@@ -7,6 +7,7 @@
 		"noUnusedParameters": true,
 		"sourceMap": true,
 		"declaration": true,
+		"declarationMap": true,
 		"noUnusedLocals": true,
 		"removeComments": false,
 		"target": "esnext",
