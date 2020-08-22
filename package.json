@@ -23,9 +23,9 @@
     "default/*",
     "common/*",
     "!**/*.ts",
-    "v*/*.d.ts",
-    "default/*.d.ts",
-    "common/*.d.ts"
+    "v*/**/*.d.ts",
+    "default/**/*.d.ts",
+    "common/**/*.d.ts"
   ],
   "engines": {
     "node": ">12"

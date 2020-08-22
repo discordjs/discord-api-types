@@ -10,3 +10,11 @@ coverage/
 v*/**/*.js
 v*/**/*.map
 v*/**/*.d.ts
+
+default/*.js
+default/*.map
+default/*.d.ts
+
+common/*.js
+common/*.map
+common/*.d.ts
