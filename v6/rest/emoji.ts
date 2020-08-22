@@ -14,12 +14,12 @@ export type RESTGetAPIGuildEmojiResult = APIEmoji;
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params
  */
 export interface RESTPostAPIGuildEmojiJSONBody {
-  name: string;
-  /**
-   * The image data, read more [here](https://discord.com/developers/docs/reference#image-data)
-   */
-  image: string;
-  roles?: string[];
+	name: string;
+	/**
+	 * The image data, read more [here](https://discord.com/developers/docs/reference#image-data)
+	 */
+	image: string;
+	roles?: string[];
 }
 
 export type RESTPostAPIGuildEmojiResult = APIEmoji;
@@ -28,8 +28,8 @@ export type RESTPostAPIGuildEmojiResult = APIEmoji;
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
  */
 export interface RESTPatchAPIGuildEmojiJSONBody {
-  name?: string;
-  roles?: string[] | null;
+	name?: string;
+	roles?: string[] | null;
 }
 
 export type RESTPatchAPIGuildEmojiResult = APIEmoji;

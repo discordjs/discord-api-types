@@ -5,8 +5,8 @@ import type { APIEmbed, APIMessage, APIWebhook } from '../payloads';
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
 export interface RESTPostAPIChannelWebhookJSONBody {
-  name: string;
-  avatar?: string | null;
+	name: string;
+	avatar?: string | null;
 }
 
 export type RESTPostAPIChannelWebhookResult = APIWebhook;
@@ -35,9 +35,9 @@ export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
  */
 export interface RESTPatchAPIWebhookJSONBody {
-  name?: string;
-  avatar?: string | null;
-  channel_id?: string;
+	name?: string;
+	avatar?: string | null;
+	channel_id?: string;
 }
 
 export type RESTPatchAPIWebhookResult = APIWebhook;
@@ -59,40 +59,40 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
 export interface RESTPostAPIWebhookWithTokenJSONBody {
-  content?: string;
-  username?: string;
-  avatar_url?: string;
-  tts?: boolean;
-  embeds?: APIEmbed[];
-  allowed_mentions?: APIAllowedMentionsSend;
+	content?: string;
+	username?: string;
+	avatar_url?: string;
+	tts?: boolean;
+	embeds?: APIEmbed[];
+	allowed_mentions?: APIAllowedMentionsSend;
 }
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
-  | {
-      /**
-       * JSON stringified message body
-       */
-      payload_json?: string;
-      /**
-       * The file contents
-       */
-      file: unknown;
-    }
-  | (RESTPostAPIWebhookWithTokenJSONBody & {
-      /**
-       * The file contents
-       */
-      file: unknown;
-    });
+	| {
+			/**
+			 * JSON stringified message body
+			 */
+			payload_json?: string;
+			/**
+			 * The file contents
+			 */
+			file: unknown;
+	  }
+	| (RESTPostAPIWebhookWithTokenJSONBody & {
+			/**
+			 * The file contents
+			 */
+			file: unknown;
+	  });
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
  */
 export interface RESTPostAPIWebhookWithTokenQuery {
-  wait?: boolean;
+	wait?: boolean;
 }
 
 export type RESTPostAPIWebhookWithTokenResult = never;
