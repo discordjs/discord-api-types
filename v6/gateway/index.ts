@@ -147,7 +147,7 @@ export enum GatewayDispatchEvents {
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
 }
 
-export type GatewaySendPayload = GatewayHeartbeat | GatewayIdentify | GatewayPresenceUpdate | GatewayVoiceStateUpdate | GatewayResume | GatewayRequestGuildMembers;
+export type GatewaySendPayload = GatewayHeartbeat | GatewayIdentify | GatewayUpdatePresence | GatewayVoiceStateUpdate | GatewayResume | GatewayRequestGuildMembers;
 
 export type GatewayReceivePayload = GatewayHello | GatewayHeartbeatRequest | GatewayHeartbeatAck | GatewayInvalidSession | GatewayReconnect | GatewayDispatchPayload;
 
@@ -563,7 +563,7 @@ export interface GatewayVoiceStateUpdate {
 /**
  * https://discord.com/developers/docs/topics/gateway#update-status
  */
-export interface GatewayPresenceUpdate {
+export interface GatewayUpdatePresence {
 	op: GatewayOPCodes.PresenceUpdate;
 	d: GatewayPresenceUpdateData;
 }
