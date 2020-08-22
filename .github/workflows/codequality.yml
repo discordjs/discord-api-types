@@ -1,0 +1,55 @@
+name: Code Quality
+
+on:
+  push:
+    branches:
+      - master
+      - stable
+  pull_request:
+
+jobs:
+  ESLint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Project
+      uses: actions/checkout@v1
+    - name: Use Node.js 14
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14
+    - name: Restore CI Cache
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-14-${{ hashFiles('**/yarn.lock') }}
+    - name: Install Dependencies
+      run: yarn --ignore-scripts --frozen-lockfile
+    - name: Run ESLint
+      uses: icrawl/action-eslint@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        custom-glob: 'v*/** default/** common/**'
+
+  TypeScript:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Project
+      uses: actions/checkout@v1
+    - name: Use Node.js 14
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14
+    - name: Restore CI Cache
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-14-${{ hashFiles('**/yarn.lock') }}
+    - name: Install Dependencies
+      run: yarn --ignore-scripts --frozen-lockfile
+    - name: Run TSC
+      uses: icrawl/action-tsc@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

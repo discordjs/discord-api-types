@@ -1,0 +1,26 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"alwaysStrict": true,
+		"lib": ["esnext"],
+		"module": "commonjs",
+		"noUnusedParameters": true,
+		"sourceMap": true,
+		"declaration": true,
+		"noUnusedLocals": true,
+		"removeComments": false,
+		"target": "esnext",
+		"importsNotUsedAsValues": "error"
+	},
+	"exclude": [
+		"node_modules",
+		"bin",
+		"examples",
+		"scripts"
+	],
+	"include": [
+		"./v*/**/*",
+		"default/**/*",
+		"common/**/*",
+	]
+}
