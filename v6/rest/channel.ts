@@ -1,4 +1,16 @@
-import type { APIChannel, APIEmbed, APIFollowedChannel, APIInvite, APIMessage, APIOverwrite, APIUser, ChannelType, InviteTargetUserType, MessageFlags, OverwriteType } from '../payloads';
+import type {
+  APIChannel,
+  APIEmbed,
+  APIFollowedChannel,
+  APIInvite,
+  APIMessage,
+  APIOverwrite,
+  APIUser,
+  ChannelType,
+  InviteTargetUserType,
+  MessageFlags,
+  OverwriteType,
+} from '../payloads';
 
 // #region TypeDefs
 
@@ -6,28 +18,28 @@ import type { APIChannel, APIEmbed, APIFollowedChannel, APIInvite, APIMessage, A
  * https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure
  */
 export interface APIOverwriteSend {
-	id: string;
-	type: OverwriteType;
-	allow: number | string;
-	deny: number | string;
+  id: string;
+  type: OverwriteType;
+  allow: number | string;
+  deny: number | string;
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
  */
 export enum AllowedMentionsTypes {
-	Role = 'roles',
-	User = 'users',
-	Everyone = 'everyone'
+  Role = 'roles',
+  User = 'users',
+  Everyone = 'everyone',
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
  */
 export interface APIAllowedMentionsSend {
-	parse?: AllowedMentionsTypes[];
-	roles?: string[];
-	users?: string[];
+  parse?: AllowedMentionsTypes[];
+  roles?: string[];
+  users?: string[];
 }
 
 // #endregion TypeDefs
@@ -36,15 +48,15 @@ export interface APIAllowedMentionsSend {
  * https://discord.com/developers/docs/resources/channel#modify-channel
  */
 export interface RESTPatchAPIChannelJSONBody {
-	name?: string;
-	type?: ChannelType.GUILD_NEWS | ChannelType.GUILD_TEXT;
-	position?: number | null;
-	topic?: string | null;
-	nsfw?: boolean | null;
-	rate_limit_per_user?: number | null;
-	user_limit?: number | null;
-	permission_overwrites?: APIOverwrite[] | null;
-	parent_id?: string | null;
+  name?: string;
+  type?: ChannelType.GUILD_NEWS | ChannelType.GUILD_TEXT;
+  position?: number | null;
+  topic?: string | null;
+  nsfw?: boolean | null;
+  rate_limit_per_user?: number | null;
+  user_limit?: number | null;
+  permission_overwrites?: APIOverwrite[] | null;
+  parent_id?: string | null;
 }
 
 export type RESTGetAPIChannelResult = APIChannel;
@@ -55,10 +67,10 @@ export type RESTDeleteAPIChannelResult = APIChannel;
  * https://discord.com/developers/docs/resources/channel#get-channel-messages
  */
 export interface RESTGetAPIChannelMessagesQuery {
-	around?: string;
-	before?: string;
-	after?: string;
-	limit?: number;
+  around?: string;
+  before?: string;
+  after?: string;
+  limit?: number;
 }
 
 export type RESTGetAPIChannelMessagesResult = APIMessage[];
@@ -67,45 +79,47 @@ export type RESTGetAPIChannelMessagesResult = APIMessage[];
  * https://discord.com/developers/docs/resources/channel#create-message
  */
 export interface RESTPostAPIChannelMessageJSONBody {
-	content?: string;
-	nonce?: number | string;
-	tts?: boolean;
-	embed?: APIEmbed;
-	allowed_mentions?: APIAllowedMentionsSend;
+  content?: string;
+  nonce?: number | string;
+  tts?: boolean;
+  embed?: APIEmbed;
+  allowed_mentions?: APIAllowedMentionsSend;
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
-export type RESTPostAPIChannelMessageFormDataBody = {
-	/**
-	 * JSON stringified message body
-	 */
-	payload_json?: string;
-	/**
-	 * The file contents
-	 */
-	file: unknown;
-} | {
-	content?: string;
-	nonce?: number | string;
-	tts?: boolean;
-	embed?: APIEmbed;
-	allowed_mentions?: APIAllowedMentionsSend;
-	/**
-	 * The file contents
-	 */
-	file: unknown;
-};
+export type RESTPostAPIChannelMessageFormDataBody =
+  | {
+      /**
+       * JSON stringified message body
+       */
+      payload_json?: string;
+      /**
+       * The file contents
+       */
+      file: unknown;
+    }
+  | {
+      content?: string;
+      nonce?: number | string;
+      tts?: boolean;
+      embed?: APIEmbed;
+      allowed_mentions?: APIAllowedMentionsSend;
+      /**
+       * The file contents
+       */
+      file: unknown;
+    };
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
  */
 export interface RESTPatchAPIChannelMessageJSONBody {
-	content?: string | null;
-	embed?: APIEmbed | null;
-	allowed_mentions?: APIAllowedMentionsSend | null;
-	flags?: MessageFlags | null;
+  content?: string | null;
+  embed?: APIEmbed | null;
+  allowed_mentions?: APIAllowedMentionsSend | null;
+  flags?: MessageFlags | null;
 }
 
 export type RESTGetAPIChannelMessageResult = APIMessage;
@@ -117,9 +131,9 @@ export type RESTDeleteAPIChannelMessageResult = never;
  * https://discord.com/developers/docs/resources/channel#get-reactions
  */
 export interface RESTGetAPIChannelMessageReactionsQuery {
-	before?: string;
-	after?: string;
-	limit?: number;
+  before?: string;
+  after?: string;
+  limit?: number;
 }
 
 export type RESTGetAPIChannelMessageReactionsResult = APIUser[];
@@ -132,7 +146,7 @@ export type RESTDeleteAPIChannelAllMessageReactionsResult = never;
  * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
  */
 export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
-	messages: string[];
+  messages: string[];
 }
 
 export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
@@ -141,9 +155,9 @@ export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
  * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
  */
 export interface RESTPutAPIChannelPermissionsJSONBody {
-	allow: number | string;
-	deny: number | string;
-	type: OverwriteType;
+  allow: number | string;
+  deny: number | string;
+  type: OverwriteType;
 }
 
 export type RESTPutAPIChannelPermissionsResult = never;
@@ -155,12 +169,12 @@ export type RESTDeleteAPIChannelPermissionsResult = never;
 export type RESTGetAPIChannelInvitesResult = APIInvite[];
 
 export interface RESTPostAPIChannelInviteJSONBody {
-	max_age?: number;
-	max_uses?: number;
-	temporary?: boolean;
-	unique?: boolean;
-	target_user_id?: string;
-	target_user_type?: InviteTargetUserType;
+  max_age?: number;
+  max_uses?: number;
+  temporary?: boolean;
+  unique?: boolean;
+  target_user_id?: string;
+  target_user_type?: InviteTargetUserType;
 }
 
 /**
@@ -183,8 +197,8 @@ export type RESTDeleteAPIChannelPinResult = never;
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
  */
 export interface RESTPutAPIChannelRecipientJSONBody {
-	access_token: string;
-	nick?: string;
+  access_token: string;
+  nick?: string;
 }
 
 export type RESTPutAPIChannelRecipientResult = unknown;
@@ -195,7 +209,7 @@ export type RESTDeleteAPIChannelRecipientResult = unknown;
 export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 
 export interface RESTPostAPIChannelFollowersJSONBody {
-	webhook_channel_id: string;
+  webhook_channel_id: string;
 }
 
 export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;

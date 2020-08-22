@@ -1,9 +1,31 @@
 {
-	"extends": "@skyra",
+	"extends": ["@skyra", "plugin:prettier/recommended"],
+	"plugins": ["import"],
 	"parserOptions": {
 		"project": "./tsconfig.json"
 	},
 	"rules": {
-		"@typescript-eslint/naming-convention": 0
+		"import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "index", "sibling", "parent"],
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
+		"prettier/prettier": [
+      2,
+      {
+        "printWidth": 120,
+        "singleQuote": true,
+        "quoteProps": "as-needed",
+        "trailingComma": "all",
+        "endOfLine": "lf",
+        "arrowParens": "avoid"
+      }
+    ],
+    "@typescript-eslint/naming-convention": 0,
+    "@typescript-eslint/indent": 0
 	}
 }

@@ -14,8 +14,8 @@ export type RESTGetAPIUserResult = APIUser;
  * https://discord.com/developers/docs/resources/user#modify-current-user
  */
 export interface RESTPatchAPICurrentUserJSONBody {
-	username?: string;
-	avatar?: string | null;
+  username?: string;
+  avatar?: string | null;
 }
 
 export type RESTPatchAPICurrentUserResult = APIUser;
@@ -24,22 +24,22 @@ export type RESTPatchAPICurrentUserResult = APIUser;
  * https://discord.com/developers/docs/resources/user#get-current-user-guilds
  */
 export interface RESTGetAPICurrentUserGuildsQuery {
-	before?: string;
-	after?: string;
-	limit?: number;
+  before?: string;
+  after?: string;
+  limit?: number;
 }
 
 export interface RESTAPIPartialCurrentUserGuild {
-	id: string;
-	name: string;
-	icon: string | null;
-	owner: boolean;
-	features: GuildFeature[];
-	/**
-	 * @deprecated Use `permissions_new` instead
-	 */
-	permissions: number;
-	permissions_new: string;
+  id: string;
+  name: string;
+  icon: string | null;
+  owner: boolean;
+  features: GuildFeature[];
+  /**
+   * @deprecated Use `permissions_new` instead
+   */
+  permissions: number;
+  permissions_new: string;
 }
 
 export type RESTGetAPICurrentUserGuildsResult = RESTAPIPartialCurrentUserGuild[];
@@ -53,7 +53,7 @@ export type RESTDeleteAPICurrentUserGuildResult = never;
  * https://discord.com/developers/docs/resources/user#create-dm
  */
 export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
-	recipient_id: string;
+  recipient_id: string;
 }
 
 export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
