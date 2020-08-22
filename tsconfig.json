@@ -10,7 +10,7 @@
 		"declarationMap": true,
 		"noUnusedLocals": true,
 		"removeComments": false,
-		"target": "esnext",
+		"target": "ES2019",
 		"importsNotUsedAsValues": "error"
 	},
 	"exclude": [
