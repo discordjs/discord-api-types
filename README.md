@@ -53,7 +53,7 @@ const { APIUserData } = require('discord-api-types');
 
 ```ts
 // TypeScript/ES Module support
-import { APIUserData } from 'discord-api-types'
+import { APIUserData } from 'discord-api-types';
 ```
 
 You should instead consider adding the API version you want to target by appending `/v*`, where the `*` represends the API version.
