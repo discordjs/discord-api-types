@@ -33,6 +33,8 @@ export enum RESTJSONErrorCodes {
 	BotsCannotUseThisEndpoint = 20001,
 	OnlyBotsCanUseThisEndpoint,
 
+	ChannelSendRateLimit = 20028,
+
 	MaximumNumberOfGuildsReached = 30001,
 	MaximumNumberOfFriendsReached,
 	MaximumNumberOfPinsReachedForTheChannel,
