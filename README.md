@@ -56,7 +56,7 @@ const { APIUserData } = require('discord-api-types');
 import { APIUserData } from 'discord-api-types';
 ```
 
-You should instead consider adding the API version you want to target by appending `/v*`, where the `*` represends the API version.
+You should instead consider adding the API version you want to target by appending `/v*`, where the `*` represents the API version.
 
 ```js
 const { APIUserData } = require('discord-api-types/v6');

@@ -47,11 +47,11 @@ export interface GatewayPresenceUpdate {
 }
 
 export enum PresenceUpdateStatus {
-	Online = 'online',
-	Idle = 'idle',
 	DoNotDisturb = 'dnd',
+	Idle = 'idle',
 	Invisible = 'invisible',
-	Offline = 'offline'
+	Offline = 'offline',
+	Online = 'online',
 }
 
 /**
