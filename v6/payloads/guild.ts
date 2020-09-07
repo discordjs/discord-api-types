@@ -217,6 +217,7 @@ export interface APIGuildIntegration {
 	account: APIIntegrationAccount;
 	synced_at: string;
 	subscriber_count: number;
+	revoked: boolean;
 	application?: APIGuildIntegrationApplication;
 }
 
