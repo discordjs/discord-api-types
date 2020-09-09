@@ -148,20 +148,20 @@ export enum GuildSystemChannelFlags {
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-features
  */
 export enum GuildFeature {
-	INVITE_SPLASH = 'INVITE_SPLASH',
-	VIP_REGIONS = 'VIP_REGIONS',
-	VANITY_URL = 'VANITY_URL',
-	VERIFIED = 'VERIFIED',
-	PARTNERED = 'PARTNERED',
-	COMMUNITY = 'COMMUNITY',
-	COMMERCE = 'COMMERCE',
-	NEWS = 'NEWS',
-	DISCOVERABLE = 'DISCOVERABLE',
-	FEATURABLE = 'FEATURABLE',
 	ANIMATED_ICON = 'ANIMATED_ICON',
 	BANNER = 'BANNER',
-	WELCOME_SCREEN_ENABLED = 'WELCOME_SCREEN_ENABLED',
+	COMMERCE = 'COMMERCE',
+	COMMUNITY = 'COMMUNITY',
+	DISCOVERABLE = 'DISCOVERABLE',
+	FEATURABLE = 'FEATURABLE',
+	INVITE_SPLASH = 'INVITE_SPLASH',
+	NEWS = 'NEWS',
+	PARTNERED = 'PARTNERED',
 	RELAY_ENABLED = 'RELAY_ENABLED',
+	VANITY_URL = 'VANITY_URL',
+	VERIFIED = 'VERIFIED',
+	VIP_REGIONS = 'VIP_REGIONS',
+	WELCOME_SCREEN_ENABLED = 'WELCOME_SCREEN_ENABLED',
 }
 
 /**
@@ -246,11 +246,11 @@ export interface APIBan {
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options
  */
 export enum GuildWidgetStyle {
-	Shield = 'shield',
 	Banner1 = 'banner1',
 	Banner2 = 'banner2',
 	Banner3 = 'banner3',
 	Banner4 = 'banner4',
+	Shield = 'shield',
 }
 
 export interface APIGuildWelcomeScreen {
