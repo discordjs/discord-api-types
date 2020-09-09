@@ -29,7 +29,7 @@ export interface APIUser {
 export enum UserFlags {
 	None = 0,
 	DiscordEmployee = 1 << 0,
-	DiscordPartner = 1 << 1,
+	PartneredServerOwner = 1 << 1,
 	DiscordHypeSquadEvents = 1 << 2,
 	BugHunterLevel1 = 1 << 3,
 	HypeSquadHouseBravery = 1 << 6,
@@ -40,7 +40,7 @@ export enum UserFlags {
 	System = 1 << 12,
 	BugHunterLevel2 = 1 << 14,
 	VerifiedBot = 1 << 16,
-	VerifiedBotDeveloper = 1 << 17,
+	EarlyVerifiedBotDeveloper = 1 << 17,
 }
 
 /**
