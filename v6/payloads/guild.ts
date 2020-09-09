@@ -213,9 +213,12 @@ export interface APIGuildIntegration {
 	enable_emoticons?: boolean;
 	expire_behavior: IntegrationExpireBehavior;
 	expire_grace_period: number;
-	user: APIUser;
+	user?: APIUser;
 	account: APIIntegrationAccount;
 	synced_at: string;
+	subscriber_count: number;
+	revoked: boolean;
+	application?: APIGuildIntegrationApplication;
 }
 
 /**
@@ -232,6 +235,18 @@ export enum IntegrationExpireBehavior {
 export interface APIIntegrationAccount {
 	id: string;
 	name: string;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#integration-application-object
+ */
+export interface APIGuildIntegrationApplication {
+	id: string;
+	name: string;
+	icon: string | null;
+	description: string;
+	summary: string;
+	bot?: APIUser;
 }
 
 /**

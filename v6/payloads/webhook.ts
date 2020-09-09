@@ -20,6 +20,7 @@ export interface APIWebhook {
 	token?: string;
 	source_guild?: APIPartialGuild;
 	source_channel?: APIPartialChannel;
+	application_id: string | null;
 }
 
 export enum WebhookType {
