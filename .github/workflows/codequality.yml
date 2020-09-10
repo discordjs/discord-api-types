@@ -19,13 +19,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14
-    - name: Restore CI Cache
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-14-${{ hashFiles('**/yarn.lock') }}
     - name: Install Dependencies
-      run: yarn --ignore-scripts --frozen-lockfile
+      run: npm ci
     - name: Run ESLint
       uses: icrawl/action-eslint@v1
       with:
@@ -41,12 +36,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14
-    - name: Restore CI Cache
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-14-${{ hashFiles('**/yarn.lock') }}
     - name: Install Dependencies
-      run: yarn --ignore-scripts --frozen-lockfile
+      run: npm ci
     - name: Run TSC
       uses: icrawl/action-tsc@v1
