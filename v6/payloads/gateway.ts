@@ -57,10 +57,7 @@ export enum PresenceUpdateStatus {
 /**
  * https://discord.com/developers/docs/topics/gateway#client-status-object
  */
-export type GatewayPresenceClientStatus = Partial<Record<
-'desktop' | 'mobile' | 'web',
-PresenceUpdateStatus
->>;
+export type GatewayPresenceClientStatus = Partial<Record<'desktop' | 'mobile' | 'web', PresenceUpdateStatus>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object
@@ -90,7 +87,7 @@ export enum ActivityType {
 	Streaming,
 	Listening,
 
-	Custom = 4
+	Custom = 4,
 }
 
 /**
@@ -118,7 +115,9 @@ export interface GatewayActivityParty {
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
  */
-export type GatewayActivityAssets = Partial<Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>>;
+export type GatewayActivityAssets = Partial<
+	Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
