@@ -23,9 +23,7 @@
     "default/*",
     "common/*",
     "!**/*.ts",
-    "v*/**/*.d.ts",
-    "default/**/*.d.ts",
-    "common/**/*.d.ts"
+    "**/*.d.ts"
   ],
   "engines": {
     "node": ">=12"
@@ -38,7 +36,6 @@
     "eslint": "^7.7.0",
     "eslint-config-marine": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
@@ -48,6 +45,15 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/discordjs/discord-api-types"
+  },
+  "eslintConfig": {
+    "extends": "marine/prettier/node",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "@typescript-eslint/naming-convention": 0
+    }
   },
   "husky": {
     "hooks": {
@@ -60,32 +66,29 @@
     "*.ts": "eslint --fix --ext ts"
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-angular"
-    ],
-    "rules": {
-      "scope-case": [
-        2,
-        "always",
-        "pascal-case"
-      ],
-      "type-enum": [
-        2,
-        "always",
-        [
-          "chore",
-          "build",
-          "ci",
-          "docs",
-          "feat",
-          "fix",
-          "perf",
-          "refactor",
-          "revert",
-          "style",
-          "test"
-        ]
-      ]
-    }
-  }
+		"extends": [
+			"@commitlint/config-angular"
+		],
+		"rules": {
+			"type-enum": [
+				2,
+				"always",
+				[
+					"chore",
+					"build",
+					"ci",
+					"docs",
+					"feat",
+					"fix",
+					"perf",
+					"refactor",
+					"revert",
+					"style",
+					"test",
+					"types",
+					"wip"
+				]
+			]
+		}
+	}
 }
