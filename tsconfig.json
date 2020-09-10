@@ -11,7 +11,8 @@
 		"noUnusedLocals": true,
 		"removeComments": false,
 		"target": "ES2020",
-		"importsNotUsedAsValues": "error"
+		"importsNotUsedAsValues": "error",
+		"strictNullChecks": true
 	},
 	"exclude": [
 		"node_modules",
@@ -20,7 +21,7 @@
 		"scripts"
 	],
 	"include": [
-		"./v*/**/*",
+		"v*/**/*",
 		"default/**/*",
 		"common/**/*",
 	]
