@@ -64,7 +64,7 @@ export interface APIMessage {
 	edited_timestamp: string | null;
 	tts: boolean;
 	mention_everyone: boolean;
-	mentions: APIUser & { member?: Omit<APIGuildMember, 'user'> };
+	mentions: (APIUser & { member?: Omit<APIGuildMember, 'user'> })[];
 	mention_roles: string[];
 	mention_channels?: APIChannelMention[];
 	attachments: APIAttachment[];
