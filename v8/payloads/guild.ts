@@ -41,14 +41,8 @@ export interface APIGuild extends APIPartialGuild {
 	region: string;
 	afk_channel_id: string | null;
 	afk_timeout: number;
-	/**
-	 * @deprecated Use `widget_enabled` instead
-	 */
-	embed_enabled?: boolean;
-	/**
-	 * @deprecated Use `widget_channel_id` instead
-	 */
-	embed_channel_id?: string | null;
+	widget_enabled?: boolean;
+	widget_channel_id?: string | null;
 	verification_level: GuildVerificationLevel;
 	default_message_notifications: GuildDefaultMessageNotifications;
 	explicit_content_filter: GuildExplicitContentFilter;
@@ -57,8 +51,6 @@ export interface APIGuild extends APIPartialGuild {
 	features: GuildFeature[];
 	mfa_level: GuildMFALevel;
 	application_id: string | null;
-	widget_enabled?: boolean;
-	widget_channel_id?: string | null;
 	system_channel_id: string | null;
 	system_channel_flags: GuildSystemChannelFlags;
 	rules_channel_id: string | null;
