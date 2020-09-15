@@ -36,14 +36,11 @@ export interface GatewayPresenceUpdate {
 	user: Partial<APIUser> & {
 		id: string;
 	};
-	roles?: string[];
 	game?: GatewayActivity | null;
 	guild_id?: string;
 	status?: PresenceUpdateStatus;
 	activities?: GatewayActivity[];
 	client_status?: GatewayPresenceClientStatus;
-	premium_since?: string | null;
-	nick?: string | null;
 }
 
 export enum PresenceUpdateStatus {
@@ -110,7 +107,7 @@ export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'name' | 'animated'>> 
 export interface GatewayActivityParty {
 	id?: string;
 	// eslint-disable-next-line prettier/prettier
-	size?: [currentSize: number, maxSize: number];
+  size?: [currentSize: number, maxSize: number];
 }
 
 /**
