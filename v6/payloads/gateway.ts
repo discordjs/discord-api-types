@@ -88,6 +88,7 @@ export enum ActivityType {
 	Listening,
 
 	Custom = 4,
+	Competing,
 }
 
 /**
