@@ -134,7 +134,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationURIQueryResult {
 /**
  * https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example
  */
-export interface RESTPostOAuth2AccessTokenWithGuildsScopeResult {
+export interface RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult {
 	access_token: string;
 	token_type: string;
 	expires_in: number;
@@ -146,7 +146,7 @@ export interface RESTPostOAuth2AccessTokenWithGuildsScopeResult {
 /**
  * https://discord.com/developers/docs/topics/oauth2#webhooks-webhook-token-response-example
  */
-export interface RESTPostOAuth2AccessTokenWithWebhookIncomingScopeResult {
+export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
 	access_token: string;
 	token_type: string;
 	expires_in: number;
@@ -155,5 +155,5 @@ export interface RESTPostOAuth2AccessTokenWithWebhookIncomingScopeResult {
 	webhook: APIWebhook;
 }
 
-export type RESTPostOAuth2AccessTokenWithGuildsAndWebhookIncomingScopeResult = RESTPostOAuth2AccessTokenWithGuildsScopeResult &
-	RESTPostOAuth2AccessTokenWithWebhookIncomingScopeResult;
+export type RESTPostOAuth2AccessTokenWithBotAndGuildsAndWebhookIncomingScopeResult = RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult &
+	RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;
