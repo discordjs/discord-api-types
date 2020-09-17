@@ -8,7 +8,7 @@ export type RESTGetAPIOauth2CurrentApplicationResult = APIApplication;
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant
  */
-export interface RESTOAuth2AuthorizationURIEncodedData {
+export interface RESTOAuth2AuthorizationQuery {
 	response_type: 'code';
 	client_id: string;
 	scope: string;
@@ -20,7 +20,7 @@ export interface RESTOAuth2AuthorizationURIEncodedData {
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
-export interface RESTOAuth2AuthorizationURIQueryResult {
+export interface RESTOAuth2AuthorizationResult {
 	code: string;
 	state?: string;
 }
@@ -65,7 +65,7 @@ export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
 /**
  * https://discord.com/developers/docs/topics/oauth2#implicit-grant
  */
-export interface RESTOAuth2ImplicitAuthorizationURIEncodedData {
+export interface RESTOAuth2ImplicitAuthorizationQuery {
 	response_type: 'token';
 	client_id: string;
 	scope: string;
@@ -94,7 +94,7 @@ export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizat
 /**
  * https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow-bot-auth-parameters
  */
-export interface RESTOAuth2BotAuthorizationURIEncodedData {
+export interface RESTOAuth2BotAuthorizationQuery {
 	client_id: string;
 	scope: string;
 	/**
@@ -108,8 +108,11 @@ export interface RESTOAuth2BotAuthorizationURIEncodedData {
 /**
  * https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization
  */
-export interface RESTOAuth2AdvancedBotAuthorizationURIEncodedData {
+export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	client_id: string;
+	/**
+	 * This assumes you include the `bot` scope alongside others (like `identify` for example)
+	 */
 	scope: string;
 	/**
 	 * The required permissions bitfield, stringified
