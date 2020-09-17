@@ -50,21 +50,21 @@ You can `require` / `import` the module directly, which will give you the latest
 > We **strongly recommend** you use a version when importing this module! This will prevent breaking changes when updating the module.
 
 ```js
-const { APIUserData } = require('discord-api-types');
+const { APIUser } = require('discord-api-types');
 ```
 
 ```ts
 // TypeScript/ES Module support
-import { APIUserData } from 'discord-api-types';
+import { APIUser } from 'discord-api-types';
 ```
 
 You should instead consider adding the API version you want to target by appending `/v*`, where the `*` represents the API version.
 
 ```js
-const { APIUserData } = require('discord-api-types/v6');
+const { APIUser } = require('discord-api-types/v6');
 ```
 
 ```ts
 // TypeScript/ES Module support
-import { APIUserData } from 'discord-api-types/v6';
+import { APIUser } from 'discord-api-types/v6';
 ```
