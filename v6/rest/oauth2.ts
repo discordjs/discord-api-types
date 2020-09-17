@@ -60,7 +60,7 @@ export interface RESTPostOAuth2RefreshTokenURIEncodedData {
 	scope: string;
 }
 
-export type RESTPostOAuth2RefreshTokenURIResult = RESTPostOAuth2AccessTokenResult;
+export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#implicit-grant
