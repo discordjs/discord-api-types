@@ -31,6 +31,8 @@ The exports of each API version is split into three main parts:
 
     - For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
 
+    - Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
+
   - If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
 
     - Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore it. This does **not** account for errors.
