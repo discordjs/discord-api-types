@@ -20,7 +20,7 @@ export interface RESTOAuth2AuthorizationQuery {
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
-export interface RESTOAuth2AuthorizationResult {
+export interface RESTOAuth2AuthorizationQueryResult {
 	code: string;
 	state?: string;
 }
@@ -124,7 +124,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	redirect_uri?: string;
 }
 
-export interface RESTOAuth2AdvancedBotAuthorizationURIQueryResult {
+export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
 	state?: string;
 	guild_id: string;
