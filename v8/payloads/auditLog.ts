@@ -189,14 +189,11 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyApplicationID
 	| APIAuditLogChangeKeyRateLimitPerUser
 	| APIAuditLogChangeKeyPermissions
-	| APIAuditLogChangeKeyPermissionsNew
 	| APIAuditLogChangeKeyColor
 	| APIAuditLogChangeKeyHoist
 	| APIAuditLogChangeKeyMentionable
 	| APIAuditLogChangeKeyAllow
-	| APIAuditLogChangeKeyAllowNew
 	| APIAuditLogChangeKeyDeny
-	| APIAuditLogChangeKeyDenyNew
 	| APIAuditLogChangeKeyCode
 	| APIAuditLogChangeKeyChannelID
 	| APIAuditLogChangeKeyInviterID
@@ -349,7 +346,7 @@ export type APIAuditLogChangeKeyRateLimitPerUser = AuditLogChangeData<'rate_limi
 /**
  * Returned when a permission bitfield is changed
  */
-export type APIAuditLogChangeKeyPermissionsNew = AuditLogChangeData<'permissions', string>;
+export type APIAuditLogChangeKeyPermissions = AuditLogChangeData<'permissions', string>;
 
 /**
  * Returned when a role's color is changed
@@ -369,12 +366,12 @@ export type APIAuditLogChangeKeyMentionable = AuditLogChangeData<'mentionable', 
 /**
  * Returned when an overwrite's allowed permissions bitfield is changed
  */
-export type APIAuditLogChangeKeyAllowNew = AuditLogChangeData<'allow', string>;
+export type APIAuditLogChangeKeyAllow = AuditLogChangeData<'allow', string>;
 
 /**
  * Returned when an overwrite's denied permissions bitfield is changed
  */
-export type APIAuditLogChangeKeyDenyNew = AuditLogChangeData<'deny', string>;
+export type APIAuditLogChangeKeyDeny = AuditLogChangeData<'deny', string>;
 
 /**
  * Returned when an invite's code is changed
