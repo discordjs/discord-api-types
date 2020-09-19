@@ -31,6 +31,8 @@ The exports of each API version is split into three main parts:
 
     - For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
 
+    - Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
+
   - If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
 
     - Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore it. This does **not** account for errors.
@@ -48,21 +50,21 @@ You can `require` / `import` the module directly, which will give you the latest
 > We **strongly recommend** you use a version when importing this module! This will prevent breaking changes when updating the module.
 
 ```js
-const { APIUserData } = require('discord-api-types');
+const { APIUser } = require('discord-api-types');
 ```
 
 ```ts
 // TypeScript/ES Module support
-import { APIUserData } from 'discord-api-types';
+import { APIUser } from 'discord-api-types';
 ```
 
 You should instead consider adding the API version you want to target by appending `/v*`, where the `*` represents the API version.
 
 ```js
-const { APIUserData } = require('discord-api-types/v6');
+const { APIUser } = require('discord-api-types/v6');
 ```
 
 ```ts
 // TypeScript/ES Module support
-import { APIUserData } from 'discord-api-types/v6';
+import { APIUser } from 'discord-api-types/v6';
 ```
