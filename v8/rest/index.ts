@@ -9,7 +9,7 @@ export * from './user';
 export * from './voice';
 export * from './webhook';
 
-export const APIVersion = '6';
+export const APIVersion = '8';
 export const Routes = {
 	/**
 	 * Route for:

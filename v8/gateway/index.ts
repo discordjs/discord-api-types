@@ -18,7 +18,7 @@ import type {
 	PresenceUpdateStatus,
 } from '../payloads';
 
-export const GatewayVersion = '6';
+export const GatewayVersion = '8';
 
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
