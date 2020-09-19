@@ -19,7 +19,7 @@ export interface APIUser {
 	verified?: boolean;
 	email?: string | null;
 	flags?: UserFlags;
-	premium_type: UserPremiumType;
+	premium_type?: UserPremiumType;
 	public_flags?: UserFlags;
 }
 

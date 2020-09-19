@@ -7,7 +7,7 @@
  *
  * These flags are exported as `BigInt`s and NOT numbers. For most of them, you can
  * convert them in a number by wrapping it in `Number()`, however be careful as any
- * futher bits added may cause issues if done so. Try to use BigInts as much as possible
+ * further bits added may cause issues if done so. Try to use BigInts as much as possible
  * or modules that can replicate them in some way.
  */
 export const PermissionFlagsBits = {
