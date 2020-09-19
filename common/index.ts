@@ -18,7 +18,7 @@ export enum RESTJSONErrorCodes {
 	UnknownToken,
 	UnknownUser,
 	UnknownEmoji,
-	UnknownWebook,
+	UnknownWebhook,
 
 	UnknownBan = 10026,
 	UnknownSKU,

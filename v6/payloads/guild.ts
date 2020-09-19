@@ -80,11 +80,11 @@ export interface APIGuild extends APIPartialGuild {
 	public_updates_channel_id: string | null;
 	max_video_channel_users?: number;
 	/**
-	 * Returned by calling GET `/guilds/{guid.id}` with the query `with_counts` set to `true`
+	 * Returned by calling GET `/guilds/{guild.id}` with the query `with_counts` set to `true`
 	 */
 	approximate_member_count?: number;
 	/**
-	 * Returned by calling GET `/guilds/{guid.id}` with the query `with_counts` set to `true`
+	 * Returned by calling GET `/guilds/{guild.id}` with the query `with_counts` set to `true`
 	 */
 	approximate_presence_count?: number;
 	welcome_screen?: APIGuildWelcomeScreen;
