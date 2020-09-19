@@ -348,14 +348,8 @@ export type APIAuditLogChangeKeyRateLimitPerUser = AuditLogChangeData<'rate_limi
 
 /**
  * Returned when a permission bitfield is changed
- * @deprecated Use `permissions_new` instead
  */
-export type APIAuditLogChangeKeyPermissions = AuditLogChangeData<'permissions', number>;
-
-/**
- * Returned when a permission bitfield is changed
- */
-export type APIAuditLogChangeKeyPermissionsNew = AuditLogChangeData<'permissions_new', string>;
+export type APIAuditLogChangeKeyPermissionsNew = AuditLogChangeData<'permissions', string>;
 
 /**
  * Returned when a role's color is changed
@@ -374,25 +368,13 @@ export type APIAuditLogChangeKeyMentionable = AuditLogChangeData<'mentionable', 
 
 /**
  * Returned when an overwrite's allowed permissions bitfield is changed
- * @deprecated Use `allow_new` instead
  */
-export type APIAuditLogChangeKeyAllow = AuditLogChangeData<'allow', number>;
-
-/**
- * Returned when an overwrite's allowed permissions bitfield is changed
- */
-export type APIAuditLogChangeKeyAllowNew = AuditLogChangeData<'allow_new', string>;
-
-/**
- * Returned when an overwrite's denied permissions bitfield is changed
- * @deprecated Use `deny_new` instead
- */
-export type APIAuditLogChangeKeyDeny = AuditLogChangeData<'deny', number>;
+export type APIAuditLogChangeKeyAllowNew = AuditLogChangeData<'allow', string>;
 
 /**
  * Returned when an overwrite's denied permissions bitfield is changed
  */
-export type APIAuditLogChangeKeyDenyNew = AuditLogChangeData<'deny_new', string>;
+export type APIAuditLogChangeKeyDenyNew = AuditLogChangeData<'deny', string>;
 
 /**
  * Returned when an invite's code is changed

@@ -35,11 +35,7 @@ export interface RESTAPIPartialCurrentUserGuild {
 	icon: string | null;
 	owner: boolean;
 	features: GuildFeature[];
-	/**
-	 * @deprecated Use `permissions_new` instead
-	 */
-	permissions: number;
-	permissions_new: string;
+	permissions: string;
 }
 
 export type RESTGetAPICurrentUserGuildsResult = RESTAPIPartialCurrentUserGuild[];

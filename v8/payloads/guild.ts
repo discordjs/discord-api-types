@@ -33,11 +33,7 @@ export interface APIGuild extends APIPartialGuild {
 	discovery_splash: string | null;
 	owner?: boolean;
 	owner_id: string;
-	/**
-	 * @deprecated Use `permissions_new` instead
-	 */
-	permissions?: number;
-	permissions_new?: string;
+	permissions?: string;
 	region: string;
 	afk_channel_id: string | null;
 	afk_timeout: number;

@@ -167,16 +167,8 @@ export interface APIReaction {
 export interface APIOverwrite {
 	id: string;
 	type: OverwriteType;
-	/**
-	 * @deprecated Use `allow_new` instead
-	 */
-	allow: number;
-	allow_new: string;
-	/**
-	 * @deprecated Use `deny_new` instead
-	 */
-	deny: number;
-	deny_new: string;
+	allow: string;
+	deny: string;
 }
 
 export enum OverwriteType {

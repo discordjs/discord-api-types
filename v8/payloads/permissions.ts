@@ -59,11 +59,7 @@ export interface APIRole {
 	color: number;
 	hoist: boolean;
 	position: number;
-	/**
-	 * @deprecated Use `permissions_new` instead
-	 */
-	permissions: number;
-	permissions_new: string;
+	permissions: string;
 	managed: boolean;
 	mentionable: boolean;
 	tags?: APIRoleTags;
