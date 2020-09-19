@@ -36,7 +36,6 @@ export interface GatewayPresenceUpdate {
 	user: Partial<APIUser> & {
 		id: string;
 	};
-	game?: GatewayActivity | null;
 	guild_id?: string;
 	status?: PresenceUpdateStatus;
 	activities?: GatewayActivity[];
