@@ -20,7 +20,7 @@ export interface APIPartialChannel {
  */
 export interface APIChannel extends APIPartialChannel {
 	guild_id?: string;
-	position: number;
+	position?: number;
 	permission_overwrites?: APIOverwrite[];
 	name?: string;
 	topic?: string | null;
