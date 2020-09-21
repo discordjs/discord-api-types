@@ -7,6 +7,7 @@ import type {
 	APIGuildPreview,
 	APIGuildWidget,
 	APIInvite,
+	APIOverwrite,
 	APIRole,
 	APIVoiceRegion,
 	GuildDefaultMessageNotifications,
@@ -17,33 +18,22 @@ import type {
 	IntegrationExpireBehavior,
 } from '../payloads';
 
-export type APIGuildCreateOverwrite = Pick<
-	APIOverwrite,
-	'type'
-> & {
+export type APIGuildCreateOverwrite = Pick<APIOverwrite, 'type'> & {
 	id: string | number;
 	allow: number | string;
 	deny: number | string;
-}
+};
 
 export type APIGuildCreatePartialChannel = Partial<
-	Pick<
-		APIChannel,
-		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
-	>
+	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
 > & {
 	name: string;
 	id?: number;
 	parent_id?: number;
 	permission_overwrites?: APIGuildCreateOverwrite[];
-}
+};
 
-export type APIGuildCreateRole = Partial<
-	Pick<
-		APIRole,
-		'name' | 'color' | 'hoist' | 'position' | 'mentionable'
-	>
-> & {
+export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 	id?: number;
 	permissions?: number;
 }
@@ -120,7 +110,13 @@ export type RESTGetAPIGuildChannelsResult = APIChannel[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
  */
-export type RESTPostAPIGuildChannelJSONBody = APIGuildCreatePartialChannel;
+export type RESTPostAPIGuildChannelJSONBody = Partial<
+	Pick<
+		APIChannel,
+		'type' | 'permission_overwrites' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user' | 'parent_id'
+	>
+> &
+	Required<Pick<APIChannel, 'name'>>;
 
 export type RESTPostAPIGuildChannelResult = APIChannel;
 
