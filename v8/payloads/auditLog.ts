@@ -155,8 +155,8 @@ export interface APIAuditLogOptions {
 }
 
 export enum AuditLogOptionsType {
-	Member = 'member',
-	Role = 'role',
+	Role = '0',
+	Member = '1',
 }
 
 /**
