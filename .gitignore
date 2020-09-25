@@ -4,6 +4,8 @@ out/
 coverage/
 .nyc_output/
 
+debug.log
+
 # Don't commit build outputs
 
 v*/**/*.js

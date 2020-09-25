@@ -664,7 +664,7 @@ export interface GatewayUpdatePresence {
  */
 export interface GatewayPresenceUpdateData {
 	since: number | null;
-	game: GatewayActivity | null;
+	activities: GatewayActivity[] | null;
 	status: PresenceUpdateStatus;
 	afk: boolean;
 }
