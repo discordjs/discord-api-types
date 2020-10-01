@@ -607,7 +607,7 @@ export interface GatewayIdentify {
 		shard?: [shard_id: number, shard_count: number];
 		presence?: RawGatewayPresenceUpdate;
 		guild_subscriptions?: boolean;
-		intents?: number;
+		intents: number;
 	};
 }
 
