@@ -220,7 +220,7 @@ export type RESTGetAPIGuildRolesResult = APIRole[];
  */
 export interface RESTPostAPIGuildRoleJSONBody {
 	name?: string | null;
-	permissions?: number | string | null;
+	permissions?: string | null;
 	color?: number | null;
 	hoist?: boolean | null;
 	mentionable?: boolean | null;
@@ -243,7 +243,7 @@ export type RESTPatchAPIGuildRolePositionsResult = APIRole[];
  */
 export interface RESTPatchAPIGuildRoleJSONBody {
 	name?: string;
-	permissions?: number | string;
+	permissions?: string;
 	color?: number;
 	hoist?: boolean;
 	mentionable?: boolean;

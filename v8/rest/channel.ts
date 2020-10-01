@@ -15,16 +15,6 @@ import type {
 // #region TypeDefs
 
 /**
- * https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure
- */
-export interface APIOverwriteSend {
-	id: string;
-	type: OverwriteType;
-	allow: number | string;
-	deny: number | string;
-}
-
-/**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
  */
 export enum AllowedMentionsTypes {
@@ -155,8 +145,8 @@ export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
  * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
  */
 export interface RESTPutAPIChannelPermissionsJSONBody {
-	allow: number | string;
-	deny: number | string;
+	allow: string;
+	deny: string;
 	type: OverwriteType;
 }
 
