@@ -180,12 +180,9 @@ export interface APIGuildPreview {
 }
 
 /**
- * @deprecated Renamed to APIGuildWidgetSettings
+ * @deprecated Use `APIGuildWidgetSettings` instead
  */
-export interface APIGuildWidget {
-	enabled: boolean;
-	channel_id: string | null;
-}
+export type APIGuildWidget = APIGuildWidgetSettings;
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-widget-object

@@ -352,7 +352,7 @@ export const Routes = {
 	},
 
 	/**
-	 * @deprecated Renamed to guildWidgetSettings
+	 * @deprecated Use `guildWidgetSettings` instead
 	 */
 	guildWidget(guildID: string) {
 		return `/guilds/${guildID}/widget`;

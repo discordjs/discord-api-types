@@ -358,7 +358,7 @@ export type RESTPatchAPIGuildWidgetJSONBody = Partial<APIGuildWidgetSettings>;
 export type RESTPatchAPIGuildWidgetSettingsJSONBody = Partial<APIGuildWidgetSettings>;
 
 /**
- * @deprecated Renamed to RESTPatchAPIGuildWidgetSettingsResult
+ * @deprecated Use `RESTPatchAPIGuildWidgetSettingsResult` instead
  */
 export type RESTPatchAPIGuildWidgetResult = APIGuildWidgetSettings;
 
