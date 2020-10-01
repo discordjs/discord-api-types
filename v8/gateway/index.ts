@@ -264,7 +264,7 @@ export type GatewayReadyDispatch = DataPayload<
 		session_id: string;
 		private_channels: [];
 		guilds: APIUnavailableGuild[];
-		shard?: [number, number];
+		shard?: [shardID: number, shardCount: number];
 	}
 >;
 
