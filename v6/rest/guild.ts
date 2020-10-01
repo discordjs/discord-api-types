@@ -28,13 +28,13 @@ export type APIGuildCreatePartialChannel = Partial<
 	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
 > & {
 	name: string;
-	id?: number;
+	id?: number | string;
 	parent_id?: number;
 	permission_overwrites?: APIGuildCreateOverwrite[];
 };
 
 export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
-	id?: number;
+	id: number | string;
 	permissions?: number;
 }
 
