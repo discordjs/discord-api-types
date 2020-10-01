@@ -352,11 +352,18 @@ export const Routes = {
 	},
 
 	/**
+	 * @deprecated Renamed to guildWidgetSettings
+	 */
+	guildWidget(guildID: string) {
+		return `/guilds/${guildID}/widget`;
+	},
+
+	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/widget`
 	 * - PATCH `/guilds/{guild.id}/widget`
 	 */
-	guildWidget(guildID: string) {
+	guildWidgetSettings(guildID: string) {
 		return `/guilds/${guildID}/widget`;
 	},
 

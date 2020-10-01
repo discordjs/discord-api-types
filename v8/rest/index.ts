@@ -356,7 +356,7 @@ export const Routes = {
 	 * - GET `/guilds/{guild.id}/widget`
 	 * - PATCH `/guilds/{guild.id}/widget`
 	 */
-	guildWidget(guildID: string) {
+	guildWidgetSettings(guildID: string) {
 		return `/guilds/${guildID}/widget`;
 	},
 

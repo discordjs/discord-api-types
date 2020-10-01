@@ -170,7 +170,7 @@ export interface APIGuildPreview {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-widget-object
  */
-export interface APIGuildWidget {
+export interface APIGuildWidgetSettings {
 	enabled: boolean;
 	channel_id: string | null;
 }

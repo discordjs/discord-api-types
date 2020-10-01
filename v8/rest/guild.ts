@@ -5,7 +5,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildPreview,
-	APIGuildWidget,
+	APIGuildWidgetSettings,
 	APIInvite,
 	APIRole,
 	APIVoiceRegion,
@@ -340,14 +340,14 @@ export type RESTPostAPIGuildIntegrationSyncResult = never;
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget
  */
-export type RESTGetAPIGuildWidgetResult = APIGuildWidget;
+export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
  */
-export type RESTPatchAPIGuildWidgetJSONBody = Partial<APIGuildWidget>;
+export type RESTPatchAPIGuildWidgetSettingsJSONBody = Partial<APIGuildWidgetSettings>;
 
-export type RESTPatchAPIGuildWidgetResult = APIGuildWidget;
+export type RESTPatchAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-vanity-url

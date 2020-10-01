@@ -5,7 +5,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildPreview,
-	APIGuildWidget,
+	APIGuildWidgetSettings,
 	APIInvite,
 	APIRole,
 	APIVoiceRegion,
@@ -338,16 +338,31 @@ export type RESTDeleteAPIGuildIntegrationResult = never;
 export type RESTPostAPIGuildIntegrationSyncResult = never;
 
 /**
+ * @deprecated Renamed to RESTGetAPIGuildWidgetSettingsResult
+ */
+export type RESTGetAPIGuildWidgetResult = APIGuildWidgetSettings;
+
+/**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget
  */
-export type RESTGetAPIGuildWidgetResult = APIGuildWidget;
+export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
+
+/**
+ * @deprecated Renamed to RESTPatchAPIGuildWidgetSettingsJSONBody
+ */
+export type RESTPatchAPIGuildWidgetJSONBody = Partial<APIGuildWidgetSettings>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
  */
-export type RESTPatchAPIGuildWidgetJSONBody = Partial<APIGuildWidget>;
+export type RESTPatchAPIGuildWidgetSettingsJSONBody = Partial<APIGuildWidgetSettings>;
 
-export type RESTPatchAPIGuildWidgetResult = APIGuildWidget;
+/**
+ * @deprecated Renamed to RESTPatchAPIGuildWidgetSettingsResult
+ */
+export type RESTPatchAPIGuildWidgetResult = APIGuildWidgetSettings;
+
+export type RESTPatchAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
