@@ -19,7 +19,7 @@ import type {
 } from '../payloads';
 
 export type APIGuildCreateOverwrite = Pick<APIOverwrite, 'type'> & {
-	id: string | number;
+	id: number | string;
 	allow: number | string;
 	deny: number | string;
 };
@@ -29,7 +29,7 @@ export type APIGuildCreatePartialChannel = Partial<
 > & {
 	name: string;
 	id?: number | string;
-	parent_id?: number;
+	parent_id?: number | string;
 	permission_overwrites?: APIGuildCreateOverwrite[];
 };
 
@@ -50,9 +50,9 @@ export interface RESTPostAPIGuildsJSONBody {
 	explicit_content_filter?: GuildExplicitContentFilter;
 	roles?: APIGuildCreateRole[];
 	channels?: APIGuildCreatePartialChannel[];
-	afk_channel_id?: number;
+	afk_channel_id?: number | string;
 	afk_timeout?: number;
-	system_channel_id?: number;
+	system_channel_id?: number | string;
 }
 
 export type RESTPostAPIGuildsResult = APIGuild;
