@@ -16,14 +16,24 @@ import type {
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
 } from '../payloads';
+import type { RESTPutAPIChannelPermissionsJSONBody } from '.';
+
+export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionsJSONBody {
+	id: number | string;
+}
 
 export type APIGuildCreatePartialChannel = Partial<
-	Pick<
-		APIChannel,
-		'type' | 'permission_overwrites' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user' | 'parent_id'
-	>
-> &
-	Required<Pick<APIChannel, 'name'>>;
+	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
+> & {
+	name: string;
+	id?: number | string;
+	parent_id?: number | string;
+	permission_overwrites?: APIGuildCreateOverwrite[];
+};
+
+export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
+	id: number | string;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
@@ -35,11 +45,11 @@ export interface RESTPostAPIGuildsJSONBody {
 	verification_level?: GuildVerificationLevel;
 	default_message_notifications?: GuildDefaultMessageNotifications;
 	explicit_content_filter?: GuildExplicitContentFilter;
-	roles?: APIRole[];
+	roles?: APIGuildCreateRole[];
 	channels?: APIGuildCreatePartialChannel[];
-	afk_channel_id?: string;
+	afk_channel_id?: number | string;
 	afk_timeout?: number;
-	system_channel_id?: string;
+	system_channel_id?: number | string;
 }
 
 export type RESTPostAPIGuildsResult = APIGuild;

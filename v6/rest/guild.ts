@@ -7,7 +7,6 @@ import type {
 	APIGuildPreview,
 	APIGuildWidgetSettings,
 	APIInvite,
-	APIOverwrite,
 	APIRole,
 	APIVoiceRegion,
 	GuildDefaultMessageNotifications,
@@ -17,12 +16,11 @@ import type {
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
 } from '../payloads';
+import type { RESTPutAPIChannelPermissionsJSONBody } from '.';
 
-export type APIGuildCreateOverwrite = Pick<APIOverwrite, 'type'> & {
+export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionsJSONBody {
 	id: number | string;
-	allow: number | string;
-	deny: number | string;
-};
+}
 
 export type APIGuildCreatePartialChannel = Partial<
 	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
@@ -35,7 +33,6 @@ export type APIGuildCreatePartialChannel = Partial<
 
 export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 	id: number | string;
-	permissions?: number;
 }
 
 /**
