@@ -176,6 +176,39 @@ export interface APIGuildWidgetSettings {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ */
+export interface APIGuildWidget {
+	id: string;
+	name: string;
+	instant_invite: string | null;
+	channels: APIGuildWidgetChannel[];
+	members: APIGuildWidgetMember[];
+	presence_count: number;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ */
+export interface APIGuildWidgetChannel {
+	id: string;
+	name: string;
+	position: number;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ */
+export interface APIGuildWidgetMember {
+	id: string;
+	username: string;
+	discriminator: string;
+	avatar: string | null;
+	status: string;
+	avatar_url: string;
+}
+
+/**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
  */
 export interface APIGuildMember {

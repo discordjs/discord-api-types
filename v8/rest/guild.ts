@@ -5,6 +5,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildPreview,
+	APIGuildWidget,
 	APIGuildWidgetSettings,
 	APIInvite,
 	APIRole,
@@ -16,7 +17,7 @@ import type {
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
 } from '../payloads';
-import type { RESTPutAPIChannelPermissionsJSONBody } from '.';
+import type { RESTPutAPIChannelPermissionsJSONBody } from './channel';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionsJSONBody {
 	id: number | string;
@@ -348,7 +349,7 @@ export type RESTDeleteAPIGuildIntegrationResult = never;
 export type RESTPostAPIGuildIntegrationSyncResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget-settings
  */
 export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 
@@ -358,6 +359,11 @@ export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 export type RESTPatchAPIGuildWidgetSettingsJSONBody = Partial<APIGuildWidgetSettings>;
 
 export type RESTPatchAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget
+ */
+export type RESTGetAPIGuildWidgetResult = APIGuildWidget;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-vanity-url

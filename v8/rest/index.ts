@@ -362,6 +362,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/widget.json`
+	 */
+	guildWidget(guildID: string) {
+		return `/guilds/${guildID}/widget.json`;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/guilds/{guild.id}/vanity-url`
 	 */
 	guildVanityUrl(guildID: string) {
