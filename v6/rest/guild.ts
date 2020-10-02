@@ -7,6 +7,7 @@ import type {
 	APIGuildPreview,
 	APIGuildWidget,
 	APIInvite,
+	APIOverwrite,
 	APIRole,
 	APIVoiceRegion,
 	GuildDefaultMessageNotifications,
@@ -17,13 +18,25 @@ import type {
 	IntegrationExpireBehavior,
 } from '../payloads';
 
+export type APIGuildCreateOverwrite = Pick<APIOverwrite, 'type'> & {
+	id: number | string;
+	allow: number | string;
+	deny: number | string;
+};
+
 export type APIGuildCreatePartialChannel = Partial<
-	Pick<
-		APIChannel,
-		'type' | 'permission_overwrites' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user' | 'parent_id'
-	>
-> &
-	Required<Pick<APIChannel, 'name'>>;
+	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
+> & {
+	name: string;
+	id?: number | string;
+	parent_id?: number | string;
+	permission_overwrites?: APIGuildCreateOverwrite[];
+};
+
+export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
+	id: number | string;
+	permissions?: number;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
@@ -35,11 +48,11 @@ export interface RESTPostAPIGuildsJSONBody {
 	verification_level?: GuildVerificationLevel;
 	default_message_notifications?: GuildDefaultMessageNotifications;
 	explicit_content_filter?: GuildExplicitContentFilter;
-	roles?: APIRole[];
+	roles?: APIGuildCreateRole[];
 	channels?: APIGuildCreatePartialChannel[];
-	afk_channel_id?: string;
+	afk_channel_id?: number | string;
 	afk_timeout?: number;
-	system_channel_id?: string;
+	system_channel_id?: number | string;
 }
 
 export type RESTPostAPIGuildsResult = APIGuild;
@@ -97,7 +110,13 @@ export type RESTGetAPIGuildChannelsResult = APIChannel[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
  */
-export type RESTPostAPIGuildChannelJSONBody = APIGuildCreatePartialChannel;
+export type RESTPostAPIGuildChannelJSONBody = Partial<
+	Pick<
+		APIChannel,
+		'type' | 'permission_overwrites' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user' | 'parent_id'
+	>
+> &
+	Required<Pick<APIChannel, 'name'>>;
 
 export type RESTPostAPIGuildChannelResult = APIChannel;
 
