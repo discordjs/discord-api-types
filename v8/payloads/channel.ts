@@ -78,13 +78,14 @@ export interface APIMessage {
 	application?: APIMessageApplication;
 	message_reference?: APIMessageReference;
 	flags?: MessageFlags;
+	referenced_message?: APIMessage | null;
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
  */
 export enum MessageType {
-	DEFAULT = 0,
+	DEFAULT,
 	RECIPIENT_ADD,
 	RECIPIENT_REMOVE,
 	CALL,
@@ -101,6 +102,7 @@ export enum MessageType {
 	GUILD_DISCOVERY_REQUALIFIED,
 	GUILD_DISCOVERY_GRACE_PERIOD_INITIAL_WARNING,
 	GUILD_DISCOVERY_GRACE_PERIOD_FINAL_WARNING,
+	INLINE_REPLY,
 }
 
 /**

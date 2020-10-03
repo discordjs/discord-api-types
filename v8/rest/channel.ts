@@ -4,6 +4,7 @@ import type {
 	APIFollowedChannel,
 	APIInvite,
 	APIMessage,
+	APIMessageReference,
 	APIOverwrite,
 	APIUser,
 	ChannelType,
@@ -74,6 +75,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	tts?: boolean;
 	embed?: APIEmbed;
 	allowed_mentions?: APIAllowedMentionsSend;
+	message_reference?: APIMessageReference;
 }
 
 /**
@@ -96,6 +98,7 @@ export type RESTPostAPIChannelMessageFormDataBody =
 			tts?: boolean;
 			embed?: APIEmbed;
 			allowed_mentions?: APIAllowedMentionsSend;
+			message_reference?: APIMessageReference;
 			/**
 			 * The file contents
 			 */

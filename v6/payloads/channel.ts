@@ -78,13 +78,14 @@ export interface APIMessage {
 	application?: APIMessageApplication;
 	message_reference?: APIMessageReference;
 	flags?: MessageFlags;
+	referenced_message?: APIMessage | null;
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
  */
 export enum MessageType {
-	DEFAULT = 0,
+	DEFAULT,
 	RECIPIENT_ADD,
 	RECIPIENT_REMOVE,
 	CALL,
