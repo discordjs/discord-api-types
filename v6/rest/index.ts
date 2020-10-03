@@ -13,6 +13,7 @@ export * from './webhook';
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export const APIVersion = '6';
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
