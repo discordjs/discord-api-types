@@ -8,6 +8,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#webhook-object
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIWebhook {
 	id: string;
@@ -23,6 +24,9 @@ export interface APIWebhook {
 	application_id: string | null;
 }
 
+/**
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
+ */
 export enum WebhookType {
 	Incoming = 1,
 	ChannelFollower,

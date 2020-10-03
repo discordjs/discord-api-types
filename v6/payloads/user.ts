@@ -6,6 +6,7 @@ import type { APIGuildIntegration } from './guild';
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIUser {
 	id: string;
@@ -25,6 +26,7 @@ export interface APIUser {
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-user-flags
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum UserFlags {
 	None = 0,
@@ -45,6 +47,7 @@ export enum UserFlags {
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-premium-types
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum UserPremiumType {
 	None,
@@ -54,6 +57,7 @@ export enum UserPremiumType {
 
 /**
  * https://discord.com/developers/docs/resources/user#connection-object
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIConnection {
 	id: string;
@@ -67,6 +71,9 @@ export interface APIConnection {
 	visibility: ConnectionVisibility;
 }
 
+/**
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
+ */
 export enum ConnectionVisibility {
 	None,
 	Everyone,

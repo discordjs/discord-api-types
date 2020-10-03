@@ -8,6 +8,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIInvite {
 	code: string;
@@ -22,6 +23,7 @@ export interface APIInvite {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum InviteTargetUserType {
 	STREAM = 1,
@@ -29,6 +31,7 @@ export enum InviteTargetUserType {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIExtendedInvite extends APIInvite {
 	uses: number;
