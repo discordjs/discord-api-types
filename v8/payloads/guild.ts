@@ -205,7 +205,7 @@ export interface APIGuildWidgetMember {
 	discriminator: string;
 	avatar: string | null;
 	status: PresenceUpdateStatus;
-	activity: { name: string };
+	activity?: { name: string };
 	avatar_url: string;
 }
 
