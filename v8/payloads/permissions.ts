@@ -9,7 +9,6 @@
  * convert them in a number by wrapping it in `Number()`, however be careful as any
  * further bits added may cause issues if done so. Try to use BigInts as much as possible
  * or modules that can replicate them in some way.
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export const PermissionFlagsBits = {
 	CREATE_INSTANT_INVITE: 1n,
@@ -53,7 +52,6 @@ Object.freeze(PermissionFlagsBits);
 
 /**
  * https://discord.com/developers/docs/topics/permissions#role-object
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIRole {
 	id: string;
@@ -61,19 +59,12 @@ export interface APIRole {
 	color: number;
 	hoist: boolean;
 	position: number;
-	/**
-	 * @deprecated Use `permissions_new` instead
-	 */
-	permissions: number;
-	permissions_new: string;
+	permissions: string;
 	managed: boolean;
 	mentionable: boolean;
 	tags?: APIRoleTags;
 }
 
-/**
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
- */
 export interface APIRoleTags {
 	bot_id?: string;
 	premium_subscriber?: null;

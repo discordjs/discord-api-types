@@ -9,14 +9,7 @@ export * from './user';
 export * from './voice';
 export * from './webhook';
 
-/**
- * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
- */
-export const APIVersion = '6';
-
-/**
- * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
- */
+export const APIVersion = '8';
 export const Routes = {
 	/**
 	 * Route for:
@@ -359,19 +352,20 @@ export const Routes = {
 	},
 
 	/**
-	 * @deprecated Use `guildWidgetSettings` instead
-	 */
-	guildWidget(guildID: string) {
-		return `/guilds/${guildID}/widget`;
-	},
-
-	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/widget`
 	 * - PATCH `/guilds/{guild.id}/widget`
 	 */
 	guildWidgetSettings(guildID: string) {
 		return `/guilds/${guildID}/widget`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/widget.json`
+	 */
+	guildWidget(guildID: string) {
+		return `/guilds/${guildID}/widget.json`;
 	},
 
 	/**

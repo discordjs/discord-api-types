@@ -7,7 +7,6 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGatewayInfo {
 	url: string;
@@ -15,7 +14,6 @@ export interface APIGatewayInfo {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway-bot
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGatewayBotInfo extends APIGatewayInfo {
 	shards: number;
@@ -24,7 +22,6 @@ export interface APIGatewayBotInfo extends APIGatewayInfo {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#session-start-limit-object
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGatewaySessionStartLimit {
 	total: number;
@@ -34,25 +31,17 @@ export interface APIGatewaySessionStartLimit {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#presence-update-presence-update-event-fields
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface GatewayPresenceUpdate {
 	user: Partial<APIUser> & {
 		id: string;
 	};
-	roles?: string[];
-	game?: GatewayActivity | null;
 	guild_id?: string;
 	status?: PresenceUpdateStatus;
 	activities?: GatewayActivity[];
 	client_status?: GatewayPresenceClientStatus;
-	premium_since?: string | null;
-	nick?: string | null;
 }
 
-/**
- * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
- */
 export enum PresenceUpdateStatus {
 	DoNotDisturb = 'dnd',
 	Idle = 'idle',
@@ -63,13 +52,11 @@ export enum PresenceUpdateStatus {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#client-status-object
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayPresenceClientStatus = Partial<Record<'desktop' | 'mobile' | 'web', PresenceUpdateStatus>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface GatewayActivity {
 	name: string;
@@ -90,7 +77,6 @@ export interface GatewayActivity {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum ActivityType {
 	Game,
@@ -103,7 +89,6 @@ export enum ActivityType {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-timestamps
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface GatewayActivityTimestamps {
 	start?: number;
@@ -112,23 +97,20 @@ export interface GatewayActivityTimestamps {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'name' | 'animated'>> & Pick<APIEmoji, 'id'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface GatewayActivityParty {
 	id?: string;
 	// eslint-disable-next-line prettier/prettier
-	size?: [currentSize: number, maxSize: number];
+  size?: [currentSize: number, maxSize: number];
 }
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayActivityAssets = Partial<
 	Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>
@@ -136,13 +118,11 @@ export type GatewayActivityAssets = Partial<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum ActivityFlags {
 	INSTANCE = 1 << 0,

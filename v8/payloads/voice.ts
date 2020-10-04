@@ -6,7 +6,6 @@ import type { APIGuildMember } from './guild';
 
 /**
  * https://discord.com/developers/docs/resources/voice#voice-state-object
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface GatewayVoiceState {
 	guild_id?: string;
@@ -25,7 +24,6 @@ export interface GatewayVoiceState {
 
 /**
  * https://discord.com/developers/docs/resources/voice#voice-region-object
- * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIVoiceRegion {
 	id: string;
