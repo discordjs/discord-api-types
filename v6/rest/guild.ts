@@ -75,6 +75,9 @@ export interface RESTGetAPIGuildQuery {
 	with_counts?: boolean;
 }
 
+/**
+ * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type RESTGetAPIGuildResult = APIGuild;
 
 /**
@@ -137,6 +140,9 @@ export type RESTPostAPIGuildChannelJSONBody = Partial<
 > &
 	Required<Pick<APIChannel, 'name'>>;
 
+/**
+ * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type RESTPostAPIGuildChannelResult = APIChannel;
 
 /**
@@ -433,6 +439,9 @@ export interface RESTPatchAPIGuildIntegrationJSONBody {
 	enable_emoticons?: boolean | null;
 }
 
+/**
+ * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type RESTPatchAPIGuildIntegrationResult = never;
 
 /**

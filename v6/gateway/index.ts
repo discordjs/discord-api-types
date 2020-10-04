@@ -311,8 +311,19 @@ export type GatewayChannelModifyDispatch = DataPayload<
 >;
 /* eslint-enable @typescript-eslint/indent */
 
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayChannelCreateDispatch = GatewayChannelModifyDispatch;
+
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayChannelUpdateDispatch = GatewayChannelModifyDispatch;
+
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayChannelDeleteDispatch = GatewayChannelModifyDispatch;
 
 /**
@@ -338,7 +349,14 @@ export type GatewayGuildModifyDispatch = DataPayload<
 	APIGuild
 >;
 
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayGuildCreateDispatch = GatewayGuildModifyDispatch;
+
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayGuildUpdateDispatch = GatewayGuildModifyDispatch;
 
 /**
@@ -360,7 +378,14 @@ export type GatewayGuildBanModifyDispatch = DataPayload<
 	}
 >;
 
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayGuildBanAddDispatch = GatewayGuildBanModifyDispatch;
+
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayGuildBanRemoveDispatch = GatewayGuildBanModifyDispatch;
 
 /**
@@ -446,7 +471,14 @@ export type GatewayGuildRoleModifyDispatch = DataPayload<
 	}
 >;
 
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayGuildRoleCreateDispatch = GatewayGuildRoleModifyDispatch;
+
+/**
+ * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type GatewayGuildRoleUpdateDispatch = GatewayGuildRoleModifyDispatch;
 
 /**

@@ -70,6 +70,10 @@ export type RESTPatchAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTDeleteAPIWebhookResult = never;
+
+/**
+ * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type RESTDeleteAPIWebhookWithTokenResult = never;
 
 /**

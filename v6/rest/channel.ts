@@ -68,10 +68,12 @@ export interface RESTPatchAPIChannelJSONBody {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIChannelResult = APIChannel;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPatchAPIChannelResult = APIChannel;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -88,6 +90,9 @@ export interface RESTGetAPIChannelMessagesQuery {
 	limit?: number;
 }
 
+/**
+ * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type RESTGetAPIChannelMessagesResult = APIMessage[];
 
 /**
@@ -146,14 +151,17 @@ export interface RESTPatchAPIChannelMessageJSONBody {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIChannelMessageResult = APIMessage;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPostAPIChannelMessageResult = APIMessage;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPatchAPIChannelMessageResult = APIMessage;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -178,10 +186,12 @@ export type RESTGetAPIChannelMessageReactionsResult = APIUser[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPutAPIChannelMessageReactionResult = never;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTDeleteAPIChannelMessageReactionResult = never;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -214,6 +224,7 @@ export interface RESTPutAPIChannelPermissionsJSONBody {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPutAPIChannelPermissionsResult = never;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -254,6 +265,7 @@ export type RESTGetAPIChannelPinsResult = APIMessage[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPutAPIChannelPinResult = never;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -272,6 +284,7 @@ export interface RESTPutAPIChannelRecipientJSONBody {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPutAPIChannelRecipientResult = unknown;
+
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
