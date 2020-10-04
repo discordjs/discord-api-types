@@ -8,6 +8,9 @@ export interface RESTGetAPIInviteQuery {
 	with_counts?: boolean;
 }
 
+/**
+ * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
+ */
 export type RESTGetAPIInviteResult = APIInvite;
 
 /**
