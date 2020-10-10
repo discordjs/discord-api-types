@@ -17,7 +17,7 @@ export interface RESTPostAPITemplateJSONBody {
  */
 export type RESTPostAPITemplateResult = APIGuild;
 
-export type RESTGetAPIGuildTemplateResult = APITemplate;
+export type RESTGetAPIGuildTemplateResult = APITemplate[];
 
 export interface RESTPostAPIGuildTemplateJSONBody {
 	name: string;
