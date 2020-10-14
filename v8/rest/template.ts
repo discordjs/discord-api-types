@@ -28,7 +28,7 @@ export type RESTPostAPIGuildTemplateResult = APITemplate;
 
 export type RESTPutAPIGuildTemplateResult = APITemplate;
 
-export type RESTPatchAPIGuildTemplateJSONBody = RESTPostAPIGuildTemplateJSONBody;
+export type RESTPatchAPIGuildTemplateJSONBody = Partial<RESTPostAPIGuildTemplateJSONBody>;
 export type RESTPatchAPIGuildTemplateResult = APITemplate;
 
 export type RESTDeleteAPIGuildTemplateResult = APITemplate;
