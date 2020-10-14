@@ -52,6 +52,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfAttachmentsInAMessageReached = 30015,
 	MaximumNumberOfInvitesReached,
 
+	GuildAlreadyHasTemplate = 30031,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 
