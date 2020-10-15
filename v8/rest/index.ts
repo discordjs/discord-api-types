@@ -408,7 +408,7 @@ export const Routes = {
 	 * - GET `/guilds/{guild.id}/templates`
 	 * - POST `/guilds/{guild.id}/templates`
 	 */
-	guildTemplate(guildID: string) {
+	guildTemplates(guildID: string) {
 		return `/guilds/${guildID}/templates`;
 	},
 
@@ -418,7 +418,7 @@ export const Routes = {
 	 * - PATCH `/guilds/{guild.id}/templates/{template.code}`
 	 * - DELETE `/guilds/{guild.id}/templates/{template.code}`
 	 */
-	guildTemplateModify(guildID: string, code: string) {
+	guildTemplate(guildID: string, code: string) {
 		return `/guilds/${guildID}/templates/${code}`;
 	},
 

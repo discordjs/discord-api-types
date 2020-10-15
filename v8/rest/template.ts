@@ -17,18 +17,17 @@ export interface RESTPostAPITemplateJSONBody {
  */
 export type RESTPostAPITemplateResult = APIGuild;
 
-export type RESTGetAPIGuildTemplateResult = APITemplate[];
+export type RESTGetAPIGuildTemplatesResult = APITemplate[];
 
-export interface RESTPostAPIGuildTemplateJSONBody {
+export interface RESTPostAPIGuildTemplatesJSONBody {
 	name: string;
 	description?: string | null;
 }
-
-export type RESTPostAPIGuildTemplateResult = APITemplate;
+export type RESTPostAPIGuildTemplatesResult = APITemplate;
 
 export type RESTPutAPIGuildTemplateResult = APITemplate;
 
-export type RESTPatchAPIGuildTemplateJSONBody = Partial<RESTPostAPIGuildTemplateJSONBody>;
+export type RESTPatchAPIGuildTemplateJSONBody = Partial<RESTPostAPIGuildTemplatesJSONBody>;
 export type RESTPatchAPIGuildTemplateResult = APITemplate;
 
 export type RESTDeleteAPIGuildTemplateResult = APITemplate;
