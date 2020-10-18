@@ -8,14 +8,14 @@ export type RESTGetAPITemplateResult = APITemplate;
 /**
  * https://github.com/discord/discord-api-docs/blob/master/docs/resources/Template.md#create-guild-from-template--post-guildstemplatestemplatecodedocs_resources_templatetemplate-object
  */
-export interface RESTPostAPITemplateJSONBody {
+export interface RESTPostAPITemplateCreateGuildJSONBody {
 	name: string;
 	icon?: string;
 }
 /**
  * https://github.com/discord/discord-api-docs/blob/master/docs/resources/Template.md#create-guild-from-template--post-guildstemplatestemplatecodedocs_resources_templatetemplate-object
  */
-export type RESTPostAPITemplateResult = APIGuild;
+export type RESTPostAPITemplateCreateGuildResult = APIGuild;
 
 export type RESTGetAPIGuildTemplatesResult = APITemplate[];
 
@@ -25,7 +25,7 @@ export interface RESTPostAPIGuildTemplatesJSONBody {
 }
 export type RESTPostAPIGuildTemplatesResult = APITemplate;
 
-export type RESTPutAPIGuildTemplateResult = APITemplate;
+export type RESTPutAPIGuildTemplateSyncResult = APITemplate;
 
 export type RESTPatchAPIGuildTemplateJSONBody = Partial<RESTPostAPIGuildTemplatesJSONBody>;
 export type RESTPatchAPIGuildTemplateResult = APITemplate;
