@@ -672,7 +672,7 @@ export interface GatewayPresenceUpdateData {
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
  */
-export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'type' | 'url'>
+export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'type' | 'url'>;
 
 // #endregion Sendable Payloads
 
