@@ -4,7 +4,7 @@
 
 import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
-import type { GatewayPresenceUpdate } from './gateway';
+import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
 import type { APIRole } from './permissions';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
@@ -204,7 +204,8 @@ export interface APIGuildWidgetMember {
 	username: string;
 	discriminator: string;
 	avatar: string | null;
-	status: string;
+	status: PresenceUpdateStatus;
+	activity?: { name: string };
 	avatar_url: string;
 }
 
