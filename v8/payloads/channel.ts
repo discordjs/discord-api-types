@@ -79,7 +79,7 @@ export interface APIMessage {
 	message_reference?: APIMessageReference;
 	flags?: MessageFlags;
 	referenced_message?: APIMessage | null;
-	stickers?: APIMessageSticker[];
+	stickers?: APISticker[];
 }
 
 /**
@@ -155,7 +155,7 @@ export enum MessageFlags {
 	URGENT = 1 << 4,
 }
 
-export interface APIMessageSticker {
+export interface APISticker {
 	id: string;
 	pack_id: string;
 	name: string;
@@ -163,10 +163,10 @@ export interface APIMessageSticker {
 	tags?: string;
 	asset: string;
 	preview_asset: string | null;
-	format_type: MessageStickerFormatType;
+	format_type: StickerFormatType;
 }
 
-export enum MessageStickerFormatType {
+export enum StickerFormatType {
 	PNG = 1,
 	APNG,
 	LOTTIE,
