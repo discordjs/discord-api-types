@@ -581,7 +581,7 @@ export type GatewayWebhooksUpdateDispatch = DataPayload<
  */
 export interface GatewayHeartbeat {
 	op: GatewayOPCodes.Heartbeat;
-	d: number;
+	d: number | null;
 }
 
 /**
