@@ -79,6 +79,7 @@ export interface APIMessage {
 	message_reference?: APIMessageReference;
 	flags?: MessageFlags;
 	referenced_message?: APIMessage | null;
+	stickers?: APIMessageSticker[];
 }
 
 /**
@@ -152,6 +153,23 @@ export enum MessageFlags {
 	SUPPRESS_EMBEDS = 1 << 2,
 	SOURCE_MESSAGE_DELETED = 1 << 3,
 	URGENT = 1 << 4,
+}
+
+export interface APIMessageSticker {
+	id: string;
+	pack_id: string;
+	name: string;
+	description: string;
+	tags?: string;
+	asset: string;
+	preview_asset: string | null;
+	format_type: MessageStickerFormatType;
+}
+
+export enum MessageStickerFormatType {
+	PNG = 1,
+	APNG,
+	LOTTIE,
 }
 
 /**

@@ -92,6 +92,8 @@ export enum RESTJSONErrorCodes {
 
 	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
 
+	InvalidStickerSent = 50081,
+
 	TwoFactorAuthenticationIsRequired = 60003,
 
 	ReactionWasBlocked = 90001,
