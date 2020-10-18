@@ -581,7 +581,7 @@ export type GatewayWebhooksUpdateDispatch = DataPayload<
  */
 export interface GatewayHeartbeat {
 	op: GatewayOPCodes.Heartbeat;
-	d: number;
+	d: number | null;
 }
 
 /**
@@ -605,7 +605,7 @@ export interface GatewayIdentify {
 		large_threshold?: number;
 		// eslint-disable-next-line prettier/prettier
 		shard?: [shard_id: number, shard_count: number];
-		presence?: RawGatewayPresenceUpdate;
+		presence?: GatewayPresenceUpdateData;
 		guild_subscriptions?: boolean;
 		intents: number;
 	};
