@@ -75,7 +75,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	tts?: boolean;
 	embed?: APIEmbed;
 	allowed_mentions?: APIAllowedMentionsSend;
-	message_reference?: APIMessageReference;
+	message_reference?: Required<Omit<APIMessageReference, 'guild_id'>> & Pick<APIMessageReference, 'guild_id'>;
 }
 
 /**
