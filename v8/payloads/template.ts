@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://github.com/discord/discord-api-docs/blob/master/docs/resources/Template.md
+ * Types extracted from https://discord.com/developers/docs/resources/template
  */
 
 import type { APIUser } from './user';
 import type { APIGuild } from './guild';
 
 /**
- * https://github.com/discord/discord-api-docs/blob/master/docs/resources/Template.md#template-structure
+ * https://discord.com/developers/docs/resources/template#template-object
  */
 export interface APITemplate {
 	code: string;

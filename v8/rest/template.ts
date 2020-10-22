@@ -1,19 +1,19 @@
 import type { APIGuild, APITemplate } from '../payloads';
 
 /**
- * https://github.com/discord/discord-api-docs/blob/master/docs/resources/Template.md#get-template--get-guildstemplatestemplatecodedocs_resources_templatetemplate-object
+ * https://discord.com/developers/docs/resources/template#get-template
  */
 export type RESTGetAPITemplateResult = APITemplate;
 
 /**
- * https://github.com/discord/discord-api-docs/blob/master/docs/resources/Template.md#create-guild-from-template--post-guildstemplatestemplatecodedocs_resources_templatetemplate-object
+ * https://discord.com/developers/docs/resources/template#create-guild-from-template
  */
 export interface RESTPostAPITemplateCreateGuildJSONBody {
 	name: string;
 	icon?: string;
 }
 /**
- * https://github.com/discord/discord-api-docs/blob/master/docs/resources/Template.md#create-guild-from-template--post-guildstemplatestemplatecodedocs_resources_templatetemplate-object
+ * https://discord.com/developers/docs/resources/template#create-guild-from-template
  */
 export type RESTPostAPITemplateCreateGuildResult = APIGuild;
 
