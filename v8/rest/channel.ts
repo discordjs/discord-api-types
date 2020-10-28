@@ -31,6 +31,7 @@ export interface APIAllowedMentionsSend {
 	parse?: AllowedMentionsTypes[];
 	roles?: string[];
 	users?: string[];
+	replied_user?: boolean;
 }
 
 // #endregion TypeDefs
