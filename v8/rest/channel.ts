@@ -76,7 +76,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	tts?: boolean;
 	embed?: APIEmbed;
 	allowed_mentions?: APIAllowedMentionsSend;
-	message_reference?: APIMessageReference;
+	message_reference?: APIMessageReference & Required<Pick<APIMessageReference, 'message_id'>>;
 }
 
 /**
@@ -99,7 +99,7 @@ export type RESTPostAPIChannelMessageFormDataBody =
 			tts?: boolean;
 			embed?: APIEmbed;
 			allowed_mentions?: APIAllowedMentionsSend;
-			message_reference?: APIMessageReference;
+			message_reference?: APIMessageReference & Required<Pick<APIMessageReference, 'message_id'>>;
 			/**
 			 * The file contents
 			 */
