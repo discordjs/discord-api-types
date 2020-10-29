@@ -56,7 +56,7 @@ export enum PresenceUpdateStatus {
 export type GatewayPresenceClientStatus = Partial<Record<'desktop' | 'mobile' | 'web', PresenceUpdateStatus>>;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
  */
 export interface GatewayActivity {
 	name: string;

@@ -664,10 +664,15 @@ export interface GatewayUpdatePresence {
  */
 export interface GatewayPresenceUpdateData {
 	since: number | null;
-	activities: GatewayActivity[] | null;
+	activities: GatewayActivityUpdateData[] | null;
 	status: PresenceUpdateStatus;
 	afk: boolean;
 }
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
+ */
+export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'type' | 'url'>;
 
 // #endregion Sendable Payloads
 
