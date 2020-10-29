@@ -67,6 +67,8 @@ export interface RESTGetAPIChannelMessagesQuery {
 
 export type RESTGetAPIChannelMessagesResult = APIMessage[];
 
+export type APIMessageReferenceSend = APIMessageReference & Required<Pick<APIMessageReference, 'message_id'>>;
+
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
@@ -76,7 +78,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	tts?: boolean;
 	embed?: APIEmbed;
 	allowed_mentions?: APIAllowedMentionsSend;
-	message_reference?: APIMessageReference & Required<Pick<APIMessageReference, 'message_id'>>;
+	message_reference?: APIMessageReferenceSend;
 }
 
 /**
@@ -99,7 +101,7 @@ export type RESTPostAPIChannelMessageFormDataBody =
 			tts?: boolean;
 			embed?: APIEmbed;
 			allowed_mentions?: APIAllowedMentionsSend;
-			message_reference?: APIMessageReference & Required<Pick<APIMessageReference, 'message_id'>>;
+			message_reference?: APIMessageReferenceSend;
 			/**
 			 * The file contents
 			 */
