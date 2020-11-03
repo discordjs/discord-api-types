@@ -61,10 +61,10 @@ import { APIUser } from 'discord-api-types';
 You should instead consider adding the API version you want to target by appending `/v*`, where the `*` represents the API version.
 
 ```js
-const { APIUser } = require('discord-api-types/v6');
+const { APIUser } = require('discord-api-types/v8');
 ```
 
 ```ts
 // TypeScript/ES Module support
-import { APIUser } from 'discord-api-types/v6';
+import { APIUser } from 'discord-api-types/v8';
 ```
