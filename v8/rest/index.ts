@@ -484,7 +484,7 @@ export const Routes = {
 	 * - POST `/webhooks/{webhook.id}/{webhook.token}/github`
 	 */
 	webhookPlatform(webhookID: string, webhookToken: string, platform: 'github' | 'slack') {
-		return `/${webhookID}/${webhookToken}/${platform}`;
+		return `/webhooks/${webhookID}/${webhookToken}/${platform}`;
 	},
 
 	/**
