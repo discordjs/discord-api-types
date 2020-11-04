@@ -308,13 +308,6 @@ export type RESTGetAPIGuildVoiceRegionsResult = APIVoiceRegion[];
  */
 export type RESTGetAPIGuildInvitesResult = APIInvite[];
 
-/**
- * https://discord.com/developers/docs/resources/guild#get-guild-integrations
- */
-export interface RESTGetAPIGuildIntegrationsQuery {
-	include_applications?: boolean;
-}
-
 export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
 
 /**
