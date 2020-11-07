@@ -59,11 +59,13 @@ export type GatewayPresenceClientStatus = Partial<Record<'desktop' | 'mobile' | 
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
  */
 export interface GatewayActivity {
+	id: string;
 	name: string;
 	type: ActivityType;
 	url?: string | null;
 	created_at: number;
 	timestamps?: GatewayActivityTimestamps;
+	platform?: ActivityPlatform;
 	application_id?: string;
 	details?: string | null;
 	state?: string | null;
@@ -73,6 +75,11 @@ export interface GatewayActivity {
 	secrets?: GatewayActivitySecrets;
 	instance?: boolean;
 	flags?: ActivityFlags;
+}
+
+export enum ActivityPlatform {
+	Samsung = 'samsung',
+	Xbox = 'xbox',
 }
 
 /**
