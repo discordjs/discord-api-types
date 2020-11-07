@@ -59,7 +59,7 @@ export type GatewayPresenceClientStatus = Partial<Record<'desktop' | 'mobile' | 
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
  */
 export interface GatewayActivity {
-	id: string;
+	id?: string;
 	name: string;
 	type: ActivityType;
 	url?: string | null;
