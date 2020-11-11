@@ -65,11 +65,13 @@ export interface GatewayActivity {
 	url?: string | null;
 	created_at: number;
 	timestamps?: GatewayActivityTimestamps;
+	sync_id?: string;
 	platform?: ActivityPlatform;
 	application_id?: string;
 	details?: string | null;
 	state?: string | null;
 	emoji?: GatewayActivityEmoji;
+	session_id?: string;
 	party?: GatewayActivityParty;
 	assets?: GatewayActivityAssets;
 	secrets?: GatewayActivitySecrets;
