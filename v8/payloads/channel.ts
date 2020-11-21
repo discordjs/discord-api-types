@@ -169,6 +169,9 @@ export interface APISticker {
 	format_type: StickerFormatType;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
+ */
 export enum StickerFormatType {
 	PNG = 1,
 	APNG,
