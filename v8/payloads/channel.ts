@@ -130,7 +130,7 @@ export interface APIMessageApplication {
  */
 export interface APIMessageReference {
 	message_id?: string;
-	channel_id: string;
+	channel_id?: string;
 	guild_id?: string;
 }
 
