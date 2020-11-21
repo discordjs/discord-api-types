@@ -79,6 +79,7 @@ export interface APIMessage {
 	message_reference?: APIMessageReference;
 	flags?: MessageFlags;
 	referenced_message?: APIMessage | null;
+	stickers?: APISticker[];
 }
 
 /**
@@ -152,6 +153,29 @@ export enum MessageFlags {
 	SUPPRESS_EMBEDS = 1 << 2,
 	SOURCE_MESSAGE_DELETED = 1 << 3,
 	URGENT = 1 << 4,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
+ */
+export interface APISticker {
+	id: string;
+	pack_id: string;
+	name: string;
+	description: string;
+	tags?: string;
+	asset: string;
+	preview_asset: string | null;
+	format_type: StickerFormatType;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
+ */
+export enum StickerFormatType {
+	PNG = 1,
+	APNG,
+	LOTTIE,
 }
 
 /**
