@@ -155,6 +155,9 @@ export enum MessageFlags {
 	URGENT = 1 << 4,
 }
 
+/**
+ * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
+ */
 export interface APISticker {
 	id: string;
 	pack_id: string;
