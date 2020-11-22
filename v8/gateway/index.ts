@@ -74,7 +74,8 @@ export enum VoiceOPCodes {
 	Hello,
 	Resumed,
 
-	ClientDisconnect = 13,
+	ClientConnect = 12,
+	ClientDisconnect,
 }
 
 /**
