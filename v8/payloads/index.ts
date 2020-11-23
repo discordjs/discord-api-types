@@ -7,6 +7,7 @@ export * from './invite';
 export * from './oauth2';
 export * from './permissions';
 export * from './teams';
+export * from './template';
 export * from './user';
 export * from './voice';
 export * from './webhook';

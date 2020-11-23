@@ -5,6 +5,7 @@ export * from './gateway';
 export * from './guild';
 export * from './invite';
 export * from './oauth2';
+export * from './template';
 export * from './user';
 export * from './voice';
 export * from './webhook';
@@ -391,6 +392,34 @@ export const Routes = {
 	 */
 	invite(code: string) {
 		return `/invites/${code}`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/templates/{template.code}`
+	 * - POST `/guilds/templates/{template.code}`
+	 */
+	template(code: string) {
+		return `/guilds/templates/${code}`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/templates`
+	 * - POST `/guilds/{guild.id}/templates`
+	 */
+	guildTemplates(guildID: string) {
+		return `/guilds/${guildID}/templates`;
+	},
+
+	/**
+	 * Route for:
+	 * - PUT `/guilds/{guild.id}/templates/{template.code}`
+	 * - PATCH `/guilds/{guild.id}/templates/{template.code}`
+	 * - DELETE `/guilds/{guild.id}/templates/{template.code}`
+	 */
+	guildTemplate(guildID: string, code: string) {
+		return `/guilds/${guildID}/templates/${code}`;
 	},
 
 	/**

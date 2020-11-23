@@ -13,6 +13,7 @@ import type {
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildFeature,
+	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
@@ -51,6 +52,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	afk_channel_id?: number | string;
 	afk_timeout?: number;
 	system_channel_id?: number | string;
+	system_channel_flags: GuildSystemChannelFlags;
 }
 
 export type RESTPostAPIGuildsResult = APIGuild;
@@ -86,6 +88,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	discovery_splash?: string | null;
 	banner?: string | null;
 	system_channel_id?: string | null;
+	system_channel_flags: GuildSystemChannelFlags;
 	rules_channel_id?: string | null;
 	public_updates_channel_id?: string | null;
 	preferred_locale?: string;
