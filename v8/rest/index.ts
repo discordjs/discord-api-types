@@ -3,6 +3,7 @@ export * from './channel';
 export * from './emoji';
 export * from './gateway';
 export * from './guild';
+export * from './interactions';
 export * from './invite';
 export * from './oauth2';
 export * from './template';
@@ -427,6 +428,8 @@ export const Routes = {
 	 * - GET `/users/@me`
 	 * - GET `/users/{user.id}`
 	 * - PATCH `/users/@me`
+	 *
+	 * @param [userID] The user ID, defaulted to `@me`
 	 */
 	user(userID = '@me') {
 		return `/users/${userID}`;
@@ -498,6 +501,7 @@ export const Routes = {
 	 * - DELETE `/webhooks/{webhook.id}`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}`
 	 * - POST `/webhooks/{webhook.id}/{webhook.token}`
+	 * - POST `/webhooks/{interaction.id}/{interaction.token}`
 	 */
 	webhook(webhookID: string, webhookToken?: string) {
 		const parts = ['', 'webhooks', webhookID];
@@ -505,6 +509,21 @@ export const Routes = {
 		if (webhookToken) parts.push(webhookToken);
 
 		return parts.join('/');
+	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
+	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
+	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
+	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
+	 *
+	 * - POST `/webhooks/{interaction.id}/{interaction.token}/messages`
+	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/@original`
+	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/{message.id}`
+	 */
+	webhookMessage(webhookID: string, webhookToken: string, messageID: string) {
+		return `/webhooks/${webhookID}/${webhookToken}/messages/${messageID}`;
 	},
 
 	/**
@@ -538,5 +557,47 @@ export const Routes = {
 	 */
 	oauth2CurrentApplication() {
 		return `/oauth2/applications/@me`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/commands`
+	 * - POST `/applications/{application.id}/commands`
+	 * - PATCH `/applications/{application.id}/commands/{command.id}`
+	 * - DELETE `/applications/{application.id}/commands/{command.id}`
+	 */
+	applicationCommands(applicationID: string, commandID?: string) {
+		const route = ['', 'applications', applicationID, 'commands'];
+
+		if (commandID) {
+			route.push(commandID);
+		}
+
+		return route.join('/');
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/guilds/{guild.id}/commands`
+	 * - POST `/applications/{application.id}/guilds/{guild.id}/commands`
+	 * - PATCH `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
+	 * - DELETE `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
+	 */
+	applicationGuildCommands(applicationID: string, guildID: string, commandID?: string) {
+		const route = ['', 'applications', applicationID, 'guilds', guildID, 'commands'];
+
+		if (commandID) {
+			route.push(commandID);
+		}
+
+		return route.join('/');
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/interactions/{interaction.id}/{interaction.token}/callback`
+	 */
+	interactionCallback(interactionID: string, interactionToken: string) {
+		return `/interactions/${interactionID}/${interactionToken}/callback`;
 	},
 };

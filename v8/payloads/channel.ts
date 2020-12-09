@@ -153,6 +153,7 @@ export enum MessageFlags {
 	SUPPRESS_EMBEDS = 1 << 2,
 	SOURCE_MESSAGE_DELETED = 1 << 3,
 	URGENT = 1 << 4,
+	EPHEMERAL = 1 << 6,
 }
 
 /**

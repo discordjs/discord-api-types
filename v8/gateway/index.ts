@@ -16,6 +16,7 @@ import type {
 	GatewayVoiceState,
 	InviteTargetUserType,
 	PresenceUpdateStatus,
+	APIApplicationCommandInteraction,
 } from '../payloads';
 
 export const GatewayVersion = '8';
@@ -144,6 +145,7 @@ export enum GatewayDispatchEvents {
 	GuildRoleCreate = 'GUILD_ROLE_CREATE',
 	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
 	GuildRoleDelete = 'GUILD_ROLE_DELETE',
+	InteractionCreate = 'INTERACTION_CREATE',
 	InviteCreate = 'INVITE_CREATE',
 	InviteDelete = 'INVITE_DELETE',
 	MessageCreate = 'MESSAGE_CREATE',
@@ -194,6 +196,7 @@ export type GatewayDispatchPayload =
 	| GatewayGuildMembersChunkDispatch
 	| GatewayGuildRoleModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
+	| GatewayInteractionCreateDispatch
 	| GatewayInviteCreateDispatch
 	| GatewayInviteDeleteDispatch
 	| GatewayMessageCreateDispatch
@@ -422,6 +425,14 @@ export type GatewayGuildRoleDeleteDispatch = DataPayload<
 		guild_id: string;
 		role_id: string;
 	}
+>;
+
+/**
+ * TODO: Interaction link
+ */
+export type GatewayInteractionCreateDispatch = DataPayload<
+	GatewayDispatchEvents.InteractionCreate,
+	APIApplicationCommandInteraction
 >;
 
 /**
