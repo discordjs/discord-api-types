@@ -173,7 +173,7 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 	channel_id?: string | null;
 }
 
-export type RESTPatchAPIGuildMemberResult = never;
+export type RESTPatchAPIGuildMemberResult = APIGuildMember;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
