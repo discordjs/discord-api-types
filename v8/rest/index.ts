@@ -54,7 +54,7 @@ export const Routes = {
 	 * - POST `/channels/{channel.id}/messages/{message.id}/crosspost`
 	 */
 	channelCrosspost(channelID: string, messageID: string) {
-		return `/channels/${channelID}/message/${messageID}/crosspost`;
+		return `/channels/${channelID}/messages/${messageID}/crosspost`;
 	},
 
 	/**
@@ -102,7 +102,7 @@ export const Routes = {
 	 * - POST `/channels/{channel.id}/messages/bulk-delete`
 	 */
 	channelBulkDelete(channelID: string) {
-		return `/channels/${channelID}/bulk-delete`;
+		return `/channels/${channelID}/messages/bulk-delete`;
 	},
 
 	/**
@@ -120,7 +120,7 @@ export const Routes = {
 	 * - POST `/channels/{channel.id}/invites`
 	 */
 	channelInvite(channelID: string) {
-		return `/channels/${channelID}`;
+		return `/channels/${channelID}/invites`;
 	},
 
 	/**
