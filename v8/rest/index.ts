@@ -522,8 +522,14 @@ export const Routes = {
 	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/@original`
 	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/{message.id}`
 	 */
-	webhookMessage(webhookID: string, webhookToken: string, messageID: string) {
-		return `/webhooks/${webhookID}/${webhookToken}/messages/${messageID}`;
+	webhookMessage(webhookID: string, webhookToken: string, messageID?: string) {
+		const parts = ['', 'webhooks', webhookID, webhookToken, 'messages'];
+
+		if (messageID) {
+			parts.push(messageID);
+		}
+
+		return parts.join('/');
 	},
 
 	/**
@@ -567,13 +573,13 @@ export const Routes = {
 	 * - DELETE `/applications/{application.id}/commands/{command.id}`
 	 */
 	applicationCommands(applicationID: string, commandID?: string) {
-		const route = ['', 'applications', applicationID, 'commands'];
+		const parts = ['', 'applications', applicationID, 'commands'];
 
 		if (commandID) {
-			route.push(commandID);
+			parts.push(commandID);
 		}
 
-		return route.join('/');
+		return parts.join('/');
 	},
 
 	/**
@@ -584,13 +590,13 @@ export const Routes = {
 	 * - DELETE `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 */
 	applicationGuildCommands(applicationID: string, guildID: string, commandID?: string) {
-		const route = ['', 'applications', applicationID, 'guilds', guildID, 'commands'];
+		const parts = ['', 'applications', applicationID, 'guilds', guildID, 'commands'];
 
 		if (commandID) {
-			route.push(commandID);
+			parts.push(commandID);
 		}
 
-		return route.join('/');
+		return parts.join('/');
 	},
 
 	/**
