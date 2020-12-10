@@ -501,6 +501,7 @@ export const Routes = {
 	 * - DELETE `/webhooks/{webhook.id}`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}`
 	 * - POST `/webhooks/{webhook.id}/{webhook.token}`
+	 *
 	 * - POST `/webhooks/{interaction.id}/{interaction.token}`
 	 */
 	webhook(webhookID: string, webhookToken?: string) {
@@ -518,18 +519,14 @@ export const Routes = {
 	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
 	 *
-	 * - POST `/webhooks/{interaction.id}/{interaction.token}/messages`
 	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/@original`
 	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/{message.id}`
+	 * - DELETE `/webhooks/{interaction.id}/{interaction.token}/messages/{message.id}`
+	 *
+	 * @param [messageID='@original'] The message ID to change, defaulted to `@original`
 	 */
-	webhookMessage(webhookID: string, webhookToken: string, messageID?: string) {
-		const parts = ['', 'webhooks', webhookID, webhookToken, 'messages'];
-
-		if (messageID) {
-			parts.push(messageID);
-		}
-
-		return parts.join('/');
+	webhookMessage(webhookID: string, webhookToken: string, messageID = '@original') {
+		return `/webhooks/${webhookID}/${webhookToken}/messages/${messageID}`;
 	},
 
 	/**
