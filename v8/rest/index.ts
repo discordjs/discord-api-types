@@ -477,8 +477,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - POST `/channels/{channel.id}/webhooks`
 	 * - GET `/channels/{channel.id}/webhooks`
+	 * - POST `/channels/{channel.id}/webhooks`
 	 */
 	channelWebhook(channelID: string) {
 		return `/channels/${channelID}/webhooks`;
@@ -514,14 +514,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
-	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
 	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
+	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
+	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
 	 *
-	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/@original`
-	 * - PATCH `/webhooks/{interaction.id}/{interaction.token}/messages/{message.id}`
-	 * - DELETE `/webhooks/{interaction.id}/{interaction.token}/messages/{message.id}`
+	 * - PATCH `/webhooks/{application.id}/{interaction.token}/messages/@original`
+	 * - PATCH `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
+	 * - DELETE `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
 	 *
 	 * @param [messageID='@original'] The message ID to change, defaulted to `@original`
 	 */
@@ -531,8 +531,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - POST `/webhooks/{webhook.id}/{webhook.token}/slack`
 	 * - POST `/webhooks/{webhook.id}/{webhook.token}/github`
+	 * - POST `/webhooks/{webhook.id}/{webhook.token}/slack`
 	 */
 	webhookPlatform(webhookID: string, webhookToken: string, platform: 'github' | 'slack') {
 		return `/webhooks/${webhookID}/${webhookToken}/${platform}`;
