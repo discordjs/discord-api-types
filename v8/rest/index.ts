@@ -429,7 +429,7 @@ export const Routes = {
 	 * - GET `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userID] The user ID, defaulted to `@me`
+	 * @param [userID='@me'] The user ID, defaulted to `@me`
 	 */
 	user(userID = '@me') {
 		return `/users/${userID}`;
