@@ -44,6 +44,7 @@ export interface APIInteraction {
 	channel_id: string;
 	member: APIGuildMember;
 	token: string;
+	version: 1;
 }
 
 export type APIApplicationCommandInteraction = Required<APIInteraction>;

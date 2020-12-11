@@ -502,7 +502,7 @@ export const Routes = {
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}`
 	 * - POST `/webhooks/{webhook.id}/{webhook.token}`
 	 *
-	 * - POST `/webhooks/{interaction.id}/{interaction.token}`
+	 * - POST `/webhooks/{application.id}/{interaction.token}`
 	 */
 	webhook(webhookID: string, webhookToken?: string) {
 		const parts = ['', 'webhooks', webhookID];
