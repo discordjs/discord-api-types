@@ -298,7 +298,7 @@ export type GatewayChannelPinsUpdateDispatch = DataPayload<
 	{
 		guild_id?: string;
 		channel_id: string;
-		last_pin_timestamp?: string;
+		last_pin_timestamp?: string | null;
 	}
 >;
 
