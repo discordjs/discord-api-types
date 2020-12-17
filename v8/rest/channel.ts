@@ -18,7 +18,7 @@ import type {
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
  */
-export enum AllowedMentionsTypes {
+export const enum AllowedMentionsTypes {
 	Everyone = 'everyone',
 	Role = 'roles',
 	User = 'users',

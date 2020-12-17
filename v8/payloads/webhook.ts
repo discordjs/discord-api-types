@@ -23,7 +23,7 @@ export interface APIWebhook {
 	application_id: string | null;
 }
 
-export enum WebhookType {
+export const enum WebhookType {
 	Incoming = 1,
 	ChannelFollower,
 }

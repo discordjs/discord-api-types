@@ -12,7 +12,8 @@
 		"removeComments": false,
 		"target": "ES2020",
 		"importsNotUsedAsValues": "error",
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"preserveConstEnums": true
 	},
 	"exclude": [
 		"node_modules",
