@@ -10,15 +10,15 @@ export type RESTPatchAPIApplicationCommandJSONBody = Partial<RESTPostAPIApplicat
 
 export type RESTPatchAPIApplicationCommandResult = APIApplicationCommand;
 
-export type RESTGetAPIGuildApplicationCommandsResult = APIApplicationCommand[];
+export type RESTGetAPIApplicationGuildCommandsResult = APIApplicationCommand[];
 
-export type RESTPostAPIGuildApplicationCommandsJSONBody = Omit<APIApplicationCommand, 'id' | 'application_id'>;
+export type RESTPostAPIApplicationGuildCommandsJSONBody = RESTPostAPIApplicationCommandsJSONBody;
 
-export type RESTPostAPIGuildApplicationCommandsResult = APIApplicationCommand;
+export type RESTPostAPIApplicationGuildCommandsResult = APIApplicationCommand;
 
-export type RESTPatchAPIGuildApplicationCommandJSONBody = Partial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationGuildCommandJSONBody = Partial<RESTPostAPIApplicationCommandsJSONBody>;
 
-export type RESTPatchAPIGuildApplicationCommandResult = APIApplicationCommand;
+export type RESTPatchAPIApplicationGuildCommandResult = APIApplicationCommand;
 
 export type RESTPostAPIInteractionCallbackJSONBody = APIInteractionResponse;
 

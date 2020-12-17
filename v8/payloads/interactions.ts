@@ -7,7 +7,7 @@ export interface APIApplicationCommand {
 	application_id: string;
 	name: string;
 	description: string;
-	options: APIApplicationCommandOption[];
+	options?: APIApplicationCommandOption[];
 }
 
 export interface APIApplicationCommandOption {
