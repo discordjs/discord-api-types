@@ -54,7 +54,7 @@ export const Routes = {
 	 * Route for:
 	 * - POST `/channels/{channel.id}/messages/{message.id}/crosspost`
 	 */
-	channelCrosspost(channelID: string, messageID: string) {
+	channelMessageCrosspost(channelID: string, messageID: string) {
 		return `/channels/${channelID}/messages/${messageID}/crosspost`;
 	},
 

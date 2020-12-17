@@ -428,7 +428,7 @@ export type GatewayGuildRoleDeleteDispatch = DataPayload<
 >;
 
 /**
- * TODO: Interaction link
+ * https://discord.com/developers/docs/topics/gateway#interaction-create
  */
 export type GatewayInteractionCreateDispatch = DataPayload<
 	GatewayDispatchEvents.InteractionCreate,

@@ -60,6 +60,7 @@ export const enum RESTJSONErrorCodes {
 	RequestEntityTooLarge = 40005,
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
+	ThisMessageWasAlreadyCrossposted = 40033,
 
 	MissingAccess = 50001,
 	InvalidAccountType,
