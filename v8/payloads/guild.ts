@@ -227,7 +227,7 @@ export interface APIGuildMember {
 	premium_since?: string | null;
 	deaf: boolean;
 	mute: boolean;
-	pending?: boolean | null;
+	pending?: boolean;
 }
 
 /**
