@@ -76,10 +76,10 @@ export type RESTGetAPIGuildPreviewResult = APIGuildPreview;
  */
 export interface RESTPatchAPIGuildJSONBody {
 	name?: string;
-	region?: string;
-	verification_level?: GuildVerificationLevel;
-	default_message_notifications?: GuildDefaultMessageNotifications;
-	explicit_content_filter?: GuildExplicitContentFilter;
+	region?: string | null;
+	verification_level?: GuildVerificationLevel | null;
+	default_message_notifications?: GuildDefaultMessageNotifications | null;
+	explicit_content_filter?: GuildExplicitContentFilter | null;
 	afk_channel_id?: string | null;
 	afk_timeout?: number;
 	icon?: string | null;
@@ -91,7 +91,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	system_channel_flags: GuildSystemChannelFlags;
 	rules_channel_id?: string | null;
 	public_updates_channel_id?: string | null;
-	preferred_locale?: string;
+	preferred_locale?: string | null;
 	features?: GuildFeature[];
 	description?: string | null;
 }
