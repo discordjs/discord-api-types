@@ -1,7 +1,7 @@
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
  */
-export enum RESTJSONErrorCodes {
+export const enum RESTJSONErrorCodes {
 	GeneralError,
 
 	UnknownAccount = 10001,
@@ -61,6 +61,8 @@ export enum RESTJSONErrorCodes {
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
+	ThisMessageWasAlreadyCrossposted = 40033,
+
 	MissingAccess = 50001,
 	InvalidAccountType,
 	CannotExecuteActionOnDMChannel,
@@ -106,7 +108,7 @@ export enum RESTJSONErrorCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes
  */
-export enum RPCErrorCodes {
+export const enum RPCErrorCodes {
 	UnknownError = 1000,
 
 	InvalidPayload = 4000,
@@ -131,7 +133,7 @@ export enum RPCErrorCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
  */
-export enum RPCCloseEventCodes {
+export const enum RPCCloseEventCodes {
 	InvalidClientID = 4000,
 	InvalidOrigin,
 	RateLimited,

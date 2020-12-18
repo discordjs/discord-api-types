@@ -18,7 +18,7 @@ import type {
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
  */
-export enum AllowedMentionsTypes {
+export const enum AllowedMentionsTypes {
 	Everyone = 'everyone',
 	Role = 'roles',
 	User = 'users',
@@ -200,12 +200,19 @@ export interface RESTPutAPIChannelRecipientJSONBody {
 export type RESTPutAPIChannelRecipientResult = unknown;
 export type RESTDeleteAPIChannelRecipientResult = unknown;
 
-// TODO: Docs updated once https://github.com/discord/discord-api-docs/pull/1692/files is merged
-
+/**
+ * https://discord.com/developers/docs/resources/channel#crosspost-message
+ */
 export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 
+/**
+ * https://discord.com/developers/docs/resources/channel#follow-news-channel
+ */
 export interface RESTPostAPIChannelFollowersJSONBody {
 	webhook_channel_id: string;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/channel#follow-news-channel
+ */
 export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;

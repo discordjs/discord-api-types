@@ -88,7 +88,7 @@ export interface APIGuild extends APIPartialGuild {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
  */
-export enum GuildDefaultMessageNotifications {
+export const enum GuildDefaultMessageNotifications {
 	ALL_MESSAGES,
 	ONLY_MENTIONS,
 }
@@ -96,7 +96,7 @@ export enum GuildDefaultMessageNotifications {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
  */
-export enum GuildExplicitContentFilter {
+export const enum GuildExplicitContentFilter {
 	DISABLED,
 	MEMBERS_WITHOUT_ROLES,
 	ALL_MEMBERS,
@@ -105,7 +105,7 @@ export enum GuildExplicitContentFilter {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
  */
-export enum GuildMFALevel {
+export const enum GuildMFALevel {
 	NONE,
 	ELEVATED,
 }
@@ -113,7 +113,7 @@ export enum GuildMFALevel {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-verification-level
  */
-export enum GuildVerificationLevel {
+export const enum GuildVerificationLevel {
 	NONE,
 	LOW,
 	MEDIUM,
@@ -124,7 +124,7 @@ export enum GuildVerificationLevel {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-premium-tier
  */
-export enum GuildPremiumTier {
+export const enum GuildPremiumTier {
 	NONE,
 	TIER_1,
 	TIER_2,
@@ -134,7 +134,7 @@ export enum GuildPremiumTier {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
  */
-export enum GuildSystemChannelFlags {
+export const enum GuildSystemChannelFlags {
 	SUPPRESS_JOIN_NOTIFICATIONS = 1 << 0,
 	SUPPRESS_PREMIUM_SUBSCRIPTIONS = 1 << 1,
 }
@@ -142,7 +142,7 @@ export enum GuildSystemChannelFlags {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-features
  */
-export enum GuildFeature {
+export const enum GuildFeature {
 	ANIMATED_ICON = 'ANIMATED_ICON',
 	BANNER = 'BANNER',
 	COMMERCE = 'COMMERCE',
@@ -254,7 +254,7 @@ export interface APIGuildIntegration {
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
  */
-export enum IntegrationExpireBehavior {
+export const enum IntegrationExpireBehavior {
 	RemoveRole,
 	Kick,
 }
@@ -290,7 +290,7 @@ export interface APIBan {
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options
  */
-export enum GuildWidgetStyle {
+export const enum GuildWidgetStyle {
 	Banner1 = 'banner1',
 	Banner2 = 'banner2',
 	Banner3 = 'banner3',

@@ -16,6 +16,7 @@ import type {
 	GatewayVoiceState,
 	InviteTargetUserType,
 	PresenceUpdateStatus,
+	APIApplicationCommandInteraction,
 } from '../payloads';
 
 export const GatewayVersion = '8';
@@ -23,7 +24,7 @@ export const GatewayVersion = '8';
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
  */
-export enum GatewayOPCodes {
+export const enum GatewayOPCodes {
 	Dispatch,
 	Heartbeat,
 	Identify,
@@ -41,7 +42,7 @@ export enum GatewayOPCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes
  */
-export enum GatewayCloseCodes {
+export const enum GatewayCloseCodes {
 	UnknownError = 4000,
 	UnknownOpCode,
 	DecodeError,
@@ -62,7 +63,7 @@ export enum GatewayCloseCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-opcodes
  */
-export enum VoiceOPCodes {
+export const enum VoiceOPCodes {
 	Identify,
 	SelectProtocol,
 	Ready,
@@ -81,7 +82,7 @@ export enum VoiceOPCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-close-event-codes
  */
-export enum VoiceCloseCodes {
+export const enum VoiceCloseCodes {
 	UnknownOpCode = 4001,
 
 	NotAuthenticated = 4003,
@@ -102,7 +103,7 @@ export enum VoiceCloseCodes {
 /**
  * https://discord.com/developers/docs/topics/gateway#list-of-intents
  */
-export enum GatewayIntentBits {
+export const enum GatewayIntentBits {
 	GUILDS = 1 << 0,
 	GUILD_MEMBERS = 1 << 1,
 	GUILD_BANS = 1 << 2,
@@ -123,7 +124,7 @@ export enum GatewayIntentBits {
 /**
  * https://discord.com/developers/docs/topics/gateway#commands-and-events-gateway-events
  */
-export enum GatewayDispatchEvents {
+export const enum GatewayDispatchEvents {
 	Ready = 'READY',
 	Resumed = 'RESUMED',
 	ChannelCreate = 'CHANNEL_CREATE',
@@ -144,6 +145,7 @@ export enum GatewayDispatchEvents {
 	GuildRoleCreate = 'GUILD_ROLE_CREATE',
 	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
 	GuildRoleDelete = 'GUILD_ROLE_DELETE',
+	InteractionCreate = 'INTERACTION_CREATE',
 	InviteCreate = 'INVITE_CREATE',
 	InviteDelete = 'INVITE_DELETE',
 	MessageCreate = 'MESSAGE_CREATE',
@@ -194,6 +196,7 @@ export type GatewayDispatchPayload =
 	| GatewayGuildMembersChunkDispatch
 	| GatewayGuildRoleModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
+	| GatewayInteractionCreateDispatch
 	| GatewayInviteCreateDispatch
 	| GatewayInviteDeleteDispatch
 	| GatewayMessageCreateDispatch
@@ -422,6 +425,14 @@ export type GatewayGuildRoleDeleteDispatch = DataPayload<
 		guild_id: string;
 		role_id: string;
 	}
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#interaction-create
+ */
+export type GatewayInteractionCreateDispatch = DataPayload<
+	GatewayDispatchEvents.InteractionCreate,
+	APIApplicationCommandInteraction
 >;
 
 /**

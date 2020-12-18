@@ -27,7 +27,7 @@ export interface APITeamMember {
 /**
  * https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
  */
-export enum TeamMemberMembershipState {
+export const enum TeamMemberMembershipState {
 	INVITED = 1,
 	ACCEPTED,
 }

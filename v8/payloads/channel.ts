@@ -40,7 +40,7 @@ export interface APIChannel extends APIPartialChannel {
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
  */
-export enum ChannelType {
+export const enum ChannelType {
 	GUILD_TEXT = 0,
 	DM,
 	GUILD_VOICE,
@@ -85,7 +85,7 @@ export interface APIMessage {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
  */
-export enum MessageType {
+export const enum MessageType {
 	DEFAULT,
 	RECIPIENT_ADD,
 	RECIPIENT_REMOVE,
@@ -137,7 +137,7 @@ export interface APIMessageReference {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
  */
-export enum MessageActivityType {
+export const enum MessageActivityType {
 	JOIN = 1,
 	SPECTATE,
 	LISTEN,
@@ -147,12 +147,13 @@ export enum MessageActivityType {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-flags
  */
-export enum MessageFlags {
+export const enum MessageFlags {
 	CROSSPOSTED = 1 << 0,
 	IS_CROSSPOST = 1 << 1,
 	SUPPRESS_EMBEDS = 1 << 2,
 	SOURCE_MESSAGE_DELETED = 1 << 3,
 	URGENT = 1 << 4,
+	EPHEMERAL = 1 << 6,
 }
 
 /**
@@ -172,7 +173,7 @@ export interface APISticker {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
  */
-export enum StickerFormatType {
+export const enum StickerFormatType {
 	PNG = 1,
 	APNG,
 	LOTTIE,
@@ -197,7 +198,7 @@ export interface APIOverwrite {
 	deny: string;
 }
 
-export enum OverwriteType {
+export const enum OverwriteType {
 	Role,
 	Member,
 }
@@ -228,7 +229,7 @@ export interface APIEmbed {
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
-export enum EmbedType {
+export const enum EmbedType {
 	Rich = 'rich',
 	Image = 'image',
 	Video = 'video',
