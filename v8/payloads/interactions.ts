@@ -13,7 +13,11 @@ export interface APIApplicationCommand {
 }
 
 interface APIApplicationCommandOptionBase {
-	type: ApplicationCommandOptionType;
+	type:
+		| ApplicationCommandOptionType.BOOLEAN
+		| ApplicationCommandOptionType.USER
+		| ApplicationCommandOptionType.CHANNEL
+		| ApplicationCommandOptionType.ROLE;
 	name: string;
 	description: string;
 	default?: boolean;
@@ -23,14 +27,17 @@ interface APIApplicationCommandOptionBase {
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoption
  */
-export type APIApplicationCommandOption = APIApplicationCommandArgumentOptions | APIApplicationCommandSubCommandOptions;
+export type APIApplicationCommandOption =
+	| APIApplicationCommandArgumentOptions
+	| APIApplicationCommandSubCommandOptions
+	| APIApplicationCommandOptionBase;
 
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands.
  *
  * If the option is a `SUB_COMMAND` or `SUB_COMMAND_GROUP` type, this nested options will be the parameters
  */
-export interface APIApplicationCommandSubCommandOptions extends APIApplicationCommandOptionBase {
+export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
 	type: ApplicationCommandOptionType.SUB_COMMAND | ApplicationCommandOptionType.SUB_COMMAND_GROUP;
 	options?: APIApplicationCommandOption[];
 }
@@ -38,17 +45,11 @@ export interface APIApplicationCommandSubCommandOptions extends APIApplicationCo
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands.
  *
- * In contrast to {@see APIApplicationCommandSubcommandOptions}, these types cannot have an `options` array,
+ * In contrast to {@see APIApplicationCommandSubCommandOptions}, these types cannot have an `options` array,
  * but they can have a `choices` one
  */
-export interface APIApplicationCommandArgumentOptions extends APIApplicationCommandOptionBase {
-	type:
-		| ApplicationCommandOptionType.STRING
-		| ApplicationCommandOptionType.INTEGER
-		| ApplicationCommandOptionType.BOOLEAN
-		| ApplicationCommandOptionType.USER
-		| ApplicationCommandOptionType.CHANNEL
-		| ApplicationCommandOptionType.ROLE;
+export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+	type: ApplicationCommandOptionType.STRING | ApplicationCommandOptionType.INTEGER;
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
