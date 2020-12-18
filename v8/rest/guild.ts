@@ -74,7 +74,7 @@ export type RESTGetAPIGuildPreviewResult = APIGuildPreview;
  */
 export interface RESTPatchAPIGuildJSONBody {
 	name?: string;
-	region?: string;
+	region?: string | null;
 	verification_level?: GuildVerificationLevel;
 	default_message_notifications?: GuildDefaultMessageNotifications;
 	explicit_content_filter?: GuildExplicitContentFilter;
