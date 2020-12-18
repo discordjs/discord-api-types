@@ -23,8 +23,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}`
-	 * - PATCH `/channels/{channel.id}`
+	 * - GET    `/channels/{channel.id}`
+	 * - PATCH  `/channels/{channel.id}`
 	 * - DELETE `/channels/{channel.id}`
 	 */
 	channel(channelID: string) {
@@ -33,7 +33,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/messages`
+	 * - GET  `/channels/{channel.id}/messages`
 	 * - POST `/channels/{channel.id}/messages`
 	 */
 	channelMessages(channelID: string) {
@@ -42,8 +42,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/messages/{message.id}`
-	 * - PATCH `/channels/{channel.id}/messages/{message.id}`
+	 * - GET    `/channels/{channel.id}/messages/{message.id}`
+	 * - PATCH  `/channels/{channel.id}/messages/{message.id}`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}`
 	 */
 	channelMessage(channelID: string, messageID: string) {
@@ -60,7 +60,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PUT `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me`
+	 * - PUT    `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me`
 	 *
 	 * **Note**: You need to URL encode the emoji yourself.
@@ -81,12 +81,12 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}`
+	 * - GET    `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}`
 	 *
 	 * **Note**: You need to URL encode the emoji yourself.
 	 */
-	channelMessageSpecificReaction(channelID: string, messageID: string, emoji: string) {
+	channelMessageReaction(channelID: string, messageID: string, emoji: string) {
 		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}`;
 	},
 
@@ -95,7 +95,7 @@ export const Routes = {
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions`
 	 */
 	channelMessageAllReactions(channelID: string, messageID: string) {
-		return `/channels/${channelID}/messages/${messageID}`;
+		return `/channels/${channelID}/messages/${messageID}/reactions`;
 	},
 
 	/**
@@ -108,19 +108,19 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PUT `/channels/{channel.id}/permissions/{overwrite.id}`
+	 * - PUT    `/channels/{channel.id}/permissions/{overwrite.id}`
 	 * - DELETE `/channels/{channel.id}/permissions/{overwrite.id}`
 	 */
-	channelPermissions(channelID: string, overwriteID: string) {
+	channelPermission(channelID: string, overwriteID: string) {
 		return `/channels/${channelID}/permissions/${overwriteID}`;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/invites`
+	 * - GET  `/channels/{channel.id}/invites`
 	 * - POST `/channels/{channel.id}/invites`
 	 */
-	channelInvite(channelID: string) {
+	channelInvites(channelID: string) {
 		return `/channels/${channelID}/invites`;
 	},
 
@@ -150,7 +150,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PUT `/channels/{channel.id}/pins/{message.id}`
+	 * - PUT    `/channels/{channel.id}/pins/{message.id}`
 	 * - DELETE `/channels/{channel.id}/pins/{message.id}`
 	 */
 	channelPin(channelID: string, messageID: string) {
@@ -159,7 +159,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PUT `/channels/{channel.id}/recipients/{user.id}`
+	 * - PUT    `/channels/{channel.id}/recipients/{user.id}`
 	 * - DELETE `/channels/{channel.id}/recipients/{user.id}`
 	 */
 	channelRecipient(channelID: string, userID: string) {
@@ -168,7 +168,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/emojis`
+	 * - GET  `/guilds/{guild.id}/emojis`
 	 * - POST `/guilds/{guild.id}/emojis`
 	 */
 	guildEmojis(guildID: string) {
@@ -177,8 +177,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/emojis/{emoji.id}`
-	 * - PATCH `/guilds/{guild.id}/emojis/{emoji.id}`
+	 * - GET    `/guilds/{guild.id}/emojis/{emoji.id}`
+	 * - PATCH  `/guilds/{guild.id}/emojis/{emoji.id}`
 	 * - DELETE `/guilds/{guild.id}/emojis/{emoji.id}`
 	 */
 	guildEmoji(guildID: string, emojiID: string) {
@@ -195,8 +195,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}`
-	 * - PATCH `/guilds/{guild.id}`
+	 * - GET    `/guilds/{guild.id}`
+	 * - PATCH  `/guilds/{guild.id}`
 	 * - DELETE `/guilds/{guild.id}`
 	 */
 	guild(guildID: string) {
@@ -213,8 +213,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/channels`
-	 * - POST `/guilds/{guild.id}/channels`
+	 * - GET   `/guilds/{guild.id}/channels`
+	 * - POST  `/guilds/{guild.id}/channels`
 	 * - PATCH `/guilds/{guild.id}/channels`
 	 */
 	guildChannels(guildID: string) {
@@ -223,9 +223,9 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/members/{user.id}`
-	 * - PUT `/guilds/{guild.id}/members/{user.id}`
-	 * - PATCH `/guilds/{guild.id}/members/{user.id}`
+	 * - GET    `/guilds/{guild.id}/members/{user.id}`
+	 * - PUT    `/guilds/{guild.id}/members/{user.id}`
+	 * - PATCH  `/guilds/{guild.id}/members/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}`
 	 */
 	guildMember(guildID: string, userID: string) {
@@ -258,7 +258,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PUT `/guilds/{guild.id}/members/{user.id}/roles/{role.id}`
+	 * - PUT    `/guilds/{guild.id}/members/{user.id}/roles/{role.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}/roles/{role.id}`
 	 */
 	guildMemberRole(guildID: string, memberID: string, roleID: string) {
@@ -275,8 +275,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/bans/{user.id}`
-	 * - PUT `/guilds/{guild.id}/bans/{user.id}`
+	 * - GET    `/guilds/{guild.id}/bans/{user.id}`
+	 * - PUT    `/guilds/{guild.id}/bans/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/bans/{user.id}`
 	 */
 	guildBan(guildID: string, userID: string) {
@@ -285,8 +285,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/roles`
-	 * - POST `/guilds/{guild.id}/roles`
+	 * - GET   `/guilds/{guild.id}/roles`
+	 * - POST  `/guilds/{guild.id}/roles`
 	 * - PATCH `/guilds/{guild.id}/roles`
 	 */
 	guildRoles(guildID: string) {
@@ -295,7 +295,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PATCH `/guilds/{guild.id}/roles/{role.id}`
+	 * - PATCH  `/guilds/{guild.id}/roles/{role.id}`
 	 * - DELETE `/guilds/{guild.id}/roles/{role.id}`
 	 */
 	guildRole(guildID: string, roleID: string) {
@@ -304,7 +304,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/prune`
+	 * - GET  `/guilds/{guild.id}/prune`
 	 * - POST `/guilds/{guild.id}/prune`
 	 */
 	guildPrune(guildID: string) {
@@ -329,7 +329,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/integrations`
+	 * - GET  `/guilds/{guild.id}/integrations`
 	 * - POST `/guilds/{guild.id}/integrations`
 	 */
 	guildIntegrations(guildID: string) {
@@ -338,7 +338,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PATCH `/guilds/{guild.id}/integrations/{integration.id}`
+	 * - PATCH  `/guilds/{guild.id}/integrations/{integration.id}`
 	 * - DELETE `/guilds/{guild.id}/integrations/{integration.id}`
 	 */
 	guildIntegration(guildID: string, integrationID: string) {
@@ -355,7 +355,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/widget`
+	 * - GET   `/guilds/{guild.id}/widget`
 	 * - PATCH `/guilds/{guild.id}/widget`
 	 */
 	guildWidgetSettings(guildID: string) {
@@ -366,7 +366,7 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/widget.json`
 	 */
-	guildWidget(guildID: string) {
+	guildWidgetJSON(guildID: string) {
 		return `/guilds/${guildID}/widget.json`;
 	},
 
@@ -388,7 +388,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/invites/{invite.code}`
+	 * - GET    `/invites/{invite.code}`
 	 * - DELETE `/invites/{invite.code}`
 	 */
 	invite(code: string) {
@@ -397,7 +397,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/templates/{template.code}`
+	 * - GET  `/guilds/templates/{template.code}`
 	 * - POST `/guilds/templates/{template.code}`
 	 */
 	template(code: string) {
@@ -406,7 +406,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/templates`
+	 * - GET  `/guilds/{guild.id}/templates`
 	 * - POST `/guilds/{guild.id}/templates`
 	 */
 	guildTemplates(guildID: string) {
@@ -415,8 +415,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PUT `/guilds/{guild.id}/templates/{template.code}`
-	 * - PATCH `/guilds/{guild.id}/templates/{template.code}`
+	 * - PUT    `/guilds/{guild.id}/templates/{template.code}`
+	 * - PATCH  `/guilds/{guild.id}/templates/{template.code}`
 	 * - DELETE `/guilds/{guild.id}/templates/{template.code}`
 	 */
 	guildTemplate(guildID: string, code: string) {
@@ -425,8 +425,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/users/@me`
-	 * - GET `/users/{user.id}`
+	 * - GET   `/users/@me`
+	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
 	 * @param [userID='@me'] The user ID, defaulted to `@me`
@@ -477,10 +477,10 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/webhooks`
+	 * - GET  `/channels/{channel.id}/webhooks`
 	 * - POST `/channels/{channel.id}/webhooks`
 	 */
-	channelWebhook(channelID: string) {
+	channelWebhooks(channelID: string) {
 		return `/channels/${channelID}/webhooks`;
 	},
 
@@ -494,15 +494,15 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/webhooks/{webhook.id}`
-	 * - GET `/webhooks/{webhook.id}/{webhook.token}`
-	 * - PATCH `/webhooks/{webhook.id}`
-	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}`
+	 * - GET    `/webhooks/{webhook.id}`
+	 * - GET    `/webhooks/{webhook.id}/{webhook.token}`
+	 * - PATCH  `/webhooks/{webhook.id}`
+	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}`
 	 * - DELETE `/webhooks/{webhook.id}`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}`
-	 * - POST `/webhooks/{webhook.id}/{webhook.token}`
+	 * - POST   `/webhooks/{webhook.id}/{webhook.token}`
 	 *
-	 * - POST `/webhooks/{application.id}/{interaction.token}`
+	 * - POST   `/webhooks/{application.id}/{interaction.token}`
 	 */
 	webhook(webhookID: string, webhookToken?: string) {
 		const parts = ['', 'webhooks', webhookID];
@@ -514,13 +514,13 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
-	 * - PATCH `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
+	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
+	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
 	 *
-	 * - PATCH `/webhooks/{application.id}/{interaction.token}/messages/@original`
-	 * - PATCH `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
+	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/@original`
+	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
 	 * - DELETE `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
 	 *
 	 * @param [messageID='@original'] The message ID to change, defaulted to `@original`
@@ -564,36 +564,36 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/applications/{application.id}/commands`
+	 * - GET  `/applications/{application.id}/commands`
 	 * - POST `/applications/{application.id}/commands`
-	 * - PATCH `/applications/{application.id}/commands/{command.id}`
+	 */
+	applicationCommands(applicationID: string) {
+		return `/applications/${applicationID}/commands`;
+	},
+
+	/**
+	 * - PATCH  `/applications/{application.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/commands/{command.id}`
 	 */
-	applicationCommands(applicationID: string, commandID?: string) {
-		const parts = ['', 'applications', applicationID, 'commands'];
-
-		if (commandID) {
-			parts.push(commandID);
-		}
-
-		return parts.join('/');
+	applicationCommand(applicationID: string, commandID: string) {
+		return `/applications/${applicationID}/commands/${commandID}`;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `/applications/{application.id}/guilds/{guild.id}/commands`
+	 * - GET  `/applications/{application.id}/guilds/{guild.id}/commands`
 	 * - POST `/applications/{application.id}/guilds/{guild.id}/commands`
-	 * - PATCH `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
+	 */
+	applicationGuildCommands(applicationID: string, guildID: string) {
+		return `/applications/${applicationID}/guilds/${guildID}/commands`;
+	},
+
+	/**
+	 * - PATCH  `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 */
-	applicationGuildCommands(applicationID: string, guildID: string, commandID?: string) {
-		const parts = ['', 'applications', applicationID, 'guilds', guildID, 'commands'];
-
-		if (commandID) {
-			parts.push(commandID);
-		}
-
-		return parts.join('/');
+	applicationGuildCommand(applicationID: string, guildID: string, commandID: string) {
+		return `/applications/${applicationID}/guilds/${guildID}/commands/${commandID}`;
 	},
 
 	/**
