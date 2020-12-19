@@ -31,7 +31,7 @@ export interface APIAuditLog {
 export interface APIAuditLogEntry {
 	target_id: string | null;
 	changes?: APIAuditLogChange[];
-	user_id: string | null;
+	user_id: string;
 	id: string;
 	action_type: AuditLogEvent;
 	options?: APIAuditLogOptions;
