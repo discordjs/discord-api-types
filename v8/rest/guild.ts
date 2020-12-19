@@ -52,7 +52,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	afk_channel_id?: number | string;
 	afk_timeout?: number;
 	system_channel_id?: number | string;
-	system_channel_flags: GuildSystemChannelFlags;
+	system_channel_flags?: GuildSystemChannelFlags;
 }
 
 export type RESTPostAPIGuildsResult = APIGuild;
