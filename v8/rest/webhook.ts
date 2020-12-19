@@ -114,3 +114,13 @@ export type RESTPostAPIWebhookWithTokenSlackQuery = RESTPostAPIWebhookWithTokenQ
  * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
  */
 export type RESTPostAPIWebhookWithTokenGitHubQuery = RESTPostAPIWebhookWithTokenQuery;
+
+export type RESTPatchAPIWebhookWithTokenMessageJSONBody = RESTPostAPIWebhookWithTokenJSONBody;
+
+export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
+	| {
+			payload_json: string;
+	  }
+	| RESTPatchAPIWebhookWithTokenMessageJSONBody;
+
+export type RESTDeleteAPIWebhookWithTokenMessageResult = never;
