@@ -24,4 +24,5 @@ export interface APIApplication {
 	primary_sku_id?: string;
 	slug?: string;
 	cover_image?: string;
+	flags?: number;
 }
