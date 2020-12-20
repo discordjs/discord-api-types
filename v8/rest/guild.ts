@@ -88,7 +88,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	discovery_splash?: string | null;
 	banner?: string | null;
 	system_channel_id?: string | null;
-	system_channel_flags: GuildSystemChannelFlags;
+	system_channel_flags?: GuildSystemChannelFlags;
 	rules_channel_id?: string | null;
 	public_updates_channel_id?: string | null;
 	preferred_locale?: string | null;
