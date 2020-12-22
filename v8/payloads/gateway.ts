@@ -80,6 +80,7 @@ export interface GatewayActivity {
 }
 
 export enum ActivityPlatform {
+	Desktop = 'desktop',
 	Samsung = 'samsung',
 	Xbox = 'xbox',
 }
