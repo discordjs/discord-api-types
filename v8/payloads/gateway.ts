@@ -143,6 +143,7 @@ export enum ActivityFlags {
 	SYNC = 1 << 4,
 	PLAY = 1 << 5,
 }
+
 export interface GatewayActivityButton {
 	label: string;
 	url: string;
