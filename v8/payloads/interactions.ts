@@ -140,9 +140,7 @@ export type APIInteractionResponsePong = InteractionResponsePayload<APIInteracti
 
 export type APIInteractionResponseAcknowledge = InteractionResponsePayload<APIInteractionResponseType.Acknowledge>;
 
-export type APIInteractionResponseAcknowledgeWithSource = InteractionResponsePayload<
-	APIInteractionResponseType.AcknowledgeWithSource
->;
+export type APIInteractionResponseAcknowledgeWithSource = InteractionResponsePayload<APIInteractionResponseType.AcknowledgeWithSource>;
 
 export type APIInteractionResponseChannelMessage = InteractionResponsePayload<
 	APIInteractionResponseType.ChannelMessage,
