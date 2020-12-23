@@ -84,7 +84,7 @@ export interface APIInteraction {
 	data?: APIApplicationCommandInteractionData;
 	guild_id: string;
 	channel_id: string;
-	member: APIGuildMember & { user: APIUser };
+	member: APIGuildMember & { permissions: string; user: APIUser };
 	token: string;
 	version: 1;
 }
@@ -140,7 +140,9 @@ export type APIInteractionResponsePong = InteractionResponsePayload<APIInteracti
 
 export type APIInteractionResponseAcknowledge = InteractionResponsePayload<APIInteractionResponseType.Acknowledge>;
 
-export type APIInteractionResponseAcknowledgeWithSource = InteractionResponsePayload<APIInteractionResponseType.AcknowledgeWithSource>;
+export type APIInteractionResponseAcknowledgeWithSource = InteractionResponsePayload<
+	APIInteractionResponseType.AcknowledgeWithSource
+>;
 
 export type APIInteractionResponseChannelMessage = InteractionResponsePayload<
 	APIInteractionResponseType.ChannelMessage,
