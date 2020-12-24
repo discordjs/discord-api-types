@@ -84,7 +84,7 @@ export interface APIInteraction {
 	data?: APIApplicationCommandInteractionData;
 	guild_id: string;
 	channel_id: string;
-	member: APIGuildMember & { user: APIUser };
+	member: APIGuildMember & { permissions: string; user: APIUser };
 	token: string;
 	version: 1;
 }
