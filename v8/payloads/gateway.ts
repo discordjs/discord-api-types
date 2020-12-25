@@ -109,7 +109,10 @@ export interface GatewayActivityTimestamps {
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
  */
-export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'name' | 'animated'>> & Pick<APIEmoji, 'id'>;
+export interface GatewayActivityEmoji extends Pick<APIEmoji, 'animated'> {
+	name: string;
+	id?: string;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
