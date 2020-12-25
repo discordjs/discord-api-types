@@ -46,6 +46,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	topic?: string | null;
 	nsfw?: boolean | null;
 	rate_limit_per_user?: number | null;
+	bitrate?: number | null;
 	user_limit?: number | null;
 	permission_overwrites?: APIOverwrite[] | null;
 	parent_id?: string | null;
