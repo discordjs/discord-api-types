@@ -221,7 +221,7 @@ export interface APIGuildWidgetMember {
  */
 export interface APIGuildMember {
 	user?: APIUser;
-	nick: string | null;
+	nick?: string | null;
 	roles: string[];
 	joined_at: string;
 	premium_since?: string | null;
