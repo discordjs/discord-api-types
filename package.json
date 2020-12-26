@@ -1,94 +1,99 @@
 {
-  "name": "discord-api-types",
-  "version": "0.11.2",
-  "description": "Discord API typings that are kept up to date for use in bot library creation.",
-  "main": "default/index.js",
-  "scripts": {
-    "prepublishOnly": "npm run clean && npm run test:lint && npm run build",
-    "build": "tsc",
-    "test:lint": "eslint --ext ts {v*,default,common}/**",
-    "lint": "eslint --fix --ext ts {v*,default,common}/**",
-    "clean": "npx rimraf {v*,default,common}/**/*.{js,d.ts,map}"
-  },
-  "keywords": [
-    "discord",
-    "discord api",
-    "types",
-    "discordjs"
-  ],
-  "author": "Vlad Frangu <kingdgrizzle@gmail.com>",
-  "license": "MIT",
-  "files": [
-    "v*/*",
-    "default/*",
-    "common/*",
-    "!**/*.ts",
-    "**/*.d.ts"
-  ],
-  "engines": {
-    "node": ">=12"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-angular": "^11.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.10.0",
-    "@typescript-eslint/parser": "^4.10.0",
-    "eslint": "^7.15.0",
-    "eslint-config-marine": "^7.2.0",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-prettier": "^3.3.0",
-    "husky": "^4.3.6",
-    "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/discordjs/discord-api-types"
-  },
-  "eslintConfig": {
-    "extends": "marine/prettier/node",
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
-    "rules": {
-      "@typescript-eslint/naming-convention": 0
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --fix",
-    "*.ts": "eslint --fix --ext ts"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-angular"
-    ],
-    "rules": {
-      "type-enum": [
-        2,
-        "always",
-        [
-          "chore",
-          "build",
-          "ci",
-          "docs",
-          "feat",
-          "fix",
-          "perf",
-          "refactor",
-          "revert",
-          "style",
-          "test",
-          "types",
-          "wip"
-        ]
-      ]
-    }
-  }
+	"name": "discord-api-types",
+	"version": "0.11.2",
+	"description": "Discord API typings that are kept up to date for use in bot library creation.",
+	"main": "default/index.js",
+	"scripts": {
+		"prepublishOnly": "npm run clean && npm run test:lint && npm run build",
+		"build": "tsc",
+		"test:lint": "eslint --ext ts {v*,default,common}/**",
+		"lint": "eslint --fix --ext ts {v*,default,common}/**",
+		"clean": "npx rimraf {v*,default,common}/**/*.{js,d.ts,map}"
+	},
+	"keywords": [
+		"discord",
+		"discord api",
+		"types",
+		"discordjs"
+	],
+	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
+	"license": "MIT",
+	"files": [
+		"v*/*",
+		"default/*",
+		"common/*",
+		"!**/*.ts",
+		"**/*.d.ts"
+	],
+	"engines": {
+		"node": ">=12"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-angular": "^11.0.0",
+		"@typescript-eslint/eslint-plugin": "^4.10.0",
+		"@typescript-eslint/parser": "^4.10.0",
+		"eslint": "^7.15.0",
+		"eslint-config-marine": "^7.2.0",
+		"eslint-config-prettier": "^7.0.0",
+		"eslint-plugin-prettier": "^3.3.0",
+		"husky": "^4.3.6",
+		"lint-staged": "^10.5.3",
+		"prettier": "^2.2.1",
+		"typescript": "^4.1.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/discordjs/discord-api-types"
+	},
+	"eslintConfig": {
+		"extends": "marine/prettier/node",
+		"parserOptions": {
+			"project": "./tsconfig.json"
+		},
+		"rules": {
+			"@typescript-eslint/naming-convention": 0
+		}
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"lint-staged": {
+		"*.js": "eslint --fix",
+		"*.ts": "eslint --fix --ext ts"
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-angular"
+		],
+		"rules": {
+			"type-enum": [
+				2,
+				"always",
+				[
+					"chore",
+					"build",
+					"ci",
+					"docs",
+					"feat",
+					"fix",
+					"perf",
+					"refactor",
+					"revert",
+					"style",
+					"test",
+					"types",
+					"wip"
+				]
+			],
+			"scope-case": [
+				1,
+				"always",
+				"pascal-case"
+			]
+		}
+	}
 }
