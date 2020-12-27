@@ -604,3 +604,18 @@ export const Routes = {
 		return `/interactions/${interactionID}/${interactionToken}/callback`;
 	},
 };
+
+export const OAuth2Routes = {
+	authorizationURL: `https://discord.com/api/v${APIVersion}/oauth2/authorize`,
+	tokenURL: `https://discord.com/api/v${APIVersion}/oauth2/token`,
+	/**
+	 * See https://tools.ietf.org/html/rfc7009
+	 */
+	tokenRevocationURL: `https://discord.com/api/v${APIVersion}/oauth2/token/revoke`,
+} as const;
+
+/**
+ * Freeze route object
+ * @internal
+ */
+Object.freeze(OAuth2Routes);

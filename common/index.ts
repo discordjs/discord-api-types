@@ -110,9 +110,7 @@ export const enum RESTJSONErrorCodes {
  */
 export const enum RPCErrorCodes {
 	UnknownError = 1000,
-
 	InvalidPayload = 4000,
-
 	InvalidCommand = 4002,
 	InvalidGuild,
 	InvalidEvent,
@@ -122,8 +120,7 @@ export const enum RPCErrorCodes {
 	InvalidOrigin,
 	InvalidToken,
 	InvalidUser,
-
-	Oauth2Error = 5000,
+	OAuth2Error = 5000,
 	SelectChannelTimedOut,
 	GetGuildTimedOut,
 	SelectVoiceForceRequired,

@@ -45,7 +45,7 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands.
  *
- * In contrast to {@see APIApplicationCommandSubCommandOptions}, these types cannot have an `options` array,
+ * In contrast to See APIApplicationCommandSubCommandOptions, these types cannot have an `options` array,
  * but they can have a `choices` one
  */
 export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
@@ -90,7 +90,7 @@ export interface APIInteraction {
 }
 
 /**
- * Like {@see APIInteraction}, only with the `data` property always present
+ * Like See APIInteraction, only with the `data` property always present
  */
 export type APIApplicationCommandInteraction = Required<APIInteraction>;
 
