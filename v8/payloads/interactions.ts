@@ -1,4 +1,4 @@
-import type { APIGuildMember, APIUser, MessageFlags } from './';
+import type { APIGuildMember, APIUser, MessageFlags } from './index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest';
 
 /**
