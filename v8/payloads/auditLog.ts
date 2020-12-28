@@ -431,11 +431,7 @@ export type APIAuditLogChangeKeyAvatarHash = AuditLogChangeData<'avatar_hash', s
 /**
  * The ID of the changed entity - sometimes used in conjunction with other keys
  */
-export interface APIAuditLogChangeKeyID {
-	key: 'id';
-	new_value: string;
-	old_value?: string;
-}
+export type APIAuditLogChangeKeyID = AuditLogChangeData<'id', string>;
 
 /**
  * The type of entity created
