@@ -141,7 +141,7 @@ export interface APIAuditLogOptions {
 	 * - CHANNEL_OVERWRITE_UPDATE
 	 * - CHANNEL_OVERWRITE_DELETE
 	 */
-	type: AuditLogOptionsType;
+	type?: AuditLogOptionsType;
 
 	/**
 	 * Present from:
