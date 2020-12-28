@@ -11,11 +11,11 @@ import type { APIUser } from './user';
  */
 export interface APIPartialChannel {
 	/**
-	 * The id of this channel
+	 * The id of the channel
 	 */
 	id: string;
 	/**
-	 * The type of channel
+	 * The type of the channel
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 	 */
