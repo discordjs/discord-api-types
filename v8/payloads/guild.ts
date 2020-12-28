@@ -390,11 +390,11 @@ export const enum GuildFeature {
 	 */
 	COMMERCE = 'COMMERCE',
 	/**
-	 * Guild can enable welcome screen and discovery, and receives community updates
+	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	COMMUNITY = 'COMMUNITY',
 	/**
-	 * Guild is lurkable and able to be discovered in the directory
+	 * Guild is able to be discovered in the directory
 	 */
 	DISCOVERABLE = 'DISCOVERABLE',
 	/**
@@ -430,6 +430,14 @@ export const enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WELCOME_SCREEN_ENABLED = 'WELCOME_SCREEN_ENABLED',
+	/**
+	 * Guild has enabled Membership Screening
+	 */
+	MEMBER_VERIFICATION_GATE_ENABLED = 'MEMBER_VERIFICATION_GATE_ENABLED',
+	/**
+	 * Guild can be previewed before joining via Membership Screening or the directory
+	 */
+	PREVIEW_ENABLED = 'PREVIEW_ENABLED',
 }
 
 /**
@@ -801,4 +809,47 @@ export interface APIGuildWelcomeScreenChannel {
 	 * The emoji name of the emoji that is shown on the left of the channel
 	 */
 	emoji_name: string | null;
+}
+
+export interface APIGuildMembershipScreening {
+	/**
+	 * When the fields were last updated
+	 */
+	version: string;
+	/**
+	 * The steps in the screening form
+	 */
+	form_fields: APIGuildMembershipScreeningField[];
+	/**
+	 * The server description shown in the screening form
+	 */
+	description: string | null;
+}
+
+// TODO: make this a union based on the type in the future, when new types are added
+
+export interface APIGuildMembershipScreeningField {
+	/**
+	 * The type of field
+	 */
+	field_type: MembershipScreeningFieldType;
+	/**
+	 * The title of the field
+	 */
+	label: string;
+	/**
+	 * The list of rules
+	 */
+	values?: string[];
+	/**
+	 * Whether the user has to fill out this field
+	 */
+	required: boolean;
+}
+
+export const enum MembershipScreeningFieldType {
+	/**
+	 * Server Rules
+	 */
+	TERMS = 'TERMS',
 }

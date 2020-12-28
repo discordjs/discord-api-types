@@ -572,6 +572,7 @@ export const Routes = {
 	},
 
 	/**
+	 * Route for:
 	 * - PATCH  `/applications/{application.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/commands/{command.id}`
 	 */
@@ -589,6 +590,7 @@ export const Routes = {
 	},
 
 	/**
+	 * Route for:
 	 * - PATCH  `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 */
@@ -602,6 +604,15 @@ export const Routes = {
 	 */
 	interactionCallback(interactionID: string, interactionToken: string) {
 		return `/interactions/${interactionID}/${interactionToken}/callback`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET   `/guilds/{guild.id}/member-verification`
+	 * - PATCH `/guilds/{guild.id}/member-verification`
+	 */
+	guildMemberVerification(guildID: string) {
+		return `/guilds/${guildID}/member-verification`;
 	},
 };
 

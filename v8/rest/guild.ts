@@ -5,6 +5,7 @@ import type {
 	APIGuild,
 	APIGuildIntegration,
 	APIGuildMember,
+	APIGuildMembershipScreening,
 	APIGuildPreview,
 	APIGuildWidget,
 	APIGuildWidgetSettings,
@@ -749,3 +750,22 @@ export interface RESTGetAPIGuildWidgetImageQuery {
  * a buffer of sorts (depends if in browser or on node.js/deno).
  */
 export type RESTGetAPIGuildWidgetImageResult = ArrayBuffer;
+
+export type RESTGetAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
+
+export interface RESTPatchAPIGuildMemberVerificationJSONBody {
+	/**
+	 * Whether Membership Screening is enabled
+	 */
+	enabled?: boolean;
+	/**
+	 * Array of field objects serialized in a string
+	 */
+	form_fields?: string;
+	/**
+	 * The server description to show in the screening form
+	 */
+	description?: string | null;
+}
+
+export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
