@@ -207,7 +207,7 @@ export interface APIAuditLogOptions {
 	 *
 	 * {@link AuditLogOptionsType}
 	 */
-	type: AuditLogOptionsType;
+	type?: AuditLogOptionsType;
 
 	/**
 	 * Name of the role
