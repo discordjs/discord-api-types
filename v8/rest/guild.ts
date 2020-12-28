@@ -602,7 +602,7 @@ export interface RESTGetAPIGuildPruneCountQuery {
 	 * Role(s) to include
 	 *
 	 * While this is typed as a string, it represents an array of
-	 * role IDs delimited by commas.
+	 * role IDs delimited by commas
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#get-guild-prune-count-query-string-params
 	 */

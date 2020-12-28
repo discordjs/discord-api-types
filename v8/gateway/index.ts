@@ -27,47 +27,47 @@ export const GatewayVersion = '8';
  */
 export const enum GatewayOPCodes {
 	/**
-	 * An event was dispatched.
+	 * An event was dispatched
 	 */
 	Dispatch,
 	/**
-	 * Fired periodically by the client to keep the connection alive.
+	 * Fired periodically by the client to keep the connection alive
 	 */
 	Heartbeat,
 	/**
-	 * Starts a new session during the initial handshake.
+	 * Starts a new session during the initial handshake
 	 */
 	Identify,
 	/**
-	 * Update the client's presence.
+	 * Update the client's presence
 	 */
 	PresenceUpdate,
 	/**
-	 * Used to join/leave or move between voice channels.
+	 * Used to join/leave or move between voice channels
 	 */
 	VoiceStateUpdate,
 	/**
-	 * Resume a previous session that was disconnected.
+	 * Resume a previous session that was disconnected
 	 */
 	Resume = 6,
 	/**
-	 * You should attempt to reconnect and resume immediately.
+	 * You should attempt to reconnect and resume immediately
 	 */
 	Reconnect,
 	/**
-	 * Request information about offline guild members in a large guild.
+	 * Request information about offline guild members in a large guild
 	 */
 	RequestGuildMembers,
 	/**
-	 * The session has been invalidated. You should reconnect and identify/resume accordingly.
+	 * The session has been invalidated. You should reconnect and identify/resume accordingly
 	 */
 	InvalidSession,
 	/**
-	 * Sent immediately after connecting, contains the `heartbeat_interval` to use.
+	 * Sent immediately after connecting, contains the `heartbeat_interval` to use
 	 */
 	Hello,
 	/**
-	 * Sent in response to receiving a heartbeat to acknowledge that it has been received.
+	 * Sent in response to receiving a heartbeat to acknowledge that it has been received
 	 */
 	HeartbeatAck,
 }
@@ -93,13 +93,13 @@ export const enum GatewayCloseCodes {
 	 */
 	DecodeError,
 	/**
-	 * You sent us a payload prior to identifying.
+	 * You sent us a payload prior to identifying
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#identify
 	 */
 	NotAuthenticated,
 	/**
-	 * The account token sent with your identify payload is incorrect.
+	 * The account token sent with your identify payload is incorrect
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#identify
 	 */
@@ -109,44 +109,44 @@ export const enum GatewayCloseCodes {
 	 */
 	AlreadyAuthenticated,
 	/**
-	 * The sequence sent when resuming the session was invalid. Reconnect and start a new session.
+	 * The sequence sent when resuming the session was invalid. Reconnect and start a new session
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#resume
 	 */
 	InvalidSeq = 4007,
 	/**
-	 * Woah nelly! You're sending payloads to us too quickly. Slow it down! You will be disconnected on receiving this.
+	 * Woah nelly! You're sending payloads to us too quickly. Slow it down! You will be disconnected on receiving this
 	 */
 	RateLimited,
 	/**
-	 * Your session timed out. Reconnect and start a new one.
+	 * Your session timed out. Reconnect and start a new one
 	 */
 	SessionTimedOut,
 	/**
-	 * You sent us an invalid shard when identifying.
+	 * You sent us an invalid shard when identifying
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#sharding
 	 */
 	InvalidShard,
 	/**
-	 * The session would have handled too many guilds - you are required to shard your connection in order to connect.
+	 * The session would have handled too many guilds - you are required to shard your connection in order to connect
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#sharding
 	 */
 	ShardingRequired,
 	/**
-	 * You sent an invalid version for the gateway.
+	 * You sent an invalid version for the gateway
 	 */
 	InvalidAPIVersion,
 	/**
-	 * You sent an invalid intent for a Gateway Intent. You may have incorrectly calculated the bitwise value.
+	 * You sent an invalid intent for a Gateway Intent. You may have incorrectly calculated the bitwise value
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#gateway-intents
 	 */
 	InvalidIntents,
 	/**
 	 * You sent a disallowed intent for a Gateway Intent. You may have tried to specify an intent that you have not
-	 * enabled or are not whitelisted for.
+	 * enabled or are not whitelisted for
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#gateway-intents
 	 *
@@ -160,43 +160,43 @@ export const enum GatewayCloseCodes {
  */
 export const enum VoiceOPCodes {
 	/**
-	 * Begin a voice websocket connection.
+	 * Begin a voice websocket connection
 	 */
 	Identify,
 	/**
-	 * Select the voice protocol.
+	 * Select the voice protocol
 	 */
 	SelectProtocol,
 	/**
-	 * Complete the websocket handshake.
+	 * Complete the websocket handshake
 	 */
 	Ready,
 	/**
-	 * Keep the websocket connection alive.
+	 * Keep the websocket connection alive
 	 */
 	Heartbeat,
 	/**
-	 * Describe the session.
+	 * Describe the session
 	 */
 	SessionDescription,
 	/**
-	 * Indicate which users are speaking.
+	 * Indicate which users are speaking
 	 */
 	Speaking,
 	/**
-	 * Sent to acknowledge a received client heartbeat.
+	 * Sent to acknowledge a received client heartbeat
 	 */
 	HeartbeatAck,
 	/**
-	 * Resume a connection.
+	 * Resume a connection
 	 */
 	Resume,
 	/**
-	 * Time to wait between sending heartbeats in milliseconds.
+	 * Time to wait between sending heartbeats in milliseconds
 	 */
 	Hello,
 	/**
-	 * Acknowledge a successful session resume.
+	 * Acknowledge a successful session resume
 	 */
 	Resumed,
 	/**
@@ -214,51 +214,51 @@ export const enum VoiceOPCodes {
  */
 export const enum VoiceCloseCodes {
 	/**
-	 * You sent an invalid opcode.
+	 * You sent an invalid opcode
 	 */
 	UnknownOpCode = 4001,
 	/**
-	 * You sent a invalid payload in your identifying to the Gateway.
+	 * You sent a invalid payload in your identifying to the Gateway
 	 */
 	FailedToDecode,
 	/**
-	 * You sent a payload before identifying with the Gateway.
+	 * You sent a payload before identifying with the Gateway
 	 */
 	NotAuthenticated,
 	/**
-	 * The token you sent in your identify payload is incorrect.
+	 * The token you sent in your identify payload is incorrect
 	 */
 	AuthenticationFailed,
 	/**
-	 * You sent more than one identify payload. Stahp.
+	 * You sent more than one identify payload. Stahp
 	 */
 	AlreadyAuthenticated,
 	/**
-	 * Your session is no longer valid.
+	 * Your session is no longer valid
 	 */
 	SessionNoLongerValid,
 	/**
-	 * Your session has timed out.
+	 * Your session has timed out
 	 */
 	SessionTimeout = 4009,
 	/**
-	 * We can't find the server you're trying to connect to.
+	 * We can't find the server you're trying to connect to
 	 */
 	ServerNotFound = 4011,
 	/**
-	 * We didn't recognize the protocol you sent.
+	 * We didn't recognize the protocol you sent
 	 */
 	UnknownProtocol,
 	/**
-	 * Either the channel was deleted or you were kicked. Should not reconnect.
+	 * Either the channel was deleted or you were kicked. Should not reconnect
 	 */
 	Disconnected = 4014,
 	/**
-	 * The server crashed. Our bad! Try resuming.
+	 * The server crashed. Our bad! Try resuming
 	 */
 	VoiceServerCrashed,
 	/**
-	 * We didn't recognize your encryption.
+	 * We didn't recognize your encryption
 	 */
 	UnknownEncryptionMode,
 }

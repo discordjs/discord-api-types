@@ -63,7 +63,7 @@ export const Routes = {
 	 * - PUT    `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me`
 	 *
-	 * **Note**: You need to URL encode the emoji yourself.
+	 * **Note**: You need to URL encode the emoji yourself
 	 */
 	channelMessageOwnReaction(channelID: string, messageID: string, emoji: string) {
 		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}/@me`;
@@ -73,7 +73,7 @@ export const Routes = {
 	 * Route for:
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/{user.id}`
 	 *
-	 * **Note**: You need to URL encode the emoji yourself.
+	 * **Note**: You need to URL encode the emoji yourself
 	 */
 	channelMessageUserReaction(channelID: string, messageID: string, emoji: string, userID: string) {
 		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}/${userID}`;
@@ -84,7 +84,7 @@ export const Routes = {
 	 * - GET    `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}`
 	 *
-	 * **Note**: You need to URL encode the emoji yourself.
+	 * **Note**: You need to URL encode the emoji yourself
 	 */
 	channelMessageReaction(channelID: string, messageID: string, emoji: string) {
 		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}`;
