@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Get GitHub Branch Name
-        run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g') >> $GITHUB_ENV"
+        run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')" >> $GITHUB_ENV
 
       - name: Push new code
         run: |
