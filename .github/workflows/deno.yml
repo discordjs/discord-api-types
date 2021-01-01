@@ -31,7 +31,7 @@ jobs:
           REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
           echo -e "\n# Checkout the repo in the target branch"
-          git clone $REPO out -b ${TARGET_BRANCH}
+          git clone $REPO out -b ${GITHUB_BRANCH_NAME}
 
           # Build files
           cd out
@@ -42,6 +42,4 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_EMAIL}"
           git commit -m "build: Deno build for ${GITHUB_SHA}" || true
-          git push origin ${TARGET_BRANCH}
-        env:
-          TARGET_BRANCH: '${{ env.GITHUB_BRANCH_NAME }}'
+          git push origin ${GITHUB_BRANCH_NAME}
