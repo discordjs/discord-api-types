@@ -19,7 +19,8 @@
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "run-s clean test:lint build:deno build:node",
+		"prepublishOnly": "run-s clean test:lint build:node",
+		"postpack": "run-s clean:node build:deno",
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
 		"esm:common": "gen-esm-wrapper ./common/index.js ./common/index.mjs",
@@ -28,7 +29,9 @@
 		"esm:v8": "gen-esm-wrapper ./v8/index.js ./v8/index.mjs",
 		"lint": "eslint --fix --ext ts {v*,default,common}/**",
 		"test:lint": "eslint --ext ts {v*,default,common}/**",
-		"clean": "rimraf {v*,default,common}/**/*.{js,mjs,d.ts,map}"
+		"clean": "run-p clean:*",
+		"clean:node": "rimraf {v*,default,common}/**/*.{js,mjs,d.ts,map}",
+		"clean:deno": "rimraf .deno/"
 	},
 	"keywords": [
 		"discord",
@@ -43,7 +46,8 @@
 		"default/*",
 		"common/*",
 		"!**/*.ts",
-		"**/*.d.ts"
+		"**/*.d.ts",
+		"!\\.deno/*"
 	],
 	"engines": {
 		"node": ">=12"
