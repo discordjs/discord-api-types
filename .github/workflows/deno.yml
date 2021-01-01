@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
+        with:
+          path: ./out
 
       - name: Use Node.js 14
         uses: actions/setup-node@v1
@@ -26,12 +28,6 @@ jobs:
 
       - name: Push new code
         run: |
-          echo -e "\n# Initialize some useful variables"
-          REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-
-          echo -e "\n# Checkout the repo in the target branch"
-          git clone $REPO out -b $TARGET_BRANCH
-
           # Build files
           cd out
           npm run build:deno
