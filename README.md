@@ -17,11 +17,43 @@ yarn add discord-api-types
 pnpm add discord-api-types
 ```
 
+We also provide typings compatible with the [deno](https://deno.land/) runtime. You have 3 ways you can import them:
+
+1. Directly from GitHub
+
+```ts
+// Importing the default API version
+import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/.deno/mod.ts';
+
+// Importing a specific API version
+import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/.deno/v8/mod.ts';
+```
+
+2. From [deno.land/x](https://deno.land/x)
+
+```ts
+// Importing the default API version
+import { APIUser } from 'https://deno.land/x/discord_api_types@0.12.0/mod.ts';
+
+// Importing a specific API version
+import { APIUser } from 'https://deno.land/x/discord_api_types@0.12.0/v8/mod.ts';
+```
+
+3. From [skypack.dev](https://www.skypack.dev/)
+
+```ts
+// Importing the default API version
+import { APIUser } from 'https://cdn.skypack.dev/discord-api-types?dts';
+
+// Importing a specific API version
+import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/v8?dts';
+```
+
 ## Project Structure
 
 The exports of each API version is split into three main parts:
 
-- Everything exported with the `API` prefix represents a payload you may get from the REST API *or* the Gateway.
+- Everything exported with the `API` prefix represents a payload you may get from the REST API _or_ the Gateway.
 
 - Everything exported with the `Gateway` prefix represents data that ONLY comes from or is directly related to the Gateway.
 
@@ -41,7 +73,7 @@ The exports of each API version is split into three main parts:
 
 - There may be types exported that are identical for all versions. These will be exported as is and can be found in the `common` directory. They will still be prefixed accordingly as described above.
 
-**Warning**: This package documents just KNOWN (and documented) properties. Anything that isn't documented will NOT be added to this package (unless said properties are in an open Pull Request to Discord's [API Documentation repository](https://github.com/discord/discord-api-docs) or known through other means *and have received the green light to be used*). For clarification's sake, this means that properties that are only known through the process of datamining and have not yet been confirmed in a way as described will NOT be included.
+**Warning**: This package documents just KNOWN (and documented) properties. Anything that isn't documented will NOT be added to this package (unless said properties are in an open Pull Request to Discord's [API Documentation repository](https://github.com/discord/discord-api-docs) or known through other means _and have received the green light to be used_). For clarification's sake, this means that properties that are only known through the process of data mining and have not yet been confirmed in a way as described will NOT be included.
 
 ## Usage
 
