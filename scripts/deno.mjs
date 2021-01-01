@@ -2,10 +2,9 @@
 import {
 	copyFile, //
 	mkdir,
-	readdir,
+	opendir,
 	readFile,
 	rm,
-	stat,
 	writeFile,
 } from 'fs/promises';
 
@@ -49,15 +48,16 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 
 	await mkdir(denoDirectory, { recursive: true });
 
-	for (const file of await readdir(nodeDirectory)) {
-		const fullFilePath = new URL(file, nodeDirectory);
-		const finalDenoPath = new URL(file.includes('index') ? 'mod.ts' : file, denoDirectory);
-
-		if ((await stat(fullFilePath)).isDirectory()) {
-			await adaptFolderToDeno(`${file}/`, new URL(folderName, node), new URL(folderName, deno));
+	for await (const file of await opendir(nodeDirectory)) {
+		if (file.isDirectory()) {
+			await adaptFolderToDeno(`${file.name}/`, new URL(folderName, node), new URL(folderName, deno));
+			continue;
 		}
 
-		if (!file.endsWith('.ts')) continue;
+		if (!file.name.endsWith('.ts')) continue;
+
+		const fullFilePath = new URL(file.name, nodeDirectory);
+		const finalDenoPath = new URL(file.name.includes('index') ? 'mod.ts' : file.name, denoDirectory);
 
 		const originalFile = await readFile(fullFilePath, { encoding: 'utf8' });
 
