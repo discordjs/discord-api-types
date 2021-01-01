@@ -20,7 +20,7 @@
 	},
 	"scripts": {
 		"prepublishOnly": "run-s clean test:lint build:node",
-		"postpack": "run-s clean:node build:deno",
+		"postpublish": "run-s clean:node build:deno",
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
 		"esm:common": "gen-esm-wrapper ./common/index.js ./common/index.mjs",
