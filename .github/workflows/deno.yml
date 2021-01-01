@@ -2,6 +2,8 @@ name: Deno Deploy
 
 on:
   push:
+    branches: 
+      - '*'
 
 jobs:
   BuildDeno:
