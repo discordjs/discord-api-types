@@ -19,9 +19,29 @@ import type { APIWebhook } from './webhook';
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
  */
 export interface APIAuditLog {
+	/**
+	 * Webhooks found in the audit log
+	 *
+	 * See https://discord.com/developers/docs/resources/webhook#webhook-object
+	 */
 	webhooks: APIWebhook[];
+	/**
+	 * Users found in the audit log
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 */
 	users: APIUser[];
+	/**
+	 * Audit log entries
+	 *
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object
+	 */
 	audit_log_entries: APIAuditLogEntry[];
+	/**
+	 * Partial integration objects
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#integration-object
+	 */
 	integrations: APIGuildIntegration[];
 }
 
@@ -29,12 +49,42 @@ export interface APIAuditLog {
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
  */
 export interface APIAuditLogEntry {
+	/**
+	 * ID of the affected entity (webhook, user, role, etc.)
+	 */
 	target_id: string | null;
+	/**
+	 * Changes made to the `target_id`
+	 *
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-change-object
+	 */
 	changes?: APIAuditLogChange[];
-	user_id: string;
+	/**
+	 * The user who made the changes
+	 *
+	 * *Against all odds, this can be `null` in some cases (webhooks deleting themselves
+	 * by using their own token, for example)*
+	 */
+	user_id: string | null;
+	/**
+	 * ID of the entry
+	 */
 	id: string;
+	/**
+	 * Type of action that occurred
+	 *
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
+	 */
 	action_type: AuditLogEvent;
+	/**
+	 * Additional info for certain action types
+	 *
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
+	 */
 	options?: APIAuditLogOptions;
+	/**
+	 * The reason for the change (0-512 characters)
+	 */
 	reason?: string;
 }
 
@@ -92,17 +142,23 @@ export const enum AuditLogEvent {
  */
 export interface APIAuditLogOptions {
 	/**
+	 * Number of days after which inactive members were kicked
+	 *
 	 * Present from:
 	 * - MEMBER_PRUNE
 	 */
 	delete_member_days?: string;
 	/**
+	 * Number of members removed by the prune
+	 *
 	 * Present from:
 	 * - MEMBER_PRUNE
 	 */
 	members_removed?: string;
 
 	/**
+	 * Channel in which the entities were targeted
+	 *
 	 * Present from:
 	 * - MEMBER_MOVE
 	 * - MESSAGE_PIN
@@ -112,6 +168,8 @@ export interface APIAuditLogOptions {
 	channel_id?: string;
 
 	/**
+	 * ID of the message that was targeted
+	 *
 	 * Present from:
 	 * - MESSAGE_PIN
 	 * - MESSAGE_UNPIN
@@ -119,6 +177,8 @@ export interface APIAuditLogOptions {
 	message_id?: string;
 
 	/**
+	 * Number of entities that were targeted
+	 *
 	 * Present from:
 	 * - MESSAGE_DELETE
 	 * - MESSAGE_BULK_DELETE
@@ -128,6 +188,8 @@ export interface APIAuditLogOptions {
 	count?: string;
 
 	/**
+	 * ID of the overwritten entity
+	 *
 	 * Present from:
 	 * - CHANNEL_OVERWRITE_CREATE
 	 * - CHANNEL_OVERWRITE_UPDATE
@@ -136,20 +198,26 @@ export interface APIAuditLogOptions {
 	id?: string;
 
 	/**
-	 * Present from:
-	 * - CHANNEL_OVERWRITE_CREATE
-	 * - CHANNEL_OVERWRITE_UPDATE
-	 * - CHANNEL_OVERWRITE_DELETE
-	 */
-	type: AuditLogOptionsType;
-
-	/**
+	 * Type of overwritten entity - "0" for "role" or "1" for "member"
+	 *
 	 * Present from:
 	 * - CHANNEL_OVERWRITE_CREATE
 	 * - CHANNEL_OVERWRITE_UPDATE
 	 * - CHANNEL_OVERWRITE_DELETE
 	 *
-	 * **Present only if the {@link APIAuditLogOptions#type entry type} is "role"**
+	 * {@link AuditLogOptionsType}
+	 */
+	type?: AuditLogOptionsType;
+
+	/**
+	 * Name of the role
+	 *
+	 * Present from:
+	 * - CHANNEL_OVERWRITE_CREATE
+	 * - CHANNEL_OVERWRITE_UPDATE
+	 * - CHANNEL_OVERWRITE_DELETE
+	 *
+	 * **Present only if the {@link APIAuditLogOptions#type entry type} is "0"**
 	 */
 	role_name?: string;
 }
@@ -431,11 +499,7 @@ export type APIAuditLogChangeKeyAvatarHash = AuditLogChangeData<'avatar_hash', s
 /**
  * The ID of the changed entity - sometimes used in conjunction with other keys
  */
-export interface APIAuditLogChangeKeyID {
-	key: 'id';
-	new_value: string;
-	old_value?: string;
-}
+export type APIAuditLogChangeKeyID = AuditLogChangeData<'id', string>;
 
 /**
  * The type of entity created

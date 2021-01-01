@@ -16,7 +16,7 @@ import type {
 	GatewayVoiceState,
 	InviteTargetUserType,
 	PresenceUpdateStatus,
-} from '../payloads';
+} from '../payloads/index';
 
 /**
  * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.

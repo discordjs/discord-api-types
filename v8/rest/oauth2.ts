@@ -1,4 +1,4 @@
-import type { APIApplication, APIGuild, APIWebhook } from '../payloads';
+import type { APIApplication, APIGuild, APIWebhook, OAuth2Scopes } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-application-information
@@ -28,7 +28,7 @@ export interface RESTOAuth2AuthorizationQueryResult {
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
-export interface RESTPostOAuth2AccessTokenURIEncodedData {
+export interface RESTPostOAuth2AccessTokenURLEncodedData {
 	client_id: string;
 	client_secret: string;
 	grant_type: 'authorization_code';
@@ -51,7 +51,7 @@ export interface RESTPostOAuth2AccessTokenResult {
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example
  */
-export interface RESTPostOAuth2RefreshTokenURIEncodedData {
+export interface RESTPostOAuth2RefreshTokenURLEncodedData {
 	client_id: string;
 	client_secret: string;
 	grant_type: 'refresh_token';
@@ -77,31 +77,47 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 /**
  * https://discord.com/developers/docs/topics/oauth2#implicit-grant-redirect-url-example
  */
-export type RESTOAuth2ImplicitAuthorizationURIFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
+export type RESTOAuth2ImplicitAuthorizationURLFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#client-credentials-grant
  */
-export interface RESTPostOAuth2ClientCredentialsURIEncodedData {
-	client_id: string;
-	client_secret: string;
+export interface RESTPostOAuth2ClientCredentialsURLEncodedData {
 	grant_type: 'client_credentials';
 	scope: string;
 }
 
-export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationURIFragmentResult;
+export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationURLFragmentResult;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow-bot-auth-parameters
  */
 export interface RESTOAuth2BotAuthorizationQuery {
-	client_id: string;
-	scope: string;
 	/**
-	 * The required permissions bitfield, stringified
+	 * Your app's client id
+	 */
+	client_id: string;
+	/**
+	 * Needs to include bot for the bot flow
+	 */
+	scope:
+		| OAuth2Scopes.Bot
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
+		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+	/**
+	 * The permissions you're requesting
+	 *
+	 * See https://discord.com/developers/docs/topics/permissions
 	 */
 	permissions?: string;
+	/**
+	 * Pre-fills the dropdown picker with a guild for the user
+	 */
 	guild_id?: string;
+	/**
+	 * `true` or `false`—disallows the user from changing the guild dropdown
+	 */
 	disable_guild_select?: boolean;
 }
 
@@ -113,7 +129,11 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	/**
 	 * This assumes you include the `bot` scope alongside others (like `identify` for example)
 	 */
-	scope: string;
+	scope:
+		| OAuth2Scopes.Bot
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
+		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The required permissions bitfield, stringified
 	 */

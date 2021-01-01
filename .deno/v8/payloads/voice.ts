@@ -1,0 +1,91 @@
+/**
+ * Types extracted from https://discord.com/developers/docs/resources/voice
+ */
+
+import type { APIGuildMember } from './guild.ts';
+
+/**
+ * https://discord.com/developers/docs/resources/voice#voice-state-object
+ */
+export interface GatewayVoiceState {
+	/**
+	 * The guild id this voice state is for
+	 */
+	guild_id?: string;
+	/**
+	 * The channel id this user is connected to
+	 */
+	channel_id: string | null;
+	/**
+	 * The user id this voice state is for
+	 */
+	user_id: string;
+	/**
+	 * The guild member this voice state is for
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 */
+	member?: APIGuildMember;
+	/**
+	 * The session id for this voice state
+	 */
+	session_id: string;
+	/**
+	 * Whether this user is deafened by the server
+	 */
+	deaf: boolean;
+	/**
+	 * Whether this user is muted by the server
+	 */
+	mute: boolean;
+	/**
+	 * Whether this user is locally deafened
+	 */
+	self_deaf: boolean;
+	/**
+	 * Whether this user is locally muted
+	 */
+	self_mute: boolean;
+	/**
+	 * Whether this user is streaming using "Go Live"
+	 */
+	self_stream?: boolean;
+	/**
+	 * Whether this user's camera is enabled
+	 */
+	self_video: boolean;
+	/**
+	 * Whether this user is muted by the current user
+	 */
+	suppress: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/voice#voice-region-object
+ */
+export interface APIVoiceRegion {
+	/**
+	 * Unique ID for the region
+	 */
+	id: string;
+	/**
+	 * Name of the region
+	 */
+	name: string;
+	/**
+	 * `true` if this is a vip-only server
+	 */
+	vip: boolean;
+	/**
+	 * `true` for a single server that is closest to the current user's client
+	 */
+	optimal: boolean;
+	/**
+	 * Whether this is a deprecated voice region (avoid switching to these)
+	 */
+	deprecated: boolean;
+	/**
+	 * Whether this is a custom voice region (used for events/etc)
+	 */
+	custom: boolean;
+}

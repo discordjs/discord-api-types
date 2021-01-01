@@ -1,4 +1,4 @@
-import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../payloads';
+import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
@@ -14,18 +14,38 @@ export type RESTGetAPIUserResult = APIUser;
  * https://discord.com/developers/docs/resources/user#modify-current-user
  */
 export interface RESTPatchAPICurrentUserJSONBody {
+	/**
+	 * User's username, if changed may cause the user's discriminator to be randomized
+	 */
 	username?: string;
+	/**
+	 * If passed, modifies the user's avatar
+	 */
 	avatar?: string | null;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/user#modify-current-user
+ */
 export type RESTPatchAPICurrentUserResult = APIUser;
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user-guilds
  */
 export interface RESTGetAPICurrentUserGuildsQuery {
+	/**
+	 * Get guilds before this guild ID
+	 */
 	before?: string;
+	/**
+	 * Get guilds after this guild ID
+	 */
 	after?: string;
+	/**
+	 * Max number of guilds to return (1-100)
+	 *
+	 * @default 100
+	 */
 	limit?: number;
 }
 
@@ -38,6 +58,9 @@ export interface RESTAPIPartialCurrentUserGuild {
 	permissions: string;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/user#get-current-user-guilds
+ */
 export type RESTGetAPICurrentUserGuildsResult = RESTAPIPartialCurrentUserGuild[];
 
 /**
@@ -49,9 +72,15 @@ export type RESTDeleteAPICurrentUserGuildResult = never;
  * https://discord.com/developers/docs/resources/user#create-dm
  */
 export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
+	/**
+	 * The recipient to open a DM channel with
+	 */
 	recipient_id: string;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/user#create-dm
+ */
 export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
 
 /**

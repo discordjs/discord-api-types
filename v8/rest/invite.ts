@@ -1,9 +1,12 @@
-import type { APIInvite } from '../payloads';
+import type { APIInvite } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/invite#get-invite
  */
 export interface RESTGetAPIInviteQuery {
+	/**
+	 * Whether the invite should contain approximate member counts
+	 */
 	with_counts?: boolean;
 }
 

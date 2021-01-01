@@ -1,5 +1,5 @@
-import type { APIGuildMember, APIUser, MessageFlags } from './';
-import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest';
+import type { APIGuildMember, APIUser, MessageFlags } from './index';
+import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand
@@ -33,7 +33,7 @@ export type APIApplicationCommandOption =
 	| APIApplicationCommandOptionBase;
 
 /**
- * This type is exported as a way to make it stricter for you when you're writing your commands.
+ * This type is exported as a way to make it stricter for you when you're writing your commands
  *
  * If the option is a `SUB_COMMAND` or `SUB_COMMAND_GROUP` type, this nested options will be the parameters
  */
@@ -43,9 +43,9 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
 }
 
 /**
- * This type is exported as a way to make it stricter for you when you're writing your commands.
+ * This type is exported as a way to make it stricter for you when you're writing your commands
  *
- * In contrast to {@see APIApplicationCommandSubCommandOptions}, these types cannot have an `options` array,
+ * In contrast to @see APIApplicationCommandSubCommandOptions, these types cannot have an `options` array,
  * but they can have a `choices` one
  */
 export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
@@ -90,7 +90,7 @@ export interface APIInteraction {
 }
 
 /**
- * Like {@see APIInteraction}, only with the `data` property always present
+ * Like See APIInteraction, only with the `data` property always present
  */
 export type APIApplicationCommandInteraction = Required<APIInteraction>;
 
@@ -120,7 +120,7 @@ export interface APIApplicationCommandInteractionDataOption {
 	 * The value returned here depends on the `ApplicationCommandOptionType` type of the option with the name
 	 * that matches this interface's `name`.
 	 *
-	 * You will need to manually cast this to the appropriate type based on the returned data.
+	 * You will need to manually cast this to the appropriate type based on the returned data
 	 */
 	value?: unknown;
 	options?: APIApplicationCommandInteractionDataOption[];

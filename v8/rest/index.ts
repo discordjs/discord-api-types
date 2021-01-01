@@ -63,7 +63,7 @@ export const Routes = {
 	 * - PUT    `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/@me`
 	 *
-	 * **Note**: You need to URL encode the emoji yourself.
+	 * **Note**: You need to URL encode the emoji yourself
 	 */
 	channelMessageOwnReaction(channelID: string, messageID: string, emoji: string) {
 		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}/@me`;
@@ -73,7 +73,7 @@ export const Routes = {
 	 * Route for:
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}/{user.id}`
 	 *
-	 * **Note**: You need to URL encode the emoji yourself.
+	 * **Note**: You need to URL encode the emoji yourself
 	 */
 	channelMessageUserReaction(channelID: string, messageID: string, emoji: string, userID: string) {
 		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}/${userID}`;
@@ -84,7 +84,7 @@ export const Routes = {
 	 * - GET    `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions/{emoji}`
 	 *
-	 * **Note**: You need to URL encode the emoji yourself.
+	 * **Note**: You need to URL encode the emoji yourself
 	 */
 	channelMessageReaction(channelID: string, messageID: string, emoji: string) {
 		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}`;
@@ -572,6 +572,7 @@ export const Routes = {
 	},
 
 	/**
+	 * Route for:
 	 * - PATCH  `/applications/{application.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/commands/{command.id}`
 	 */
@@ -589,6 +590,7 @@ export const Routes = {
 	},
 
 	/**
+	 * Route for:
 	 * - PATCH  `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 */
@@ -603,4 +605,28 @@ export const Routes = {
 	interactionCallback(interactionID: string, interactionToken: string) {
 		return `/interactions/${interactionID}/${interactionToken}/callback`;
 	},
+
+	/**
+	 * Route for:
+	 * - GET   `/guilds/{guild.id}/member-verification`
+	 * - PATCH `/guilds/{guild.id}/member-verification`
+	 */
+	guildMemberVerification(guildID: string) {
+		return `/guilds/${guildID}/member-verification`;
+	},
 };
+
+export const OAuth2Routes = {
+	authorizationURL: `https://discord.com/api/v${APIVersion}/oauth2/authorize`,
+	tokenURL: `https://discord.com/api/v${APIVersion}/oauth2/token`,
+	/**
+	 * See https://tools.ietf.org/html/rfc7009
+	 */
+	tokenRevocationURL: `https://discord.com/api/v${APIVersion}/oauth2/token/revoke`,
+} as const;
+
+/**
+ * Freeze route object
+ * @internal
+ */
+Object.freeze(OAuth2Routes);

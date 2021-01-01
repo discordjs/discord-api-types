@@ -3,22 +3,57 @@
  */
 
 import type { APIUser } from './user';
-import type { RESTPostAPIGuildsJSONBody } from '../rest';
+import type { RESTPostAPIGuildsJSONBody } from '../rest/index';
 
 /**
  * https://discord.com/developers/docs/resources/template#template-object
  */
 export interface APITemplate {
+	/**
+	 * The template code (unique ID)
+	 */
 	code: string;
+	/**
+	 * Template name
+	 */
 	name: string;
+	/**
+	 * The description for the template
+	 */
 	description: string | null;
+	/**
+	 * Number of times this template has been used
+	 */
 	usage_count: number;
+	/**
+	 * The ID of the user who created the template
+	 */
 	creator_id: string;
+	/**
+	 * The user who created the template
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 */
 	creator: APIUser;
+	/**
+	 * When this template was created
+	 */
 	created_at: string;
+	/**
+	 * When this template was last synced to the source guild
+	 */
 	updated_at: string;
+	/**
+	 * The ID of the guild this template is based on
+	 */
 	source_guild_id: string;
+	/**
+	 * The guild snapshot this template contains
+	 */
 	serialized_source_guild: APITemplateSerializedSourceGuild;
+	/**
+	 * Whether the template has unsynced changes
+	 */
 	is_dirty: boolean | null;
 }
 

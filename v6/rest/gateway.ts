@@ -1,4 +1,4 @@
-import type { APIGatewayBotInfo, APIGatewayInfo } from '../payloads';
+import type { APIGatewayBotInfo, APIGatewayInfo } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway
