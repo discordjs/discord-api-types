@@ -1,0 +1,47 @@
+name: Deno Deploy
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  BuildDeno:
+    name: Publish Deno Types
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'release')"
+
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node_version: 14
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Get GitHub Branch Name
+        run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g') >> $GITHUB_ENV"
+
+      - name: Push new code
+        run: |
+          echo -e "\n# Initialize some useful variables"
+          REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          echo -e "\n# Checkout the repo in the target branch"
+          git clone $REPO out -b $TARGET_BRANCH
+
+          # Build files
+          cd out
+          npm run build:deno
+
+          echo -e "\n# Commit and push"
+          git add --all .
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_EMAIL}"
+          git commit -m "build: Deno build for ${GITHUB_SHA}" || true
+          git push origin $TARGET_BRANCH
+        env:
+          TARGET_BRANCH: '${{ env.GITHUB_BRANCH_NAME }}'
