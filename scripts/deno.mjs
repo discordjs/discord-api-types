@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { readdir, mkdir, readFile, writeFile, rm, stat } from 'fs/promises';
+import { readdir, mkdir, readFile, writeFile, rm, stat, copyFile } from 'fs/promises';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -79,4 +79,11 @@ await Promise.all(
 		'v6',
 		'v8',
 	].map((item) => adaptFolderToDeno(item)),
+);
+
+await Promise.all(
+	[
+		'LICENSE', //
+		'README.md',
+	].map((item) => copyFile(join(baseDirectory, item), join(denoPath, item))),
 );
