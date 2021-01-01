@@ -17,7 +17,7 @@ jobs:
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
-          node_version: 14
+          node-version: 14
 
       - name: Install Dependencies
         run: npm ci
@@ -31,7 +31,7 @@ jobs:
           REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
           echo -e "\n# Checkout the repo in the target branch"
-          git clone $REPO out -b $TARGET_BRANCH
+          git clone $REPO out -b ${TARGET_BRANCH}
 
           # Build files
           cd out
@@ -42,6 +42,6 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_EMAIL}"
           git commit -m "build: Deno build for ${GITHUB_SHA}" || true
-          git push origin $TARGET_BRANCH
+          git push origin ${TARGET_BRANCH}
         env:
           TARGET_BRANCH: '${{ env.GITHUB_BRANCH_NAME }}'
