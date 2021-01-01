@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
-        with:
-          path: ./out
 
       - name: Use Node.js 14
         uses: actions/setup-node@v1
@@ -29,7 +27,6 @@ jobs:
       - name: Push new code
         run: |
           # Build files
-          cd out
           npm run build:deno
 
           echo -e "\n# Commit and push"
