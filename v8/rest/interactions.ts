@@ -1,4 +1,4 @@
-import type { APIApplicationCommand, APIInteractionResponse } from '../payloads';
+import type { APIApplicationCommand, APIInteractionResponse } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#get-global-application-commands

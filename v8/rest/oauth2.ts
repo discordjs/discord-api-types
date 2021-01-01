@@ -1,4 +1,4 @@
-import type { APIApplication, APIGuild, APIWebhook, OAuth2Scopes } from '../payloads';
+import type { APIApplication, APIGuild, APIWebhook, OAuth2Scopes } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-application-information

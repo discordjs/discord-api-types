@@ -1,5 +1,5 @@
 import type { APIAllowedMentionsSend } from './channel';
-import type { APIEmbed, APIMessage, APIWebhook } from '../payloads';
+import type { APIEmbed, APIMessage, APIWebhook } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook

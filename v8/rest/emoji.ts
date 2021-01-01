@@ -1,4 +1,4 @@
-import type { APIEmoji } from '../payloads';
+import type { APIEmoji } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/emoji#list-guild-emojis

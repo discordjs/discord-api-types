@@ -18,7 +18,7 @@ import type {
 	PresenceUpdateStatus,
 	APIApplicationCommandInteraction,
 	APIApplication,
-} from '../payloads';
+} from '../payloads/index';
 
 export const GatewayVersion = '8';
 

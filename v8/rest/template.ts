@@ -1,4 +1,4 @@
-import type { APIGuild, APITemplate } from '../payloads';
+import type { APIGuild, APITemplate } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/template#get-template

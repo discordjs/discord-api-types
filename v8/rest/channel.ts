@@ -12,7 +12,7 @@ import type {
 	InviteTargetUserType,
 	MessageFlags,
 	OverwriteType,
-} from '../payloads';
+} from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-channel

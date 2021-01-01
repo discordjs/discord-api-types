@@ -1,5 +1,5 @@
 import type { APIGuildMember, APIUser, MessageFlags } from './index';
-import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest';
+import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand

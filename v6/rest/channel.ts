@@ -11,7 +11,7 @@ import type {
 	InviteTargetUserType,
 	MessageFlags,
 	OverwriteType,
-} from '../payloads';
+} from '../payloads/index';
 
 // #region TypeDefs
 

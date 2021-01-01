@@ -18,7 +18,7 @@ import type {
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
-} from '../payloads';
+} from '../payloads/index';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {

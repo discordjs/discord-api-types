@@ -3,7 +3,7 @@
  */
 
 import type { APIUser } from './user';
-import type { RESTPostAPIGuildsJSONBody } from '../rest';
+import type { RESTPostAPIGuildsJSONBody } from '../rest/index';
 
 /**
  * https://discord.com/developers/docs/resources/template#template-object

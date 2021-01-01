@@ -15,7 +15,7 @@ import type {
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
-} from '../payloads';
+} from '../payloads/index';
 import type { RESTPutAPIChannelPermissionsJSONBody } from './channel';
 
 /**

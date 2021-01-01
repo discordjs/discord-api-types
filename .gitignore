@@ -11,11 +11,14 @@ debug.log
 v*/**/*.js
 v*/**/*.map
 v*/**/*.d.ts
+v*/**/*.mjs
 
 default/*.js
 default/*.map
 default/*.d.ts
+default/*.mjs
 
 common/*.js
 common/*.map
 common/*.d.ts
+common/*.mjs

@@ -1,4 +1,4 @@
-import type { APIAllowedMentions, APIEmbed, APIMessage, APIWebhook } from '../payloads';
+import type { APIAllowedMentions, APIEmbed, APIMessage, APIWebhook } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook

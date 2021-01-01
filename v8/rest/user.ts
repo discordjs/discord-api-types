@@ -1,4 +1,4 @@
-import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../payloads';
+import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user

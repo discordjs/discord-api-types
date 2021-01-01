@@ -1,4 +1,4 @@
-import type { APIInvite } from '../payloads';
+import type { APIInvite } from '../payloads/index';
 
 /**
  * https://discord.com/developers/docs/resources/invite#get-invite

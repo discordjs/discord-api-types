@@ -2,7 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/webhook
  */
 
-import type { APIPartialChannel, APIPartialGuild, APIUser } from '../index';
+import type { APIPartialChannel, APIPartialGuild, APIUser } from './index';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#webhook-object
