@@ -27,8 +27,8 @@
 		"esm:default": "gen-esm-wrapper ./default/index.js ./default/index.mjs",
 		"esm:v6": "gen-esm-wrapper ./v6/index.js ./v6/index.mjs",
 		"esm:v8": "gen-esm-wrapper ./v8/index.js ./v8/index.mjs",
-		"lint": "eslint --fix --ext ts {v*,default,common}/**",
-		"test:lint": "eslint --ext ts {v*,default,common}/**",
+		"lint": "eslint --fix --ext mjs,js,ts {v*,default,common}/**",
+		"test:lint": "eslint --ext mjs,js,ts {v*,default,common}/**",
 		"clean": "run-p clean:*",
 		"clean:node": "rimraf {v*,default,common}/**/*.{js,mjs,d.ts,map}",
 		"clean:deno": "rimraf .deno/"
@@ -92,8 +92,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.js": "eslint --fix",
-		"*.ts": "eslint --fix --ext ts"
+		"*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts"
 	},
 	"commitlint": {
 		"extends": [

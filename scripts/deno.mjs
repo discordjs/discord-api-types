@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { readdir, mkdir, readFile, writeFile, rm, stat, copyFile } from 'fs/promises';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
+import {
+	copyFile, //
+	mkdir,
+	readdir,
+	readFile,
+	rm,
+	stat,
+	writeFile,
+} from 'fs/promises';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const baseDirectory = join(__dirname, '..');
-const denoPath = join(baseDirectory, '.deno');
+const baseDirectory = new URL('../', import.meta.url);
+const denoPath = new URL('.deno/', baseDirectory);
 
 // Remove existing deno built files
 try {
@@ -37,21 +40,21 @@ function convertImports(source) {
 
 /**
  * @param {string} folderName The folder name
- * @param {string} node The node path
- * @param {string} deno The deno path
+ * @param {URL} node The node path
+ * @param {URL} deno The deno path
  */
 async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPath) {
-	const nodeDirectory = join(node, folderName);
-	const denoDirectory = join(deno, folderName);
+	const nodeDirectory = new URL(folderName, node);
+	const denoDirectory = new URL(folderName, deno);
 
 	await mkdir(denoDirectory, { recursive: true });
 
 	for (const file of await readdir(nodeDirectory)) {
-		const fullFilePath = join(nodeDirectory, file);
-		const finalDenoPath = join(denoDirectory, file.includes('index') ? 'mod.ts' : file);
+		const fullFilePath = new URL(file, nodeDirectory);
+		const finalDenoPath = new URL(file.includes('index') ? 'mod.ts' : file, denoDirectory);
 
 		if ((await stat(fullFilePath)).isDirectory()) {
-			await adaptFolderToDeno(file, join(node, folderName), join(deno, folderName));
+			await adaptFolderToDeno(`${file}/`, new URL(folderName, node), new URL(folderName, deno));
 		}
 
 		if (!file.endsWith('.ts')) continue;
@@ -63,11 +66,11 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 }
 
 async function createModTS() {
-	const defaultFile = await readFile(join(baseDirectory, 'default', 'index.ts'), { encoding: 'utf8' });
+	const defaultFile = await readFile(new URL('./default/index.ts', baseDirectory), { encoding: 'utf8' });
 
 	const converted = convertImports(defaultFile).replace('../v', './v');
 
-	await writeFile(join(denoPath, 'mod.ts'), converted);
+	await writeFile(new URL('mod.ts', denoPath), converted);
 }
 
 // Create mod.ts which is the default/index.ts
@@ -75,9 +78,9 @@ await createModTS();
 
 await Promise.all(
 	[
-		'common', //
-		'v6',
-		'v8',
+		'common/', //
+		'v6/',
+		'v8/',
 	].map((item) => adaptFolderToDeno(item)),
 );
 
@@ -85,5 +88,5 @@ await Promise.all(
 	[
 		'LICENSE', //
 		'README.md',
-	].map((item) => copyFile(join(baseDirectory, item), join(denoPath, item))),
+	].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
 );

@@ -15,6 +15,5 @@
 		"strictNullChecks": true,
 		"preserveConstEnums": true
 	},
-	"exclude": ["node_modules"],
 	"include": ["v*/**/*", "default/**/*", "common/**/*"]
 }
