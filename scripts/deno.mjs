@@ -9,14 +9,14 @@ import {
 } from 'fs/promises';
 
 const baseDirectory = new URL('../', import.meta.url);
-const denoPath = new URL('.deno/', baseDirectory);
+const denoPath = new URL('deno/', baseDirectory);
 
 // Remove existing deno built files
 try {
 	await rm(denoPath, { recursive: true });
 } catch {}
 
-// Create .deno folder
+// Create deno folder
 await mkdir(denoPath);
 
 /**

@@ -1,9 +1,11 @@
-<div style="text-align:center;"><h1>Discord API Types</h1></div>
+# Discord API Types
 
 [![GitHub](https://img.shields.io/github/license/discordjs/discord-api-types)](https://github.com/discordjs/discord-api-types/blob/main/LICENSE.md)
 [![npm](https://img.shields.io/npm/v/discord-api-types?color=crimson&logo=npm)](https://www.npmjs.com/package/discord-api-types)
+[![deno](https://img.shields.io/npm/v/discord-api-types?color=blue&label=deno&logo=deno)](https://deno.land/x/discord_api_types)
 [![Patreon Donate](https://img.shields.io/badge/patreon-donate-brightgreen.svg?label=Donate%20with%20Patreon&logo=patreon&colorB=F96854&link=https://www.patreon.com/vladfrangu)](https://www.patreon.com/vladfrangu)
 [![Ko-fi Donate](https://img.shields.io/badge/kofi-donate-brightgreen.svg?label=Donate%20with%20Ko-fi&logo=ko-fi&colorB=F16061&link=https://ko-fi.com/wolfgalvlad&logoColor=FFFFFF)](https://ko-fi.com/wolfgalvlad)
+[![GitHub Sponsors](https://img.shields.io/badge/patreon-donate-brightgreen.svg?label=Sponsor%20through%20GitHub&logo=github&colorB=F96854&link=https://github.com/sponsors/vladfrangu)](https://github.com/sponsors/vladfrangu)
 
 Simple type definitions for the [Discord API](https://discord.com/developers/docs/intro).
 
@@ -23,10 +25,10 @@ We also provide typings compatible with the [deno](https://deno.land/) runtime. 
 
 ```ts
 // Importing the default API version
-import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/.deno/mod.ts';
+import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/mod.ts';
 
 // Importing a specific API version
-import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/.deno/v8/mod.ts';
+import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/v8/mod.ts';
 ```
 
 2. From [deno.land/x](https://deno.land/x)
