@@ -31,7 +31,7 @@
 		"test:lint": "eslint --ext mjs,js,ts {v*,default,common}/**",
 		"clean": "run-p clean:*",
 		"clean:node": "rimraf {v*,default,common}/**/*.{js,mjs,d.ts,map}",
-		"clean:deno": "rimraf .deno/"
+		"clean:deno": "rimraf deno/"
 	},
 	"keywords": [
 		"discord",
@@ -47,7 +47,7 @@
 		"common/*",
 		"!**/*.ts",
 		"**/*.d.ts",
-		"!\\.deno/*"
+		"!deno/*"
 	],
 	"engines": {
 		"node": ">=12"
