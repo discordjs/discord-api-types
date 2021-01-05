@@ -26,11 +26,13 @@ jobs:
       - name: Build Files
         run: npm run build:deno
 
-      - name: Push new code
+      - name: Set Git User and Email
         run: |
-          echo -e "\n# Commit and push"
-          git add --all .
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and Push New Code
+        run: |
+          git add --all .
           git commit -m "build: deno build for ${GITHUB_SHA}" || true
-          git push origin $TARGET_BRANCH
+          git push || true
