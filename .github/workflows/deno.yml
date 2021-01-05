@@ -2,14 +2,14 @@ name: Deno Deploy
 
 on:
   push:
-    branches: 
-      - '*'
+    branches:
+      - '**'
 
 jobs:
   BuildDeno:
     name: Publish Deno Types
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'release')"
+    if: contains(github.event.head_commit.message, 'release')
 
     steps:
       - name: Checkout Project
