@@ -1,3 +1,4 @@
+import type { Snowflake } from '../../common/index';
 import type { APIAllowedMentions, APIEmbed, APIMessage, APIWebhook } from '../payloads/index';
 
 /**
@@ -58,7 +59,7 @@ export interface RESTPatchAPIWebhookJSONBody {
 	/**
 	 * The new channel id this webhook should be moved to
 	 */
-	channel_id?: string;
+	channel_id?: Snowflake;
 }
 
 /**

@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
+import type { Snowflake } from '../../common/index';
 import type { APIOverwrite, ChannelType } from './channel';
 import type {
 	APIGuildIntegration,
@@ -65,11 +66,11 @@ export interface APIAuditLogEntry {
 	 * *Against all odds, this can be `null` in some cases (webhooks deleting themselves
 	 * by using their own token, for example)*
 	 */
-	user_id: string | null;
+	user_id: Snowflake | null;
 	/**
 	 * ID of the entry
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * Type of action that occurred
 	 *
@@ -165,7 +166,7 @@ export interface APIAuditLogOptions {
 	 * - MESSAGE_UNPIN
 	 * - MESSAGE_DELETE
 	 */
-	channel_id?: string;
+	channel_id?: Snowflake;
 
 	/**
 	 * ID of the message that was targeted
@@ -174,7 +175,7 @@ export interface APIAuditLogOptions {
 	 * - MESSAGE_PIN
 	 * - MESSAGE_UNPIN
 	 */
-	message_id?: string;
+	message_id?: Snowflake;
 
 	/**
 	 * Number of entities that were targeted
@@ -195,7 +196,7 @@ export interface APIAuditLogOptions {
 	 * - CHANNEL_OVERWRITE_UPDATE
 	 * - CHANNEL_OVERWRITE_DELETE
 	 */
-	id?: string;
+	id?: Snowflake;
 
 	/**
 	 * Type of overwritten entity - "0" for "role" or "1" for "member"
@@ -297,7 +298,7 @@ export type APIAuditLogChangeKeySplashHash = AuditLogChangeData<'splash_hash', s
 /**
  * Returned when a guild's owner ID is changed
  */
-export type APIAuditLogChangeKeyOwnerID = AuditLogChangeData<'owner_id', string>;
+export type APIAuditLogChangeKeyOwnerID = AuditLogChangeData<'owner_id', Snowflake>;
 
 /**
  * Returned when a guild's region is changed
@@ -307,7 +308,7 @@ export type APIAuditLogChangeKeyRegion = AuditLogChangeData<'region', string>;
 /**
  * Returned when a guild's afk_channel_id is changed
  */
-export type APIAuditLogChangeKeyAFKChannelID = AuditLogChangeData<'afk_channel_id', string>;
+export type APIAuditLogChangeKeyAFKChannelID = AuditLogChangeData<'afk_channel_id', Snowflake>;
 
 /**
  * Returned when a guild's afk_timeout is changed
@@ -368,12 +369,12 @@ export type APIAuditLogChangeKeyWidgetEnabled = AuditLogChangeData<'widget_enabl
 /**
  * Returned when a guild's widget_channel_id is changed
  */
-export type APIAuditLogChangeKeyWidgetChannelID = AuditLogChangeData<'widget_channel_id', string>;
+export type APIAuditLogChangeKeyWidgetChannelID = AuditLogChangeData<'widget_channel_id', Snowflake>;
 
 /**
  * Returned when a guild's system_channel_id is changed
  */
-export type APIAuditLogChangeKeySystemChannelID = AuditLogChangeData<'system_channel_id', string>;
+export type APIAuditLogChangeKeySystemChannelID = AuditLogChangeData<'system_channel_id', Snowflake>;
 
 /**
  * Returned when a channel's position is changed
@@ -403,7 +404,7 @@ export type APIAuditLogChangeKeyNSFW = AuditLogChangeData<'nsfw', boolean>;
 /**
  * The application ID of the added or removed Webhook or Bot
  */
-export type APIAuditLogChangeKeyApplicationID = AuditLogChangeData<'application_id', string>;
+export type APIAuditLogChangeKeyApplicationID = AuditLogChangeData<'application_id', Snowflake>;
 
 /**
  * Returned when a channel's amount of seconds a user has to wait before sending another message
@@ -449,12 +450,12 @@ export type APIAuditLogChangeKeyCode = AuditLogChangeData<'code', string>;
 /**
  * Returned when an invite's channel_id is changed
  */
-export type APIAuditLogChangeKeyChannelID = AuditLogChangeData<'channel_id', string>;
+export type APIAuditLogChangeKeyChannelID = AuditLogChangeData<'channel_id', Snowflake>;
 
 /**
  * Returned when an invite's inviter_id is changed
  */
-export type APIAuditLogChangeKeyInviterID = AuditLogChangeData<'inviter_id', string>;
+export type APIAuditLogChangeKeyInviterID = AuditLogChangeData<'inviter_id', Snowflake>;
 
 /**
  * Returned when an invite's max_uses is changed
@@ -499,7 +500,7 @@ export type APIAuditLogChangeKeyAvatarHash = AuditLogChangeData<'avatar_hash', s
 /**
  * The ID of the changed entity - sometimes used in conjunction with other keys
  */
-export type APIAuditLogChangeKeyID = AuditLogChangeData<'id', string>;
+export type APIAuditLogChangeKeyID = AuditLogChangeData<'id', Snowflake>;
 
 /**
  * The type of entity created

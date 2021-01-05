@@ -1,3 +1,4 @@
+import type { Snowflake } from '../../common/index';
 import type { APIGuildMember, APIUser, MessageFlags } from './index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
 
@@ -5,8 +6,8 @@ import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand
  */
 export interface APIApplicationCommand {
-	id: string;
-	application_id: string;
+	id: Snowflake;
+	application_id: Snowflake;
 	name: string;
 	description: string;
 	options?: APIApplicationCommandOption[];
@@ -79,11 +80,11 @@ export interface APIApplicationCommandOptionChoice {
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
 export interface APIInteraction {
-	id: string;
+	id: Snowflake;
 	type: InteractionType;
 	data?: APIApplicationCommandInteractionData;
-	guild_id: string;
-	channel_id: string;
+	guild_id: Snowflake;
+	channel_id: Snowflake;
 	member: APIGuildMember & { permissions: string; user: APIUser };
 	token: string;
 	version: 1;
@@ -106,7 +107,7 @@ export const enum InteractionType {
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-applicationcommandinteractiondata
  */
 export interface APIApplicationCommandInteractionData {
-	id: string;
+	id: Snowflake;
 	name: string;
 	options?: APIApplicationCommandInteractionDataOption[];
 }

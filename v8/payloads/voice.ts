@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/voice
  */
 
+import type { Snowflake } from '../../common/index';
 import type { APIGuildMember } from './guild';
 
 /**
@@ -11,15 +12,15 @@ export interface GatewayVoiceState {
 	/**
 	 * The guild id this voice state is for
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * The channel id this user is connected to
 	 */
-	channel_id: string | null;
+	channel_id: Snowflake | null;
 	/**
 	 * The user id this voice state is for
 	 */
-	user_id: string;
+	user_id: Snowflake;
 	/**
 	 * The guild member this voice state is for
 	 *

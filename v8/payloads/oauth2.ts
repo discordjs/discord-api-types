@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/topics/oauth2
  */
 
+import type { Snowflake } from '../../common/index';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
 
@@ -12,7 +13,7 @@ export interface APIApplication {
 	/**
 	 * The id of the app
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * The name of the app
 	 */
@@ -63,11 +64,11 @@ export interface APIApplication {
 	/**
 	 * If this application is a game sold on Discord, this field will be the guild to which it has been linked
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * If this application is a game sold on Discord, this field will be the id of the "Game SKU" that is created, if exists
 	 */
-	primary_sku_id?: string;
+	primary_sku_id?: Snowflake;
 	/**
 	 * If this application is a game sold on Discord, this field will be the URL slug that links to the store page
 	 */

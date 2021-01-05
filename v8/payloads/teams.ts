@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/topics/teams
  */
 
+import type { Snowflake } from '../../common/index';
 import type { APIUser } from './user';
 
 /**
@@ -15,7 +16,7 @@ export interface APITeam {
 	/**
 	 * The unique id of the team
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * The members of the team
 	 */
@@ -23,7 +24,7 @@ export interface APITeam {
 	/**
 	 * The user id of the current team owner
 	 */
-	owner_user_id: string;
+	owner_user_id: Snowflake;
 }
 
 /**
@@ -43,7 +44,7 @@ export interface APITeamMember {
 	/**
 	 * The id of the parent team of which they are a member
 	 */
-	team_id: string;
+	team_id: Snowflake;
 	/**
 	 * The avatar, discriminator, id, and username of the user
 	 *
