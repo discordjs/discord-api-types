@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/topics/gateway
  */
 
+import type { Snowflake } from '../../common/mod.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { APIUser } from './user.ts';
 
@@ -67,13 +68,11 @@ export interface GatewayPresenceUpdate {
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
-	user: Partial<APIUser> & {
-		id: string;
-	};
+	user: Partial<APIUser> & Pick<APIUser, 'id'>;
 	/**
 	 * ID of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * Either "idle", "dnd", "online", or "offline"
 	 */
@@ -156,7 +155,7 @@ export interface GatewayActivity {
 	/**
 	 * Application id for the game
 	 */
-	application_id?: string;
+	application_id?: Snowflake;
 	/**
 	 * What the player is currently doing
 	 */

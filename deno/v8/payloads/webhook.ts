@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/webhook
  */
 
+import type { Snowflake } from '../../common/mod.ts';
 import type { APIPartialChannel, APIPartialGuild, APIUser } from './mod.ts';
 
 /**
@@ -11,7 +12,7 @@ export interface APIWebhook {
 	/**
 	 * The id of the webhook
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * The type of the webhook
 	 *
@@ -21,11 +22,11 @@ export interface APIWebhook {
 	/**
 	 * The guild id this webhook is for
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * The channel id this webhook is for
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The user this webhook was created by (not returned when getting a webhook with its token)
 	 *
@@ -47,7 +48,7 @@ export interface APIWebhook {
 	/**
 	 * The bot/OAuth2 application that created this webhook
 	 */
-	application_id: string | null;
+	application_id: Snowflake | null;
 	source_guild?: APIPartialGuild;
 	source_channel?: APIPartialChannel;
 }

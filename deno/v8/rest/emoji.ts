@@ -1,3 +1,4 @@
+import type { Snowflake } from '../../common/mod.ts';
 import type { APIEmoji } from '../payloads/mod.ts';
 
 /**
@@ -27,7 +28,7 @@ export interface RESTPostAPIGuildEmojiJSONBody {
 	/**
 	 * Roles for which this emoji will be whitelisted
 	 */
-	roles?: string[];
+	roles?: Snowflake[];
 }
 
 /**
@@ -46,7 +47,7 @@ export interface RESTPatchAPIGuildEmojiJSONBody {
 	/**
 	 * Roles for which this emoji will be whitelisted
 	 */
-	roles?: string[] | null;
+	roles?: Snowflake[] | null;
 }
 
 /**

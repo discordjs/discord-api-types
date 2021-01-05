@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
+import type { Snowflake } from '../../common/mod.ts';
 import type { APIGuildIntegration } from './guild.ts';
 
 /**
@@ -11,7 +12,7 @@ export interface APIUser {
 	/**
 	 * The user's id
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * The user's username, not unique across the platform
 	 */
