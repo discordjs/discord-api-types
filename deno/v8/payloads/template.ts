@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/template
  */
 
+import type { Snowflake } from '../../common/mod.ts';
 import type { APIUser } from './user.ts';
 import type { RESTPostAPIGuildsJSONBody } from '../rest/mod.ts';
 
@@ -28,7 +29,7 @@ export interface APITemplate {
 	/**
 	 * The ID of the user who created the template
 	 */
-	creator_id: string;
+	creator_id: Snowflake;
 	/**
 	 * The user who created the template
 	 *
@@ -46,7 +47,7 @@ export interface APITemplate {
 	/**
 	 * The ID of the guild this template is based on
 	 */
-	source_guild_id: string;
+	source_guild_id: Snowflake;
 	/**
 	 * The guild snapshot this template contains
 	 */

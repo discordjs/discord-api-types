@@ -1,3 +1,4 @@
+import type { Permissions, Snowflake } from '../../common/mod.ts';
 import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../payloads/mod.ts';
 
 /**
@@ -36,11 +37,11 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	/**
 	 * Get guilds before this guild ID
 	 */
-	before?: string;
+	before?: Snowflake;
 	/**
 	 * Get guilds after this guild ID
 	 */
-	after?: string;
+	after?: Snowflake;
 	/**
 	 * Max number of guilds to return (1-100)
 	 *
@@ -50,12 +51,12 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 }
 
 export interface RESTAPIPartialCurrentUserGuild {
-	id: string;
+	id: Snowflake;
 	name: string;
 	icon: string | null;
 	owner: boolean;
 	features: GuildFeature[];
-	permissions: string;
+	permissions: Permissions;
 }
 
 /**

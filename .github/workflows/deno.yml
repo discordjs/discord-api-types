@@ -2,14 +2,14 @@ name: Deno Deploy
 
 on:
   push:
-    branches: 
-      - '*'
+    branches:
+      - '**'
 
 jobs:
   BuildDeno:
     name: Publish Deno Types
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'release')"
+    if: contains(github.event.head_commit.message, 'release')
 
     steps:
       - name: Checkout Project
@@ -23,20 +23,16 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Get GitHub Branch Name
-        run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12-)" >> $GITHUB_ENV
+      - name: Build Files
+        run: npm run build:deno
 
-      - name: Push new code
+      - name: Set Git User and Email
         run: |
-          # Build files
-          npm run build:deno
-
-          echo -e "\n# Commit and push"
-          git add --all .
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and Push New Code
+        run: |
+          git add --all .
           git commit -m "build: deno build for ${GITHUB_SHA}" || true
-          git push origin $TARGET_BRANCH
-        env:
-          TARGET_BRANCH: '${{ env.GITHUB_BRANCH_NAME }}'
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          git push || true

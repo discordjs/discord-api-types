@@ -2,6 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/topics/permissions
  */
 
+import type { Permissions, Snowflake } from '../../common/mod.ts';
+
 /**
  * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
  *
@@ -57,7 +59,7 @@ export interface APIRole {
 	/**
 	 * Role id
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * Role name
 	 */
@@ -79,7 +81,7 @@ export interface APIRole {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	permissions: string;
+	permissions: Permissions;
 	/**
 	 * Whether this role is managed by an integration
 	 */
@@ -101,7 +103,7 @@ export interface APIRoleTags {
 	/**
 	 * The id of the bot this role belongs to
 	 */
-	bot_id?: string;
+	bot_id?: Snowflake;
 	/**
 	 * Whether this is the guild's premium subscriber role
 	 */
@@ -109,5 +111,5 @@ export interface APIRoleTags {
 	/**
 	 * The id of the integration this role belongs to
 	 */
-	integration_id?: string;
+	integration_id?: Snowflake;
 }

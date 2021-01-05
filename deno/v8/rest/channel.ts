@@ -1,3 +1,4 @@
+import type { Permissions, Snowflake } from '../../common/mod.ts';
 import type {
 	APIAllowedMentions,
 	APIChannel,
@@ -86,7 +87,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: text, news, store, voice
 	 */
-	parent_id?: string | null;
+	parent_id?: Snowflake | null;
 }
 
 /**
@@ -106,15 +107,15 @@ export interface RESTGetAPIChannelMessagesQuery {
 	/**
 	 * Get messages around this message ID
 	 */
-	around?: string;
+	around?: Snowflake;
 	/**
 	 * Get messages before this message ID
 	 */
-	before?: string;
+	before?: Snowflake;
 	/**
 	 * Get messages after this message ID
 	 */
-	after?: string;
+	after?: Snowflake;
 	/**
 	 * Max number of messages to return (1-100)
 	 *
@@ -224,11 +225,11 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
 	 * Get users before this user ID
 	 */
-	before?: string;
+	before?: Snowflake;
 	/**
 	 * Get users after this user ID
 	 */
-	after?: string;
+	after?: Snowflake;
 	/**
 	 * Max number of users to return (1-100)
 	 *
@@ -294,7 +295,7 @@ export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 	/**
 	 * An array of message ids to delete (2-100)
 	 */
-	messages: string[];
+	messages: Snowflake[];
 }
 
 /**
@@ -311,13 +312,13 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	allow: string;
+	allow: Permissions;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	deny: string;
+	deny: Permissions;
 	/**
 	 * `0` for a role or `1` for a member
 	 */
@@ -390,7 +391,7 @@ export interface RESTPostAPIChannelFollowersJSONBody {
 	/**
 	 * ID of target channel
 	 */
-	webhook_channel_id: string;
+	webhook_channel_id: Snowflake;
 }
 
 /**
