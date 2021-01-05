@@ -2,6 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/emoji
  */
 
+import type { Snowflake } from '../../common/index';
+import type { APIRole } from './permissions';
 import type { APIUser } from './user';
 
 /**
@@ -11,7 +13,7 @@ export interface APIPartialEmoji {
 	/**
 	 * Emoji id
 	 */
-	id: string | null;
+	id: Snowflake | null;
 	/**
 	 * Emoji name (can be null only in reaction emoji objects)
 	 */
@@ -29,7 +31,7 @@ export interface APIEmoji extends APIPartialEmoji {
 	/**
 	 * Roles this emoji is whitelisted to
 	 */
-	roles?: string[];
+	roles?: APIRole['id'][];
 	/**
 	 * User that created this emoji
 	 */

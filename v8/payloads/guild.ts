@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
+import type { Permissions, Snowflake } from '../../common/index';
 import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
@@ -16,7 +17,7 @@ export interface APIUnavailableGuild {
 	/**
 	 * Guild id
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * `true` if this guild is unavailable due to an outage
 	 */
@@ -100,7 +101,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * ID of owner
 	 */
-	owner_id: string;
+	owner_id: Snowflake;
 	/**
 	 * Total permissions for the user in the guild (excludes overrides)
 	 *
@@ -108,7 +109,7 @@ export interface APIGuild extends APIPartialGuild {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	permissions?: string;
+	permissions?: Permissions;
 	/**
 	 * Voice region id for the guild
 	 *
@@ -118,7 +119,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * ID of afk channel
 	 */
-	afk_channel_id: string | null;
+	afk_channel_id: Snowflake | null;
 	/**
 	 * afk timeout in seconds
 	 */
@@ -130,7 +131,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * The channel id that the widget will generate an invite to, or `null` if set to no invite
 	 */
-	widget_channel_id?: string | null;
+	widget_channel_id?: Snowflake | null;
 	/**
 	 * Verification level required for the guild
 	 *
@@ -176,11 +177,11 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * Application id of the guild creator if it is bot-created
 	 */
-	application_id: string | null;
+	application_id: Snowflake | null;
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id: string | null;
+	system_channel_id: Snowflake | null;
 	/**
 	 * System channel flags
 	 *
@@ -190,7 +191,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * The id of the channel where Community guilds can display rules and/or guidelines
 	 */
-	rules_channel_id: string | null;
+	rules_channel_id: Snowflake | null;
 	/**
 	 * When this guild was joined at
 	 *
@@ -282,7 +283,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * The id of the channel where admins and moderators of Community guilds receive notices from Discord
 	 */
-	public_updates_channel_id: string | null;
+	public_updates_channel_id: Snowflake | null;
 	/**
 	 * The maximum amount of users in a video channel
 	 */
@@ -447,7 +448,7 @@ export interface APIGuildPreview {
 	/**
 	 * Guild id
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * Guild name (2-100 characters)
 	 */
@@ -507,7 +508,7 @@ export interface APIGuildWidgetSettings {
 	/**
 	 * The widget channel id
 	 */
-	channel_id: string | null;
+	channel_id: Snowflake | null;
 }
 
 /**
@@ -531,7 +532,7 @@ export interface APIGuildMember {
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
 	 */
-	roles: string[];
+	roles: Snowflake[];
 	/**
 	 * When the user joined the guild
 	 */
@@ -565,7 +566,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Integration id
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * Integration name
 	 */
@@ -589,7 +590,7 @@ export interface APIGuildIntegration {
 	 *
 	 * **This field is not provided for `discord` bot integrations.**
 	 */
-	role_id?: string;
+	role_id?: Snowflake;
 	/**
 	 * Whether emoticons should be synced for this integration (`twitch` only currently)
 	 *
@@ -683,7 +684,7 @@ export interface APIGuildIntegrationApplication {
 	/**
 	 * The id of the app
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * The name of the app
 	 */
@@ -728,7 +729,7 @@ export interface APIBan {
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
  */
 export interface APIGuildWidget {
-	id: string;
+	id: Snowflake;
 	name: string;
 	instant_invite: string | null;
 	channels: APIGuildWidgetChannel[];
@@ -740,7 +741,7 @@ export interface APIGuildWidget {
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
  */
 export interface APIGuildWidgetChannel {
-	id: string;
+	id: Snowflake;
 	name: string;
 	position: number;
 }
@@ -800,11 +801,11 @@ export interface APIGuildWelcomeScreenChannel {
 	/**
 	 * The channel id that is suggested
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The emoji id of the emoji that is shown on the left of the channel
 	 */
-	emoji_id: string | null;
+	emoji_id: Snowflake | null;
 	/**
 	 * The emoji name of the emoji that is shown on the left of the channel
 	 */

@@ -1,3 +1,4 @@
+import type { Snowflake } from '../../common/index';
 import type { APIAuditLog, AuditLogEvent } from '../payloads/auditLog';
 
 /**
@@ -7,7 +8,7 @@ export interface RESTGetAPIAuditLogQuery {
 	/**
 	 * Filter the log for actions made by a user
 	 */
-	user_id?: string;
+	user_id?: Snowflake;
 	/**
 	 * The type of audit log events
 	 */
@@ -15,7 +16,7 @@ export interface RESTGetAPIAuditLogQuery {
 	/**
 	 * Filter the log before a certain entry ID
 	 */
-	before?: string;
+	before?: Snowflake;
 	/**
 	 * How many entries are returned (default 50, minimum 1, maximum 100)
 	 *

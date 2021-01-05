@@ -147,3 +147,14 @@ export interface GatewayConnectQuery {
 	encoding: 'json' | 'etf';
 	compress?: 'zlib-stream';
 }
+
+/**
+ * https://discord.com/developers/docs/reference#snowflakes
+ */
+export type Snowflake = `${bigint}`;
+
+/**
+ * https://discord.com/developers/docs/topics/permissions
+ * @internal
+ */
+export type Permissions = `${bigint}`;

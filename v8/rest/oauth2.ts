@@ -1,3 +1,4 @@
+import type { Permissions, Snowflake } from '../../common/index';
 import type { APIApplication, APIGuild, APIWebhook, OAuth2Scopes } from '../payloads/index';
 
 /**
@@ -10,7 +11,7 @@ export type RESTGetAPIOauth2CurrentApplicationResult = Omit<APIApplication, 'fla
  */
 export interface RESTOAuth2AuthorizationQuery {
 	response_type: 'code';
-	client_id: string;
+	client_id: Snowflake;
 	scope: string;
 	redirect_uri?: string;
 	state?: string;
@@ -29,7 +30,7 @@ export interface RESTOAuth2AuthorizationQueryResult {
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
 export interface RESTPostOAuth2AccessTokenURLEncodedData {
-	client_id: string;
+	client_id: Snowflake;
 	client_secret: string;
 	grant_type: 'authorization_code';
 	code: string;
@@ -52,7 +53,7 @@ export interface RESTPostOAuth2AccessTokenResult {
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example
  */
 export interface RESTPostOAuth2RefreshTokenURLEncodedData {
-	client_id: string;
+	client_id: Snowflake;
 	client_secret: string;
 	grant_type: 'refresh_token';
 	refresh_token: string;
@@ -67,7 +68,7 @@ export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
  */
 export interface RESTOAuth2ImplicitAuthorizationQuery {
 	response_type: 'token';
-	client_id: string;
+	client_id: Snowflake;
 	scope: string;
 	redirect_uri?: string;
 	state?: string;
@@ -96,7 +97,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	/**
 	 * Your app's client id
 	 */
-	client_id: string;
+	client_id: Snowflake;
 	/**
 	 * Needs to include bot for the bot flow
 	 */
@@ -110,11 +111,11 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions
 	 */
-	permissions?: string;
+	permissions?: Permissions;
 	/**
 	 * Pre-fills the dropdown picker with a guild for the user
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * `true` or `false`—disallows the user from changing the guild dropdown
 	 */
@@ -125,7 +126,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
  * https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization
  */
 export interface RESTOAuth2AdvancedBotAuthorizationQuery {
-	client_id: string;
+	client_id: Snowflake;
 	/**
 	 * This assumes you include the `bot` scope alongside others (like `identify` for example)
 	 */
@@ -137,8 +138,8 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	/**
 	 * The required permissions bitfield, stringified
 	 */
-	permissions?: string;
-	guild_id?: string;
+	permissions?: Permissions;
+	guild_id?: Snowflake;
 	disable_guild_select?: boolean;
 	response_type: string;
 	redirect_uri?: string;
@@ -147,8 +148,8 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
 	state?: string;
-	guild_id: string;
-	permissions: string;
+	guild_id: Snowflake;
+	permissions: Permissions;
 }
 
 /**

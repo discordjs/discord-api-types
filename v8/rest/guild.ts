@@ -1,3 +1,4 @@
+import type { Permissions, Snowflake } from '../../common/index';
 import type {
 	APIBan,
 	APIChannel,
@@ -105,7 +106,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: number | string;
+	afk_channel_id?: number | Snowflake;
 	/**
 	 * AFK timeout in seconds
 	 */
@@ -113,7 +114,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: number | string;
+	system_channel_id?: number | Snowflake;
 	/**
 	 * System channel flags
 	 *
@@ -184,7 +185,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: string | null;
+	afk_channel_id?: Snowflake | null;
 	/**
 	 * AFK timeout in seconds
 	 */
@@ -198,7 +199,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * User id to transfer guild ownership to (must be owner)
 	 */
-	owner_id?: string;
+	owner_id?: Snowflake;
 	/**
 	 * base64 16:9 png/jpeg image for the guild splash (when the guild has `INVITE_SPLASH` feature)
 	 *
@@ -216,7 +217,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: string | null;
+	system_channel_id?: Snowflake | null;
 	/**
 	 * System channel flags
 	 *
@@ -226,11 +227,11 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * The id of the channel where Community guilds display rules and/or guidelines
 	 */
-	rules_channel_id?: string | null;
+	rules_channel_id?: Snowflake | null;
 	/**
 	 * The id of the channel where admins and moderators of Community guilds receive notices from Discord
 	 */
-	public_updates_channel_id?: string | null;
+	public_updates_channel_id?: Snowflake | null;
 	/**
 	 * The preferred locale of a Community guild used in server discovery and notices from Discord; defaults to "en-US"
 	 *
@@ -281,7 +282,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
 	/**
 	 * Channel id
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * Sorting position of the channel
 	 */
@@ -293,7 +294,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
 	/**
 	 * The new parent id of this channel
 	 */
-	parent_id?: string | null;
+	parent_id?: Snowflake | null;
 }>;
 
 /**
@@ -321,7 +322,7 @@ export interface RESTGetAPIGuildMembersQuery {
 	 *
 	 * @default 0
 	 */
-	after?: string;
+	after?: Snowflake;
 }
 
 /**
@@ -363,7 +364,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 	 *
 	 * Requires `MANAGE_ROLES` permission
 	 */
-	roles?: string[];
+	roles?: Snowflake[];
 	/**
 	 * Whether the user is muted in voice channels
 	 *
@@ -395,7 +396,7 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 	 *
 	 * Requires `MANAGE_ROLES` permission
 	 */
-	roles?: string[] | null;
+	roles?: Snowflake[] | null;
 	/**
 	 * Whether the user is muted in voice channels. Will throw a 400 if the user is not in a voice channel
 	 *
@@ -413,7 +414,7 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 	 *
 	 * Requires `MOVE_MEMBERS` permission
 	 */
-	channel_id?: string | null;
+	channel_id?: Snowflake | null;
 }
 
 /**
@@ -507,7 +508,7 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	 *
 	 * @default "​default role permissions in guild"
 	 */
-	permissions?: string | null;
+	permissions?: Permissions | null;
 	/**
 	 * RGB color value
 	 *
@@ -540,7 +541,7 @@ export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
 	/**
 	 * Role id
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * Sorting position of the role
 	 */
@@ -563,7 +564,7 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	/**
 	 * Bitwise value of the enabled/disabled permissions
 	 */
-	permissions?: string | null;
+	permissions?: Permissions | null;
 	/**
 	 * RGB color value
 	 */
@@ -635,7 +636,7 @@ export interface RESTPostAPIGuildPruneJSONBody {
 	/**
 	 * Role(s) to include
 	 */
-	include_roles?: string[];
+	include_roles?: Snowflake[];
 }
 
 /**
@@ -665,7 +666,7 @@ export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
  */
 export interface RESTPostAPIGuildIntegrationJSONBody {
 	type: string;
-	id: string;
+	id: Snowflake;
 }
 
 export type RESTPostAPIGuildIntegrationResult = never;

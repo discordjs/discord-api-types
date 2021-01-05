@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/topics/gateway
  */
 
+import type { Snowflake } from '../../common/index';
 import type {
 	APIChannel,
 	APIEmoji,
@@ -550,11 +551,11 @@ export interface GatewayChannelPinsUpdateDispatchData {
 	/**
 	 * The id of the guild
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * The id of the channel
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The time at which the most recent pinned message was pinned
 	 */
@@ -623,7 +624,7 @@ export interface GatewayGuildBanModifyDispatchData {
 	/**
 	 * ID of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * The banned user
 	 *
@@ -667,7 +668,7 @@ export interface GatewayGuildEmojisUpdateDispatchData {
 	/**
 	 * ID of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * Array of emojis
 	 *
@@ -691,7 +692,7 @@ export interface GatewayGuildIntegrationsUpdateDispatchData {
 	/**
 	 * ID of the guild whose integrations were updated
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 }
 
 /**
@@ -709,7 +710,7 @@ export interface GatewayGuildMemberAddDispatchData extends APIGuildMember {
 	/**
 	 * The id of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 }
 
 /**
@@ -727,7 +728,7 @@ export interface GatewayGuildMemberRemoveDispatchData {
 	/**
 	 * The id of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * The user who was removed
 	 *
@@ -751,7 +752,7 @@ export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' |
 	/**
 	 * The id of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 };
 
 /**
@@ -769,7 +770,7 @@ export interface GatewayGuildMembersChunkDispatchData {
 	/**
 	 * The id of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * Set of guild members
 	 *
@@ -819,7 +820,7 @@ export interface GatewayGuildRoleModifyDispatchData {
 	/**
 	 * The id of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * The role created or updated
 	 *
@@ -863,11 +864,11 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	/**
 	 * The id of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * The id of the role
 	 */
-	role_id: string;
+	role_id: Snowflake;
 }
 
 /**
@@ -898,7 +899,7 @@ export interface GatewayInviteCreateDispatchData {
 	/**
 	 * The channel the invite is for
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The unique invite code
 	 *
@@ -912,7 +913,7 @@ export interface GatewayInviteCreateDispatchData {
 	/**
 	 * The guild of the invite
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * The user that created the invite
 	 *
@@ -964,11 +965,11 @@ export interface GatewayInviteDeleteDispatchData {
 	/**
 	 * The channel of the invite
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The guild of the invite
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * The unique invite code
 	 *
@@ -1002,8 +1003,8 @@ export type GatewayMessageUpdateDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway#message-update
  */
 export type GatewayMessageUpdateDispatchData = {
-	id: string;
-	channel_id: string;
+	id: Snowflake;
+	channel_id: Snowflake;
 } & Partial<APIMessage>;
 
 /**
@@ -1021,15 +1022,15 @@ export interface GatewayMessageDeleteDispatchData {
 	/**
 	 * The id of the message
 	 */
-	id: string;
+	id: Snowflake;
 	/**
 	 * The id of the channel
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The id of the guild
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 }
 
 /**
@@ -1047,15 +1048,15 @@ export interface GatewayMessageDeleteBulkDispatchData {
 	/**
 	 * The ids of the messages
 	 */
-	ids: string[];
+	ids: Snowflake[];
 	/**
 	 * The id of the channel
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The id of the guild
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 }
 
 /**
@@ -1134,15 +1135,15 @@ export interface GatewayTypingStartDispatchData {
 	/**
 	 * The id of the channel
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The id of the guild
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 	/**
 	 * The id of the user
 	 */
-	user_id: string;
+	user_id: Snowflake;
 	/**
 	 * Unix time (in seconds) of when the user started typing
 	 */
@@ -1197,7 +1198,7 @@ export interface GatewayVoiceServerUpdateDispatchData {
 	/**
 	 * The guild this voice server update is for
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * The voice server host
 	 */
@@ -1219,11 +1220,11 @@ export interface GatewayWebhooksUpdateDispatchData {
 	/**
 	 * The id of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * The id of the channel
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 }
 
 // #endregion Dispatch Payloads
@@ -1364,7 +1365,7 @@ export interface GatewayRequestGuildMembersData {
 	/**
 	 * ID of the guild to get members for
 	 */
-	guild_id: string | string[];
+	guild_id: Snowflake;
 	/**
 	 * String that username starts with, or an empty string to return all members
 	 */
@@ -1381,7 +1382,7 @@ export interface GatewayRequestGuildMembersData {
 	/**
 	 * Used to specify which users you wish to fetch
 	 */
-	user_ids?: string | string[];
+	user_ids?: Snowflake | Snowflake[];
 	/**
 	 * Nonce to identify the Guild Members Chunk response
 	 *
@@ -1405,11 +1406,11 @@ export interface GatewayVoiceStateUpdateData {
 	/**
 	 * ID of the guild
 	 */
-	guild_id: string;
+	guild_id: Snowflake;
 	/**
 	 * ID of the voice channel client wants to join (`null` if disconnecting)
 	 */
-	channel_id: string | null;
+	channel_id: Snowflake | null;
 	/**
 	 * Is the client muted
 	 */
@@ -1496,19 +1497,19 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			/**
 			 * The id of the user
 			 */
-			user_id: string;
+			user_id: Snowflake;
 			/**
 			 * The id of the channel
 			 */
-			channel_id: string;
+			channel_id: Snowflake;
 			/**
 			 * The id of the message
 			 */
-			message_id: string;
+			message_id: Snowflake;
 			/**
 			 * The id of the guild
 			 */
-			guild_id?: string;
+			guild_id?: Snowflake;
 			/**
 			 * The member who reacted if this happened in a guild
 			 *
@@ -1530,14 +1531,14 @@ interface MessageReactionRemoveData {
 	/**
 	 * The id of the channel
 	 */
-	channel_id: string;
+	channel_id: Snowflake;
 	/**
 	 * The id of the message
 	 */
-	message_id: string;
+	message_id: Snowflake;
 	/**
 	 * The id of the guild
 	 */
-	guild_id?: string;
+	guild_id?: Snowflake;
 }
 // #endregion Shared
