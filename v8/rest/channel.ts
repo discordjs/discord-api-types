@@ -1,4 +1,4 @@
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 import type {
 	APIAllowedMentions,
 	APIChannel,
@@ -312,13 +312,13 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	allow: string;
+	allow: Permissions;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	deny: string;
+	deny: Permissions;
 	/**
 	 * `0` for a role or `1` for a member
 	 */

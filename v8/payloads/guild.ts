@@ -2,7 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
@@ -109,7 +109,7 @@ export interface APIGuild extends APIPartialGuild {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	permissions?: string;
+	permissions?: Permissions;
 	/**
 	 * Voice region id for the guild
 	 *

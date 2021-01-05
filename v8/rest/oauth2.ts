@@ -1,4 +1,4 @@
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 import type { APIApplication, APIGuild, APIWebhook, OAuth2Scopes } from '../payloads/index';
 
 /**
@@ -111,7 +111,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions
 	 */
-	permissions?: string;
+	permissions?: Permissions;
 	/**
 	 * Pre-fills the dropdown picker with a guild for the user
 	 */
@@ -138,7 +138,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	/**
 	 * The required permissions bitfield, stringified
 	 */
-	permissions?: string;
+	permissions?: Permissions;
 	guild_id?: Snowflake;
 	disable_guild_select?: boolean;
 	response_type: string;
@@ -149,7 +149,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
 	state?: string;
 	guild_id: Snowflake;
-	permissions: string;
+	permissions: Permissions;
 }
 
 /**

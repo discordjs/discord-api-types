@@ -2,7 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/topics/permissions
  */
 
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 
 /**
  * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
@@ -81,7 +81,7 @@ export interface APIRole {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	permissions: string;
+	permissions: Permissions;
 	/**
 	 * Whether this role is managed by an integration
 	 */

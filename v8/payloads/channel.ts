@@ -2,7 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/channel
  */
 
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIRole } from './permissions';
@@ -537,7 +537,7 @@ export interface APIOverwrite {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	allow: string;
+	allow: Permissions;
 	/**
 	 * Permission bit set
 	 *
@@ -545,7 +545,7 @@ export interface APIOverwrite {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	deny: string;
+	deny: Permissions;
 }
 
 export const enum OverwriteType {

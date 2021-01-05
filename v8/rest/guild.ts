@@ -1,4 +1,4 @@
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 import type {
 	APIBan,
 	APIChannel,
@@ -508,7 +508,7 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	 *
 	 * @default "​default role permissions in guild"
 	 */
-	permissions?: string | null;
+	permissions?: Permissions | null;
 	/**
 	 * RGB color value
 	 *
@@ -564,7 +564,7 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	/**
 	 * Bitwise value of the enabled/disabled permissions
 	 */
-	permissions?: string | null;
+	permissions?: Permissions | null;
 	/**
 	 * RGB color value
 	 */

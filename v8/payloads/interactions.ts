@@ -1,4 +1,4 @@
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 import type { APIGuildMember, APIUser, MessageFlags } from './index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
 
@@ -85,7 +85,7 @@ export interface APIInteraction {
 	data?: APIApplicationCommandInteractionData;
 	guild_id: Snowflake;
 	channel_id: Snowflake;
-	member: APIGuildMember & { permissions: string; user: APIUser };
+	member: APIGuildMember & { permissions: Permissions; user: APIUser };
 	token: string;
 	version: 1;
 }

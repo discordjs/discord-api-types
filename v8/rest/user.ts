@@ -1,4 +1,4 @@
-import type { Snowflake } from '../../common/index';
+import type { Permissions, Snowflake } from '../../common/index';
 import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../payloads/index';
 
 /**
@@ -56,7 +56,7 @@ export interface RESTAPIPartialCurrentUserGuild {
 	icon: string | null;
 	owner: boolean;
 	features: GuildFeature[];
-	permissions: string;
+	permissions: Permissions;
 }
 
 /**
