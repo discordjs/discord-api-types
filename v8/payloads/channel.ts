@@ -209,7 +209,7 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
 	 */
-	mention_roles: Pick<APIRole, 'id'>[];
+	mention_roles: APIRole['id'][];
 	/**
 	 * Channels specifically mentioned in this message
 	 *

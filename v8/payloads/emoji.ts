@@ -31,7 +31,7 @@ export interface APIEmoji extends APIPartialEmoji {
 	/**
 	 * Roles this emoji is whitelisted to
 	 */
-	roles?: Pick<APIRole, 'id'>[];
+	roles?: APIRole['id'][];
 	/**
 	 * User that created this emoji
 	 */
