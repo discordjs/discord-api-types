@@ -207,11 +207,19 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = Nullable<
 	Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions'>
 >;
 
+/**
+ * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
+ */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 	| {
 			payload_json: string;
 	  }
 	| RESTPatchAPIWebhookWithTokenMessageJSONBody;
+
+/**
+ * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
+ */
+export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook-message

@@ -87,6 +87,8 @@ export const enum RESTJSONErrorCodes {
 	CannotExecuteActionOnThisChannelType = 50024,
 	InvalidOauth2AccessToken,
 
+	InvalidWebhookToken = 50027,
+
 	InvalidRecipients = 50033,
 	OneOfTheMessagesProvidedWasTooOldForBulkDelete,
 	InvalidFormBodyOrContentType,
