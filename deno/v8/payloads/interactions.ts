@@ -115,17 +115,23 @@ export interface APIApplicationCommandInteractionData {
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-applicationcommandinteractiondataoption
  */
-export interface APIApplicationCommandInteractionDataOption {
-	name: string;
-	/**
-	 * The value returned here depends on the `ApplicationCommandOptionType` type of the option with the name
-	 * that matches this interface's `name`.
-	 *
-	 * You will need to manually cast this to the appropriate type based on the returned data
-	 */
-	value?: unknown;
-	options?: APIApplicationCommandInteractionDataOption[];
-}
+export type APIApplicationCommandInteractionDataOption =
+	| {
+			name: string;
+			options: APIApplicationCommandInteractionDataOption[];
+			value?: never;
+	  }
+	| {
+			name: string;
+			options?: never;
+			/**
+			 * The value returned here depends on the `ApplicationCommandOptionType` type of the option with the name
+			 * that matches this interface's `name`.
+			 *
+			 * You will need to manually cast this to the appropriate type based on the returned data
+			 */
+			value: unknown;
+	  };
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-interaction-response
