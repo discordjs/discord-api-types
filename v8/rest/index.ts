@@ -566,6 +566,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/oauth2/@me`
+	 */
+	oauth2CurrentAuthorization() {
+		return `/oauth2/@me`;
+	},
+
+	/**
+	 * Route for:
 	 * - GET  `/applications/{application.id}/commands`
 	 * - POST `/applications/{application.id}/commands`
 	 */
