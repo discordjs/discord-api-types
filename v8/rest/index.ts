@@ -583,7 +583,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET		`/applications/{application.id}/commands/{command.id}`
+	 * - GET    `/applications/{application.id}/commands/{command.id}`
 	 * - PATCH  `/applications/{application.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/commands/{command.id}`
 	 */
@@ -602,7 +602,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET		`/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
+	 * - GET    `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 * - PATCH  `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 */
