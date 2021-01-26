@@ -30,6 +30,10 @@ export const enum RESTJSONErrorCodes {
 
 	UnknownRedistributable = 10036,
 
+	UnknownGuildTemplate = 10057,
+
+	UnknownApplicationCommand = 10063,
+
 	BotsCannotUseThisEndpoint = 20001,
 	OnlyBotsCanUseThisEndpoint,
 
