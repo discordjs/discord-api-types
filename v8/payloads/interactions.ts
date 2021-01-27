@@ -1,6 +1,6 @@
 import type { Permissions, Snowflake } from '../../common/index';
-import type { APIGuildMember, APIUser, MessageFlags } from './index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
+import type { APIGuildMember, APIUser, MessageFlags } from './index';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand

@@ -4,6 +4,9 @@
 
 import type { Snowflake } from '../../common/index';
 import type {
+	APIApplication,
+	APIApplicationCommand,
+	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
@@ -17,9 +20,6 @@ import type {
 	GatewayVoiceState,
 	InviteTargetUserType,
 	PresenceUpdateStatus,
-	APIApplicationCommandInteraction,
-	APIApplication,
-	APIApplicationCommand,
 } from '../payloads/index';
 
 export const GatewayVersion = '8';
