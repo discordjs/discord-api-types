@@ -542,7 +542,7 @@ export interface APIGuildMember {
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/360028038352-Server-Boosting-
 	 */
-	premium_since?: string | null;
+	premium_since: string | null;
 	/**
 	 * Whether the user is deafened in voice channels
 	 */
