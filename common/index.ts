@@ -164,3 +164,13 @@ export type Snowflake = `${bigint}`;
  * @internal
  */
 export type Permissions = `${bigint}`;
+
+/**
+ * https://discord.com/developers/docs/reference#message-formatting-formats
+ */
+export const FormattingPatterns = {
+	User: /<@!?(\d{17,19})>/,
+	Channel: /<#(\d{17,19})>/,
+	Role: /<@&(\d{17,19})>/,
+	Emoji: /<?(a)?:?(\w{2,32}):(\d{17,19})>?/,
+};
