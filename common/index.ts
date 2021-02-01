@@ -194,13 +194,13 @@ export const FormattingPatterns = {
 	/**
 	 * Regex for matching a custom emoji, either static or animated
 	 */
-	Emoji: /<?(a)?:?(\w{2,32}):(\d{17,19})>?/,
+	Emoji: /<(a)?:(\w{2,32}):(\d{17,19})>/,
 	/**
 	 * Regex for matching an animated custom emoji
 	 */
-	AnimatedEmoji: /<(a):(\w{2,32}):(\d{17,19})>?/,
+	AnimatedEmoji: /<(a):(\w{2,32}):(\d{17,19})>/,
 	/**
 	 * Regex for matching a static custom emoji
 	 */
-	StaticEmoji: /<:(\w{2,32}):(\d{17,19})>?/,
+	StaticEmoji: /<:(\w{2,32}):(\d{17,19})>/,
 } as const;
