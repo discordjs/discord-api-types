@@ -169,14 +169,38 @@ export type Permissions = `${bigint}`;
  * https://discord.com/developers/docs/reference#message-formatting-formats
  */
 export const FormattingPatterns = {
+	/**
+	 * Regex for matching a user mention, strictly without a username
+	 */
 	User: /<@(\d{17,19})>/,
+	/**
+	 * Regex for matching a user mention, strictly with a nickname
+	 */
 	UserWithNickname: /<@!(\d{17,19})>/,
+	/**
+	 * Regex for matching a user mention, with or without a nickname
+	 */
 	UserWithOptionalNickname: /<@!?(\d{17,19})>/,
 
+	/**
+	 * Regex for matching a channel mention
+	 */
 	Channel: /<#(\d{17,19})>/,
+	/**
+	 * Regex for matching a role mention
+	 */
 	Role: /<@&(\d{17,19})>/,
 
+	/**
+	 * Regex for matching a custom emoji, either static or animated
+	 */
 	Emoji: /<?(a)?:?(\w{2,32}):(\d{17,19})>?/,
+	/**
+	 * Regex for matching an animated custom emoji
+	 */
 	AnimatedEmoji: /<(a):(\w{2,32}):(\d{17,19})>?/,
+	/**
+	 * Regex for matching a static custom emoji
+	 */
 	StaticEmoji: /<:(\w{2,32}):(\d{17,19})>?/,
 } as const;
