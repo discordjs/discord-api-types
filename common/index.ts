@@ -170,37 +170,57 @@ export type Permissions = `${bigint}`;
  */
 export const FormattingPatterns = {
 	/**
-	 * Regex for matching a user mention, strictly without a username
+	 * Regular expression for matching a user mention, strictly without a nickname
+	 *
+	 * The `userID` group property is present on the `exec` result of this expression
 	 */
-	User: /<@(\d{17,19})>/,
+	User: /<@(?<userID>\d{17,20})>/,
 	/**
-	 * Regex for matching a user mention, strictly with a nickname
+	 * Regular expression for matching a user mention, strictly with a nickname
+	 *
+	 * The `userID` group property is present on the `exec` result of this expression
 	 */
-	UserWithNickname: /<@!(\d{17,19})>/,
+	UserWithNickname: /<@!(?<userID>\d{17,20})>/,
 	/**
-	 * Regex for matching a user mention, with or without a nickname
+	 * Regular expression for matching a user mention, with or without a nickname
+	 *
+	 * The `userID` group property is present on the `exec` result of this expression
 	 */
-	UserWithOptionalNickname: /<@!?(\d{17,19})>/,
-
+	UserWithOptionalNickname: /<@!?(?<userID>\d{17,20})>/,
 	/**
-	 * Regex for matching a channel mention
+	 * Regular expression for matching a channel mention
+	 *
+	 * The `channelID` group property is present on the `exec` result of this expression
 	 */
-	Channel: /<#(\d{17,19})>/,
+	Channel: /<#(?<channelID>\d{17,20})>/,
 	/**
-	 * Regex for matching a role mention
+	 * Regular expression for matching a role mention
+	 *
+	 * The `roleID` group property is present on the `exec` result of this expression
 	 */
-	Role: /<@&(\d{17,19})>/,
-
+	Role: /<@&(?<roleID>\d{17,20})>/,
 	/**
-	 * Regex for matching a custom emoji, either static or animated
+	 * Regular expression for matching a custom emoji, either static or animated
+	 *
+	 * The `emojiAnimated`, `emojiName` and `emojiID` group properties are present on the `exec` result of this expression
 	 */
-	Emoji: /<(a)?:(\w{2,32}):(\d{17,19})>/,
+	Emoji: /<(?<emojiAnimated>a)?:(?<emojiName>\w{2,32}):(?<emojiID>\d{17,20})>/,
 	/**
-	 * Regex for matching an animated custom emoji
+	 * Regular expression for matching strictly an animated custom emoji
+	 *
+	 * The `emojiAnimated`, `emojiName` and `emojiID` group properties are present on the `exec` result of this expression
 	 */
-	AnimatedEmoji: /<(a):(\w{2,32}):(\d{17,19})>/,
+	AnimatedEmoji: /<(?<emojiAnimated>a):(?<emojiName>\w{2,32}):(?<emojiID>\d{17,20})>/,
 	/**
-	 * Regex for matching a static custom emoji
+	 * Regular expression for matching strictly a static custom emoji
+	 *
+	 * The `emojiName` and `emojiID` group properties are present on the `exec` result of this expression
 	 */
-	StaticEmoji: /<:(\w{2,32}):(\d{17,19})>/,
+	StaticEmoji: /<:(?<emojiName>\w{2,32}):(?<emojiID>\d{17,20})>/,
 } as const;
+
+/**
+ * Freezes the formatting patterns
+ * @internal
+ */
+Object.freeze(FormattingPatterns);
