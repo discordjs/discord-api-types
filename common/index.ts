@@ -172,51 +172,51 @@ export const FormattingPatterns = {
 	/**
 	 * Regular expression for matching a user mention, strictly without a nickname
 	 *
-	 * The `userID` group property is present on the `exec` result of this expression
+	 * The `id` group property is present on the `exec` result of this expression
 	 */
-	User: /<@(?<userID>\d{17,20})>/,
+	User: /<@(?<id>\d{17,20})>/,
 	/**
 	 * Regular expression for matching a user mention, strictly with a nickname
 	 *
-	 * The `userID` group property is present on the `exec` result of this expression
+	 * The `id` group property is present on the `exec` result of this expression
 	 */
-	UserWithNickname: /<@!(?<userID>\d{17,20})>/,
+	UserWithNickname: /<@!(?<id>\d{17,20})>/,
 	/**
 	 * Regular expression for matching a user mention, with or without a nickname
 	 *
-	 * The `userID` group property is present on the `exec` result of this expression
+	 * The `id` group property is present on the `exec` result of this expression
 	 */
-	UserWithOptionalNickname: /<@!?(?<userID>\d{17,20})>/,
+	UserWithOptionalNickname: /<@!?(?<id>\d{17,20})>/,
 	/**
 	 * Regular expression for matching a channel mention
 	 *
-	 * The `channelID` group property is present on the `exec` result of this expression
+	 * The `id` group property is present on the `exec` result of this expression
 	 */
-	Channel: /<#(?<channelID>\d{17,20})>/,
+	Channel: /<#(?<id>\d{17,20})>/,
 	/**
 	 * Regular expression for matching a role mention
 	 *
-	 * The `roleID` group property is present on the `exec` result of this expression
+	 * The `id` group property is present on the `exec` result of this expression
 	 */
-	Role: /<@&(?<roleID>\d{17,20})>/,
+	Role: /<@&(?<id>\d{17,20})>/,
 	/**
 	 * Regular expression for matching a custom emoji, either static or animated
 	 *
-	 * The `emojiAnimated`, `emojiName` and `emojiID` group properties are present on the `exec` result of this expression
+	 * The `animated`, `name` and `id` group properties are present on the `exec` result of this expression
 	 */
-	Emoji: /<(?<emojiAnimated>a)?:(?<emojiName>\w{2,32}):(?<emojiID>\d{17,20})>/,
+	Emoji: /<(?<animated>a)?:(?<name>\w{2,32}):(?<id>\d{17,20})>/,
 	/**
 	 * Regular expression for matching strictly an animated custom emoji
 	 *
-	 * The `emojiAnimated`, `emojiName` and `emojiID` group properties are present on the `exec` result of this expression
+	 * The `animated`, `name` and `id` group properties are present on the `exec` result of this expression
 	 */
-	AnimatedEmoji: /<(?<emojiAnimated>a):(?<emojiName>\w{2,32}):(?<emojiID>\d{17,20})>/,
+	AnimatedEmoji: /<(?<animated>a):(?<name>\w{2,32}):(?<id>\d{17,20})>/,
 	/**
 	 * Regular expression for matching strictly a static custom emoji
 	 *
-	 * The `emojiName` and `emojiID` group properties are present on the `exec` result of this expression
+	 * The `name` and `id` group properties are present on the `exec` result of this expression
 	 */
-	StaticEmoji: /<:(?<emojiName>\w{2,32}):(?<emojiID>\d{17,20})>/,
+	StaticEmoji: /<:(?<name>\w{2,32}):(?<id>\d{17,20})>/,
 } as const;
 
 /**
