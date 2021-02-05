@@ -233,12 +233,18 @@ export const enum AuditLogOptionsType {
  */
 export type APIAuditLogChange =
 	| APIAuditLogChangeKeyName
+	| APIAuditLogChangeKeyDescription
 	| APIAuditLogChangeKeyIconHash
 	| APIAuditLogChangeKeySplashHash
+	| APIAuditLogChangeKeyDiscoverySplashHash
+	| APIAuditLogChangeKeyBannerHash
 	| APIAuditLogChangeKeyOwnerID
 	| APIAuditLogChangeKeyRegion
+	| APIAuditLogChangeKeyPreferredLocale
 	| APIAuditLogChangeKeyAFKChannelID
 	| APIAuditLogChangeKeyAFKTimeout
+	| APIAuditLogChangeKeyRulesChannelID
+	| APIAuditLogChangeKeyPublicUpdatesChannelID
 	| APIAuditLogChangeKeyMFALevel
 	| APIAuditLogChangeKeyVerificationLevel
 	| APIAuditLogChangeKeyExplicitContentFilter
@@ -278,12 +284,18 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyType
 	| APIAuditLogChangeKeyEnableEmoticons
 	| APIAuditLogChangeKeyExpireBehavior
-	| APIAuditLogChangeKeyExpireGracePeriod;
+	| APIAuditLogChangeKeyExpireGracePeriod
+	| APIAuditLogChangeKeyUserLimit;
 
 /**
  * Returned when a guild's name is changed
  */
 export type APIAuditLogChangeKeyName = AuditLogChangeData<'name', string>;
+
+/**
+ * Returned when a guild's description is changed
+ */
+export type APIAuditLogChangeKeyDescription = AuditLogChangeData<'description', string>;
 
 /**
  * Returned when a guild's icon is changed
@@ -296,7 +308,17 @@ export type APIAuditLogChangeKeyIconHash = AuditLogChangeData<'icon_hash', strin
 export type APIAuditLogChangeKeySplashHash = AuditLogChangeData<'splash_hash', string>;
 
 /**
- * Returned when a guild's owner ID is changed
+ * Returned when a guild's discovery splash is changed
+ */
+export type APIAuditLogChangeKeyDiscoverySplashHash = AuditLogChangeData<'discovery_splash_hash', string>;
+
+/**
+ * Returned when a guild's banner hash is changed
+ */
+export type APIAuditLogChangeKeyBannerHash = AuditLogChangeData<'banner_hash', string>;
+
+/**
+ * Returned when a guild's owner_id is changed
  */
 export type APIAuditLogChangeKeyOwnerID = AuditLogChangeData<'owner_id', Snowflake>;
 
@@ -304,6 +326,11 @@ export type APIAuditLogChangeKeyOwnerID = AuditLogChangeData<'owner_id', Snowfla
  * Returned when a guild's region is changed
  */
 export type APIAuditLogChangeKeyRegion = AuditLogChangeData<'region', string>;
+
+/**
+ * Returned when a guild's preferred_locale is changed
+ */
+export type APIAuditLogChangeKeyPreferredLocale = AuditLogChangeData<'preferred_locale', string>;
 
 /**
  * Returned when a guild's afk_channel_id is changed
@@ -314,6 +341,16 @@ export type APIAuditLogChangeKeyAFKChannelID = AuditLogChangeData<'afk_channel_i
  * Returned when a guild's afk_timeout is changed
  */
 export type APIAuditLogChangeKeyAFKTimeout = AuditLogChangeData<'afk_timeout', number>;
+
+/**
+ * Returned when a guild's rules_channel_id is changed
+ */
+export type APIAuditLogChangeKeyRulesChannelID = AuditLogChangeData<'rules_channel_id', string>;
+
+/**
+ * Returned when a guild's public_updates_channel_id is changed
+ */
+export type APIAuditLogChangeKeyPublicUpdatesChannelID = AuditLogChangeData<'public_updates_channel_id', string>;
 
 /**
  * Returned when a guild's mfa_level is changed
@@ -523,10 +560,17 @@ export type APIAuditLogChangeKeyExpireBehavior = AuditLogChangeData<'expire_beha
 export type APIAuditLogChangeKeyExpireGracePeriod = AuditLogChangeData<'expire_grace_period', number>;
 
 /**
- * @internal
+ * Returned when a voice channel's user_limit is changed
  */
+export type APIAuditLogChangeKeyUserLimit = AuditLogChangeData<'user_limit', number>;
+
 interface AuditLogChangeData<K extends string, D extends unknown> {
 	key: K;
+	/**
+	 * The new value
+	 *
+	 * If not present, it can mean the value the key denotes has been set to `null`
+	 */
 	new_value?: D;
 	old_value?: D;
 }
