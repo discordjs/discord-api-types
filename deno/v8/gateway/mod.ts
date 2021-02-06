@@ -32,7 +32,8 @@ export const enum GatewayOPCodes {
 	 */
 	Dispatch,
 	/**
-	 * Fired periodically by the client to keep the connection alive
+	 * A bidirectional opcode to maintain an active gateway connection.
+	 * Fired periodically by the client, or fired by the gateway to request an immediate heartbeat from the client.
 	 */
 	Heartbeat,
 	/**
