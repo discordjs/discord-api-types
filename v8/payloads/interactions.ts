@@ -79,16 +79,49 @@ export interface APIApplicationCommandOptionChoice {
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
-export interface APIInteraction {
+export type APIInteraction = {
+	/**
+	 * id of the interaction
+	 */
 	id: Snowflake;
+	/**
+	 * the type of interaction
+	 */
 	type: InteractionType;
+	/**
+	 * the command data payload
+	 */
 	data?: APIApplicationCommandInteractionData;
-	guild_id: Snowflake;
-	channel_id: Snowflake;
-	member: APIGuildMember & { permissions: Permissions; user: APIUser };
+	/**
+	 * the channel it was sent from
+	 */
+	channel_id?: Snowflake;
+	/**
+	 * a continuation token for responding to the interaction
+	 */
 	token: string;
+	/**
+	 * read-only property, always `1`
+	 */
 	version: 1;
-}
+} & (
+	| {
+			/**
+			 * the guild it was sent from
+			 */
+			guild_id: Snowflake;
+			/**
+			 * guild member data for the invoking user, including permissions
+			 */
+			member: APIGuildMember & { permissions: Permissions; user: APIUser };
+	  }
+	| {
+			/**
+			 * user object for the invoking user, if invoked in a DM
+			 */
+			user: APIUser;
+	  }
+);
 
 /**
  * Like See APIInteraction, only with the `data` property always present
