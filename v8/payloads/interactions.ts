@@ -81,27 +81,27 @@ export interface APIApplicationCommandOptionChoice {
  */
 export interface APIBaseInteraction {
 	/**
-	 * id of the interaction
+	 * ID of the interaction
 	 */
 	id: Snowflake;
 	/**
-	 * the type of interaction
+	 * The type of interaction
 	 */
 	type: InteractionType;
 	/**
-	 * the command data payload
+	 * The command data payload
 	 */
 	data?: APIApplicationCommandInteractionData;
 	/**
-	 * the channel it was sent from
+	 * The channel it was sent from
 	 */
 	channel_id?: Snowflake;
 	/**
-	 * a continuation token for responding to the interaction
+	 * A continuation token for responding to the interaction
 	 */
 	token: string;
 	/**
-	 * read-only property, always `1`
+	 * Read-only property, always `1`
 	 */
 	version: 1;
 }
@@ -111,11 +111,11 @@ export interface APIBaseInteraction {
  */
 export interface APIGuildInteraction extends APIBaseInteraction {
 	/**
-	 * the guild it was sent from
+	 * The guild it was sent from
 	 */
 	guild_id: Snowflake;
 	/**
-	 * guild member data for the invoking user, including permissions
+	 * Guild member data for the invoking user, including permissions
 	 */
 	member: APIGuildMember & { permissions: Permissions; user: APIUser };
 }
@@ -125,11 +125,11 @@ export interface APIGuildInteraction extends APIBaseInteraction {
  */
 export interface APIDMInteraction extends APIBaseInteraction {
 	/**
-	 * the guild it was sent from
+	 * The guild it was sent from
 	 */
 	guild_id: undefined;
 	/**
-	 * user object for the invoking user, if invoked in a DM
+	 * User object for the invoking user, if invoked in a DM
 	 */
 	user: APIUser;
 }
