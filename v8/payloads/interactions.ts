@@ -76,6 +76,9 @@ export interface APIApplicationCommandOptionChoice {
 	value: string | number;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ */
 export interface APIBaseInteraction {
 	/**
 	 * id of the interaction
