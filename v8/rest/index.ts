@@ -638,7 +638,7 @@ export const OAuth2Routes = {
 } as const;
 
 /**
- * Freeze Oauth2 route object
+ * Freeze OAuth2 route object
  * @internal
  */
 Object.freeze(OAuth2Routes);
