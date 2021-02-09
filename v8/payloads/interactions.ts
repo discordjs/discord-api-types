@@ -177,7 +177,7 @@ export interface APIApplicationCommandInteractionDataOption {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interaction-response
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
@@ -203,7 +203,7 @@ export type APIInteractionResponseChannelMessageWithSource = InteractionResponse
 >;
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionresponsetype
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
  */
 export const enum APIInteractionResponseType {
 	Pong = 1,
@@ -214,7 +214,7 @@ export const enum APIInteractionResponseType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionapplicationcommandcallbackdata
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionapplicationcommandcallbackdata
  */
 export type APIInteractionApplicationCommandCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
