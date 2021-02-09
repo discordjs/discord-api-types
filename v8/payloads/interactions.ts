@@ -76,10 +76,7 @@ export interface APIApplicationCommandOptionChoice {
 	value: string | number;
 }
 
-/**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction
- */
-export type APIInteraction = {
+export interface APIBaseInteraction {
 	/**
 	 * id of the interaction
 	 */
@@ -104,24 +101,40 @@ export type APIInteraction = {
 	 * read-only property, always `1`
 	 */
 	version: 1;
-} & (
-	| {
-			/**
-			 * the guild it was sent from
-			 */
-			guild_id: Snowflake;
-			/**
-			 * guild member data for the invoking user, including permissions
-			 */
-			member: APIGuildMember & { permissions: Permissions; user: APIUser };
-	  }
-	| {
-			/**
-			 * user object for the invoking user, if invoked in a DM
-			 */
-			user: APIUser;
-	  }
-);
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ */
+export interface APIGuildInteraction extends APIBaseInteraction {
+	/**
+	 * the guild it was sent from
+	 */
+	guild_id: Snowflake;
+	/**
+	 * guild member data for the invoking user, including permissions
+	 */
+	member: APIGuildMember & { permissions: Permissions; user: APIUser };
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ */
+export interface APIDMInteraction extends APIBaseInteraction {
+	/**
+	 * the guild it was sent from
+	 */
+	guild_id: undefined;
+	/**
+	 * user object for the invoking user, if invoked in a DM
+	 */
+	user: APIUser;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ */
+export type APIInteraction = APIGuildInteraction | APIDMInteraction;
 
 /**
  * Like See APIInteraction, only with the `data` property always present
