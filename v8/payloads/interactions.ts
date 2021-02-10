@@ -1,6 +1,6 @@
 import type { Permissions, Snowflake } from '../../common/index';
-import type { APIGuildMember, APIUser, MessageFlags } from './index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
+import type { APIGuildMember, APIUser, MessageFlags } from './index';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand
@@ -110,14 +110,12 @@ export interface APIBaseInteraction {
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
 export interface APIGuildInteraction extends APIBaseInteraction {
-	/**
-	 * The guild it was sent from
-	 */
 	guild_id: Snowflake;
 	/**
 	 * Guild member data for the invoking user, including permissions
 	 */
 	member: APIGuildMember & { permissions: Permissions; user: APIUser };
+	channel_id: Snowflake;
 }
 
 /**
@@ -129,11 +127,12 @@ export interface APIDMInteraction extends APIBaseInteraction {
 	 *
 	 * In the case of an `APIDMInteraction`, this will not be present
 	 */
-	guild_id: undefined;
+	guild_id?: never;
 	/**
 	 * User object for the invoking user, if invoked in a DM
 	 */
 	user: APIUser;
+	channel_id: Snowflake;
 }
 
 /**
@@ -142,7 +141,7 @@ export interface APIDMInteraction extends APIBaseInteraction {
 export type APIInteraction = APIGuildInteraction | APIDMInteraction;
 
 /**
- * Like See APIInteraction, only with the `data` property always present
+ * Like APIInteraction, only with the `data` property always present
  */
 export type APIApplicationCommandInteraction = Required<APIInteraction>;
 
@@ -228,5 +227,5 @@ export type APIInteractionApplicationCommandCallbackData = Omit<
  */
 interface InteractionResponsePayload<T extends APIInteractionResponseType, D = false> {
 	type: T;
-	data?: D extends true ? APIInteractionApplicationCommandCallbackData : never;
+	data: D extends true ? APIInteractionApplicationCommandCallbackData : never;
 }
