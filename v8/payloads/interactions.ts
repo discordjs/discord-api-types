@@ -126,6 +126,8 @@ export interface APIGuildInteraction extends APIBaseInteraction {
 export interface APIDMInteraction extends APIBaseInteraction {
 	/**
 	 * The guild it was sent from
+	 *
+	 * In the case of an `APIDMInteraction`, this will not be present
 	 */
 	guild_id: undefined;
 	/**
