@@ -569,7 +569,8 @@ interface AuditLogChangeData<K extends string, D extends unknown> {
 	/**
 	 * The new value
 	 *
-	 * If not present, it can mean the value the key denotes has been set to `null`
+	 * If `new_value` is not present in the change object, while `old_value` is,
+	 * that means the property that was changed has been reset, or set to `null`
 	 */
 	new_value?: D;
 	old_value?: D;
