@@ -628,6 +628,18 @@ export const Routes = {
 	},
 };
 
+export const Bases = {
+	api: 'https://discord.com/api',
+	cdn: 'https://discordapp.com',
+	invite: 'https://discord.gg',
+} as const;
+
+/**
+ * Freeze bases object
+ * @internal
+ */
+Object.freeze(Bases);
+
 export const OAuth2Routes = {
 	authorizationURL: `https://discord.com/api/v${APIVersion}/oauth2/authorize`,
 	tokenURL: `https://discord.com/api/v${APIVersion}/oauth2/token`,
