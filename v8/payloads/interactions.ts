@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../common/index';
-import type { APIGuildMember, APIUser, MessageFlags } from './index';
+import type { APIGuildMember, APIPartialChannel, APIRole, APIUser, MessageFlags } from './index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
 
 /**
@@ -110,6 +110,12 @@ export interface APIApplicationCommandInteractionData {
 	id: Snowflake;
 	name: string;
 	options?: APIApplicationCommandInteractionDataOption[];
+	resolved?: {
+		users?: Record<Snowflake, APIUser>;
+		roles?: Record<Snowflake, APIRole>;
+		members?: Record<Snowflake, Omit<APIGuildMember, 'user' | 'deaf' | 'mute'>>;
+		channels?: Record<Snowflake, Required<APIPartialChannel> & { permissions: Permissions }>;
+	};
 }
 
 /**
