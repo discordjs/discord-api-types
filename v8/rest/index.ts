@@ -628,7 +628,7 @@ export const Routes = {
 	},
 };
 
-export const Bases = {
+export const RouteBases = {
 	api: 'https://discord.com/api',
 	cdn: 'https://discordapp.com',
 	invite: 'https://discord.gg',
