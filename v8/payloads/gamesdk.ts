@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/game-sdk/achievements#the-api-way
+ * Types extracted from https://discord.com/developers/docs/game-sdk
  */
 import type { Snowflake } from '../../common/index';
 
