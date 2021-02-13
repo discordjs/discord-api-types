@@ -8,30 +8,30 @@ import type { Snowflake } from '../../common/index';
  */
 export interface APIAchievement {
 	/**
-	 * the unique id of the application
+	 * Achievement id
+	 */
+	id: number;
+	/**
+	 * The id of the application this achievement belongs to
 	 */
 	application_id: Snowflake;
 
 	/**
-	 * the name of the achievement as an achievement locale object
+	 * Achievement name
 	 */
 	name: APIAchievementLocale;
 	/**
-	 * the user-facing achievement description as an achievement locale object
+	 * Achievement description
 	 */
 	description: APIAchievementLocale;
 	/**
-	 * if the achievement is secret
+	 * If the achievement is secret
 	 */
 	secret: boolean;
 	/**
-	 * if the achievement is secure
+	 * If the achievement is secure
 	 */
 	secure: boolean;
-	/**
-	 * the unique id of the achievement
-	 */
-	id: number;
 	/**
 	 * 	the hash of the icon
 	 */
@@ -98,37 +98,37 @@ export const enum LobbyType {
  */
 export interface APILobby {
 	/**
-	 * the max capacity of the lobby
+	 * Lobby id
+	 */
+	id: Snowflake;
+	/**
+	 * The max capacity of the lobby
 	 *
 	 * @default 16
 	 */
 	capacity: number;
 	/**
-	 * the region in which to make the lobby - defaults to the region of the requesting server's IP address
+	 * The region in which to make the lobby - defaults to the region of the requesting server's IP address
 	 */
 	region: string;
 	/**
-	 * the password to the lobby
+	 * The password to the lobby
 	 */
 	secret: string;
 	/**
-	 * your application id
+	 * The id of the application this achievement belongs to
 	 */
 	application_id: Snowflake;
 	/**
-	 * metadata for the lobby - key/value pairs with types `string`
+	 * Metadata for the lobby
 	 */
 	metadata: Record<string, string>;
 	/**
-	 * if the lobby is public or private
+	 * If the lobby is public or private
 	 */
 	type: LobbyType;
 	/**
-	 * the unique id of the lobby
-	 */
-	id: Snowflake;
-	/**
-	 * the id of the lobby owner
+	 * The id of the lobby owner
 	 */
 	owner_id: Snowflake;
 }
@@ -138,58 +138,60 @@ export interface APILobby {
  */
 export const enum EntitlementType {
 	/**
-	 * entitlement was purchased
+	 * Entitlement was purchased
 	 */
 	Purchase = 1,
 	/**
-	 * entitlement for a Discord Nitro subscription
+	 * Entitlement for a Discord Nitro subscription
 	 */
 	PremiumSubscription,
 	/**
-	 * entitlement was gifted by a developer
+	 * Entitlement was gifted by a developer
 	 */
 	DeveloperGift,
 	/**
-	 * entitlement was purchased by a dev in application test mode
+	 * Entitlement was purchased by a dev in application test mode
 	 */
 	TestModePurchase,
 	/**
-	 * entitlement was granted when the SKU was free
+	 * Entitlement was granted when the SKU was free
 	 */
 	FreePurchase,
 	/**
-	 * entitlement was gifted by another user
+	 * Entitlement was gifted by another user
 	 */
 	UserGift,
 	/**
-	 * entitlement was claimed by user for free as a Nitro Subscriber
+	 * Entitlement was claimed by user for free as a Nitro Subscriber
 	 */
 	PremiumPurchase,
 }
 
 export interface APIEntitlement {
 	/**
-	 * the ID of the user this entitlement belongs to
-	 */
-	user_id: Snowflake;
-	/**
-	 * the ID of the SKU to which the user is entitled
-	 */
-	sku_id: Snowflake;
-	/**
-	 * the ID of the application this entitlement belongs to
-	 */
-	application_id: Snowflake;
-	/**
-	 * the unique ID of this entitlement
+	 * Entitlement id
 	 */
 	id: Snowflake;
 	/**
-	 * the kind of entitlement it is
+	 * The id of the user this entitlement belongs to
+	 */
+	user_id: Snowflake;
+	/**
+	 * The id of the SKU to which the user is entitled
+	 */
+	sku_id: Snowflake;
+	/**
+	 * The id of the application this entitlement belongs to
+	 */
+	application_id: Snowflake;
+	/**
+	 * The type of the entitlement
 	 */
 	type: EntitlementType;
 	/**
-	 * payment data for this entitled -- to recieve this data you must specifiy `with_patments` in respective query bodies
+	 * Payment data for this entitlement
+	 *
+	 * To recieve this data you must specifiy `with_patments` in respective query bodies
 	 */
 	payment?: APIPaymentData;
 }
@@ -199,23 +201,23 @@ export interface APIEntitlement {
  */
 export interface APIPaymentData {
 	/**
-	 * unique ID of the payment
+	 * Payment id
 	 */
 	id: Snowflake;
 	/**
-	 * the currency the payment was made in
+	 * The currency the payment was made in
 	 */
 	currency: number;
 	/**
-	 * the amount paid
+	 * The amount paid
 	 */
 	amount: number;
 	/**
-	 * the amount of tax
+	 * The amount of tax paid
 	 */
 	tax: number;
 	/**
-	 * whether the amount is tax-inclusive
+	 * Whether the amount is tax-inclusive
 	 */
 	tax_inclusive: boolean;
 }
@@ -247,18 +249,18 @@ export const enum APISKUType {
  */
 export interface APISKUPrice {
 	/**
-	 * the amount of money the SKU costs
+	 * The amount of money the SKU costs
 	 */
 	amount: number;
 	/**
-	 * the currency the amount is in
+	 * The currency the amount is in
 	 */
 	currency: string;
 }
 
 export interface APISKU {
 	/**
-	 * The unique ID of this SKU
+	 * SKU id
 	 */
 	id: Snowflake;
 	/**
@@ -271,7 +273,7 @@ export interface APISKU {
 	 */
 	dependent_sku_id: Snowflake | null;
 	/**
-	 * The ID of the application this SKU belongs to
+	 * The id of the application this SKU belongs to
 	 */
 	application_id: Snowflake;
 	/**
@@ -279,6 +281,9 @@ export interface APISKU {
 	 * @unstable
 	 */
 	manifest_labels: Snowflake[];
+	/**
+	 * The name of this SKU
+	 */
 	name: string;
 	/**
 	 * The field is lacking documentation
@@ -300,6 +305,9 @@ export interface APISKU {
 	 * @unstable
 	 */
 	content_ratings: {}; // eslint-disable-line @typescript-eslint/ban-types
+	/**
+	 * The date this SKU was released
+	 */
 	release_date: string;
 	/**
 	 * The field is lacking documentation
@@ -311,7 +319,13 @@ export interface APISKU {
 	 * @unstable
 	 */
 	price_tier: number;
+	/**
+	 * The price of this SKU
+	 */
 	price: APISKUPrice;
+	/**
+	 * Whether or not this SKU is premium
+	 */
 	premium: boolean;
 	/**
 	 * The field is lacking documentation

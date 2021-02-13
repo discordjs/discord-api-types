@@ -64,7 +64,7 @@ export type RESTDeleteAPIAchievementResult = never;
  */
 export interface RESTPutAPIUpdateUserAchievementJSONBody {
 	/**
-	 * the user's progress towards completing the achievement
+	 * The user's progress towards completing the achievement
 	 */
 	percent_complete: number;
 }
@@ -106,7 +106,7 @@ export type RESTDeleteAPIDeleteLobbyResult = never;
  */
 export interface RESTPatchAPILobbyMemberJSONBody {
 	/**
-	 * Metadata for the lobby member - key/value pairs with types string
+	 * Metadata for the lobby member
 	 */
 	metadata: Record<string, string>;
 }
@@ -119,29 +119,29 @@ export interface RESTPatchAPILobbyMemberResult {}
 /**
  * https://discord.com/developers/docs/game-sdk/lobbies#create-lobby-search-searchfilter-object
  */
-export interface SearchFilterObject {
+export interface CreateLobbySearchFilterObject {
 	/**
-	 * the metadata key to search
+	 * The metadata key to search
 	 */
 	key: string;
 	/**
-	 * the value of the metadata key to validate against
+	 * The value of the metadata key to validate against
 	 */
 	value: string;
 	/**
-	 * the type to cast `value` as
+	 * The type to cast `value` as
 	 */
-	cast: RESTPostAPICreateLobbySearchSearchCast;
+	cast: CreateLobbySearchFilterObject;
 	/**
-	 * how to compare the metadata values
+	 * How to compare the metadata values
 	 */
-	comparison: RESTPostAPICreateLobbySearchSearchComparison;
+	comparison: CreateLobbySearchSearchComparison;
 }
 
 /**
  * https://discord.com/developers/docs/game-sdk/lobbies#create-lobby-search-searchcomparison-types
  */
-export const enum RESTPostAPICreateLobbySearchSearchComparison {
+export const enum CreateLobbySearchSearchComparison {
 	EQUAL_TO_OR_LESS_THAN = -2,
 	LESS_THAN,
 	EQUAL,
@@ -153,17 +153,17 @@ export const enum RESTPostAPICreateLobbySearchSearchComparison {
 /**
  * https://discord.com/developers/docs/game-sdk/lobbies#create-lobby-search-searchsort-object
  */
-export interface RESTPostAPICreateLobbySearchSearchSort {
+export interface CreateLobbySearchSearchSort {
 	/**
-	 * the metadata key on which to sort lobbies that meet the search criteria
+	 * The metadata key on which to sort lobbies that meet the search criteria
 	 */
 	key: string;
 	/**
-	 * the type to cast `value` as
+	 * The type to cast `value` as
 	 */
-	cast: RESTPostAPICreateLobbySearchSearchCast;
+	cast: CreateLobbySearchCast;
 	/**
-	 * the value around which to sort the key
+	 * The value around which to sort the key
 	 */
 	near_value: string;
 }
@@ -171,7 +171,7 @@ export interface RESTPostAPICreateLobbySearchSearchSort {
 /**
  * https://discord.com/developers/docs/game-sdk/lobbies#create-lobby-search-searchcast-types
  */
-export const enum RESTPostAPICreateLobbySearchSearchCast {
+export const enum CreateLobbySearchCast {
 	STRING = 1,
 	NUMBER,
 }
@@ -181,19 +181,19 @@ export const enum RESTPostAPICreateLobbySearchSearchCast {
  */
 export interface RESTPostAPICreateLobbySearchJSONBody {
 	/**
-	 * your application id
+	 * The id of the application the lobby is under
 	 */
 	application_id: Snowflake;
 	/**
-	 * the filter to check against
+	 * The filter to check against
 	 */
-	filter: SearchFilterObject;
+	filter: CreateLobbySearchFilterObject;
 	/**
-	 * how to sort the results
+	 * How to sort the results
 	 */
-	sort: RESTPostAPICreateLobbySearchSearchSort;
+	sort: CreateLobbySearchSearchSort;
 	/**
-	 * limit of lobbies returned
+	 * Limit of lobbies returned
 	 *
 	 * @default 25
 	 */
@@ -205,7 +205,7 @@ export interface RESTPostAPICreateLobbySearchJSONBody {
  */
 export interface RESTPostAPISendLobyDataJSONBody {
 	/**
-	 * a message to be sent to other lobby members
+	 * A message to be sent to other lobby members
 	 */
 	data: string;
 }
@@ -220,7 +220,7 @@ export type RESTPostAPISendLobyDataResult = never;
  */
 export interface RESTGetAPIEntitlementQuery {
 	/**
-	 * Whether or not to payment data for each entitlement
+	 * Whether or not to include payment data for each entitlement
 	 */
 	with_payments?: boolean;
 }
@@ -235,7 +235,7 @@ export type RESTGetAPIEntitlementResponse = APIEntitlement;
  */
 export interface RESTGetAPIGetEntitlementsQuery extends RESTGetAPIEntitlementQuery {
 	/**
-	 * the user id to look up entitlements for
+	 * The user id to look up entitlements for
 	 */
 	user_id?: Snowflake;
 	/**
@@ -244,15 +244,15 @@ export interface RESTGetAPIGetEntitlementsQuery extends RESTGetAPIEntitlementQue
 	sku_ids?: string;
 
 	/**
-	 * retrieve entitlements before this time
+	 * Retrieve entitlements before this time
 	 */
 	before?: Snowflake;
 	/**
-	 * retrieve entitlements after this time
+	 * Retrieve entitlements after this time
 	 */
 	after?: Snowflake;
 	/**
-	 * number of entitlements to return, 1-100
+	 * Number of entitlements to return (1-100)
 	 *
 	 * @default 100
 	 */
@@ -284,11 +284,11 @@ export type RESTDeleteAPIDeleteTestEntitlement = never;
  */
 export interface RESTPutAPICreatePurchaseDiscountJSONBody {
 	/**
-	 * the percentage to discount (1-100)
+	 * The percentage to discount (1-100)
 	 */
 	percent_off: number;
 	/**
-	 * the time to live for the discount, in seconds (60-3600)
+	 * The time to live for the discount, in seconds (60-3600)
 	 *
 	 * @default 600
 	 */
