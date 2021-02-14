@@ -122,14 +122,14 @@ export type APIApplicationCommandInteractionDataOption =
 			type: ApplicationCommandOptionType.SUB_COMMAND | ApplicationCommandOptionType.SUB_COMMAND_GROUP;
 			options: APIApplicationCommandInteractionDataOption[];
 	  }
+	| { name: string; type: ApplicationCommandOptionType.STRING; value: string }
 	| {
 			name: string;
 			type:
-				| ApplicationCommandOptionType.STRING
 				| ApplicationCommandOptionType.USER
 				| ApplicationCommandOptionType.CHANNEL
 				| ApplicationCommandOptionType.ROLE;
-			value: string;
+			value: Snowflake;
 	  }
 	| { name: string; type: ApplicationCommandOptionType.INTEGER; value: number }
 	| { name: string; type: ApplicationCommandOptionType.BOOLEAN; value: boolean };
