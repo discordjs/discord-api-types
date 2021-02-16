@@ -116,7 +116,6 @@ export interface APIApplicationCommandInteractionData {
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-applicationcommandinteractiondataoption
  */
 export type APIApplicationCommandInteractionDataOption =
-	| { name: string; options: APIApplicationCommandInteractionDataOption[] }
 	| {
 			name: string;
 			type: ApplicationCommandOptionType.SUB_COMMAND | ApplicationCommandOptionType.SUB_COMMAND_GROUP;
