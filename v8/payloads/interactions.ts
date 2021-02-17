@@ -157,11 +157,32 @@ export type APIInteractionResponseChannelMessageWithSource = InteractionResponse
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionresponsetype
  */
 export const enum APIInteractionResponseType {
+	/**
+	 * ACK a `Ping`
+	 */
 	Pong = 1,
+	/**
+	 * ACK a command without sending a message, eating the user's input
+	 * @deprecated Switch to `DeferredChannelMessageWithSource`
+	 */
 	Acknowledge,
+	/**
+	 * Respond with a message, eating the user's input
+	 * @deprecated Switch to `ChannelMessageWithSource`
+	 */
 	ChannelMessage,
+	/**
+	 * Respond to an interaction with a message
+	 */
 	ChannelMessageWithSource,
-	AcknowledgeWithSource,
+	/**
+	 * ACK an interaction and edit to a response later, the user sees a loading state
+	 */
+	DeferredChannelMessageWithSource,
+	/**
+	 * @deprecated Renamed to `DeferredChannelMessageWithSource`
+	 */
+	AcknowledgeWithSource = 5,
 }
 
 /**
