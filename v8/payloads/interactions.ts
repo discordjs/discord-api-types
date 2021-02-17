@@ -163,12 +163,12 @@ export const enum APIInteractionResponseType {
 	Pong = 1,
 	/**
 	 * ACK a command without sending a message, eating the user's input
-	 * @deprecated Switch to `DeferredChannelMessageWithSource`
+	 * @deprecated Use `DeferredChannelMessageWithSource` instead
 	 */
 	Acknowledge,
 	/**
 	 * Respond with a message, eating the user's input
-	 * @deprecated Switch to `ChannelMessageWithSource`
+	 * @deprecated Use `ChannelMessageWithSource` instead
 	 */
 	ChannelMessage,
 	/**
