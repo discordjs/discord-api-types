@@ -34,19 +34,13 @@ import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api
 2. From [deno.land/x](https://deno.land/x)
 
 ```ts
-// Importing the default API version
-import { APIUser } from 'https://deno.land/x/discord_api_types@0.12.0/mod.ts';
-
 // Importing a specific API version
-import { APIUser } from 'https://deno.land/x/discord_api_types@0.12.0/v8/mod.ts';
+import { APIUser } from 'https://deno.land/x/discord_api_types/v8/mod.ts';
 ```
 
 3. From [skypack.dev](https://www.skypack.dev/)
 
 ```ts
-// Importing the default API version
-import { APIUser } from 'https://cdn.skypack.dev/discord-api-types?dts';
-
 // Importing a specific API version
 import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/v8?dts';
 ```
@@ -81,18 +75,7 @@ The exports of each API version is split into three main parts:
 
 You can `require` / `import` the module directly, which will give you the latest types as of the current API version. This is considered the `default` version and will be updated according to Discord's default API version; this means it may break at any point in time.
 
-> We **strongly recommend** you use a version when importing this module! This will prevent breaking changes when updating the module.
-
-```js
-const { APIUser } = require('discord-api-types');
-```
-
-```ts
-// TypeScript/ES Module support
-import { APIUser } from 'discord-api-types';
-```
-
-You should instead consider adding the API version you want to target by appending `/v*`, where the `*` represents the API version.
+You can only import this module by specifying the API version you want to target. Append `/v*` to the import path, where the `*` represents the API version. Below are some examples
 
 ```js
 const { APIUser } = require('discord-api-types/v8');
