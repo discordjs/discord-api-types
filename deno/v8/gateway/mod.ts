@@ -4,6 +4,9 @@
 
 import type { Snowflake } from '../../common/mod.ts';
 import type {
+	APIApplication,
+	APIApplicationCommand,
+	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
@@ -17,8 +20,6 @@ import type {
 	GatewayVoiceState,
 	InviteTargetUserType,
 	PresenceUpdateStatus,
-	APIApplicationCommandInteraction,
-	APIApplication,
 } from '../payloads/mod.ts';
 
 export const GatewayVersion = '8';
@@ -290,42 +291,45 @@ export const enum GatewayIntentBits {
  * https://discord.com/developers/docs/topics/gateway#commands-and-events-gateway-events
  */
 export const enum GatewayDispatchEvents {
-	Ready = 'READY',
-	Resumed = 'RESUMED',
+	ApplicationCommandCreate = 'APPLICATION_COMMAND_CREATE',
+	ApplicationCommandUpdate = 'APPLICATION_COMMAND_UPDATE',
+	ApplicationCommandDelete = 'APPLICATION_COMMAND_DELETE',
 	ChannelCreate = 'CHANNEL_CREATE',
-	ChannelUpdate = 'CHANNEL_UPDATE',
 	ChannelDelete = 'CHANNEL_DELETE',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
-	GuildCreate = 'GUILD_CREATE',
-	GuildUpdate = 'GUILD_UPDATE',
-	GuildDelete = 'GUILD_DELETE',
+	ChannelUpdate = 'CHANNEL_UPDATE',
 	GuildBanAdd = 'GUILD_BAN_ADD',
 	GuildBanRemove = 'GUILD_BAN_REMOVE',
+	GuildCreate = 'GUILD_CREATE',
+	GuildDelete = 'GUILD_DELETE',
 	GuildEmojisUpdate = 'GUILD_EMOJIS_UPDATE',
 	GuildIntegrationsUpdate = 'GUILD_INTEGRATIONS_UPDATE',
 	GuildMemberAdd = 'GUILD_MEMBER_ADD',
 	GuildMemberRemove = 'GUILD_MEMBER_REMOVE',
-	GuildMemberUpdate = 'GUILD_MEMBER_UPDATE',
 	GuildMembersChunk = 'GUILD_MEMBERS_CHUNK',
+	GuildMemberUpdate = 'GUILD_MEMBER_UPDATE',
 	GuildRoleCreate = 'GUILD_ROLE_CREATE',
-	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
 	GuildRoleDelete = 'GUILD_ROLE_DELETE',
+	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
+	GuildUpdate = 'GUILD_UPDATE',
 	InteractionCreate = 'INTERACTION_CREATE',
 	InviteCreate = 'INVITE_CREATE',
 	InviteDelete = 'INVITE_DELETE',
 	MessageCreate = 'MESSAGE_CREATE',
-	MessageUpdate = 'MESSAGE_UPDATE',
 	MessageDelete = 'MESSAGE_DELETE',
 	MessageDeleteBulk = 'MESSAGE_DELETE_BULK',
 	MessageReactionAdd = 'MESSAGE_REACTION_ADD',
 	MessageReactionRemove = 'MESSAGE_REACTION_REMOVE',
 	MessageReactionRemoveAll = 'MESSAGE_REACTION_REMOVE_ALL',
 	MessageReactionRemoveEmoji = 'MESSAGE_REACTION_REMOVE_EMOJI',
+	MessageUpdate = 'MESSAGE_UPDATE',
 	PresenceUpdate = 'PRESENCE_UPDATE',
+	Ready = 'READY',
+	Resumed = 'RESUMED',
 	TypingStart = 'TYPING_START',
 	UserUpdate = 'USER_UPDATE',
-	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
+	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
 }
 
@@ -346,40 +350,91 @@ export type GatewayReceivePayload =
 	| GatewayDispatchPayload;
 
 export type GatewayDispatchPayload =
-	| GatewayReadyDispatch
-	| GatewayResumedDispatch
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
-	| GatewayGuildModifyDispatch
-	| GatewayGuildDeleteDispatch
 	| GatewayGuildBanModifyDispatch
+	| GatewayGuildDeleteDispatch
 	| GatewayGuildEmojisUpdateDispatch
 	| GatewayGuildIntegrationsUpdateDispatch
 	| GatewayGuildMemberAddDispatch
 	| GatewayGuildMemberRemoveDispatch
-	| GatewayGuildMemberUpdateDispatch
 	| GatewayGuildMembersChunkDispatch
-	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildMemberUpdateDispatch
+	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
+	| GatewayGuildRoleModifyDispatch
 	| GatewayInteractionCreateDispatch
 	| GatewayInviteCreateDispatch
 	| GatewayInviteDeleteDispatch
 	| GatewayMessageCreateDispatch
-	| GatewayMessageUpdateDispatch
-	| GatewayMessageDeleteDispatch
 	| GatewayMessageDeleteBulkDispatch
+	| GatewayMessageDeleteDispatch
 	| GatewayMessageReactionAddDispatch
-	| GatewayMessageReactionRemoveDispatch
 	| GatewayMessageReactionRemoveAllDispatch
+	| GatewayMessageReactionRemoveDispatch
 	| GatewayMessageReactionRemoveEmojiDispatch
+	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewayReadyDispatch
+	| GatewayResumedDispatch
 	| GatewayTypingStartDispatch
 	| GatewayUserUpdateDispatch
-	| GatewayVoiceStateUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
+	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch;
 
 // #region Dispatch Payloads
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-create
+ * https://discord.com/developers/docs/topics/gateway#application-command-update
+ * https://discord.com/developers/docs/topics/gateway#application-command-delete
+ */
+export type GatewayApplicationCommandModifyDispatch = DataPayload<
+	| GatewayDispatchEvents.ApplicationCommandCreate
+	| GatewayDispatchEvents.ApplicationCommandUpdate
+	| GatewayDispatchEvents.ApplicationCommandDelete,
+	GatewayApplicationCommandModifyDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-create
+ * https://discord.com/developers/docs/topics/gateway#application-command-update
+ * https://discord.com/developers/docs/topics/gateway#application-command-delete
+ */
+export interface GatewayApplicationCommandModifyDispatchData extends APIApplicationCommand {
+	guild_id?: string;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-create
+ */
+export type GatewayApplicationCommandCreateDispatch = GatewayApplicationCommandModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-create
+ */
+export type GatewayApplicationCommandCreateDispatchData = GatewayApplicationCommandModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-update
+ */
+export type GatewayApplicationCommandUpdateDispatch = GatewayApplicationCommandModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-update
+ */
+export type GatewayApplicationCommandUpdateDispatchData = GatewayApplicationCommandModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-delete
+ */
+export type GatewayApplicationCommandDeleteDispatch = GatewayApplicationCommandModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#application-command-delete
+ */
+export type GatewayApplicationCommandDeleteDispatchData = GatewayApplicationCommandModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#hello

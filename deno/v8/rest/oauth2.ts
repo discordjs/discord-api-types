@@ -1,10 +1,32 @@
 import type { Permissions, Snowflake } from '../../common/mod.ts';
-import type { APIApplication, APIGuild, APIWebhook, OAuth2Scopes } from '../payloads/mod.ts';
+import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from '../payloads/mod.ts';
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-application-information
  */
 export type RESTGetAPIOauth2CurrentApplicationResult = Omit<APIApplication, 'flags'>;
+
+/**
+ * https://discord.com/developers/docs/topics/oauth2#get-current-authorization-information
+ */
+export interface RESTGetAPIOauth2CurrentAuthorizationResult {
+	/**
+	 * the current application
+	 */
+	application: Partial<APIApplication>;
+	/**
+	 * the scopes the user has authorized the application for
+	 */
+	scopes: OAuth2Scopes[];
+	/**
+	 * when the access token expires
+	 */
+	expires: string;
+	/**
+	 * the user who has authorized, if the user has authorized with the `identify` scope
+	 */
+	user?: APIUser;
+}
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant
