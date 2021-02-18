@@ -4,6 +4,9 @@
 
 import type { Snowflake } from '../../common/index';
 import type {
+	APIApplication,
+	APIApplicationCommand,
+	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
@@ -17,9 +20,6 @@ import type {
 	GatewayVoiceState,
 	InviteTargetUserType,
 	PresenceUpdateStatus,
-	APIApplicationCommandInteraction,
-	APIApplication,
-	APIApplicationCommand,
 } from '../payloads/index';
 
 export const GatewayVersion = '8';
@@ -33,7 +33,8 @@ export const enum GatewayOPCodes {
 	 */
 	Dispatch,
 	/**
-	 * Fired periodically by the client to keep the connection alive
+	 * A bidirectional opcode to maintain an active gateway connection.
+	 * Fired periodically by the client, or fired by the gateway to request an immediate heartbeat from the client.
 	 */
 	Heartbeat,
 	/**

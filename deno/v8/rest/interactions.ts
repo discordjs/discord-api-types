@@ -6,6 +6,11 @@ import type { APIApplicationCommand, APIInteractionResponse } from '../payloads/
 export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
 
 /**
+ * https://discord.com/developers/docs/interactions/slash-commands#get-global-application-command
+ */
+export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
+
+/**
  * https://discord.com/developers/docs/interactions/slash-commands#create-global-application-command
  */
 export type RESTPostAPIApplicationCommandsJSONBody = Omit<APIApplicationCommand, 'id' | 'application_id'>;
@@ -29,6 +34,11 @@ export type RESTPatchAPIApplicationCommandResult = APIApplicationCommand;
  * https://discord.com/developers/docs/interactions/slash-commands#get-guild-application-commands
  */
 export type RESTGetAPIApplicationGuildCommandsResult = APIApplicationCommand[];
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#get-guild-application-command
+ */
+export type RESTGetAPIApplicationGuildCommandResult = APIApplicationCommand;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#create-guild-application-command

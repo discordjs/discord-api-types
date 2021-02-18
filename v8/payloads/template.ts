@@ -3,8 +3,8 @@
  */
 
 import type { Snowflake } from '../../common/index';
-import type { APIUser } from './user';
 import type { RESTPostAPIGuildsJSONBody } from '../rest/index';
+import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/resources/template#template-object
