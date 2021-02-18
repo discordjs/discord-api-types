@@ -134,7 +134,18 @@ export type RESTGetAPIChannelMessagesResult = APIMessage[];
  */
 export type RESTGetAPIChannelMessageResult = APIMessage;
 
-export type APIMessageReferenceSend = Partial<APIMessageReference> & Required<Pick<APIMessageReference, 'message_id'>>;
+/**
+ * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+ */
+export type APIMessageReferenceSend = Partial<APIMessageReference> &
+	Required<Pick<APIMessageReference, 'message_id'>> & {
+		/**
+		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
+		 *
+		 * @default true
+		 */
+		fail_if_not_exists?: boolean;
+	};
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message

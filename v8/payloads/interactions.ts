@@ -1,6 +1,6 @@
 import type { Permissions, Snowflake } from '../../common/index';
-import type { APIGuildMember, APIUser, MessageFlags } from './index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/index';
+import type { APIGuildMember, APIUser, MessageFlags } from './index';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand
@@ -46,7 +46,7 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands
  *
- * In contrast to @see APIApplicationCommandSubCommandOptions, these types cannot have an `options` array,
+ * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
  * but they can have a `choices` one
  */
 export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
