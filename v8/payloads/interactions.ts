@@ -133,16 +133,20 @@ export interface APIApplicationCommandInteractionDataOption {
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
 	| APIInteractionResponseAcknowledge
-	| APIInteractionResponseAcknowledgeWithSource
 	| APIInteractionResponseChannelMessage
-	| APIInteractionResponseChannelMessageWithSource;
+	| APIInteractionResponseChannelMessageWithSource
+	| APIInteractionResponseDeferredChannelMessageWithSource;
 
 export type APIInteractionResponsePong = InteractionResponsePayload<APIInteractionResponseType.Pong>;
 
+/**
+ * @deprecated Use `APIInteractionResponseDeferredChannelMessageWithSource` instead; will be removed on April 9, 2021
+ */
 export type APIInteractionResponseAcknowledge = InteractionResponsePayload<APIInteractionResponseType.Acknowledge>;
 
-export type APIInteractionResponseAcknowledgeWithSource = InteractionResponsePayload<APIInteractionResponseType.AcknowledgeWithSource>;
-
+/**
+ * @deprecated Use `APIInteractionResponseChannelMessageWithSource` instead; will be removed on April 9, 2021
+ */
 export type APIInteractionResponseChannelMessage = InteractionResponsePayload<
 	APIInteractionResponseType.ChannelMessage,
 	true
@@ -153,15 +157,34 @@ export type APIInteractionResponseChannelMessageWithSource = InteractionResponse
 	true
 >;
 
+export type APIInteractionResponseDeferredChannelMessageWithSource = InteractionResponsePayload<APIInteractionResponseType.DeferredChannelMessageWithSource>;
+
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionresponsetype
  */
 export const enum APIInteractionResponseType {
+	/**
+	 * ACK a `Ping`
+	 */
 	Pong = 1,
+	/**
+	 * ACK a command without sending a message, eating the user's input
+	 * @deprecated Use `DeferredChannelMessageWithSource` instead; will be removed on April 9, 2021
+	 */
 	Acknowledge,
+	/**
+	 * Respond with a message, eating the user's input
+	 * @deprecated Use `ChannelMessageWithSource` instead; will be removed on April 9, 2021
+	 */
 	ChannelMessage,
+	/**
+	 * Respond to an interaction with a message
+	 */
 	ChannelMessageWithSource,
-	AcknowledgeWithSource,
+	/**
+	 * ACK an interaction and edit to a response later, the user sees a loading state
+	 */
+	DeferredChannelMessageWithSource,
 }
 
 /**
