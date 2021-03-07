@@ -133,16 +133,20 @@ export interface APIApplicationCommandInteractionDataOption {
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
 	| APIInteractionResponseAcknowledge
-	| APIInteractionResponseAcknowledgeWithSource
 	| APIInteractionResponseChannelMessage
-	| APIInteractionResponseChannelMessageWithSource;
+	| APIInteractionResponseChannelMessageWithSource
+	| APIInteractionResponseDeferredChannelMessageWithSource;
 
 export type APIInteractionResponsePong = InteractionResponsePayload<APIInteractionResponseType.Pong>;
 
+/**
+ * @deprecated Use `APIInteractionResponseDeferredChannelMessageWithSource` instead; will be removed on April 9, 2021
+ */
 export type APIInteractionResponseAcknowledge = InteractionResponsePayload<APIInteractionResponseType.Acknowledge>;
 
-export type APIInteractionResponseAcknowledgeWithSource = InteractionResponsePayload<APIInteractionResponseType.AcknowledgeWithSource>;
-
+/**
+ * @deprecated Use `APIInteractionResponseChannelMessageWithSource` instead; will be removed on April 9, 2021
+ */
 export type APIInteractionResponseChannelMessage = InteractionResponsePayload<
 	APIInteractionResponseType.ChannelMessage,
 	true
@@ -152,6 +156,8 @@ export type APIInteractionResponseChannelMessageWithSource = InteractionResponse
 	APIInteractionResponseType.ChannelMessageWithSource,
 	true
 >;
+
+export type APIInteractionResponseDeferredChannelMessageWithSource = InteractionResponsePayload<APIInteractionResponseType.DeferredChannelMessageWithSource>;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionresponsetype
