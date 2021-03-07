@@ -179,10 +179,6 @@ export const enum APIInteractionResponseType {
 	 * ACK an interaction and edit to a response later, the user sees a loading state
 	 */
 	DeferredChannelMessageWithSource,
-	/**
-	 * @deprecated Renamed to `DeferredChannelMessageWithSource`
-	 */
-	AcknowledgeWithSource = 5,
 }
 
 /**
