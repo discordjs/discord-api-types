@@ -132,36 +132,34 @@ export interface APIApplicationCommandInteractionDataOption {
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
-	| APIInteractionResponseAcknowledge
-	| APIInteractionResponseAcknowledgeWithSource
-	| APIInteractionResponseChannelMessage
-	| APIInteractionResponseChannelMessageWithSource;
+	| APIInteractionResponseChannelMessageWithSource
+	| APIInteractionResponseDeferredChannelMessageWithSource;
 
 export type APIInteractionResponsePong = InteractionResponsePayload<APIInteractionResponseType.Pong>;
-
-export type APIInteractionResponseAcknowledge = InteractionResponsePayload<APIInteractionResponseType.Acknowledge>;
-
-export type APIInteractionResponseAcknowledgeWithSource = InteractionResponsePayload<APIInteractionResponseType.AcknowledgeWithSource>;
-
-export type APIInteractionResponseChannelMessage = InteractionResponsePayload<
-	APIInteractionResponseType.ChannelMessage,
-	true
->;
 
 export type APIInteractionResponseChannelMessageWithSource = InteractionResponsePayload<
 	APIInteractionResponseType.ChannelMessageWithSource,
 	true
 >;
 
+export type APIInteractionResponseDeferredChannelMessageWithSource = InteractionResponsePayload<APIInteractionResponseType.DeferredChannelMessageWithSource>;
+
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionresponsetype
  */
 export const enum APIInteractionResponseType {
+	/**
+	 * ACK a `Ping`
+	 */
 	Pong = 1,
-	Acknowledge,
-	ChannelMessage,
-	ChannelMessageWithSource,
-	AcknowledgeWithSource,
+	/**
+	 * Respond to an interaction with a message
+	 */
+	ChannelMessageWithSource = 4,
+	/**
+	 * ACK an interaction and edit to a response later, the user sees a loading state
+	 */
+	DeferredChannelMessageWithSource,
 }
 
 /**
