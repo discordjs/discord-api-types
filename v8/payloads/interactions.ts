@@ -113,7 +113,7 @@ export interface APIApplicationCommandInteractionData {
 	resolved?: {
 		users?: Record<string, APIUser>;
 		roles?: Record<string, APIRole>;
-		members?: Record<string, Omit<APIGuildMember, 'user' | 'deaf' | 'mute'>>;
+		members?: Record<string, Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> & { permissions: Permissions }>;
 		channels?: Record<string, Required<APIPartialChannel> & { permissions: Permissions }>;
 	};
 }
