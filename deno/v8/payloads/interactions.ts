@@ -1,6 +1,6 @@
 import type { Permissions, Snowflake } from '../../common/mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../rest/mod.ts';
-import type { APIGuildMember, APIUser, MessageFlags } from './mod.ts';
+import type { APIGuildMember, APIPartialChannel, APIRole, APIUser, MessageFlags } from './mod.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand
@@ -160,6 +160,12 @@ export interface APIApplicationCommandInteractionData {
 	id: Snowflake;
 	name: string;
 	options?: APIApplicationCommandInteractionDataOption[];
+	resolved?: {
+		users?: Record<string, APIUser>;
+		roles?: Record<string, APIRole>;
+		members?: Record<string, Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> & { permissions: Permissions }>;
+		channels?: Record<string, Required<APIPartialChannel> & { permissions: Permissions }>;
+	};
 }
 
 /**
