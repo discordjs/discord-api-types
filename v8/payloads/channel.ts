@@ -5,6 +5,7 @@
 import type { Permissions, Snowflake } from '../../common/index';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
+import type { APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
 import type { APIUser } from './user';
 
@@ -307,6 +308,10 @@ export interface APIMessage {
 	 * See https://discord.com/developers/docs/resources/channel#message-object
 	 */
 	referenced_message?: APIMessage | null;
+	/**
+	 * Sent if the message is a response to an Interaction
+	 */
+	interaction?: APIMessageInteraction;
 }
 
 /**

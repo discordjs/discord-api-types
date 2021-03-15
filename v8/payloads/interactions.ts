@@ -246,6 +246,28 @@ export type APIInteractionApplicationCommandCallbackData = Omit<
 > & { flags?: MessageFlags };
 
 /**
+ * https://discord.com/developers/docs/interactions/slash-commands#messageinteraction
+ */
+export interface APIMessageInteraction {
+	/**
+	 * ID of the interaction
+	 */
+	id: Snowflake;
+	/**
+	 * The type of interaction
+	 */
+	type: InteractionType;
+	/**
+	 * The name of the ApplicationCommand
+	 */
+	name: string;
+	/**
+	 * The user who invoked the interaction
+	 */
+	user: APIUser;
+}
+
+/**
  * @internal
  */
 interface InteractionResponsePayload<T extends APIInteractionResponseType, D = false> {
