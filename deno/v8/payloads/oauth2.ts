@@ -80,10 +80,22 @@ export interface APIApplication {
 	/**
 	 * The application's public flags
 	 */
-	flags: number;
+	flags: ApplicationFlags;
 }
 
-export const enum OAuth2Scopes {
+export enum ApplicationFlags {
+	ManagedEmoji = 1 << 2,
+	GroupDMCreate = 1 << 4,
+	RPCHasConnected = 1 << 11,
+	GatewayPresence = 1 << 12,
+	GatewayPresenceLimit = 1 << 13,
+	GatewayGuildMembers = 1 << 14,
+	GatewayGuildMembersLimited = 1 << 15,
+	VerificationPendingGuildLimit = 1 << 16,
+	Embedded = 1 << 17,
+}
+
+export enum OAuth2Scopes {
 	/**
 	 * For oauth2 bots, this puts the bot in the user's selected guild by default
 	 */

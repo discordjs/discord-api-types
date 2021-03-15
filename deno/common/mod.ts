@@ -1,7 +1,7 @@
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
  */
-export const enum RESTJSONErrorCodes {
+export enum RESTJSONErrorCodes {
 	GeneralError,
 
 	UnknownAccount = 10001,
@@ -114,7 +114,7 @@ export const enum RESTJSONErrorCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes
  */
-export const enum RPCErrorCodes {
+export enum RPCErrorCodes {
 	UnknownError = 1000,
 	InvalidPayload = 4000,
 	InvalidCommand = 4002,
@@ -136,7 +136,7 @@ export const enum RPCErrorCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
  */
-export const enum RPCCloseEventCodes {
+export enum RPCCloseEventCodes {
 	InvalidClientID = 4000,
 	InvalidOrigin,
 	RateLimited,

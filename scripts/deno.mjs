@@ -31,6 +31,15 @@ function convertImports(source) {
 }
 
 /**
+ * @param {string} source The raw source
+ */
+function convertConstEnums(source) {
+	return source.replace(/const enum/gi, 'enum');
+}
+
+const transformers = [convertImports, convertConstEnums];
+
+/**
  * @param {string} folderName The folder name
  * @param {URL} node The node path
  * @param {URL} deno The deno path
@@ -54,7 +63,9 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 
 		const originalFile = await readFile(fullFilePath, { encoding: 'utf8' });
 
-		await writeFile(finalDenoPath, convertImports(originalFile));
+		const finalFile = transformers.reduce((code, transformer) => transformer(code), originalFile);
+
+		await writeFile(finalDenoPath, finalFile);
 	}
 }
 
