@@ -83,7 +83,7 @@ export interface APIApplication {
 	flags: ApplicationFlags;
 }
 
-export const enum ApplicationFlags {
+export enum ApplicationFlags {
 	ManagedEmoji = 1 << 2,
 	GroupDMCreate = 1 << 4,
 	RPCHasConnected = 1 << 11,
