@@ -91,7 +91,7 @@ export interface GatewayPresenceUpdate {
 	client_status?: GatewayPresenceClientStatus;
 }
 
-export const enum PresenceUpdateStatus {
+export enum PresenceUpdateStatus {
 	Online = 'online',
 	DoNotDisturb = 'dnd',
 	Idle = 'idle',
@@ -213,7 +213,7 @@ export enum ActivityPlatform {
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
  */
-export const enum ActivityType {
+export enum ActivityType {
 	/**
 	 * Playing {game}
 	 */
@@ -288,7 +288,7 @@ export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
  */
-export const enum ActivityFlags {
+export enum ActivityFlags {
 	INSTANCE = 1 << 0,
 	JOIN = 1 << 1,
 	SPECTATE = 1 << 2,
