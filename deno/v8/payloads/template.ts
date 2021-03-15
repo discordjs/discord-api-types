@@ -3,8 +3,8 @@
  */
 
 import type { Snowflake } from '../../common/mod.ts';
-import type { APIUser } from './user.ts';
 import type { RESTPostAPIGuildsJSONBody } from '../rest/mod.ts';
+import type { APIUser } from './user.ts';
 
 /**
  * https://discord.com/developers/docs/resources/template#template-object

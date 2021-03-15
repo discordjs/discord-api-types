@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import {
-	copyFile, //
-	mkdir,
-	opendir,
-	readFile,
-	rm,
-	writeFile,
-} from 'fs/promises';
+import { copyFile, mkdir, opendir, readFile, rm, writeFile } from 'fs/promises';
 
 const baseDirectory = new URL('../', import.meta.url);
 const denoPath = new URL('deno/', baseDirectory);
@@ -38,6 +31,15 @@ function convertImports(source) {
 }
 
 /**
+ * @param {string} source The raw source
+ */
+function convertConstEnums(source) {
+	return source.replace(/const enum/gi, 'enum');
+}
+
+const transformers = [convertImports, convertConstEnums];
+
+/**
  * @param {string} folderName The folder name
  * @param {URL} node The node path
  * @param {URL} deno The deno path
@@ -50,7 +52,7 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 
 	for await (const file of await opendir(nodeDirectory)) {
 		if (file.isDirectory()) {
-			await adaptFolderToDeno(`${file.name}/`, new URL(folderName, node), new URL(folderName, deno));
+			await adaptFolderToDeno(`${file.name}/`, nodeDirectory, denoDirectory);
 			continue;
 		}
 
@@ -61,20 +63,11 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 
 		const originalFile = await readFile(fullFilePath, { encoding: 'utf8' });
 
-		await writeFile(finalDenoPath, convertImports(originalFile));
+		const finalFile = transformers.reduce((code, transformer) => transformer(code), originalFile);
+
+		await writeFile(finalDenoPath, finalFile);
 	}
 }
-
-async function createModTS() {
-	const defaultFile = await readFile(new URL('./default/index.ts', baseDirectory), { encoding: 'utf8' });
-
-	const converted = convertImports(defaultFile).replace('../v', './v');
-
-	await writeFile(new URL('mod.ts', denoPath), converted);
-}
-
-// Create mod.ts which is the default/index.ts
-await createModTS();
 
 await Promise.all(
 	[

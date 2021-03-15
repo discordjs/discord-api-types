@@ -31,7 +31,7 @@ export type APIGuildCreatePartialChannel = Partial<
 > & {
 	name: string;
 	id?: number | string;
-	parent_id?: number | string;
+	parent_id?: number | string | null;
 	permission_overwrites?: APIGuildCreateOverwrite[];
 };
 
@@ -106,7 +106,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: number | Snowflake;
+	afk_channel_id?: number | Snowflake | null;
 	/**
 	 * AFK timeout in seconds
 	 */
@@ -114,7 +114,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: number | Snowflake;
+	system_channel_id?: number | Snowflake | null;
 	/**
 	 * System channel flags
 	 *

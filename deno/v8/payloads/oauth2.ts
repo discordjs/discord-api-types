@@ -83,7 +83,7 @@ export interface APIApplication {
 	flags: number;
 }
 
-export const enum OAuth2Scopes {
+export enum OAuth2Scopes {
 	/**
 	 * For oauth2 bots, this puts the bot in the user's selected guild by default
 	 */

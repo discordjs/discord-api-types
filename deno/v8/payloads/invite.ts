@@ -57,7 +57,7 @@ export interface APIInvite {
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
  */
-export const enum InviteTargetUserType {
+export enum InviteTargetUserType {
 	STREAM = 1,
 }
 
