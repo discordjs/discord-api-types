@@ -79,19 +79,69 @@ export interface APIApplicationCommandOptionChoice {
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
-export interface APIInteraction {
+export interface APIBaseInteraction {
+	/**
+	 * ID of the interaction
+	 */
 	id: Snowflake;
+	/**
+	 * The type of interaction
+	 */
 	type: InteractionType;
+	/**
+	 * The command data payload
+	 */
 	data?: APIApplicationCommandInteractionData;
-	guild_id: Snowflake;
-	channel_id: Snowflake;
-	member: APIGuildMember & { permissions: Permissions; user: APIUser };
+	/**
+	 * The channel it was sent from
+	 */
+	channel_id?: Snowflake;
+	/**
+	 * A continuation token for responding to the interaction
+	 */
 	token: string;
+	/**
+	 * Read-only property, always `1`
+	 */
 	version: 1;
 }
 
 /**
- * Like See APIInteraction, only with the `data` property always present
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ */
+export interface APIGuildInteraction extends APIBaseInteraction {
+	guild_id: Snowflake;
+	/**
+	 * Guild member data for the invoking user, including permissions
+	 */
+	member: APIGuildMember & { permissions: Permissions; user: APIUser };
+	channel_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ */
+export interface APIDMInteraction extends APIBaseInteraction {
+	/**
+	 * The guild it was sent from
+	 *
+	 * In the case of an `APIDMInteraction`, this will not be present
+	 */
+	guild_id?: never;
+	/**
+	 * User object for the invoking user, if invoked in a DM
+	 */
+	user: APIUser;
+	channel_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ */
+export type APIInteraction = APIGuildInteraction | APIDMInteraction;
+
+/**
+ * Like APIInteraction, only with the `data` property always present
  */
 export type APIApplicationCommandInteraction = Required<APIInteraction>;
 
@@ -128,7 +178,7 @@ export interface APIApplicationCommandInteractionDataOption {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interaction-response
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
@@ -160,7 +210,7 @@ export type APIInteractionResponseChannelMessageWithSource = InteractionResponse
 export type APIInteractionResponseDeferredChannelMessageWithSource = InteractionResponsePayload<APIInteractionResponseType.DeferredChannelMessageWithSource>;
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionresponsetype
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
  */
 export const enum APIInteractionResponseType {
 	/**
@@ -188,7 +238,7 @@ export const enum APIInteractionResponseType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactionapplicationcommandcallbackdata
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionapplicationcommandcallbackdata
  */
 export type APIInteractionApplicationCommandCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
@@ -200,5 +250,5 @@ export type APIInteractionApplicationCommandCallbackData = Omit<
  */
 interface InteractionResponsePayload<T extends APIInteractionResponseType, D = false> {
 	type: T;
-	data?: D extends true ? APIInteractionApplicationCommandCallbackData : never;
+	data: D extends true ? APIInteractionApplicationCommandCallbackData : never;
 }
