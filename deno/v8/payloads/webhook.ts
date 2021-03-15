@@ -53,7 +53,7 @@ export interface APIWebhook {
 	source_channel?: APIPartialChannel;
 }
 
-export const enum WebhookType {
+export enum WebhookType {
 	/**
 	 * Incoming Webhooks can post messages to channels with a generated token
 	 */
