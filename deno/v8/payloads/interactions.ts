@@ -57,7 +57,7 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptiontype
  */
-export const enum ApplicationCommandOptionType {
+export enum ApplicationCommandOptionType {
 	SUB_COMMAND = 1,
 	SUB_COMMAND_GROUP,
 	STRING,
@@ -148,7 +148,7 @@ export type APIApplicationCommandInteraction = Required<APIInteraction>;
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactiontype
  */
-export const enum InteractionType {
+export enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
 }
@@ -212,7 +212,7 @@ export type APIInteractionResponseDeferredChannelMessageWithSource = Interaction
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
  */
-export const enum APIInteractionResponseType {
+export enum APIInteractionResponseType {
 	/**
 	 * ACK a `Ping`
 	 */

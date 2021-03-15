@@ -104,7 +104,7 @@ export interface APIChannel extends APIPartialChannel {
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
  */
-export const enum ChannelType {
+export enum ChannelType {
 	/**
 	 * A text channel within a guild
 	 */
@@ -317,7 +317,7 @@ export interface APIMessage {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
  */
-export const enum MessageType {
+export enum MessageType {
 	DEFAULT,
 	RECIPIENT_ADD,
 	RECIPIENT_REMOVE,
@@ -404,7 +404,7 @@ export interface APIMessageReference {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
  */
-export const enum MessageActivityType {
+export enum MessageActivityType {
 	JOIN = 1,
 	SPECTATE,
 	LISTEN,
@@ -414,7 +414,7 @@ export const enum MessageActivityType {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-flags
  */
-export const enum MessageFlags {
+export enum MessageFlags {
 	/**
 	 * This message has been published to subscribed channels (via Channel Following)
 	 */
@@ -481,7 +481,7 @@ export interface APISticker {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
  */
-export const enum StickerFormatType {
+export enum StickerFormatType {
 	PNG = 1,
 	APNG,
 	LOTTIE,
@@ -553,7 +553,7 @@ export interface APIOverwrite {
 	deny: Permissions;
 }
 
-export const enum OverwriteType {
+export enum OverwriteType {
 	Role,
 	Member,
 }
@@ -646,7 +646,7 @@ export interface APIEmbed {
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
-export const enum EmbedType {
+export enum EmbedType {
 	/**
 	 * Generic embed rendered from embed attributes
 	 */
@@ -876,7 +876,7 @@ export interface APIChannelMention {
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
  */
-export const enum AllowedMentionsTypes {
+export enum AllowedMentionsTypes {
 	/**
 	 * Controls @everyone and @here mentions
 	 */
