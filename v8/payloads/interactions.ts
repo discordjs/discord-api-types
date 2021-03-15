@@ -182,25 +182,10 @@ export interface APIApplicationCommandInteractionDataOption {
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
-	| APIInteractionResponseAcknowledge
-	| APIInteractionResponseChannelMessage
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource;
 
 export type APIInteractionResponsePong = InteractionResponsePayload<APIInteractionResponseType.Pong>;
-
-/**
- * @deprecated Use `APIInteractionResponseDeferredChannelMessageWithSource` instead; will be removed on April 9, 2021
- */
-export type APIInteractionResponseAcknowledge = InteractionResponsePayload<APIInteractionResponseType.Acknowledge>;
-
-/**
- * @deprecated Use `APIInteractionResponseChannelMessageWithSource` instead; will be removed on April 9, 2021
- */
-export type APIInteractionResponseChannelMessage = InteractionResponsePayload<
-	APIInteractionResponseType.ChannelMessage,
-	true
->;
 
 export type APIInteractionResponseChannelMessageWithSource = InteractionResponsePayload<
 	APIInteractionResponseType.ChannelMessageWithSource,
@@ -218,19 +203,9 @@ export const enum APIInteractionResponseType {
 	 */
 	Pong = 1,
 	/**
-	 * ACK a command without sending a message, eating the user's input
-	 * @deprecated Use `DeferredChannelMessageWithSource` instead; will be removed on April 9, 2021
-	 */
-	Acknowledge,
-	/**
-	 * Respond with a message, eating the user's input
-	 * @deprecated Use `ChannelMessageWithSource` instead; will be removed on April 9, 2021
-	 */
-	ChannelMessage,
-	/**
 	 * Respond to an interaction with a message
 	 */
-	ChannelMessageWithSource,
+	ChannelMessageWithSource = 4,
 	/**
 	 * ACK an interaction and edit to a response later, the user sees a loading state
 	 */
