@@ -27,7 +27,7 @@ export const GatewayVersion = '8';
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
  */
-export const enum GatewayOPCodes {
+export enum GatewayOPCodes {
 	/**
 	 * An event was dispatched
 	 */
@@ -78,7 +78,7 @@ export const enum GatewayOPCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes
  */
-export const enum GatewayCloseCodes {
+export enum GatewayCloseCodes {
 	/**
 	 * We're not sure what went wrong. Try reconnecting?
 	 */
@@ -161,7 +161,7 @@ export const enum GatewayCloseCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-opcodes
  */
-export const enum VoiceOPCodes {
+export enum VoiceOPCodes {
 	/**
 	 * Begin a voice websocket connection
 	 */
@@ -215,7 +215,7 @@ export const enum VoiceOPCodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-close-event-codes
  */
-export const enum VoiceCloseCodes {
+export enum VoiceCloseCodes {
 	/**
 	 * You sent an invalid opcode
 	 */
@@ -269,7 +269,7 @@ export const enum VoiceCloseCodes {
 /**
  * https://discord.com/developers/docs/topics/gateway#list-of-intents
  */
-export const enum GatewayIntentBits {
+export enum GatewayIntentBits {
 	GUILDS = 1 << 0,
 	GUILD_MEMBERS = 1 << 1,
 	GUILD_BANS = 1 << 2,
@@ -290,7 +290,7 @@ export const enum GatewayIntentBits {
 /**
  * https://discord.com/developers/docs/topics/gateway#commands-and-events-gateway-events
  */
-export const enum GatewayDispatchEvents {
+export enum GatewayDispatchEvents {
 	ApplicationCommandCreate = 'APPLICATION_COMMAND_CREATE',
 	ApplicationCommandUpdate = 'APPLICATION_COMMAND_UPDATE',
 	ApplicationCommandDelete = 'APPLICATION_COMMAND_DELETE',
