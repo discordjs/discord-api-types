@@ -213,6 +213,9 @@ export type APIInteractionResponseDeferredChannelMessageWithSource = Interaction
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
  */
 export enum APIInteractionResponseType {
+	/**
+	 * ACK a `Ping`
+	 */
 	Pong = 1,
 	/**
 	 * ACK a command without sending a message, eating the user's input
