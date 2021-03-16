@@ -2,7 +2,7 @@
 name: Feature request
 about: Request a feature for the discord-api-types library
 title: ''
-labels: 'discussion, in review'
+labels: 'discussion'
 assignees: ''
 ---
 

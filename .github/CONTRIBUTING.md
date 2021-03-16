@@ -49,5 +49,5 @@ $ npm i # install the dependencies of the project
 A high level overview of tools used:
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
-- [Eslint](https://eslint.org/) for code-style
+- [ESLint](https://eslint.org/) for code-style
 - [Prettier](https://prettier.io/) for code formatting

@@ -2,7 +2,7 @@
 name: Bug report
 about: Report incorrect or unexpected behavior of discord-api-types
 title: ''
-labels: 'bug, in review'
+labels: 'bug'
 assignees: ''
 ---
 
