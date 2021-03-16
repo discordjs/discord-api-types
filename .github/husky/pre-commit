@@ -10,5 +10,5 @@ npx --no-install lint-staged
 # Build deno changes automatically (because of current bug in GitHub Actions)
 npm run build:deno
 
-# Add all changed files
+# Add any changed deno files
 git add deno/
