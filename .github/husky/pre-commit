@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run pretty-quick to run prettier across all staged files
+npx --no-install pretty-quick --staged
+
+# Run lint-staged
+npx --no-install lint-staged
+
+# Build deno changes automatically (because of current bug in GitHub Actions)
+npm run build:deno
+
+# Add all changed files
+git add deno/
