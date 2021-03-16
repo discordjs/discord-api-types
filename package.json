@@ -19,19 +19,19 @@
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "run-s clean test:lint build:node",
-		"postpublish": "run-s clean:node build:deno",
+		"build:ci": "tsc --noEmit --incremental false",
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
-		"build:ci": "tsc --noEmit --incremental false",
+		"clean:deno": "rimraf deno/",
+		"clean:node": "rimraf {v*,default,common}/**/*.{js,mjs,d.ts,map}",
+		"clean": "run-p clean:*",
 		"esm:common": "gen-esm-wrapper ./common/index.js ./common/index.mjs",
 		"esm:v6": "gen-esm-wrapper ./v6/index.js ./v6/index.mjs",
 		"esm:v8": "gen-esm-wrapper ./v8/index.js ./v8/index.mjs",
 		"lint": "eslint --fix --ext mjs,js,ts {v*,default,common}/**",
-		"test:lint": "eslint --ext mjs,js,ts {v*,default,common}/**",
-		"clean": "run-p clean:*",
-		"clean:node": "rimraf {v*,default,common}/**/*.{js,mjs,d.ts,map}",
-		"clean:deno": "rimraf deno/"
+		"postpublish": "run-s clean:node build:deno",
+		"prepublishOnly": "run-s clean test:lint build:node",
+		"test:lint": "eslint --ext mjs,js,ts {v*,default,common}/**"
 	},
 	"keywords": [
 		"discord",
@@ -53,21 +53,22 @@
 		"node": ">=12"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^11.0.0",
-		"@commitlint/config-angular": "^11.0.0",
-		"@typescript-eslint/eslint-plugin": "^4.14.2",
-		"@typescript-eslint/parser": "^4.14.2",
-		"eslint": "^7.19.0",
-		"eslint-config-marine": "^8.1.0",
-		"eslint-config-prettier": "^7.2.0",
+		"@commitlint/cli": "^12.0.1",
+		"@commitlint/config-angular": "^12.0.1",
+		"@typescript-eslint/eslint-plugin": "^4.18.0",
+		"@typescript-eslint/parser": "^4.18.0",
+		"eslint": "^7.22.0",
+		"eslint-config-marine": "^8.3.2",
+		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
 		"gen-esm-wrapper": "^1.1.1",
 		"husky": "^4.3.8",
 		"lint-staged": "^10.5.4",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.2.1",
+		"pretty-quick": "^3.1.0",
 		"rimraf": "^3.0.2",
-		"typescript": "^4.1.3"
+		"typescript": "^4.2.3"
 	},
 	"repository": {
 		"type": "git",
@@ -87,7 +88,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged",
+			"pre-commit": "pretty-quick --staged && lint-staged && npm run build:deno && git add deno",
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}
 	},
