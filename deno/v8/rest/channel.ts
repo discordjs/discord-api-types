@@ -162,7 +162,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * `true` if this is a TTS message
 	 */
-	tts?: true;
+	tts?: boolean;
 	/**
 	 * Embedded `rich` content
 	 *
