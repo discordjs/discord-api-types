@@ -238,14 +238,19 @@ export type APIInteractionResponse =
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource;
 
-export type APIInteractionResponsePong = InteractionResponsePayload<InteractionResponseType.Pong>;
+export interface APIInteractionResponsePong {
+	type: InteractionResponseType.Pong;
+}
 
-export type APIInteractionResponseChannelMessageWithSource = InteractionResponsePayload<
-	InteractionResponseType.ChannelMessageWithSource,
-	true
->;
+export interface APIInteractionResponseChannelMessageWithSource {
+	type: InteractionResponseType.ChannelMessageWithSource;
+	data: APIInteractionApplicationCommandCallbackData;
+}
 
-export type APIInteractionResponseDeferredChannelMessageWithSource = InteractionResponsePayload<InteractionResponseType.DeferredChannelMessageWithSource>;
+export interface APIInteractionResponseDeferredChannelMessageWithSource {
+	type: InteractionResponseType.DeferredChannelMessageWithSource;
+	data?: Pick<APIInteractionApplicationCommandCallbackData, 'flags'>;
+}
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
@@ -293,14 +298,6 @@ export interface APIMessageInteraction {
 	 * The user who invoked the interaction
 	 */
 	user: APIUser;
-}
-
-/**
- * @internal
- */
-interface InteractionResponsePayload<T extends InteractionResponseType, D = false> {
-	type: T;
-	data: D extends true ? APIInteractionApplicationCommandCallbackData : never;
 }
 
 /**
