@@ -85,6 +85,10 @@ export interface APIBaseInteraction {
 	 */
 	id: Snowflake;
 	/**
+	 * ID of the application this interaction is for
+	 */
+	application_id: Snowflake;
+	/**
 	 * The type of interaction
 	 */
 	type: InteractionType;
