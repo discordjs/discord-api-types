@@ -172,22 +172,59 @@ export interface APIApplicationCommandInteractionData {
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-applicationcommandinteractiondataoption
  */
 export type APIApplicationCommandInteractionDataOption =
-	| {
-			name: string;
-			type: ApplicationCommandOptionType.SUB_COMMAND | ApplicationCommandOptionType.SUB_COMMAND_GROUP;
-			options: APIApplicationCommandInteractionDataOption[];
-	  }
-	| { name: string; type: ApplicationCommandOptionType.STRING; value: string }
-	| {
-			name: string;
-			type:
-				| ApplicationCommandOptionType.USER
-				| ApplicationCommandOptionType.CHANNEL
-				| ApplicationCommandOptionType.ROLE;
-			value: Snowflake;
-	  }
-	| { name: string; type: ApplicationCommandOptionType.INTEGER; value: number }
-	| { name: string; type: ApplicationCommandOptionType.BOOLEAN; value: boolean };
+	| ApplicationCommandInteractionDataOptionSubCommand
+	| ApplicationCommandInteractionDataOptionSubCommandGroup
+	| APIApplicationCommandInteractionDataOptionWithValues;
+
+export interface ApplicationCommandInteractionDataOptionSubCommand {
+	name: string;
+	type: ApplicationCommandOptionType.SUB_COMMAND;
+	options: APIApplicationCommandInteractionDataOptionWithValues[];
+}
+
+export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
+	name: string;
+	type: ApplicationCommandOptionType.SUB_COMMAND;
+	options: ApplicationCommandInteractionDataOptionSubCommand[];
+}
+
+export type APIApplicationCommandInteractionDataOptionWithValues =
+	| ApplicationCommandInteractionDataOptionString
+	| ApplicationCommandInteractionDataOptionRole
+	| ApplicationCommandInteractionDataOptionChannel
+	| ApplicationCommandInteractionDataOptionUser
+	| ApplicationCommandInteractionDataOptionInteger
+	| ApplicationCommandInteractionDataOptionBoolean;
+
+export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
+	ApplicationCommandOptionType.STRING,
+	string
+>;
+
+export type ApplicationCommandInteractionDataOptionRole = InteractionDataOptionBase<
+	ApplicationCommandOptionType.ROLE,
+	Snowflake
+>;
+
+export type ApplicationCommandInteractionDataOptionChannel = InteractionDataOptionBase<
+	ApplicationCommandOptionType.CHANNEL,
+	Snowflake
+>;
+
+export type ApplicationCommandInteractionDataOptionUser = InteractionDataOptionBase<
+	ApplicationCommandOptionType.USER,
+	Snowflake
+>;
+
+export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
+	ApplicationCommandOptionType.INTEGER,
+	number
+>;
+
+export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOptionBase<
+	ApplicationCommandOptionType.BOOLEAN,
+	boolean
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response
@@ -197,19 +234,19 @@ export type APIInteractionResponse =
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource;
 
-export type APIInteractionResponsePong = InteractionResponsePayload<APIInteractionResponseType.Pong>;
+export type APIInteractionResponsePong = InteractionResponsePayload<InteractionResponseType.Pong>;
 
 export type APIInteractionResponseChannelMessageWithSource = InteractionResponsePayload<
-	APIInteractionResponseType.ChannelMessageWithSource,
+	InteractionResponseType.ChannelMessageWithSource,
 	true
 >;
 
-export type APIInteractionResponseDeferredChannelMessageWithSource = InteractionResponsePayload<APIInteractionResponseType.DeferredChannelMessageWithSource>;
+export type APIInteractionResponseDeferredChannelMessageWithSource = InteractionResponsePayload<InteractionResponseType.DeferredChannelMessageWithSource>;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
  */
-export const enum APIInteractionResponseType {
+export const enum InteractionResponseType {
 	/**
 	 * ACK a `Ping`
 	 */
@@ -257,7 +294,16 @@ export interface APIMessageInteraction {
 /**
  * @internal
  */
-interface InteractionResponsePayload<T extends APIInteractionResponseType, D = false> {
+interface InteractionResponsePayload<T extends InteractionResponseType, D = false> {
 	type: T;
 	data: D extends true ? APIInteractionApplicationCommandCallbackData : never;
+}
+
+/**
+ * @internal
+ */
+interface InteractionDataOptionBase<T extends ApplicationCommandOptionType, D = unknown> {
+	name: string;
+	type: T;
+	value: D;
 }
