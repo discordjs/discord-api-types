@@ -1,6 +1,6 @@
 {
 	"name": "discord-api-types",
-	"version": "0.13.2",
+	"version": "0.13.3",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
 	"main": "./default/index.js",
 	"types": "./default/index.d.ts",
@@ -42,12 +42,9 @@
 	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
 	"license": "MIT",
 	"files": [
-		"v*/*",
-		"default/*",
-		"common/*",
-		"!**/*.ts",
-		"**/*.d.ts",
-		"!deno/*"
+		"v*/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
+		"default/*.{js,js.map,d.ts,d.ts.map,mjs}",
+		"common/*.{js,js.map,d.ts,d.ts.map,mjs}"
 	],
 	"engines": {
 		"node": ">=12"
