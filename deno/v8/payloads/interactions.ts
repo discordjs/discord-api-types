@@ -188,7 +188,7 @@ export interface ApplicationCommandInteractionDataOptionSubCommand {
 
 export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
 	name: string;
-	type: ApplicationCommandOptionType.SUB_COMMAND;
+	type: ApplicationCommandOptionType.SUB_COMMAND_GROUP;
 	options: ApplicationCommandInteractionDataOptionSubCommand[];
 }
 
