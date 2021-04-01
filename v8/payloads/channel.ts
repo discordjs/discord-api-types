@@ -100,7 +100,7 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	last_pin_timestamp?: string | null;
 	/**
-	 * The camera video quality mode of the voice channel, 1 when not present
+	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
