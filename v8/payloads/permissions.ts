@@ -44,6 +44,7 @@ export const PermissionFlagsBits = {
 	MANAGE_WEBHOOKS: 1n << 29n,
 	MANAGE_EMOJIS: 1n << 30n,
 	USE_APPLICATION_COMMANDS: 1n << 31n,
+	REQUEST_TO_SPEAK: 1n << 32n,
 } as const;
 
 /**

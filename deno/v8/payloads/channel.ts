@@ -108,7 +108,7 @@ export enum ChannelType {
 	/**
 	 * A text channel within a guild
 	 */
-	GUILD_TEXT = 0,
+	GUILD_TEXT,
 	/**
 	 * A direct message between users
 	 */
@@ -139,6 +139,12 @@ export enum ChannelType {
 	 * See https://discord.com/developers/docs/game-and-server-management/special-channels
 	 */
 	GUILD_STORE,
+	/**
+	 * A voice channel for hosting events with an audience
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/1500005513722
+	 */
+	GUILD_STAGE_VOICE = 13,
 }
 
 /**
