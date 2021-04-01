@@ -88,6 +88,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: text, news, store, voice
 	 */
 	parent_id?: Snowflake | null;
+	/**
+	 * Voice region id for the voice or stage channel, automatic when set to null
+	 *
+	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 */
+	rtc_region?: string | null;
 }
 
 /**

@@ -99,6 +99,12 @@ export interface APIChannel extends APIPartialChannel {
 	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
 	 */
 	last_pin_timestamp?: string | null;
+	/**
+	 * Voice region id for the voice or stage channel, automatic when set to null
+	 *
+	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 */
+	rtc_region: string | null;
 }
 
 /**
