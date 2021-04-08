@@ -626,6 +626,15 @@ export const Routes = {
 	guildMemberVerification(guildID: Snowflake) {
 		return `/guilds/${guildID}/member-verification` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/guilds/{guild.id}/voice-states/@me`
+	 * - PATCH `/guilds/{guild.id}/voice-states/{user.id}`
+	 */
+	guildVoiceState(guildID: Snowflake, userID: Snowflake | '@me' = '@me') {
+		return `/guilds/${guildID}/voice-states/${userID}` as const;
+	},
 };
 
 export const RouteBases = {

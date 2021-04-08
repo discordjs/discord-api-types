@@ -59,6 +59,10 @@ export interface GatewayVoiceState {
 	 * Whether this user is muted by the current user
 	 */
 	suppress: boolean;
+	/**
+	 * The time at which the user requested to speak
+	 */
+	request_to_speak_timestamp: string | null;
 }
 
 /**
