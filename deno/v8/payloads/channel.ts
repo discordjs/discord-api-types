@@ -435,7 +435,14 @@ export enum MessageFlags {
 	 * This message came from the urgent message system
 	 */
 	URGENT = 1 << 4,
+	/**
+	 * This message is only visible to the user who invoked the Interaction
+	 */
 	EPHEMERAL = 1 << 6,
+	/**
+	 * This message is an Interaction Response and the bot is "thinking"
+	 */
+	LOADING = 1 << 7,
 }
 
 /**
