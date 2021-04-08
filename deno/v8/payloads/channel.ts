@@ -99,6 +99,12 @@ export interface APIChannel extends APIPartialChannel {
 	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
 	 */
 	last_pin_timestamp?: string | null;
+	/**
+	 * The camera video quality mode of the voice channel, `1` when not present
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
+	 */
+	video_quality_mode?: VideoQualityMode;
 }
 
 /**
@@ -139,6 +145,17 @@ export enum ChannelType {
 	 * See https://discord.com/developers/docs/game-and-server-management/special-channels
 	 */
 	GUILD_STORE,
+}
+
+export enum VideoQualityMode {
+	/**
+	 * Discord chooses the quality for optimal performance
+	 */
+	AUTO = 1,
+	/**
+	 * 720p
+	 */
+	FULL,
 }
 
 /**
