@@ -90,6 +90,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	parent_id?: Snowflake | null;
 	/**
+	 * Voice region id for the voice or stage channel, automatic when set to `null`
+	 *
+	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 */
+	rtc_region?: string | null;
+	/**
 	 * The camera video quality mode of the voice channel
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes

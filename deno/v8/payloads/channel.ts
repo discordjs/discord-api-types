@@ -100,6 +100,12 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	last_pin_timestamp?: string | null;
 	/**
+	 * Voice region id for the voice or stage channel, automatic when set to `null`
+	 *
+	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 */
+	rtc_region: string | null;
+	/**
 	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes

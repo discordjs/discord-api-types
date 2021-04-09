@@ -114,6 +114,7 @@ export interface APIGuild extends APIPartialGuild {
 	 * Voice region id for the guild
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 * @deprecated This field has been deprecated in favor of `rtc_region` on the channel.
 	 */
 	region: string;
 	/**
