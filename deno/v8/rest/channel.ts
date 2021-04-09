@@ -13,6 +13,7 @@ import type {
 	InviteTargetUserType,
 	MessageFlags,
 	OverwriteType,
+	VideoQualityMode,
 } from '../payloads/mod.ts';
 
 /**
@@ -94,6 +95,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	rtc_region?: string | null;
+	/**
+	 * The camera video quality mode of the voice channel
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
+	 */
+	video_quality_mode?: VideoQualityMode | null;
 }
 
 /**

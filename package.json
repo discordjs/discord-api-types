@@ -90,7 +90,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts"
+		"{v*,default,common}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts"
 	},
 	"commitlint": {
 		"extends": [

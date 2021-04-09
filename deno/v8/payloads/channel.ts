@@ -105,6 +105,12 @@ export interface APIChannel extends APIPartialChannel {
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	rtc_region: string | null;
+  /**
+	 * The camera video quality mode of the voice channel, `1` when not present
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
+	 */
+	video_quality_mode?: VideoQualityMode;
 }
 
 /**
@@ -114,7 +120,7 @@ export enum ChannelType {
 	/**
 	 * A text channel within a guild
 	 */
-	GUILD_TEXT = 0,
+	GUILD_TEXT,
 	/**
 	 * A direct message between users
 	 */
@@ -145,6 +151,23 @@ export enum ChannelType {
 	 * See https://discord.com/developers/docs/game-and-server-management/special-channels
 	 */
 	GUILD_STORE,
+	/**
+	 * A voice channel for hosting events with an audience
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/1500005513722
+	 */
+	GUILD_STAGE_VOICE = 13,
+}
+
+export enum VideoQualityMode {
+	/**
+	 * Discord chooses the quality for optimal performance
+	 */
+	AUTO = 1,
+	/**
+	 * 720p
+	 */
+	FULL,
 }
 
 /**
@@ -343,6 +366,7 @@ export enum MessageType {
 	GUILD_DISCOVERY_GRACE_PERIOD_FINAL_WARNING,
 	REPLY = 19,
 	APPLICATION_COMMAND,
+	GUILD_INVITE_REMINDER = 22,
 }
 
 /**
@@ -441,7 +465,14 @@ export enum MessageFlags {
 	 * This message came from the urgent message system
 	 */
 	URGENT = 1 << 4,
+	/**
+	 * This message is only visible to the user who invoked the Interaction
+	 */
 	EPHEMERAL = 1 << 6,
+	/**
+	 * This message is an Interaction Response and the bot is "thinking"
+	 */
+	LOADING = 1 << 7,
 }
 
 /**
