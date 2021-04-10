@@ -39,6 +39,14 @@ export interface APIApplication {
 	 */
 	bot_require_code_grant: boolean;
 	/**
+	 * The url of the app's terms of service
+	 */
+	terms_of_service_url?: string;
+	/**
+	 * The url of the app's privacy policy
+	 */
+	privacy_policy_url?: string;
+	/**
 	 * Partial user object containing info on the owner of the application
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
@@ -88,7 +96,7 @@ export enum ApplicationFlags {
 	GroupDMCreate = 1 << 4,
 	RPCHasConnected = 1 << 11,
 	GatewayPresence = 1 << 12,
-	GatewayPresenceLimit = 1 << 13,
+	GatewayPresenceLimited = 1 << 13,
 	GatewayGuildMembers = 1 << 14,
 	GatewayGuildMembersLimited = 1 << 15,
 	VerificationPendingGuildLimit = 1 << 16,
