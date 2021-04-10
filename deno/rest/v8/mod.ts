@@ -568,6 +568,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET  `/applications/{application.id}/commands`
+	 * - PUT  `/applications/{application.id}/commands`
 	 * - POST `/applications/{application.id}/commands`
 	 */
 	applicationCommands(applicationID: Snowflake) {
@@ -587,6 +588,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET  `/applications/{application.id}/guilds/{guild.id}/commands`
+	 * - PUT  `/applications/{application.id}/guilds/{guild.id}/commands`
 	 * - POST `/applications/{application.id}/guilds/{guild.id}/commands`
 	 */
 	applicationGuildCommands(applicationID: Snowflake, guildID: Snowflake) {

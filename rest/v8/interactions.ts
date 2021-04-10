@@ -36,6 +36,16 @@ export type RESTPatchAPIApplicationCommandJSONBody = Partial<RESTPostAPIApplicat
 export type RESTPatchAPIApplicationCommandResult = APIApplicationCommand;
 
 /**
+ * https://discord.com/developers/docs/interactions/slash-commands#bulk-overwrite-global-application-commands
+ */
+export type RESTPutAPIApplicationCommandsJSONBody = RESTPostAPIApplicationCommandsJSONBody[];
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#bulk-overwrite-global-application-commands
+ */
+export type RESTPutAPIApplicationCommandsResult = APIApplicationCommand[];
+
+/**
  * https://discord.com/developers/docs/interactions/slash-commands#get-guild-application-commands
  */
 export type RESTGetAPIApplicationGuildCommandsResult = APIApplicationCommand[];
@@ -64,6 +74,16 @@ export type RESTPatchAPIApplicationGuildCommandJSONBody = Partial<RESTPostAPIApp
  * https://discord.com/developers/docs/interactions/slash-commands#edit-guild-application-command
  */
 export type RESTPatchAPIApplicationGuildCommandResult = APIApplicationCommand;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#bulk-overwrite-global-application-commands
+ */
+export type RESTPutAPIApplicationGuildCommandsJSONBody = RESTPostAPIApplicationCommandsJSONBody[];
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#bulk-overwrite-global-application-commands
+ */
+export type RESTPutAPIApplicationGuildCommandsResult = APIApplicationCommand[];
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#create-interaction-response
