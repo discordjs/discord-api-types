@@ -1344,6 +1344,8 @@ export interface GatewayRequestGuildMembersData {
 	/**
 	 * Nonce to identify the Guild Members Chunk response
 	 *
+	 * Nonce can only be up to 32 bytes. If you send an invalid nonce it will be ignored and the reply member_chunk(s) will not have a `nonce` set.
+	 *
 	 * See https://discord.com/developers/docs/topics/gateway#guild-members-chunk
 	 */
 	nonce?: string;

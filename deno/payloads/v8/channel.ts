@@ -272,7 +272,7 @@ export interface APIMessage {
 	 */
 	reactions?: APIReaction[];
 	/**
-	 * Used for validating a message was sent
+	 * A nonce that can be used for optimistic message sending (up to 25 characters)
 	 *
 	 * **You will not receive this from further fetches. This is received only once from a `MESSAGE_CREATE`
 	 * event to ensure it got sent**
