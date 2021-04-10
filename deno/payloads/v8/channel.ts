@@ -35,7 +35,7 @@ export interface APIPartialChannel {
  */
 export interface APIChannel extends APIPartialChannel {
 	/**
-	 * The id of the guild
+	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
 	guild_id?: Snowflake;
 	/**
