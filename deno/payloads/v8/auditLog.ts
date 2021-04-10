@@ -63,8 +63,7 @@ export interface APIAuditLogEntry {
 	/**
 	 * The user who made the changes
 	 *
-	 * *Against all odds, this can be `null` in some cases (webhooks deleting themselves
-	 * by using their own token, for example)*
+	 * This can be `null` in some cases (webhooks deleting themselves by using their own token, for example)
 	 */
 	user_id: Snowflake | null;
 	/**
