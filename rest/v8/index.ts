@@ -648,6 +648,15 @@ export const Routes = {
 	applicationCommandPermissions(applicationID: Snowflake, guildID: Snowflake, commandID: Snowflake) {
 		return `/applications/${applicationID}/guilds/${guildID}/commands/${commandID}/permissions` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET   `/guilds/{guild.id}/welcome-screen`
+	 * - PATCH `/guilds/{guild.id}/welcome-screen`
+	 */
+	guildWelcomeScreen(guildID: Snowflake) {
+		return `/guilds/${guildID}/welcome-screen` as const;
+	},
 };
 
 export const RouteBases = {

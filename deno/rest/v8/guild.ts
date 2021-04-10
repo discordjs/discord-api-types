@@ -8,6 +8,7 @@ import type {
 	APIGuildMember,
 	APIGuildMembershipScreening,
 	APIGuildPreview,
+	APIGuildWelcomeScreen,
 	APIGuildWidget,
 	APIGuildWidgetSettings,
 	APIRole,
@@ -758,3 +759,22 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 	 */
 	suppress?: boolean;
 }
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
+ */
+export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
+ */
+export interface RESTPatchAPIGuildWelcomeScreenJSONBody extends Nullable<Partial<APIGuildWelcomeScreen>> {
+	/**
+	 * Whether the welcome screen is enabled
+	 */
+	enabled?: boolean | null;
+}
+
+type Nullable<T> = {
+	[P in keyof T]: T[P] | null;
+};
