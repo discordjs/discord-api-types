@@ -58,7 +58,7 @@ export interface APIApplication {
 	 */
 	summary: string;
 	/**
-	 * The base64 encoded key for the GameSDK's GetTicket
+	 * The hex encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
 	 * See https://discord.com/developers/docs/game-sdk/applications#get-ticket
 	 */
