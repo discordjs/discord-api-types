@@ -49,7 +49,13 @@ export interface APIWebhook {
 	 * The bot/OAuth2 application that created this webhook
 	 */
 	application_id: Snowflake | null;
+	/**
+	 * The guild of the channel that this webhook is following (returned for Channel Follower Webhooks)
+	 */
 	source_guild?: APIPartialGuild;
+	/**
+	 * The channel that this webhook is following (returned for Channel Follower Webhooks)
+	 */
 	source_channel?: APIPartialChannel;
 }
 
