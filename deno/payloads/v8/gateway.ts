@@ -201,6 +201,9 @@ export interface GatewayActivity {
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
 	flags?: ActivityFlags;
+	/**
+	 * The custom buttons shown in the Rich Presence (max 2)
+	 */
 	buttons?: string[] | GatewayActivityButton[];
 }
 
@@ -298,6 +301,12 @@ export enum ActivityFlags {
 }
 
 export interface GatewayActivityButton {
+	/**
+	 * The text shown on the button (1-32 characters)
+	 */
 	label: string;
+	/**
+	 * The url opened when clicking the button (1-512 characters)
+	 */
 	url: string;
 }
