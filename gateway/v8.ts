@@ -1388,11 +1388,11 @@ export interface GatewayPresenceUpdateData {
 	 */
 	since: number | null;
 	/**
-	 * `null`, or the user's activities
+	 * The user's activities
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#activity-object
 	 */
-	activities: GatewayActivityUpdateData[] | null;
+	activities: GatewayActivityUpdateData[];
 	/**
 	 * The user's new status
 	 *
