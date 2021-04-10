@@ -1250,13 +1250,6 @@ export interface GatewayIdentifyData {
 	 */
 	presence?: GatewayPresenceUpdateData;
 	/**
-	 * Enables dispatching of guild subscription events (presence and typing events)
-	 *
-	 * @default true
-	 * @deprecated Use `intents` instead
-	 */
-	guild_subscriptions?: boolean;
-	/**
 	 * The Gateway Intents you wish to receive
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#gateway-intents
