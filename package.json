@@ -74,7 +74,8 @@
 		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts}/** globals.ts",
 		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts}/** globals.ts",
 		"prepublishOnly": "run-s clean test:lint build:node",
-		"postpublish": "run-s clean:node build:deno"
+		"postpublish": "run-s clean:node build:deno",
+		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
 	},
 	"keywords": [
 		"discord",
@@ -97,6 +98,7 @@
 		"@types/node": "^14.14.37",
 		"@typescript-eslint/eslint-plugin": "^4.21.0",
 		"@typescript-eslint/parser": "^4.21.0",
+		"conventional-changelog-cli": "^2.1.1",
 		"eslint": "^7.24.0",
 		"eslint-config-marine": "^8.3.2",
 		"eslint-config-prettier": "^8.1.0",
