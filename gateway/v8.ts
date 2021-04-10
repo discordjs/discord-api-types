@@ -705,12 +705,14 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-update
  */
-export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' | 'mute'> & {
-	/**
-	 * The id of the guild
-	 */
-	guild_id: Snowflake;
-};
+export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' | 'mute' | 'user'> &
+	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
+	Required<Pick<APIGuildMember, 'user'>> & {
+		/**
+		 * The id of the guild
+		 */
+		guild_id: Snowflake;
+	};
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-members-chunk
