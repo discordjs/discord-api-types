@@ -10,6 +10,7 @@ import type {
 	APIChannel,
 	APIEmoji,
 	APIGuild,
+	APIGuildIntegration,
 	APIGuildMember,
 	APIMessage,
 	APIRole,
@@ -186,8 +187,8 @@ export enum GatewayIntentBits {
  */
 export enum GatewayDispatchEvents {
 	ApplicationCommandCreate = 'APPLICATION_COMMAND_CREATE',
-	ApplicationCommandUpdate = 'APPLICATION_COMMAND_UPDATE',
 	ApplicationCommandDelete = 'APPLICATION_COMMAND_DELETE',
+	ApplicationCommandUpdate = 'APPLICATION_COMMAND_UPDATE',
 	ChannelCreate = 'CHANNEL_CREATE',
 	ChannelDelete = 'CHANNEL_DELETE',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
@@ -206,6 +207,9 @@ export enum GatewayDispatchEvents {
 	GuildRoleDelete = 'GUILD_ROLE_DELETE',
 	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
 	GuildUpdate = 'GUILD_UPDATE',
+	IntegrationCreate = 'INTEGRATION_CREATE',
+	IntegrationDelete = 'INTEGRATION_DELETE',
+	IntegrationUpdate = 'INTEGRATION_UPDATE',
 	InteractionCreate = 'INTERACTION_CREATE',
 	InviteCreate = 'INVITE_CREATE',
 	InviteDelete = 'INVITE_DELETE',
@@ -257,6 +261,9 @@ export type GatewayDispatchPayload =
 	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
 	| GatewayGuildRoleModifyDispatch
+	| GatewayIntegrationCreateDispatch
+	| GatewayIntegrationDeleteDispatch
+	| GatewayIntegrationUpdateDispatch
 	| GatewayInteractionCreateDispatch
 	| GatewayInviteCreateDispatch
 	| GatewayInviteDeleteDispatch
@@ -819,6 +826,58 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	 * The id of the role
 	 */
 	role_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#integration-create
+ */
+export type GatewayIntegrationCreateDispatch = DataPayload<
+	GatewayDispatchEvents.IntegrationCreate,
+	GatewayIntegrationCreateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#integration-create
+ */
+export type GatewayIntegrationCreateDispatchData = APIGuildIntegration & { guild_id: Snowflake };
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#integration-update
+ */
+export type GatewayIntegrationUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.IntegrationUpdate,
+	GatewayIntegrationUpdateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#integration-update
+ */
+export type GatewayIntegrationUpdateDispatchData = APIGuildIntegration & { guild_id: Snowflake };
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#integration-update
+ */
+export type GatewayIntegrationDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.IntegrationDelete,
+	GatewayIntegrationDeleteDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#integration-delete
+ */
+export interface GatewayIntegrationDeleteDispatchData {
+	/**
+	 * Integration id
+	 */
+	id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
+	guild_id: Snowflake;
+	/**
+	 * ID of the bot/OAuth2 application for this Discord integration
+	 */
+	application_id?: Snowflake;
 }
 
 /**
