@@ -6,6 +6,10 @@
 	"module": "./shortcuts/v8.mjs",
 	"types": "./shortcuts/v8.d.ts",
 	"exports": {
+		"./globals": {
+			"require": "./globals.js",
+			"import": "./globals.mjs"
+		},
 		"./v6": {
 			"require": "./shortcuts/v6.js",
 			"import": "./shortcuts/v6.mjs"
