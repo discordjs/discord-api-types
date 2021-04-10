@@ -43,8 +43,7 @@ export const PermissionFlagsBits = {
 	MANAGE_ROLES: 1n << 28n,
 	MANAGE_WEBHOOKS: 1n << 29n,
 	MANAGE_EMOJIS: 1n << 30n,
-	// TODO: rename this accordingly to the PR merged ~~thanks for the inconsistency~~
-	USE_APPLICATION_COMMANDS: 1n << 31n,
+	USE_SLASH_COMMANDS: 1n << 31n,
 	REQUEST_TO_SPEAK: 1n << 32n,
 } as const;
 
