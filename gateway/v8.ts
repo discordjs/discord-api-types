@@ -879,17 +879,21 @@ export interface GatewayInviteCreateDispatchData {
 	 */
 	max_uses: number;
 	/**
-	 * The target user for this invite
+	 * The type of user target for this voice channel invite
+	 *
+	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+	 */
+	target_type?: InviteTargetUserType;
+	/**
+	 * The user whose stream to display for this voice channel stream invite
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	target_user?: APIUser;
 	/**
-	 * The type of user target for this invite
-	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+	 * The embedded application to open for this voice channel embedded application invite
 	 */
-	target_user_type?: InviteTargetUserType;
+	target_application?: Partial<APIApplication>;
 	/**
 	 * Whether or not the invite is temporary (invited users will be kicked on disconnect unless they're assigned a role)
 	 */

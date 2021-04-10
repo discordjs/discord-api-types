@@ -389,13 +389,21 @@ export interface RESTPostAPIChannelInviteJSONBody {
 	 */
 	unique?: boolean;
 	/**
-	 * The target user id for this invite
+	 * The type of target user for this voice channel invite
 	 */
-	target_user_id?: string;
+	target_type?: InviteTargetUserType;
 	/**
-	 * The type of target user for this invite
+	 * The id of the user whose stream to display for this invite
+	 * - Required if `target_type` is 1
+	 * - The user must be streaming in the channel
 	 */
-	target_user_type?: InviteTargetUserType;
+	target_user_id?: Snowflake;
+	/**
+	 * The id of the embedded application to open for this invite
+	 * - Required if `target_type` is 2
+	 * - The application must have the `EMBEDDED` flag
+	 */
+	target_application_id?: Snowflake;
 }
 
 /**

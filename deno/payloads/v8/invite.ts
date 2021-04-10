@@ -4,6 +4,7 @@
 
 import type { APIPartialChannel } from './channel.ts';
 import type { APIPartialGuild } from './guild.ts';
+import type { APIApplication } from './oauth2.ts';
 import type { APIUser } from './user.ts';
 
 /**
@@ -33,23 +34,27 @@ export interface APIInvite {
 	 */
 	inviter?: APIUser;
 	/**
-	 * The target user for this invite
+	 * The type of user target for this voice channel invite
+	 *
+	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+	 */
+	target_type?: InviteTargetUserType;
+	/**
+	 * The user whose stream to display for this voice channel stream invite
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	target_user?: APIUser;
 	/**
-	 * The type of user target for this invite
-	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+	 * The embedded application to open for this voice channel embedded application invite
 	 */
-	target_user_type?: InviteTargetUserType;
+	target_application?: Partial<APIApplication>;
 	/**
-	 * Approximate count of online members (only present when `target_user` is set)
+	 * Approximate count of online members, returned from the `GET /invites/<code>` endpoint when `with_counts` is `true`
 	 */
 	approximate_presence_count?: number;
 	/**
-	 * Approximate count of total members
+	 * Approximate count of total members, returned from the `GET /invites/<code>` endpoint when `with_counts` is `true`
 	 */
 	approximate_member_count?: number;
 }
@@ -59,6 +64,7 @@ export interface APIInvite {
  */
 export enum InviteTargetUserType {
 	STREAM = 1,
+	EMBEDDED_APPLICATION,
 }
 
 /**
