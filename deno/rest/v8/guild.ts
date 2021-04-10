@@ -329,6 +329,9 @@ export interface RESTGetAPIGuildMembersQuery {
  */
 export type RESTGetAPIGuildMembersResult = APIGuildMember[];
 
+/**
+ * https://discord.com/developers/docs/resources/guild#search-guild-members
+ */
 export interface RESTGetAPIGuildMembersSearchQuery {
 	/**
 	 * Query string to match username(s) and nickname(s) against
