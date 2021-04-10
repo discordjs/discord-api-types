@@ -840,6 +840,12 @@ export interface APIAttachment {
 	 */
 	filename: string;
 	/**
+	 * The attachment's media type
+	 *
+	 * See https://en.wikipedia.org/wiki/Media_type
+	 */
+	content_type?: string;
+	/**
 	 * Size of file in bytes
 	 */
 	size: number;
