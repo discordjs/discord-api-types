@@ -212,9 +212,21 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = Nullable<
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 	| {
-			payload_json: string;
+			/**
+			 * JSON stringified message body
+			 */
+			payload_json?: string;
+			/**
+			 * The file contents
+			 */
+			file: unknown;
 	  }
-	| RESTPatchAPIWebhookWithTokenMessageJSONBody;
+	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & {
+			/**
+			 * The file contents
+			 */
+			file: unknown;
+	  });
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
