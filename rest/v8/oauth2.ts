@@ -78,8 +78,6 @@ export interface RESTPostOAuth2RefreshTokenURLEncodedData {
 	client_secret: string;
 	grant_type: 'refresh_token';
 	refresh_token: string;
-	redirect_uri?: string;
-	scope?: string;
 }
 
 export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
