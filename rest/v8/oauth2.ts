@@ -57,7 +57,6 @@ export interface RESTPostOAuth2AccessTokenURLEncodedData {
 	grant_type: 'authorization_code';
 	code: string;
 	redirect_uri?: string;
-	scope: string;
 }
 
 /**
@@ -80,7 +79,7 @@ export interface RESTPostOAuth2RefreshTokenURLEncodedData {
 	grant_type: 'refresh_token';
 	refresh_token: string;
 	redirect_uri?: string;
-	scope: string;
+	scope?: string;
 }
 
 export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
