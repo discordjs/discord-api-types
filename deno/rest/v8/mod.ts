@@ -335,7 +335,6 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET  `/guilds/{guild.id}/integrations`
-	 * - POST `/guilds/{guild.id}/integrations`
 	 */
 	guildIntegrations(guildID: Snowflake) {
 		return `/guilds/${guildID}/integrations` as const;
@@ -343,19 +342,10 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - PATCH  `/guilds/{guild.id}/integrations/{integration.id}`
 	 * - DELETE `/guilds/{guild.id}/integrations/{integration.id}`
 	 */
 	guildIntegration(guildID: Snowflake, integrationID: Snowflake) {
 		return `/guilds/${guildID}/integrations/${integrationID}` as const;
-	},
-
-	/**
-	 * Route for:
-	 * - POST `/guilds/{guild.id}/integrations/{integration.id}/sync`
-	 */
-	guildIntegrationSync(guildID: Snowflake, integrationID: Snowflake) {
-		return `/guilds/${guildID}/integrations/${integrationID}/sync` as const;
 	},
 
 	/**

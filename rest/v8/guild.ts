@@ -18,7 +18,6 @@ import type {
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
-	IntegrationExpireBehavior,
 } from '../../payloads/v8/index';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 
@@ -662,49 +661,9 @@ export type RESTGetAPIGuildInvitesResult = APIExtendedInvite[];
 export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
 
 /**
- * https://discord.com/developers/docs/resources/guild#create-guild-integration
- */
-export interface RESTPostAPIGuildIntegrationJSONBody {
-	type: string;
-	id: Snowflake;
-}
-
-export type RESTPostAPIGuildIntegrationResult = never;
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-guild-integration
- */
-export interface RESTPatchAPIGuildIntegrationJSONBody {
-	/**
-	 * The behavior when an integration subscription lapses
-	 *
-	 * See https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
-	 */
-	expire_behavior?: IntegrationExpireBehavior | null;
-	/**
-	 * Period (in days) where the integration will ignore lapsed subscriptions
-	 */
-	expire_grace_period?: number | null;
-	/**
-	 * Whether emoticons should be synced for this integration (`twitch` only currently)
-	 */
-	enable_emoticons?: boolean | null;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-guild-integration
- */
-export type RESTPatchAPIGuildIntegrationResult = never;
-
-/**
  * https://discord.com/developers/docs/resources/guild#delete-guild-integration
  */
 export type RESTDeleteAPIGuildIntegrationResult = never;
-
-/**
- * https://discord.com/developers/docs/resources/guild#sync-guild-integration
- */
-export type RESTPostAPIGuildIntegrationSyncResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-settings
