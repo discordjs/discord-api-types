@@ -4,5 +4,15 @@
 		"allowJs": true,
 		"checkJs": true
 	},
-	"include": ["common", "default", "v6", "v8", "scripts", "deno"]
+	"include": [
+		"globals.ts",
+		"gateway/**/*.ts",
+		"payloads/**/*.ts",
+		"rest/**/*.ts",
+		"rpc/**/*.ts",
+		"shortcuts/**/*.ts",
+		"voice/**/*.ts",
+		"scripts",
+		"deno"
+	]
 }
