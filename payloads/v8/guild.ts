@@ -808,6 +808,10 @@ export interface APIGuildWelcomeScreenChannel {
 	 */
 	channel_id: Snowflake;
 	/**
+	 * The description shown for the channel
+	 */
+	description: string;
+	/**
 	 * The emoji id of the emoji that is shown on the left of the channel
 	 */
 	emoji_id: Snowflake | null;
