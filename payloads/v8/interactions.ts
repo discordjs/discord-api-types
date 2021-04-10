@@ -6,11 +6,32 @@ import type { APIGuildMember, APIPartialChannel, APIRole, APIUser, MessageFlags 
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand
  */
 export interface APIApplicationCommand {
+	/**
+	 * Unique id of the command
+	 */
 	id: Snowflake;
+	/**
+	 * Unique id of the parent application
+	 */
 	application_id: Snowflake;
+	/**
+	 * 1-32 character name matching `^[\w-]{1,32}$`
+	 */
 	name: string;
+	/**
+	 * 1-100 character description
+	 */
 	description: string;
+	/**
+	 * The parameters for the command
+	 */
 	options?: APIApplicationCommandOption[];
+	/**
+	 * Whether the command is enabled by default when the app is added to a guild
+	 *
+	 * If missing, this property should be assumed as `true`
+	 */
+	default_permissions?: boolean;
 }
 
 interface APIApplicationCommandOptionBase {
@@ -155,6 +176,51 @@ export type APIApplicationCommandInteraction = Required<APIInteraction>;
 export const enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#guildapplicationcommandpermissions
+ */
+export interface APIGuildApplicationCommandPermissions {
+	/**
+	 * The id of the command
+	 */
+	id: Snowflake;
+	/**
+	 * The id of the application the command belongs to
+	 */
+	application_id: Snowflake;
+	/**
+	 * The id of the guild
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The permissions for the command in the guild
+	 */
+	permissions: APIApplicationCommandPermission[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandpermissions
+ */
+export interface APIApplicationCommandPermission {
+	/**
+	 * The id of the role or user
+	 */
+	id: Snowflake;
+	/**
+	 * Role or user
+	 */
+	type: ApplicationCommandPermissionType;
+	/**
+	 * `true` to allow, `false`, to disallow
+	 */
+	permission: boolean;
+}
+
+export const enum ApplicationCommandPermissionType {
+	ROLE = 1,
+	USER,
 }
 
 /**

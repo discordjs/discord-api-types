@@ -1,4 +1,9 @@
-import type { APIApplicationCommand, APIInteractionResponse } from '../../payloads/v8/index';
+import type {
+	APIApplicationCommand,
+	APIApplicationCommandPermission,
+	APIGuildApplicationCommandPermissions,
+	APIInteractionResponse,
+} from '../../payloads/v8/index';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#get-global-application-commands
@@ -85,3 +90,38 @@ export type RESTPostAPIInteractionCallbackFormDataBody =
 			 */
 			file: unknown;
 	  });
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#get-guild-application-command-permissions
+ */
+export type RESTGetAPIGuildApplicationCommandsPermissionsResult = APIGuildApplicationCommandPermissions[];
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#get-application-command-permissions
+ */
+export type RESTGetAPIApplicationCommandPermissionsResult = APIGuildApplicationCommandPermissions;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-application-command-permissions
+ */
+export interface RESTPutAPIApplicationCommandPermissionsJSONBody {
+	permissions: APIApplicationCommandPermission[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-application-command-permissions
+ */
+export type RESTPutAPIApplicationCommandPermissionsResult = APIGuildApplicationCommandPermissions;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#batch-edit-application-command-permissions
+ */
+export type RESTPutAPIGuildApplicationCommandsPermissionsJSONBody = Pick<
+	APIGuildApplicationCommandPermissions,
+	'id' | 'permissions'
+>[];
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#batch-edit-application-command-permissions
+ */
+export type RESTPutAPIGuildApplicationCommandsPermissionsResult = APIGuildApplicationCommandPermissions[];

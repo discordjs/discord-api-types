@@ -638,6 +638,24 @@ export const Routes = {
 	guildVoiceState(guildID: Snowflake, userID: Snowflake | '@me' = '@me') {
 		return `/guilds/${guildID}/voice-states/${userID}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/guilds/{guild.id}/commands/permissions`
+	 * - PUT `/applications/{application.id}/guilds/{guild.id}/commands/permissions`
+	 */
+	guildApplicationCommandsPermissions(applicationID: Snowflake, guildID: Snowflake) {
+		return `/applications/${applicationID}/guilds/${guildID}/commands/permissions` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}/permissions`
+	 * - PUT `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}/permissions`
+	 */
+	applicationCommandPermissions(applicationID: Snowflake, guildID: Snowflake, commandID: Snowflake) {
+		return `/applications/${applicationID}/guilds/${guildID}/commands/${commandID}/permissions` as const;
+	},
 };
 
 export const RouteBases = {
