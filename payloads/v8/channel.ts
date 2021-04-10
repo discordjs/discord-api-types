@@ -6,6 +6,7 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
+import { APIApplication } from './oauth2';
 import type { APIRole } from './permissions';
 import type { APIUser } from './user';
 
@@ -302,7 +303,7 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-application-structure
 	 */
-	application?: APIMessageApplication;
+	application?: Partial<APIApplication>;
 	/**
 	 * Reference data sent with crossposted messages and replies
 	 *
@@ -385,32 +386,6 @@ export interface APIMessageActivity {
 	 * See https://discord.com/developers/docs/rich-presence/how-to#updating-presence-update-presence-payload-fields
 	 */
 	party_id?: string;
-}
-
-/**
- * https://discord.com/developers/docs/resources/channel#message-object-message-application-structure
- */
-export interface APIMessageApplication {
-	/**
-	 * ID of the application
-	 */
-	id: Snowflake;
-	/**
-	 * ID of the embed's image asset
-	 */
-	cover_image?: string;
-	/**
-	 * Application's description
-	 */
-	description: string;
-	/**
-	 * ID of the application's icon
-	 */
-	icon: string | null;
-	/**
-	 * Name of the application
-	 */
-	name: string;
 }
 
 /**
