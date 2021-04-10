@@ -218,6 +218,9 @@ export interface APIApplicationCommandPermission {
 	permission: boolean;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandpermissiontype
+ */
 export const enum ApplicationCommandPermissionType {
 	ROLE = 1,
 	USER,
