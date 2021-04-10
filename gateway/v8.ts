@@ -414,10 +414,6 @@ export interface GatewayReadyDispatchData {
 	 */
 	user: APIUser;
 	/**
-	 * Empty array
-	 */
-	private_channels: [];
-	/**
 	 * The guilds the user is in
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#unavailable-guild-object
