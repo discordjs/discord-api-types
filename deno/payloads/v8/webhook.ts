@@ -57,6 +57,10 @@ export interface APIWebhook {
 	 * The channel that this webhook is following (returned for Channel Follower Webhooks)
 	 */
 	source_channel?: APIPartialChannel;
+	/**
+	 * The url used for executing the webhook (returned by the [webhooks](#DOCS_TOPICS_OAUTH2/webhooks) OAuth2 flow)
+	 */
+	url?: string;
 }
 
 export enum WebhookType {
