@@ -247,10 +247,6 @@ export type RESTDeleteAPIChannelMessageUserReactionResult = never;
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
-	 * Get users before this user ID
-	 */
-	before?: Snowflake;
-	/**
 	 * Get users after this user ID
 	 */
 	after?: Snowflake;
