@@ -157,10 +157,6 @@ export const enum OAuth2Scopes {
 	 */
 	RPC = 'rpc',
 	/**
-	 * For local rpc server api access, this allows you to access the API as the local user - whitelist only
-	 */
-	RPCApi = 'rpc.api',
-	/**
 	 * For local rpc server api access, this allows you to receive notifications pushed out to the user - whitelist only
 	 */
 	RPCNotificationsRead = 'rpc.notifications.read',
