@@ -1155,8 +1155,12 @@ export interface GatewayVoiceServerUpdateDispatchData {
 	guild_id: Snowflake;
 	/**
 	 * The voice server host
+	 *
+	 * A `null` endpoint means that the voice server allocated has gone away and is trying to be reallocated.
+	 * You should attempt to disconnect from the currently connected voice server, and not attempt to reconnect
+	 * until a new voice server is allocated
 	 */
-	endpoint: string;
+	endpoint: string | null;
 }
 
 /**
