@@ -22,8 +22,14 @@ Promise.allSettled(
 			// Voice
 			fileToESMWrapperCall('voice', version),
 
+			// RPC
+			fileToESMWrapperCall('rpc', version),
+
 			// Utils
 			fileToESMWrapperCall('utils', version),
+
+			// Shortcuts
+			fileToESMWrapperCall('shortcuts', version),
 		])
 		.flat(),
 );

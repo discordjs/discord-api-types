@@ -1,33 +1,4 @@
-/**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes
- */
-export const enum RPCErrorCodes {
-	UnknownError = 1000,
-	InvalidPayload = 4000,
-	InvalidCommand = 4002,
-	InvalidGuild,
-	InvalidEvent,
-	InvalidChannel,
-	InvalidPermissions,
-	InvalidClientID,
-	InvalidOrigin,
-	InvalidToken,
-	InvalidUser,
-	OAuth2Error = 5000,
-	SelectChannelTimedOut,
-	GetGuildTimedOut,
-	SelectVoiceForceRequired,
-	CaptureShortcutAlreadyListening,
-}
+// This file exports all the types available in the recommended API version
+// Thereby, things MAY break in the future. Try sticking to imports from a specific version
 
-/**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
- */
-export const enum RPCCloseEventCodes {
-	InvalidClientID = 4000,
-	InvalidOrigin,
-	RateLimited,
-	TokenRevoked,
-	InvalidVersion,
-	InvalidEncoding,
-}
+export * from './v8';

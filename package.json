@@ -46,6 +46,10 @@
 			"require": "./rpc/index.js",
 			"import": "./rpc/index.mjs"
 		},
+		"./rpc/v*": {
+			"require": "./rpc/v*.js",
+			"import": "./rpc/v*.mjs"
+		},
 		"./voice": {
 			"require": "./voice/index.js",
 			"import": "./voice/index.mjs"
@@ -70,15 +74,13 @@
 		"clean:deno": "rimraf deno/",
 		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{js,mjs,d.ts,map} globals.{js,mjs,d.ts,*map}",
 		"clean": "run-p clean:*",
-		"esm:globals": "gen-esm-wrapper ./globals.js ./globals.mjs",
 		"esm:gateway": "gen-esm-wrapper ./gateway/index.js ./gateway/index.mjs",
 		"esm:payloads": "gen-esm-wrapper ./payloads/index.js ./payloads/index.mjs",
 		"esm:rest": "gen-esm-wrapper ./rest/index.js ./rest/index.mjs",
 		"esm:rpc": "gen-esm-wrapper ./rpc/index.js ./rpc/index.mjs",
-		"esm:v6": "gen-esm-wrapper ./shortcuts/v6.js ./shortcuts/v6.mjs",
-		"esm:v8": "gen-esm-wrapper ./shortcuts/v8.js ./shortcuts/v8.mjs",
 		"esm:utils": "gen-esm-wrapper ./utils/index.js ./utils/index.mjs",
 		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
+		"esm:globals": "gen-esm-wrapper ./globals.js ./globals.mjs",
 		"esm:versions": "node ./scripts/versions.mjs",
 		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",
 		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",

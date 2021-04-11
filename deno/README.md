@@ -32,8 +32,7 @@ const { APIUser } = require('discord-api-types/v8');
 import { APIUser } from 'discord-api-types/v8';
 ```
 
-You may also import just certain parts of the module that you need. The possible values are: `globals`, `gateway`, `gateway/v*`, `payloads`, `payloads/v*`, `rest`, `rest/v*`, `rpc`, `utils`, `utils/v*`, `voice`, and `voice/v*`.
-Below are some examples
+You may also import just certain parts of the module that you need. The possible values are: `globals`, `gateway`, `gateway/v*`, `payloads`, `payloads/v*`, `rest`, `rest/v*`, `rpc`, `rpc/v*`, `utils`, `utils/v*`, `voice`, and `voice/v*`. Below are some examples
 
 ```js
 const { GatewayVersion } = require('discord-api-types/gateway/v8');
@@ -44,7 +43,7 @@ const { GatewayVersion } = require('discord-api-types/gateway/v8');
 import { GatewayVersion } from 'discord-api-types/gateway/v8';
 ```
 
-> _**Note:** The `v*` exports (`discord-api-type/v*`) include the appropriate version of `gateway`, `payloads`, `rest` and `utils` you specified, alongside the `globals` exports_
+> _**Note:** The `v*` exports (`discord-api-type/v*`) include the appropriate version of `gateway`, `payloads`, `rest`, `rpc`, and `utils` you specified, alongside the `globals` exports_
 
 ### Deno
 
