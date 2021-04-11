@@ -3,6 +3,7 @@
 ### Bug Fixes
 
 - **APIApplicationCommand:** default_permission ([#111](https://github.com/discordjs/discord-api-types/issues/111)) ([9420c3e](https://github.com/discordjs/discord-api-types/commit/9420c3e0af7b2486f0e49bb680ed98e0d9f5c625))
+- **Scripts:** `await` in `versions` script, log any errors from deno one ([9113eb1](https://github.com/discordjs/discord-api-types/commit/9113eb133c4627445e2bcd4583c243dde74a20ee))
 
 ### BREAKING CHANGES
 
