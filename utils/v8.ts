@@ -5,7 +5,7 @@ import {
 	APIDMInteraction,
 	APIGuildInteraction,
 	APIInteraction,
-} from '../payloads';
+} from '../payloads/v8/index';
 
 /**
  * A type-guard check for guild interactions.

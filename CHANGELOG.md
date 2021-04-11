@@ -9,6 +9,7 @@
 - **GuildWelcomeScreenChannel:** document missing `description` property ([238695b](https://github.com/discordjs/discord-api-types/commit/238695b44d8547d51782e3d9d9729e2db85bc444))
 - **OAuth2:** `scope` can be optional / not required ([bbe56a9](https://github.com/discordjs/discord-api-types/commit/bbe56a97564ce8c317f291080327484f0d987e1c))
 - **OAuth2:** remove invalid parameters from refresh token request ([1c02450](https://github.com/discordjs/discord-api-types/commit/1c024507f3f55b922565845c2bedac615ffa24d5))
+- **Utils:** correct import for deno users ([3eea63c](https://github.com/discordjs/discord-api-types/commit/3eea63c694ae6d45de521708c0c5c3cd20dd3b36))
 
 ### chore
 
