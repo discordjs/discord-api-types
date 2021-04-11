@@ -31,7 +31,7 @@ export interface APIApplicationCommand {
 	 *
 	 * If missing, this property should be assumed as `true`
 	 */
-	default_permissions?: boolean;
+	default_permission?: boolean;
 }
 
 interface APIApplicationCommandOptionBase {
