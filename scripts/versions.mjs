@@ -6,7 +6,7 @@ const execAsync = promisify(exec);
 const fileToESMWrapperCall = (path, version) =>
 	execAsync(`npx gen-esm-wrapper ./${path}/${version}.js ./${path}/${version}.mjs`);
 
-Promise.allSettled(
+await Promise.allSettled(
 	[
 		'v6', //
 		'v8',

@@ -1,3 +1,14 @@
+# [0.15.0](https://github.com/discordjs/discord-api-types/compare/0.14.0...0.15.0) (2021-04-11)
+
+### Bug Fixes
+
+- **APIApplicationCommand:** default_permission ([#111](https://github.com/discordjs/discord-api-types/issues/111)) ([9420c3e](https://github.com/discordjs/discord-api-types/commit/9420c3e0af7b2486f0e49bb680ed98e0d9f5c625))
+- **Scripts:** `await` in `versions` script, log any errors from deno one ([9113eb1](https://github.com/discordjs/discord-api-types/commit/9113eb133c4627445e2bcd4583c243dde74a20ee))
+
+### BREAKING CHANGES
+
+- **APIApplicationCommand:** This renames the `default_permissions` property to `default_permission`, the correct spelling.
+
 # [0.14.0](https://github.com/discordjs/discord-api-types/compare/0.13.3...0.14.0) (2021-04-11)
 
 ### Bug Fixes
