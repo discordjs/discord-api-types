@@ -69,7 +69,7 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 	}
 }
 
-await Promise.all(
+const folderResults = await Promise.allSettled(
 	[
 		'gateway/', //
 		'payloads/',
@@ -81,6 +81,18 @@ await Promise.all(
 	].map((item) => adaptFolderToDeno(item)),
 );
 
-await Promise.all(
-	['LICENSE', 'README.md', 'globals.ts'].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
+for (const result of folderResults) {
+	if (result.status === 'rejected') console.error(result.reason);
+}
+
+const copyResults = await Promise.allSettled(
+	[
+		'LICENSE', //
+		'README.md',
+		'globals.ts',
+	].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
 );
+
+for (const result of copyResults) {
+	if (result.status === 'rejected') console.error(result.reason);
+}
