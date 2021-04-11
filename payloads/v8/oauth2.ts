@@ -39,11 +39,11 @@ export interface APIApplication {
 	 */
 	bot_require_code_grant: boolean;
 	/**
-	 * The url of the app's terms of service
+	 * The url of the application's terms of service
 	 */
 	terms_of_service_url?: string;
 	/**
-	 * The url of the app's privacy policy
+	 * The url of the application's privacy policy
 	 */
 	privacy_policy_url?: string;
 	/**
@@ -58,7 +58,7 @@ export interface APIApplication {
 	 */
 	summary: string;
 	/**
-	 * The hex encoded key for verification in interactions and the GameSDK's GetTicket function
+	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
 	 * See https://discord.com/developers/docs/game-sdk/applications#get-ticket
 	 */
