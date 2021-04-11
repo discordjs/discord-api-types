@@ -32,7 +32,7 @@ const { APIUser } = require('discord-api-types/v8');
 import { APIUser } from 'discord-api-types/v8';
 ```
 
-You may also import just certain parts of the module that you need. The possible values are: `globals`, `gateway`, `gateway/v*`, `payloads`, `payloads/v*`, `rest`, `rest/v*`, `rpc`, `utils`, `utils/v*`, `voice` and `voice/v*`.
+You may also import just certain parts of the module that you need. The possible values are: `globals`, `gateway`, `gateway/v*`, `payloads`, `payloads/v*`, `rest`, `rest/v*`, `rpc`, `utils`, `utils/v*`, `voice`, and `voice/v*`.
 Below are some examples
 
 ```js
