@@ -53,6 +53,14 @@
 		"./voice/v*": {
 			"require": "./voice/v*.js",
 			"import": "./voice/v*.mjs"
+		},
+		"./utils": {
+			"require": "./utils/index.js",
+			"import": "./utils/index.mjs"
+		},
+		"./utils/v*": {
+			"require": "./utils/v*.js",
+			"import": "./utils/v*.mjs"
 		}
 	},
 	"scripts": {
@@ -60,7 +68,7 @@
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
 		"clean:deno": "rimraf deno/",
-		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,shortcuts}/**/*.{js,mjs,d.ts,map} globals.{js,mjs,d.ts,*map}",
+		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{js,mjs,d.ts,map} globals.{js,mjs,d.ts,*map}",
 		"clean": "run-p clean:*",
 		"esm:globals": "gen-esm-wrapper ./globals.js ./globals.mjs",
 		"esm:gateway": "gen-esm-wrapper ./gateway/index.js ./gateway/index.mjs",
@@ -69,10 +77,11 @@
 		"esm:rpc": "gen-esm-wrapper ./rpc/index.js ./rpc/index.mjs",
 		"esm:v6": "gen-esm-wrapper ./shortcuts/v6.js ./shortcuts/v6.mjs",
 		"esm:v8": "gen-esm-wrapper ./shortcuts/v8.js ./shortcuts/v8.mjs",
+		"esm:utils": "gen-esm-wrapper ./utils/index.js ./utils/index.mjs",
 		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
 		"esm:versions": "node ./scripts/versions.mjs",
-		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts}/** globals.ts",
-		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts}/** globals.ts",
+		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",
+		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"postpublish": "run-s clean:node build:deno",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
@@ -86,7 +95,7 @@
 	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
 	"license": "MIT",
 	"files": [
-		"{gateway,payloads,rest,rpc,voice,shortcuts}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
+		"{gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
 		"globals.{js,js.map,d.ts,d.ts.map,mjs}"
 	],
 	"engines": {
@@ -145,7 +154,7 @@
 		}
 	},
 	"lint-staged": {
-		"{gateway,rest,rpc,voice,shortcuts}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts",
+		"{gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts",
 		"globals.ts": "eslint --fix --ext mjs,js,ts"
 	},
 	"commitlint": {

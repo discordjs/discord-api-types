@@ -135,6 +135,11 @@ export interface APIBaseInteraction {
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
 export interface APIGuildInteraction extends APIBaseInteraction {
+	/**
+	 * The guild it was sent from
+	 *
+	 * In the case of an `APIDMInteraction`, this will not be present
+	 */
 	guild_id: Snowflake;
 	/**
 	 * Guild member data for the invoking user, including permissions
@@ -148,12 +153,6 @@ export interface APIGuildInteraction extends APIBaseInteraction {
  */
 export interface APIDMInteraction extends APIBaseInteraction {
 	/**
-	 * The guild it was sent from
-	 *
-	 * In the case of an `APIDMInteraction`, this will not be present
-	 */
-	guild_id?: never;
-	/**
 	 * User object for the invoking user, if invoked in a DM
 	 */
 	user: APIUser;
@@ -166,9 +165,27 @@ export interface APIDMInteraction extends APIBaseInteraction {
 export type APIInteraction = APIGuildInteraction | APIDMInteraction;
 
 /**
- * Like APIInteraction, only with the `data` property always present
+ * Like APIGuildInteraction, only with the `data` property always present
+ *
+ * @see APIGuildInteraction
  */
-export type APIApplicationCommandInteraction = Required<APIInteraction>;
+export type APIApplicationCommandGuildInteraction = Required<APIGuildInteraction>;
+
+/**
+ * Like APIDMInteraction, only with the `data` property always present
+ *
+ * @see APIDMInteraction
+ */
+export type APIApplicationCommandDMInteraction = Required<APIDMInteraction>;
+
+/**
+ * Like APIInteraction, only with the `data` property always present
+ *
+ * @see APIInteraction
+ */
+export type APIApplicationCommandInteraction =
+	| APIApplicationCommandGuildInteraction
+	| APIApplicationCommandDMInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactiontype

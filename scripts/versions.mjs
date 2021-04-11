@@ -21,6 +21,9 @@ Promise.allSettled(
 
 			// Voice
 			fileToESMWrapperCall('voice', version),
+
+			// Utils
+			fileToESMWrapperCall('utils', version),
 		])
 		.flat(),
 );

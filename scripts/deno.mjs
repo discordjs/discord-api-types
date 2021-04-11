@@ -76,14 +76,11 @@ await Promise.all(
 		'rest/',
 		'rpc/',
 		'shortcuts/',
+		'utils/',
 		'voice/',
 	].map((item) => adaptFolderToDeno(item)),
 );
 
 await Promise.all(
-	[
-		'LICENSE', //
-		'README.md',
-		'globals.ts',
-	].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
+	['LICENSE', 'README.md', 'globals.ts'].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
 );

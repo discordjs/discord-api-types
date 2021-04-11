@@ -22,6 +22,7 @@
 		"rest/**/*.ts",
 		"rpc/**/*.ts",
 		"shortcuts/**/*.ts",
+		"utils/**/*.ts",
 		"voice/**/*.ts"
 	]
 }
