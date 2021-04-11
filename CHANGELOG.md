@@ -1,4 +1,4 @@
-# [0.14.0](https://github.com/discordjs/discord-api-types/compare/0.13.3...0.14.0) (2021-04-10)
+# [0.14.0](https://github.com/discordjs/discord-api-types/compare/0.13.3...0.14.0) (2021-04-11)
 
 ### Bug Fixes
 
@@ -30,6 +30,7 @@
 - **APIAttachment:** add `content_type` ([2d432d1](https://github.com/discordjs/discord-api-types/commit/2d432d145eb8a009b092b27b6231252d7b2f2823))
 - **APIChannel:** add `rtc_region` ([#108](https://github.com/discordjs/discord-api-types/issues/108)) ([07ba907](https://github.com/discordjs/discord-api-types/commit/07ba9072429dec85a13479dc211ec1f9d8788acf))
 - **APIChannel:** add `video_quality_mode` ([#106](https://github.com/discordjs/discord-api-types/issues/106)) ([d8d7bcc](https://github.com/discordjs/discord-api-types/commit/d8d7bccea617ad0d1150b9d2aed3b26ec1e4f99a))
+- **APIInteraction:** add type-check utilities ([3307201](https://github.com/discordjs/discord-api-types/commit/33072011c2ea9ace8350dedc0cd1068660dc2ece))
 - **Exports:** add `globals` to the exported sub-modules ([5d35f61](https://github.com/discordjs/discord-api-types/commit/5d35f61334480af983c4767373ef05e395da2e18))
 - **Gateway:** add `INTEGRATION_*` events ([9c3fab0](https://github.com/discordjs/discord-api-types/commit/9c3fab052619609eb543ff400c2b813b69c6b99f))
 - **GuildWelcomeScreen:** document `welcome-screen` endpoint ([169ecde](https://github.com/discordjs/discord-api-types/commit/169ecde47a6a911309630e952ab26b805ac87cf0))
@@ -44,6 +45,11 @@
 
 ### BREAKING CHANGES
 
+- **APIInteraction:** This commit removes the `guild_id` property from `APIDMInteraction`
+  which allows type-checks to work with the `in` operator.
+  Because of that, we also provide utility functions that help with those type checks.
+  Use them in your code by importing the `Utils` object, or by directly importing them.
+  Check the README for examples
 - **OAuth2:** This commit removes parameters that are not expected
   in the refresh token request body
 
