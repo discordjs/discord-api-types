@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { copyFile, mkdir, opendir, readFile, rm, writeFile } from 'fs/promises';
+import { copyFile, mkdir, opendir, readFile, rm, writeFile } from 'node:fs/promises';
 
 const baseDirectory = new URL('../', import.meta.url);
 const denoPath = new URL('deno/', baseDirectory);
@@ -71,15 +71,16 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 
 await Promise.all(
 	[
-		'common/', //
-		'v6/',
-		'v8/',
+		'gateway/', //
+		'payloads/',
+		'rest/',
+		'rpc/',
+		'shortcuts/',
+		'utils/',
+		'voice/',
 	].map((item) => adaptFolderToDeno(item)),
 );
 
 await Promise.all(
-	[
-		'LICENSE', //
-		'README.md',
-	].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
+	['LICENSE', 'README.md', 'globals.ts'].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
 );

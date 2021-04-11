@@ -11,9 +11,18 @@
 		"noUnusedLocals": true,
 		"removeComments": false,
 		"target": "ES2020",
-		"importsNotUsedAsValues": "error",
+		"importsNotUsedAsValues": "remove",
 		"strictNullChecks": true,
 		"preserveConstEnums": true
 	},
-	"include": ["v*/**/*", "default/**/*", "common/**/*"]
+	"include": [
+		"globals.ts",
+		"gateway/**/*.ts",
+		"payloads/**/*.ts",
+		"rest/**/*.ts",
+		"rpc/**/*.ts",
+		"shortcuts/**/*.ts",
+		"utils/**/*.ts",
+		"voice/**/*.ts"
+	]
 }

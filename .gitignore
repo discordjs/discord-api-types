@@ -1,24 +1,42 @@
 node_modules/
 
-out/
-coverage/
-.nyc_output/
-
-debug.log
-
 # Don't commit build outputs
+globals.js
+globals.*map
+globals.d.ts
+globals.mjs
 
-v*/**/*.js
-v*/**/*.map
-v*/**/*.d.ts
-v*/**/*.mjs
+gateway/**/*.js
+gateway/**/*.map
+gateway/**/*.d.ts
+gateway/**/*.mjs
 
-default/*.js
-default/*.map
-default/*.d.ts
-default/*.mjs
+payloads/**/*.js
+payloads/**/*.map
+payloads/**/*.d.ts
+payloads/**/*.mjs
 
-common/*.js
-common/*.map
-common/*.d.ts
-common/*.mjs
+rest/**/*.js
+rest/**/*.map
+rest/**/*.d.ts
+rest/**/*.mjs
+
+rpc/**/*.js
+rpc/**/*.map
+rpc/**/*.d.ts
+rpc/**/*.mjs
+
+shortcuts/**/*.js
+shortcuts/**/*.map
+shortcuts/**/*.d.ts
+shortcuts/**/*.mjs
+
+utils/**/*.js
+utils/**/*.map
+utils/**/*.d.ts
+utils/**/*.mjs
+
+voice/**/*.js
+voice/**/*.map
+voice/**/*.d.ts
+voice/**/*.mjs

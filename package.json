@@ -1,21 +1,70 @@
 {
 	"name": "discord-api-types",
-	"version": "0.13.3",
+	"version": "0.14.0",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
-	"main": "./default/index.js",
-	"types": "./default/index.d.ts",
+	"main": "./shortcuts/v8.js",
+	"module": "./shortcuts/v8.mjs",
+	"types": "./shortcuts/v8.d.ts",
 	"exports": {
-		"./common": {
-			"require": "./common/index.js",
-			"import": "./common/index.mjs"
+		"./globals": {
+			"require": "./globals.js",
+			"import": "./globals.mjs"
 		},
 		"./v6": {
-			"require": "./v6/index.js",
-			"import": "./v6/index.mjs"
+			"require": "./shortcuts/v6.js",
+			"import": "./shortcuts/v6.mjs"
 		},
 		"./v8": {
-			"require": "./v8/index.js",
-			"import": "./v8/index.mjs"
+			"require": "./shortcuts/v8.js",
+			"import": "./shortcuts/v8.mjs"
+		},
+		"./gateway": {
+			"require": "./gateway/index.js",
+			"import": "./gateway/index.mjs"
+		},
+		"./gateway/v*": {
+			"require": "./gateway/v*.js",
+			"import": "./gateway/v*.mjs"
+		},
+		"./payloads": {
+			"require": "./payloads/index.js",
+			"import": "./payloads/index.mjs"
+		},
+		"./payloads/v*": {
+			"require": "./payloads/v*/index.js",
+			"import": "./payloads/v*/index.mjs"
+		},
+		"./rest": {
+			"require": "./rest/index.js",
+			"import": "./rest/index.mjs"
+		},
+		"./rest/v*": {
+			"require": "./rest/v*/index.js",
+			"import": "./rest/v*/index.mjs"
+		},
+		"./rpc": {
+			"require": "./rpc/index.js",
+			"import": "./rpc/index.mjs"
+		},
+		"./rpc/v*": {
+			"require": "./rpc/v*.js",
+			"import": "./rpc/v*.mjs"
+		},
+		"./voice": {
+			"require": "./voice/index.js",
+			"import": "./voice/index.mjs"
+		},
+		"./voice/v*": {
+			"require": "./voice/v*.js",
+			"import": "./voice/v*.mjs"
+		},
+		"./utils": {
+			"require": "./utils/index.js",
+			"import": "./utils/index.mjs"
+		},
+		"./utils/v*": {
+			"require": "./utils/v*.js",
+			"import": "./utils/v*.mjs"
 		}
 	},
 	"scripts": {
@@ -23,15 +72,21 @@
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
 		"clean:deno": "rimraf deno/",
-		"clean:node": "rimraf {v*,default,common}/**/*.{js,mjs,d.ts,map}",
+		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{js,mjs,d.ts,map} globals.{js,mjs,d.ts,*map}",
 		"clean": "run-p clean:*",
-		"esm:common": "gen-esm-wrapper ./common/index.js ./common/index.mjs",
-		"esm:v6": "gen-esm-wrapper ./v6/index.js ./v6/index.mjs",
-		"esm:v8": "gen-esm-wrapper ./v8/index.js ./v8/index.mjs",
-		"lint": "eslint --fix --ext mjs,js,ts {v*,default,common}/**",
-		"postpublish": "run-s clean:node build:deno",
+		"esm:gateway": "gen-esm-wrapper ./gateway/index.js ./gateway/index.mjs",
+		"esm:payloads": "gen-esm-wrapper ./payloads/index.js ./payloads/index.mjs",
+		"esm:rest": "gen-esm-wrapper ./rest/index.js ./rest/index.mjs",
+		"esm:rpc": "gen-esm-wrapper ./rpc/index.js ./rpc/index.mjs",
+		"esm:utils": "gen-esm-wrapper ./utils/index.js ./utils/index.mjs",
+		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
+		"esm:globals": "gen-esm-wrapper ./globals.js ./globals.mjs",
+		"esm:versions": "node ./scripts/versions.mjs",
+		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",
+		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",
 		"prepublishOnly": "run-s clean test:lint build:node",
-		"test:lint": "eslint --ext mjs,js,ts {v*,default,common}/**"
+		"postpublish": "run-s clean:node build:deno",
+		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
 	},
 	"keywords": [
 		"discord",
@@ -42,19 +97,20 @@
 	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
 	"license": "MIT",
 	"files": [
-		"v*/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
-		"default/*.{js,js.map,d.ts,d.ts.map,mjs}",
-		"common/*.{js,js.map,d.ts,d.ts.map,mjs}"
+		"{gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
+		"globals.{js,js.map,d.ts,d.ts.map,mjs}"
 	],
 	"engines": {
 		"node": ">=12"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^12.0.1",
-		"@commitlint/config-angular": "^12.0.1",
-		"@typescript-eslint/eslint-plugin": "^4.18.0",
-		"@typescript-eslint/parser": "^4.18.0",
-		"eslint": "^7.22.0",
+		"@commitlint/cli": "^12.1.1",
+		"@commitlint/config-angular": "^12.1.1",
+		"@types/node": "^14.14.37",
+		"@typescript-eslint/eslint-plugin": "^4.21.0",
+		"@typescript-eslint/parser": "^4.21.0",
+		"conventional-changelog-cli": "^2.1.1",
+		"eslint": "^7.24.0",
 		"eslint-config-marine": "^8.3.2",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
@@ -65,7 +121,7 @@
 		"prettier": "^2.2.1",
 		"pretty-quick": "^3.1.0",
 		"rimraf": "^3.0.2",
-		"typescript": "^4.2.3"
+		"typescript": "^4.2.4"
 	},
 	"repository": {
 		"type": "git",
@@ -81,7 +137,17 @@
 		},
 		"rules": {
 			"@typescript-eslint/naming-convention": 0
-		}
+		},
+		"overrides": [
+			{
+				"files": [
+					"scripts/**/*.mjs"
+				],
+				"parserOptions": {
+					"sourceType": "module"
+				}
+			}
+		]
 	},
 	"husky": {
 		"hooks": {
@@ -90,7 +156,8 @@
 		}
 	},
 	"lint-staged": {
-		"{v*,default,common}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts"
+		"{gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts",
+		"globals.ts": "eslint --fix --ext mjs,js,ts"
 	},
 	"commitlint": {
 		"extends": [

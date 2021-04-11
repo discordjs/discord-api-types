@@ -19,30 +19,55 @@ yarn add discord-api-types
 pnpm add discord-api-types
 ```
 
+### Usage
+
+You can only import this module by specifying the API version you want to target. Append `/v*` to the import path, where the `*` represents the API version. Below are some examples
+
+```js
+const { APIUser } = require('discord-api-types/v8');
+```
+
+```ts
+// TypeScript/ES Module support
+import { APIUser } from 'discord-api-types/v8';
+```
+
+You may also import just certain parts of the module that you need. The possible values are: `globals`, `gateway`, `gateway/v*`, `payloads`, `payloads/v*`, `rest`, `rest/v*`, `rpc`, `rpc/v*`, `utils`, `utils/v*`, `voice`, and `voice/v*`. Below are some examples
+
+```js
+const { GatewayVersion } = require('discord-api-types/gateway/v8');
+```
+
+```ts
+// TypeScript/ES Module support
+import { GatewayVersion } from 'discord-api-types/gateway/v8';
+```
+
+> _**Note:** The `v*` exports (`discord-api-type/v*`) include the appropriate version of `gateway`, `payloads`, `rest`, `rpc`, and `utils` you specified, alongside the `globals` exports_
+
+### Deno
+
 We also provide typings compatible with the [deno](https://deno.land/) runtime. You have 3 ways you can import them:
 
 1. Directly from GitHub
 
 ```ts
-// Importing the default API version
-import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/mod.ts';
-
 // Importing a specific API version
-import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/v8/mod.ts';
+import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/shortcuts/v8/mod.ts';
 ```
 
 2. From [deno.land/x](https://deno.land/x)
 
 ```ts
 // Importing a specific API version
-import { APIUser } from 'https://deno.land/x/discord_api_types/v8/mod.ts';
+import { APIUser } from 'https://deno.land/x/discord_api_types/shortcuts/v8.ts';
 ```
 
 3. From [skypack.dev](https://www.skypack.dev/)
 
 ```ts
 // Importing a specific API version
-import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/v8?dts';
+import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/shortcuts/v8?dts';
 ```
 
 ## Project Structure
@@ -67,21 +92,6 @@ The exports of each API version is split into three main parts:
 
 - Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route object).
 
-- There may be types exported that are identical for all versions. These will be exported as is and can be found in the `common` directory. They will still be prefixed accordingly as described above.
+- There may be types exported that are identical for all versions. These will be exported as is and can be found in the `globals` file. They will still be prefixed accordingly as described above.
 
-**Warning**: This package documents just KNOWN (and documented) properties. Anything that isn't documented will NOT be added to this package (unless said properties are in an open Pull Request to Discord's [API Documentation repository](https://github.com/discord/discord-api-docs) or known through other means _and have received the green light to be used_). For clarification's sake, this means that properties that are only known through the process of data mining and have not yet been confirmed in a way as described will NOT be included.
-
-## Usage
-
-You can `require` / `import` the module directly, which will give you the latest types as of the current API version. This is considered the `default` version and will be updated according to Discord's default API version; this means it may break at any point in time.
-
-You can only import this module by specifying the API version you want to target. Append `/v*` to the import path, where the `*` represents the API version. Below are some examples
-
-```js
-const { APIUser } = require('discord-api-types/v8');
-```
-
-```ts
-// TypeScript/ES Module support
-import { APIUser } from 'discord-api-types/v8';
-```
+**Warning**: This package documents just KNOWN (and documented) properties. Anything that isn't documented will NOT be added to this package (unless said properties are in an open Pull Request to Discord's [API Documentation repository](https://github.com/discord/discord-api-docs) or known through other means _and have received the green light to be used_). For clarification's sake, this means that properties that are only known through the process of data mining and have not yet been confirmed in a way as described will **NOT** be included.
