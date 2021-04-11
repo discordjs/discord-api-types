@@ -58,7 +58,7 @@ export interface APIWebhook {
 	 */
 	source_channel?: APIPartialChannel;
 	/**
-	 * The url used for executing the webhook (returned by the [webhooks](#DOCS_TOPICS_OAUTH2/webhooks) OAuth2 flow)
+	 * The url used for executing the webhook (returned by the webhooks OAuth2 flow)
 	 */
 	url?: string;
 }
