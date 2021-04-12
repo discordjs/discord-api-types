@@ -9,7 +9,7 @@ const rootDir = join(__dirname, '..');
 const execAsync = promisify(exec);
 
 const fileToESMWrapperCall = (path, version) =>
-	execAsync(`npx gen-esm-wrapper ${rootDir}${path}/${version}.js ${rootDir}${path}/${version}.mjs`);
+	execAsync(`npx gen-esm-wrapper "${join(rootDir, path, `${version}.js`)}" "${join(rootDir, path, `${version}.mjs`)}"`);
 
 await Promise.allSettled(
 	[
@@ -20,18 +20,18 @@ await Promise.allSettled(
 		'v4',
 	]
 		.map((version) => [
-			fileToESMWrapperCall('/gateway', version),
-			fileToESMWrapperCall(`/payloads/${version}`, 'index'),
-			fileToESMWrapperCall(`/rest/${version}`, 'index'),
+			fileToESMWrapperCall('gateway', version),
+			fileToESMWrapperCall(`payloads/${version}`, 'index'),
+			fileToESMWrapperCall(`rest/${version}`, 'index'),
 
 			// Voice
-			fileToESMWrapperCall('/voice', version),
+			fileToESMWrapperCall('voice', version),
 
 			// RPC
-			fileToESMWrapperCall('/rpc', version),
+			fileToESMWrapperCall('rpc', version),
 
 			// Utils
-			fileToESMWrapperCall('/utils', version),
+			fileToESMWrapperCall('utils', version),
 
 			// Shortcuts
 			fileToESMWrapperCall('', version),
