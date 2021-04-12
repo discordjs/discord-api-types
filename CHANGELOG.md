@@ -1,13 +1,8 @@
-## [0.15.1](https://github.com/discordjs/discord-api-types/compare/0.14.0...0.15.1) (2021-04-12)
+## [0.15.1](https://github.com/discordjs/discord-api-types/compare/0.15.0...0.15.1) (2021-04-12)
 
 ### Bug Fixes
 
-- **APIApplicationCommand:** default_permission ([#111](https://github.com/discordjs/discord-api-types/issues/111)) ([9420c3e](https://github.com/discordjs/discord-api-types/commit/9420c3e0af7b2486f0e49bb680ed98e0d9f5c625))
 - **TypeScript:** imports not working in TypeScript ([4738c33](https://github.com/discordjs/discord-api-types/commit/4738c33b062d359a1c2fbb35cdd2daf128ab6e5b))
-
-### BREAKING CHANGES
-
-- **APIApplicationCommand:** This renames the `default_permissions` property to `default_permission`, the correct spelling.
 
 # [0.15.0](https://github.com/discordjs/discord-api-types/compare/0.14.0...0.15.0) (2021-04-11)
 
