@@ -29,7 +29,7 @@ await Promise.allSettled(
 			fileToESMWrapperCall('utils', version),
 
 			// Shortcuts
-			fileToESMWrapperCall('shortcuts', version),
+			fileToESMWrapperCall('owo/..', version),
 		])
 		.flat(),
 );

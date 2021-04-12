@@ -17,11 +17,12 @@
 	},
 	"include": [
 		"globals.ts",
+		"v6.ts",
+		"v8.ts",
 		"gateway/**/*.ts",
 		"payloads/**/*.ts",
 		"rest/**/*.ts",
 		"rpc/**/*.ts",
-		"shortcuts/**/*.ts",
 		"utils/**/*.ts",
 		"voice/**/*.ts"
 	]
