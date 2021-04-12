@@ -53,21 +53,21 @@ We also provide typings compatible with the [deno](https://deno.land/) runtime. 
 
 ```ts
 // Importing a specific API version
-import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/shortcuts/v8/mod.ts';
+import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/v8.ts';
 ```
 
 2. From [deno.land/x](https://deno.land/x)
 
 ```ts
 // Importing a specific API version
-import { APIUser } from 'https://deno.land/x/discord_api_types/shortcuts/v8.ts';
+import { APIUser } from 'https://deno.land/x/discord_api_types/v8.ts';
 ```
 
 3. From [skypack.dev](https://www.skypack.dev/)
 
 ```ts
 // Importing a specific API version
-import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/shortcuts/v8?dts';
+import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/v8?dts';
 ```
 
 ## Project Structure

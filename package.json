@@ -1,22 +1,22 @@
 {
 	"name": "discord-api-types",
-	"version": "0.15.0",
+	"version": "0.15.1",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
-	"main": "./shortcuts/v8.js",
-	"module": "./shortcuts/v8.mjs",
-	"types": "./shortcuts/v8.d.ts",
+	"main": "./v8.js",
+	"module": "./v8.mjs",
+	"types": "./v8.d.ts",
 	"exports": {
 		"./globals": {
 			"require": "./globals.js",
 			"import": "./globals.mjs"
 		},
 		"./v6": {
-			"require": "./shortcuts/v6.js",
-			"import": "./shortcuts/v6.mjs"
+			"require": "./v6.js",
+			"import": "./v6.mjs"
 		},
 		"./v8": {
-			"require": "./shortcuts/v8.js",
-			"import": "./shortcuts/v8.mjs"
+			"require": "./v8.js",
+			"import": "./v8.mjs"
 		},
 		"./gateway": {
 			"require": "./gateway/index.js",
@@ -72,7 +72,7 @@
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
 		"clean:deno": "rimraf deno/",
-		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{js,mjs,d.ts,map} globals.{js,mjs,d.ts,*map}",
+		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,utils}/**/*.{js,mjs,d.ts,map} {globals,v*}.{js,mjs,d.ts,*map}",
 		"clean": "run-p clean:*",
 		"esm:gateway": "gen-esm-wrapper ./gateway/index.js ./gateway/index.mjs",
 		"esm:payloads": "gen-esm-wrapper ./payloads/index.js ./payloads/index.mjs",
@@ -82,8 +82,8 @@
 		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
 		"esm:globals": "gen-esm-wrapper ./globals.js ./globals.mjs",
 		"esm:versions": "node ./scripts/versions.mjs",
-		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",
-		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,shortcuts,utils}/** globals.ts",
+		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/** {globals,v*}.ts",
+		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/** {globals,v*}.ts",
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"postpublish": "run-s clean:node build:deno",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
@@ -97,13 +97,16 @@
 	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
 	"license": "MIT",
 	"files": [
-		"{gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
-		"globals.{js,js.map,d.ts,d.ts.map,mjs}"
+		"{gateway,payloads,rest,rpc,voice,utils}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
+		"{globals,v*}.{js,js.map,d.ts,d.ts.map,mjs}"
 	],
 	"engines": {
 		"node": ">=12"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.13.15",
+		"@babel/eslint-parser": "^7.13.14",
+		"@babel/plugin-syntax-top-level-await": "^7.12.13",
 		"@commitlint/cli": "^12.1.1",
 		"@commitlint/config-angular": "^12.1.1",
 		"@types/node": "^14.14.37",
@@ -143,7 +146,9 @@
 				"files": [
 					"scripts/**/*.mjs"
 				],
+				"parser": "@babel/eslint-parser",
 				"parserOptions": {
+					"ecmaVersion": 2021,
 					"sourceType": "module"
 				}
 			}

@@ -1,3 +1,9 @@
+## [0.15.1](https://github.com/discordjs/discord-api-types/compare/0.15.0...0.15.1) (2021-04-12)
+
+### Bug Fixes
+
+- **TypeScript:** imports not working in TypeScript ([4738c33](https://github.com/discordjs/discord-api-types/commit/4738c33b062d359a1c2fbb35cdd2daf128ab6e5b))
+
 # [0.15.0](https://github.com/discordjs/discord-api-types/compare/0.14.0...0.15.0) (2021-04-11)
 
 ### Bug Fixes

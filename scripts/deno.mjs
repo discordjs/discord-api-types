@@ -39,6 +39,14 @@ function convertConstEnums(source) {
 
 const transformers = [convertImports, convertConstEnums];
 
+async function convertFile(fullFilePath, finalDenoPath) {
+	const originalFile = await readFile(fullFilePath, { encoding: 'utf8' });
+
+	const finalFile = transformers.reduce((code, transformer) => transformer(code), originalFile);
+
+	await writeFile(finalDenoPath, finalFile);
+}
+
 /**
  * @param {string} folderName The folder name
  * @param {URL} node The node path
@@ -61,21 +69,17 @@ async function adaptFolderToDeno(folderName, node = baseDirectory, deno = denoPa
 		const fullFilePath = new URL(file.name, nodeDirectory);
 		const finalDenoPath = new URL(file.name.includes('index') ? 'mod.ts' : file.name, denoDirectory);
 
-		const originalFile = await readFile(fullFilePath, { encoding: 'utf8' });
-
-		const finalFile = transformers.reduce((code, transformer) => transformer(code), originalFile);
-
-		await writeFile(finalDenoPath, finalFile);
+		await convertFile(fullFilePath, finalDenoPath);
 	}
 }
 
+// Convert folders
 const folderResults = await Promise.allSettled(
 	[
 		'gateway/', //
 		'payloads/',
 		'rest/',
 		'rpc/',
-		'shortcuts/',
 		'utils/',
 		'voice/',
 	].map((item) => adaptFolderToDeno(item)),
@@ -85,6 +89,7 @@ for (const result of folderResults) {
 	if (result.status === 'rejected') console.error(result.reason);
 }
 
+// Copy over core files
 const copyResults = await Promise.allSettled(
 	[
 		'LICENSE', //
@@ -94,5 +99,17 @@ const copyResults = await Promise.allSettled(
 );
 
 for (const result of copyResults) {
+	if (result.status === 'rejected') console.error(result.reason);
+}
+
+// Copy over shortcuts for versions, converting imports
+const globalFileResults = await Promise.allSettled(
+	[
+		'v6.ts', //
+		'v8.ts',
+	].map((version) => convertFile(new URL(version, baseDirectory), new URL(version, denoPath))),
+);
+
+for (const result of globalFileResults) {
 	if (result.status === 'rejected') console.error(result.reason);
 }

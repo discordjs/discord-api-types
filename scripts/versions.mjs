@@ -1,10 +1,15 @@
 import { exec } from 'node:child_process';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const rootDir = join(__dirname, '..');
 const execAsync = promisify(exec);
 
 const fileToESMWrapperCall = (path, version) =>
-	execAsync(`npx gen-esm-wrapper ./${path}/${version}.js ./${path}/${version}.mjs`);
+	execAsync(`npx gen-esm-wrapper "${join(rootDir, path, `${version}.js`)}" "${join(rootDir, path, `${version}.mjs`)}"`);
 
 await Promise.allSettled(
 	[
@@ -29,7 +34,7 @@ await Promise.allSettled(
 			fileToESMWrapperCall('utils', version),
 
 			// Shortcuts
-			fileToESMWrapperCall('shortcuts', version),
+			fileToESMWrapperCall('', version),
 		])
 		.flat(),
 );
