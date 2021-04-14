@@ -93,6 +93,7 @@ for (const result of folderResults) {
 const copyResults = await Promise.allSettled(
 	[
 		'LICENSE', //
+		'CHANGELOG.md',
 		'README.md',
 		'globals.ts',
 	].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
