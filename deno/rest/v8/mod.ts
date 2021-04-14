@@ -426,7 +426,7 @@ export const Routes = {
 	 *
 	 * @param [userID='@me'] The user ID, defaulted to `@me`
 	 */
-	user(userID = '@me') {
+	user(userID: Snowflake | '@me' = '@me') {
 		return `/users/${userID}` as const;
 	},
 
@@ -509,6 +509,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET    `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
+	 * - GET    `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
 	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
 	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
@@ -520,7 +522,7 @@ export const Routes = {
 	 *
 	 * @param [messageID='@original'] The message ID to change, defaulted to `@original`
 	 */
-	webhookMessage(webhookID: Snowflake, webhookToken: string, messageID = '@original') {
+	webhookMessage(webhookID: Snowflake, webhookToken: string, messageID: Snowflake | '@original' = '@original') {
 		return `/webhooks/${webhookID}/${webhookToken}/messages/${messageID}` as const;
 	},
 
@@ -667,10 +669,7 @@ export const RouteBases = {
 	gift: 'https://discord.gift',
 } as const;
 
-/**
- * Freeze bases object
- * @internal
- */
+// Freeze bases object
 Object.freeze(RouteBases);
 
 export const OAuth2Routes = {
@@ -682,8 +681,5 @@ export const OAuth2Routes = {
 	tokenRevocationURL: `https://discord.com/api/v${APIVersion}/oauth2/token/revoke`,
 } as const;
 
-/**
- * Freeze OAuth2 route object
- * @internal
- */
+// Freeze OAuth2 route object
 Object.freeze(OAuth2Routes);
