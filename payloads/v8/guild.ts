@@ -297,7 +297,18 @@ export interface APIGuild extends APIPartialGuild {
 	 * **This field is only received from https://discord.com/developers/docs/resources/guild#get-guild with the `with_counts` query parameter set to `true`**
 	 */
 	approximate_presence_count?: number;
+	/**
+	 * The welcome screen of a Community guild, shown to new members
+	 *
+	 * Returned in the invite object
+	 */
 	welcome_screen?: APIGuildWelcomeScreen;
+	/**
+	 * `true` if this guild is designated as NSFW
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/1500005389362-NSFW-Server-Designation
+	 */
+	nsfw: boolean;
 }
 
 /**
