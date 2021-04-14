@@ -1,3 +1,19 @@
+# [0.16.0](https://github.com/discordjs/discord-api-types/compare/0.15.1...0.16.0) (2021-04-14)
+
+### Features
+
+- **Guild:** add `nsfw` property ([#116](https://github.com/discordjs/discord-api-types/issues/116)) ([21b572b](https://github.com/discordjs/discord-api-types/commit/21b572b7f25a320e40f8ca2e63d6bd8b111403aa))
+- **RESTJSONErrorCode:** add `UnknownInteraction` error code ([#115](https://github.com/discordjs/discord-api-types/issues/115)) ([ced37d0](https://github.com/discordjs/discord-api-types/commit/ced37d0a5ebdc80887662529922c57e2531e1e5b))
+
+### docs
+
+- **Routes:** add `GET` routes to `webhookMessages` ([#114](https://github.com/discordjs/discord-api-types/issues/114)) ([6451679](https://github.com/discordjs/discord-api-types/commit/6451679c9acb9d7fde593914452577669473841d))
+
+### BREAKING CHANGES
+
+- **Routes:** possibly a breaking change due to the fact that the messageID is now strictly typed as a Snowflake or `@me`
+  - Reference: discord/discord-api-docs#2410
+
 ## [0.15.1](https://github.com/discordjs/discord-api-types/compare/0.15.0...0.15.1) (2021-04-12)
 
 ### Bug Fixes
