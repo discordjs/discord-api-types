@@ -32,7 +32,8 @@ export enum RESTJSONErrorCodes {
 
 	UnknownGuildTemplate = 10057,
 
-	UnknownApplicationCommand = 10063,
+	UnknownInteraction = 10062,
+	UnknownApplicationCommand,
 
 	BotsCannotUseThisEndpoint = 20001,
 	OnlyBotsCanUseThisEndpoint,
