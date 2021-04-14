@@ -303,6 +303,12 @@ export interface APIGuild extends APIPartialGuild {
 	 * Returned in the invite object
 	 */
 	welcome_screen?: APIGuildWelcomeScreen;
+	/**
+	 * `true` if this guild is designated as NSFW
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/1500005389362-NSFW-Server-Designation
+	 */
+	nsfw: boolean;
 }
 
 /**
