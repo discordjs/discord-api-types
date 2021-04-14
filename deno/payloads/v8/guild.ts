@@ -297,6 +297,11 @@ export interface APIGuild extends APIPartialGuild {
 	 * **This field is only received from https://discord.com/developers/docs/resources/guild#get-guild with the `with_counts` query parameter set to `true`**
 	 */
 	approximate_presence_count?: number;
+	/**
+	 * The welcome screen of a Community guild, shown to new members
+	 *
+	 * Returned in the invite object
+	 */
 	welcome_screen?: APIGuildWelcomeScreen;
 }
 
