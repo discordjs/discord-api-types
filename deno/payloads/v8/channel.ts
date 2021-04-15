@@ -479,10 +479,6 @@ export interface APISticker {
 	 */
 	asset: string;
 	/**
-	 * Sticker preview asset hash
-	 */
-	preview_asset: string | null;
-	/**
 	 * Type of sticker format
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
