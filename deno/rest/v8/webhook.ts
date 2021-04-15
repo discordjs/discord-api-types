@@ -229,6 +229,11 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 	  });
 
 /**
+ * https://discord.com/developers/docs/resources/webhook#get-webhook-message
+ */
+export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
+
+/**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
