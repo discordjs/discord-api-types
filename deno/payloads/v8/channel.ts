@@ -105,7 +105,7 @@ export interface APIChannel extends APIPartialChannel {
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
-	rtc_region: string | null;
+	rtc_region?: string | null;
 	/**
 	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
