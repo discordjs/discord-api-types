@@ -683,3 +683,26 @@ export const OAuth2Routes = {
 
 // Freeze OAuth2 route object
 Object.freeze(OAuth2Routes);
+
+export interface RESTError<E> {
+	code: number;
+	errors: E;
+	message: string;
+}
+
+interface InnerError {
+	code: string;
+	message: string;
+}
+
+type OuterError = Record<string, { _errors: InnerError[] }>;
+
+/**
+ * https://discord.com/developers/docs/reference#error-messages-array-error
+ */
+export type RESTArrayError = RESTError<Record<string, Record<number, OuterError>>>;
+
+/**
+ * https://discord.com/developers/docs/reference#error-messages-object-error
+ */
+export type RESTObjectError = RESTError<OuterError>;
