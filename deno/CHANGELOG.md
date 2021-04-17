@@ -1,3 +1,23 @@
+# [0.17.0](https://github.com/discordjs/discord-api-types/compare/0.16.0...0.17.0) (2021-04-17)
+
+### Bug Fixes
+
+- **APIChannel:** `rtc_region` is optional ([#118](https://github.com/discordjs/discord-api-types/issues/118)) ([617f507](https://github.com/discordjs/discord-api-types/commit/617f507427fae6456de228a23809ab04c1df13f6))
+
+### Code Refactoring
+
+- **APISticker:** remove `preview_asset` ([#119](https://github.com/discordjs/discord-api-types/issues/119)) ([9817623](https://github.com/discordjs/discord-api-types/commit/9817623291ec852a831c3de225e90a65d83dac7f))
+
+### Features
+
+- **WebhookMessage:** add `GET` route types ([#120](https://github.com/discordjs/discord-api-types/issues/120)) ([3294fb1](https://github.com/discordjs/discord-api-types/commit/3294fb15ae6c259c1b53b7f2eca4ea8dca2f2372))
+
+### BREAKING CHANGES
+
+- **APISticker:** This removes the `preview_asset` property from sticket objects
+  - Reference: https://github.com/discord/discord-api-docs/commit/b9b8db2
+- **APIChannel:** This corrects the fact that `rtc_region` isn't present on non-voice-like channels
+
 # [0.16.0](https://github.com/discordjs/discord-api-types/compare/0.15.1...0.16.0) (2021-04-14)
 
 ### Features
