@@ -1,3 +1,18 @@
+# [0.18.0](https://github.com/discordjs/discord-api-types/compare/0.16.0...0.18.0) (2021-04-18)
+
+### Bug Fixes
+
+- **APIInvite:** `channel` is not optional ([#123](https://github.com/discordjs/discord-api-types/issues/123)) ([abe0513](https://github.com/discordjs/discord-api-types/commit/abe05136fd169f483fe09a213259b4cbd526497b))
+
+### Code Refactoring
+
+- **Invite:** rename `InviteTargetUserType` to `InviteTargetType` ([#124](https://github.com/discordjs/discord-api-types/issues/124)) ([bc9ab45](https://github.com/discordjs/discord-api-types/commit/bc9ab4556ca8a7c8e4c7942c87fa322c91b733dc))
+
+### BREAKING CHANGES
+
+- **Invite:** `InviteTargetUserType` is renamed to `InviteTargetType`, to match the documentation.
+  - Reference: https://github.com/discord/discord-api-docs/pull/2690
+
 # [0.17.0](https://github.com/discordjs/discord-api-types/compare/0.16.0...0.17.0) (2021-04-17)
 
 ### Bug Fixes
