@@ -19,7 +19,7 @@ import type {
 	GatewayActivity,
 	GatewayPresenceUpdate as RawGatewayPresenceUpdate,
 	GatewayVoiceState,
-	InviteTargetUserType,
+	InviteTargetType,
 	PresenceUpdateStatus,
 } from '../payloads/v8/mod.ts';
 
@@ -936,11 +936,11 @@ export interface GatewayInviteCreateDispatchData {
 	 */
 	max_uses: number;
 	/**
-	 * The type of user target for this voice channel invite
+	 * The type of target for this voice channel invite
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
 	 */
-	target_type?: InviteTargetUserType;
+	target_type?: InviteTargetType;
 	/**
 	 * The user whose stream to display for this voice channel stream invite
 	 *
