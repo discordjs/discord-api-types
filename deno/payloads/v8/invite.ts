@@ -34,11 +34,11 @@ export interface APIInvite {
 	 */
 	inviter?: APIUser;
 	/**
-	 * The type of user target for this voice channel invite
+	 * The type of target for this voice channel invite
 	 *
 	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
 	 */
-	target_type?: InviteTargetUserType;
+	target_type?: InviteTargetType;
 	/**
 	 * The user whose stream to display for this voice channel stream invite
 	 *
@@ -47,6 +47,8 @@ export interface APIInvite {
 	target_user?: APIUser;
 	/**
 	 * The embedded application to open for this voice channel embedded application invite
+	 *
+	 * See https://discord.com/developers/docs/topics/oauth2#application
 	 */
 	target_application?: Partial<APIApplication>;
 	/**
@@ -60,9 +62,9 @@ export interface APIInvite {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+ * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
  */
-export enum InviteTargetUserType {
+export enum InviteTargetType {
 	STREAM = 1,
 	EMBEDDED_APPLICATION,
 }

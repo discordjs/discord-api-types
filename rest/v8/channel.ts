@@ -10,7 +10,7 @@ import type {
 	APIOverwrite,
 	APIUser,
 	ChannelType,
-	InviteTargetUserType,
+	InviteTargetType,
 	MessageFlags,
 	OverwriteType,
 	VideoQualityMode,
@@ -385,9 +385,11 @@ export interface RESTPostAPIChannelInviteJSONBody {
 	 */
 	unique?: boolean;
 	/**
-	 * The type of target user for this voice channel invite
+	 * The type of target for this voice channel invite
+	 *
+	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
 	 */
-	target_type?: InviteTargetUserType;
+	target_type?: InviteTargetType;
 	/**
 	 * The id of the user whose stream to display for this invite
 	 * - Required if `target_type` is 1
