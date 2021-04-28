@@ -39,7 +39,8 @@ interface APIApplicationCommandOptionBase {
 		| ApplicationCommandOptionType.BOOLEAN
 		| ApplicationCommandOptionType.USER
 		| ApplicationCommandOptionType.CHANNEL
-		| ApplicationCommandOptionType.ROLE;
+		| ApplicationCommandOptionType.ROLE
+		| ApplicationCommandOptionType.MENTIONABLE;
 	name: string;
 	description: string;
 	default?: boolean;
@@ -87,6 +88,7 @@ export enum ApplicationCommandOptionType {
 	USER,
 	CHANNEL,
 	ROLE,
+	MENTIONABLE,
 }
 
 /**
@@ -283,6 +285,7 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionRole
 	| ApplicationCommandInteractionDataOptionChannel
 	| ApplicationCommandInteractionDataOptionUser
+	| ApplicationCommandInteractionDataOptionMentionable
 	| ApplicationCommandInteractionDataOptionInteger
 	| ApplicationCommandInteractionDataOptionBoolean;
 
@@ -303,6 +306,11 @@ export type ApplicationCommandInteractionDataOptionChannel = InteractionDataOpti
 
 export type ApplicationCommandInteractionDataOptionUser = InteractionDataOptionBase<
 	ApplicationCommandOptionType.USER,
+	Snowflake
+>;
+
+export type ApplicationCommandInteractionDataOptionMentionable = InteractionDataOptionBase<
+	ApplicationCommandOptionType.MENTIONABLE,
 	Snowflake
 >;
 
