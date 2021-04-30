@@ -62,7 +62,7 @@ export interface APIInvite {
 	/**
 	 * The expiration date of this invite, returned from the `GET /invites/<code>` endpoint when `with_expiration` is `true`
 	 */
-	expires_at?: string;
+	expires_at?: string | null;
 }
 
 /**
