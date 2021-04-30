@@ -59,6 +59,10 @@ export interface APIInvite {
 	 * Approximate count of total members, returned from the `GET /invites/<code>` endpoint when `with_counts` is `true`
 	 */
 	approximate_member_count?: number;
+	/**
+	 * The expiration date of this invite, returned from the `GET /invites/<code>` endpoint when `with_expiration` is `true`
+	 */
+	expires_at?: string;
 }
 
 /**
