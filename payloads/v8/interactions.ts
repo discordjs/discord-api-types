@@ -100,6 +100,21 @@ export interface APIApplicationCommandOptionChoice {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/channel#channel-object
+ */
+export interface APIInteractionChannel extends Required<APIPartialChannel> {
+	permissions: Permissions;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-member-object
+ */
+export interface APIInteractionGuildMember extends APIGuildMember {
+	permissions: Permissions;
+	user: APIUser;
+}
+
+/**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
 export interface APIBaseInteraction {
@@ -146,7 +161,7 @@ export interface APIGuildInteraction extends APIBaseInteraction {
 	/**
 	 * Guild member data for the invoking user, including permissions
 	 */
-	member: APIGuildMember & { permissions: Permissions; user: APIUser };
+	member: APIInteractionGuildMember;
 	channel_id: Snowflake;
 }
 
@@ -255,8 +270,8 @@ export interface APIApplicationCommandInteractionData {
 	resolved?: {
 		users?: Record<string, APIUser>;
 		roles?: Record<string, APIRole>;
-		members?: Record<string, Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> & { permissions: Permissions }>;
-		channels?: Record<string, Required<APIPartialChannel> & { permissions: Permissions }>;
+		members?: Record<string, Omit<APIInteractionGuildMember, 'user' | 'deaf' | 'mute'>>;
+		channels?: Record<string, APIInteractionChannel>;
 	};
 }
 
