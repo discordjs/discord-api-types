@@ -100,21 +100,6 @@ export interface APIApplicationCommandOptionChoice {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object
- */
-export interface APIInteractionChannel extends Required<APIPartialChannel> {
-	permissions: Permissions;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#guild-member-object
- */
-export interface APIInteractionGuildMember extends APIGuildMember {
-	permissions: Permissions;
-	user: APIUser;
-}
-
-/**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
 export interface APIBaseInteraction {
@@ -146,6 +131,14 @@ export interface APIBaseInteraction {
 	 * Read-only property, always `1`
 	 */
 	version: 1;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-member-object
+ */
+export interface APIInteractionGuildMember extends APIGuildMember {
+	permissions: Permissions;
+	user: APIUser;
 }
 
 /**
@@ -261,6 +254,20 @@ export enum ApplicationCommandPermissionType {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/channel#channel-object
+ */
+export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
+	permissions: Permissions;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-member-object
+ */
+export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
+	permissions: Permissions;
+}
+
+/**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-applicationcommandinteractiondata
  */
 export interface APIApplicationCommandInteractionData {
@@ -270,8 +277,8 @@ export interface APIApplicationCommandInteractionData {
 	resolved?: {
 		users?: Record<string, APIUser>;
 		roles?: Record<string, APIRole>;
-		members?: Record<string, Omit<APIInteractionGuildMember, 'user' | 'deaf' | 'mute'>>;
-		channels?: Record<string, APIInteractionChannel>;
+		members?: Record<string, APIInteractionDataResolvedGuildMember>;
+		channels?: Record<string, APIInteractionDataResolvedChannel>;
 	};
 }
 
