@@ -1,3 +1,15 @@
+## [0.18.1](https://github.com/discordjs/discord-api-types/compare/0.18.0...0.18.1) (2021-05-03)
+
+### Bug Fixes
+
+- **APIInvite:** `expires_at` is nullable ([#128](https://github.com/discordjs/discord-api-types/issues/128)) ([44b956a](https://github.com/discordjs/discord-api-types/commit/44b956ad858a457e7671ced38529b433b02efbde))
+
+### Features
+
+- add new interfaces for interaction-related structures ([#129](https://github.com/discordjs/discord-api-types/issues/129)) ([bd638b9](https://github.com/discordjs/discord-api-types/commit/bd638b97e5d26abd8a4f1edbd0f56ddc7d3a30a0))
+- **APIInvite:** add `expires_at` field and `with_expiration` param ([#127](https://github.com/discordjs/discord-api-types/issues/127)) ([82ca0ce](https://github.com/discordjs/discord-api-types/commit/82ca0ce5c44ad2e93b3c4875baa82720ea8dd221))
+- **ApplicationCommandOptionType:** add `MENTIONABLE` (9) ([#126](https://github.com/discordjs/discord-api-types/issues/126)) ([91afb0b](https://github.com/discordjs/discord-api-types/commit/91afb0bb49015c02b6000c27d07e703011dc540d))
+
 # [0.18.0](https://github.com/discordjs/discord-api-types/compare/0.16.0...0.18.0) (2021-04-18)
 
 ### Bug Fixes
