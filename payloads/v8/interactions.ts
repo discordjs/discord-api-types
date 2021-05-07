@@ -36,11 +36,11 @@ export interface APIApplicationCommand {
 
 interface APIApplicationCommandOptionBase {
 	type:
-		| ApplicationCommandOptionType.BOOLEAN
-		| ApplicationCommandOptionType.USER
-		| ApplicationCommandOptionType.CHANNEL
-		| ApplicationCommandOptionType.ROLE
-		| ApplicationCommandOptionType.MENTIONABLE;
+		| ApplicationCommandOptionType.Boolean
+		| ApplicationCommandOptionType.User
+		| ApplicationCommandOptionType.Channel
+		| ApplicationCommandOptionType.Role
+		| ApplicationCommandOptionType.Mentionable;
 	name: string;
 	description: string;
 	default?: boolean;
@@ -61,7 +61,7 @@ export type APIApplicationCommandOption =
  * If the option is a `SUB_COMMAND` or `SUB_COMMAND_GROUP` type, this nested options will be the parameters
  */
 export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.SUB_COMMAND | ApplicationCommandOptionType.SUB_COMMAND_GROUP;
+	type: ApplicationCommandOptionType.SubCommand | ApplicationCommandOptionType.SubCommandGroup;
 	options?: APIApplicationCommandOption[];
 }
 
@@ -72,7 +72,7 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * but they can have a `choices` one
  */
 export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.STRING | ApplicationCommandOptionType.INTEGER;
+	type: ApplicationCommandOptionType.String | ApplicationCommandOptionType.Integer;
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
@@ -80,15 +80,15 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptiontype
  */
 export const enum ApplicationCommandOptionType {
-	SUB_COMMAND = 1,
-	SUB_COMMAND_GROUP,
-	STRING,
-	INTEGER,
-	BOOLEAN,
-	USER,
-	CHANNEL,
-	ROLE,
-	MENTIONABLE,
+	SubCommand = 1,
+	SubCommandGroup,
+	String,
+	Integer,
+	Boolean,
+	User,
+	Channel,
+	Role,
+	Mentionable,
 }
 
 /**
@@ -249,8 +249,8 @@ export interface APIApplicationCommandPermission {
  * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandpermissiontype
  */
 export const enum ApplicationCommandPermissionType {
-	ROLE = 1,
-	USER,
+	Role = 1,
+	User,
 }
 
 /**
@@ -292,13 +292,13 @@ export type APIApplicationCommandInteractionDataOption =
 
 export interface ApplicationCommandInteractionDataOptionSubCommand {
 	name: string;
-	type: ApplicationCommandOptionType.SUB_COMMAND;
+	type: ApplicationCommandOptionType.SubCommand;
 	options: APIApplicationCommandInteractionDataOptionWithValues[];
 }
 
 export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
 	name: string;
-	type: ApplicationCommandOptionType.SUB_COMMAND_GROUP;
+	type: ApplicationCommandOptionType.SubCommandGroup;
 	options: ApplicationCommandInteractionDataOptionSubCommand[];
 }
 
@@ -312,37 +312,37 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionBoolean;
 
 export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
-	ApplicationCommandOptionType.STRING,
+	ApplicationCommandOptionType.String,
 	string
 >;
 
 export type ApplicationCommandInteractionDataOptionRole = InteractionDataOptionBase<
-	ApplicationCommandOptionType.ROLE,
+	ApplicationCommandOptionType.Role,
 	Snowflake
 >;
 
 export type ApplicationCommandInteractionDataOptionChannel = InteractionDataOptionBase<
-	ApplicationCommandOptionType.CHANNEL,
+	ApplicationCommandOptionType.Channel,
 	Snowflake
 >;
 
 export type ApplicationCommandInteractionDataOptionUser = InteractionDataOptionBase<
-	ApplicationCommandOptionType.USER,
+	ApplicationCommandOptionType.User,
 	Snowflake
 >;
 
 export type ApplicationCommandInteractionDataOptionMentionable = InteractionDataOptionBase<
-	ApplicationCommandOptionType.MENTIONABLE,
+	ApplicationCommandOptionType.Mentionable,
 	Snowflake
 >;
 
 export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
-	ApplicationCommandOptionType.INTEGER,
+	ApplicationCommandOptionType.Integer,
 	number
 >;
 
 export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOptionBase<
-	ApplicationCommandOptionType.BOOLEAN,
+	ApplicationCommandOptionType.Boolean,
 	boolean
 >;
 

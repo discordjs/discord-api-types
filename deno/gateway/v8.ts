@@ -165,21 +165,21 @@ export enum GatewayCloseCodes {
  * https://discord.com/developers/docs/topics/gateway#list-of-intents
  */
 export enum GatewayIntentBits {
-	GUILDS = 1 << 0,
-	GUILD_MEMBERS = 1 << 1,
-	GUILD_BANS = 1 << 2,
-	GUILD_EMOJIS = 1 << 3,
-	GUILD_INTEGRATIONS = 1 << 4,
-	GUILD_WEBHOOKS = 1 << 5,
-	GUILD_INVITES = 1 << 6,
-	GUILD_VOICE_STATES = 1 << 7,
-	GUILD_PRESENCES = 1 << 8,
-	GUILD_MESSAGES = 1 << 9,
-	GUILD_MESSAGE_REACTIONS = 1 << 10,
-	GUILD_MESSAGE_TYPING = 1 << 11,
-	DIRECT_MESSAGES = 1 << 12,
-	DIRECT_MESSAGE_REACTIONS = 1 << 13,
-	DIRECT_MESSAGE_TYPING = 1 << 14,
+	Guilds = 1 << 0,
+	GuildMembers = 1 << 1,
+	GuildBans = 1 << 2,
+	GuildEmojis = 1 << 3,
+	GuildIntegrations = 1 << 4,
+	GuildWebhooks = 1 << 5,
+	GuildInvites = 1 << 6,
+	GuildVoiceStates = 1 << 7,
+	GuildPresences = 1 << 8,
+	GuildMessages = 1 << 9,
+	GuildMessageReactions = 1 << 10,
+	GuildMessageTyping = 1 << 11,
+	DirectMessages = 1 << 12,
+	DirectMessageReactions = 1 << 13,
+	DirectmessageTyping = 1 << 14,
 }
 
 /**
