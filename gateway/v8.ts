@@ -179,7 +179,7 @@ export const enum GatewayIntentBits {
 	GuildMessageTyping = 1 << 11,
 	DirectMessages = 1 << 12,
 	DirectMessageReactions = 1 << 13,
-	DirectmessageTyping = 1 << 14,
+	DirectMessageTyping = 1 << 14,
 }
 
 /**
