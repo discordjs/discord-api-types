@@ -359,7 +359,7 @@ export enum MessageType {
 	UserPremiumGuildSubscription,
 	UserPremiumGuildSubscriptionTier1,
 	UserPremiumGuildSubscriptionTier2,
-	UserPremoimGuildSubscriptionTier3,
+	UserPremiumGuildSubscriptionTier3,
 	ChannelFollowAdd,
 	GuildDiscoveryDisqualified = 14,
 	GuildDiscoveryRequalified,
