@@ -38,7 +38,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: text, news
 	 */
-	type?: ChannelType.GUILD_NEWS | ChannelType.GUILD_TEXT;
+	type?: ChannelType.GuildNews | ChannelType.GuildText;
 	/**
 	 * The position of the channel in the left-hand listing
 	 *

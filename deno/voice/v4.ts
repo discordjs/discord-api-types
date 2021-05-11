@@ -3,7 +3,7 @@ export const VoiceGatewayVersion = '4';
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-opcodes
  */
-export enum VoiceOPCodes {
+export enum VoiceOpcodes {
 	/**
 	 * Begin a voice websocket connection
 	 */
@@ -61,7 +61,7 @@ export enum VoiceCloseCodes {
 	/**
 	 * You sent an invalid opcode
 	 */
-	UnknownOpCode = 4001,
+	UnknownOpcode = 4001,
 	/**
 	 * You sent a invalid payload in your identifying to the Gateway
 	 */

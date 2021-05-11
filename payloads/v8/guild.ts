@@ -315,25 +315,25 @@ export interface APIGuild extends APIPartialGuild {
  * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
  */
 export const enum GuildDefaultMessageNotifications {
-	ALL_MESSAGES,
-	ONLY_MENTIONS,
+	AllMessages,
+	OnlyMentions,
 }
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
  */
 export const enum GuildExplicitContentFilter {
-	DISABLED,
-	MEMBERS_WITHOUT_ROLES,
-	ALL_MEMBERS,
+	Disabled,
+	MembersWithoutRoles,
+	AllMembers,
 }
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
  */
 export const enum GuildMFALevel {
-	NONE,
-	ELEVATED,
+	None,
+	Elevated,
 }
 
 /**
@@ -343,33 +343,33 @@ export const enum GuildVerificationLevel {
 	/**
 	 * Unrestricted
 	 */
-	NONE,
+	None,
 	/**
 	 * Must have verified email on account
 	 */
-	LOW,
+	Low,
 	/**
 	 * Must be registered on Discord for longer than 5 minutes
 	 */
-	MEDIUM,
+	Medium,
 	/**
 	 * Must be a member of the guild for longer than 10 minutes
 	 */
-	HIGH,
+	High,
 	/**
 	 * Must have a verified phone number
 	 */
-	VERY_HIGH,
+	VeryHigh,
 }
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-premium-tier
  */
 export const enum GuildPremiumTier {
-	NONE,
-	TIER_1,
-	TIER_2,
-	TIER_3,
+	None,
+	Tier1,
+	Tier2,
+	Tier3,
 }
 
 /**
@@ -379,15 +379,15 @@ export const enum GuildSystemChannelFlags {
 	/**
 	 * Suppress member join notifications
 	 */
-	SUPPRESS_JOIN_NOTIFICATIONS = 1 << 0,
+	SuppressJoinNotifications = 1 << 0,
 	/**
 	 * Suppress server boost notifications
 	 */
-	SUPPRESS_PREMIUM_SUBSCRIPTIONS = 1 << 1,
+	SuppressPremiumSubscriptions = 1 << 1,
 	/**
 	 * Suppress server setup tips
 	 */
-	SUPPRESS_GUILD_REMINDER_NOTIFICATIONS = 1 << 2,
+	SuppressGuildReminderNotifications = 1 << 2,
 }
 
 /**
@@ -397,64 +397,64 @@ export const enum GuildFeature {
 	/**
 	 * Guild has access to set an animated guild icon
 	 */
-	ANIMATED_ICON = 'ANIMATED_ICON',
+	AnimatedIcon = 'ANIMATED_ICON',
 	/**
 	 * Guild has access to set a guild banner image
 	 */
-	BANNER = 'BANNER',
+	Banner = 'BANNER',
 	/**
 	 * Guild has access to use commerce features (i.e. create store channels)
 	 */
-	COMMERCE = 'COMMERCE',
+	Commerce = 'COMMERCE',
 	/**
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
-	COMMUNITY = 'COMMUNITY',
+	Community = 'COMMUNITY',
 	/**
 	 * Guild is able to be discovered in the directory
 	 */
-	DISCOVERABLE = 'DISCOVERABLE',
+	Discoverable = 'DISCOVERABLE',
 	/**
 	 * Guild is able to be featured in the directory
 	 */
-	FEATURABLE = 'FEATURABLE',
+	Featurable = 'FEATURABLE',
 	/**
 	 * Guild has access to set an invite splash background
 	 */
-	INVITE_SPLASH = 'INVITE_SPLASH',
+	InviteSplash = 'INVITE_SPLASH',
 	/**
 	 * Guild has access to create news channels
 	 */
-	NEWS = 'NEWS',
+	News = 'NEWS',
 	/**
 	 * Guild is partnered
 	 */
-	PARTNERED = 'PARTNERED',
-	RELAY_ENABLED = 'RELAY_ENABLED',
+	Partnered = 'PARTNERED',
+	RelayEnabled = 'RELAY_ENABLED',
 	/**
 	 * Guild has access to set a vanity URL
 	 */
-	VANITY_URL = 'VANITY_URL',
+	VanityURL = 'VANITY_URL',
 	/**
 	 * Guild is verified
 	 */
-	VERIFIED = 'VERIFIED',
+	Verified = 'VERIFIED',
 	/**
 	 * Guild has access to set 384kbps bitrate in voice (previously VIP voice servers)
 	 */
-	VIP_REGIONS = 'VIP_REGIONS',
+	VIPRegions = 'VIP_REGIONS',
 	/**
 	 * Guild has enabled the welcome screen
 	 */
-	WELCOME_SCREEN_ENABLED = 'WELCOME_SCREEN_ENABLED',
+	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
 	/**
 	 * Guild has enabled Membership Screening
 	 */
-	MEMBER_VERIFICATION_GATE_ENABLED = 'MEMBER_VERIFICATION_GATE_ENABLED',
+	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
 	/**
 	 * Guild can be previewed before joining via Membership Screening or the directory
 	 */
-	PREVIEW_ENABLED = 'PREVIEW_ENABLED',
+	PreviewEnabled = 'PREVIEW_ENABLED',
 }
 
 /**
@@ -872,5 +872,5 @@ export const enum MembershipScreeningFieldType {
 	/**
 	 * Server Rules
 	 */
-	TERMS = 'TERMS',
+	Terms = 'TERMS',
 }

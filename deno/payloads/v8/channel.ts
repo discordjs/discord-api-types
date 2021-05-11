@@ -121,7 +121,7 @@ export enum ChannelType {
 	/**
 	 * A text channel within a guild
 	 */
-	GUILD_TEXT,
+	GuildText,
 	/**
 	 * A direct message between users
 	 */
@@ -129,46 +129,46 @@ export enum ChannelType {
 	/**
 	 * A voice channel within a guild
 	 */
-	GUILD_VOICE,
+	GuildVoice,
 	/**
 	 * A direct message between multiple users
 	 */
-	GROUP_DM,
+	GroupDM,
 	/**
 	 * An organizational category that contains up to 50 channels
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/115001580171-Channel-Categories-101
 	 */
-	GUILD_CATEGORY,
+	GuildCategory,
 	/**
 	 * A channel that users can follow and crosspost into their own guild
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/360032008192
 	 */
-	GUILD_NEWS,
+	GuildNews,
 	/**
 	 * A channel in which game developers can sell their game on Discord
 	 *
 	 * See https://discord.com/developers/docs/game-and-server-management/special-channels
 	 */
-	GUILD_STORE,
+	GuildStore,
 	/**
 	 * A voice channel for hosting events with an audience
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/1500005513722
 	 */
-	GUILD_STAGE_VOICE = 13,
+	GuildStageVoice = 13,
 }
 
 export enum VideoQualityMode {
 	/**
 	 * Discord chooses the quality for optimal performance
 	 */
-	AUTO = 1,
+	Auto = 1,
 	/**
 	 * 720p
 	 */
-	FULL,
+	Full,
 }
 
 /**
@@ -348,26 +348,26 @@ export interface APIMessage {
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
  */
 export enum MessageType {
-	DEFAULT,
-	RECIPIENT_ADD,
-	RECIPIENT_REMOVE,
-	CALL,
-	CHANNEL_NAME_CHANGE,
-	CHANNEL_ICON_CHANGE,
-	CHANNEL_PINNED_MESSAGE,
-	GUILD_MEMBER_JOIN,
-	USER_PREMIUM_GUILD_SUBSCRIPTION,
-	USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1,
-	USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2,
-	USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_3,
-	CHANNEL_FOLLOW_ADD,
-	GUILD_DISCOVERY_DISQUALIFIED = 14,
-	GUILD_DISCOVERY_REQUALIFIED,
-	GUILD_DISCOVERY_GRACE_PERIOD_INITIAL_WARNING,
-	GUILD_DISCOVERY_GRACE_PERIOD_FINAL_WARNING,
-	REPLY = 19,
-	APPLICATION_COMMAND,
-	GUILD_INVITE_REMINDER = 22,
+	Default,
+	RecipientAdd,
+	RecipientRemove,
+	Call,
+	ChannelNameChange,
+	ChannelIconChange,
+	ChannelPinnedMessage,
+	GuildMemberJoin,
+	UserPremiumGuildSubscription,
+	UserPremiumGuildSubscriptionTier1,
+	UserPremiumGuildSubscriptionTier2,
+	UserPremiumGuildSubscriptionTier3,
+	ChannelFollowAdd,
+	GuildDiscoveryDisqualified = 14,
+	GuildDiscoveryRequalified,
+	GuildDiscoveryGracePeriodInitialWarning,
+	GuildDiscoveryGracePeriodFinalWarning,
+	Reply = 19,
+	ApplicationCommand,
+	GuildInviteReminder = 22,
 }
 
 /**
@@ -410,10 +410,10 @@ export interface APIMessageReference {
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
  */
 export enum MessageActivityType {
-	JOIN = 1,
-	SPECTATE,
-	LISTEN,
-	JOIN_REQUEST = 5,
+	Join = 1,
+	Spectate,
+	Listen,
+	JoinRequest = 5,
 }
 
 /**
@@ -423,31 +423,31 @@ export enum MessageFlags {
 	/**
 	 * This message has been published to subscribed channels (via Channel Following)
 	 */
-	CROSSPOSTED = 1 << 0,
+	Crossposted = 1 << 0,
 	/**
 	 * This message originated from a message in another channel (via Channel Following)
 	 */
-	IS_CROSSPOST = 1 << 1,
+	IsCrosspost = 1 << 1,
 	/**
 	 * Do not include any embeds when serializing this message
 	 */
-	SUPPRESS_EMBEDS = 1 << 2,
+	SuppressEmbeds = 1 << 2,
 	/**
 	 * The source message for this crosspost has been deleted (via Channel Following)
 	 */
-	SOURCE_MESSAGE_DELETED = 1 << 3,
+	SourceMessageDeleted = 1 << 3,
 	/**
 	 * This message came from the urgent message system
 	 */
-	URGENT = 1 << 4,
+	Urgent = 1 << 4,
 	/**
 	 * This message is only visible to the user who invoked the Interaction
 	 */
-	EPHEMERAL = 1 << 6,
+	Ephemeral = 1 << 6,
 	/**
 	 * This message is an Interaction Response and the bot is "thinking"
 	 */
-	LOADING = 1 << 7,
+	Loading = 1 << 7,
 }
 
 /**
@@ -670,7 +670,7 @@ export enum EmbedType {
 	/**
 	 * Animated gif image embed rendered as a video embed
 	 */
-	GifV = 'gifv',
+	GIFV = 'gifv',
 	/**
 	 * Article embed
 	 */
