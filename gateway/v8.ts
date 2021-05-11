@@ -75,7 +75,7 @@ export const enum GatewayOpcodes {
 	/**
 	 * Sent in response to receiving a heartbeat to acknowledge that it has been received
 	 */
-	HeartbeatACK,
+	HeartbeatAck,
 }
 
 /**
@@ -242,7 +242,7 @@ export type GatewaySendPayload =
 export type GatewayReceivePayload =
 	| GatewayHello
 	| GatewayHeartbeatRequest
-	| GatewayHeartbeatACK
+	| GatewayHeartbeatAck
 	| GatewayInvalidSession
 	| GatewayReconnect
 	| GatewayDispatchPayload;
@@ -366,8 +366,8 @@ export interface GatewayHeartbeatRequest extends NonDispatchPayload {
 /**
  * https://discord.com/developers/docs/topics/gateway#heartbeating-example-gateway-heartbeat-ack
  */
-export interface GatewayHeartbeatACK extends NonDispatchPayload {
-	op: GatewayOpcodes.HeartbeatACK;
+export interface GatewayHeartbeatAck extends NonDispatchPayload {
+	op: GatewayOpcodes.HeartbeatAck;
 	d: never;
 }
 

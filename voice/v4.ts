@@ -31,7 +31,7 @@ export const enum VoiceOpcodes {
 	/**
 	 * Sent to acknowledge a received client heartbeat
 	 */
-	HeartbeatACK,
+	HeartbeatAck,
 	/**
 	 * Resume a connection
 	 */
