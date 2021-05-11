@@ -125,7 +125,7 @@ export enum ChannelType {
 	/**
 	 * A direct message between users
 	 */
-	Dm,
+	DM,
 	/**
 	 * A voice channel within a guild
 	 */
@@ -133,7 +133,7 @@ export enum ChannelType {
 	/**
 	 * A direct message between multiple users
 	 */
-	GroupDm,
+	GroupDM,
 	/**
 	 * An organizational category that contains up to 50 channels
 	 *
@@ -490,9 +490,9 @@ export interface APISticker {
  * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
  */
 export enum StickerFormatType {
-	Png = 1,
-	Apng,
-	Lottie,
+	PNG = 1,
+	APNG,
+	LOTTIE,
 }
 
 /**
@@ -670,7 +670,7 @@ export enum EmbedType {
 	/**
 	 * Animated gif image embed rendered as a video embed
 	 */
-	GifV = 'gifv',
+	GIFV = 'gifv',
 	/**
 	 * Article embed
 	 */

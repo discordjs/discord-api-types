@@ -30,7 +30,7 @@ export const GatewayVersion = '8';
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
  */
-export const enum GatewayOPCodes {
+export const enum GatewayOpcodes {
 	/**
 	 * An event was dispatched
 	 */
@@ -75,7 +75,7 @@ export const enum GatewayOPCodes {
 	/**
 	 * Sent in response to receiving a heartbeat to acknowledge that it has been received
 	 */
-	HeartbeatAck,
+	HeartbeatACK,
 }
 
 /**
@@ -91,7 +91,7 @@ export const enum GatewayCloseCodes {
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#payloads-and-opcodes
 	 */
-	UnknownOpCode,
+	UnknownOpcode,
 	/**
 	 * You sent an invalid payload to us. Don't do that!
 	 *
@@ -242,7 +242,7 @@ export type GatewaySendPayload =
 export type GatewayReceivePayload =
 	| GatewayHello
 	| GatewayHeartbeatRequest
-	| GatewayHeartbeatAck
+	| GatewayHeartbeatACK
 	| GatewayInvalidSession
 	| GatewayReconnect
 	| GatewayDispatchPayload;
@@ -341,7 +341,7 @@ export type GatewayApplicationCommandDeleteDispatchData = GatewayApplicationComm
  * https://discord.com/developers/docs/topics/gateway#hello
  */
 export interface GatewayHello extends NonDispatchPayload {
-	op: GatewayOPCodes.Hello;
+	op: GatewayOpcodes.Hello;
 	d: GatewayHelloData;
 }
 
@@ -359,15 +359,15 @@ export interface GatewayHelloData {
  * https://discord.com/developers/docs/topics/gateway#heartbeating
  */
 export interface GatewayHeartbeatRequest extends NonDispatchPayload {
-	op: GatewayOPCodes.Heartbeat;
+	op: GatewayOpcodes.Heartbeat;
 	d: never;
 }
 
 /**
  * https://discord.com/developers/docs/topics/gateway#heartbeating-example-gateway-heartbeat-ack
  */
-export interface GatewayHeartbeatAck extends NonDispatchPayload {
-	op: GatewayOPCodes.HeartbeatAck;
+export interface GatewayHeartbeatACK extends NonDispatchPayload {
+	op: GatewayOpcodes.HeartbeatACK;
 	d: never;
 }
 
@@ -375,7 +375,7 @@ export interface GatewayHeartbeatAck extends NonDispatchPayload {
  * https://discord.com/developers/docs/topics/gateway#invalid-session
  */
 export interface GatewayInvalidSession extends NonDispatchPayload {
-	op: GatewayOPCodes.InvalidSession;
+	op: GatewayOpcodes.InvalidSession;
 	d: GatewayInvalidSessionData;
 }
 
@@ -388,7 +388,7 @@ export type GatewayInvalidSessionData = boolean;
  * https://discord.com/developers/docs/topics/gateway#reconnect
  */
 export interface GatewayReconnect extends NonDispatchPayload {
-	op: GatewayOPCodes.Reconnect;
+	op: GatewayOpcodes.Reconnect;
 	d: never;
 }
 
@@ -1250,7 +1250,7 @@ export interface GatewayWebhooksUpdateDispatchData {
  * https://discord.com/developers/docs/topics/gateway#heartbeating
  */
 export interface GatewayHeartbeat {
-	op: GatewayOPCodes.Heartbeat;
+	op: GatewayOpcodes.Heartbeat;
 	d: GatewayHeartbeatData;
 }
 
@@ -1263,7 +1263,7 @@ export type GatewayHeartbeatData = number | null;
  * https://discord.com/developers/docs/topics/gateway#identify
  */
 export interface GatewayIdentify {
-	op: GatewayOPCodes.Identify;
+	op: GatewayOpcodes.Identify;
 	d: GatewayIdentifyData;
 }
 
@@ -1336,7 +1336,7 @@ export interface GatewayIdentifyProperties {
  * https://discord.com/developers/docs/topics/gateway#resume
  */
 export interface GatewayResume {
-	op: GatewayOPCodes.Resume;
+	op: GatewayOpcodes.Resume;
 	d: GatewayResumeData;
 }
 
@@ -1362,7 +1362,7 @@ export interface GatewayResumeData {
  * https://discord.com/developers/docs/topics/gateway#request-guild-members
  */
 export interface GatewayRequestGuildMembers {
-	op: GatewayOPCodes.RequestGuildMembers;
+	op: GatewayOpcodes.RequestGuildMembers;
 	d: GatewayRequestGuildMembersData;
 }
 
@@ -1405,7 +1405,7 @@ export interface GatewayRequestGuildMembersData {
  * https://discord.com/developers/docs/topics/gateway#update-voice-state
  */
 export interface GatewayVoiceStateUpdate {
-	op: GatewayOPCodes.VoiceStateUpdate;
+	op: GatewayOpcodes.VoiceStateUpdate;
 	d: GatewayVoiceStateUpdateData;
 }
 
@@ -1435,7 +1435,7 @@ export interface GatewayVoiceStateUpdateData {
  * https://discord.com/developers/docs/topics/gateway#update-status
  */
 export interface GatewayUpdatePresence {
-	op: GatewayOPCodes.PresenceUpdate;
+	op: GatewayOpcodes.PresenceUpdate;
 	d: GatewayPresenceUpdateData;
 }
 
@@ -1477,7 +1477,7 @@ interface BasePayload {
 	/**
 	 * Opcode for the payload
 	 */
-	op: GatewayOPCodes;
+	op: GatewayOpcodes;
 	/**
 	 * Event data
 	 */
@@ -1495,7 +1495,7 @@ interface BasePayload {
 type NonDispatchPayload = Omit<BasePayload, 't'>;
 
 interface DataPayload<Event extends GatewayDispatchEvents, D = unknown> extends BasePayload {
-	op: GatewayOPCodes.Dispatch;
+	op: GatewayOpcodes.Dispatch;
 	t: Event;
 	d: D;
 }

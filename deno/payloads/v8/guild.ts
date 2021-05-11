@@ -434,7 +434,7 @@ export enum GuildFeature {
 	/**
 	 * Guild has access to set a vanity URL
 	 */
-	VanityUrl = 'VANITY_URL',
+	VanityURL = 'VANITY_URL',
 	/**
 	 * Guild is verified
 	 */
@@ -442,7 +442,7 @@ export enum GuildFeature {
 	/**
 	 * Guild has access to set 384kbps bitrate in voice (previously VIP voice servers)
 	 */
-	VipRegions = 'VIP_REGIONS',
+	VIPRegions = 'VIP_REGIONS',
 	/**
 	 * Guild has enabled the welcome screen
 	 */
