@@ -342,6 +342,10 @@ export interface APIMessage {
 	 * Sent if the message is a response to an Interaction
 	 */
 	interaction?: APIMessageInteraction;
+	/**
+	 * Interactive components included in the message
+	 */
+	components?: APIBaseComponent[];
 }
 
 /**
@@ -929,4 +933,87 @@ export interface APIAllowedMentions {
 	 * @default false
 	 */
 	replied_user?: boolean;
+}
+
+/**
+ * TODO: Include docs link
+ */
+export interface APIBaseComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType;
+}
+
+/**
+ * TODO: Include docs link
+ */
+ export const enum ComponentType {
+	/**
+	 * ActionRow component
+	 */
+	ActionRow = 1,
+	/**
+	 * Button component
+	 */
+	Button,
+}
+
+/**
+ * TODO: Include docs link
+ */
+export interface APIActionRowComponent extends APIBaseComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType.ActionRow;
+	/**
+	 * The compponets in the ActionRow
+	 */
+	components: APIBaseComponent[];
+}
+
+/**
+ * TODO: Include docs link
+ */
+export interface APIButtonComponent extends APIBaseComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType.Button;
+	/**
+	 * The label to be displayed on the button
+	 */
+	label: string;
+	/**
+	 * The custom_id to be sent in the interaction when clicked
+	 */
+	custom_id: string;
+	/**
+	 * The style of the button
+	 */
+	style: ButtonStyle;
+	/**
+	 * The emoji to display to the left of the text
+	 */
+	emoji?: APIPartialEmoji;
+	/**
+	 * The URL to direct users to when clicked for Link buttons
+	 */
+	url?: string;
+	/**
+	 * The status of the button
+	 */
+	disabled?: boolean;
+}
+
+/**
+ * TODO: Include docs link
+ */
+export const enum ButtonStyle {
+	Primary = 1,
+	Secondary,
+	Success,
+	Danger,
+	Link
 }

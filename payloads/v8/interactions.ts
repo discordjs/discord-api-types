@@ -1,5 +1,6 @@
 import type { Permissions, Snowflake } from '../../globals';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../rest/v8/index';
+import { APIMessage } from './channel';
 import type { APIGuildMember, APIPartialChannel, APIRole, APIUser, MessageFlags } from './index';
 
 /**
@@ -118,7 +119,7 @@ export interface APIBaseInteraction {
 	/**
 	 * The command data payload
 	 */
-	data?: APIApplicationCommandInteractionData;
+	data?: APIApplicationCommandInteractionData | APIButtonInteractionData;
 	/**
 	 * The channel it was sent from
 	 */
@@ -170,9 +171,19 @@ export interface APIDMInteraction extends APIBaseInteraction {
 }
 
 /**
+ * TODO: Include docs link
+ */
+export interface APIButtonInteraction extends APIBaseInteraction {
+	/**
+	 * Message object to which the button was attached
+	 */
+	message: APIMessage;
+}
+
+/**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
-export type APIInteraction = APIGuildInteraction | APIDMInteraction;
+export type APIInteraction = APIGuildInteraction | APIDMInteraction | APIButtonInteraction;
 
 /**
  * Like APIGuildInteraction, only with the `data` property always present
@@ -203,6 +214,7 @@ export type APIApplicationCommandInteraction =
 export const enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
+	Button,
 }
 
 /**
@@ -346,13 +358,20 @@ export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOpti
 	boolean
 >;
 
+export interface APIButtonInteractionData {
+	custom_id: string;
+	component_type: 2;
+}
+
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
 	| APIInteractionResponseChannelMessageWithSource
-	| APIInteractionResponseDeferredChannelMessageWithSource;
+	| APIInteractionResponseDeferredChannelMessageWithSource
+	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponseUpdateMessage;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
@@ -366,6 +385,15 @@ export interface APIInteractionResponseChannelMessageWithSource {
 export interface APIInteractionResponseDeferredChannelMessageWithSource {
 	type: InteractionResponseType.DeferredChannelMessageWithSource;
 	data?: Pick<APIInteractionApplicationCommandCallbackData, 'flags'>;
+}
+
+export interface APIInteractionResponseDeferredMessageUpdate {
+	type: InteractionResponseType.DeferredMessageUpdate;
+}
+
+export interface APIInteractionResponseUpdateMessage {
+	type: InteractionResponseType.UpdateMessage;
+	data?: APIInteractionApplicationCommandCallbackData;
 }
 
 /**
@@ -384,6 +412,14 @@ export const enum InteractionResponseType {
 	 * ACK an interaction and edit to a response later, the user sees a loading state
 	 */
 	DeferredChannelMessageWithSource,
+	/**
+	 * ACK a button interaction and update it to a loading state
+	 */
+	DeferredMessageUpdate,
+	/**
+	 * ACK a button interaction and edit the message to which the button was attached
+	 */
+	UpdateMessage
 }
 
 /**
