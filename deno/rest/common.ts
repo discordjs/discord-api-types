@@ -105,6 +105,10 @@ export enum RESTJSONErrorCodes {
 
 	InvalidStickerSent = 50081,
 
+	InvalidActionOnArchivedThread = 50083,
+	InvalidThreadNotificationSettings,
+	ParameterEarlierThanCreation,
+
 	TwoFactorAuthenticationIsRequired = 60003,
 
 	ReactionWasBlocked = 90001,
