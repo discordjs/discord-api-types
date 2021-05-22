@@ -684,22 +684,26 @@ export const OAuth2Routes = {
 // Freeze OAuth2 route object
 Object.freeze(OAuth2Routes);
 
-interface DiscordErrorFieldInformation {
+export interface DiscordErrorFieldInformation {
 	code: string;
 	message: string;
 }
 
-interface DiscordErrorGroupWrapper {
+export interface DiscordErrorGroupWrapper {
 	_errors: DiscordError[];
 }
 
-type DiscordError = DiscordErrorGroupWrapper | DiscordErrorFieldInformation | Record<string, DiscordError> | string;
+export type DiscordErrorData =
+	| DiscordErrorGroupWrapper
+	| DiscordErrorFieldInformation
+	| { [k: string]: DiscordErrorData }
+	| string;
 
 /**
  * https://discord.com/developers/docs/reference#error-messages
  */
-export interface DiscordErrorData {
+export interface DiscordError {
 	code: number;
 	message: string;
-	errors?: DiscordError;
+	errors?: DiscordErrorData;
 }

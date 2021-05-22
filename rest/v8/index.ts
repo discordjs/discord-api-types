@@ -693,7 +693,11 @@ export interface DiscordErrorGroupWrapper {
 	_errors: DiscordError[];
 }
 
-export type DiscordErrorData = DiscordErrorGroupWrapper | DiscordErrorFieldInformation | { [k: string]: DiscordErrorData } | string;
+export type DiscordErrorData =
+	| DiscordErrorGroupWrapper
+	| DiscordErrorFieldInformation
+	| { [k: string]: DiscordErrorData }
+	| string;
 
 /**
  * https://discord.com/developers/docs/reference#error-messages
