@@ -75,17 +75,18 @@
 		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,utils}/**/*.{js,mjs,d.ts,map} {globals,v*}.{js,mjs,d.ts,*map}",
 		"clean": "run-p clean:*",
 		"esm:gateway": "gen-esm-wrapper ./gateway/index.js ./gateway/index.mjs",
+		"esm:globals": "gen-esm-wrapper ./globals.js ./globals.mjs",
 		"esm:payloads": "gen-esm-wrapper ./payloads/index.js ./payloads/index.mjs",
 		"esm:rest": "gen-esm-wrapper ./rest/index.js ./rest/index.mjs",
 		"esm:rpc": "gen-esm-wrapper ./rpc/index.js ./rpc/index.mjs",
 		"esm:utils": "gen-esm-wrapper ./utils/index.js ./utils/index.mjs",
-		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
-		"esm:globals": "gen-esm-wrapper ./globals.js ./globals.mjs",
 		"esm:versions": "node ./scripts/versions.mjs",
+		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
 		"lint": "eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/** {globals,v*}.ts",
-		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/** {globals,v*}.ts",
-		"prepublishOnly": "run-s clean test:lint build:node",
 		"postpublish": "run-s clean:node build:deno",
+		"prepare": "husky install",
+		"prepublishOnly": "run-s clean test:lint build:node",
+		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/** {globals,v*}.ts",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
 	},
 	"keywords": [
@@ -118,7 +119,7 @@
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
 		"gen-esm-wrapper": "^1.1.1",
-		"husky": "^4.3.8",
+		"husky": "^6.0.0",
 		"lint-staged": "^10.5.4",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.2.1",
@@ -154,15 +155,9 @@
 			}
 		]
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged && lint-staged && npm run build:deno && git add deno",
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-		}
-	},
 	"lint-staged": {
 		"{gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts",
-		"globals.ts": "eslint --fix --ext mjs,js,ts"
+		"{globals,v*}.ts": "eslint --fix --ext mjs,js,ts"
 	},
 	"commitlint": {
 		"extends": [
