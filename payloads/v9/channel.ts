@@ -613,28 +613,33 @@ export const enum OverwriteType {
  */
 export interface APIThreadMetadata {
 	/**
-	 * The archived state of the thread
+	 * Whether the thread is archived
 	 */
 	archived: boolean;
 	/**
-	 * The id of the member that last changed `archived`
+	 * ID of the user that last archived or unarchived the thread
 	 */
 	archiver_id?: Snowflake;
 	/**
-	 * The duration to wait before automatically archive the thread
+	 * Duration in minutes to automatically archive the thread after recent activity, can be set to: 60, 1440, 4320, 10080
 	 */
 	auto_archive_duration: ThreadAutoArchiveDuration;
 	/**
-	 * An ISO8601 timestamp for when `archived` was last changed
+	 * An ISO8601 timestamp when the thread's archive status was last changed, used for calculating recent activity
 	 */
 	archive_timestamp: string;
 	/**
-	 * The locked state of the thread
+	 * When a thread is locked, only users with MANAGE_THREADS can unarchive it
 	 */
 	locked?: boolean;
 }
 
-export type ThreadAutoArchiveDuration = 60 | 1440 | 4320 | 10080;
+export const enum ThreadAutoArchiveDuration {
+	OneHour = 60,
+	OneDay = 1440,
+	ThreeDays = 4320,
+	OneWeek = 10080,
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#thread-member-object-thread-member-structure
@@ -656,14 +661,10 @@ export interface APIThreadMember {
 	 * Member flags combined as a bitfield
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
-	 *
 	 */
 	flags: ThreadMemberFlags;
 }
 
-/**
- * Currently undocumented
- */
 export const enum ThreadMemberFlags {}
 
 export interface APIThreadList {
