@@ -77,9 +77,9 @@ export enum RESTJSONErrorCodes {
 	CannotSendMessagesToThisUser,
 	CannotSendMessagesInVoiceChannel,
 	ChannelVerificationLevelTooHighForYouToGainAccess,
-	Oauth2ApplicationDoesNotHaveBot,
-	Oauth2ApplicationLimitReached,
-	InvalidOauth2State,
+	OAuth2ApplicationDoesNotHaveBot,
+	OAuth2ApplicationLimitReached,
+	InvalidOAuth2State,
 	MissingPermissions,
 	InvalidToken,
 	NoteWasTooLong,
@@ -90,7 +90,7 @@ export enum RESTJSONErrorCodes {
 	CannotExecuteActionOnSystemMessage,
 
 	CannotExecuteActionOnThisChannelType = 50024,
-	InvalidOauth2AccessToken,
+	InvalidOAuth2AccessToken,
 
 	InvalidWebhookToken = 50027,
 
