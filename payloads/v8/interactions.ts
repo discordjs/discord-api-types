@@ -1,6 +1,6 @@
 import type { Permissions, Snowflake } from '../../globals';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../rest/v8/index';
-import { APIMessage } from './channel';
+import { APIMessage, ComponentType } from './channel';
 import type { APIGuildMember, APIPartialChannel, APIRole, APIUser, MessageFlags } from './index';
 
 /**
@@ -119,7 +119,7 @@ export interface APIBaseInteraction {
 	/**
 	 * The command data payload
 	 */
-	data?: APIApplicationCommandInteractionData | APIButtonInteractionData;
+	data?: APIApplicationCommandInteractionData | APIMessageComponentInteractionData;
 	/**
 	 * The channel it was sent from
 	 */
@@ -173,7 +173,7 @@ export interface APIDMInteraction extends APIBaseInteraction {
 /**
  * TODO: Include docs link
  */
-export interface APIButtonInteraction extends APIBaseInteraction {
+export interface APIMessageComponentInteraction extends APIBaseInteraction {
 	/**
 	 * Message object to which the button was attached
 	 */
@@ -183,7 +183,7 @@ export interface APIButtonInteraction extends APIBaseInteraction {
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction
  */
-export type APIInteraction = APIGuildInteraction | APIDMInteraction | APIButtonInteraction;
+export type APIInteraction = APIGuildInteraction | APIDMInteraction | APIMessageComponentInteraction;
 
 /**
  * Like APIGuildInteraction, only with the `data` property always present
@@ -214,7 +214,7 @@ export type APIApplicationCommandInteraction =
 export const enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
-	Button,
+	MessageComponent,
 }
 
 /**
@@ -358,10 +358,18 @@ export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOpti
 	boolean
 >;
 
-export interface APIButtonInteractionData {
+export interface APIMessageButtonInteractionData {
 	custom_id: string;
-	component_type: 2;
+	component_type: ComponentType;
 }
+
+export interface APIMessageSelectMenuInteractionData {
+	custom_id: string;
+	component_type: ComponentType;
+	values: string[]
+}
+
+export type APIMessageComponentInteractionData = APIMessageButtonInteractionData | APIMessageSelectMenuInteractionData;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response

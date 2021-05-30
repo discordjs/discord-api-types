@@ -343,9 +343,9 @@ export interface APIMessage {
 	 */
 	interaction?: APIMessageInteraction;
 	/**
-	 * Interactive components included in the message
+	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
-	components?: APIBaseComponent[];
+	components?: APIActionRowComponent[];
 }
 
 /**
@@ -948,7 +948,7 @@ export interface APIBaseComponent {
 /**
  * TODO: Include docs link
  */
- export const enum ComponentType {
+export const enum ComponentType {
 	/**
 	 * ActionRow component
 	 */
@@ -957,6 +957,10 @@ export interface APIBaseComponent {
 	 * Button component
 	 */
 	Button,
+	/**
+	 * Select Menu component
+	 */
+	SelectMenu
 }
 
 /**
@@ -970,7 +974,7 @@ export interface APIActionRowComponent extends APIBaseComponent {
 	/**
 	 * The compponets in the ActionRow
 	 */
-	components: APIBaseComponent[];
+	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
 }
 
 /**
@@ -1006,6 +1010,58 @@ export interface APIButtonComponent extends APIBaseComponent {
 	 */
 	disabled?: boolean;
 }
+
+export interface APISelectMenuComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType.SelectMenu;
+	/**
+	 * The custom_id to be sent in the interaction when clicked
+	 */
+	custom_id: string;
+	/**
+	 * Custom placeholder text if nothing is selected
+	 */
+	placeholder: string;
+	/**
+	 * The minimum number of items that must be chosen
+	 */
+	min_values: number;
+	/**
+	 * The maximum number of items that can be chosen
+	 */
+	max_values: number;
+	/**
+	 * Choices to display in the select menu
+	 */
+	options: APISelectOption[];
+}
+
+export interface APISelectOption {
+	/**
+	 * The user-facing name of the option (max 25 chars)
+	 */
+	label: string;
+	/**
+	 * The dev-defined value of the option (max 100 chars)
+	 */
+	value: string;
+	/**
+	 * An additional description of the option (max 50 chars)
+	 */
+	description: string;
+	/**
+	 * The emoji to display to the left of the option
+	 */
+	emoji: APIPartialEmoji;
+	/**
+	 * Whether this option should be already-selected by default
+	 */
+	default: boolean;
+}
+
+export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent
 
 /**
  * TODO: Include docs link
