@@ -171,7 +171,7 @@ export interface APIDMInteraction extends APIBaseInteraction {
 }
 
 /**
- * TODO: Include docs link
+ * https://discord.com/developers/docs/interactions/message-components#buttons-button-interaction
  */
 export interface APIMessageComponentInteraction extends APIBaseInteraction {
 	/**

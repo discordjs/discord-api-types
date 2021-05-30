@@ -936,7 +936,7 @@ export interface APIAllowedMentions {
 }
 
 /**
- * TODO: Include docs link
+ * https://discord.com/developers/docs/interactions/message-components
  */
 export interface APIBaseComponent {
 	/**
@@ -946,7 +946,7 @@ export interface APIBaseComponent {
 }
 
 /**
- * TODO: Include docs link
+ * https://discord.com/developers/docs/interactions/message-components#component-types
  */
 export const enum ComponentType {
 	/**
@@ -964,7 +964,7 @@ export const enum ComponentType {
 }
 
 /**
- * TODO: Include docs link
+ * https://discord.com/developers/docs/interactions/message-components#component-object
  */
 export interface APIActionRowComponent extends APIBaseComponent {
 	/**
@@ -978,7 +978,7 @@ export interface APIActionRowComponent extends APIBaseComponent {
 }
 
 /**
- * TODO: Include docs link
+ * https://discord.com/developers/docs/interactions/message-components#buttons-button-object
  */
 export interface APIButtonComponent extends APIBaseComponent {
 	/**
@@ -1011,6 +1011,9 @@ export interface APIButtonComponent extends APIBaseComponent {
 	disabled?: boolean;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/message-components#component-object
+ */
 export interface APISelectMenuComponent {
 	/**
 	 * The type of the component
@@ -1038,6 +1041,9 @@ export interface APISelectMenuComponent {
 	options: APISelectOption[];
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/message-components#component-object
+ */
 export interface APISelectOption {
 	/**
 	 * The user-facing name of the option (max 25 chars)
@@ -1064,7 +1070,7 @@ export interface APISelectOption {
 export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent
 
 /**
- * TODO: Include docs link
+ * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
  */
 export const enum ButtonStyle {
 	Primary = 1,
