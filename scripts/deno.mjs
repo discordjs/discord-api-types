@@ -108,6 +108,7 @@ const globalFileResults = await Promise.allSettled(
 	[
 		'v6.ts', //
 		'v8.ts',
+		'v9.ts',
 	].map((version) => convertFile(new URL(version, baseDirectory), new URL(version, denoPath))),
 );
 

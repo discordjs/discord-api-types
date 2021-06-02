@@ -19,6 +19,7 @@
 		"globals.ts",
 		"v6.ts",
 		"v8.ts",
+		"v9.ts",
 		"gateway/**/*.ts",
 		"payloads/**/*.ts",
 		"rest/**/*.ts",
