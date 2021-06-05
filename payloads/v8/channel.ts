@@ -960,7 +960,7 @@ export const enum ComponentType {
 	/**
 	 * Select Menu component
 	 */
-	SelectMenu
+	SelectMenu,
 }
 
 /**
@@ -1067,7 +1067,7 @@ export interface APISelectOption {
 	default: boolean;
 }
 
-export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent
+export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
@@ -1077,5 +1077,5 @@ export const enum ButtonStyle {
 	Secondary,
 	Success,
 	Danger,
-	Link
+	Link,
 }

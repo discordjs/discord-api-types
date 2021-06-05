@@ -366,7 +366,7 @@ export interface APIMessageButtonInteractionData {
 export interface APIMessageSelectMenuInteractionData {
 	custom_id: string;
 	component_type: ComponentType;
-	values: string[]
+	values: string[];
 }
 
 export type APIMessageComponentInteractionData = APIMessageButtonInteractionData | APIMessageSelectMenuInteractionData;
@@ -427,7 +427,7 @@ export const enum InteractionResponseType {
 	/**
 	 * ACK a button interaction and edit the message to which the button was attached
 	 */
-	UpdateMessage
+	UpdateMessage,
 }
 
 /**
