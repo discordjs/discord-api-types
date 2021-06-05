@@ -27,6 +27,7 @@ jobs:
       - name: Bump Version & Publish
         run: |
           npx standard-version
+          npx conventional-changelog -p angular -i CHANGELOG.md
           npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-next.$(git rev-parse --verify HEAD)
           npm publish --tag next || true
         env:
