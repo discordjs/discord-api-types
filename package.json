@@ -130,7 +130,6 @@
 		"prettier": "^2.3.0",
 		"pretty-quick": "^3.1.0",
 		"rimraf": "^3.0.2",
-		"semantic-release": "^17.4.3",
 		"typescript": "^4.3.2"
 	},
 	"repository": {
@@ -196,18 +195,11 @@
 			]
 		}
 	},
-	"release": {
-		"branches": [
-			"main"
-		],
-		"plugins": [
-			"@semantic-release/commit-analyzer",
-			[
-				"@semantic-release/npm",
-				{
-					"npmPublish": false
-				}
-			]
-		]
+	"standard-version": {
+		"skip": {
+			"changelog": true,
+			"commit": true,
+			"tag": true
+		}
 	}
 }
