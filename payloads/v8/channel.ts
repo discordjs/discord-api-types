@@ -972,7 +972,7 @@ export interface APIActionRowComponent extends APIBaseComponent {
 	 */
 	type: ComponentType.ActionRow;
 	/**
-	 * The compponets in the ActionRow
+	 * The components in the ActionRow
 	 */
 	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
 }
