@@ -332,17 +332,17 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	allow: Permissions;
+	allow?: Permissions | null;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	deny: Permissions;
+	deny?: Permissions | null;
 	/**
 	 * `0` for a role or `1` for a member
 	 */
-	type: OverwriteType;
+	type?: OverwriteType | null;
 }
 
 /**
