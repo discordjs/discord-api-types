@@ -988,11 +988,11 @@ export interface APIButtonComponent extends APIBaseComponent {
 	/**
 	 * The label to be displayed on the button
 	 */
-	label: string;
+	label?: string;
 	/**
 	 * The custom_id to be sent in the interaction when clicked
 	 */
-	custom_id: string;
+	custom_id?: string;
 	/**
 	 * The style of the button
 	 */
@@ -1026,15 +1026,15 @@ export interface APISelectMenuComponent {
 	/**
 	 * Custom placeholder text if nothing is selected
 	 */
-	placeholder: string;
+	placeholder?: string;
 	/**
 	 * The minimum number of items that must be chosen
 	 */
-	min_values: number;
+	min_values?: number;
 	/**
 	 * The maximum number of items that can be chosen
 	 */
-	max_values: number;
+	max_values?: number;
 	/**
 	 * Choices to display in the select menu
 	 */
@@ -1056,11 +1056,11 @@ export interface APISelectOption {
 	/**
 	 * An additional description of the option (max 50 chars)
 	 */
-	description: string;
+	description?: string;
 	/**
 	 * The emoji to display to the left of the option
 	 */
-	emoji: APIPartialEmoji;
+	emoji?: APIPartialEmoji;
 	/**
 	 * Whether this option should be already-selected by default
 	 */
