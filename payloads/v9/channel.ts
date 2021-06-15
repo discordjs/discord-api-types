@@ -132,6 +132,10 @@ export interface APIChannel extends APIPartialChannel {
 	 * The client users member for the thread, only included in select endpoints
 	 */
 	member?: APIThreadMember;
+	/**
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
+	 */
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 }
 
 /**
@@ -616,10 +620,6 @@ export interface APIThreadMetadata {
 	 * Whether the thread is archived
 	 */
 	archived: boolean;
-	/**
-	 * ID of the user that last archived or unarchived the thread
-	 */
-	archiver_id?: Snowflake;
 	/**
 	 * Duration in minutes to automatically archive the thread after recent activity, can be set to: 60, 1440, 4320, 10080
 	 */
