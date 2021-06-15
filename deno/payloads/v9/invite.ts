@@ -5,6 +5,7 @@
 import type { APIPartialChannel } from './channel.ts';
 import type { APIPartialGuild } from './guild.ts';
 import type { APIApplication } from './oauth2.ts';
+import type { APIInviteStageInstance } from './stageInstance.ts';
 import type { APIUser } from './user.ts';
 
 /**
@@ -63,6 +64,10 @@ export interface APIInvite {
 	 * The expiration date of this invite, returned from the `GET /invites/<code>` endpoint when `with_expiration` is `true`
 	 */
 	expires_at?: string | null;
+	/**
+	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
+	 */
+	stage_instance?: APIInviteStageInstance;
 }
 
 /**
