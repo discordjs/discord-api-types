@@ -198,9 +198,16 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 */
 	tts?: boolean;
 	/**
+	 * Embedded `rich` content (up to 6000 characters)
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 */
+	embeds?: APIEmbed[];
+	/**
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * @deprecated
 	 */
 	embed?: APIEmbed;
 	/**
@@ -303,7 +310,12 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 */
 	content?: string | null;
 	/**
+	 * Embedded `rich` content (up to 6000 characters)
+	 */
+	embeds?: APIEmbed[];
+	/**
 	 * Embedded `rich` content
+	 * @deprecated
 	 */
 	embed?: APIEmbed | null;
 	/**
