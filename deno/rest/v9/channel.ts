@@ -122,6 +122,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: newsThread, publicThread, privateThread
 	 */
 	locked?: boolean;
+	/**
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
+	 *
+	 * Channel types: text, news
+	 */
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 }
 
 /**

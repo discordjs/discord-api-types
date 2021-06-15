@@ -59,6 +59,8 @@ export const enum RESTJSONErrorCodes {
 
 	GuildAlreadyHasTemplate = 30031,
 
+	MaximumThreadParticipants = 30033,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 
@@ -114,4 +116,9 @@ export const enum RESTJSONErrorCodes {
 	ReactionWasBlocked = 90001,
 
 	APIResourceOverloaded = 130000,
+
+	ThreadAlreadyCreatedForMessage = 160004,
+	ThreadLocked,
+	MaximumActiveThreads,
+	MaximumActiveAnnoucementThreads,
 }
