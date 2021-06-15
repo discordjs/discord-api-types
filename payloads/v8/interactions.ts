@@ -360,12 +360,12 @@ export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOpti
 
 export interface APIMessageButtonInteractionData {
 	custom_id: string;
-	component_type: ComponentType;
+	component_type: ComponentType.Button;
 }
 
 export interface APIMessageSelectMenuInteractionData {
 	custom_id: string;
-	component_type: ComponentType;
+	component_type: ComponentType.SelectMenu;
 	values: string[];
 }
 
