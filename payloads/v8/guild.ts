@@ -7,7 +7,7 @@ import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
 import type { APIRole } from './permissions';
-import { APIStageInstance } from './stageInstance';
+import type { APIStageInstance } from './stageInstance';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
 

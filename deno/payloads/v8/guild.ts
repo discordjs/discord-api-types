@@ -7,7 +7,7 @@ import type { APIChannel } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway.ts';
 import type { APIRole } from './permissions.ts';
-import { APIStageInstance } from './stageInstance.ts';
+import type { APIStageInstance } from './stageInstance.ts';
 import type { APIUser } from './user.ts';
 import type { GatewayVoiceState } from './voice.ts';
 

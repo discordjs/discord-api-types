@@ -1,5 +1,5 @@
-import { Snowflake } from '../../globals';
-import { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v8/index';
+import type { Snowflake } from '../../globals';
+import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v8/index';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
