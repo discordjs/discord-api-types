@@ -16,7 +16,7 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	/**
 	 * The privacy level of the stage instance
 	 *
-	 * @default GUILD_ONLY
+	 * @default GuildOnly
 	 */
 	privacy_level?: StageInstancePrivacyLevel;
 }

@@ -318,7 +318,6 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://support.discord.com/hc/en-us/articles/1500005389362-NSFW-Server-Designation
 	 */
 	nsfw: boolean;
-
 	/**
 	 * The stage instances in the guild
 	 *

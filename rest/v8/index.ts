@@ -10,6 +10,7 @@ export * from './guild';
 export * from './interactions';
 export * from './invite';
 export * from './oauth2';
+export * from './stageInstance';
 export * from './template';
 export * from './user';
 export * from './voice';
@@ -658,6 +659,18 @@ export const Routes = {
 	 */
 	guildWelcomeScreen(guildID: Snowflake) {
 		return `/guilds/${guildID}/welcome-screen` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/stage-instances/{channel.id}`
+	 * - POST `/stage-instances`
+	 * - PATCH `/stage-instances/{channel.id}`
+	 * - DELETE `/stage-instances/{channel.id}`
+	 */
+	stageInstance(channelID?: Snowflake) {
+		if (channelID) return `/stage-instances/${channelID}` as const;
+		return `/stage-instances` as const;
 	},
 };
 
