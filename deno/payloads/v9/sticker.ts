@@ -30,8 +30,8 @@ export interface APISticker {
 	 */
 	tags: string;
 	/**
-	 * @deprecated
 	 * Previously the sticker asset hash, now an empty string
+	 * @deprecated
 	 */
 	asset: '';
 	/**
