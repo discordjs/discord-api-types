@@ -356,10 +356,10 @@ export interface APIMessage {
 	 */
 	flags?: MessageFlags;
 	/**
-	 * @deprecated
 	 * The stickers sent with the message (bots currently can only receive messages with stickers, not send)
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
+	 * @deprecated
 	 */
 	stickers?: APISticker[];
 	/**
