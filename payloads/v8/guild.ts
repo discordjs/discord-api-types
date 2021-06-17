@@ -7,6 +7,7 @@ import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
 import type { APIRole } from './permissions';
+import type { APISticker } from './sticker';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
 
@@ -309,6 +310,12 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://support.discord.com/hc/en-us/articles/1500005389362-NSFW-Server-Designation
 	 */
 	nsfw: boolean;
+	/**
+	 * Custom guild stickers
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 */
+	stickers: APISticker[];
 }
 
 /**
