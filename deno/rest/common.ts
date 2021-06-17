@@ -32,6 +32,8 @@ export enum RESTJSONErrorCodes {
 
 	UnknownGuildTemplate = 10057,
 
+	UnknownSticker = 10060,
+
 	UnknownInteraction = 10062,
 	UnknownApplicationCommand,
 

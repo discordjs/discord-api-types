@@ -6,8 +6,9 @@ import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIGuildMember } from './guild.ts';
 import type { APIMessageInteraction } from './interactions.ts';
-import { APIApplication } from './oauth2.ts';
+import type { APIApplication } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
+import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
 
 /**
@@ -355,6 +356,7 @@ export interface APIMessage {
 	 */
 	flags?: MessageFlags;
 	/**
+	 * @deprecated
 	 * The stickers sent with the message (bots currently can only receive messages with stickers, not send)
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
@@ -494,51 +496,6 @@ export enum MessageFlags {
 	 * This message is an Interaction Response and the bot is "thinking"
 	 */
 	Loading = 1 << 7,
-}
-
-/**
- * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
- */
-export interface APISticker {
-	/**
-	 * ID of the sticker
-	 */
-	id: Snowflake;
-	/**
-	 * ID of the pack the sticker is from
-	 */
-	pack_id: Snowflake;
-	/**
-	 * Name of the sticker
-	 */
-	name: string;
-	/**
-	 * Description of the sticker
-	 */
-	description: string;
-	/**
-	 * A comma-separated list of tags for the sticker
-	 */
-	tags?: string;
-	/**
-	 * Sticker asset hash
-	 */
-	asset: string;
-	/**
-	 * Type of sticker format
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
-	 */
-	format_type: StickerFormatType;
-}
-
-/**
- * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
- */
-export enum StickerFormatType {
-	PNG = 1,
-	APNG,
-	LOTTIE,
 }
 
 /**

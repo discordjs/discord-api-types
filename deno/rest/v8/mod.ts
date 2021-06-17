@@ -10,6 +10,7 @@ export * from './guild.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
+export * from './sticker.ts';
 export * from './template.ts';
 export * from './user.ts';
 export * from './voice.ts';
@@ -658,6 +659,33 @@ export const Routes = {
 	 */
 	guildWelcomeScreen(guildID: Snowflake) {
 		return `/guilds/${guildID}/welcome-screen` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/sticker-packs`
+	 */
+	nitroStickerPacks() {
+		return '/sticker-packs' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/stickers`
+	 * - POST `/guilds/{guild.id}/stickers`
+	 */
+	guildStickers(guildID: Snowflake) {
+		return `/guilds/${guildID}/stickers` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET    `/guilds/{guild.id}/stickers/{sticker.id}`
+	 * - PATCH  `/guilds/{guild.id}/stickers/{sticker.id}`
+	 * - DELETE `/guilds/{guild.id}/stickers/{sticker.id}`
+	 */
+	guildSticker(guildID: Snowflake, stickerID: Snowflake) {
+		return `/guilds/${guildID}/stickers/${stickerID}` as const;
 	},
 };
 
