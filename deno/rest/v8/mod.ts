@@ -663,6 +663,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/stickers/{sticker.id}`
+	 */
+	sticker(stickerID: Snowflake) {
+		return `/stickers/${stickerID}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/sticker-packs`
 	 */
 	nitroStickerPacks() {

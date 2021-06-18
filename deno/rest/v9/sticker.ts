@@ -1,14 +1,16 @@
 import type { APISticker, APIStickerPack } from '../../payloads/v9/mod.ts';
 
+export type RESTGetAPIStickerResult = APISticker;
+
 export interface RESTGetNitroStickerPacksResult {
 	sticker_packs: APIStickerPack[];
 }
 
-export type RESTGetAPIStickersResult = APISticker[];
+export type RESTGetAPIGuildStickersResult = APISticker[];
 
-export type RESTGetAPIStickerResult = APISticker;
+export type RESTGetAPIGuildStickerResult = APISticker;
 
-export interface RESTPostAPIStickerFormDataBody {
+export interface RESTPostAPIGuildStickerFormDataBody {
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
@@ -27,9 +29,9 @@ export interface RESTPostAPIStickerFormDataBody {
 	file: unknown;
 }
 
-export type RESTPostAPIStickerResult = APISticker;
+export type RESTPostAPIGuildStickerResult = APISticker;
 
-export interface RESTPatchAPIStickerJSONBody {
+export interface RESTPatchAPIGuildStickerJSONBody {
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
@@ -44,6 +46,6 @@ export interface RESTPatchAPIStickerJSONBody {
 	tags: string;
 }
 
-export type RESTPatchAPIStickerResult = APISticker;
+export type RESTPatchAPIGuildStickerResult = APISticker;
 
-export type RESTDeleteAPIStickerResult = never;
+export type RESTDeleteAPIGuildStickerResult = never;
