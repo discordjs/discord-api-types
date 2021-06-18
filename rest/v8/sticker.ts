@@ -43,7 +43,7 @@ export interface RESTPatchAPIGuildStickerJSONBody {
 	/**
 	 * The name of a unicode emoji representing the sticker's expression
 	 */
-	tags: string;
+	tags?: string;
 }
 
 export type RESTPatchAPIGuildStickerResult = APISticker;
