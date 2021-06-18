@@ -66,19 +66,19 @@ export const FormattingPatterns = {
 	 *
 	 * The `timetsamp` and `flag` group properties are present on the `exec` result of this expression
 	 */
-	Timestamp: /<t:(?<timestamp>-?\d{1,32})(:(?<flag>[tTdDfFR]))?>/,
+	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<flag>[tTdDfFR]))?>/,
 	/**
 	 * Regular expression for matching strictly unflagged timestamps
 	 *
 	 * The `timestamp` group property is present on the `exec` result of this expression
 	 */
-	UnflaggedTimestamp: /<t:(?<timestamp>-?\d{1,32})>/,
+	UnflaggedTimestamp: /<t:(?<timestamp>-?\d{1,13})>/,
 	/**
 	 * Regular expression for matching strictly flagged timestamps
 	 *
 	 * The `timestamp` and `fllag` group properties are present on the `exec` result of this expression
 	 */
-	FlaggedTimestamp: /<t:(?<timestamp>-?\d{1,32}):(?<flag>[tTdDfFR]))>/,
+	FlaggedTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<flag>[tTdDfFR]))>/,
 } as const;
 
 /**
