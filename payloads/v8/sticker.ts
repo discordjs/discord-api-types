@@ -71,11 +71,11 @@ export const enum StickerType {
 	/**
 	 * An official sticker in a pack, part of Nitro or in a removed purchasable pack
 	 */
-	STANDARD = 1,
+	Standard = 1,
 	/**
 	 * A sticker uploaded to a Boosted guild for the guild's members
 	 */
-	GUILD,
+	Guild,
 }
 
 /**
@@ -84,7 +84,7 @@ export const enum StickerType {
 export const enum StickerFormatType {
 	PNG = 1,
 	APNG,
-	LOTTIE,
+	Lottie,
 }
 
 /**
