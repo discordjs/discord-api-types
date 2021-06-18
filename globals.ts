@@ -62,23 +62,23 @@ export const FormattingPatterns = {
 	 */
 	StaticEmoji: /<:(?<name>\w{2,32}):(?<id>\d{17,20})>/,
 	/**
-	 * Regular expression for matching a timestamp, either unflagged or flagged
+	 * Regular expression for matching a timestamp, either default or custom styled
 	 *
-	 * The `timestamp` and `flag` group properties are present on the `exec` result of this expression
+	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
-	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<flag>[tTdDfFR]))?>/,
+	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<style>[tTdDfFR]))?>/,
 	/**
-	 * Regular expression for matching strictly unflagged timestamps
+	 * Regular expression for matching strictly default styled timestamps
 	 *
 	 * The `timestamp` group property is present on the `exec` result of this expression
 	 */
-	UnflaggedTimestamp: /<t:(?<timestamp>-?\d{1,13})>/,
+	DefaultStyledTimestamp: /<t:(?<timestamp>-?\d{1,13})>/,
 	/**
-	 * Regular expression for matching strictly flagged timestamps
+	 * Regular expression for matching strictly custom styled timestamps
 	 *
-	 * The `timestamp` and `flag` group properties are present on the `exec` result of this expression
+	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
-	FlaggedTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<flag>[tTdDfFR]))>/,
+	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[tTdDfFR]))>/,
 } as const;
 
 /**
