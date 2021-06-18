@@ -64,7 +64,7 @@ export const FormattingPatterns = {
 	/**
 	 * Regular expression for matching a timestamp, either unflagged or flagged
 	 *
-	 * The `timetsamp` and `flag` group properties are present on the `exec` result of this expression
+	 * The `timestamp` and `flag` group properties are present on the `exec` result of this expression
 	 */
 	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<flag>[tTdDfFR]))?>/,
 	/**
