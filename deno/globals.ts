@@ -61,6 +61,24 @@ export const FormattingPatterns = {
 	 * The `name` and `id` group properties are present on the `exec` result of this expression
 	 */
 	StaticEmoji: /<:(?<name>\w{2,32}):(?<id>\d{17,20})>/,
+	/**
+	 * Regular expression for matching a timestamp, either unflagged or flagged
+	 *
+	 * The `timetsamp` and `flag` group properties are present on the `exec` result of this expression
+	 */
+	Timestamp: /<t:(?<timestamp>-?\d{1,32})(:(?<flag>[tTdDfFR]))?>/,
+	/**
+	 * Regular expression for matching strictly unflagged timestamps
+	 *
+	 * The `timestamp` group property is present on the `exec` result of this expression
+	 */
+	UnflaggedTimestamp: /<t:(?<timestamp>-?\d{1,32})>/,
+	/**
+	 * Regular expression for matching strictly flagged timestamps
+	 *
+	 * The `timestamp` and `fllag` group properties are present on the `exec` result of this expression
+	 */
+	FlaggedTimestamp: /<t:(?<timestamp>-?\d{1,32}):(?<flag>[tTdDfFR]))>/,
 } as const;
 
 /**
