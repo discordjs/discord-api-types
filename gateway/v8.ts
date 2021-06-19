@@ -14,6 +14,7 @@ import type {
 	APIGuildMember,
 	APIMessage,
 	APIRole,
+	APIStageInstance,
 	APIUnavailableGuild,
 	APIUser,
 	GatewayActivity,
@@ -222,6 +223,9 @@ export const enum GatewayDispatchEvents {
 	MessageReactionRemoveEmoji = 'MESSAGE_REACTION_REMOVE_EMOJI',
 	MessageUpdate = 'MESSAGE_UPDATE',
 	PresenceUpdate = 'PRESENCE_UPDATE',
+	StageInstanceCreate = 'StageInstanceCreate',
+	StageInstanceDelete = 'StageInstanceDelete',
+	StageInstanceUpdate = 'StageInstanceUpdate',
 	Ready = 'READY',
 	Resumed = 'RESUMED',
 	TypingStart = 'TYPING_START',
@@ -276,6 +280,9 @@ export type GatewayDispatchPayload =
 	| GatewayMessageReactionRemoveEmojiDispatch
 	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewayStageInstanceCreateDispatch
+	| GatewayStageInstanceDeleteDispatch
+	| GatewayStageInstanceUpdateDispatch
 	| GatewayReadyDispatch
 	| GatewayResumedDispatch
 	| GatewayTypingStartDispatch
@@ -1133,6 +1140,45 @@ export type GatewayPresenceUpdateDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway#presence-update
  */
 export type GatewayPresenceUpdateDispatchData = RawGatewayPresenceUpdate;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-create
+ */
+export type GatewayStageInstanceCreateDispatch = DataPayload<
+	GatewayDispatchEvents.StageInstanceCreate,
+	GatewayStageInstanceCreateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-create
+ */
+export type GatewayStageInstanceCreateDispatchData = APIStageInstance;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-delete
+ */
+export type GatewayStageInstanceDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.StageInstanceDelete,
+	GatewayStageInstanceDeleteDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-delete
+ */
+export type GatewayStageInstanceDeleteDispatchData = APIStageInstance;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-update
+ */
+export type GatewayStageInstanceUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.StageInstanceUpdate,
+	GatewayStageInstanceUpdateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-update
+ */
+export type GatewayStageInstanceUpdateDispatchData = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#typing-start
