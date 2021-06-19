@@ -379,6 +379,10 @@ export interface APIMessage {
 	 */
 	interaction?: APIMessageInteraction;
 	/**
+	 * Sent if the message contains components like buttons, action rows, or other interactive components
+	 */
+	components?: APIActionRowComponent[];
+	/**
 	 * Sent if a thread was started from this message
 	 */
 	thread?: APIChannel;
@@ -1045,4 +1049,149 @@ export interface APIAllowedMentions {
 	 * @default false
 	 */
 	replied_user?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components
+ */
+export interface APIBaseComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#component-types
+ */
+export enum ComponentType {
+	/**
+	 * ActionRow component
+	 */
+	ActionRow = 1,
+	/**
+	 * Button component
+	 */
+	Button,
+	/**
+	 * Select Menu component
+	 */
+	SelectMenu,
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#component-object
+ */
+export interface APIActionRowComponent extends APIBaseComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType.ActionRow;
+	/**
+	 * The components in the ActionRow
+	 */
+	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#buttons-button-object
+ */
+export interface APIButtonComponent extends APIBaseComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType.Button;
+	/**
+	 * The label to be displayed on the button
+	 */
+	label?: string;
+	/**
+	 * The custom_id to be sent in the interaction when clicked
+	 */
+	custom_id?: string;
+	/**
+	 * The style of the button
+	 */
+	style: ButtonStyle;
+	/**
+	 * The emoji to display to the left of the text
+	 */
+	emoji?: APIPartialEmoji;
+	/**
+	 * The URL to direct users to when clicked for Link buttons
+	 */
+	url?: string;
+	/**
+	 * The status of the button
+	 */
+	disabled?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#component-object
+ */
+export interface APISelectMenuComponent {
+	/**
+	 * The type of the component
+	 */
+	type: ComponentType.SelectMenu;
+	/**
+	 * The custom_id to be sent in the interaction when clicked
+	 */
+	custom_id: string;
+	/**
+	 * Custom placeholder text if nothing is selected
+	 */
+	placeholder?: string;
+	/**
+	 * The minimum number of items that must be chosen
+	 */
+	min_values?: number;
+	/**
+	 * The maximum number of items that can be chosen
+	 */
+	max_values?: number;
+	/**
+	 * Choices to display in the select menu
+	 */
+	options: APISelectOption[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#component-object
+ */
+export interface APISelectOption {
+	/**
+	 * The user-facing name of the option (max 25 chars)
+	 */
+	label: string;
+	/**
+	 * The dev-defined value of the option (max 100 chars)
+	 */
+	value: string;
+	/**
+	 * An additional description of the option (max 50 chars)
+	 */
+	description?: string;
+	/**
+	 * The emoji to display to the left of the option
+	 */
+	emoji?: APIPartialEmoji;
+	/**
+	 * Whether this option should be already-selected by default
+	 */
+	default: boolean;
+}
+
+export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
+ */
+export enum ButtonStyle {
+	Primary = 1,
+	Secondary,
+	Success,
+	Danger,
+	Link,
 }

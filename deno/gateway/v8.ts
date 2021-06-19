@@ -13,6 +13,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIMessage,
+	APIMessageComponentInteraction,
 	APIRole,
 	APIUnavailableGuild,
 	APIUser,
@@ -889,7 +890,7 @@ export type GatewayInteractionCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#interaction-create
  */
-export type GatewayInteractionCreateDispatchData = APIApplicationCommandInteraction;
+export type GatewayInteractionCreateDispatchData = APIApplicationCommandInteraction | APIMessageComponentInteraction;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-create
