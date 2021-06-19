@@ -721,14 +721,20 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/stage-instances/{channel.id}`
 	 * - POST `/stage-instances`
+	 */
+	stageInstances() {
+		return `/stage-instances` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/stage-instances/{channel.id}`
 	 * - PATCH `/stage-instances/{channel.id}`
 	 * - DELETE `/stage-instances/{channel.id}`
 	 */
-	stageInstance(channelID?: Snowflake) {
-		if (channelID) return `/stage-instances/${channelID}` as const;
-		return `/stage-instances` as const;
+	stageInstance(channelID: Snowflake) {
+		return `/stage-instances/${channelID}` as const;
 	},
 };
 
