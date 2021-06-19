@@ -61,6 +61,24 @@ export const FormattingPatterns = {
 	 * The `name` and `id` group properties are present on the `exec` result of this expression
 	 */
 	StaticEmoji: /<:(?<name>\w{2,32}):(?<id>\d{17,20})>/,
+	/**
+	 * Regular expression for matching a timestamp, either default or custom styled
+	 *
+	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
+	 */
+	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<style>[tTdDfFR]))?>/,
+	/**
+	 * Regular expression for matching strictly default styled timestamps
+	 *
+	 * The `timestamp` group property is present on the `exec` result of this expression
+	 */
+	DefaultStyledTimestamp: /<t:(?<timestamp>-?\d{1,13})>/,
+	/**
+	 * Regular expression for matching strictly custom styled timestamps
+	 *
+	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
+	 */
+	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[tTdDfFR]))>/,
 } as const;
 
 /**
