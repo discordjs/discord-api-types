@@ -538,10 +538,7 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	/**
 	 * The type of thread to create
 	 */
-	type: Extract<
-		ChannelType,
-		ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread
-	>;
+	type: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
 }
 
 /**
