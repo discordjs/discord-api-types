@@ -78,7 +78,7 @@ export const FormattingPatterns = {
 	 *
 	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
-	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[tTdDfFR]))>/,
+	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[tTdDfFR])>/,
 } as const;
 
 /**
