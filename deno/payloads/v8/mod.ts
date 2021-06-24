@@ -7,6 +7,7 @@ export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
 export * from './permissions.ts';
+export * from './stageInstance.ts';
 export * from './teams.ts';
 export * from './template.ts';
 export * from './user.ts';

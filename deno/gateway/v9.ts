@@ -15,6 +15,7 @@ import type {
 	APIMessage,
 	APIMessageComponentInteraction,
 	APIRole,
+	APIStageInstance,
 	APIThreadMember,
 	APIUnavailableGuild,
 	APIUser,
@@ -226,6 +227,9 @@ export enum GatewayDispatchEvents {
 	MessageReactionRemoveEmoji = 'MESSAGE_REACTION_REMOVE_EMOJI',
 	MessageUpdate = 'MESSAGE_UPDATE',
 	PresenceUpdate = 'PRESENCE_UPDATE',
+	StageInstanceCreate = 'STAGE_INSTANCE_CREATE',
+	StageInstanceDelete = 'STAGE_INSTANCE_DELETE',
+	StageInstanceUpdate = 'STAGE_INSTANCE_UPDATE',
 	Ready = 'READY',
 	Resumed = 'RESUMED',
 	ThreadCreate = 'THREAD_CREATE',
@@ -1147,6 +1151,45 @@ export type GatewayPresenceUpdateDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway#presence-update
  */
 export type GatewayPresenceUpdateDispatchData = RawGatewayPresenceUpdate;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-create
+ */
+export type GatewayStageInstanceCreateDispatch = DataPayload<
+	GatewayDispatchEvents.StageInstanceCreate,
+	GatewayStageInstanceCreateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-create
+ */
+export type GatewayStageInstanceCreateDispatchData = APIStageInstance;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-delete
+ */
+export type GatewayStageInstanceDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.StageInstanceDelete,
+	GatewayStageInstanceDeleteDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-delete
+ */
+export type GatewayStageInstanceDeleteDispatchData = APIStageInstance;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-update
+ */
+export type GatewayStageInstanceUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.StageInstanceUpdate,
+	GatewayStageInstanceUpdateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#stage-instance-update
+ */
+export type GatewayStageInstanceUpdateDispatchData = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-list-sync

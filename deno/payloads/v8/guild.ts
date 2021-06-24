@@ -7,6 +7,7 @@ import type { APIChannel } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway.ts';
 import type { APIRole } from './permissions.ts';
+import type { APIStageInstance } from './stageInstance.ts';
 import type { APIUser } from './user.ts';
 import type { GatewayVoiceState } from './voice.ts';
 
@@ -309,6 +310,14 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://support.discord.com/hc/en-us/articles/1500005389362-NSFW-Server-Designation
 	 */
 	nsfw: boolean;
+	/**
+	 * The stage instances in the guild
+	 *
+	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
+	 *
+	 * See https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-stage-instance-structure
+	 */
+	stage_instances?: APIStageInstance[];
 }
 
 /**
