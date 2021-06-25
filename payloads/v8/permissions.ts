@@ -42,7 +42,7 @@ export const PermissionFlagsBits = {
 	ManageNicknames: 1n << 27n,
 	ManageRoles: 1n << 28n,
 	ManageWebhooks: 1n << 29n,
-	ManageEmojis: 1n << 30n,
+	ManageEmojisAndStickers: 1n << 30n,
 	UseSlashCommands: 1n << 31n,
 	RequestToSpeak: 1n << 32n,
 } as const;
