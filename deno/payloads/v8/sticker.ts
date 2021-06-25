@@ -110,7 +110,7 @@ export interface APIStickerPack {
 	/**
 	 * ID of a sticker in the pack which is shown as the pack's icon
 	 */
-	cover_sticker_id: Snowflake;
+	cover_sticker_id?: Snowflake;
 	/**
 	 * Description of the sticker pack
 	 */
