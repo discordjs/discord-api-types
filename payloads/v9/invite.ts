@@ -5,6 +5,7 @@
 import type { APIPartialChannel } from './channel';
 import type { APIPartialGuild } from './guild';
 import type { APIApplication } from './oauth2';
+import type { APIInviteStageInstance } from './stageInstance';
 import type { APIUser } from './user';
 
 /**
@@ -63,6 +64,10 @@ export interface APIInvite {
 	 * The expiration date of this invite, returned from the `GET /invites/<code>` endpoint when `with_expiration` is `true`
 	 */
 	expires_at?: string | null;
+	/**
+	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
+	 */
+	stage_instance?: APIInviteStageInstance;
 }
 
 /**

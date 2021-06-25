@@ -515,7 +515,7 @@ export type RESTDeleteAPIChannelRecipientResult = unknown;
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-with-message
  */
-export interface RESTPostAPIChannelThreadsJSONBody {
+export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
 	 * 2-100 character thread name
 	 */
@@ -528,6 +528,21 @@ export interface RESTPostAPIChannelThreadsJSONBody {
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-with-message
+ */
+export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
+
+/**
+ * https://discord.com/developers/docs/resources/channel#start-thread-without-message
+ */
+export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMessagesThreadsJSONBody {
+	/**
+	 * The type of thread to create
+	 */
+	type: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#start-thread-without-message
  */
 export type RESTPostAPIChannelThreadsResult = APIChannel;
 
