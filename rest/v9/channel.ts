@@ -233,7 +233,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
-	sticker_ids?: Snowflake[];
+	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake];
 }
 
 /**
