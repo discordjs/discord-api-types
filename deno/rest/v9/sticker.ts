@@ -16,15 +16,15 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 	 */
 	name: string;
 	/**
-	 * Description of the sticker (up to 100 characters)
+	 * Description of the sticker (empty or 2-100 characters)
 	 */
-	description?: string;
+	description: string;
 	/**
-	 * The name of a unicode emoji representing the sticker's expression
+	 * The name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
 	tags: string;
 	/**
-	 * The sticker file to upload
+	 * The sticker file to upload, must be a PNG, APNG, or Lottie JSON file, max 500 KB
 	 */
 	file: unknown;
 }
@@ -37,11 +37,11 @@ export interface RESTPatchAPIGuildStickerJSONBody {
 	 */
 	name?: string;
 	/**
-	 * Description of the sticker (up to 100 characters)
+	 * Description of the sticker (2-100 characters)
 	 */
-	description?: string;
+	description?: string | null;
 	/**
-	 * The name of a unicode emoji representing the sticker's expression
+	 * The name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
 	tags?: string;
 }

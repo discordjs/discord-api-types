@@ -105,6 +105,9 @@ export enum RESTJSONErrorCodes {
 
 	InvalidAPIVersion = 50041,
 
+	FileUploadedExceedsMaximumSize = 50045,
+	InvalidFileUploaded,
+
 	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
 
 	InvalidStickerSent = 50081,
@@ -122,5 +125,7 @@ export enum RESTJSONErrorCodes {
 	ThreadAlreadyCreatedForMessage = 160004,
 	ThreadLocked,
 	MaximumActiveThreads,
-	MaximumActiveAnnoucementThreads,
+	MaximumActiveAnnouncementThreads,
+
+	InvalidJSONForUploadedLottieFile = 170001,
 }
