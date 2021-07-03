@@ -26,7 +26,7 @@ export interface APISticker {
 	 */
 	description: string | null;
 	/**
-	 * For guild stickers, the name of a unicode emoji representing the sticker's expression. for standard stickers, a comma-separated list of related expressions.
+	 * For guild stickers, the Discord name of a unicode emoji representing the sticker's expression. for standard stickers, a comma-separated list of related expressions.
 	 */
 	tags: string;
 	/**
