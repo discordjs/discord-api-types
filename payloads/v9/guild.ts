@@ -313,11 +313,11 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	welcome_screen?: APIGuildWelcomeScreen;
 	/**
-	 * `true` if this guild is designated as NSFW
+	 * The nsfw level of the guild
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/1500005389362-NSFW-Server-Designation
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level
 	 */
-	nsfw: boolean;
+	nsfw_level: GuildNSFWLevel;
 	/**
 	 * The stage instances in the guild
 	 *
@@ -351,6 +351,16 @@ export const enum GuildExplicitContentFilter {
 export const enum GuildMFALevel {
 	None,
 	Elevated,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level
+ */
+export const enum GuildNSFWLevel {
+	Default,
+	Explicit,
+	Safe,
+	AgeRestricted,
 }
 
 /**
