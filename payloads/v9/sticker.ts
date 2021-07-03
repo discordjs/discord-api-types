@@ -79,13 +79,18 @@ export const enum StickerType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#sticker-object-sticker-format-types
+ * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
  */
 export const enum StickerFormatType {
 	PNG = 1,
 	APNG,
 	Lottie,
 }
+
+/**
+ * https://discord.com/developers/docs/resources/sticker#sticker-item-object
+ */
+export type APIStickerItem = Pick<APISticker, 'id' | 'name' | 'format_type'>;
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object

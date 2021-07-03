@@ -8,7 +8,7 @@ import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
 import type { APIApplication } from './oauth2';
 import type { APIRole } from './permissions';
-import type { APISticker } from './sticker';
+import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
 
 /**
@@ -320,13 +320,6 @@ export interface APIMessage {
 	 */
 	flags?: MessageFlags;
 	/**
-	 * The stickers sent with the message (bots currently can only receive messages with stickers, not send)
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
-	 * @deprecated
-	 */
-	stickers?: APISticker[];
-	/**
 	 * The message associated with the `message_reference`
 	 *
 	 * This field is only returned for messages with a `type` of `19` (REPLY).
@@ -348,6 +341,19 @@ export interface APIMessage {
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
 	components?: APIActionRowComponent[];
+	/**
+	 * Sent if the message contains stickers
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-item-object
+	 */
+	sticker_items?: APIStickerItem[];
+	/**
+	 * The stickers sent with the message
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 * @deprecated Use `sticker_items` instead
+	 */
+	stickers?: APISticker[];
 }
 
 /**
