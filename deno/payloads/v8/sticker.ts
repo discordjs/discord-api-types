@@ -47,7 +47,7 @@ export interface APISticker {
 	 */
 	format_type: StickerFormatType;
 	/**
-	 * Whether or not the guild sticker is available
+	 * Whether this guild sticker can be used, may be false due to loss of Server Boosts
 	 */
 	available?: boolean;
 	/**
