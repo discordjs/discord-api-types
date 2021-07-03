@@ -3,7 +3,7 @@
  */
 
 import type { Snowflake } from '../../globals.ts';
-import type { APIOverwrite, ChannelType } from './channel.ts';
+import type { APIOverwrite } from './channel.ts';
 import type {
 	APIGuildIntegration,
 	GuildDefaultMessageNotifications,
@@ -13,6 +13,7 @@ import type {
 	IntegrationExpireBehavior,
 } from './guild.ts';
 import type { APIRole } from './permissions.ts';
+import type { StickerFormatType } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { APIWebhook } from './webhook.ts';
 
@@ -135,6 +136,10 @@ export enum AuditLogEvent {
 	IntegrationCreate = 80,
 	IntegrationUpdate,
 	IntegrationDelete,
+
+	StickerCreate = 90,
+	StickerUpdate,
+	StickerDelete,
 }
 
 /**
@@ -284,15 +289,20 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyEnableEmoticons
 	| APIAuditLogChangeKeyExpireBehavior
 	| APIAuditLogChangeKeyExpireGracePeriod
-	| APIAuditLogChangeKeyUserLimit;
+	| APIAuditLogChangeKeyUserLimit
+	| APIAuditLogChangeKeyTags
+	| APIAuditLogChangeKeyFormatType
+	| APIAuditLogChangeKeyAsset
+	| APIAuditLogChangeKeyAvailable
+	| APIAuditLogChangeKeyGuildID;
 
 /**
- * Returned when a guild's name is changed
+ * Returned when an entity's name is changed
  */
 export type APIAuditLogChangeKeyName = AuditLogChangeData<'name', string>;
 
 /**
- * Returned when a guild's description is changed
+ * Returned when a guild's or sticker's description is changed
  */
 export type APIAuditLogChangeKeyDescription = AuditLogChangeData<'description', string>;
 
@@ -541,7 +551,7 @@ export type APIAuditLogChangeKeyID = AuditLogChangeData<'id', Snowflake>;
 /**
  * The type of entity created
  */
-export type APIAuditLogChangeKeyType = AuditLogChangeData<'type', ChannelType | string>;
+export type APIAuditLogChangeKeyType = AuditLogChangeData<'type', number | string>;
 
 /**
  * Returned when an integration's enable_emoticons is changed
@@ -562,6 +572,31 @@ export type APIAuditLogChangeKeyExpireGracePeriod = AuditLogChangeData<'expire_g
  * Returned when a voice channel's user_limit is changed
  */
 export type APIAuditLogChangeKeyUserLimit = AuditLogChangeData<'user_limit', number>;
+
+/**
+ * Returned when a sticker's related emoji is changed
+ */
+export type APIAuditLogChangeKeyTags = AuditLogChangeData<'tags', string>;
+
+/**
+ * Returned when a sticker's format_type is changed
+ */
+export type APIAuditLogChangeKeyFormatType = AuditLogChangeData<'format_type', StickerFormatType>;
+
+/**
+ * Empty string
+ */
+export type APIAuditLogChangeKeyAsset = AuditLogChangeData<'asset', ''>;
+
+/**
+ * Returned when a sticker's availability is changed
+ */
+export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', boolean>;
+
+/**
+ * Returned when a sticker's guild_id is changed
+ */
+export type APIAuditLogChangeKeyGuildID = AuditLogChangeData<'guild_id', Snowflake>;
 
 interface AuditLogChangeData<K extends string, D extends unknown> {
 	key: K;
