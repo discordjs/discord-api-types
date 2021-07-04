@@ -16,6 +16,7 @@ import type { APIRole } from './permissions.ts';
 import type { StickerFormatType } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { APIWebhook } from './webhook.ts';
+import type { StageInstancePrivacyLevel } from './stageInstance.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
@@ -136,6 +137,9 @@ export enum AuditLogEvent {
 	IntegrationCreate = 80,
 	IntegrationUpdate,
 	IntegrationDelete,
+	StageInstanceCreate,
+	StageInstanceUpdate,
+	StageInstanceDelete,
 
 	StickerCreate = 90,
 	StickerUpdate,
@@ -169,6 +173,9 @@ export interface APIAuditLogOptions {
 	 * - MESSAGE_PIN
 	 * - MESSAGE_UNPIN
 	 * - MESSAGE_DELETE
+	 * - STAGE_INSTANCE_CREATE
+	 * - STAGE_INSTANCE_UPDATE
+	 * - STAGE_INSTANCE_DELETE
 	 */
 	channel_id?: Snowflake;
 
@@ -290,6 +297,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyExpireBehavior
 	| APIAuditLogChangeKeyExpireGracePeriod
 	| APIAuditLogChangeKeyUserLimit
+	| APIAuditLogChangeKeyPrivacyLevel
 	| APIAuditLogChangeKeyTags
 	| APIAuditLogChangeKeyFormatType
 	| APIAuditLogChangeKeyAsset
@@ -572,6 +580,11 @@ export type APIAuditLogChangeKeyExpireGracePeriod = AuditLogChangeData<'expire_g
  * Returned when a voice channel's user_limit is changed
  */
 export type APIAuditLogChangeKeyUserLimit = AuditLogChangeData<'user_limit', number>;
+
+/**
+ * Returned when privacy level of a stage instance is changed
+ */
+export type APIAuditLogChangeKeyPrivacyLevel = AuditLogChangeData<'privacy_level', StageInstancePrivacyLevel>;
 
 /**
  * Returned when a sticker's related emoji is changed
