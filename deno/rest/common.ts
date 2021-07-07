@@ -63,6 +63,8 @@ export enum RESTJSONErrorCodes {
 
 	MaximumThreadParticipants = 30033,
 
+	MaximumNumberOfStickersReached = 30039,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 
@@ -129,5 +131,5 @@ export enum RESTJSONErrorCodes {
 
 	InvalidJSONForUploadedLottieFile = 170001,
 
-	LottieAnimationMaximumDimensionsExceededd = 170005,
+	LottieAnimationMaximumDimensionsExceeded = 170005,
 }
