@@ -128,4 +128,6 @@ export enum RESTJSONErrorCodes {
 	MaximumActiveAnnouncementThreads,
 
 	InvalidJSONForUploadedLottieFile = 170001,
+
+	LottieAnimationMaximumDimensionsExceededd = 170005,
 }
