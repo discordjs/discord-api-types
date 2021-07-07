@@ -16,6 +16,7 @@ import type {
 	APIMessageComponentInteraction,
 	APIRole,
 	APIStageInstance,
+	APISticker,
 	APIUnavailableGuild,
 	APIUser,
 	GatewayActivity,
@@ -170,7 +171,7 @@ export const enum GatewayIntentBits {
 	Guilds = 1 << 0,
 	GuildMembers = 1 << 1,
 	GuildBans = 1 << 2,
-	GuildEmojis = 1 << 3,
+	GuildEmojisAndStickers = 1 << 3,
 	GuildIntegrations = 1 << 4,
 	GuildWebhooks = 1 << 5,
 	GuildInvites = 1 << 6,
@@ -208,6 +209,7 @@ export const enum GatewayDispatchEvents {
 	GuildRoleCreate = 'GUILD_ROLE_CREATE',
 	GuildRoleDelete = 'GUILD_ROLE_DELETE',
 	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
+	GuildStickersUpdate = 'GUILD_STICKERS_UPDATE',
 	GuildUpdate = 'GUILD_UPDATE',
 	IntegrationCreate = 'INTEGRATION_CREATE',
 	IntegrationDelete = 'INTEGRATION_DELETE',
@@ -266,6 +268,7 @@ export type GatewayDispatchPayload =
 	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
 	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildStickersUpdateDispatch
 	| GatewayIntegrationCreateDispatch
 	| GatewayIntegrationDeleteDispatch
 	| GatewayIntegrationUpdateDispatch
@@ -636,6 +639,30 @@ export interface GatewayGuildEmojisUpdateDispatchData {
 	 * See https://discord.com/developers/docs/resources/emoji#emoji-object
 	 */
 	emojis: APIEmoji[];
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-stickers-update
+ */
+export type GatewayGuildStickersUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildStickersUpdate,
+	GatewayGuildStickersUpdateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-stickers-update
+ */
+export interface GatewayGuildStickersUpdateDispatchData {
+	/**
+	 * ID of the guild
+	 */
+	guild_id: Snowflake;
+	/**
+	 * Array of stickers
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 */
+	stickers: APISticker[];
 }
 
 /**

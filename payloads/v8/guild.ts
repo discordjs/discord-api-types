@@ -8,6 +8,7 @@ import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
 import type { APIRole } from './permissions';
 import type { APIStageInstance } from './stageInstance';
+import type { APISticker } from './sticker';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
 
@@ -318,6 +319,12 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-stage-instance-structure
 	 */
 	stage_instances?: APIStageInstance[];
+	/**
+	 * Custom guild stickers
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 */
+	stickers: APISticker[];
 }
 
 /**

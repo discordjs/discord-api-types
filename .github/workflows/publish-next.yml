@@ -28,12 +28,12 @@ jobs:
         run: npx standard-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          
+
       - name: Deprecate old versions
         run: npm deprecate discord-api-types@"~$(jq --raw-output '.version' package.json)-next" "No longer supported. Install the latest @next release" || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          
+
       - name: Publish new version
         run: |
           npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)

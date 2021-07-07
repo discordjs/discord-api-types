@@ -228,6 +228,12 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
 	 */
 	message_reference?: APIMessageReferenceSend;
+	/**
+	 * IDs of up to 3 stickers in the server to send in the message
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 */
+	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake];
 }
 
 /**

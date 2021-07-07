@@ -11,6 +11,7 @@ export * from './interactions';
 export * from './invite';
 export * from './oauth2';
 export * from './stageInstance';
+export * from './sticker';
 export * from './template';
 export * from './user';
 export * from './voice';
@@ -735,6 +736,41 @@ export const Routes = {
 	 */
 	stageInstance(channelID: Snowflake) {
 		return `/stage-instances/${channelID}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/stickers/{sticker.id}`
+	 */
+	sticker(stickerID: Snowflake) {
+		return `/stickers/${stickerID}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/sticker-packs`
+	 */
+	nitroStickerPacks() {
+		return '/sticker-packs' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/stickers`
+	 * - POST `/guilds/{guild.id}/stickers`
+	 */
+	guildStickers(guildID: Snowflake) {
+		return `/guilds/${guildID}/stickers` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET    `/guilds/{guild.id}/stickers/{sticker.id}`
+	 * - PATCH  `/guilds/{guild.id}/stickers/{sticker.id}`
+	 * - DELETE `/guilds/{guild.id}/stickers/{sticker.id}`
+	 */
+	guildSticker(guildID: Snowflake, stickerID: Snowflake) {
+		return `/guilds/${guildID}/stickers/${stickerID}` as const;
 	},
 };
 

@@ -6,8 +6,9 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
-import { APIApplication } from './oauth2';
+import type { APIApplication } from './oauth2';
 import type { APIRole } from './permissions';
+import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
 
 /**
@@ -319,12 +320,6 @@ export interface APIMessage {
 	 */
 	flags?: MessageFlags;
 	/**
-	 * The stickers sent with the message (bots currently can only receive messages with stickers, not send)
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
-	 */
-	stickers?: APISticker[];
-	/**
 	 * The message associated with the `message_reference`
 	 *
 	 * This field is only returned for messages with a `type` of `19` (REPLY).
@@ -346,6 +341,19 @@ export interface APIMessage {
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
 	components?: APIActionRowComponent[];
+	/**
+	 * Sent if the message contains stickers
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-item-object
+	 */
+	sticker_items?: APIStickerItem[];
+	/**
+	 * The stickers sent with the message
+	 *
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 * @deprecated Use `sticker_items` instead
+	 */
+	stickers?: APISticker[];
 }
 
 /**
@@ -452,51 +460,6 @@ export const enum MessageFlags {
 	 * This message is an Interaction Response and the bot is "thinking"
 	 */
 	Loading = 1 << 7,
-}
-
-/**
- * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-structure
- */
-export interface APISticker {
-	/**
-	 * ID of the sticker
-	 */
-	id: Snowflake;
-	/**
-	 * ID of the pack the sticker is from
-	 */
-	pack_id: Snowflake;
-	/**
-	 * Name of the sticker
-	 */
-	name: string;
-	/**
-	 * Description of the sticker
-	 */
-	description: string;
-	/**
-	 * A comma-separated list of tags for the sticker
-	 */
-	tags?: string;
-	/**
-	 * Sticker asset hash
-	 */
-	asset: string;
-	/**
-	 * Type of sticker format
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
-	 */
-	format_type: StickerFormatType;
-}
-
-/**
- * https://discord.com/developers/docs/resources/channel#message-object-message-sticker-format-types
- */
-export const enum StickerFormatType {
-	PNG = 1,
-	APNG,
-	LOTTIE,
 }
 
 /**

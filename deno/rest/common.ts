@@ -32,6 +32,8 @@ export enum RESTJSONErrorCodes {
 
 	UnknownGuildTemplate = 10057,
 
+	UnknownSticker = 10060,
+
 	UnknownInteraction = 10062,
 	UnknownApplicationCommand,
 
@@ -60,6 +62,8 @@ export enum RESTJSONErrorCodes {
 	GuildAlreadyHasTemplate = 30031,
 
 	MaximumThreadParticipants = 30033,
+
+	MaximumNumberOfStickersReached = 30039,
 
 	Unauthorized = 40001,
 	VerifyYourAccount,
@@ -103,6 +107,9 @@ export enum RESTJSONErrorCodes {
 
 	InvalidAPIVersion = 50041,
 
+	FileUploadedExceedsMaximumSize = 50045,
+	InvalidFileUploaded,
+
 	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
 
 	InvalidStickerSent = 50081,
@@ -120,5 +127,9 @@ export enum RESTJSONErrorCodes {
 	ThreadAlreadyCreatedForMessage = 160004,
 	ThreadLocked,
 	MaximumActiveThreads,
-	MaximumActiveAnnoucementThreads,
+	MaximumActiveAnnouncementThreads,
+
+	InvalidJSONForUploadedLottieFile = 170001,
+
+	LottieAnimationMaximumDimensionsExceeded = 170005,
 }

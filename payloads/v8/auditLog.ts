@@ -3,7 +3,7 @@
  */
 
 import type { Snowflake } from '../../globals';
-import type { APIOverwrite, ChannelType } from './channel';
+import type { APIOverwrite } from './channel';
 import type {
 	APIGuildIntegration,
 	GuildDefaultMessageNotifications,
@@ -13,6 +13,7 @@ import type {
 	IntegrationExpireBehavior,
 } from './guild';
 import type { APIRole } from './permissions';
+import type { StickerFormatType } from './sticker';
 import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
 import type { StageInstancePrivacyLevel } from './stageInstance';
@@ -136,10 +137,13 @@ export const enum AuditLogEvent {
 	IntegrationCreate = 80,
 	IntegrationUpdate,
 	IntegrationDelete,
-
-	StageInstanceCreate = 83,
+	StageInstanceCreate,
 	StageInstanceUpdate,
 	StageInstanceDelete,
+
+	StickerCreate = 90,
+	StickerUpdate,
+	StickerDelete,
 }
 
 /**
@@ -293,15 +297,20 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyExpireBehavior
 	| APIAuditLogChangeKeyExpireGracePeriod
 	| APIAuditLogChangeKeyUserLimit
-	| APIAuditLogChangeKeyPrivacyLevel;
+	| APIAuditLogChangeKeyPrivacyLevel
+	| APIAuditLogChangeKeyTags
+	| APIAuditLogChangeKeyFormatType
+	| APIAuditLogChangeKeyAsset
+	| APIAuditLogChangeKeyAvailable
+	| APIAuditLogChangeKeyGuildID;
 
 /**
- * Returned when a guild's name is changed
+ * Returned when an entity's name is changed
  */
 export type APIAuditLogChangeKeyName = AuditLogChangeData<'name', string>;
 
 /**
- * Returned when a guild's description is changed
+ * Returned when a guild's or sticker's description is changed
  */
 export type APIAuditLogChangeKeyDescription = AuditLogChangeData<'description', string>;
 
@@ -550,7 +559,7 @@ export type APIAuditLogChangeKeyID = AuditLogChangeData<'id', Snowflake>;
 /**
  * The type of entity created
  */
-export type APIAuditLogChangeKeyType = AuditLogChangeData<'type', ChannelType | string>;
+export type APIAuditLogChangeKeyType = AuditLogChangeData<'type', number | string>;
 
 /**
  * Returned when an integration's enable_emoticons is changed
@@ -576,6 +585,31 @@ export type APIAuditLogChangeKeyUserLimit = AuditLogChangeData<'user_limit', num
  * Returned when privacy level of a stage instance is changed
  */
 export type APIAuditLogChangeKeyPrivacyLevel = AuditLogChangeData<'privacy_level', StageInstancePrivacyLevel>;
+
+/**
+ * Returned when a sticker's related emoji is changed
+ */
+export type APIAuditLogChangeKeyTags = AuditLogChangeData<'tags', string>;
+
+/**
+ * Returned when a sticker's format_type is changed
+ */
+export type APIAuditLogChangeKeyFormatType = AuditLogChangeData<'format_type', StickerFormatType>;
+
+/**
+ * Empty string
+ */
+export type APIAuditLogChangeKeyAsset = AuditLogChangeData<'asset', ''>;
+
+/**
+ * Returned when a sticker's availability is changed
+ */
+export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', boolean>;
+
+/**
+ * Returned when a sticker's guild_id is changed
+ */
+export type APIAuditLogChangeKeyGuildID = AuditLogChangeData<'guild_id', Snowflake>;
 
 interface AuditLogChangeData<K extends string, D extends unknown> {
 	key: K;
