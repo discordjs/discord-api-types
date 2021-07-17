@@ -132,4 +132,6 @@ export enum RESTJSONErrorCodes {
 	InvalidJSONForUploadedLottieFile = 170001,
 
 	LottieAnimationMaximumDimensionsExceeded = 170005,
+
+	StickerAnimationDurationExceeds5SecondMax = 170007,
 }
