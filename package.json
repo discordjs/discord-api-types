@@ -91,6 +91,9 @@
 		"prepare": "is-ci || husky install",
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"test:lint": "eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/**/*.ts {globals,v*}.ts",
+		"pretest:types": "tsc",
+		"test:types": "tsd",
+		"posttest:types": "npm run clean:node",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
 	},
 	"keywords": [
@@ -109,28 +112,29 @@
 		"node": ">=12"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.14.3",
-		"@babel/eslint-parser": "^7.14.4",
-		"@babel/plugin-syntax-top-level-await": "^7.12.13",
+		"@babel/core": "^7.14.6",
+		"@babel/eslint-parser": "^7.14.7",
+		"@babel/plugin-syntax-top-level-await": "^7.14.5",
 		"@commitlint/cli": "^12.1.4",
 		"@commitlint/config-angular": "^12.1.4",
-		"@types/node": "^15.6.1",
-		"@typescript-eslint/eslint-plugin": "^4.26.0",
-		"@typescript-eslint/parser": "^4.26.0",
+		"@types/node": "^16.3.3",
+		"@typescript-eslint/eslint-plugin": "^4.28.3",
+		"@typescript-eslint/parser": "^4.28.3",
 		"conventional-changelog-cli": "^2.1.1",
-		"eslint": "^7.27.0",
+		"eslint": "^7.30.0",
 		"eslint-config-marine": "^9.0.6",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^3.4.0",
-		"gen-esm-wrapper": "^1.1.1",
-		"husky": "^6.0.0",
+		"gen-esm-wrapper": "^1.1.2",
+		"husky": "^7.0.1",
 		"is-ci": "^3.0.0",
-		"lint-staged": "^11.0.0",
+		"lint-staged": "^11.0.1",
 		"npm-run-all": "^4.1.5",
-		"prettier": "^2.3.0",
-		"pretty-quick": "^3.1.0",
+		"prettier": "^2.3.2",
+		"pretty-quick": "^3.1.1",
 		"rimraf": "^3.0.2",
-		"typescript": "^4.3.2"
+		"tsd": "^0.17.0",
+		"typescript": "^4.3.5"
 	},
 	"repository": {
 		"type": "git",
@@ -161,7 +165,7 @@
 		]
 	},
 	"lint-staged": {
-		"{gateway,payloads,rest,rpc,voice,shortcuts,utils}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts",
+		"{gateway,payloads,rest,rpc,voice,utils}/**/*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts",
 		"{globals,v*}.ts": "eslint --fix --ext mjs,js,ts"
 	},
 	"commitlint": {
@@ -201,5 +205,8 @@
 			"commit": true,
 			"tag": true
 		}
+	},
+	"tsd": {
+		"directory": "tests"
 	}
 }

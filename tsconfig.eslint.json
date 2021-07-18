@@ -16,6 +16,7 @@
 		"utils/**/*.ts",
 		"voice/**/*.ts",
 		"scripts",
-		"deno"
+		"deno",
+		"tests/**/*.ts"
 	]
 }

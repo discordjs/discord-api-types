@@ -61,3 +61,25 @@ jobs:
           git add --all .
           git commit -m "build: deno build for ${GITHUB_SHA}" || true
           git push || true
+
+  tsd:
+    name: TSD checks
+    runs-on: ubuntu-latest
+
+    needs: testing
+    if: needs.testing.result == 'success'
+
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run TSD
+        run: npm run test:types

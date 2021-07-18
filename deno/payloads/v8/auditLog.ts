@@ -544,7 +544,7 @@ export type APIAuditLogChangeKeyMute = AuditLogChangeData<'mute', boolean>;
 /**
  * Returned when a user's nick is changed
  */
-export type APIAuditLogChangeKeyNick = AuditLogChangeData<'mute', boolean>;
+export type APIAuditLogChangeKeyNick = AuditLogChangeData<'nick', boolean>;
 
 /**
  * Returned when a user's avatar_hash is changed
