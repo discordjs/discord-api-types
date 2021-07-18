@@ -1,5 +1,6 @@
 import { ComponentType } from '../channel';
 import { APIBaseInteraction, InteractionType } from '../interactions';
+import { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
 
 export type APIMessageComponentInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,
@@ -31,3 +32,7 @@ export interface APIMessageSelectMenuInteractionData
 	extends APIMessageComponentBaseInteractionData<ComponentType.SelectMenu> {
 	values: string[];
 }
+
+export type APIMessageComponentDMInteraction = APIDMInteractionWrapper<APIMessageComponentInteraction>;
+
+export type APIMessageComponentGuildInteraction = APIGuildInteractionWrapper<APIMessageComponentInteraction>;

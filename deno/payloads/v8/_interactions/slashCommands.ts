@@ -2,7 +2,7 @@ import { APIRole, APIUser } from '../mod.ts';
 import { Permissions, Snowflake } from '../../../globals.ts';
 import { APIPartialChannel } from '../channel.ts';
 import { APIGuildMember } from '../guild.ts';
-import { APIBaseInteraction } from './base.ts';
+import { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
 import { InteractionType } from './responses.ts';
 
 /**
@@ -263,3 +263,7 @@ export type APIApplicationCommandInteraction = APIBaseInteraction<
 			'channel_id' | 'data'
 		>
 	>;
+
+export type APIApplicationCommandDMInteraction = APIDMInteractionWrapper<APIApplicationCommandInteraction>;
+
+export type APIApplicationCommandGuildInteraction = APIGuildInteractionWrapper<APIApplicationCommandInteraction>;

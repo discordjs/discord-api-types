@@ -1,6 +1,13 @@
-import { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './_interactions/base.ts';
-import { APIMessageComponentInteraction } from './_interactions/messageComponents.ts';
-import { APIApplicationCommandInteraction } from './_interactions/slashCommands.ts';
+import {
+	APIMessageComponentDMInteraction,
+	APIMessageComponentGuildInteraction,
+	APIMessageComponentInteraction,
+} from './_interactions/messageComponents.ts';
+import {
+	APIApplicationCommandDMInteraction,
+	APIApplicationCommandGuildInteraction,
+	APIApplicationCommandInteraction,
+} from './_interactions/slashCommands.ts';
 
 export * from './_interactions/base.ts';
 export * from './_interactions/messageComponents.ts';
@@ -9,10 +16,6 @@ export * from './_interactions/slashCommands.ts';
 
 export type APIInteraction = APIApplicationCommandInteraction | APIMessageComponentInteraction;
 
-export type APIDMInteraction =
-	| APIDMInteractionWrapper<APIApplicationCommandInteraction>
-	| APIDMInteractionWrapper<APIMessageComponentInteraction>;
+export type APIDMInteraction = APIApplicationCommandDMInteraction | APIMessageComponentDMInteraction;
 
-export type APIGuildInteraction =
-	| APIGuildInteractionWrapper<APIApplicationCommandInteraction>
-	| APIGuildInteractionWrapper<APIMessageComponentInteraction>;
+export type APIGuildInteraction = APIApplicationCommandGuildInteraction | APIMessageComponentGuildInteraction;

@@ -2,7 +2,7 @@ import { APIRole, APIUser } from '../index';
 import { Permissions, Snowflake } from '../../../globals';
 import { APIPartialChannel } from '../channel';
 import { APIGuildMember } from '../guild';
-import { APIBaseInteraction } from './base';
+import { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
 import { InteractionType } from './responses';
 
 /**
@@ -263,3 +263,7 @@ export type APIApplicationCommandInteraction = APIBaseInteraction<
 			'channel_id' | 'data'
 		>
 	>;
+
+export type APIApplicationCommandDMInteraction = APIDMInteractionWrapper<APIApplicationCommandInteraction>;
+
+export type APIApplicationCommandGuildInteraction = APIGuildInteractionWrapper<APIApplicationCommandInteraction>;
