@@ -342,6 +342,10 @@ export interface APIMessage {
 	 */
 	application?: Partial<APIApplication>;
 	/**
+	 * If the message is a response to an Interaction, this is the id of the interaction's application
+	 */
+	application_id?: Snowflake;
+	/**
 	 * Reference data sent with crossposted messages, replies, pins, and thread starter messages
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
@@ -596,7 +600,7 @@ export interface APIThreadMetadata {
 	 */
 	archive_timestamp: string;
 	/**
-	 * When a thread is locked, only users with MANAGE_THREADS can unarchive it
+	 * Whether the thread is locked; when a thread is locked, only users with `MANAGE_THREADS` can unarchive it
 	 */
 	locked?: boolean;
 }
@@ -614,12 +618,16 @@ export enum ThreadAutoArchiveDuration {
 export interface APIThreadMember {
 	/**
 	 * The id of the thread
+	 *
+	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
 	 */
-	id: Snowflake;
+	id?: Snowflake;
 	/**
 	 * The id of the member
+	 *
+	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
 	 */
-	user_id: Snowflake;
+	user_id?: Snowflake;
 	/**
 	 * An ISO8601 timestamp for when the member last joined
 	 */
