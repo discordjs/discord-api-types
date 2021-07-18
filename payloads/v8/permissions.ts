@@ -45,6 +45,7 @@ export const PermissionFlagsBits = {
 	ManageEmojisAndStickers: 1n << 30n,
 	UseSlashCommands: 1n << 31n,
 	RequestToSpeak: 1n << 32n,
+	UseExternalStickers: 1n << 37n,
 } as const;
 
 /**
