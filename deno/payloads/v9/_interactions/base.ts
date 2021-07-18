@@ -82,3 +82,15 @@ export interface APIBaseInteraction<Type extends InteractionType, Data extends u
 	 */
 	version: 1;
 }
+
+export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
+	Original,
+	'member' | 'guild_id'
+> &
+	Required<Pick<Original, 'user'>>;
+
+export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
+	Original,
+	'user'
+> &
+	Required<Pick<Original, 'member' | 'guild_id'>>;

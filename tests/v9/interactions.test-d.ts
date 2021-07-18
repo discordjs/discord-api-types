@@ -2,10 +2,14 @@ import { expectType } from 'tsd';
 import {
 	APIApplicationCommandInteraction,
 	APIApplicationCommandInteractionData,
+	APIDMInteraction,
+	APIGuildInteraction,
 	APIInteraction,
+	APIInteractionGuildMember,
 	APIMessageButtonInteractionData,
 	APIMessageComponentInteraction,
 	APIMessageSelectMenuInteractionData,
+	APIUser,
 	ComponentType,
 	InteractionType,
 } from '../../v9';
@@ -29,3 +33,11 @@ if (interaction.type === InteractionType.ApplicationCommand) {
 		expectType<string[]>(data.values);
 	}
 }
+
+declare const dmInteraction: APIDMInteraction;
+
+expectType<APIUser>(dmInteraction.user);
+
+declare const guildInteraction: APIGuildInteraction;
+
+expectType<APIInteractionGuildMember>(guildInteraction.member);
