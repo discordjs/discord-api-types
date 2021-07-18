@@ -1,0 +1,33 @@
+import { ComponentType } from '../channel';
+import { APIBaseInteraction, InteractionType } from '../interactions';
+
+export type APIMessageComponentInteraction = APIBaseInteraction<
+	InteractionType.MessageComponent,
+	APIMessageComponentInteractionData
+> &
+	Required<
+		Pick<
+			APIBaseInteraction<InteractionType.MessageComponent, APIMessageComponentInteractionData>,
+			'channel_id' | 'data'
+		>
+	>;
+
+export type APIMessageComponentInteractionData = APIMessageButtonInteractionData | APIMessageSelectMenuInteractionData;
+
+export interface APIMessageComponentBaseInteractionData<CType extends ComponentType> {
+	/**
+	 * The `custom_id` of the component
+	 */
+	custom_id: string;
+	/**
+	 * The type of the component
+	 */
+	component_type: CType;
+}
+
+export type APIMessageButtonInteractionData = APIMessageComponentBaseInteractionData<ComponentType.Button>;
+
+export interface APIMessageSelectMenuInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.SelectMenu> {
+	values: string[];
+}
