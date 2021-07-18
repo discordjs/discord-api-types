@@ -85,7 +85,7 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	icon?: string | null;
 	/**
-	 * ID of the DM creator
+	 * ID of the DM creator or thread creator
 	 */
 	owner_id?: Snowflake;
 	/**
@@ -94,6 +94,10 @@ export interface APIChannel extends APIPartialChannel {
 	application_id?: Snowflake;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
+	 *
+	 * OR
+	 *
+	 * ID of the parent channel for a thread
 	 */
 	parent_id?: Snowflake | null;
 	/**
@@ -113,6 +117,26 @@ export interface APIChannel extends APIPartialChannel {
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
 	video_quality_mode?: VideoQualityMode;
+	/**
+	 * The approximate message count of the thread, does not count above 50 even if there are more messages
+	 */
+	message_count?: number;
+	/**
+	 * The approximate member count of the thread, does not count above 50 even if there are more members
+	 */
+	member_count?: number;
+	/**
+	 * The metadata for a thread channel not shared by other channels
+	 */
+	thread_metadata?: APIThreadMetadata;
+	/**
+	 * The client users member for the thread, only included in select endpoints
+	 */
+	member?: APIThreadMember;
+	/**
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
+	 */
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 }
 
 /**
@@ -154,11 +178,23 @@ export const enum ChannelType {
 	 */
 	GuildStore,
 	/**
+	 * A thread channel (public) within a Guild News channel
+	 */
+	GuildNewsThread = 10,
+	/**
+	 * A public thread channel within a Guild Text channel
+	 */
+	GuildPublicThread,
+	/**
+	 * A private thread channel within a Guild Text channel
+	 */
+	GuildPrivateThread,
+	/**
 	 * A voice channel for hosting events with an audience
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/1500005513722
 	 */
-	GuildStageVoice = 13,
+	GuildStageVoice,
 }
 
 export const enum VideoQualityMode {
@@ -306,7 +342,7 @@ export interface APIMessage {
 	 */
 	application?: Partial<APIApplication>;
 	/**
-	 * Reference data sent with crossposted messages and replies
+	 * Reference data sent with crossposted messages, replies, pins, and thread starter messages
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
 	 */
@@ -337,6 +373,10 @@ export interface APIMessage {
 	 * Sent if the message is a response to an Interaction
 	 */
 	interaction?: APIMessageInteraction;
+	/**
+	 * Sent if a thread was started from this message
+	 */
+	thread?: APIChannel;
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
@@ -377,9 +417,11 @@ export const enum MessageType {
 	GuildDiscoveryRequalified,
 	GuildDiscoveryGracePeriodInitialWarning,
 	GuildDiscoveryGracePeriodFinalWarning,
-	Reply = 19,
+	ThreadCreated,
+	Reply,
 	ApplicationCommand,
-	GuildInviteReminder = 22,
+	ThreadStarterMessage,
+	GuildInviteReminder,
 }
 
 /**
@@ -452,6 +494,10 @@ export const enum MessageFlags {
 	 * This message came from the urgent message system
 	 */
 	Urgent = 1 << 4,
+	/**
+	 * This message has an associated thread, which shares its id
+	 */
+	HasThread = 1 << 5,
 	/**
 	 * This message is only visible to the user who invoked the Interaction
 	 */
@@ -531,6 +577,76 @@ export interface APIOverwrite {
 export const enum OverwriteType {
 	Role,
 	Member,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#thread-metadata-object-thread-metadata-structure
+ */
+export interface APIThreadMetadata {
+	/**
+	 * Whether the thread is archived
+	 */
+	archived: boolean;
+	/**
+	 * Duration in minutes to automatically archive the thread after recent activity, can be set to: 60, 1440, 4320, 10080
+	 */
+	auto_archive_duration: ThreadAutoArchiveDuration;
+	/**
+	 * An ISO8601 timestamp when the thread's archive status was last changed, used for calculating recent activity
+	 */
+	archive_timestamp: string;
+	/**
+	 * When a thread is locked, only users with MANAGE_THREADS can unarchive it
+	 */
+	locked?: boolean;
+}
+
+export const enum ThreadAutoArchiveDuration {
+	OneHour = 60,
+	OneDay = 1440,
+	ThreeDays = 4320,
+	OneWeek = 10080,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#thread-member-object-thread-member-structure
+ */
+export interface APIThreadMember {
+	/**
+	 * The id of the thread
+	 */
+	id: Snowflake;
+	/**
+	 * The id of the member
+	 */
+	user_id: Snowflake;
+	/**
+	 * An ISO8601 timestamp for when the member last joined
+	 */
+	join_timestamp: string;
+	/**
+	 * Member flags combined as a bitfield
+	 *
+	 * See https://en.wikipedia.org/wiki/Bit_field
+	 */
+	flags: ThreadMemberFlags;
+}
+
+export const enum ThreadMemberFlags {}
+
+export interface APIThreadList {
+	/**
+	 * The threads that were fetched
+	 */
+	threads: APIChannel[];
+	/**
+	 * The members for the client user in each of the fetched threads
+	 */
+	members: APIThreadMember[];
+	/**
+	 * Whether there are potentially additional threads
+	 */
+	has_more?: boolean;
 }
 
 /**
@@ -899,13 +1015,13 @@ export interface APIAllowedMentions {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components
+ * https://discord.com/developers/docs/interactions/message-components#component-object
  */
-export interface APIBaseComponent {
+export interface APIBaseMessageComponent<T extends ComponentType> {
 	/**
 	 * The type of the component
 	 */
-	type: ComponentType;
+	type: T;
 }
 
 /**
@@ -913,7 +1029,7 @@ export interface APIBaseComponent {
  */
 export const enum ComponentType {
 	/**
-	 * ActionRow component
+	 * Action Row component
 	 */
 	ActionRow = 1,
 	/**
@@ -927,13 +1043,9 @@ export const enum ComponentType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-object
+ * https://discord.com/developers/docs/interactions/message-components#action-rows
  */
-export interface APIActionRowComponent extends APIBaseComponent {
-	/**
-	 * The type of the component
-	 */
-	type: ComponentType.ActionRow;
+export interface APIActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
@@ -941,71 +1053,97 @@ export interface APIActionRowComponent extends APIBaseComponent {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#buttons-button-object
+ * https://discord.com/developers/docs/interactions/message-components#buttons
  */
-export interface APIButtonComponent extends APIBaseComponent {
-	/**
-	 * The type of the component
-	 */
-	type: ComponentType.Button;
+interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessageComponent<ComponentType.Button> {
 	/**
 	 * The label to be displayed on the button
 	 */
 	label?: string;
-	/**
-	 * The custom_id to be sent in the interaction when clicked
-	 */
-	custom_id?: string;
+
 	/**
 	 * The style of the button
 	 */
-	style: ButtonStyle;
+	style: Style;
 	/**
 	 * The emoji to display to the left of the text
 	 */
 	emoji?: APIPartialEmoji;
-	/**
-	 * The URL to direct users to when clicked for Link buttons
-	 */
-	url?: string;
+
 	/**
 	 * The status of the button
 	 */
 	disabled?: boolean;
 }
 
-/**
- * https://discord.com/developers/docs/interactions/message-components#component-object
- */
-export interface APISelectMenuComponent {
-	/**
-	 * The type of the component
-	 */
-	type: ComponentType.SelectMenu;
+export interface APIButtonComponentWithCustomID
+	extends APIButtonComponentBase<
+		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
+	> {
 	/**
 	 * The custom_id to be sent in the interaction when clicked
 	 */
 	custom_id: string;
+}
+
+export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
 	/**
-	 * Custom placeholder text if nothing is selected
+	 * The URL to direct users to when clicked for Link buttons
 	 */
-	placeholder?: string;
-	/**
-	 * The minimum number of items that must be chosen
-	 */
-	min_values?: number;
-	/**
-	 * The maximum number of items that can be chosen
-	 */
-	max_values?: number;
-	/**
-	 * Choices to display in the select menu
-	 */
-	options: APISelectOption[];
+	url: string;
+}
+
+export type APIButtonComponent = APIButtonComponentWithCustomID | APIButtonComponentWithURL;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
+ */
+export const enum ButtonStyle {
+	Primary = 1,
+	Secondary,
+	Success,
+	Danger,
+	Link,
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-object
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export interface APISelectMenuComponent extends APIBaseMessageComponent<ComponentType.SelectMenu> {
+	/**
+	 * A developer-defined identifier for the select menu, max 100 characters
+	 */
+	custom_id: string;
+	/**
+	 * The choices in the select, max 25
+	 */
+	options: APISelectOption[];
+	/**
+	 * Custom placeholder text if nothing is selected, max 100 characters
+	 */
+	placeholder?: string;
+	/**
+	 * The minimum number of items that must be chosen; min 0, max 25
+	 *
+	 * @default 1
+	 */
+	min_values?: number;
+	/**
+	 * The maximum number of items that can be chosen; max 25
+	 *
+	 * @default 1
+	 */
+	max_values?: number;
+	/**
+	 * Disable the select
+	 *
+	 * @default false
+	 */
+	disabled?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
  */
 export interface APISelectOption {
 	/**
@@ -1027,18 +1165,10 @@ export interface APISelectOption {
 	/**
 	 * Whether this option should be already-selected by default
 	 */
-	default: boolean;
+	default?: boolean;
 }
-
-export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
+ * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export const enum ButtonStyle {
-	Primary = 1,
-	Secondary,
-	Success,
-	Danger,
-	Link,
-}
+export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;

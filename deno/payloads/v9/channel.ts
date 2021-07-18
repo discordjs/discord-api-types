@@ -1055,32 +1055,45 @@ export interface APIActionRowComponent extends APIBaseMessageComponent<Component
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons
  */
-export interface APIButtonComponent extends APIBaseMessageComponent<ComponentType.Button> {
+interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessageComponent<ComponentType.Button> {
 	/**
 	 * The label to be displayed on the button
 	 */
 	label?: string;
-	/**
-	 * The custom_id to be sent in the interaction when clicked
-	 */
-	custom_id?: string;
+
 	/**
 	 * The style of the button
 	 */
-	style: ButtonStyle;
+	style: Style;
 	/**
 	 * The emoji to display to the left of the text
 	 */
 	emoji?: APIPartialEmoji;
-	/**
-	 * The URL to direct users to when clicked for Link buttons
-	 */
-	url?: string;
+
 	/**
 	 * The status of the button
 	 */
 	disabled?: boolean;
 }
+
+export interface APIButtonComponentWithCustomID
+	extends APIButtonComponentBase<
+		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
+	> {
+	/**
+	 * The custom_id to be sent in the interaction when clicked
+	 */
+	custom_id: string;
+}
+
+export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
+	/**
+	 * The URL to direct users to when clicked for Link buttons
+	 */
+	url: string;
+}
+
+export type APIButtonComponent = APIButtonComponentWithCustomID | APIButtonComponentWithURL;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
