@@ -85,7 +85,7 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	icon?: string | null;
 	/**
-	 * ID of the DM creator or thread creator
+	 * ID of the DM creator
 	 */
 	owner_id?: Snowflake;
 	/**
@@ -94,10 +94,6 @@ export interface APIChannel extends APIPartialChannel {
 	application_id?: Snowflake;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
-	 *
-	 * OR
-	 *
-	 * ID of the parent channel for a thread
 	 */
 	parent_id?: Snowflake | null;
 	/**
@@ -117,26 +113,6 @@ export interface APIChannel extends APIPartialChannel {
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
 	video_quality_mode?: VideoQualityMode;
-	/**
-	 * The approximate message count of the thread, does not count above 50 even if there are more messages
-	 */
-	message_count?: number;
-	/**
-	 * The approximate member count of the thread, does not count above 50 even if there are more members
-	 */
-	member_count?: number;
-	/**
-	 * The metadata for a thread channel not shared by other channels
-	 */
-	thread_metadata?: APIThreadMetadata;
-	/**
-	 * The client users member for the thread, only included in select endpoints
-	 */
-	member?: APIThreadMember;
-	/**
-	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
-	 */
-	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 }
 
 /**
@@ -178,23 +154,11 @@ export enum ChannelType {
 	 */
 	GuildStore,
 	/**
-	 * A thread channel (public) within a Guild News channel
-	 */
-	GuildNewsThread = 10,
-	/**
-	 * A public thread channel within a Guild Text channel
-	 */
-	GuildPublicThread,
-	/**
-	 * A private thread channel within a Guild Text channel
-	 */
-	GuildPrivateThread,
-	/**
 	 * A voice channel for hosting events with an audience
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/1500005513722
 	 */
-	GuildStageVoice,
+	GuildStageVoice = 13,
 }
 
 export enum VideoQualityMode {
@@ -378,10 +342,6 @@ export interface APIMessage {
 	 */
 	interaction?: APIMessageInteraction;
 	/**
-	 * Sent if a thread was started from this message
-	 */
-	thread?: APIChannel;
-	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
 	components?: APIActionRowComponent[];
@@ -421,11 +381,9 @@ export enum MessageType {
 	GuildDiscoveryRequalified,
 	GuildDiscoveryGracePeriodInitialWarning,
 	GuildDiscoveryGracePeriodFinalWarning,
-	ThreadCreated,
-	Reply,
+	Reply = 19,
 	ApplicationCommand,
-	ThreadStarterMessage,
-	GuildInviteReminder,
+	GuildInviteReminder = 22,
 }
 
 /**
@@ -498,10 +456,6 @@ export enum MessageFlags {
 	 * This message came from the urgent message system
 	 */
 	Urgent = 1 << 4,
-	/**
-	 * This message has an associated thread, which shares its id
-	 */
-	HasThread = 1 << 5,
 	/**
 	 * This message is only visible to the user who invoked the Interaction
 	 */
@@ -581,80 +535,6 @@ export interface APIOverwrite {
 export enum OverwriteType {
 	Role,
 	Member,
-}
-
-/**
- * https://discord.com/developers/docs/resources/channel#thread-metadata-object-thread-metadata-structure
- */
-export interface APIThreadMetadata {
-	/**
-	 * Whether the thread is archived
-	 */
-	archived: boolean;
-	/**
-	 * Duration in minutes to automatically archive the thread after recent activity, can be set to: 60, 1440, 4320, 10080
-	 */
-	auto_archive_duration: ThreadAutoArchiveDuration;
-	/**
-	 * An ISO8601 timestamp when the thread's archive status was last changed, used for calculating recent activity
-	 */
-	archive_timestamp: string;
-	/**
-	 * Whether the thread is locked; when a thread is locked, only users with `MANAGE_THREADS` can unarchive it
-	 */
-	locked?: boolean;
-}
-
-export enum ThreadAutoArchiveDuration {
-	OneHour = 60,
-	OneDay = 1440,
-	ThreeDays = 4320,
-	OneWeek = 10080,
-}
-
-/**
- * https://discord.com/developers/docs/resources/channel#thread-member-object-thread-member-structure
- */
-export interface APIThreadMember {
-	/**
-	 * The id of the thread
-	 *
-	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
-	 */
-	id?: Snowflake;
-	/**
-	 * The id of the member
-	 *
-	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
-	 */
-	user_id?: Snowflake;
-	/**
-	 * An ISO8601 timestamp for when the member last joined
-	 */
-	join_timestamp: string;
-	/**
-	 * Member flags combined as a bitfield
-	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
-	 */
-	flags: ThreadMemberFlags;
-}
-
-export enum ThreadMemberFlags {}
-
-export interface APIThreadList {
-	/**
-	 * The threads that were fetched
-	 */
-	threads: APIChannel[];
-	/**
-	 * The members for the client user in each of the fetched threads
-	 */
-	members: APIThreadMember[];
-	/**
-	 * Whether there are potentially additional threads
-	 */
-	has_more?: boolean;
 }
 
 /**
