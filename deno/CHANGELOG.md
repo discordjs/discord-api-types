@@ -1,3 +1,65 @@
+# [0.19.0](https://github.com/discordjs/discord-api-types/compare/0.18.1...0.19.0) (2021-07-19)
+
+### Bug Fixes
+
+- **FormattingPatterns:** fix StyledTimestamp ([#147](https://github.com/discordjs/discord-api-types/issues/147)) ([dd12c6a](https://github.com/discordjs/discord-api-types/commit/dd12c6ac9902d1b300a167f0acd9fba5192aaa91))
+- **RESTOAuth2:** correct casing of `OAuth` ([#134](https://github.com/discordjs/discord-api-types/issues/134)) ([f0b2766](https://github.com/discordjs/discord-api-types/commit/f0b2766d5b55bd9b8b8ba9c506a868dafcdca568))
+- **RESTPostAPIWebhookWithTokenJSONBody:** add missing components ([#152](https://github.com/discordjs/discord-api-types/issues/152)) ([ca933ae](https://github.com/discordjs/discord-api-types/commit/ca933ae84d54456f0a443e5e8bd10b7613271f62))
+- fix autopublish CD ([#140](https://github.com/discordjs/discord-api-types/issues/140)) ([8627c9d](https://github.com/discordjs/discord-api-types/commit/8627c9d2195aaa0a97de2fdf9f64ba0c0ff6db02))
+
+### chore
+
+- Get up to date _again_ ([#156](https://github.com/discordjs/discord-api-types/issues/156)) ([86e0736](https://github.com/discordjs/discord-api-types/commit/86e0736726fb4ef13736510fa6d69f20383d5ea5))
+- **RESTErrorCodes:** correct casing for OAuth ([ca6612e](https://github.com/discordjs/discord-api-types/commit/ca6612e0a4f313731009a37a81c3a0834e6a0cd8))
+
+### Code Refactoring
+
+- **Enums:** make property casing consistent ([#131](https://github.com/discordjs/discord-api-types/issues/131)) ([aa5e26d](https://github.com/discordjs/discord-api-types/commit/aa5e26d92b587bf9b4fc33e038a6d3c8586597c2))
+
+### Features
+
+- **Stickers:** sticker packs, sticker routes, and guild stickers ([#145](https://github.com/discordjs/discord-api-types/issues/145)) ([4a83629](https://github.com/discordjs/discord-api-types/commit/4a836293d5224a6cad19c50bc074a9ef9b0f0af4))
+- add stage instance related typings to audit logs ([#151](https://github.com/discordjs/discord-api-types/issues/151)) ([836e8fb](https://github.com/discordjs/discord-api-types/commit/836e8fb29491f8df72c0caf2eb5c05ed2bda3191))
+- **APIGuild:** add `nsfw_level` ([#149](https://github.com/discordjs/discord-api-types/issues/149)) ([5256ac7](https://github.com/discordjs/discord-api-types/commit/5256ac7f97d35200f1676721a80ad0f57d05cab7))
+- **Channel:** add embeds to post / patch ([#143](https://github.com/discordjs/discord-api-types/issues/143)) ([13d483e](https://github.com/discordjs/discord-api-types/commit/13d483ef2e53373438e8b03fed681232626b2670))
+- **FormattingPatterns:** add timestamp ([#146](https://github.com/discordjs/discord-api-types/issues/146)) ([16eae7e](https://github.com/discordjs/discord-api-types/commit/16eae7eafe9ef6001f664a30c0f78d6982d2e54c))
+- **RESTErrors:** add types for rest errors ([#122](https://github.com/discordjs/discord-api-types/issues/122)) ([7b47fc9](https://github.com/discordjs/discord-api-types/commit/7b47fc96809aed2b28e15064f308651b08a5b74d))
+- **Threads:** add typed thread creation ([#148](https://github.com/discordjs/discord-api-types/issues/148)) ([f393ba5](https://github.com/discordjs/discord-api-types/commit/f393ba520d7d6d2aacaca7b3ca5d355fab614f6e))
+- add typings for stage instance ([#144](https://github.com/discordjs/discord-api-types/issues/144)) ([e36ef9e](https://github.com/discordjs/discord-api-types/commit/e36ef9e1d225d8e8c849c3198e628202eedbd20b))
+- **Interactions:** components and component interactions ([#132](https://github.com/discordjs/discord-api-types/issues/132)) ([036bb03](https://github.com/discordjs/discord-api-types/commit/036bb035c9d6ddf780bab5af4884861d08f04d24))
+- **Threads:** add default auto archive and minor tweaks ([#142](https://github.com/discordjs/discord-api-types/issues/142)) ([d2b6276](https://github.com/discordjs/discord-api-types/commit/d2b62761194064b38e38045a72ee8b38c920ada6))
+- api v9 and threads ([#133](https://github.com/discordjs/discord-api-types/issues/133)) ([d1498c3](https://github.com/discordjs/discord-api-types/commit/d1498c3ce2eaea11c9946726ef758f7de489253b))
+
+### BREAKING CHANGES
+
+- `APISelectOption` has been renamed to `APISelectMenuOption`
+- APISelectMenuOption#default is now properly marked as optional
+
+- Updated OAuth2 Application types
+- `APIApplication#owner` is now marked as optional, per the docs
+
+- Correct APIAuditLogChangeKeyNick's key
+- This renames APIAuditLogChangeKeyNick's key from `mute` to `nick`
+
+- Add `application_id` to APIMessage
+- Correct type of `id` and `user_id` in APIThreadMember
+- The type of `id` and `user_id` in APIThreadMember are now marked as optional; read the TSDoc for when it's actually optional
+
+- Correctly version API route in RouteBases
+- This changes the `RouteBases.api` to be versioned based on the API version you're importing. **Make sure to update your code to handle that**
+
+- Added new guild features
+  ref: https://github.com/discordjs/discord-api-types/pull/156/commits/4d36e533cffecbcce13e968a7803e5a68e021106
+
+- Cleaned up interaction types
+- While this shouldn't be necessary, this is a warning that types for interactions HAVE changed and you may need to update your code. For the most part, the types _should_ be the same, more accurate and strictly typed. You will also see that every type of interaction has a Guild/DM counterpart exported (ex: APIApplicationCommandGuildInteraction vs APIApplicationCommandInteraction, where the former has all the guild properties, while the latter has all properties that depend on context marked as optional).
+
+- Add message property to MessageComponent interactions
+- **RESTErrorCodes:** This properly capitalizes certain error codes with the right OAuth capitalization
+- **RESTOAuth2:** `RESTGetAPIOauth2CurrentApplicationResult` and `RESTGetAPIOauth2CurrentAuthorizationResult` have been renamed to `RESTGetAPIOAuth2CurrentApplicationResult ` and `RESTGetAPIOAuth2CurrentAuthorizationResult`, to correct the casing of `OAuth`
+
+- **Enums:** Enum keys have been normalized, and they are all PascalCased now (for API v8 and above). API v6 did not receive these changes.
+
 ## [0.18.1](https://github.com/discordjs/discord-api-types/compare/0.18.0...0.18.1) (2021-05-03)
 
 ### Bug Fixes

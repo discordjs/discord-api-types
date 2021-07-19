@@ -1,5 +1,11 @@
 import type { Snowflake } from '../../globals.ts';
-import type { APIAllowedMentions, APIEmbed, APIMessage, APIWebhook } from '../../payloads/v9/mod.ts';
+import type {
+	APIAllowedMentions,
+	APIActionRowComponent,
+	APIEmbed,
+	APIMessage,
+	APIWebhook,
+} from '../../payloads/v9/mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
@@ -119,6 +125,10 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * The thread to post this message in
 	 */
 	thread_id?: Snowflake;
+	/**
+	 * the components to include with the message
+	 */
+	components?: APIActionRowComponent[];
 }
 
 /**
