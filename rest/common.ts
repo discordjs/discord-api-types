@@ -130,8 +130,10 @@ export const enum RESTJSONErrorCodes {
 	MaximumActiveAnnouncementThreads,
 
 	InvalidJSONForUploadedLottieFile = 170001,
-
-	LottieAnimationMaximumDimensionsExceeded = 170005,
-
-	StickerAnimationDurationExceeds5SecondMax = 170007,
+	UploadedLottiesCannotContainRasterizedImages,
+	StickerMaximumFramerateExceeded,
+	StickerFrameCountExceeds1000Max,
+	LottieAnimationMaximumDimensionsExceeded,
+	StickerFramerateIsTooSmallOrTooLarge,
+	StickerAnimationDurationExceeds5SecondMax,
 }
