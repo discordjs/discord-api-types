@@ -948,7 +948,6 @@ interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessa
 	 * The label to be displayed on the button
 	 */
 	label?: string;
-
 	/**
 	 * The style of the button
 	 */
@@ -957,7 +956,6 @@ interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessa
 	 * The emoji to display to the left of the text
 	 */
 	emoji?: APIPartialEmoji;
-
 	/**
 	 * The status of the button
 	 */

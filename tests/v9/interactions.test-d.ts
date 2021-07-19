@@ -21,14 +21,17 @@ if (interaction.type === InteractionType.ApplicationCommand) {
 
 	const { data } = interaction;
 	expectType<APIApplicationCommandInteractionData>(data);
-	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- Technically not wrong, but safety
-} else if (interaction.type === InteractionType.MessageComponent) {
+}
+
+if (interaction.type === InteractionType.MessageComponent) {
 	expectType<APIMessageComponentInteraction>(interaction);
 
 	const { data } = interaction;
 	if (data.component_type === ComponentType.Button) {
 		expectType<APIMessageButtonInteractionData>(data);
-	} else {
+	}
+
+	if (data.component_type === ComponentType.SelectMenu) {
 		expectType<APIMessageSelectMenuInteractionData>(data);
 		expectType<string[]>(data.values);
 	}
