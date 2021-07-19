@@ -6,7 +6,7 @@ import { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWrapper
 import { InteractionType } from './responses';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#applicationcommand
+ * https://discord.com/developers/docs/interactions/slash-commands#application-command-object
  */
 export interface APIApplicationCommand {
 	/**
@@ -17,6 +17,10 @@ export interface APIApplicationCommand {
 	 * Unique id of the parent application
 	 */
 	application_id: Snowflake;
+	/**
+	 * Guild id of the command, if not global
+	 */
+	guild_id?: Snowflake;
 	/**
 	 * 1-32 character name matching `^[\w-]{1,32}$`
 	 */
@@ -51,7 +55,7 @@ interface APIApplicationCommandOptionBase {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoption
+ * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-structure
  */
 export type APIApplicationCommandOption =
 	| APIApplicationCommandArgumentOptions
@@ -80,7 +84,7 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptiontype
+ * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-type
  */
 export const enum ApplicationCommandOptionType {
 	SubCommand = 1,
@@ -95,7 +99,7 @@ export const enum ApplicationCommandOptionType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptionchoice
+ * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-choice-structure
  */
 export interface APIApplicationCommandOptionChoice {
 	name: string;
@@ -103,7 +107,7 @@ export interface APIApplicationCommandOptionChoice {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-applicationcommandinteractiondata
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-interaction-structure
  */
 export interface APIApplicationCommandInteractionData {
 	id: Snowflake;
@@ -132,7 +136,7 @@ export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMemb
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-applicationcommandinteractiondataoption
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-application-command-interaction-data-option-structure
  */
 export type APIApplicationCommandInteractionDataOption =
 	| ApplicationCommandInteractionDataOptionSubCommand
@@ -204,7 +208,7 @@ interface InteractionDataOptionBase<T extends ApplicationCommandOptionType, D = 
 // PERMISSIONS
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#guildapplicationcommandpermissions
+ * https://discord.com/developers/docs/interactions/slash-commands#application-command-permissions-object-guild-application-command-permissions-structure
  */
 export interface APIGuildApplicationCommandPermissions {
 	/**
@@ -226,7 +230,7 @@ export interface APIGuildApplicationCommandPermissions {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandpermissions
+ * https://discord.com/developers/docs/interactions/slash-commands#application-command-permissions-object-application-command-permissions-structure
  */
 export interface APIApplicationCommandPermission {
 	/**

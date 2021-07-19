@@ -26,12 +26,12 @@ export interface APIInteractionResponsePong {
 
 export interface APIInteractionResponseChannelMessageWithSource {
 	type: InteractionResponseType.ChannelMessageWithSource;
-	data: APIInteractionApplicationCommandCallbackData;
+	data: APIInteractionResponseCallbackData;
 }
 
 export interface APIInteractionResponseDeferredChannelMessageWithSource {
 	type: InteractionResponseType.DeferredChannelMessageWithSource;
-	data?: Pick<APIInteractionApplicationCommandCallbackData, 'flags'>;
+	data?: Pick<APIInteractionResponseCallbackData, 'flags'>;
 }
 
 export interface APIInteractionResponseDeferredMessageUpdate {
@@ -40,7 +40,7 @@ export interface APIInteractionResponseDeferredMessageUpdate {
 
 export interface APIInteractionResponseUpdateMessage {
 	type: InteractionResponseType.UpdateMessage;
-	data?: APIInteractionApplicationCommandCallbackData;
+	data?: APIInteractionResponseCallbackData;
 }
 
 /**
@@ -72,7 +72,7 @@ export enum InteractionResponseType {
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionapplicationcommandcallbackdata
  */
-export type APIInteractionApplicationCommandCallbackData = Omit<
+export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
 	'username' | 'avatar_url'
 > & { flags?: MessageFlags };

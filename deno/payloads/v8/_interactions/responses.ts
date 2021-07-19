@@ -2,7 +2,7 @@ import { MessageFlags } from '../mod.ts';
 import { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v8.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactiontype
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-interaction-request-type
  */
 export enum InteractionType {
 	Ping = 1,
@@ -11,7 +11,7 @@ export enum InteractionType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
@@ -26,12 +26,12 @@ export interface APIInteractionResponsePong {
 
 export interface APIInteractionResponseChannelMessageWithSource {
 	type: InteractionResponseType.ChannelMessageWithSource;
-	data: APIInteractionApplicationCommandCallbackData;
+	data: APIInteractionResponseCallbackData;
 }
 
 export interface APIInteractionResponseDeferredChannelMessageWithSource {
 	type: InteractionResponseType.DeferredChannelMessageWithSource;
-	data?: Pick<APIInteractionApplicationCommandCallbackData, 'flags'>;
+	data?: Pick<APIInteractionResponseCallbackData, 'flags'>;
 }
 
 export interface APIInteractionResponseDeferredMessageUpdate {
@@ -40,11 +40,11 @@ export interface APIInteractionResponseDeferredMessageUpdate {
 
 export interface APIInteractionResponseUpdateMessage {
 	type: InteractionResponseType.UpdateMessage;
-	data?: APIInteractionApplicationCommandCallbackData;
+	data?: APIInteractionResponseCallbackData;
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object-interaction-callback-type
  */
 export enum InteractionResponseType {
 	/**
@@ -70,9 +70,9 @@ export enum InteractionResponseType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionapplicationcommandcallbackdata
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object-interaction-application-command-callback-data-structure
  */
-export type APIInteractionApplicationCommandCallbackData = Omit<
+export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
 	'username' | 'avatar_url'
 > & { flags?: MessageFlags };

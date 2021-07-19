@@ -9,7 +9,7 @@ export type APIMessageComponentInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageComponentInteractionData>,
-			'channel_id' | 'data'
+			'channel_id' | 'data' | 'message'
 		>
 	>;
 
