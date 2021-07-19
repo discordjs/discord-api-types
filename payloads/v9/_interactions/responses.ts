@@ -2,7 +2,7 @@ import { MessageFlags } from '../index';
 import { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-interactiontype
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-interaction-request-type
  */
 export const enum InteractionType {
 	Ping = 1,
@@ -11,7 +11,7 @@ export const enum InteractionType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
@@ -44,7 +44,7 @@ export interface APIInteractionResponseUpdateMessage {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object-interaction-callback-type
  */
 export const enum InteractionResponseType {
 	/**
@@ -70,7 +70,7 @@ export const enum InteractionResponseType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionapplicationcommandcallbackdata
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object-interaction-application-command-callback-data-structure
  */
 export type APIInteractionApplicationCommandCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
