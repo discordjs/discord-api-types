@@ -481,6 +481,30 @@ export const enum GuildFeature {
 	 * Guild can be previewed before joining via Membership Screening or the directory
 	 */
 	PreviewEnabled = 'PREVIEW_ENABLED',
+	/**
+	 * Guild has enabled ticketed events
+	 */
+	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
+	/**
+	 * Guild has enabled monetization
+	 */
+	MonetizationEnabled = 'MONETIZATION_ENABLED',
+	/**
+	 * Guild has increased custom sticker slots
+	 */
+	MoreStickers = 'MORE_STICKERS',
+	/**
+	 * Guild has access to the three day archive time for threads
+	 */
+	ThreeDayThreadArchive = 'THREE_DAY_THREAD_ARCHIVE',
+	/**
+	 * Guild has access to the seven day archive time for threads
+	 */
+	SevenDayThreadArchive = 'SEVEN_DAY_THREAD_ARCHIVE',
+	/**
+	 * Guild has access to create private threads
+	 */
+	PrivateThreads = 'PRIVATE_THREADS',
 }
 
 /**

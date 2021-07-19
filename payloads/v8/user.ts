@@ -88,6 +88,7 @@ export const enum UserFlags {
 	BugHunterLevel2 = 1 << 14,
 	VerifiedBot = 1 << 16,
 	EarlyVerifiedBotDeveloper = 1 << 17,
+	DiscordCertifiedModerator = 1 << 18,
 }
 
 /**

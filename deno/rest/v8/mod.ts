@@ -717,7 +717,7 @@ export const Routes = {
 };
 
 export const RouteBases = {
-	api: 'https://discord.com/api',
+	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',

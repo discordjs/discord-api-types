@@ -342,6 +342,10 @@ export interface APIMessage {
 	 */
 	application?: Partial<APIApplication>;
 	/**
+	 * If the message is a response to an Interaction, this is the id of the interaction's application
+	 */
+	application_id?: Snowflake;
+	/**
 	 * Reference data sent with crossposted messages, replies, pins, and thread starter messages
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
@@ -596,7 +600,7 @@ export interface APIThreadMetadata {
 	 */
 	archive_timestamp: string;
 	/**
-	 * When a thread is locked, only users with MANAGE_THREADS can unarchive it
+	 * Whether the thread is locked; when a thread is locked, only users with `MANAGE_THREADS` can unarchive it
 	 */
 	locked?: boolean;
 }
@@ -614,12 +618,16 @@ export enum ThreadAutoArchiveDuration {
 export interface APIThreadMember {
 	/**
 	 * The id of the thread
+	 *
+	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
 	 */
-	id: Snowflake;
+	id?: Snowflake;
 	/**
 	 * The id of the member
+	 *
+	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
 	 */
-	user_id: Snowflake;
+	user_id?: Snowflake;
 	/**
 	 * An ISO8601 timestamp for when the member last joined
 	 */
@@ -1015,13 +1023,13 @@ export interface APIAllowedMentions {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components
+ * https://discord.com/developers/docs/interactions/message-components#component-object
  */
-export interface APIBaseComponent {
+export interface APIBaseMessageComponent<T extends ComponentType> {
 	/**
 	 * The type of the component
 	 */
-	type: ComponentType;
+	type: T;
 }
 
 /**
@@ -1029,7 +1037,7 @@ export interface APIBaseComponent {
  */
 export enum ComponentType {
 	/**
-	 * ActionRow component
+	 * Action Row component
 	 */
 	ActionRow = 1,
 	/**
@@ -1043,13 +1051,9 @@ export enum ComponentType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-object
+ * https://discord.com/developers/docs/interactions/message-components#action-rows
  */
-export interface APIActionRowComponent extends APIBaseComponent {
-	/**
-	 * The type of the component
-	 */
-	type: ComponentType.ActionRow;
+export interface APIActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
@@ -1057,73 +1061,97 @@ export interface APIActionRowComponent extends APIBaseComponent {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#buttons-button-object
+ * https://discord.com/developers/docs/interactions/message-components#buttons
  */
-export interface APIButtonComponent extends APIBaseComponent {
-	/**
-	 * The type of the component
-	 */
-	type: ComponentType.Button;
+interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessageComponent<ComponentType.Button> {
 	/**
 	 * The label to be displayed on the button
 	 */
 	label?: string;
 	/**
-	 * The custom_id to be sent in the interaction when clicked
-	 */
-	custom_id?: string;
-	/**
 	 * The style of the button
 	 */
-	style: ButtonStyle;
+	style: Style;
 	/**
 	 * The emoji to display to the left of the text
 	 */
 	emoji?: APIPartialEmoji;
-	/**
-	 * The URL to direct users to when clicked for Link buttons
-	 */
-	url?: string;
 	/**
 	 * The status of the button
 	 */
 	disabled?: boolean;
 }
 
-/**
- * https://discord.com/developers/docs/interactions/message-components#component-object
- */
-export interface APISelectMenuComponent {
-	/**
-	 * The type of the component
-	 */
-	type: ComponentType.SelectMenu;
+export interface APIButtonComponentWithCustomID
+	extends APIButtonComponentBase<
+		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
+	> {
 	/**
 	 * The custom_id to be sent in the interaction when clicked
 	 */
 	custom_id: string;
+}
+
+export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
 	/**
-	 * Custom placeholder text if nothing is selected
+	 * The URL to direct users to when clicked for Link buttons
 	 */
-	placeholder?: string;
-	/**
-	 * The minimum number of items that must be chosen
-	 */
-	min_values?: number;
-	/**
-	 * The maximum number of items that can be chosen
-	 */
-	max_values?: number;
-	/**
-	 * Choices to display in the select menu
-	 */
-	options: APISelectOption[];
+	url: string;
+}
+
+export type APIButtonComponent = APIButtonComponentWithCustomID | APIButtonComponentWithURL;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
+ */
+export enum ButtonStyle {
+	Primary = 1,
+	Secondary,
+	Success,
+	Danger,
+	Link,
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-object
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APISelectOption {
+export interface APISelectMenuComponent extends APIBaseMessageComponent<ComponentType.SelectMenu> {
+	/**
+	 * A developer-defined identifier for the select menu, max 100 characters
+	 */
+	custom_id: string;
+	/**
+	 * The choices in the select, max 25
+	 */
+	options: APISelectMenuOption[];
+	/**
+	 * Custom placeholder text if nothing is selected, max 100 characters
+	 */
+	placeholder?: string;
+	/**
+	 * The minimum number of items that must be chosen; min 0, max 25
+	 *
+	 * @default 1
+	 */
+	min_values?: number;
+	/**
+	 * The maximum number of items that can be chosen; max 25
+	 *
+	 * @default 1
+	 */
+	max_values?: number;
+	/**
+	 * Disable the select
+	 *
+	 * @default false
+	 */
+	disabled?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
+ */
+export interface APISelectMenuOption {
 	/**
 	 * The user-facing name of the option (max 25 chars)
 	 */
@@ -1143,18 +1171,10 @@ export interface APISelectOption {
 	/**
 	 * Whether this option should be already-selected by default
 	 */
-	default: boolean;
+	default?: boolean;
 }
-
-export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
+ * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export enum ButtonStyle {
-	Primary = 1,
-	Secondary,
-	Success,
-	Danger,
-	Link,
-}
+export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
