@@ -249,13 +249,13 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeySplashHash
 	| APIAuditLogChangeKeyDiscoverySplashHash
 	| APIAuditLogChangeKeyBannerHash
-	| APIAuditLogChangeKeyOwnerID
+	| APIAuditLogChangeKeyOwnerId
 	| APIAuditLogChangeKeyRegion
 	| APIAuditLogChangeKeyPreferredLocale
-	| APIAuditLogChangeKeyAFKChannelID
+	| APIAuditLogChangeKeyAFKChannelId
 	| APIAuditLogChangeKeyAFKTimeout
-	| APIAuditLogChangeKeyRulesChannelID
-	| APIAuditLogChangeKeyPublicUpdatesChannelID
+	| APIAuditLogChangeKeyRulesChannelId
+	| APIAuditLogChangeKeyPublicUpdatesChannelId
 	| APIAuditLogChangeKeyMFALevel
 	| APIAuditLogChangeKeyVerificationLevel
 	| APIAuditLogChangeKeyExplicitContentFilter
@@ -265,14 +265,14 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKey$Remove
 	| APIAuditLogChangeKeyPruneDeleteDays
 	| APIAuditLogChangeKeyWidgetEnabled
-	| APIAuditLogChangeKeyWidgetChannelID
-	| APIAuditLogChangeKeySystemChannelID
+	| APIAuditLogChangeKeyWidgetChannelId
+	| APIAuditLogChangeKeySystemChannelId
 	| APIAuditLogChangeKeyPosition
 	| APIAuditLogChangeKeyTopic
 	| APIAuditLogChangeKeyBitrate
 	| APIAuditLogChangeKeyPermissionOverwrites
 	| APIAuditLogChangeKeyNSFW
-	| APIAuditLogChangeKeyApplicationID
+	| APIAuditLogChangeKeyApplicationId
 	| APIAuditLogChangeKeyRateLimitPerUser
 	| APIAuditLogChangeKeyPermissions
 	| APIAuditLogChangeKeyColor
@@ -281,8 +281,8 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyAllow
 	| APIAuditLogChangeKeyDeny
 	| APIAuditLogChangeKeyCode
-	| APIAuditLogChangeKeyChannelID
-	| APIAuditLogChangeKeyInviterID
+	| APIAuditLogChangeKeyChannelId
+	| APIAuditLogChangeKeyInviterId
 	| APIAuditLogChangeKeyMaxUses
 	| APIAuditLogChangeKeyUses
 	| APIAuditLogChangeKeyMaxAge
@@ -291,7 +291,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyMute
 	| APIAuditLogChangeKeyNick
 	| APIAuditLogChangeKeyAvatarHash
-	| APIAuditLogChangeKeyID
+	| APIAuditLogChangeKeyId
 	| APIAuditLogChangeKeyType
 	| APIAuditLogChangeKeyEnableEmoticons
 	| APIAuditLogChangeKeyExpireBehavior
@@ -302,7 +302,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyFormatType
 	| APIAuditLogChangeKeyAsset
 	| APIAuditLogChangeKeyAvailable
-	| APIAuditLogChangeKeyGuildID;
+	| APIAuditLogChangeKeyGuildId;
 
 /**
  * Returned when an entity's name is changed
@@ -337,7 +337,7 @@ export type APIAuditLogChangeKeyBannerHash = AuditLogChangeData<'banner_hash', s
 /**
  * Returned when a guild's owner_id is changed
  */
-export type APIAuditLogChangeKeyOwnerID = AuditLogChangeData<'owner_id', Snowflake>;
+export type APIAuditLogChangeKeyOwnerId = AuditLogChangeData<'owner_id', Snowflake>;
 
 /**
  * Returned when a guild's region is changed
@@ -352,7 +352,7 @@ export type APIAuditLogChangeKeyPreferredLocale = AuditLogChangeData<'preferred_
 /**
  * Returned when a guild's afk_channel_id is changed
  */
-export type APIAuditLogChangeKeyAFKChannelID = AuditLogChangeData<'afk_channel_id', Snowflake>;
+export type APIAuditLogChangeKeyAFKChannelId = AuditLogChangeData<'afk_channel_id', Snowflake>;
 
 /**
  * Returned when a guild's afk_timeout is changed
@@ -362,12 +362,12 @@ export type APIAuditLogChangeKeyAFKTimeout = AuditLogChangeData<'afk_timeout', n
 /**
  * Returned when a guild's rules_channel_id is changed
  */
-export type APIAuditLogChangeKeyRulesChannelID = AuditLogChangeData<'rules_channel_id', string>;
+export type APIAuditLogChangeKeyRulesChannelId = AuditLogChangeData<'rules_channel_id', string>;
 
 /**
  * Returned when a guild's public_updates_channel_id is changed
  */
-export type APIAuditLogChangeKeyPublicUpdatesChannelID = AuditLogChangeData<'public_updates_channel_id', string>;
+export type APIAuditLogChangeKeyPublicUpdatesChannelId = AuditLogChangeData<'public_updates_channel_id', string>;
 
 /**
  * Returned when a guild's mfa_level is changed
@@ -423,12 +423,12 @@ export type APIAuditLogChangeKeyWidgetEnabled = AuditLogChangeData<'widget_enabl
 /**
  * Returned when a guild's widget_channel_id is changed
  */
-export type APIAuditLogChangeKeyWidgetChannelID = AuditLogChangeData<'widget_channel_id', Snowflake>;
+export type APIAuditLogChangeKeyWidgetChannelId = AuditLogChangeData<'widget_channel_id', Snowflake>;
 
 /**
  * Returned when a guild's system_channel_id is changed
  */
-export type APIAuditLogChangeKeySystemChannelID = AuditLogChangeData<'system_channel_id', Snowflake>;
+export type APIAuditLogChangeKeySystemChannelId = AuditLogChangeData<'system_channel_id', Snowflake>;
 
 /**
  * Returned when a channel's position is changed
@@ -458,7 +458,7 @@ export type APIAuditLogChangeKeyNSFW = AuditLogChangeData<'nsfw', boolean>;
 /**
  * The application ID of the added or removed Webhook or Bot
  */
-export type APIAuditLogChangeKeyApplicationID = AuditLogChangeData<'application_id', Snowflake>;
+export type APIAuditLogChangeKeyApplicationId = AuditLogChangeData<'application_id', Snowflake>;
 
 /**
  * Returned when a channel's amount of seconds a user has to wait before sending another message
@@ -504,12 +504,12 @@ export type APIAuditLogChangeKeyCode = AuditLogChangeData<'code', string>;
 /**
  * Returned when an invite's channel_id is changed
  */
-export type APIAuditLogChangeKeyChannelID = AuditLogChangeData<'channel_id', Snowflake>;
+export type APIAuditLogChangeKeyChannelId = AuditLogChangeData<'channel_id', Snowflake>;
 
 /**
  * Returned when an invite's inviter_id is changed
  */
-export type APIAuditLogChangeKeyInviterID = AuditLogChangeData<'inviter_id', Snowflake>;
+export type APIAuditLogChangeKeyInviterId = AuditLogChangeData<'inviter_id', Snowflake>;
 
 /**
  * Returned when an invite's max_uses is changed
@@ -554,7 +554,7 @@ export type APIAuditLogChangeKeyAvatarHash = AuditLogChangeData<'avatar_hash', s
 /**
  * The ID of the changed entity - sometimes used in conjunction with other keys
  */
-export type APIAuditLogChangeKeyID = AuditLogChangeData<'id', Snowflake>;
+export type APIAuditLogChangeKeyId = AuditLogChangeData<'id', Snowflake>;
 
 /**
  * The type of entity created
@@ -609,7 +609,7 @@ export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', bool
 /**
  * Returned when a sticker's guild_id is changed
  */
-export type APIAuditLogChangeKeyGuildID = AuditLogChangeData<'guild_id', Snowflake>;
+export type APIAuditLogChangeKeyGuildId = AuditLogChangeData<'guild_id', Snowflake>;
 
 interface AuditLogChangeData<K extends string, D extends unknown> {
 	key: K;

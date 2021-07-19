@@ -24,8 +24,8 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/audit-logs`
 	 */
-	guildAuditLog(guildID: Snowflake) {
-		return `/guilds/${guildID}/audit-logs` as const;
+	guildAuditLog(guildId: Snowflake) {
+		return `/guilds/${guildId}/audit-logs` as const;
 	},
 
 	/**
@@ -34,8 +34,8 @@ export const Routes = {
 	 * - PATCH  `/channels/{channel.id}`
 	 * - DELETE `/channels/{channel.id}`
 	 */
-	channel(channelID: Snowflake) {
-		return `/channels/${channelID}` as const;
+	channel(channelId: Snowflake) {
+		return `/channels/${channelId}` as const;
 	},
 
 	/**
@@ -43,8 +43,8 @@ export const Routes = {
 	 * - GET  `/channels/{channel.id}/messages`
 	 * - POST `/channels/{channel.id}/messages`
 	 */
-	channelMessages(channelID: Snowflake) {
-		return `/channels/${channelID}/messages` as const;
+	channelMessages(channelId: Snowflake) {
+		return `/channels/${channelId}/messages` as const;
 	},
 
 	/**
@@ -53,16 +53,16 @@ export const Routes = {
 	 * - PATCH  `/channels/{channel.id}/messages/{message.id}`
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}`
 	 */
-	channelMessage(channelID: Snowflake, messageID: Snowflake) {
-		return `/channels/${channelID}/messages/${messageID}` as const;
+	channelMessage(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/messages/${messageId}` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - POST `/channels/{channel.id}/messages/{message.id}/crosspost`
 	 */
-	channelMessageCrosspost(channelID: Snowflake, messageID: Snowflake) {
-		return `/channels/${channelID}/messages/${messageID}/crosspost` as const;
+	channelMessageCrosspost(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/messages/${messageId}/crosspost` as const;
 	},
 
 	/**
@@ -72,8 +72,8 @@ export const Routes = {
 	 *
 	 * **Note**: You need to URL encode the emoji yourself
 	 */
-	channelMessageOwnReaction(channelID: Snowflake, messageID: Snowflake, emoji: string) {
-		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}/@me` as const;
+	channelMessageOwnReaction(channelId: Snowflake, messageId: Snowflake, emoji: string) {
+		return `/channels/${channelId}/messages/${messageId}/reactions/${emoji}/@me` as const;
 	},
 
 	/**
@@ -82,8 +82,8 @@ export const Routes = {
 	 *
 	 * **Note**: You need to URL encode the emoji yourself
 	 */
-	channelMessageUserReaction(channelID: Snowflake, messageID: Snowflake, emoji: string, userID: Snowflake) {
-		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}/${userID}` as const;
+	channelMessageUserReaction(channelId: Snowflake, messageId: Snowflake, emoji: string, userId: Snowflake) {
+		return `/channels/${channelId}/messages/${messageId}/reactions/${emoji}/${userId}` as const;
 	},
 
 	/**
@@ -93,24 +93,24 @@ export const Routes = {
 	 *
 	 * **Note**: You need to URL encode the emoji yourself
 	 */
-	channelMessageReaction(channelID: Snowflake, messageID: Snowflake, emoji: string) {
-		return `/channels/${channelID}/messages/${messageID}/reactions/${emoji}` as const;
+	channelMessageReaction(channelId: Snowflake, messageId: Snowflake, emoji: string) {
+		return `/channels/${channelId}/messages/${messageId}/reactions/${emoji}` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - DELETE `/channels/{channel.id}/messages/{message.id}/reactions`
 	 */
-	channelMessageAllReactions(channelID: Snowflake, messageID: Snowflake) {
-		return `/channels/${channelID}/messages/${messageID}/reactions` as const;
+	channelMessageAllReactions(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/messages/${messageId}/reactions` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - POST `/channels/{channel.id}/messages/bulk-delete`
 	 */
-	channelBulkDelete(channelID: Snowflake) {
-		return `/channels/${channelID}/messages/bulk-delete` as const;
+	channelBulkDelete(channelId: Snowflake) {
+		return `/channels/${channelId}/messages/bulk-delete` as const;
 	},
 
 	/**
@@ -118,8 +118,8 @@ export const Routes = {
 	 * - PUT    `/channels/{channel.id}/permissions/{overwrite.id}`
 	 * - DELETE `/channels/{channel.id}/permissions/{overwrite.id}`
 	 */
-	channelPermission(channelID: Snowflake, overwriteID: Snowflake) {
-		return `/channels/${channelID}/permissions/${overwriteID}` as const;
+	channelPermission(channelId: Snowflake, overwriteId: Snowflake) {
+		return `/channels/${channelId}/permissions/${overwriteId}` as const;
 	},
 
 	/**
@@ -127,32 +127,32 @@ export const Routes = {
 	 * - GET  `/channels/{channel.id}/invites`
 	 * - POST `/channels/{channel.id}/invites`
 	 */
-	channelInvites(channelID: Snowflake) {
-		return `/channels/${channelID}/invites` as const;
+	channelInvites(channelId: Snowflake) {
+		return `/channels/${channelId}/invites` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - POST `/channels/{channel.id}/followers`
 	 */
-	channelFollowers(channelID: Snowflake) {
-		return `/channels/${channelID}/followers` as const;
+	channelFollowers(channelId: Snowflake) {
+		return `/channels/${channelId}/followers` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - POST `/channels/{channel.id}/typing`
 	 */
-	channelTyping(channelID: Snowflake) {
-		return `/channels/${channelID}/typing` as const;
+	channelTyping(channelId: Snowflake) {
+		return `/channels/${channelId}/typing` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/channels/{channel.id}/pins`
 	 */
-	channelPins(channelID: Snowflake) {
-		return `/channels/${channelID}/pins` as const;
+	channelPins(channelId: Snowflake) {
+		return `/channels/${channelId}/pins` as const;
 	},
 
 	/**
@@ -160,8 +160,8 @@ export const Routes = {
 	 * - PUT    `/channels/{channel.id}/pins/{message.id}`
 	 * - DELETE `/channels/{channel.id}/pins/{message.id}`
 	 */
-	channelPin(channelID: Snowflake, messageID: Snowflake) {
-		return `/channels/${channelID}/pins/${messageID}` as const;
+	channelPin(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/pins/${messageId}` as const;
 	},
 
 	/**
@@ -169,8 +169,8 @@ export const Routes = {
 	 * - PUT    `/channels/{channel.id}/recipients/{user.id}`
 	 * - DELETE `/channels/{channel.id}/recipients/{user.id}`
 	 */
-	channelRecipient(channelID: Snowflake, userID: Snowflake) {
-		return `/channels/${channelID}/recipients/${userID}` as const;
+	channelRecipient(channelId: Snowflake, userId: Snowflake) {
+		return `/channels/${channelId}/recipients/${userId}` as const;
 	},
 
 	/**
@@ -178,8 +178,8 @@ export const Routes = {
 	 * - GET  `/guilds/{guild.id}/emojis`
 	 * - POST `/guilds/{guild.id}/emojis`
 	 */
-	guildEmojis(guildID: Snowflake) {
-		return `/guilds/${guildID}/emojis` as const;
+	guildEmojis(guildId: Snowflake) {
+		return `/guilds/${guildId}/emojis` as const;
 	},
 
 	/**
@@ -188,8 +188,8 @@ export const Routes = {
 	 * - PATCH  `/guilds/{guild.id}/emojis/{emoji.id}`
 	 * - DELETE `/guilds/{guild.id}/emojis/{emoji.id}`
 	 */
-	guildEmoji(guildID: Snowflake, emojiID: Snowflake) {
-		return `/guilds/${guildID}/emojis/${emojiID}` as const;
+	guildEmoji(guildId: Snowflake, emojiId: Snowflake) {
+		return `/guilds/${guildId}/emojis/${emojiId}` as const;
 	},
 
 	/**
@@ -206,16 +206,16 @@ export const Routes = {
 	 * - PATCH  `/guilds/{guild.id}`
 	 * - DELETE `/guilds/{guild.id}`
 	 */
-	guild(guildID: Snowflake) {
-		return `/guilds/${guildID}` as const;
+	guild(guildId: Snowflake) {
+		return `/guilds/${guildId}` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/preview`
 	 */
-	guildPreview(guildID: Snowflake) {
-		return `/guilds/${guildID}/preview` as const;
+	guildPreview(guildId: Snowflake) {
+		return `/guilds/${guildId}/preview` as const;
 	},
 
 	/**
@@ -224,8 +224,8 @@ export const Routes = {
 	 * - POST  `/guilds/{guild.id}/channels`
 	 * - PATCH `/guilds/{guild.id}/channels`
 	 */
-	guildChannels(guildID: Snowflake) {
-		return `/guilds/${guildID}/channels` as const;
+	guildChannels(guildId: Snowflake) {
+		return `/guilds/${guildId}/channels` as const;
 	},
 
 	/**
@@ -235,32 +235,32 @@ export const Routes = {
 	 * - PATCH  `/guilds/{guild.id}/members/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}`
 	 */
-	guildMember(guildID: Snowflake, userID: Snowflake) {
-		return `/guilds/${guildID}/members/${userID}` as const;
+	guildMember(guildId: Snowflake, userId: Snowflake) {
+		return `/guilds/${guildId}/members/${userId}` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/members`
 	 */
-	guildMembers(guildID: Snowflake) {
-		return `/guilds/${guildID}/members` as const;
+	guildMembers(guildId: Snowflake) {
+		return `/guilds/${guildId}/members` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/members/search`
 	 */
-	guildMembersSearch(guildID: Snowflake) {
-		return `/guilds/${guildID}/members/search` as const;
+	guildMembersSearch(guildId: Snowflake) {
+		return `/guilds/${guildId}/members/search` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
 	 */
-	guildCurrentMemberNickname(guildID: Snowflake) {
-		return `/guilds/${guildID}/members/@me/nick` as const;
+	guildCurrentMemberNickname(guildId: Snowflake) {
+		return `/guilds/${guildId}/members/@me/nick` as const;
 	},
 
 	/**
@@ -268,16 +268,16 @@ export const Routes = {
 	 * - PUT    `/guilds/{guild.id}/members/{user.id}/roles/{role.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}/roles/{role.id}`
 	 */
-	guildMemberRole(guildID: Snowflake, memberID: Snowflake, roleID: Snowflake) {
-		return `/guilds/${guildID}/members/${memberID}/roles/${roleID}` as const;
+	guildMemberRole(guildId: Snowflake, memberId: Snowflake, roleId: Snowflake) {
+		return `/guilds/${guildId}/members/${memberId}/roles/${roleId}` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/bans`
 	 */
-	guildBans(guildID: Snowflake) {
-		return `/guilds/${guildID}/bans` as const;
+	guildBans(guildId: Snowflake) {
+		return `/guilds/${guildId}/bans` as const;
 	},
 
 	/**
@@ -286,8 +286,8 @@ export const Routes = {
 	 * - PUT    `/guilds/{guild.id}/bans/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/bans/{user.id}`
 	 */
-	guildBan(guildID: Snowflake, userID: Snowflake) {
-		return `/guilds/${guildID}/bans/${userID}` as const;
+	guildBan(guildId: Snowflake, userId: Snowflake) {
+		return `/guilds/${guildId}/bans/${userId}` as const;
 	},
 
 	/**
@@ -296,8 +296,8 @@ export const Routes = {
 	 * - POST  `/guilds/{guild.id}/roles`
 	 * - PATCH `/guilds/{guild.id}/roles`
 	 */
-	guildRoles(guildID: Snowflake) {
-		return `/guilds/${guildID}/roles` as const;
+	guildRoles(guildId: Snowflake) {
+		return `/guilds/${guildId}/roles` as const;
 	},
 
 	/**
@@ -305,8 +305,8 @@ export const Routes = {
 	 * - PATCH  `/guilds/{guild.id}/roles/{role.id}`
 	 * - DELETE `/guilds/{guild.id}/roles/{role.id}`
 	 */
-	guildRole(guildID: Snowflake, roleID: Snowflake) {
-		return `/guilds/${guildID}/roles/${roleID}` as const;
+	guildRole(guildId: Snowflake, roleId: Snowflake) {
+		return `/guilds/${guildId}/roles/${roleId}` as const;
 	},
 
 	/**
@@ -314,40 +314,40 @@ export const Routes = {
 	 * - GET  `/guilds/{guild.id}/prune`
 	 * - POST `/guilds/{guild.id}/prune`
 	 */
-	guildPrune(guildID: Snowflake) {
-		return `/guilds/${guildID}/prune` as const;
+	guildPrune(guildId: Snowflake) {
+		return `/guilds/${guildId}/prune` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/regions`
 	 */
-	guildVoiceRegions(guildID: Snowflake) {
-		return `/guilds/${guildID}/regions` as const;
+	guildVoiceRegions(guildId: Snowflake) {
+		return `/guilds/${guildId}/regions` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/invites`
 	 */
-	guildInvites(guildID: Snowflake) {
-		return `/guilds/${guildID}/invites` as const;
+	guildInvites(guildId: Snowflake) {
+		return `/guilds/${guildId}/invites` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET  `/guilds/{guild.id}/integrations`
 	 */
-	guildIntegrations(guildID: Snowflake) {
-		return `/guilds/${guildID}/integrations` as const;
+	guildIntegrations(guildId: Snowflake) {
+		return `/guilds/${guildId}/integrations` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - DELETE `/guilds/{guild.id}/integrations/{integration.id}`
 	 */
-	guildIntegration(guildID: Snowflake, integrationID: Snowflake) {
-		return `/guilds/${guildID}/integrations/${integrationID}` as const;
+	guildIntegration(guildId: Snowflake, integrationId: Snowflake) {
+		return `/guilds/${guildId}/integrations/${integrationId}` as const;
 	},
 
 	/**
@@ -355,32 +355,32 @@ export const Routes = {
 	 * - GET   `/guilds/{guild.id}/widget`
 	 * - PATCH `/guilds/{guild.id}/widget`
 	 */
-	guildWidgetSettings(guildID: Snowflake) {
-		return `/guilds/${guildID}/widget` as const;
+	guildWidgetSettings(guildId: Snowflake) {
+		return `/guilds/${guildId}/widget` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/widget.json`
 	 */
-	guildWidgetJSON(guildID: Snowflake) {
-		return `/guilds/${guildID}/widget.json` as const;
+	guildWidgetJSON(guildId: Snowflake) {
+		return `/guilds/${guildId}/widget.json` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/vanity-url`
 	 */
-	guildVanityUrl(guildID: Snowflake) {
-		return `/guilds/${guildID}/vanity-url` as const;
+	guildVanityUrl(guildId: Snowflake) {
+		return `/guilds/${guildId}/vanity-url` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/widget.png`
 	 */
-	guildWidgetImage(guildID: Snowflake) {
-		return `/guilds/${guildID}/widget.png` as const;
+	guildWidgetImage(guildId: Snowflake) {
+		return `/guilds/${guildId}/widget.png` as const;
 	},
 
 	/**
@@ -406,8 +406,8 @@ export const Routes = {
 	 * - GET  `/guilds/{guild.id}/templates`
 	 * - POST `/guilds/{guild.id}/templates`
 	 */
-	guildTemplates(guildID: Snowflake) {
-		return `/guilds/${guildID}/templates` as const;
+	guildTemplates(guildId: Snowflake) {
+		return `/guilds/${guildId}/templates` as const;
 	},
 
 	/**
@@ -416,8 +416,8 @@ export const Routes = {
 	 * - PATCH  `/guilds/{guild.id}/templates/{template.code}`
 	 * - DELETE `/guilds/{guild.id}/templates/{template.code}`
 	 */
-	guildTemplate(guildID: Snowflake, code: string) {
-		return `/guilds/${guildID}/templates/${code}` as const;
+	guildTemplate(guildId: Snowflake, code: string) {
+		return `/guilds/${guildId}/templates/${code}` as const;
 	},
 
 	/**
@@ -425,10 +425,10 @@ export const Routes = {
 	 * - POST `/channels/{channel.id}/threads`
 	 * - POST `/channels/{channel.id}/messages/{message.id}/threads`
 	 */
-	threads(parentID: Snowflake, messageID?: Snowflake) {
-		const parts = ['', 'channels', parentID];
+	threads(parentId: Snowflake, messageId?: Snowflake) {
+		const parts = ['', 'channels', parentId];
 
-		if (messageID) parts.push('messages', messageID);
+		if (messageId) parts.push('messages', messageId);
 
 		parts.push('threads');
 
@@ -441,8 +441,8 @@ export const Routes = {
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
-	channelThreads(channelID: Snowflake, archived?: 'public' | 'private') {
-		const parts = ['', 'channels', channelID, 'threads'];
+	channelThreads(channelId: Snowflake, archived?: 'public' | 'private') {
+		const parts = ['', 'channels', channelId, 'threads'];
 
 		if (archived) parts.push('archived', archived);
 		else parts.push('active');
@@ -456,8 +456,8 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/channels/{channel.id}/users/@me/threads/archived/prviate`
 	 */
-	channelJoinedArhivedThreads(channelID: Snowflake) {
-		return `/channels/${channelID}/users/@me/threads/archived/private` as const;
+	channelJoinedArhivedThreads(channelId: Snowflake) {
+		return `/channels/${channelId}/users/@me/threads/archived/private` as const;
 	},
 
 	/**
@@ -468,10 +468,10 @@ export const Routes = {
 	 * - DELETE `/channels/{thread.id}/thread-members/@me`
 	 * - DELETE `/channels/{thread.id}/thread-members/{user.id}`
 	 */
-	threadMembers(threadID: Snowflake, userID?: Snowflake | '@me') {
-		const parts = ['', 'channels', threadID, 'thread-members'];
+	threadMembers(threadId: Snowflake, userId?: Snowflake | '@me') {
+		const parts = ['', 'channels', threadId, 'thread-members'];
 
-		if (userID) parts.push(userID);
+		if (userId) parts.push(userId);
 
 		return parts.join('/') as
 			| `/channels/${Snowflake}/thread-members`
@@ -484,10 +484,10 @@ export const Routes = {
 	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userID='@me'] The user ID, defaulted to `@me`
+	 * @param [userId='@me'] The user ID, defaulted to `@me`
 	 */
-	user(userID: Snowflake | '@me' = '@me') {
-		return `/users/${userID}` as const;
+	user(userId: Snowflake | '@me' = '@me') {
+		return `/users/${userId}` as const;
 	},
 
 	/**
@@ -502,8 +502,8 @@ export const Routes = {
 	 * Route for:
 	 * - DELETE `/users/@me/guilds/{guild.id}`
 	 */
-	userGuild(guildID: Snowflake) {
-		return `/users/@me/guilds/${guildID}` as const;
+	userGuild(guildId: Snowflake) {
+		return `/users/@me/guilds/${guildId}` as const;
 	},
 
 	/**
@@ -535,16 +535,16 @@ export const Routes = {
 	 * - GET  `/channels/{channel.id}/webhooks`
 	 * - POST `/channels/{channel.id}/webhooks`
 	 */
-	channelWebhooks(channelID: Snowflake) {
-		return `/channels/${channelID}/webhooks` as const;
+	channelWebhooks(channelId: Snowflake) {
+		return `/channels/${channelId}/webhooks` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/webhooks`
 	 */
-	guildWebhooks(guildID: Snowflake) {
-		return `/guilds/${guildID}/webhooks` as const;
+	guildWebhooks(guildId: Snowflake) {
+		return `/guilds/${guildId}/webhooks` as const;
 	},
 
 	/**
@@ -559,8 +559,8 @@ export const Routes = {
 	 *
 	 * - POST   `/webhooks/{application.id}/{interaction.token}`
 	 */
-	webhook(webhookID: Snowflake, webhookToken?: string) {
-		const parts = ['', 'webhooks', webhookID];
+	webhook(webhookId: Snowflake, webhookToken?: string) {
+		const parts = ['', 'webhooks', webhookId];
 
 		if (webhookToken) parts.push(webhookToken);
 
@@ -580,10 +580,10 @@ export const Routes = {
 	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
 	 * - DELETE `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
 	 *
-	 * @param [messageID='@original'] The message ID to change, defaulted to `@original`
+	 * @param [messageId='@original'] The message ID to change, defaulted to `@original`
 	 */
-	webhookMessage(webhookID: Snowflake, webhookToken: string, messageID: Snowflake | '@original' = '@original') {
-		return `/webhooks/${webhookID}/${webhookToken}/messages/${messageID}` as const;
+	webhookMessage(webhookId: Snowflake, webhookToken: string, messageId: Snowflake | '@original' = '@original') {
+		return `/webhooks/${webhookId}/${webhookToken}/messages/${messageId}` as const;
 	},
 
 	/**
@@ -591,8 +591,8 @@ export const Routes = {
 	 * - POST `/webhooks/{webhook.id}/{webhook.token}/github`
 	 * - POST `/webhooks/{webhook.id}/{webhook.token}/slack`
 	 */
-	webhookPlatform(webhookID: Snowflake, webhookToken: string, platform: 'github' | 'slack') {
-		return `/webhooks/${webhookID}/${webhookToken}/${platform}` as const;
+	webhookPlatform(webhookId: Snowflake, webhookToken: string, platform: 'github' | 'slack') {
+		return `/webhooks/${webhookId}/${webhookToken}/${platform}` as const;
 	},
 
 	/**
@@ -633,8 +633,8 @@ export const Routes = {
 	 * - PUT  `/applications/{application.id}/commands`
 	 * - POST `/applications/{application.id}/commands`
 	 */
-	applicationCommands(applicationID: Snowflake) {
-		return `/applications/${applicationID}/commands` as const;
+	applicationCommands(applicationId: Snowflake) {
+		return `/applications/${applicationId}/commands` as const;
 	},
 
 	/**
@@ -643,8 +643,8 @@ export const Routes = {
 	 * - PATCH  `/applications/{application.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/commands/{command.id}`
 	 */
-	applicationCommand(applicationID: Snowflake, commandID: Snowflake) {
-		return `/applications/${applicationID}/commands/${commandID}` as const;
+	applicationCommand(applicationId: Snowflake, commandId: Snowflake) {
+		return `/applications/${applicationId}/commands/${commandId}` as const;
 	},
 
 	/**
@@ -653,8 +653,8 @@ export const Routes = {
 	 * - PUT  `/applications/{application.id}/guilds/{guild.id}/commands`
 	 * - POST `/applications/{application.id}/guilds/{guild.id}/commands`
 	 */
-	applicationGuildCommands(applicationID: Snowflake, guildID: Snowflake) {
-		return `/applications/${applicationID}/guilds/${guildID}/commands` as const;
+	applicationGuildCommands(applicationId: Snowflake, guildId: Snowflake) {
+		return `/applications/${applicationId}/guilds/${guildId}/commands` as const;
 	},
 
 	/**
@@ -663,16 +663,16 @@ export const Routes = {
 	 * - PATCH  `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 * - DELETE `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}`
 	 */
-	applicationGuildCommand(applicationID: Snowflake, guildID: Snowflake, commandID: Snowflake) {
-		return `/applications/${applicationID}/guilds/${guildID}/commands/${commandID}` as const;
+	applicationGuildCommand(applicationId: Snowflake, guildId: Snowflake, commandId: Snowflake) {
+		return `/applications/${applicationId}/guilds/${guildId}/commands/${commandId}` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - POST `/interactions/{interaction.id}/{interaction.token}/callback`
 	 */
-	interactionCallback(interactionID: Snowflake, interactionToken: string) {
-		return `/interactions/${interactionID}/${interactionToken}/callback` as const;
+	interactionCallback(interactionId: Snowflake, interactionToken: string) {
+		return `/interactions/${interactionId}/${interactionToken}/callback` as const;
 	},
 
 	/**
@@ -680,8 +680,8 @@ export const Routes = {
 	 * - GET   `/guilds/{guild.id}/member-verification`
 	 * - PATCH `/guilds/{guild.id}/member-verification`
 	 */
-	guildMemberVerification(guildID: Snowflake) {
-		return `/guilds/${guildID}/member-verification` as const;
+	guildMemberVerification(guildId: Snowflake) {
+		return `/guilds/${guildId}/member-verification` as const;
 	},
 
 	/**
@@ -689,8 +689,8 @@ export const Routes = {
 	 * - PATCH `/guilds/{guild.id}/voice-states/@me`
 	 * - PATCH `/guilds/{guild.id}/voice-states/{user.id}`
 	 */
-	guildVoiceState(guildID: Snowflake, userID: Snowflake | '@me' = '@me') {
-		return `/guilds/${guildID}/voice-states/${userID}` as const;
+	guildVoiceState(guildId: Snowflake, userId: Snowflake | '@me' = '@me') {
+		return `/guilds/${guildId}/voice-states/${userId}` as const;
 	},
 
 	/**
@@ -698,8 +698,8 @@ export const Routes = {
 	 * - GET `/applications/{application.id}/guilds/{guild.id}/commands/permissions`
 	 * - PUT `/applications/{application.id}/guilds/{guild.id}/commands/permissions`
 	 */
-	guildApplicationCommandsPermissions(applicationID: Snowflake, guildID: Snowflake) {
-		return `/applications/${applicationID}/guilds/${guildID}/commands/permissions` as const;
+	guildApplicationCommandsPermissions(applicationId: Snowflake, guildId: Snowflake) {
+		return `/applications/${applicationId}/guilds/${guildId}/commands/permissions` as const;
 	},
 
 	/**
@@ -707,8 +707,8 @@ export const Routes = {
 	 * - GET `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}/permissions`
 	 * - PUT `/applications/{application.id}/guilds/{guild.id}/commands/{command.id}/permissions`
 	 */
-	applicationCommandPermissions(applicationID: Snowflake, guildID: Snowflake, commandID: Snowflake) {
-		return `/applications/${applicationID}/guilds/${guildID}/commands/${commandID}/permissions` as const;
+	applicationCommandPermissions(applicationId: Snowflake, guildId: Snowflake, commandId: Snowflake) {
+		return `/applications/${applicationId}/guilds/${guildId}/commands/${commandId}/permissions` as const;
 	},
 
 	/**
@@ -716,8 +716,8 @@ export const Routes = {
 	 * - GET   `/guilds/{guild.id}/welcome-screen`
 	 * - PATCH `/guilds/{guild.id}/welcome-screen`
 	 */
-	guildWelcomeScreen(guildID: Snowflake) {
-		return `/guilds/${guildID}/welcome-screen` as const;
+	guildWelcomeScreen(guildId: Snowflake) {
+		return `/guilds/${guildId}/welcome-screen` as const;
 	},
 
 	/**
@@ -734,16 +734,16 @@ export const Routes = {
 	 * - PATCH `/stage-instances/{channel.id}`
 	 * - DELETE `/stage-instances/{channel.id}`
 	 */
-	stageInstance(channelID: Snowflake) {
-		return `/stage-instances/${channelID}` as const;
+	stageInstance(channelId: Snowflake) {
+		return `/stage-instances/${channelId}` as const;
 	},
 
 	/**
 	 * Route for:
 	 * - GET `/stickers/{sticker.id}`
 	 */
-	sticker(stickerID: Snowflake) {
-		return `/stickers/${stickerID}` as const;
+	sticker(stickerId: Snowflake) {
+		return `/stickers/${stickerId}` as const;
 	},
 
 	/**
@@ -759,8 +759,8 @@ export const Routes = {
 	 * - GET  `/guilds/{guild.id}/stickers`
 	 * - POST `/guilds/{guild.id}/stickers`
 	 */
-	guildStickers(guildID: Snowflake) {
-		return `/guilds/${guildID}/stickers` as const;
+	guildStickers(guildId: Snowflake) {
+		return `/guilds/${guildId}/stickers` as const;
 	},
 
 	/**
@@ -769,8 +769,8 @@ export const Routes = {
 	 * - PATCH  `/guilds/{guild.id}/stickers/{sticker.id}`
 	 * - DELETE `/guilds/{guild.id}/stickers/{sticker.id}`
 	 */
-	guildSticker(guildID: Snowflake, stickerID: Snowflake) {
-		return `/guilds/${guildID}/stickers/${stickerID}` as const;
+	guildSticker(guildId: Snowflake, stickerId: Snowflake) {
+		return `/guilds/${guildId}/stickers/${stickerId}` as const;
 	},
 };
 
