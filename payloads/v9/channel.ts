@@ -1104,7 +1104,7 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 export type APIButtonComponent = APIButtonComponentWithCustomID | APIButtonComponentWithURL;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#buttons-button-styles
+ * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
  */
 export const enum ButtonStyle {
 	Primary = 1,
