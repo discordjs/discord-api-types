@@ -324,9 +324,7 @@ export type GatewayApplicationCommandModifyDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway#application-command-update
  * https://discord.com/developers/docs/topics/gateway#application-command-delete
  */
-export interface GatewayApplicationCommandModifyDispatchData extends APIApplicationCommand {
-	guild_id?: string;
-}
+export type GatewayApplicationCommandModifyDispatchData = APIApplicationCommand;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#application-command-create

@@ -1,10 +1,11 @@
 import { Permissions, Snowflake } from '../../../globals.ts';
 import { InteractionType } from '../../v9.ts';
+import { APIMessage } from '../channel.ts';
 import { APIGuildMember } from '../guild.ts';
-import { APIUser } from '../mod.ts';
+import { APIUser } from '../user.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#messageinteraction
+ * https://discord.com/developers/docs/interactions/slash-commands#message-interaction-object-message-interaction-structure
  */
 export interface APIMessageInteraction {
 	/**
@@ -36,7 +37,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 // INTERACTIONS RECEIVED
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction
+ * https://discord.com/developers/docs/interactions/slash-commands#interaction-object
  */
 export interface APIBaseInteraction<Type extends InteractionType, Data extends unknown> {
 	/**
@@ -81,6 +82,10 @@ export interface APIBaseInteraction<Type extends InteractionType, Data extends u
 	 * Read-only property, always `1`
 	 */
 	version: 1;
+	/**
+	 * For components, the message they were attached to
+	 */
+	message?: APIMessage;
 }
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
