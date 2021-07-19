@@ -1003,7 +1003,7 @@ export interface APISelectMenuComponent extends APIBaseMessageComponent<Componen
 	/**
 	 * The choices in the select, max 25
 	 */
-	options: APISelectOption[];
+	options: APISelectMenuOption[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 100 characters
 	 */
@@ -1031,7 +1031,7 @@ export interface APISelectMenuComponent extends APIBaseMessageComponent<Componen
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
  */
-export interface APISelectOption {
+export interface APISelectMenuOption {
 	/**
 	 * The user-facing name of the option (max 25 chars)
 	 */
