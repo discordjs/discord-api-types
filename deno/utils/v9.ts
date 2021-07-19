@@ -3,7 +3,7 @@ import {
 	APIApplicationCommandGuildInteraction,
 	APIApplicationCommandInteraction,
 	APIButtonComponent,
-	APIButtonComponentWithCustomID,
+	APIButtonComponentWithCustomId,
 	APIButtonComponentWithURL,
 	APIDMInteraction,
 	APIGuildInteraction,
@@ -98,6 +98,6 @@ export function isLinkButton(component: APIButtonComponent): component is APIBut
  * @param button The button to check against
  * @returns A boolean that indicates if the button has a `custom_id` attached to it
  */
-export function isInteractionButton(component: APIButtonComponent): component is APIButtonComponentWithCustomID {
+export function isInteractionButton(component: APIButtonComponent): component is APIButtonComponentWithCustomId {
 	return component.style !== ButtonStyle.Link;
 }

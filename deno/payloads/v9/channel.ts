@@ -1082,7 +1082,7 @@ interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessa
 	disabled?: boolean;
 }
 
-export interface APIButtonComponentWithCustomID
+export interface APIButtonComponentWithCustomId
 	extends APIButtonComponentBase<
 		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
 	> {
@@ -1099,7 +1099,7 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 	url: string;
 }
 
-export type APIButtonComponent = APIButtonComponentWithCustomID | APIButtonComponentWithURL;
+export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithURL;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles

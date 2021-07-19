@@ -9,7 +9,7 @@ export enum RPCErrorCodes {
 	InvalidEvent,
 	InvalidChannel,
 	InvalidPermissions,
-	InvalidClientID,
+	InvalidClientId,
 	InvalidOrigin,
 	InvalidToken,
 	InvalidUser,
@@ -24,7 +24,7 @@ export enum RPCErrorCodes {
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
  */
 export enum RPCCloseEventCodes {
-	InvalidClientID = 4000,
+	InvalidClientId = 4000,
 	InvalidOrigin,
 	RateLimited,
 	TokenRevoked,
