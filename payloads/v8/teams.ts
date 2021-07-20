@@ -22,6 +22,10 @@ export interface APITeam {
 	 */
 	members: APITeamMember[];
 	/**
+	 * The name of the team
+	 */
+	name: string;
+	/**
 	 * The user id of the current team owner
 	 */
 	owner_user_id: Snowflake;

@@ -4,7 +4,7 @@
 
 import type { APIPartialChannel } from './channel';
 import type { APIPartialGuild } from './guild';
-import type { APIApplication } from './oauth2';
+import type { APIApplication } from './application';
 import type { APIInviteStageInstance } from './stageInstance';
 import type { APIUser } from './user';
 
