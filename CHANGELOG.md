@@ -1,3 +1,26 @@
+# [0.20.0](https://github.com/discordjs/discord-api-types/compare/0.19.0...0.20.0) (2021-07-20)
+
+### chore
+
+- Add more missing stuff ([#160](https://github.com/discordjs/discord-api-types/issues/160)) ([d009554](https://github.com/discordjs/discord-api-types/commit/d009554caed6c738c4a801f00806ab7cc4ac7e16))
+
+### Code Refactoring
+
+- change `xID` to `xId` ([#159](https://github.com/discordjs/discord-api-types/issues/159)) ([323e531](https://github.com/discordjs/discord-api-types/commit/323e531a77aa75397ee1ce59f0db35b08b80b606))
+- rename `isStyledButton` to `isInteractionButton` ([#158](https://github.com/discordjs/discord-api-types/issues/158)) ([634f64d](https://github.com/discordjs/discord-api-types/commit/634f64d4ce143bd0a6b9ccf0ffb1241c21550958))
+
+### Features
+
+- **PermissionFlagsBits:** add `UseExternalStickers` (1n << 37n) ([#154](https://github.com/discordjs/discord-api-types/issues/154)) ([5dccc6b](https://github.com/discordjs/discord-api-types/commit/5dccc6b2a3711e14d499ee9a2122403a80da99fe))
+- **RESTJSONErrorCodes:** add sticker errors ([#155](https://github.com/discordjs/discord-api-types/issues/155)) ([8dbeca0](https://github.com/discordjs/discord-api-types/commit/8dbeca0fc91cafef59eb8ee30bcfee9ab14a422c))
+
+### BREAKING CHANGES
+
+- `GatewayGuildMemberUpdateDispatchData#joined_at` is properly marked as nullable now
+- In v9, `thread_id` was incorrectly placed in `RESTPostAPIWebhookWithTokenJSONBody` and has been moved to `RESTPostAPIWebhookWithTokenQuery`
+- All types that contained the `ID` word in them have had it renamed to `Id` (ex: `APIButtonComponentWithCustomID` is now `APIButtonComponentWithCustomId`)
+- The `isStyledButton` util has been renamed to `isInteractionButton`
+
 # [0.19.0](https://github.com/discordjs/discord-api-types/compare/0.18.1...0.19.0) (2021-07-19)
 
 ### Bug Fixes
