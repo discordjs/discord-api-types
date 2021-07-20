@@ -1,3 +1,9 @@
+## [0.20.1](https://github.com/discordjs/discord-api-types/compare/0.20.0...0.20.1) (2021-07-20)
+
+### Features
+
+- **Interactions:** add interaction response and followup route ([#162](https://github.com/discordjs/discord-api-types/issues/162)) ([f99f07f](https://github.com/discordjs/discord-api-types/commit/f99f07f72e95a9537a955eb942b52e345c1067d6))
+
 # [0.20.0](https://github.com/discordjs/discord-api-types/compare/0.19.0...0.20.0) (2021-07-20)
 
 ### chore
