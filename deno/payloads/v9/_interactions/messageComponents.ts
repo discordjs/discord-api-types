@@ -1,6 +1,6 @@
-import { ComponentType } from '../channel.ts';
-import { APIBaseInteraction, InteractionType } from '../interactions.ts';
-import { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
+import type { ComponentType } from '../channel.ts';
+import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
 
 export type APIMessageComponentInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,

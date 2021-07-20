@@ -1,8 +1,8 @@
-import { Permissions, Snowflake } from '../../../globals';
-import { InteractionType } from '../../v9';
-import { APIMessage } from '../channel';
-import { APIGuildMember } from '../guild';
-import { APIUser } from '../user';
+import type { Permissions, Snowflake } from '../../../globals';
+import type { InteractionType } from '../../v9';
+import type { APIMessage } from '../channel';
+import type { APIGuildMember } from '../guild';
+import type { APIUser } from '../user';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#message-interaction-object-message-interaction-structure
