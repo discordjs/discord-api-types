@@ -1,6 +1,8 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
+	APIActionRowComponent,
 	APIAllowedMentions,
+	APIAttachment,
 	APIChannel,
 	APIEmbed,
 	APIExtendedInvite,
@@ -29,7 +31,7 @@ export type RESTGetAPIChannelResult = APIChannel;
  */
 export interface RESTPatchAPIChannelJSONBody {
 	/**
-	 * 2-100 character channel name
+	 * 1-100 character channel name
 	 *
 	 * Channel types: all
 	 */
@@ -229,6 +231,12 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 */
 	message_reference?: APIMessageReferenceSend;
 	/**
+	 * The components to include with the message
+	 *
+	 * See https://discord.com/developers/docs/interactions/message-components#component-object
+	 */
+	components?: APIActionRowComponent[];
+	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
@@ -323,10 +331,14 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	content?: string | null;
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
-	embeds?: APIEmbed[];
+	embeds?: APIEmbed[] | null;
 	/**
 	 * Embedded `rich` content
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 * @deprecated Use `embeds` instead
 	 */
 	embed?: APIEmbed | null;
@@ -335,13 +347,50 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * When specifying flags, ensure to include all previously set flags/bits
 	 * in addition to ones that you are modifying
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
 	 */
 	flags?: MessageFlags | null;
 	/**
 	 * Allowed mentions for the message
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
 	allowed_mentions?: APIAllowedMentions | null;
+	/**
+	 * Attached files to keep
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 */
+	attachments?: APIAttachment[] | null;
+	/**
+	 * The components to include with the message
+	 *
+	 * See https://discord.com/developers/docs/interactions/message-components#component-object
+	 */
+	components?: APIActionRowComponent[] | null;
 }
+
+/**
+ * https://discord.com/developers/docs/resources/channel#edit-message
+ */
+export type RESTPatchAPIChannelMessageFormDataBody =
+	| {
+			/**
+			 * JSON stringified message body
+			 */
+			payload_json?: string;
+			/**
+			 * The file contents
+			 */
+			file: unknown;
+	  }
+	| (RESTPatchAPIChannelMessageJSONBody & {
+			/**
+			 * The file contents
+			 */
+			file: unknown;
+	  });
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
@@ -523,7 +572,7 @@ export type RESTDeleteAPIChannelRecipientResult = unknown;
  */
 export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
-	 * 2-100 character thread name
+	 * 1-100 character thread name
 	 */
 	name: string;
 	/**

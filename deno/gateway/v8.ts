@@ -25,6 +25,7 @@ import type {
 	InviteTargetType,
 	PresenceUpdateStatus,
 } from '../payloads/v8/mod.ts';
+import type { Nullable } from '../utils/internals.ts';
 
 export * from './common.ts';
 
@@ -441,7 +442,7 @@ export interface GatewayReadyDispatchData {
 	/**
 	 * Contains `id` and `flags`
 	 *
-	 * See https://discord.com/developers/docs/topics/oauth2#application-object
+	 * See https://discord.com/developers/docs/resources/application#application-object
 	 */
 	application: Pick<APIApplication, 'id' | 'flags'>;
 }
@@ -734,9 +735,10 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-update
  */
-export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' | 'mute' | 'user'> &
+export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' | 'mute' | 'user' | 'joined_at'> &
 	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
-	Required<Pick<APIGuildMember, 'user'>> & {
+	Required<Pick<APIGuildMember, 'user'>> &
+	Nullable<Pick<APIGuildMember, 'joined_at'>> & {
 		/**
 		 * The id of the guild
 		 */
@@ -1375,7 +1377,7 @@ export interface GatewayIdentifyData {
 	/**
 	 * Presence structure for initial presence information
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#update-status
+	 * See https://discord.com/developers/docs/topics/gateway#update-presence
 	 */
 	presence?: GatewayPresenceUpdateData;
 	/**
@@ -1504,7 +1506,7 @@ export interface GatewayVoiceStateUpdateData {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#update-status
+ * https://discord.com/developers/docs/topics/gateway#update-presence
  */
 export interface GatewayUpdatePresence {
 	op: GatewayOpcodes.PresenceUpdate;
@@ -1512,7 +1514,7 @@ export interface GatewayUpdatePresence {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#update-status-gateway-status-update-structure
+ * https://discord.com/developers/docs/topics/gateway#update-presence-gateway-presence-update-structure
  */
 export interface GatewayPresenceUpdateData {
 	/**
@@ -1528,7 +1530,7 @@ export interface GatewayPresenceUpdateData {
 	/**
 	 * The user's new status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#update-status-status-types
+	 * See https://discord.com/developers/docs/topics/gateway#update-presence-status-types
 	 */
 	status: PresenceUpdateStatus;
 	/**

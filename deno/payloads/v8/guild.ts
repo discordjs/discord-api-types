@@ -246,7 +246,7 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	presences?: GatewayPresenceUpdate[];
 	/**
-	 * The maximum number of presences for the guild (the default value, currently 25000, is in effect when `null` is returned)
+	 * The maximum number of presences for the guild (`null` is always returned, apart from the largest of guilds)
 	 */
 	max_presences?: number | null;
 	/**

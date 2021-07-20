@@ -1,9 +1,9 @@
-import { APIRole, APIUser } from '../mod.ts';
-import { Permissions, Snowflake } from '../../../globals.ts';
-import { APIPartialChannel } from '../channel.ts';
-import { APIGuildMember } from '../guild.ts';
-import { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
-import { InteractionType } from './responses.ts';
+import type { APIRole, APIUser } from '../mod.ts';
+import type { Permissions, Snowflake } from '../../../globals.ts';
+import type { APIPartialChannel } from '../channel.ts';
+import type { APIGuildMember } from '../guild.ts';
+import type { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
+import type { InteractionType } from './responses.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#application-command-object

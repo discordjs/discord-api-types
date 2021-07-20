@@ -1,8 +1,8 @@
-import { Permissions, Snowflake } from '../../../globals.ts';
-import { InteractionType } from '../../v8.ts';
-import { APIMessage } from '../channel.ts';
-import { APIGuildMember } from '../guild.ts';
-import { APIUser } from '../user.ts';
+import type { Permissions, Snowflake } from '../../../globals.ts';
+import type { InteractionType } from '../../v8.ts';
+import type { APIMessage } from '../channel.ts';
+import type { APIGuildMember } from '../guild.ts';
+import type { APIUser } from '../user.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#message-interaction-object-message-interaction-structure

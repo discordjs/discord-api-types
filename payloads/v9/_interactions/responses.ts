@@ -1,5 +1,5 @@
-import { MessageFlags } from '../index';
-import { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9';
+import type { MessageFlags } from '../index';
+import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-interaction-request-type

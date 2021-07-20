@@ -1,9 +1,9 @@
-import {
+import type {
 	APIMessageComponentDMInteraction,
 	APIMessageComponentGuildInteraction,
 	APIMessageComponentInteraction,
 } from './_interactions/messageComponents.ts';
-import {
+import type {
 	APIApplicationCommandDMInteraction,
 	APIApplicationCommandGuildInteraction,
 	APIApplicationCommandInteraction,
