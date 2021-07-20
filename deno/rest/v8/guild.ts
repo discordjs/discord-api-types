@@ -20,6 +20,7 @@ import type {
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 } from '../../payloads/v8/mod.ts';
+import type { Nullable } from '../../utils/internals.ts';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
@@ -774,7 +775,3 @@ export interface RESTPatchAPIGuildWelcomeScreenJSONBody extends Nullable<Partial
 	 */
 	enabled?: boolean | null;
 }
-
-type Nullable<T> = {
-	[P in keyof T]: T[P] | null;
-};

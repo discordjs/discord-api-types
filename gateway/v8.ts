@@ -25,6 +25,7 @@ import type {
 	InviteTargetType,
 	PresenceUpdateStatus,
 } from '../payloads/v8/index';
+import type { Nullable } from '../utils/internals';
 
 export * from './common';
 
@@ -1625,7 +1626,3 @@ interface MessageReactionRemoveData {
 	guild_id?: Snowflake;
 }
 // #endregion Shared
-
-type Nullable<T> = {
-	[P in keyof T]: T[P] | null;
-};

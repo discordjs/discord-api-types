@@ -7,6 +7,7 @@ import type {
 	APIWebhook,
 	APIAttachment,
 } from '../../payloads/v9/mod.ts';
+import type { Nullable } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
@@ -273,7 +274,3 @@ export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
  * https://discord.com/developers/docs/resources/webhook#delete-webhook-message
  */
 export type RESTDeleteAPIWebhookWithTokenMessageResult = never;
-
-type Nullable<T> = {
-	[P in keyof T]: T[P] | null;
-};
