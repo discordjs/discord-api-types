@@ -6,7 +6,7 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
-import type { APIApplication } from './oauth2';
+import type { APIApplication } from './application';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
@@ -680,7 +680,7 @@ export interface APIEmbed {
 	/**
 	 * Description of embed
 	 *
-	 * Length limit: 2048 characters
+	 * Length limit: 4096 characters
 	 */
 	description?: string;
 	/**

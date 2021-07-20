@@ -5,6 +5,7 @@ import type {
 	APIEmbed,
 	APIMessage,
 	APIWebhook,
+	APIAttachment,
 } from '../../payloads/v8/mod.ts';
 
 /**
@@ -115,14 +116,22 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	tts?: boolean;
 	/**
 	 * Embedded `rich` content
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
 	embeds?: APIEmbed[];
 	/**
 	 * Allowed mentions for the message
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
 	allowed_mentions?: APIAllowedMentions;
 	/**
-	 * the components to include with the message
+	 * The components to include with the message
+	 *
+	 * Requires an application-owned webhook
+	 *
+	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent[];
 }
@@ -213,9 +222,17 @@ export type RESTPostAPIWebhookWithTokenGitHubWaitResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
-export type RESTPatchAPIWebhookWithTokenMessageJSONBody = Nullable<
-	Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions'>
->;
+export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
+	extends Nullable<
+		Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>
+	> {
+	/**
+	 * Attached files to keep
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 */
+	attachments?: APIAttachment[] | null;
+}
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
