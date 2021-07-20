@@ -3,7 +3,16 @@ import type {
 	APIApplicationCommandPermission,
 	APIGuildApplicationCommandPermissions,
 	APIInteractionResponse,
+	APIInteractionResponseCallbackData,
 } from '../../payloads/v9/mod.ts';
+import type {
+	RESTDeleteAPIWebhookWithTokenMessageResult,
+	RESTGetAPIWebhookWithTokenMessageResult,
+	RESTPatchAPIWebhookWithTokenMessageFormDataBody,
+	RESTPatchAPIWebhookWithTokenMessageJSONBody,
+	RESTPatchAPIWebhookWithTokenMessageResult,
+	RESTPostAPIWebhookWithTokenWaitResult,
+} from './webhook.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#get-global-application-commands
@@ -110,6 +119,87 @@ export type RESTPostAPIInteractionCallbackFormDataBody =
 			 */
 			file: unknown;
 	  });
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#get-original-interaction-response
+ */
+export type RESTGetAPIInteractionOriginalResponseResult = RESTGetAPIWebhookWithTokenMessageResult;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-original-interaction-response
+ */
+export type RESTPatchAPIInteractionOriginalResponseJSONBody = RESTPatchAPIWebhookWithTokenMessageJSONBody;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-original-interaction-response
+ */
+export type RESTPatchAPIInteractionOriginalResponseFormDataBody = RESTPatchAPIWebhookWithTokenMessageFormDataBody;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-original-interaction-response
+ */
+export type RESTPatchAPIInteractionOriginalResponseResult = RESTPatchAPIWebhookWithTokenMessageResult;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#delete-original-interaction-response
+ */
+export type RESTDeleteAPIInteractionOriginalResponseResult = RESTDeleteAPIWebhookWithTokenMessageResult;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#create-followup-message
+ */
+export type RESTPostAPIInteractionFollowupJSONBody = APIInteractionResponseCallbackData;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#create-followup-message
+ */
+export type RESTPostAPIInteractionFollowupFormDataBody =
+	| {
+			/**
+			 * JSON stringified message body
+			 */
+			payload_json?: string;
+			/**
+			 * The file contents
+			 */
+			file: unknown;
+	  }
+	| (RESTPostAPIInteractionFollowupJSONBody & {
+			/**
+			 * The file contents
+			 */
+			file: unknown;
+	  });
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#create-followup-message
+ */
+export type RESTPostAPIInteractionFollowupResult = RESTPostAPIWebhookWithTokenWaitResult;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#get-followup-message
+ */
+export type RESTGetAPIInteractionFollowupResult = RESTGetAPIWebhookWithTokenMessageResult;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-followup-message
+ */
+export type RESTPatchAPIInteractionFollowupJSONBody = RESTPatchAPIWebhookWithTokenMessageJSONBody;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-followup-message
+ */
+export type RESTPatchAPIInteractionFollowupFormDataBody = RESTPatchAPIWebhookWithTokenMessageFormDataBody;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#edit-followup-message
+ */
+export type RESTPatchAPIInteractionFollowupResult = RESTPatchAPIWebhookWithTokenMessageResult;
+
+/**
+ * https://discord.com/developers/docs/interactions/slash-commands#delete-followup-message
+ */
+export type RESTDeleteAPIInteractionFollowupResult = RESTDeleteAPIWebhookWithTokenMessageResult;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#get-guild-application-command-permissions

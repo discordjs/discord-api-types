@@ -225,6 +225,11 @@ export type RESTPostAPIWebhookWithTokenGitHubResult = never;
 export type RESTPostAPIWebhookWithTokenGitHubWaitResult = APIMessage;
 
 /**
+ * https://discord.com/developers/docs/resources/webhook#get-webhook-message
+ */
+export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
+
+/**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
@@ -259,11 +264,6 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 			 */
 			file: unknown;
 	  });
-
-/**
- * https://discord.com/developers/docs/resources/webhook#get-webhook-message
- */
-export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
