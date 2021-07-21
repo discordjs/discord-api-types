@@ -1,3 +1,9 @@
+## [0.20.2](https://github.com/discordjs/discord-api-types/compare/0.21.0...0.20.2) (2021-07-21)
+
+### Bug Fixes
+
+- **APIInteraction:** bring back Ping type ([#164](https://github.com/discordjs/discord-api-types/issues/164)) ([ff75eb3](https://github.com/discordjs/discord-api-types/commit/ff75eb3f5dfd7597968c26133d125cfe40ee5838))
+
 ## [0.20.1](https://github.com/discordjs/discord-api-types/compare/0.20.0...0.20.1) (2021-07-20)
 
 ### Features
