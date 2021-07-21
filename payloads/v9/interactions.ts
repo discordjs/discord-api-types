@@ -3,6 +3,7 @@ import type {
 	APIMessageComponentGuildInteraction,
 	APIMessageComponentInteraction,
 } from './_interactions/messageComponents';
+import type { APIPingInteraction } from './_interactions/ping';
 import type {
 	APIApplicationCommandDMInteraction,
 	APIApplicationCommandGuildInteraction,
@@ -14,7 +15,7 @@ export * from './_interactions/messageComponents';
 export * from './_interactions/responses';
 export * from './_interactions/slashCommands';
 
-export type APIInteraction = APIApplicationCommandInteraction | APIMessageComponentInteraction;
+export type APIInteraction = APIPingInteraction | APIApplicationCommandInteraction | APIMessageComponentInteraction;
 
 export type APIDMInteraction = APIApplicationCommandDMInteraction | APIMessageComponentDMInteraction;
 
