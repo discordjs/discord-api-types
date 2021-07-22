@@ -1,6 +1,6 @@
 import type { APIRole, APIUser } from '../mod.ts';
 import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { APIPartialChannel } from '../channel.ts';
+import type { APIMessage, APIPartialChannel } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
 import type { InteractionType } from './responses.ts';
@@ -13,6 +13,10 @@ export interface APIApplicationCommand {
 	 * Unique id of the command
 	 */
 	id: Snowflake;
+	/**
+	 * Type of the command
+	 */
+	type: ApplicationCommandType;
 	/**
 	 * Unique id of the parent application
 	 */
@@ -39,6 +43,12 @@ export interface APIApplicationCommand {
 	 * If missing, this property should be assumed as `true`
 	 */
 	default_permission?: boolean;
+}
+
+enum ApplicationCommandType {
+	ChatInput = 1,
+	User,
+	Message,
 }
 
 interface APIApplicationCommandOptionBase {
@@ -113,11 +123,13 @@ export interface APIApplicationCommandInteractionData {
 	id: Snowflake;
 	name: string;
 	options?: APIApplicationCommandInteractionDataOption[];
+	target_id?: Snowflake;
 	resolved?: {
 		users?: Record<Snowflake, APIUser>;
 		roles?: Record<Snowflake, APIRole>;
 		members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
 		channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
+		messages?: Record<Snowflake, APIMessage>;
 	};
 }
 

@@ -27,7 +27,8 @@ export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#create-global-application-command
  */
-export type RESTPostAPIApplicationCommandsJSONBody = Omit<APIApplicationCommand, 'id' | 'application_id'>;
+export type RESTPostAPIApplicationCommandsJSONBody = Omit<APIApplicationCommand, 'id' | 'application_id' | 'type'> &
+	Partial<Pick<APIApplicationCommand, 'type'>>;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#create-global-application-command
