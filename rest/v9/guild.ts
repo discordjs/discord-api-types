@@ -12,6 +12,7 @@ import type {
 	APIGuildWidget,
 	APIGuildWidgetSettings,
 	APIRole,
+	APIThreadList,
 	APIVoiceRegion,
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
@@ -302,6 +303,11 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  */
 export type RESTPatchAPIGuildChannelPositionsResult = never;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#list-active-threads
+ */
+export type RESTGetAPIGuildThreadsResult = Omit<APIThreadList, 'has_more'>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-member
