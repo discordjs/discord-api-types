@@ -79,7 +79,10 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * but they can have a `choices` one
  */
 export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.String | ApplicationCommandOptionType.Integer;
+	type:
+		| ApplicationCommandOptionType.String
+		| ApplicationCommandOptionType.Integer
+		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
@@ -96,6 +99,7 @@ export const enum ApplicationCommandOptionType {
 	Channel,
 	Role,
 	Mentionable,
+	Number,
 }
 
 /**
@@ -162,6 +166,7 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionUser
 	| ApplicationCommandInteractionDataOptionMentionable
 	| ApplicationCommandInteractionDataOptionInteger
+	| ApplicationCommandInteractionDataOptionNumber
 	| ApplicationCommandInteractionDataOptionBoolean;
 
 export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
@@ -191,6 +196,11 @@ export type ApplicationCommandInteractionDataOptionMentionable = InteractionData
 
 export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Integer,
+	number
+>;
+
+export type ApplicationCommandInteractionDataOptionNumber = InteractionDataOptionBase<
+	ApplicationCommandOptionType.Number,
 	number
 >;
 
