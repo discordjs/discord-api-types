@@ -114,10 +114,10 @@ export interface APIApplicationCommandInteractionData {
 	name: string;
 	options?: APIApplicationCommandInteractionDataOption[];
 	resolved?: {
-		users?: Record<Snowflake, APIUser>;
-		roles?: Record<Snowflake, APIRole>;
-		members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
-		channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
+		users?: Record<string, APIUser>;
+		roles?: Record<string, APIRole>;
+		members?: Record<string, APIInteractionDataResolvedGuildMember>;
+		channels?: Record<string, APIInteractionDataResolvedChannel>;
 	};
 }
 
