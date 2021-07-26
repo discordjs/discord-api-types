@@ -12,6 +12,7 @@ import type {
 
 export * from './_interactions/base';
 export * from './_interactions/messageComponents';
+export * from './_interactions/ping';
 export * from './_interactions/responses';
 export * from './_interactions/slashCommands';
 
