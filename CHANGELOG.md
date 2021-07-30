@@ -1,3 +1,24 @@
+# [0.21.0](https://github.com/discordjs/discord-api-types/compare/0.20.1...0.21.0) (2021-07-30)
+
+### Bug Fixes
+
+- change resolved index types to string ([#169](https://github.com/discordjs/discord-api-types/issues/169)) ([d338409](https://github.com/discordjs/discord-api-types/commit/d338409410854cc1f97f9903fdc2565e1f45e778))
+- export APIPingInteraction ([#168](https://github.com/discordjs/discord-api-types/issues/168)) ([ef2a0ae](https://github.com/discordjs/discord-api-types/commit/ef2a0aeb07cdd04b47e6cb0d40dd8a1b2a77b491))
+- **APIInteraction:** bring back Ping type ([#164](https://github.com/discordjs/discord-api-types/issues/164)) ([ff75eb3](https://github.com/discordjs/discord-api-types/commit/ff75eb3f5dfd7597968c26133d125cfe40ee5838))
+
+### Features
+
+- **ApplicationCommandOptionType:** add Number (10) ([#153](https://github.com/discordjs/discord-api-types/issues/153)) ([6f15e53](https://github.com/discordjs/discord-api-types/commit/6f15e537dfee5bda383572cd725c05246c97ca62))
+- **Globals:** revert template bigint type to string type ([#171](https://github.com/discordjs/discord-api-types/issues/171)) ([f299507](https://github.com/discordjs/discord-api-types/commit/f2995073e033b050ab459c42b480e626f3f6ae8e))
+
+### Reverts
+
+- fix: change resolved index types to string ([#172](https://github.com/discordjs/discord-api-types/issues/172)) ([647905e](https://github.com/discordjs/discord-api-types/commit/647905e16bfeb689e644695657ac5f05920c0c4c))
+
+### BREAKING CHANGES
+
+- **Globals:** The type for Snowflake and Permissions is reverted from the `${bigint}` template type back to a normal string type
+
 ## [0.20.2](https://github.com/discordjs/discord-api-types/compare/0.21.0...0.20.2) (2021-07-21)
 
 ### Bug Fixes
