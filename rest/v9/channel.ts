@@ -577,6 +577,8 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	name: string;
 	/**
 	 * The amount of time in minutes to wait before automatically archiving the thread
+	 *
+	 * The 3 day and 7 day archive durations require the server to be boosted. The [guild features](https://discord.com/developers/docs/resources/guild#guild-object-guild-features) will indicate if a server is able to use those settings.
 	 */
 	auto_archive_duration: ThreadAutoArchiveDuration;
 }
@@ -592,8 +594,15 @@ export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
 export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
 	 * The type of thread to create
+	 *
+	 * In API v9, `type` defaults to `PRIVATE_THREAD`.
+	 * In API v10 this will be changed to be a required field, with no default.
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+	 *
+	 * @default 12
 	 */
-	type: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+	type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
 }
 
 /**
@@ -632,6 +641,8 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 
 /**
  * https://discord.com/developers/docs/resources/channel#list-active-threads
+ *
+ * @deprecated Use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead. Will be removed in v10.
  */
 export type RESTGetAPIChannelThreadsResult = APIThreadList;
 

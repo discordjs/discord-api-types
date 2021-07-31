@@ -437,7 +437,17 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/threads/active`
+	 */
+	guildActiveThreads(guildId: Snowflake) {
+		return `/guilds/${guildId}/threads/active` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/channels/{channel.id}/threads/active`
+	 * 	 (deprecated, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
+	 * 	 Will be removed in v10.)
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
@@ -456,7 +466,7 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/channels/{channel.id}/users/@me/threads/archived/prviate`
 	 */
-	channelJoinedArhivedThreads(channelId: Snowflake) {
+	channelJoinedArchivedThreads(channelId: Snowflake) {
 		return `/channels/${channelId}/users/@me/threads/archived/private` as const;
 	},
 
