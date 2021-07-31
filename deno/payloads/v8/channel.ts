@@ -955,11 +955,26 @@ interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessa
 	/**
 	 * The emoji to display to the left of the text
 	 */
-	emoji?: APIPartialEmoji;
+	emoji?: APIMessageComponentEmoji;
 	/**
 	 * The status of the button
 	 */
 	disabled?: boolean;
+}
+
+export interface APIMessageComponentEmoji {
+	/**
+	 * Emoji id
+	 */
+	id?: Snowflake;
+	/**
+	 * Emoji name
+	 */
+	name?: string;
+	/**
+	 * Whether this emoji is animated
+	 */
+	animated?: boolean;
 }
 
 export interface APIButtonComponentWithCustomId
@@ -1047,7 +1062,7 @@ export interface APISelectMenuOption {
 	/**
 	 * The emoji to display to the left of the option
 	 */
-	emoji?: APIPartialEmoji;
+	emoji?: APIMessageComponentEmoji;
 	/**
 	 * Whether this option should be already-selected by default
 	 */
