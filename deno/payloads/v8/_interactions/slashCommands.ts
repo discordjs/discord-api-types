@@ -68,7 +68,7 @@ export type APIApplicationCommandOption =
  * If the option is a `SUB_COMMAND` or `SUB_COMMAND_GROUP` type, this nested options will be the parameters
  */
 export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.SubCommand | ApplicationCommandOptionType.SubCommandGroup;
+	type: ApplicationCommandOptionType.Subcommand | ApplicationCommandOptionType.SubcommandGroup;
 	options?: APIApplicationCommandOption[];
 }
 
@@ -90,8 +90,8 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
  * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-type
  */
 export enum ApplicationCommandOptionType {
-	SubCommand = 1,
-	SubCommandGroup,
+	Subcommand = 1,
+	SubcommandGroup,
 	String,
 	Integer,
 	Boolean,
@@ -149,13 +149,13 @@ export type APIApplicationCommandInteractionDataOption =
 
 export interface ApplicationCommandInteractionDataOptionSubCommand {
 	name: string;
-	type: ApplicationCommandOptionType.SubCommand;
+	type: ApplicationCommandOptionType.Subcommand;
 	options: APIApplicationCommandInteractionDataOptionWithValues[];
 }
 
 export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
 	name: string;
-	type: ApplicationCommandOptionType.SubCommandGroup;
+	type: ApplicationCommandOptionType.SubcommandGroup;
 	options: ApplicationCommandInteractionDataOptionSubCommand[];
 }
 
