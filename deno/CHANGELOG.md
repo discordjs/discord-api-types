@@ -1,3 +1,24 @@
+# [0.22.0](https://github.com/discordjs/discord-api-types/compare/0.21.0...0.22.0) (2021-07-31)
+
+### Bug Fixes
+
+- **Gateway:** thread list sync now sends an array as documented ([#174](https://github.com/discordjs/discord-api-types/issues/174)) ([a93235c](https://github.com/discordjs/discord-api-types/commit/a93235c9df2bc36a337c03e8ba08986e6e377483))
+- **MessageComponent:** correct type for emoji ([#176](https://github.com/discordjs/discord-api-types/issues/176)) ([b75b05f](https://github.com/discordjs/discord-api-types/commit/b75b05f0d50014335fefc8bb8969d519ed0076d3))
+
+### chore
+
+- **ApplicationCommandOptionType:** casing changes for subcommands ([#175](https://github.com/discordjs/discord-api-types/issues/175)) ([f93b6be](https://github.com/discordjs/discord-api-types/commit/f93b6be2528c80f8dc038282a7d6ddb3c4685c2f))
+
+### Features
+
+- thread updates ([#167](https://github.com/discordjs/discord-api-types/issues/167)) ([47100bc](https://github.com/discordjs/discord-api-types/commit/47100bcf2c154146baecb359e1c00ecca9939ffa))
+
+### BREAKING CHANGES
+
+- **ApplicationCommandOptionType:** This renames `SubCommand` to `Subcommand`, and `SubCommandGroup` to `SubcommandGroup`
+- `Routes#channelJoinedArchivedThreads` is now spelled right (from `Routes#channelJoinedArhivedThreads`)
+- **Gateway:** `GatewayThreadListSync#members` is now an array of APIThreadMember instead of a Record of GatewayThreadListSyncMember
+
 # [0.21.0](https://github.com/discordjs/discord-api-types/compare/0.20.1...0.21.0) (2021-07-30)
 
 ### Bug Fixes
