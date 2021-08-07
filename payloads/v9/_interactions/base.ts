@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../../globals';
-import type { InteractionType } from '../../v9';
+import type { InteractionType } from './responses';
 import type { APIMessage } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
