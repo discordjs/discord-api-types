@@ -970,7 +970,7 @@ export interface APIMessageComponentEmoji {
 	/**
 	 * Emoji name
 	 */
-	name?: string;
+	name: string;
 	/**
 	 * Whether this emoji is animated
 	 */
