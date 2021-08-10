@@ -331,10 +331,8 @@ export interface GatewayThreadListSync {
 	/**
 	 * The member objects for the client user in each joined thread that was synced
 	 */
-	members: Record<Snowflake, GatewayThreadListSyncMember>;
+	members: APIThreadMember[];
 }
-
-export type GatewayThreadListSyncMember = Omit<APIThreadMember, 'id' | 'user_id'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-members-update-thread-members-update-event-fields

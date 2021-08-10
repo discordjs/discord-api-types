@@ -1,13 +1,13 @@
 /**
  * https://discord.com/developers/docs/reference#snowflakes
  */
-export type Snowflake = `${bigint}`;
+export type Snowflake = string;
 
 /**
  * https://discord.com/developers/docs/topics/permissions
  * @internal
  */
-export type Permissions = `${bigint}`;
+export type Permissions = string;
 
 /**
  * https://discord.com/developers/docs/reference#message-formatting-formats

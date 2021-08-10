@@ -78,7 +78,7 @@ export type APIApplicationCommandOption =
  * If the option is a `SUB_COMMAND` or `SUB_COMMAND_GROUP` type, this nested options will be the parameters
  */
 export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.SubCommand | ApplicationCommandOptionType.SubCommandGroup;
+	type: ApplicationCommandOptionType.Subcommand | ApplicationCommandOptionType.SubcommandGroup;
 	options?: APIApplicationCommandOption[];
 }
 
@@ -89,7 +89,10 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * but they can have a `choices` one
  */
 export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.String | ApplicationCommandOptionType.Integer;
+	type:
+		| ApplicationCommandOptionType.String
+		| ApplicationCommandOptionType.Integer
+		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
@@ -97,8 +100,8 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
  * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-type
  */
 export const enum ApplicationCommandOptionType {
-	SubCommand = 1,
-	SubCommandGroup,
+	Subcommand = 1,
+	SubcommandGroup,
 	String,
 	Integer,
 	Boolean,
@@ -106,6 +109,7 @@ export const enum ApplicationCommandOptionType {
 	Channel,
 	Role,
 	Mentionable,
+	Number,
 }
 
 /**
@@ -157,13 +161,13 @@ export type APIApplicationCommandInteractionDataOption =
 
 export interface ApplicationCommandInteractionDataOptionSubCommand {
 	name: string;
-	type: ApplicationCommandOptionType.SubCommand;
+	type: ApplicationCommandOptionType.Subcommand;
 	options: APIApplicationCommandInteractionDataOptionWithValues[];
 }
 
 export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
 	name: string;
-	type: ApplicationCommandOptionType.SubCommandGroup;
+	type: ApplicationCommandOptionType.SubcommandGroup;
 	options: ApplicationCommandInteractionDataOptionSubCommand[];
 }
 
@@ -174,6 +178,7 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionUser
 	| ApplicationCommandInteractionDataOptionMentionable
 	| ApplicationCommandInteractionDataOptionInteger
+	| ApplicationCommandInteractionDataOptionNumber
 	| ApplicationCommandInteractionDataOptionBoolean;
 
 export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
@@ -203,6 +208,11 @@ export type ApplicationCommandInteractionDataOptionMentionable = InteractionData
 
 export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Integer,
+	number
+>;
+
+export type ApplicationCommandInteractionDataOptionNumber = InteractionDataOptionBase<
+	ApplicationCommandOptionType.Number,
 	number
 >;
 

@@ -3,7 +3,7 @@
  */
 
 import type { Snowflake } from '../../globals.ts';
-import type { APIOverwrite } from './channel.ts';
+import type { APIChannel, APIOverwrite } from './channel.ts';
 import type {
 	APIGuildIntegration,
 	GuildDefaultMessageNotifications,
@@ -46,6 +46,14 @@ export interface APIAuditLog {
 	 * See https://discord.com/developers/docs/resources/guild#integration-object
 	 */
 	integrations: APIGuildIntegration[];
+	/**
+	 * Threads found in the audit log
+	 *
+	 * Threads referenced in THREAD_CREATE and THREAD_UPDATE events are included in the threads map, since archived threads might not be kept in memory by clients.
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object
+	 */
+	threads: APIChannel[];
 }
 
 /**
@@ -144,6 +152,10 @@ export enum AuditLogEvent {
 	StickerCreate = 90,
 	StickerUpdate,
 	StickerDelete,
+
+	ThreadCreate = 110,
+	ThreadUpdate,
+	ThreadDelete,
 }
 
 /**
@@ -302,7 +314,11 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyFormatType
 	| APIAuditLogChangeKeyAsset
 	| APIAuditLogChangeKeyAvailable
-	| APIAuditLogChangeKeyGuildId;
+	| APIAuditLogChangeKeyGuildId
+	| APIAuditLogChangeKeyArchived
+	| APIAuditLogChangeKeyLocked
+	| APIAuditLogChangeKeyAutoArchiveDuration
+	| APIAuditLogChangeKeyDefaultAutoArchiveDuration;
 
 /**
  * Returned when an entity's name is changed
@@ -610,6 +626,29 @@ export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', bool
  * Returned when a sticker's guild_id is changed
  */
 export type APIAuditLogChangeKeyGuildId = AuditLogChangeData<'guild_id', Snowflake>;
+
+/*
+ * Returned when a thread's archive status is changed
+ */
+export type APIAuditLogChangeKeyArchived = AuditLogChangeData<'archived', boolean>;
+
+/*
+ * Returned when a thread's lock status is changed
+ */
+export type APIAuditLogChangeKeyLocked = AuditLogChangeData<'locked', boolean>;
+
+/*
+ * Returned when a thread's auto archive duration is changed
+ */
+export type APIAuditLogChangeKeyAutoArchiveDuration = AuditLogChangeData<'auto_archive_duration', number>;
+
+/*
+ * Returned when a channel's default auto archive duration for newly created threads is changed
+ */
+export type APIAuditLogChangeKeyDefaultAutoArchiveDuration = AuditLogChangeData<
+	'default_auto_archive_duration',
+	number
+>;
 
 interface AuditLogChangeData<K extends string, D extends unknown> {
 	key: K;

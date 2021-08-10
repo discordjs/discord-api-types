@@ -72,6 +72,11 @@ export interface APIChannel extends APIPartialChannel {
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
+	 *
+	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
 	 */
 	rate_limit_per_user?: number;
 	/**
@@ -1075,11 +1080,26 @@ interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessa
 	/**
 	 * The emoji to display to the left of the text
 	 */
-	emoji?: APIPartialEmoji;
+	emoji?: APIMessageComponentEmoji;
 	/**
 	 * The status of the button
 	 */
 	disabled?: boolean;
+}
+
+export interface APIMessageComponentEmoji {
+	/**
+	 * Emoji id
+	 */
+	id?: Snowflake;
+	/**
+	 * Emoji name
+	 */
+	name?: string;
+	/**
+	 * Whether this emoji is animated
+	 */
+	animated?: boolean;
 }
 
 export interface APIButtonComponentWithCustomId
@@ -1167,7 +1187,7 @@ export interface APISelectMenuOption {
 	/**
 	 * The emoji to display to the left of the option
 	 */
-	emoji?: APIPartialEmoji;
+	emoji?: APIMessageComponentEmoji;
 	/**
 	 * Whether this option should be already-selected by default
 	 */
