@@ -120,22 +120,53 @@ export interface APIApplicationCommandOptionChoice {
 	value: string | number;
 }
 
-/**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-interaction-structure
- */
-export interface APIApplicationCommandInteractionData {
+export interface APIBaseApplicationCommandInteractionData<Type extends ApplicationCommandType> {
 	id: Snowflake;
+	type: Type;
 	name: string;
-	options?: APIApplicationCommandInteractionDataOption[];
-	target_id?: Snowflake;
-	resolved?: {
-		users?: Record<Snowflake, APIUser>;
-		roles?: Record<Snowflake, APIRole>;
-		members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
-		channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
-		messages?: Record<Snowflake, APIMessage>;
-	};
 }
+
+export interface APIChatInputApplicationCommandInteractionData
+	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
+	options?: APIApplicationCommandInteractionDataOption[];
+	resolved?: APIChatInputApplicationCommandInteractionDataResolved;
+}
+
+export interface APIChatInputApplicationCommandInteractionDataResolved {
+	users?: Record<Snowflake, APIUser>;
+	roles?: Record<Snowflake, APIRole>;
+	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
+	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
+}
+
+export interface APIUserApplicationCommandInteractionData
+	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
+	target_id: Snowflake;
+	resolved: APIUserApplicationCommandInteractionDataResolved;
+}
+
+export interface APIUserApplicationCommandInteractionDataResolved {
+	users: Record<Snowflake, APIUser>;
+	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
+}
+
+export interface APIMessageApplicationCommandInteractionData
+	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
+	target_id: Snowflake;
+	resolved: APIMessageApplicationCommandInteractionDataResolved;
+}
+
+export interface APIMessageApplicationCommandInteractionDataResolved {
+	messages: Record<Snowflake, APIMessage>;
+}
+
+export type APIContextMenuInteractionData =
+	| APIUserApplicationCommandInteractionData
+	| APIMessageApplicationCommandInteractionData;
+
+export type APIApplicationCommandInteractionData =
+	| APIChatInputApplicationCommandInteractionData
+	| APIContextMenuInteractionData;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object
@@ -279,16 +310,44 @@ export enum ApplicationCommandPermissionType {
 
 // INTERACTIONS
 
-export type APIApplicationCommandInteraction = APIBaseInteraction<
-	InteractionType.ApplicationCommand,
-	APIApplicationCommandInteractionData
-> &
-	Required<
-		Pick<
-			APIBaseInteraction<InteractionType.ApplicationCommand, APIApplicationCommandInteractionData>,
-			'channel_id' | 'data'
-		>
-	>;
+export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
+	APIBaseInteraction<InteractionType.ApplicationCommand, Data> &
+		Required<Pick<APIBaseInteraction<InteractionType.ApplicationCommand, Data>, 'channel_id' | 'data'>>;
+
+export type APIChatInputApplicationCommandInteraction =
+	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
+
+export type APIChatInputApplicationCommandDMInteraction =
+	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
+
+export type APIChatInputApplicationCommandGuildInteraction =
+	APIGuildInteractionWrapper<APIChatInputApplicationCommandInteraction>;
+
+export type APIUserApplicationCommandInteraction =
+	APIApplicationCommandInteractionWrapper<APIUserApplicationCommandInteractionData>;
+
+export type APIUserApplicationCommandDMInteraction = APIDMInteractionWrapper<APIUserApplicationCommandInteraction>;
+
+export type APIUserApplicationCommandGuildInteraction =
+	APIGuildInteractionWrapper<APIUserApplicationCommandInteraction>;
+
+export type APIMessageApplicationCommandInteraction =
+	APIApplicationCommandInteractionWrapper<APIMessageApplicationCommandInteractionData>;
+
+export type APIMessageApplicationCommandDMInteraction =
+	APIDMInteractionWrapper<APIMessageApplicationCommandInteraction>;
+
+export type APIMessageApplicationCommandGuildInteraction =
+	APIGuildInteractionWrapper<APIMessageApplicationCommandInteraction>;
+
+export type APIContextMenuInteraction = APIApplicationCommandInteractionWrapper<APIContextMenuInteractionData>;
+
+export type APIContextMenuDMInteraction = APIDMInteractionWrapper<APIContextMenuInteraction>;
+
+export type APIContextMenuGuildInteraction = APIGuildInteractionWrapper<APIContextMenuInteraction>;
+
+export type APIApplicationCommandInteraction =
+	APIApplicationCommandInteractionWrapper<APIApplicationCommandInteractionData>;
 
 export type APIApplicationCommandDMInteraction = APIDMInteractionWrapper<APIApplicationCommandInteraction>;
 
