@@ -8,13 +8,13 @@ import type {
 	APIApplicationCommandDMInteraction,
 	APIApplicationCommandGuildInteraction,
 	APIApplicationCommandInteraction,
-} from './_interactions/slashCommands';
+} from './_interactions/applicationCommands';
 
 export * from './_interactions/base';
 export * from './_interactions/messageComponents';
 export * from './_interactions/ping';
 export * from './_interactions/responses';
-export * from './_interactions/slashCommands';
+export * from './_interactions/applicationCommands';
 
 export type APIInteraction = APIPingInteraction | APIApplicationCommandInteraction | APIMessageComponentInteraction;
 
