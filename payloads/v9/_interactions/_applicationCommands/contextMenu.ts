@@ -1,4 +1,4 @@
-import type { APIUser } from '../../index';
+import type { APIUser } from '../../user';
 import type { Snowflake } from '../../../../globals';
 import type { APIMessage } from '../../channel';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';

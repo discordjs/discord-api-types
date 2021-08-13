@@ -1,4 +1,4 @@
-import type { APIUser } from '../../mod.ts';
+import type { APIUser } from '../../user.ts';
 import type { Snowflake } from '../../../../globals.ts';
 import type { APIMessage } from '../../channel.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
