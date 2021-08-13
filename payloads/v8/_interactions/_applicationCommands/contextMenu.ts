@@ -4,10 +4,10 @@ import type { APIMessage } from '../../channel';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
 	APIApplicationCommandInteractionWrapper,
-	APIBaseApplicationCommandInteractionData,
 	APIInteractionDataResolvedGuildMember,
 	ApplicationCommandType,
 } from '../applicationCommands';
+import type { APIBaseApplicationCommandInteractionData } from './internals';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure

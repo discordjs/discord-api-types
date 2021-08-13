@@ -73,15 +73,6 @@ export enum ApplicationCommandType {
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
  */
-export interface APIBaseApplicationCommandInteractionData<Type extends ApplicationCommandType> {
-	id: Snowflake;
-	type: Type;
-	name: string;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- */
 export type APIApplicationCommandInteractionData =
 	| APIChatInputApplicationCommandInteractionData
 	| APIContextMenuInteractionData;

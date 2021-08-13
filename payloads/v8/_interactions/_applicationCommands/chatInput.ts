@@ -3,11 +3,11 @@ import type { Snowflake } from '../../../../globals';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
 	APIApplicationCommandInteractionWrapper,
-	APIBaseApplicationCommandInteractionData,
 	APIInteractionDataResolvedChannel,
 	APIInteractionDataResolvedGuildMember,
 	ApplicationCommandType,
 } from '../applicationCommands';
+import type { APIBaseApplicationCommandInteractionData } from './internals';
 
 interface APIApplicationCommandOptionBase {
 	type:
