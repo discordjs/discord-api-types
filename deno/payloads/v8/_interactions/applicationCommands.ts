@@ -6,7 +6,7 @@ import type { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWr
 import type { InteractionType } from './responses.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#application-command-object
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object
  */
 export interface APIApplicationCommand {
 	/**
@@ -45,6 +45,9 @@ export interface APIApplicationCommand {
 	default_permission?: boolean;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
+ */
 export enum ApplicationCommandType {
 	ChatInput = 1,
 	User,
@@ -65,7 +68,7 @@ interface APIApplicationCommandOptionBase {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  */
 export type APIApplicationCommandOption =
 	| APIApplicationCommandArgumentOptions
@@ -97,7 +100,7 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-type
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
  */
 export enum ApplicationCommandOptionType {
 	Subcommand = 1,
@@ -113,25 +116,34 @@ export enum ApplicationCommandOptionType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-choice-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
  */
 export interface APIApplicationCommandOptionChoice {
 	name: string;
 	value: string | number;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ */
 export interface APIBaseApplicationCommandInteractionData<Type extends ApplicationCommandType> {
 	id: Snowflake;
 	type: Type;
 	name: string;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ */
 export interface APIChatInputApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
 	options?: APIApplicationCommandInteractionDataOption[];
 	resolved?: APIChatInputApplicationCommandInteractionDataResolved;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ */
 export interface APIChatInputApplicationCommandInteractionDataResolved {
 	users?: Record<Snowflake, APIUser>;
 	roles?: Record<Snowflake, APIRole>;
@@ -139,31 +151,49 @@ export interface APIChatInputApplicationCommandInteractionDataResolved {
 	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ */
 export interface APIUserApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
 	target_id: Snowflake;
 	resolved: APIUserApplicationCommandInteractionDataResolved;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ */
 export interface APIUserApplicationCommandInteractionDataResolved {
 	users: Record<Snowflake, APIUser>;
 	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ */
 export interface APIMessageApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
 	target_id: Snowflake;
 	resolved: APIMessageApplicationCommandInteractionDataResolved;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ */
 export interface APIMessageApplicationCommandInteractionDataResolved {
 	messages: Record<Snowflake, APIMessage>;
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ */
 export type APIContextMenuInteractionData =
 	| APIUserApplicationCommandInteractionData
 	| APIMessageApplicationCommandInteractionData;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ */
 export type APIApplicationCommandInteractionData =
 	| APIChatInputApplicationCommandInteractionData
 	| APIContextMenuInteractionData;
@@ -183,7 +213,7 @@ export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMemb
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-application-command-interaction-data-option-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
  */
 export type APIApplicationCommandInteractionDataOption =
 	| ApplicationCommandInteractionDataOptionSubCommand
@@ -261,7 +291,7 @@ interface InteractionDataOptionBase<T extends ApplicationCommandOptionType, D = 
 // PERMISSIONS
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#application-command-permissions-object-guild-application-command-permissions-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-guild-application-command-permissions-structure
  */
 export interface APIGuildApplicationCommandPermissions {
 	/**
@@ -283,7 +313,7 @@ export interface APIGuildApplicationCommandPermissions {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#application-command-permissions-object-application-command-permissions-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-structure
  */
 export interface APIApplicationCommandPermission {
 	/**
@@ -301,7 +331,7 @@ export interface APIApplicationCommandPermission {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#applicationcommandpermissiontype
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permission-type
  */
 export enum ApplicationCommandPermissionType {
 	Role = 1,
@@ -310,52 +340,100 @@ export enum ApplicationCommandPermissionType {
 
 // INTERACTIONS
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
 	APIBaseInteraction<InteractionType.ApplicationCommand, Data> &
 		Required<Pick<APIBaseInteraction<InteractionType.ApplicationCommand, Data>, 'channel_id' | 'data'>>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIChatInputApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIChatInputApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIChatInputApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIChatInputApplicationCommandInteraction>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIUserApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIUserApplicationCommandInteractionData>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIUserApplicationCommandDMInteraction = APIDMInteractionWrapper<APIUserApplicationCommandInteraction>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIUserApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIUserApplicationCommandInteraction>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIMessageApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIMessageApplicationCommandInteractionData>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIMessageApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIMessageApplicationCommandInteraction>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIMessageApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIMessageApplicationCommandInteraction>;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIContextMenuInteraction = APIUserApplicationCommandInteraction | APIMessageApplicationCommandInteraction;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIContextMenuDMInteraction =
 	| APIUserApplicationCommandDMInteraction
 	| APIMessageApplicationCommandDMInteraction;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIContextMenuGuildInteraction =
 	| APIUserApplicationCommandGuildInteraction
 	| APIMessageApplicationCommandGuildInteraction;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIApplicationCommandInteraction = APIChatInputApplicationCommandInteraction | APIContextMenuInteraction;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIApplicationCommandDMInteraction =
 	| APIChatInputApplicationCommandDMInteraction
 	| APIContextMenuDMInteraction;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIApplicationCommandGuildInteraction =
 	| APIChatInputApplicationCommandGuildInteraction
 	| APIContextMenuGuildInteraction;

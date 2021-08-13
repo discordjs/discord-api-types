@@ -1,11 +1,11 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { InteractionType } from '../../v8.ts';
+import type { InteractionType } from './responses.ts';
 import type { APIMessage } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#message-interaction-object-message-interaction-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
  */
 export interface APIMessageInteraction {
 	/**
@@ -37,7 +37,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 // INTERACTIONS RECEIVED
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export interface APIBaseInteraction<Type extends InteractionType, Data extends unknown> {
 	/**

@@ -16,8 +16,17 @@ export * from './_interactions/ping.ts';
 export * from './_interactions/responses.ts';
 export * from './_interactions/applicationCommands.ts';
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIInteraction = APIPingInteraction | APIApplicationCommandInteraction | APIMessageComponentInteraction;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIDMInteraction = APIApplicationCommandDMInteraction | APIMessageComponentDMInteraction;
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
 export type APIGuildInteraction = APIApplicationCommandGuildInteraction | APIMessageComponentGuildInteraction;

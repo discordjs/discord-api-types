@@ -2,7 +2,7 @@ import type { MessageFlags } from '../mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-object-interaction-request-type
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
  */
 export enum InteractionType {
 	Ping = 1,
@@ -11,7 +11,7 @@ export enum InteractionType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
@@ -44,7 +44,7 @@ export interface APIInteractionResponseUpdateMessage {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object-interaction-callback-type
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
  */
 export enum InteractionResponseType {
 	/**
@@ -70,7 +70,7 @@ export enum InteractionResponseType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-response-object-interaction-application-command-callback-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
  */
 export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
