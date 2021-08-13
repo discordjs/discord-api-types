@@ -26,15 +26,15 @@ export interface APIApplicationCommand {
 	 */
 	guild_id?: Snowflake;
 	/**
-	 * 1-32 character name matching `^[\w-]{1,32}$`
+	 * 1-32 character name; `CHAT_INPUT` command names must be all lowercase matching `^[\w-]{1,32}$`
 	 */
 	name: string;
 	/**
-	 * 1-100 character description
+	 * 1-100 character description for `CHAT_INPUT` commands, empty string for `USER` and `MESSAGE` commands
 	 */
 	description: string;
 	/**
-	 * The parameters for the command
+	 * The parameters for the `CHAT_INPUT` command, max 25
 	 */
 	options?: APIApplicationCommandOption[];
 	/**
@@ -45,7 +45,7 @@ export interface APIApplicationCommand {
 	default_permission?: boolean;
 }
 
-enum ApplicationCommandType {
+export enum ApplicationCommandType {
 	ChatInput = 1,
 	User,
 	Message,
@@ -340,15 +340,22 @@ export type APIMessageApplicationCommandDMInteraction =
 export type APIMessageApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIMessageApplicationCommandInteraction>;
 
-export type APIContextMenuInteraction = APIApplicationCommandInteractionWrapper<APIContextMenuInteractionData>;
+export type APIContextMenuInteraction = APIUserApplicationCommandInteraction | APIMessageApplicationCommandInteraction;
 
-export type APIContextMenuDMInteraction = APIDMInteractionWrapper<APIContextMenuInteraction>;
+export type APIContextMenuDMInteraction =
+	| APIUserApplicationCommandDMInteraction
+	| APIMessageApplicationCommandDMInteraction;
 
-export type APIContextMenuGuildInteraction = APIGuildInteractionWrapper<APIContextMenuInteraction>;
+export type APIContextMenuGuildInteraction =
+	| APIUserApplicationCommandGuildInteraction
+	| APIMessageApplicationCommandGuildInteraction;
 
-export type APIApplicationCommandInteraction =
-	APIApplicationCommandInteractionWrapper<APIApplicationCommandInteractionData>;
+export type APIApplicationCommandInteraction = APIChatInputApplicationCommandInteraction | APIContextMenuInteraction;
 
-export type APIApplicationCommandDMInteraction = APIDMInteractionWrapper<APIApplicationCommandInteraction>;
+export type APIApplicationCommandDMInteraction =
+	| APIChatInputApplicationCommandDMInteraction
+	| APIContextMenuDMInteraction;
 
-export type APIApplicationCommandGuildInteraction = APIGuildInteractionWrapper<APIApplicationCommandInteraction>;
+export type APIApplicationCommandGuildInteraction =
+	| APIChatInputApplicationCommandGuildInteraction
+	| APIContextMenuGuildInteraction;

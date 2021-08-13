@@ -4,6 +4,7 @@ import type {
 	APIGuildApplicationCommandPermissions,
 	APIInteractionResponse,
 	APIInteractionResponseCallbackData,
+	ApplicationCommandType,
 } from '../../payloads/v9/mod.ts';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
@@ -24,11 +25,23 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
  */
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
-/**
- * https://discord.com/developers/docs/interactions/slash-commands#create-global-application-command
- */
-export type RESTPostAPIApplicationCommandsJSONBody = Omit<APIApplicationCommand, 'id' | 'application_id' | 'type'> &
-	Partial<Pick<APIApplicationCommand, 'type'>>;
+type RESTPostAPIBaseApplicationCommandsJSONBody = Omit<
+	APIApplicationCommand,
+	'id' | 'application_id' | 'description' | 'type'
+>;
+
+export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
+	type?: ApplicationCommandType.ChatInput;
+	description: string;
+}
+
+export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
+	type: ApplicationCommandType.User | ApplicationCommandType.Message;
+}
+
+export type RESTPostAPIApplicationCommandsJSONBody =
+	| RESTPostAPIChatInputApplicationCommandsJSONBody
+	| RESTPostAPIContextMenuApplicationCommandsJSONBody;
 
 /**
  * https://discord.com/developers/docs/interactions/slash-commands#create-global-application-command
