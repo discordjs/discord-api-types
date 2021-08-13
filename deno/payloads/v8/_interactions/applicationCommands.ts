@@ -1,9 +1,25 @@
-import type { APIRole, APIUser } from '../mod.ts';
 import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { APIMessage, APIPartialChannel } from '../channel.ts';
+import type { APIPartialChannel } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
-import type { APIBaseInteraction, APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
+import type { APIBaseInteraction } from './base.ts';
 import type { InteractionType } from './responses.ts';
+import type {
+	APIApplicationCommandOption,
+	APIChatInputApplicationCommandDMInteraction,
+	APIChatInputApplicationCommandGuildInteraction,
+	APIChatInputApplicationCommandInteraction,
+	APIChatInputApplicationCommandInteractionData,
+} from './_applicationCommands/chatInput.ts';
+import type {
+	APIContextMenuDMInteraction,
+	APIContextMenuGuildInteraction,
+	APIContextMenuInteraction,
+	APIContextMenuInteractionData,
+} from './_applicationCommands/contextMenu.ts';
+
+export * from './_applicationCommands/chatInput.ts';
+export * from './_applicationCommands/contextMenu.ts';
+export * from './_applicationCommands/permissions.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object
@@ -54,75 +70,6 @@ export enum ApplicationCommandType {
 	Message,
 }
 
-interface APIApplicationCommandOptionBase {
-	type:
-		| ApplicationCommandOptionType.Boolean
-		| ApplicationCommandOptionType.User
-		| ApplicationCommandOptionType.Channel
-		| ApplicationCommandOptionType.Role
-		| ApplicationCommandOptionType.Mentionable;
-	name: string;
-	description: string;
-	default?: boolean;
-	required?: boolean;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
- */
-export type APIApplicationCommandOption =
-	| APIApplicationCommandArgumentOptions
-	| APIApplicationCommandSubCommandOptions
-	| APIApplicationCommandOptionBase;
-
-/**
- * This type is exported as a way to make it stricter for you when you're writing your commands
- *
- * If the option is a `SUB_COMMAND` or `SUB_COMMAND_GROUP` type, this nested options will be the parameters
- */
-export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.Subcommand | ApplicationCommandOptionType.SubcommandGroup;
-	options?: APIApplicationCommandOption[];
-}
-
-/**
- * This type is exported as a way to make it stricter for you when you're writing your commands
- *
- * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
- * but they can have a `choices` one
- */
-export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type:
-		| ApplicationCommandOptionType.String
-		| ApplicationCommandOptionType.Integer
-		| ApplicationCommandOptionType.Number;
-	choices?: APIApplicationCommandOptionChoice[];
-}
-
-/**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
- */
-export enum ApplicationCommandOptionType {
-	Subcommand = 1,
-	SubcommandGroup,
-	String,
-	Integer,
-	Boolean,
-	User,
-	Channel,
-	Role,
-	Mentionable,
-	Number,
-}
-
-/**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
- */
-export interface APIApplicationCommandOptionChoice {
-	name: string;
-	value: string | number;
-}
-
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
  */
@@ -131,65 +78,6 @@ export interface APIBaseApplicationCommandInteractionData<Type extends Applicati
 	type: Type;
 	name: string;
 }
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- */
-export interface APIChatInputApplicationCommandInteractionData
-	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
-	options?: APIApplicationCommandInteractionDataOption[];
-	resolved?: APIChatInputApplicationCommandInteractionDataResolved;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
- */
-export interface APIChatInputApplicationCommandInteractionDataResolved {
-	users?: Record<Snowflake, APIUser>;
-	roles?: Record<Snowflake, APIRole>;
-	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
-	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- */
-export interface APIUserApplicationCommandInteractionData
-	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
-	target_id: Snowflake;
-	resolved: APIUserApplicationCommandInteractionDataResolved;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
- */
-export interface APIUserApplicationCommandInteractionDataResolved {
-	users: Record<Snowflake, APIUser>;
-	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- */
-export interface APIMessageApplicationCommandInteractionData
-	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
-	target_id: Snowflake;
-	resolved: APIMessageApplicationCommandInteractionDataResolved;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
- */
-export interface APIMessageApplicationCommandInteractionDataResolved {
-	messages: Record<Snowflake, APIMessage>;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- */
-export type APIContextMenuInteractionData =
-	| APIUserApplicationCommandInteractionData
-	| APIMessageApplicationCommandInteractionData;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
@@ -213,211 +101,11 @@ export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMemb
 }
 
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
- */
-export type APIApplicationCommandInteractionDataOption =
-	| ApplicationCommandInteractionDataOptionSubCommand
-	| ApplicationCommandInteractionDataOptionSubCommandGroup
-	| APIApplicationCommandInteractionDataOptionWithValues;
-
-export interface ApplicationCommandInteractionDataOptionSubCommand {
-	name: string;
-	type: ApplicationCommandOptionType.Subcommand;
-	options: APIApplicationCommandInteractionDataOptionWithValues[];
-}
-
-export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
-	name: string;
-	type: ApplicationCommandOptionType.SubcommandGroup;
-	options: ApplicationCommandInteractionDataOptionSubCommand[];
-}
-
-export type APIApplicationCommandInteractionDataOptionWithValues =
-	| ApplicationCommandInteractionDataOptionString
-	| ApplicationCommandInteractionDataOptionRole
-	| ApplicationCommandInteractionDataOptionChannel
-	| ApplicationCommandInteractionDataOptionUser
-	| ApplicationCommandInteractionDataOptionMentionable
-	| ApplicationCommandInteractionDataOptionInteger
-	| ApplicationCommandInteractionDataOptionNumber
-	| ApplicationCommandInteractionDataOptionBoolean;
-
-export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
-	ApplicationCommandOptionType.String,
-	string
->;
-
-export type ApplicationCommandInteractionDataOptionRole = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Role,
-	Snowflake
->;
-
-export type ApplicationCommandInteractionDataOptionChannel = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Channel,
-	Snowflake
->;
-
-export type ApplicationCommandInteractionDataOptionUser = InteractionDataOptionBase<
-	ApplicationCommandOptionType.User,
-	Snowflake
->;
-
-export type ApplicationCommandInteractionDataOptionMentionable = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Mentionable,
-	Snowflake
->;
-
-export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Integer,
-	number
->;
-
-export type ApplicationCommandInteractionDataOptionNumber = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Number,
-	number
->;
-
-export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Boolean,
-	boolean
->;
-
-interface InteractionDataOptionBase<T extends ApplicationCommandOptionType, D = unknown> {
-	name: string;
-	type: T;
-	value: D;
-}
-
-// PERMISSIONS
-
-/**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-guild-application-command-permissions-structure
- */
-export interface APIGuildApplicationCommandPermissions {
-	/**
-	 * The id of the command
-	 */
-	id: Snowflake;
-	/**
-	 * The id of the application the command belongs to
-	 */
-	application_id: Snowflake;
-	/**
-	 * The id of the guild
-	 */
-	guild_id: Snowflake;
-	/**
-	 * The permissions for the command in the guild
-	 */
-	permissions: APIApplicationCommandPermission[];
-}
-
-/**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-structure
- */
-export interface APIApplicationCommandPermission {
-	/**
-	 * The id of the role or user
-	 */
-	id: Snowflake;
-	/**
-	 * Role or user
-	 */
-	type: ApplicationCommandPermissionType;
-	/**
-	 * `true` to allow, `false`, to disallow
-	 */
-	permission: boolean;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permission-type
- */
-export enum ApplicationCommandPermissionType {
-	Role = 1,
-	User,
-}
-
-// INTERACTIONS
-
-/**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
 	APIBaseInteraction<InteractionType.ApplicationCommand, Data> &
 		Required<Pick<APIBaseInteraction<InteractionType.ApplicationCommand, Data>, 'channel_id' | 'data'>>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIChatInputApplicationCommandInteraction =
-	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIChatInputApplicationCommandDMInteraction =
-	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIChatInputApplicationCommandGuildInteraction =
-	APIGuildInteractionWrapper<APIChatInputApplicationCommandInteraction>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIUserApplicationCommandInteraction =
-	APIApplicationCommandInteractionWrapper<APIUserApplicationCommandInteractionData>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIUserApplicationCommandDMInteraction = APIDMInteractionWrapper<APIUserApplicationCommandInteraction>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIUserApplicationCommandGuildInteraction =
-	APIGuildInteractionWrapper<APIUserApplicationCommandInteraction>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIMessageApplicationCommandInteraction =
-	APIApplicationCommandInteractionWrapper<APIMessageApplicationCommandInteractionData>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIMessageApplicationCommandDMInteraction =
-	APIDMInteractionWrapper<APIMessageApplicationCommandInteraction>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIMessageApplicationCommandGuildInteraction =
-	APIGuildInteractionWrapper<APIMessageApplicationCommandInteraction>;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIContextMenuInteraction = APIUserApplicationCommandInteraction | APIMessageApplicationCommandInteraction;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIContextMenuDMInteraction =
-	| APIUserApplicationCommandDMInteraction
-	| APIMessageApplicationCommandDMInteraction;
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- */
-export type APIContextMenuGuildInteraction =
-	| APIUserApplicationCommandGuildInteraction
-	| APIMessageApplicationCommandGuildInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
