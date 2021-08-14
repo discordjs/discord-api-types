@@ -94,15 +94,15 @@ export const enum OAuth2Scopes {
 	 */
 	ActivitiesWrite = 'activities.write',
 	/**
-	 * Allows your app to use Slash Commands in a guild
+	 * Allows your app to use Application Commands in a guild
 	 *
-	 * See https://discord.com/developers/docs/interactions/slash-commands
+	 * See https://discord.com/developers/docs/interactions/application-commands
 	 */
 	ApplicationsCommands = 'applications.commands',
 	/**
-	 * Allows your app to update its Slash Commands via this bearer token - client credentials grant only
+	 * Allows your app to update its Application Commands via this bearer token - client credentials grant only
 	 *
-	 * See https://discord.com/developers/docs/interactions/slash-commands
+	 * See https://discord.com/developers/docs/interactions/application-commands
 	 */
 	ApplicationsCommandsUpdate = 'applications.commands.update',
 }

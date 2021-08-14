@@ -5,7 +5,7 @@ import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#message-interaction-object-message-interaction-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
  */
 export interface APIMessageInteraction {
 	/**
@@ -37,7 +37,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 // INTERACTIONS RECEIVED
 
 /**
- * https://discord.com/developers/docs/interactions/slash-commands#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export interface APIBaseInteraction<Type extends InteractionType, Data extends unknown> {
 	/**
