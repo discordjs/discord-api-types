@@ -428,9 +428,10 @@ export const enum MessageType {
 	GuildDiscoveryGracePeriodFinalWarning,
 	ThreadCreated,
 	Reply,
-	ApplicationCommand,
+	SlashCommand,
 	ThreadStarterMessage,
 	GuildInviteReminder,
+	ContextMenuCommand,
 }
 
 /**
