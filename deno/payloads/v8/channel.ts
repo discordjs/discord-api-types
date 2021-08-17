@@ -382,7 +382,7 @@ export enum MessageType {
 	GuildDiscoveryGracePeriodInitialWarning,
 	GuildDiscoveryGracePeriodFinalWarning,
 	Reply = 19,
-	SlashCommand,
+	ChatInputCommand,
 	GuildInviteReminder = 22,
 	ContextMenuCommand,
 }
