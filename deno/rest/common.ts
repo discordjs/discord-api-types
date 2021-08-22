@@ -36,6 +36,9 @@ export enum RESTJSONErrorCodes {
 
 	UnknownGiftCode = 10038,
 
+	UnknownStream = 10049,
+	UnknownPremiumServerSubscribeCooldown,
+
 	UnknownGuildTemplate = 10057,
 
 	UnknownDiscoverableServerCategory = 10059,
@@ -48,6 +51,8 @@ export enum RESTJSONErrorCodes {
 	UnknownStageInstance,
 	UnknownGuildMemberVerificationForm,
 	UnknownGuildWelcomeScreen,
+	UnknownGuildScheduledEvent,
+	UnknownGuildScheduledEventUser,
 
 	BotsCannotUseThisEndpoint = 20001,
 	OnlyBotsCanUseThisEndpoint,
@@ -98,6 +103,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfBanFetchesHasBeenReached = 30037,
 
 	MaximumNumberOfStickersReached = 30039,
+	MaximumNumberOfPruneRequestsHasBeenReached,
 
 	Unauthorized = 40001,
 	VerifyYourAccount,
@@ -135,6 +141,7 @@ export enum RESTJSONErrorCodes {
 
 	CannotExecuteActionOnThisChannelType = 50024,
 	InvalidOAuth2AccessToken,
+	MissingRequiredOAuth2Scope,
 
 	InvalidWebhookToken = 50027,
 	InvalidRole,
@@ -149,7 +156,9 @@ export enum RESTJSONErrorCodes {
 	FileUploadedExceedsMaximumSize = 50045,
 	InvalidFileUploaded,
 
-	CannotSelfRedeemThisGift = 50070,
+	CannotSelfRedeemThisGift = 50054,
+
+	PaymentSourceRequiredToRedeemGift = 50070,
 
 	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
 
@@ -158,6 +167,10 @@ export enum RESTJSONErrorCodes {
 	InvalidActionOnArchivedThread = 50083,
 	InvalidThreadNotificationSettings,
 	ParameterEarlierThanCreation,
+
+	ServerNotAvailableInYourLocation = 50095,
+
+	ServerNeedsMonetizationEnabledToPerformThisAction = 50097,
 
 	TwoFactorAuthenticationIsRequired = 60003,
 
