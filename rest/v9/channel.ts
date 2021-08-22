@@ -130,6 +130,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: text, news
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration;
+	/**
+	 * Whether non-moderators can add other non-moderators to the thread
+	 *
+	 * Channel types: privateThread
+	 */
+	invitable?: boolean;
 }
 
 /**
@@ -603,6 +609,10 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	 * @default 12
 	 */
 	type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+	/**
+	 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
+	 */
+	invitable?: boolean;
 }
 
 /**

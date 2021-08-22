@@ -608,6 +608,10 @@ export interface APIThreadMetadata {
 	 * Whether the thread is locked; when a thread is locked, only users with `MANAGE_THREADS` can unarchive it
 	 */
 	locked?: boolean;
+	/**
+	 * Whether non-moderators can add other non-moderators to the thread; only available on private threads
+	 */
+	invitable?: boolean;
 }
 
 export enum ThreadAutoArchiveDuration {
