@@ -7,6 +7,7 @@ export * from './channel.ts';
 export * from './emoji.ts';
 export * from './gateway.ts';
 export * from './guild.ts';
+export * from './guildEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
@@ -781,6 +782,25 @@ export const Routes = {
 	 */
 	guildSticker(guildId: Snowflake, stickerId: Snowflake) {
 		return `/guilds/${guildId}/stickers/${stickerId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/events`
+	 * - POST `/guilds/{guild.id}/events`
+	 */
+	guildEvents(guildId: Snowflake) {
+		return `/guilds/${guildId}/events`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guild-events/{event.id}`
+	 * - PATCH /guild-events/{event.id}
+	 * - DELETE `/guild-events/{event.id}`
+	 */
+	guildEvent(guildEventId: Snowflake) {
+		return `/guild-events/${guildEventId}`;
 	},
 };
 
