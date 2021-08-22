@@ -40,6 +40,16 @@ export interface APIUser {
 	 */
 	mfa_enabled?: boolean;
 	/**
+	 * The user's banner hash
+	 *
+	 * See https://discord.com/developers/docs/reference#image-formatting
+	 */
+	banner?: string | null;
+	/**
+	 * The user's banner color encoded as an integer representation of hexadecimal color code
+	 */
+	accent_color?: number | null;
+	/**
 	 * The user's chosen language option
 	 */
 	locale?: string;
