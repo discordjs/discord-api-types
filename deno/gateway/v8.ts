@@ -10,6 +10,7 @@ import type {
 	APIChannel,
 	APIEmoji,
 	APIGuild,
+	APIGuildEvent,
 	APIGuildIntegration,
 	APIGuildMember,
 	APIMessage,
@@ -237,6 +238,9 @@ export enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
+	GuildScheduledEventCreate = 'Guild_Scheduled_Event_Create',
+	GuildScheduledEventUpdate = 'Guild_Scheduled_Event_Update',
+	GuildScheduledEventDelete = 'Guild_Scheduled_Event_Delete',
 }
 
 export type GatewaySendPayload =
@@ -269,6 +273,9 @@ export type GatewayDispatchPayload =
 	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
 	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildScheduledEventCreateDispatch
+	| GatewayGuildScheduledEventUpdateDispatch
+	| GatewayGuildScheduledEventDeleteDispatch
 	| GatewayGuildStickersUpdateDispatch
 	| GatewayIntegrationCreateDispatch
 	| GatewayIntegrationDeleteDispatch
@@ -860,6 +867,27 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	 */
 	role_id: Snowflake;
 }
+
+export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventCreate,
+	GatewayGuildScheduledEventCreateDispatchData
+>;
+
+export type GatewayGuildScheduledEventCreateDispatchData = APIGuildEvent;
+
+export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUpdate,
+	GatewayGuildScheduledEventUpdateDispatchData
+>;
+
+export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildEvent;
+
+export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventDelete,
+	GatewayGuildScheduledEventDeleteDispatchData
+>;
+
+export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildEvent;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-create

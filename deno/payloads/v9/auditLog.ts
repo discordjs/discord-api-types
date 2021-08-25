@@ -153,6 +153,10 @@ export enum AuditLogEvent {
 	StickerUpdate,
 	StickerDelete,
 
+	GuildScheduledEventCreate = 100,
+	GuildScheduledEventUpdate,
+	GuildScheduledEventDelete,
+
 	ThreadCreate = 110,
 	ThreadUpdate,
 	ThreadDelete,
@@ -318,7 +322,10 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyArchived
 	| APIAuditLogChangeKeyLocked
 	| APIAuditLogChangeKeyAutoArchiveDuration
-	| APIAuditLogChangeKeyDefaultAutoArchiveDuration;
+	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
+	| APIAuditLogChangeKeyEntityType
+	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeySkuIds;
 
 /**
  * Returned when an entity's name is changed
@@ -649,6 +656,21 @@ export type APIAuditLogChangeKeyDefaultAutoArchiveDuration = AuditLogChangeData<
 	'default_auto_archive_duration',
 	number
 >;
+
+/**
+ * Returned when entity type of a guild scheduled event is changed
+ */
+export type APIAuditLogChangeKeyEntityType = AuditLogChangeData<'entity_type', number>;
+
+/**
+ * Returned when status of a guild scheduled event is changed
+ */
+export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', number>;
+
+/**
+ * Returned when the skus of a guild event is changed
+ */
+export type APIAuditLogChangeKeySkuIds = AuditLogChangeData<'sku_ids', Snowflake[]>;
 
 interface AuditLogChangeData<K extends string, D extends unknown> {
 	key: K;
