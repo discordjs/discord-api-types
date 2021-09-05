@@ -789,7 +789,7 @@ export interface APIEmbedThumbnail {
 	/**
 	 * Source url of thumbnail (only supports http(s) and attachments)
 	 */
-	url?: string;
+	url: string;
 	/**
 	 * A proxied url of the thumbnail
 	 */
@@ -829,7 +829,7 @@ export interface APIEmbedImage {
 	/**
 	 * Source url of image (only supports http(s) and attachments)
 	 */
-	url?: string;
+	url: string;
 	/**
 	 * A proxied url of the image
 	 */
@@ -867,7 +867,7 @@ export interface APIEmbedAuthor {
 	 *
 	 * Length limit: 256 characters
 	 */
-	name?: string;
+	name: string;
 	/**
 	 * URL of author
 	 */
