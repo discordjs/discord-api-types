@@ -382,8 +382,9 @@ export const enum MessageType {
 	GuildDiscoveryGracePeriodInitialWarning,
 	GuildDiscoveryGracePeriodFinalWarning,
 	Reply = 19,
-	ApplicationCommand,
+	ChatInputCommand,
 	GuildInviteReminder = 22,
+	ContextMenuCommand,
 }
 
 /**
