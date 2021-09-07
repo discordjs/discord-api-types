@@ -1,3 +1,32 @@
+# [0.23.0](https://github.com/discordjs/discord-api-types/compare/0.22.0...0.23.0) (2021-09-07)
+
+### Bug Fixes
+
+- **AuditLog:** correct `nickname` type ([#189](https://github.com/discordjs/discord-api-types/issues/189)) ([64937e2](https://github.com/discordjs/discord-api-types/commit/64937e2311bf5e688f6789d9e66827e980e4e01c))
+- **Embed:** correct certain optional types as being required ([#192](https://github.com/discordjs/discord-api-types/issues/192)) ([e628f0f](https://github.com/discordjs/discord-api-types/commit/e628f0f6f089a0840b9d69bea930dd3ad7fa7462))
+- import causing error 404 on deno ([#178](https://github.com/discordjs/discord-api-types/issues/178)) ([8fcd0f2](https://github.com/discordjs/discord-api-types/commit/8fcd0f2222a77a1a0b19888d699e98d450268cc8))
+
+### chore
+
+- **Gateway:** remove `APPLICATION_COMMAND_*` events ([#191](https://github.com/discordjs/discord-api-types/issues/191)) ([d590caf](https://github.com/discordjs/discord-api-types/commit/d590caf359b61aa77780385437929f443cbf4a26))
+
+### Features
+
+- **APIApplicationCommand:** add `version` field ([#193](https://github.com/discordjs/discord-api-types/issues/193)) ([ecbed18](https://github.com/discordjs/discord-api-types/commit/ecbed180424c0975c52208f0f803b08f105df04a))
+- **APIUser:** add `banner` and `accent_color` ([#183](https://github.com/discordjs/discord-api-types/issues/183)) ([b07b903](https://github.com/discordjs/discord-api-types/commit/b07b9030c134fdaf53f500d319c88067c1a8a175))
+- **Interactions:** context menu items ([#166](https://github.com/discordjs/discord-api-types/issues/166)) ([fdc1c1a](https://github.com/discordjs/discord-api-types/commit/fdc1c1a5b411d8ef3d635ad90bd97c2b1bf77cf1))
+- **JSONErrorCodes:** add `160002` ([#190](https://github.com/discordjs/discord-api-types/issues/190)) ([8b49887](https://github.com/discordjs/discord-api-types/commit/8b49887c7f732fe88cadb1e6ca17e0dc12db25f9))
+- **MessageType:** add ContextMenuCommand and rename ApplicationCommand to ChatInputCommand ([#180](https://github.com/discordjs/discord-api-types/issues/180)) ([0024823](https://github.com/discordjs/discord-api-types/commit/0024823d053c15491011eb6d11c314e299689ba5))
+- **Threads:** add `invitable` ([#185](https://github.com/discordjs/discord-api-types/issues/185)) ([b6babf2](https://github.com/discordjs/discord-api-types/commit/b6babf2ee2c66817ac99752d14feed2d574ecb14))
+
+### BREAKING CHANGES
+
+- **Gateway:** The three Application Command events have been removed
+- **Embed:**
+  - `APIEmbedAuthor#name` is required, not optional
+  - `APIEmbedThumbnail#url` is required, not optional
+  - `APIEmbedImage#url` is required, not optional
+
 # [0.22.0](https://github.com/discordjs/discord-api-types/compare/0.21.0...0.22.0) (2021-07-31)
 
 ### Bug Fixes
