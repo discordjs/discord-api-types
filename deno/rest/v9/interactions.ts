@@ -27,7 +27,7 @@ export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
 type RESTPostAPIBaseApplicationCommandsJSONBody = Omit<
 	APIApplicationCommand,
-	'id' | 'application_id' | 'description' | 'type'
+	'id' | 'application_id' | 'description' | 'type' | 'version'
 >;
 
 /**
