@@ -5,7 +5,6 @@
 import type { Snowflake } from '../globals.ts';
 import type {
 	APIApplication,
-	APIApplicationCommand,
 	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
@@ -193,9 +192,6 @@ export enum GatewayIntentBits {
  * https://discord.com/developers/docs/topics/gateway#commands-and-events-gateway-events
  */
 export enum GatewayDispatchEvents {
-	ApplicationCommandCreate = 'APPLICATION_COMMAND_CREATE',
-	ApplicationCommandDelete = 'APPLICATION_COMMAND_DELETE',
-	ApplicationCommandUpdate = 'APPLICATION_COMMAND_UPDATE',
 	ChannelCreate = 'CHANNEL_CREATE',
 	ChannelDelete = 'CHANNEL_DELETE',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
@@ -307,55 +303,6 @@ export type GatewayDispatchPayload =
 	| GatewayWebhooksUpdateDispatch;
 
 // #region Dispatch Payloads
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-create
- * https://discord.com/developers/docs/topics/gateway#application-command-update
- * https://discord.com/developers/docs/topics/gateway#application-command-delete
- */
-export type GatewayApplicationCommandModifyDispatch = DataPayload<
-	| GatewayDispatchEvents.ApplicationCommandCreate
-	| GatewayDispatchEvents.ApplicationCommandUpdate
-	| GatewayDispatchEvents.ApplicationCommandDelete,
-	GatewayApplicationCommandModifyDispatchData
->;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-create
- * https://discord.com/developers/docs/topics/gateway#application-command-update
- * https://discord.com/developers/docs/topics/gateway#application-command-delete
- */
-export type GatewayApplicationCommandModifyDispatchData = APIApplicationCommand;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-create
- */
-export type GatewayApplicationCommandCreateDispatch = GatewayApplicationCommandModifyDispatch;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-create
- */
-export type GatewayApplicationCommandCreateDispatchData = GatewayApplicationCommandModifyDispatchData;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-update
- */
-export type GatewayApplicationCommandUpdateDispatch = GatewayApplicationCommandModifyDispatch;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-update
- */
-export type GatewayApplicationCommandUpdateDispatchData = GatewayApplicationCommandModifyDispatchData;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-delete
- */
-export type GatewayApplicationCommandDeleteDispatch = GatewayApplicationCommandModifyDispatch;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#application-command-delete
- */
-export type GatewayApplicationCommandDeleteDispatchData = GatewayApplicationCommandModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#hello
