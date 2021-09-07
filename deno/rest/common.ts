@@ -182,6 +182,8 @@ export enum RESTJSONErrorCodes {
 
 	TheStageIsAlreadyOpen = 150006,
 
+	CannotReplyWithoutPermissionToReadMessageHistory = 160002,
+
 	ThreadAlreadyCreatedForMessage = 160004,
 	ThreadLocked,
 	MaximumActiveThreads,
