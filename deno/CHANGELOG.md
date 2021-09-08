@@ -1,3 +1,9 @@
+## [0.23.1](https://github.com/discordjs/discord-api-types/compare/0.23.0...0.23.1) (2021-09-08)
+
+### Bug Fixes
+
+- **RESTPostAPIBaseApplicationCommandsJSONBody:** omit `version` field ([#195](https://github.com/discordjs/discord-api-types/issues/195)) ([43cc755](https://github.com/discordjs/discord-api-types/commit/43cc755e3390437d11f7733477a2c86afd6daf23))
+
 # [0.23.0](https://github.com/discordjs/discord-api-types/compare/0.22.0...0.23.0) (2021-09-07)
 
 ### Bug Fixes
