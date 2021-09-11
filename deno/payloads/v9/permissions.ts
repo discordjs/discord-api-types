@@ -49,6 +49,7 @@ export const PermissionFlagsBits = {
 	UsePublicThreads: 1n << 35n,
 	UsePrivateThreads: 1n << 36n,
 	UseExternalStickers: 1n << 37n,
+	StartEmbeddedActivities: 1n << 39n,
 } as const;
 
 /**
