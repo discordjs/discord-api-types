@@ -1,4 +1,4 @@
-import type { APIRole, APIUser } from '../../index';
+import type { APIRole, APIUser, ChannelType } from '../../index';
 import type { Snowflake } from '../../../../globals';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
