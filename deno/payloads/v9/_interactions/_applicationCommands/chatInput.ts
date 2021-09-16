@@ -8,7 +8,7 @@ import type {
 	ApplicationCommandType,
 } from '../applicationCommands.ts';
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
-import { ChannelType } from '../../channel';
+import { ChannelType } from '../../channel.ts';
 
 interface APIApplicationCommandOptionBase {
 	type:
@@ -29,6 +29,7 @@ interface APIApplicationCommandOptionBase {
 export type APIApplicationCommandOption =
 	| APIApplicationCommandArgumentOptions
 	| APIApplicationCommandSubCommandOptions
+	| APIApplicationCommandChannelOptions
 	| APIApplicationCommandOptionBase;
 
 /**

@@ -28,6 +28,7 @@ interface APIApplicationCommandOptionBase {
 export type APIApplicationCommandOption =
 	| APIApplicationCommandArgumentOptions
 	| APIApplicationCommandSubCommandOptions
+	| APIApplicationCommandChannelOptions
 	| APIApplicationCommandOptionBase;
 
 /**
