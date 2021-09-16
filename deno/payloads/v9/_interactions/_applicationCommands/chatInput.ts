@@ -1,4 +1,4 @@
-import type { APIRole, APIUser } from '../../mod.ts';
+import type { APIRole, APIUser, ChannelType } from '../../mod.ts';
 import type { Snowflake } from '../../../../globals.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 import type {
@@ -8,7 +8,6 @@ import type {
 	ApplicationCommandType,
 } from '../applicationCommands.ts';
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
-import { ChannelType } from '../../channel.ts';
 
 interface APIApplicationCommandOptionBase {
 	type:
