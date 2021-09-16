@@ -60,11 +60,11 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
  * This type is exported as a way to make it stricter for you when you're writing your commands
  *
  * In contrast to `APIApplicationCommandSubCommandOptions` and `APIApplicationCommandArgumentOptions`,
- *  these types cannot have an `options` array, or a `choices` array, but they can have a `channel_type` one.
+ *  these types cannot have an `options` array, or a `choices` array, but they can have a `channel_types` one.
  */
 export interface APIApplicationCommandChannelOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
 	type: ApplicationCommandOptionType.Channel;
-	channel_type?: ChannelType;
+	channel_types?: ChannelType[];
 }
 
 /**
