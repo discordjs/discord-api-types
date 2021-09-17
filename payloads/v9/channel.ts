@@ -31,10 +31,7 @@ export interface APIPartialChannel {
 	name?: string;
 }
 
-/**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
- */
-export interface APIChannel extends APIPartialChannel {
+export interface BaseAPIChannel extends APIPartialChannel {
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
@@ -58,18 +55,6 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	nsfw?: boolean;
 	/**
-	 * The id of the last message sent in this channel (may not point to an existing or valid message)
-	 */
-	last_message_id?: Snowflake | null;
-	/**
-	 * The bitrate (in bits) of the voice channel
-	 */
-	bitrate?: number;
-	/**
-	 * The user limit of the voice channel
-	 */
-	user_limit?: number;
-	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
 	 *
@@ -80,36 +65,44 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	rate_limit_per_user?: number;
 	/**
-	 * The recipients of the DM
-	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
-	 */
-	recipients?: APIUser[];
-	/**
 	 * Icon hash
 	 */
 	icon?: string | null;
-	/**
-	 * ID of the DM creator or thread creator
-	 */
-	owner_id?: Snowflake;
-	/**
-	 * Application id of the group DM creator if it is bot-created
-	 */
-	application_id?: Snowflake;
-	/**
-	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
-	 *
-	 * OR
-	 *
-	 * ID of the parent channel for a thread
-	 */
-	parent_id?: Snowflake | null;
 	/**
 	 * When the last pinned message was pinned.
 	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
 	 */
 	last_pin_timestamp?: string | null;
+}
+
+export interface APITextBasedChannel extends BaseAPIChannel {
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+}
+
+export interface APIOwnedChannel extends BaseAPIChannel {
+	type: ChannelType.DM | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+	/**
+	 * ID of the DM creator or thread creator
+	 */
+	owner_id?: Snowflake;
+}
+
+export interface APIVoiceChannel extends BaseAPIChannel {
+	/**
+	 * Application id of the group DM creator if it is bot-created
+	 */
+	application_id?: Snowflake;
+	/**
+	 * The bitrate (in bits) of the voice channel
+	 */
+	bitrate?: number;
+	/**
+	 * The user limit of the voice channel
+	 */
+	user_limit?: number;
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
@@ -122,6 +115,39 @@ export interface APIChannel extends APIPartialChannel {
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
 	video_quality_mode?: VideoQualityMode;
+}
+
+export interface APIDMChannel extends BaseAPIChannel {
+	/**
+	 * The recipients of the DM
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 */
+	recipients?: APIUser[];
+	/**
+	 * Application id of the group DM creator if it is bot-created
+	 */
+	application_id?: Snowflake;
+}
+
+export interface APIThreadChannel extends APITextBasedChannel {
+	type: ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+	/**
+	 * The client users member for the thread, only included in select endpoints
+	 */
+	member?: APIThreadMember;
+	/**
+	 * The metadata for a thread channel not shared by other channels
+	 */
+	thread_metadata?: APIThreadMetadata;
+	/**
+	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
+	 *
+	 * OR
+	 *
+	 * ID of the parent channel for a thread
+	 */
+	parent_id?: Snowflake | null;
 	/**
 	 * The approximate message count of the thread, does not count above 50 even if there are more messages
 	 */
@@ -131,18 +157,15 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	member_count?: number;
 	/**
-	 * The metadata for a thread channel not shared by other channels
-	 */
-	thread_metadata?: APIThreadMetadata;
-	/**
-	 * The client users member for the thread, only included in select endpoints
-	 */
-	member?: APIThreadMember;
-	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 }
+
+/**
+ * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
+ */
+export type APIChannel = APITextBasedChannel | APIOwnedChannel | APIDMChannel | APIVoiceChannel | APIThreadChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
