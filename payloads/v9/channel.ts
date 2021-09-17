@@ -20,12 +20,6 @@ export interface APIPartialChannel {
 	 */
 	id: Snowflake;
 	/**
-	 * The type of the channel
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
-	 */
-	type: ChannelType;
-	/**
 	 * The name of the channel (2-100 characters)
 	 */
 	name?: string;
@@ -82,8 +76,11 @@ export interface APITextBasedChannel extends BaseAPIChannel {
 	last_message_id?: Snowflake | null;
 }
 
-export interface APIOwnedChannel extends BaseAPIChannel {
-	type: ChannelType.DM | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+export interface APITextChannel extends APITextBasedChannel {
+	type: ChannelType.GuildText;
+}
+
+export interface APIOwnedChannel extends APITextBasedChannel {
 	/**
 	 * ID of the DM creator or thread creator
 	 */
@@ -91,6 +88,7 @@ export interface APIOwnedChannel extends BaseAPIChannel {
 }
 
 export interface APIVoiceChannel extends BaseAPIChannel {
+	type: ChannelType.GuildVoice | ChannelType.GuildStageVoice;
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
@@ -117,7 +115,8 @@ export interface APIVoiceChannel extends BaseAPIChannel {
 	video_quality_mode?: VideoQualityMode;
 }
 
-export interface APIDMChannel extends BaseAPIChannel {
+export interface APIDMChannel extends APIOwnedChannel {
+	type: ChannelType.DM | ChannelType.GroupDM;
 	/**
 	 * The recipients of the DM
 	 *
@@ -130,7 +129,7 @@ export interface APIDMChannel extends BaseAPIChannel {
 	application_id?: Snowflake;
 }
 
-export interface APIThreadChannel extends APITextBasedChannel {
+export interface APIThreadChannel extends APITextBasedChannel, APIOwnedChannel {
 	type: ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
 	/**
 	 * The client users member for the thread, only included in select endpoints
@@ -165,7 +164,7 @@ export interface APIThreadChannel extends APITextBasedChannel {
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
-export type APIChannel = APITextBasedChannel | APIOwnedChannel | APIDMChannel | APIVoiceChannel | APIThreadChannel;
+export type APIChannel = APIDMChannel | APIVoiceChannel | APITextChannel | APIThreadChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
