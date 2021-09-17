@@ -962,6 +962,10 @@ export interface APIAttachment {
 	 * Width of file (if image)
 	 */
 	width?: number | null;
+	/**
+	 * Whether this attachment is ephemeral
+	 */
+	ephemeral?: boolean;
 }
 
 /**
