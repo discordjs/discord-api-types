@@ -77,7 +77,7 @@ export interface APITextBasedChannel extends BaseAPIChannel {
 }
 
 export interface APITextChannel extends APITextBasedChannel {
-	type: ChannelType.GuildText;
+	type: ChannelType.GuildText | ChannelType.GuildNews | ChannelType.GuildCategory | ChannelType.GuildStore;
 }
 
 export interface APIOwnedChannel extends APITextBasedChannel {
@@ -130,7 +130,7 @@ export interface APIDMChannel extends APIOwnedChannel {
 }
 
 export interface APIThreadChannel extends APITextBasedChannel, APIOwnedChannel {
-	type: ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+	type: ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread | ChannelType.GuildNewsThread;
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
