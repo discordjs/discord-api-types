@@ -41,13 +41,33 @@ export interface BaseAPIChannel extends APIPartialChannel {
 	 */
 	permission_overwrites?: APIOverwrite[];
 	/**
-	 * The channel topic (0-1024 characters)
-	 */
-	topic?: string | null;
-	/**
 	 * Whether the channel is nsfw
 	 */
 	nsfw?: boolean;
+	/**
+	 * Icon hash
+	 */
+	icon?: string | null;
+	/**
+	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
+	 *
+	 * OR
+	 *
+	 * ID of the parent channel for a thread
+	 */
+	parent_id?: Snowflake | null;
+}
+
+export interface APITextBasedChannel extends BaseAPIChannel {
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
@@ -58,26 +78,26 @@ export interface BaseAPIChannel extends APIPartialChannel {
 	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
 	 */
 	rate_limit_per_user?: number;
-	/**
-	 * Icon hash
-	 */
-	icon?: string | null;
-	/**
-	 * When the last pinned message was pinned.
-	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
-	 */
-	last_pin_timestamp?: string | null;
-}
-
-export interface APITextBasedChannel extends BaseAPIChannel {
-	/**
-	 * The id of the last message sent in this channel (may not point to an existing or valid message)
-	 */
-	last_message_id?: Snowflake | null;
 }
 
 export interface APITextChannel extends APITextBasedChannel {
-	type: ChannelType.GuildText | ChannelType.GuildNews | ChannelType.GuildCategory | ChannelType.GuildStore;
+	type: ChannelType.GuildText;
+	/**
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
+	 */
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
+	/**
+	 * The channel topic (0-1024 characters)
+	 */
+	topic?: string | null;
+}
+
+export interface APINonRateLimitedChannel extends Omit<APITextChannel, 'rate_limit_per_user' | 'type'> {
+	type: ChannelType.GuildNews;
+}
+
+export interface APINonInteractiveChannel extends BaseAPIChannel {
+	type: ChannelType.GuildCategory | ChannelType.GuildStore;
 }
 
 export interface APIOwnedChannel extends APITextBasedChannel {
@@ -89,10 +109,6 @@ export interface APIOwnedChannel extends APITextBasedChannel {
 
 export interface APIVoiceChannel extends BaseAPIChannel {
 	type: ChannelType.GuildVoice | ChannelType.GuildStageVoice;
-	/**
-	 * Application id of the group DM creator if it is bot-created
-	 */
-	application_id?: Snowflake;
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -115,14 +131,23 @@ export interface APIVoiceChannel extends BaseAPIChannel {
 	video_quality_mode?: VideoQualityMode;
 }
 
-export interface APIDMChannel extends APIOwnedChannel {
-	type: ChannelType.DM | ChannelType.GroupDM;
+export interface APIDMChannelBase
+	extends Pick<APITextBasedChannel, 'last_message_id' | 'parent_id'>,
+		Pick<BaseAPIChannel, 'id'> {
 	/**
 	 * The recipients of the DM
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	recipients?: APIUser[];
+}
+
+export interface APIDMChannel extends APIDMChannelBase {
+	type: ChannelType.DM;
+}
+
+export interface APIGroupDMChannel extends APIDMChannelBase, APIOwnedChannel, Pick<BaseAPIChannel, 'name'> {
+	type: ChannelType.GroupDM;
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
@@ -140,14 +165,6 @@ export interface APIThreadChannel extends APITextBasedChannel, APIOwnedChannel {
 	 */
 	thread_metadata?: APIThreadMetadata;
 	/**
-	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
-	 *
-	 * OR
-	 *
-	 * ID of the parent channel for a thread
-	 */
-	parent_id?: Snowflake | null;
-	/**
 	 * The approximate message count of the thread, does not count above 50 even if there are more messages
 	 */
 	message_count?: number;
@@ -155,16 +172,19 @@ export interface APIThreadChannel extends APITextBasedChannel, APIOwnedChannel {
 	 * The approximate member count of the thread, does not count above 50 even if there are more members
 	 */
 	member_count?: number;
-	/**
-	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
-	 */
-	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
-export type APIChannel = APIDMChannel | APIVoiceChannel | APITextChannel | APIThreadChannel;
+export type APIChannel =
+	| APIDMChannel
+	| APIGroupDMChannel
+	| APIVoiceChannel
+	| APITextChannel
+	| APIThreadChannel
+	| APINonInteractiveChannel
+	| APINonRateLimitedChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
