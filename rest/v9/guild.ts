@@ -12,7 +12,9 @@ import type {
 	APIGuildWidget,
 	APIGuildWidgetSettings,
 	APIRole,
+	APITextChannel,
 	APIThreadList,
+	APIVoiceChannel,
 	APIVoiceRegion,
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
@@ -29,7 +31,7 @@ export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSON
 }
 
 export type APIGuildCreatePartialChannel = Partial<
-	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
+	Pick<APIVoiceChannel & APITextChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
 > & {
 	name: string;
 	id?: number | string;
