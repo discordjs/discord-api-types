@@ -12,9 +12,7 @@ import type {
 	APIGuildWidget,
 	APIGuildWidgetSettings,
 	APIRole,
-	APITextChannel,
 	APIThreadList,
-	APIVoiceChannel,
 	APIVoiceRegion,
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
@@ -22,6 +20,8 @@ import type {
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
+	APIDMChannel,
+	APIGroupDMChannel,
 } from '../../payloads/v9/index';
 import type { Nullable } from '../../utils/internals';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
@@ -30,9 +30,7 @@ export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSON
 	id: number | string;
 }
 
-export type APIGuildCreatePartialChannel = Partial<
-	Pick<APIVoiceChannel & APITextChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
-> & {
+export type APIGuildCreatePartialChannel = Partial<Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>> & {
 	name: string;
 	id?: number | string;
 	parent_id?: number | string | null;

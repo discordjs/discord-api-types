@@ -14,7 +14,7 @@ import type { APIUser } from './user';
 /**
  * Not documented, but partial only includes id, name, and type
  */
-export interface APIPartialChannel {
+export interface APIPartialChannel<T extends ChannelType> {
 	/**
 	 * The id of the channel
 	 */
@@ -23,17 +23,39 @@ export interface APIPartialChannel {
 	 * The name of the channel (2-100 characters)
 	 */
 	name?: string;
+	/**
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+	 */
+	type: T;
 }
 
-export interface BaseAPIChannel extends APIPartialChannel {
+export type TextBasedChannels =
+	| ChannelType.DM
+	| ChannelType.GroupDM
+	| ChannelType.GuildNews
+	| ChannelType.GuildPublicThread
+	| ChannelType.GuildPrivateThread
+	| ChannelType.GuildNewsThread
+	| ChannelType.GuildStore
+	| ChannelType.GuildText;
+
+export type GuildChannels = Exclude<
+	TextBasedChannels | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
+	ChannelType.DM | ChannelType.GroupDM
+>;
+
+export interface APITextBasedChannel<T extends ChannelType> extends APIPartialChannel<T> {
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+}
+
+export interface APIGuildChannel<T extends ChannelType> extends APIPartialChannel<T> {
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
 	guild_id?: Snowflake;
-	/**
-	 * Sorting position of the channel
-	 */
-	position?: number;
 	/**
 	 * Explicit permission overwrites for members and roles
 	 *
@@ -41,13 +63,9 @@ export interface BaseAPIChannel extends APIPartialChannel {
 	 */
 	permission_overwrites?: APIOverwrite[];
 	/**
-	 * Whether the channel is nsfw
+	 * Sorting position of the channel
 	 */
-	nsfw?: boolean;
-	/**
-	 * Icon hash
-	 */
-	icon?: string | null;
+	position?: number;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
 	 *
@@ -56,18 +74,31 @@ export interface BaseAPIChannel extends APIPartialChannel {
 	 * ID of the parent channel for a thread
 	 */
 	parent_id?: Snowflake | null;
+	/**
+	 * Whether the channel is nsfw
+	 */
+	nsfw?: boolean;
 }
 
-export interface APITextBasedChannel extends BaseAPIChannel {
+export type GuildTextChannels = Exclude<TextBasedChannels, ChannelType.DM | ChannelType.GroupDM>;
+
+export interface APIGuildTextChannel<T extends GuildTextChannels> extends APITextBasedChannel<T>, APIGuildChannel<T> {
 	/**
-	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 */
-	last_message_id?: Snowflake | null;
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
+	/**
+	 * The channel topic (0-1024 characters)
+	 */
+	topic?: string | null;
 	/**
 	 * When the last pinned message was pinned.
 	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
 	 */
 	last_pin_timestamp?: string | null;
+}
+
+export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildText> {
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
@@ -79,36 +110,11 @@ export interface APITextBasedChannel extends BaseAPIChannel {
 	 */
 	rate_limit_per_user?: number;
 }
+export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
+export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
+export type APIGuildStoreChannel = APIGuildChannel<ChannelType.GuildStore>;
 
-export interface APITextChannel extends APITextBasedChannel {
-	type: ChannelType.GuildText;
-	/**
-	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
-	 */
-	default_auto_archive_duration?: ThreadAutoArchiveDuration;
-	/**
-	 * The channel topic (0-1024 characters)
-	 */
-	topic?: string | null;
-}
-
-export interface APINonRateLimitedChannel extends Omit<APITextChannel, 'rate_limit_per_user' | 'type'> {
-	type: ChannelType.GuildNews;
-}
-
-export interface APINonInteractiveChannel extends BaseAPIChannel {
-	type: ChannelType.GuildCategory | ChannelType.GuildStore;
-}
-
-export interface APIOwnedChannel extends APITextBasedChannel {
-	/**
-	 * ID of the DM creator or thread creator
-	 */
-	owner_id?: Snowflake;
-}
-
-export interface APIVoiceChannel extends BaseAPIChannel {
-	type: ChannelType.GuildVoice | ChannelType.GuildStageVoice;
+export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -131,9 +137,9 @@ export interface APIVoiceChannel extends BaseAPIChannel {
 	video_quality_mode?: VideoQualityMode;
 }
 
-export interface APIDMChannelBase
-	extends Pick<APITextBasedChannel, 'last_message_id' | 'parent_id'>,
-		Pick<BaseAPIChannel, 'id'> {
+export type APIGuildVoiceChannel = APIVoiceChannel;
+
+export interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
 	/**
 	 * The recipients of the DM
 	 *
@@ -142,20 +148,31 @@ export interface APIDMChannelBase
 	recipients?: APIUser[];
 }
 
-export interface APIDMChannel extends APIDMChannelBase {
-	type: ChannelType.DM;
-}
+export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
 
-export interface APIGroupDMChannel extends APIDMChannelBase, APIOwnedChannel, Pick<BaseAPIChannel, 'name'> {
-	type: ChannelType.GroupDM;
+export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM> {
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
 	application_id?: Snowflake;
+	/**
+	 * Icon hash
+	 */
+	icon?: string | null;
+	/**
+	 * ID of the DM creator
+	 */
+	owner_id?: Snowflake;
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
 }
 
-export interface APIThreadChannel extends APITextBasedChannel, APIOwnedChannel {
-	type: ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread | ChannelType.GuildNewsThread;
+export interface APIThreadChannel
+	extends APIGuildChannel<
+		ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread | ChannelType.GuildNewsThread
+	> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -172,6 +189,24 @@ export interface APIThreadChannel extends APITextBasedChannel, APIOwnedChannel {
 	 * The approximate member count of the thread, does not count above 50 even if there are more members
 	 */
 	member_count?: number;
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
+	 *
+	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
+	 */
+	rate_limit_per_user?: number;
+	/**
+	 * ID of the thread creator
+	 */
+	owner_id?: Snowflake;
+	/**
+	 * The id of the last message sent in this thread (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
 }
 
 /**
@@ -180,11 +215,15 @@ export interface APIThreadChannel extends APITextBasedChannel, APIOwnedChannel {
 export type APIChannel =
 	| APIDMChannel
 	| APIGroupDMChannel
-	| APIVoiceChannel
+	| APIDMChannel
 	| APITextChannel
+	| APINewsChannel
+	| APIGuildStoreChannel
+	| APIVoiceChannel
+	| APIGuildVoiceChannel
+	| APIGuildCategoryChannel
 	| APIThreadChannel
-	| APINonInteractiveChannel
-	| APINonRateLimitedChannel;
+	| APINewsChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
