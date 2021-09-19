@@ -59,6 +59,10 @@ export interface APIApplicationCommand {
 	 * If missing, this property should be assumed as `true`
 	 */
 	default_permission?: boolean;
+	/**
+	 * Autoincrementing version identifier updated during substantial record changes
+	 */
+	version: Snowflake;
 }
 
 /**

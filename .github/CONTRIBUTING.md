@@ -1,6 +1,6 @@
 # discord-api-types Contributing Guide
 
-**The issue tracker is only for bug reports and enhancement suggestions. If you have a question, please ask it in the [Discord server](https://discord.gg/bRCvFy9) instead of opening an issue, or on [GitHub Discussions](https://github.com/discordjs/discord-api-types/discussions) – you will get redirected there anyway.**
+**The issue tracker is only for bug reports and enhancement suggestions. If you have a question, please ask it in the [Discord server](https://discord.gg/djs) instead of opening an issue, or on [GitHub Discussions](https://github.com/discordjs/discord-api-types/discussions) – you will get redirected there anyway.**
 
 - [Code of Conduct](https://github.com/discordjs/discord-api-types/blob/main/.github/CODE_OF_CONDUCT.md)
 - [Pull Request Guidelines](#pull-request-guidelines)

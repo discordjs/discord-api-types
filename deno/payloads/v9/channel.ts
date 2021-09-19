@@ -428,9 +428,10 @@ export enum MessageType {
 	GuildDiscoveryGracePeriodFinalWarning,
 	ThreadCreated,
 	Reply,
-	ApplicationCommand,
+	ChatInputCommand,
 	ThreadStarterMessage,
 	GuildInviteReminder,
+	ContextMenuCommand,
 }
 
 /**
@@ -608,6 +609,10 @@ export interface APIThreadMetadata {
 	 * Whether the thread is locked; when a thread is locked, only users with `MANAGE_THREADS` can unarchive it
 	 */
 	locked?: boolean;
+	/**
+	 * Whether non-moderators can add other non-moderators to the thread; only available on private threads
+	 */
+	invitable?: boolean;
 }
 
 export enum ThreadAutoArchiveDuration {
@@ -784,7 +789,7 @@ export interface APIEmbedThumbnail {
 	/**
 	 * Source url of thumbnail (only supports http(s) and attachments)
 	 */
-	url?: string;
+	url: string;
 	/**
 	 * A proxied url of the thumbnail
 	 */
@@ -824,7 +829,7 @@ export interface APIEmbedImage {
 	/**
 	 * Source url of image (only supports http(s) and attachments)
 	 */
-	url?: string;
+	url: string;
 	/**
 	 * A proxied url of the image
 	 */
@@ -862,7 +867,7 @@ export interface APIEmbedAuthor {
 	 *
 	 * Length limit: 256 characters
 	 */
-	name?: string;
+	name: string;
 	/**
 	 * URL of author
 	 */
@@ -957,6 +962,10 @@ export interface APIAttachment {
 	 * Width of file (if image)
 	 */
 	width?: number | null;
+	/**
+	 * Whether this attachment is ephemeral
+	 */
+	ephemeral?: boolean;
 }
 
 /**

@@ -382,8 +382,9 @@ export enum MessageType {
 	GuildDiscoveryGracePeriodInitialWarning,
 	GuildDiscoveryGracePeriodFinalWarning,
 	Reply = 19,
-	ApplicationCommand,
+	ChatInputCommand,
 	GuildInviteReminder = 22,
+	ContextMenuCommand,
 }
 
 /**
@@ -659,7 +660,7 @@ export interface APIEmbedThumbnail {
 	/**
 	 * Source url of thumbnail (only supports http(s) and attachments)
 	 */
-	url?: string;
+	url: string;
 	/**
 	 * A proxied url of the thumbnail
 	 */
@@ -699,7 +700,7 @@ export interface APIEmbedImage {
 	/**
 	 * Source url of image (only supports http(s) and attachments)
 	 */
-	url?: string;
+	url: string;
 	/**
 	 * A proxied url of the image
 	 */
@@ -737,7 +738,7 @@ export interface APIEmbedAuthor {
 	 *
 	 * Length limit: 256 characters
 	 */
-	name?: string;
+	name: string;
 	/**
 	 * URL of author
 	 */
@@ -832,6 +833,10 @@ export interface APIAttachment {
 	 * Width of file (if image)
 	 */
 	width?: number | null;
+	/**
+	 * Whether this attachment is ephemeral
+	 */
+	ephemeral?: boolean;
 }
 
 /**
