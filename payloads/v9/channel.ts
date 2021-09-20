@@ -36,7 +36,6 @@ export type TextBasedChannels =
 	| ChannelType.GuildPublicThread
 	| ChannelType.GuildPrivateThread
 	| ChannelType.GuildNewsThread
-	| ChannelType.GuildStore
 	| ChannelType.GuildText;
 
 export type GuildChannels = Exclude<
@@ -137,8 +136,6 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	video_quality_mode?: VideoQualityMode;
 }
 
-export type APIGuildVoiceChannel = APIVoiceChannel;
-
 export interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
 	/**
 	 * The recipients of the DM
@@ -220,7 +217,6 @@ export type APIChannel =
 	| APINewsChannel
 	| APIGuildStoreChannel
 	| APIVoiceChannel
-	| APIGuildVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
 	| APINewsChannel;
