@@ -2,7 +2,9 @@ import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
 	APIBan,
 	APIChannel,
+	APIDMChannel,
 	APIExtendedInvite,
+	APIGroupDMChannel,
 	APIGuild,
 	APIGuildIntegration,
 	APIGuildMember,
@@ -27,9 +29,7 @@ export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSON
 	id: number | string;
 }
 
-export type APIGuildCreatePartialChannel = Partial<
-	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
-> & {
+export type APIGuildCreatePartialChannel = Partial<Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>> & {
 	name: string;
 	id?: number | string;
 	parent_id?: number | string | null;
