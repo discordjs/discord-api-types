@@ -14,7 +14,7 @@ import type { APIUser } from './user';
 /**
  * Not documented, but partial only includes id, name, and type
  */
-export interface APIPartialChannel<T extends ChannelType> {
+export interface APIPartialChannel {
 	/**
 	 * The id of the channel
 	 */
@@ -26,6 +26,14 @@ export interface APIPartialChannel<T extends ChannelType> {
 	/**
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 	 */
+	type: ChannelType;
+}
+
+/**
+ * This interface is used to allow easy extension for other channel types. While
+ * also allowing `APIPartialChannel` to be used without breaking.
+ */
+export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel {
 	type: T;
 }
 
@@ -43,14 +51,14 @@ export type GuildChannels = Exclude<
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
-export interface APITextBasedChannel<T extends ChannelType> extends APIPartialChannel<T> {
+export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * The id of the last message sent in this channel (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
 }
 
-export interface APIGuildChannel<T extends ChannelType> extends APIPartialChannel<T> {
+export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
