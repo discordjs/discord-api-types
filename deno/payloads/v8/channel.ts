@@ -41,7 +41,7 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 
 export type TextBasedChannels = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
 
-export type APIGuildChannel = Exclude<
+export type GuildChannels = Exclude<
 	TextBasedChannels | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
 	ChannelType.DM | ChannelType.GroupDM
 >;
@@ -84,7 +84,9 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 
 export type GuildTextChannelTypes = Exclude<TextBasedChannels, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannels> extends APITextBasedChannel<T>, APIGuildChannel<T> {
+export interface APIGuildTextChannel<T extends GuildTextChannelTypes>
+	extends APITextBasedChannel<T>,
+		APIGuildChannel<T> {
 	/**
 	 * The channel topic (0-1024 characters)
 	 */
