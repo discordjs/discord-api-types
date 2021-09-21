@@ -41,7 +41,7 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 
 export type TextBasedChannels = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
 
-export type GuildChannels = Exclude<
+export type APIGuildChannel = Exclude<
 	TextBasedChannels | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
 	ChannelType.DM | ChannelType.GroupDM
 >;
