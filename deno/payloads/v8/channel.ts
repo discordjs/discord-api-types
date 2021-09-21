@@ -137,7 +137,7 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	video_quality_mode?: VideoQualityMode;
 }
 
-export interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
 	/**
 	 * The recipients of the DM
 	 *
@@ -171,7 +171,6 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
 export type APIChannel =
-	| APIDMChannel
 	| APIGroupDMChannel
 	| APIDMChannel
 	| APITextChannel

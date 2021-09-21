@@ -20,13 +20,15 @@ export interface APIPartialChannel {
 	 */
 	id: Snowflake;
 	/**
-	 * The name of the channel (2-100 characters)
-	 */
-	name?: string;
-	/**
+	 * The type of the channel
+	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 	 */
 	type: ChannelType;
+	/**
+	 * The name of the channel (2-100 characters)
+	 */
+	name?: string;
 }
 
 /**
@@ -146,7 +148,7 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	video_quality_mode?: VideoQualityMode;
 }
 
-export interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
 	/**
 	 * The recipients of the DM
 	 *
@@ -220,7 +222,6 @@ export interface APIThreadChannel
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
 export type APIChannel =
-	| APIDMChannel
 	| APIGroupDMChannel
 	| APIDMChannel
 	| APITextChannel
