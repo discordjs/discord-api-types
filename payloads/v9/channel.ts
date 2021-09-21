@@ -48,7 +48,7 @@ export type TextChannelTypes =
 	| ChannelType.GuildNewsThread
 	| ChannelType.GuildText;
 
-export type GuildChannels = Exclude<
+export type GuildChannelTypes = Exclude<
 	TextChannelTypes | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
 	ChannelType.DM | ChannelType.GroupDM
 >;
@@ -121,6 +121,7 @@ export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildTex
 	 */
 	rate_limit_per_user?: number;
 }
+
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 export type APIGuildStoreChannel = APIGuildChannel<ChannelType.GuildStore>;
