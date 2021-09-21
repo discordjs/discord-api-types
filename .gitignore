@@ -45,3 +45,6 @@ voice/**/*.js
 voice/**/*.map
 voice/**/*.d.ts
 voice/**/*.mjs
+
+# macOS files
+.DS_store
