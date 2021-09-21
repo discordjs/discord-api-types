@@ -39,10 +39,10 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 	type: T;
 }
 
-export type TextBasedChannels = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
+export type TextChannelTypes = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
 
 export type GuildChannels = Exclude<
-	TextBasedChannels | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
+	TextChannelTypes | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
@@ -82,7 +82,7 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	nsfw?: boolean;
 }
 
-export type GuildTextChannelTypes = Exclude<TextBasedChannels, ChannelType.DM | ChannelType.GroupDM>;
+export type GuildTextChannelTypes = Exclude<TextChannelTypes, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APIGuildTextChannel<T extends GuildTextChannelTypes>
 	extends APITextBasedChannel<T>,
