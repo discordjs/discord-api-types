@@ -62,7 +62,7 @@ export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicatio
  */
 export interface APIApplicationCommandChannelOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
 	type: ApplicationCommandOptionType.Channel;
-	channel_types?: ChannelType[];
+	channel_types?: Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>[];
 }
 
 /**
