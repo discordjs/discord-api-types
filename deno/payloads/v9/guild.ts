@@ -513,6 +513,10 @@ export enum GuildFeature {
 	 * Guild has access to create private threads
 	 */
 	PrivateThreads = 'PRIVATE_THREADS',
+	/**
+	 * Guild is able to set role icons
+	 */
+	RoleIcons = 'ROLE_ICONS',
 }
 
 /**
