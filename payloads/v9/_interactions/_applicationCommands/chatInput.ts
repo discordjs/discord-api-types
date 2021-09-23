@@ -46,14 +46,14 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
  * but they can have a either a `choices` or a `autocomplete` field
  */
-export type APIApplicationCommandArgumentOptions = Omit<APIApplicationCommandOptionBase, 'type'> & {
+export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
 	type:
 		| ApplicationCommandOptionType.String
 		| ApplicationCommandOptionType.Integer
 		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
 	autocomplete?: boolean;
-};
+}
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
