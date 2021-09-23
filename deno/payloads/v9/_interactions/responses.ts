@@ -8,6 +8,7 @@ export enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
 	MessageComponent,
+	ApplicationCommandAutocomplete,
 }
 
 /**
@@ -22,6 +23,10 @@ export type APIInteractionResponse =
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
+}
+
+export interface APICommandAutocompleteResponse {
+	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -67,6 +72,10 @@ export enum InteractionResponseType {
 	 * ACK a button interaction and edit the message to which the button was attached
 	 */
 	UpdateMessage,
+	/**
+	 * For autocomplete interactions
+	 */
+	ApplicationCommandAutocompleteResult,
 }
 
 /**
