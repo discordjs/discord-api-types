@@ -40,30 +40,20 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
 	options?: APIApplicationCommandOption[];
 }
 
-// This is here because auto completed command options aren't a seperate 'type', and it only
-// applies to the the choices types.
-type AutoCompleteOrChoices =
-	| { type: ApplicationCommandOptionType.String; choices?: never; autocomplete: true }
-	| { choices?: APIApplicationCommandOptionChoice[]; autocomplete?: false };
-
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands
  *
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
- * but they can have a `choices` one
+ * but they can have a either a `choices` or a `autocomplete` field
  */
 export type APIApplicationCommandArgumentOptions = Omit<APIApplicationCommandOptionBase, 'type'> & {
 	type:
 		| ApplicationCommandOptionType.String
 		| ApplicationCommandOptionType.Integer
 		| ApplicationCommandOptionType.Number;
-} & AutoCompleteOrChoices;
-
-export interface APIApplicationCommandAutocompleteOptions
-	extends Omit<APIApplicationCommandArgumentOptions, 'choices' | 'autocomplete'> {
-	choices?: never;
-	autocomplete: true;
-}
+	choices?: APIApplicationCommandOptionChoice[];
+	autocomplete?: boolean;
+};
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
