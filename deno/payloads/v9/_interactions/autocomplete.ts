@@ -1,6 +1,6 @@
 import type { APIBaseInteraction, ApplicationCommandOptionType, InteractionType } from '../mod.ts';
 
-export type APICommandAutocompleteInteraction = APIBaseInteraction<
+export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	InteractionType.ApplicationCommandAutocomplete,
 	APICommandAutocompleteInteractionData
 >;

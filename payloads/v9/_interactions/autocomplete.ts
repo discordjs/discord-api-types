@@ -1,6 +1,6 @@
 import type { APIBaseInteraction, ApplicationCommandOptionType, InteractionType } from '..';
 
-export type APICommandAutocompleteInteraction = APIBaseInteraction<
+export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	InteractionType.ApplicationCommandAutocomplete,
 	APICommandAutocompleteInteractionData
 >;

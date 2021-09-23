@@ -9,7 +9,7 @@ import type {
 	APIApplicationCommandGuildInteraction,
 	APIApplicationCommandInteraction,
 } from './_interactions/applicationCommands.ts';
-import type { APICommandAutocompleteInteraction } from './_interactions/autocomplete.ts';
+import type { APIApplicationCommandAutocompleteInteraction } from './_interactions/autocomplete.ts';
 
 export * from './_interactions/base.ts';
 export * from './_interactions/messageComponents.ts';
@@ -24,7 +24,7 @@ export type APIInteraction =
 	| APIPingInteraction
 	| APIApplicationCommandInteraction
 	| APIMessageComponentInteraction
-	| APICommandAutocompleteInteraction;
+	| APIApplicationCommandAutocompleteInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
