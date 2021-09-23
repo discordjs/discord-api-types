@@ -1,5 +1,6 @@
 import type { MessageFlags } from '../index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -27,6 +28,7 @@ export interface APIInteractionResponsePong {
 
 export interface APICommandAutocompleteResponse {
 	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
+	data: APICommandAutocompleteInteractionResponseCallbackData;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -85,3 +87,7 @@ export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
 	'username' | 'avatar_url'
 > & { flags?: MessageFlags };
+
+export interface APICommandAutocompleteInteractionResponseCallbackData extends APIInteractionResponseCallbackData {
+	choices?: APIApplicationCommandOptionChoice[];
+}

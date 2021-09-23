@@ -6,7 +6,6 @@ import type {
 	APIMessage,
 	APIWebhook,
 	APIAttachment,
-	APIApplicationCommandOptionChoice,
 } from '../../payloads/v9/index';
 import type { Nullable } from '../../utils/internals';
 
@@ -136,10 +135,6 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent[];
-	/**
-	 * Autocomplete choices (limited to 25 choices)
-	 */
-	choices?: APIApplicationCommandOptionChoice[];
 }
 
 /**
