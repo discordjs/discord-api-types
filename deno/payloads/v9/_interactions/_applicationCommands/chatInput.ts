@@ -46,7 +46,7 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * This type is exported as a way to make it stricter for you when you're writing your commands
  *
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
- * but they can have a either a `choices` or a `autocomplete` field
+ * but they can have a either a `choices` or a `autocomplete` field where it's set to false.
  */
 export interface APIApplicationCommandArgumentOptions
 	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
@@ -58,6 +58,12 @@ export interface APIApplicationCommandArgumentOptions
 	autocomplete?: false;
 }
 
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandArgumentOptions`, these types cannot have an `choices` array,
+ * but they can a `autocomplete` field where it's set to `true`
+ */
 export interface APIApplicationCommandAutocompleteOptions
 	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
 	type:
