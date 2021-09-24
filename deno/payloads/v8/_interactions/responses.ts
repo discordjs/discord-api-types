@@ -1,5 +1,6 @@
 import type { MessageFlags } from '../mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v8.ts';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -8,6 +9,7 @@ export enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
 	MessageComponent,
+	ApplicationCommandAutocomplete,
 }
 
 /**
@@ -22,6 +24,11 @@ export type APIInteractionResponse =
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
+}
+
+export interface APICommandAutocompleteResponse {
+	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
+	data: APICommandAutocompleteInteractionResponseCallbackData;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -67,6 +74,10 @@ export enum InteractionResponseType {
 	 * ACK a button interaction and edit the message to which the button was attached
 	 */
 	UpdateMessage,
+	/**
+	 * For autocomplete interactions
+	 */
+	ApplicationCommandAutocompleteResult,
 }
 
 /**
@@ -76,3 +87,7 @@ export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
 	'username' | 'avatar_url'
 > & { flags?: MessageFlags };
+
+export interface APICommandAutocompleteInteractionResponseCallbackData extends APIInteractionResponseCallbackData {
+	choices?: APIApplicationCommandOptionChoice[];
+}
