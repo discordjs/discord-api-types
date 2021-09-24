@@ -20,6 +20,7 @@ interface APIApplicationCommandOptionBase {
 	description: string;
 	default?: boolean;
 	required?: boolean;
+	autocomplete?: never;
 }
 
 /**
@@ -28,7 +29,8 @@ interface APIApplicationCommandOptionBase {
 export type APIApplicationCommandOption =
 	| APIApplicationCommandArgumentOptions
 	| APIApplicationCommandSubCommandOptions
-	| APIApplicationCommandOptionBase;
+	| APIApplicationCommandOptionBase
+	| APIApplicationCommandAutocompleteOptions;
 
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands
@@ -46,13 +48,23 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
  * but they can have a either a `choices` or a `autocomplete` field
  */
-export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+export interface APIApplicationCommandArgumentOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
 	type:
 		| ApplicationCommandOptionType.String
 		| ApplicationCommandOptionType.Integer
 		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
-	autocomplete?: boolean;
+	autocomplete?: false;
+}
+
+export interface APIApplicationCommandAutocompleteOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
+	type:
+		| ApplicationCommandOptionType.String
+		| ApplicationCommandOptionType.Integer
+		| ApplicationCommandOptionType.Number;
+	autocomplete: true;
 }
 
 /**
