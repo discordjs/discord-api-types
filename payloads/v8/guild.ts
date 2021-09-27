@@ -594,6 +594,10 @@ export interface APIGuildMember {
 	 */
 	nick?: string | null;
 	/**
+	 * the member's guild avatar hash
+	 */
+	avatar?: string;
+	/**
 	 * Array of role object ids
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
