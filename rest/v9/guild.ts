@@ -532,15 +532,11 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	 */
 	hoist?: boolean | null;
 	/**
-	 * the role's icon image (if the guild has the `ROLE_ICONS` feature)
-	 *
-	 * @default null
+	 * The role's icon image (if the guild has the `ROLE_ICONS` feature)
 	 */
 	icon?: string | null;
 	/**
-	 * the role's unicode emoji (if the guild has the `ROLE_ICONS` feature)
-	 *
-	 * @default null
+	 * The role's unicode emoji (if the guild has the `ROLE_ICONS` feature)
 	 */
 	unicode_emoji?: string | null;
 	/**
@@ -596,11 +592,11 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	 */
 	hoist?: boolean | null;
 	/**
-	 * the role's icon image (if the guild has the `ROLE_ICONS` feature)
+	 * The role's icon image (if the guild has the `ROLE_ICONS` feature)
 	 */
 	icon?: string | null;
 	/**
-	 * the role's unicode emoji (if the guild has the `ROLE_ICONS` feature)
+	 * The role's unicode emoji (if the guild has the `ROLE_ICONS` feature)
 	 */
 	unicode_emoji?: string | null;
 	/**
