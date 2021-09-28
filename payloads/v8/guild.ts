@@ -596,7 +596,7 @@ export interface APIGuildMember {
 	/**
 	 * the member's guild avatar hash
 	 */
-	avatar?: string;
+	avatar?: string | null;
 	/**
 	 * Array of role object ids
 	 *
