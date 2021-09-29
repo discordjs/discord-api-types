@@ -536,7 +536,7 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	 */
 	icon?: string | null;
 	/**
-	 * The role's unicode emoji (if the guild has the `ROLE_ICONS` feature)
+	 * The role's unicode emoji as a standard emoji (if the guild has the `ROLE_ICONS` feature)
 	 */
 	unicode_emoji?: string | null;
 	/**
@@ -596,7 +596,7 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	 */
 	icon?: string | null;
 	/**
-	 * The role's unicode emoji (if the guild has the `ROLE_ICONS` feature)
+	 * The role's unicode emoji as a standard emoji (if the guild has the `ROLE_ICONS` feature)
 	 */
 	unicode_emoji?: string | null;
 	/**

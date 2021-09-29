@@ -80,7 +80,7 @@ export interface APIRole {
 	 */
 	icon?: string;
 	/**
-	 * The role unicode emoji
+	 * The role unicode emoji as a standard emoji
 	 */
 	unicode_emoji?: string;
 	/**
