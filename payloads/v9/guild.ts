@@ -466,6 +466,10 @@ export const enum GuildFeature {
 	Partnered = 'PARTNERED',
 	RelayEnabled = 'RELAY_ENABLED',
 	/**
+	 * Guild is able to set role icons
+	 */
+	RoleIcons = 'ROLE_ICONS',
+	/**
 	 * Guild has access to set a vanity URL
 	 */
 	VanityURL = 'VANITY_URL',

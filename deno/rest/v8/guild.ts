@@ -526,6 +526,14 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	 */
 	hoist?: boolean | null;
 	/**
+	 * The role's icon image (if the guild has the `ROLE_ICONS` feature)
+	 */
+	icon?: string | null;
+	/**
+	 * The role's unicode emoji as a standard emoji (if the guild has the `ROLE_ICONS` feature)
+	 */
+	unicode_emoji?: string | null;
+	/**
 	 * Whether the role should be mentionable
 	 *
 	 * @default false
@@ -577,6 +585,14 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	 * Whether the role should be displayed separately in the sidebar
 	 */
 	hoist?: boolean | null;
+	/**
+	 * The role's icon image (if the guild has the `ROLE_ICONS` feature)
+	 */
+	icon?: string | null;
+	/**
+	 * The role's unicode emoji as a standard emoji (if the guild has the `ROLE_ICONS` feature)
+	 */
+	unicode_emoji?: string | null;
 	/**
 	 * Whether the role should be mentionable
 	 */

@@ -80,6 +80,14 @@ export interface APIRole {
 	 */
 	hoist: boolean;
 	/**
+	 * The role icon hash
+	 */
+	icon?: string;
+	/**
+	 * The role unicode emoji as a standard emoji
+	 */
+	unicode_emoji?: string;
+	/**
 	 * Position of this role
 	 */
 	position: number;
