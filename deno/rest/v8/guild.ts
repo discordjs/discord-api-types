@@ -8,6 +8,7 @@ import type {
 	APIGuildMember,
 	APIGuildMembershipScreening,
 	APIGuildPreview,
+	APIGuildScheduledEvent,
 	APIGuildWelcomeScreen,
 	APIGuildWidget,
 	APIGuildWidgetSettings,
@@ -775,3 +776,10 @@ export interface RESTPatchAPIGuildWelcomeScreenJSONBody extends Nullable<Partial
 	 */
 	enabled?: boolean | null;
 }
+
+export type RESTPostAPIGuildScheduledEventJSONBody = Pick<
+	APIGuildScheduledEvent,
+	'channel_id' | 'description' | 'name' | 'privacy_level' | 'scheduled_start_time' | 'entity_type'
+>;
+
+export type RESTPatchAPIGuildScheduledEventJSONBody = Partial<RESTPostAPIGuildScheduledEventJSONBody>;

@@ -7,7 +7,7 @@ import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
 import type { APIRole } from './permissions';
-import type { APIStageInstance } from './stageInstance';
+import type { APIStageInstance, StageInstancePrivacyLevel } from './stageInstance';
 import type { APISticker } from './sticker';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
@@ -923,4 +923,96 @@ export const enum MembershipScreeningFieldType {
 	 * Server Rules
 	 */
 	Terms = 'TERMS',
+}
+
+export const enum GuildScheduledEventStatusTypes {
+	SCHEDULED = 1,
+	ACTIVE,
+	COMPLETETED,
+	CANCELLED,
+}
+
+export const enum GuildScheduledEventEntityTypes {
+	NONE,
+	STAGE_INSTANCE,
+	VOICE,
+	LOCATION,
+}
+
+export interface APIGuildScheduledEventEntityMetadata {
+	/**
+	 * The speakers of the stage channel
+	 */
+	speaker_ids?: Snowflake[];
+	/**
+	 * The location of the event
+	 */
+	location?: string;
+}
+
+export interface APIGuildScheduledEvent {
+	/**
+	 * The id of the event
+	 */
+	id: Snowflake;
+	/**
+	 * The guild id of the event
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The channel id of the event
+	 */
+	channel_id?: Snowflake;
+	/**
+	 * The name of the event
+	 */
+	name: string;
+	/**
+	 * The description of the event
+	 */
+	description?: string;
+	/**
+	 * The image of the event
+	 */
+	image?: string;
+	/**
+	 * The time the event will start
+	 */
+	scheduled_start_time: string;
+	/**
+	 * The time the event will end, or `null` if the event does not have a scheduled time to end
+	 */
+	scheduled_end_time?: string | null;
+	/**
+	 * Event privacy level
+	 */
+	privacy_level: StageInstancePrivacyLevel;
+	/**
+	 * The scheduled status of the event
+	 */
+	status: GuildScheduledEventStatusTypes;
+	/**
+	 * The scheduled entity type of the event
+	 */
+	entity_type: GuildScheduledEventEntityTypes;
+	/**
+	 * Entity ID
+	 */
+	entity_id?: Snowflake;
+	/**
+	 * Metadata for the event
+	 */
+	entity_metadata: APIGuildScheduledEventEntityMetadata;
+	/**
+	 * Sku ids
+	 */
+	sku_ids: Snowflake[];
+	/**
+	 * skus
+	 */
+	skus: unknown[];
+	/**
+	 * Users subscribed to the event
+	 */
+	user_count?: number;
 }

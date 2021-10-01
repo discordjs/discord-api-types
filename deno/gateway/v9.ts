@@ -11,6 +11,7 @@ import type {
 	APIGuild,
 	APIGuildIntegration,
 	APIGuildMember,
+	APIGuildScheduledEvent,
 	APIMessage,
 	APIMessageComponentInteraction,
 	APIRole,
@@ -211,6 +212,11 @@ export enum GatewayDispatchEvents {
 	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
 	GuildStickersUpdate = 'GUILD_STICKERS_UPDATE',
 	GuildUpdate = 'GUILD_UPDATE',
+	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
+	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
+	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
+	GuildScheduledEventUserCreate = 'GUILD_SCHEDULED_EVENT_USER_CREATE',
+	GuildScheduledEventUserDelete = 'GUILD_SCHEDULED_EVENT_USER_DELETE',
 	IntegrationCreate = 'INTEGRATION_CREATE',
 	IntegrationDelete = 'INTEGRATION_DELETE',
 	IntegrationUpdate = 'INTEGRATION_UPDATE',
@@ -817,6 +823,61 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	 */
 	role_id: Snowflake;
 }
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-scheduled-event-create
+ */
+export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventCreate,
+	APIGuildScheduledEvent
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-scheduled-event-update
+ */
+export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUpdate,
+	APIGuildScheduledEvent
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-scheduled-event-delete
+ */
+export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventDelete,
+	APIGuildScheduledEvent
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-scheduled-event-user-create
+ * https://discord.com/developers/docs/topics/gateway#guild-scheduled-event-user-delete
+ */
+export interface GuildScheduledEventUserDispatchData {
+	/**
+	 * Id of the guild scheduled event
+	 */
+	guild_scheduled_event_id: Snowflake;
+	/**
+	 * Id of the user
+	 */
+	user_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-scheduled-event-user-create
+ */
+export type APIGuildScheduledEventUserCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserCreate,
+	GuildScheduledEventUserDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-scheduled-event-user-delete
+ */
+export type APIGuildScheduledEventUserDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserDelete,
+	GuildScheduledEventUserDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-create

@@ -3,6 +3,7 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals.ts';
+import type { StageInstancePrivacyLevel } from '../v8.ts';
 import type { APIChannel } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway.ts';
@@ -931,4 +932,96 @@ export enum MembershipScreeningFieldType {
 	 * Server Rules
 	 */
 	Terms = 'TERMS',
+}
+
+export enum GuildScheduledEventStatusTypes {
+	SCHEDULED = 1,
+	ACTIVE,
+	COMPLETETED,
+	CANCELLED,
+}
+
+export enum GuildScheduledEventEntityTypes {
+	NONE,
+	STAGE_INSTANCE,
+	VOICE,
+	LOCATION,
+}
+
+export interface APIGuildScheduledEventEntityMetadata {
+	/**
+	 * The speakers of the stage channel
+	 */
+	speaker_ids?: Snowflake[];
+	/**
+	 * The location of the event
+	 */
+	location?: string;
+}
+
+export interface APIGuildScheduledEvent {
+	/**
+	 * The id of the event
+	 */
+	id: Snowflake;
+	/**
+	 * The guild id of the event
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The channel id of the event
+	 */
+	channel_id?: Snowflake;
+	/**
+	 * The name of the event
+	 */
+	name: string;
+	/**
+	 * The description of the event
+	 */
+	description?: string;
+	/**
+	 * The image of the event
+	 */
+	image?: string;
+	/**
+	 * The time the event will start
+	 */
+	scheduled_start_time: string;
+	/**
+	 * The time the event will end, or `null` if the event does not have a scheduled time to end
+	 */
+	scheduled_end_time?: string | null;
+	/**
+	 * Event privacy level
+	 */
+	privacy_level: StageInstancePrivacyLevel;
+	/**
+	 * The scheduled status of the event
+	 */
+	status: GuildScheduledEventStatusTypes;
+	/**
+	 * The scheduled entity type of the event
+	 */
+	entity_type: GuildScheduledEventEntityTypes;
+	/**
+	 * Entity ID
+	 */
+	entity_id?: Snowflake;
+	/**
+	 * Metadata for the event
+	 */
+	entity_metadata: APIGuildScheduledEventEntityMetadata;
+	/**
+	 * Sku ids
+	 */
+	sku_ids: Snowflake[];
+	/**
+	 * skus
+	 */
+	skus: unknown[];
+	/**
+	 * Users subscribed to the event
+	 */
+	user_count?: number;
 }

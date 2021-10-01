@@ -3,7 +3,7 @@
  */
 
 import type { APIPartialChannel } from './channel.ts';
-import type { APIPartialGuild } from './guild.ts';
+import type { APIPartialGuild, APIGuildScheduledEvent } from './guild.ts';
 import type { APIApplication } from './application.ts';
 import type { APIInviteStageInstance } from './stageInstance.ts';
 import type { APIUser } from './user.ts';
@@ -68,6 +68,10 @@ export interface APIInvite {
 	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
 	 */
 	stage_instance?: APIInviteStageInstance;
+	/**
+	 * Guild scheduled event data, only included if `guild_scheduled_event_id` contains a valid guild scheduled event id
+	 */
+	guild_scheduled_event?: APIGuildScheduledEvent;
 }
 
 /**
