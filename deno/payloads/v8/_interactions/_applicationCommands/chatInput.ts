@@ -13,7 +13,6 @@ interface APIApplicationCommandOptionBase {
 	type:
 		| ApplicationCommandOptionType.Boolean
 		| ApplicationCommandOptionType.User
-		| ApplicationCommandOptionType.Channel
 		| ApplicationCommandOptionType.Role
 		| ApplicationCommandOptionType.Mentionable;
 	name: string;
