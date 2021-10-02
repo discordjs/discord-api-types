@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../../globals';
-import type { APIPartialChannel } from '../channel';
+import type { APIPartialChannel, APIThreadMetadata } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIBaseInteraction } from './base';
 import type { InteractionType } from './responses';
@@ -85,7 +85,9 @@ export type APIApplicationCommandInteractionData =
  * https://discord.com/developers/docs/resources/channel#channel-object
  */
 export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
+	thread_metadata?: APIThreadMetadata | null;
 	permissions: Permissions;
+	parent_id?: string | null;
 }
 
 /**
