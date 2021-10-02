@@ -594,7 +594,7 @@ export interface APIGuildMember {
 	 */
 	nick?: string | null;
 	/**
-	 * the member's guild avatar hash
+	 * The member's guild avatar hash
 	 */
 	avatar?: string | null;
 	/**
