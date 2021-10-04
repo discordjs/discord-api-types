@@ -78,10 +78,6 @@ export interface APIVoiceRegion {
 	 */
 	name: string;
 	/**
-	 * `true` if this is a vip-only server
-	 */
-	vip: boolean;
-	/**
 	 * `true` for a single server that is closest to the current user's client
 	 */
 	optimal: boolean;
