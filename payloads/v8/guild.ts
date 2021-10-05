@@ -445,6 +445,12 @@ export const enum GuildFeature {
 	 */
 	Featurable = 'FEATURABLE',
 	/**
+	 * Guild is a Student Hub
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 */
+	Hub = 'HUB',
+	/**
 	 * Guild has access to set an invite splash background
 	 */
 	InviteSplash = 'INVITE_SPLASH',
