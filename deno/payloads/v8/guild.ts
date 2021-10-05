@@ -449,6 +449,18 @@ export enum GuildFeature {
 	 */
 	InviteSplash = 'INVITE_SPLASH',
 	/**
+	 * Guild has enabled Membership Screening
+	 */
+	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
+	/**
+	 * Guild has enabled monetization
+	 */
+	MonetizationEnabled = 'MONETIZATION_ENABLED',
+	/**
+	 * Guild has increased custom sticker slots
+	 */
+	MoreStickers = 'MORE_STICKERS',
+	/**
 	 * Guild has access to create news channels
 	 */
 	News = 'NEWS',
@@ -456,11 +468,31 @@ export enum GuildFeature {
 	 * Guild is partnered
 	 */
 	Partnered = 'PARTNERED',
+	/**
+	 * Guild can be previewed before joining via Membership Screening or the directory
+	 */
+	PreviewEnabled = 'PREVIEW_ENABLED',
+	/**
+	 * Guild has access to create private threads
+	 */
+	PrivateThreads = 'PRIVATE_THREADS',
 	RelayEnabled = 'RELAY_ENABLED',
 	/**
 	 * Guild is able to set role icons
 	 */
 	RoleIcons = 'ROLE_ICONS',
+	/**
+	 * Guild has access to the seven day archive time for threads
+	 */
+	SevenDayThreadArchive = 'SEVEN_DAY_THREAD_ARCHIVE',
+	/**
+	 * Guild has access to the three day archive time for threads
+	 */
+	ThreeDayThreadArchive = 'THREE_DAY_THREAD_ARCHIVE',
+	/**
+	 * Guild has enabled ticketed events
+	 */
+	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
 	/**
 	 * Guild has access to set a vanity URL
 	 */
@@ -477,38 +509,6 @@ export enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
-	/**
-	 * Guild has enabled Membership Screening
-	 */
-	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
-	/**
-	 * Guild can be previewed before joining via Membership Screening or the directory
-	 */
-	PreviewEnabled = 'PREVIEW_ENABLED',
-	/**
-	 * Guild has enabled ticketed events
-	 */
-	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
-	/**
-	 * Guild has enabled monetization
-	 */
-	MonetizationEnabled = 'MONETIZATION_ENABLED',
-	/**
-	 * Guild has increased custom sticker slots
-	 */
-	MoreStickers = 'MORE_STICKERS',
-	/**
-	 * Guild has access to the three day archive time for threads
-	 */
-	ThreeDayThreadArchive = 'THREE_DAY_THREAD_ARCHIVE',
-	/**
-	 * Guild has access to the seven day archive time for threads
-	 */
-	SevenDayThreadArchive = 'SEVEN_DAY_THREAD_ARCHIVE',
-	/**
-	 * Guild has access to create private threads
-	 */
-	PrivateThreads = 'PRIVATE_THREADS',
 }
 
 /**
