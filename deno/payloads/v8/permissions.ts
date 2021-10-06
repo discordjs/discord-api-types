@@ -78,11 +78,11 @@ export interface APIRole {
 	/**
 	 * The role icon hash
 	 */
-	icon?: string;
+	icon?: string | null;
 	/**
 	 * The role unicode emoji as a standard emoji
 	 */
-	unicode_emoji?: string;
+	unicode_emoji?: string | null;
 	/**
 	 * Position of this role
 	 */
