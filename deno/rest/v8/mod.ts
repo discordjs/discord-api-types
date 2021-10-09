@@ -752,12 +752,12 @@ export const RouteBases = {
 Object.freeze(RouteBases);
 
 export const OAuth2Routes = {
-	authorizationURL: `https://discord.com/api/v${APIVersion}/oauth2/authorize`,
-	tokenURL: `https://discord.com/api/v${APIVersion}/oauth2/token`,
+	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
+	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
 	 * See https://tools.ietf.org/html/rfc7009
 	 */
-	tokenRevocationURL: `https://discord.com/api/v${APIVersion}/oauth2/token/revoke`,
+	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;
 
 // Freeze OAuth2 route object
