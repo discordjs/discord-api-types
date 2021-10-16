@@ -1,3 +1,29 @@
+# [0.24.0](https://github.com/discordjs/discord-api-types/compare/0.23.1...0.24.0) (2021-10-16)
+
+### Bug Fixes
+
+- **APISelectMenuComponent:** make options field optional ([#209](https://github.com/discordjs/discord-api-types/issues/209)) ([0c592a0](https://github.com/discordjs/discord-api-types/commit/0c592a0950431f43143bf1c32589bce2dd842b44))
+
+### Code Refactoring
+
+- **APIVoiceRegion:** removed `vip` property ([#214](https://github.com/discordjs/discord-api-types/issues/214)) ([7db6953](https://github.com/discordjs/discord-api-types/commit/7db69531d86fe5bdd462747b1e1287ee6b2dc496))
+
+### Features
+
+- **APIApplicationCommand:** add `channel_types` field to channel options ([#198](https://github.com/discordjs/discord-api-types/issues/198)) ([77396b5](https://github.com/discordjs/discord-api-types/commit/77396b557c6f3d4f85cfc4cd3b253638bc5b449d))
+- **APIAttachment:** add ephemeral field ([#199](https://github.com/discordjs/discord-api-types/issues/199)) ([2aee879](https://github.com/discordjs/discord-api-types/commit/2aee87960070cb56979d3ced453c8cd64e81f150))
+- **APIGuildMember:** add per guild avatars ([#208](https://github.com/discordjs/discord-api-types/issues/208)) ([0331518](https://github.com/discordjs/discord-api-types/commit/0331518c49c4761f900bacd8ca8a92e38b36b6e9))
+- **APIRole:** add role icons ([#204](https://github.com/discordjs/discord-api-types/issues/204)) ([1076822](https://github.com/discordjs/discord-api-types/commit/1076822b90a1b6facf74aa3f2a6750566b3feb53))
+- **InteractionResolvedChannels:** add `parent_id` and `thread_metadata` fields to resolved channels ([#210](https://github.com/discordjs/discord-api-types/issues/210)) ([64e4e52](https://github.com/discordjs/discord-api-types/commit/64e4e5246cd61eadf35591b8afdf4c5922fd4086))
+- **PermissionFlagBits:** update thread permissions ([#181](https://github.com/discordjs/discord-api-types/issues/181)) ([68d97ae](https://github.com/discordjs/discord-api-types/commit/68d97aed1425002677acdf1d5444b36d3cfcc322))
+- **PermissionFlagsBits:** add `StartEmbeddedActivities` ([#197](https://github.com/discordjs/discord-api-types/issues/197)) ([4bbe1ea](https://github.com/discordjs/discord-api-types/commit/4bbe1eaa867da810a1d039b21c3fc78208a50801))
+- **RESTJSONErrorCodes:** add error 50101 ([#202](https://github.com/discordjs/discord-api-types/issues/202)) ([b453d75](https://github.com/discordjs/discord-api-types/commit/b453d75e4d13d34836247929be56c042cbc4b762))
+- **Routes:** add missing OAuth2 routes ([#218](https://github.com/discordjs/discord-api-types/issues/218)) ([9dd3446](https://github.com/discordjs/discord-api-types/commit/9dd3446b64f31ae0831944f5c608095d650142d7))
+
+### BREAKING CHANGES
+
+- **APIVoiceRegion:** The `vip` property has been removed.
+
 ## [0.23.1](https://github.com/discordjs/discord-api-types/compare/0.23.0...0.23.1) (2021-09-08)
 
 ### Bug Fixes
