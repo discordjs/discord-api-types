@@ -25,10 +25,11 @@ interface APIApplicationCommandOptionBase {
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  */
 export type APIApplicationCommandOption =
-	| APIApplicationCommandArgumentOptions
+	| APIApplicationCommandStringArgumentOptions
 	| APIApplicationCommandSubCommandOptions
 	| APIApplicationCommandChannelOptions
-	| APIApplicationCommandOptionBase;
+	| APIApplicationCommandOptionBase
+	| APIApplicationCommandNumberArgumentOptions;
 
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands
@@ -46,12 +47,31 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
  * but they can have a `choices` one
  */
-export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+export interface APIApplicationCommandStringArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
 	type:
 		| ApplicationCommandOptionType.String
 		| ApplicationCommandOptionType.Integer
 		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
+ * but they can have a `choices`, and a `min_value` and `max_value` field
+ */
+export interface APIApplicationCommandNumberArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+	type: ApplicationCommandOptionType.Integer;
+	choices?: APIApplicationCommandOptionChoice[];
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	min_value?: number;
+	/**
+	 * if the option is an `INTEGER` or `NUMBER` type, the maximum value permitted
+	 */
+	max_value?: number;
 }
 
 /**
