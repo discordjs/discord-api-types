@@ -59,7 +59,7 @@ export interface APIApplicationCommandStringArgumentOptions extends Omit<APIAppl
  * This type is exported as a way to make it stricter for you when you're writing your commands
  *
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
- * but they can have a `choices`, and a `min_value` and `max_value` field
+ * but they can have a `choices`, a `min_value` and `max_value` field
  */
 export interface APIApplicationCommandNumberArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
 	type: ApplicationCommandOptionType.Integer | ApplicationCommandOptionType.Number;
