@@ -62,7 +62,7 @@ export interface APIApplicationCommandStringArgumentOptions extends Omit<APIAppl
  * but they can have a `choices`, and a `min_value` and `max_value` field
  */
 export interface APIApplicationCommandNumberArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
-	type: ApplicationCommandOptionType.Integer;
+	type: ApplicationCommandOptionType.Integer | ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
 	/**
 	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
