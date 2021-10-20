@@ -135,28 +135,23 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent[];
+	/**
+	 * Attachment objects with filename and description
+	 */
+	attachments?: Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>[];
 }
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIWebhookWithTokenJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
@@ -235,6 +230,8 @@ export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
 	/**
 	 * Attached files to keep
 	 *
+	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
 	attachments?: APIAttachment[] | null;
@@ -244,22 +241,13 @@ export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message

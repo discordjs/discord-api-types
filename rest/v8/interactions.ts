@@ -126,22 +126,13 @@ export type RESTPostAPIInteractionCallbackJSONBody = APIInteractionResponse;
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
  */
 export type RESTPostAPIInteractionCallbackFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIInteractionCallbackJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response
@@ -177,22 +168,13 @@ export type RESTPostAPIInteractionFollowupJSONBody = APIInteractionResponseCallb
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message
  */
 export type RESTPostAPIInteractionFollowupFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIInteractionFollowupJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message
