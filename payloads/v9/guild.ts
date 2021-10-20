@@ -422,6 +422,10 @@ export const enum GuildSystemChannelFlags {
 	 * Suppress server setup tips
 	 */
 	SuppressGuildReminderNotifications = 1 << 2,
+	/**
+	 * Suppress member join sticker replies
+	 */
+	SuppressJoinNotificationReplies = 1 << 3,
 }
 
 /**
