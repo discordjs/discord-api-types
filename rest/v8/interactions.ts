@@ -38,7 +38,7 @@ export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPos
 	/**
 	 * Whether this application command option should be autocompleted
 	 */
-	auto_complete?: boolean;
+	autocomplete?: boolean;
 	description: string;
 }
 
