@@ -1,4 +1,4 @@
-import type { APIRole, APIUser } from '../../index';
+import type { APIRole, APIUser, ChannelType } from '../../index';
 import type { Snowflake } from '../../../../globals';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
@@ -13,7 +13,6 @@ interface APIApplicationCommandOptionBase {
 	type:
 		| ApplicationCommandOptionType.Boolean
 		| ApplicationCommandOptionType.User
-		| ApplicationCommandOptionType.Channel
 		| ApplicationCommandOptionType.Role
 		| ApplicationCommandOptionType.Mentionable;
 	name: string;
@@ -30,6 +29,7 @@ export type APIApplicationCommandOption =
 	| APIApplicationCommandArgumentOptions
 	| APIApplicationCommandSubCommandOptions
 	| APIApplicationCommandOptionBase
+	| APIApplicationCommandChannelOptions
 	| APIApplicationCommandAutocompleteOptions;
 
 /**
@@ -71,6 +71,17 @@ export interface APIApplicationCommandAutocompleteOptions
 		| ApplicationCommandOptionType.Integer
 		| ApplicationCommandOptionType.Number;
 	autocomplete: true;
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandSubCommandOptions` and `APIApplicationCommandArgumentOptions`,
+ *  these types cannot have an `options` array, or a `choices` array, but they can have a `channel_types` one.
+ */
+export interface APIApplicationCommandChannelOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+	type: ApplicationCommandOptionType.Channel;
+	channel_types?: Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>[];
 }
 
 /**

@@ -571,6 +571,30 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/oauth2/authorize`
+	 */
+	oauth2Authorization() {
+		return `/oauth2/authorize` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/oauth2/token`
+	 */
+	oauth2TokenExchange() {
+		return `/oauth2/token` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/oauth2/token/revoke`
+	 */
+	oauth2TokenRevocation() {
+		return `/oauth2/token/revoke` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET  `/applications/{application.id}/commands`
 	 * - PUT  `/applications/{application.id}/commands`
 	 * - POST `/applications/{application.id}/commands`
@@ -728,12 +752,12 @@ export const RouteBases = {
 Object.freeze(RouteBases);
 
 export const OAuth2Routes = {
-	authorizationURL: `https://discord.com/api/v${APIVersion}/oauth2/authorize`,
-	tokenURL: `https://discord.com/api/v${APIVersion}/oauth2/token`,
+	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
+	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
 	 * See https://tools.ietf.org/html/rfc7009
 	 */
-	tokenRevocationURL: `https://discord.com/api/v${APIVersion}/oauth2/token/revoke`,
+	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;
 
 // Freeze OAuth2 route object
