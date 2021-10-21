@@ -415,7 +415,7 @@ export enum GuildSystemChannelFlags {
 	 */
 	SuppressGuildReminderNotifications = 1 << 2,
 	/**
-	 * Suppress member join sticker replies
+	 * Hide member join sticker reply buttons
 	 */
 	SuppressJoinNotificationReplies = 1 << 3,
 }
