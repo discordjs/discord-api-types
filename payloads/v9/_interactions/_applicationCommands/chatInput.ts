@@ -115,7 +115,7 @@ export type APIApplicationCommandInteractionDataOption =
 	| ApplicationCommandInteractionDataOptionSubCommand
 	| ApplicationCommandInteractionDataOptionSubCommandGroup
 	| APIApplicationCommandInteractionDataOptionWithValues
-	| ApplicationCommandAutoCompleteInteractionData;
+	| ApplicationCommandAutoCompleteOptionInteractionData;
 
 export interface ApplicationCommandInteractionDataOptionSubCommand {
 	name: string;
@@ -129,7 +129,7 @@ export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
 	options: ApplicationCommandInteractionDataOptionSubCommand[];
 }
 
-export interface ApplicationCommandAutoCompleteInteractionData {
+export interface ApplicationCommandAutoCompleteOptionInteractionData {
 	name: string;
 	type:
 		| ApplicationCommandOptionType.String
