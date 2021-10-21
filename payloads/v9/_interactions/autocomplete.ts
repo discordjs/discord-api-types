@@ -1,4 +1,4 @@
-import type { APIBaseInteraction, ApplicationCommandOptionType, InteractionType } from '..';
+import type { APIBaseInteraction, ApplicationCommandOptionType, InteractionType } from '../index';
 
 export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	InteractionType.ApplicationCommandAutocomplete,
