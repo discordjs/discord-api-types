@@ -88,6 +88,6 @@ export type APIInteractionResponseCallbackData = Omit<
 	'username' | 'avatar_url'
 > & { flags?: MessageFlags };
 
-export interface APICommandAutocompleteInteractionResponseCallbackData extends APIInteractionResponseCallbackData {
+export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
 }

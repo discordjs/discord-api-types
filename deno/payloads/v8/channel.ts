@@ -1023,7 +1023,7 @@ export interface APISelectMenuComponent extends APIBaseMessageComponent<Componen
 	/**
 	 * The choices in the select, max 25
 	 */
-	options: APISelectMenuOption[];
+	options?: APISelectMenuOption[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 100 characters
 	 */

@@ -172,6 +172,8 @@ export const enum RESTJSONErrorCodes {
 
 	ServerNeedsMonetizationEnabledToPerformThisAction = 50097,
 
+	ServerNeedsMoreBoostsToPerformThisAction = 50101,
+
 	TwoFactorAuthenticationIsRequired = 60003,
 
 	NoUsersWithDiscordTagExist = 80004,
