@@ -114,8 +114,7 @@ export interface APIApplicationCommandOptionChoice {
 export type APIApplicationCommandInteractionDataOption =
 	| ApplicationCommandInteractionDataOptionSubCommand
 	| ApplicationCommandInteractionDataOptionSubCommandGroup
-	| APIApplicationCommandInteractionDataOptionWithValues
-	| ApplicationCommandAutoCompleteOptionInteractionData;
+	| APIApplicationCommandInteractionDataOptionWithValues;
 
 export interface ApplicationCommandInteractionDataOptionSubCommand {
 	name: string;

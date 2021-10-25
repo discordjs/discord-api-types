@@ -20,7 +20,8 @@ export type APIInteractionResponse =
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
-	| APIInteractionResponseUpdateMessage;
+	| APIInteractionResponseUpdateMessage
+	| APICommandAutocompleteResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
