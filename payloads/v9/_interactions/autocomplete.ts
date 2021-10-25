@@ -1,25 +1,6 @@
-import type { APIBaseInteraction, ApplicationCommandOptionType, InteractionType } from '..';
+import type { APIApplicationCommandInteractionData, APIBaseInteraction, InteractionType } from '../index';
 
 export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	InteractionType.ApplicationCommandAutocomplete,
-	APICommandAutocompleteInteractionData
+	APIApplicationCommandInteractionData
 >;
-
-export interface APICommandAutocompleteInteractionData {
-	/**
-	 * The name of the parameter
-	 */
-	name: string;
-	/**
-	 * Value of application command option type
-	 */
-	type: ApplicationCommandOptionType;
-	/**
-	 * Value of the command option
-	 */
-	value?: string;
-	/**
-	 * Whether the field is focused by the user
-	 */
-	focused: boolean;
-}

@@ -117,6 +117,16 @@ export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
 	options: ApplicationCommandInteractionDataOptionSubCommand[];
 }
 
+export interface ApplicationCommandInteractionDataOptionAutocomplete {
+	name: string;
+	type:
+		| ApplicationCommandOptionType.String
+		| ApplicationCommandOptionType.Integer
+		| ApplicationCommandOptionType.Number;
+	value?: string | number;
+	focused?: boolean;
+}
+
 export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionString
 	| ApplicationCommandInteractionDataOptionRole
@@ -125,7 +135,8 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionMentionable
 	| ApplicationCommandInteractionDataOptionInteger
 	| ApplicationCommandInteractionDataOptionNumber
-	| ApplicationCommandInteractionDataOptionBoolean;
+	| ApplicationCommandInteractionDataOptionBoolean
+	| ApplicationCommandInteractionDataOptionAutocomplete;
 
 export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
 	ApplicationCommandOptionType.String,
