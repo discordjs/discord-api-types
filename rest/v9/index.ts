@@ -581,10 +581,12 @@ export const Routes = {
 	 * Route for:
 	 * - GET    `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
 	 * - GET    `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
+	 * - GET    `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}?thread_id={thread.id}`
 	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
-	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
+	 * - PATCH  `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}?thread_id={thread.id}`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/@original`
 	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}`
+	 * - DELETE `/webhooks/{webhook.id}/{webhook.token}/messages/{message.id}?thread_id={thread.id}`
 	 *
 	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/@original`
 	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
@@ -592,8 +594,19 @@ export const Routes = {
 	 *
 	 * @param [messageId='@original'] The message ID to change, defaulted to `@original`
 	 */
-	webhookMessage(webhookId: Snowflake, webhookToken: string, messageId: Snowflake | '@original' = '@original') {
-		return `/webhooks/${webhookId}/${webhookToken}/messages/${messageId}` as const;
+	webhookMessage(
+		webhookId: Snowflake,
+		webhookToken: string,
+		messageId: Snowflake | '@original' = '@original',
+		threadId?: Snowflake,
+	) {
+		const baseURL = `/webhooks/${webhookId}/${webhookToken}/messages/${messageId}` as const;
+
+		if (threadId) {
+			return `${baseURL}?thread_id=${threadId}` as const;
+		}
+
+		return baseURL;
 	},
 
 	/**
