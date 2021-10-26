@@ -333,6 +333,10 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
 	stickers: APISticker[];
+	/**
+	 * true if server boosts progress bar is enabled
+	 */
+	premium_progress_bar_enabled: boolean;
 }
 
 /**
