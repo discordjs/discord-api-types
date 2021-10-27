@@ -62,7 +62,7 @@ export enum RESTJSONErrorCodes {
 	NotAuthorizedToPerformThisActionOnThisApplication = 20012,
 
 	ActionCannotBePerformedDueToSlowmodeRateLimit = 20016,
-
+	TheMazeIsntMeantForYou,
 	OnlyTheOwnerOfThisAccountCanPerformThisAction = 20018,
 
 	AnnouncementEditLimitExceeded = 20022,
