@@ -21,13 +21,13 @@ export type APIInteractionResponse =
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
 	| APIInteractionResponseUpdateMessage
-	| APICommandAutocompleteResponse;
+	| APIApplicationCommandAutocompleteResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
 }
 
-export interface APICommandAutocompleteResponse {
+export interface APIApplicationCommandAutocompleteResponse {
 	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
 	data: APICommandAutocompleteInteractionResponseCallbackData;
 }

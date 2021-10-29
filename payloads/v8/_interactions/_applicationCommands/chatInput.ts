@@ -128,16 +128,6 @@ export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
 	options: ApplicationCommandInteractionDataOptionSubCommand[];
 }
 
-export interface ApplicationCommandInteractionDataOptionAutocomplete {
-	name: string;
-	type:
-		| ApplicationCommandOptionType.String
-		| ApplicationCommandOptionType.Integer
-		| ApplicationCommandOptionType.Number;
-	value?: string | number;
-	focused?: boolean;
-}
-
 export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionString
 	| ApplicationCommandInteractionDataOptionRole
@@ -146,13 +136,12 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionMentionable
 	| ApplicationCommandInteractionDataOptionInteger
 	| ApplicationCommandInteractionDataOptionNumber
-	| ApplicationCommandInteractionDataOptionBoolean
-	| ApplicationCommandInteractionDataOptionAutocomplete;
+	| ApplicationCommandInteractionDataOptionBoolean;
 
-export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
-	ApplicationCommandOptionType.String,
-	string
->;
+export interface ApplicationCommandInteractionDataOptionString
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.String, string> {
+	focused?: boolean;
+}
 
 export type ApplicationCommandInteractionDataOptionRole = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Role,
@@ -174,15 +163,15 @@ export type ApplicationCommandInteractionDataOptionMentionable = InteractionData
 	Snowflake
 >;
 
-export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Integer,
-	number
->;
+export interface ApplicationCommandInteractionDataOptionInteger
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.Integer, number> {
+	focused?: boolean;
+}
 
-export type ApplicationCommandInteractionDataOptionNumber = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Number,
-	number
->;
+export interface ApplicationCommandInteractionDataOptionNumber
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.Number, number> {
+	focused?: boolean;
+}
 
 export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Boolean,
