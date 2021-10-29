@@ -35,6 +35,10 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = Omit<
  */
 export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type?: ApplicationCommandType.ChatInput;
+	/**
+	 * Whether this application command option should be autocompleted
+	 */
+	autocomplete?: boolean;
 	description: string;
 }
 

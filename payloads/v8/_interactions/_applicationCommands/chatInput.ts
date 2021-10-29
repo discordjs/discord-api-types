@@ -19,6 +19,7 @@ interface APIApplicationCommandOptionBase {
 	description: string;
 	default?: boolean;
 	required?: boolean;
+	autocomplete?: never;
 }
 
 /**
@@ -27,8 +28,9 @@ interface APIApplicationCommandOptionBase {
 export type APIApplicationCommandOption =
 	| APIApplicationCommandArgumentOptions
 	| APIApplicationCommandSubCommandOptions
+	| APIApplicationCommandOptionBase
 	| APIApplicationCommandChannelOptions
-	| APIApplicationCommandOptionBase;
+	| APIApplicationCommandAutocompleteOptions;
 
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands
@@ -46,12 +48,29 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
  * but they can have a `choices` one
  */
-export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+export interface APIApplicationCommandArgumentOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
 	type:
 		| ApplicationCommandOptionType.String
 		| ApplicationCommandOptionType.Integer
 		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
+	autocomplete?: false;
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandArgumentOptions`, these types cannot have an `choices` array,
+ * but they can a `autocomplete` field where it's set to `true`
+ */
+export interface APIApplicationCommandAutocompleteOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
+	type:
+		| ApplicationCommandOptionType.String
+		| ApplicationCommandOptionType.Integer
+		| ApplicationCommandOptionType.Number;
+	autocomplete: true;
 }
 
 /**
@@ -119,10 +138,10 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionNumber
 	| ApplicationCommandInteractionDataOptionBoolean;
 
-export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
-	ApplicationCommandOptionType.String,
-	string
->;
+export interface ApplicationCommandInteractionDataOptionString
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.String, string> {
+	focused?: boolean;
+}
 
 export type ApplicationCommandInteractionDataOptionRole = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Role,
@@ -144,15 +163,15 @@ export type ApplicationCommandInteractionDataOptionMentionable = InteractionData
 	Snowflake
 >;
 
-export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Integer,
-	number
->;
+export interface ApplicationCommandInteractionDataOptionInteger
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.Integer, number> {
+	focused?: boolean;
+}
 
-export type ApplicationCommandInteractionDataOptionNumber = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Number,
-	number
->;
+export interface ApplicationCommandInteractionDataOptionNumber
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.Number, number> {
+	focused?: boolean;
+}
 
 export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Boolean,
