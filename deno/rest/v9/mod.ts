@@ -473,6 +473,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET    `/channels/{thread.id}/thread-members`
+	 * - GET    `/channels/{thread.id}/thread-members/{user.id}`
 	 * - PUT    `/channels/{thread.id}/thread-members/@me`
 	 * - PUT    `/channels/{thread.id}/thread-members/{user.id}`
 	 * - DELETE `/channels/{thread.id}/thread-members/@me`
