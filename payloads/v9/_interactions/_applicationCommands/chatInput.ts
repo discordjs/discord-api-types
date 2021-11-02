@@ -83,8 +83,14 @@ export interface APIApplicationCommandNumericAutocompleteOptions
 	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
 	type: ApplicationCommandOptionType.Integer | ApplicationCommandOptionType.Number;
 	autocomplete: true;
-	max_value?: number;
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
 	min_value?: number;
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	max_value?: number;
 }
 
 /**
