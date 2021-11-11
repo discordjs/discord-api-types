@@ -198,4 +198,5 @@ export const enum RESTJSONErrorCodes {
 	LottieAnimationMaximumDimensionsExceeded,
 	StickerFramerateIsTooSmallOrTooLarge,
 	StickerAnimationDurationExceedsMaximumOf5Seconds,
+	ExactlyOneGuildIdParameterIsRequired = 180001,
 }
