@@ -644,7 +644,7 @@ export interface APIGuildMember {
 	 */
 	pending?: boolean;
 	/**
-	 * Timestamp of when the time out will be removed; until then, they cannot interact with the server
+	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null;
 }
