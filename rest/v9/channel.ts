@@ -575,6 +575,10 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	 * The 3 day and 7 day archive durations require the server to be boosted. The [guild features](https://discord.com/developers/docs/resources/guild#guild-object-guild-features) will indicate if a server is able to use those settings.
 	 */
 	auto_archive_duration: ThreadAutoArchiveDuration;
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600)
+	 */
+	rate_limit_per_user?: number;
 }
 
 /**
