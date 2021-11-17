@@ -185,6 +185,7 @@ export const enum GatewayIntentBits {
 	DirectMessages = 1 << 12,
 	DirectMessageReactions = 1 << 13,
 	DirectMessageTyping = 1 << 14,
+	GuildScheduledEvents = 1 << 16,
 }
 
 /**

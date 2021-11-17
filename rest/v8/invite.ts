@@ -1,3 +1,4 @@
+import type { Snowflake } from '../../globals';
 import type { APIInvite } from '../../payloads/v8/index';
 
 /**
@@ -12,6 +13,10 @@ export interface RESTGetAPIInviteQuery {
 	 * Whether the invite should contain the expiration date
 	 */
 	with_expiration?: boolean;
+	/**
+	 * The guild scheduled event to include with the invite
+	 */
+	guild_scheduled_event_id?: Snowflake;
 }
 
 export type RESTGetAPIInviteResult = APIInvite;

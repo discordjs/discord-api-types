@@ -1,3 +1,4 @@
+import type { APIUser } from './user';
 import type { Snowflake } from '../../globals';
 
 export interface APIGuildScheduledEvent {
@@ -6,23 +7,27 @@ export interface APIGuildScheduledEvent {
 	 */
 	id: Snowflake;
 	/**
-	 * The guild id of the event
+	 * The guild id which the scheduled event belongs to
 	 */
 	guild_id: Snowflake;
 	/**
-	 * The stage channel id of the guild event
+	 * The channel id in which the scheduled event will be hosted, or `null` if entity type is `EXTERNAL`
 	 */
 	channel_id: Snowflake | null;
 	/**
-	 * The name of the guild event
+	 * The id of the user that created the scheduled event
+	 */
+	creator_id?: Snowflake;
+	/**
+	 * The name of the scheduled event
 	 */
 	name: string;
 	/**
-	 * The description of the guild event
+	 * The description of the scheduled event
 	 */
 	description?: string;
 	/**
-	 * The time at which the guild event will start
+	 * The time the scheduled event will start
 	 */
 	scheduled_start_time: string;
 	/**
@@ -30,27 +35,31 @@ export interface APIGuildScheduledEvent {
 	 */
 	scheduled_end_time: string | null;
 	/**
-	 * The privacy level of the guild event
+	 * The privacy level of the scheduled event
 	 */
 	privvacy_level: GuildScheduledEventPrivacyLevel;
 	/**
-	 * The scheduled status of the guild event
+	 * The status of the scheduled event
 	 */
 	status: GuildScheduledEventStatus;
 	/**
-	 * The scheduled entity type of the guild event
+	 * The type of hosting entity associated with the scheduled event
 	 */
 	entity_type: GuildScheduledEventEntityType;
 	/**
-	 * The id of the guild event entity
+	 * The id of the hosting entity associated with the scheduled event
 	 */
 	entity_id: Snowflake | null;
 	/**
-	 * The metadata for the guild event
+	 * The entity metadata for the scheduled event
 	 */
 	entity_metadata: APIGuildScheduledEventEntityMetadata;
 	/**
-	 * The number of users subscribed to the guild event
+	 * The user that created the scheduled event
+	 */
+	creator?: APIUser;
+	/**
+	 * The number of users subscribed to the scheduled event
 	 */
 	user_count?: number;
 }
@@ -59,6 +68,9 @@ export interface APIGuildScheduledEvent {
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata
  */
 export interface APIGuildScheduledEventEntityMetadata {
+	/**
+	 * The location of the scheduled event
+	 */
 	location?: string;
 }
 
