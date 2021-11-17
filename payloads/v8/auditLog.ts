@@ -308,8 +308,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyAvailable
 	| APIAuditLogChangeKeyGuildId
 	| APIAuditLogChangeKeyEntityType
-	| APIAuditLogChangeKeyStatus
-	| APIAuditLogChangeKeySkuIds;
+	| APIAuditLogChangeKeyStatus;
 
 /**
  * Returned when an entity's name is changed
@@ -627,11 +626,6 @@ export type APIAuditLogChangeKeyEntityType = AuditLogChangeData<'entity_type', n
  * Returned when status of a guild scheduled event is changed
  */
 export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', number>;
-
-/**
- * Returned when the skus of a guild event is changed
- */
-export type APIAuditLogChangeKeySkuIds = AuditLogChangeData<'sku_ids', Snowflake[]>;
 
 interface AuditLogChangeData<K extends string, D extends unknown> {
 	key: K;
