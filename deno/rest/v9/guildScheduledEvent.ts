@@ -55,5 +55,5 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 export type RESTDeleteAPIGuildScheduledEventResult = never;
 
 export interface RESTPatchAPIGuildScheduledEventJSONBody extends Partial<RESTPostAPIGuildScheduledEventJSONBody> {
-	status: GuildScheduledEventStatus;
+	status?: GuildScheduledEventStatus;
 }
