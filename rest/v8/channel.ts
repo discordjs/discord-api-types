@@ -217,7 +217,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>[];
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
 }
 
 /**
