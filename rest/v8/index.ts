@@ -734,6 +734,14 @@ export const Routes = {
 	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}`;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/users`
+	 */
+	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users`;
+	},
 };
 
 export const RouteBases = {
