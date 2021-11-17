@@ -29,9 +29,9 @@ export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSON
 	id: number | string;
 }
 
-export type APIGuildChannel = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
+export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
 
-export type APIGuildCreatePartialChannel = Partial<APIGuildChannel> & {
+export type APIGuildCreatePartialChannel = Partial<APIGuildChannelResolvable> & {
 	name: string;
 	id?: number | string;
 	parent_id?: number | string | null;
