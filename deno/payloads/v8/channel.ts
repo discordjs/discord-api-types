@@ -39,10 +39,10 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 	type: T;
 }
 
-export type TextBasedChannels = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
+export type TextChannelTypes = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
 
-export type GuildChannels = Exclude<
-	TextBasedChannels | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
+export type GuildChannelTypes = Exclude<
+	TextChannelTypes | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
@@ -78,9 +78,11 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	nsfw?: boolean;
 }
 
-export type GuildTextChannels = Exclude<TextBasedChannels, ChannelType.DM | ChannelType.GroupDM>;
+export type GuildTextChannelTypes = Exclude<TextChannelTypes, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannels> extends APITextBasedChannel<T>, APIGuildChannel<T> {
+export interface APIGuildTextChannel<T extends GuildTextChannelTypes>
+	extends APITextBasedChannel<T>,
+		APIGuildChannel<T> {
 	/**
 	 * The channel topic (0-1024 characters)
 	 */
@@ -99,6 +101,7 @@ export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildTex
 	 */
 	rate_limit_per_user?: number;
 }
+
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 export type APIGuildStoreChannel = APIGuildChannel<ChannelType.GuildStore>;
@@ -126,7 +129,7 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	video_quality_mode?: VideoQualityMode;
 }
 
-export interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
 	/**
 	 * The recipients of the DM
 	 *
@@ -160,7 +163,6 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
 export type APIChannel =
-	| APIDMChannel
 	| APIGroupDMChannel
 	| APIDMChannel
 	| APITextChannel
