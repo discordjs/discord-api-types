@@ -70,10 +70,6 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	position?: number;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
-	 *
-	 * OR
-	 *
-	 * ID of the parent channel for a thread
 	 */
 	parent_id?: Snowflake | null;
 	/**
@@ -100,11 +96,6 @@ export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildTex
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 *
-	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
-	 *
-	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
-	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
 	 */
 	rate_limit_per_user?: number;
 }
