@@ -7,7 +7,7 @@ export * from './channel.ts';
 export * from './emoji.ts';
 export * from './gateway.ts';
 export * from './guild.ts';
-export * from './guildEvent.ts';
+export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
@@ -718,21 +718,21 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET  `/guilds/{guild.id}/events`
-	 * - POST `/guilds/{guild.id}/events`
+	 * - GET  `/guilds/{guild.id}/scheduled-events`
+	 * - POST `/guilds/{guild.id}/scheduled-events`
 	 */
-	guildEvents(guildId: Snowflake) {
-		return `/guilds/${guildId}/events`;
+	guildScheduledEvents(guildId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events`;
 	},
 
 	/**
 	 * Route for:
-	 * - GET  `/guild-events/{event.id}`
-	 * - PATCH /guild-events/{event.id}
-	 * - DELETE `/guild-events/{event.id}`
+	 * - GET  `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - PATCH `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
 	 */
-	guildEvent(guildEventId: Snowflake) {
-		return `/guild-events/${guildEventId}`;
+	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}`;
 	},
 };
 

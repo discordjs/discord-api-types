@@ -4,7 +4,7 @@ export * from './channel';
 export * from './emoji';
 export * from './gateway';
 export * from './guild';
-export * from './guildEvent';
+export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
 export * from './oauth2';

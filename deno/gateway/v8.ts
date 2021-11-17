@@ -10,7 +10,7 @@ import type {
 	APIChannel,
 	APIEmoji,
 	APIGuild,
-	APIGuildEvent,
+	APIGuildScheduledEvent,
 	APIGuildIntegration,
 	APIGuildMember,
 	APIMessage,
@@ -873,21 +873,21 @@ export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
 	GatewayGuildScheduledEventCreateDispatchData
 >;
 
-export type GatewayGuildScheduledEventCreateDispatchData = APIGuildEvent;
+export type GatewayGuildScheduledEventCreateDispatchData = APIGuildScheduledEvent;
 
 export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUpdate,
 	GatewayGuildScheduledEventUpdateDispatchData
 >;
 
-export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildEvent;
+export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildScheduledEvent;
 
 export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventDelete,
 	GatewayGuildScheduledEventDeleteDispatchData
 >;
 
-export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildEvent;
+export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-create
