@@ -250,6 +250,8 @@ export enum GatewayDispatchEvents {
 	GuildScheduledEventCreate = 'Guild_Scheduled_Event_Create',
 	GuildScheduledEventUpdate = 'Guild_Scheduled_Event_Update',
 	GuildScheduledEventDelete = 'Guild_Scheduled_Event_Delete',
+	GuildScheduledEventUserAdd = 'Guild_Scheduled_Event_User_Add',
+	GuildScheduledEventUserRemove = 'Guild_Scheduled_Event_User_Remove',
 }
 
 export type GatewaySendPayload =
@@ -285,6 +287,8 @@ export type GatewayDispatchPayload =
 	| GatewayGuildScheduledEventCreateDispatch
 	| GatewayGuildScheduledEventUpdateDispatch
 	| GatewayGuildScheduledEventDeleteDispatch
+	| GatewayGuildScheduledEventUserAddDispatch
+	| GatewayGuildScheduledEventUserRemoveDispatch
 	| GatewayGuildStickersUpdateDispatch
 	| GatewayIntegrationCreateDispatch
 	| GatewayIntegrationDeleteDispatch
@@ -898,6 +902,28 @@ export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
 >;
 
 export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
+
+export type GatewayGuildScheduledEventUserAddDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserAdd,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+export interface GatewayGuildScheduledEventUserAddDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
+}
+
+export type GatewayGuildScheduledEventUserRemoveDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserRemove,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+export interface GatewayGuildScheduledEventUserRemoveDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-create
