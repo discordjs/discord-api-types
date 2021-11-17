@@ -106,4 +106,6 @@ export enum ApplicationFlags {
 	GatewayGuildMembersLimited = 1 << 15,
 	VerificationPendingGuildLimit = 1 << 16,
 	Embedded = 1 << 17,
+	GatewayMessageContent = 1 << 18,
+	GatewayMessageContentLimited = 1 << 19,
 }

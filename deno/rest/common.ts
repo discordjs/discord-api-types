@@ -62,8 +62,8 @@ export enum RESTJSONErrorCodes {
 	NotAuthorizedToPerformThisActionOnThisApplication = 20012,
 
 	ActionCannotBePerformedDueToSlowmodeRateLimit = 20016,
-
-	OnlyTheOwnerOfThisAccountCanPerformThisAction = 20018,
+	TheMazeIsntMeantForYou,
+	OnlyTheOwnerOfThisAccountCanPerformThisAction,
 
 	AnnouncementEditLimitExceeded = 20022,
 
@@ -171,6 +171,8 @@ export enum RESTJSONErrorCodes {
 	ServerNotAvailableInYourLocation = 50095,
 
 	ServerNeedsMonetizationEnabledToPerformThisAction = 50097,
+
+	ServerNeedsMoreBoostsToPerformThisAction = 50101,
 
 	TwoFactorAuthenticationIsRequired = 60003,
 

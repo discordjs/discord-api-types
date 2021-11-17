@@ -872,6 +872,10 @@ export interface APIAttachment {
 	 */
 	filename: string;
 	/**
+	 * Description for the file
+	 */
+	description?: string;
+	/**
 	 * The attachment's media type
 	 *
 	 * See https://en.wikipedia.org/wiki/Media_type
@@ -1087,7 +1091,7 @@ export interface APISelectMenuComponent extends APIBaseMessageComponent<Componen
 	/**
 	 * The choices in the select, max 25
 	 */
-	options: APISelectMenuOption[];
+	options?: APISelectMenuOption[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 100 characters
 	 */
