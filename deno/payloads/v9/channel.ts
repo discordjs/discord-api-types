@@ -48,7 +48,7 @@ export type TextChannelTypes =
 	| ChannelType.GuildNewsThread
 	| ChannelType.GuildText;
 
-// TODO: Remove when upstream PR seperates structures
+// TODO: Remove when upstream PR separates structures
 export type GuildChannelTypes = Exclude<
 	TextChannelTypes | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
 	ChannelType.DM | ChannelType.GroupDM
