@@ -94,7 +94,7 @@ export interface APIApplication {
 	/**
 	 * Up to 5 tags describing the content and functionality of the application
 	 */
-	tags?: [string, string, string, string, string];
+	tags?: [string, string?, string?, string?, string?];
 	/**
 	 * Settings for the application's default in-app authorization link, if enabled
 	 */
