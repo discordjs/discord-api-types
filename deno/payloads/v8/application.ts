@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
+import type { OAuth2Scopes } from './mod.ts';
 import type { Snowflake } from '../../globals.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
@@ -106,7 +107,7 @@ export interface APIApplication {
 }
 
 export interface APIApplicationInstallParams {
-	scopes: string[];
+	scopes: OAuth2Scopes[];
 	permissions: string;
 }
 
