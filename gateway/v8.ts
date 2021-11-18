@@ -239,11 +239,11 @@ export const enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
-	GuildScheduledEventCreate = 'Guild_Scheduled_Event_Create',
-	GuildScheduledEventUpdate = 'Guild_Scheduled_Event_Update',
-	GuildScheduledEventDelete = 'Guild_Scheduled_Event_Delete',
-	GuildScheduledEventUserAdd = 'Guild_Scheduled_Event_User_Add',
-	GuildScheduledEventUserRemove = 'Guild_Scheduled_Event_User_Remove',
+	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
+	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
+	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
+	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
+	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
 }
 
 export type GatewaySendPayload =

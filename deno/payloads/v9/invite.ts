@@ -70,7 +70,7 @@ export interface APIInvite {
 	 */
 	stage_instance?: APIInviteStageInstance;
 	/**
-	 * The guild scheduled event data, only included if `guild_scheduled_event_id` contains a valid guild scheduled event id
+	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */
 	guild_scheduled_event?: APIGuildScheduledEvent;
 }

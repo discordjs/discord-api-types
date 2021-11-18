@@ -37,7 +37,7 @@ export interface APIGuildScheduledEvent {
 	/**
 	 * The privacy level of the scheduled event
 	 */
-	privvacy_level: GuildScheduledEventPrivacyLevel;
+	privacy_level: GuildScheduledEventPrivacyLevel;
 	/**
 	 * The status of the scheduled event
 	 */

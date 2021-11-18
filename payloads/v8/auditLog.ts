@@ -17,6 +17,7 @@ import type { StickerFormatType } from './sticker';
 import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
 import type { StageInstancePrivacyLevel } from './stageInstance';
+import type { GuildScheduledEventEntityType, GuildScheduledEventStatus } from './guildScheduledEvent';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
@@ -621,12 +622,12 @@ export type APIAuditLogChangeKeyGuildId = AuditLogChangeData<'guild_id', Snowfla
 /**
  * Returned when entity type of a guild scheduled event is changed
  */
-export type APIAuditLogChangeKeyEntityType = AuditLogChangeData<'entity_type', number>;
+export type APIAuditLogChangeKeyEntityType = AuditLogChangeData<'entity_type', GuildScheduledEventEntityType>;
 
 /**
  * Returned when status of a guild scheduled event is changed
  */
-export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', number>;
+export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', GuildScheduledEventStatus>;
 
 /**
  * Returned when location of a guild scheduled event is changed
