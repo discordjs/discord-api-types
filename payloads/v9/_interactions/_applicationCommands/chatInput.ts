@@ -160,7 +160,7 @@ export type APIApplicationCommandInteractionDataOption =
 export interface ApplicationCommandInteractionDataOptionSubCommand {
 	name: string;
 	type: ApplicationCommandOptionType.Subcommand;
-	options: APIApplicationCommandInteractionDataOptionWithValues[];
+	options?: APIApplicationCommandInteractionDataOptionWithValues[];
 }
 
 export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
