@@ -17,7 +17,7 @@ export interface APIGuildScheduledEvent {
 	/**
 	 * The id of the user that created the scheduled event
 	 */
-	creator_id?: Snowflake;
+	creator_id: Snowflake | null;
 	/**
 	 * The name of the scheduled event
 	 */
@@ -78,8 +78,7 @@ export interface APIGuildScheduledEventEntityMetadata {
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
  */
 export enum GuildScheduledEventEntityType {
-	None = 0,
-	StageInstance,
+	StageInstance = 1,
 	Voice,
 	External,
 }
@@ -99,11 +98,7 @@ export enum GuildScheduledEventStatus {
  */
 export enum GuildScheduledEventPrivacyLevel {
 	/**
-	 * the scheduled event is public and available in discovery
-	 */
-	Public = 1,
-	/**
 	 * The scheduled event is only accessible to guild members
 	 */
-	GuildOnly,
+	GuildOnly = 2,
 }

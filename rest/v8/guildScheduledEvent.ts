@@ -70,6 +70,16 @@ export type RESTPostAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
  */
+export interface RESTGetAPIGuildScheduledEventQuery {
+	/**
+	 * Whether to include number of users subscribed to this event
+	 */
+	with_user_count?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
+ */
 export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 
 /**
@@ -103,9 +113,17 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
 	 */
 	limit?: number;
 	/**
-	 * Whether to include guild member data. attaches `guild_member` property to the user object
+	 * Whether to include guild member data if it exists
 	 */
 	with_member?: boolean;
+	/**
+	 * Consider only users before given user id
+	 */
+	before?: Snowflake;
+	/**
+	 * Consider only users after given user id
+	 */
+	after?: Snowflake;
 }
 
 /**
@@ -119,8 +137,19 @@ export interface RESTGetAPIGuildScheduledEventUsersResult {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
+ * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure
  */
-export interface APIGuildScheduledEventUser extends APIUser {
-	guild_member?: APIGuildMember;
+export interface APIGuildScheduledEventUser {
+	/**
+	 * The scheduled event id which the user subscribed to
+	 */
+	guild_scheduled_event_id: Snowflake;
+	/**
+	 * The user which subscribed to the event
+	 */
+	user: APIUser;
+	/**
+	 * The guild member data for this user for the guild which this event belongs to, if any
+	 */
+	member?: APIGuildMember;
 }
