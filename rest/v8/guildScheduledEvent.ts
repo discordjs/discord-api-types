@@ -129,12 +129,7 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
  */
-export interface RESTGetAPIGuildScheduledEventUsersResult {
-	/**
-	 * Array of user objects with an optional `guild_member` property for each user
-	 */
-	users: APIGuildScheduledEventUser[];
-}
+export type RESTGetAPIGuildScheduledEventUsersResult = APIGuildScheduledEventUser[];
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure
