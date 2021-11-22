@@ -41,7 +41,7 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 
 export type TextChannelTypes = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
 
-// TODO: Remove when upstream PR separates structures
+// TODO: remove when text in voice is released
 export type GuildChannelTypes = Exclude<
 	TextChannelTypes | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
 	ChannelType.DM | ChannelType.GroupDM
