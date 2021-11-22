@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
-import type { OAuth2Scopes } from './mod.ts';
 import type { Permissions, Snowflake } from '../../globals.ts';
+import type { OAuth2Scopes } from './oauth2.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
 
