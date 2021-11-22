@@ -3,7 +3,7 @@
  */
 
 import type { OAuth2Scopes } from './mod.ts';
-import type { Snowflake } from '../../globals.ts';
+import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
 
@@ -108,7 +108,7 @@ export interface APIApplication {
 
 export interface APIApplicationInstallParams {
 	scopes: OAuth2Scopes[];
-	permissions: string;
+	permissions: Permissions;
 }
 
 /**

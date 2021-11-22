@@ -3,7 +3,7 @@
  */
 
 import type { OAuth2Scopes } from './index';
-import type { Snowflake } from '../../globals';
+import type { Permissions, Snowflake } from '../../globals';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
 
@@ -108,7 +108,7 @@ export interface APIApplication {
 
 export interface APIApplicationInstallParams {
 	scopes: OAuth2Scopes[];
-	permissions: string;
+	permissions: Permissions;
 }
 
 /**
