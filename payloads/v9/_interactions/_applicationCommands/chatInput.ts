@@ -17,7 +17,6 @@ interface APIApplicationCommandOptionBase {
 		| ApplicationCommandOptionType.Mentionable;
 	name: string;
 	description: string;
-	default?: boolean;
 	required?: boolean;
 	autocomplete?: never;
 }

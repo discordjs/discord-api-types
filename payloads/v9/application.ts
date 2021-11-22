@@ -91,23 +91,6 @@ export interface APIApplication {
 	 * See https://discord.com/developers/docs/resources/application#application-object-application-flags
 	 */
 	flags: ApplicationFlags;
-	/**
-	 * Up to 5 tags describing the content and functionality of the application
-	 */
-	tags?: [string, string, string, string, string];
-	/**
-	 * Settings for the application's default in-app authorization link, if enabled
-	 */
-	install_params?: APIApplicationInstallParams;
-	/**
-	 * The application's default custom authorization link, if enabled
-	 */
-	custom_install_url?: string;
-}
-
-export interface APIApplicationInstallParams {
-	scopes: string[];
-	permissions: string;
 }
 
 /**
