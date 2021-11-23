@@ -101,8 +101,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
 
 	MaximumNumberOfBanFetchesHasBeenReached = 30037,
-
-	MaximumNumberOfUncompletedGuildScheduledEventsReached = 30038,
+	MaximumNumberOfUncompletedGuildScheduledEventsReached,
 
 	MaximumNumberOfStickersReached = 30039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
