@@ -108,15 +108,15 @@ export const enum UserFlags {
 	/**
 	 * House Bravery Member
 	 */
-	HypesquadOnlineHouse1 = 1 << 6,
+	HypeSquadOnlineHouse1 = 1 << 6,
 	/**
 	 * House Brilliance Member
 	 */
-	HypesquadOnlineHouse2 = 1 << 7,
+	HypeSquadOnlineHouse2 = 1 << 7,
 	/**
 	 * House Balance Member
 	 */
-	HypesquadOnlineHouse3 = 1 << 8,
+	HypeSquadOnlineHouse3 = 1 << 8,
 	/**
 	 * Early Nitro Supporter
 	 */
