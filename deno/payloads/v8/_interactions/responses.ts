@@ -1,6 +1,7 @@
 import type { MessageFlags } from '../mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v8.ts';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
+import type { APIActionRowComponent } from '../channel.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -10,6 +11,7 @@ export enum InteractionType {
 	ApplicationCommand,
 	MessageComponent,
 	ApplicationCommandAutocomplete,
+	ModalSubmit,
 }
 
 /**
@@ -30,6 +32,11 @@ export interface APIInteractionResponsePong {
 export interface APIApplicationCommandAutocompleteResponse {
 	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
 	data: APICommandAutocompleteInteractionResponseCallbackData;
+}
+
+export interface APIModalInteractionResponse {
+	type: InteractionResponseType.Modal;
+	data: APIModalInteractionResponseCallbackData;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -79,6 +86,10 @@ export enum InteractionResponseType {
 	 * For autocomplete interactions
 	 */
 	ApplicationCommandAutocompleteResult,
+	/**
+	 * Respond to an interaction with an modal for a user to fill-out
+	 */
+	Modal,
 }
 
 /**
@@ -91,4 +102,10 @@ export type APIInteractionResponseCallbackData = Omit<
 
 export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
+}
+
+export interface APIModalInteractionResponseCallbackData {
+	custom_id: string;
+	title: string;
+	components: APIActionRowComponent[];
 }
