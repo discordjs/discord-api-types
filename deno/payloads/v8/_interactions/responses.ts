@@ -1,7 +1,7 @@
 import type { MessageFlags } from '../mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v8.ts';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
-import type { APIActionRowComponent } from '../channel.ts';
+import type { APIModalActionRowComponent } from '../channel.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -107,5 +107,5 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 export interface APIModalInteractionResponseCallbackData {
 	custom_id: string;
 	title: string;
-	components: APIActionRowComponent[];
+	components: APIModalActionRowComponent[];
 }

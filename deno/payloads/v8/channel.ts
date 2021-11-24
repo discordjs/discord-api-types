@@ -953,6 +953,13 @@ export interface APIActionRowComponent extends APIBaseMessageComponent<Component
 	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
 }
 
+export interface APIModalActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
+	/**
+	 * The components in the ActionRow
+	 */
+	components: Exclude<APIModalComponent, APIActionRowComponent>[];
+}
+
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons
  */
@@ -1115,8 +1122,6 @@ export interface APIInputTextComponent extends APIBaseMessageComponent<Component
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageComponent =
-	| APIActionRowComponent
-	| APIButtonComponent
-	| APISelectMenuComponent
-	| APIInputTextComponent;
+export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
+
+export type APIModalComponent = APIActionRowComponent | APIInputTextComponent;

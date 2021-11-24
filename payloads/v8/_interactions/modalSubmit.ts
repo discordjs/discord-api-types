@@ -1,4 +1,4 @@
-import type { APIBaseInteraction, InteractionType, APIActionRowComponent } from '../index';
+import type { APIBaseInteraction, InteractionType, APIModalActionRowComponent } from '../index';
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-object-component-structure
@@ -11,7 +11,7 @@ export interface APIModalSubmission {
 	/**
 	 * A list of child components
 	 */
-	components?: APIActionRowComponent[];
+	components?: APIModalActionRowComponent[];
 }
 
 /**
