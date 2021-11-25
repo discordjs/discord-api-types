@@ -101,6 +101,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
 
 	MaximumNumberOfBanFetchesHasBeenReached = 30037,
+	MaximumNumberOfUncompletedGuildScheduledEventsReached,
 
 	MaximumNumberOfStickersReached = 30039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
@@ -198,4 +199,8 @@ export enum RESTJSONErrorCodes {
 	LottieAnimationMaximumDimensionsExceeded,
 	StickerFramerateIsTooSmallOrTooLarge,
 	StickerAnimationDurationExceedsMaximumOf5Seconds,
+
+	CannotUpdateAFinishedEvent = 180000,
+
+	FailedToCreateStageNeededForStageEvent = 180002,
 }

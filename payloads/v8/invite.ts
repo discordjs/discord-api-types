@@ -7,6 +7,7 @@ import type { APIPartialGuild } from './guild';
 import type { APIApplication } from './application';
 import type { APIInviteStageInstance } from './stageInstance';
 import type { APIUser } from './user';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent';
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
@@ -68,6 +69,10 @@ export interface APIInvite {
 	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
 	 */
 	stage_instance?: APIInviteStageInstance;
+	/**
+	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
+	 */
+	guild_scheduled_event?: APIGuildScheduledEvent;
 }
 
 /**

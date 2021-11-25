@@ -11,6 +11,7 @@ import type { APIStageInstance } from './stageInstance';
 import type { APISticker } from './sticker';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
@@ -325,6 +326,14 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
 	stickers: APISticker[];
+	/**
+	 * The scheduled events in the guild
+	 *
+	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
+	 *
+	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 */
+	guild_scheduled_events?: APIGuildScheduledEvent[];
 }
 
 /**
