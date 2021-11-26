@@ -957,7 +957,7 @@ export interface APIModalActionRowComponent extends APIBaseMessageComponent<Comp
 	/**
 	 * The components in the ActionRow
 	 */
-	components: Exclude<APIModalComponent, APIActionRowComponent>[];
+	components: Exclude<APIModalComponent, APIModalActionRowComponent>[];
 }
 
 /**
@@ -1124,4 +1124,4 @@ export interface APIInputTextComponent extends APIBaseMessageComponent<Component
  */
 export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
 
-export type APIModalComponent = APIActionRowComponent | APIInputTextComponent;
+export type APIModalComponent = APIModalActionRowComponent | APIInputTextComponent;
