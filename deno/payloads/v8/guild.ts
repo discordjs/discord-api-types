@@ -327,7 +327,7 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	stickers: APISticker[];
 	/**
-	 * true if server boosts progress bar is enabled
+	 * Whether the guild has the boost progress bar enabled.
 	 */
 	premium_progress_bar_enabled: boolean;
 	/**
