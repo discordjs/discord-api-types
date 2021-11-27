@@ -808,6 +808,10 @@ export interface APIAttachment {
 	 */
 	filename: string;
 	/**
+	 * Description for the file
+	 */
+	description?: string;
+	/**
 	 * The attachment's media type
 	 *
 	 * See https://en.wikipedia.org/wiki/Media_type

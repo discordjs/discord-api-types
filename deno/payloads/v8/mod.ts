@@ -4,6 +4,7 @@ export * from './channel.ts';
 export * from './emoji.ts';
 export * from './gateway.ts';
 export * from './guild.ts';
+export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';

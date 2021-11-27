@@ -17,18 +17,22 @@ interface APIApplicationCommandOptionBase {
 		| ApplicationCommandOptionType.Mentionable;
 	name: string;
 	description: string;
-	default?: boolean;
 	required?: boolean;
+	autocomplete?: never;
 }
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  */
 export type APIApplicationCommandOption =
-	| APIApplicationCommandArgumentOptions
+	| APIApplicationCommandStringArgumentOptions
 	| APIApplicationCommandSubCommandOptions
+	| APIApplicationCommandOptionBase
 	| APIApplicationCommandChannelOptions
-	| APIApplicationCommandOptionBase;
+	| APIApplicationCommandOptionBase
+	| APIApplicationCommandNumberArgumentOptions
+	| APIApplicationCommandStringAutocompleteOptions
+	| APIApplicationCommandNumericAutocompleteOptions;
 
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands
@@ -46,12 +50,71 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
  * but they can have a `choices` one
  */
-export interface APIApplicationCommandArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+export interface APIApplicationCommandStringArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+	type: ApplicationCommandOptionType.String;
+	choices?: APIApplicationCommandOptionChoice[];
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
+ * but they can have a `choices`, a `min_value` and `max_value` field
+ */
+export interface APIApplicationCommandNumberArgumentOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
+	type: ApplicationCommandOptionType.Integer | ApplicationCommandOptionType.Number;
+	choices?: APIApplicationCommandOptionChoice[];
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	min_value?: number;
+	/**
+	 * if the option is an `INTEGER` or `NUMBER` type, the maximum value permitted
+	 */
+	max_value?: number;
+	autocomplete?: false;
+}
+export interface APIApplicationCommandArgumentOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
 	type:
 		| ApplicationCommandOptionType.String
 		| ApplicationCommandOptionType.Integer
 		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
+	autocomplete?: false;
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandArgumentOptions`, these types cannot have an `choices` array,
+ * but they can a `autocomplete` field where it's set to `true`
+ */
+export interface APIApplicationCommandStringAutocompleteOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
+	type: ApplicationCommandOptionType.String;
+	autocomplete: true;
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandArgumentOptions`, these types cannot have an `choices` array,
+ * but they can a `autocomplete` field where it's set to `true`
+ */
+export interface APIApplicationCommandNumericAutocompleteOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
+	type: ApplicationCommandOptionType.Integer | ApplicationCommandOptionType.Number;
+	autocomplete: true;
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	min_value?: number;
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	max_value?: number;
 }
 
 /**
@@ -100,7 +163,7 @@ export type APIApplicationCommandInteractionDataOption =
 export interface ApplicationCommandInteractionDataOptionSubCommand {
 	name: string;
 	type: ApplicationCommandOptionType.Subcommand;
-	options: APIApplicationCommandInteractionDataOptionWithValues[];
+	options?: APIApplicationCommandInteractionDataOptionWithValues[];
 }
 
 export interface ApplicationCommandInteractionDataOptionSubCommandGroup {
@@ -119,10 +182,10 @@ export type APIApplicationCommandInteractionDataOptionWithValues =
 	| ApplicationCommandInteractionDataOptionNumber
 	| ApplicationCommandInteractionDataOptionBoolean;
 
-export type ApplicationCommandInteractionDataOptionString = InteractionDataOptionBase<
-	ApplicationCommandOptionType.String,
-	string
->;
+export interface ApplicationCommandInteractionDataOptionString
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.String, string> {
+	focused?: boolean;
+}
 
 export type ApplicationCommandInteractionDataOptionRole = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Role,
@@ -144,15 +207,15 @@ export type ApplicationCommandInteractionDataOptionMentionable = InteractionData
 	Snowflake
 >;
 
-export type ApplicationCommandInteractionDataOptionInteger = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Integer,
-	number
->;
+export interface ApplicationCommandInteractionDataOptionInteger
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.Integer, number> {
+	focused?: boolean;
+}
 
-export type ApplicationCommandInteractionDataOptionNumber = InteractionDataOptionBase<
-	ApplicationCommandOptionType.Number,
-	number
->;
+export interface ApplicationCommandInteractionDataOptionNumber
+	extends InteractionDataOptionBase<ApplicationCommandOptionType.Number, number> {
+	focused?: boolean;
+}
 
 export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Boolean,

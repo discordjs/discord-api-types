@@ -9,6 +9,7 @@ import type {
 	APIChannel,
 	APIEmoji,
 	APIGuild,
+	APIGuildScheduledEvent,
 	APIGuildIntegration,
 	APIGuildMember,
 	APIMessage,
@@ -186,6 +187,7 @@ export enum GatewayIntentBits {
 	DirectMessages = 1 << 12,
 	DirectMessageReactions = 1 << 13,
 	DirectMessageTyping = 1 << 14,
+	GuildScheduledEvents = 1 << 16,
 }
 
 /**
@@ -242,6 +244,11 @@ export enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
+	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
+	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
+	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
+	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
+	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
 }
 
 export type GatewaySendPayload =
@@ -274,6 +281,11 @@ export type GatewayDispatchPayload =
 	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
 	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildScheduledEventCreateDispatch
+	| GatewayGuildScheduledEventUpdateDispatch
+	| GatewayGuildScheduledEventDeleteDispatch
+	| GatewayGuildScheduledEventUserAddDispatch
+	| GatewayGuildScheduledEventUserRemoveDispatch
 	| GatewayGuildStickersUpdateDispatch
 	| GatewayIntegrationCreateDispatch
 	| GatewayIntegrationDeleteDispatch
@@ -816,6 +828,49 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	 * The id of the role
 	 */
 	role_id: Snowflake;
+}
+
+export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventCreate,
+	GatewayGuildScheduledEventCreateDispatchData
+>;
+
+export type GatewayGuildScheduledEventCreateDispatchData = APIGuildScheduledEvent;
+
+export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUpdate,
+	GatewayGuildScheduledEventUpdateDispatchData
+>;
+
+export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildScheduledEvent;
+
+export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventDelete,
+	GatewayGuildScheduledEventDeleteDispatchData
+>;
+
+export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
+
+export type GatewayGuildScheduledEventUserAddDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserAdd,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+export interface GatewayGuildScheduledEventUserAddDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
+}
+
+export type GatewayGuildScheduledEventUserRemoveDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserRemove,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+export interface GatewayGuildScheduledEventUserRemoveDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
 }
 
 /**

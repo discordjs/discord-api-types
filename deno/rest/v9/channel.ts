@@ -248,28 +248,23 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
 	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake];
+	/**
+	 * Attachment objects with filename and description
+	 */
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
 export type RESTPostAPIChannelMessageFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIChannelMessageJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -366,6 +361,8 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * Attached files to keep
 	 *
+	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
 	attachments?: APIAttachment[] | null;
@@ -381,22 +378,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
  * https://discord.com/developers/docs/resources/channel#edit-message
  */
 export type RESTPatchAPIChannelMessageFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPatchAPIChannelMessageJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPatchAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
@@ -587,6 +575,10 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	 * The 3 day and 7 day archive durations require the server to be boosted. The [guild features](https://discord.com/developers/docs/resources/guild#guild-object-guild-features) will indicate if a server is able to use those settings.
 	 */
 	auto_archive_duration: ThreadAutoArchiveDuration;
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600)
+	 */
+	rate_limit_per_user?: number;
 }
 
 /**
