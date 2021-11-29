@@ -1,3 +1,35 @@
+# [0.25.0](https://github.com/discordjs/discord-api-types/compare/0.24.0...0.25.0) (2021-11-29)
+
+### Bug Fixes
+
+- **APIApplicationCommandOption:** remove `default` property ([#242](https://github.com/discordjs/discord-api-types/issues/242)) ([faa8bf4](https://github.com/discordjs/discord-api-types/commit/faa8bf494bc79b844ce73e1892461e8440dc7abc))
+- correct types for autocomplete interaction data ([#234](https://github.com/discordjs/discord-api-types/issues/234)) ([691abb5](https://github.com/discordjs/discord-api-types/commit/691abb581fb17093b5fa139f3ff53cbc0ad0b2a1))
+- correct types for REST attachments ([#238](https://github.com/discordjs/discord-api-types/issues/238)) ([fa54b9d](https://github.com/discordjs/discord-api-types/commit/fa54b9de5522b9fa9d5367650950f8b0e44f6e14))
+- make subcommand options optional ([#241](https://github.com/discordjs/discord-api-types/issues/241)) ([7379a34](https://github.com/discordjs/discord-api-types/commit/7379a345e820703a59a2d754c8ee7c0f0c710e09))
+
+### Code Refactoring
+
+- **UserFlags:** update flag names ([#229](https://github.com/discordjs/discord-api-types/issues/229)) ([f2d62e3](https://github.com/discordjs/discord-api-types/commit/f2d62e3cdf6128357f65e946fe1926cf915a6395))
+
+### Features
+
+- add guild scheduled event ([#186](https://github.com/discordjs/discord-api-types/issues/186)) ([d333962](https://github.com/discordjs/discord-api-types/commit/d333962715a58bd5ac14ad80e900b43b02777794))
+- **RESTPostAPIChannelThreadsJSONBody:** add `rate_limit_per_user` ([#237](https://github.com/discordjs/discord-api-types/issues/237)) ([1e52e0c](https://github.com/discordjs/discord-api-types/commit/1e52e0ceab31465c7bbd820e332ef219ad715916))
+- add max/min option for number-based options ([#221](https://github.com/discordjs/discord-api-types/issues/221)) ([bc1d03e](https://github.com/discordjs/discord-api-types/commit/bc1d03e527b9d37fac6d76cfbb51f4eeb8238e7b))
+- add maze api error ([#228](https://github.com/discordjs/discord-api-types/issues/228)) ([7a15c97](https://github.com/discordjs/discord-api-types/commit/7a15c9786333fb6f2259f42536cfbf2cf0e43db8))
+- **ActivityFlags:** add new flags ([#207](https://github.com/discordjs/discord-api-types/issues/207)) ([0f51d8e](https://github.com/discordjs/discord-api-types/commit/0f51d8e83f8aa53efde5c01849aaf09b91d15cbd))
+- **ApplicationFlags:** add message content intent flags ([#226](https://github.com/discordjs/discord-api-types/issues/226)) ([d189e36](https://github.com/discordjs/discord-api-types/commit/d189e36c49cd230f98798ff57b668a6fe56df11b))
+- **Attachments:** multi uploads and alt text ([#223](https://github.com/discordjs/discord-api-types/issues/223)) ([fdf133e](https://github.com/discordjs/discord-api-types/commit/fdf133ef45d3871defb46e47079c2acdd65e69d7))
+- **GuildSystemChannelFlags:** add suppress member join sticker replies flag ([#222](https://github.com/discordjs/discord-api-types/issues/222)) ([4021dae](https://github.com/discordjs/discord-api-types/commit/4021dae44b331198d164a7c93dbc1242184efdf7))
+- **Interactions:** add autocomplete api types ([#205](https://github.com/discordjs/discord-api-types/issues/205)) ([3b9320d](https://github.com/discordjs/discord-api-types/commit/3b9320dbf2cbbae7db44f00e8deaf336ab052e8b))
+- **UserFlags:** add `BOT_HTTP_INTERACTIONS` flag ([#212](https://github.com/discordjs/discord-api-types/issues/212)) ([a015f96](https://github.com/discordjs/discord-api-types/commit/a015f96fcb4a74866f884db87732876095788111))
+
+### BREAKING CHANGES
+
+- **UserFlags:** All user flags now follow the internal name, with descriptions added for what they represent. This means you'll have to do some minor renaming in your code if you check for flags.
+- **APIApplicationCommandOption:** If you were using the `default` property for ApplicationCommandOptions, it has been removed, as Discord wasn't even taking it into account anymore.
+- The types for autocomplete interactions have been corrected.
+
 # [0.24.0](https://github.com/discordjs/discord-api-types/compare/0.23.1...0.24.0) (2021-10-16)
 
 ### Bug Fixes
