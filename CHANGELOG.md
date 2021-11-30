@@ -1,3 +1,13 @@
+## [0.25.2](https://github.com/discordjs/discord-api-types/compare/0.25.1...0.25.2) (2021-11-30)
+
+### Bug Fixes
+
+- **APISelectMenuComponent:** `options` property is required ([#248](https://github.com/discordjs/discord-api-types/issues/248)) ([51dee6e](https://github.com/discordjs/discord-api-types/commit/51dee6e0e5bb4d749b9f0436e7ec9d4793e56567))
+
+### Features
+
+- **Guild:** boost progress bars ([#227](https://github.com/discordjs/discord-api-types/issues/227)) ([47382b6](https://github.com/discordjs/discord-api-types/commit/47382b6183a1d232053fef23691d423f8af88f88))
+
 ## [0.25.1](https://github.com/discordjs/discord-api-types/compare/0.25.0...0.25.1) (2021-11-30)
 
 ### Bug Fixes
