@@ -123,6 +123,10 @@ export interface RESTPostAPIGuildsJSONBody {
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
 	 */
 	system_channel_flags?: GuildSystemChannelFlags;
+	/**
+	 * Whether the boosts progress bar should be enabled.
+	 */
+	premium_progress_bar_enabled?: boolean;
 }
 
 /**
@@ -250,6 +254,10 @@ export interface RESTPatchAPIGuildJSONBody {
 	 * The description for the guild, if the guild is discoverable
 	 */
 	description?: string | null;
+	/**
+	 * Whether the boosts progress bar should be enabled.
+	 */
+	premium_progress_bar_enabled?: boolean;
 }
 
 /**

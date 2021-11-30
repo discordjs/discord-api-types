@@ -327,6 +327,10 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	stickers: APISticker[];
 	/**
+	 * Whether the guild has the boost progress bar enabled.
+	 */
+	premium_progress_bar_enabled: boolean;
+	/**
 	 * The scheduled events in the guild
 	 *
 	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
