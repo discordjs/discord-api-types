@@ -7,7 +7,7 @@ import type {
 	GuildScheduledEventStatus,
 	APIGuildMember,
 	APIUser,
-} from '../../payloads/v9';
+} from '../../v9';
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
