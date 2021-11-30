@@ -1,3 +1,9 @@
+## [0.25.1](https://github.com/discordjs/discord-api-types/compare/0.25.0...0.25.1) (2021-11-30)
+
+### Bug Fixes
+
+- **deno:** faulty import paths for guild scheduled events ([#245](https://github.com/discordjs/discord-api-types/issues/245)) ([44c0f05](https://github.com/discordjs/discord-api-types/commit/44c0f05cb2fc2b9ea50745530ae94a669a839594))
+
 # [0.25.0](https://github.com/discordjs/discord-api-types/compare/0.24.0...0.25.0) (2021-11-29)
 
 ### Bug Fixes
