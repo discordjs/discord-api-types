@@ -17,7 +17,11 @@ import type { StickerFormatType } from './sticker';
 import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
 import type { StageInstancePrivacyLevel } from './stageInstance';
-import type { GuildScheduledEventEntityType, GuildScheduledEventStatus } from './guildScheduledEvent';
+import type {
+	APIGuildScheduledEvent,
+	GuildScheduledEventEntityType,
+	GuildScheduledEventStatus,
+} from './guildScheduledEvent';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
@@ -47,6 +51,12 @@ export interface APIAuditLog {
 	 * See https://discord.com/developers/docs/resources/guild#integration-object
 	 */
 	integrations: APIGuildIntegration[];
+	/**
+	 * The guild scheduled events in the audit log
+	 *
+	 * See https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 */
+	guild_scheduled_events: APIGuildScheduledEvent[];
 }
 
 /**
