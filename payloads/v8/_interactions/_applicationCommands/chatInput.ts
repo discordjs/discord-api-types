@@ -25,11 +25,14 @@ interface APIApplicationCommandOptionBase {
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  */
 export type APIApplicationCommandOption =
-	| APIApplicationCommandChoiceArgumentOptions
+	| APIApplicationCommandStringArgumentOptions
 	| APIApplicationCommandSubCommandOptions
+	| APIApplicationCommandOptionBase
 	| APIApplicationCommandChannelOptions
 	| APIApplicationCommandOptionBase
-	| APIApplicationCommandNumberArgumentOptions;
+	| APIApplicationCommandNumberArgumentOptions
+	| APIApplicationCommandStringAutocompleteOptions
+	| APIApplicationCommandNumericAutocompleteOptions;
 
 /**
  * This type is exported as a way to make it stricter for you when you're writing your commands
@@ -45,16 +48,11 @@ export interface APIApplicationCommandSubCommandOptions extends Omit<APIApplicat
  * This type is exported as a way to make it stricter for you when you're writing your commands
  *
  * In contrast to `APIApplicationCommandSubCommandOptions`, these types cannot have an `options` array,
- * but they can have a either a `choices` or a `autocomplete` field.
+ * but they can have a `choices` one
  */
-export interface APIApplicationCommandChoiceArgumentOptions
-	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
-	type:
-		| ApplicationCommandOptionType.String
-		| ApplicationCommandOptionType.Integer
-		| ApplicationCommandOptionType.Number;
+export interface APIApplicationCommandStringArgumentOptions extends Omit<APIApplicationCommandOptionBase, 'type'> {
+	type: ApplicationCommandOptionType.String;
 	choices?: APIApplicationCommandOptionChoice[];
-	autocomplete?: boolean;
 }
 
 /**
@@ -85,6 +83,38 @@ export interface APIApplicationCommandArgumentOptions
 		| ApplicationCommandOptionType.Number;
 	choices?: APIApplicationCommandOptionChoice[];
 	autocomplete?: false;
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandArgumentOptions`, these types cannot have an `choices` array,
+ * but they can a `autocomplete` field where it's set to `true`
+ */
+export interface APIApplicationCommandStringAutocompleteOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
+	type: ApplicationCommandOptionType.String;
+	autocomplete: true;
+}
+
+/**
+ * This type is exported as a way to make it stricter for you when you're writing your commands
+ *
+ * In contrast to `APIApplicationCommandArgumentOptions`, these types cannot have an `choices` array,
+ * but they can a `autocomplete` field where it's set to `true`
+ */
+export interface APIApplicationCommandNumericAutocompleteOptions
+	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
+	type: ApplicationCommandOptionType.Integer | ApplicationCommandOptionType.Number;
+	autocomplete: true;
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	min_value?: number;
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	max_value?: number;
 }
 
 /**
