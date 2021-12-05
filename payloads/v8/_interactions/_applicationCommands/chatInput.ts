@@ -18,7 +18,6 @@ interface APIApplicationCommandOptionBase {
 	name: string;
 	description: string;
 	required?: boolean;
-	autocomplete?: never;
 }
 
 /**
@@ -94,7 +93,7 @@ export interface APIApplicationCommandArgumentOptions
 export interface APIApplicationCommandStringAutocompleteOptions
 	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
 	type: ApplicationCommandOptionType.String;
-	autocomplete?: true;
+	autocomplete: true;
 }
 
 /**
@@ -106,7 +105,7 @@ export interface APIApplicationCommandStringAutocompleteOptions
 export interface APIApplicationCommandNumericAutocompleteOptions
 	extends Omit<APIApplicationCommandOptionBase, 'type' | 'autocomplete'> {
 	type: ApplicationCommandOptionType.Integer | ApplicationCommandOptionType.Number;
-	autocomplete?: true;
+	autocomplete: true;
 	/**
 	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
 	 */
