@@ -158,6 +158,7 @@ export enum RESTJSONErrorCodes {
 	InvalidFileUploaded,
 
 	CannotSelfRedeemThisGift = 50054,
+	InvalidGuild,
 
 	PaymentSourceRequiredToRedeemGift = 50070,
 
