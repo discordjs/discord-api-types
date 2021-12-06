@@ -443,6 +443,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/users/@me/guilds/{guild.id}/member`
+	 */
+	userGuildMember(guildId: Snowflake) {
+		return `/users/@me/guilds/${guildId}/member` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - DELETE `/users/@me/guilds/{guild.id}`
 	 */
 	userGuild(guildId: Snowflake) {
