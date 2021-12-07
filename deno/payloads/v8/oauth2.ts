@@ -45,7 +45,7 @@ export enum OAuth2Scopes {
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
 	 */
-	GuildMembersRead = 'guilds.members.read',
+	GuildsMembersRead = 'guilds.members.read',
 	/**
 	 * Allows your app to join users to a group dm
 	 *
