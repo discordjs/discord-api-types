@@ -28,7 +28,7 @@ export interface APIInvite {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channel: Required<APIPartialChannel>;
+	channel: Required<APIPartialChannel> | null;
 	/**
 	 * The user who created the invite
 	 *
