@@ -41,6 +41,12 @@ export enum OAuth2Scopes {
 	 */
 	GuildsJoin = 'guilds.join',
 	/**
+	 * Allows /users/@me/guilds/{guild.id}/member to return a user's member information in a guild
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
+	 */
+	GuildsMembersRead = 'guilds.members.read',
+	/**
 	 * Allows your app to join users to a group dm
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#group-dm-add-recipient

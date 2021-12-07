@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
-import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../../payloads/v8/mod.ts';
+import type { APIChannel, APIConnection, APIGuildMember, APIUser, GuildFeature } from '../../payloads/v8/mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
@@ -10,6 +10,11 @@ export type RESTGetAPICurrentUserResult = APIUser;
  * https://discord.com/developers/docs/resources/user#get-user
  */
 export type RESTGetAPIUserResult = APIUser;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
+ */
+export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
