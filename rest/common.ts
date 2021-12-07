@@ -68,6 +68,7 @@ export const enum RESTJSONErrorCodes {
 	AnnouncementEditLimitExceeded = 20022,
 
 	ChannelSendRateLimit = 20028,
+	ServerSendRateLimit,
 
 	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20031,
 
