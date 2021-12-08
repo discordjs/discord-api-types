@@ -1568,7 +1568,10 @@ interface BasePayload {
 	t?: string;
 }
 
-type NonDispatchPayload = Omit<BasePayload, 't'>;
+type NonDispatchPayload = Omit<BasePayload, 't' | 's'> & {
+	t: null;
+	s: null;
+};
 
 interface DataPayload<Event extends GatewayDispatchEvents, D = unknown> extends BasePayload {
 	op: GatewayOpcodes.Dispatch;
