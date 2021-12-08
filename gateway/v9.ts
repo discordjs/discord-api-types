@@ -1650,11 +1650,11 @@ interface BasePayload {
 	/**
 	 * Sequence number, used for resuming sessions and heartbeats
 	 */
-	s: number;
+	s: number | null;
 	/**
 	 * The event name for this payload
 	 */
-	t?: string;
+	t?: string | null;
 }
 
 type NonDispatchPayload = Omit<BasePayload, 't'>;
