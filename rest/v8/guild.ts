@@ -436,8 +436,18 @@ export type RESTPatchAPIGuildMemberResult = APIGuildMember;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
+ *
+ * @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  */
 export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
+	/**
+	 * Value to set users nickname to
+	 *
+	 * Requires `CHANGE_NICKNAME` permission
+	 */
+	nick?: string | null;
+}
+export interface RESTPatchAPICurrentGuildMemberJSONBody {
 	/**
 	 * Value to set users nickname to
 	 *
