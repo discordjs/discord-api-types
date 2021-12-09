@@ -234,7 +234,7 @@ export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: APIAttachment[] | null;
+	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
 }
 
 /**
