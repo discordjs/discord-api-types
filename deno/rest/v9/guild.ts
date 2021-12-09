@@ -454,6 +454,8 @@ export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
+ *
+ * @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  */
 export type RESTPatchAPICurrentGuildMemberNicknameResult = Required<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
 
