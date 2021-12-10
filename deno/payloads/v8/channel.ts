@@ -1117,6 +1117,10 @@ export interface APIInputTextComponent extends APIBaseMessageComponent<Component
 	 * Maximal length of text input
 	 */
 	max_length?: number;
+	/**
+	 * Whether or not this text input is required or not
+	 */
+	required?: boolean;
 }
 
 /**
