@@ -1257,7 +1257,7 @@ export type GatewayThreadMemberUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-member-update
  */
-export type GatewayThreadMemberUpdateDispatchData = APIThreadMember;
+export type GatewayThreadMemberUpdateDispatchData = APIThreadMember & { guild_id: Snowflake };
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-create
