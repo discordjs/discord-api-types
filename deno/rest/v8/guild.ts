@@ -447,6 +447,10 @@ export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
 	 */
 	nick?: string | null;
 }
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-current-member
+ */
 export interface RESTPatchAPICurrentGuildMemberJSONBody {
 	/**
 	 * Value to set users nickname to
