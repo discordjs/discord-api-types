@@ -259,6 +259,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
+	 * @deprecated Use {@link Routes.guildMember} instead.
 	 */
 	guildCurrentMemberNickname(guildId: Snowflake) {
 		return `/guilds/${guildId}/members/@me/nick` as const;
