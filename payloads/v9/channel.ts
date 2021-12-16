@@ -1157,7 +1157,7 @@ export const enum ButtonStyle {
 }
 
 // TODO: Add link
-export const enum InputTextStyle {
+export const enum TextStyleType {
 	Short = 1,
 	Paragraph,
 }
@@ -1229,7 +1229,11 @@ export interface APIInputTextComponent extends APIBaseMessageComponent<Component
 	/**
 	 * One of input text styles
 	 */
-	style: InputTextStyle;
+	style: TextStyleType;
+	/**
+	 * The custom id for the text input
+	 */
+	custom_id: string;
 	/**
 	 * Text that appears on top of the input text field, max 80 characters
 	 */
@@ -1238,6 +1242,10 @@ export interface APIInputTextComponent extends APIBaseMessageComponent<Component
 	 * Placeholder for the text input
 	 */
 	placeholder?: string;
+	/**
+	 * The pre-filled text in the text input
+	 */
+	value?: string;
 	/**
 	 * Minimal length of text input
 	 */
