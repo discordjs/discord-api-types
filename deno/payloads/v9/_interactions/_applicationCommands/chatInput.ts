@@ -1,5 +1,6 @@
 import type { APIRole, APIUser, ChannelType } from '../../mod.ts';
 import type { Snowflake } from '../../../../globals.ts';
+import type { APIAttachment } from '../../channel.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 import type {
 	APIApplicationCommandInteractionWrapper,
@@ -138,6 +139,7 @@ export enum ApplicationCommandOptionType {
 	Role,
 	Mentionable,
 	Number,
+	Attachment,
 }
 
 /**
@@ -207,6 +209,11 @@ export interface ApplicationCommandInteractionDataOptionInteger
 	extends InteractionDataOptionBase<ApplicationCommandOptionType.Integer, number> {
 	focused?: boolean;
 }
+
+export type ApplicationCommandInteractionDataOptionAttachment = InteractionDataOptionBase<
+	ApplicationCommandOptionType.Attachment,
+	APIAttachment
+>;
 
 export interface ApplicationCommandInteractionDataOptionNumber
 	extends InteractionDataOptionBase<ApplicationCommandOptionType.Number, number> {
