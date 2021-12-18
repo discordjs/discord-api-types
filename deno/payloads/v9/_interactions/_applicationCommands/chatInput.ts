@@ -248,6 +248,7 @@ export interface APIChatInputApplicationCommandInteractionDataResolved {
 	roles?: Record<Snowflake, APIRole>;
 	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
 	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
+	attachments?: Record<Snowflake, APIAttachment>;
 }
 
 /**
