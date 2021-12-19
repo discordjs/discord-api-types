@@ -1,7 +1,6 @@
-import type { APIRole, APIUser, ChannelType } from '../../mod.ts';
+import type { APIRole, APIUser, ChannelType, APIAttachment } from '../../mod.ts';
 import type { Snowflake } from '../../../../globals.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
-import type { APIAttachment } from '../../channel.ts';
 import type {
 	APIApplicationCommandInteractionWrapper,
 	APIInteractionDataResolvedChannel,
@@ -221,7 +220,7 @@ export interface ApplicationCommandInteractionDataOptionNumber
 
 export type ApplicationCommandInteractionDataOptionAttachment = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Attachment,
-	APIAttachment
+	Snowflake
 >;
 
 export type ApplicationCommandInteractionDataOptionBoolean = InteractionDataOptionBase<

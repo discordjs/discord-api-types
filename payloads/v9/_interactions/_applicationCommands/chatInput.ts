@@ -1,6 +1,5 @@
-import type { APIRole, APIUser, ChannelType } from '../../index';
+import type { APIRole, APIUser, ChannelType, APIAttachment } from '../../index';
 import type { Snowflake } from '../../../../globals';
-import type { APIAttachment } from '../../channel';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
 	APIApplicationCommandInteractionWrapper,
@@ -212,7 +211,7 @@ export interface ApplicationCommandInteractionDataOptionInteger
 
 export type ApplicationCommandInteractionDataOptionAttachment = InteractionDataOptionBase<
 	ApplicationCommandOptionType.Attachment,
-	APIAttachment
+	Snowflake
 >;
 
 export interface ApplicationCommandInteractionDataOptionNumber
