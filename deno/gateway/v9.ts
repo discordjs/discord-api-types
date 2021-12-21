@@ -302,6 +302,9 @@ export type GatewayDispatchPayload =
 	| GatewayMessageReactionRemoveEmojiDispatch
 	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewayStageInstanceCreateDispatch
+	| GatewayStageInstanceDeleteDispatch
+	| GatewayStageInstanceUpdateDispatch
 	| GatewayReadyDispatch
 	| GatewayResumedDispatch
 	| GatewayThreadListSyncDispatch
