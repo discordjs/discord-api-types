@@ -1,8 +1,9 @@
 import { expectAssignable, expectNotAssignable, expectNotType } from 'tsd';
 import {
-	APIApplicationCommandNumericAutocompleteOptions,
+	APIApplicationCommandIntegerOption,
+	APIApplicationCommandNumberOption,
 	APIApplicationCommandOption,
-	APIApplicationCommandStringAutocompleteOptions,
+	APIApplicationCommandStringOption,
 	ApplicationCommandOptionType,
 } from '../../v9';
 
@@ -11,45 +12,45 @@ const baseValues = {
 	description: 'test',
 };
 
-expectAssignable<APIApplicationCommandStringAutocompleteOptions>({
+expectAssignable<APIApplicationCommandStringOption>({
 	...baseValues,
 	type: ApplicationCommandOptionType.String,
 	autocomplete: true,
 });
 
-expectAssignable<APIApplicationCommandNumericAutocompleteOptions>({
+expectAssignable<APIApplicationCommandIntegerOption>({
 	...baseValues,
 	type: ApplicationCommandOptionType.Integer,
 	autocomplete: true,
 });
 
-expectAssignable<APIApplicationCommandNumericAutocompleteOptions>({
+expectAssignable<APIApplicationCommandNumberOption>({
 	...baseValues,
 	type: ApplicationCommandOptionType.Number,
 	autocomplete: true,
 });
 
-expectNotType<APIApplicationCommandStringAutocompleteOptions>({
+expectNotType<APIApplicationCommandStringOption>({
 	...baseValues,
 	type: ApplicationCommandOptionType.String,
 	choices: [],
 });
 
-expectNotAssignable<APIApplicationCommandStringAutocompleteOptions>({
+expectNotAssignable<APIApplicationCommandStringOption>({
 	...baseValues,
 	type: ApplicationCommandOptionType.String,
 	choices: [],
 	autocomplete: true,
 });
 
-expectNotAssignable<APIApplicationCommandStringAutocompleteOptions>({
+expectAssignable<APIApplicationCommandStringOption>({
 	...baseValues,
 	type: ApplicationCommandOptionType.String,
 	choices: [],
 	autocomplete: false,
 });
 
-expectNotAssignable<APIApplicationCommandNumericAutocompleteOptions>({
+expectAssignable<APIApplicationCommandNumberOption>({
 	...baseValues,
 	type: ApplicationCommandOptionType.Number,
 	choices: [],
