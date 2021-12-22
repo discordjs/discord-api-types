@@ -18,7 +18,6 @@ interface APIApplicationCommandOptionBase {
 	name: string;
 	description: string;
 	required?: boolean;
-	autocomplete?: never;
 }
 
 /**

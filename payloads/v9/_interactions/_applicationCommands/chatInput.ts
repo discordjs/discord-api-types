@@ -18,7 +18,6 @@ interface APIApplicationCommandOptionBase {
 	name: string;
 	description: string;
 	required?: boolean;
-	autocomplete?: never;
 }
 
 /**
@@ -29,7 +28,6 @@ export type APIApplicationCommandOption =
 	| APIApplicationCommandSubCommandOptions
 	| APIApplicationCommandOptionBase
 	| APIApplicationCommandChannelOptions
-	| APIApplicationCommandOptionBase
 	| APIApplicationCommandNumberArgumentOptions
 	| APIApplicationCommandStringAutocompleteOptions
 	| APIApplicationCommandNumericAutocompleteOptions;
