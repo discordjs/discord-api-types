@@ -10,8 +10,8 @@ import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../bas
 import type { APIBaseApplicationCommandInteractionData } from './internals';
 
 import type {
-	APIApplicationCommandInteractionDataStringOption,
 	APIApplicationCommandStringOption,
+	APIApplicationCommandInteractionDataStringOption,
 } from './_chatInput/string';
 import type {
 	APIApplicationCommandIntegerOptionBase,
@@ -22,32 +22,32 @@ import type {
 	APIApplicationCommandInteractionDataBooleanOption,
 } from './_chatInput/boolean';
 import type {
-	APIApplicationCommandInteractionDataUserOption,
 	APIApplicationCommandUserOption,
+	APIApplicationCommandInteractionDataUserOption,
 } from './_chatInput/user';
 import type {
 	APIApplicationCommandChannelOption,
 	APIApplicationCommandInteractionDataChannelOption,
 } from './_chatInput/channel';
 import type {
-	APIApplicationCommandInteractionDataRoleOption,
 	APIApplicationCommandRoleOption,
+	APIApplicationCommandInteractionDataRoleOption,
 } from './_chatInput/role';
 import type {
-	APIApplicationCommandInteractionDataMentionableOption,
 	APIApplicationCommandMentionableOption,
+	APIApplicationCommandInteractionDataMentionableOption,
 } from './_chatInput/mentionable';
 import type {
-	APIApplicationCommandInteractionDataNumberOption,
 	APIApplicationCommandNumberOptionBase,
+	APIApplicationCommandInteractionDataNumberOption,
 } from './_chatInput/number';
 import type {
-	APIApplicationCommandInteractionDataSubcommandOption,
 	APIApplicationCommandSubcommandOption,
+	APIApplicationCommandInteractionDataSubcommandOption,
 } from './_chatInput/subcommand';
 import type {
-	APIApplicationCommandInteractionDataSubcommandGroupOption,
 	APIApplicationCommandSubcommandGroupOption,
+	APIApplicationCommandInteractionDataSubcommandGroupOption,
 } from './_chatInput/subcommandGroup';
 
 export * from './_chatInput/string';
