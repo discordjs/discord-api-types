@@ -89,9 +89,9 @@ export type APIApplicationCommandOption =
 export type APIApplicationCommandInteractionDataOption =
 	| APIApplicationCommandInteractionDataSubcommandOption
 	| APIApplicationCommandInteractionDataSubcommandGroupOption
-	| APIApplicationCommandInteractionDataBasicOptions;
+	| APIApplicationCommandInteractionDataBasicOption;
 
-export type APIApplicationCommandInteractionDataBasicOptions =
+export type APIApplicationCommandInteractionDataBasicOption =
 	| APIApplicationCommandInteractionDataStringOption
 	| APIApplicationCommandInteractionDataIntegerOption
 	| APIApplicationCommandInteractionDataBooleanOption
