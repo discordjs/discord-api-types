@@ -65,7 +65,7 @@ export * from './_chatInput/shared.ts';
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  */
-export type APIApplicationCommandBasicOptions =
+export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandStringOption
 	| APIApplicationCommandIntegerOptionBase
 	| APIApplicationCommandBooleanOption
@@ -81,7 +81,7 @@ export type APIApplicationCommandBasicOptions =
 export type APIApplicationCommandOption =
 	| APIApplicationCommandSubcommandOption
 	| APIApplicationCommandSubcommandGroupOption
-	| APIApplicationCommandBasicOptions;
+	| APIApplicationCommandBasicOption;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
