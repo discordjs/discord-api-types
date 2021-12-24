@@ -1,5 +1,6 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIChannel, APIConnection, APIGuildMember, APIUser, GuildFeature } from '../../payloads/v8/mod.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
@@ -19,7 +20,7 @@ export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
  */
-export interface RESTPatchAPICurrentUserJSONBody {
+export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * User's username, if changed may cause the user's discriminator to be randomized
 	 */
@@ -28,7 +29,7 @@ export interface RESTPatchAPICurrentUserJSONBody {
 	 * If passed, modifies the user's avatar
 	 */
 	avatar?: string | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user

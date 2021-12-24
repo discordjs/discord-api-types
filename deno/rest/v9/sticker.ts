@@ -1,4 +1,5 @@
 import type { APISticker, APIStickerPack } from '../../payloads/v9/mod.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 export type RESTGetAPIStickerResult = APISticker;
 
@@ -31,7 +32,7 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 
 export type RESTPostAPIGuildStickerResult = APISticker;
 
-export interface RESTPatchAPIGuildStickerJSONBody {
+export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
@@ -44,7 +45,7 @@ export interface RESTPatchAPIGuildStickerJSONBody {
 	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
 	tags?: string;
-}
+}>;
 
 export type RESTPatchAPIGuildStickerResult = APISticker;
 
