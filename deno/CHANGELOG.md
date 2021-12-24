@@ -1,3 +1,39 @@
+# [0.26.0](https://github.com/discordjs/discord-api-types/compare/0.25.2...0.26.0) (2021-12-24)
+
+### Bug Fixes
+
+- **APIInvite:** channel can be null ([#182](https://github.com/discordjs/discord-api-types/issues/182)) ([c67d426](https://github.com/discordjs/discord-api-types/commit/c67d426e3d3634eb0756f07029b9176cfc5873ce))
+- **GatewayStageInstance:** Stage Instance dispatches not included in `GatewayDispatchPayload` ([#267](https://github.com/discordjs/discord-api-types/issues/267)) ([46db72d](https://github.com/discordjs/discord-api-types/commit/46db72da2fd14a51047b4e66e934738785e72d96))
+- **NonDispatchPayload:** `t` & `s` fields are always null on non-dispatch payloads ([#259](https://github.com/discordjs/discord-api-types/issues/259)) ([315ce35](https://github.com/discordjs/discord-api-types/commit/315ce3584917635b93a26123470f37a10bd8d846))
+- only a partial object is needed when updating attachments ([#263](https://github.com/discordjs/discord-api-types/issues/263)) ([7ab780b](https://github.com/discordjs/discord-api-types/commit/7ab780b3aefb3c8c34a8114db3ace6c4e6ae3206))
+- **StickerPack:** Optional `banner_asset_id` ([#270](https://github.com/discordjs/discord-api-types/issues/270)) ([7eee39d](https://github.com/discordjs/discord-api-types/commit/7eee39d86c0d40857d0bf6fc0d4d1e31cda1895c))
+
+### Features
+
+- Add API error code `50055` ([#256](https://github.com/discordjs/discord-api-types/issues/256)) ([b01716b](https://github.com/discordjs/discord-api-types/commit/b01716bf22fba617c0a09084ff607127366432b6))
+- Add API error code 50109 ([#268](https://github.com/discordjs/discord-api-types/issues/268)) ([bfc5e46](https://github.com/discordjs/discord-api-types/commit/bfc5e46f5374289997219c35aa0b992dfaa4ec40))
+- add support for user guild member read oauth2 scope and route ([#254](https://github.com/discordjs/discord-api-types/issues/254)) ([e9d02a1](https://github.com/discordjs/discord-api-types/commit/e9d02a19fc3b4fad2f488b0db3b63d6301878730))
+- **APIAuditLog:** add `guild_scheduled_events` prop ([#251](https://github.com/discordjs/discord-api-types/issues/251)) ([c7efcd5](https://github.com/discordjs/discord-api-types/commit/c7efcd55059673ab9fc8e6ef9711050700274057))
+- **APIGuildMember:** add guild timeouts ([#235](https://github.com/discordjs/discord-api-types/issues/235)) ([0bbc972](https://github.com/discordjs/discord-api-types/commit/0bbc9721f6e18eb559c40e207f60218e7862d4ea))
+- **GatewayThreadMemberUpdateDispatchData:** add `guild_id` extra field ([#266](https://github.com/discordjs/discord-api-types/issues/266)) ([2c72242](https://github.com/discordjs/discord-api-types/commit/2c72242a03bd5adfd0fc145bf5645d1bad59254e))
+- **RESTJSONErrorCodes:** add error 20029 ([#257](https://github.com/discordjs/discord-api-types/issues/257)) ([9e619fc](https://github.com/discordjs/discord-api-types/commit/9e619fc460337d53c85fc3977c89489c14bd8254))
+- bring in support for TS 4.5's `exactOptionalPropertyTypes` ([#275](https://github.com/discordjs/discord-api-types/issues/275)) ([c20e5ae](https://github.com/discordjs/discord-api-types/commit/c20e5ae2a9edcca529e233a4deb634bc760076d2))
+
+### Cleanups
+
+- Make application command option union easier to use ([#250](https://github.com/discordjs/discord-api-types/issues/250)) ([8bbb819](https://github.com/discordjs/discord-api-types/commit/8bbb81942b3f87e46273bb75a12e2db4ef7ee797))
+- **ChatInputCommandOptions:** cleanup chat input options ([#274](https://github.com/discordjs/discord-api-types/issues/274)) ([7fe78ce](https://github.com/discordjs/discord-api-types/commit/7fe78cec25a07dcd5d7ba2af3a5d773620c2d3cf))
+
+### BREAKING CHANGES
+
+- **StickerPack:** `banner_asset_id` is now optional. Reference PR: https://github.com/discord/discord-api-docs/pull/4245
+- **APIInvite:** this marks the channel property of invites as possibly null
+- **ChatInputCommandOptions:** A lot of the options were renamed and split up to clean up internal code.
+  All option interfaces that ended in a plural (`*Options`) have had their pluralization removed (`*Option` now).
+  `APIApplicationCommandInteractionDataOptionWithValues` has been renamed to `APIApplicationCommandInteractionDataBasicOption`,
+  and every `*InteractionDataOptions{Type}` interfaces have been renamed to `*InteractionData{Type}Option`
+  (i.e.: `ApplicationCommandInteractionDataOptionString` -> `APIApplicationCommandInteractionDataStringOption`).
+
 ## [0.25.2](https://github.com/discordjs/discord-api-types/compare/0.25.1...0.25.2) (2021-11-30)
 
 ### Bug Fixes
