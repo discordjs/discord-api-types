@@ -644,7 +644,7 @@ export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', GuildSched
  */
 export type APIAuditLogChangeKeyLocation = AuditLogChangeData<'location', string>;
 
-interface AuditLogChangeData<K extends string, D extends unknown> {
+interface AuditLogChangeData<K extends string, D> {
 	key: K;
 	/**
 	 * The new value

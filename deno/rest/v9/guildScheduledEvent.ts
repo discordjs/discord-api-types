@@ -1,12 +1,12 @@
 import type { Snowflake } from '../../globals.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 import type {
 	APIGuildScheduledEvent,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventPrivacyLevel,
 	APIGuildScheduledEventEntityMetadata,
 	GuildScheduledEventStatus,
-	APIGuildMember,
-	APIUser,
+	APIGuildScheduledEventUser,
 } from '../../v9.ts';
 
 /**
@@ -27,7 +27,7 @@ export type RESTGetAPIGuildScheduledEventsResult = APIGuildScheduledEvent[];
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
  */
-export interface RESTPostAPIGuildScheduledEventJSONBody {
+export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The stage channel id of the guild event
 	 */
@@ -60,7 +60,7 @@ export interface RESTPostAPIGuildScheduledEventJSONBody {
 	 * The entity metadata of the scheduled event
 	 */
 	entity_metadata?: APIGuildScheduledEventEntityMetadata;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
@@ -85,12 +85,13 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
  */
-export interface RESTPatchAPIGuildScheduledEventJSONBody extends Partial<RESTPostAPIGuildScheduledEventJSONBody> {
-	/**
-	 * The status of the scheduled event
-	 */
-	status?: GuildScheduledEventStatus;
-}
+export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		/**
+		 * The status of the scheduled event
+		 */
+		status?: GuildScheduledEventStatus;
+	}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
@@ -130,21 +131,3 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
  */
 export type RESTGetAPIGuildScheduledEventUsersResult = APIGuildScheduledEventUser[];
-
-/**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure
- */
-export interface APIGuildScheduledEventUser {
-	/**
-	 * The scheduled event id which the user subscribed to
-	 */
-	guild_scheduled_event_id: Snowflake;
-	/**
-	 * The user which subscribed to the event
-	 */
-	user: APIUser;
-	/**
-	 * The guild member data for this user for the guild which this event belongs to, if any
-	 */
-	member?: APIGuildMember;
-}

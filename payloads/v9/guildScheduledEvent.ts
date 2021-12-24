@@ -1,4 +1,5 @@
 import type { APIUser } from './user';
+import type { APIGuildMember } from './guild';
 import type { Snowflake } from '../../globals';
 
 export interface APIGuildScheduledEvent {
@@ -101,4 +102,22 @@ export const enum GuildScheduledEventPrivacyLevel {
 	 * The scheduled event is only accessible to guild members
 	 */
 	GuildOnly = 2,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure
+ */
+export interface APIGuildScheduledEventUser {
+	/**
+	 * The scheduled event id which the user subscribed to
+	 */
+	guild_scheduled_event_id: Snowflake;
+	/**
+	 * The user which subscribed to the event
+	 */
+	user: APIUser;
+	/**
+	 * The guild member data for this user for the guild which this event belongs to, if any
+	 */
+	member?: APIGuildMember;
 }

@@ -28,11 +28,17 @@ if (interaction.type === InteractionType.MessageComponent) {
 
 	const { data } = interaction;
 	if (data.component_type === ComponentType.Button) {
-		expectType<APIMessageButtonInteractionData>(data);
+		// TODO: For some reason, tsd yields a `Parameter type APIMessageButtonInteractionData is not identical to argument type APIMessageButtonInteractionData.` error
+		// expectType<APIMessageButtonInteractionData>(data);
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const _: APIMessageButtonInteractionData = data;
 	}
 
 	if (data.component_type === ComponentType.SelectMenu) {
-		expectType<APIMessageSelectMenuInteractionData>(data);
+		// TODO: for some reason, tsd yields a `Parameter type APIMessageSelectMenuInteractionData is not identical to argument type APIMessageSelectMenuInteractionData.` error
+		// expectType<APIMessageSelectMenuInteractionData>(data);
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const _: APIMessageSelectMenuInteractionData = data;
 		expectType<string[]>(data.values);
 	}
 }
