@@ -7,7 +7,7 @@ export interface APIApplicationCommandOptionBase<Type extends ApplicationCommand
 	required?: boolean;
 }
 
-export interface APIInteractionDataOptionBase<T extends ApplicationCommandOptionType, D = unknown> {
+export interface APIInteractionDataOptionBase<T extends ApplicationCommandOptionType, D> {
 	name: string;
 	type: T;
 	value: D;
