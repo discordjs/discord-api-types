@@ -97,6 +97,7 @@ export interface APIApplication {
  * https://discord.com/developers/docs/resources/application#application-object-application-flags
  */
 export enum ApplicationFlags {
+	EmbeddedReleased = 1 << 1,
 	ManagedEmoji = 1 << 2,
 	GroupDMCreate = 1 << 4,
 	RPCHasConnected = 1 << 11,
@@ -108,4 +109,5 @@ export enum ApplicationFlags {
 	Embedded = 1 << 17,
 	GatewayMessageContent = 1 << 18,
 	GatewayMessageContentLimited = 1 << 19,
+	EmbeddedFirstParty = 1 << 20,
 }
