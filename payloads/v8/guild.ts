@@ -582,6 +582,10 @@ export interface APIGuildPreview {
 	 * The description for the guild
 	 */
 	description: string;
+	/**
+	 * Custom guild stickers
+	 */
+	stickers: APISticker[];
 }
 
 /**
