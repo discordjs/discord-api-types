@@ -336,7 +336,8 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
 	| APIAuditLogChangeKeyEntityType
 	| APIAuditLogChangeKeyStatus
-	| APIAuditLogChangeKeyLocation;
+	| APIAuditLogChangeKeyLocation
+	| APIAuditLogChangeKeyCommunicationDisabledUntil;
 
 /**
  * Returned when an entity's name is changed
@@ -682,6 +683,11 @@ export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', GuildSched
  * Returned when location of a guild scheduled event is changed
  */
 export type APIAuditLogChangeKeyLocation = AuditLogChangeData<'location', string>;
+
+/**
+ * Returned when a user's timeout is changed
+ */
+export type APIAuditLogChangeKeyCommunicationDisabledUntil = AuditLogChangeData<'communication_disabled_until', string>;
 
 interface AuditLogChangeData<K extends string, D> {
 	key: K;
