@@ -1,7 +1,7 @@
 /**
  * https://discord.com/developers/docs/reference#snowflakes
  */
-export type Snowflake = string;
+export type Snowflake = `${number}`;
 
 /**
  * https://discord.com/developers/docs/topics/permissions
