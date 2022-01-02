@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../../../globals.ts';
-import type { APIRole, APIUser, APIAttachment } from '../../mod.ts';
+import type { APIAttachment, APIRole, APIUser } from '../../mod.ts';
 import type {
 	APIApplicationCommandInteractionWrapper,
 	APIInteractionDataResolvedChannel,
