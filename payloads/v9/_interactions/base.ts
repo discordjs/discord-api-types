@@ -39,7 +39,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
-export interface APIBaseInteraction<Type extends InteractionType, Data extends unknown> {
+export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * ID of the interaction
 	 */

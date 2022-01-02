@@ -6,6 +6,7 @@ import type {
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
 } from '../../payloads/v9/mod.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
 	RESTGetAPIWebhookWithTokenMessageResult,
@@ -25,22 +26,18 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
  */
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
-type RESTPostAPIBaseApplicationCommandsJSONBody = Omit<
-	APIApplicationCommand,
-	'id' | 'application_id' | 'description' | 'type' | 'version'
+type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Omit<APIApplicationCommand, 'id' | 'application_id' | 'description' | 'type' | 'version' | 'guild_id'>
 >;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
-export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
-	type?: ApplicationCommandType.ChatInput;
-	/**
-	 * Whether this application command option should be autocompleted
-	 */
-	autocomplete?: boolean;
-	description: string;
-}
+export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		type?: ApplicationCommandType.ChatInput;
+		description: string;
+	}>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
@@ -64,7 +61,7 @@ export type RESTPostAPIApplicationCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
  */
-export type RESTPatchAPIApplicationCommandJSONBody = Partial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
@@ -104,7 +101,7 @@ export type RESTPostAPIApplicationGuildCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = Partial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command

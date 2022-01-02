@@ -177,6 +177,8 @@ export enum RESTJSONErrorCodes {
 
 	ServerNeedsMoreBoostsToPerformThisAction = 50101,
 
+	RequestBodyContainsInvalidJSON = 50109,
+
 	TwoFactorAuthenticationIsRequired = 60003,
 
 	NoUsersWithDiscordTagExist = 80004,

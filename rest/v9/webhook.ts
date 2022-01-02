@@ -7,12 +7,12 @@ import type {
 	APIWebhook,
 	APIAttachment,
 } from '../../payloads/v9/index';
-import type { Nullable } from '../../utils/internals';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
-export interface RESTPostAPIChannelWebhookJSONBody {
+export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the webhook (1-80 characters)
 	 */
@@ -23,7 +23,7 @@ export interface RESTPostAPIChannelWebhookJSONBody {
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	avatar?: string | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
@@ -53,7 +53,7 @@ export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
  */
-export interface RESTPatchAPIWebhookJSONBody {
+export type RESTPatchAPIWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The default name of the webhook
 	 */
@@ -68,7 +68,7 @@ export interface RESTPatchAPIWebhookJSONBody {
 	 * The new channel id this webhook should be moved to
 	 */
 	channel_id?: Snowflake;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
@@ -98,7 +98,7 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
-export interface RESTPostAPIWebhookWithTokenJSONBody {
+export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
@@ -139,7 +139,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * Attachment objects with filename and description
 	 */
 	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
@@ -227,19 +227,18 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
-export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
-	extends Nullable<
-		Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>
-	> {
-	/**
-	 * Attached files to keep
-	 *
-	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
-	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
-}
+export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>> & {
+		/**
+		 * Attached files to keep
+		 *
+		 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+		 *
+		 * See https://discord.com/developers/docs/resources/channel#attachment-object
+		 */
+		attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
+	}
+>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message

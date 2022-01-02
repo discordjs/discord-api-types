@@ -1,7 +1,8 @@
 import type { APIUser } from './user';
+import type { APIGuildMember } from './guild';
 import type { Snowflake } from '../../globals';
 
-export interface APIGuildScheduledEvent {
+interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType> {
 	/**
 	 * The id of the guild event
 	 */
@@ -45,7 +46,7 @@ export interface APIGuildScheduledEvent {
 	/**
 	 * The type of hosting entity associated with the scheduled event
 	 */
-	entity_type: GuildScheduledEventEntityType;
+	entity_type: Type;
 	/**
 	 * The id of the hosting entity associated with the scheduled event
 	 */
@@ -53,7 +54,7 @@ export interface APIGuildScheduledEvent {
 	/**
 	 * The entity metadata for the scheduled event
 	 */
-	entity_metadata: APIGuildScheduledEventEntityMetadata;
+	entity_metadata: APIGuildScheduledEventEntityMetadata | null;
 	/**
 	 * The user that created the scheduled event
 	 */
@@ -63,6 +64,31 @@ export interface APIGuildScheduledEvent {
 	 */
 	user_count?: number;
 }
+
+export interface APIStageInstanceGuildScheduledEvent
+	extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.StageInstance> {
+	channel_id: Snowflake;
+	entity_metadata: null;
+}
+
+export interface APIVoiceGuildScheduledEvent extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.Voice> {
+	channel_id: Snowflake;
+	entity_metadata: null;
+}
+
+export interface APIExternalGuildScheduledEvent
+	extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.External> {
+	channel_id: null;
+	entity_metadata: Required<APIGuildScheduledEventEntityMetadata>;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-structure
+ */
+export type APIGuildScheduledEvent =
+	| APIStageInstanceGuildScheduledEvent
+	| APIVoiceGuildScheduledEvent
+	| APIExternalGuildScheduledEvent;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata
@@ -101,4 +127,22 @@ export const enum GuildScheduledEventPrivacyLevel {
 	 * The scheduled event is only accessible to guild members
 	 */
 	GuildOnly = 2,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure
+ */
+export interface APIGuildScheduledEventUser {
+	/**
+	 * The scheduled event id which the user subscribed to
+	 */
+	guild_scheduled_event_id: Snowflake;
+	/**
+	 * The user which subscribed to the event
+	 */
+	user: APIUser;
+	/**
+	 * The guild member data for this user for the guild which this event belongs to, if any
+	 */
+	member?: APIGuildMember;
 }
