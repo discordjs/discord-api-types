@@ -14,7 +14,7 @@ import type {
 	APIApplicationCommandInteractionDataStringOption,
 } from './_chatInput/string';
 import type {
-	APIApplicationCommandIntegerOptionBase,
+	APIApplicationCommandIntegerOption,
 	APIApplicationCommandInteractionDataIntegerOption,
 } from './_chatInput/integer';
 import type {
@@ -38,7 +38,7 @@ import type {
 	APIApplicationCommandInteractionDataMentionableOption,
 } from './_chatInput/mentionable';
 import type {
-	APIApplicationCommandNumberOptionBase,
+	APIApplicationCommandNumberOption,
 	APIApplicationCommandInteractionDataNumberOption,
 } from './_chatInput/number';
 import type {
@@ -67,13 +67,13 @@ export * from './_chatInput/shared';
  */
 export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandStringOption
-	| APIApplicationCommandIntegerOptionBase
+	| APIApplicationCommandIntegerOption
 	| APIApplicationCommandBooleanOption
 	| APIApplicationCommandUserOption
 	| APIApplicationCommandChannelOption
 	| APIApplicationCommandRoleOption
 	| APIApplicationCommandMentionableOption
-	| APIApplicationCommandNumberOptionBase;
+	| APIApplicationCommandNumberOption;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure

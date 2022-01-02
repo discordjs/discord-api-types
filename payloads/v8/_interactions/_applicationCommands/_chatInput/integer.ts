@@ -5,7 +5,7 @@ import type {
 } from './base';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
 
-export interface APIApplicationCommandIntegerOptionBase
+interface APIApplicationCommandIntegerOptionBase
 	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Integer> {
 	/**
 	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
