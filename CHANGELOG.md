@@ -1,3 +1,15 @@
+## [0.26.1](https://github.com/discordjs/discord-api-types/compare/0.26.0...0.26.1) (2022-01-02)
+
+### Bug Fixes
+
+- **APIApplicationCommandOption:** correct type for integer and number ([#284](https://github.com/discordjs/discord-api-types/issues/284)) ([fe1f531](https://github.com/discordjs/discord-api-types/commit/fe1f5313a8fc13d0a2433738cce9be37f5d9eeb5))
+
+### Features
+
+- **APIAuditLogChangeData:** Add `communication_disabled_until` ([#281](https://github.com/discordjs/discord-api-types/issues/281)) ([0cf51ab](https://github.com/discordjs/discord-api-types/commit/0cf51abc267bd6246a7952e7f6a23fa8c5db290a))
+- **APIGuildScheduledEvent:** add more precise types for stage instance/voice/external events ([#278](https://github.com/discordjs/discord-api-types/issues/278)) ([751aee6](https://github.com/discordjs/discord-api-types/commit/751aee6fa7d4c542324a30e9b9bc641b0e7a8bf4))
+- **ApplicationFlags:** add embedded application flags ([#277](https://github.com/discordjs/discord-api-types/issues/277)) ([9f4f59c](https://github.com/discordjs/discord-api-types/commit/9f4f59c8e55f78caf614e27e28b6bca939665ca5))
+
 # [0.26.0](https://github.com/discordjs/discord-api-types/compare/0.25.2...0.26.0) (2021-12-24)
 
 ### Bug Fixes
