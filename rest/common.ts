@@ -170,6 +170,7 @@ export const enum RESTJSONErrorCodes {
 	InvalidActionOnArchivedThread = 50083,
 	InvalidThreadNotificationSettings,
 	ParameterEarlierThanCreation,
+	CommunityUpdatesAndRulesChannelCannotBeChangedToAnnouncement,
 
 	ServerNotAvailableInYourLocation = 50095,
 
