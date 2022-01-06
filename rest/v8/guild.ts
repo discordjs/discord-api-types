@@ -459,14 +459,14 @@ export type RESTPatchAPICurrentGuildMemberNicknameJSONBody = AddUndefinedToPossi
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-member
  */
-export interface RESTPatchAPICurrentGuildMemberJSONBody {
+export type RESTPatchAPICurrentGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Value to set users nickname to
 	 *
 	 * Requires `CHANGE_NICKNAME` permission
 	 */
 	nick?: string | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
