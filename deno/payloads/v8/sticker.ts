@@ -93,7 +93,7 @@ export enum StickerFormatType {
 export type APIStickerItem = Pick<APISticker, 'id' | 'name' | 'format_type'>;
 
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-object
+ * https://discord.com/developers/docs/resources/sticker#sticker-pack-object
  */
 export interface APIStickerPack {
 	/**
@@ -123,5 +123,5 @@ export interface APIStickerPack {
 	/**
 	 * ID of the sticker pack's banner image
 	 */
-	banner_asset_id: Snowflake;
+	banner_asset_id?: Snowflake;
 }
