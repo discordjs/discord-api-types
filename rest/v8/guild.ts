@@ -435,6 +435,10 @@ export type RESTPatchAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPro
 	 * Requires `MOVE_MEMBERS` permission
 	 */
 	channel_id?: Snowflake | null;
+	/**
+	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
+	 */
+	communication_disabled_until?: string | null;
 }>;
 
 /**
