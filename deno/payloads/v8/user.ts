@@ -145,6 +145,10 @@ export enum UserFlags {
 	 * Bot uses only [HTTP interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction) and is shown in the online member list
 	 */
 	BotHTTPInteractions = 1 << 19,
+	/**
+	 * User has been identified as spammer
+	 */
+	Spammer = 1 << 20,
 }
 
 /**
