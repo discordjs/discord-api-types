@@ -606,6 +606,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/oauth2/applications/{application.id}/assets`
+	 */
+	oauth2ApplicationAssets(applicationId: Snowflake) {
+		return `/oauth2/applications/${applicationId}/assets` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET  `/applications/{application.id}/commands`
 	 * - PUT  `/applications/{application.id}/commands`
 	 * - POST `/applications/{application.id}/commands`

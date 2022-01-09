@@ -197,3 +197,16 @@ export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
 
 export type RESTPostOAuth2AccessTokenWithBotAndGuildsAndWebhookIncomingScopeResult =
 	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult & RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;
+
+export enum OAuth2ApplicationAssetType {
+	Small = 1,
+	Big,
+}
+
+export interface APIOAuth2ApplicationAsset {
+	id: Snowflake;
+	name: string;
+	type: OAuth2ApplicationAssetType;
+}
+
+export type RESTGetAPIOAuth2ApplicationAssetsResult = APIOAuth2ApplicationAsset[];
