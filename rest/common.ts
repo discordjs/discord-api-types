@@ -68,6 +68,7 @@ export const enum RESTJSONErrorCodes {
 	AnnouncementEditLimitExceeded = 20022,
 
 	ChannelSendRateLimit = 20028,
+	ServerSendRateLimit,
 
 	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20031,
 
@@ -101,6 +102,7 @@ export const enum RESTJSONErrorCodes {
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
 
 	MaximumNumberOfBanFetchesHasBeenReached = 30037,
+	MaximumNumberOfUncompletedGuildScheduledEventsReached,
 
 	MaximumNumberOfStickersReached = 30039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
@@ -157,6 +159,7 @@ export const enum RESTJSONErrorCodes {
 	InvalidFileUploaded,
 
 	CannotSelfRedeemThisGift = 50054,
+	InvalidGuild,
 
 	PaymentSourceRequiredToRedeemGift = 50070,
 
@@ -173,6 +176,8 @@ export const enum RESTJSONErrorCodes {
 	ServerNeedsMonetizationEnabledToPerformThisAction = 50097,
 
 	ServerNeedsMoreBoostsToPerformThisAction = 50101,
+
+	RequestBodyContainsInvalidJSON = 50109,
 
 	TwoFactorAuthenticationIsRequired = 60003,
 
@@ -198,4 +203,8 @@ export const enum RESTJSONErrorCodes {
 	LottieAnimationMaximumDimensionsExceeded,
 	StickerFramerateIsTooSmallOrTooLarge,
 	StickerAnimationDurationExceedsMaximumOf5Seconds,
+
+	CannotUpdateAFinishedEvent = 180000,
+
+	FailedToCreateStageNeededForStageEvent = 180002,
 }

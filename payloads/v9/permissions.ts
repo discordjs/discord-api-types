@@ -45,12 +45,14 @@ export const PermissionFlagsBits = {
 	ManageEmojisAndStickers: 1n << 30n,
 	UseApplicationCommands: 1n << 31n,
 	RequestToSpeak: 1n << 32n,
+	ManageEvents: 1n << 33n,
 	ManageThreads: 1n << 34n,
 	CreatePublicThreads: 1n << 35n,
 	CreatePrivateThreads: 1n << 36n,
 	UseExternalStickers: 1n << 37n,
 	SendMessagesInThreads: 1n << 38n,
 	StartEmbeddedActivities: 1n << 39n,
+	ModerateMembers: 1n << 40n,
 } as const;
 
 /**

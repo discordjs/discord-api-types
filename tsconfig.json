@@ -13,7 +13,8 @@
 		"target": "ES2020",
 		"importsNotUsedAsValues": "error",
 		"strictNullChecks": true,
-		"preserveConstEnums": true
+		"preserveConstEnums": true,
+		"exactOptionalPropertyTypes": true
 	},
 	"include": [
 		"globals.ts",

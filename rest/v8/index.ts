@@ -7,6 +7,7 @@ export * from './channel';
 export * from './emoji';
 export * from './gateway';
 export * from './guild';
+export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
 export * from './oauth2';
@@ -232,10 +233,11 @@ export const Routes = {
 	 * Route for:
 	 * - GET    `/guilds/{guild.id}/members/{user.id}`
 	 * - PUT    `/guilds/{guild.id}/members/{user.id}`
+	 * - PATCH  `/guilds/{guild.id}/members/@me`
 	 * - PATCH  `/guilds/{guild.id}/members/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}`
 	 */
-	guildMember(guildId: Snowflake, userId: Snowflake) {
+	guildMember(guildId: Snowflake, userId: Snowflake | '@me' = '@me') {
 		return `/guilds/${guildId}/members/${userId}` as const;
 	},
 
@@ -258,6 +260,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
+	 * @deprecated Use {@link Routes.guildMember} instead.
 	 */
 	guildCurrentMemberNickname(guildId: Snowflake) {
 		return `/guilds/${guildId}/members/@me/nick` as const;
@@ -438,6 +441,14 @@ export const Routes = {
 	 */
 	userGuilds() {
 		return `/users/@me/guilds` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/users/@me/guilds/{guild.id}/member`
+	 */
+	userGuildMember(guildId: Snowflake) {
+		return `/users/@me/guilds/${guildId}/member` as const;
 	},
 
 	/**
@@ -738,6 +749,33 @@ export const Routes = {
 	guildSticker(guildId: Snowflake, stickerId: Snowflake) {
 		return `/guilds/${guildId}/stickers/${stickerId}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/scheduled-events`
+	 * - POST `/guilds/{guild.id}/scheduled-events`
+	 */
+	guildScheduledEvents(guildId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - PATCH `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 */
+	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/users`
+	 */
+	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users`;
+	},
 };
 
 export const RouteBases = {
@@ -762,27 +800,3 @@ export const OAuth2Routes = {
 
 // Freeze OAuth2 route object
 Object.freeze(OAuth2Routes);
-
-export interface DiscordErrorFieldInformation {
-	code: string;
-	message: string;
-}
-
-export interface DiscordErrorGroupWrapper {
-	_errors: DiscordError[];
-}
-
-export type DiscordErrorData =
-	| DiscordErrorGroupWrapper
-	| DiscordErrorFieldInformation
-	| { [k: string]: DiscordErrorData }
-	| string;
-
-/**
- * https://discord.com/developers/docs/reference#error-messages
- */
-export interface DiscordError {
-	code: number;
-	message: string;
-	errors?: DiscordErrorData;
-}
