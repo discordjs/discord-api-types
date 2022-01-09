@@ -233,10 +233,11 @@ export const Routes = {
 	 * Route for:
 	 * - GET    `/guilds/{guild.id}/members/{user.id}`
 	 * - PUT    `/guilds/{guild.id}/members/{user.id}`
+	 * - PATCH  `/guilds/{guild.id}/members/@me`
 	 * - PATCH  `/guilds/{guild.id}/members/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}`
 	 */
-	guildMember(guildId: Snowflake, userId: Snowflake) {
+	guildMember(guildId: Snowflake, userId: Snowflake | '@me' = '@me') {
 		return `/guilds/${guildId}/members/${userId}` as const;
 	},
 
@@ -259,6 +260,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
+	 * @deprecated Use {@link Routes.guildMember} instead.
 	 */
 	guildCurrentMemberNickname(guildId: Snowflake) {
 		return `/guilds/${guildId}/members/@me/nick` as const;
