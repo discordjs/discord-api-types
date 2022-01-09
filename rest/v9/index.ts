@@ -853,6 +853,7 @@ export const RouteBases = {
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',
 	gift: 'https://discord.gift',
+	scheduledEvent: 'https://discord.com/events',
 } as const;
 
 // Freeze bases object
