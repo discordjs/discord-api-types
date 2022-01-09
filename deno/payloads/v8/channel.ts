@@ -83,9 +83,9 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	nsfw?: boolean;
 }
 
-export type GuildTextChannelTypes = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
+export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannelTypes>
+export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	extends APITextBasedChannel<T>,
 		APIGuildChannel<T> {
 	/**
