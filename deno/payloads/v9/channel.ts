@@ -39,7 +39,7 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 	type: T;
 }
 
-// TODO: remove when text in voice is released
+// TODO: update when text in voice is released
 export type TextChannelTypes =
 	| ChannelType.DM
 	| ChannelType.GroupDM
@@ -50,7 +50,11 @@ export type TextChannelTypes =
 	| ChannelType.GuildText;
 
 export type GuildChannelTypes = Exclude<
-	TextChannelTypes | ChannelType.GuildVoice | ChannelType.GuildStageVoice,
+	| TextChannelTypes
+	| ChannelType.GuildVoice
+	| ChannelType.GuildStageVoice
+	| ChannelType.GuildNews
+	| ChannelType.GuildStore,
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
