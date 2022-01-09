@@ -1,0 +1,15 @@
+.stars {
+	list-style-type: '✨ ';
+}
+
+.forks {
+	list-style-type: '🤖 ';
+}
+
+.contributors {
+	list-style-type: '👥 ';
+}
+
+.downloads {
+	list-style-type: '📥 ';
+}

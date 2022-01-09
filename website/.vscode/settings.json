@@ -1,0 +1,20 @@
+{
+	"editor.detectIndentation": true,
+	"files.eol": "\n",
+	"files.associations": {
+		"*.mdx": "markdown"
+	},
+	"cSpell.language": "en-GB",
+	"cSpell.maxNumberOfProblems": 8,
+	"cSpell.numSuggestions": 24,
+	"search.exclude": {
+		"**/.docusaurus/": true,
+		"**/.git/": true,
+		"**/.yarn": true,
+		"**/*.code-search": true,
+		"**/bower_components": true,
+		"**/node_modules": true,
+		"**/projects/": true
+	},
+	"cSpell.words": ["favna", "nsfw"]
+}

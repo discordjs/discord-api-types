@@ -1,0 +1,9 @@
+{
+	"redirects": [
+		{ "source": "/discord", "destination": "https://discord.gg/djs", "permanent": true },
+		{ "source": "/patreon", "destination": "https://www.patreon.com/vladfrangu", "permanent": true },
+		{ "source": "/sponsor", "destination": "https://github.com/sponsors/vladfrangu", "permanent": true },
+		{ "source": "/kofi", "destination": "https://ko-fi.com/wolfgalvlad", "permanent": true },
+		{ "source": "/ghorg", "destination": "https://github.com/discordjs", "permanent": true }
+	]
+}

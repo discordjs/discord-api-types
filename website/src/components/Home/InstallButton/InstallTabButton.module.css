@@ -1,0 +1,30 @@
+.button {
+	box-shadow: var(--sapphire-paper-drop-shadow-4);
+}
+
+.buttonContent {
+	display: flex;
+	align-items: center;
+}
+
+.copyIcon {
+	height: 20px;
+	margin-left: 8px;
+}
+
+.colorGreen {
+	color: #3ba55c;
+}
+
+html[data-theme='dark'] .button {
+	background-color: #23272a;
+	border-color: #23272a;
+}
+
+html[data-theme='dark'] .button:hover {
+	background-color: #4f545c29;
+}
+
+html[data-theme='dark'] .buttonContent {
+	color: #b9bbbe;
+}

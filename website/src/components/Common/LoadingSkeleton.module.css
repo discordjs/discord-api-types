@@ -1,0 +1,28 @@
+.loadingSkeleton {
+	width: 315px;
+	height: 210px;
+	cursor: progress;
+	animation: loading 1.5s infinite;
+}
+
+.lightLoadingSkeleton {
+	background: linear-gradient(0.25turn, transparent, #fff, transparent), linear-gradient(#eee, #eee), linear-gradient(#eee, #eee),
+		linear-gradient(#eee, #eee), linear-gradient(#eee, #eee), linear-gradient(#eee, #eee);
+	background-repeat: no-repeat;
+	background-size: 315px 210px, 315px 30px, 315px 30px, 315px 30px, 315px 30px, 315px 30px;
+	background-position: -315px 0, 0 0, 0 45px, 0 90px, 0 135px, 0 180px;
+}
+
+.darkLoadingSkeleton {
+	background: linear-gradient(0.25turn, transparent, #444, transparent), linear-gradient(#333, #333), linear-gradient(#333, #333),
+		linear-gradient(#333, #333), linear-gradient(#333, #333), linear-gradient(#333, #333);
+	background-repeat: no-repeat;
+	background-size: 315px 210px, 315px 30px, 315px 30px, 315px 30px, 315px 30px, 315px 30px;
+	background-position: -315px 0, 0 0, 0 45px, 0 90px, 0 135px, 0 180px;
+}
+
+@keyframes loading {
+	to {
+		background-position: 315px 0, 0 0, 0 45px, 0 90px, 0 135px, 0 180px;
+	}
+}

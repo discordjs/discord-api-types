@@ -1,0 +1,28 @@
+.navbar__inner {
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	max-width: 80rem;
+	margin-left: auto;
+	margin: auto;
+}
+
+@media (min-width: 640px) {
+	.navbar__inner {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.navbar__inner {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+
+.main-wrapper > :not(.hero) {
+	max-width: 1536px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
