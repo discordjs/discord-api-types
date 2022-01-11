@@ -86,6 +86,14 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * For components, the message they were attached to
 	 */
 	message?: APIMessage;
+	/**
+	 * The selected language of the invoking user
+	 */
+	locale: string;
+	/**
+	 * The guild's preferred locale, if invoked in a guild
+	 */
+	guild_locale?: string;
 }
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
