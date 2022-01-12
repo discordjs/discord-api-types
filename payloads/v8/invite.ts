@@ -121,4 +121,10 @@ export interface APIExtendedInvite extends APIInvite {
 	 * When this invite was created
 	 */
 	created_at: string;
+	/**
+	 * The type of channel this invite belongs to
+	 *
+	 * See // TODO: link
+	 */
+	type: InviteType;
 }
