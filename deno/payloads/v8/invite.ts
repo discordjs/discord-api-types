@@ -73,6 +73,12 @@ export interface APIInvite {
 	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */
 	guild_scheduled_event?: APIGuildScheduledEvent;
+	/**
+	 * The type of channel this invite belongs to
+	 *
+	 * See // TODO: link
+	 */
+	type: InviteType;
 }
 
 /**
@@ -81,6 +87,14 @@ export interface APIInvite {
 export enum InviteTargetType {
 	Stream = 1,
 	EmbeddedApplication,
+}
+
+/**
+ * // TODO: link
+ */
+export enum InviteType {
+	Guild,
+	GroupDm,
 }
 
 /**
