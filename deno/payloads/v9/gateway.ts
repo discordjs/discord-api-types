@@ -221,7 +221,7 @@ export enum ActivityType {
 	/**
 	 * Playing {game}
 	 */
-	Game,
+	Playing,
 	/**
 	 * Streaming {details}
 	 */
