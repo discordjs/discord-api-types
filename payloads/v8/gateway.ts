@@ -220,7 +220,7 @@ export const enum ActivityType {
 	/**
 	 * Playing {game}
 	 */
-	Game,
+	Playing,
 	/**
 	 * Streaming {details}
 	 */
