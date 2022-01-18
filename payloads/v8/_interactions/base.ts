@@ -3,6 +3,7 @@ import type { InteractionType } from './responses';
 import type { APIMessage } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
+import type { LocaleString } from '../../../v8';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
@@ -89,11 +90,11 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * The selected language of the invoking user
 	 */
-	locale: string;
+	locale: LocaleString;
 	/**
 	 * The guild's preferred locale, if invoked in a guild
 	 */
-	guild_locale?: string;
+	guild_locale?: LocaleString;
 }
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
