@@ -5,6 +5,8 @@ import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
 import type { LocaleString } from '../../../v8.ts';
 
+export type PartialAPIMessageInteractionGuildMember = Pick<APIGuildMember, 'roles' | 'mute' | 'joined_at' | 'deaf'>;
+
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
  */
@@ -25,6 +27,10 @@ export interface APIMessageInteraction {
 	 * The user who invoked the interaction
 	 */
 	user: APIUser;
+	/**
+	 * The guild member who invoked the interaction, only sent in MESSAGE_CREATE events
+	 */
+	member?: PartialAPIMessageInteractionGuildMember;
 }
 
 /**
