@@ -254,6 +254,10 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 * Attachment objects with filename and description
 	 */
 	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+	/**
+	 * Message flags combined as a bitfield
+	 */
+	flags?: MessageFlags;
 }>;
 
 /**
