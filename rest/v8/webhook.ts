@@ -6,6 +6,7 @@ import type {
 	APIMessage,
 	APIWebhook,
 	APIAttachment,
+	MessageFlags,
 } from '../../payloads/v8/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals';
 
@@ -142,7 +143,7 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	/**
 	 * Message flags combined as a bitfield
 	 */
-	flags?: bigint;
+	flags?: MessageFlags;
 }>;
 
 /**

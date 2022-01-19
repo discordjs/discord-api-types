@@ -224,7 +224,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Message flags combined as a bitfield
 	 */
-	flags?: bigint;
+	flags?: MessageFlags;
 }>;
 
 /**
