@@ -60,6 +60,10 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 
 export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
+	 * Banner hash
+	 */
+	banner?: string | null;
+	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
 	guild_id?: Snowflake;

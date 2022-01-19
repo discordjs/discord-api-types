@@ -454,6 +454,10 @@ export enum GuildFeature {
 	 */
 	Banner = 'BANNER',
 	/**
+	 * Guild has access to set a channel banner
+	 */
+	ChannelBanner = 'CHANNEL_BANNER',
+	/**
 	 * Guild has access to use commerce features (i.e. create store channels)
 	 */
 	Commerce = 'COMMERCE',
