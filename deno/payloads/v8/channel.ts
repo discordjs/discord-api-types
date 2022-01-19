@@ -32,17 +32,37 @@ export interface APIPartialChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
+ * This interface is used to allow easy extension for other channel types. While
+ * also allowing `APIPartialChannel` to be used without breaking.
  */
-export interface APIChannel extends APIPartialChannel {
+export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel {
+	type: T;
+}
+
+// TODO: update when text in voice is released
+export type TextChannelType = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
+
+export type GuildChannelType = Exclude<
+	| TextChannelType
+	| ChannelType.GuildVoice
+	| ChannelType.GuildStageVoice
+	| ChannelType.GuildNews
+	| ChannelType.GuildStore,
+	ChannelType.DM | ChannelType.GroupDM
+>;
+
+export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+}
+
+export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
 	guild_id?: Snowflake;
-	/**
-	 * Sorting position of the channel
-	 */
-	position?: number;
 	/**
 	 * Explicit permission overwrites for members and roles
 	 *
@@ -50,17 +70,48 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	permission_overwrites?: APIOverwrite[];
 	/**
-	 * The channel topic (0-1024 characters)
+	 * Sorting position of the channel
 	 */
-	topic?: string | null;
+	position?: number;
+	/**
+	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
+	 */
+	parent_id?: Snowflake | null;
 	/**
 	 * Whether the channel is nsfw
 	 */
 	nsfw?: boolean;
+}
+
+export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
+
+export interface APIGuildTextChannel<T extends GuildTextChannelType>
+	extends APITextBasedChannel<T>,
+		APIGuildChannel<T> {
 	/**
-	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 * The channel topic (0-1024 characters)
 	 */
-	last_message_id?: Snowflake | null;
+	topic?: string | null;
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+}
+
+export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildText> {
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 */
+	rate_limit_per_user?: number;
+}
+
+export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
+export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
+export type APIGuildStoreChannel = APIGuildChannel<ChannelType.GuildStore>;
+
+export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -69,38 +120,6 @@ export interface APIChannel extends APIPartialChannel {
 	 * The user limit of the voice channel
 	 */
 	user_limit?: number;
-	/**
-	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 */
-	rate_limit_per_user?: number;
-	/**
-	 * The recipients of the DM
-	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
-	 */
-	recipients?: APIUser[];
-	/**
-	 * Icon hash
-	 */
-	icon?: string | null;
-	/**
-	 * ID of the DM creator
-	 */
-	owner_id?: Snowflake;
-	/**
-	 * Application id of the group DM creator if it is bot-created
-	 */
-	application_id?: Snowflake;
-	/**
-	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
-	 */
-	parent_id?: Snowflake | null;
-	/**
-	 * When the last pinned message was pinned.
-	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
-	 */
-	last_pin_timestamp?: string | null;
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
@@ -114,6 +133,49 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	video_quality_mode?: VideoQualityMode;
 }
+
+interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+	/**
+	 * The recipients of the DM
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 */
+	recipients?: APIUser[];
+}
+
+export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
+
+export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM> {
+	/**
+	 * Application id of the group DM creator if it is bot-created
+	 */
+	application_id?: Snowflake;
+	/**
+	 * Icon hash
+	 */
+	icon?: string | null;
+	/**
+	 * ID of the DM creator
+	 */
+	owner_id?: Snowflake;
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
+ */
+export type APIChannel =
+	| APIGroupDMChannel
+	| APIDMChannel
+	| APITextChannel
+	| APINewsChannel
+	| APIGuildStoreChannel
+	| APIVoiceChannel
+	| APIGuildCategoryChannel
+	| APINewsChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types

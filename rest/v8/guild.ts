@@ -2,7 +2,9 @@ import type { Permissions, Snowflake } from '../../globals';
 import type {
 	APIBan,
 	APIChannel,
+	APIDMChannel,
 	APIExtendedInvite,
+	APIGroupDMChannel,
 	APIGuild,
 	APIGuildIntegration,
 	APIGuildMember,
@@ -25,6 +27,7 @@ import type {
 	Nullable,
 	StrictPartial,
 	StrictRequired,
+	UnionToIntersection,
 } from '../../utils/internals';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 
@@ -32,8 +35,12 @@ export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSON
 	id: number | string;
 }
 
+export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
 export type APIGuildCreatePartialChannel = StrictPartial<
-	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
+	Pick<
+		UnionToIntersection<APIGuildChannelResolvable>,
+		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
+	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 		name: string;
