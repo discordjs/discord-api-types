@@ -707,6 +707,10 @@ export interface APIThreadMetadata {
 	 * Whether non-moderators can add other non-moderators to the thread; only available on private threads
 	 */
 	invitable?: boolean;
+	/**
+	 * Timestamp when the thread was created; only populated for threads created after 2022-01-09
+	 */
+	create_timestamp?: string;
 }
 
 export enum ThreadAutoArchiveDuration {
