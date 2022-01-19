@@ -170,6 +170,7 @@ export enum RESTJSONErrorCodes {
 	InvalidActionOnArchivedThread = 50083,
 	InvalidThreadNotificationSettings,
 	ParameterEarlierThanCreation,
+	CommunityServerChannelsMustBeTextChannels,
 
 	ServerNotAvailableInYourLocation = 50095,
 
