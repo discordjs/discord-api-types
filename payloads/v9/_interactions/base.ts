@@ -5,7 +5,18 @@ import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
 import type { LocaleString } from '../../../v9';
 
-export type PartialAPIMessageInteractionGuildMember = Pick<APIGuildMember, 'roles' | 'mute' | 'joined_at' | 'deaf'>;
+export type PartialAPIMessageInteractionGuildMember = Pick<
+	APIGuildMember,
+	| 'roles'
+	| 'premium_since'
+	| 'pending'
+	| 'nick'
+	| 'mute'
+	| 'joined_at'
+	| 'deaf'
+	| 'communication_disabled_until'
+	| 'avatar'
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
