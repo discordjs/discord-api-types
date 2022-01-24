@@ -17,6 +17,11 @@ import type { StickerFormatType } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { APIWebhook } from './webhook.ts';
 import type { StageInstancePrivacyLevel } from './stageInstance.ts';
+import type {
+	APIGuildScheduledEvent,
+	GuildScheduledEventEntityType,
+	GuildScheduledEventStatus,
+} from './guildScheduledEvent.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
@@ -46,6 +51,12 @@ export interface APIAuditLog {
 	 * See https://discord.com/developers/docs/resources/guild#integration-object
 	 */
 	integrations: APIGuildIntegration[];
+	/**
+	 * The guild scheduled events in the audit log
+	 *
+	 * See https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 */
+	guild_scheduled_events: APIGuildScheduledEvent[];
 }
 
 /**
@@ -144,6 +155,10 @@ export enum AuditLogEvent {
 	StickerCreate = 90,
 	StickerUpdate,
 	StickerDelete,
+
+	GuildScheduledEventCreate = 100,
+	GuildScheduledEventUpdate,
+	GuildScheduledEventDelete,
 }
 
 /**
@@ -302,7 +317,11 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyFormatType
 	| APIAuditLogChangeKeyAsset
 	| APIAuditLogChangeKeyAvailable
-	| APIAuditLogChangeKeyGuildId;
+	| APIAuditLogChangeKeyGuildId
+	| APIAuditLogChangeKeyEntityType
+	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeyLocation
+	| APIAuditLogChangeKeyCommunicationDisabledUntil;
 
 /**
  * Returned when an entity's name is changed
@@ -310,7 +329,7 @@ export type APIAuditLogChange =
 export type APIAuditLogChangeKeyName = AuditLogChangeData<'name', string>;
 
 /**
- * Returned when a guild's or sticker's description is changed
+ * Returned when a guild's or sticker's or guild scheduled event's description is changed
  */
 export type APIAuditLogChangeKeyDescription = AuditLogChangeData<'description', string>;
 
@@ -502,7 +521,7 @@ export type APIAuditLogChangeKeyDeny = AuditLogChangeData<'deny', string>;
 export type APIAuditLogChangeKeyCode = AuditLogChangeData<'code', string>;
 
 /**
- * Returned when an invite's channel_id is changed
+ * Returned when an invite's or guild scheduled event's channel_id is changed
  */
 export type APIAuditLogChangeKeyChannelId = AuditLogChangeData<'channel_id', Snowflake>;
 
@@ -582,7 +601,7 @@ export type APIAuditLogChangeKeyExpireGracePeriod = AuditLogChangeData<'expire_g
 export type APIAuditLogChangeKeyUserLimit = AuditLogChangeData<'user_limit', number>;
 
 /**
- * Returned when privacy level of a stage instance is changed
+ * Returned when privacy level of a stage instance or guild scheduled event is changed
  */
 export type APIAuditLogChangeKeyPrivacyLevel = AuditLogChangeData<'privacy_level', StageInstancePrivacyLevel>;
 
@@ -611,7 +630,27 @@ export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', bool
  */
 export type APIAuditLogChangeKeyGuildId = AuditLogChangeData<'guild_id', Snowflake>;
 
-interface AuditLogChangeData<K extends string, D extends unknown> {
+/**
+ * Returned when entity type of a guild scheduled event is changed
+ */
+export type APIAuditLogChangeKeyEntityType = AuditLogChangeData<'entity_type', GuildScheduledEventEntityType>;
+
+/**
+ * Returned when status of a guild scheduled event is changed
+ */
+export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', GuildScheduledEventStatus>;
+
+/**
+ * Returned when location of a guild scheduled event is changed
+ */
+export type APIAuditLogChangeKeyLocation = AuditLogChangeData<'location', string>;
+
+/**
+ * Returned when a user's timeout is changed
+ */
+export type APIAuditLogChangeKeyCommunicationDisabledUntil = AuditLogChangeData<'communication_disabled_until', string>;
+
+interface AuditLogChangeData<K extends string, D> {
 	key: K;
 	/**
 	 * The new value

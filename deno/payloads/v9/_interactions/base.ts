@@ -3,6 +3,7 @@ import type { InteractionType } from './responses.ts';
 import type { APIMessage } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
+import type { LocaleString } from '../../../v9.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
@@ -39,7 +40,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
-export interface APIBaseInteraction<Type extends InteractionType, Data extends unknown> {
+export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * ID of the interaction
 	 */
@@ -86,6 +87,14 @@ export interface APIBaseInteraction<Type extends InteractionType, Data extends u
 	 * For components, the message they were attached to
 	 */
 	message?: APIMessage;
+	/**
+	 * The selected language of the invoking user
+	 */
+	locale: LocaleString;
+	/**
+	 * The guild's preferred locale, if invoked in a guild
+	 */
+	guild_locale?: LocaleString;
 }
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<

@@ -68,6 +68,7 @@ export enum RESTJSONErrorCodes {
 	AnnouncementEditLimitExceeded = 20022,
 
 	ChannelSendRateLimit = 20028,
+	ServerSendRateLimit,
 
 	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20031,
 
@@ -101,6 +102,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
 
 	MaximumNumberOfBanFetchesHasBeenReached = 30037,
+	MaximumNumberOfUncompletedGuildScheduledEventsReached,
 
 	MaximumNumberOfStickersReached = 30039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
@@ -157,6 +159,7 @@ export enum RESTJSONErrorCodes {
 	InvalidFileUploaded,
 
 	CannotSelfRedeemThisGift = 50054,
+	InvalidGuild,
 
 	PaymentSourceRequiredToRedeemGift = 50070,
 
@@ -167,12 +170,15 @@ export enum RESTJSONErrorCodes {
 	InvalidActionOnArchivedThread = 50083,
 	InvalidThreadNotificationSettings,
 	ParameterEarlierThanCreation,
+	CommunityServerChannelsMustBeTextChannels,
 
 	ServerNotAvailableInYourLocation = 50095,
 
 	ServerNeedsMonetizationEnabledToPerformThisAction = 50097,
 
 	ServerNeedsMoreBoostsToPerformThisAction = 50101,
+
+	RequestBodyContainsInvalidJSON = 50109,
 
 	TwoFactorAuthenticationIsRequired = 60003,
 
@@ -198,4 +204,43 @@ export enum RESTJSONErrorCodes {
 	LottieAnimationMaximumDimensionsExceeded,
 	StickerFramerateIsTooSmallOrTooLarge,
 	StickerAnimationDurationExceedsMaximumOf5Seconds,
+
+	CannotUpdateAFinishedEvent = 180000,
+
+	FailedToCreateStageNeededForStageEvent = 180002,
 }
+
+export enum Locale {
+	EnglishUS = 'en-US',
+	EnglishGB = 'en-GB',
+	Bulgarian = 'bg',
+	ChineseCN = 'zh-CN',
+	ChineseTW = 'zh-TW',
+	Croatian = 'hr',
+	Czech = 'cs',
+	Danish = 'da',
+	Dutch = 'nl',
+	Finnish = 'fi',
+	French = 'fr',
+	German = 'de',
+	Greek = 'el',
+	Hindi = 'hi',
+	Hungarian = 'hu',
+	Italian = 'it',
+	Japanese = 'ja',
+	Korean = 'ko',
+	Lithuanian = 'lt',
+	Norwegian = 'no',
+	Polish = 'pl',
+	PortugueseBR = 'pt-BR',
+	Romanian = 'ro',
+	Russian = 'ru',
+	SpanishES = 'es-ES',
+	Swedish = 'sv-SE',
+	Thai = 'th',
+	Turkish = 'tr',
+	Ukrainian = 'uk',
+	Vietnamese = 'vi',
+}
+
+export type LocaleString = `${Locale}`;

@@ -20,22 +20,35 @@ import type {
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
+	APIDMChannel,
+	APIGroupDMChannel,
 } from '../../payloads/v9/mod.ts';
-import type { Nullable } from '../../utils/internals.ts';
+import type {
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
+	Nullable,
+	StrictPartial,
+	StrictRequired,
+	UnionToIntersection,
+} from '../../utils/internals.ts';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;
 }
 
-export type APIGuildCreatePartialChannel = Partial<
-	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
-> & {
-	name: string;
-	id?: number | string;
-	parent_id?: number | string | null;
-	permission_overwrites?: APIGuildCreateOverwrite[];
-};
+export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
+export type APIGuildCreatePartialChannel = StrictPartial<
+	Pick<
+		UnionToIntersection<APIGuildChannelResolvable>,
+		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
+	>
+> &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		name: string;
+		id?: number | string;
+		parent_id?: number | string | null;
+		permission_overwrites?: APIGuildCreateOverwrite[];
+	}>;
 
 export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 	id: number | string;
@@ -44,7 +57,7 @@ export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
  */
-export interface RESTPostAPIGuildsJSONBody {
+export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the guild (2-100 characters)
 	 */
@@ -123,7 +136,11 @@ export interface RESTPostAPIGuildsJSONBody {
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
 	 */
 	system_channel_flags?: GuildSystemChannelFlags;
-}
+	/**
+	 * Whether the boosts progress bar should be enabled.
+	 */
+	premium_progress_bar_enabled?: boolean;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
@@ -155,7 +172,7 @@ export type RESTGetAPIGuildPreviewResult = APIGuildPreview;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild
  */
-export interface RESTPatchAPIGuildJSONBody {
+export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * New name for the guild (2-100 characters)
 	 */
@@ -250,7 +267,11 @@ export interface RESTPatchAPIGuildJSONBody {
 	 * The description for the guild, if the guild is discoverable
 	 */
 	description?: string | null;
-}
+	/**
+	 * Whether the boosts progress bar should be enabled.
+	 */
+	premium_progress_bar_enabled?: boolean;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild
@@ -280,24 +301,26 @@ export type RESTPostAPIGuildChannelResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  */
-export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
-	/**
-	 * Channel id
-	 */
-	id: Snowflake;
-	/**
-	 * Sorting position of the channel
-	 */
-	position: number;
-	/**
-	 * Sync channel overwrites with the new parent, when moving to a new `parent_id`
-	 */
-	lock_permissions?: boolean;
-	/**
-	 * The new parent id of this channel
-	 */
-	parent_id?: Snowflake | null;
-}>;
+export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		/**
+		 * Channel id
+		 */
+		id: Snowflake;
+		/**
+		 * Sorting position of the channel
+		 */
+		position: number;
+		/**
+		 * Sync channel overwrites with the new parent, when moving to a new `parent_id`
+		 */
+		lock_permissions?: boolean;
+		/**
+		 * The new parent id of this channel
+		 */
+		parent_id?: Snowflake | null;
+	}>
+>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
@@ -358,7 +381,7 @@ export type RESTGetAPIGuildMembersSearchResult = APIGuildMember[];
 /**
  * https://discord.com/developers/docs/resources/guild#add-guild-member
  */
-export interface RESTPutAPIGuildMemberJSONBody {
+export type RESTPutAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * An oauth2 access token granted with the `guilds.join` to the bot's application for the user you want to add to the guild
 	 */
@@ -387,14 +410,14 @@ export interface RESTPutAPIGuildMemberJSONBody {
 	 * Requires `DEAFEN_MEMBERS` permission
 	 */
 	deaf?: boolean;
-}
+}>;
 
-export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
+export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
  */
-export interface RESTPatchAPIGuildMemberJSONBody {
+export type RESTPatchAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Value to set users nickname to
 	 *
@@ -425,7 +448,11 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 	 * Requires `MOVE_MEMBERS` permission
 	 */
 	channel_id?: Snowflake | null;
-}
+	/**
+	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
+	 */
+	communication_disabled_until?: string | null;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#add-guild-member
@@ -434,20 +461,37 @@ export type RESTPatchAPIGuildMemberResult = APIGuildMember;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
+ *
+ *  @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  */
-export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
+export type RESTPatchAPICurrentGuildMemberNicknameJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Value to set users nickname to
 	 *
 	 * Requires `CHANGE_NICKNAME` permission
 	 */
 	nick?: string | null;
-}
+}>;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-current-member
+ */
+export type RESTPatchAPICurrentGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+	/**
+	 * Value to set users nickname to
+	 *
+	 * Requires `CHANGE_NICKNAME` permission
+	 */
+	nick?: string | null;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
+ *
+ * @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  */
-export type RESTPatchAPICurrentGuildMemberNicknameResult = Required<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
+export type RESTPatchAPICurrentGuildMemberNicknameResult =
+	StrictRequired<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#add-guild-member-role
@@ -477,7 +521,7 @@ export type RESTGetAPIGuildBanResult = APIBan;
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-ban
  */
-export interface RESTPutAPIGuildBanJSONBody {
+export type RESTPutAPIGuildBanJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Number of days to delete messages for (0-7)
 	 */
@@ -486,7 +530,7 @@ export interface RESTPutAPIGuildBanJSONBody {
 	 * Reason for the ban
 	 */
 	reason?: string;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-ban
@@ -506,7 +550,7 @@ export type RESTGetAPIGuildRolesResult = APIRole[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-role
  */
-export interface RESTPostAPIGuildRoleJSONBody {
+export type RESTPostAPIGuildRoleJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the role
 	 *
@@ -516,7 +560,7 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	/**
 	 * Bitwise value of the enabled/disabled permissions
 	 *
-	 * @default "​default role permissions in guild"
+	 * @default "default role permissions in guild"
 	 */
 	permissions?: Permissions | null;
 	/**
@@ -545,7 +589,7 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	 * @default false
 	 */
 	mentionable?: boolean | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-role
@@ -555,16 +599,18 @@ export type RESTPostAPIGuildRoleResult = APIRole;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
  */
-export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
-	/**
-	 * Role id
-	 */
-	id: Snowflake;
-	/**
-	 * Sorting position of the role
-	 */
-	position?: number;
-}>;
+export type RESTPatchAPIGuildRolePositionsJSONBody = Array<
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		/**
+		 * Role id
+		 */
+		id: Snowflake;
+		/**
+		 * Sorting position of the role
+		 */
+		position?: number;
+	}>
+>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
@@ -574,7 +620,7 @@ export type RESTPatchAPIGuildRolePositionsResult = APIRole[];
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role
  */
-export interface RESTPatchAPIGuildRoleJSONBody {
+export type RESTPatchAPIGuildRoleJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the role
 	 */
@@ -603,7 +649,7 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	 * Whether the role should be mentionable
 	 */
 	mentionable?: boolean | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role
@@ -646,7 +692,7 @@ export interface RESTGetAPIGuildPruneCountResult {
 /**
  * https://discord.com/developers/docs/resources/guild#begin-guild-prune
  */
-export interface RESTPostAPIGuildPruneJSONBody {
+export type RESTPostAPIGuildPruneJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Number of days to count prune for (1 or more)
 	 *
@@ -663,7 +709,7 @@ export interface RESTPostAPIGuildPruneJSONBody {
 	 * Role(s) to include
 	 */
 	include_roles?: Snowflake[];
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#begin-guild-prune
@@ -700,7 +746,7 @@ export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
  */
-export type RESTPatchAPIGuildWidgetSettingsJSONBody = Partial<APIGuildWidgetSettings>;
+export type RESTPatchAPIGuildWidgetSettingsJSONBody = StrictPartial<APIGuildWidgetSettings>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
@@ -740,7 +786,7 @@ export type RESTGetAPIGuildWidgetImageResult = ArrayBuffer;
 
 export type RESTGetAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
-export interface RESTPatchAPIGuildMemberVerificationJSONBody {
+export type RESTPatchAPIGuildMemberVerificationJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Whether Membership Screening is enabled
 	 */
@@ -753,11 +799,11 @@ export interface RESTPatchAPIGuildMemberVerificationJSONBody {
 	 * The server description to show in the screening form
 	 */
 	description?: string | null;
-}
+}>;
 
 export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
-export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
+export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The id of the channel the user is currently in
 	 */
@@ -770,9 +816,9 @@ export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 	 * Sets the user's request to speak
 	 */
 	request_to_speak_timestamp?: string | null;
-}
+}>;
 
-export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
+export type RESTPatchAPIGuildVoiceStateUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The id of the channel the user is currently in
 	 */
@@ -781,7 +827,7 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 	 * Toggles the user's suppress state
 	 */
 	suppress?: boolean;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
@@ -791,9 +837,10 @@ export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  */
-export interface RESTPatchAPIGuildWelcomeScreenJSONBody extends Nullable<Partial<APIGuildWelcomeScreen>> {
-	/**
-	 * Whether the welcome screen is enabled
-	 */
-	enabled?: boolean | null;
-}
+export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIGuildWelcomeScreen>> &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		/**
+		 * Whether the welcome screen is enabled
+		 */
+		enabled?: boolean | null;
+	}>;

@@ -11,6 +11,7 @@ import type { APIStageInstance } from './stageInstance.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { GatewayVoiceState } from './voice.ts';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
@@ -333,6 +334,18 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
 	stickers: APISticker[];
+	/**
+	 * Whether the guild has the boost progress bar enabled.
+	 */
+	premium_progress_bar_enabled: boolean;
+	/**
+	 * The scheduled events in the guild
+	 *
+	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
+	 *
+	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 */
+	guild_scheduled_events?: APIGuildScheduledEvent[];
 }
 
 /**
@@ -577,6 +590,10 @@ export interface APIGuildPreview {
 	 * The description for the guild
 	 */
 	description: string;
+	/**
+	 * Custom guild stickers
+	 */
+	stickers: APISticker[];
 }
 
 /**
@@ -643,6 +660,10 @@ export interface APIGuildMember {
 	 * *If this field is not present, it can be assumed as `false`.*
 	 */
 	pending?: boolean;
+	/**
+	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
+	 */
+	communication_disabled_until?: string | null;
 }
 
 /**
