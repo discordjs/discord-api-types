@@ -60,6 +60,10 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 	 * The entity metadata of the scheduled event
 	 */
 	entity_metadata?: APIGuildScheduledEventEntityMetadata;
+	/**
+	 * The cover image of the scheduled event
+	 */
+	image?: string | null;
 }>;
 
 /**

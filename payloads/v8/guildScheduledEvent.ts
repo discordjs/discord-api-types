@@ -63,6 +63,10 @@ interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType>
 	 * The number of users subscribed to the scheduled event
 	 */
 	user_count?: number;
+	/**
+	 * The cover image of the scheduled event
+	 */
+	image: string | null;
 }
 
 export interface APIStageInstanceGuildScheduledEvent
