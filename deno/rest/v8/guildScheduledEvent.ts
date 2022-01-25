@@ -63,7 +63,7 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 	/**
 	 * The cover image of the scheduled event
 	 */
-	image?: string;
+	image?: string | null;
 }>;
 
 /**
