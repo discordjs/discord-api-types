@@ -610,6 +610,10 @@ export enum MessageFlags {
 	 * This message is an Interaction Response and the bot is "thinking"
 	 */
 	Loading = 1 << 7,
+	/**
+	 * This message failed to mention some roles and add their members to the thread
+	 */
+	FailedToMentionSomeRolesInThread = 1 << 8,
 }
 
 /**
