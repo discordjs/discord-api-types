@@ -161,6 +161,8 @@ export const enum RESTJSONErrorCodes {
 	CannotSelfRedeemThisGift = 50054,
 	InvalidGuild,
 
+	InvalidMessageType = 50068,
+
 	PaymentSourceRequiredToRedeemGift = 50070,
 
 	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
