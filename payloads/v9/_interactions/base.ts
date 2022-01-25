@@ -5,6 +5,19 @@ import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
 import type { LocaleString } from '../../../v9';
 
+export type PartialAPIMessageInteractionGuildMember = Pick<
+	APIGuildMember,
+	| 'roles'
+	| 'premium_since'
+	| 'pending'
+	| 'nick'
+	| 'mute'
+	| 'joined_at'
+	| 'deaf'
+	| 'communication_disabled_until'
+	| 'avatar'
+>;
+
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
  */
@@ -25,6 +38,10 @@ export interface APIMessageInteraction {
 	 * The user who invoked the interaction
 	 */
 	user: APIUser;
+	/**
+	 * The guild member who invoked the interaction, only sent in MESSAGE_CREATE events
+	 */
+	member?: PartialAPIMessageInteractionGuildMember;
 }
 
 /**
