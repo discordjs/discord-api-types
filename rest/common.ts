@@ -107,6 +107,8 @@ export const enum RESTJSONErrorCodes {
 	MaximumNumberOfStickersReached = 30039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
 
+	MaxmimumNumberOfEditsToMessagesOlderThanOneHourReached = 30046,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
