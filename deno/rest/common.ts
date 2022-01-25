@@ -107,6 +107,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfStickersReached = 30039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
 
+	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30042,
+
 	MaxmimumNumberOfEditsToMessagesOlderThanOneHourReached = 30046,
 
 	Unauthorized = 40001,
