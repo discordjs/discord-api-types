@@ -1,7 +1,7 @@
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
  */
-export const enum ApplicationCommandOptionType {
+export enum ApplicationCommandOptionType {
 	Subcommand = 1,
 	SubcommandGroup,
 	String,

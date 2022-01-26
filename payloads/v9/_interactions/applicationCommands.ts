@@ -68,7 +68,7 @@ export interface APIApplicationCommand {
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
  */
-export const enum ApplicationCommandType {
+export enum ApplicationCommandType {
 	ChatInput = 1,
 	User,
 	Message,

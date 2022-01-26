@@ -2,7 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/topics/oauth2
  */
 
-export const enum OAuth2Scopes {
+export enum OAuth2Scopes {
 	/**
 	 * For oauth2 bots, this puts the bot in the user's selected guild by default
 	 */

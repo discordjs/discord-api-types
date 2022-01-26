@@ -67,7 +67,7 @@ export interface APISticker {
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types
  */
-export const enum StickerType {
+export enum StickerType {
 	/**
 	 * An official sticker in a pack, part of Nitro or in a removed purchasable pack
 	 */
@@ -81,7 +81,7 @@ export const enum StickerType {
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
  */
-export const enum StickerFormatType {
+export enum StickerFormatType {
 	PNG = 1,
 	APNG,
 	Lottie,

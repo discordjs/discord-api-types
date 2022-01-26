@@ -63,7 +63,7 @@ export interface APIWebhook {
 	url?: string;
 }
 
-export const enum WebhookType {
+export enum WebhookType {
 	/**
 	 * Incoming Webhooks can post messages to channels with a generated token
 	 */
