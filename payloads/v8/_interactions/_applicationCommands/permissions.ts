@@ -43,7 +43,7 @@ export interface APIApplicationCommandPermission {
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permission-type
  */
-export const enum ApplicationCommandPermissionType {
+export enum ApplicationCommandPermissionType {
 	Role = 1,
 	User,
 }

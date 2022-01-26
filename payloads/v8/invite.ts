@@ -78,7 +78,7 @@ export interface APIInvite {
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
  */
-export const enum InviteTargetType {
+export enum InviteTargetType {
 	Stream = 1,
 	EmbeddedApplication,
 }

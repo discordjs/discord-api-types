@@ -107,7 +107,7 @@ export interface APIGuildScheduledEventEntityMetadata {
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
  */
-export const enum GuildScheduledEventEntityType {
+export enum GuildScheduledEventEntityType {
 	StageInstance = 1,
 	Voice,
 	External,
@@ -116,7 +116,7 @@ export const enum GuildScheduledEventEntityType {
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-status
  */
-export const enum GuildScheduledEventStatus {
+export enum GuildScheduledEventStatus {
 	Scheduled = 1,
 	Active,
 	Completed,
@@ -126,7 +126,7 @@ export const enum GuildScheduledEventStatus {
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-privacy-level
  */
-export const enum GuildScheduledEventPrivacyLevel {
+export enum GuildScheduledEventPrivacyLevel {
 	/**
 	 * The scheduled event is only accessible to guild members
 	 */

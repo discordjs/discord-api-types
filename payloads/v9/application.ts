@@ -96,7 +96,7 @@ export interface APIApplication {
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-flags
  */
-export const enum ApplicationFlags {
+export enum ApplicationFlags {
 	EmbeddedReleased = 1 << 1,
 	ManagedEmoji = 1 << 2,
 	GroupDMCreate = 1 << 4,

@@ -1,7 +1,7 @@
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
  */
-export const enum RESTJSONErrorCodes {
+export enum RESTJSONErrorCodes {
 	GeneralError,
 
 	UnknownAccount = 10001,
@@ -216,7 +216,7 @@ export const enum RESTJSONErrorCodes {
 	FailedToCreateStageNeededForStageEvent = 180002,
 }
 
-export const enum Locale {
+export enum Locale {
 	EnglishUS = 'en-US',
 	EnglishGB = 'en-GB',
 	Bulgarian = 'bg',

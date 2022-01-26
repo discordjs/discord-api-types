@@ -84,7 +84,7 @@ export interface APIUser {
 /**
  * https://discord.com/developers/docs/resources/user#user-object-user-flags
  */
-export const enum UserFlags {
+export enum UserFlags {
 	/**
 	 * None
 	 */
@@ -154,7 +154,7 @@ export const enum UserFlags {
 /**
  * https://discord.com/developers/docs/resources/user#user-object-premium-types
  */
-export const enum UserPremiumType {
+export enum UserPremiumType {
 	None,
 	NitroClassic,
 	Nitro,
@@ -206,7 +206,7 @@ export interface APIConnection {
 	visibility: ConnectionVisibility;
 }
 
-export const enum ConnectionVisibility {
+export enum ConnectionVisibility {
 	/**
 	 * Invisible to everyone except the user themselves
 	 */

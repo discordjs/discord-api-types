@@ -241,7 +241,7 @@ export type APIChannel =
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
  */
-export const enum ChannelType {
+export enum ChannelType {
 	/**
 	 * A text channel within a guild
 	 */
@@ -296,7 +296,7 @@ export const enum ChannelType {
 	GuildStageVoice,
 }
 
-export const enum VideoQualityMode {
+export enum VideoQualityMode {
 	/**
 	 * Discord chooses the quality for optimal performance
 	 */
@@ -502,7 +502,7 @@ export interface APIMessage {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
  */
-export const enum MessageType {
+export enum MessageType {
 	Default,
 	RecipientAdd,
 	RecipientRemove,
@@ -567,7 +567,7 @@ export interface APIMessageReference {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
  */
-export const enum MessageActivityType {
+export enum MessageActivityType {
 	Join = 1,
 	Spectate,
 	Listen,
@@ -577,7 +577,7 @@ export const enum MessageActivityType {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-flags
  */
-export const enum MessageFlags {
+export enum MessageFlags {
 	/**
 	 * This message has been published to subscribed channels (via Channel Following)
 	 */
@@ -682,7 +682,7 @@ export interface APIOverwrite {
 	deny: Permissions;
 }
 
-export const enum OverwriteType {
+export enum OverwriteType {
 	Role,
 	Member,
 }
@@ -717,7 +717,7 @@ export interface APIThreadMetadata {
 	create_timestamp?: string;
 }
 
-export const enum ThreadAutoArchiveDuration {
+export enum ThreadAutoArchiveDuration {
 	OneHour = 60,
 	OneDay = 1440,
 	ThreeDays = 4320,
@@ -752,7 +752,7 @@ export interface APIThreadMember {
 	flags: ThreadMemberFlags;
 }
 
-export const enum ThreadMemberFlags {}
+export enum ThreadMemberFlags {}
 
 export interface APIThreadList {
 	/**
@@ -857,7 +857,7 @@ export interface APIEmbed {
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
-export const enum EmbedType {
+export enum EmbedType {
 	/**
 	 * Generic embed rendered from embed attributes
 	 */
@@ -1101,7 +1101,7 @@ export interface APIChannelMention {
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
  */
-export const enum AllowedMentionsTypes {
+export enum AllowedMentionsTypes {
 	/**
 	 * Controls @everyone and @here mentions
 	 */
@@ -1155,7 +1155,7 @@ export interface APIBaseMessageComponent<T extends ComponentType> {
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-types
  */
-export const enum ComponentType {
+export enum ComponentType {
 	/**
 	 * Action Row component
 	 */
@@ -1239,7 +1239,7 @@ export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonCompo
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
  */
-export const enum ButtonStyle {
+export enum ButtonStyle {
 	Primary = 1,
 	Secondary,
 	Success,

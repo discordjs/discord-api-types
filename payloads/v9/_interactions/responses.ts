@@ -5,7 +5,7 @@ import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
  */
-export const enum InteractionType {
+export enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
 	MessageComponent,
@@ -54,7 +54,7 @@ export interface APIInteractionResponseUpdateMessage {
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
  */
-export const enum InteractionResponseType {
+export enum InteractionResponseType {
 	/**
 	 * ACK a `Ping`
 	 */
