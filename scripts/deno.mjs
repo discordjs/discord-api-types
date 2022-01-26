@@ -30,14 +30,7 @@ function convertImports(source) {
 	);
 }
 
-/**
- * @param {string} source The raw source
- */
-function convertConstEnums(source) {
-	return source.replace(/const enum/gi, 'enum');
-}
-
-const transformers = [convertImports, convertConstEnums];
+const transformers = [convertImports];
 
 async function convertFile(fullFilePath, finalDenoPath) {
 	const originalFile = await readFile(fullFilePath, { encoding: 'utf8' });
