@@ -1280,7 +1280,12 @@ export type GatewayThreadCreateDispatch = GatewayChannelModifyDispatch;
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-create
  */
-export type GatewayThreadCreateDispatchData = GatewayChannelModifyDispatchData;
+export type GatewayThreadCreateDispatchData = GatewayChannelModifyDispatchData & {
+	/**
+	 * Whether the thread is newly created or not.
+	 */
+	newly_created: boolean;
+};
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-update
