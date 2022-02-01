@@ -9,7 +9,6 @@ import type {
 	APIFollowedChannel,
 	APIMessage,
 	APIMessageReference,
-	APIOverwrite,
 	APIThreadList,
 	APIThreadMember,
 	APIUser,
@@ -21,6 +20,10 @@ import type {
 	VideoQualityMode,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+
+export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
+	id: Snowflake;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-channel
@@ -88,7 +91,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 *
 	 * Channel types: all excluding newsThread, publicThread, privateThread
 	 */
-	permission_overwrites?: APIOverwrite[] | null;
+	permission_overwrites?: APIChannelPatchOverwrite[] | null;
 	/**
 	 * ID of the new parent category for a channel
 	 *
@@ -425,14 +428,18 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	 * The bitwise value of all allowed permissions
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
+	 *
+	 * @default "0"
 	 */
-	allow: Permissions;
+	allow?: Permissions | null;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
+	 *
+	 * @default "0"
 	 */
-	deny: Permissions;
+	deny?: Permissions | null;
 	/**
 	 * `0` for a role or `1` for a member
 	 */
