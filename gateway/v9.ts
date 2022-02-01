@@ -27,6 +27,7 @@ import type {
 	GatewayVoiceState,
 	InviteTargetType,
 	PresenceUpdateStatus,
+	APIThreadChannel,
 } from '../payloads/v9/index';
 import type { Nullable } from '../utils/internals';
 
@@ -1280,7 +1281,12 @@ export type GatewayThreadCreateDispatch = GatewayChannelModifyDispatch;
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-create
  */
-export type GatewayThreadCreateDispatchData = GatewayChannelModifyDispatchData;
+export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
+	/**
+	 * Whether the thread is newly created or not.
+	 */
+	newly_created: boolean;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-update
