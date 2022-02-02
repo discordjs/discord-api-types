@@ -1285,7 +1285,7 @@ export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
 	/**
 	 * Whether the thread is newly created or not.
 	 */
-	newly_created: boolean;
+	newly_created?: true;
 }
 
 /**
