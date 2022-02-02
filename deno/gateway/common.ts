@@ -1,7 +1,7 @@
 /**
  * https://discord.com/developers/docs/topics/gateway#connecting-gateway-url-params
  */
-export interface GatewayURLQuery {
+export interface GatewayUrlQuery {
 	v: string;
 	encoding: 'json' | 'etf';
 	compress?: 'zlib-stream';

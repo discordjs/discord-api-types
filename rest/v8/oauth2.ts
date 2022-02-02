@@ -51,7 +51,7 @@ export interface RESTOAuth2AuthorizationQueryResult {
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
-export interface RESTPostOAuth2AccessTokenURLEncodedData {
+export interface RESTPostOAuth2AccessTokenUrlEncodedData {
 	client_id: Snowflake;
 	client_secret: string;
 	grant_type: 'authorization_code';
@@ -73,7 +73,7 @@ export interface RESTPostOAuth2AccessTokenResult {
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example
  */
-export interface RESTPostOAuth2RefreshTokenURLEncodedData {
+export interface RESTPostOAuth2RefreshTokenUrlEncodedData {
 	client_id: Snowflake;
 	client_secret: string;
 	grant_type: 'refresh_token';
@@ -97,17 +97,17 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 /**
  * https://discord.com/developers/docs/topics/oauth2#implicit-grant-redirect-url-example
  */
-export type RESTOAuth2ImplicitAuthorizationURLFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
+export type RESTOAuth2ImplicitAuthorizationUrlFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#client-credentials-grant
  */
-export interface RESTPostOAuth2ClientCredentialsURLEncodedData {
+export interface RESTPostOAuth2ClientCredentialsUrlEncodedData {
 	grant_type: 'client_credentials';
 	scope: string;
 }
 
-export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationURLFragmentResult;
+export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationUrlFragmentResult;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow-bot-auth-parameters

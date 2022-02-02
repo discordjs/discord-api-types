@@ -521,7 +521,7 @@ export enum GuildFeature {
 	/**
 	 * Guild has access to set a vanity URL
 	 */
-	VanityURL = 'VANITY_URL',
+	VanityUrl = 'VANITY_URL',
 	/**
 	 * Guild is verified
 	 */

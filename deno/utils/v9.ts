@@ -4,7 +4,7 @@ import {
 	APIApplicationCommandInteraction,
 	APIButtonComponent,
 	APIButtonComponentWithCustomId,
-	APIButtonComponentWithURL,
+	APIButtonComponentWithUrl,
 	APIDMInteraction,
 	APIGuildInteraction,
 	APIInteraction,
@@ -89,7 +89,7 @@ export function isMessageComponentGuildInteraction(
  * @param component The button to check against
  * @returns A boolean that indicates if the button has a `url` attached to it
  */
-export function isLinkButton(component: APIButtonComponent): component is APIButtonComponentWithURL {
+export function isLinkButton(component: APIButtonComponent): component is APIButtonComponentWithUrl {
 	return component.style === ButtonStyle.Link;
 }
 

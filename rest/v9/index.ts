@@ -860,12 +860,12 @@ export const RouteBases = {
 Object.freeze(RouteBases);
 
 export const OAuth2Routes = {
-	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
-	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
+	authorizationUrl: `${RouteBases.api}${Routes.oauth2Authorization()}`,
+	tokenUrl: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
 	 * See https://tools.ietf.org/html/rfc7009
 	 */
-	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
+	tokenRevocationUrl: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;
 
 // Freeze OAuth2 route object

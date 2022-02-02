@@ -1058,14 +1058,14 @@ export interface APIButtonComponentWithCustomId
 	custom_id: string;
 }
 
-export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
+export interface APIButtonComponentWithUrl extends APIButtonComponentBase<ButtonStyle.Link> {
 	/**
 	 * The URL to direct users to when clicked for Link buttons
 	 */
 	url: string;
 }
 
-export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithURL;
+export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithUrl;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles

@@ -287,7 +287,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyVerificationLevel
 	| APIAuditLogChangeKeyExplicitContentFilter
 	| APIAuditLogChangeKeyDefaultMessageNotifications
-	| APIAuditLogChangeKeyVanityURLCode
+	| APIAuditLogChangeKeyVanityUrlCode
 	| APIAuditLogChangeKey$Add
 	| APIAuditLogChangeKey$Remove
 	| APIAuditLogChangeKeyPruneDeleteDays
@@ -433,7 +433,7 @@ export type APIAuditLogChangeKeyDefaultMessageNotifications = AuditLogChangeData
 /**
  * Returned when a guild's vanity_url_code is changed
  */
-export type APIAuditLogChangeKeyVanityURLCode = AuditLogChangeData<'vanity_url_code', string>;
+export type APIAuditLogChangeKeyVanityUrlCode = AuditLogChangeData<'vanity_url_code', string>;
 
 /**
  * Returned when new role(s) are added
