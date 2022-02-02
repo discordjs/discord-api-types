@@ -86,10 +86,6 @@ export interface APIUser {
  */
 export enum UserFlags {
 	/**
-	 * None
-	 */
-	None = 0,
-	/**
 	 * Discord Employee
 	 */
 	Staff = 1 << 0,
