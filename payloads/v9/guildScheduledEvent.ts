@@ -18,7 +18,7 @@ interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType>
 	/**
 	 * The id of the user that created the scheduled event
 	 */
-	creator_id: Snowflake | null;
+	creator_id?: Snowflake | null;
 	/**
 	 * The name of the scheduled event
 	 */
