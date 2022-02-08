@@ -114,8 +114,8 @@ export enum RESTJSONErrorCodes {
 	Unauthorized = 40001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
-
-	RequestEntityTooLarge = 40005,
+	SendMessagesHasBeenTemporarilyDisabled,
+	RequestEntityTooLarge,
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
