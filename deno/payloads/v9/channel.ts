@@ -1165,9 +1165,9 @@ export enum ComponentType {
 	 */
 	SelectMenu,
 	/**
-	 * Input Text component
+	 * Text Input component
 	 */
-	InputText,
+	TextInput,
 }
 
 /**
@@ -1254,8 +1254,10 @@ export enum ButtonStyle {
 	Link,
 }
 
-// TODO: Add link
-export enum TextStyleType {
+/**
+ * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles
+ */
+export enum TextInputStyle {
 	Short = 1,
 	Paragraph,
 }
@@ -1322,18 +1324,20 @@ export interface APISelectMenuOption {
 	default?: boolean;
 }
 
-// TODO: Add api links
-export interface APIInputTextComponent extends APIBaseMessageComponent<ComponentType.InputText> {
+/**
+ * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
+ */
+export interface APITextInputComponent extends APIBaseMessageComponent<ComponentType.TextInput> {
 	/**
-	 * One of input text styles
+	 * One of text input styles
 	 */
-	style: TextStyleType;
+	style: TextInputStyle;
 	/**
 	 * The custom id for the text input
 	 */
 	custom_id: string;
 	/**
-	 * Text that appears on top of the input text field, max 80 characters
+	 * Text that appears on top of the text input field, max 80 characters
 	 */
 	label: string;
 	/**
@@ -1363,4 +1367,4 @@ export interface APIInputTextComponent extends APIBaseMessageComponent<Component
  */
 export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
 
-export type APIModalComponent = APIModalActionRowComponent | APIInputTextComponent;
+export type APIModalComponent = APIModalActionRowComponent | APITextInputComponent;
