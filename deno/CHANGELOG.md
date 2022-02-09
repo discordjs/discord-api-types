@@ -1,3 +1,48 @@
+# [0.27.0](https://github.com/discordjs/discord-api-types/compare/0.26.1...0.27.0) (2022-02-09)
+
+### Bug Fixes
+
+- **GatewayThreadCreateDispatchData:** `newly_created` is optional, and `true` when present ([#312](https://github.com/discordjs/discord-api-types/issues/312)) ([87b9b08](https://github.com/discordjs/discord-api-types/commit/87b9b0885a3734b376e64da51d7667b74558f7e5))
+
+### Code Refactoring
+
+- **ActivityType:** change `Game` to `Playing` ([#298](https://github.com/discordjs/discord-api-types/issues/298)) ([08a8b28](https://github.com/discordjs/discord-api-types/commit/08a8b28ee1ed2041744d922db35dab24f3861469))
+- **UserFlags:** remove `None` ([#308](https://github.com/discordjs/discord-api-types/issues/308)) ([8e13cd8](https://github.com/discordjs/discord-api-types/commit/8e13cd80c66d11d93157a053e329ad98ece4a457))
+
+### Features
+
+- **APIGuildPreview:** add `stickers` ([#279](https://github.com/discordjs/discord-api-types/issues/279)) ([310c68f](https://github.com/discordjs/discord-api-types/commit/310c68f034812072ca3cacbeaff1f5b9454e3409))
+- **APIInteraction:** add locale props to interactions ([#273](https://github.com/discordjs/discord-api-types/issues/273)) ([03b8d3f](https://github.com/discordjs/discord-api-types/commit/03b8d3fee032fb77213389019baa2b80377dcfdc))
+- **APIMessageInteraction:** add `member` field ([#299](https://github.com/discordjs/discord-api-types/issues/299)) ([80ed7ba](https://github.com/discordjs/discord-api-types/commit/80ed7ba1c1ebb2e12d3a04339d4ff0209be9bbef))
+- **APIScheduledEvent:** add `image` prop ([#303](https://github.com/discordjs/discord-api-types/issues/303)) ([663c4e9](https://github.com/discordjs/discord-api-types/commit/663c4e97fbe2029ab040388b50d5600bfe281c4f))
+- **APIThreadMetadata:** add `create_timestamp` field ([#301](https://github.com/discordjs/discord-api-types/issues/301)) ([d95d956](https://github.com/discordjs/discord-api-types/commit/d95d9562dcc514556f3a4ced3e8f3ee4c5ed1282))
+- **ApplicationCommand:** attachment application command option type ([#272](https://github.com/discordjs/discord-api-types/issues/272)) ([71c4e6a](https://github.com/discordjs/discord-api-types/commit/71c4e6aecd044ce5282742c0e47bff7b64b890f7))
+- **GatewayThreadCreateDispatch:** Add `newly_created` field` ([#311](https://github.com/discordjs/discord-api-types/issues/311)) ([7e54215](https://github.com/discordjs/discord-api-types/commit/7e542152da2e58f44c2314d5bd3b04a518fa979e))
+- **Locales:** add locale string enum ([#297](https://github.com/discordjs/discord-api-types/issues/297)) ([b07d5a0](https://github.com/discordjs/discord-api-types/commit/b07d5a0c2273b6b51b44542b638a768c36d0f184))
+- **MessageFlags:** add `FailedToMentionSomeRolesInThread` ([#280](https://github.com/discordjs/discord-api-types/issues/280)) ([76588d9](https://github.com/discordjs/discord-api-types/commit/76588d9d384f71ace05d96de17889e4490874462))
+- **RESTAPIPostChannelMessage, RESTAPIPostWebhookMessage:** add flags for creation ([#300](https://github.com/discordjs/discord-api-types/issues/300)) ([4194bd9](https://github.com/discordjs/discord-api-types/commit/4194bd9054a7e4b004f9244706f423292a8a0e56))
+- **RESTJSONErrorCodes:** add error 30042 ([#305](https://github.com/discordjs/discord-api-types/issues/305)) ([9c2b185](https://github.com/discordjs/discord-api-types/commit/9c2b185367b1ea2e432355d76af8f19e8fca7398))
+- **RESTJSONErrorCodes:** add error 30046 ([#304](https://github.com/discordjs/discord-api-types/issues/304)) ([56d3975](https://github.com/discordjs/discord-api-types/commit/56d39756c0d973ec56fe6e1eeb75d827f50aac81))
+- **RESTJSONErrorCodes:** add error 40004 ([#314](https://github.com/discordjs/discord-api-types/issues/314)) ([269a75c](https://github.com/discordjs/discord-api-types/commit/269a75ccf7b413bfc031849713e919ebb8d87a1a))
+- **RESTJSONErrorCodes:** add error 50068 ([#302](https://github.com/discordjs/discord-api-types/issues/302)) ([7655e20](https://github.com/discordjs/discord-api-types/commit/7655e2024800abc4431011668b83373e0868485e))
+- **RESTJSONErrorCodes:** add error code 50086 ([#286](https://github.com/discordjs/discord-api-types/issues/286)) ([51fb37c](https://github.com/discordjs/discord-api-types/commit/51fb37cbba44677870f0f916bd1416bdbd34e052))
+- **RESTPatchAPIGuildMember:** add `communication_disabled_until` field ([#289](https://github.com/discordjs/discord-api-types/issues/289)) ([5056b0f](https://github.com/discordjs/discord-api-types/commit/5056b0f2b3798480dbbc193fd80dedfefedff4fc))
+- **RESTPatchAPIGuildMember:** add modify current member and deprecate nick route ([#262](https://github.com/discordjs/discord-api-types/issues/262)) ([9a982ff](https://github.com/discordjs/discord-api-types/commit/9a982ff8d9592a02d78f24295efd756dc0c69fa8))
+- **RouteBases:** add base for guild scheduled events ([#293](https://github.com/discordjs/discord-api-types/issues/293)) ([83f29b6](https://github.com/discordjs/discord-api-types/commit/83f29b692839cc51869bcafdaf387b68731e0a28))
+- **UserFlags:** add `Spammer` flag ([#294](https://github.com/discordjs/discord-api-types/issues/294)) ([03f12d7](https://github.com/discordjs/discord-api-types/commit/03f12d71eef2661ee5290152952ea1adc9a92383))
+
+### types
+
+- Add tagged `type` unions for channel types ([#200](https://github.com/discordjs/discord-api-types/issues/200)) ([2c1fbda](https://github.com/discordjs/discord-api-types/commit/2c1fbda621fc1c1ea227295c578e6d8486dbc4f2))
+
+### BREAKING CHANGES
+
+- **UserFlags:** The `None` user flag is bye-bye (although I doubt anyone is using it)
+- All of the channel types are now split based on their type. As such, you will need to assert the type (either by checking it with the enum or by casting the data as the correct channel) before accessing data.
+  _If you encounter any missing properties due to this, please open an issue! This is a big change, and we hope nothing is missing_
+
+- **ActivityType:** `Game` was renamed to `Playing`
+
 ## [0.26.1](https://github.com/discordjs/discord-api-types/compare/0.26.0...0.26.1) (2022-01-02)
 
 ### Bug Fixes
