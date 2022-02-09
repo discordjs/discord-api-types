@@ -1180,11 +1180,17 @@ export interface APIActionRowComponent extends APIBaseMessageComponent<Component
 	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
 }
 
+export interface ModalSubmitComponent {
+	type: ComponentType;
+	custom_id: string;
+	value: string;
+}
+
 export interface APIModalActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
-	components: Exclude<APIModalComponent, APIModalActionRowComponent>[];
+	components: ModalSubmitComponent[];
 }
 
 /**
