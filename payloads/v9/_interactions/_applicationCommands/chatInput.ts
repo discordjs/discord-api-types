@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../../../globals';
-import type { APIRole, APIUser } from '../../index';
+import type { APIAttachment, APIRole, APIUser } from '../../index';
 import type {
 	APIApplicationCommandInteractionWrapper,
 	APIInteractionDataResolvedChannel,
@@ -42,6 +42,10 @@ import type {
 	APIApplicationCommandInteractionDataNumberOption,
 } from './_chatInput/number';
 import type {
+	APIApplicationCommandAttachmentOption,
+	APIApplicationCommandInteractionDataAttachmentOption,
+} from './_chatInput/attachment';
+import type {
 	APIApplicationCommandSubcommandOption,
 	APIApplicationCommandInteractionDataSubcommandOption,
 } from './_chatInput/subcommand';
@@ -58,6 +62,7 @@ export * from './_chatInput/channel';
 export * from './_chatInput/role';
 export * from './_chatInput/mentionable';
 export * from './_chatInput/number';
+export * from './_chatInput/attachment';
 export * from './_chatInput/subcommand';
 export * from './_chatInput/subcommandGroup';
 export * from './_chatInput/shared';
@@ -73,7 +78,8 @@ export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandChannelOption
 	| APIApplicationCommandRoleOption
 	| APIApplicationCommandMentionableOption
-	| APIApplicationCommandNumberOption;
+	| APIApplicationCommandNumberOption
+	| APIApplicationCommandAttachmentOption;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
@@ -99,7 +105,8 @@ export type APIApplicationCommandInteractionDataBasicOption =
 	| APIApplicationCommandInteractionDataChannelOption
 	| APIApplicationCommandInteractionDataRoleOption
 	| APIApplicationCommandInteractionDataMentionableOption
-	| APIApplicationCommandInteractionDataNumberOption;
+	| APIApplicationCommandInteractionDataNumberOption
+	| APIApplicationCommandInteractionDataAttachmentOption;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
@@ -118,6 +125,7 @@ export interface APIChatInputApplicationCommandInteractionDataResolved {
 	roles?: Record<Snowflake, APIRole>;
 	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
 	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
+	attachments?: Record<Snowflake, APIAttachment>;
 }
 
 /**
