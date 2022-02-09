@@ -104,8 +104,20 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
+ */
 export interface APIModalInteractionResponseCallbackData {
+	/**
+	 * A developer-defined identifier for the component, max 100 characters
+	 */
 	custom_id: string;
+	/**
+	 * The title of the popup modal
+	 */
 	title: string;
+	/**
+	 * Between 1 and 5 (inclusive) components that make up the modal
+	 */
 	components: APIModalActionRowComponent[];
 }

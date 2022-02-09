@@ -1,8 +1,5 @@
 import type { APIBaseInteraction, InteractionType, APIModalActionRowComponent } from '../index';
 
-/**
- * https://discord.com/developers/docs/interactions/message-components#component-object-component-structure
- */
 export interface APIModalSubmission {
 	/**
 	 * A developer-defined identifier for the component, max 100 characters

@@ -104,6 +104,9 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
+ */
 export interface APIModalInteractionResponseCallbackData {
 	custom_id: string;
 	title: string;
