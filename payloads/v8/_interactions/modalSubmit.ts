@@ -1,4 +1,14 @@
-import type { APIBaseInteraction, InteractionType, APIModalActionRowComponent } from '../index';
+import type { APIBaseInteraction, InteractionType, APIModalActionRowComponent, ComponentType } from '../index';
+
+export interface ModalSubmitComponent {
+	type: ComponentType;
+	custom_id: string;
+	value: string;
+}
+
+export interface ModalSubmitActionRowComponent extends Omit<APIModalActionRowComponent, 'components'> {
+	components: ModalSubmitComponent[];
+}
 
 export interface APIModalSubmission {
 	/**
@@ -8,7 +18,7 @@ export interface APIModalSubmission {
 	/**
 	 * A list of child components
 	 */
-	components?: APIModalActionRowComponent[];
+	components?: ModalSubmitActionRowComponent[];
 }
 
 /**
