@@ -406,7 +406,7 @@ export interface APIMessage {
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
-	components?: APIActionRowComponent[];
+	components?: APIActionRowComponent<APIMessageComponent>[];
 	/**
 	 * Sent if the message contains stickers
 	 *
@@ -1008,18 +1008,12 @@ export const enum ComponentType {
 /**
  * https://discord.com/developers/docs/interactions/message-components#action-rows
  */
-export interface APIActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
+export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
+	extends APIBaseMessageComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
-	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
-}
-
-export interface APIModalActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
-	/**
-	 * The components in the ActionRow
-	 */
-	components: Exclude<APIModalComponent, APIModalActionRowComponent>[];
+	components: Exclude<T, APIActionRowComponent<T>>[];
 }
 
 /**
@@ -1200,6 +1194,11 @@ export interface APITextInputComponent extends APIBaseMessageComponent<Component
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
+export type APIMessageComponent =
+	| APIActionRowComponent<APIMessageComponent | APIModalComponent>
+	| APIButtonComponent
+	| APISelectMenuComponent;
 
-export type APIModalComponent = APIModalActionRowComponent | APITextInputComponent;
+export type APIModalComponent = APIActionRowComponent<APIModalComponent> | APITextInputComponent;
+
+export type APIActionRowComponentTypes = APIMessageComponent | APIModalComponent;

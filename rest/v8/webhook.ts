@@ -7,6 +7,7 @@ import type {
 	APIWebhook,
 	APIAttachment,
 	MessageFlags,
+	APIMessageComponent,
 } from '../../payloads/v8/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals';
 
@@ -135,7 +136,7 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent[];
+	components?: APIActionRowComponent<APIMessageComponent>[];
 	/**
 	 * Attachment objects with filename and description
 	 */
