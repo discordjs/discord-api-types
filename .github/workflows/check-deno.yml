@@ -1,0 +1,23 @@
+name: Check Deno
+
+on:
+  pull_request:
+
+jobs:
+  check_deno:
+    name: Ensure Deno types are up to date
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Check Script
+        run: npm run ci:check-deno

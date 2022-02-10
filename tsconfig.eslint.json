@@ -1,8 +1,7 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true
+		"allowJs": true
 	},
 	"include": [
 		"globals.ts",
@@ -15,7 +14,7 @@
 		"rpc/**/*.ts",
 		"utils/**/*.ts",
 		"voice/**/*.ts",
-		"scripts",
+		"scripts/**/*",
 		"deno",
 		"tests/**/*.ts"
 	]
