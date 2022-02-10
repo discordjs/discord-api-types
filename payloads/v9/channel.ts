@@ -3,10 +3,10 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals';
+import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
-import type { APIApplication } from './application';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
@@ -483,7 +483,7 @@ export interface APIMessage {
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
-	components?: APIActionRowComponent[];
+	components?: APIActionRowComponent<APIMessageComponent>[];
 	/**
 	 * Sent if the message contains stickers
 	 *
@@ -1145,7 +1145,7 @@ export interface APIAllowedMentions {
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-object
  */
-export interface APIBaseMessageComponent<T extends ComponentType> {
+export interface APIBaseComponent<T extends ComponentType> {
 	/**
 	 * The type of the component
 	 */
@@ -1168,22 +1168,27 @@ export enum ComponentType {
 	 * Select Menu component
 	 */
 	SelectMenu,
+	/**
+	 * Text Input component
+	 */
+	TextInput,
 }
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#action-rows
  */
-export interface APIActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
+export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
+	extends APIBaseComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
-	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
+	components: Exclude<T, APIActionRowComponent<T>>[];
 }
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons
  */
-interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessageComponent<ComponentType.Button> {
+interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
 	/**
 	 * The label to be displayed on the button
 	 */
@@ -1248,9 +1253,17 @@ export enum ButtonStyle {
 }
 
 /**
+ * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles
+ */
+export enum TextInputStyle {
+	Short = 1,
+	Paragraph,
+}
+
+/**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APISelectMenuComponent extends APIBaseMessageComponent<ComponentType.SelectMenu> {
+export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
 	 */
@@ -1310,6 +1323,56 @@ export interface APISelectMenuOption {
 }
 
 /**
+ * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
+ */
+export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
+	/**
+	 * One of text input styles
+	 */
+	style: TextInputStyle;
+	/**
+	 * The custom id for the text input
+	 */
+	custom_id: string;
+	/**
+	 * Text that appears on top of the text input field, max 80 characters
+	 */
+	label: string;
+	/**
+	 * Placeholder for the text input
+	 */
+	placeholder?: string;
+	/**
+	 * The pre-filled text in the text input
+	 */
+	value?: string;
+	/**
+	 * Minimal length of text input
+	 */
+	min_length?: number;
+	/**
+	 * Maximal length of text input
+	 */
+	max_length?: number;
+	/**
+	 * Whether or not this text input is required or not
+	 */
+	required?: boolean;
+}
+
+export type APIActionRowComponentTypes = APIMessageComponent | APIModalComponent;
+
+/**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
+export type APIMessageComponent =
+	| APIActionRowComponent<APIMessageComponent>
+	| APIButtonComponent
+	| APISelectMenuComponent;
+
+export type APIMessageActionRowComponent = APIActionRowComponent<APIMessageComponent>;
+
+// Modal components
+export type APIModalComponent = APIActionRowComponent<APIModalComponent> | APITextInputComponent;
+
+export type APIModalActionRowComponent = APIActionRowComponent<APIModalComponent>;
