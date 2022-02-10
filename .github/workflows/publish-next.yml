@@ -2,14 +2,23 @@ name: Publish next
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */12 * * *'
+  # Temporarily off while we work on publishing automatic full releases
+  # schedule:
+  #   - cron: '0 */12 * * *'
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
-    name: Publish to npm
+    name: Publish @next release to npm
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel previous publish attempts
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
       - name: Checkout repository
         uses: actions/checkout@v2
         with:

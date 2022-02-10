@@ -32,6 +32,10 @@ function convertImports(source) {
 
 const transformers = [convertImports];
 
+/**
+ * @param {URL} fullFilePath
+ * @param {URL} finalDenoPath
+ */
 async function convertFile(fullFilePath, finalDenoPath) {
 	const originalFile = await readFile(fullFilePath, { encoding: 'utf8' });
 
