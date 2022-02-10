@@ -1195,7 +1195,7 @@ export interface APITextInputComponent extends APIBaseMessageComponent<Component
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
 export type APIMessageComponent =
-	| APIActionRowComponent<APIMessageComponent | APIModalComponent>
+	| APIActionRowComponent<APIMessageComponent>
 	| APIButtonComponent
 	| APISelectMenuComponent;
 
