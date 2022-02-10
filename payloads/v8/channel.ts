@@ -3,10 +3,10 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals';
+import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
-import type { APIApplication } from './application';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
@@ -976,7 +976,7 @@ export interface APIAllowedMentions {
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-object
  */
-export interface APIBaseMessageComponent<T extends ComponentType> {
+export interface APIBaseComponent<T extends ComponentType> {
 	/**
 	 * The type of the component
 	 */
@@ -1009,7 +1009,7 @@ export const enum ComponentType {
  * https://discord.com/developers/docs/interactions/message-components#action-rows
  */
 export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
-	extends APIBaseMessageComponent<ComponentType.ActionRow> {
+	extends APIBaseComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
@@ -1019,7 +1019,7 @@ export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons
  */
-interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessageComponent<ComponentType.Button> {
+interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
 	/**
 	 * The label to be displayed on the button
 	 */
@@ -1094,7 +1094,7 @@ export enum TextInputStyle {
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APISelectMenuComponent extends APIBaseMessageComponent<ComponentType.SelectMenu> {
+export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
 	 */
@@ -1156,7 +1156,7 @@ export interface APISelectMenuOption {
 /**
  * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
  */
-export interface APITextInputComponent extends APIBaseMessageComponent<ComponentType.TextInput> {
+export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
 	/**
 	 * One of text input styles
 	 */
@@ -1191,6 +1191,8 @@ export interface APITextInputComponent extends APIBaseMessageComponent<Component
 	required?: boolean;
 }
 
+export type APIActionRowComponentTypes = APIMessageComponent | APIModalComponent;
+
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
@@ -1199,6 +1201,9 @@ export type APIMessageComponent =
 	| APIButtonComponent
 	| APISelectMenuComponent;
 
+export type APIMessageActionRowComponent = APIActionRowComponent<APIMessageComponent>;
+
+// Modal components
 export type APIModalComponent = APIActionRowComponent<APIModalComponent> | APITextInputComponent;
 
-export type APIActionRowComponentTypes = APIMessageComponent | APIModalComponent;
+export type APIModalActionRowComponent = APIActionRowComponent<APIModalComponent>;
