@@ -1,5 +1,11 @@
 import type { APIActionRowComponent, APIModalComponent } from '../channel';
-import type { APIBaseInteraction, InteractionType, ComponentType } from '../index';
+import type {
+	APIBaseInteraction,
+	InteractionType,
+	ComponentType,
+	APIDMInteractionWrapper,
+	APIGuildInteractionWrapper,
+} from '../index';
 
 export interface ModalSubmitComponent {
 	type: ComponentType;
@@ -27,3 +33,13 @@ export interface APIModalSubmission {
  */
 export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission> &
 	Required<Pick<APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission>, 'data'>>;
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
+export type APIModalSubmitDMInteraction = APIDMInteractionWrapper<APIModalSubmitInteraction>;
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ */
+export type APIModalSubmitGuildInteraction = APIGuildInteractionWrapper<APIModalSubmitInteraction>;
