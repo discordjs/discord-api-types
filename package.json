@@ -73,7 +73,6 @@
 		"build:ci": "tsc --noEmit --incremental false",
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
-		"ci:check-deno": "ts-node --project tsconfig.json ./scripts/actions/report-deno-not-ran.ts",
 		"clean:deno": "rimraf deno/",
 		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,utils}/**/*.{js,mjs,d.ts,*map} {globals,v*}.{js,mjs,d.ts,*map}",
 		"clean": "run-p clean:*",

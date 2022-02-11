@@ -23,6 +23,6 @@ jobs:
         run: npm ci
 
       - name: Run Check Script
-        run: npm run ci:check-deno
+        run: node ./scripts/actions/report-deno-not-ran.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
