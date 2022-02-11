@@ -10,6 +10,7 @@ import type {
 	APIApplicationCommandInteraction,
 } from './_interactions/applicationCommands.ts';
 import type { APIApplicationCommandAutocompleteInteraction } from './_interactions/autocomplete.ts';
+import type { APIModalSubmitInteraction } from './_interactions/modalSubmit.ts';
 
 export * from './_interactions/base.ts';
 export * from './_interactions/messageComponents.ts';
@@ -25,7 +26,8 @@ export type APIInteraction =
 	| APIPingInteraction
 	| APIApplicationCommandInteraction
 	| APIMessageComponentInteraction
-	| APIApplicationCommandAutocompleteInteraction;
+	| APIApplicationCommandAutocompleteInteraction
+	| APIModalSubmitInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object

@@ -7,6 +7,7 @@ import {
 	APIInteraction,
 	APIInteractionGuildMember,
 	APIMessageComponentInteraction,
+	APIModalSubmission,
 	APIUser,
 	ComponentType,
 	InteractionType,
@@ -35,6 +36,10 @@ if (interaction.type === InteractionType.MessageComponent) {
 		// expectType<APIMessageSelectMenuInteractionData>(data);
 		expectType<string[]>(data.values);
 	}
+}
+
+if (interaction.type === InteractionType.ModalSubmit) {
+	expectType<APIModalSubmission>(interaction.data);
 }
 
 declare const dmInteraction: APIDMInteraction;

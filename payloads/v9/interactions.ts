@@ -10,6 +10,7 @@ import type {
 	APIApplicationCommandInteraction,
 } from './_interactions/applicationCommands';
 import type { APIApplicationCommandAutocompleteInteraction } from './_interactions/autocomplete';
+import type { APIModalSubmitInteraction } from './_interactions/modalSubmit';
 
 export * from './_interactions/base';
 export * from './_interactions/messageComponents';
@@ -25,7 +26,8 @@ export type APIInteraction =
 	| APIPingInteraction
 	| APIApplicationCommandInteraction
 	| APIMessageComponentInteraction
-	| APIApplicationCommandAutocompleteInteraction;
+	| APIApplicationCommandAutocompleteInteraction
+	| APIModalSubmitInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
