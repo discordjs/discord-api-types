@@ -39,7 +39,7 @@ if (interaction.type === InteractionType.MessageComponent) {
 }
 
 if (interaction.type === InteractionType.ModalSubmit) {
-	expectType<APIModalSubmission>(interaction.data);
+	expectType<APIModalSubmission | undefined>(interaction.data);
 }
 
 declare const dmInteraction: APIDMInteraction;
