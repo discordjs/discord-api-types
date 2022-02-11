@@ -25,4 +25,5 @@ export interface APIModalSubmission {
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
-export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission>;
+export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission> &
+	Required<Pick<APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission>, 'data'>>;
