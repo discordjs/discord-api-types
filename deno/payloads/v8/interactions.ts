@@ -9,7 +9,11 @@ import type {
 	APIApplicationCommandGuildInteraction,
 	APIApplicationCommandInteraction,
 } from './_interactions/applicationCommands.ts';
-import type { APIApplicationCommandAutocompleteInteraction } from './_interactions/autocomplete.ts';
+import type {
+	APIApplicationCommandAutocompleteDMInteraction,
+	APIApplicationCommandAutocompleteGuildInteraction,
+	APIApplicationCommandAutocompleteInteraction,
+} from './_interactions/autocomplete.ts';
 import type {
 	APIModalSubmitDMInteraction,
 	APIModalSubmitGuildInteraction,
@@ -39,6 +43,7 @@ export type APIInteraction =
 export type APIDMInteraction =
 	| APIApplicationCommandDMInteraction
 	| APIMessageComponentDMInteraction
+	| APIApplicationCommandAutocompleteDMInteraction
 	| APIModalSubmitDMInteraction;
 
 /**
@@ -47,4 +52,5 @@ export type APIDMInteraction =
 export type APIGuildInteraction =
 	| APIApplicationCommandGuildInteraction
 	| APIMessageComponentGuildInteraction
+	| APIApplicationCommandAutocompleteGuildInteraction
 	| APIModalSubmitGuildInteraction;

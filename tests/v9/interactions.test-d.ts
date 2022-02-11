@@ -2,6 +2,7 @@ import { expectType } from 'tsd';
 import {
 	APIApplicationCommandInteraction,
 	APIApplicationCommandInteractionData,
+	APIChatInputApplicationCommandInteractionData,
 	APIDMInteraction,
 	APIGuildInteraction,
 	APIInteraction,
@@ -36,6 +37,10 @@ if (interaction.type === InteractionType.MessageComponent) {
 		// expectType<APIMessageSelectMenuInteractionData>(data);
 		expectType<string[]>(data.values);
 	}
+}
+
+if (interaction.type === InteractionType.ApplicationCommandAutocomplete) {
+	expectType<APIChatInputApplicationCommandInteractionData>(interaction.data);
 }
 
 if (interaction.type === InteractionType.ModalSubmit) {
