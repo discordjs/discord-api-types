@@ -124,6 +124,8 @@ export enum RESTJSONErrorCodes {
 
 	ApplicationCommandWithThatNameAlreadyExists = 40041,
 
+	InteractionHasAlreadyBeenAcknowledged = 40060,
+
 	MissingAccess = 50001,
 	InvalidAccountType,
 	CannotExecuteActionOnDMChannel,
