@@ -10,6 +10,11 @@ import type {
 	APIApplicationCommandInteraction,
 } from './_interactions/applicationCommands';
 import type { APIApplicationCommandAutocompleteInteraction } from './_interactions/autocomplete';
+import type {
+	APIModalSubmitDMInteraction,
+	APIModalSubmitGuildInteraction,
+	APIModalSubmitInteraction,
+} from './_interactions/modalSubmit';
 
 export * from './_interactions/base';
 export * from './_interactions/messageComponents';
@@ -25,14 +30,21 @@ export type APIInteraction =
 	| APIPingInteraction
 	| APIApplicationCommandInteraction
 	| APIMessageComponentInteraction
-	| APIApplicationCommandAutocompleteInteraction;
+	| APIApplicationCommandAutocompleteInteraction
+	| APIModalSubmitInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
-export type APIDMInteraction = APIApplicationCommandDMInteraction | APIMessageComponentDMInteraction;
+export type APIDMInteraction =
+	| APIApplicationCommandDMInteraction
+	| APIMessageComponentDMInteraction
+	| APIModalSubmitDMInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
-export type APIGuildInteraction = APIApplicationCommandGuildInteraction | APIMessageComponentGuildInteraction;
+export type APIGuildInteraction =
+	| APIApplicationCommandGuildInteraction
+	| APIMessageComponentGuildInteraction
+	| APIModalSubmitGuildInteraction;
