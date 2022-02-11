@@ -9,7 +9,13 @@ import type {
 export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	InteractionType.ApplicationCommandAutocomplete,
 	APIChatInputApplicationCommandInteractionData
->;
+> &
+	Required<
+		Pick<
+			APIBaseInteraction<InteractionType.ApplicationCommandAutocomplete, APIChatInputApplicationCommandInteractionData>,
+			'data'
+		>
+	>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
