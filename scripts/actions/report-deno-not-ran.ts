@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/action';
 import type { PullRequestOpenedEvent, PullRequestSynchronizeEvent } from '@octokit/webhooks-types';
-import { execSync } from 'child_process';
-import { readFile } from 'fs/promises';
+import { execSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
 
 const octokit = new Octokit();
 const [OWNER, REPOSITORY] = process.env.GITHUB_REPOSITORY!.split('/');
