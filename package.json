@@ -107,9 +107,6 @@
 		"{gateway,payloads,rest,rpc,voice,utils}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
 		"{globals,v*}.{js,js.map,d.ts,d.ts.map,mjs}"
 	],
-	"engines": {
-		"node": ">=12"
-	},
 	"devDependencies": {
 		"@commitlint/cli": "^16.1.0",
 		"@commitlint/config-angular": "^16.0.0",
