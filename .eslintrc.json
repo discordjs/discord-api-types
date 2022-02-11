@@ -1,0 +1,11 @@
+{
+	"extends": "marine/prettier/node",
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "./tsconfig.eslint.json",
+		"extraFileExtensions": [".mjs"]
+	},
+	"rules": {
+		"@typescript-eslint/naming-convention": 0
+	}
+}

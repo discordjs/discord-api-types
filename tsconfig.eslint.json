@@ -14,7 +14,7 @@
 		"rpc/**/*.ts",
 		"utils/**/*.ts",
 		"voice/**/*.ts",
-		"scripts/**/*",
+		"scripts",
 		"deno",
 		"tests/**/*.ts"
 	]

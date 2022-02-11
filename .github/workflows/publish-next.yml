@@ -2,9 +2,6 @@ name: Publish next
 
 on:
   workflow_dispatch:
-  # Temporarily off while we work on publishing automatic full releases
-  # schedule:
-  #   - cron: '0 */12 * * *'
   push:
     branches:
       - main
@@ -13,6 +10,7 @@ jobs:
   publish:
     name: Publish @next release to npm
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'discordjs'
     steps:
       - name: Cancel previous publish attempts
         uses: styfle/cancel-workflow-action@0.9.1
@@ -39,11 +37,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Deprecate old versions
-        run: npm deprecate discord-api-types@"~$(jq --raw-output '.version' package.json)-next" "No longer supported. Install the latest @next release" || true
+        run: npx npm-deprecate --name "*next*" --package discord-api-types --message "No longer supported. Install the latest @next release" || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
-      - name: Publish new version
+      - name: Publish new @next version
         run: |
           npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
           npm publish --tag next || true
