@@ -88,7 +88,7 @@
 		"lint": "prettier --write . && eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/**/*.ts {globals,v*}.ts scripts/**/*.{mjs,ts}",
 		"postpublish": "run-s clean:node build:deno",
 		"prepare": "is-ci || husky install",
-		"prepublishOnly": "run-s clean test:lint build:node changelog",
+		"prepublishOnly": "run-s clean test:lint build:node",
 		"test:lint": "prettier --check . && eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/**/*.ts {globals,v*}.ts scripts/**/*.{mjs,ts}",
 		"pretest:types": "tsc",
 		"test:types": "tsd",
