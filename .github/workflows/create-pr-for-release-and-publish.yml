@@ -6,6 +6,7 @@ on:
     branches:
       - main
   schedule:
+    # Run every Tuesday and Thursday at 12:00
     - cron: '0 12 * * 2,4'
 
 jobs:
