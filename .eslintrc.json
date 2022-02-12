@@ -4,8 +4,5 @@
 	"parserOptions": {
 		"project": "./tsconfig.eslint.json",
 		"extraFileExtensions": [".mjs"]
-	},
-	"rules": {
-		"@typescript-eslint/naming-convention": 0
 	}
 }
