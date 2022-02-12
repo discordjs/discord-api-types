@@ -3,6 +3,13 @@ import conventionalRecommendedBump from 'conventional-recommended-bump';
 import { execSync } from 'node:child_process';
 import { promisify } from 'node:util';
 
+const lastCommitMessage = execSync('git log -1 --pretty=%B', { encoding: 'utf8' });
+
+if (lastCommitMessage.startsWith('chore(release)')) {
+	console.log('Preventing the action from completing as there are no new commits to release.');
+	process.exit(1);
+}
+
 const conventionalReleaseTypesTo0Ver = new Map([
 	['major', 'minor'],
 	['minor', 'patch'],
