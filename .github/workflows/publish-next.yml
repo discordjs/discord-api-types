@@ -32,18 +32,16 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Bump version
-        run: npx standard-version
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+        run: node ./scripts/bump-version.mjs
 
-      - name: Deprecate old versions
+      - name: Deprecate old @next versions
         run: npx npm-deprecate --name "*next*" --package discord-api-types --message "No longer supported. Install the latest @next release" || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Publish new @next version
         run: |
-          npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
+          npm version $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
           npm publish --tag next || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
