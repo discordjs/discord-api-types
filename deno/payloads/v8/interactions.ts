@@ -26,6 +26,7 @@ export * from './_interactions/ping.ts';
 export * from './_interactions/responses.ts';
 export * from './_interactions/applicationCommands.ts';
 export * from './_interactions/modalSubmit.ts';
+export * from './_interactions/autocomplete.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
