@@ -38,7 +38,8 @@ const pullRequest = await octokit.pulls.create({
 	owner: OWNER,
 	repo: REPOSITORY,
 	maintainer_can_modify: true,
+	title: `chore(release): ${packageJson.version} 🎉`,
 	body: pullRequestBody.join('\n'),
 });
 
-console.log(`✅ Done! Created pull request ${pullRequest.data.html_url}!`);
+console.log(`✅ Done! Created pull request ${pullRequest.data.html_url}`);

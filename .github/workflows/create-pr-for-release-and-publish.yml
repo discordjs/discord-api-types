@@ -42,12 +42,12 @@ jobs:
           git checkout -b "chore/release/$(jq --raw-output '.version' package.json)"
 
           # Run changelog generation and deno scripts
-          npx run-s changelog build:deno
+          npm run ci:pr
 
           # Add all changes, commit and push
           git add --all .
           git commit -m "chore(release): $(jq --raw-output '.version' package.json) 🎉" -m "Build ran for ${GITHUB_SHA}"
-          git push
+          git push -u origin "chore/release/$(jq --raw-output '.version' package.json)"
 
       - name: Create Pull Request
         run: node ./scripts/actions/create-pr.mjs
@@ -60,5 +60,26 @@ jobs:
     if: github.repository_owner == 'discordjs' && github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release)') && !contains(github.event.head_commit.message, '[skip ci]')
 
     steps:
-      - name: TODO
-        run: echo 'OwO coming soon to a repository near you'
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install Node v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Publish release to npm
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Create GitHub release
+        run: node ./scripts/actions/create-release.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

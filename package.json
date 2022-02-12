@@ -74,6 +74,7 @@
 		"build:deno": "node ./scripts/deno.mjs",
 		"build:node": "tsc && run-p esm:*",
 		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+		"ci:pr": "run-s changelog lint build:deno",
 		"clean:deno": "rimraf deno/",
 		"clean:node": "rimraf {gateway,payloads,rest,rpc,voice,utils}/**/*.{js,mjs,d.ts,*map} {globals,v*}.{js,mjs,d.ts,*map}",
 		"clean": "run-p clean:*",
@@ -170,13 +171,6 @@
 				"always",
 				"pascal-case"
 			]
-		}
-	},
-	"standard-version": {
-		"skip": {
-			"changelog": true,
-			"commit": true,
-			"tag": true
 		}
 	},
 	"tsd": {
