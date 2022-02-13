@@ -10,7 +10,7 @@ jobs:
   publish:
     name: Publish @next release to npm
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'discordjs'
+    if: github.repository_owner == 'discordjs' && !(github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release)'))
     steps:
       - name: Cancel previous publish attempts
         uses: styfle/cancel-workflow-action@0.9.1
