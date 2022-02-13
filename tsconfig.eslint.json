@@ -1,8 +1,7 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true
+		"allowJs": true
 	},
 	"include": [
 		"globals.ts",

@@ -1,0 +1,93 @@
+name: Create PR for new releases and publish new version
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    # Run every Tuesday and Thursday at 12:00
+    - cron: '0 12 * * 2,4'
+
+jobs:
+  create_pr:
+    name: Create PR for new version
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'discordjs' && github.event_name != 'push'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install Node v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Set Git User and Email
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version
+        run: node ./scripts/bump-version.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create branch for changes, add all changes and push
+        run: |
+          git checkout -b "chore/release/$(jq --raw-output '.version' package.json)"
+
+          # Run changelog generation and deno scripts
+          npm run ci:pr
+
+          # Add all changes, commit and push
+          git add --all .
+          git commit -m "chore(release): $(jq --raw-output '.version' package.json) 🎉" -m "Build ran for ${GITHUB_SHA}"
+          git push -u origin "chore/release/$(jq --raw-output '.version' package.json)"
+
+      - name: Create Pull Request
+        run: node ./scripts/actions/create-pr.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create_release:
+    name: Create release and publish
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'discordjs' && github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release)') && !contains(github.event.head_commit.message, '[skip ci]')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install Node v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Deprecate old versions
+        run: npx npm-deprecate --name "*" --package discord-api-types --message "No longer supported. Install the latest release!" || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Publish release to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Create GitHub release
+        run: node ./scripts/actions/create-release.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

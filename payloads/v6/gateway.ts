@@ -122,7 +122,6 @@ export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'name' | 'animated'>> 
  */
 export interface GatewayActivityParty {
 	id?: string;
-	// eslint-disable-next-line prettier/prettier
 	size?: [currentSize: number, maxSize: number];
 }
 
