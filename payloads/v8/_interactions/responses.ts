@@ -1,7 +1,7 @@
 import type { MessageFlags } from '../index';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v8';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands';
-import type { APIActionRowComponent, APIModalComponent } from '../channel';
+import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -119,5 +119,5 @@ export interface APIModalInteractionResponseCallbackData {
 	/**
 	 * Between 1 and 5 (inclusive) components that make up the modal
 	 */
-	components: APIActionRowComponent<APIModalComponent>[];
+	components: APIActionRowComponent<APIModalActionRowComponent>[];
 }

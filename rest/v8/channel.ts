@@ -1,7 +1,6 @@
 import type { Permissions, Snowflake } from '../../globals';
 import type {
 	APIActionRowComponent,
-	APIMessageComponent,
 	APIAllowedMentions,
 	APIAttachment,
 	APIChannel,
@@ -16,6 +15,7 @@ import type {
 	MessageFlags,
 	OverwriteType,
 	VideoQualityMode,
+	APIMessageActionRowComponent,
 } from '../../payloads/v8/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 
@@ -214,7 +214,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageComponent>[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
@@ -348,7 +348,7 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageComponent>[] | null;
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null;
 }>;
 
 /**

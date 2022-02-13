@@ -1,6 +1,5 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
-	APIMessageComponent,
 	APIActionRowComponent,
 	APIAllowedMentions,
 	APIAttachment,
@@ -21,6 +20,7 @@ import type {
 	VideoQualityMode,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { APIMessageActionRowComponent } from '../../v8.ts';
 
 export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: Snowflake;
@@ -247,7 +247,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageComponent>[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
@@ -381,7 +381,7 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageComponent>[] | null;
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null;
 }>;
 
 /**
