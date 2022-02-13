@@ -4,9 +4,6 @@ import conventionalRecommendedBump from 'conventional-recommended-bump';
 import { execSync } from 'node:child_process';
 import { promisify } from 'node:util';
 
-const octokit = new Octokit();
-const [OWNER, REPOSITORY] = process.env.GITHUB_REPOSITORY.split('/');
-
 const lastCommitMessage = execSync('git log -1 --pretty=%B', { encoding: 'utf8' });
 
 if (lastCommitMessage.startsWith('chore(release)')) {
@@ -44,6 +41,14 @@ const newVersion = JSON.parse(execSync('npm version --json', { encoding: 'utf8' 
 console.info(
 	`✅ Done! discord-api-types was bumped to ${newVersion['discord-api-types']}! Checking if there was a pull request open already and closing it if so...`,
 );
+
+if (!process.env.GITHUB_TOKEN) {
+	console.info('🙉 Skipping the pull request checks as no GITHUB_TOKEN was provided.');
+	process.exit(0);
+}
+
+const octokit = new Octokit();
+const [OWNER, REPOSITORY] = process.env.GITHUB_REPOSITORY.split('/');
 
 const pullRequests = await octokit.pulls.list({
 	owner: OWNER,
