@@ -1,4 +1,4 @@
-import type { APIActionRowComponent, APIModalComponent } from '../channel.ts';
+import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel.ts';
 import type {
 	APIBaseInteraction,
 	InteractionType,
@@ -13,7 +13,8 @@ export interface ModalSubmitComponent {
 	value: string;
 }
 
-export interface ModalSubmitActionRowComponent extends Omit<APIActionRowComponent<APIModalComponent>, 'components'> {
+export interface ModalSubmitActionRowComponent
+	extends Omit<APIActionRowComponent<APIModalActionRowComponent>, 'components'> {
 	components: ModalSubmitComponent[];
 }
 
