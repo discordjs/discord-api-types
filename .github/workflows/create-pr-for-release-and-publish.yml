@@ -37,6 +37,8 @@ jobs:
 
       - name: Bump version
         run: node ./scripts/bump-version.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create branch for changes, add all changes and push
         run: |
