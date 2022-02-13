@@ -18,9 +18,9 @@ import type {
 	OverwriteType,
 	ThreadAutoArchiveDuration,
 	VideoQualityMode,
+	APIMessageActionRowComponent,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
-import type { APIMessageActionRowComponent } from '../../v8.ts';
 
 export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: Snowflake;

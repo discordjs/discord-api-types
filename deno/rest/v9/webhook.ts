@@ -7,10 +7,9 @@ import type {
 	APIWebhook,
 	APIAttachment,
 	MessageFlags,
+	APIMessageActionRowComponent,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
-import type { APIMessageActionRowComponent } from '../../v8.ts';
-
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
