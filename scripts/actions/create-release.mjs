@@ -21,14 +21,14 @@ const changelogContent = await readFile(new URL('../../CHANGELOG.md', import.met
 
 if (previousRelease) {
 	// find difference between previous release and current version
-	const maybeMajorIndex = changelogContent.indexOf(`# [${previousRelease.tag_name}](https://github.com`);
+	const maybeMinorIndex = changelogContent.indexOf(`## [${previousRelease.tag_name}](https://github.com`);
 
-	if (maybeMajorIndex === -1) {
-		// find minor version
-		const maybeMinorIndex = changelogContent.indexOf(`## [${previousRelease.tag_name}](https://github.com`);
-		releaseChangelog.push(changelogContent.slice(0, maybeMinorIndex));
-	} else {
+	if (maybeMinorIndex === -1) {
+		// find major version
+		const maybeMajorIndex = changelogContent.indexOf(`# [${previousRelease.tag_name}](https://github.com`);
 		releaseChangelog.push(changelogContent.slice(0, maybeMajorIndex));
+	} else {
+		releaseChangelog.push(changelogContent.slice(0, maybeMinorIndex));
 	}
 } else {
 	releaseChangelog.push(changelogContent);
