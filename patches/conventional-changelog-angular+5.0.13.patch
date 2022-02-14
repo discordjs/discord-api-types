@@ -1,8 +1,8 @@
 diff --git a/node_modules/conventional-changelog-angular/writer-opts.js b/node_modules/conventional-changelog-angular/writer-opts.js
-index d5de1a3..6c00c9c 100644
+index d5de1a3..b9902b3 100644
 --- a/node_modules/conventional-changelog-angular/writer-opts.js
 +++ b/node_modules/conventional-changelog-angular/writer-opts.js
-@@ -4,6 +4,30 @@ const compareFunc = require('compare-func')
+@@ -4,6 +4,32 @@ const compareFunc = require('compare-func')
  const Q = require('q')
  const readFile = Q.denodeify(require('fs').readFile)
  const resolve = require('path').resolve
@@ -12,28 +12,30 @@ index d5de1a3..6c00c9c 100644
 +const fetchedPrs = [];
 +let currentPage = 1;
 +
-+while (true) {
-+  const apiResult = request('GET', `https://api.github.com/repos/discordjs/discord-api-types/pulls?state=closed&page=${currentPage++}&per_page=100`, {
-+    headers: {
-+      'User-Agent': 'octokit-rest.js/18.12.0 octokit-core.js/3.5.1 Node.js/16.13.2 (win32; x64)',
-+      'Authorization': process.env.GITHUB_TOKEN ? 'token ' + process.env.GITHUB_TOKEN : undefined,
++if (process.env.GITHUB_TOKEN) {
++  while (true) {
++    const apiResult = request('GET', `https://api.github.com/repos/discordjs/discord-api-types/pulls?state=closed&page=${currentPage++}&per_page=100`, {
++      headers: {
++        'User-Agent': 'octokit-rest.js/18.12.0 octokit-core.js/3.5.1 Node.js/16.13.2 (win32; x64)',
++        'Authorization': `token ${process.env.GITHUB_TOKEN}`,
++      }
++    });
++
++    const parsed = JSON.parse(apiResult.getBody('utf8'));
++
++    if (Array.isArray(parsed)) {
++      fetchedPrs.push(...parsed);
 +    }
-+  });
 +
-+  const parsed = JSON.parse(apiResult.getBody('utf8'));
-+
-+  if (Array.isArray(parsed)) {
-+    fetchedPrs.push(...parsed);
-+  }
-+
-+  if (parsed.length < 100) {
-+    break;
++    if (parsed.length < 100) {
++      break;
++    }
 +  }
 +}
-
+ 
  module.exports = Q.all([
    readFile(resolve(__dirname, './templates/template.hbs'), 'utf-8'),
-@@ -69,17 +93,29 @@ function getWriterOpts () {
+@@ -69,17 +95,29 @@ function getWriterOpts () {
          let url = context.repository
            ? `${context.host}/${context.owner}/${context.repository}`
            : context.repoUrl
