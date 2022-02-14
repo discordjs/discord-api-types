@@ -20,6 +20,10 @@
 			"require": "./v9.js",
 			"import": "./v9.mjs"
 		},
+		"./v10": {
+			"require": "./v10.js",
+			"import": "./v10.mjs"
+		},
 		"./gateway": {
 			"require": "./gateway/index.js",
 			"import": "./gateway/index.mjs"

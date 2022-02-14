@@ -20,6 +20,7 @@ await Promise.allSettled(
 		'v6', //
 		'v8',
 		'v9',
+		'v10',
 
 		// Voice
 		'v4',

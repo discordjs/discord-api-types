@@ -5,18 +5,18 @@
 import type { Snowflake } from '../globals.ts';
 import type {
 	APIApplication,
-	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
-	APIGuildScheduledEvent,
 	APIGuildIntegration,
 	APIGuildMember,
+	APIGuildScheduledEvent,
+	APIInteraction,
 	APIMessage,
-	APIMessageComponentInteraction,
 	APIRole,
 	APIStageInstance,
 	APISticker,
+	APIThreadChannel,
 	APIThreadMember,
 	APIUnavailableGuild,
 	APIUser,
@@ -27,7 +27,6 @@ import type {
 	GatewayVoiceState,
 	InviteTargetType,
 	PresenceUpdateStatus,
-	APIThreadChannel,
 } from '../payloads/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
 
@@ -940,7 +939,7 @@ export type GatewayInteractionCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#interaction-create
  */
-export type GatewayInteractionCreateDispatchData = APIApplicationCommandInteraction | APIMessageComponentInteraction;
+export type GatewayInteractionCreateDispatchData = APIInteraction;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-create
