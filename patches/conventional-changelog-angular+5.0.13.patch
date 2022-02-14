@@ -7,8 +7,8 @@ index d5de1a3..7c52896 100644
  const readFile = Q.denodeify(require('fs').readFile)
  const resolve = require('path').resolve
 +// I hate this. But transforms cannot be async... :/
-+const {default: request} = require('sync-request');
- 
++const { default: request } = require('sync-request');
+
  module.exports = Q.all([
    readFile(resolve(__dirname, './templates/template.hbs'), 'utf-8'),
 @@ -69,13 +71,31 @@ function getWriterOpts () {
