@@ -224,13 +224,6 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 */
 	embeds?: APIEmbed[];
 	/**
-	 * Embedded `rich` content
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
-	 * @deprecated Use `embeds` instead
-	 */
-	embed?: APIEmbed;
-	/**
 	 * Allowed mentions for a message
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
@@ -346,13 +339,6 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
 	embeds?: APIEmbed[] | null;
-	/**
-	 * Embedded `rich` content
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
-	 * @deprecated Use `embeds` instead
-	 */
-	embed?: APIEmbed | null;
 	/**
 	 * Edit the flags of a message (only `SUPPRESS_EMBEDS` can currently be set/unset)
 	 *
