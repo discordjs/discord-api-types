@@ -40,7 +40,10 @@ if (interaction.type === InteractionType.MessageComponent) {
 }
 
 if (interaction.type === InteractionType.ApplicationCommandAutocomplete) {
-	expectType<APIChatInputApplicationCommandInteractionData>(interaction.data);
+	expectType<
+		APIChatInputApplicationCommandInteractionData &
+			Required<Pick<APIChatInputApplicationCommandInteractionData, 'options'>>
+	>(interaction.data);
 }
 
 if (interaction.type === InteractionType.ModalSubmit) {
