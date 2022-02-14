@@ -1,27 +1,17 @@
 diff --git a/node_modules/conventional-changelog-angular/writer-opts.js b/node_modules/conventional-changelog-angular/writer-opts.js
-index d5de1a3..6605848 100644
+index d5de1a3..7c52896 100644
 --- a/node_modules/conventional-changelog-angular/writer-opts.js
 +++ b/node_modules/conventional-changelog-angular/writer-opts.js
-@@ -4,6 +4,9 @@ const compareFunc = require('compare-func')
+@@ -4,6 +4,8 @@ const compareFunc = require('compare-func')
  const Q = require('q')
  const readFile = Q.denodeify(require('fs').readFile)
  const resolve = require('path').resolve
-+const { Octokit } = require('@octokit/rest');
-+
-+const octokit = new Octokit();
++// I hate this. But transforms cannot be async... :/
++const {default: request} = require('sync-request');
  
  module.exports = Q.all([
    readFile(resolve(__dirname, './templates/template.hbs'), 'utf-8'),
-@@ -24,7 +27,7 @@ module.exports = Q.all([
- 
- function getWriterOpts () {
-   return {
--    transform: (commit, context) => {
-+    transform: async (commit, context) => {
-       let discard = true
-       const issues = []
- 
-@@ -69,13 +72,29 @@ function getWriterOpts () {
+@@ -69,13 +71,31 @@ function getWriterOpts () {
          let url = context.repository
            ? `${context.host}/${context.owner}/${context.repository}`
            : context.repoUrl
@@ -41,13 +31,15 @@ index d5de1a3..6605848 100644
            })
 +
 +          try {
-+            const apiResult = await octokit.issues.get({
-+              issue_number: currentIssue,
-+              owner,
-+              repo,
++            const apiResult = request('GET', `https://api.github.com/repos/${owner}/${repo}/issues/${currentIssue}`, {
++              headers: {
++                'User-Agent': 'octokit-rest.js/18.12.0 octokit-core.js/3.5.1 Node.js/16.13.2 (win32; x64'
++              }
 +            });
 +
-+            commit.subject += ` by @${apiResult.data.user.login}`;
++            const data = JSON.parse(apiResult.getBody('utf8'));
++
++            commit.subject += ` by @${data.user.login}`;
 +          } catch {}
          }
          if (context.host) {
