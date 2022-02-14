@@ -1,7 +1,6 @@
 import type { Snowflake } from '../../globals';
 
 export * from '../common';
-
 export * from './auditLog';
 export * from './channel';
 export * from './emoji';
@@ -825,7 +824,7 @@ export const Routes = {
 	 * - POST `/guilds/{guild.id}/scheduled-events`
 	 */
 	guildScheduledEvents(guildId: Snowflake) {
-		return `/guilds/${guildId}/scheduled-events`;
+		return `/guilds/${guildId}/scheduled-events` as const;
 	},
 
 	/**
@@ -835,7 +834,7 @@ export const Routes = {
 	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
 	 */
 	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
-		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}`;
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}` as const;
 	},
 
 	/**
@@ -843,7 +842,7 @@ export const Routes = {
 	 * - GET `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/users`
 	 */
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
-		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users`;
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
 };
 
