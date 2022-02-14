@@ -8,7 +8,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGatewayInfo {
 	/**
@@ -19,7 +19,7 @@ export interface APIGatewayInfo {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway-bot
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGatewayBotInfo extends APIGatewayInfo {
 	/**
@@ -38,7 +38,7 @@ export interface APIGatewayBotInfo extends APIGatewayInfo {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#session-start-limit-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGatewaySessionStartLimit {
 	/**
@@ -61,7 +61,7 @@ export interface APIGatewaySessionStartLimit {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#presence-update-presence-update-event-fields
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayPresenceUpdate {
 	/**
@@ -96,7 +96,7 @@ export interface GatewayPresenceUpdate {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum PresenceUpdateStatus {
 	Online = 'online',
@@ -111,7 +111,7 @@ export enum PresenceUpdateStatus {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#client-status-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayPresenceClientStatus {
 	/**
@@ -130,7 +130,7 @@ export interface GatewayPresenceClientStatus {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayActivity {
 	/**
@@ -217,7 +217,7 @@ export interface GatewayActivity {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ActivityPlatform {
 	Desktop = 'desktop',
@@ -227,7 +227,7 @@ export enum ActivityPlatform {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ActivityType {
 	/**
@@ -258,7 +258,7 @@ export enum ActivityType {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-timestamps
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayActivityTimestamps {
 	/**
@@ -273,13 +273,13 @@ export interface GatewayActivityTimestamps {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'id' | 'animated'>> & Pick<APIEmoji, 'name'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayActivityParty {
 	/**
@@ -294,7 +294,7 @@ export interface GatewayActivityParty {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivityAssets = Partial<
 	Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>
@@ -302,13 +302,13 @@ export type GatewayActivityAssets = Partial<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ActivityFlags {
 	Instance = 1 << 0,
@@ -323,7 +323,7 @@ export enum ActivityFlags {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayActivityButton {
 	/**

@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../globals';
-import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from '../../payloads/v9/index';
+import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from '../../payloads/v10/index';
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-application-information

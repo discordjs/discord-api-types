@@ -5,7 +5,7 @@ import type {
 	APIInteractionResponse,
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
-} from '../../payloads/v9/index';
+} from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,

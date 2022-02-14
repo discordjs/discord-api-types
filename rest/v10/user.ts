@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../globals';
-import type { APIChannel, APIConnection, APIGuildMember, APIUser, GuildFeature } from '../../payloads/v9/index';
+import type { APIChannel, APIConnection, APIGuildMember, APIUser, GuildFeature } from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**

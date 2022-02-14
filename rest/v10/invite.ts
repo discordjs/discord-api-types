@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals';
-import type { APIInvite } from '../../payloads/v9/index';
+import type { APIInvite } from '../../payloads/v10/index';
 
 /**
  * https://discord.com/developers/docs/resources/invite#get-invite

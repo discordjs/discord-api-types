@@ -1,11 +1,11 @@
-import type { MessageFlags } from '../mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v8.ts';
-import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel.ts';
+import type { MessageFlags } from '../mod.ts';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InteractionType {
 	Ping = 1,
@@ -17,7 +17,7 @@ export enum InteractionType {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIInteractionResponse =
 	| APIInteractionResponsePong
@@ -29,14 +29,14 @@ export type APIInteractionResponse =
 	| APIModalInteractionResponse;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIApplicationCommandAutocompleteResponse {
 	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
@@ -44,7 +44,7 @@ export interface APIApplicationCommandAutocompleteResponse {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIModalInteractionResponse {
 	type: InteractionResponseType.Modal;
@@ -52,7 +52,7 @@ export interface APIModalInteractionResponse {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionResponseChannelMessageWithSource {
 	type: InteractionResponseType.ChannelMessageWithSource;
@@ -60,7 +60,7 @@ export interface APIInteractionResponseChannelMessageWithSource {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionResponseDeferredChannelMessageWithSource {
 	type: InteractionResponseType.DeferredChannelMessageWithSource;
@@ -68,14 +68,14 @@ export interface APIInteractionResponseDeferredChannelMessageWithSource {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionResponseDeferredMessageUpdate {
 	type: InteractionResponseType.DeferredMessageUpdate;
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionResponseUpdateMessage {
 	type: InteractionResponseType.UpdateMessage;
@@ -84,7 +84,7 @@ export interface APIInteractionResponseUpdateMessage {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InteractionResponseType {
 	/**
@@ -119,7 +119,7 @@ export enum InteractionResponseType {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
@@ -127,7 +127,7 @@ export type APIInteractionResponseCallbackData = Omit<
 > & { flags?: MessageFlags };
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
@@ -135,7 +135,7 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIModalInteractionResponseCallbackData {
 	/**

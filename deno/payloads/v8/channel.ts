@@ -13,7 +13,7 @@ import type { APIUser } from './user.ts';
 
 /**
  * Not documented, but partial only includes id, name, and type
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIPartialChannel {
 	/**
@@ -35,7 +35,7 @@ export interface APIPartialChannel {
 /**
  * This interface is used to allow easy extension for other channel types. While
  * also allowing `APIPartialChannel` to be used without breaking.
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel {
 	type: T;
@@ -43,12 +43,12 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 
 // TODO: update when text in voice is released
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type TextChannelType = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GuildChannelType = Exclude<
 	| TextChannelType
@@ -60,7 +60,7 @@ export type GuildChannelType = Exclude<
 >;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
@@ -70,7 +70,7 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
@@ -98,12 +98,12 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	extends APITextBasedChannel<T>,
@@ -120,7 +120,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildText> {
 	/**
@@ -131,22 +131,22 @@ export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildTex
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIGuildStoreChannel = APIGuildChannel<ChannelType.GuildStore>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
 	/**
@@ -171,6 +171,9 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	video_quality_mode?: VideoQualityMode;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
 	/**
 	 * The recipients of the DM
@@ -181,12 +184,12 @@ interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T>
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM> {
 	/**
@@ -209,7 +212,7 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChannel =
 	| APIGroupDMChannel
@@ -223,7 +226,7 @@ export type APIChannel =
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ChannelType {
 	/**
@@ -269,7 +272,7 @@ export enum ChannelType {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum VideoQualityMode {
 	/**
@@ -284,7 +287,7 @@ export enum VideoQualityMode {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessage {
 	/**
@@ -473,7 +476,7 @@ export interface APIMessage {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum MessageType {
 	Default,
@@ -501,7 +504,7 @@ export enum MessageType {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageActivity {
 	/**
@@ -520,7 +523,7 @@ export interface APIMessageActivity {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageReference {
 	/**
@@ -539,7 +542,7 @@ export interface APIMessageReference {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum MessageActivityType {
 	Join = 1,
@@ -550,7 +553,7 @@ export enum MessageActivityType {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-flags
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum MessageFlags {
 	/**
@@ -585,7 +588,7 @@ export enum MessageFlags {
 
 /**
  * https://discord.com/developers/docs/resources/channel#followed-channel-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIFollowedChannel {
 	/**
@@ -600,7 +603,7 @@ export interface APIFollowedChannel {
 
 /**
  * https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIReaction {
 	/**
@@ -621,7 +624,7 @@ export interface APIReaction {
 
 /**
  * https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIOverwrite {
 	/**
@@ -653,7 +656,7 @@ export interface APIOverwrite {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum OverwriteType {
 	Role,
@@ -664,7 +667,7 @@ export enum OverwriteType {
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
  *
  * Length limit: 6000 characters
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbed {
 	/**
@@ -748,7 +751,7 @@ export interface APIEmbed {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum EmbedType {
 	/**
@@ -779,7 +782,7 @@ export enum EmbedType {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedThumbnail {
 	/**
@@ -802,7 +805,7 @@ export interface APIEmbedThumbnail {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedVideo {
 	/**
@@ -821,7 +824,7 @@ export interface APIEmbedVideo {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedImage {
 	/**
@@ -844,7 +847,7 @@ export interface APIEmbedImage {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedProvider {
 	/**
@@ -859,7 +862,7 @@ export interface APIEmbedProvider {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedAuthor {
 	/**
@@ -884,7 +887,7 @@ export interface APIEmbedAuthor {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedFooter {
 	/**
@@ -905,7 +908,7 @@ export interface APIEmbedFooter {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedField {
 	/**
@@ -928,7 +931,7 @@ export interface APIEmbedField {
 
 /**
  * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIAttachment {
 	/**
@@ -977,7 +980,7 @@ export interface APIAttachment {
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIChannelMention {
 	/**
@@ -1002,7 +1005,7 @@ export interface APIChannelMention {
 
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum AllowedMentionsTypes {
 	/**
@@ -1021,7 +1024,7 @@ export enum AllowedMentionsTypes {
 
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIAllowedMentions {
 	/**
@@ -1048,7 +1051,7 @@ export interface APIAllowedMentions {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIBaseComponent<T extends ComponentType> {
 	/**
@@ -1059,7 +1062,7 @@ export interface APIBaseComponent<T extends ComponentType> {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-types
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ComponentType {
 	/**
@@ -1082,7 +1085,7 @@ export enum ComponentType {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#action-rows
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
 	extends APIBaseComponent<ComponentType.ActionRow> {
@@ -1115,7 +1118,7 @@ interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseCompo
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageComponentEmoji {
 	/**
@@ -1133,7 +1136,7 @@ export interface APIMessageComponentEmoji {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIButtonComponentWithCustomId
 	extends APIButtonComponentBase<
@@ -1146,7 +1149,7 @@ export interface APIButtonComponentWithCustomId
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
 	/**
@@ -1156,13 +1159,13 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithURL;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ButtonStyle {
 	Primary = 1,
@@ -1174,7 +1177,7 @@ export enum ButtonStyle {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum TextInputStyle {
 	Short = 1,
@@ -1183,7 +1186,7 @@ export enum TextInputStyle {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
 	/**
@@ -1220,7 +1223,7 @@ export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.S
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APISelectMenuOption {
 	/**
@@ -1247,7 +1250,7 @@ export interface APISelectMenuOption {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
 	/**
@@ -1286,27 +1289,27 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageComponent = APIMessageActionRowComponent | APIActionRowComponent<APIMessageActionRowComponent>;
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalComponent = APIModalActionRowComponent | APIActionRowComponent<APIModalActionRowComponent>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuComponent;
 
 // Modal components
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalActionRowComponent = APITextInputComponent;

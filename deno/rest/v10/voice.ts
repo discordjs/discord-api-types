@@ -1,4 +1,4 @@
-import type { APIVoiceRegion } from '../../payloads/v9/mod.ts';
+import type { APIVoiceRegion } from '../../payloads/v10/mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/voice#list-voice-regions

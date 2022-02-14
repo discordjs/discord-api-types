@@ -7,7 +7,7 @@ import type { APIPartialChannel, APIPartialGuild, APIUser } from './mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#webhook-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIWebhook {
 	/**
@@ -65,7 +65,7 @@ export interface APIWebhook {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum WebhookType {
 	/**

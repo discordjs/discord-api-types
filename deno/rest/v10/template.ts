@@ -1,4 +1,4 @@
-import type { APIGuild, APITemplate } from '../../payloads/v9/mod.ts';
+import type { APIGuild, APITemplate } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 
 /**

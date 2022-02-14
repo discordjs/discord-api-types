@@ -613,7 +613,7 @@ export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThread
 		 *
 		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 		 *
-		 * @default 12
+		 * @default ChannelType.GuildPrivateThread
 		 */
 		type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
 		/**

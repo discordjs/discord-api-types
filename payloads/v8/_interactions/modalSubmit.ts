@@ -1,14 +1,14 @@
 import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
 import type {
 	APIBaseInteraction,
-	InteractionType,
-	ComponentType,
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,
+	ComponentType,
+	InteractionType,
 } from '../index';
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface ModalSubmitComponent {
 	type: ComponentType;
@@ -17,7 +17,7 @@ export interface ModalSubmitComponent {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface ModalSubmitActionRowComponent
 	extends Omit<APIActionRowComponent<APIModalActionRowComponent>, 'components'> {
@@ -25,7 +25,7 @@ export interface ModalSubmitActionRowComponent
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIModalSubmission {
 	/**
@@ -40,19 +40,19 @@ export interface APIModalSubmission {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission> &
 	Required<Pick<APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission>, 'data'>>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalSubmitDMInteraction = APIDMInteractionWrapper<APIModalSubmitInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalSubmitGuildInteraction = APIGuildInteractionWrapper<APIModalSubmitInteraction>;

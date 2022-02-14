@@ -3,13 +3,13 @@ import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-application-information
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIOAuth2CurrentApplicationResult = Omit<APIApplication, 'flags'>;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-authorization-information
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 	/**
@@ -32,7 +32,7 @@ export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTOAuth2AuthorizationQuery {
 	response_type: 'code';
@@ -45,7 +45,7 @@ export interface RESTOAuth2AuthorizationQuery {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTOAuth2AuthorizationQueryResult {
 	code: string;
@@ -54,7 +54,7 @@ export interface RESTOAuth2AuthorizationQueryResult {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostOAuth2AccessTokenURLEncodedData {
 	client_id: Snowflake;
@@ -66,7 +66,7 @@ export interface RESTPostOAuth2AccessTokenURLEncodedData {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-access-token-response
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostOAuth2AccessTokenResult {
 	access_token: string;
@@ -78,7 +78,7 @@ export interface RESTPostOAuth2AccessTokenResult {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostOAuth2RefreshTokenURLEncodedData {
 	client_id: Snowflake;
@@ -88,13 +88,13 @@ export interface RESTPostOAuth2RefreshTokenURLEncodedData {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#implicit-grant
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTOAuth2ImplicitAuthorizationQuery {
 	response_type: 'token';
@@ -107,13 +107,13 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#implicit-grant-redirect-url-example
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTOAuth2ImplicitAuthorizationURLFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#client-credentials-grant
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostOAuth2ClientCredentialsURLEncodedData {
 	grant_type: 'client_credentials';
@@ -121,13 +121,13 @@ export interface RESTPostOAuth2ClientCredentialsURLEncodedData {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationURLFragmentResult;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow-bot-auth-parameters
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTOAuth2BotAuthorizationQuery {
 	/**
@@ -160,7 +160,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	client_id: Snowflake;
@@ -183,7 +183,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
@@ -194,7 +194,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult {
 	access_token: string;
@@ -207,7 +207,7 @@ export interface RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult {
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#webhooks-webhook-token-response-example
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
 	access_token: string;
@@ -219,7 +219,7 @@ export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostOAuth2AccessTokenWithBotAndGuildsAndWebhookIncomingScopeResult =
 	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult & RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;

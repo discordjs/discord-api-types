@@ -1,12 +1,12 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { InteractionType } from './responses.ts';
+import type { LocaleString } from '../../../v8.ts';
 import type { APIMessage } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
-import type { LocaleString } from '../../../v8.ts';
+import type { InteractionType } from './responses.ts';
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,
@@ -23,7 +23,7 @@ export type PartialAPIMessageInteractionGuildMember = Pick<
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageInteraction {
 	/**
@@ -50,7 +50,7 @@ export interface APIMessageInteraction {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionGuildMember extends APIGuildMember {
 	permissions: Permissions;
@@ -61,7 +61,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
@@ -121,7 +121,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,
@@ -130,7 +130,7 @@ export type APIDMInteractionWrapper<Original extends APIBaseInteraction<Interact
 	Required<Pick<Original, 'user'>>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,

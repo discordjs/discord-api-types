@@ -3,7 +3,7 @@ import type { APIBaseInteraction, InteractionType } from '../interactions';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageComponentInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,
@@ -17,12 +17,12 @@ export type APIMessageComponentInteraction = APIBaseInteraction<
 	>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageComponentInteractionData = APIMessageButtonInteractionData | APIMessageSelectMenuInteractionData;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageComponentBaseInteractionData<CType extends ComponentType> {
 	/**
@@ -36,12 +36,12 @@ export interface APIMessageComponentBaseInteractionData<CType extends ComponentT
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageButtonInteractionData = APIMessageComponentBaseInteractionData<ComponentType.Button>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageSelectMenuInteractionData
 	extends APIMessageComponentBaseInteractionData<ComponentType.SelectMenu> {
@@ -49,11 +49,11 @@ export interface APIMessageSelectMenuInteractionData
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageComponentDMInteraction = APIDMInteractionWrapper<APIMessageComponentInteraction>;
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageComponentGuildInteraction = APIGuildInteractionWrapper<APIMessageComponentInteraction>;

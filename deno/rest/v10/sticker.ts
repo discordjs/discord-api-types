@@ -1,4 +1,4 @@
-import type { APISticker, APIStickerPack } from '../../payloads/v9/mod.ts';
+import type { APISticker, APIStickerPack } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 export type RESTGetAPIStickerResult = APISticker;

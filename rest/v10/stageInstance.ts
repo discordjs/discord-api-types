@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals';
-import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v9/index';
+import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**

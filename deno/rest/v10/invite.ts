@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
-import type { APIInvite } from '../../payloads/v9/mod.ts';
+import type { APIInvite } from '../../payloads/v10/mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/invite#get-invite

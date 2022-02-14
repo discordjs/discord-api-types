@@ -7,7 +7,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/topics/teams#data-models-team-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APITeam {
 	/**
@@ -34,7 +34,7 @@ export interface APITeam {
 
 /**
  * https://discord.com/developers/docs/topics/teams#data-models-team-members-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APITeamMember {
 	/**
@@ -61,7 +61,7 @@ export interface APITeamMember {
 
 /**
  * https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum TeamMemberMembershipState {
 	Invited = 1,

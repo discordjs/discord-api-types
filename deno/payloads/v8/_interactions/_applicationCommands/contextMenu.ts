@@ -1,17 +1,17 @@
-import type { APIUser } from '../../user.ts';
 import type { Snowflake } from '../../../../globals.ts';
 import type { APIMessage } from '../../channel.ts';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
+import type { APIUser } from '../../user.ts';
 import type {
 	APIApplicationCommandInteractionWrapper,
 	APIInteractionDataResolvedGuildMember,
 	ApplicationCommandType,
 } from '../applicationCommands.ts';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUserApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
@@ -21,7 +21,7 @@ export interface APIUserApplicationCommandInteractionData
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUserApplicationCommandInteractionDataResolved {
 	users: Record<Snowflake, APIUser>;
@@ -30,7 +30,7 @@ export interface APIUserApplicationCommandInteractionDataResolved {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
@@ -40,7 +40,7 @@ export interface APIMessageApplicationCommandInteractionData
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageApplicationCommandInteractionDataResolved {
 	messages: Record<Snowflake, APIMessage>;
@@ -48,7 +48,7 @@ export interface APIMessageApplicationCommandInteractionDataResolved {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuInteractionData =
 	| APIUserApplicationCommandInteractionData
@@ -56,54 +56,54 @@ export type APIContextMenuInteractionData =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIUserApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIUserApplicationCommandInteractionData>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIUserApplicationCommandDMInteraction = APIDMInteractionWrapper<APIUserApplicationCommandInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIUserApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIUserApplicationCommandInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIMessageApplicationCommandInteractionData>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIMessageApplicationCommandInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIMessageApplicationCommandInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuInteraction = APIUserApplicationCommandInteraction | APIMessageApplicationCommandInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuDMInteraction =
 	| APIUserApplicationCommandDMInteraction
@@ -111,7 +111,7 @@ export type APIContextMenuDMInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuGuildInteraction =
 	| APIUserApplicationCommandGuildInteraction

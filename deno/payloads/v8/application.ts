@@ -8,7 +8,7 @@ import type { APIUser } from './user.ts';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIApplication {
 	/**
@@ -96,7 +96,7 @@ export interface APIApplication {
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-flags
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ApplicationFlags {
 	EmbeddedReleased = 1 << 1,

@@ -4,25 +4,25 @@ import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../..
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPICurrentUserResult = APIUser;
 
 /**
  * https://discord.com/developers/docs/resources/user#get-user
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIUserResult = APIUser;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -37,13 +37,13 @@ export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPro
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPICurrentUserResult = APIUser;
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user-guilds
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTGetAPICurrentUserGuildsQuery {
 	/**
@@ -63,7 +63,7 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 }
 
 /**
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTAPIPartialCurrentUserGuild {
 	id: Snowflake;
@@ -76,19 +76,19 @@ export interface RESTAPIPartialCurrentUserGuild {
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user-guilds
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPICurrentUserGuildsResult = RESTAPIPartialCurrentUserGuild[];
 
 /**
  * https://discord.com/developers/docs/resources/user#leave-guild
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPICurrentUserGuildResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/user#create-dm
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
 	/**
@@ -99,12 +99,12 @@ export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
 
 /**
  * https://discord.com/developers/docs/resources/user#create-dm
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
 
 /**
  * https://discord.com/developers/docs/resources/user#get-user-connections
- * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPICurrentUserConnectionsResult = APIConnection[];

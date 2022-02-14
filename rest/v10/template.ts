@@ -1,4 +1,4 @@
-import type { APIGuild, APITemplate } from '../../payloads/v9/index';
+import type { APIGuild, APITemplate } from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 
 /**

@@ -2,12 +2,12 @@ import type { Snowflake } from '../../globals';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 import type {
 	APIGuildScheduledEvent,
+	APIGuildScheduledEventEntityMetadata,
+	APIGuildScheduledEventUser,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventPrivacyLevel,
-	APIGuildScheduledEventEntityMetadata,
 	GuildScheduledEventStatus,
-	APIGuildScheduledEventUser,
-} from '../../v9';
+} from '../../v10';
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
