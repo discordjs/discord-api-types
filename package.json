@@ -108,6 +108,7 @@
 		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
 		"lint": "prettier --write . && eslint --fix --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/**/*.ts {globals,v*}.ts scripts/**/*.mjs",
 		"postpublish": "run-s clean:node build:deno",
+		"postinstall": "patch-package",
 		"prepare": "is-ci || husky install",
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"test:lint": "prettier --check . && eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/**/*.ts {globals,v*}.ts scripts/**/*.mjs",
