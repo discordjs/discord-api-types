@@ -1,3 +1,16 @@
+## [0.27.1](https://github.com/discordjs/discord-api-types/compare/0.27.0...0.27.1) (2022-02-14)
+
+### Bug Fixes
+
+- **APIInteraction:** add modal submit interaction & make `data` required in APIModalSubmit ([#321](https://github.com/discordjs/discord-api-types/issues/321)) ([f88727b](https://github.com/discordjs/discord-api-types/commit/f88727bd80d32f3ddf4374b1fd46ce50c36eea4d))
+- **APIInteractions:** export ApplicationCommandAutocomplete ([#309](https://github.com/discordjs/discord-api-types/issues/309)) ([5056da5](https://github.com/discordjs/discord-api-types/commit/5056da523af6154fbf2fbcf10e30ce437ec42ce8))
+- **CI:** skip pull request checks for runs that don't include the token ([#327](https://github.com/discordjs/discord-api-types/issues/327)) ([0ad06fc](https://github.com/discordjs/discord-api-types/commit/0ad06fc639d7f8bdff135a58d435e6cb15029842))
+- make `data` required in autocomplete interaction and add separate dm/guild types ([#322](https://github.com/discordjs/discord-api-types/issues/322)) ([7abeb2e](https://github.com/discordjs/discord-api-types/commit/7abeb2e0391d6e47517edba63342ba9c4adc4fcb))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error 40060 ([#320](https://github.com/discordjs/discord-api-types/issues/320)) ([72e9617](https://github.com/discordjs/discord-api-types/commit/72e9617fee6e05d2eb4b715c0261d316ff0e1f1e))
+
 # [0.27.0](https://github.com/discordjs/discord-api-types/compare/0.26.1...0.27.0) (2022-02-10)
 
 ### Bug Fixes
