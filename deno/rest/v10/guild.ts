@@ -526,10 +526,6 @@ export type RESTPutAPIGuildBanJSONBody = AddUndefinedToPossiblyUndefinedProperti
 	 * Number of days to delete messages for (0-7)
 	 */
 	delete_message_days?: number;
-	/**
-	 * Reason for the ban
-	 */
-	reason?: string;
 }>;
 
 /**
