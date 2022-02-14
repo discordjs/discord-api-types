@@ -69,6 +69,7 @@ export * from './_chatInput/shared.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandStringOption
@@ -83,6 +84,7 @@ export type APIApplicationCommandBasicOption =
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandOption =
 	| APIApplicationCommandSubcommandOption
@@ -91,12 +93,16 @@ export type APIApplicationCommandOption =
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteractionDataOption =
 	| APIApplicationCommandInteractionDataSubcommandOption
 	| APIApplicationCommandInteractionDataSubcommandGroupOption
 	| APIApplicationCommandInteractionDataBasicOption;
 
+/**
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
+ */
 export type APIApplicationCommandInteractionDataBasicOption =
 	| APIApplicationCommandInteractionDataStringOption
 	| APIApplicationCommandInteractionDataIntegerOption
@@ -110,6 +116,7 @@ export type APIApplicationCommandInteractionDataBasicOption =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIChatInputApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
@@ -119,6 +126,7 @@ export interface APIChatInputApplicationCommandInteractionData
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIChatInputApplicationCommandInteractionDataResolved {
 	users?: Record<Snowflake, APIUser>;
@@ -130,18 +138,21 @@ export interface APIChatInputApplicationCommandInteractionDataResolved {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChatInputApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChatInputApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChatInputApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIChatInputApplicationCommandInteraction>;

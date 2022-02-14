@@ -11,6 +11,7 @@ import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInvite {
 	/**
@@ -77,6 +78,7 @@ export interface APIInvite {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InviteTargetType {
 	Stream = 1,
@@ -85,6 +87,7 @@ export enum InviteTargetType {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIExtendedInvite extends APIInvite {
 	/**

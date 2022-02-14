@@ -6,6 +6,7 @@ import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/topics/permissions#role-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIRole {
 	/**
@@ -58,6 +59,7 @@ export interface APIRole {
 
 /**
  * https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIRoleTags {
 	/**

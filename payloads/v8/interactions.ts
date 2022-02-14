@@ -30,6 +30,7 @@ export * from './_interactions/autocomplete';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIInteraction =
 	| APIPingInteraction
@@ -40,6 +41,7 @@ export type APIInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIDMInteraction =
 	| APIApplicationCommandDMInteraction
@@ -49,6 +51,7 @@ export type APIDMInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated Gateway v8 is deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIGuildInteraction =
 	| APIApplicationCommandGuildInteraction
