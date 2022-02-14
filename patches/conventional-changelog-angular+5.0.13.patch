@@ -1,0 +1,54 @@
+diff --git a/node_modules/conventional-changelog-angular/writer-opts.js b/node_modules/conventional-changelog-angular/writer-opts.js
+index d5de1a3..6605848 100644
+--- a/node_modules/conventional-changelog-angular/writer-opts.js
++++ b/node_modules/conventional-changelog-angular/writer-opts.js
+@@ -4,6 +4,9 @@ const compareFunc = require('compare-func')
+ const Q = require('q')
+ const readFile = Q.denodeify(require('fs').readFile)
+ const resolve = require('path').resolve
++const { Octokit } = require('@octokit/rest');
++
++const octokit = new Octokit();
+ 
+ module.exports = Q.all([
+   readFile(resolve(__dirname, './templates/template.hbs'), 'utf-8'),
+@@ -24,7 +27,7 @@ module.exports = Q.all([
+ 
+ function getWriterOpts () {
+   return {
+-    transform: (commit, context) => {
++    transform: async (commit, context) => {
+       let discard = true
+       const issues = []
+ 
+@@ -69,13 +72,29 @@ function getWriterOpts () {
+         let url = context.repository
+           ? `${context.host}/${context.owner}/${context.repository}`
+           : context.repoUrl
++
++        let [owner, repo] = context.repository ? [context.owner, context.repository] : context.repoUrl.split('/').slice(3);
++
++        let currentIssue;
+         if (url) {
+           url = `${url}/issues/`
++
+           // Issue URLs.
+           commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
+-            issues.push(issue)
++            issues.push(issue);
++            currentIssue = issue;
+             return `[#${issue}](${url}${issue})`
+           })
++
++          try {
++            const apiResult = await octokit.issues.get({
++              issue_number: currentIssue,
++              owner,
++              repo,
++            });
++
++            commit.subject += ` by @${apiResult.data.user.login}`;
++          } catch {}
+         }
+         if (context.host) {
+           // User URLs.
