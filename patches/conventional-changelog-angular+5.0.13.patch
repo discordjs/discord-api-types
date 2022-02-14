@@ -1,22 +1,42 @@
 diff --git a/node_modules/conventional-changelog-angular/writer-opts.js b/node_modules/conventional-changelog-angular/writer-opts.js
-index d5de1a3..4257e76 100644
+index d5de1a3..6c00c9c 100644
 --- a/node_modules/conventional-changelog-angular/writer-opts.js
 +++ b/node_modules/conventional-changelog-angular/writer-opts.js
-@@ -4,6 +4,8 @@ const compareFunc = require('compare-func')
+@@ -4,6 +4,30 @@ const compareFunc = require('compare-func')
  const Q = require('q')
  const readFile = Q.denodeify(require('fs').readFile)
  const resolve = require('path').resolve
 +// I hate this. But transforms cannot be async... :/
 +const { default: request } = require('sync-request');
- 
++
++const fetchedPrs = [];
++let currentPage = 1;
++
++while (true) {
++  const apiResult = request('GET', `https://api.github.com/repos/discordjs/discord-api-types/pulls?state=closed&page=${currentPage++}&per_page=100`, {
++    headers: {
++      'User-Agent': 'octokit-rest.js/18.12.0 octokit-core.js/3.5.1 Node.js/16.13.2 (win32; x64)',
++      'Authorization': process.env.GITHUB_TOKEN ? 'token ' + process.env.GITHUB_TOKEN : undefined,
++    }
++  });
++
++  const parsed = JSON.parse(apiResult.getBody('utf8'));
++
++  if (Array.isArray(parsed)) {
++    fetchedPrs.push(...parsed);
++  }
++
++  if (parsed.length < 100) {
++    break;
++  }
++}
+
  module.exports = Q.all([
    readFile(resolve(__dirname, './templates/template.hbs'), 'utf-8'),
-@@ -69,13 +71,33 @@ function getWriterOpts () {
+@@ -69,17 +93,29 @@ function getWriterOpts () {
          let url = context.repository
            ? `${context.host}/${context.owner}/${context.repository}`
            : context.repoUrl
-+
-+        let [owner, repo] = context.repository ? [context.owner, context.repository] : context.repoUrl.split('/').slice(3);
 +
 +        let currentIssue;
          if (url) {
@@ -31,18 +51,17 @@ index d5de1a3..4257e76 100644
            })
 +
 +          try {
-+            const apiResult = request('GET', `https://api.github.com/repos/${owner}/${repo}/issues/${currentIssue}`, {
-+              headers: {
-+                'User-Agent': 'octokit-rest.js/18.12.0 octokit-core.js/3.5.1 Node.js/16.13.2 (win32; x64'
-+              }
-+            });
++            const data = fetchedPrs.find((pr) => String(pr.number) === currentIssue);
 +
-+            const data = JSON.parse(apiResult.getBody('utf8'));
-+
-+            if (data.user) {
++            if (data?.user) {
 +              commit.subject += ` by @${data.user.login}`;
 +            }
 +          } catch {}
          }
          if (context.host) {
            // User URLs.
+-          commit.subject = commit.subject.replace(/\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g, (_, username) => {
++          commit.subject = commit.subject.replace(/\B@([a-zA-Z0-9](?:-?[a-zA-Z0-9/]){0,38})/g, (_, username) => {
+             if (username.includes('/')) {
+               return `@${username}`
+             }
