@@ -594,8 +594,8 @@ export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThread
 		/**
 		 * The type of thread to create
 		 *
-		 * In API v9, `type` defaults to `PRIVATE_THREAD`.
-		 * In API v10 this will be changed to be a required field, with no default.
+		 * In API v9 and v10, `type` defaults to `PRIVATE_THREAD`.
+		 * In a future API version this will be changed to be a required field, with no default.
 		 *
 		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 		 *
