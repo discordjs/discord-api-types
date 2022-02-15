@@ -8,6 +8,7 @@ import type {
 	APIExtendedInvite,
 	APIFollowedChannel,
 	APIMessage,
+	APIMessageActionRowComponent,
 	APIMessageReference,
 	APIThreadList,
 	APIThreadMember,
@@ -18,7 +19,6 @@ import type {
 	OverwriteType,
 	ThreadAutoArchiveDuration,
 	VideoQualityMode,
-	APIMessageActionRowComponent,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 
@@ -609,11 +609,11 @@ export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThread
 		 * The type of thread to create
 		 *
 		 * In API v9, `type` defaults to `PRIVATE_THREAD`.
-		 * In API v10 this will be changed to be a required field, with no default.
+		 * In a future API version this will be changed to be a required field, with no default.
 		 *
 		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 		 *
-		 * @default 12
+		 * @default ChannelType.GuildPrivateThread
 		 */
 		type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
 		/**
@@ -659,7 +659,7 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 /**
  * https://discord.com/developers/docs/resources/channel#list-active-threads
  *
- * @deprecated Use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead. Will be removed in v10.
+ * @deprecated Removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
  */
 export type RESTGetAPIChannelThreadsResult = APIThreadList;
 

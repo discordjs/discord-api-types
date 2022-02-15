@@ -5,7 +5,7 @@ import {
 	APIApplicationCommandOption,
 	APIApplicationCommandStringOption,
 	ApplicationCommandOptionType,
-} from '../../v9';
+} from '../../v10';
 
 const baseValues = {
 	name: 'test',

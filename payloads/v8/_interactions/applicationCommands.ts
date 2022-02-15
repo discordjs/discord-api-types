@@ -23,6 +23,7 @@ export * from './_applicationCommands/permissions';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIApplicationCommand {
 	/**
@@ -67,6 +68,7 @@ export interface APIApplicationCommand {
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ApplicationCommandType {
 	ChatInput = 1,
@@ -76,6 +78,7 @@ export enum ApplicationCommandType {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteractionData =
 	| APIChatInputApplicationCommandInteractionData
@@ -83,6 +86,7 @@ export type APIApplicationCommandInteractionData =
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
 	permissions: Permissions;
@@ -90,6 +94,7 @@ export interface APIInteractionDataResolvedChannel extends Required<APIPartialCh
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
 	permissions: Permissions;
@@ -97,6 +102,7 @@ export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMemb
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
 	APIBaseInteraction<InteractionType.ApplicationCommand, Data> &
@@ -104,11 +110,13 @@ export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationC
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteraction = APIChatInputApplicationCommandInteraction | APIContextMenuInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandDMInteraction =
 	| APIChatInputApplicationCommandDMInteraction
@@ -116,6 +124,7 @@ export type APIApplicationCommandDMInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandGuildInteraction =
 	| APIChatInputApplicationCommandGuildInteraction

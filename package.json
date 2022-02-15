@@ -2,7 +2,6 @@
 	"name": "discord-api-types",
 	"version": "0.27.1",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
-	"types": "./v9.d.ts",
 	"exports": {
 		"./globals": {
 			"require": "./globals.js",
@@ -19,6 +18,10 @@
 		"./v9": {
 			"require": "./v9.js",
 			"import": "./v9.mjs"
+		},
+		"./v10": {
+			"require": "./v10.js",
+			"import": "./v10.mjs"
 		},
 		"./gateway": {
 			"require": "./gateway/index.js",
@@ -92,7 +95,7 @@
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"test:lint": "prettier --check . && eslint --ext mjs,ts {gateway,payloads,rest,rpc,voice,utils}/**/*.ts {globals,v*}.ts scripts/**/*.{mjs,ts}",
 		"pretest:types": "tsc",
-		"test:types": "tsd",
+		"test:types": "node ./scripts/run-tsd.mjs",
 		"posttest:types": "npm run clean:node"
 	},
 	"keywords": [

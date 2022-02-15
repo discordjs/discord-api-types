@@ -12,19 +12,20 @@ import type {
 	GuildVerificationLevel,
 	IntegrationExpireBehavior,
 } from './guild.ts';
-import type { APIRole } from './permissions.ts';
-import type { StickerFormatType } from './sticker.ts';
-import type { APIUser } from './user.ts';
-import type { APIWebhook } from './webhook.ts';
-import type { StageInstancePrivacyLevel } from './stageInstance.ts';
 import type {
 	APIGuildScheduledEvent,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventStatus,
 } from './guildScheduledEvent.ts';
+import type { APIRole } from './permissions.ts';
+import type { StageInstancePrivacyLevel } from './stageInstance.ts';
+import type { StickerFormatType } from './sticker.ts';
+import type { APIUser } from './user.ts';
+import type { APIWebhook } from './webhook.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIAuditLog {
 	/**
@@ -61,6 +62,7 @@ export interface APIAuditLog {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIAuditLogEntry {
 	/**
@@ -103,6 +105,7 @@ export interface APIAuditLogEntry {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum AuditLogEvent {
 	GuildUpdate = 1,
@@ -163,6 +166,7 @@ export enum AuditLogEvent {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIAuditLogOptions {
 	/**
@@ -249,6 +253,9 @@ export interface APIAuditLogOptions {
 	role_name?: string;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export enum AuditLogOptionsType {
 	Role = '0',
 	Member = '1',
@@ -256,6 +263,7 @@ export enum AuditLogOptionsType {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChange =
 	| APIAuditLogChangeKeyName
@@ -325,81 +333,97 @@ export type APIAuditLogChange =
 
 /**
  * Returned when an entity's name is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyName = AuditLogChangeData<'name', string>;
 
 /**
  * Returned when a guild's or sticker's or guild scheduled event's description is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyDescription = AuditLogChangeData<'description', string>;
 
 /**
  * Returned when a guild's icon is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyIconHash = AuditLogChangeData<'icon_hash', string>;
 
 /**
  * Returned when a guild's splash is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeySplashHash = AuditLogChangeData<'splash_hash', string>;
 
 /**
  * Returned when a guild's discovery splash is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyDiscoverySplashHash = AuditLogChangeData<'discovery_splash_hash', string>;
 
 /**
  * Returned when a guild's banner hash is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyBannerHash = AuditLogChangeData<'banner_hash', string>;
 
 /**
  * Returned when a guild's owner_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyOwnerId = AuditLogChangeData<'owner_id', Snowflake>;
 
 /**
  * Returned when a guild's region is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyRegion = AuditLogChangeData<'region', string>;
 
 /**
  * Returned when a guild's preferred_locale is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyPreferredLocale = AuditLogChangeData<'preferred_locale', string>;
 
 /**
  * Returned when a guild's afk_channel_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyAFKChannelId = AuditLogChangeData<'afk_channel_id', Snowflake>;
 
 /**
  * Returned when a guild's afk_timeout is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyAFKTimeout = AuditLogChangeData<'afk_timeout', number>;
 
 /**
  * Returned when a guild's rules_channel_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyRulesChannelId = AuditLogChangeData<'rules_channel_id', string>;
 
 /**
  * Returned when a guild's public_updates_channel_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyPublicUpdatesChannelId = AuditLogChangeData<'public_updates_channel_id', string>;
 
 /**
  * Returned when a guild's mfa_level is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyMFALevel = AuditLogChangeData<'mfa_level', GuildMFALevel>;
 
 /**
  * Returned when a guild's verification_level is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyVerificationLevel = AuditLogChangeData<'verification_level', GuildVerificationLevel>;
 
 /**
  * Returned when a guild's explicit_content_filter is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyExplicitContentFilter = AuditLogChangeData<
 	'explicit_content_filter',
@@ -408,6 +432,7 @@ export type APIAuditLogChangeKeyExplicitContentFilter = AuditLogChangeData<
 
 /**
  * Returned when a guild's default_message_notifications is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyDefaultMessageNotifications = AuditLogChangeData<
 	'default_message_notifications',
@@ -416,237 +441,284 @@ export type APIAuditLogChangeKeyDefaultMessageNotifications = AuditLogChangeData
 
 /**
  * Returned when a guild's vanity_url_code is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyVanityURLCode = AuditLogChangeData<'vanity_url_code', string>;
 
 /**
  * Returned when new role(s) are added
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKey$Add = AuditLogChangeData<'$add', APIRole[]>;
 
 /**
  * Returned when role(s) are removed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKey$Remove = AuditLogChangeData<'$remove', APIRole[]>;
 
 /**
  * Returned when there is a change in number of days after which inactive and role-unassigned members are kicked
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyPruneDeleteDays = AuditLogChangeData<'prune_delete_days', number>;
 
 /**
  * Returned when a guild's widget is enabled
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyWidgetEnabled = AuditLogChangeData<'widget_enabled', boolean>;
 
 /**
  * Returned when a guild's widget_channel_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyWidgetChannelId = AuditLogChangeData<'widget_channel_id', Snowflake>;
 
 /**
  * Returned when a guild's system_channel_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeySystemChannelId = AuditLogChangeData<'system_channel_id', Snowflake>;
 
 /**
  * Returned when a channel's position is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyPosition = AuditLogChangeData<'position', number>;
 
 /**
  * Returned when a channel's topic is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyTopic = AuditLogChangeData<'topic', string>;
 
 /**
  * Returned when a voice channel's bitrate is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyBitrate = AuditLogChangeData<'bitrate', number>;
 
 /**
  * Returned when a channel's permission overwrites is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyPermissionOverwrites = AuditLogChangeData<'permission_overwrites', APIOverwrite[]>;
 
 /**
  * Returned when a channel's NSFW restriction is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyNSFW = AuditLogChangeData<'nsfw', boolean>;
 
 /**
  * The application ID of the added or removed Webhook or Bot
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyApplicationId = AuditLogChangeData<'application_id', Snowflake>;
 
 /**
  * Returned when a channel's amount of seconds a user has to wait before sending another message
  * is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyRateLimitPerUser = AuditLogChangeData<'rate_limit_per_user', number>;
 
 /**
  * Returned when a permission bitfield is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyPermissions = AuditLogChangeData<'permissions', string>;
 
 /**
  * Returned when a role's color is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyColor = AuditLogChangeData<'color', number>;
 
 /**
  * Returned when a role's hoist status is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyHoist = AuditLogChangeData<'hoist', boolean>;
 
 /**
  * Returned when a role's mentionable status is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyMentionable = AuditLogChangeData<'mentionable', boolean>;
 
 /**
  * Returned when an overwrite's allowed permissions bitfield is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyAllow = AuditLogChangeData<'allow', string>;
 
 /**
  * Returned when an overwrite's denied permissions bitfield is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyDeny = AuditLogChangeData<'deny', string>;
 
 /**
  * Returned when an invite's code is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyCode = AuditLogChangeData<'code', string>;
 
 /**
  * Returned when an invite's or guild scheduled event's channel_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyChannelId = AuditLogChangeData<'channel_id', Snowflake>;
 
 /**
  * Returned when an invite's inviter_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyInviterId = AuditLogChangeData<'inviter_id', Snowflake>;
 
 /**
  * Returned when an invite's max_uses is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyMaxUses = AuditLogChangeData<'max_uses', number>;
 
 /**
  * Returned when an invite's uses is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyUses = AuditLogChangeData<'uses', number>;
 
 /**
  * Returned when an invite's max_age is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyMaxAge = AuditLogChangeData<'max_age', number>;
 
 /**
  * Returned when an invite's temporary status is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyTemporary = AuditLogChangeData<'temporary', boolean>;
 
 /**
  * Returned when a user's deaf status is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyDeaf = AuditLogChangeData<'deaf', boolean>;
 
 /**
  * Returned when a user's mute status is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyMute = AuditLogChangeData<'mute', boolean>;
 
 /**
  * Returned when a user's nick is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyNick = AuditLogChangeData<'nick', string>;
 
 /**
  * Returned when a user's avatar_hash is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyAvatarHash = AuditLogChangeData<'avatar_hash', string>;
 
 /**
  * The ID of the changed entity - sometimes used in conjunction with other keys
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyId = AuditLogChangeData<'id', Snowflake>;
 
 /**
  * The type of entity created
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyType = AuditLogChangeData<'type', number | string>;
 
 /**
  * Returned when an integration's enable_emoticons is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyEnableEmoticons = AuditLogChangeData<'enable_emoticons', boolean>;
 
 /**
  * Returned when an integration's expire_behavior is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyExpireBehavior = AuditLogChangeData<'expire_behavior', IntegrationExpireBehavior>;
 
 /**
  * Returned when an integration's expire_grace_period is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyExpireGracePeriod = AuditLogChangeData<'expire_grace_period', number>;
 
 /**
  * Returned when a voice channel's user_limit is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyUserLimit = AuditLogChangeData<'user_limit', number>;
 
 /**
  * Returned when privacy level of a stage instance or guild scheduled event is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyPrivacyLevel = AuditLogChangeData<'privacy_level', StageInstancePrivacyLevel>;
 
 /**
  * Returned when a sticker's related emoji is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyTags = AuditLogChangeData<'tags', string>;
 
 /**
  * Returned when a sticker's format_type is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyFormatType = AuditLogChangeData<'format_type', StickerFormatType>;
 
 /**
  * Empty string
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyAsset = AuditLogChangeData<'asset', ''>;
 
 /**
  * Returned when a sticker's availability is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', boolean>;
 
 /**
  * Returned when a sticker's guild_id is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyGuildId = AuditLogChangeData<'guild_id', Snowflake>;
 
 /**
  * Returned when entity type of a guild scheduled event is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyEntityType = AuditLogChangeData<'entity_type', GuildScheduledEventEntityType>;
 
 /**
  * Returned when status of a guild scheduled event is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyStatus = AuditLogChangeData<'status', GuildScheduledEventStatus>;
 
 /**
  * Returned when location of a guild scheduled event is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyLocation = AuditLogChangeData<'location', string>;
 
 /**
  * Returned when a user's timeout is changed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChangeKeyCommunicationDisabledUntil = AuditLogChangeData<'communication_disabled_until', string>;
 

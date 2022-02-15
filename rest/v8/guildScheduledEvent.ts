@@ -2,15 +2,16 @@ import type { Snowflake } from '../../globals';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 import type {
 	APIGuildScheduledEvent,
+	APIGuildScheduledEventEntityMetadata,
+	APIGuildScheduledEventUser,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventPrivacyLevel,
-	APIGuildScheduledEventEntityMetadata,
 	GuildScheduledEventStatus,
-	APIGuildScheduledEventUser,
 } from '../../v8';
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTGetAPIGuildScheduledEventsQuery {
 	/**
@@ -21,11 +22,13 @@ export interface RESTGetAPIGuildScheduledEventsQuery {
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildScheduledEventsResult = APIGuildScheduledEvent[];
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -68,11 +71,13 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTGetAPIGuildScheduledEventQuery {
 	/**
@@ -83,11 +88,13 @@ export interface RESTGetAPIGuildScheduledEventQuery {
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
@@ -99,16 +106,19 @@ export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIG
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#delete-guild-scheduled-event
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildScheduledEventResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTGetAPIGuildScheduledEventUsersQuery {
 	/**
@@ -133,5 +143,6 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildScheduledEventUsersResult = APIGuildScheduledEventUser[];

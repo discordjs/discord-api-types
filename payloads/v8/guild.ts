@@ -6,15 +6,16 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent';
 import type { APIRole } from './permissions';
 import type { APIStageInstance } from './stageInstance';
 import type { APISticker } from './sticker';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
-import type { APIGuildScheduledEvent } from './guildScheduledEvent';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUnavailableGuild {
 	/**
@@ -29,6 +30,7 @@ export interface APIUnavailableGuild {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'>, Pick<APIGuild, 'welcome_screen'> {
 	/**
@@ -81,6 +83,7 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuild extends APIPartialGuild {
 	/**
@@ -342,6 +345,7 @@ export interface APIGuild extends APIPartialGuild {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildDefaultMessageNotifications {
 	AllMessages,
@@ -350,6 +354,7 @@ export enum GuildDefaultMessageNotifications {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildExplicitContentFilter {
 	Disabled,
@@ -359,6 +364,7 @@ export enum GuildExplicitContentFilter {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildMFALevel {
 	None,
@@ -367,6 +373,7 @@ export enum GuildMFALevel {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildNSFWLevel {
 	Default,
@@ -377,6 +384,7 @@ export enum GuildNSFWLevel {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-verification-level
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildVerificationLevel {
 	/**
@@ -403,6 +411,7 @@ export enum GuildVerificationLevel {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-premium-tier
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildPremiumTier {
 	None,
@@ -413,6 +422,7 @@ export enum GuildPremiumTier {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildSystemChannelFlags {
 	/**
@@ -435,6 +445,7 @@ export enum GuildSystemChannelFlags {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-features
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildFeature {
 	/**
@@ -530,6 +541,7 @@ export enum GuildFeature {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-preview-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildPreview {
 	/**
@@ -590,6 +602,7 @@ export interface APIGuildPreview {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-widget-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildWidgetSettings {
 	/**
@@ -604,6 +617,7 @@ export interface APIGuildWidgetSettings {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildMember {
 	/**
@@ -660,6 +674,7 @@ export interface APIGuildMember {
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildIntegration {
 	/**
@@ -752,10 +767,14 @@ export interface APIGuildIntegration {
 	application?: APIGuildIntegrationApplication;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type APIGuildInteractionType = 'twitch' | 'youtube' | 'discord';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum IntegrationExpireBehavior {
 	RemoveRole,
@@ -764,6 +783,7 @@ export enum IntegrationExpireBehavior {
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-account-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIIntegrationAccount {
 	/**
@@ -778,6 +798,7 @@ export interface APIIntegrationAccount {
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-application-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildIntegrationApplication {
 	/**
@@ -800,8 +821,10 @@ export interface APIGuildIntegrationApplication {
 	description: string;
 	/**
 	 * The summary of the app
+	 *
+	 * @deprecated Always an empty string, will be removed in v11
 	 */
-	summary: string;
+	summary: '';
 	/**
 	 * The bot associated with this application
 	 *
@@ -812,6 +835,7 @@ export interface APIGuildIntegrationApplication {
 
 /**
  * https://discord.com/developers/docs/resources/guild#ban-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIBan {
 	/**
@@ -826,6 +850,7 @@ export interface APIBan {
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildWidget {
 	id: Snowflake;
@@ -838,6 +863,7 @@ export interface APIGuildWidget {
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildWidgetChannel {
 	id: Snowflake;
@@ -847,6 +873,7 @@ export interface APIGuildWidgetChannel {
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildWidgetMember {
 	id: string;
@@ -860,6 +887,7 @@ export interface APIGuildWidgetMember {
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildWidgetStyle {
 	/**
@@ -885,6 +913,9 @@ export enum GuildWidgetStyle {
 	Banner4 = 'banner4',
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIGuildWelcomeScreen {
 	/**
 	 * The welcome screen short message
@@ -896,6 +927,9 @@ export interface APIGuildWelcomeScreen {
 	welcome_channels: APIGuildWelcomeScreenChannel[];
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIGuildWelcomeScreenChannel {
 	/**
 	 * The channel id that is suggested
@@ -915,6 +949,9 @@ export interface APIGuildWelcomeScreenChannel {
 	emoji_name: string | null;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIGuildMembershipScreening {
 	/**
 	 * When the fields were last updated
@@ -932,6 +969,9 @@ export interface APIGuildMembershipScreening {
 
 // TODO: make this a union based on the type in the future, when new types are added
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIGuildMembershipScreeningField {
 	/**
 	 * The type of field
@@ -951,6 +991,9 @@ export interface APIGuildMembershipScreeningField {
 	required: boolean;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export enum MembershipScreeningFieldType {
 	/**
 	 * Server Rules

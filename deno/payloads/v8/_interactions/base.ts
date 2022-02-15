@@ -1,10 +1,13 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { InteractionType } from './responses.ts';
+import type { LocaleString } from '../../../v8.ts';
 import type { APIMessage } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
-import type { LocaleString } from '../../../v8.ts';
+import type { InteractionType } from './responses.ts';
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,
 	| 'roles'
@@ -20,6 +23,7 @@ export type PartialAPIMessageInteractionGuildMember = Pick<
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageInteraction {
 	/**
@@ -46,6 +50,7 @@ export interface APIMessageInteraction {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionGuildMember extends APIGuildMember {
 	permissions: Permissions;
@@ -56,6 +61,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
@@ -114,12 +120,18 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	guild_locale?: LocaleString;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,
 	'member' | 'guild_id'
 > &
 	Required<Pick<Original, 'user'>>;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,
 	'user'

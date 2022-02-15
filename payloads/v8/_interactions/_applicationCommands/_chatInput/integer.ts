@@ -5,6 +5,9 @@ import type {
 } from './base';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 interface APIApplicationCommandIntegerOptionBase
 	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Integer> {
 	/**
@@ -17,11 +20,17 @@ interface APIApplicationCommandIntegerOptionBase
 	max_value?: number;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type APIApplicationCommandIntegerOption = APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
 	APIApplicationCommandIntegerOptionBase,
 	APIApplicationCommandOptionChoice<number>
 >;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIApplicationCommandInteractionDataIntegerOption
 	extends APIInteractionDataOptionBase<ApplicationCommandOptionType.Integer, number> {
 	focused?: boolean;

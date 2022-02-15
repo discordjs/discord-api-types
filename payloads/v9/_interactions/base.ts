@@ -1,9 +1,9 @@
 import type { Permissions, Snowflake } from '../../../globals';
-import type { InteractionType } from './responses';
+import type { LocaleString } from '../../../v9';
 import type { APIMessage } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
-import type { LocaleString } from '../../../v9';
+import type { InteractionType } from './responses';
 
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,

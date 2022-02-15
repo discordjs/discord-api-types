@@ -12,7 +12,7 @@ import {
 	APIUser,
 	ComponentType,
 	InteractionType,
-} from '../../v9';
+} from '../../v10';
 
 declare const interaction: APIInteraction;
 
