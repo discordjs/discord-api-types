@@ -12,7 +12,10 @@ export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 > &
 	Required<
 		Pick<
-			APIBaseInteraction<InteractionType.ApplicationCommandAutocomplete, APIChatInputApplicationCommandInteractionData>,
+			APIBaseInteraction<
+				InteractionType.ApplicationCommandAutocomplete,
+				Required<Pick<APIChatInputApplicationCommandInteractionData, 'options'>>
+			>,
 			'data'
 		>
 	>;

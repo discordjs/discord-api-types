@@ -2,7 +2,7 @@ import { expectType } from 'tsd';
 import {
 	APIApplicationCommandInteraction,
 	APIApplicationCommandInteractionData,
-	APIChatInputApplicationCommandInteractionData,
+	APIApplicationCommandAutocompleteInteraction,
 	APIDMInteraction,
 	APIGuildInteraction,
 	APIInteraction,
@@ -40,7 +40,7 @@ if (interaction.type === InteractionType.MessageComponent) {
 }
 
 if (interaction.type === InteractionType.ApplicationCommandAutocomplete) {
-	expectType<APIChatInputApplicationCommandInteractionData>(interaction.data);
+	expectType<APIApplicationCommandAutocompleteInteraction['data']>(interaction.data);
 }
 
 if (interaction.type === InteractionType.ModalSubmit) {
