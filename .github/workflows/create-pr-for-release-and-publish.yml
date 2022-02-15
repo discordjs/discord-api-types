@@ -6,8 +6,8 @@ on:
     branches:
       - main
   schedule:
-    # Run every Tuesday and Thursday at 12:00
-    - cron: '0 12 * * 2,4'
+    # Run every Monday and Thursday at 12:00
+    - cron: '0 12 * * 1,4'
 
 jobs:
   create_pr:
