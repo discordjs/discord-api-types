@@ -1,3 +1,9 @@
+## [0.27.2](https://github.com/discordjs/discord-api-types/compare/0.27.1...0.27.2) (2022-02-15)
+
+### Bug Fixes
+
+- **APIInteractionResponse:** add `APIModalInteractionResponse` to union ([#333](https://github.com/discordjs/discord-api-types/issues/333)) ([a8f19e6](https://github.com/discordjs/discord-api-types/commit/a8f19e6a19cbefd99c8c8bd35e565ab3584c9eeb))
+
 ## [0.27.1](https://github.com/discordjs/discord-api-types/compare/0.27.0...0.27.1) (2022-02-14)
 
 ### Bug Fixes
