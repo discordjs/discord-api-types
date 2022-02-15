@@ -29,6 +29,7 @@ export interface APIStageInstance {
 	privacy_level: StageInstancePrivacyLevel;
 	/**
 	 * Whether or not stage discovery is disabled
+	 * @deprecated
 	 */
 	discoverable_disabled: boolean;
 }
