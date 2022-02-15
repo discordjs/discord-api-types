@@ -448,8 +448,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET `/channels/{channel.id}/threads/active`
-	 * 	 (deprecated, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
-	 * 	 Will be removed in v10.)
+	 * 	 (deprecated, removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.)
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */

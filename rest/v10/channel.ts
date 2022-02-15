@@ -643,13 +643,6 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#list-active-threads
- *
- * @deprecated Use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead. Will be removed in v10.
- */
-export type RESTGetAPIChannelThreadsResult = APIThreadList;
-
-/**
  * https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
  */
 export type RESTGetAPIChannelUsersThreadsArchivedResult = APIThreadList;

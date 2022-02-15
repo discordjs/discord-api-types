@@ -528,6 +528,8 @@ export type RESTPutAPIGuildBanJSONBody = AddUndefinedToPossiblyUndefinedProperti
 	delete_message_days?: number;
 	/**
 	 * Reason for the ban
+	 *
+	 * @deprecated Removed in API v10, use the `X-Audit-Log-Reason` header instead.
 	 */
 	reason?: string;
 }>;

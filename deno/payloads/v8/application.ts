@@ -56,8 +56,10 @@ export interface APIApplication {
 	/**
 	 * If this application is a game sold on Discord, this field will be the summary field for the store page
 	 * of its primary sku
+	 *
+	 * @deprecated Always an empty string, will be removed in v11
 	 */
-	summary: string;
+	summary: '';
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *

@@ -659,7 +659,7 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 /**
  * https://discord.com/developers/docs/resources/channel#list-active-threads
  *
- * @deprecated Use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead. Will be removed in v10.
+ * @deprecated Removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
  */
 export type RESTGetAPIChannelThreadsResult = APIThreadList;
 
