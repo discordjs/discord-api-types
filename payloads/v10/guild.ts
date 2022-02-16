@@ -446,6 +446,10 @@ export enum GuildSystemChannelFlags {
  */
 export enum GuildFeature {
 	/**
+	 * Guild has access to set an animated guild banner image
+	 */
+	AnimatedBanner = 'ANIMATED_BANNER',
+	/**
 	 * Guild has access to set an animated guild icon
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
