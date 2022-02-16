@@ -2,6 +2,9 @@
  * Types extracted from https://discord.com/developers/docs/topics/oauth2
  */
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export enum OAuth2Scopes {
 	/**
 	 * For oauth2 bots, this puts the bot in the user's selected guild by default
@@ -40,6 +43,12 @@ export enum OAuth2Scopes {
 	 * See https://discord.com/developers/docs/resources/guild#add-guild-member
 	 */
 	GuildsJoin = 'guilds.join',
+	/**
+	 * Allows /users/@me/guilds/{guild.id}/member to return a user's member information in a guild
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
+	 */
+	GuildsMembersRead = 'guilds.members.read',
 	/**
 	 * Allows your app to join users to a group dm
 	 *

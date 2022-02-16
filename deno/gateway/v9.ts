@@ -5,17 +5,18 @@
 import type { Snowflake } from '../globals.ts';
 import type {
 	APIApplication,
-	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
 	APIGuildIntegration,
 	APIGuildMember,
+	APIGuildScheduledEvent,
+	APIInteraction,
 	APIMessage,
-	APIMessageComponentInteraction,
 	APIRole,
 	APIStageInstance,
 	APISticker,
+	APIThreadChannel,
 	APIThreadMember,
 	APIUnavailableGuild,
 	APIUser,
@@ -186,6 +187,7 @@ export enum GatewayIntentBits {
 	DirectMessages = 1 << 12,
 	DirectMessageReactions = 1 << 13,
 	DirectMessageTyping = 1 << 14,
+	GuildScheduledEvents = 1 << 16,
 }
 
 /**
@@ -242,6 +244,11 @@ export enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
+	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
+	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
+	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
+	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
+	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
 }
 
 export type GatewaySendPayload =
@@ -274,6 +281,11 @@ export type GatewayDispatchPayload =
 	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
 	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildScheduledEventCreateDispatch
+	| GatewayGuildScheduledEventUpdateDispatch
+	| GatewayGuildScheduledEventDeleteDispatch
+	| GatewayGuildScheduledEventUserAddDispatch
+	| GatewayGuildScheduledEventUserRemoveDispatch
 	| GatewayGuildStickersUpdateDispatch
 	| GatewayIntegrationCreateDispatch
 	| GatewayIntegrationDeleteDispatch
@@ -290,6 +302,9 @@ export type GatewayDispatchPayload =
 	| GatewayMessageReactionRemoveEmojiDispatch
 	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewayStageInstanceCreateDispatch
+	| GatewayStageInstanceDeleteDispatch
+	| GatewayStageInstanceUpdateDispatch
 	| GatewayReadyDispatch
 	| GatewayResumedDispatch
 	| GatewayThreadListSyncDispatch
@@ -818,6 +833,49 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	role_id: Snowflake;
 }
 
+export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventCreate,
+	GatewayGuildScheduledEventCreateDispatchData
+>;
+
+export type GatewayGuildScheduledEventCreateDispatchData = APIGuildScheduledEvent;
+
+export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUpdate,
+	GatewayGuildScheduledEventUpdateDispatchData
+>;
+
+export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildScheduledEvent;
+
+export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventDelete,
+	GatewayGuildScheduledEventDeleteDispatchData
+>;
+
+export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
+
+export type GatewayGuildScheduledEventUserAddDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserAdd,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+export interface GatewayGuildScheduledEventUserAddDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
+}
+
+export type GatewayGuildScheduledEventUserRemoveDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserRemove,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+export interface GatewayGuildScheduledEventUserRemoveDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
+}
+
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-create
  */
@@ -881,7 +939,7 @@ export type GatewayInteractionCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#interaction-create
  */
-export type GatewayInteractionCreateDispatchData = APIApplicationCommandInteraction | APIMessageComponentInteraction;
+export type GatewayInteractionCreateDispatchData = APIInteraction;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-create
@@ -1202,7 +1260,7 @@ export type GatewayThreadMemberUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-member-update
  */
-export type GatewayThreadMemberUpdateDispatchData = APIThreadMember;
+export type GatewayThreadMemberUpdateDispatchData = APIThreadMember & { guild_id: Snowflake };
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-create
@@ -1222,7 +1280,12 @@ export type GatewayThreadCreateDispatch = GatewayChannelModifyDispatch;
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-create
  */
-export type GatewayThreadCreateDispatchData = GatewayChannelModifyDispatchData;
+export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
+	/**
+	 * Whether the thread is newly created or not.
+	 */
+	newly_created?: true;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-update
@@ -1602,7 +1665,10 @@ interface BasePayload {
 	t?: string;
 }
 
-type NonDispatchPayload = Omit<BasePayload, 't'>;
+type NonDispatchPayload = Omit<BasePayload, 't' | 's'> & {
+	t: null;
+	s: null;
+};
 
 interface DataPayload<Event extends GatewayDispatchEvents, D = unknown> extends BasePayload {
 	op: GatewayOpcodes.Dispatch;

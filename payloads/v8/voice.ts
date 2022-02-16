@@ -7,6 +7,7 @@ import type { APIGuildMember } from './guild';
 
 /**
  * https://discord.com/developers/docs/resources/voice#voice-state-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayVoiceState {
 	/**
@@ -67,6 +68,7 @@ export interface GatewayVoiceState {
 
 /**
  * https://discord.com/developers/docs/resources/voice#voice-region-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIVoiceRegion {
 	/**
@@ -77,10 +79,6 @@ export interface APIVoiceRegion {
 	 * Name of the region
 	 */
 	name: string;
-	/**
-	 * `true` if this is a vip-only server
-	 */
-	vip: boolean;
 	/**
 	 * `true` for a single server that is closest to the current user's client
 	 */

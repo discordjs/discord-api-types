@@ -3,7 +3,7 @@ export const VoiceGatewayVersion = '4';
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-opcodes
  */
-export const enum VoiceOpcodes {
+export enum VoiceOpcodes {
 	/**
 	 * Begin a voice websocket connection
 	 */
@@ -57,7 +57,7 @@ export const enum VoiceOpcodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-close-event-codes
  */
-export const enum VoiceCloseCodes {
+export enum VoiceCloseCodes {
 	/**
 	 * You sent an invalid opcode
 	 */

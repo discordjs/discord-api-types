@@ -1,8 +1,10 @@
 import type { Snowflake } from '../../globals.ts';
 import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v8/mod.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostAPIStageInstanceJSONBody {
 	/**
@@ -23,18 +25,21 @@ export interface RESTPostAPIStageInstanceJSONBody {
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIStageInstanceResult = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#get-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIStageInstanceResult = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface RESTPatchAPIStageInstanceJSONBody {
+export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The topic of the stage instance (1-120 characters)
 	 */
@@ -43,14 +48,16 @@ export interface RESTPatchAPIStageInstanceJSONBody {
 	 * The privacy level of the stage instance
 	 */
 	privacy_level?: StageInstancePrivacyLevel;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIStageInstanceResult = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIStageInstanceResult = never;

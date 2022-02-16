@@ -6,6 +6,7 @@ import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIChannel } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway.ts';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
 import type { APIRole } from './permissions.ts';
 import type { APIStageInstance } from './stageInstance.ts';
 import type { APISticker } from './sticker.ts';
@@ -333,6 +334,18 @@ export interface APIGuild extends APIPartialGuild {
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
 	stickers: APISticker[];
+	/**
+	 * Whether the guild has the boost progress bar enabled.
+	 */
+	premium_progress_bar_enabled: boolean;
+	/**
+	 * The scheduled events in the guild
+	 *
+	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
+	 *
+	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 */
+	guild_scheduled_events?: APIGuildScheduledEvent[];
 }
 
 /**
@@ -422,6 +435,10 @@ export enum GuildSystemChannelFlags {
 	 * Suppress server setup tips
 	 */
 	SuppressGuildReminderNotifications = 1 << 2,
+	/**
+	 * Hide member join sticker reply buttons
+	 */
+	SuppressJoinNotificationReplies = 1 << 3,
 }
 
 /**
@@ -461,6 +478,18 @@ export enum GuildFeature {
 	 */
 	InviteSplash = 'INVITE_SPLASH',
 	/**
+	 * Guild has enabled Membership Screening
+	 */
+	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
+	/**
+	 * Guild has enabled monetization
+	 */
+	MonetizationEnabled = 'MONETIZATION_ENABLED',
+	/**
+	 * Guild has increased custom sticker slots
+	 */
+	MoreStickers = 'MORE_STICKERS',
+	/**
 	 * Guild has access to create news channels
 	 */
 	News = 'NEWS',
@@ -468,7 +497,31 @@ export enum GuildFeature {
 	 * Guild is partnered
 	 */
 	Partnered = 'PARTNERED',
+	/**
+	 * Guild can be previewed before joining via Membership Screening or the directory
+	 */
+	PreviewEnabled = 'PREVIEW_ENABLED',
+	/**
+	 * Guild has access to create private threads
+	 */
+	PrivateThreads = 'PRIVATE_THREADS',
 	RelayEnabled = 'RELAY_ENABLED',
+	/**
+	 * Guild is able to set role icons
+	 */
+	RoleIcons = 'ROLE_ICONS',
+	/**
+	 * Guild has access to the seven day archive time for threads
+	 */
+	SevenDayThreadArchive = 'SEVEN_DAY_THREAD_ARCHIVE',
+	/**
+	 * Guild has access to the three day archive time for threads
+	 */
+	ThreeDayThreadArchive = 'THREE_DAY_THREAD_ARCHIVE',
+	/**
+	 * Guild has enabled ticketed events
+	 */
+	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
 	/**
 	 * Guild has access to set a vanity URL
 	 */
@@ -485,38 +538,6 @@ export enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
-	/**
-	 * Guild has enabled Membership Screening
-	 */
-	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
-	/**
-	 * Guild can be previewed before joining via Membership Screening or the directory
-	 */
-	PreviewEnabled = 'PREVIEW_ENABLED',
-	/**
-	 * Guild has enabled ticketed events
-	 */
-	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
-	/**
-	 * Guild has enabled monetization
-	 */
-	MonetizationEnabled = 'MONETIZATION_ENABLED',
-	/**
-	 * Guild has increased custom sticker slots
-	 */
-	MoreStickers = 'MORE_STICKERS',
-	/**
-	 * Guild has access to the three day archive time for threads
-	 */
-	ThreeDayThreadArchive = 'THREE_DAY_THREAD_ARCHIVE',
-	/**
-	 * Guild has access to the seven day archive time for threads
-	 */
-	SevenDayThreadArchive = 'SEVEN_DAY_THREAD_ARCHIVE',
-	/**
-	 * Guild has access to create private threads
-	 */
-	PrivateThreads = 'PRIVATE_THREADS',
 }
 
 /**
@@ -573,6 +594,10 @@ export interface APIGuildPreview {
 	 * The description for the guild
 	 */
 	description: string;
+	/**
+	 * Custom guild stickers
+	 */
+	stickers: APISticker[];
 }
 
 /**
@@ -606,6 +631,10 @@ export interface APIGuildMember {
 	 */
 	nick?: string | null;
 	/**
+	 * The member's guild avatar hash
+	 */
+	avatar?: string | null;
+	/**
 	 * Array of role object ids
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
@@ -635,6 +664,10 @@ export interface APIGuildMember {
 	 * *If this field is not present, it can be assumed as `false`.*
 	 */
 	pending?: boolean;
+	/**
+	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
+	 */
+	communication_disabled_until?: string | null;
 }
 
 /**
@@ -779,8 +812,10 @@ export interface APIGuildIntegrationApplication {
 	description: string;
 	/**
 	 * The summary of the app
+	 *
+	 * @deprecated Always an empty string, will be removed in v11
 	 */
-	summary: string;
+	summary: '';
 	/**
 	 * The bot associated with this application
 	 *

@@ -6,13 +6,14 @@ import type {
 	APIMessage,
 	APIWebhook,
 	APIAttachment,
+	MessageFlags,
+	APIMessageActionRowComponent,
 } from '../../payloads/v9/mod.ts';
-import type { Nullable } from '../../utils/internals.ts';
-
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
-export interface RESTPostAPIChannelWebhookJSONBody {
+export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the webhook (1-80 characters)
 	 */
@@ -23,7 +24,7 @@ export interface RESTPostAPIChannelWebhookJSONBody {
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	avatar?: string | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
@@ -53,7 +54,7 @@ export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
  */
-export interface RESTPatchAPIWebhookJSONBody {
+export type RESTPatchAPIWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The default name of the webhook
 	 */
@@ -68,7 +69,7 @@ export interface RESTPatchAPIWebhookJSONBody {
 	 * The new channel id this webhook should be moved to
 	 */
 	channel_id?: Snowflake;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
@@ -98,7 +99,7 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
-export interface RESTPostAPIWebhookWithTokenJSONBody {
+export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
@@ -134,29 +135,28 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent[];
-}
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
+	/**
+	 * Attachment objects with filename and description
+	 */
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+	/**
+	 * Message flags combined as a bitfield
+	 */
+	flags?: MessageFlags;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIWebhookWithTokenJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
@@ -232,38 +232,30 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
-export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
-	extends Nullable<
-		Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>
-	> {
-	/**
-	 * Attached files to keep
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
-	 */
-	attachments?: APIAttachment[] | null;
-}
+export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>> & {
+		/**
+		 * Attached files to keep
+		 *
+		 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+		 *
+		 * See https://discord.com/developers/docs/resources/channel#attachment-object
+		 */
+		attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
+	}
+>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message

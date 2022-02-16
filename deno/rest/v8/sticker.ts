@@ -1,15 +1,31 @@
 import type { APISticker, APIStickerPack } from '../../payloads/v8/mod.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type RESTGetAPIStickerResult = APISticker;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface RESTGetNitroStickerPacksResult {
 	sticker_packs: APIStickerPack[];
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type RESTGetAPIGuildStickersResult = APISticker[];
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type RESTGetAPIGuildStickerResult = APISticker;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface RESTPostAPIGuildStickerFormDataBody {
 	/**
 	 * Name of the sticker (2-30 characters)
@@ -29,9 +45,15 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 	file: unknown;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type RESTPostAPIGuildStickerResult = APISticker;
 
-export interface RESTPatchAPIGuildStickerJSONBody {
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
@@ -44,8 +66,14 @@ export interface RESTPatchAPIGuildStickerJSONBody {
 	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
 	tags?: string;
-}
+}>;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type RESTPatchAPIGuildStickerResult = APISticker;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type RESTDeleteAPIGuildStickerResult = never;

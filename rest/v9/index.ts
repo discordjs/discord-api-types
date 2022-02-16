@@ -1,12 +1,12 @@
 import type { Snowflake } from '../../globals';
 
 export * from '../common';
-
 export * from './auditLog';
 export * from './channel';
 export * from './emoji';
 export * from './gateway';
 export * from './guild';
+export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
 export * from './oauth2';
@@ -232,10 +232,11 @@ export const Routes = {
 	 * Route for:
 	 * - GET    `/guilds/{guild.id}/members/{user.id}`
 	 * - PUT    `/guilds/{guild.id}/members/{user.id}`
+	 * - PATCH  `/guilds/{guild.id}/members/@me`
 	 * - PATCH  `/guilds/{guild.id}/members/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}`
 	 */
-	guildMember(guildId: Snowflake, userId: Snowflake) {
+	guildMember(guildId: Snowflake, userId: Snowflake | '@me' = '@me') {
 		return `/guilds/${guildId}/members/${userId}` as const;
 	},
 
@@ -258,6 +259,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
+	 * @deprecated Use {@link Routes.guildMember} instead.
 	 */
 	guildCurrentMemberNickname(guildId: Snowflake) {
 		return `/guilds/${guildId}/members/@me/nick` as const;
@@ -446,8 +448,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET `/channels/{channel.id}/threads/active`
-	 * 	 (deprecated, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
-	 * 	 Will be removed in v10.)
+	 * 	 (deprecated, removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.)
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
@@ -473,6 +474,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET    `/channels/{thread.id}/thread-members`
+	 * - GET    `/channels/{thread.id}/thread-members/{user.id}`
 	 * - PUT    `/channels/{thread.id}/thread-members/@me`
 	 * - PUT    `/channels/{thread.id}/thread-members/{user.id}`
 	 * - DELETE `/channels/{thread.id}/thread-members/@me`
@@ -506,6 +508,14 @@ export const Routes = {
 	 */
 	userGuilds() {
 		return `/users/@me/guilds` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/users/@me/guilds/{guild.id}/member`
+	 */
+	userGuildMember(guildId: Snowflake) {
+		return `/users/@me/guilds/${guildId}/member` as const;
 	},
 
 	/**
@@ -635,6 +645,30 @@ export const Routes = {
 	 */
 	oauth2CurrentAuthorization() {
 		return `/oauth2/@me` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/oauth2/authorize`
+	 */
+	oauth2Authorization() {
+		return `/oauth2/authorize` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/oauth2/token`
+	 */
+	oauth2TokenExchange() {
+		return `/oauth2/token` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/oauth2/token/revoke`
+	 */
+	oauth2TokenRevocation() {
+		return `/oauth2/token/revoke` as const;
 	},
 
 	/**
@@ -782,6 +816,33 @@ export const Routes = {
 	guildSticker(guildId: Snowflake, stickerId: Snowflake) {
 		return `/guilds/${guildId}/stickers/${stickerId}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/scheduled-events`
+	 * - POST `/guilds/{guild.id}/scheduled-events`
+	 */
+	guildScheduledEvents(guildId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - PATCH `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 */
+	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/users`
+	 */
+	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
+	},
 };
 
 export const RouteBases = {
@@ -790,18 +851,19 @@ export const RouteBases = {
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',
 	gift: 'https://discord.gift',
+	scheduledEvent: 'https://discord.com/events',
 } as const;
 
 // Freeze bases object
 Object.freeze(RouteBases);
 
 export const OAuth2Routes = {
-	authorizationURL: `https://discord.com/api/v${APIVersion}/oauth2/authorize`,
-	tokenURL: `https://discord.com/api/v${APIVersion}/oauth2/token`,
+	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
+	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
 	 * See https://tools.ietf.org/html/rfc7009
 	 */
-	tokenRevocationURL: `https://discord.com/api/v${APIVersion}/oauth2/token/revoke`,
+	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;
 
 // Freeze OAuth2 route object

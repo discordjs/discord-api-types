@@ -1,5 +1,7 @@
-import type { MessageFlags } from '../mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9.ts';
+import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel.ts';
+import type { MessageFlags } from '../mod.ts';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -8,6 +10,8 @@ export enum InteractionType {
 	Ping = 1,
 	ApplicationCommand,
 	MessageComponent,
+	ApplicationCommandAutocomplete,
+	ModalSubmit,
 }
 
 /**
@@ -18,10 +22,22 @@ export type APIInteractionResponse =
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
-	| APIInteractionResponseUpdateMessage;
+	| APIInteractionResponseUpdateMessage
+	| APIApplicationCommandAutocompleteResponse
+	| APIModalInteractionResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
+}
+
+export interface APIApplicationCommandAutocompleteResponse {
+	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
+	data: APICommandAutocompleteInteractionResponseCallbackData;
+}
+
+export interface APIModalInteractionResponse {
+	type: InteractionResponseType.Modal;
+	data: APIModalInteractionResponseCallbackData;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -67,6 +83,14 @@ export enum InteractionResponseType {
 	 * ACK a button interaction and edit the message to which the button was attached
 	 */
 	UpdateMessage,
+	/**
+	 * For autocomplete interactions
+	 */
+	ApplicationCommandAutocompleteResult,
+	/**
+	 * Respond to an interaction with an modal for a user to fill-out
+	 */
+	Modal,
 }
 
 /**
@@ -76,3 +100,25 @@ export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
 	'username' | 'avatar_url'
 > & { flags?: MessageFlags };
+
+export interface APICommandAutocompleteInteractionResponseCallbackData {
+	choices?: APIApplicationCommandOptionChoice[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
+ */
+export interface APIModalInteractionResponseCallbackData {
+	/**
+	 * A developer-defined identifier for the component, max 100 characters
+	 */
+	custom_id: string;
+	/**
+	 * The title of the popup modal
+	 */
+	title: string;
+	/**
+	 * Between 1 and 5 (inclusive) components that make up the modal
+	 */
+	components: APIActionRowComponent<APIModalActionRowComponent>[];
+}

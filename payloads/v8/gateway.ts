@@ -8,6 +8,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGatewayInfo {
 	/**
@@ -18,6 +19,7 @@ export interface APIGatewayInfo {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway-bot
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGatewayBotInfo extends APIGatewayInfo {
 	/**
@@ -36,6 +38,7 @@ export interface APIGatewayBotInfo extends APIGatewayInfo {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#session-start-limit-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGatewaySessionStartLimit {
 	/**
@@ -58,6 +61,7 @@ export interface APIGatewaySessionStartLimit {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#presence-update-presence-update-event-fields
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayPresenceUpdate {
 	/**
@@ -91,7 +95,10 @@ export interface GatewayPresenceUpdate {
 	client_status?: GatewayPresenceClientStatus;
 }
 
-export const enum PresenceUpdateStatus {
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export enum PresenceUpdateStatus {
 	Online = 'online',
 	DoNotDisturb = 'dnd',
 	Idle = 'idle',
@@ -104,6 +111,7 @@ export const enum PresenceUpdateStatus {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#client-status-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayPresenceClientStatus {
 	/**
@@ -122,6 +130,7 @@ export interface GatewayPresenceClientStatus {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayActivity {
 	/**
@@ -207,6 +216,9 @@ export interface GatewayActivity {
 	buttons?: string[] | GatewayActivityButton[];
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export enum ActivityPlatform {
 	Desktop = 'desktop',
 	Samsung = 'samsung',
@@ -215,12 +227,13 @@ export enum ActivityPlatform {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum ActivityType {
+export enum ActivityType {
 	/**
 	 * Playing {game}
 	 */
-	Game,
+	Playing,
 	/**
 	 * Streaming {details}
 	 */
@@ -245,6 +258,7 @@ export const enum ActivityType {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-timestamps
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayActivityTimestamps {
 	/**
@@ -259,11 +273,13 @@ export interface GatewayActivityTimestamps {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'id' | 'animated'>> & Pick<APIEmoji, 'name'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayActivityParty {
 	/**
@@ -278,6 +294,7 @@ export interface GatewayActivityParty {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivityAssets = Partial<
 	Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>
@@ -285,21 +302,29 @@ export type GatewayActivityAssets = Partial<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum ActivityFlags {
+export enum ActivityFlags {
 	Instance = 1 << 0,
 	Join = 1 << 1,
 	Spectate = 1 << 2,
 	JoinRequest = 1 << 3,
 	Sync = 1 << 4,
 	Play = 1 << 5,
+	PartyPrivacyFriends = 1 << 6,
+	PartyPrivacyVoiceChannel = 1 << 7,
+	Embedded = 1 << 8,
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface GatewayActivityButton {
 	/**
 	 * The text shown on the button (1-32 characters)

@@ -2,14 +2,16 @@
  * Types extracted from https://discord.com/developers/docs/resources/invite
  */
 
+import type { APIApplication } from './application';
 import type { APIPartialChannel } from './channel';
 import type { APIPartialGuild } from './guild';
-import type { APIApplication } from './application';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent';
 import type { APIInviteStageInstance } from './stageInstance';
 import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInvite {
 	/**
@@ -27,7 +29,7 @@ export interface APIInvite {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channel: Required<APIPartialChannel>;
+	channel: Required<APIPartialChannel> | null;
 	/**
 	 * The user who created the invite
 	 *
@@ -68,18 +70,24 @@ export interface APIInvite {
 	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
 	 */
 	stage_instance?: APIInviteStageInstance;
+	/**
+	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
+	 */
+	guild_scheduled_event?: APIGuildScheduledEvent;
 }
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum InviteTargetType {
+export enum InviteTargetType {
 	Stream = 1,
 	EmbeddedApplication,
 }
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIExtendedInvite extends APIInvite {
 	/**

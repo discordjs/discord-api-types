@@ -7,6 +7,7 @@ import type { APIGuildIntegration } from './guild.ts';
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUser {
 	/**
@@ -83,26 +84,74 @@ export interface APIUser {
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-user-flags
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum UserFlags {
-	None = 0,
-	DiscordEmployee = 1 << 0,
-	PartneredServerOwner = 1 << 1,
-	DiscordHypeSquadEvents = 1 << 2,
+	/**
+	 * Discord Employee
+	 */
+	Staff = 1 << 0,
+	/**
+	 * Partnered Server Owner
+	 */
+	Partner = 1 << 1,
+	/**
+	 * HypeSquad Events Coordinator
+	 */
+	Hypesquad = 1 << 2,
+	/**
+	 * Bug Hunter Level 1
+	 */
 	BugHunterLevel1 = 1 << 3,
-	HypeSquadHouseBravery = 1 << 6,
-	HypeSquadHouseBrilliance = 1 << 7,
-	HypeSquadHouseBalance = 1 << 8,
-	EarlySupporter = 1 << 9,
-	TeamUser = 1 << 10,
+	/**
+	 * House Bravery Member
+	 */
+	HypeSquadOnlineHouse1 = 1 << 6,
+	/**
+	 * House Brilliance Member
+	 */
+	HypeSquadOnlineHouse2 = 1 << 7,
+	/**
+	 * House Balance MemberW
+	 */
+	HypeSquadOnlineHouse3 = 1 << 8,
+	/**
+	 * Early Nitro Supporter
+	 */
+	PremiumEarlySupporter = 1 << 9,
+	/**
+	 * User is a [team](https://discord.com/developers/docs/topics/teams)
+	 */
+	TeamPseudoUser = 1 << 10,
+	/**
+	 * Bug Hunter Level 2
+	 */
 	BugHunterLevel2 = 1 << 14,
+	/**
+	 * Verified Bot
+	 */
 	VerifiedBot = 1 << 16,
-	EarlyVerifiedBotDeveloper = 1 << 17,
-	DiscordCertifiedModerator = 1 << 18,
+	/**
+	 * Early Verified Bot Developer
+	 */
+	VerifiedDeveloper = 1 << 17,
+	/**
+	 * Discord Certified Moderator
+	 */
+	CertifiedModerator = 1 << 18,
+	/**
+	 * Bot uses only [HTTP interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction) and is shown in the online member list
+	 */
+	BotHTTPInteractions = 1 << 19,
+	/**
+	 * User has been identified as spammer
+	 */
+	Spammer = 1 << 20,
 }
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-premium-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum UserPremiumType {
 	None,
@@ -112,6 +161,7 @@ export enum UserPremiumType {
 
 /**
  * https://discord.com/developers/docs/resources/user#connection-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIConnection {
 	/**
@@ -156,6 +206,9 @@ export interface APIConnection {
 	visibility: ConnectionVisibility;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export enum ConnectionVisibility {
 	/**
 	 * Invisible to everyone except the user themselves

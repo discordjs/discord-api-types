@@ -8,6 +8,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIApplication {
 	/**
@@ -55,8 +56,10 @@ export interface APIApplication {
 	/**
 	 * If this application is a game sold on Discord, this field will be the summary field for the store page
 	 * of its primary sku
+	 *
+	 * @deprecated Always an empty string, will be removed in v11
 	 */
-	summary: string;
+	summary: '';
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
@@ -95,8 +98,10 @@ export interface APIApplication {
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-flags
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum ApplicationFlags {
+export enum ApplicationFlags {
+	EmbeddedReleased = 1 << 1,
 	ManagedEmoji = 1 << 2,
 	GroupDMCreate = 1 << 4,
 	RPCHasConnected = 1 << 11,
@@ -106,4 +111,7 @@ export const enum ApplicationFlags {
 	GatewayGuildMembersLimited = 1 << 15,
 	VerificationPendingGuildLimit = 1 << 16,
 	Embedded = 1 << 17,
+	GatewayMessageContent = 1 << 18,
+	GatewayMessageContentLimited = 1 << 19,
+	EmbeddedFirstParty = 1 << 20,
 }
