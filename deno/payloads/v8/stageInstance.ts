@@ -3,6 +3,7 @@ import type { APIGuildMember } from './guild.ts';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIStageInstance {
 	/**
@@ -35,6 +36,7 @@ export interface APIStageInstance {
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum StageInstancePrivacyLevel {
 	/**
@@ -49,6 +51,7 @@ export enum StageInstancePrivacyLevel {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-stage-instance-object-invite-stage-instance-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInviteStageInstance {
 	/**

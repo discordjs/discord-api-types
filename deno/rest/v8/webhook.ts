@@ -1,18 +1,21 @@
 import type { Snowflake } from '../../globals.ts';
 import type {
-	APIAllowedMentions,
 	APIActionRowComponent,
+	APIAllowedMentions,
+	APIAttachment,
 	APIEmbed,
 	APIMessage,
+	APIMessageActionRowComponent,
 	APIWebhook,
-	APIAttachment,
+	MessageFlags,
 } from '../../payloads/v8/mod.ts';
-import type { Nullable } from '../../utils/internals.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface RESTPostAPIChannelWebhookJSONBody {
+export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the webhook (1-80 characters)
 	 */
@@ -23,37 +26,43 @@ export interface RESTPostAPIChannelWebhookJSONBody {
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	avatar?: string | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelWebhookResult = APIWebhook;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-channel-webhooks
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIChannelWebhooksResult = APIWebhook[];
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-guild-webhooks
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildWebhooksResult = APIWebhook[];
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIWebhookResult = APIWebhook;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-webhook-with-token
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface RESTPatchAPIWebhookJSONBody {
+export type RESTPatchAPIWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The default name of the webhook
 	 */
@@ -68,37 +77,43 @@ export interface RESTPatchAPIWebhookJSONBody {
 	 * The new channel id this webhook should be moved to
 	 */
 	channel_id?: Snowflake;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookResult = APIWebhook;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook-with-token
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookWithTokenJSONBody = Omit<RESTPatchAPIWebhookJSONBody, 'channel_id'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook-with-token
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookWithTokenResult = RESTGetAPIWebhookWithTokenResult;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIWebhookResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook-with-token
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIWebhookWithTokenResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface RESTPostAPIWebhookWithTokenJSONBody {
+export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
@@ -134,15 +149,20 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>[];
-}
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+	/**
+	 * Message flags combined as a bitfield
+	 */
+	flags?: MessageFlags;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
 	| ({
@@ -155,6 +175,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostAPIWebhookWithTokenQuery {
 	/**
@@ -164,10 +185,15 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	 * @default false
 	 */
 	wait?: boolean;
+	/**
+	 * Send a message to the specified thread within a webhook's channel. The thread will automatically be unarchived.
+	 */
+	thread_id?: Snowflake;
 }
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenResult = never;
 
@@ -176,16 +202,19 @@ export type RESTPostAPIWebhookWithTokenResult = never;
  * the `wait` query parameter set to `true`
  *
  * See https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenWaitResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-querystring-params
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenSlackQuery = RESTPostAPIWebhookWithTokenQuery;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenSlackResult = never;
 
@@ -194,16 +223,19 @@ export type RESTPostAPIWebhookWithTokenSlackResult = never;
  * the `wait` query parameter set to `true`
  *
  * See https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-querystring-params
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenSlackWaitResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenGitHubQuery = RESTPostAPIWebhookWithTokenQuery;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenGitHubResult = never;
 
@@ -212,33 +244,36 @@ export type RESTPostAPIWebhookWithTokenGitHubResult = never;
  * the `wait` query parameter set to `true`
  *
  * See https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenGitHubWaitResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-webhook-message
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface RESTPatchAPIWebhookWithTokenMessageJSONBody
-	extends Nullable<
-		Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>
-	> {
-	/**
-	 * Attached files to keep
-	 *
-	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
-	 */
-	attachments?: APIAttachment[] | null;
-}
+export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>> & {
+		/**
+		 * Attached files to keep
+		 *
+		 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+		 *
+		 * See https://discord.com/developers/docs/resources/channel#attachment-object
+		 */
+		attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
+	}
+>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 	| ({
@@ -251,10 +286,12 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook-message
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIWebhookWithTokenMessageResult = never;

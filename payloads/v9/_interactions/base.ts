@@ -1,8 +1,22 @@
 import type { Permissions, Snowflake } from '../../../globals';
-import type { InteractionType } from './responses';
+import type { LocaleString } from '../../../v9';
 import type { APIMessage } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
+import type { InteractionType } from './responses';
+
+export type PartialAPIMessageInteractionGuildMember = Pick<
+	APIGuildMember,
+	| 'roles'
+	| 'premium_since'
+	| 'pending'
+	| 'nick'
+	| 'mute'
+	| 'joined_at'
+	| 'deaf'
+	| 'communication_disabled_until'
+	| 'avatar'
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
@@ -24,6 +38,10 @@ export interface APIMessageInteraction {
 	 * The user who invoked the interaction
 	 */
 	user: APIUser;
+	/**
+	 * The guild member who invoked the interaction, only sent in MESSAGE_CREATE events
+	 */
+	member?: PartialAPIMessageInteractionGuildMember;
 }
 
 /**
@@ -39,7 +57,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
-export interface APIBaseInteraction<Type extends InteractionType, Data extends unknown> {
+export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * ID of the interaction
 	 */
@@ -86,6 +104,14 @@ export interface APIBaseInteraction<Type extends InteractionType, Data extends u
 	 * For components, the message they were attached to
 	 */
 	message?: APIMessage;
+	/**
+	 * The selected language of the invoking user
+	 */
+	locale: LocaleString;
+	/**
+	 * The guild's preferred locale, if invoked in a guild
+	 */
+	guild_locale?: LocaleString;
 }
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<

@@ -1,14 +1,14 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true
+		"allowJs": true
 	},
 	"include": [
 		"globals.ts",
 		"v6.ts",
 		"v8.ts",
 		"v9.ts",
+		"v10.ts",
 		"gateway/**/*.ts",
 		"payloads/**/*.ts",
 		"rest/**/*.ts",

@@ -5,14 +5,14 @@
 import type { Snowflake } from '../globals';
 import type {
 	APIApplication,
-	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
 	APIGuildIntegration,
 	APIGuildMember,
+	APIGuildScheduledEvent,
+	APIInteraction,
 	APIMessage,
-	APIMessageComponentInteraction,
 	APIRole,
 	APIStageInstance,
 	APISticker,
@@ -28,12 +28,16 @@ import type { Nullable } from '../utils/internals';
 
 export * from './common';
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export const GatewayVersion = '8';
 
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum GatewayOpcodes {
+export enum GatewayOpcodes {
 	/**
 	 * An event was dispatched
 	 */
@@ -83,8 +87,9 @@ export const enum GatewayOpcodes {
 
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum GatewayCloseCodes {
+export enum GatewayCloseCodes {
 	/**
 	 * We're not sure what went wrong. Try reconnecting?
 	 */
@@ -166,8 +171,9 @@ export const enum GatewayCloseCodes {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#list-of-intents
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum GatewayIntentBits {
+export enum GatewayIntentBits {
 	Guilds = 1 << 0,
 	GuildMembers = 1 << 1,
 	GuildBans = 1 << 2,
@@ -183,12 +189,14 @@ export const enum GatewayIntentBits {
 	DirectMessages = 1 << 12,
 	DirectMessageReactions = 1 << 13,
 	DirectMessageTyping = 1 << 14,
+	GuildScheduledEvents = 1 << 16,
 }
 
 /**
  * https://discord.com/developers/docs/topics/gateway#commands-and-events-gateway-events
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum GatewayDispatchEvents {
+export enum GatewayDispatchEvents {
 	ChannelCreate = 'CHANNEL_CREATE',
 	ChannelDelete = 'CHANNEL_DELETE',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
@@ -233,8 +241,16 @@ export const enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
+	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
+	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
+	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
+	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
+	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type GatewaySendPayload =
 	| GatewayHeartbeat
 	| GatewayIdentify
@@ -243,6 +259,9 @@ export type GatewaySendPayload =
 	| GatewayResume
 	| GatewayRequestGuildMembers;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type GatewayReceivePayload =
 	| GatewayHello
 	| GatewayHeartbeatRequest
@@ -251,6 +270,9 @@ export type GatewayReceivePayload =
 	| GatewayReconnect
 	| GatewayDispatchPayload;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type GatewayDispatchPayload =
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
@@ -265,6 +287,11 @@ export type GatewayDispatchPayload =
 	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
 	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildScheduledEventCreateDispatch
+	| GatewayGuildScheduledEventUpdateDispatch
+	| GatewayGuildScheduledEventDeleteDispatch
+	| GatewayGuildScheduledEventUserAddDispatch
+	| GatewayGuildScheduledEventUserRemoveDispatch
 	| GatewayGuildStickersUpdateDispatch
 	| GatewayIntegrationCreateDispatch
 	| GatewayIntegrationDeleteDispatch
@@ -296,6 +323,7 @@ export type GatewayDispatchPayload =
 
 /**
  * https://discord.com/developers/docs/topics/gateway#hello
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayHello extends NonDispatchPayload {
 	op: GatewayOpcodes.Hello;
@@ -304,6 +332,7 @@ export interface GatewayHello extends NonDispatchPayload {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#hello
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayHelloData {
 	/**
@@ -314,6 +343,7 @@ export interface GatewayHelloData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#heartbeating
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayHeartbeatRequest extends NonDispatchPayload {
 	op: GatewayOpcodes.Heartbeat;
@@ -322,6 +352,7 @@ export interface GatewayHeartbeatRequest extends NonDispatchPayload {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#heartbeating-example-gateway-heartbeat-ack
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayHeartbeatAck extends NonDispatchPayload {
 	op: GatewayOpcodes.HeartbeatAck;
@@ -330,6 +361,7 @@ export interface GatewayHeartbeatAck extends NonDispatchPayload {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invalid-session
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayInvalidSession extends NonDispatchPayload {
 	op: GatewayOpcodes.InvalidSession;
@@ -338,11 +370,13 @@ export interface GatewayInvalidSession extends NonDispatchPayload {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invalid-session
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayInvalidSessionData = boolean;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#reconnect
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayReconnect extends NonDispatchPayload {
 	op: GatewayOpcodes.Reconnect;
@@ -351,11 +385,13 @@ export interface GatewayReconnect extends NonDispatchPayload {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#ready
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayReadyDispatch = DataPayload<GatewayDispatchEvents.Ready, GatewayReadyDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#ready
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayReadyDispatchData {
 	/**
@@ -396,6 +432,7 @@ export interface GatewayReadyDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#resumed
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayResumedDispatch = DataPayload<GatewayDispatchEvents.Resumed, never>;
 
@@ -403,6 +440,7 @@ export type GatewayResumedDispatch = DataPayload<GatewayDispatchEvents.Resumed, 
  * https://discord.com/developers/docs/topics/gateway#channel-create
  * https://discord.com/developers/docs/topics/gateway#channel-update
  * https://discord.com/developers/docs/topics/gateway#channel-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelModifyDispatch = DataPayload<
 	GatewayDispatchEvents.ChannelCreate | GatewayDispatchEvents.ChannelDelete | GatewayDispatchEvents.ChannelUpdate,
@@ -413,41 +451,49 @@ export type GatewayChannelModifyDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway#channel-create
  * https://discord.com/developers/docs/topics/gateway#channel-update
  * https://discord.com/developers/docs/topics/gateway#channel-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelModifyDispatchData = APIChannel;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelCreateDispatch = GatewayChannelModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelCreateDispatchData = GatewayChannelModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelUpdateDispatch = GatewayChannelModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelUpdateDispatchData = GatewayChannelModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelDeleteDispatch = GatewayChannelModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelDeleteDispatchData = GatewayChannelModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-pins-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayChannelPinsUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.ChannelPinsUpdate,
@@ -456,6 +502,7 @@ export type GatewayChannelPinsUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-pins-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayChannelPinsUpdateDispatchData {
 	/**
@@ -475,6 +522,7 @@ export interface GatewayChannelPinsUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
  * https://discord.com/developers/docs/topics/gateway#guild-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildModifyDispatch = DataPayload<
 	GatewayDispatchEvents.GuildCreate | GatewayDispatchEvents.GuildUpdate,
@@ -484,42 +532,50 @@ export type GatewayGuildModifyDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
  * https://discord.com/developers/docs/topics/gateway#guild-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildModifyDispatchData = APIGuild;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildCreateDispatch = GatewayGuildModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildCreateDispatchData = GatewayGuildModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildUpdateDispatch = GatewayGuildModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildUpdateDispatchData = GatewayGuildModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildDeleteDispatch = DataPayload<GatewayDispatchEvents.GuildDelete, GatewayGuildDeleteDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildDeleteDispatchData = APIUnavailableGuild;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-ban-add
  * https://discord.com/developers/docs/topics/gateway#guild-ban-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildBanModifyDispatch = DataPayload<
 	GatewayDispatchEvents.GuildBanAdd | GatewayDispatchEvents.GuildBanRemove,
@@ -529,6 +585,7 @@ export type GatewayGuildBanModifyDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-ban-add
  * https://discord.com/developers/docs/topics/gateway#guild-ban-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildBanModifyDispatchData {
 	/**
@@ -545,26 +602,31 @@ export interface GatewayGuildBanModifyDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-ban-add
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildBanAddDispatch = GatewayGuildBanModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-ban-add
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildBanAddDispatchData = GatewayGuildBanModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-ban-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildBanRemoveDispatch = GatewayGuildBanModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-ban-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildBanRemoveDispatchData = GatewayGuildBanModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-emojis-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildEmojisUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildEmojisUpdate,
@@ -573,6 +635,7 @@ export type GatewayGuildEmojisUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-emojis-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildEmojisUpdateDispatchData {
 	/**
@@ -589,6 +652,7 @@ export interface GatewayGuildEmojisUpdateDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-stickers-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildStickersUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildStickersUpdate,
@@ -597,6 +661,7 @@ export type GatewayGuildStickersUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-stickers-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildStickersUpdateDispatchData {
 	/**
@@ -613,6 +678,7 @@ export interface GatewayGuildStickersUpdateDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-integrations-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildIntegrationsUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildIntegrationsUpdate,
@@ -621,6 +687,7 @@ export type GatewayGuildIntegrationsUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-integrations-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildIntegrationsUpdateDispatchData {
 	/**
@@ -631,6 +698,7 @@ export interface GatewayGuildIntegrationsUpdateDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-add
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildMemberAddDispatch = DataPayload<
 	GatewayDispatchEvents.GuildMemberAdd,
@@ -639,6 +707,7 @@ export type GatewayGuildMemberAddDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-add
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildMemberAddDispatchData extends APIGuildMember {
 	/**
@@ -649,6 +718,7 @@ export interface GatewayGuildMemberAddDispatchData extends APIGuildMember {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildMemberRemoveDispatch = DataPayload<
 	GatewayDispatchEvents.GuildMemberRemove,
@@ -657,6 +727,7 @@ export type GatewayGuildMemberRemoveDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildMemberRemoveDispatchData {
 	/**
@@ -673,6 +744,7 @@ export interface GatewayGuildMemberRemoveDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildMemberUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildMemberUpdate,
@@ -681,6 +753,7 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-member-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' | 'mute' | 'user' | 'joined_at'> &
 	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
@@ -694,6 +767,7 @@ export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' |
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-members-chunk
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildMembersChunkDispatch = DataPayload<
 	GatewayDispatchEvents.GuildMembersChunk,
@@ -702,6 +776,7 @@ export type GatewayGuildMembersChunkDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-members-chunk
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildMembersChunkDispatchData {
 	/**
@@ -743,6 +818,7 @@ export interface GatewayGuildMembersChunkDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-create
  * https://discord.com/developers/docs/topics/gateway#guild-role-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildRoleModifyDispatch = DataPayload<
 	GatewayDispatchEvents.GuildRoleCreate | GatewayDispatchEvents.GuildRoleUpdate,
@@ -752,6 +828,7 @@ export type GatewayGuildRoleModifyDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-create
  * https://discord.com/developers/docs/topics/gateway#guild-role-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildRoleModifyDispatchData {
 	/**
@@ -768,26 +845,31 @@ export interface GatewayGuildRoleModifyDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildRoleCreateDispatch = GatewayGuildRoleModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildRoleCreateDispatchData = GatewayGuildRoleModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildRoleUpdateDispatch = GatewayGuildRoleModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildRoleUpdateDispatchData = GatewayGuildRoleModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayGuildRoleDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.GuildRoleDelete,
@@ -796,6 +878,7 @@ export type GatewayGuildRoleDeleteDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-role-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayGuildRoleDeleteDispatchData {
 	/**
@@ -809,7 +892,81 @@ export interface GatewayGuildRoleDeleteDispatchData {
 }
 
 /**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventCreate,
+	GatewayGuildScheduledEventCreateDispatchData
+>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventCreateDispatchData = APIGuildScheduledEvent;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUpdate,
+	GatewayGuildScheduledEventUpdateDispatchData
+>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildScheduledEvent;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventDelete,
+	GatewayGuildScheduledEventDeleteDispatchData
+>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventUserAddDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserAdd,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface GatewayGuildScheduledEventUserAddDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
+}
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GatewayGuildScheduledEventUserRemoveDispatch = DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventUserRemove,
+	GatewayGuildScheduledEventUserAddDispatchData
+>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface GatewayGuildScheduledEventUserRemoveDispatchData {
+	guild_scheduled_event_id: Snowflake;
+	user_id: Snowflake;
+	guild_id: Snowflake;
+}
+
+/**
  * https://discord.com/developers/docs/topics/gateway#integration-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayIntegrationCreateDispatch = DataPayload<
 	GatewayDispatchEvents.IntegrationCreate,
@@ -818,11 +975,13 @@ export type GatewayIntegrationCreateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayIntegrationCreateDispatchData = APIGuildIntegration & { guild_id: Snowflake };
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayIntegrationUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.IntegrationUpdate,
@@ -831,11 +990,13 @@ export type GatewayIntegrationUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayIntegrationUpdateDispatchData = APIGuildIntegration & { guild_id: Snowflake };
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayIntegrationDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.IntegrationDelete,
@@ -844,6 +1005,7 @@ export type GatewayIntegrationDeleteDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#integration-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayIntegrationDeleteDispatchData {
 	/**
@@ -862,6 +1024,7 @@ export interface GatewayIntegrationDeleteDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#interaction-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayInteractionCreateDispatch = DataPayload<
 	GatewayDispatchEvents.InteractionCreate,
@@ -870,11 +1033,13 @@ export type GatewayInteractionCreateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#interaction-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type GatewayInteractionCreateDispatchData = APIApplicationCommandInteraction | APIMessageComponentInteraction;
+export type GatewayInteractionCreateDispatchData = APIInteraction;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayInviteCreateDispatch = DataPayload<
 	GatewayDispatchEvents.InviteCreate,
@@ -883,6 +1048,7 @@ export type GatewayInviteCreateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayInviteCreateDispatchData {
 	/**
@@ -945,6 +1111,7 @@ export interface GatewayInviteCreateDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayInviteDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.InviteDelete,
@@ -953,6 +1120,7 @@ export type GatewayInviteDeleteDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayInviteDeleteDispatchData {
 	/**
@@ -973,6 +1141,7 @@ export interface GatewayInviteDeleteDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageCreateDispatch = DataPayload<
 	GatewayDispatchEvents.MessageCreate,
@@ -981,11 +1150,13 @@ export type GatewayMessageCreateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageCreateDispatchData = APIMessage;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.MessageUpdate,
@@ -994,6 +1165,7 @@ export type GatewayMessageUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageUpdateDispatchData = {
 	id: Snowflake;
@@ -1002,6 +1174,7 @@ export type GatewayMessageUpdateDispatchData = {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.MessageDelete,
@@ -1010,6 +1183,7 @@ export type GatewayMessageDeleteDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayMessageDeleteDispatchData {
 	/**
@@ -1028,6 +1202,7 @@ export interface GatewayMessageDeleteDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-delete-bulk
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageDeleteBulkDispatch = DataPayload<
 	GatewayDispatchEvents.MessageDeleteBulk,
@@ -1036,6 +1211,7 @@ export type GatewayMessageDeleteBulkDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-delete-bulk
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayMessageDeleteBulkDispatchData {
 	/**
@@ -1054,26 +1230,31 @@ export interface GatewayMessageDeleteBulkDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-add
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageReactionAddDispatch = ReactionData<GatewayDispatchEvents.MessageReactionAdd>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-add
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDispatch['d'];
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageReactionRemoveDispatch = ReactionData<GatewayDispatchEvents.MessageReactionRemove, 'member'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-remove
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageReactionRemoveDispatchData = GatewayMessageReactionRemoveDispatch['d'];
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-remove-all
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageReactionRemoveAllDispatch = DataPayload<
 	GatewayDispatchEvents.MessageReactionRemoveAll,
@@ -1082,11 +1263,13 @@ export type GatewayMessageReactionRemoveAllDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-remove-all
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageReactionRemoveAllDispatchData = MessageReactionRemoveData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-remove-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayMessageReactionRemoveEmojiDispatch = DataPayload<
 	GatewayDispatchEvents.MessageReactionRemoveEmoji,
@@ -1095,6 +1278,7 @@ export type GatewayMessageReactionRemoveEmojiDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-reaction-remove-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayMessageReactionRemoveEmojiDispatchData extends MessageReactionRemoveData {
 	/**
@@ -1105,6 +1289,7 @@ export interface GatewayMessageReactionRemoveEmojiDispatchData extends MessageRe
 
 /**
  * https://discord.com/developers/docs/topics/gateway#presence-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayPresenceUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.PresenceUpdate,
@@ -1113,11 +1298,13 @@ export type GatewayPresenceUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#presence-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayPresenceUpdateDispatchData = RawGatewayPresenceUpdate;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#stage-instance-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayStageInstanceCreateDispatch = DataPayload<
 	GatewayDispatchEvents.StageInstanceCreate,
@@ -1126,11 +1313,13 @@ export type GatewayStageInstanceCreateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#stage-instance-create
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayStageInstanceCreateDispatchData = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#stage-instance-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayStageInstanceDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.StageInstanceDelete,
@@ -1139,11 +1328,13 @@ export type GatewayStageInstanceDeleteDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#stage-instance-delete
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayStageInstanceDeleteDispatchData = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#stage-instance-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayStageInstanceUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.StageInstanceUpdate,
@@ -1152,16 +1343,19 @@ export type GatewayStageInstanceUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#stage-instance-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayStageInstanceUpdateDispatchData = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#typing-start
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayTypingStartDispatch = DataPayload<GatewayDispatchEvents.TypingStart, GatewayTypingStartDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#typing-start
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayTypingStartDispatchData {
 	/**
@@ -1190,16 +1384,19 @@ export interface GatewayTypingStartDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#user-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayUserUpdateDispatch = DataPayload<GatewayDispatchEvents.UserUpdate, GatewayUserUpdateDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#user-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayUserUpdateDispatchData = APIUser;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#voice-state-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayVoiceStateUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.VoiceStateUpdate,
@@ -1208,11 +1405,13 @@ export type GatewayVoiceStateUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#voice-state-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayVoiceStateUpdateDispatchData = GatewayVoiceState;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#voice-server-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayVoiceServerUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.VoiceServerUpdate,
@@ -1221,6 +1420,7 @@ export type GatewayVoiceServerUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#voice-server-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayVoiceServerUpdateDispatchData {
 	/**
@@ -1243,6 +1443,7 @@ export interface GatewayVoiceServerUpdateDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#webhooks-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayWebhooksUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.WebhooksUpdate,
@@ -1251,6 +1452,7 @@ export type GatewayWebhooksUpdateDispatch = DataPayload<
 
 /**
  * https://discord.com/developers/docs/topics/gateway#webhooks-update
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayWebhooksUpdateDispatchData {
 	/**
@@ -1269,6 +1471,7 @@ export interface GatewayWebhooksUpdateDispatchData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#heartbeating
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayHeartbeat {
 	op: GatewayOpcodes.Heartbeat;
@@ -1277,11 +1480,13 @@ export interface GatewayHeartbeat {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#heartbeating
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayHeartbeatData = number | null;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#identify
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayIdentify {
 	op: GatewayOpcodes.Identify;
@@ -1290,6 +1495,7 @@ export interface GatewayIdentify {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#identify
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayIdentifyData {
 	/**
@@ -1337,6 +1543,7 @@ export interface GatewayIdentifyData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#identify-identify-connection-properties
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayIdentifyProperties {
 	/**
@@ -1355,6 +1562,7 @@ export interface GatewayIdentifyProperties {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#resume
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayResume {
 	op: GatewayOpcodes.Resume;
@@ -1363,6 +1571,7 @@ export interface GatewayResume {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#resume
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayResumeData {
 	/**
@@ -1381,6 +1590,7 @@ export interface GatewayResumeData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#request-guild-members
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayRequestGuildMembers {
 	op: GatewayOpcodes.RequestGuildMembers;
@@ -1389,6 +1599,7 @@ export interface GatewayRequestGuildMembers {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#request-guild-members
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayRequestGuildMembersData {
 	/**
@@ -1424,6 +1635,7 @@ export interface GatewayRequestGuildMembersData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#update-voice-state
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayVoiceStateUpdate {
 	op: GatewayOpcodes.VoiceStateUpdate;
@@ -1432,6 +1644,7 @@ export interface GatewayVoiceStateUpdate {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#update-voice-state
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayVoiceStateUpdateData {
 	/**
@@ -1454,6 +1667,7 @@ export interface GatewayVoiceStateUpdateData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#update-presence
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayUpdatePresence {
 	op: GatewayOpcodes.PresenceUpdate;
@@ -1462,6 +1676,7 @@ export interface GatewayUpdatePresence {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#update-presence-gateway-presence-update-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface GatewayPresenceUpdateData {
 	/**
@@ -1488,6 +1703,7 @@ export interface GatewayPresenceUpdateData {
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'type' | 'url'>;
 
@@ -1513,7 +1729,10 @@ interface BasePayload {
 	t?: string;
 }
 
-type NonDispatchPayload = Omit<BasePayload, 't'>;
+type NonDispatchPayload = Omit<BasePayload, 't' | 's'> & {
+	t: null;
+	s: null;
+};
 
 interface DataPayload<Event extends GatewayDispatchEvents, D = unknown> extends BasePayload {
 	op: GatewayOpcodes.Dispatch;
@@ -1558,6 +1777,9 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 	>
 >;
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 interface MessageReactionRemoveData {
 	/**
 	 * The id of the channel

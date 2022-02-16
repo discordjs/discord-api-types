@@ -540,7 +540,7 @@ export type APIAuditLogChangeKeyExpireGracePeriod = AuditLogChangeData<'expire_g
  * @internal
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
-interface AuditLogChangeData<K extends string, D extends unknown> {
+interface AuditLogChangeData<K extends string, D> {
 	key: K;
 	new_value?: D;
 	old_value?: D;

@@ -3,16 +3,17 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals';
+import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
-import type { APIApplication } from './application';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
 
 /**
  * Not documented, but partial only includes id, name, and type
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIPartialChannel {
 	/**
@@ -32,17 +33,50 @@ export interface APIPartialChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
+ * This interface is used to allow easy extension for other channel types. While
+ * also allowing `APIPartialChannel` to be used without breaking.
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface APIChannel extends APIPartialChannel {
+export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel {
+	type: T;
+}
+
+// TODO: update when text in voice is released
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type TextChannelType = ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildNews | ChannelType.GuildText;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GuildChannelType = Exclude<
+	| TextChannelType
+	| ChannelType.GuildVoice
+	| ChannelType.GuildStageVoice
+	| ChannelType.GuildNews
+	| ChannelType.GuildStore,
+	ChannelType.DM | ChannelType.GroupDM
+>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+}
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
 	guild_id?: Snowflake;
-	/**
-	 * Sorting position of the channel
-	 */
-	position?: number;
 	/**
 	 * Explicit permission overwrites for members and roles
 	 *
@@ -50,17 +84,71 @@ export interface APIChannel extends APIPartialChannel {
 	 */
 	permission_overwrites?: APIOverwrite[];
 	/**
-	 * The channel topic (0-1024 characters)
+	 * Sorting position of the channel
 	 */
-	topic?: string | null;
+	position?: number;
+	/**
+	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
+	 */
+	parent_id?: Snowflake | null;
 	/**
 	 * Whether the channel is nsfw
 	 */
 	nsfw?: boolean;
+}
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface APIGuildTextChannel<T extends GuildTextChannelType>
+	extends APITextBasedChannel<T>,
+		APIGuildChannel<T> {
 	/**
-	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 * The channel topic (0-1024 characters)
 	 */
-	last_message_id?: Snowflake | null;
+	topic?: string | null;
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+}
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildText> {
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 */
+	rate_limit_per_user?: number;
+}
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIGuildStoreChannel = APIGuildChannel<ChannelType.GuildStore>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -69,38 +157,6 @@ export interface APIChannel extends APIPartialChannel {
 	 * The user limit of the voice channel
 	 */
 	user_limit?: number;
-	/**
-	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 */
-	rate_limit_per_user?: number;
-	/**
-	 * The recipients of the DM
-	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
-	 */
-	recipients?: APIUser[];
-	/**
-	 * Icon hash
-	 */
-	icon?: string | null;
-	/**
-	 * ID of the DM creator
-	 */
-	owner_id?: Snowflake;
-	/**
-	 * Application id of the group DM creator if it is bot-created
-	 */
-	application_id?: Snowflake;
-	/**
-	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
-	 */
-	parent_id?: Snowflake | null;
-	/**
-	 * When the last pinned message was pinned.
-	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
-	 */
-	last_pin_timestamp?: string | null;
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
@@ -116,9 +172,63 @@ export interface APIChannel extends APIPartialChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum ChannelType {
+interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+	/**
+	 * The recipients of the DM
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 */
+	recipients?: APIUser[];
+}
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM> {
+	/**
+	 * Application id of the group DM creator if it is bot-created
+	 */
+	application_id?: Snowflake;
+	/**
+	 * Icon hash
+	 */
+	icon?: string | null;
+	/**
+	 * ID of the DM creator
+	 */
+	owner_id?: Snowflake;
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIChannel =
+	| APIGroupDMChannel
+	| APIDMChannel
+	| APITextChannel
+	| APINewsChannel
+	| APIGuildStoreChannel
+	| APIVoiceChannel
+	| APIGuildCategoryChannel
+	| APINewsChannel;
+
+/**
+ * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export enum ChannelType {
 	/**
 	 * A text channel within a guild
 	 */
@@ -161,7 +271,10 @@ export const enum ChannelType {
 	GuildStageVoice = 13,
 }
 
-export const enum VideoQualityMode {
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export enum VideoQualityMode {
 	/**
 	 * Discord chooses the quality for optimal performance
 	 */
@@ -174,6 +287,7 @@ export const enum VideoQualityMode {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessage {
 	/**
@@ -344,7 +458,7 @@ export interface APIMessage {
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 */
-	components?: APIActionRowComponent[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
 	 * Sent if the message contains stickers
 	 *
@@ -362,8 +476,9 @@ export interface APIMessage {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum MessageType {
+export enum MessageType {
 	Default,
 	RecipientAdd,
 	RecipientRemove,
@@ -389,6 +504,7 @@ export const enum MessageType {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageActivity {
 	/**
@@ -407,6 +523,7 @@ export interface APIMessageActivity {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageReference {
 	/**
@@ -425,8 +542,9 @@ export interface APIMessageReference {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum MessageActivityType {
+export enum MessageActivityType {
 	Join = 1,
 	Spectate,
 	Listen,
@@ -435,8 +553,9 @@ export const enum MessageActivityType {
 
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-flags
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum MessageFlags {
+export enum MessageFlags {
 	/**
 	 * This message has been published to subscribed channels (via Channel Following)
 	 */
@@ -469,6 +588,7 @@ export const enum MessageFlags {
 
 /**
  * https://discord.com/developers/docs/resources/channel#followed-channel-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIFollowedChannel {
 	/**
@@ -483,6 +603,7 @@ export interface APIFollowedChannel {
 
 /**
  * https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIReaction {
 	/**
@@ -503,6 +624,7 @@ export interface APIReaction {
 
 /**
  * https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIOverwrite {
 	/**
@@ -533,7 +655,10 @@ export interface APIOverwrite {
 	deny: Permissions;
 }
 
-export const enum OverwriteType {
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export enum OverwriteType {
 	Role,
 	Member,
 }
@@ -542,6 +667,7 @@ export const enum OverwriteType {
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
  *
  * Length limit: 6000 characters
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbed {
 	/**
@@ -625,8 +751,9 @@ export interface APIEmbed {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum EmbedType {
+export enum EmbedType {
 	/**
 	 * Generic embed rendered from embed attributes
 	 */
@@ -655,6 +782,7 @@ export const enum EmbedType {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedThumbnail {
 	/**
@@ -677,6 +805,7 @@ export interface APIEmbedThumbnail {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedVideo {
 	/**
@@ -695,6 +824,7 @@ export interface APIEmbedVideo {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedImage {
 	/**
@@ -717,6 +847,7 @@ export interface APIEmbedImage {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedProvider {
 	/**
@@ -731,6 +862,7 @@ export interface APIEmbedProvider {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedAuthor {
 	/**
@@ -755,6 +887,7 @@ export interface APIEmbedAuthor {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedFooter {
 	/**
@@ -775,6 +908,7 @@ export interface APIEmbedFooter {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIEmbedField {
 	/**
@@ -797,6 +931,7 @@ export interface APIEmbedField {
 
 /**
  * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIAttachment {
 	/**
@@ -845,6 +980,7 @@ export interface APIAttachment {
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIChannelMention {
 	/**
@@ -869,8 +1005,9 @@ export interface APIChannelMention {
 
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum AllowedMentionsTypes {
+export enum AllowedMentionsTypes {
 	/**
 	 * Controls @everyone and @here mentions
 	 */
@@ -887,6 +1024,7 @@ export const enum AllowedMentionsTypes {
 
 /**
  * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIAllowedMentions {
 	/**
@@ -913,8 +1051,9 @@ export interface APIAllowedMentions {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface APIBaseMessageComponent<T extends ComponentType> {
+export interface APIBaseComponent<T extends ComponentType> {
 	/**
 	 * The type of the component
 	 */
@@ -923,8 +1062,9 @@ export interface APIBaseMessageComponent<T extends ComponentType> {
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#component-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum ComponentType {
+export enum ComponentType {
 	/**
 	 * Action Row component
 	 */
@@ -937,22 +1077,28 @@ export const enum ComponentType {
 	 * Select Menu component
 	 */
 	SelectMenu,
+	/**
+	 * Text Input component
+	 */
+	TextInput,
 }
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#action-rows
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface APIActionRowComponent extends APIBaseMessageComponent<ComponentType.ActionRow> {
+export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
+	extends APIBaseComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
-	components: Exclude<APIMessageComponent, APIActionRowComponent>[];
+	components: T[];
 }
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons
  */
-interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessageComponent<ComponentType.Button> {
+interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
 	/**
 	 * The label to be displayed on the button
 	 */
@@ -971,6 +1117,9 @@ interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseMessa
 	disabled?: boolean;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIMessageComponentEmoji {
 	/**
 	 * Emoji id
@@ -986,6 +1135,9 @@ export interface APIMessageComponentEmoji {
 	animated?: boolean;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIButtonComponentWithCustomId
 	extends APIButtonComponentBase<
 		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
@@ -996,6 +1148,9 @@ export interface APIButtonComponentWithCustomId
 	custom_id: string;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
 	/**
 	 * The URL to direct users to when clicked for Link buttons
@@ -1003,12 +1158,16 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 	url: string;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithURL;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum ButtonStyle {
+export enum ButtonStyle {
 	Primary = 1,
 	Secondary,
 	Success,
@@ -1017,9 +1176,19 @@ export const enum ButtonStyle {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface APISelectMenuComponent extends APIBaseMessageComponent<ComponentType.SelectMenu> {
+export enum TextInputStyle {
+	Short = 1,
+	Paragraph,
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
 	 */
@@ -1027,7 +1196,7 @@ export interface APISelectMenuComponent extends APIBaseMessageComponent<Componen
 	/**
 	 * The choices in the select, max 25
 	 */
-	options?: APISelectMenuOption[];
+	options: APISelectMenuOption[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 100 characters
 	 */
@@ -1054,6 +1223,7 @@ export interface APISelectMenuComponent extends APIBaseMessageComponent<Componen
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APISelectMenuOption {
 	/**
@@ -1079,6 +1249,67 @@ export interface APISelectMenuOption {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#message-components
+ * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIMessageComponent = APIActionRowComponent | APIButtonComponent | APISelectMenuComponent;
+export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
+	/**
+	 * One of text input styles
+	 */
+	style: TextInputStyle;
+	/**
+	 * The custom id for the text input
+	 */
+	custom_id: string;
+	/**
+	 * Text that appears on top of the text input field, max 80 characters
+	 */
+	label: string;
+	/**
+	 * Placeholder for the text input
+	 */
+	placeholder?: string;
+	/**
+	 * The pre-filled text in the text input
+	 */
+	value?: string;
+	/**
+	 * Minimal length of text input
+	 */
+	min_length?: number;
+	/**
+	 * Maximal length of text input
+	 */
+	max_length?: number;
+	/**
+	 * Whether or not this text input is required or not
+	 */
+	required?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#message-components
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIMessageComponent = APIMessageActionRowComponent | APIActionRowComponent<APIMessageActionRowComponent>;
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIModalComponent = APIModalActionRowComponent | APIActionRowComponent<APIModalActionRowComponent>;
+
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#message-components
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuComponent;
+
+// Modal components
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export type APIModalActionRowComponent = APITextInputComponent;

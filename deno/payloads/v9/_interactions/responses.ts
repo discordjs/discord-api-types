@@ -1,5 +1,6 @@
-import type { MessageFlags } from '../mod.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9.ts';
+import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel.ts';
+import type { MessageFlags } from '../mod.ts';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**
@@ -10,6 +11,7 @@ export enum InteractionType {
 	ApplicationCommand,
 	MessageComponent,
 	ApplicationCommandAutocomplete,
+	ModalSubmit,
 }
 
 /**
@@ -21,7 +23,8 @@ export type APIInteractionResponse =
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
 	| APIInteractionResponseUpdateMessage
-	| APIApplicationCommandAutocompleteResponse;
+	| APIApplicationCommandAutocompleteResponse
+	| APIModalInteractionResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
@@ -30,6 +33,11 @@ export interface APIInteractionResponsePong {
 export interface APIApplicationCommandAutocompleteResponse {
 	type: InteractionResponseType.ApplicationCommandAutocompleteResult;
 	data: APICommandAutocompleteInteractionResponseCallbackData;
+}
+
+export interface APIModalInteractionResponse {
+	type: InteractionResponseType.Modal;
+	data: APIModalInteractionResponseCallbackData;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -79,6 +87,10 @@ export enum InteractionResponseType {
 	 * For autocomplete interactions
 	 */
 	ApplicationCommandAutocompleteResult,
+	/**
+	 * Respond to an interaction with an modal for a user to fill-out
+	 */
+	Modal,
 }
 
 /**
@@ -91,4 +103,22 @@ export type APIInteractionResponseCallbackData = Omit<
 
 export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
+ */
+export interface APIModalInteractionResponseCallbackData {
+	/**
+	 * A developer-defined identifier for the component, max 100 characters
+	 */
+	custom_id: string;
+	/**
+	 * The title of the popup modal
+	 */
+	title: string;
+	/**
+	 * Between 1 and 5 (inclusive) components that make up the modal
+	 */
+	components: APIActionRowComponent<APIModalActionRowComponent>[];
 }

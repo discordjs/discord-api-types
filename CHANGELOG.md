@@ -1,3 +1,159 @@
+## [0.27.1](https://github.com/discordjs/discord-api-types/compare/0.27.0...0.27.1) (2022-02-14)
+
+### Bug Fixes
+
+- **APIInteraction:** add modal submit interaction & make `data` required in APIModalSubmit ([#321](https://github.com/discordjs/discord-api-types/issues/321)) ([f88727b](https://github.com/discordjs/discord-api-types/commit/f88727bd80d32f3ddf4374b1fd46ce50c36eea4d))
+- **APIInteractions:** export ApplicationCommandAutocomplete ([#309](https://github.com/discordjs/discord-api-types/issues/309)) ([5056da5](https://github.com/discordjs/discord-api-types/commit/5056da523af6154fbf2fbcf10e30ce437ec42ce8))
+- **CI:** skip pull request checks for runs that don't include the token ([#327](https://github.com/discordjs/discord-api-types/issues/327)) ([0ad06fc](https://github.com/discordjs/discord-api-types/commit/0ad06fc639d7f8bdff135a58d435e6cb15029842))
+- make `data` required in autocomplete interaction and add separate dm/guild types ([#322](https://github.com/discordjs/discord-api-types/issues/322)) ([7abeb2e](https://github.com/discordjs/discord-api-types/commit/7abeb2e0391d6e47517edba63342ba9c4adc4fcb))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error 40060 ([#320](https://github.com/discordjs/discord-api-types/issues/320)) ([72e9617](https://github.com/discordjs/discord-api-types/commit/72e9617fee6e05d2eb4b715c0261d316ff0e1f1e))
+
+# [0.27.0](https://github.com/discordjs/discord-api-types/compare/0.26.1...0.27.0) (2022-02-10)
+
+### Bug Fixes
+
+- **GatewayThreadCreateDispatchData:** `newly_created` is optional, and `true` when present ([#312](https://github.com/discordjs/discord-api-types/issues/312)) ([87b9b08](https://github.com/discordjs/discord-api-types/commit/87b9b0885a3734b376e64da51d7667b74558f7e5))
+
+### Code Refactoring
+
+- **ActivityType:** change `Game` to `Playing` ([#298](https://github.com/discordjs/discord-api-types/issues/298)) ([08a8b28](https://github.com/discordjs/discord-api-types/commit/08a8b28ee1ed2041744d922db35dab24f3861469))
+- **UserFlags:** remove `None` ([#308](https://github.com/discordjs/discord-api-types/issues/308)) ([8e13cd8](https://github.com/discordjs/discord-api-types/commit/8e13cd80c66d11d93157a053e329ad98ece4a457))
+
+### Features
+
+- **APIGuildPreview:** add `stickers` ([#279](https://github.com/discordjs/discord-api-types/issues/279)) ([310c68f](https://github.com/discordjs/discord-api-types/commit/310c68f034812072ca3cacbeaff1f5b9454e3409))
+- **APIInteraction:** add locale props to interactions ([#273](https://github.com/discordjs/discord-api-types/issues/273)) ([03b8d3f](https://github.com/discordjs/discord-api-types/commit/03b8d3fee032fb77213389019baa2b80377dcfdc))
+- **APIMessageInteraction:** add `member` field ([#299](https://github.com/discordjs/discord-api-types/issues/299)) ([80ed7ba](https://github.com/discordjs/discord-api-types/commit/80ed7ba1c1ebb2e12d3a04339d4ff0209be9bbef))
+- **APIScheduledEvent:** add `image` prop ([#303](https://github.com/discordjs/discord-api-types/issues/303)) ([663c4e9](https://github.com/discordjs/discord-api-types/commit/663c4e97fbe2029ab040388b50d5600bfe281c4f))
+- **APIThreadMetadata:** add `create_timestamp` field ([#301](https://github.com/discordjs/discord-api-types/issues/301)) ([d95d956](https://github.com/discordjs/discord-api-types/commit/d95d9562dcc514556f3a4ced3e8f3ee4c5ed1282))
+- **ApplicationCommand:** attachment application command option type ([#272](https://github.com/discordjs/discord-api-types/issues/272)) ([71c4e6a](https://github.com/discordjs/discord-api-types/commit/71c4e6aecd044ce5282742c0e47bff7b64b890f7))
+- **GatewayThreadCreateDispatch:** Add `newly_created` field ([#311](https://github.com/discordjs/discord-api-types/issues/311)) ([7e54215](https://github.com/discordjs/discord-api-types/commit/7e542152da2e58f44c2314d5bd3b04a518fa979e))
+- **Interactions:** add modal and text input interactions ([#243](https://github.com/discordjs/discord-api-types/issues/243)) ([bf0f66b](https://github.com/discordjs/discord-api-types/commit/bf0f66b60a97f79c0e80ace5b408baee343bc82c))
+- **Locales:** add locale string enum ([#297](https://github.com/discordjs/discord-api-types/issues/297)) ([b07d5a0](https://github.com/discordjs/discord-api-types/commit/b07d5a0c2273b6b51b44542b638a768c36d0f184))
+- **MessageFlags:** add `FailedToMentionSomeRolesInThread` ([#280](https://github.com/discordjs/discord-api-types/issues/280)) ([76588d9](https://github.com/discordjs/discord-api-types/commit/76588d9d384f71ace05d96de17889e4490874462))
+- **RESTPostAPIChannelMessage, RESTPostAPIWebhookMessage:** add flags for creation ([#300](https://github.com/discordjs/discord-api-types/issues/300)) ([4194bd9](https://github.com/discordjs/discord-api-types/commit/4194bd9054a7e4b004f9244706f423292a8a0e56))
+- **RESTJSONErrorCodes:** add error 30042 ([#305](https://github.com/discordjs/discord-api-types/issues/305)) ([9c2b185](https://github.com/discordjs/discord-api-types/commit/9c2b185367b1ea2e432355d76af8f19e8fca7398))
+- **RESTJSONErrorCodes:** add error 30046 ([#304](https://github.com/discordjs/discord-api-types/issues/304)) ([56d3975](https://github.com/discordjs/discord-api-types/commit/56d39756c0d973ec56fe6e1eeb75d827f50aac81))
+- **RESTJSONErrorCodes:** add error 40004 ([#314](https://github.com/discordjs/discord-api-types/issues/314)) ([269a75c](https://github.com/discordjs/discord-api-types/commit/269a75ccf7b413bfc031849713e919ebb8d87a1a))
+- **RESTJSONErrorCodes:** add error 50068 ([#302](https://github.com/discordjs/discord-api-types/issues/302)) ([7655e20](https://github.com/discordjs/discord-api-types/commit/7655e2024800abc4431011668b83373e0868485e))
+- **RESTJSONErrorCodes:** add error code 50086 ([#286](https://github.com/discordjs/discord-api-types/issues/286)) ([51fb37c](https://github.com/discordjs/discord-api-types/commit/51fb37cbba44677870f0f916bd1416bdbd34e052))
+- **RESTPatchAPIGuildMember:** add `communication_disabled_until` field ([#289](https://github.com/discordjs/discord-api-types/issues/289)) ([5056b0f](https://github.com/discordjs/discord-api-types/commit/5056b0f2b3798480dbbc193fd80dedfefedff4fc))
+- **RESTPatchAPIGuildMember:** add modify current member and deprecate nick route ([#262](https://github.com/discordjs/discord-api-types/issues/262)) ([9a982ff](https://github.com/discordjs/discord-api-types/commit/9a982ff8d9592a02d78f24295efd756dc0c69fa8))
+- **RouteBases:** add base for guild scheduled events ([#293](https://github.com/discordjs/discord-api-types/issues/293)) ([83f29b6](https://github.com/discordjs/discord-api-types/commit/83f29b692839cc51869bcafdaf387b68731e0a28))
+- **UserFlags:** add `Spammer` flag ([#294](https://github.com/discordjs/discord-api-types/issues/294)) ([03f12d7](https://github.com/discordjs/discord-api-types/commit/03f12d71eef2661ee5290152952ea1adc9a92383))
+
+### types
+
+- Add tagged `type` unions for channel types ([#200](https://github.com/discordjs/discord-api-types/issues/200)) ([2c1fbda](https://github.com/discordjs/discord-api-types/commit/2c1fbda621fc1c1ea227295c578e6d8486dbc4f2))
+
+### BREAKING CHANGES
+
+- **Interactions:** `APIBaseMessageComponent` was renamed to `APIBaseComponent`
+- **UserFlags:** The `None` user flag is bye-bye (although I doubt anyone is using it)
+- All of the channel types are now split based on their type. As such, you will need to assert the type (either by checking it with the enum or by casting the data as the correct channel) before accessing data.
+  _If you encounter any missing properties due to this, please open an issue! This is a big change, and we hope nothing is missing_
+
+- **ActivityType:** `Game` was renamed to `Playing`
+
+## [0.26.1](https://github.com/discordjs/discord-api-types/compare/0.26.0...0.26.1) (2022-01-02)
+
+### Bug Fixes
+
+- **APIApplicationCommandOption:** correct type for integer and number ([#284](https://github.com/discordjs/discord-api-types/issues/284)) ([fe1f531](https://github.com/discordjs/discord-api-types/commit/fe1f5313a8fc13d0a2433738cce9be37f5d9eeb5))
+
+### Features
+
+- **APIAuditLogChangeData:** Add `communication_disabled_until` ([#281](https://github.com/discordjs/discord-api-types/issues/281)) ([0cf51ab](https://github.com/discordjs/discord-api-types/commit/0cf51abc267bd6246a7952e7f6a23fa8c5db290a))
+- **APIGuildScheduledEvent:** add more precise types for stage instance/voice/external events ([#278](https://github.com/discordjs/discord-api-types/issues/278)) ([751aee6](https://github.com/discordjs/discord-api-types/commit/751aee6fa7d4c542324a30e9b9bc641b0e7a8bf4))
+- **ApplicationFlags:** add embedded application flags ([#277](https://github.com/discordjs/discord-api-types/issues/277)) ([9f4f59c](https://github.com/discordjs/discord-api-types/commit/9f4f59c8e55f78caf614e27e28b6bca939665ca5))
+
+# [0.26.0](https://github.com/discordjs/discord-api-types/compare/0.25.2...0.26.0) (2021-12-24)
+
+### Bug Fixes
+
+- **APIInvite:** channel can be null ([#182](https://github.com/discordjs/discord-api-types/issues/182)) ([c67d426](https://github.com/discordjs/discord-api-types/commit/c67d426e3d3634eb0756f07029b9176cfc5873ce))
+- **GatewayStageInstance:** Stage Instance dispatches not included in `GatewayDispatchPayload` ([#267](https://github.com/discordjs/discord-api-types/issues/267)) ([46db72d](https://github.com/discordjs/discord-api-types/commit/46db72da2fd14a51047b4e66e934738785e72d96))
+- **NonDispatchPayload:** `t` & `s` fields are always null on non-dispatch payloads ([#259](https://github.com/discordjs/discord-api-types/issues/259)) ([315ce35](https://github.com/discordjs/discord-api-types/commit/315ce3584917635b93a26123470f37a10bd8d846))
+- only a partial object is needed when updating attachments ([#263](https://github.com/discordjs/discord-api-types/issues/263)) ([7ab780b](https://github.com/discordjs/discord-api-types/commit/7ab780b3aefb3c8c34a8114db3ace6c4e6ae3206))
+- **StickerPack:** Optional `banner_asset_id` ([#270](https://github.com/discordjs/discord-api-types/issues/270)) ([7eee39d](https://github.com/discordjs/discord-api-types/commit/7eee39d86c0d40857d0bf6fc0d4d1e31cda1895c))
+
+### Features
+
+- Add API error code `50055` ([#256](https://github.com/discordjs/discord-api-types/issues/256)) ([b01716b](https://github.com/discordjs/discord-api-types/commit/b01716bf22fba617c0a09084ff607127366432b6))
+- Add API error code 50109 ([#268](https://github.com/discordjs/discord-api-types/issues/268)) ([bfc5e46](https://github.com/discordjs/discord-api-types/commit/bfc5e46f5374289997219c35aa0b992dfaa4ec40))
+- add support for user guild member read oauth2 scope and route ([#254](https://github.com/discordjs/discord-api-types/issues/254)) ([e9d02a1](https://github.com/discordjs/discord-api-types/commit/e9d02a19fc3b4fad2f488b0db3b63d6301878730))
+- **APIAuditLog:** add `guild_scheduled_events` prop ([#251](https://github.com/discordjs/discord-api-types/issues/251)) ([c7efcd5](https://github.com/discordjs/discord-api-types/commit/c7efcd55059673ab9fc8e6ef9711050700274057))
+- **APIGuildMember:** add guild timeouts ([#235](https://github.com/discordjs/discord-api-types/issues/235)) ([0bbc972](https://github.com/discordjs/discord-api-types/commit/0bbc9721f6e18eb559c40e207f60218e7862d4ea))
+- **GatewayThreadMemberUpdateDispatchData:** add `guild_id` extra field ([#266](https://github.com/discordjs/discord-api-types/issues/266)) ([2c72242](https://github.com/discordjs/discord-api-types/commit/2c72242a03bd5adfd0fc145bf5645d1bad59254e))
+- **RESTJSONErrorCodes:** add error 20029 ([#257](https://github.com/discordjs/discord-api-types/issues/257)) ([9e619fc](https://github.com/discordjs/discord-api-types/commit/9e619fc460337d53c85fc3977c89489c14bd8254))
+- bring in support for TS 4.5's `exactOptionalPropertyTypes` ([#275](https://github.com/discordjs/discord-api-types/issues/275)) ([c20e5ae](https://github.com/discordjs/discord-api-types/commit/c20e5ae2a9edcca529e233a4deb634bc760076d2))
+
+### Cleanups
+
+- Make application command option union easier to use ([#250](https://github.com/discordjs/discord-api-types/issues/250)) ([8bbb819](https://github.com/discordjs/discord-api-types/commit/8bbb81942b3f87e46273bb75a12e2db4ef7ee797))
+- **ChatInputCommandOptions:** cleanup chat input options ([#274](https://github.com/discordjs/discord-api-types/issues/274)) ([7fe78ce](https://github.com/discordjs/discord-api-types/commit/7fe78cec25a07dcd5d7ba2af3a5d773620c2d3cf))
+
+### BREAKING CHANGES
+
+- **StickerPack:** `banner_asset_id` is now optional. Reference PR: https://github.com/discord/discord-api-docs/pull/4245
+- **APIInvite:** this marks the channel property of invites as possibly null
+- **ChatInputCommandOptions:** A lot of the options were renamed and split up to clean up internal code.
+  All option interfaces that ended in a plural (`*Options`) have had their pluralization removed (`*Option` now).
+  `APIApplicationCommandInteractionDataOptionWithValues` has been renamed to `APIApplicationCommandInteractionDataBasicOption`,
+  and every `*InteractionDataOptions{Type}` interfaces have been renamed to `*InteractionData{Type}Option`
+  (i.e.: `ApplicationCommandInteractionDataOptionString` -> `APIApplicationCommandInteractionDataStringOption`).
+
+## [0.25.2](https://github.com/discordjs/discord-api-types/compare/0.25.1...0.25.2) (2021-11-30)
+
+### Bug Fixes
+
+- **APISelectMenuComponent:** `options` property is required ([#248](https://github.com/discordjs/discord-api-types/issues/248)) ([51dee6e](https://github.com/discordjs/discord-api-types/commit/51dee6e0e5bb4d749b9f0436e7ec9d4793e56567))
+
+### Features
+
+- **Guild:** boost progress bars ([#227](https://github.com/discordjs/discord-api-types/issues/227)) ([47382b6](https://github.com/discordjs/discord-api-types/commit/47382b6183a1d232053fef23691d423f8af88f88))
+
+## [0.25.1](https://github.com/discordjs/discord-api-types/compare/0.25.0...0.25.1) (2021-11-30)
+
+### Bug Fixes
+
+- **deno:** faulty import paths for guild scheduled events ([#245](https://github.com/discordjs/discord-api-types/issues/245)) ([44c0f05](https://github.com/discordjs/discord-api-types/commit/44c0f05cb2fc2b9ea50745530ae94a669a839594))
+
+# [0.25.0](https://github.com/discordjs/discord-api-types/compare/0.24.0...0.25.0) (2021-11-29)
+
+### Bug Fixes
+
+- **APIApplicationCommandOption:** remove `default` property ([#242](https://github.com/discordjs/discord-api-types/issues/242)) ([faa8bf4](https://github.com/discordjs/discord-api-types/commit/faa8bf494bc79b844ce73e1892461e8440dc7abc))
+- correct types for autocomplete interaction data ([#234](https://github.com/discordjs/discord-api-types/issues/234)) ([691abb5](https://github.com/discordjs/discord-api-types/commit/691abb581fb17093b5fa139f3ff53cbc0ad0b2a1))
+- correct types for REST attachments ([#238](https://github.com/discordjs/discord-api-types/issues/238)) ([fa54b9d](https://github.com/discordjs/discord-api-types/commit/fa54b9de5522b9fa9d5367650950f8b0e44f6e14))
+- make subcommand options optional ([#241](https://github.com/discordjs/discord-api-types/issues/241)) ([7379a34](https://github.com/discordjs/discord-api-types/commit/7379a345e820703a59a2d754c8ee7c0f0c710e09))
+
+### Code Refactoring
+
+- **UserFlags:** update flag names ([#229](https://github.com/discordjs/discord-api-types/issues/229)) ([f2d62e3](https://github.com/discordjs/discord-api-types/commit/f2d62e3cdf6128357f65e946fe1926cf915a6395))
+
+### Features
+
+- add guild scheduled event ([#186](https://github.com/discordjs/discord-api-types/issues/186)) ([d333962](https://github.com/discordjs/discord-api-types/commit/d333962715a58bd5ac14ad80e900b43b02777794))
+- **RESTPostAPIChannelThreadsJSONBody:** add `rate_limit_per_user` ([#237](https://github.com/discordjs/discord-api-types/issues/237)) ([1e52e0c](https://github.com/discordjs/discord-api-types/commit/1e52e0ceab31465c7bbd820e332ef219ad715916))
+- add max/min option for number-based options ([#221](https://github.com/discordjs/discord-api-types/issues/221)) ([bc1d03e](https://github.com/discordjs/discord-api-types/commit/bc1d03e527b9d37fac6d76cfbb51f4eeb8238e7b))
+- add maze api error ([#228](https://github.com/discordjs/discord-api-types/issues/228)) ([7a15c97](https://github.com/discordjs/discord-api-types/commit/7a15c9786333fb6f2259f42536cfbf2cf0e43db8))
+- **ActivityFlags:** add new flags ([#207](https://github.com/discordjs/discord-api-types/issues/207)) ([0f51d8e](https://github.com/discordjs/discord-api-types/commit/0f51d8e83f8aa53efde5c01849aaf09b91d15cbd))
+- **ApplicationFlags:** add message content intent flags ([#226](https://github.com/discordjs/discord-api-types/issues/226)) ([d189e36](https://github.com/discordjs/discord-api-types/commit/d189e36c49cd230f98798ff57b668a6fe56df11b))
+- **Attachments:** multi uploads and alt text ([#223](https://github.com/discordjs/discord-api-types/issues/223)) ([fdf133e](https://github.com/discordjs/discord-api-types/commit/fdf133ef45d3871defb46e47079c2acdd65e69d7))
+- **GuildSystemChannelFlags:** add suppress member join sticker replies flag ([#222](https://github.com/discordjs/discord-api-types/issues/222)) ([4021dae](https://github.com/discordjs/discord-api-types/commit/4021dae44b331198d164a7c93dbc1242184efdf7))
+- **Interactions:** add autocomplete api types ([#205](https://github.com/discordjs/discord-api-types/issues/205)) ([3b9320d](https://github.com/discordjs/discord-api-types/commit/3b9320dbf2cbbae7db44f00e8deaf336ab052e8b))
+- **UserFlags:** add `BOT_HTTP_INTERACTIONS` flag ([#212](https://github.com/discordjs/discord-api-types/issues/212)) ([a015f96](https://github.com/discordjs/discord-api-types/commit/a015f96fcb4a74866f884db87732876095788111))
+
+### BREAKING CHANGES
+
+- **UserFlags:** All user flags now follow the internal name, with descriptions added for what they represent. This means you'll have to do some minor renaming in your code if you check for flags.
+- **APIApplicationCommandOption:** If you were using the `default` property for ApplicationCommandOptions, it has been removed, as Discord wasn't even taking it into account anymore.
+- The types for autocomplete interactions have been corrected.
+
 # [0.24.0](https://github.com/discordjs/discord-api-types/compare/0.23.1...0.24.0) (2021-10-16)
 
 ### Bug Fixes

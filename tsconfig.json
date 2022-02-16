@@ -13,13 +13,15 @@
 		"target": "ES2020",
 		"importsNotUsedAsValues": "error",
 		"strictNullChecks": true,
-		"preserveConstEnums": true
+		"preserveConstEnums": true,
+		"exactOptionalPropertyTypes": true
 	},
 	"include": [
 		"globals.ts",
 		"v6.ts",
 		"v8.ts",
 		"v9.ts",
+		"v10.ts",
 		"gateway/**/*.ts",
 		"payloads/**/*.ts",
 		"rest/**/*.ts",
