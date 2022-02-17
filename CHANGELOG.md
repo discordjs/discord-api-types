@@ -1,3 +1,14 @@
+## [0.27.2](https://github.com/discordjs/discord-api-types/compare/0.27.1...0.27.2) (2022-02-17)
+
+### Bug Fixes
+
+- **APIApplicationCommandAutocompleteInteraction:** make `options` field required ([#332](https://github.com/discordjs/discord-api-types/issues/332)) ([5396daf](https://github.com/discordjs/discord-api-types/commit/5396daf0dbbe7ed54d94c621649b746b1131dee9))
+- **APIInteractionResponse:** add `APIModalInteractionResponse` to union ([#333](https://github.com/discordjs/discord-api-types/issues/333)) ([a8f19e6](https://github.com/discordjs/discord-api-types/commit/a8f19e6a19cbefd99c8c8bd35e565ab3584c9eeb))
+
+### Features
+
+- api v10 ([#331](https://github.com/discordjs/discord-api-types/issues/331)) ([8e87b3e](https://github.com/discordjs/discord-api-types/commit/8e87b3e1ce35201503623839602c44fe2a52a27b))
+
 ## [0.27.1](https://github.com/discordjs/discord-api-types/compare/0.27.0...0.27.1) (2022-02-14)
 
 ### Bug Fixes
