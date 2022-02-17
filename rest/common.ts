@@ -133,7 +133,7 @@ export enum RESTJSONErrorCodes {
 	CannotEditMessageAuthoredByAnotherUser,
 	CannotSendAnEmptyMessage,
 	CannotSendMessagesToThisUser,
-	CannotSendMessagesInVoiceChannel,
+	CannotSendMessagesInNonTextChannel,
 	ChannelVerificationLevelTooHighForYouToGainAccess,
 	OAuth2ApplicationDoesNotHaveBot,
 	OAuth2ApplicationLimitReached,
