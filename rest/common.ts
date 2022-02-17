@@ -47,7 +47,8 @@ export enum RESTJSONErrorCodes {
 	UnknownInteraction = 10062,
 	UnknownApplicationCommand,
 
-	UnknownApplicationCommandPermissions = 10066,
+	UnknownVoiceState = 10065,
+	UnknownApplicationCommandPermissions,
 	UnknownStageInstance,
 	UnknownGuildMemberVerificationForm,
 	UnknownGuildWelcomeScreen,
