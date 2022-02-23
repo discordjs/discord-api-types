@@ -7,7 +7,7 @@ export type Snowflake = string | `${bigint}`;
  * https://discord.com/developers/docs/topics/permissions
  * @internal
  */
-export type Permissions = string;
+export type Permissions = string | `${bigint}`;
 
 /**
  * https://discord.com/developers/docs/reference#message-formatting-formats
