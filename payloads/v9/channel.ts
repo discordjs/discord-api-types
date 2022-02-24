@@ -1273,7 +1273,7 @@ export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.S
 	 */
 	options: APISelectMenuOption[];
 	/**
-	 * Custom placeholder text if nothing is selected, max 100 characters
+	 * Custom placeholder text if nothing is selected, max 150 characters
 	 */
 	placeholder?: string;
 	/**
