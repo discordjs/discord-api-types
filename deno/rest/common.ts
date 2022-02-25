@@ -41,7 +41,7 @@ export enum RESTJSONErrorCodes {
 
 	UnknownGuildTemplate = 10057,
 
-	UnknownDiscoverableServerCategory = 10059,
+	UnknownDiscoveryCategory = 10059,
 	UnknownSticker,
 
 	UnknownInteraction = 10062,
@@ -93,7 +93,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfAnimatedEmojisReached = 30018,
 	MaximumNumberOfServerMembersReached,
 
-	MaximumNumberOfServerCategoriesReached = 30030,
+	MaximumNumberOfGuildDiscoverySubcategoriesReached = 30030,
 
 	GuildAlreadyHasTemplate = 30031,
 

@@ -843,6 +843,32 @@ export const Routes = {
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/discovery/categories`
+	 */
+	discoveryCategories() {
+		return '/discovery/categories' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/${guild.id}/discovery-metadata`
+	 * - PATCH `/guilds/${guild.id}/discovery-metadata`
+	 */
+	discoveryMetadata(guildId: Snowflake) {
+		return `/guilds/${guildId}/discovery-metadata`;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/guilds/${guild.id}/discovery-categories/${category.id}`
+	 * - DELETE `/guilds/${guild.id}/discovery-categories/${category.id}`
+	 */
+	discoverySubcategory(guildId: Snowflake, categoryId: number) {
+		return `/guilds/${guildId}/discovery-categories/${categoryId}`;
+	},
 };
 
 export const RouteBases = {

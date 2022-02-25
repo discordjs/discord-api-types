@@ -466,6 +466,10 @@ export enum GuildFeature {
 	 */
 	Discoverable = 'DISCOVERABLE',
 	/**
+	 * Guild cannot be discoverable
+	 */
+	DiscoverableDisabled = 'DISCOVERABLE_DISABLED',
+	/**
 	 * Guild is able to be featured in the directory
 	 */
 	Featurable = 'FEATURABLE',
