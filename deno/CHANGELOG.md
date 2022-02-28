@@ -1,3 +1,13 @@
+# [0.28.0](https://github.com/discordjs/discord-api-types/compare/0.27.3...0.28.0) (2022-02-28)
+
+### Code Refactoring
+
+- **PermissionFlagsBits:** rename `StartEmbeddedActivities` to `UseEmbeddedActivities` ([#342](https://github.com/discordjs/discord-api-types/issues/342)) ([3e3acb5](https://github.com/discordjs/discord-api-types/commit/3e3acb5297e3e546fbb7fc82acddb50170ffc1de))
+
+### BREAKING CHANGES
+
+- **PermissionFlagsBits:** The `StartEmbeddedActivities` permission flag has been renamed to `UseEmbeddedActivities`
+
 ## [0.27.3](https://github.com/discordjs/discord-api-types/compare/0.27.2...0.27.3) (2022-02-24)
 
 ### Bug Fixes
