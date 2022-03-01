@@ -132,7 +132,7 @@ export interface GatewayActivity {
 	/**
 	 * The activity's name
 	 */
-	name: string;
+	name?: string;
 	/**
 	 * Activity type
 	 *
