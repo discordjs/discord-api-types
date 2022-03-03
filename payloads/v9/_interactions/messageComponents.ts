@@ -13,6 +13,28 @@ export type APIMessageComponentInteraction = APIBaseInteraction<
 		>
 	>;
 
+export type APIMessageComponentButtonInteraction = APIBaseInteraction<
+	InteractionType.MessageComponent,
+	APIMessageButtonInteractionData
+> &
+	Required<
+		Pick<
+			APIBaseInteraction<InteractionType.MessageComponent, APIMessageButtonInteractionData>,
+			'channel_id' | 'data' | 'message'
+		>
+	>;
+
+export type APIMessageComponentSelectMenuInteraction = APIBaseInteraction<
+	InteractionType.MessageComponent,
+	APIMessageSelectMenuInteractionData
+> &
+	Required<
+		Pick<
+			APIBaseInteraction<InteractionType.MessageComponent, APIMessageSelectMenuInteractionData>,
+			'channel_id' | 'data' | 'message'
+		>
+	>;
+
 export type APIMessageComponentInteractionData = APIMessageButtonInteractionData | APIMessageSelectMenuInteractionData;
 
 export interface APIMessageComponentBaseInteractionData<CType extends ComponentType> {
