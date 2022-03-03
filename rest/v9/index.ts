@@ -846,28 +846,44 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET   `/guilds/{guild.id}/discovery-metadata`
+	 * - PATCH `/guilds/{guild.id}/discovery-metadata`
+	 */
+	guildDiscoveryMetadata(guildId: Snowflake) {
+		return `/guilds/${guildId}/discovery-metadata` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/discovery/categories`
 	 */
 	discoveryCategories() {
-		return '/discovery/categories' as const;
+		return `/discovery/categories` as const;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/${guild.id}/discovery-metadata`
-	 * - PATCH `/guilds/${guild.id}/discovery-metadata`
+	 * - PUT `/guilds/${guild.id}/categories/${category.id}`
+	 * - DELETE `/guilds/${guild.id}/categories/${category.id}`
 	 */
-	discoveryMetadata(guildId: Snowflake) {
-		return `/guilds/${guildId}/discovery-metadata`;
+	guildDiscoverySubcategory(guildId: Snowflake, categoryId: number) {
+		return `/guilds/${guildId}/categories/${categoryId}` as const;
 	},
 
 	/**
 	 * Route for:
-	 * - POST `/guilds/${guild.id}/discovery-categories/${category.id}`
-	 * - DELETE `/guilds/${guild.id}/discovery-categories/${category.id}`
+	 * - GET `/guilds/${guild.id}/discovery-requirements`
 	 */
-	discoverySubcategory(guildId: Snowflake, categoryId: number) {
-		return `/guilds/${guildId}/discovery-categories/${categoryId}`;
+	guildDiscoveryRequirements(guildId: Snowflake) {
+		return `/guilds/${guildId}/discovery-requirements` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - Get `/discovery/valid-term`
+	 */
+	validateDiscoverySearchTerm() {
+		return '/discovery/valid-term' as const;
 	},
 };
 

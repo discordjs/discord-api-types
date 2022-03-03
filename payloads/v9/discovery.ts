@@ -23,11 +23,11 @@ export interface APIDiscoveryMetadata {
 	/**
 	 * When the server's partner application was accepted or denied, for applications via Server Settings
 	 */
-	partner_actioned_timestamp: string;
+	partner_actioned_timestamp?: string;
 	/**
 	 * When the server applied for partnership, if it has a pending application
 	 */
-	partner_application_timestamp: string;
+	partner_application_timestamp?: string;
 	/**
 	 * Ids of up to 5 discovery subcategories set for this guild
 	 */
@@ -45,7 +45,7 @@ export interface APIDiscoveryCategory {
 	/**
 	 * The name of this category, in multiple languages
 	 */
-	name: APIDiscoveryCategoryName;
+	name: string;
 	/**
 	 * Whether this category can be set as a guild's primary category
 	 */
@@ -53,15 +53,127 @@ export interface APIDiscoveryCategory {
 }
 
 /**
- * https://discord.com/developers/docs/resources/discovery#discovery-category-object
+ * https://discord.com/developers/docs/resources/discovery#discovery-requirements-structure
  */
-export interface APIDiscoveryCategoryName {
+export interface APIDiscoveryRequirements {
 	/**
-	 * The name in English
+	 * The guild id
 	 */
-	default: string;
+	guild_id?: Snowflake;
 	/**
-	 * The name in other languages
+	 * Whether the guild has not been flagged by Trust & Safety
 	 */
-	localizations?: Record<string, string>;
+	safe_environment?: boolean;
+	/**
+	 * Whether the guild meets the activity requirements
+	 */
+	healthy?: boolean | null;
+	/**
+	 * Whether the guild's activity metrics have not yet been calculated
+	 */
+	health_score_pending?: boolean;
+	/**
+	 * Whether the guild meets its minimum member count requirement
+	 */
+	size?: boolean;
+	/**
+	 * Banned terms found in the guild's name, description, and channel names
+	 */
+	nsfw_properties?: APIDiscoveryRequirementsNSFWProperties;
+	/**
+	 * Whether the guild has the 2FA requirement for moderation enabled
+	 */
+	protected?: boolean;
+	/**
+	 * Whether the guild meets the requirements to be in Discovery
+	 */
+	sufficient?: boolean | null;
+	/**
+	 * Whether the grace period can allow the guild to remain in Discovery
+	 */
+	sufficient_without_grace_period?: boolean;
+	/**
+	 * Whether the guild has a rules channel set
+	 */
+	valid_rules_channel?: boolean;
+	/**
+	 * Whether the guild meets the new member retention requirement
+	 */
+	retention_healthy?: boolean | null;
+	/**
+	 * Whether the guild meets the weekly visitor and communicator requirements
+	 */
+	engagement_healthy?: boolean | null;
+	/**
+	 * Whether the guild meets its minimum age requirement
+	 */
+	age?: boolean;
+	/**
+	 * The guild's minimum age requirement, in days
+	 */
+	minimum_age?: number;
+	/**
+	 * The guild's activity metrics
+	 */
+	health_score?: APIDiscoveryRequirementsHealthScore;
+	/**
+	 * The guild's minimum member count requirement
+	 */
+	minimum_size?: number;
+	/**
+	 * When the guild's grace period ends
+	 */
+	grace_period_end_date?: string;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/discovery#discovery-requirements-nsfw-properties-structure
+ */
+export interface APIDiscoveryRequirementsNSFWProperties {
+	/**
+	 * Ids of channels with names containing banned terms
+	 */
+	channels?: Snowflake[];
+	/**
+	 * The banned terms found in the channel names
+	 */
+	channel_banned_keywords?: Record<Snowflake, string[]>;
+	/**
+	 * The guild name, if it contains banned terms
+	 */
+	name?: string;
+	/**
+	 * The banned terms found in the guild name
+	 */
+	name_banned_keywords?: string[];
+	/**
+	 * The guild description, if it contains banned terms
+	 */
+	description?: string;
+	/**
+	 * The banned terms found in the guild description
+	 */
+	description_banned_keywords?: string[];
+}
+
+/**
+ * https://discord.com/developers/docs/resources/discovery#discovery-requirements-health-score-structure
+ */
+export interface APIDiscoveryRequirementsHealthScore {
+	/**
+	 * Average weekly number of users who talk in the guild and have been on Discord for 8 weeks+
+	 */
+	avg_nonnew_communicators: string | null;
+	/**
+	 * Average weekly number of users who view the guild and have been on Discord for 8 weeks+
+	 */
+	avg_nonnew_participators: string | null;
+	/**
+	 * Average number of users who join the guild per week
+	 */
+	num_intentful_joiners: string | null;
+	/**
+	 * Average proportion of new members who remain in the guild for at least a week
+	 */
+	perc_ret_w1_intentful: number | null;
 }
