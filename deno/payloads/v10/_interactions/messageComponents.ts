@@ -24,7 +24,7 @@ export type APIMessageComponentButtonInteraction = APIBaseInteraction<
 		>
 	>;
 
-export type APIMessageComponentSelectInteraction = APIBaseInteraction<
+export type APIMessageComponentSelectMenuInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,
 	APIMessageSelectMenuInteractionData
 > &
