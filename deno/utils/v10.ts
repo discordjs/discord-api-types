@@ -10,11 +10,14 @@ import {
 	APIDMInteraction,
 	APIGuildInteraction,
 	APIInteraction,
+	APIMessageComponentButtonInteraction,
 	APIMessageComponentDMInteraction,
 	APIMessageComponentGuildInteraction,
 	APIMessageComponentInteraction,
+	APIMessageComponentSelectMenuInteraction,
 	ApplicationCommandType,
 	ButtonStyle,
+	ComponentType,
 } from '../payloads/v10/mod.ts';
 
 // Interactions
@@ -103,6 +106,30 @@ export function isLinkButton(component: APIButtonComponent): component is APIBut
  */
 export function isInteractionButton(component: APIButtonComponent): component is APIButtonComponentWithCustomId {
 	return component.style !== ButtonStyle.Link;
+}
+
+// Message Components
+
+/**
+ * A type-guard check for button message component interactions
+ * @param interaction The message component interaction to check against
+ * @returns A boolean that indicates if the message component is a button
+ */
+export function isMessageComponentButtonInteraction(
+	interaction: APIMessageComponentInteraction,
+): interaction is APIMessageComponentButtonInteraction {
+	return interaction.data.component_type === ComponentType.Button;
+}
+
+/**
+ * A type-guard check for select menu message component interactions
+ * @param interaction The message component interaction to check against
+ * @returns A boolean that indicates if the message component is a select menu
+ */
+export function isMessageComponentSelectMenuInteraction(
+	interaction: APIMessageComponentInteraction,
+): interaction is APIMessageComponentSelectMenuInteraction {
+	return interaction.data.component_type === ComponentType.SelectMenu;
 }
 
 // Application Commands
