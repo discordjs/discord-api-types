@@ -5,12 +5,15 @@ import {
 	APIButtonComponent,
 	APIButtonComponentWithCustomId,
 	APIButtonComponentWithURL,
+	APIChatInputApplicationCommandInteraction,
+	APIContextMenuInteraction,
 	APIDMInteraction,
 	APIGuildInteraction,
 	APIInteraction,
 	APIMessageComponentDMInteraction,
 	APIMessageComponentGuildInteraction,
 	APIMessageComponentInteraction,
+	ApplicationCommandType,
 	ButtonStyle,
 } from '../payloads/v10/mod.ts';
 
@@ -100,4 +103,30 @@ export function isLinkButton(component: APIButtonComponent): component is APIBut
  */
 export function isInteractionButton(component: APIButtonComponent): component is APIButtonComponentWithCustomId {
 	return component.style !== ButtonStyle.Link;
+}
+
+// Application Commands
+
+/**
+ * A type-guard check for chat input application commands.
+ * @param interaction The interaction to check against
+ * @returns A boolean that indicates if the interaction is a chat input application command
+ */
+export function isChatInputApplicationCommandInteraction(
+	interaction: APIApplicationCommandInteraction,
+): interaction is APIChatInputApplicationCommandInteraction {
+	return interaction.data.type === ApplicationCommandType.ChatInput;
+}
+
+/**
+ * A type-guard check for context menu application commands.
+ * @param interaction The interaction to check against
+ * @returns A boolean that indicates if the interaction is a context menu application command
+ */
+export function isContextMenuApplicationCommandInteraction(
+	interaction: APIApplicationCommandInteraction,
+): interaction is APIContextMenuInteraction {
+	return (
+		interaction.data.type === ApplicationCommandType.Message || interaction.data.type === ApplicationCommandType.User
+	);
 }
