@@ -1188,7 +1188,7 @@ export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
 /**
  * https://discord.com/developers/docs/interactions/message-components#buttons
  */
-interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
+export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
 	/**
 	 * The label to be displayed on the button
 	 */
