@@ -18,6 +18,7 @@ import {
 	ApplicationCommandType,
 	ButtonStyle,
 	ComponentType,
+	InteractionType,
 } from '../payloads/v9/mod.ts';
 
 // Interactions
@@ -109,6 +110,17 @@ export function isInteractionButton(component: APIButtonComponent): component is
 }
 
 // Message Components
+
+/**
+ * A type-guard check for message component interactions
+ * @param interaction The interaction to check against
+ * @returns A boolean that indicates if the interaction is a message component
+ */
+export function isMessageComponentInteraction(
+	interaction: APIInteraction,
+): interaction is APIMessageComponentInteraction {
+	return interaction.type === InteractionType.MessageComponent;
+}
 
 /**
  * A type-guard check for button message component interactions
