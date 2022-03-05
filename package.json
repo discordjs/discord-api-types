@@ -5,71 +5,88 @@
 	"exports": {
 		"./globals": {
 			"require": "./globals.js",
-			"import": "./globals.mjs"
+			"import": "./globals.mjs",
+			"types": "./globals.d.ts"
 		},
 		"./v6": {
 			"require": "./v6.js",
-			"import": "./v6.mjs"
+			"import": "./v6.mjs",
+			"types": "./v6.d.ts"
 		},
 		"./v8": {
 			"require": "./v8.js",
-			"import": "./v8.mjs"
+			"import": "./v8.mjs",
+			"types": "./v8.d.ts"
 		},
 		"./v9": {
 			"require": "./v9.js",
-			"import": "./v9.mjs"
+			"import": "./v9.mjs",
+			"types": "./v9.d.ts"
 		},
 		"./v10": {
 			"require": "./v10.js",
-			"import": "./v10.mjs"
+			"import": "./v10.mjs",
+			"types": "./v10.d.ts"
 		},
 		"./gateway": {
 			"require": "./gateway/index.js",
-			"import": "./gateway/index.mjs"
+			"import": "./gateway/index.mjs",
+			"types": "./gateway/index.d.ts"
 		},
 		"./gateway/v*": {
 			"require": "./gateway/v*.js",
-			"import": "./gateway/v*.mjs"
+			"import": "./gateway/v*.mjs",
+			"types": "./gateway/v*.d.ts"
 		},
 		"./payloads": {
 			"require": "./payloads/index.js",
-			"import": "./payloads/index.mjs"
+			"import": "./payloads/index.mjs",
+			"types": "./payloads/index.d.ts"
 		},
 		"./payloads/v*": {
 			"require": "./payloads/v*/index.js",
-			"import": "./payloads/v*/index.mjs"
+			"import": "./payloads/v*/index.mjs",
+			"types": "./payloads/v*/index.d.ts"
 		},
 		"./rest": {
 			"require": "./rest/index.js",
-			"import": "./rest/index.mjs"
+			"import": "./rest/index.mjs",
+			"types": "./rest/index.d.ts"
 		},
 		"./rest/v*": {
 			"require": "./rest/v*/index.js",
-			"import": "./rest/v*/index.mjs"
+			"import": "./rest/v*/index.mjs",
+			"types": "./rest/v*/index.d.ts"
 		},
 		"./rpc": {
 			"require": "./rpc/index.js",
-			"import": "./rpc/index.mjs"
+			"import": "./rpc/index.mjs",
+			"types": "./rpc/index.d.ts"
 		},
 		"./rpc/v*": {
 			"require": "./rpc/v*.js",
-			"import": "./rpc/v*.mjs"
+			"import": "./rpc/v*.mjs",
+			"types": "./rpc/v*.d.ts"
 		},
 		"./voice": {
 			"require": "./voice/index.js",
-			"import": "./voice/index.mjs"
+			"import": "./voice/index.mjs",
+			"types": "./voice/index.d.ts"
 		},
 		"./voice/v*": {
 			"require": "./voice/v*.js",
-			"import": "./voice/v*.mjs"
+			"import": "./voice/v*.mjs",
+			"types": "./voice/v*.d.ts"
 		},
 		"./utils": {
 			"require": "./utils/index.js",
-			"import": "./utils/index.mjs"
+			"import": "./utils/index.mjs",
+			"types": "./utils/index.d.ts"
 		},
 		"./utils/v*": {
 			"require": "./utils/v*.js",
-			"import": "./utils/v*.mjs"
+			"import": "./utils/v*.mjs",
+			"types": "./utils/v*.d.ts"
 		}
 	},
 	"scripts": {
