@@ -1,3 +1,19 @@
+# [0.28.0](https://github.com/discordjs/discord-api-types/compare/0.27.3...0.28.0) (2022-03-07)
+
+### Code Refactoring
+
+- **PermissionFlagsBits:** rename `StartEmbeddedActivities` to `UseEmbeddedActivities` ([#342](https://github.com/discordjs/discord-api-types/issues/342)) ([3e3acb5](https://github.com/discordjs/discord-api-types/commit/3e3acb5297e3e546fbb7fc82acddb50170ffc1de))
+
+### Features
+
+- add support for TS module: NodeNext ([#356](https://github.com/discordjs/discord-api-types/issues/356)) ([e9ee696](https://github.com/discordjs/discord-api-types/commit/e9ee6966c38c82544536ece85af0c1b3bd592bfc))
+- **MessageComponentInteraction:** export specific interaction aliases ([#353](https://github.com/discordjs/discord-api-types/issues/353)) ([3503a4f](https://github.com/discordjs/discord-api-types/commit/3503a4fd384be8459a1628a6f019a1bc164c0386))
+- **Utils:** add more typeguard functions to determine the interaction types ([#355](https://github.com/discordjs/discord-api-types/issues/355)) ([dec7717](https://github.com/discordjs/discord-api-types/commit/dec7717bc76ac86c8b7d45ed4e0b506e532f7cb9))
+
+### BREAKING CHANGES
+
+- **PermissionFlagsBits:** The `StartEmbeddedActivities` permission flag has been renamed to `UseEmbeddedActivities`
+
 ## [0.27.3](https://github.com/discordjs/discord-api-types/compare/0.27.2...0.27.3) (2022-02-24)
 
 ### Bug Fixes
