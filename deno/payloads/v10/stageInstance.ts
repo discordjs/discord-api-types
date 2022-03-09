@@ -32,6 +32,10 @@ export interface APIStageInstance {
 	 * @deprecated
 	 */
 	discoverable_disabled: boolean;
+	/**
+	 * The id of the scheduled event for this stage instance
+	 */
+	guild_scheduled_event_id?: Snowflake;
 }
 
 /**
