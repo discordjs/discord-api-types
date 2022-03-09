@@ -4,10 +4,25 @@
 
 import type { APIApplication } from './application.ts';
 import type { APIPartialChannel } from './channel.ts';
-import type { APIPartialGuild } from './guild.ts';
+import type { APIGuild } from './guild.ts';
 import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
 import type { APIInviteStageInstance } from './stageInstance.ts';
 import type { APIUser } from './user.ts';
+
+export type APIInviteGuild = Pick<
+	APIGuild,
+	| 'id'
+	| 'name'
+	| 'splash'
+	| 'banner'
+	| 'icon'
+	| 'vanity_url_code'
+	| 'description'
+	| 'features'
+	| 'verification_level'
+	| 'nsfw_level'
+	| 'premium_subscription_count'
+>;
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
@@ -23,7 +38,7 @@ export interface APIInvite {
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object
 	 */
-	guild?: APIPartialGuild;
+	guild?: APIInviteGuild;
 	/**
 	 * The channel this invite is for
 	 *
