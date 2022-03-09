@@ -110,7 +110,7 @@ export enum RESTJSONErrorCodes {
 
 	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30042,
 
-	MaxmimumNumberOfEditsToMessagesOlderThanOneHourReached = 30046,
+	MaximumNumberOfEditsToMessagesOlderThanOneHourReached = 30046,
 
 	Unauthorized = 40001,
 	VerifyYourAccount,
