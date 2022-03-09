@@ -26,7 +26,7 @@ interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType>
 	/**
 	 * The description of the scheduled event
 	 */
-	description?: string;
+	description?: string | null;
 	/**
 	 * The time the scheduled event will start
 	 */
