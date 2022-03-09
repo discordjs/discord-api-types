@@ -33,7 +33,7 @@ export interface APISticker {
 	 * Previously the sticker asset hash, now an empty string
 	 * @deprecated
 	 */
-	asset: '';
+	asset?: '';
 	/**
 	 * Type of sticker
 	 *
