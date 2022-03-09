@@ -66,7 +66,7 @@ interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType>
 	/**
 	 * The cover image of the scheduled event
 	 */
-	image: string | null;
+	image?: string | null;
 }
 
 export interface APIStageInstanceGuildScheduledEvent
