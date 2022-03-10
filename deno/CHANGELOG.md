@@ -1,3 +1,30 @@
+# [0.29.0](https://github.com/discordjs/discord-api-types/compare/0.28.0...0.29.0) (2022-03-10)
+
+### Bug Fixes
+
+- **GatewayVoiceState:** some fields are optional instead of nullable ([#345](https://github.com/discordjs/discord-api-types/issues/345)) ([fddff21](https://github.com/discordjs/discord-api-types/commit/fddff2167c858832d6c61f3efca8d944fd356a85))
+- **RESTJSONErrorCodes:** typo in error `30046` ([#362](https://github.com/discordjs/discord-api-types/issues/362)) ([854aa36](https://github.com/discordjs/discord-api-types/commit/854aa3691c4d16a2c7fec7421cf25ea03a030e55))
+
+### Code Refactoring
+
+- **APIGuildScheduledEventBase:** make `description` nullable ([#359](https://github.com/discordjs/discord-api-types/issues/359)) ([e5710d0](https://github.com/discordjs/discord-api-types/commit/e5710d0e42d4f597bc9ed5594619a5032bf59bcb))
+- make things optional and nullable where applicable ([#361](https://github.com/discordjs/discord-api-types/issues/361)) ([10fdeaa](https://github.com/discordjs/discord-api-types/commit/10fdeaa68df9b3b61b20b8d90b9587d03d95a450))
+- **RESTJSONErrorCodes:** update error `50008` key ([#338](https://github.com/discordjs/discord-api-types/issues/338)) ([9a57848](https://github.com/discordjs/discord-api-types/commit/9a578489ad05b2ba8ed8d496db19cb86fa572ef7))
+
+### Features
+
+- **APIInviteGuild:** add boost count ([#323](https://github.com/discordjs/discord-api-types/issues/323)) ([cb92843](https://github.com/discordjs/discord-api-types/commit/cb92843991307d59c61d017d8ab1adcd469b4512))
+- **APIStageInstance:** add `guild_scheduled_event_id` ([#350](https://github.com/discordjs/discord-api-types/issues/350)) ([d06d2d6](https://github.com/discordjs/discord-api-types/commit/d06d2d6a9a8ccc84337b2ce9c59430694ae93e8a))
+- **RESTJSONErrorCodes:** add error `10065` ([#336](https://github.com/discordjs/discord-api-types/issues/336)) ([e8127b8](https://github.com/discordjs/discord-api-types/commit/e8127b89f89c4612fab0d3702ce512e41ab75b6e))
+
+### BREAKING CHANGES
+
+- **RESTJSONErrorCodes:** `MaximumNumberOfEditsToMessagesOlderThanOneHourReached` is no longer mistyped as `MaxmimumNumberOfEditsToMessagesOlderThanOneHourReached`
+- **APIGuildScheduledEventBase:** The type for `description` can also be null, not just optional
+- **RESTJSONErrorCodes:** The error code `50008` has been renamed from `CannotSendMessagesInVoiceChannel` to `CannotSendMessagesInNonTextChannel`
+- The deprecated `asset` field for stickers is correctly marked as optional now. The `image` field for Guild Scheduled Events is now correctly typed as optional.
+- **GatewayVoiceState:** `channel_id` and `request_to_speak_timestamp` are correctly typed as optional, not nullable now.
+
 # [0.28.0](https://github.com/discordjs/discord-api-types/compare/0.27.3...0.28.0) (2022-03-07)
 
 ### Code Refactoring
