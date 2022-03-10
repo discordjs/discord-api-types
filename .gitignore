@@ -47,4 +47,4 @@ voice/**/*.d.ts
 voice/**/*.mjs
 
 # macOS files
-.DS_store
+.DS_Store
