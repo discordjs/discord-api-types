@@ -681,7 +681,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Integration type
 	 */
-	type: APIGuildInteractionType;
+	type: APIGuildIntegrationType;
 	/**
 	 * Is this integration enabled
 	 */
@@ -760,7 +760,7 @@ export interface APIGuildIntegration {
 	application?: APIGuildIntegrationApplication;
 }
 
-export type APIGuildInteractionType = 'twitch' | 'youtube' | 'discord';
+export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
