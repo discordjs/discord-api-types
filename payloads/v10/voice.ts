@@ -16,7 +16,7 @@ export interface GatewayVoiceState {
 	/**
 	 * The channel id this user is connected to
 	 */
-	channel_id?: Snowflake;
+	channel_id: Snowflake | null;
 	/**
 	 * The user id this voice state is for
 	 */
@@ -62,7 +62,7 @@ export interface GatewayVoiceState {
 	/**
 	 * The time at which the user requested to speak
 	 */
-	request_to_speak_timestamp?: string;
+	request_to_speak_timestamp: string | null;
 }
 
 /**
