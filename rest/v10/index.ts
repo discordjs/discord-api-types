@@ -846,7 +846,9 @@ export const RouteBases = {
 } as const;
 
 // Freeze bases object
-Object.freeze(RouteBases);
+(async () => {
+	await Object.freeze(RouteBases);
+})();
 
 export const OAuth2Routes = {
 	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
