@@ -1,9 +1,12 @@
+import type { LocaleString } from '../../../../../v10.ts';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 
 export interface APIApplicationCommandOptionBase<Type extends ApplicationCommandOptionType> {
 	type: Type;
 	name: string;
+	name_localizations?: Record<LocaleString, string>;
 	description: string;
+	description_localizations?: Record<LocaleString, string>;
 	required?: boolean;
 }
 

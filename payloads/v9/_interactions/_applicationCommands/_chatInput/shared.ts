@@ -1,3 +1,5 @@
+import type { LocaleString } from '../../../../../v9';
+
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
  */
@@ -20,5 +22,6 @@ export enum ApplicationCommandOptionType {
  */
 export interface APIApplicationCommandOptionChoice<ValueType = string | number> {
 	name: string;
+	name_localizations?: Record<LocaleString, string>;
 	value: ValueType;
 }

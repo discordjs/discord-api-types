@@ -1,4 +1,5 @@
 import type { Permissions, Snowflake } from '../../../globals';
+import type { LocaleString } from '../../../v9';
 import type { APIPartialChannel, APIThreadMetadata } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIBaseInteraction } from './base';
@@ -49,6 +50,10 @@ export interface APIApplicationCommand {
 	 * 1-100 character description for `CHAT_INPUT` commands, empty string for `USER` and `MESSAGE` commands
 	 */
 	description: string;
+	/**
+	 * Localization dictionary for the description field. Values follow the same restrictions as description
+	 */
+	description_localizations?: Record<LocaleString, string>;
 	/**
 	 * The parameters for the `CHAT_INPUT` command, max 25
 	 */
