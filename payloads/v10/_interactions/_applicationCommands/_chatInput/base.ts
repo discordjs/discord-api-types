@@ -1,12 +1,12 @@
-import type { LocaleString } from '../../../../../v10';
+import type { LocalizationMap } from '../../../../../v10';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
 
 export interface APIApplicationCommandOptionBase<Type extends ApplicationCommandOptionType> {
 	type: Type;
 	name: string;
-	name_localizations?: Record<LocaleString, string>;
+	name_localizations?: LocalizationMap;
 	description: string;
-	description_localizations?: Record<LocaleString, string>;
+	description_localizations?: LocalizationMap;
 	required?: boolean;
 }
 

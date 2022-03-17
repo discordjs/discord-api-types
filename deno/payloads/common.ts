@@ -1,3 +1,5 @@
+import type { LocaleString } from '../v10.ts';
+
 /**
  * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
  *
@@ -54,3 +56,5 @@ export const PermissionFlagsBits = {
  * @internal
  */
 Object.freeze(PermissionFlagsBits);
+
+export type LocalizationMap = Partial<Record<LocaleString, string>>;
