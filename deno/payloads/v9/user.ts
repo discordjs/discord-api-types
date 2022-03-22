@@ -94,7 +94,7 @@ export enum UserFlags {
 	 */
 	Partner = 1 << 1,
 	/**
-	 * HypeSquad Events Coordinator
+	 * HypeSquad Events
 	 */
 	Hypesquad = 1 << 2,
 	/**
