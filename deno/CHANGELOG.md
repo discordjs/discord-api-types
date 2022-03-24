@@ -1,3 +1,21 @@
+# [0.30.0](https://github.com/discordjs/discord-api-types/compare/0.29.0...0.30.0) (2022-03-24)
+
+### Bug Fixes
+
+- **APIGuildIntegrationType:** correct name of type ([#366](https://github.com/discordjs/discord-api-types/issues/366)) ([fa740eb](https://github.com/discordjs/discord-api-types/commit/fa740eb16c8bba9d2c9c915d2e0139e5e1211040))
+
+### Features
+
+- **APIApplicationCommand:** add command localization ([#370](https://github.com/discordjs/discord-api-types/issues/370)) ([f702988](https://github.com/discordjs/discord-api-types/commit/f70298811242d946cee01b112c34382f0e54cb78))
+
+### Reverts
+
+- fix(GatewayVoiceState): some fields are optional instead of nullable ([#367](https://github.com/discordjs/discord-api-types/issues/367)) ([e822e45](https://github.com/discordjs/discord-api-types/commit/e822e45b3b6e07eb85a45039975cb33636765f5e))
+
+### BREAKING CHANGES
+
+- **APIGuildIntegrationType:** `APIGuildInteractionType` is now correctly named `APIGuildIntegrationType`
+
 # [0.29.0](https://github.com/discordjs/discord-api-types/compare/0.28.0...0.29.0) (2022-03-10)
 
 ### Bug Fixes
