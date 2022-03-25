@@ -21,9 +21,9 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	 */
 	privacy_level?: StageInstancePrivacyLevel;
 	/**
-	 * Notify @everyone that a Stage instance has started
+	 * Notify @everyone that a stage instance has started
 	 */
-	 send_start_notification?: boolean;
+	send_start_notification?: boolean;
 }
 
 /**
