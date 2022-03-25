@@ -20,6 +20,10 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	 * @default GuildOnly
 	 */
 	privacy_level?: StageInstancePrivacyLevel;
+	/**
+	 * Notify @everyone that a Stage instance has started
+	 */
+	 send_start_notification?: boolean;
 }
 
 /**
