@@ -273,6 +273,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyName
 	| APIAuditLogChangeKeyDescription
 	| APIAuditLogChangeKeyIconHash
+	| APIAuditLogChangeKeyImageHash
 	| APIAuditLogChangeKeySplashHash
 	| APIAuditLogChangeKeyDiscoverySplashHash
 	| APIAuditLogChangeKeyBannerHash
@@ -353,6 +354,11 @@ export type APIAuditLogChangeKeyDescription = AuditLogChangeData<'description', 
  * Returned when a guild's icon is changed
  */
 export type APIAuditLogChangeKeyIconHash = AuditLogChangeData<'icon_hash', string>;
+
+/**
+ * Returned when a guild's scheduled event's cover image is changed
+ */
+export type APIAuditLogChangeKeyImageHash = AuditLogChangeData<'image_hash', string>;
 
 /**
  * Returned when a guild's splash is changed
