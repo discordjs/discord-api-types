@@ -356,7 +356,7 @@ export type APIAuditLogChangeKeyDescription = AuditLogChangeData<'description', 
 export type APIAuditLogChangeKeyIconHash = AuditLogChangeData<'icon_hash', string>;
 
 /**
- * Returned when a guild's scheduled event cover image changed
+ * Returned when a guild's scheduled event's cover image is changed
  */
 export type APIAuditLogChangeKeyImageHash = AuditLogChangeData<'image_hash', string>;
 
