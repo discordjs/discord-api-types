@@ -51,3 +51,7 @@
   color: 'aed5fc'
 - name: 'topic:voice'
   color: 'aed5fc'
+- name: 'topic:globals'
+  color: 'aed5fc'
+- name: 'topic:website'
+  color: 'aed5fc'
