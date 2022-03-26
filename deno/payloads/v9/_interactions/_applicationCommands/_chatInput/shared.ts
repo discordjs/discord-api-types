@@ -22,6 +22,6 @@ export enum ApplicationCommandOptionType {
  */
 export interface APIApplicationCommandOptionChoice<ValueType = string | number> {
 	name: string;
-	name_localizations?: LocalizationMap;
+	name_localizations?: LocalizationMap | null;
 	value: ValueType;
 }
