@@ -57,4 +57,4 @@ export const PermissionFlagsBits = {
  */
 Object.freeze(PermissionFlagsBits);
 
-export type LocalizationMap = Partial<Record<LocaleString, string>>;
+export type LocalizationMap = Partial<Record<LocaleString, string | null>>;

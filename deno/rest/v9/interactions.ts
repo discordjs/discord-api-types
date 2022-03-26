@@ -27,7 +27,17 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
 type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Omit<APIApplicationCommand, 'id' | 'application_id' | 'description' | 'type' | 'version' | 'guild_id'>
+	Omit<
+		APIApplicationCommand,
+		| 'id'
+		| 'application_id'
+		| 'description'
+		| 'type'
+		| 'version'
+		| 'guild_id'
+		| 'name_localized'
+		| 'description_localized'
+	>
 >;
 
 /**
