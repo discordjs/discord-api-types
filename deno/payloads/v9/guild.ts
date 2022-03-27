@@ -54,7 +54,7 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 	 */
 	banner?: string | null;
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description?: string | null;
 	/**
@@ -267,7 +267,7 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	vanity_url_code: string | null;
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description: string | null;
 	/**
