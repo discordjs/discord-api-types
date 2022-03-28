@@ -1,3 +1,9 @@
+## [0.30.1](https://github.com/discordjs/discord-api-types/compare/0.30.0...0.30.1) (2022-03-28)
+
+### Features
+
+- **APIAuditLogChange:** add `APIAuditLogChangeKeyImageHash` ([#379](https://github.com/discordjs/discord-api-types/issues/379)) ([f532002](https://github.com/discordjs/discord-api-types/commit/f532002574b655d87151c325be6c02fe6f65bbe0))
+
 # [0.30.0](https://github.com/discordjs/discord-api-types/compare/0.29.0...0.30.0) (2022-03-24)
 
 ### Bug Fixes
