@@ -51,7 +51,7 @@ export interface APIApplicationCommand {
 	 */
 	name_localizations?: LocalizationMap;
 	/**
-	 * The localized description
+	 * The localized name
 	 */
 	name_localized?: string;
 	/**
