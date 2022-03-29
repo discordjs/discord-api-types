@@ -165,7 +165,7 @@ interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T>
 
 export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
 
-export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM> {
+export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.GroupDM>, 'name'> {
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
@@ -174,6 +174,10 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
 	 * Icon hash
 	 */
 	icon?: string | null;
+	/**
+	 * The name of the channel (2-100 characters)
+	 */
+	name?: string | null;
 	/**
 	 * ID of the DM creator
 	 */
