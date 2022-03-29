@@ -2,7 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
-import type { Snowflake } from '../../globals';
+import type { Permissions, Snowflake } from '../../globals';
+import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
 
@@ -94,6 +95,23 @@ export interface APIApplication {
 	 * See https://discord.com/developers/docs/resources/application#application-object-application-flags
 	 */
 	flags: ApplicationFlags;
+	/**
+	 * Up to 5 tags describing the content and functionality of the application
+	 */
+	tags?: [string, string?, string?, string?, string?];
+	/**
+	 * Settings for the application's default in-app authorization link, if enabled
+	 */
+	install_params?: APIApplicationInstallParams;
+	/**
+	 * The application's default custom authorization link, if enabled
+	 */
+	custom_install_url?: string;
+}
+
+export interface APIApplicationInstallParams {
+	scopes: OAuth2Scopes[];
+	permissions: Permissions;
 }
 
 /**
