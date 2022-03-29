@@ -50,11 +50,7 @@ export type TextChannelType =
 	| ChannelType.GuildText;
 
 export type GuildChannelType = Exclude<
-	| TextChannelType
-	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice
-	| ChannelType.GuildNews
-	| ChannelType.GuildStore,
+	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildNews,
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
@@ -129,7 +125,6 @@ export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildTex
 
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
-export type APIGuildStoreChannel = APIGuildChannel<ChannelType.GuildStore>;
 
 export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
 	/**
@@ -236,7 +231,6 @@ export type APIChannel =
 	| APIDMChannel
 	| APITextChannel
 	| APINewsChannel
-	| APIGuildStoreChannel
 	| APIVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
@@ -274,12 +268,6 @@ export enum ChannelType {
 	 * See https://support.discord.com/hc/en-us/articles/360032008192
 	 */
 	GuildNews,
-	/**
-	 * A channel in which game developers can sell their game on Discord
-	 *
-	 * See https://discord.com/developers/docs/game-and-server-management/special-channels
-	 */
-	GuildStore,
 	/**
 	 * A thread channel (public) within a Guild News channel
 	 */
