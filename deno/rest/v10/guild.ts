@@ -264,7 +264,7 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	features?: GuildFeature[];
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description?: string | null;
 	/**
