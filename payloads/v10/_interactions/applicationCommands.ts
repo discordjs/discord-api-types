@@ -49,7 +49,7 @@ export interface APIApplicationCommand {
 	/**
 	 * Localization dictionary for the name field. Values follow the same restrictions as name
 	 */
-	name_localizations?: LocalizationMap;
+	name_localizations?: LocalizationMap | null;
 	/**
 	 * 1-100 character description for `CHAT_INPUT` commands, empty string for `USER` and `MESSAGE` commands
 	 */
@@ -57,7 +57,7 @@ export interface APIApplicationCommand {
 	/**
 	 * Localization dictionary for the description field. Values follow the same restrictions as description
 	 */
-	description_localizations?: LocalizationMap;
+	description_localizations?: LocalizationMap | null;
 	/**
 	 * The parameters for the `CHAT_INPUT` command, max 25
 	 */

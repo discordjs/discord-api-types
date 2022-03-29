@@ -4,9 +4,9 @@ import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } 
 export interface APIApplicationCommandOptionBase<Type extends ApplicationCommandOptionType> {
 	type: Type;
 	name: string;
-	name_localizations?: LocalizationMap;
+	name_localizations?: LocalizationMap | null;
 	description: string;
-	description_localizations?: LocalizationMap;
+	description_localizations?: LocalizationMap | null;
 	required?: boolean;
 }
 
