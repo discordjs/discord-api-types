@@ -248,7 +248,7 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	discovery_splash?: string | null;
 	/**
-	 * base64 16:9 png/jpeg image for the guild banner (when the guild has `BANNER` feature)
+	 * base64 16:9 png/jpeg image for the guild banner (when the server has the `BANNER` feature; can be animated gif when the server has the `ANIMATED_BANNER` feature)
 	 */
 	banner?: string | null;
 	/**
