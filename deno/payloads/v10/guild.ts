@@ -811,12 +811,6 @@ export interface APIGuildIntegrationApplication {
 	 */
 	description: string;
 	/**
-	 * The summary of the app
-	 *
-	 * @deprecated Always an empty string, will be removed in v11
-	 */
-	summary: '';
-	/**
 	 * The bot associated with this application
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
