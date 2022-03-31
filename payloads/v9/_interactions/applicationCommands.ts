@@ -43,7 +43,7 @@ export interface APIApplicationCommand {
 	 */
 	guild_id?: Snowflake;
 	/**
-	 * 1-32 character name; `CHAT_INPUT` command names must be all lowercase matching `^[\w-]{1,32}$`
+	 * 1-32 character name; `CHAT_INPUT` command names must be all lowercase matching `^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$`
 	 */
 	name: string;
 	/**
