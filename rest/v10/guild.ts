@@ -514,6 +514,26 @@ export type RESTDeleteAPIGuildMemberResult = never;
 export type RESTGetAPIGuildBansResult = APIBan[];
 
 /**
+ * https://discord.com/developers/docs/resources/guild#get-guild-bans
+ */
+export interface RESTGetAPIGuildBansQuery {
+	/**
+	 * Consider only users before given user id
+	 */
+	before?: Snowflake;
+	/**
+	 * Consider only users after given user id
+	 */
+	after?: Snowflake;
+	/**
+	 * Number of users to return (1-1000)
+	 *
+	 * @default 1000
+	 */
+	limit?: number;
+}
+
+/**
  * https://discord.com/developers/docs/resources/guild#get-guild-ban
  */
 export type RESTGetAPIGuildBanResult = APIBan;
