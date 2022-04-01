@@ -683,7 +683,7 @@ export enum GuildMemberFlags {
 	/**
 	 * Whether the member has joined and left the guild before
 	 */
-	DID_REJOIN = 1 << 0,
+	DidRejoin = 1 << 0,
 }
 
 /**
