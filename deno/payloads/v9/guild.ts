@@ -656,6 +656,8 @@ export interface APIGuildMember {
 	deaf: boolean;
 	/**
 	 * The member's flags combined as a bitfield
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#guild-member-object-member-flags
 	 */
 	flags: GuildMemberFlags;
 	/**
@@ -678,6 +680,9 @@ export interface APIGuildMember {
  * https://discord.com/developers/docs/resources/guild#guild-member-object-member-flags
  */
 export enum GuildMemberFlags {
+	/**
+	 * Whether the member has joined and left the guild before
+	 */
 	DID_REJOIN = 1 << 0,
 }
 
