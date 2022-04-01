@@ -655,6 +655,10 @@ export interface APIGuildMember {
 	 */
 	deaf: boolean;
 	/**
+	 * The member's flags combined as a bitfield
+	 */
+	flags: GuildMemberFlags;
+	/**
 	 * Whether the user is muted in voice channels
 	 */
 	mute: boolean;
@@ -668,6 +672,13 @@ export interface APIGuildMember {
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-member-object-member-flags
+ */
+export enum GuildMemberFlags {
+	DID_REJOIN = 1 << 0,
 }
 
 /**
