@@ -33,6 +33,10 @@ export interface APIInvite {
 	 */
 	code: string;
 	/**
+	 * The invite type
+	 */
+	type: InviteTypes;
+	/**
 	 * The guild this invite is for
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object
@@ -89,6 +93,14 @@ export interface APIInvite {
 	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */
 	guild_scheduled_event?: APIGuildScheduledEvent;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/invite#invite-object-invite-types
+ */
+export enum InviteTypes {
+	Guild,
+	GroupDm,
 }
 
 /**
