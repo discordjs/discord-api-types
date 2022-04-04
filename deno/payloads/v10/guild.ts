@@ -2,7 +2,6 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
-import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIChannel } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway.ts';
@@ -12,6 +11,7 @@ import type { APIStageInstance } from './stageInstance.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { GatewayVoiceState } from './voice.ts';
+import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object

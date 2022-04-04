@@ -1,6 +1,6 @@
-import type { APIApplicationCommandBasicOption, APIApplicationCommandInteractionDataBasicOption } from '../chatInput';
 import type { APIApplicationCommandOptionBase } from './base';
 import type { ApplicationCommandOptionType } from './shared';
+import type { APIApplicationCommandBasicOption, APIApplicationCommandInteractionDataBasicOption } from '../chatInput';
 
 export interface APIApplicationCommandSubcommandOption
 	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Subcommand> {

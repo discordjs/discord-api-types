@@ -1,3 +1,4 @@
+import type { APIBaseApplicationCommandInteractionData } from './internals';
 import type { Snowflake } from '../../../../globals';
 import type { APIMessage } from '../../channel';
 import type { APIUser } from '../../user';
@@ -7,7 +8,6 @@ import type {
 	ApplicationCommandType,
 } from '../applicationCommands';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
-import type { APIBaseApplicationCommandInteractionData } from './internals';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure

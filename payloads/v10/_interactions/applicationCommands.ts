@@ -1,9 +1,3 @@
-import type { Permissions, Snowflake } from '../../../globals';
-import type { LocalizationMap } from '../../../v10';
-import type { APIPartialChannel, APIThreadMetadata } from '../channel';
-import type { APIGuildMember } from '../guild';
-import type { APIBaseInteraction } from './base';
-import type { InteractionType } from './responses';
 import type {
 	APIApplicationCommandOption,
 	APIChatInputApplicationCommandDMInteraction,
@@ -17,6 +11,12 @@ import type {
 	APIContextMenuInteraction,
 	APIContextMenuInteractionData,
 } from './_applicationCommands/contextMenu';
+import type { APIBaseInteraction } from './base';
+import type { InteractionType } from './responses';
+import type { Permissions, Snowflake } from '../../../globals';
+import type { LocalizationMap } from '../../../v10';
+import type { APIPartialChannel, APIThreadMetadata } from '../channel';
+import type { APIGuildMember } from '../guild';
 
 export * from './_applicationCommands/chatInput';
 export * from './_applicationCommands/contextMenu';

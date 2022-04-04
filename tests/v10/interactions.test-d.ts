@@ -1,8 +1,9 @@
 import { expectType } from 'tsd';
+import type { Snowflake } from '../../globals';
 import {
+	APIApplicationCommandAutocompleteInteraction,
 	APIApplicationCommandInteraction,
 	APIApplicationCommandInteractionData,
-	APIApplicationCommandAutocompleteInteraction,
 	APIDMInteraction,
 	APIGuildInteraction,
 	APIInteraction,
@@ -21,6 +22,7 @@ if (interaction.type === InteractionType.ApplicationCommand) {
 
 	const { data } = interaction;
 	expectType<APIApplicationCommandInteractionData>(data);
+	expectType<Snowflake | undefined>(data.guild_id);
 }
 
 if (interaction.type === InteractionType.MessageComponent) {

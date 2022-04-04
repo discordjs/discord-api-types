@@ -1,13 +1,3 @@
-import type { Snowflake } from '../../../../globals';
-import type { APIAttachment, APIRole, APIUser } from '../../index';
-import type {
-	APIApplicationCommandInteractionWrapper,
-	APIInteractionDataResolvedChannel,
-	APIInteractionDataResolvedGuildMember,
-	ApplicationCommandType,
-} from '../applicationCommands';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
-import type { APIBaseApplicationCommandInteractionData } from './internals';
 import type {
 	APIApplicationCommandAttachmentOption,
 	APIApplicationCommandInteractionDataAttachmentOption,
@@ -52,6 +42,16 @@ import type {
 	APIApplicationCommandInteractionDataUserOption,
 	APIApplicationCommandUserOption,
 } from './_chatInput/user';
+import type { APIBaseApplicationCommandInteractionData } from './internals';
+import type { Snowflake } from '../../../../globals';
+import type { APIAttachment, APIRole, APIUser } from '../../index';
+import type {
+	APIApplicationCommandInteractionWrapper,
+	APIInteractionDataResolvedChannel,
+	APIInteractionDataResolvedGuildMember,
+	ApplicationCommandType,
+} from '../applicationCommands';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 
 export * from './_chatInput/attachment';
 export * from './_chatInput/boolean';

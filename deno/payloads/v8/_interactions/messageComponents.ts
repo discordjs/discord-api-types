@@ -1,6 +1,6 @@
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
 import type { ComponentType } from '../channel.ts';
 import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

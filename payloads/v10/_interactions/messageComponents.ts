@@ -1,6 +1,6 @@
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
 import type { ComponentType } from '../channel';
 import type { APIBaseInteraction, InteractionType } from '../interactions';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
 
 export type APIMessageComponentInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,

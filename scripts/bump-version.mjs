@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
-import { Octokit } from '@octokit/action';
-import conventionalRecommendedBump from 'conventional-recommended-bump';
 import { execSync } from 'node:child_process';
 import { promisify } from 'node:util';
+import { Octokit } from '@octokit/action';
+import conventionalRecommendedBump from 'conventional-recommended-bump';
 
 const lastCommitMessage = execSync('git log -1 --pretty=%B', { encoding: 'utf8' });
 

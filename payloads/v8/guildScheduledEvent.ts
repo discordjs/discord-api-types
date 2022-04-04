@@ -1,6 +1,6 @@
-import type { Snowflake } from '../../globals';
 import type { APIGuildMember } from './guild';
 import type { APIUser } from './user';
+import type { Snowflake } from '../../globals';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

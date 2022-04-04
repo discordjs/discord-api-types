@@ -1,9 +1,3 @@
-import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { LocalizationMap } from '../../../v9.ts';
-import type { APIPartialChannel, APIThreadMetadata } from '../channel.ts';
-import type { APIGuildMember } from '../guild.ts';
-import type { APIBaseInteraction } from './base.ts';
-import type { InteractionType } from './responses.ts';
 import type {
 	APIApplicationCommandOption,
 	APIChatInputApplicationCommandDMInteraction,
@@ -17,6 +11,12 @@ import type {
 	APIContextMenuInteraction,
 	APIContextMenuInteractionData,
 } from './_applicationCommands/contextMenu.ts';
+import type { APIBaseInteraction } from './base.ts';
+import type { InteractionType } from './responses.ts';
+import type { Permissions, Snowflake } from '../../../globals.ts';
+import type { LocalizationMap } from '../../../v9.ts';
+import type { APIPartialChannel, APIThreadMetadata } from '../channel.ts';
+import type { APIGuildMember } from '../guild.ts';
 
 export * from './_applicationCommands/chatInput.ts';
 export * from './_applicationCommands/contextMenu.ts';

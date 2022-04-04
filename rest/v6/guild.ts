@@ -1,3 +1,4 @@
+import type { RESTPutAPIChannelPermissionsJSONBody } from './channel';
 import type {
 	APIBan,
 	APIChannel,
@@ -16,7 +17,6 @@ import type {
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
 } from '../../payloads/v6/index';
-import type { RESTPutAPIChannelPermissionsJSONBody } from './channel';
 
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.

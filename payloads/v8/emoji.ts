@@ -2,9 +2,9 @@
  * Types extracted from https://discord.com/developers/docs/resources/emoji
  */
 
-import type { Snowflake } from '../../globals';
 import type { APIRole } from './permissions';
 import type { APIUser } from './user';
+import type { Snowflake } from '../../globals';
 
 /**
  * Not documented but mentioned

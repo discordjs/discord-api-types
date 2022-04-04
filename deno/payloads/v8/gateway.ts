@@ -2,9 +2,9 @@
  * Types extracted from https://discord.com/developers/docs/topics/gateway
  */
 
-import type { Snowflake } from '../../globals.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { APIUser } from './user.ts';
+import type { Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway

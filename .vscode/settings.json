@@ -1,4 +1,9 @@
 {
 	"files.eol": "\n",
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": false,
+		"source.fixAll": true,
+		"source.fixAll.eslint": true
+	}
 }

@@ -2,7 +2,6 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
-import type { Permissions, Snowflake } from '../../globals';
 import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
@@ -12,6 +11,7 @@ import type { APIStageInstance } from './stageInstance';
 import type { APISticker } from './sticker';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
+import type { Permissions, Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object

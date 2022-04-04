@@ -1,6 +1,6 @@
-import type { Snowflake } from '../../globals';
 import type { APIGuildMember } from './guild';
 import type { APIUser } from './user';
+import type { Snowflake } from '../../globals';
 
 interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType> {
 	/**
