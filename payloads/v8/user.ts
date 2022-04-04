@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
-import type { Snowflake } from '../../globals';
 import type { APIGuildIntegration } from './guild';
+import type { Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object

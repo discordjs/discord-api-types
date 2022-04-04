@@ -1,13 +1,3 @@
-import type { Snowflake } from '../../../../globals.ts';
-import type { APIAttachment, APIRole, APIUser } from '../../mod.ts';
-import type {
-	APIApplicationCommandInteractionWrapper,
-	APIInteractionDataResolvedChannel,
-	APIInteractionDataResolvedGuildMember,
-	ApplicationCommandType,
-} from '../applicationCommands.ts';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
-import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 import type {
 	APIApplicationCommandAttachmentOption,
 	APIApplicationCommandInteractionDataAttachmentOption,
@@ -52,6 +42,16 @@ import type {
 	APIApplicationCommandInteractionDataUserOption,
 	APIApplicationCommandUserOption,
 } from './_chatInput/user.ts';
+import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
+import type { Snowflake } from '../../../../globals.ts';
+import type { APIAttachment, APIRole, APIUser } from '../../mod.ts';
+import type {
+	APIApplicationCommandInteractionWrapper,
+	APIInteractionDataResolvedChannel,
+	APIInteractionDataResolvedGuildMember,
+	ApplicationCommandType,
+} from '../applicationCommands.ts';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 
 export * from './_chatInput/attachment.ts';
 export * from './_chatInput/boolean.ts';

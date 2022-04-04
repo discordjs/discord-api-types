@@ -2,7 +2,6 @@
  * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
-import type { Snowflake } from '../../globals.ts';
 import type { APIOverwrite } from './channel.ts';
 import type {
 	APIGuildIntegration,
@@ -22,6 +21,7 @@ import type { StageInstancePrivacyLevel } from './stageInstance.ts';
 import type { StickerFormatType } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { APIWebhook } from './webhook.ts';
+import type { Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure

@@ -1,3 +1,4 @@
+import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 import type { Permissions, Snowflake } from '../../globals';
 import type {
 	APIBan,
@@ -30,7 +31,6 @@ import type {
 	StrictRequired,
 	UnionToIntersection,
 } from '../../utils/internals';
-import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;

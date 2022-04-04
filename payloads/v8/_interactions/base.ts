@@ -1,9 +1,9 @@
+import type { InteractionType } from './responses';
 import type { Permissions, Snowflake } from '../../../globals';
 import type { LocaleString } from '../../../v8';
 import type { APIMessage } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
-import type { InteractionType } from './responses';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

@@ -2,7 +2,6 @@
  * Types extracted from https://discord.com/developers/docs/resources/channel
  */
 
-import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIApplication } from './application.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIGuildMember } from './guild.ts';
@@ -10,6 +9,7 @@ import type { APIMessageInteraction } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker, APIStickerItem } from './sticker.ts';
 import type { APIUser } from './user.ts';
+import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * Not documented, but partial only includes id, name, and type

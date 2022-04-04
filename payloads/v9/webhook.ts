@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/webhook
  */
 
-import type { Snowflake } from '../../globals';
 import type { APIPartialChannel, APIPartialGuild, APIUser } from './index';
+import type { Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#webhook-object

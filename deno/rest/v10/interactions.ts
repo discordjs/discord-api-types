@@ -1,4 +1,12 @@
 import type {
+	RESTDeleteAPIWebhookWithTokenMessageResult,
+	RESTGetAPIWebhookWithTokenMessageResult,
+	RESTPatchAPIWebhookWithTokenMessageFormDataBody,
+	RESTPatchAPIWebhookWithTokenMessageJSONBody,
+	RESTPatchAPIWebhookWithTokenMessageResult,
+	RESTPostAPIWebhookWithTokenWaitResult,
+} from './webhook.ts';
+import type {
 	APIApplicationCommand,
 	APIApplicationCommandPermission,
 	APIGuildApplicationCommandPermissions,
@@ -7,14 +15,6 @@ import type {
 	ApplicationCommandType,
 } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
-import type {
-	RESTDeleteAPIWebhookWithTokenMessageResult,
-	RESTGetAPIWebhookWithTokenMessageResult,
-	RESTPatchAPIWebhookWithTokenMessageFormDataBody,
-	RESTPatchAPIWebhookWithTokenMessageJSONBody,
-	RESTPatchAPIWebhookWithTokenMessageResult,
-	RESTPostAPIWebhookWithTokenWaitResult,
-} from './webhook.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands

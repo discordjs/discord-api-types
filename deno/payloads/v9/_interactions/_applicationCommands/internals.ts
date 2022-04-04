@@ -5,4 +5,5 @@ export interface APIBaseApplicationCommandInteractionData<Type extends Applicati
 	id: Snowflake;
 	type: Type;
 	name: string;
+	guild_id?: Snowflake;
 }

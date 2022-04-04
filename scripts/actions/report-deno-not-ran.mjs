@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { Octokit } from '@octokit/action';
 import { execSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
+import { Octokit } from '@octokit/action';
 
 const octokit = new Octokit();
 const [OWNER, REPOSITORY] = process.env.GITHUB_REPOSITORY.split('/');

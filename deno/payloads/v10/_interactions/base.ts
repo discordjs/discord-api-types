@@ -1,9 +1,9 @@
+import type { InteractionType } from './responses.ts';
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { LocaleString } from '../../../v10.ts';
 import type { APIMessage } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
-import type { InteractionType } from './responses.ts';
 
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,

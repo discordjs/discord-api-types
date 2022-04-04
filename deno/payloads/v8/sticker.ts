@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/sticker
  */
 
-import type { Snowflake } from '../../globals.ts';
 import type { APIUser } from './user.ts';
+import type { Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object

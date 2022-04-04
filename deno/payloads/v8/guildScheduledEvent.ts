@@ -1,6 +1,6 @@
-import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 import type { APIUser } from './user.ts';
+import type { Snowflake } from '../../globals.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

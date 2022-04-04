@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/restrict-template-expressions */
-import { Octokit } from '@octokit/action';
 import { readFile } from 'node:fs/promises';
+import { Octokit } from '@octokit/action';
 
 const packageJson = JSON.parse(await readFile(new URL('../../package.json', import.meta.url), { encoding: 'utf8' }));
 const octokit = new Octokit();

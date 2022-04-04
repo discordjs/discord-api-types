@@ -1,5 +1,5 @@
-import type { Snowflake } from '../../globals';
 import type { APIGuildMember } from './guild';
+import type { Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object
