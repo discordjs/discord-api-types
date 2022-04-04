@@ -1,3 +1,26 @@
+# [0.31.0](https://github.com/discordjs/discord-api-types/compare/0.30.0...0.31.0) (2022-04-04)
+
+### Code Refactoring
+
+- **APIGroupDMChannel:** make `name` nullable ([#347](https://github.com/discordjs/discord-api-types/issues/347)) ([ed0049b](https://github.com/discordjs/discord-api-types/commit/ed0049b78f4008460b0c7a2ec68eb38f018be3bd))
+- remove `summary` from applications ([#386](https://github.com/discordjs/discord-api-types/issues/386)) ([f0ab4e8](https://github.com/discordjs/discord-api-types/commit/f0ab4e8c48895f8daee7fa296b8319a98fb7d4e1))
+- remove store channels ([#364](https://github.com/discordjs/discord-api-types/issues/364)) ([25677ff](https://github.com/discordjs/discord-api-types/commit/25677fff43533b3b11b88f01efe98f0875014cb5))
+
+### Features
+
+- add `RESTGetAPIGuildBansQuery` ([#391](https://github.com/discordjs/discord-api-types/issues/391)) ([b1bf7bf](https://github.com/discordjs/discord-api-types/commit/b1bf7bf0f9a37fa391a67e4b5b1dd288821d0ebb))
+- **APIApplication:** app authorization links and tags ([#239](https://github.com/discordjs/discord-api-types/issues/239)) ([93eab11](https://github.com/discordjs/discord-api-types/commit/93eab113cdcfd3bdd868f1d86bb4bc2a5247d844))
+- **APIApplicationCommand:** add missing localization props ([#383](https://github.com/discordjs/discord-api-types/issues/383)) ([9c12718](https://github.com/discordjs/discord-api-types/commit/9c1271816312382be3471cb2fdbb6260e973b4f6))
+- **APIAuditLogChange:** add `APIAuditLogChangeKeyImageHash` ([#379](https://github.com/discordjs/discord-api-types/issues/379)) ([f532002](https://github.com/discordjs/discord-api-types/commit/f532002574b655d87151c325be6c02fe6f65bbe0))
+- **GuildFeatures:** add animated banners ([#219](https://github.com/discordjs/discord-api-types/issues/219)) ([c23f2ac](https://github.com/discordjs/discord-api-types/commit/c23f2accf998ffa0c068d222fd9f34228a86a699))
+- **RESTPostAPIStageInstanceJSONBody:** add `send_start_notification` ([#378](https://github.com/discordjs/discord-api-types/issues/378)) ([b764e8d](https://github.com/discordjs/discord-api-types/commit/b764e8dc1a92e254161f3a443e17148a81240b66))
+
+### BREAKING CHANGES
+
+- The deprecated `summary` field has been removed
+- Store channels have been removed, alongside their types
+- **APIGroupDMChannel:** The `name` field is now also nullable for Group DM Channels
+
 # [0.30.0](https://github.com/discordjs/discord-api-types/compare/0.29.0...0.30.0) (2022-03-24)
 
 ### Bug Fixes
