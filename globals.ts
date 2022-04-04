@@ -20,6 +20,20 @@ export const FormattingPatterns = {
 	 */
 	User: /<@(?<id>\d{17,20})>/,
 	/**
+	 * Regular expression for matching a user mention, strictly with a nickname
+	 *
+	 * The `id` group property is present on the `exec` result of this expression
+	 * @deprecated `!` is no longer supported in mentions
+	 */
+	UserWithNickname: /<@!(?<id>\d{17,20})>/,
+	/**
+	 * Regular expression for matching a user mention, with or without a nickname
+	 *
+	 * The `id` group property is present on the `exec` result of this expression
+	 * @deprecated `!` is no longer supported in mentions
+	 */
+	UserWithOptionalNickname: /<@!?(?<id>\d{17,20})>/,
+	/**
 	 * Regular expression for matching a channel mention
 	 *
 	 * The `id` group property is present on the `exec` result of this expression
