@@ -86,7 +86,7 @@ export interface APIApplication {
 	 *
 	 * See https://discord.com/developers/docs/resources/application#application-object-application-flags
 	 */
-	flags: ApplicationFlags;
+	flags?: ApplicationFlags;
 	/**
 	 * Up to 5 tags describing the content and functionality of the application
 	 */
