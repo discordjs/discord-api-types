@@ -20,6 +20,7 @@ import type {
 	ThreadAutoArchiveDuration,
 	VideoQualityMode,
 } from '../../payloads/v9/mod.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-channel
@@ -29,7 +30,7 @@ export type RESTGetAPIChannelResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/channel#modify-channel
  */
-export interface RESTPatchAPIChannelJSONBody {
+export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * 1-100 character channel name
 	 *
@@ -136,7 +137,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: privateThread
 	 */
 	invitable?: boolean;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#modify-channel
@@ -185,20 +186,21 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
  */
-export type APIMessageReferenceSend = Partial<APIMessageReference> &
-	Required<Pick<APIMessageReference, 'message_id'>> & {
+export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
+	Required<Pick<APIMessageReference, 'message_id'>> &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
 		 * @default true
 		 */
 		fail_if_not_exists?: boolean;
-	};
+	}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
-export interface RESTPostAPIChannelMessageJSONBody {
+export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
@@ -248,28 +250,23 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
 	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake];
-}
+	/**
+	 * Attachment objects with filename and description
+	 */
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
 export type RESTPostAPIChannelMessageFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIChannelMessageJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -330,7 +327,7 @@ export type RESTDeleteAPIChannelMessageReactionResult = never;
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
  */
-export interface RESTPatchAPIChannelMessageJSONBody {
+export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The new message contents (up to 2000 characters)
 	 */
@@ -366,37 +363,30 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * Attached files to keep
 	 *
+	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: APIAttachment[] | null;
+	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
 	/**
 	 * The components to include with the message
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent[] | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
  */
 export type RESTPatchAPIChannelMessageFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPatchAPIChannelMessageJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPatchAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
@@ -458,7 +448,7 @@ export type RESTGetAPIChannelInvitesResult = APIExtendedInvite[];
 /**
  * https://discord.com/developers/docs/resources/channel#create-channel-invite
  */
-export interface RESTPostAPIChannelInviteJSONBody {
+export type RESTPostAPIChannelInviteJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Duration of invite in seconds before expiry, or 0 for never
 	 *
@@ -502,7 +492,7 @@ export interface RESTPostAPIChannelInviteJSONBody {
 	 * - The application must have the `EMBEDDED` flag
 	 */
 	target_application_id?: Snowflake;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-channel-invite
@@ -552,7 +542,7 @@ export type RESTDeleteAPIChannelPinResult = never;
 /**
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
  */
-export interface RESTPutAPIChannelRecipientJSONBody {
+export type RESTPutAPIChannelRecipientJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Access token of a user that has granted your app the `gdm.join` scope
 	 */
@@ -561,7 +551,7 @@ export interface RESTPutAPIChannelRecipientJSONBody {
 	 * Nickname of the user being added
 	 */
 	nick?: string;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
@@ -576,7 +566,7 @@ export type RESTDeleteAPIChannelRecipientResult = unknown;
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-with-message
  */
-export interface RESTPostAPIChannelMessagesThreadsJSONBody {
+export type RESTPostAPIChannelMessagesThreadsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * 1-100 character thread name
 	 */
@@ -587,7 +577,11 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	 * The 3 day and 7 day archive durations require the server to be boosted. The [guild features](https://discord.com/developers/docs/resources/guild#guild-object-guild-features) will indicate if a server is able to use those settings.
 	 */
 	auto_archive_duration: ThreadAutoArchiveDuration;
-}
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600)
+	 */
+	rate_limit_per_user?: number;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-with-message
@@ -597,23 +591,24 @@ export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-without-message
  */
-export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMessagesThreadsJSONBody {
-	/**
-	 * The type of thread to create
-	 *
-	 * In API v9, `type` defaults to `PRIVATE_THREAD`.
-	 * In API v10 this will be changed to be a required field, with no default.
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
-	 *
-	 * @default 12
-	 */
-	type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
-	/**
-	 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
-	 */
-	invitable?: boolean;
-}
+export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		/**
+		 * The type of thread to create
+		 *
+		 * In API v9, `type` defaults to `PRIVATE_THREAD`.
+		 * In API v10 this will be changed to be a required field, with no default.
+		 *
+		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+		 *
+		 * @default 12
+		 */
+		type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+		/**
+		 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
+		 */
+		invitable?: boolean;
+	}>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-without-message

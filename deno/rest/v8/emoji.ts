@@ -1,5 +1,6 @@
 import type { Snowflake } from '../../globals.ts';
 import type { APIEmoji } from '../../payloads/v8/mod.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/emoji#list-guild-emojis
@@ -14,7 +15,7 @@ export type RESTGetAPIGuildEmojiResult = APIEmoji;
 /**
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params
  */
-export interface RESTPostAPIGuildEmojiJSONBody {
+export type RESTPostAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the emoji
 	 */
@@ -29,7 +30,7 @@ export interface RESTPostAPIGuildEmojiJSONBody {
 	 * Roles for which this emoji will be whitelisted
 	 */
 	roles?: Snowflake[];
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji
@@ -39,7 +40,7 @@ export type RESTPostAPIGuildEmojiResult = APIEmoji;
 /**
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
  */
-export interface RESTPatchAPIGuildEmojiJSONBody {
+export type RESTPatchAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the emoji
 	 */
@@ -48,7 +49,7 @@ export interface RESTPatchAPIGuildEmojiJSONBody {
 	 * Roles for which this emoji will be whitelisted
 	 */
 	roles?: Snowflake[] | null;
-}
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji

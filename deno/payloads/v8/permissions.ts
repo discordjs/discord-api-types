@@ -45,8 +45,10 @@ export const PermissionFlagsBits = {
 	ManageEmojisAndStickers: 1n << 30n,
 	UseApplicationCommands: 1n << 31n,
 	RequestToSpeak: 1n << 32n,
+	ManageEvents: 1n << 33n,
 	UseExternalStickers: 1n << 37n,
 	StartEmbeddedActivities: 1n << 39n,
+	ModerateMembers: 1n << 40n,
 } as const;
 
 /**
@@ -78,11 +80,11 @@ export interface APIRole {
 	/**
 	 * The role icon hash
 	 */
-	icon?: string;
+	icon?: string | null;
 	/**
 	 * The role unicode emoji as a standard emoji
 	 */
-	unicode_emoji?: string;
+	unicode_emoji?: string | null;
 	/**
 	 * Position of this role
 	 */

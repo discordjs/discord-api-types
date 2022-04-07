@@ -6,6 +6,7 @@ import type {
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
 } from '../../payloads/v8/index';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
 	RESTGetAPIWebhookWithTokenMessageResult,
@@ -25,18 +26,18 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
  */
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
-type RESTPostAPIBaseApplicationCommandsJSONBody = Omit<
-	APIApplicationCommand,
-	'id' | 'application_id' | 'description' | 'type' | 'version'
+type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Omit<APIApplicationCommand, 'id' | 'application_id' | 'description' | 'type' | 'version' | 'guild_id'>
 >;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
-export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
-	type?: ApplicationCommandType.ChatInput;
-	description: string;
-}
+export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+		type?: ApplicationCommandType.ChatInput;
+		description: string;
+	}>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
@@ -60,7 +61,7 @@ export type RESTPostAPIApplicationCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
  */
-export type RESTPatchAPIApplicationCommandJSONBody = Partial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
@@ -100,7 +101,7 @@ export type RESTPostAPIApplicationGuildCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = Partial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
@@ -126,22 +127,13 @@ export type RESTPostAPIInteractionCallbackJSONBody = APIInteractionResponse;
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
  */
 export type RESTPostAPIInteractionCallbackFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIInteractionCallbackJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response
@@ -177,22 +169,13 @@ export type RESTPostAPIInteractionFollowupJSONBody = APIInteractionResponseCallb
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message
  */
 export type RESTPostAPIInteractionFollowupFormDataBody =
-	| {
+	| ({
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string;
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  }
-	| (RESTPostAPIInteractionFollowupJSONBody & {
-			/**
-			 * The file contents
-			 */
-			file: unknown;
-	  });
+	  } & Record<`files[${bigint}]`, unknown>)
+	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message

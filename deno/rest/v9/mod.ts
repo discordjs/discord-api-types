@@ -7,6 +7,7 @@ export * from './channel.ts';
 export * from './emoji.ts';
 export * from './gateway.ts';
 export * from './guild.ts';
+export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
@@ -473,6 +474,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET    `/channels/{thread.id}/thread-members`
+	 * - GET    `/channels/{thread.id}/thread-members/{user.id}`
 	 * - PUT    `/channels/{thread.id}/thread-members/@me`
 	 * - PUT    `/channels/{thread.id}/thread-members/{user.id}`
 	 * - DELETE `/channels/{thread.id}/thread-members/@me`
@@ -506,6 +508,14 @@ export const Routes = {
 	 */
 	userGuilds() {
 		return `/users/@me/guilds` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/users/@me/guilds/{guild.id}/member`
+	 */
+	userGuildMember(guildId: Snowflake) {
+		return `/users/@me/guilds/${guildId}/member` as const;
 	},
 
 	/**
@@ -635,6 +645,30 @@ export const Routes = {
 	 */
 	oauth2CurrentAuthorization() {
 		return `/oauth2/@me` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/oauth2/authorize`
+	 */
+	oauth2Authorization() {
+		return `/oauth2/authorize` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/oauth2/token`
+	 */
+	oauth2TokenExchange() {
+		return `/oauth2/token` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/oauth2/token/revoke`
+	 */
+	oauth2TokenRevocation() {
+		return `/oauth2/token/revoke` as const;
 	},
 
 	/**
@@ -782,6 +816,33 @@ export const Routes = {
 	guildSticker(guildId: Snowflake, stickerId: Snowflake) {
 		return `/guilds/${guildId}/stickers/${stickerId}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/scheduled-events`
+	 * - POST `/guilds/{guild.id}/scheduled-events`
+	 */
+	guildScheduledEvents(guildId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - PATCH `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 */
+	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}`;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/users`
+	 */
+	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users`;
+	},
 };
 
 export const RouteBases = {
@@ -796,12 +857,12 @@ export const RouteBases = {
 Object.freeze(RouteBases);
 
 export const OAuth2Routes = {
-	authorizationURL: `https://discord.com/api/v${APIVersion}/oauth2/authorize`,
-	tokenURL: `https://discord.com/api/v${APIVersion}/oauth2/token`,
+	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
+	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
 	 * See https://tools.ietf.org/html/rfc7009
 	 */
-	tokenRevocationURL: `https://discord.com/api/v${APIVersion}/oauth2/token/revoke`,
+	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;
 
 // Freeze OAuth2 route object
