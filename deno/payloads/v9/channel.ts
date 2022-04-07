@@ -286,6 +286,12 @@ export enum ChannelType {
 	 * See https://support.discord.com/hc/en-us/articles/1500005513722
 	 */
 	GuildStageVoice,
+	/**
+	 * The channel in a Student Hub containing the listed servers
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 */
+	GuildDirectory,
 }
 
 export enum VideoQualityMode {
