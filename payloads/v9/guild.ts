@@ -346,6 +346,10 @@ export interface APIGuild extends APIPartialGuild {
 	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
 	 */
 	guild_scheduled_events?: APIGuildScheduledEvent[];
+	/**
+	 * The type of Student Hub the guild is
+	 */
+	hub_type: GuildHubType | null;
 }
 
 /**
@@ -419,6 +423,12 @@ export enum GuildPremiumTier {
 	Tier3,
 }
 
+export enum GuildHubType {
+	Default,
+	HighSchool,
+	College,
+}
+
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
  */
@@ -474,6 +484,10 @@ export enum GuildFeature {
 	 */
 	Featurable = 'FEATURABLE',
 	/**
+	 * Guild is listed in a directory channel
+	 */
+	HasDirectoryEntry = 'HAS_DIRECTORY_ENTRY',
+	/**
 	 * Guild is a Student Hub
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
@@ -483,6 +497,12 @@ export enum GuildFeature {
 	 * Guild has access to set an invite splash background
 	 */
 	InviteSplash = 'INVITE_SPLASH',
+	/**
+	 * Guild is in a Student Hub
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 */
+	LinkedToHub = 'LINKED_TO_HUB',
 	/**
 	 * Guild has enabled Membership Screening
 	 */
