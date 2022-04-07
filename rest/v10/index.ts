@@ -834,14 +834,6 @@ export const Routes = {
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
-
-	/**
-	 * Route for
-	 * - POST /channels/${channel.id}/threads
-	 */
-	guildForumThreads(channelId: Snowflake) {
-		return `/channels/${channelId}/threads` as const;
-	},
 };
 
 export const RouteBases = {
