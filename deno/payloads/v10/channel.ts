@@ -292,9 +292,15 @@ export enum ChannelType {
 	 */
 	GuildStageVoice,
 	/**
+	 * The channel in a Student Hub containing the listed servers
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 */
+	GuildDirectory,
+	/**
 	 * A channel that can only contain threads
 	 */
-	GuildForum = 15,
+	GuildForum,
 }
 
 export enum VideoQualityMode {
