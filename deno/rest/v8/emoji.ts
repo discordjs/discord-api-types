@@ -4,16 +4,19 @@ import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../..
 
 /**
  * https://discord.com/developers/docs/resources/emoji#list-guild-emojis
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildEmojisResult = APIEmoji[];
 
 /**
  * https://discord.com/developers/docs/resources/emoji#get-guild-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildEmojiResult = APIEmoji;
 
 /**
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -34,11 +37,13 @@ export type RESTPostAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPrope
 
 /**
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildEmojiResult = APIEmoji;
 
 /**
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -53,10 +58,12 @@ export type RESTPatchAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedProp
 
 /**
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildEmojiResult = APIEmoji;
 
 /**
  * https://discord.com/developers/docs/resources/emoji#delete-guild-emoji
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildEmojiResult = never;

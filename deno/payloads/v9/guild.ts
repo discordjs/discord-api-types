@@ -2,16 +2,16 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
-import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIChannel } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway.ts';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
 import type { APIRole } from './permissions.ts';
 import type { APIStageInstance } from './stageInstance.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { GatewayVoiceState } from './voice.ts';
-import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
+import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
@@ -54,7 +54,7 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 	 */
 	banner?: string | null;
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description?: string | null;
 	/**
@@ -267,7 +267,7 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	vanity_url_code: string | null;
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description: string | null;
 	/**
@@ -446,6 +446,10 @@ export enum GuildSystemChannelFlags {
  */
 export enum GuildFeature {
 	/**
+	 * Guild has access to set an animated guild banner image
+	 */
+	AnimatedBanner = 'ANIMATED_BANNER',
+	/**
 	 * Guild has access to set an animated guild icon
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
@@ -596,6 +600,10 @@ export interface APIGuildPreview {
 	 * The description for the guild
 	 */
 	description: string;
+	/**
+	 * Custom guild stickers
+	 */
+	stickers: APISticker[];
 }
 
 /**
@@ -683,7 +691,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Integration type
 	 */
-	type: APIGuildInteractionType;
+	type: APIGuildIntegrationType;
 	/**
 	 * Is this integration enabled
 	 */
@@ -762,7 +770,7 @@ export interface APIGuildIntegration {
 	application?: APIGuildIntegrationApplication;
 }
 
-export type APIGuildInteractionType = 'twitch' | 'youtube' | 'discord';
+export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
@@ -808,10 +816,6 @@ export interface APIGuildIntegrationApplication {
 	 * The description of the app
 	 */
 	description: string;
-	/**
-	 * The summary of the app
-	 */
-	summary: string;
 	/**
 	 * The bot associated with this application
 	 *

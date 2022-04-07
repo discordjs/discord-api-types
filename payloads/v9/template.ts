@@ -2,9 +2,9 @@
  * Types extracted from https://discord.com/developers/docs/resources/template
  */
 
+import type { APIUser } from './user';
 import type { Snowflake } from '../../globals';
 import type { RESTPostAPIGuildsJSONBody } from '../../rest/v9/index';
-import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/resources/template#template-object

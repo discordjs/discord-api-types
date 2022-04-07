@@ -1,3 +1,5 @@
+import type { LocalizationMap } from '../../../../../v9.ts';
+
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
  */
@@ -12,6 +14,7 @@ export enum ApplicationCommandOptionType {
 	Role,
 	Mentionable,
 	Number,
+	Attachment,
 }
 
 /**
@@ -19,5 +22,6 @@ export enum ApplicationCommandOptionType {
  */
 export interface APIApplicationCommandOptionChoice<ValueType = string | number> {
 	name: string;
+	name_localizations?: LocalizationMap | null;
 	value: ValueType;
 }

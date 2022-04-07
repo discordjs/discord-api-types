@@ -1,4 +1,12 @@
 import type {
+	RESTDeleteAPIWebhookWithTokenMessageResult,
+	RESTGetAPIWebhookWithTokenMessageResult,
+	RESTPatchAPIWebhookWithTokenMessageFormDataBody,
+	RESTPatchAPIWebhookWithTokenMessageJSONBody,
+	RESTPatchAPIWebhookWithTokenMessageResult,
+	RESTPostAPIWebhookWithTokenWaitResult,
+} from './webhook';
+import type {
 	APIApplicationCommand,
 	APIApplicationCommandPermission,
 	APIGuildApplicationCommandPermissions,
@@ -7,14 +15,6 @@ import type {
 	ApplicationCommandType,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
-import type {
-	RESTDeleteAPIWebhookWithTokenMessageResult,
-	RESTGetAPIWebhookWithTokenMessageResult,
-	RESTPatchAPIWebhookWithTokenMessageFormDataBody,
-	RESTPatchAPIWebhookWithTokenMessageJSONBody,
-	RESTPatchAPIWebhookWithTokenMessageResult,
-	RESTPostAPIWebhookWithTokenWaitResult,
-} from './webhook';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
@@ -27,7 +27,17 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
 type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Omit<APIApplicationCommand, 'id' | 'application_id' | 'description' | 'type' | 'version' | 'guild_id'>
+	Omit<
+		APIApplicationCommand,
+		| 'id'
+		| 'application_id'
+		| 'description'
+		| 'type'
+		| 'version'
+		| 'guild_id'
+		| 'name_localized'
+		| 'description_localized'
+	>
 >;
 
 /**

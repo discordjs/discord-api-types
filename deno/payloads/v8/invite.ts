@@ -2,15 +2,31 @@
  * Types extracted from https://discord.com/developers/docs/resources/invite
  */
 
-import type { APIPartialChannel } from './channel.ts';
-import type { APIPartialGuild } from './guild.ts';
 import type { APIApplication } from './application.ts';
+import type { APIPartialChannel } from './channel.ts';
+import type { APIGuild } from './guild.ts';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
 import type { APIInviteStageInstance } from './stageInstance.ts';
 import type { APIUser } from './user.ts';
-import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
+
+export type APIInviteGuild = Pick<
+	APIGuild,
+	| 'id'
+	| 'name'
+	| 'splash'
+	| 'banner'
+	| 'icon'
+	| 'vanity_url_code'
+	| 'description'
+	| 'features'
+	| 'verification_level'
+	| 'nsfw_level'
+	| 'premium_subscription_count'
+>;
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInvite {
 	/**
@@ -22,7 +38,7 @@ export interface APIInvite {
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object
 	 */
-	guild?: APIPartialGuild;
+	guild?: APIInviteGuild;
 	/**
 	 * The channel this invite is for
 	 *
@@ -77,6 +93,7 @@ export interface APIInvite {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InviteTargetType {
 	Stream = 1,
@@ -85,6 +102,7 @@ export enum InviteTargetType {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIExtendedInvite extends APIInvite {
 	/**

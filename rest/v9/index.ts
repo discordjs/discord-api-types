@@ -1,7 +1,6 @@
 import type { Snowflake } from '../../globals';
 
 export * from '../common';
-
 export * from './auditLog';
 export * from './channel';
 export * from './emoji';
@@ -233,10 +232,11 @@ export const Routes = {
 	 * Route for:
 	 * - GET    `/guilds/{guild.id}/members/{user.id}`
 	 * - PUT    `/guilds/{guild.id}/members/{user.id}`
+	 * - PATCH  `/guilds/{guild.id}/members/@me`
 	 * - PATCH  `/guilds/{guild.id}/members/{user.id}`
 	 * - DELETE `/guilds/{guild.id}/members/{user.id}`
 	 */
-	guildMember(guildId: Snowflake, userId: Snowflake) {
+	guildMember(guildId: Snowflake, userId: Snowflake | '@me' = '@me') {
 		return `/guilds/${guildId}/members/${userId}` as const;
 	},
 
@@ -259,6 +259,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
+	 * @deprecated Use {@link Routes.guildMember} instead.
 	 */
 	guildCurrentMemberNickname(guildId: Snowflake) {
 		return `/guilds/${guildId}/members/@me/nick` as const;
@@ -447,8 +448,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET `/channels/{channel.id}/threads/active`
-	 * 	 (deprecated, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
-	 * 	 Will be removed in v10.)
+	 * 	 (deprecated, removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.)
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
@@ -823,7 +823,7 @@ export const Routes = {
 	 * - POST `/guilds/{guild.id}/scheduled-events`
 	 */
 	guildScheduledEvents(guildId: Snowflake) {
-		return `/guilds/${guildId}/scheduled-events`;
+		return `/guilds/${guildId}/scheduled-events` as const;
 	},
 
 	/**
@@ -833,7 +833,7 @@ export const Routes = {
 	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
 	 */
 	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
-		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}`;
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}` as const;
 	},
 
 	/**
@@ -841,7 +841,7 @@ export const Routes = {
 	 * - GET `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/users`
 	 */
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
-		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users`;
+		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
 };
 
@@ -851,6 +851,7 @@ export const RouteBases = {
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',
 	gift: 'https://discord.gift',
+	scheduledEvent: 'https://discord.com/events',
 } as const;
 
 // Freeze bases object

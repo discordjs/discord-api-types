@@ -1,7 +1,7 @@
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
  */
-export const enum RESTJSONErrorCodes {
+export enum RESTJSONErrorCodes {
 	GeneralError,
 
 	UnknownAccount = 10001,
@@ -47,7 +47,8 @@ export const enum RESTJSONErrorCodes {
 	UnknownInteraction = 10062,
 	UnknownApplicationCommand,
 
-	UnknownApplicationCommandPermissions = 10066,
+	UnknownVoiceState = 10065,
+	UnknownApplicationCommandPermissions,
 	UnknownStageInstance,
 	UnknownGuildMemberVerificationForm,
 	UnknownGuildWelcomeScreen,
@@ -107,11 +108,15 @@ export const enum RESTJSONErrorCodes {
 	MaximumNumberOfStickersReached = 30039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
 
+	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30042,
+
+	MaximumNumberOfEditsToMessagesOlderThanOneHourReached = 30046,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
-
-	RequestEntityTooLarge = 40005,
+	SendMessagesHasBeenTemporarilyDisabled,
+	RequestEntityTooLarge,
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
@@ -120,6 +125,8 @@ export const enum RESTJSONErrorCodes {
 
 	ApplicationCommandWithThatNameAlreadyExists = 40041,
 
+	InteractionHasAlreadyBeenAcknowledged = 40060,
+
 	MissingAccess = 50001,
 	InvalidAccountType,
 	CannotExecuteActionOnDMChannel,
@@ -127,7 +134,7 @@ export const enum RESTJSONErrorCodes {
 	CannotEditMessageAuthoredByAnotherUser,
 	CannotSendAnEmptyMessage,
 	CannotSendMessagesToThisUser,
-	CannotSendMessagesInVoiceChannel,
+	CannotSendMessagesInNonTextChannel,
 	ChannelVerificationLevelTooHighForYouToGainAccess,
 	OAuth2ApplicationDoesNotHaveBot,
 	OAuth2ApplicationLimitReached,
@@ -161,6 +168,8 @@ export const enum RESTJSONErrorCodes {
 	CannotSelfRedeemThisGift = 50054,
 	InvalidGuild,
 
+	InvalidMessageType = 50068,
+
 	PaymentSourceRequiredToRedeemGift = 50070,
 
 	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
@@ -170,6 +179,7 @@ export const enum RESTJSONErrorCodes {
 	InvalidActionOnArchivedThread = 50083,
 	InvalidThreadNotificationSettings,
 	ParameterEarlierThanCreation,
+	CommunityServerChannelsMustBeTextChannels,
 
 	ServerNotAvailableInYourLocation = 50095,
 
@@ -208,3 +218,38 @@ export const enum RESTJSONErrorCodes {
 
 	FailedToCreateStageNeededForStageEvent = 180002,
 }
+
+export enum Locale {
+	EnglishUS = 'en-US',
+	EnglishGB = 'en-GB',
+	Bulgarian = 'bg',
+	ChineseCN = 'zh-CN',
+	ChineseTW = 'zh-TW',
+	Croatian = 'hr',
+	Czech = 'cs',
+	Danish = 'da',
+	Dutch = 'nl',
+	Finnish = 'fi',
+	French = 'fr',
+	German = 'de',
+	Greek = 'el',
+	Hindi = 'hi',
+	Hungarian = 'hu',
+	Italian = 'it',
+	Japanese = 'ja',
+	Korean = 'ko',
+	Lithuanian = 'lt',
+	Norwegian = 'no',
+	Polish = 'pl',
+	PortugueseBR = 'pt-BR',
+	Romanian = 'ro',
+	Russian = 'ru',
+	SpanishES = 'es-ES',
+	Swedish = 'sv-SE',
+	Thai = 'th',
+	Turkish = 'tr',
+	Ukrainian = 'uk',
+	Vietnamese = 'vi',
+}
+
+export type LocaleString = `${Locale}`;

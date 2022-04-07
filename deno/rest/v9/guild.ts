@@ -1,3 +1,4 @@
+import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
 	APIBan,
@@ -20,21 +21,27 @@ import type {
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
+	APIDMChannel,
+	APIGroupDMChannel,
 } from '../../payloads/v9/mod.ts';
 import type {
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
 	Nullable,
 	StrictPartial,
 	StrictRequired,
+	UnionToIntersection,
 } from '../../utils/internals.ts';
-import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;
 }
 
+export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
 export type APIGuildCreatePartialChannel = StrictPartial<
-	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
+	Pick<
+		UnionToIntersection<APIGuildChannelResolvable>,
+		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
+	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 		name: string;
@@ -223,7 +230,7 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	discovery_splash?: string | null;
 	/**
-	 * base64 16:9 png/jpeg image for the guild banner (when the guild has `BANNER` feature)
+	 * base64 16:9 png/jpeg image for the guild banner (when the server has the `BANNER` feature; can be animated gif when the server has the `ANIMATED_BANNER` feature)
 	 */
 	banner?: string | null;
 	/**
@@ -257,7 +264,7 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	features?: GuildFeature[];
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description?: string | null;
 	/**
@@ -441,6 +448,10 @@ export type RESTPatchAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPro
 	 * Requires `MOVE_MEMBERS` permission
 	 */
 	channel_id?: Snowflake | null;
+	/**
+	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
+	 */
+	communication_disabled_until?: string | null;
 }>;
 
 /**
@@ -450,6 +461,8 @@ export type RESTPatchAPIGuildMemberResult = APIGuildMember;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
+ *
+ *  @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  */
 export type RESTPatchAPICurrentGuildMemberNicknameJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -461,7 +474,21 @@ export type RESTPatchAPICurrentGuildMemberNicknameJSONBody = AddUndefinedToPossi
 }>;
 
 /**
+ * https://discord.com/developers/docs/resources/guild#modify-current-member
+ */
+export type RESTPatchAPICurrentGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+	/**
+	 * Value to set users nickname to
+	 *
+	 * Requires `CHANGE_NICKNAME` permission
+	 */
+	nick?: string | null;
+}>;
+
+/**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
+ *
+ * @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  */
 export type RESTPatchAPICurrentGuildMemberNicknameResult =
 	StrictRequired<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
@@ -487,6 +514,26 @@ export type RESTDeleteAPIGuildMemberResult = never;
 export type RESTGetAPIGuildBansResult = APIBan[];
 
 /**
+ * https://discord.com/developers/docs/resources/guild#get-guild-bans
+ */
+export interface RESTGetAPIGuildBansQuery {
+	/**
+	 * Consider only users before given user id
+	 */
+	before?: Snowflake;
+	/**
+	 * Consider only users after given user id
+	 */
+	after?: Snowflake;
+	/**
+	 * Number of users to return (1-1000)
+	 *
+	 * @default 1000
+	 */
+	limit?: number;
+}
+
+/**
  * https://discord.com/developers/docs/resources/guild#get-guild-ban
  */
 export type RESTGetAPIGuildBanResult = APIBan;
@@ -501,6 +548,8 @@ export type RESTPutAPIGuildBanJSONBody = AddUndefinedToPossiblyUndefinedProperti
 	delete_message_days?: number;
 	/**
 	 * Reason for the ban
+	 *
+	 * @deprecated Removed in API v10, use the `X-Audit-Log-Reason` header instead.
 	 */
 	reason?: string;
 }>;

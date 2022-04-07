@@ -8,8 +8,8 @@ import type {
 	APIExtendedInvite,
 	APIFollowedChannel,
 	APIMessage,
+	APIMessageActionRowComponent,
 	APIMessageReference,
-	APIOverwrite,
 	APIThreadList,
 	APIThreadMember,
 	APIUser,
@@ -21,6 +21,10 @@ import type {
 	VideoQualityMode,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
+
+export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
+	id: Snowflake;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-channel
@@ -60,7 +64,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, news, store
+	 * Channel types: text, news
 	 */
 	nsfw?: boolean | null;
 	/**
@@ -88,11 +92,11 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 *
 	 * Channel types: all excluding newsThread, publicThread, privateThread
 	 */
-	permission_overwrites?: APIOverwrite[] | null;
+	permission_overwrites?: APIChannelPatchOverwrite[] | null;
 	/**
 	 * ID of the new parent category for a channel
 	 *
-	 * Channel types: text, news, store, voice
+	 * Channel types: text, news, voice
 	 */
 	parent_id?: Snowflake | null;
 	/**
@@ -243,7 +247,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
@@ -254,6 +258,10 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 * Attachment objects with filename and description
 	 */
 	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+	/**
+	 * Message flags combined as a bitfield
+	 */
+	flags?: MessageFlags;
 }>;
 
 /**
@@ -373,7 +381,7 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent[] | null;
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null;
 }>;
 
 /**
@@ -421,14 +429,18 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	 * The bitwise value of all allowed permissions
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
+	 *
+	 * @default "0"
 	 */
-	allow: Permissions;
+	allow?: Permissions | null;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
+	 *
+	 * @default "0"
 	 */
-	deny: Permissions;
+	deny?: Permissions | null;
 	/**
 	 * `0` for a role or `1` for a member
 	 */
@@ -597,11 +609,11 @@ export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThread
 		 * The type of thread to create
 		 *
 		 * In API v9, `type` defaults to `PRIVATE_THREAD`.
-		 * In API v10 this will be changed to be a required field, with no default.
+		 * In a future API version this will be changed to be a required field, with no default.
 		 *
 		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 		 *
-		 * @default 12
+		 * @default ChannelType.GuildPrivateThread
 		 */
 		type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
 		/**
@@ -647,7 +659,7 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 /**
  * https://discord.com/developers/docs/resources/channel#list-active-threads
  *
- * @deprecated Use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead. Will be removed in v10.
+ * @deprecated Removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
  */
 export type RESTGetAPIChannelThreadsResult = APIThreadList;
 

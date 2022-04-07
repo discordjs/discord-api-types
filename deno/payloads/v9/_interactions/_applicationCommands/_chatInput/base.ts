@@ -1,9 +1,12 @@
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
+import type { LocalizationMap } from '../../../../../v9.ts';
 
 export interface APIApplicationCommandOptionBase<Type extends ApplicationCommandOptionType> {
 	type: Type;
 	name: string;
+	name_localizations?: LocalizationMap | null;
 	description: string;
+	description_localizations?: LocalizationMap | null;
 	required?: boolean;
 }
 

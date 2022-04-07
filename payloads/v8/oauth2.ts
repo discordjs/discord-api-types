@@ -2,7 +2,10 @@
  * Types extracted from https://discord.com/developers/docs/topics/oauth2
  */
 
-export const enum OAuth2Scopes {
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export enum OAuth2Scopes {
 	/**
 	 * For oauth2 bots, this puts the bot in the user's selected guild by default
 	 */

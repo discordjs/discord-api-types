@@ -5,18 +5,18 @@
 import type { Snowflake } from '../globals.ts';
 import type {
 	APIApplication,
-	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
-	APIGuildScheduledEvent,
 	APIGuildIntegration,
 	APIGuildMember,
+	APIGuildScheduledEvent,
+	APIInteraction,
 	APIMessage,
-	APIMessageComponentInteraction,
 	APIRole,
 	APIStageInstance,
 	APISticker,
+	APIThreadChannel,
 	APIThreadMember,
 	APIUnavailableGuild,
 	APIUser,
@@ -939,7 +939,7 @@ export type GatewayInteractionCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#interaction-create
  */
-export type GatewayInteractionCreateDispatchData = APIApplicationCommandInteraction | APIMessageComponentInteraction;
+export type GatewayInteractionCreateDispatchData = APIInteraction;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-create
@@ -1280,7 +1280,12 @@ export type GatewayThreadCreateDispatch = GatewayChannelModifyDispatch;
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-create
  */
-export type GatewayThreadCreateDispatchData = GatewayChannelModifyDispatchData;
+export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
+	/**
+	 * Whether the thread is newly created or not.
+	 */
+	newly_created?: true;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-update

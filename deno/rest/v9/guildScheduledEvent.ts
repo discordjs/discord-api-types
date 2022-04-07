@@ -60,6 +60,10 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 	 * The entity metadata of the scheduled event
 	 */
 	entity_metadata?: APIGuildScheduledEventEntityMetadata;
+	/**
+	 * The cover image of the scheduled event
+	 */
+	image?: string | null;
 }>;
 
 /**
@@ -91,6 +95,14 @@ export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIG
 		 * The status of the scheduled event
 		 */
 		status?: GuildScheduledEventStatus;
+		/**
+		 * The entity metadata of the scheduled event
+		 */
+		entity_metadata?: APIGuildScheduledEventEntityMetadata | null;
+		/**
+		 * The description of the guild event
+		 */
+		description?: string | null;
 	}>;
 
 /**

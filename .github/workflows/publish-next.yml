@@ -2,14 +2,21 @@ name: Publish next
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */12 * * *'
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
-    name: Publish to npm
+    name: Publish @next release to npm
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'discordjs' && !(github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release)'))
     steps:
+      - name: Cancel previous publish attempts
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -25,18 +32,16 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Bump version
-        run: npx standard-version
+        run: node ./scripts/bump-version.mjs
+
+      - name: Deprecate old @next versions
+        run: npx npm-deprecate --name "*next*" --package discord-api-types --message "No longer supported. Install the latest @next release" || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
-      - name: Deprecate old versions
-        run: npm deprecate discord-api-types@"~$(jq --raw-output '.version' package.json)-next" "No longer supported. Install the latest @next release" || true
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-
-      - name: Publish new version
+      - name: Publish new @next version
         run: |
-          npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
+          npm version $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
           npm publish --tag next || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

@@ -1,5 +1,7 @@
 import { expectType } from 'tsd';
+import type { Snowflake } from '../../globals';
 import {
+	APIApplicationCommandAutocompleteInteraction,
 	APIApplicationCommandInteraction,
 	APIApplicationCommandInteractionData,
 	APIDMInteraction,
@@ -7,10 +9,11 @@ import {
 	APIInteraction,
 	APIInteractionGuildMember,
 	APIMessageComponentInteraction,
+	APIModalSubmission,
 	APIUser,
 	ComponentType,
 	InteractionType,
-} from '../../v9';
+} from '../../v10';
 
 declare const interaction: APIInteraction;
 
@@ -19,6 +22,7 @@ if (interaction.type === InteractionType.ApplicationCommand) {
 
 	const { data } = interaction;
 	expectType<APIApplicationCommandInteractionData>(data);
+	expectType<Snowflake | undefined>(data.guild_id);
 }
 
 if (interaction.type === InteractionType.MessageComponent) {
@@ -35,6 +39,14 @@ if (interaction.type === InteractionType.MessageComponent) {
 		// expectType<APIMessageSelectMenuInteractionData>(data);
 		expectType<string[]>(data.values);
 	}
+}
+
+if (interaction.type === InteractionType.ApplicationCommandAutocomplete) {
+	expectType<APIApplicationCommandAutocompleteInteraction['data']>(interaction.data);
+}
+
+if (interaction.type === InteractionType.ModalSubmit) {
+	expectType<APIModalSubmission>(interaction.data);
 }
 
 declare const dmInteraction: APIDMInteraction;

@@ -694,7 +694,6 @@ export interface GatewayIdentify {
 		properties: GatewayIdentifyProperties;
 		compress?: boolean;
 		large_threshold?: number;
-		// eslint-disable-next-line prettier/prettier
 		shard?: [shard_id: number, shard_count: number];
 		presence?: RawGatewayPresenceUpdate;
 		guild_subscriptions?: boolean;

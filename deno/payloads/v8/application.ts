@@ -2,12 +2,14 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
-import type { Snowflake } from '../../globals.ts';
+import type { OAuth2Scopes } from './oauth2.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
+import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIApplication {
 	/**
@@ -55,8 +57,10 @@ export interface APIApplication {
 	/**
 	 * If this application is a game sold on Discord, this field will be the summary field for the store page
 	 * of its primary sku
+	 *
+	 * @deprecated Always an empty string, will be removed in v11
 	 */
-	summary: string;
+	summary: '';
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
@@ -91,10 +95,28 @@ export interface APIApplication {
 	 * See https://discord.com/developers/docs/resources/application#application-object-application-flags
 	 */
 	flags: ApplicationFlags;
+	/**
+	 * Up to 5 tags describing the content and functionality of the application
+	 */
+	tags?: [string, string?, string?, string?, string?];
+	/**
+	 * Settings for the application's default in-app authorization link, if enabled
+	 */
+	install_params?: APIApplicationInstallParams;
+	/**
+	 * The application's default custom authorization link, if enabled
+	 */
+	custom_install_url?: string;
+}
+
+export interface APIApplicationInstallParams {
+	scopes: OAuth2Scopes[];
+	permissions: Permissions;
 }
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-flags
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ApplicationFlags {
 	EmbeddedReleased = 1 << 1,

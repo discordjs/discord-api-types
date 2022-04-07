@@ -2,11 +2,12 @@
  * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
-import type { Snowflake } from '../../globals';
 import type { APIGuildIntegration } from './guild';
+import type { Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUser {
 	/**
@@ -83,12 +84,9 @@ export interface APIUser {
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-user-flags
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum UserFlags {
-	/**
-	 * None
-	 */
-	None = 0,
+export enum UserFlags {
 	/**
 	 * Discord Employee
 	 */
@@ -114,7 +112,7 @@ export const enum UserFlags {
 	 */
 	HypeSquadOnlineHouse2 = 1 << 7,
 	/**
-	 * House Balance Member
+	 * House Balance MemberW
 	 */
 	HypeSquadOnlineHouse3 = 1 << 8,
 	/**
@@ -145,12 +143,17 @@ export const enum UserFlags {
 	 * Bot uses only [HTTP interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction) and is shown in the online member list
 	 */
 	BotHTTPInteractions = 1 << 19,
+	/**
+	 * User has been identified as spammer
+	 */
+	Spammer = 1 << 20,
 }
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-premium-types
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export const enum UserPremiumType {
+export enum UserPremiumType {
 	None,
 	NitroClassic,
 	Nitro,
@@ -158,6 +161,7 @@ export const enum UserPremiumType {
 
 /**
  * https://discord.com/developers/docs/resources/user#connection-object
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIConnection {
 	/**
@@ -202,7 +206,10 @@ export interface APIConnection {
 	visibility: ConnectionVisibility;
 }
 
-export const enum ConnectionVisibility {
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
+export enum ConnectionVisibility {
 	/**
 	 * Invisible to everyone except the user themselves
 	 */

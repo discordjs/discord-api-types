@@ -2,16 +2,16 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
-import type { Permissions, Snowflake } from '../../globals';
 import type { APIChannel } from './channel';
 import type { APIEmoji } from './emoji';
 import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway';
+import type { APIGuildScheduledEvent } from './guildScheduledEvent';
 import type { APIRole } from './permissions';
 import type { APIStageInstance } from './stageInstance';
 import type { APISticker } from './sticker';
 import type { APIUser } from './user';
 import type { GatewayVoiceState } from './voice';
-import type { APIGuildScheduledEvent } from './guildScheduledEvent';
+import type { Permissions, Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
@@ -54,7 +54,7 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 	 */
 	banner?: string | null;
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description?: string | null;
 	/**
@@ -267,7 +267,7 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	vanity_url_code: string | null;
 	/**
-	 * The description for the guild, if the guild is discoverable
+	 * The description for the guild
 	 */
 	description: string | null;
 	/**
@@ -351,7 +351,7 @@ export interface APIGuild extends APIPartialGuild {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
  */
-export const enum GuildDefaultMessageNotifications {
+export enum GuildDefaultMessageNotifications {
 	AllMessages,
 	OnlyMentions,
 }
@@ -359,7 +359,7 @@ export const enum GuildDefaultMessageNotifications {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
  */
-export const enum GuildExplicitContentFilter {
+export enum GuildExplicitContentFilter {
 	Disabled,
 	MembersWithoutRoles,
 	AllMembers,
@@ -368,7 +368,7 @@ export const enum GuildExplicitContentFilter {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
  */
-export const enum GuildMFALevel {
+export enum GuildMFALevel {
 	None,
 	Elevated,
 }
@@ -376,7 +376,7 @@ export const enum GuildMFALevel {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level
  */
-export const enum GuildNSFWLevel {
+export enum GuildNSFWLevel {
 	Default,
 	Explicit,
 	Safe,
@@ -386,7 +386,7 @@ export const enum GuildNSFWLevel {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-verification-level
  */
-export const enum GuildVerificationLevel {
+export enum GuildVerificationLevel {
 	/**
 	 * Unrestricted
 	 */
@@ -412,7 +412,7 @@ export const enum GuildVerificationLevel {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-premium-tier
  */
-export const enum GuildPremiumTier {
+export enum GuildPremiumTier {
 	None,
 	Tier1,
 	Tier2,
@@ -422,7 +422,7 @@ export const enum GuildPremiumTier {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
  */
-export const enum GuildSystemChannelFlags {
+export enum GuildSystemChannelFlags {
 	/**
 	 * Suppress member join notifications
 	 */
@@ -444,7 +444,11 @@ export const enum GuildSystemChannelFlags {
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-features
  */
-export const enum GuildFeature {
+export enum GuildFeature {
+	/**
+	 * Guild has access to set an animated guild banner image
+	 */
+	AnimatedBanner = 'ANIMATED_BANNER',
 	/**
 	 * Guild has access to set an animated guild icon
 	 */
@@ -596,6 +600,10 @@ export interface APIGuildPreview {
 	 * The description for the guild
 	 */
 	description: string;
+	/**
+	 * Custom guild stickers
+	 */
+	stickers: APISticker[];
 }
 
 /**
@@ -683,7 +691,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Integration type
 	 */
-	type: APIGuildInteractionType;
+	type: APIGuildIntegrationType;
 	/**
 	 * Is this integration enabled
 	 */
@@ -762,12 +770,12 @@ export interface APIGuildIntegration {
 	application?: APIGuildIntegrationApplication;
 }
 
-export type APIGuildInteractionType = 'twitch' | 'youtube' | 'discord';
+export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
  */
-export const enum IntegrationExpireBehavior {
+export enum IntegrationExpireBehavior {
 	RemoveRole,
 	Kick,
 }
@@ -808,10 +816,6 @@ export interface APIGuildIntegrationApplication {
 	 * The description of the app
 	 */
 	description: string;
-	/**
-	 * The summary of the app
-	 */
-	summary: string;
 	/**
 	 * The bot associated with this application
 	 *
@@ -871,7 +875,7 @@ export interface APIGuildWidgetMember {
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options
  */
-export const enum GuildWidgetStyle {
+export enum GuildWidgetStyle {
 	/**
 	 * Shield style widget with Discord icon and guild members online count
 	 */
@@ -961,7 +965,7 @@ export interface APIGuildMembershipScreeningField {
 	required: boolean;
 }
 
-export const enum MembershipScreeningFieldType {
+export enum MembershipScreeningFieldType {
 	/**
 	 * Server Rules
 	 */

@@ -1,0 +1,56 @@
+chore:
+  - any: ['*']
+    all:
+      [
+        '!deno/**/*',
+        '!gateway/**/*',
+        '!payloads/**/*',
+        '!rest/**/*',
+        '!rpc/**/*',
+        '!tests/**/*',
+        '!utils/**/*',
+        '!voice/**/*',
+      ]
+
+ci:
+  - .github/**/*
+  - .husky/**/*
+  - scripts/actions/**/*
+
+dependencies:
+  - package.json
+  - package-lock.json
+
+'topic:deno':
+  - scripts/deno.mjs
+  - scripts/actions/report-deno-not-ran.mjs
+
+'topic:gateway':
+  - gateway/**/*
+
+'topic:payloads':
+  - payloads/**/*
+
+'topic:rest':
+  - rest/**/*
+
+'topic:rpc':
+  - rpc/**/*
+
+'topic:scripts':
+  - scripts/**/*
+
+'topic:tests':
+  - tests/**/*
+
+'topic:utils':
+  - utils/**/*
+
+'topic:voice':
+  - voice/**/*
+
+'topic:globals':
+  - globals.ts
+
+'topic:website':
+  - website/**/*

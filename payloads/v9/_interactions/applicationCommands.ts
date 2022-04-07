@@ -1,8 +1,3 @@
-import type { Permissions, Snowflake } from '../../../globals';
-import type { APIPartialChannel, APIThreadMetadata } from '../channel';
-import type { APIGuildMember } from '../guild';
-import type { APIBaseInteraction } from './base';
-import type { InteractionType } from './responses';
 import type {
 	APIApplicationCommandOption,
 	APIChatInputApplicationCommandDMInteraction,
@@ -16,6 +11,12 @@ import type {
 	APIContextMenuInteraction,
 	APIContextMenuInteractionData,
 } from './_applicationCommands/contextMenu';
+import type { APIBaseInteraction } from './base';
+import type { InteractionType } from './responses';
+import type { Permissions, Snowflake } from '../../../globals';
+import type { LocalizationMap } from '../../../v9';
+import type { APIPartialChannel, APIThreadMetadata } from '../channel';
+import type { APIGuildMember } from '../guild';
 
 export * from './_applicationCommands/chatInput';
 export * from './_applicationCommands/contextMenu';
@@ -42,13 +43,29 @@ export interface APIApplicationCommand {
 	 */
 	guild_id?: Snowflake;
 	/**
-	 * 1-32 character name; `CHAT_INPUT` command names must be all lowercase matching `^[\w-]{1,32}$`
+	 * 1-32 character name; `CHAT_INPUT` command names must be all lowercase matching `^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$`
 	 */
 	name: string;
+	/**
+	 * Localization dictionary for the name field. Values follow the same restrictions as name
+	 */
+	name_localizations?: LocalizationMap | null;
+	/**
+	 * The localized name
+	 */
+	name_localized?: string;
 	/**
 	 * 1-100 character description for `CHAT_INPUT` commands, empty string for `USER` and `MESSAGE` commands
 	 */
 	description: string;
+	/**
+	 * Localization dictionary for the description field. Values follow the same restrictions as description
+	 */
+	description_localizations?: LocalizationMap | null;
+	/**
+	 * The localized description
+	 */
+	description_localized?: string;
 	/**
 	 * The parameters for the `CHAT_INPUT` command, max 25
 	 */
@@ -68,7 +85,7 @@ export interface APIApplicationCommand {
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
  */
-export const enum ApplicationCommandType {
+export enum ApplicationCommandType {
 	ChatInput = 1,
 	User,
 	Message,

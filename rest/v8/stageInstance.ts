@@ -4,6 +4,7 @@ import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../..
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostAPIStageInstanceJSONBody {
 	/**
@@ -24,16 +25,19 @@ export interface RESTPostAPIStageInstanceJSONBody {
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIStageInstanceResult = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#get-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIStageInstanceResult = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -48,10 +52,12 @@ export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedP
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIStageInstanceResult = APIStageInstance;
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIStageInstanceResult = never;

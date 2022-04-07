@@ -5,18 +5,18 @@
 import type { Snowflake } from '../globals';
 import type {
 	APIApplication,
-	APIApplicationCommandInteraction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
-	APIGuildScheduledEvent,
 	APIGuildIntegration,
 	APIGuildMember,
+	APIGuildScheduledEvent,
+	APIInteraction,
 	APIMessage,
-	APIMessageComponentInteraction,
 	APIRole,
 	APIStageInstance,
 	APISticker,
+	APIThreadChannel,
 	APIThreadMember,
 	APIUnavailableGuild,
 	APIUser,
@@ -37,7 +37,7 @@ export const GatewayVersion = '9';
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
  */
-export const enum GatewayOpcodes {
+export enum GatewayOpcodes {
 	/**
 	 * An event was dispatched
 	 */
@@ -88,7 +88,7 @@ export const enum GatewayOpcodes {
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes
  */
-export const enum GatewayCloseCodes {
+export enum GatewayCloseCodes {
 	/**
 	 * We're not sure what went wrong. Try reconnecting?
 	 */
@@ -171,7 +171,7 @@ export const enum GatewayCloseCodes {
 /**
  * https://discord.com/developers/docs/topics/gateway#list-of-intents
  */
-export const enum GatewayIntentBits {
+export enum GatewayIntentBits {
 	Guilds = 1 << 0,
 	GuildMembers = 1 << 1,
 	GuildBans = 1 << 2,
@@ -193,7 +193,7 @@ export const enum GatewayIntentBits {
 /**
  * https://discord.com/developers/docs/topics/gateway#commands-and-events-gateway-events
  */
-export const enum GatewayDispatchEvents {
+export enum GatewayDispatchEvents {
 	ChannelCreate = 'CHANNEL_CREATE',
 	ChannelDelete = 'CHANNEL_DELETE',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
@@ -939,7 +939,7 @@ export type GatewayInteractionCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#interaction-create
  */
-export type GatewayInteractionCreateDispatchData = APIApplicationCommandInteraction | APIMessageComponentInteraction;
+export type GatewayInteractionCreateDispatchData = APIInteraction;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#invite-create
@@ -1280,7 +1280,12 @@ export type GatewayThreadCreateDispatch = GatewayChannelModifyDispatch;
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-create
  */
-export type GatewayThreadCreateDispatchData = GatewayChannelModifyDispatchData;
+export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
+	/**
+	 * Whether the thread is newly created or not.
+	 */
+	newly_created?: true;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#thread-update

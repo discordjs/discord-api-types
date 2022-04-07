@@ -1,5 +1,8 @@
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIApplicationCommandOptionBase<Type extends ApplicationCommandOptionType> {
 	type: Type;
 	name: string;
@@ -7,12 +10,18 @@ export interface APIApplicationCommandOptionBase<Type extends ApplicationCommand
 	required?: boolean;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export interface APIInteractionDataOptionBase<T extends ApplicationCommandOptionType, D> {
 	name: string;
 	type: T;
 	value: D;
 }
 
+/**
+ * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
+ */
 export type APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
 	Base extends APIApplicationCommandOptionBase<ApplicationCommandOptionType>,
 	ChoiceType extends APIApplicationCommandOptionChoice,
