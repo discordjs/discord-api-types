@@ -1368,7 +1368,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel/channel-flags
+ * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
  */
 export enum ChannelFlags {
 	Pinned = 1 << 1,
