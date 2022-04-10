@@ -26,10 +26,11 @@ import type {
 } from '../../payloads/v9/index';
 import type {
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
+	DistributiveOmit,
+	DistributivePick,
 	Nullable,
 	StrictPartial,
 	StrictRequired,
-	UnionToIntersection,
 } from '../../utils/internals';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
@@ -38,9 +39,9 @@ export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSON
 
 export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
 export type APIGuildCreatePartialChannel = StrictPartial<
-	Pick<
-		UnionToIntersection<APIGuildChannelResolvable>,
-		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
+	DistributivePick<
+		APIGuildChannelResolvable,
+		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user' | 'default_auto_archive_duration'
 	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
@@ -291,7 +292,7 @@ export type RESTGetAPIGuildChannelsResult = APIChannel[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
  */
-export type RESTPostAPIGuildChannelJSONBody = Omit<APIGuildCreatePartialChannel, 'id'>;
+export type RESTPostAPIGuildChannelJSONBody = DistributiveOmit<APIGuildCreatePartialChannel, 'id'>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
