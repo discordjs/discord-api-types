@@ -239,7 +239,7 @@ export type APIChannel =
 	| APIGuildCategoryChannel
 	| APIThreadChannel
 	| APINewsChannel
-	| APIGuildCategoryChannel;
+	| APIGuildForumChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
