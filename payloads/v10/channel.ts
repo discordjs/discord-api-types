@@ -37,6 +37,7 @@ export interface APIPartialChannel {
  */
 export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel {
 	type: T;
+	flags?: ChannelFlags;
 }
 
 // TODO: update when text in voice is released
@@ -47,7 +48,8 @@ export type TextChannelType =
 	| ChannelType.GuildPublicThread
 	| ChannelType.GuildPrivateThread
 	| ChannelType.GuildNewsThread
-	| ChannelType.GuildText;
+	| ChannelType.GuildText
+	| ChannelType.GuildForum;
 
 export type GuildChannelType = Exclude<
 	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildNews,
@@ -223,6 +225,8 @@ export interface APIThreadChannel
 	last_message_id?: Snowflake | null;
 }
 
+export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
+
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
@@ -234,7 +238,8 @@ export type APIChannel =
 	| APIVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
-	| APINewsChannel;
+	| APINewsChannel
+	| APIGuildForumChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
@@ -292,6 +297,10 @@ export enum ChannelType {
 	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
 	 */
 	GuildDirectory,
+	/**
+	 * A channel that can only contain threads
+	 */
+	GuildForum,
 }
 
 export enum VideoQualityMode {
@@ -1356,6 +1365,13 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 * Whether or not this text input is required or not
 	 */
 	required?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
+ */
+export enum ChannelFlags {
+	Pinned = 1 << 1,
 }
 
 /**

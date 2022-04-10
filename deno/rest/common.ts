@@ -55,6 +55,8 @@ export enum RESTJSONErrorCodes {
 	UnknownGuildScheduledEvent,
 	UnknownGuildScheduledEventUser,
 
+	UnknownTag = 10087,
+
 	BotsCannotUseThisEndpoint = 20001,
 	OnlyBotsCanUseThisEndpoint,
 
@@ -111,6 +113,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30042,
 
 	MaximumNumberOfEditsToMessagesOlderThanOneHourReached = 30046,
+	MaximumNumberOfPinnedThreadsInForumHasBeenReached,
+	MaximumNumberOfTagsInForumHasBeenReached,
 
 	Unauthorized = 40001,
 	VerifyYourAccount,
@@ -126,6 +130,7 @@ export enum RESTJSONErrorCodes {
 	ApplicationCommandWithThatNameAlreadyExists = 40041,
 
 	InteractionHasAlreadyBeenAcknowledged = 40060,
+	TagNamesMustBeUnique,
 
 	MissingAccess = 50001,
 	InvalidAccountType,
