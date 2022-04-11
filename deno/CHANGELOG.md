@@ -1,3 +1,11 @@
+## [0.31.1](https://github.com/discordjs/discord-api-types/compare/0.31.0...0.31.1) (2022-04-11)
+
+### Features
+
+- **APIApplicationCommandInteractionData:** add `guild_id` ([#396](https://github.com/discordjs/discord-api-types/issues/396)) ([bc6e97f](https://github.com/discordjs/discord-api-types/commit/bc6e97f309b1f5e0bc0063ada3aed77f34214e9f))
+- **APIGuildForum:** add support for forums, part 1 ([#398](https://github.com/discordjs/discord-api-types/issues/398)) ([bf08484](https://github.com/discordjs/discord-api-types/commit/bf084849885dd15b19f4f46aa260815037131600))
+- student hubs ([#215](https://github.com/discordjs/discord-api-types/issues/215)) ([69079ee](https://github.com/discordjs/discord-api-types/commit/69079ee132777977e9a9e163696ffdc8db82fe38))
+
 # [0.31.0](https://github.com/discordjs/discord-api-types/compare/0.30.0...0.31.0) (2022-04-04)
 
 ### Code Refactoring
