@@ -131,7 +131,7 @@ export interface APIMessageApplication {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIMessageReference {

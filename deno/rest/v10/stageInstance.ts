@@ -37,7 +37,7 @@ export type RESTPostAPIStageInstanceResult = APIStageInstance;
 export type RESTGetAPIStageInstanceResult = APIStageInstance;
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance
+ * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
  */
 export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -51,7 +51,7 @@ export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedP
 }>;
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance
+ * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
  */
 export type RESTPatchAPIStageInstanceResult = APIStageInstance;
 

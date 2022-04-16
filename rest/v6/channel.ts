@@ -261,7 +261,7 @@ export type RESTPostAPIChannelTypingResult = never;
 export type RESTGetAPIChannelPinsResult = APIMessage[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#add-pinned-channel-message
+ * https://discord.com/developers/docs/resources/channel#pin-message
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPutAPIChannelPinResult = never;

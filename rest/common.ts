@@ -224,6 +224,9 @@ export enum RESTJSONErrorCodes {
 	FailedToCreateStageNeededForStageEvent = 180002,
 }
 
+/**
+ * https://discord.com/developers/docs/reference#locales
+ */
 export enum Locale {
 	EnglishUS = 'en-US',
 	EnglishGB = 'en-GB',

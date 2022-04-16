@@ -2,11 +2,13 @@ import type { APISticker, APIStickerPack } from '../../payloads/v8/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#get-sticker
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIStickerResult = APISticker;
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#list-nitro-sticker-packs
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTGetNitroStickerPacksResult {
@@ -14,16 +16,19 @@ export interface RESTGetNitroStickerPacksResult {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#list-guild-stickers
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildStickersResult = APISticker[];
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#get-guild-sticker
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildStickerResult = APISticker;
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#create-guild-sticker
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostAPIGuildStickerFormDataBody {
@@ -46,11 +51,13 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#create-guild-sticker
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildStickerResult = APISticker;
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
@@ -69,11 +76,13 @@ export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPr
 }>;
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildStickerResult = APISticker;
 
 /**
+ * https://discord.com/developers/docs/resources/sticker#delete-guild-sticker
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildStickerResult = never;

@@ -159,7 +159,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
 
 /**
- * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
+ * https://discord.com/developers/docs/resources/webhook#execute-webhook-query-string-params
  */
 export interface RESTPostAPIWebhookWithTokenQuery {
 	/**
@@ -184,12 +184,12 @@ export type RESTPostAPIWebhookWithTokenResult = never;
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * See https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
+ * See https://discord.com/developers/docs/resources/webhook#execute-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenWaitResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-querystring-params
+ * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenSlackQuery = RESTPostAPIWebhookWithTokenQuery;
 
@@ -202,12 +202,12 @@ export type RESTPostAPIWebhookWithTokenSlackResult = never;
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * See https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-querystring-params
+ * See https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenSlackWaitResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
+ * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenGitHubQuery = RESTPostAPIWebhookWithTokenQuery;
 
@@ -220,7 +220,7 @@ export type RESTPostAPIWebhookWithTokenGitHubResult = never;
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * See https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
+ * See https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenGitHubWaitResult = APIMessage;
 
