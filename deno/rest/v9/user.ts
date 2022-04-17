@@ -13,7 +13,7 @@ export type RESTGetAPICurrentUserResult = APIUser;
 export type RESTGetAPIUserResult = APIUser;
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
+ * https://discord.com/developers/docs/resources/user#get-current-user-guild-member
  */
 export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
 

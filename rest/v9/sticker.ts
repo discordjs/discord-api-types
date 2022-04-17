@@ -1,16 +1,31 @@
 import type { APISticker, APIStickerPack } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#get-sticker
+ */
 export type RESTGetAPIStickerResult = APISticker;
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#list-nitro-sticker-packs
+ */
 export interface RESTGetNitroStickerPacksResult {
 	sticker_packs: APIStickerPack[];
 }
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#list-guild-stickers
+ */
 export type RESTGetAPIGuildStickersResult = APISticker[];
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#get-guild-sticker
+ */
 export type RESTGetAPIGuildStickerResult = APISticker;
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#create-guild-sticker
+ */
 export interface RESTPostAPIGuildStickerFormDataBody {
 	/**
 	 * Name of the sticker (2-30 characters)
@@ -30,8 +45,14 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 	file: unknown;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#create-guild-sticker
+ */
 export type RESTPostAPIGuildStickerResult = APISticker;
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
+ */
 export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Name of the sticker (2-30 characters)
@@ -47,6 +68,12 @@ export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPr
 	tags?: string;
 }>;
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
+ */
 export type RESTPatchAPIGuildStickerResult = APISticker;
 
+/**
+ * https://discord.com/developers/docs/resources/sticker#delete-guild-sticker
+ */
 export type RESTDeleteAPIGuildStickerResult = never;

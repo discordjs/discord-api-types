@@ -43,7 +43,7 @@ export enum OAuth2Scopes {
 	/**
 	 * Allows /users/@me/guilds/{guild.id}/member to return a user's member information in a guild
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
+	 * See https://discord.com/developers/docs/resources/user#get-current-user-guild-member
 	 */
 	GuildsMembersRead = 'guilds.members.read',
 	/**

@@ -188,7 +188,7 @@ export type RESTGetAPIChannelMessagesResult = APIMessage[];
 export type RESTGetAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  */
 export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
 	Required<Pick<APIMessageReference, 'message_id'>> &
@@ -239,7 +239,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Include to make your message a reply
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
 	 */
 	message_reference?: APIMessageReferenceSend;
 	/**
@@ -542,12 +542,12 @@ export type RESTPostAPIChannelTypingResult = never;
 export type RESTGetAPIChannelPinsResult = APIMessage[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#add-pinned-channel-message
+ * https://discord.com/developers/docs/resources/channel#pin-message
  */
 export type RESTPutAPIChannelPinResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-pinned-channel-message
+ * https://discord.com/developers/docs/resources/channel#unpin-message
  */
 export type RESTDeleteAPIChannelPinResult = never;
 
@@ -576,7 +576,7 @@ export type RESTPutAPIChannelRecipientResult = unknown;
 export type RESTDeleteAPIChannelRecipientResult = unknown;
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-with-message
+ * https://discord.com/developers/docs/resources/channel#start-thread-from-message
  */
 export type RESTPostAPIChannelMessagesThreadsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
@@ -607,7 +607,7 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessageFormDataBody;
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-with-message
+ * https://discord.com/developers/docs/resources/channel#start-thread-from-message
  */
 export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
 
