@@ -31,7 +31,7 @@ export type RESTPostAPITemplateCreateGuildJSONBody = AddUndefinedToPossiblyUndef
 export type RESTPostAPITemplateCreateGuildResult = APIGuild;
 
 /**
- * https://discord.com/developers/docs/resources/template#get-templates
+ * https://discord.com/developers/docs/resources/template#get-guild-templates
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildTemplatesResult = APITemplate[];
