@@ -15,7 +15,7 @@ export type RESTGetAPICurrentUserResult = APIUser;
 export type RESTGetAPIUserResult = APIUser;
 
 /**
- * TODO: Find the correct link
+ * https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;

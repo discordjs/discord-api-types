@@ -165,7 +165,7 @@ export type RESTGetAPIChannelMessagesResult = APIMessage[];
 export type RESTGetAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
@@ -218,7 +218,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Include to make your message a reply
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
 	 */
 	message_reference?: APIMessageReferenceSend;
 	/**
@@ -547,13 +547,13 @@ export type RESTPostAPIChannelTypingResult = never;
 export type RESTGetAPIChannelPinsResult = APIMessage[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#pin-message
+ * https://discord.com/developers/docs/resources/channel#add-pinned-channel-message
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIChannelPinResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#unpin-message
+ * https://discord.com/developers/docs/resources/channel#delete-pinned-channel-message
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelPinResult = never;

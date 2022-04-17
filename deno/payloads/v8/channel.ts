@@ -426,7 +426,7 @@ export interface APIMessage {
 	/**
 	 * Reference data sent with crossposted messages, replies, pins, and thread starter messages
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
 	 */
 	message_reference?: APIMessageReference;
 	/**
@@ -522,7 +522,7 @@ export interface APIMessageActivity {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageReference {
