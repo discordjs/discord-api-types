@@ -3,8 +3,8 @@ import Layout from '@theme/Layout';
 import React, { useEffect } from 'react';
 import { SWRConfig } from 'swr';
 import HeadTags from '../components/Home/HeadTags';
-import HomePageFeatures from '../components/Home/HomepageFeatures';
 import HomePageHeader from '../components/Home/HomePageHeader';
+import HomePageFeatures from '../components/Home/HomepageFeatures';
 
 export default function Home(): JSX.Element {
 	const { siteConfig } = useDocusaurusContext();
@@ -34,6 +34,7 @@ export default function Home(): JSX.Element {
 			<Layout title="Home" description={siteConfig.tagline}>
 				<SWRConfig
 					value={{
+						// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
 						fetcher: (resource: string, init: RequestInit) => fetch(resource, init).then((res) => res.json())
 					}}
 				>

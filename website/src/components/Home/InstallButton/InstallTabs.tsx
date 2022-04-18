@@ -12,7 +12,8 @@ const InstallTabs: FC = () => {
 	const pnpmInstallCommand = npmToPnpm(npmInstallCommand);
 
 	const handleClickInstallButton = async (command: string) => {
-		await navigator.clipboard.writeText(command);
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+		await window.navigator.clipboard.writeText(command);
 	};
 
 	return (
@@ -21,19 +22,25 @@ const InstallTabs: FC = () => {
 				<TabItem value="npm" label="npm" default>
 					<InstallTabButton
 						installCommand={npmInstallCommand}
-						handleClickInstallButton={() => handleClickInstallButton(npmInstallCommand)}
+						handleClickInstallButton={() => {
+							void handleClickInstallButton(npmInstallCommand);
+						}}
 					/>
 				</TabItem>
 				<TabItem value="yarn" label="yarn">
 					<InstallTabButton
 						installCommand={yarnInstallCommand}
-						handleClickInstallButton={() => handleClickInstallButton(yarnInstallCommand)}
+						handleClickInstallButton={() => {
+							void handleClickInstallButton(yarnInstallCommand);
+						}}
 					/>
 				</TabItem>
 				<TabItem value="pnpm" label="pnpm">
 					<InstallTabButton
 						installCommand={pnpmInstallCommand}
-						handleClickInstallButton={() => handleClickInstallButton(pnpmInstallCommand)}
+						handleClickInstallButton={() => {
+							void handleClickInstallButton(pnpmInstallCommand);
+						}}
 					/>
 				</TabItem>
 			</Tabs>

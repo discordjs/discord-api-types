@@ -9,13 +9,11 @@ interface Props {
 	noRightMargin: boolean;
 }
 
-const SimpleLink: FC<Props> = ({ href, linkName, noRightMargin = false }) => {
-	return (
-		<a href={href} className={styles.link}>
-			{linkName}
-			<ExternalLinkIcon className={clsx(styles.linkIcon, { [styles.linkIconNoMarginRight]: noRightMargin })} />
-		</a>
-	);
-};
+const SimpleLink: FC<Props> = ({ href, linkName, noRightMargin = false }) => (
+	<a href={href} className={styles.link}>
+		{linkName}
+		<ExternalLinkIcon className={clsx(styles.linkIcon, { [styles.linkIconNoMarginRight]: noRightMargin })} />
+	</a>
+);
 
 export default SimpleLink;

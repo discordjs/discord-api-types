@@ -1,8 +1,12 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+const { join } = require('path');
 const { npm2yarn2pnpm } = require('@sapphire/docusaurus-plugin-npm2yarn2pnpm');
 const { ts2esm2cjs } = require('@sapphire/docusaurus-plugin-ts2esm2cjs');
-const { join } = require('path');
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+
+/** @type {string[]} */
 const versions = require('./versions.json');
 
 const Description = "Discord API Types is a simple Node/Deno module that brings up to date typings for Discord's API";
@@ -58,6 +62,10 @@ const config = {
 						path: './',
 						entry: {
 							globals: { path: 'globals.ts', label: 'Global Types' },
+							'gateway/common': { path: 'gateway/common.ts', label: 'Gateway - Common Types' },
+							'payloads/common': { path: 'payloads/common.ts', label: 'Payloads - Common Types' },
+							'rest/common': { path: 'rest/common.ts', label: 'REST - Common Types' },
+							'rpc/common': { path: 'rpc/common.ts', label: 'RPC - Common Types' },
 							v6: { path: 'v6.ts', label: 'API v6 - Deprecated' },
 							v8: { path: 'v8.ts', label: 'API v8 - Deprecated' },
 							v9: { path: 'v9.ts', label: 'API v9' },

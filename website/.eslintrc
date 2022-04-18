@@ -21,7 +21,8 @@
 			"files": ["docusaurus.config.js", "babel.config.js", "sidebars.js"],
 			"rules": {
 				"@typescript-eslint/no-var-requires": "off",
-				"@typescript-eslint/ban-ts-comment": "off"
+				"@typescript-eslint/ban-ts-comment": "off",
+				"@typescript-eslint/no-require-imports": "off"
 			}
 		}
 	],
@@ -100,6 +101,12 @@
 		"react/require-render-return": "error",
 		"react/style-prop-object": "warn",
 		"react/void-dom-elements-no-children": "warn",
+		"react/jsx-filename-extension": [
+			"error",
+			{
+				"extensions": [".jsx", ".tsx"]
+			}
+		],
 		"jsx-a11y/accessible-emoji": "warn",
 		"jsx-a11y/alt-text": "warn",
 		"jsx-a11y/anchor-has-content": "warn",

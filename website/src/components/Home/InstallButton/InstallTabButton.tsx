@@ -6,7 +6,7 @@ import styles from './InstallTabButton.module.css';
 
 interface Props {
 	installCommand: string;
-	handleClickInstallButton(): void;
+	handleClickInstallButton: () => void;
 }
 
 const InstallTabButton: FC<Props> = ({ installCommand, handleClickInstallButton }) => {
