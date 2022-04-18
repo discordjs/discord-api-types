@@ -1,3 +1,9 @@
+## [0.31.2](https://github.com/discordjs/discord-api-types/compare/0.31.1...0.31.2) (2022-04-18)
+
+### Features
+
+- **RESTPostAPIGuildChannelJSONBody:** add `default_auto_archive` prop ([#400](https://github.com/discordjs/discord-api-types/issues/400)) ([6a192b1](https://github.com/discordjs/discord-api-types/commit/6a192b132c11f13d95ea3e7ed1eb556600f2f415))
+
 ## [0.31.1](https://github.com/discordjs/discord-api-types/compare/0.31.0...0.31.1) (2022-04-11)
 
 ### Features
