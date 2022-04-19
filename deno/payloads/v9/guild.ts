@@ -715,7 +715,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Is this integration enabled
 	 */
-	enabled: boolean;
+	enabled?: boolean;
 	/**
 	 * Is this integration syncing
 	 *
