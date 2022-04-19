@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
-        with:
-          submodules: true
 
       - name: Add problem matcher
         run: echo "::add-matcher::.github/problemMatchers/eslint.json" && echo "::add-matcher::.github/problemMatchers/tsc.json"
