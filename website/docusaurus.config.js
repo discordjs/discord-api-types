@@ -100,7 +100,7 @@ const config = {
 				blog: false,
 				theme: {
 					customCss: [
-						require.resolve('./src/css/custom.css'),
+						require.resolve('./src/css/custom.scss'),
 						require.resolve('./src/css/tippy-discord.css'),
 						require.resolve('./src/css/discordjs.scss')
 					]

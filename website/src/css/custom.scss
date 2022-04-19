@@ -18,6 +18,13 @@
 	--ifm-navbar-background-color: #4752c4;
 	--ifm-navbar-link-hover-color: #81d4fa;
 	--ifm-navbar-link-color: #f5f6f7;
+	--ifm-menu-link-sublist-icon-filter: invert(100%) sepia(94%) saturate(17%) hue-rotate(223deg) brightness(104%) contrast(98%);
+
+	@media screen and (max-width: 997px) {
+		--ifm-menu-color: var(--ifm-navbar-link-color);
+		--ifm-menu-color-active: var(--ifm-navbar-link-hover-color);
+		--ifm-menu-color-background-active: rgba(255, 255, 255, 0.05);
+	}
 }
 
 html[data-theme='dark'] {
@@ -74,16 +81,15 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 	--ifm-footer-background-color: #4752c4;
 }
 
-@media screen and (min-width: 966px) {
-	footer > .container {
-		display: grid;
-		place-content: center;
-	}
-}
+footer > .container {
+	display: grid;
+	place-content: center;
 
-@media screen and (max-width: 966px) {
-	footer > div > div.row.footer__links {
-		padding-left: 1rem !important;
-		padding-right: 1rem !important;
+	> :first-child {
+		text-align: center;
+
+		> :last-child {
+			margin-bottom: calc(var(--ifm-spacing-vertical) * 0.5);
+		}
 	}
 }

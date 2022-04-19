@@ -21,8 +21,8 @@
 		"lint:md": "markdownlint-cli2-fix",
 		"lint:md-no-fix": "markdownlint-cli2",
 		"clean": "node scripts/clean.mjs",
-		"format": "prettier --write \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,json,md,mdx,yml}\"",
-		"format:check": "prettier --check \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,json,md,mdx,yml}\"",
+		"format": "prettier --write \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml}\"",
+		"format:check": "prettier --check \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml}\"",
 		"test:lint": "run-s lint:no-fix format:check lint:md-no-fix",
 		"vercel-build": "npm run build"
 	},
