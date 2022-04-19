@@ -11,7 +11,7 @@
 	"scope": "/",
 	"short_name": "Discord API Types",
 	"start_url": "/",
-	"theme_color": "#23529B",
+	"theme_color": "#2563EB",
 	"icons": [
 		{
 			"src": "https://discord-api-types.dev/icons/android-chrome-36x36.png",
@@ -83,7 +83,7 @@
 	],
 	"splash_pages": {
 		"name": "Discord API Types",
-		"theme_color": "#23529B",
+		"theme_color": "#2563EB",
 		"background_color": "#131516",
 		"icons": [
 			{
