@@ -26,14 +26,32 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org/
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint
+      - name: Check lint on discord-api-types
         run: npm run test:lint
 
       - name: Run TSC
         run: npm run build:ci
+
+      - name: Check for any website changes
+        id: website_files_changed
+        uses: tj-actions/changed-files@v18.7
+        with:
+          files: website/**/*
+
+      - name: Install website dependencies
+        if: steps.website_files_changed.outputs.any_changed == 'true'
+        run: pushd website && npm ci && popd
+
+      - name: Check lint on discord-api-types/website
+        if: steps.website_files_changed.outputs.any_changed == 'true'
+        run: pushd website && npm run test:lint && popd
+
+      - name: Run build on website
+        if: steps.website_files_changed.outputs.any_changed == 'true'
+        run: pushd website && npm run build && popd
 
   tsd:
     name: TSD checks
