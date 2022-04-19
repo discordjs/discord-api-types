@@ -6,7 +6,7 @@
             <square150x150logo src="https://discord-api-types.dev/icons/mstile-150x150.png"/>
             <square310x310logo src="https://discord-api-types.dev/icons/mstile-310x310.png"/>
             <wide310x150logo src="https://discord-api-types.dev/icons/mstile-310x150.png"/>
-            <TileColor>#23529B</TileColor>
+            <TileColor>#2563EB</TileColor>
         </tile>
     </msapplication>
 </browserconfig>

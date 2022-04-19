@@ -30,6 +30,7 @@ const config = {
 	themes: [],
 
 	plugins: [
+		'docusaurus-plugin-sass',
 		[
 			'@docusaurus/plugin-pwa',
 			{
@@ -48,14 +49,14 @@ const config = {
 					{
 						tagName: 'meta',
 						name: 'theme-color',
-						content: '#23529B'
+						content: '#2563EB'
 					}
 				]
 			}
 		],
 		[
 			'docusaurus-plugin-typedoc-api',
-			{
+			/** @type {Parameters<import('docusaurus-plugin-typedoc-api')['default']>[1]} */ ({
 				projectRoot: join(__dirname, '../'),
 				packages: [
 					{
@@ -81,7 +82,7 @@ const config = {
 						slug: 'discord-api-types'
 					}
 				]
-			}
+			})
 		]
 	],
 
@@ -101,7 +102,7 @@ const config = {
 					customCss: [
 						require.resolve('./src/css/custom.css'),
 						require.resolve('./src/css/tippy-discord.css'),
-						require.resolve('./src/css/discordjs.css')
+						require.resolve('./src/css/discordjs.scss')
 					]
 				}
 			})

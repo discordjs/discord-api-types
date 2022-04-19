@@ -26,3 +26,8 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+// Theme the theme switcher icon to always be white
+.navbar__items.navbar__items--right > :first-child {
+	color: #f5f6f7;
+}
