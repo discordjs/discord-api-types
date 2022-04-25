@@ -1,3 +1,17 @@
+# [0.32.0](https://github.com/discordjs/discord-api-types/compare/0.31.2...0.32.0) (2022-04-25)
+
+### Bug Fixes
+
+- add `position` property to create channel options ([#409](https://github.com/discordjs/discord-api-types/issues/409)) ([3fe53ce](https://github.com/discordjs/discord-api-types/commit/3fe53ced9f0e61473a8b92d0503c51084e6a58f3))
+
+### Code Refactoring
+
+- **APIGuildIntegration:** make `enabled` optional ([#406](https://github.com/discordjs/discord-api-types/issues/406)) ([1212eb9](https://github.com/discordjs/discord-api-types/commit/1212eb933e6bf1d82b1b41164030bd317e9c59eb))
+
+### BREAKING CHANGES
+
+- **APIGuildIntegration:** `enabled` is now properly marked as optional
+
 ## [0.31.2](https://github.com/discordjs/discord-api-types/compare/0.31.1...0.31.2) (2022-04-18)
 
 ### Features
