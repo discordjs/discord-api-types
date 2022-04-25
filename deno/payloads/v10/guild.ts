@@ -667,7 +667,7 @@ export interface APIGuildMember {
 	 */
 	roles: Snowflake[];
 	/**
-	 * When the user joined the guild
+	 * When the user joined the guild. `null` for lurkers
 	 */
 	joined_at: string | null;
 	/**
