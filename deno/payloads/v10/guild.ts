@@ -669,7 +669,7 @@ export interface APIGuildMember {
 	/**
 	 * When the user joined the guild
 	 */
-	joined_at: string;
+	joined_at: string | null;
 	/**
 	 * When the user started boosting the guild
 	 *
