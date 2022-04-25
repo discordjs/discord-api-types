@@ -537,14 +537,6 @@ export enum GuildFeature {
 	 */
 	RoleIcons = 'ROLE_ICONS',
 	/**
-	 * Guild has access to the seven day archive time for threads
-	 */
-	SevenDayThreadArchive = 'SEVEN_DAY_THREAD_ARCHIVE',
-	/**
-	 * Guild has access to the three day archive time for threads
-	 */
-	ThreeDayThreadArchive = 'THREE_DAY_THREAD_ARCHIVE',
-	/**
 	 * Guild has enabled ticketed events
 	 */
 	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
