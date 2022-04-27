@@ -254,7 +254,7 @@ export enum ChannelType {
 	 */
 	DM,
 	/**
-	 * A voice channel within a guild
+	 * A voice channel within a guild, can be a text-based channel
 	 */
 	GuildVoice,
 	/**
