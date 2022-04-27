@@ -171,6 +171,8 @@ export enum AuditLogEvent {
 	ThreadCreate = 110,
 	ThreadUpdate,
 	ThreadDelete,
+
+	ApplicationCommandPermissionUpdate = 121,
 }
 
 /**
@@ -516,6 +518,10 @@ export type APIAuditLogChangeKeyPermissions = AuditLogChangeData<'permissions', 
  * Returned when a role's color is changed
  */
 export type APIAuditLogChangeKeyColor = AuditLogChangeData<'color', number>;
+
+export type APIAuditLogChangeKeyCommandId = AuditLogChangeData<'command_id', string>;
+
+export type APIAuditLogChangeKeySnowflake = AuditLogChangeData<'snowflake', string>;
 
 /**
  * Returned when a role's hoist status is changed
