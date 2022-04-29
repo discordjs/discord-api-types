@@ -594,12 +594,12 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
  */
-export type RESTPostAPIGuildForumThreadsFormDataBody = {
+export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
 	 * First message in the forum thread
 	 */
-	message: RESTPostAPIChannelMessageFormDataBody;
-} & RESTPostAPIChannelMessagesThreadsJSONBody;
+	message: string;
+};
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-from-message
