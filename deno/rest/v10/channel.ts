@@ -584,13 +584,22 @@ export type RESTPostAPIChannelMessagesThreadsJSONBody = AddUndefinedToPossiblyUn
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
  */
-export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody &
-	RESTPostAPIChannelMessageJSONBody;
+export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
+	/**
+	 * First message in the forum thread
+	 */
+	message: RESTPostAPIChannelMessageJSONBody;
+};
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
  */
-export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessageFormDataBody;
+export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
+	/**
+	 * First message in the forum thread
+	 */
+	message: string;
+};
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-from-message
