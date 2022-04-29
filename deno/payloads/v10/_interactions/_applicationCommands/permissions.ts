@@ -27,7 +27,7 @@ export interface APIGuildApplicationCommandPermissions {
  */
 export interface APIApplicationCommandPermission {
 	/**
-	 * The id of the role, user or channel
+	 * The id of the role, user or channel. Can also be a permission constant
 	 */
 	id: Snowflake;
 	/**
