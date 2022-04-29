@@ -598,13 +598,12 @@ export type RESTPostAPIChannelMessagesThreadsJSONBody = AddUndefinedToPossiblyUn
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
  */
-export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody &
-	RESTPostAPIChannelMessageJSONBody & {
-		/**
-		 * First message in the forum thread
-		 */
-		message: RESTPostAPIGuildForumThreadsFormDataBody;
-	};
+export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
+	/**
+	 * First message in the forum thread
+	 */
+	message: RESTPostAPIChannelMessageFormDataBody;
+};
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
