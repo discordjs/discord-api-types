@@ -41,7 +41,14 @@ export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGr
 export type APIGuildCreatePartialChannel = StrictPartial<
 	DistributivePick<
 		APIGuildChannelResolvable,
-		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user' | 'default_auto_archive_duration'
+		| 'type'
+		| 'topic'
+		| 'nsfw'
+		| 'bitrate'
+		| 'user_limit'
+		| 'rate_limit_per_user'
+		| 'default_auto_archive_duration'
+		| 'position'
 	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
