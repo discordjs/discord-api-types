@@ -152,7 +152,10 @@ export interface GatewayActivity {
 	 */
 	timestamps?: GatewayActivityTimestamps;
 	sync_id?: string;
-	platform?: ActivityPlatform;
+	/**
+	 * {@link ActivityPlatform}
+	 */
+	platform?: string;
 	/**
 	 * Application id for the game
 	 */
@@ -208,10 +211,19 @@ export interface GatewayActivity {
 	buttons?: string[] | GatewayActivityButton[];
 }
 
+/**
+ * @unstable This enum is currently not documented by Discord but has known values which we will try to keep up to date.
+ * Values might be added or removed without a major version bump.
+ */
 export enum ActivityPlatform {
 	Desktop = 'desktop',
-	Samsung = 'samsung',
 	Xbox = 'xbox',
+	Samsung = 'samsung',
+	IOS = 'ios',
+	Android = 'android',
+	Embedded = 'embedded',
+	PS4 = 'ps4',
+	PS5 = 'ps5',
 }
 
 /**
