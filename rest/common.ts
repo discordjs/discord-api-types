@@ -179,7 +179,7 @@ export enum RESTJSONErrorCodes {
 
 	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
 
-	CannotEditMessageWithStickers = 50080,
+	CannotEditStickersWithinMessage = 50080,
 	InvalidStickerSent,
 
 	InvalidActionOnArchivedThread = 50083,
