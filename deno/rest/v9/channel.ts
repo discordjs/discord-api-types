@@ -602,7 +602,7 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 	/**
 	 * First message in the forum thread
 	 */
-	message: RESTPostAPIChannelMessageFormDataBody;
+	message: RESTPostAPIChannelMessageJSONBody;
 };
 
 /**
