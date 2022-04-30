@@ -127,6 +127,7 @@ export interface GatewayPresenceClientStatus {
 export interface GatewayActivity {
 	/**
 	 * The activity's id
+	 * @unstable
 	 */
 	id: string;
 	/**
@@ -151,8 +152,16 @@ export interface GatewayActivity {
 	 * Unix timestamps for start and/or end of the game
 	 */
 	timestamps?: GatewayActivityTimestamps;
+	/**
+	 * The Spotify song id
+	 * @unstable
+	 */
 	sync_id?: string;
-	platform?: ActivityPlatform;
+	/**
+	 * The platform this activity is being done on
+	 * @unstable You can use {@link ActivityPlatform} as a stepping stone, but this might be inaccurate
+	 */
+	platform?: string;
 	/**
 	 * Application id for the game
 	 */
@@ -171,6 +180,9 @@ export interface GatewayActivity {
 	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
 	 */
 	emoji?: GatewayActivityEmoji;
+	/**
+	 * @unstable
+	 */
 	session_id?: string;
 	/**
 	 * Information for the current party of the player
@@ -208,10 +220,19 @@ export interface GatewayActivity {
 	buttons?: string[] | GatewayActivityButton[];
 }
 
+/**
+ * @unstable This enum is currently not documented by Discord but has known values which we will try to keep up to date.
+ * Values might be added or removed without a major version bump.
+ */
 export enum ActivityPlatform {
 	Desktop = 'desktop',
-	Samsung = 'samsung',
 	Xbox = 'xbox',
+	Samsung = 'samsung',
+	IOS = 'ios',
+	Android = 'android',
+	Embedded = 'embedded',
+	PS4 = 'ps4',
+	PS5 = 'ps5',
 }
 
 /**
