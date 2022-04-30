@@ -110,5 +110,5 @@ export enum OAuth2Scopes {
 	 *
 	 * See https://discord.com/developers/docs/interactions/application-commands
 	 */
-	ApplicationsCommandsUpdate = 'applications.commands.update',
+	ApplicationsCommandsUpdate = 'applications.commands.permissions.update',
 }
