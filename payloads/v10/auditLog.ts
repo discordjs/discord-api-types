@@ -16,6 +16,7 @@ import type {
 	GuildScheduledEventEntityType,
 	GuildScheduledEventStatus,
 } from './guildScheduledEvent';
+import type { APIApplicationCommand } from './interactions';
 import type { APIRole } from './permissions';
 import type { StageInstancePrivacyLevel } from './stageInstance';
 import type { StickerFormatType } from './sticker';
@@ -27,6 +28,12 @@ import type { Snowflake } from '../../globals';
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
  */
 export interface APIAuditLog {
+	/**
+	 * List of application commands found in the audit log
+	 *
+	 * See https://discord.com/developers/docs/interactions/application-commands#application-command-object
+	 */
+	application_commands: APIApplicationCommand[];
 	/**
 	 * Webhooks found in the audit log
 	 *
