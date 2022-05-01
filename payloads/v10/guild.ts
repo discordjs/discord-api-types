@@ -564,6 +564,10 @@ export enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
+	/**
+	 * Guild has enabled the auto moderation system
+	 */
+	AutoModeration = 'AUTO_MODERATION',
 }
 
 /**

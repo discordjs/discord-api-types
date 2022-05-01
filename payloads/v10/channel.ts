@@ -533,7 +533,7 @@ export enum MessageType {
 	ThreadStarterMessage,
 	GuildInviteReminder,
 	ContextMenuCommand,
-	AutoModerationMessage,
+	AutoModerationAction,
 }
 
 /**
@@ -891,7 +891,7 @@ export enum EmbedType {
 	 */
 	Link = 'link',
 	/**
-	 * Embed for auto moderation alerts
+	 * Embed containing blocked content by auto moderation
 	 */
 	AutoModerationMessage = 'auto_moderation_message',
 }
