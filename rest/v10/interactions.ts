@@ -71,7 +71,9 @@ export type RESTPostAPIApplicationCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
  */
-export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<
+	Omit<RESTPostAPIApplicationCommandsJSONBody, 'dm_permission'>
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
