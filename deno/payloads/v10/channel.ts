@@ -893,7 +893,7 @@ export enum EmbedType {
 	/**
 	 * Embed for auto moderation alerts
 	 */
-	AutoModAlerts = 'auto_moderation_message',
+	AutoModerationMessage = 'auto_moderation_message',
 }
 
 /**
