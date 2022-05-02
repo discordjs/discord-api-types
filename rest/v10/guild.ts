@@ -49,6 +49,7 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		| 'rate_limit_per_user'
 		| 'default_auto_archive_duration'
 		| 'position'
+		| 'flags'
 	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
