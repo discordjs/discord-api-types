@@ -171,6 +171,10 @@ export enum AuditLogEvent {
 	ThreadCreate = 110,
 	ThreadUpdate,
 	ThreadDelete,
+
+	AutoModerationRuleCreate = 140,
+	AutoModerationRuleUpdate,
+	AutoModerationRuleDelete,
 }
 
 /**
