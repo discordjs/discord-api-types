@@ -891,7 +891,7 @@ export enum EmbedType {
 	 */
 	Link = 'link',
 	/**
-	 * Embed containing blocked content by auto moderation
+	 * Auto moderation embed
 	 */
 	AutoModerationMessage = 'auto_moderation_message',
 }
