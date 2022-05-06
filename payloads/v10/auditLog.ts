@@ -175,6 +175,7 @@ export enum AuditLogEvent {
 	AutoModerationRuleCreate = 140,
 	AutoModerationRuleUpdate,
 	AutoModerationRuleDelete,
+	AutoModerationBlockMessage,
 }
 
 /**
