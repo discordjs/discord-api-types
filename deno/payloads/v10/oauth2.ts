@@ -15,6 +15,10 @@ export enum OAuth2Scopes {
 	 */
 	Connections = 'connections',
 	/**
+	 * Allows your app to see information about the user's DMs and group DMs - requires Discord approval
+	 */
+	DMChannelsRead = 'dm_channels.read',
+	/**
 	 * Enables [/users/@me](https://discord.com/developers/docs/resources/user#get-current-user) to return an `email`
 	 *
 	 * See https://discord.com/developers/docs/resources/user#get-current-user
@@ -69,6 +73,10 @@ export enum OAuth2Scopes {
 	 * This generates a webhook that is returned in the oauth token response for authorization code grants
 	 */
 	WebhookIncoming = 'webhook.incoming',
+	/**
+	 * Allows your app to connect to voice on user's behalf and see all the voice members - requires Discord approval
+	 */
+	Voice = 'voice',
 	/**
 	 * Allows your app to upload/update builds for a user's applications - requires Discord approval
 	 */
