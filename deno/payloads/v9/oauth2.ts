@@ -15,7 +15,7 @@ export enum OAuth2Scopes {
 	 */
 	Connections = 'connections',
 	/**
-	 * Allows your app to see information about the user's DMs and group DMs
+	 * Allows your app to see information about the user's DMs and group DMs - requires Discord approval
 	 */
 	DMChannelsRead = 'dm_channels.read',
 	/**
@@ -74,7 +74,7 @@ export enum OAuth2Scopes {
 	 */
 	WebhookIncoming = 'webhook.incoming',
 	/**
-	 * Allows your app to connect to voice on user's behalf and see all the voice members
+	 * Allows your app to connect to voice on user's behalf and see all the voice members - requires Discord approval
 	 */
 	Voice = 'voice',
 	/**
