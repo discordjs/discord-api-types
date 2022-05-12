@@ -1,3 +1,9 @@
+## [0.32.2](https://github.com/discordjs/discord-api-types/compare/0.32.1...0.32.2) (2022-05-12)
+
+### Features
+
+- **OAuth2Scopes:** add new OAuth2 scopes ([#435](https://github.com/discordjs/discord-api-types/issues/435)) ([8f16f45](https://github.com/discordjs/discord-api-types/commit/8f16f452ac7dc8988617d1211fc6a9547d254795))
+
 ## [0.32.1](https://github.com/discordjs/discord-api-types/compare/0.32.0...0.32.1) (2022-05-05)
 
 ### Features
