@@ -71,9 +71,7 @@ export type RESTPostAPIApplicationCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
  */
-export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<
-	Omit<RESTPostAPIApplicationCommandsJSONBody, 'dm_permission'>
->;
+export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
@@ -113,7 +111,9 @@ export type RESTPostAPIApplicationGuildCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<
+	Omit<RESTPostAPIApplicationCommandsJSONBody, 'dm_permission'>
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
