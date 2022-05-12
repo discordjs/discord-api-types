@@ -33,7 +33,7 @@ export interface APIAuditLog {
 	 *
 	 * See https://discord.com/developers/docs/interactions/application-commands#application-command-object
 	 */
-	application_commands?: APIApplicationCommand[];
+	application_commands: APIApplicationCommand[];
 	/**
 	 * Webhooks found in the audit log
 	 *
@@ -527,7 +527,8 @@ export type APIAuditLogChangeKeyPermissions = AuditLogChangeData<'permissions', 
 export type APIAuditLogChangeKeyColor = AuditLogChangeData<'color', number>;
 
 /**
- * Returned when permissions for a command were updated
+ * Represents a change where the key is a snowflake.
+ * Currently, the only known instance of this is returned when permissions for a command were updated (<insert name of object here>)
  */
 export type APIAuditLogChangeKeySnowflake = AuditLogChangeData<Snowflake, unknown>;
 
