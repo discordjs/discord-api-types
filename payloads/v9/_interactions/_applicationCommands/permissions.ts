@@ -27,11 +27,11 @@ export interface APIGuildApplicationCommandPermissions {
  */
 export interface APIApplicationCommandPermission {
 	/**
-	 * The id of the role or user
+	 * The id of the role, user or channel. Can also be a permission constant
 	 */
 	id: Snowflake;
 	/**
-	 * Role or user
+	 * Role, user or channel
 	 */
 	type: ApplicationCommandPermissionType;
 	/**
@@ -46,4 +46,13 @@ export interface APIApplicationCommandPermission {
 export enum ApplicationCommandPermissionType {
 	Role = 1,
 	User,
+	Channel,
 }
+
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-constants
+ */
+export const APIApplicationCommandPermissionsConstant = {
+	Everyone: (guildId: string | bigint): Snowflake => String(guildId),
+	AllChannels: (guildId: string | bigint): Snowflake => String(BigInt(guildId) - 1n),
+};

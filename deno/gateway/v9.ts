@@ -194,6 +194,7 @@ export enum GatewayIntentBits {
  * https://discord.com/developers/docs/topics/gateway#commands-and-events-gateway-events
  */
 export enum GatewayDispatchEvents {
+	ApplicationCommandPermissionsUpdate = 'APPLICATION_COMMAND_PERMISSIONS_UPDATE',
 	ChannelCreate = 'CHANNEL_CREATE',
 	ChannelDelete = 'CHANNEL_DELETE',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
