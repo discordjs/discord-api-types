@@ -33,7 +33,7 @@ export interface APIAuditLog {
 	 *
 	 * See https://discord.com/developers/docs/interactions/application-commands#application-command-object
 	 */
-	application_commands: APIApplicationCommand[];
+	application_commands?: APIApplicationCommand[];
 	/**
 	 * Webhooks found in the audit log
 	 *
