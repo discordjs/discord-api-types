@@ -529,7 +529,7 @@ export type APIAuditLogChangeKeyColor = AuditLogChangeData<'color', number>;
 /**
  * Returned when permissions for a command were updated
  */
-export type APIAuditLogChangeKeySnowflake = AuditLogChangeData<'snowflake', unknown>;
+export type APIAuditLogChangeKeySnowflake = AuditLogChangeData<Snowflake, unknown>;
 
 /**
  * Returned when a role's hoist status is changed

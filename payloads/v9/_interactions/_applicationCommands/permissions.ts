@@ -54,11 +54,5 @@ export enum ApplicationCommandPermissionType {
  */
 export const APIApplicationCommandPermissionsConstant = {
 	Everyone: (guildId: string | bigint): Snowflake => String(guildId),
-	AllChannels(guildId: string | bigint): Snowflake {
-		if (typeof guildId === 'string') {
-			return `${BigInt(guildId) - 1n}`;
-		}
-
-		return `${guildId - 1n}`;
-	},
+	AllChannels: (guildId: string | bigint): Snowflake => String(BigInt(guildId) - 1n),
 };
