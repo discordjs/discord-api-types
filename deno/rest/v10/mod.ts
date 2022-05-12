@@ -439,14 +439,6 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/threads/active`
-	 */
-	guildActiveThreads(guildId: Snowflake) {
-		return `/guilds/${guildId}/threads/active` as const;
-	},
-
-	/**
-	 * Route for:
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
