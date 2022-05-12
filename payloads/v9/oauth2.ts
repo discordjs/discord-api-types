@@ -119,4 +119,10 @@ export enum OAuth2Scopes {
 	 * See https://discord.com/developers/docs/interactions/application-commands
 	 */
 	ApplicationsCommandsUpdate = 'applications.commands.update',
+	/**
+	 * Allows your app to update permissions for its commands using a Bearer token - client credentials grant only
+	 *
+	 * See https://discord.com/developers/docs/interactions/application-commands
+	 */
+	ApplicationCommandsPermissionsUpdate = 'applications.commands.permissions.update',
 }

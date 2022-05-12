@@ -91,27 +91,29 @@ export type RESTPutAPIApplicationCommandsResult = APIApplicationCommand[];
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
  */
-export type RESTGetAPIApplicationGuildCommandsResult = APIApplicationCommand[];
+export type RESTGetAPIApplicationGuildCommandsResult = Omit<APIApplicationCommand, 'dm_permission'>[];
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
  */
-export type RESTGetAPIApplicationGuildCommandResult = APIApplicationCommand;
+export type RESTGetAPIApplicationGuildCommandResult = Omit<APIApplicationCommand, 'dm_permission'>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command
  */
-export type RESTPostAPIApplicationGuildCommandsJSONBody = RESTPostAPIApplicationCommandsJSONBody;
+export type RESTPostAPIApplicationGuildCommandsJSONBody = Omit<RESTPostAPIApplicationCommandsJSONBody, 'dm_permission'>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command
  */
-export type RESTPostAPIApplicationGuildCommandsResult = APIApplicationCommand;
+export type RESTPostAPIApplicationGuildCommandsResult = Omit<APIApplicationCommand, 'dm_permission'>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<
+	Omit<RESTPostAPIApplicationCommandsJSONBody, 'dm_permission'>
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
