@@ -527,14 +527,9 @@ export type APIAuditLogChangeKeyPermissions = AuditLogChangeData<'permissions', 
 export type APIAuditLogChangeKeyColor = AuditLogChangeData<'color', number>;
 
 /**
- * Returned when application command permissions are changed
- */
-export type APIAuditLogChangeKeyCommandId = AuditLogChangeData<'command_id', string>;
-
-/**
  * Returned when permissions for a command were updated
  */
-export type APIAuditLogChangeKeySnowflake = AuditLogChangeData<'snowflake', Snowflake>;
+export type APIAuditLogChangeKeySnowflake = AuditLogChangeData<'snowflake', unknown>;
 
 /**
  * Returned when a role's hoist status is changed
