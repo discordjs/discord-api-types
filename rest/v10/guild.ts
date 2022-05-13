@@ -339,7 +339,7 @@ export type RESTPatchAPIGuildChannelPositionsResult = never;
 /**
  * https://discord.com/developers/docs/resources/guild#list-active-threads
  */
-export type RESTGetAPIGuildThreadsResult = Omit<APIThreadList, 'has_more'>;
+export type RESTGetAPIGuildThreadsResult = APIThreadList;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-member

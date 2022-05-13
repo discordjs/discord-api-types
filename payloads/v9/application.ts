@@ -54,6 +54,12 @@ export interface APIApplication {
 	 */
 	owner?: APIUser;
 	/**
+	 * An empty string
+	 *
+	 * @deprecated This field will be removed in v11
+	 */
+	summary: string;
+	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
 	 * See https://discord.com/developers/docs/game-sdk/applications#get-ticket
