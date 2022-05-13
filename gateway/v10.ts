@@ -509,10 +509,20 @@ export type GatewayGuildModifyDispatch = DataPayload<
 >;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#guild-create
  * https://discord.com/developers/docs/topics/gateway#guild-update
  */
-export type GatewayGuildModifyDispatchData = APIGuild & {
+export type GatewayGuildModifyDispatchData = APIGuild;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-create
+ */
+export type GatewayGuildCreateDispatch = GatewayGuildModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#guild-create
+ * https://discord.com/developers/docs/topics/gateway#guild-create-guild-create-extra-fields
+ */
+export type GatewayGuildCreateDispatchData = APIGuild & {
 	/**
 	 * When this guild was joined at
 	 *
@@ -588,16 +598,6 @@ export type GatewayGuildModifyDispatchData = APIGuild & {
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
 };
-
-/**
- * https://discord.com/developers/docs/topics/gateway#guild-create
- */
-export type GatewayGuildCreateDispatch = GatewayGuildModifyDispatch;
-
-/**
- * https://discord.com/developers/docs/topics/gateway#guild-create
- */
-export type GatewayGuildCreateDispatchData = GatewayGuildModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-update
