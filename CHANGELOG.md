@@ -1,3 +1,10 @@
+## [0.32.1](https://github.com/discordjs/discord-api-types/compare/0.32.0...0.32.1) (2022-05-05)
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50080` ([#408](https://github.com/discordjs/discord-api-types/issues/408)) ([43cfbcb](https://github.com/discordjs/discord-api-types/commit/43cfbcba284a96de6bde101b866ad9ac306992b5))
+- **RESTPostAPIGuildForumThreads:** add `message` field ([#416](https://github.com/discordjs/discord-api-types/issues/416)) ([a28c824](https://github.com/discordjs/discord-api-types/commit/a28c824f82014b15a715b51b4426356428bb4ba2))
+
 # [0.32.0](https://github.com/discordjs/discord-api-types/compare/0.31.2...0.32.0) (2022-04-25)
 
 ### Bug Fixes
