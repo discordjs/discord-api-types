@@ -909,3 +909,69 @@ export enum MembershipScreeningFieldType {
 	 */
 	Terms = 'TERMS',
 }
+
+export interface APIGuildAutoModRule {
+	/**
+	 * The rule name
+	 */
+	name: string;
+	/**
+	 * The rule trigger type
+	 */
+	trigger_type: AutoModRuleTriggerType;
+	/**
+	 * The rule event type
+	 */
+	event_type: AutoModRuleEventType;
+	/**
+	 * The rule actions
+	 */
+	actions: AutoModRuleAction[];
+	/**
+	 * The rule keywords (up to 1000)
+	 *
+	 * TODO: type this correctly
+	 */
+	trigger_metadata: never;
+	/**
+	 * Whether the rule is enabled
+	 */
+	enabled: boolean;
+	/**
+	 * The role ids that shouldn't be affected by this rule
+	 */
+	exempt_roles: Snowflake[];
+	/**
+	 * The channel ids that shouldn't be affected by this rule
+	 */
+	exempt_channels: Snowflake[];
+	/**
+	 * The rule position relative to all other rules
+	 */
+	position: number;
+}
+
+export enum AutoModRuleTriggerType {
+	/**
+	 * Filter of specific words
+	 */
+	KeywordFilter = 1,
+}
+
+export enum AutoModRuleEventType {
+	/**
+	 * When a message is posted by a guild member
+	 */
+	MessageSend = 1,
+}
+
+export enum AutoModRuleAction {
+	/**
+	 * Blocks the message content according to the rule
+	 */
+	BlockMessage = 1,
+	/**
+	 * Sends an alert with the message to a specific channel
+	 */
+	SendAnAlert = 2,
+}

@@ -179,7 +179,7 @@ export enum AuditLogEvent {
 	ThreadUpdate,
 	ThreadDelete,
 
-	ApplicationCommandPermissionUpdate = 121,
+  ApplicationCommandPermissionUpdate = 121,
 
 	AutoModerationRuleCreate = 140,
 	AutoModerationRuleUpdate,
