@@ -770,10 +770,6 @@ export interface APIThreadList {
 	 * The members for the client user in each of the fetched threads
 	 */
 	members: APIThreadMember[];
-	/**
-	 * Whether there are potentially additional threads
-	 */
-	has_more?: boolean;
 }
 
 /**
