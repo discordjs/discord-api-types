@@ -834,6 +834,9 @@ export type RESTPatchAPIGuildMemberVerificationJSONBody = AddUndefinedToPossibly
 
 export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
+ */
 export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The id of the channel the user is currently in
@@ -849,6 +852,14 @@ export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPos
 	request_to_speak_timestamp?: string | null;
 }>;
 
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
+ */
+export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = never;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
+ */
 export type RESTPatchAPIGuildVoiceStateUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The id of the channel the user is currently in
@@ -875,3 +886,8 @@ export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIG
 		 */
 		enabled?: boolean | null;
 	}>;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
+ */
+export type RESTPatchAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
