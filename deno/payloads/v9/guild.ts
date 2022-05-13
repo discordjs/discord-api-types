@@ -2,15 +2,11 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
-import type { APIChannel } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
-import type { GatewayPresenceUpdate, PresenceUpdateStatus } from './gateway.ts';
-import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
+import type { PresenceUpdateStatus } from './gateway.ts';
 import type { APIRole } from './permissions.ts';
-import type { APIStageInstance } from './stageInstance.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
-import type { GatewayVoiceState } from './voice.ts';
 import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
@@ -197,64 +193,6 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	rules_channel_id: Snowflake | null;
 	/**
-	 * When this guild was joined at
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 */
-	joined_at?: string;
-	/**
-	 * `true` if this is considered a large guild
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 */
-	large?: boolean;
-	/**
-	 * Total number of members in this guild
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 */
-	member_count?: number;
-	/**
-	 * States of members currently in voice channels; lacks the `guild_id` key
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 *
-	 * See https://discord.com/developers/docs/resources/voice#voice-state-object
-	 */
-	voice_states?: Omit<GatewayVoiceState, 'guild_id'>[];
-	/**
-	 * Users in the guild
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
-	 */
-	members?: APIGuildMember[];
-	/**
-	 * Channels in the guild
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object
-	 */
-	channels?: APIChannel[];
-	/**
-	 * Threads in the guild
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object
-	 */
-	threads?: APIChannel[];
-	/**
-	 * Presences of the members in the guild, will only include non-offline members if the size is greater than `large_threshold`
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 *
-	 * See https://discord.com/developers/docs/topics/gateway#presence-update
-	 */
-	presences?: GatewayPresenceUpdate[];
-	/**
 	 * The maximum number of presences for the guild (`null` is always returned, apart from the largest of guilds)
 	 */
 	max_presences?: number | null;
@@ -321,14 +259,6 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	nsfw_level: GuildNSFWLevel;
 	/**
-	 * The stage instances in the guild
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 *
-	 * See https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-stage-instance-structure
-	 */
-	stage_instances?: APIStageInstance[];
-	/**
 	 * Custom guild stickers
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
@@ -338,14 +268,6 @@ export interface APIGuild extends APIPartialGuild {
 	 * Whether the guild has the boost progress bar enabled.
 	 */
 	premium_progress_bar_enabled: boolean;
-	/**
-	 * The scheduled events in the guild
-	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
-	 *
-	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
-	 */
-	guild_scheduled_events?: APIGuildScheduledEvent[];
 	/**
 	 * The type of Student Hub the guild is
 	 */
