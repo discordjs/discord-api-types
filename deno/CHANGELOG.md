@@ -1,3 +1,21 @@
+# [0.33.0](https://github.com/discordjs/discord-api-types/compare/0.32.1...0.33.0) (2022-05-16)
+
+### Code Refactoring
+
+- **GuildFeature:** thread archive durations are no longer boost locked ([#412](https://github.com/discordjs/discord-api-types/issues/412)) ([1737ade](https://github.com/discordjs/discord-api-types/commit/1737adea1fc3d5050db30266e49c63277b7a77fc))
+- separate `GUILD_CREATE` fields from `APIGuild` object ([#423](https://github.com/discordjs/discord-api-types/issues/423)) ([17f5caa](https://github.com/discordjs/discord-api-types/commit/17f5caa671da50a79d61393f5a970ce59c5d875e))
+
+### Features
+
+- add support for application command permissions v2 ([#415](https://github.com/discordjs/discord-api-types/issues/415)) ([d3163ca](https://github.com/discordjs/discord-api-types/commit/d3163ca22e5b7d8292f9f6ccd444aa5c93771d92))
+- **OAuth2Scopes:** add new OAuth2 scopes ([#435](https://github.com/discordjs/discord-api-types/issues/435)) ([8f16f45](https://github.com/discordjs/discord-api-types/commit/8f16f452ac7dc8988617d1211fc6a9547d254795))
+- **rest:** add missing guild routes results ([#438](https://github.com/discordjs/discord-api-types/issues/438)) ([1afce87](https://github.com/discordjs/discord-api-types/commit/1afce87fbef8e43ee040010e36019a4ebc6fecfe))
+
+### BREAKING CHANGES
+
+- APIGuild now correctly shows just the properties that are obtainable through rest/GUILD_UPDATE, while the extra fields have been moved to GatewayGuildCreateDispatchData to correctly represent the data received
+- **GuildFeature:** `SevenDayThreadArchive` and `ThreeDayThreadArchive` have been removed as they are no longer valid
+
 ## [0.32.1](https://github.com/discordjs/discord-api-types/compare/0.32.0...0.32.1) (2022-05-05)
 
 ### Features
