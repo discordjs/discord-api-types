@@ -6,6 +6,8 @@ import type { Snowflake } from '../globals';
 import type { GatewayPresenceUpdate } from '../payloads/v9/gateway';
 import type {
 	APIApplication,
+	APIAutoModerationRule,
+	APIAutoModerationAction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
