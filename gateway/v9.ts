@@ -251,6 +251,10 @@ export enum GatewayDispatchEvents {
 	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
 	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
 	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
+	AutoModerationRuleCreate = 'AUTO_MODERATION_RULE_CREATE',
+	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
+	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
+	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
 }
 
 export type GatewaySendPayload =
@@ -425,6 +429,79 @@ export interface GatewayReadyDispatchData {
  * https://discord.com/developers/docs/topics/gateway#resumed
  */
 export type GatewayResumedDispatch = DataPayload<GatewayDispatchEvents.Resumed, never>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
+ */
+export type GatewayAutoModerationRuleModifyDispatch = DataPayload<
+	| GatewayDispatchEvents.AutoModerationRuleCreate
+	| GatewayDispatchEvents.AutoModerationRuleUpdate
+	| GatewayDispatchEvents.AutoModerationRuleDelete,
+	GatewayAutoModerationRuleModifyDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
+ */
+export type GatewayAutoModerationRuleModifyDispatchData = APIAutoModerationRule;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#channel-create
+ */
+export type GatewayAutoModerationRuleCreateDispatch = GatewayAutoModerationRuleModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#channel-create
+ */
+export type GatewayAutoModerationRuleCreateDispatchData = GatewayAutoModerationRuleModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#channel-update
+ */
+export type GatewayAutoModerationRuleUpdateDispatch = GatewayAutoModerationRuleModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#channel-update
+ */
+export type GatewayAutoModerationRuleUpdateDispatchData = GatewayAutoModerationRuleModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#channel-delete
+ */
+export type GatewayAutoModerationRuleDeleteDispatch = GatewayAutoModerationRuleModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#channel-delete
+ */
+export type GatewayAutoModerationRuleDeleteDispatchData = GatewayAutoModerationRuleModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-action-execution
+ */
+export type GatewayAutoModerationActionExecutionDispatch = DataPayload<
+	GatewayDispatchEvents.AutoModerationActionExecution,
+	GatewayAutoModerationActionExecutionDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-action-execution-auto-moderation-action-execution-event-fields
+ *
+ * TODO: Add more fields
+ */
+export interface GatewayAutoModerationActionExecutionDispatchData {
+	/**
+	 * The action which was executed
+	 */
+	action: APIAutoModerationAction;
+	/**
+	 * The id of the guild in which action was executed
+	 */
+	guild_id: Snowflake;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-create

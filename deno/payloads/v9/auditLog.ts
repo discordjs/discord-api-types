@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
+import type { APIAutoModerationRule } from './autoModeration.ts';
 import type { APIChannel, APIOverwrite } from './channel.ts';
 import type {
 	APIGuildIntegration,
@@ -52,6 +53,12 @@ export interface APIAuditLog {
 	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object
 	 */
 	audit_log_entries: APIAuditLogEntry[];
+	/**
+	 * List of auto moderation rules referenced in the audit log
+	 *
+	 * See https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object
+	 */
+	auto_moderation_rules: APIAutoModerationRule[];
 	/**
 	 * Partial integration objects
 	 *
