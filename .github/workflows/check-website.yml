@@ -23,6 +23,9 @@ jobs:
         with:
           files: website/**/*
 
+      - name: Install common dependencies
+        run: npm ci
+
       - name: Install website dependencies
         if: steps.website_files_changed.outputs.any_changed == 'true'
         run: pushd website && npm ci && popd
