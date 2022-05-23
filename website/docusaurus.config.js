@@ -9,7 +9,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 /** @type {string[]} */
 const versions = require('./versions.json');
 
-const Description = "Discord API Types is a simple Node/Deno module that brings up to date typings for Discord's API";
+const Description = "discord-api-types is a simple Node/Deno module that brings up to date typings for Discord's API";
 const BaseUrl = 'https://discord-api-types.dev';
 const Email = 'vlad@sapphirejs.dev';
 const Title = 'discord-api-types documentation';
