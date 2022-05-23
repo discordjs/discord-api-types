@@ -112,7 +112,7 @@ const config = {
 	themeConfig:
 		/** @type {Partial<import('@docusaurus/preset-classic').ThemeConfig>} */
 		({
-			image: 'https://discord-api-types.dev/icons/opengraph.png',
+			image: 'https://discord-api-types.dev/opengraph.png',
 			colorMode: {
 				defaultMode: 'dark',
 				respectPrefersColorScheme: true
