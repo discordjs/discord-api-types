@@ -93,3 +93,25 @@ footer > .container {
 		}
 	}
 }
+
+.footer__item {
+	padding: 0.5em 0;
+}
+
+.markdown__logo {
+	margin-top: -8rem;
+	margin-bottom: -8rem;
+}
+
+@media screen and (max-width: 966px) {
+	.markdown__logo {
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
+}
+
+.navbar__logo > img {
+	height: 64px;
+	width: 64px;
+	margin-top: -25%;
+}

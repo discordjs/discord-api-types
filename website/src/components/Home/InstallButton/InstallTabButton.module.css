@@ -2,6 +2,12 @@
 	box-shadow: var(--sapphire-paper-drop-shadow-4);
 }
 
+@media screen and (max-width: 966px) {
+	.button {
+		--ifm-button-size-multiplier: 1.25;
+	}
+}
+
 .buttonContent {
 	display: flex;
 	align-items: center;

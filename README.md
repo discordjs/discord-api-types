@@ -1,5 +1,7 @@
 # Discord API Types
 
+[![discord-api-types](./website/static/svgs/logo_long_blurple.svg)](https://github.com/discordjs/discord-api-types)
+
 [![GitHub](https://img.shields.io/github/license/discordjs/discord-api-types)](https://github.com/discordjs/discord-api-types/blob/main/LICENSE.md)
 [![npm](https://img.shields.io/npm/v/discord-api-types?color=crimson&logo=npm)](https://www.npmjs.com/package/discord-api-types)
 [![deno](https://img.shields.io/npm/v/discord-api-types?color=blue&label=deno&logo=deno)](https://deno.land/x/discord_api_types)

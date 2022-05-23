@@ -12,17 +12,17 @@ const versions = require('./versions.json');
 const Description = "Discord API Types is a simple Node/Deno module that brings up to date typings for Discord's API";
 const BaseUrl = 'https://discord-api-types.dev';
 const Email = 'vlad@sapphirejs.dev';
-const Title = 'Discord API Types';
+const Title = 'discord-api-types documentation';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: 'Discord API Types',
+	title: 'discord-api-types documentation',
 	url: BaseUrl,
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'throw',
 	onDuplicateRoutes: 'throw',
-	favicon: 'img/favicon.ico',
+	favicon: '/favicon.ico',
 	tagline: Description,
 	organizationName: 'discordjs',
 	projectName: 'discord-api-types',
@@ -39,7 +39,7 @@ const config = {
 					{
 						tagName: 'link',
 						rel: 'icon',
-						href: '/icons/android-chrome-192x192.png'
+						href: '/android-chrome-192x192.png'
 					},
 					{
 						tagName: 'link',
@@ -118,10 +118,15 @@ const config = {
 				respectPrefersColorScheme: true
 			},
 			metadata: [
-				{ name: 'apple-mobile-web-app-capable', content: 'yes' },
-				{ name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+				// Tags from realfavicongenerator
 				{ name: 'apple-mobile-web-app-title', content: Title },
 				{ name: 'application-name', content: Title },
+				{ name: 'msapplication-TileColor', content: '#2563EB' },
+				{ name: 'msapplication-TileImage', content: '/mstile-144x144.png' },
+				{ name: 'theme-color', content: '#2563EB' },
+
+				{ name: 'apple-mobile-web-app-capable', content: 'yes' },
+				{ name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
 				{ name: 'audience', content: 'all' },
 				{ name: 'author', content: `Vlad Frangu, ${Email}` },
 				{ name: 'coverage', content: 'Worldwide' },
@@ -133,18 +138,15 @@ const config = {
 				{ name: 'identifier-URL', content: BaseUrl },
 				{ name: 'keywords', content: 'discord, bot, discord api, documentation, guide, discord-api-types' },
 				{ name: 'msapplication-config', content: '/browserconfig.xml' },
-				{ name: 'msapplication-TileColor', content: '#2563EB' },
-				{ name: 'msapplication-TileImage', content: '/icons/mstile-144x144.png' },
 				{ name: 'owner', content: `Vlad Frangu, ${Email}` },
 				{ name: 'rating', content: 'safe for kids' },
 				{ name: 'reply-to', content: Email },
 				{ name: 'revisit-after', content: '7 days' },
 				{ name: 'robots', content: 'archive,follow,imageindex,index,odp,snippet,translate' },
 				{ name: 'shortlink', content: BaseUrl },
-				{ name: 'subject', content: 'Documentation website for Discord API Types' },
+				{ name: 'subject', content: 'Documentation website for discord-api-types' },
 				{ name: 'summary', content: Description },
 				{ name: 'target', content: 'all' },
-				{ name: 'theme-color', content: '#2563EB' },
 				{ name: 'twitter:card', content: 'summary' },
 				{ name: 'twitter:creator', content: '@WolfgalVlad' },
 				{ name: 'twitter:site', content: '@WolfgalVlad' },
@@ -162,10 +164,11 @@ const config = {
 				{ property: 'og:url', content: BaseUrl }
 			],
 			navbar: {
-				title: 'Discord API Types',
+				title: 'discord-api-types',
 				logo: {
 					alt: 'Discord API Types Logo',
-					src: 'img/logo.svg'
+					src: 'svgs/logo_light.svg',
+					srcDark: 'svgs/logo_dark.svg'
 				},
 				items: [
 					{
@@ -198,7 +201,7 @@ const config = {
 				style: 'dark',
 				logo: {
 					alt: 'Powered By Vercel',
-					src: 'img/powered-by-vercel.svg',
+					src: '/powered-by-vercel.svg',
 					href: 'https://vercel.com/?utm_source=sapphiredev&utm_campaign=oss'
 				},
 				links: [

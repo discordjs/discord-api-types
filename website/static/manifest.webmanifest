@@ -1,80 +1,73 @@
 {
 	"$schema": "http://json.schemastore.org/web-manifest",
-	"background_color": "#131516",
+	"background_color": "#2563eb",
+	"theme_color": "#2563eb",
 	"categories": ["discord", "bot", "framework", "documentation", "guide", "discord-api-types"],
-	"description": "Discord API Types is a simple Node/Deno module that brings up to date typings for Discord's API",
+	"description": "discord-api-types is a simple Node/Deno module that brings up to date typings for Discord's API",
 	"dir": "auto",
 	"display": "minimal-ui",
-	"lang": "en_US",
-	"name": "Discord API Types Website",
+	"lang": "en-US",
+	"name": "discord-api-types",
+	"short_name": "discord-api-types",
 	"orientation": "portrait-primary",
-	"scope": "/",
-	"short_name": "Discord API Types",
 	"start_url": "/",
-	"theme_color": "#2563EB",
+	"scope": "/",
 	"icons": [
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-36x36.png",
+			"src": "/android-chrome-36x36.png",
 			"sizes": "36x36",
-			"type": "image/png",
-			"purpose": "any badge"
+			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-48x48.png",
+			"src": "/android-chrome-48x48.png",
 			"sizes": "48x48",
 			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-72x72.png",
+			"src": "/android-chrome-72x72.png",
 			"sizes": "72x72",
 			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-96x96.png",
+			"src": "/android-chrome-96x96.png",
 			"sizes": "96x96",
 			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-144x144.png",
+			"src": "/android-chrome-144x144.png",
 			"sizes": "144x144",
 			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-192x192.png",
+			"src": "/android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-256x256.png",
+			"src": "/android-chrome-256x256.png",
 			"sizes": "256x256",
 			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-384x384.png",
+			"src": "/android-chrome-384x384.png",
 			"sizes": "384x384",
 			"type": "image/png"
 		},
 		{
-			"src": "https://discord-api-types.dev/icons/android-chrome-512x512.png",
+			"src": "/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"
-		},
-		{
-			"src": "https://discord-api-types.dev/icons/maskable_icon.png",
-			"sizes": "640x640",
-			"type": "image/png",
-			"purpose": "any maskable"
 		}
 	],
 	"shortcuts": [
 		{
-			"name": "Discord API Types Website",
+			"name": "discord-api-types homepage",
 			"short_name": "Homepage",
-			"description": "Go to Discord API Types' website",
+			"description": "Go to the discord-api-types homepage",
 			"url": "/",
 			"icons": [
 				{
-					"src": "https://discord-api-types.dev/icons/android-chrome-96x96.png",
+					"src": "/android-chrome-96x96.png",
 					"sizes": "96x96",
 					"type": "image/png"
 				}
@@ -82,58 +75,58 @@
 		}
 	],
 	"splash_pages": {
-		"name": "Discord API Types",
-		"theme_color": "#2563EB",
-		"background_color": "#131516",
+		"name": "discord-api-types",
+		"theme_color": "#2563eb",
+		"background_color": "#2563eb",
 		"icons": [
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-36x36.png",
+				"src": "/android-chrome-36x36.png",
 				"sizes": "36x36",
 				"type": "image/png",
 				"purpose": "any badge"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-48x48.png",
+				"src": "/android-chrome-48x48.png",
 				"sizes": "48x48",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-72x72.png",
+				"src": "/android-chrome-72x72.png",
 				"sizes": "72x72",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-96x96.png",
+				"src": "/android-chrome-96x96.png",
 				"sizes": "96x96",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-144x144.png",
+				"src": "/android-chrome-144x144.png",
 				"sizes": "144x144",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-192x192.png",
+				"src": "/android-chrome-192x192.png",
 				"sizes": "192x192",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-256x256.png",
+				"src": "/android-chrome-256x256.png",
 				"sizes": "256x256",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-384x384.png",
+				"src": "/android-chrome-384x384.png",
 				"sizes": "384x384",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/android-chrome-512x512.png",
+				"src": "/android-chrome-512x512.png",
 				"sizes": "512x512",
 				"type": "image/png"
 			},
 			{
-				"src": "https://discord-api-types.dev/icons/maskable_icon.png",
+				"src": "/maskable_icon.png",
 				"sizes": "640x640",
 				"type": "image/png",
 				"purpose": "any maskable"
