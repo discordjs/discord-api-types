@@ -24,6 +24,7 @@ jobs:
           files: website/**/*
 
       - name: Install common dependencies
+        if: steps.website_files_changed.outputs.any_changed == 'true'
         run: npm ci
 
       - name: Install website dependencies
