@@ -1,5 +1,5 @@
 .button {
-	box-shadow: var(--sapphire-paper-drop-shadow-4);
+	box-shadow: var(--discord_api_types-paper-drop-shadow-4);
 }
 
 @media screen and (max-width: 966px) {

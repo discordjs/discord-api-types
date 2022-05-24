@@ -1,8 +1,8 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import clsx from 'clsx';
 import React, { FC, memo, Suspense } from 'react';
-import LoadingSkeleton from '../../Common/LoadingSkeleton';
 import Statistics from './Statistics';
+import LoadingSkeleton from '../../Common/LoadingSkeleton';
 
 const StatisticsFeature: FC = () => (
 	<div className={clsx('col col--4')}>

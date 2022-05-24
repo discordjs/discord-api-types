@@ -4,7 +4,7 @@
 	"files.associations": {
 		"*.mdx": "markdown"
 	},
-	"cSpell.language": "en-GB",
+	"cSpell.language": "en-US",
 	"cSpell.maxNumberOfProblems": 8,
 	"cSpell.numSuggestions": 24,
 	"search.exclude": {
@@ -15,6 +15,5 @@
 		"**/bower_components": true,
 		"**/node_modules": true,
 		"**/projects/": true
-	},
-	"cSpell.words": ["favna", "nsfw"]
+	}
 }

@@ -11,7 +11,7 @@ const versions = require('./versions.json');
 
 const Description = "discord-api-types is a simple Node/Deno module that brings up to date typings for Discord's API";
 const BaseUrl = 'https://discord-api-types.dev';
-const Email = 'vlad@sapphirejs.dev';
+const Email = 'vlad@discord-api-types.dev';
 const Title = 'discord-api-types documentation';
 
 /** @type {import('@docusaurus/types').Config} */
