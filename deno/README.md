@@ -45,7 +45,7 @@ const { GatewayVersion } = require('discord-api-types/gateway/v10');
 import { GatewayVersion } from 'discord-api-types/gateway/v10';
 ```
 
-> _**Note:** The `v*` exports (`discord-api-type/v*`) include the appropriate version of `gateway`, `payloads`, `rest`, `rpc`, and `utils` you specified, alongside the `globals` exports_
+> _**Note:** The `v*` exports (`discord-api-types/v*`) include the appropriate version of `gateway`, `payloads`, `rest`, `rpc`, and `utils` you specified, alongside the `globals` exports_
 
 ### Deno
 
