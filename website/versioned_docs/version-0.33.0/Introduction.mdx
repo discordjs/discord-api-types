@@ -1,0 +1,167 @@
+---
+id: introduction_to_discord-api-types
+title: Introduction
+sidebar_position: 0
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<div align="center">
+
+<img src="/svgs/logo_long_blurple.svg" className="markdown__logo" />
+
+[![Discord server](https://img.shields.io/discord/222078108977594368?color=5865F2&logo=discord&logoColor=white)](https://discord-api-types.dev/discord)
+[![Patreon Donate](https://img.shields.io/badge/patreon-donate-brightgreen.svg?label=Donate%20with%20Patreon&logo=patreon&colorB=F96854&link=https://www.patreon.com/vladfrangu)](https://www.patreon.com/vladfrangu)
+[![Ko-fi Donate](https://img.shields.io/badge/kofi-donate-brightgreen.svg?label=Donate%20with%20Ko-fi&logo=ko-fi&colorB=F16061&link=https://ko-fi.com/wolfgalvlad&logoColor=FFFFFF)](https://ko-fi.com/wolfgalvlad)
+[![GitHub Sponsors](https://img.shields.io/badge/patreon-donate-brightgreen.svg?label=Sponsor%20through%20GitHub&logo=github&colorB=F96854&link=https://github.com/sponsors/vladfrangu)](https://github.com/sponsors/vladfrangu)
+
+[![NPM version](https://img.shields.io/npm/v/discord-api-types?color=crimson&label=NPM%20Version&logo=npm)](https://www.npmjs.com/package/discord-api-types)
+[![NPM downloads](https://img.shields.io/npm/dt/discord-api-types.svg?label=NPM%20Downloads&logo=npm)](https://www.npmjs.com/package/discord-api-types)
+[![deno](https://img.shields.io/npm/v/discord-api-types?color=blue&label=deno&logo=deno)](https://deno.land/x/discord_api_types)
+
+</div>
+
+## About
+
+Discord API Types is a community-maintained project that brings API types for Discord's REST, Gateway and Voice APIs.
+
+## Installation
+
+Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
+
+```bash npm2yarn2pnpm
+npm install discord-api-types
+```
+
+### Usage
+
+You can only import this module by specifying the API version you want to target. Append `/v*` to the import path, where
+the `*` represents the API version. Below are some examples
+
+<Tabs groupId="ts2esm2cjs">
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+/**
+ * @type {import('discord-api-types/v10').APIUser}
+ */
+```
+
+</TabItem>
+
+<TabItem value="esm" label="ESM">
+
+```javascript
+/**
+ * @type {import('discord-api-types/v10').APIUser}
+ */
+```
+
+</TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { type APIUser } from 'discord-api-types/v10';
+```
+
+</TabItem>
+
+</Tabs>
+
+:::info
+
+You may also import just certain parts of the module that you need. The possible values are: `globals`, `gateway`,
+`gateway/v*`, `payloads`, `payloads/v*`, `rest`, `rest/v*`, `rpc`, `rpc/v*`, `utils`, `utils/v*`, `voice`, and
+`voice/v*`. Below is an example of importing directly from the gateway submodule
+
+```typescript ts2esm2cjs
+import { GatewayVersion } from 'discord-api-types/gateway/v10';
+
+console.log(`Let's connect to wss://gateway.discord.gg/?v=${GatewayVersion}`);
+```
+
+> _**Note:** The `v*` exports (`discord-api-type/v*`) include the appropriate version of `gateway`, `payloads`, `rest`,
+> `rpc`, and `utils` you specified, alongside the `globals` exports_
+
+:::
+
+### Deno
+
+We also provide typings compatible with the [deno](https://deno.land/) runtime. Here are 3 examples of how you can
+import them:
+
+<Tabs>
+<TabItem value="github" label="From GitHub">
+
+```typescript
+// Importing a specific API version
+import { APIUser } from 'https://raw.githubusercontent.com/discordjs/discord-api-types/main/deno/v10.ts';
+```
+
+</TabItem>
+
+<TabItem value="deno" label="From deno.land/x" default>
+
+```typescript
+// Importing a specific API version
+import { APIUser } from 'https://deno.land/x/discord_api_types/v10.ts';
+```
+
+</TabItem>
+
+<TabItem value="skypack" label="From skypack.dev">
+
+```typescript
+// Importing a specific API version
+import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/v10?dts';
+```
+
+</TabItem>
+
+</Tabs>
+
+## Project Structure
+
+The exports of each API version is split into three main parts:
+
+-   Everything exported with the `API` prefix represents a payload you may get from the REST API _or_ the Gateway.
+
+-   Everything exported with the `Gateway` prefix represents data that ONLY comes from or is directly related to the
+    Gateway.
+
+-   Everything exported with the `REST` prefix represents data that ONLY comes from or is directly related to the REST
+    API.
+
+    -   For endpoint options, they will follow the following structure:
+        `REST<HTTP Method><Type><Query|(JSON|FormData)Body|Result>` where the type represents what it will return.
+
+        -   For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
+
+        -   Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of
+            the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
+
+    -   If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
+
+        -   Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore
+            it. This does **not** account for errors.
+
+-   Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route
+    object).
+
+-   There may be types exported that are identical for all versions. These will be exported as is and can be found in the
+    `globals` file. They will still be prefixed accordingly as described above.
+
+:::danger A note about how types are documented
+
+This package will add types only for known and documented properties that are present in Discord's
+[API Documentation repository](https://github.com/discord/discord-api-docs), that are mentioned in an open pull request,
+or known through other means _and have received the green light to be used_. Anything else will not be documented (for
+example client only types).
+
+With that aside, we may allow certain types that are not documented in the
+[API Documentation repository](https://github.com/discord/discord-api-docs) on a case by case basis. They will be
+documented with an `@unstable` tag and are not subject with the same versioning rules.
+
+:::

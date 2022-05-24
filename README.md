@@ -1,5 +1,7 @@
 # Discord API Types
 
+[![discord-api-types](./website/static/svgs/logo_long_blurple.svg)](https://github.com/discordjs/discord-api-types)
+
 [![GitHub](https://img.shields.io/github/license/discordjs/discord-api-types)](https://github.com/discordjs/discord-api-types/blob/main/LICENSE.md)
 [![npm](https://img.shields.io/npm/v/discord-api-types?color=crimson&logo=npm)](https://www.npmjs.com/package/discord-api-types)
 [![deno](https://img.shields.io/npm/v/discord-api-types?color=blue&label=deno&logo=deno)](https://deno.land/x/discord_api_types)
@@ -94,4 +96,9 @@ The exports of each API version is split into three main parts:
 
 - There may be types exported that are identical for all versions. These will be exported as is and can be found in the `globals` file. They will still be prefixed accordingly as described above.
 
-**Warning**: This package documents just KNOWN (and documented) properties. Anything that isn't documented will NOT be added to this package (unless said properties are in an open Pull Request to Discord's [API Documentation repository](https://github.com/discord/discord-api-docs) or known through other means _and have received the green light to be used_). For clarification's sake, this means that properties that are only known through the process of data mining and have not yet been confirmed in a way as described will **NOT** be included.
+**A note about how types are documented**: This package will add types only for known and documented properties that are present in Discord's [API Documentation repository](https://github.com/discord/discord-api-docs),
+that are mentioned in an open pull request, or known through other means _and have received the green light to be used_.
+Anything else will not be documented (for example client only types).
+
+With that aside, we may allow certain types that are not documented in the [API Documentation repository](https://github.com/discord/discord-api-docs) on a case by case basis.
+They will be documented with an `@unstable` tag and are not subject with the same versioning rules.

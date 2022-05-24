@@ -1,4 +1,4 @@
-import type { LocaleString } from '../v10.ts';
+import type { LocaleString } from '../rest/common.ts';
 
 /**
  * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags

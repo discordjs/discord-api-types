@@ -1,0 +1,103 @@
+{
+	"name": "discord-api-types-website",
+	"version": "1.0.0",
+	"description": "Website for discord-api-types, hosted on https://discord-api-types.dev",
+	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"docusaurus": "docusaurus",
+		"start": "npm run clean && docusaurus start",
+		"build": "npm run clean && docusaurus build",
+		"swizzle": "docusaurus swizzle",
+		"deploy": "docusaurus deploy",
+		"clear": "docusaurus clear",
+		"serve": "docusaurus serve",
+		"write-translations": "docusaurus write-translations",
+		"write-heading-ids": "docusaurus write-heading-ids",
+		"typecheck": "tsc",
+		"lint": "eslint src --ext mjs,ts --fix",
+		"lint:no-fix": "eslint src --ext mjs,ts --fix",
+		"lint:md": "markdownlint-cli2-fix",
+		"lint:md-no-fix": "markdownlint-cli2",
+		"clean": "node scripts/clean.mjs",
+		"format": "prettier --write \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml}\"",
+		"format:check": "prettier --check \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml}\"",
+		"test:lint": "run-s lint:no-fix format:check lint:md-no-fix",
+		"vercel-build": "npm run build"
+	},
+	"dependencies": {
+		"@docusaurus/core": "2.0.0-beta.20",
+		"@docusaurus/plugin-pwa": "2.0.0-beta.20",
+		"@docusaurus/preset-classic": "2.0.0-beta.20",
+		"@docusaurus/theme-search-algolia": "2.0.0-beta.20",
+		"@heroicons/react": "^1.0.6",
+		"@mdx-js/react": "^1.6.22",
+		"@sapphire/docusaurus-plugin-npm2yarn2pnpm": "^1.1.0",
+		"@sapphire/docusaurus-plugin-ts2esm2cjs": "^1.1.0",
+		"@svgr/webpack": "^6.2.1",
+		"@tippyjs/react": "^4.2.6",
+		"clsx": "^1.1.1",
+		"docusaurus-plugin-sass": "^0.2.2",
+		"docusaurus-plugin-typedoc-api": "^1.11.0",
+		"prism-react-renderer": "^1.3.3",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"sass": "^1.52.1",
+		"swr": "^1.3.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.0.0",
+		"@commitlint/config-conventional": "^17.0.0",
+		"@docusaurus/module-type-aliases": "2.0.0-beta.20",
+		"@sapphire/prettier-config": "^1.4.3",
+		"@sapphire/ts-config": "^3.3.4",
+		"@types/node": "^17.0.35",
+		"@types/react": "^18.0.9",
+		"@types/react-dom": "^18.0.4",
+		"@typescript-eslint/eslint-plugin": "^5.25.0",
+		"@typescript-eslint/parser": "^5.25.0",
+		"cross-env": "^7.0.3",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^8.16.0",
+		"lint-staged": "^12.4.1",
+		"markdownlint": "^0.25.1",
+		"markdownlint-cli2": "^0.4.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.6.2",
+		"pretty-quick": "^3.1.3",
+		"replace-in-file": "^6.3.2",
+		"rimraf": "^3.0.2",
+		"typedoc": "^0.22.15",
+		"typedoc-plugin-djs-links": "^1.0.4",
+		"typedoc-plugin-markdown": "^3.12.1",
+		"typedoc-plugin-mdn-links": "^1.0.6",
+		"typescript": "^4.6.4"
+	},
+	"browserslist": {
+		"production": [
+			">0.5%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"homepage": "https://discord-api-types.dev",
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	},
+	"lint-staged": {
+		"*.{mjs,js,jsx,ts,tsx}": "eslint --fix --ext mjs,js,jsx,ts,tsx"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	}
+}

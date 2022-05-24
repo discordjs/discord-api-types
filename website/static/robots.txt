@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+Sitemap: https://discord-api-types.dev/sitemap.xml
+User-agent: *
+Disallow:

@@ -1,1 +1,10 @@
+
+# Node modules
+node_modules/
+
+# Generated data
 deno/
+
+website/versioned_docs/
+website/.docusaurus/
+website/build
