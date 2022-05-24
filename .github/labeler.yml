@@ -20,6 +20,8 @@ ci:
 dependencies:
   - package.json
   - package-lock.json
+  - website/package.json
+  - website/package-lock.json
 
 'topic:deno':
   - scripts/deno.mjs
