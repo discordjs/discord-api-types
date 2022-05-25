@@ -161,16 +161,12 @@ const config = {
 				{ property: 'og:image:width', content: '1024' },
 				{ property: 'og:locale', content: 'en_US' },
 				{ property: 'og:site_name', content: Title },
-				{ property: 'og:title', content: Title },
+				{ property: 'og:title', content: 'discord-api-types - Imagine typings' },
 				{ property: 'og:type', content: 'article' },
 				{ property: 'og:url', content: BaseUrl }
 			],
 			navbar: {
 				title: 'discord-api-types',
-				logo: {
-					alt: 'Discord API Types Logo',
-					src: 'svgs/logo_light.svg'
-				},
 				items: [
 					{
 						to: '/',
@@ -202,7 +198,8 @@ const config = {
 						href: 'https://github.com/discordjs/discord-api-types',
 						position: 'right',
 						className: 'header-github-link',
-						'aria-label': 'GitHub repository'
+						'aria-label': 'GitHub repository',
+						label: 'GitHub'
 					}
 				]
 			},
