@@ -49,6 +49,8 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		| 'rate_limit_per_user'
 		| 'default_auto_archive_duration'
 		| 'position'
+		| 'rtc_region'
+		| 'video_quality_mode'
 		| 'flags'
 	>
 > &
