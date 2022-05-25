@@ -5,7 +5,7 @@ import type { Snowflake } from '../../../../globals.ts';
  */
 export interface APIGuildApplicationCommandPermissions {
 	/**
-	 * The id of the command
+	 * The id of the command or the application id if that permission applies to all commands
 	 */
 	id: Snowflake;
 	/**
