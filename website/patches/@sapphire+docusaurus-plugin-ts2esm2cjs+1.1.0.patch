@@ -1,0 +1,62 @@
+diff --git a/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.js b/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.js
+index fa63a72..ecab1c5 100644
+--- a/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.js
++++ b/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.js
+@@ -74,7 +74,7 @@ var transformNode = (node, options) => {
+     {
+       type: node.type,
+       lang: node.lang,
+-      meta: `${jsHighlight} showLineNumbers`,
++      meta: `${jsHighlight}`,
+       value: prettierFormatCode(restoreNewLines(cjsCode), options.prettierOptions)
+     },
+     {
+@@ -84,7 +84,7 @@ var transformNode = (node, options) => {
+     {
+       type: node.type,
+       lang: node.lang,
+-      meta: `${jsHighlight} showLineNumbers`,
++      meta: `${jsHighlight}`,
+       value: prettierFormatCode(restoreNewLines(esmCode), options.prettierOptions)
+     },
+     {
+@@ -94,7 +94,7 @@ var transformNode = (node, options) => {
+     {
+       type: node.type,
+       lang: node.lang,
+-      meta: `${tsHighlight} showLineNumbers`,
++      meta: `${tsHighlight}`,
+       value: node.value
+     },
+     {
+diff --git a/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.mjs b/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.mjs
+index b7c3523..506c78b 100644
+--- a/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.mjs
++++ b/node_modules/@sapphire/docusaurus-plugin-ts2esm2cjs/dist/index.mjs
+@@ -48,7 +48,7 @@ var transformNode = (node, options) => {
+     {
+       type: node.type,
+       lang: node.lang,
+-      meta: `${jsHighlight} showLineNumbers`,
++      meta: `${jsHighlight}`,
+       value: prettierFormatCode(restoreNewLines(cjsCode), options.prettierOptions)
+     },
+     {
+@@ -58,7 +58,7 @@ var transformNode = (node, options) => {
+     {
+       type: node.type,
+       lang: node.lang,
+-      meta: `${jsHighlight} showLineNumbers`,
++      meta: `${jsHighlight}`,
+       value: prettierFormatCode(restoreNewLines(esmCode), options.prettierOptions)
+     },
+     {
+@@ -68,7 +68,7 @@ var transformNode = (node, options) => {
+     {
+       type: node.type,
+       lang: node.lang,
+-      meta: `${tsHighlight} showLineNumbers`,
++      meta: `${tsHighlight}`,
+       value: node.value
+     },
+     {

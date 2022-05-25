@@ -147,9 +147,11 @@ const config = {
 				{ name: 'subject', content: 'Documentation website for discord-api-types' },
 				{ name: 'summary', content: Description },
 				{ name: 'target', content: 'all' },
-				{ name: 'twitter:card', content: 'summary' },
+				{ name: 'twitter:card', content: 'summary_large_image' },
 				{ name: 'twitter:creator', content: '@WolfgalVlad' },
 				{ name: 'twitter:site', content: '@WolfgalVlad' },
+				{ name: 'twitter:title', content: Title },
+				{ name: 'twitter:description', content: Description },
 				{ name: 'url', content: BaseUrl },
 				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 				{ property: 'og:description', content: Description },
@@ -160,15 +162,14 @@ const config = {
 				{ property: 'og:locale', content: 'en_US' },
 				{ property: 'og:site_name', content: Title },
 				{ property: 'og:title', content: Title },
-				{ property: 'og:type', content: 'website' },
+				{ property: 'og:type', content: 'article' },
 				{ property: 'og:url', content: BaseUrl }
 			],
 			navbar: {
 				title: 'discord-api-types',
 				logo: {
 					alt: 'Discord API Types Logo',
-					src: 'svgs/logo_light.svg',
-					srcDark: 'svgs/logo_dark.svg'
+					src: 'svgs/logo_light.svg'
 				},
 				items: [
 					{
@@ -188,12 +189,20 @@ const config = {
 						label: 'API',
 						position: 'left',
 						items: [
-							{ label: versions.length === 0 ? 'Development Time' : '@next', to: versions.length === 0 ? 'api' : 'api/next' },
+							{ label: versions.length === 0 ? 'Development Time' : 'next 🚧', to: versions.length === 0 ? 'api' : 'api/next' },
 							...versions.map((version, i) => ({
 								label: version,
 								to: i === 0 ? 'api' : `api/${version}`
 							}))
 						]
+					},
+
+					// Right
+					{
+						href: 'https://github.com/discordjs/discord-api-types',
+						position: 'right',
+						className: 'header-github-link',
+						'aria-label': 'GitHub repository'
 					}
 				]
 			},

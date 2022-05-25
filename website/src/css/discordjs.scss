@@ -20,15 +20,21 @@
 	}
 }
 
-.main-wrapper > :not(.hero) {
-	max-width: 96rem;
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
+.main-wrapper {
+	> :not(.hero) {
+		max-width: 96rem;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	> .theme-back-to-top-button {
+		width: 3rem;
+	}
 }
 
 // Theme the theme switcher icon to always be white
-.navbar__items.navbar__items--right > :first-child,
+.navbar__items.navbar__items--right > :nth-child(2),
 .navbar-sidebar__brand > :nth-child(2) {
 	color: #f5f6f7;
 
