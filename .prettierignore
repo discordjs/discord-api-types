@@ -5,6 +5,9 @@ node_modules/
 # Generated data
 deno/
 
+# Versioned json
+website/versioned_sidebars/
 website/versioned_docs/
+website/versions.json
 website/.docusaurus/
 website/build
