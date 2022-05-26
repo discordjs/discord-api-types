@@ -1,3 +1,14 @@
+## [0.33.1](https://github.com/discordjs/discord-api-types/compare/0.33.0...0.33.1) (2022-05-26)
+
+### Bug Fixes
+
+- **RESTPostAPIApplicationGuildCommands:** correct types due to unions ([#447](https://github.com/discordjs/discord-api-types/issues/447)) ([6d85ad6](https://github.com/discordjs/discord-api-types/commit/6d85ad6b1d707b980f9897ea68dd4b7573b3a770))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50600` ([#444](https://github.com/discordjs/discord-api-types/issues/444)) ([5ef49f4](https://github.com/discordjs/discord-api-types/commit/5ef49f41cecaa1d5937428a5c58f1d88bfc61266))
+- **RESTPostAPIGuildChannels:** update post body fields ([#419](https://github.com/discordjs/discord-api-types/issues/419)) ([748db34](https://github.com/discordjs/discord-api-types/commit/748db34e30338cf4a9fd8ce7b86d1d5c7dde63b1))
+
 # [0.33.0](https://github.com/discordjs/discord-api-types/compare/0.32.1...0.33.0) (2022-05-16)
 
 ### Code Refactoring
