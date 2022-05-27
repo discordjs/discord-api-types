@@ -169,7 +169,7 @@ const config = {
 				items: [
 					{
 						to: '/',
-						label: 'discord api types',
+						label: 'discord-api-types',
 						position: 'left',
 						activeBaseRegex: '^/$'
 					},
