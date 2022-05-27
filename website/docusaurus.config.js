@@ -166,11 +166,10 @@ const config = {
 				{ property: 'og:url', content: BaseUrl }
 			],
 			navbar: {
-				title: 'discord-api-types',
 				items: [
 					{
 						to: '/',
-						label: 'Home',
+						label: 'discord-api-types',
 						position: 'left',
 						activeBaseRegex: '^/$'
 					},
