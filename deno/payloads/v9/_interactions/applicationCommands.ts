@@ -73,11 +73,11 @@ export interface APIApplicationCommand {
 	/**
 	 * Set of permissions represented as a bitset
 	 */
-	default_member_permissions?: Permissions | null;
+	default_member_permissions: Permissions | null;
 	/**
 	 * Indicates whether the command is available in DMs with the app, only for globally-scoped commands. By default, commands are visible
 	 */
-	dm_permission?: boolean | null;
+	dm_permission?: boolean;
 	/**
 	 * Whether the command is enabled by default when the app is added to a guild
 	 *
