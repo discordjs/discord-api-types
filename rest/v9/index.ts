@@ -276,6 +276,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/${guild.id}/users/${user.id}/banner`
+	 */
+	guildMemberBanner(guildId: Snowflake, userId: Snowflake) {
+		return `/guilds/${guildId}/users/${userId}/banner` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/guilds/{guild.id}/bans`
 	 */
 	guildBans(guildId: Snowflake) {
