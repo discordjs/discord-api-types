@@ -500,13 +500,9 @@ export interface GatewayChannelPinsUpdateDispatchData {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#guild-create
  * https://discord.com/developers/docs/topics/gateway#guild-update
  */
-export type GatewayGuildModifyDispatch = DataPayload<
-	GatewayDispatchEvents.GuildCreate | GatewayDispatchEvents.GuildUpdate,
-	GatewayGuildModifyDispatchData
->;
+export type GatewayGuildModifyDispatch = DataPayload<GatewayDispatchEvents.GuildUpdate, GatewayGuildModifyDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-update
@@ -516,13 +512,13 @@ export type GatewayGuildModifyDispatchData = APIGuild;
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
  */
-export type GatewayGuildCreateDispatch = GatewayGuildModifyDispatch;
+export type GatewayGuildCreateDispatch = DataPayload<GatewayDispatchEvents.GuildCreate, GatewayGuildCreateDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
  * https://discord.com/developers/docs/topics/gateway#guild-create-guild-create-extra-fields
  */
-export type GatewayGuildCreateDispatchData = APIGuild & {
+export interface GatewayGuildCreateDispatchData extends APIGuild {
 	/**
 	 * When this guild was joined at
 	 *
@@ -597,7 +593,7 @@ export type GatewayGuildCreateDispatchData = APIGuild & {
 	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
-};
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-update
