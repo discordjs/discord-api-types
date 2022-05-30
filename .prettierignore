@@ -6,8 +6,8 @@ node_modules/
 deno/
 
 # Versioned json
-website/versioned_sidebars/
-website/versioned_docs/
+website/versioned_sidebars/**/*.json
+website/versioned_docs/**/*.json
 website/versions.json
 website/.docusaurus/
 website/build
