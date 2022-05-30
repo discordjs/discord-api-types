@@ -1,3 +1,10 @@
+## [0.33.2](https://github.com/discordjs/discord-api-types/compare/0.33.1...0.33.2) (2022-05-30)
+
+### Bug Fixes
+
+- **docs-site:** website link colors ([#457](https://github.com/discordjs/discord-api-types/issues/457)) ([51e664d](https://github.com/discordjs/discord-api-types/commit/51e664d8e826e7f0aa467c000f3a1707fc283a36))
+- **GatewayGuildCreateDispatch:** add extra fields that were missing ([#458](https://github.com/discordjs/discord-api-types/issues/458)) ([15fcd1b](https://github.com/discordjs/discord-api-types/commit/15fcd1b2a85e8d1e136416a66326a4aadcc301fb))
+
 ## [0.33.1](https://github.com/discordjs/discord-api-types/compare/0.33.0...0.33.1) (2022-05-26)
 
 ### Bug Fixes
