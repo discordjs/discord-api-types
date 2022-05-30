@@ -37,7 +37,9 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 		| 'guild_id'
 		| 'name_localized'
 		| 'description_localized'
-	>
+		| 'default_member_permissions'
+	> &
+		Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>
 >;
 
 /**
