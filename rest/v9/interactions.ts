@@ -6,7 +6,6 @@ import type {
 	RESTPatchAPIWebhookWithTokenMessageResult,
 	RESTPostAPIWebhookWithTokenWaitResult,
 } from './webhook';
-import type { Permissions } from '../../globals';
 import type {
 	APIApplicationCommand,
 	APIApplicationCommandPermission,
@@ -39,10 +38,9 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 		| 'name_localized'
 		| 'description_localized'
 		| 'default_member_permissions'
-	>
-> & {
-	defaultMemberPermissions?: Permissions | null;
-};
+	> &
+		Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
