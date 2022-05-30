@@ -15,6 +15,7 @@ import type {
 	ApplicationCommandType,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { Permissions } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
@@ -37,8 +38,11 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 		| 'guild_id'
 		| 'name_localized'
 		| 'description_localized'
+		| 'default_member_permissions'
 	>
->;
+> & {
+	defaultMemberPermissions?: Permissions | null;
+};
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
