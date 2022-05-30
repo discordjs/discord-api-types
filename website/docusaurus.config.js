@@ -150,7 +150,7 @@ const config = {
 				{ name: 'twitter:card', content: 'summary_large_image' },
 				{ name: 'twitter:creator', content: '@WolfgalVlad' },
 				{ name: 'twitter:site', content: '@WolfgalVlad' },
-				{ name: 'twitter:title', content: Title },
+				{ name: 'twitter:title', content: 'discord-api-types - Imagine typings' },
 				{ name: 'twitter:description', content: Description },
 				{ name: 'url', content: BaseUrl },
 				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
