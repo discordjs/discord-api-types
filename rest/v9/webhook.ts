@@ -144,6 +144,10 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	 * Message flags combined as a bitfield
 	 */
 	flags?: MessageFlags;
+	/**
+	 * Name of thread to create (only available if webhook is in a forum channel)
+	 */
+	thread_name: string;
 }>;
 
 /**
