@@ -5,6 +5,10 @@ import { Octokit } from '@octokit/action';
 const packageJson = JSON.parse(await readFile(new URL('../../package.json', import.meta.url), { encoding: 'utf8' }));
 const octokit = new Octokit();
 const [OWNER, REPOSITORY] = process.env.GITHUB_REPOSITORY.split('/');
+const prPattern = new RegExp(
+	`\\(\\[#(?<prNumber>\\d+)\\]\\(https:\\/\\/github\\.com\\/${OWNER}\\/${REPOSITORY}\\/(?:issues|pulls)\\/(?:\\d+)\\)\\)`,
+	'gi',
+);
 
 console.log('👀 Getting the previous release version');
 const previousReleases = await octokit.repos.listReleases({
@@ -19,6 +23,8 @@ console.log('👀 Previous release version:', previousRelease?.tag_name);
 const releaseChangelog = [];
 const changelogContent = await readFile(new URL('../../CHANGELOG.md', import.meta.url), { encoding: 'utf8' });
 
+let contentToParseAndAdd = '';
+
 if (previousRelease) {
 	// find difference between previous release and current version
 	const maybeMinorIndex = changelogContent.indexOf(`## [${previousRelease.tag_name}](https://github.com`);
@@ -26,13 +32,31 @@ if (previousRelease) {
 	if (maybeMinorIndex === -1) {
 		// find major version
 		const maybeMajorIndex = changelogContent.indexOf(`# [${previousRelease.tag_name}](https://github.com`);
-		releaseChangelog.push(changelogContent.slice(0, maybeMajorIndex));
+		contentToParseAndAdd = changelogContent.slice(0, maybeMajorIndex);
 	} else {
-		releaseChangelog.push(changelogContent.slice(0, maybeMinorIndex));
+		contentToParseAndAdd = changelogContent.slice(0, maybeMinorIndex);
 	}
 } else {
-	releaseChangelog.push(changelogContent);
+	contentToParseAndAdd = changelogContent;
 }
+
+for (const [input, prNumber] of contentToParseAndAdd.matchAll(prPattern)) {
+	try {
+		const prData = await octokit.pulls.get({
+			owner: OWNER,
+			repo: REPOSITORY,
+			pull_number: Number(prNumber),
+		});
+
+		const replaced = input.replace('))', `) by @${prData.data.user?.login ?? 'ghost'})`);
+
+		contentToParseAndAdd = contentToParseAndAdd.replace(input, replaced);
+	} catch (err) {
+		console.error(`Failed to fetch PR #${prNumber}`, err);
+	}
+}
+
+releaseChangelog.push(contentToParseAndAdd);
 
 const { data } = await octokit.repos.generateReleaseNotes({
 	owner: OWNER,
