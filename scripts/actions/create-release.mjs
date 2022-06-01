@@ -6,10 +6,7 @@ const packageJson = JSON.parse(await readFile(new URL('../../package.json', impo
 const octokit = new Octokit();
 const [OWNER, REPOSITORY] = process.env.GITHUB_REPOSITORY.split('/');
 const prPattern = new RegExp(
-	`\\(\\[#(?<prNumber>\\d+)\\]\\(https:\\/\\/github\\.com\\/${process.env.GITHUB_REPOSITORY?.replaceAll(
-		'/',
-		'\\/',
-	)}\\/(?:issues|pulls)\\/(?:\\d+)\\)\\)`,
+	`\\(\\[#(?<prNumber>\\d+)\\]\\(https:\\/\\/github\\.com\\/${OWNER}\\/${REPOSITORY}\\/(?:issues|pulls)\\/(?:\\d+)\\)\\)`,
 	'gi',
 );
 
