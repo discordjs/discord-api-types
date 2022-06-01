@@ -22,6 +22,7 @@
 	--ifm-navbar-link-active-color: #e5e7eb;
 	--ifm-navbar-link-hover-color: #e5e7eb;
 	--ifm-font-weight-semibold: 700;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
 	@media screen and (max-width: 997px) {
 		--ifm-menu-color: var(--ifm-navbar-link-color);
@@ -44,17 +45,7 @@ html[data-theme='dark'] {
 	--ifm-background-color: #1d1d1d;
 	--ifm-navbar-background-color: #4752c4;
 	--ifm-link-color: hsl(235, 85%, 82%);
-}
-
-.docusaurus-highlight-code-line {
-	background-color: rgba(0, 0, 0, 0.1);
-	display: block;
-	margin: 0 calc(-1 * var(--ifm-pre-padding));
-	padding: 0 var(--ifm-pre-padding);
-}
-
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-	background-color: rgba(0, 0, 0, 0.3);
+	--docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
 }
 
 .footer--dark {

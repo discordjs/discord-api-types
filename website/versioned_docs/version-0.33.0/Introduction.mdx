@@ -28,7 +28,7 @@ Discord API Types is a community-maintained project that brings API types for Di
 
 ## Installation
 
-Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
+Install with [`npm`](https://www.npmjs.com/) / [`yarn`](https://yarnpkg.com) / [`pnpm`](https://pnpm.js.org/):
 
 ```bash npm2yarn2pnpm
 npm install discord-api-types
@@ -42,7 +42,7 @@ the `*` represents the API version. Below are some examples
 <Tabs groupId="ts2esm2cjs">
 <TabItem value="javascript" label="JavaScript">
 
-```javascript showLineNumbers
+```typescript showLineNumbers
 /**
  * @type {import('discord-api-types/v10').APIUser}
  */
@@ -52,7 +52,7 @@ the `*` represents the API version. Below are some examples
 
 <TabItem value="esm" label="ESM">
 
-```javascript showLineNumbers
+```typescript showLineNumbers
 /**
  * @type {import('discord-api-types/v10').APIUser}
  */
@@ -126,32 +126,32 @@ import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/v10?dts';
 
 The exports of each API version is split into three main parts:
 
--   Everything exported with the `API` prefix represents a payload you may get from the REST API _or_ the Gateway.
+- Everything exported with the `API` prefix represents a payload you may get from the REST API _or_ the Gateway.
 
--   Everything exported with the `Gateway` prefix represents data that ONLY comes from or is directly related to the
-    Gateway.
+- Everything exported with the `Gateway` prefix represents data that ONLY comes from or is directly related to the
+  Gateway.
 
--   Everything exported with the `REST` prefix represents data that ONLY comes from or is directly related to the REST
-    API.
+- Everything exported with the `REST` prefix represents data that ONLY comes from or is directly related to the REST
+  API.
 
-    -   For endpoint options, they will follow the following structure:
-        `REST<HTTP Method><Type><Query|(JSON|FormData)Body|Result>` where the type represents what it will return.
+  - For endpoint options, they will follow the following structure:
+    `REST<HTTP Method><Type><Query|(JSON|FormData)Body|Result>` where the type represents what it will return.
 
-        -   For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
+    - For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
 
-        -   Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of
-            the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
+    - Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of
+      the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
 
-    -   If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
+  - If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
 
-        -   Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore
-            it. This does **not** account for errors.
+    - Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore
+      it. This does **not** account for errors.
 
--   Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route
-    object).
+- Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route
+  object).
 
--   There may be types exported that are identical for all versions. These will be exported as is and can be found in the
-    `globals` file. They will still be prefixed accordingly as described above.
+- There may be types exported that are identical for all versions. These will be exported as is and can be found in the
+  `globals` file. They will still be prefixed accordingly as described above.
 
 :::danger A note about how types are documented
 
