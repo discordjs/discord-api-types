@@ -146,6 +146,9 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	flags?: MessageFlags;
 	/**
 	 * Name of thread to create (only available if webhook is in a forum channel)
+	 *
+	 * If the webhook is in a thread channel, you must provide either `thread_id` in the query string params, or `thread_name` in the JSON/form params.
+	 * If `thread_id` is provided, the message will send in that thread. If `thread_name` is provided, a thread with that name will be created in the forum channel.
 	 */
 	thread_name: string;
 }>;
