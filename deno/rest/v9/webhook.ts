@@ -145,10 +145,9 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	 */
 	flags?: MessageFlags;
 	/**
-	 * Name of thread to create (only available if webhook is in a forum channel)
+	 * Name of thread to create
 	 *
-	 * If the webhook is in a thread channel, you must provide either `thread_id` in the query string params, or `thread_name` in the JSON/form params.
-	 * If `thread_id` is provided, the message will send in that thread. If `thread_name` is provided, a thread with that name will be created in the forum channel.
+	 * Available only if the webhook is in a forum channel and a thread is not specified in {@link RESTPostAPIWebhookWithTokenQuery.thread_id} query parameter
 	 */
 	thread_name: string;
 }>;
@@ -178,6 +177,8 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	wait?: boolean;
 	/**
 	 * Send a message to the specified thread within a webhook's channel. The thread will automatically be unarchived.
+	 *
+	 * Available only if the {@link RESTPostAPIWebhookWithTokenJSONBody.thread_name} JSON body property is not specified
 	 */
 	thread_id?: Snowflake;
 }
