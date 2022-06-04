@@ -144,6 +144,12 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	 * Message flags combined as a bitfield
 	 */
 	flags?: MessageFlags;
+	/**
+	 * Name of thread to create
+	 *
+	 * Available only if the webhook is in a forum channel and a thread is not specified in {@link RESTPostAPIWebhookWithTokenQuery.thread_id} query parameter
+	 */
+	thread_name: string;
 }>;
 
 /**
@@ -171,6 +177,8 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	wait?: boolean;
 	/**
 	 * Send a message to the specified thread within a webhook's channel. The thread will automatically be unarchived.
+	 *
+	 * Available only if the {@link RESTPostAPIWebhookWithTokenJSONBody.thread_name} JSON body property is not specified
 	 */
 	thread_id?: Snowflake;
 }
