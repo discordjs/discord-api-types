@@ -621,6 +621,10 @@ export enum MessageFlags {
 	 * This message failed to mention some roles and add their members to the thread
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
+	/**
+	 * This message contains a abusive website link, pops up a warning when clicked
+	 */
+	ShouldShowLinkNotDiscordWarning = 1 << 10,
 }
 
 /**
