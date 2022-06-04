@@ -1,3 +1,9 @@
+## [0.33.3](https://github.com/discordjs/discord-api-types/compare/0.33.2...0.33.3) (2022-06-04)
+
+### Bug Fixes
+
+- **AddUndefinedToPossiblyUndefinedProperties:** recurse down objects ([#471](https://github.com/discordjs/discord-api-types/issues/471)) ([43c372d](https://github.com/discordjs/discord-api-types/commit/43c372d81722e48b105d5121a2cfdf614f1e7704))
+
 ## [0.33.2](https://github.com/discordjs/discord-api-types/compare/0.33.1...0.33.2) (2022-06-01)
 
 ### Bug Fixes
