@@ -116,6 +116,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfPinnedThreadsInForumHasBeenReached,
 	MaximumNumberOfTagsInForumHasBeenReached,
 
+	BitrateIsTooHighForChannelOfThisType = 30052,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
