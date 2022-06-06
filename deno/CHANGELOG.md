@@ -1,3 +1,9 @@
+## [0.33.4](https://github.com/discordjs/discord-api-types/compare/0.33.3...0.33.4) (2022-06-06)
+
+### Features
+
+- **RESTPostAPIWebhookWithTokenJSONBody:** add `thread_name` ([#463](https://github.com/discordjs/discord-api-types/issues/463)) ([8e5f07e](https://github.com/discordjs/discord-api-types/commit/8e5f07e2eebc14e5777dbfb932ef54f252165524))
+
 ## [0.33.3](https://github.com/discordjs/discord-api-types/compare/0.33.2...0.33.3) (2022-06-04)
 
 ### Bug Fixes
