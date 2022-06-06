@@ -273,6 +273,7 @@ export type GatewayDispatchPayload =
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
 	| GatewayGuildBanModifyDispatch
+	| GatewayGuildCreateDispatch
 	| GatewayGuildDeleteDispatch
 	| GatewayGuildEmojisUpdateDispatch
 	| GatewayGuildIntegrationsUpdateDispatch
