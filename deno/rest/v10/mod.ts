@@ -276,6 +276,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - POST `/guilds/{guild.id}/mfa`
+	 */
+	guildMFA(guildId: Snowflake) {
+		return `/guilds/${guildId}/mfa` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/guilds/{guild.id}/bans`
 	 */
 	guildBans(guildId: Snowflake) {
