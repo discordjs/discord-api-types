@@ -70,6 +70,8 @@ export enum RESTJSONErrorCodes {
 
 	AnnouncementEditLimitExceeded = 20022,
 
+	UnderMinimumAge = 20024,
+
 	ChannelSendRateLimit = 20028,
 	ServerSendRateLimit,
 
