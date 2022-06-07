@@ -1,3 +1,14 @@
+## [0.33.5](https://github.com/discordjs/discord-api-types/compare/0.33.4...0.33.5) (2022-06-07)
+
+### Bug Fixes
+
+- **GatewayGuildCreateDispatch:** add missing `GatewayGuildCreateDispatch` ([#477](https://github.com/discordjs/discord-api-types/issues/477)) ([d268e0b](https://github.com/discordjs/discord-api-types/commit/d268e0bff7429e1cde43174fdf6d2342569860d5))
+- **RESTPostAPIWebhookWithTokenJSONBody:** `thread_name` should be optional ([#479](https://github.com/discordjs/discord-api-types/issues/479)) ([eff8892](https://github.com/discordjs/discord-api-types/commit/eff8892b03656cfc2b709c6c30edb98e38bf2a1e))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `30052` ([#469](https://github.com/discordjs/discord-api-types/issues/469)) ([d854317](https://github.com/discordjs/discord-api-types/commit/d8543177cd978a19daa32fbb183892b6f8c24772))
+
 ## [0.33.4](https://github.com/discordjs/discord-api-types/compare/0.33.3...0.33.4) (2022-06-06)
 
 ### Features
