@@ -1124,7 +1124,7 @@ export type GatewayMessageCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#message-create
  */
-export type GatewayMessageCreateDispatchData = APIMessage;
+export type GatewayMessageCreateDispatchData = Omit<APIMessage, 'mentions'> & GatewayMessageEventExtraFields;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-update
@@ -1137,10 +1137,43 @@ export type GatewayMessageUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#message-update
  */
-export type GatewayMessageUpdateDispatchData = {
-	id: Snowflake;
-	channel_id: Snowflake;
-} & Partial<APIMessage>;
+export type GatewayMessageUpdateDispatchData = Omit<Partial<APIMessage>, 'mentions'> &
+	GatewayMessageEventExtraFields & {
+		/**
+		 * ID of the message
+		 */
+		id: Snowflake;
+		/**
+		 * ID of the channel the message was sent in
+		 */
+		channel_id: Snowflake;
+	};
+
+export interface GatewayMessageEventExtraFields {
+	/**
+	 * ID of the guild the message was sent in
+	 */
+	guild_id?: Snowflake;
+	/**
+	 * Member properties for this message's author
+	 *
+	 * The member object exists in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 */
+	member?: APIGuildMember;
+	/**
+	 * Users specifically mentioned in the message
+	 *
+	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 */
+	mentions: (APIUser & { member?: Omit<APIGuildMember, 'user'> })[];
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-delete
