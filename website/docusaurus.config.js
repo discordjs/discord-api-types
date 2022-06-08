@@ -207,7 +207,7 @@ const config = {
 				logo: {
 					alt: 'Powered By Vercel',
 					src: '/powered-by-vercel.svg',
-					href: 'https://vercel.com/?utm_source=sapphiredev&utm_campaign=oss'
+					href: 'https://vercel.com/?utm_source=discordjs&utm_campaign=oss'
 				},
 				links: [
 					{
