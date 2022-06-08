@@ -174,9 +174,7 @@ export interface RESTPostAPIGuildsMFAJSONBody {
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
  */
-export interface RESTPostAPIGuildsMFAResult {
-	level: GuildMFALevel;
-}
+export type RESTPostAPIGuildsMFAResult = RESTPostAPIGuildsMFAJSONBody;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild
