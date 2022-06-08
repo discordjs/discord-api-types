@@ -150,6 +150,7 @@ export enum RESTJSONErrorCodes {
 	InvalidToken,
 	NoteWasTooLong,
 	ProvidedTooFewOrTooManyMessagesToDelete,
+	InvalidMFALevel,
 
 	MessageCanOnlyBePinnedInTheChannelItWasSentIn = 50019,
 	InviteCodeInvalidOrTaken,

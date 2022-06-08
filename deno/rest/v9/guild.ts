@@ -18,6 +18,7 @@ import type {
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildFeature,
+	GuildMFALevel,
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
@@ -157,6 +158,23 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
  * https://discord.com/developers/docs/resources/guild#create-guild
  */
 export type RESTPostAPIGuildsResult = APIGuild;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
+ */
+export interface RESTPostAPIGuildsMFAJSONBody {
+	/**
+	 * MFA level
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
+	 */
+	level: GuildMFALevel;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
+ */
+export type RESTPostAPIGuildsMFAResult = RESTPostAPIGuildsMFAJSONBody;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild
