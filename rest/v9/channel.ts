@@ -64,7 +64,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, news
+	 * Channel types: text, voice, news
 	 */
 	nsfw?: boolean | null;
 	/**
@@ -96,7 +96,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	/**
 	 * ID of the new parent category for a channel
 	 *
-	 * Channel types: text, news, voice
+	 * Channel types: text, voice, news
 	 */
 	parent_id?: Snowflake | null;
 	/**
