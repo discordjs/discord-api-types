@@ -227,6 +227,8 @@ export enum RESTJSONErrorCodes {
 	CannotUpdateAFinishedEvent = 180000,
 
 	FailedToCreateStageNeededForStageEvent = 180002,
+
+	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
 }
 
 /**
