@@ -35,7 +35,7 @@ export interface APIAutoModerationRule {
 	/**
 	 * The rule trigger metadata
 	 */
-	trigger_metadata: never;
+	trigger_metadata: AutoModerationRuleTriggerMetadata;
 	/**
 	 * The actions which will execute when this rule is triggered
 	 */
@@ -59,24 +59,58 @@ export interface APIAutoModerationRule {
  */
 export enum AutoModerationRuleTriggerType {
 	/**
-	 * Check if any words from a user defined list of keywords exist in content
+	 * Check if content contains words from a user defined list of keywords
 	 */
-	KeyWords = 1,
+	Keyword = 1,
 	/**
-	 * Check if any known harmful links exist in content
+	 * Check if content contains any harmful links
 	 */
-	HarmfulLinks,
+	HarmfulLink,
 	/**
 	 * Check if content represents generic spam
 	 */
 	Spam,
 	/**
-	 * Check if any words from built in pre-determined lists of words exist in content
+	 * Check if content contains words from internal pre-defined wordsets
 	 */
-	DefaultKeywordList,
+	KeywordPreset,
 }
 
-// TODO: Add AutoModerationRuleTriggerMetadata object (?)
+/**
+ * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-trigger-metadata
+ */
+export interface AutoModerationRuleTriggerMetadata {
+	/**
+	 * Substrings which will be searched for in content
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
+	 */
+	keyword_filter: string[];
+	/**
+	 * The internally pre-defined wordsets which will be searched for in content
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
+	 */
+	presets: AutoModerationRuleKeywordPresetType[];
+}
+
+/**
+ * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-preset-types
+ */
+export enum AutoModerationRuleKeywordPresetType {
+	/**
+	 * Words that may be considered forms of swearing or cursing
+	 */
+	Profanity = 1,
+	/**
+	 * Words that refer to sexually explicit behavior or activity
+	 */
+	SexualContent,
+	/**
+	 * Personal insults or words that may be considered hate speech
+	 */
+	Slurs,
+}
 
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-event-types
@@ -99,16 +133,43 @@ export interface APIAutoModerationAction {
 	/**
 	 * Additional metadata needed during execution for this specific action type
 	 */
-	metadata: never;
+	metadata: AutoModerationActionMetadata;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-action-types
+ */
 export enum AutoModerationActionType {
 	/**
 	 * Blocks the content of a message according to the rule
 	 */
 	BlockMessage = 1,
 	/**
-	 * Records original message in a specified channel
+	 * Logs user content to a specified channel
 	 */
-	LogToChannel,
+	SendAlertMessage,
+	/**
+	 * Timeout user for specified duration
+	 */
+	Timeout,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-action-metadata
+ */
+export interface AutoModerationActionMetadata {
+	/**
+	 * Channel to which user content should be logged
+	 *
+	 * Associated action type: {@link AutoModerationActionType.SendAlertMessage}
+	 */
+	channel_id: Snowflake;
+	/**
+	 * Timeout duration in seconds (Maximum of 4 weeks - 2419200 seconds)
+	 *
+	 * Only available if using {@link AutoModerationRuleTriggerType.Keyword}
+	 *
+	 * Associated action type: {@link AutoModerationActionType.Timeout}
+	 */
+	duration_seconds: number;
 }
