@@ -355,6 +355,16 @@ export interface APIMessage {
 	 */
 	mention_everyone: boolean;
 	/**
+	 * Users specifically mentioned in the message
+	 *
+	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 */
+	mentions: APIUser[];
+	/**
 	 * Roles specifically mentioned in this message
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
