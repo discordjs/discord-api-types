@@ -6,7 +6,7 @@
 
 _Code is forked from the Sapphire Community's Website under the MIT license_
 
-[![GitHub](https://img.shields.io/github/license/sapphiredev/website)](https://github.com/discordjs/discord-api-types/blob/main/website/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/discordjs/discord-api-types)](https://github.com/discordjs/discord-api-types/blob/main/website/LICENSE.md)
 
 </div>
 
@@ -24,4 +24,4 @@ version of the documentation, as well as being able to preview builds internally
 
 [![Vercel](./static/powered-by-vercel.svg)][vercel]
 
-[vercel]: https://vercel.com?utm_source=sapphiredev&utm_campaign=oss
+[vercel]: https://vercel.com?utm_source=discordjs&utm_campaign=oss

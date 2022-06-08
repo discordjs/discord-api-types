@@ -1,6 +1,6 @@
 # Discord API Types
 
-[![discord-api-types](./website/static/svgs/logo_long_blurple.svg)](https://github.com/discordjs/discord-api-types)
+[![discord-api-types](https://raw.githubusercontent.com/discordjs/discord-api-types/main/website/static/svgs/logo_long_blurple.svg)](https://github.com/discordjs/discord-api-types)
 
 [![GitHub](https://img.shields.io/github/license/discordjs/discord-api-types)](https://github.com/discordjs/discord-api-types/blob/main/LICENSE.md)
 [![npm](https://img.shields.io/npm/v/discord-api-types?color=crimson&logo=npm)](https://www.npmjs.com/package/discord-api-types)
@@ -8,6 +8,7 @@
 [![Patreon Donate](https://img.shields.io/badge/patreon-donate-brightgreen.svg?label=Donate%20with%20Patreon&logo=patreon&colorB=F96854&link=https://www.patreon.com/vladfrangu)](https://www.patreon.com/vladfrangu)
 [![Ko-fi Donate](https://img.shields.io/badge/kofi-donate-brightgreen.svg?label=Donate%20with%20Ko-fi&logo=ko-fi&colorB=F16061&link=https://ko-fi.com/wolfgalvlad&logoColor=FFFFFF)](https://ko-fi.com/wolfgalvlad)
 [![GitHub Sponsors](https://img.shields.io/badge/patreon-donate-brightgreen.svg?label=Sponsor%20through%20GitHub&logo=github&colorB=F96854&link=https://github.com/sponsors/vladfrangu)](https://github.com/sponsors/vladfrangu)
+[![Powered by Vercel](https://raw.githubusercontent.com/discordjs/discord-api-types/main/website/static/powered-by-vercel.svg)](https://vercel.com?utm_source=discordjs&utm_campaign=oss)
 
 Simple type definitions for the [Discord API](https://discord.com/developers/docs/intro).
 
