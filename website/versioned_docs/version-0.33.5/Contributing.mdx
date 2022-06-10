@@ -162,7 +162,7 @@ normal name (for instance `UserFlags`).
 #### `rest`
 
 This folder holds all the types that are related to Discord's REST API. Just like [`payloads`](#payloads), it is split
-into folders that have an `index.ts` file. from the structure in [`Discord's API Documentation`](https://discord.dev),
+into folders that have an `index.ts` file, from the structure in [`Discord's API Documentation`](https://discord.dev),
 under the `Resources` category.
 
 :::info
@@ -170,7 +170,7 @@ under the `Resources` category.
 Types created here must start with the `REST` prefix (for instance `RESTGetAPIUserResult`) unless they are objects or
 enums (for instance `Routes`).
 
-They must also follow the following structure: `REST{http_method}{type_name}{Query|(JSON|FormData)|Result}`, where:
+They must also follow the following structure: `REST{http_method}{type_name}{Query|(JSON|FormData)Body|Result}`, where:
 
 - `http_method` is the PascalCase HTTP method name (for instance `Get`, `Post`, and so on)
 - `type_name` is the actual name of the type it returns (for instance `APIUser`)
