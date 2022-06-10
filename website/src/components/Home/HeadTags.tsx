@@ -23,19 +23,10 @@ const HeadTags: FC = () => (
 		<link rel="apple-touch-startup-image" href="/apple-startup.png" />
 
 		<link
-			rel="preload"
+			rel="preload prerender stylesheet"
 			as="style"
 			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
-			onLoad={(event) => {
-				event.currentTarget.onload = null;
-				event.currentTarget.rel = 'stylesheet';
-			}}
 		/>
-		<noscript>
-			{`
-				<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" />
-			`}
-		</noscript>
 	</Head>
 );
 
