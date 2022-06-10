@@ -12,7 +12,6 @@ const HeadTags: FC = () => (
 		<link rel="canonical" href="https://discord-api-types.dev" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
 		<link rel="icon" type="image/png" sizes="194x194" href="/android-chrome-194x194.png" />
@@ -22,6 +21,12 @@ const HeadTags: FC = () => (
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#23529B" />
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-startup-image" href="/apple-startup.png" />
+
+		<link
+			rel="preload prerender stylesheet"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+		/>
 	</Head>
 );
 
