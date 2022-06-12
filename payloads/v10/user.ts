@@ -170,8 +170,10 @@ export interface APIConnection {
 	name: string;
 	/**
 	 * The service of the connection
+	 *
+	 * See https://discord.com/developers/docs/resources/user#connection-object-services
 	 */
-	type: string;
+	type: ConnectionService;
 	/**
 	 * Whether the connection is revoked
 	 */
@@ -200,6 +202,20 @@ export interface APIConnection {
 	 * See https://discord.com/developers/docs/resources/user#connection-object-visibility-types
 	 */
 	visibility: ConnectionVisibility;
+}
+
+export enum ConnectionService {
+	BattleNet = 'battlenet',
+	Facebook = 'facebook',
+	Github = 'github',
+	PlaystationNetwork = 'playstation',
+	Reddit = 'reddit',
+	Spotify = 'spotify',
+	Steam = 'steam',
+	Twitch = 'twitch',
+	Twitter = 'twitter',
+	Xbox = 'xbox',
+	Youtube = 'youtube',
 }
 
 export enum ConnectionVisibility {
