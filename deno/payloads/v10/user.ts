@@ -206,6 +206,7 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	BattleNet = 'battlenet',
+	EpicGames = 'epicgames',
 	Facebook = 'facebook',
 	Github = 'github',
 	PlaystationNetwork = 'playstation',
