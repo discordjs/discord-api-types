@@ -208,9 +208,9 @@ export enum ConnectionService {
 	BattleNet = 'battlenet',
 	EpicGames = 'epicgames',
 	Facebook = 'facebook',
-	Github = 'github',
+	GitHub = 'github',
 	LeagueOfLegends = 'leagueoflegends',
-	PlaystationNetwork = 'playstation',
+	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
 	Spotify = 'spotify',
 	Skype = 'skype',
@@ -218,7 +218,7 @@ export enum ConnectionService {
 	Twitch = 'twitch',
 	Twitter = 'twitter',
 	Xbox = 'xbox',
-	Youtube = 'youtube',
+	YouTube = 'youtube',
 }
 
 export enum ConnectionVisibility {
