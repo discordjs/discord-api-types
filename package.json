@@ -1,6 +1,6 @@
 {
 	"name": "discord-api-types",
-	"version": "0.33.5",
+	"version": "0.34.0",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
 	"homepage": "https://discord-api-types.dev",
 	"exports": {
