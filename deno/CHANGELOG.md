@@ -1,3 +1,18 @@
+# [0.34.0](https://github.com/discordjs/discord-api-types/compare/0.33.5...0.34.0) (2022-06-13)
+
+### Code Refactoring
+
+- separate `MESSAGE_CREATE` fields from `APIMessage` object ([#434](https://github.com/discordjs/discord-api-types/issues/434)) ([0bb2204](https://github.com/discordjs/discord-api-types/commit/0bb2204b5ddd32b791641a33d52669bc739bc208))
+
+### Features
+
+- add guild mfa endpoint and error `50017` ([#476](https://github.com/discordjs/discord-api-types/issues/476)) ([292c6b5](https://github.com/discordjs/discord-api-types/commit/292c6b58ee9384db2ce06addb80d2ea2bcd32de2))
+- **RESTJSONErrorCodes:** add 220003 error ([#466](https://github.com/discordjs/discord-api-types/issues/466)) ([20653b3](https://github.com/discordjs/discord-api-types/commit/20653b34819f6adf8116bef2a1e5edc3233c4117))
+
+### BREAKING CHANGES
+
+- Certain fields that come only through the gateway are now correctly typed as such
+
 ## [0.33.5](https://github.com/discordjs/discord-api-types/compare/0.33.4...0.33.5) (2022-06-07)
 
 ### Bug Fixes
