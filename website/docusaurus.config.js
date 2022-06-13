@@ -102,7 +102,8 @@ const config = {
 					customCss: [
 						require.resolve('./src/css/custom.scss'),
 						require.resolve('./src/css/tippy-discord.css'),
-						require.resolve('./src/css/discordjs.scss')
+						require.resolve('./src/css/discordjs.scss'),
+						require.resolve('./src/css/font.scss')
 					]
 				}
 			})
@@ -166,6 +167,9 @@ const config = {
 				{ property: 'og:url', content: BaseUrl }
 			],
 			navbar: {
+				logo: {
+					src: '/svgs/mini_logo.svg'
+				},
 				items: [
 					{
 						to: '/',

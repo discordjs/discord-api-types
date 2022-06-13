@@ -21,12 +21,6 @@ const HeadTags: FC = () => (
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#23529B" />
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-startup-image" href="/apple-startup.png" />
-
-		<link
-			rel="preload prerender stylesheet"
-			as="style"
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
-		/>
 	</Head>
 );
 

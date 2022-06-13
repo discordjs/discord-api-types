@@ -12,9 +12,8 @@
 }
 
 .logo {
-	margin-top: -4rem;
-	margin-bottom: -4rem;
-	max-height: 24rem;
+	margin-bottom: 2rem;
+	max-height: 12rem;
 }
 
 .fontSemiTitle {
@@ -22,11 +21,6 @@
 }
 
 @media screen and (max-width: 966px) {
-	.logo {
-		padding-top: 4rem;
-		padding-bottom: 4rem;
-	}
-
 	.fontSemiTitle {
 		font-size: 1.5rem;
 	}
