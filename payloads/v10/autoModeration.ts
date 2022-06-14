@@ -59,19 +59,19 @@ export interface APIAutoModerationRule {
  */
 export enum AutoModerationRuleTriggerType {
 	/**
-	 * Check if content contains words from a user defined list of keywords
+	 * Check if content contains words from a user defined list of keywords (Maximum of 3 per guild)
 	 */
 	Keyword = 1,
 	/**
-	 * Check if content contains any harmful links
+	 * Check if content contains any harmful links (Maximum of 1 per guild)
 	 */
 	HarmfulLink,
 	/**
-	 * Check if content represents generic spam
+	 * Check if content represents generic spam (Maximum of 1 per guild)
 	 */
 	Spam,
 	/**
-	 * Check if content contains words from internal pre-defined wordsets
+	 * Check if content contains words from internal pre-defined wordsets (Maximum of 1 per guild)
 	 */
 	KeywordPreset,
 }
@@ -132,8 +132,10 @@ export interface APIAutoModerationAction {
 	type: AutoModerationActionType;
 	/**
 	 * Additional metadata needed during execution for this specific action type
+	 *
+	 * Will only be omitted if the action type is {@link AutoModerationActionType.BlockMessage}
 	 */
-	metadata: AutoModerationActionMetadata;
+	metadata?: AutoModerationActionMetadata;
 }
 
 /**
@@ -149,7 +151,7 @@ export enum AutoModerationActionType {
 	 */
 	SendAlertMessage,
 	/**
-	 * Timeout user for specified duration
+	 * Timeout user for specified duration, which requires the `MODERATE_MEMBERS` permission
 	 */
 	Timeout,
 }

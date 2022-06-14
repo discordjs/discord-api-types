@@ -36,8 +36,10 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	trigger_type: AutoModerationRuleTriggerType;
 	/**
 	 * The rule trigger metadata
+	 *
+	 * Can be omitted if the trigger type is {@link AutoModerationRuleTriggerType.HarmfulLink} or {@link AutoModerationRuleTriggerType.Spam}
 	 */
-	trigger_metadata: AutoModerationRuleTriggerMetadata;
+	trigger_metadata?: AutoModerationRuleTriggerMetadata;
 	/**
 	 * The actions which will execute when this rule is triggered
 	 */
