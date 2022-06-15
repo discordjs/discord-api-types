@@ -101,6 +101,10 @@ export enum PresenceUpdateStatus {
 	 */
 	Invisible = 'invisible',
 	Offline = 'offline',
+	/**
+	 * Streaming in Twitch or YouTube
+	 */
+	Streaming = 'streaming',
 }
 
 /**
