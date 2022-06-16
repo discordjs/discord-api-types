@@ -890,6 +890,12 @@ export enum EmbedType {
 	 * Link embed
 	 */
 	Link = 'link',
+	/**
+	 * Auto moderation alert embed
+	 *
+	 * @unstable This embed type is currently not documented by Discord, but it is returned in the auto moderation system messages.
+	 */
+	AutoModerationMessage = 'auto_moderation_message',
 }
 
 /**

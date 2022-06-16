@@ -155,7 +155,7 @@ export enum AutoModerationActionType {
 	 */
 	SendAlertMessage,
 	/**
-	 * Timeout user for specified duration, this action type will only work if the bot has `MODERATE_MEMBERS` permission
+	 * Timeout user for specified duration, this action type can be set if the bot has `MODERATE_MEMBERS` permission
 	 */
 	Timeout,
 }
