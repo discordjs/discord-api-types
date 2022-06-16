@@ -35,7 +35,7 @@ export interface APIAutoModerationRule {
 	/**
 	 * The rule trigger metadata
 	 */
-	trigger_metadata: AutoModerationRuleTriggerMetadata;
+	trigger_metadata: APIAutoModerationRuleTriggerMetadata;
 	/**
 	 * The actions which will execute when this rule is triggered
 	 */
@@ -79,7 +79,7 @@ export enum AutoModerationRuleTriggerType {
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-trigger-metadata
  */
-export interface AutoModerationRuleTriggerMetadata {
+export interface APIAutoModerationRuleTriggerMetadata {
 	/**
 	 * Substrings which will be searched for in content
 	 *
@@ -139,7 +139,7 @@ export interface APIAutoModerationAction {
 	 *
 	 * Will only be omitted if the action type is {@link AutoModerationActionType.BlockMessage}
 	 */
-	metadata?: AutoModerationActionMetadata;
+	metadata?: APIAutoModerationActionMetadata;
 }
 
 /**
@@ -155,7 +155,7 @@ export enum AutoModerationActionType {
 	 */
 	SendAlertMessage,
 	/**
-	 * Timeout user for specified duration, which requires the `MODERATE_MEMBERS` permission
+	 * Timeout user for specified duration, this action type will only work if the bot has `MODERATE_MEMBERS` permission
 	 */
 	Timeout,
 }
@@ -163,7 +163,7 @@ export enum AutoModerationActionType {
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-action-metadata
  */
-export interface AutoModerationActionMetadata {
+export interface APIAutoModerationActionMetadata {
 	/**
 	 * Channel to which user content should be logged
 	 *

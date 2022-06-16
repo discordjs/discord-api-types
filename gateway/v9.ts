@@ -192,6 +192,8 @@ export enum GatewayIntentBits {
 	DirectMessageReactions = 1 << 13,
 	DirectMessageTyping = 1 << 14,
 	GuildScheduledEvents = 1 << 16,
+	AutoModerationConfiguration = 1 << 20,
+	AutoModerationExecution = 1 << 21,
 }
 
 /**

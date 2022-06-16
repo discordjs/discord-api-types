@@ -3,7 +3,7 @@ import type {
 	APIAutoModerationAction,
 	APIAutoModerationRule,
 	AutoModerationRuleEventType,
-	AutoModerationRuleTriggerMetadata,
+	APIAutoModerationRuleTriggerMetadata,
 	AutoModerationRuleTriggerType,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
@@ -39,7 +39,7 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	 *
 	 * Can be omitted if the trigger type is {@link AutoModerationRuleTriggerType.HarmfulLink} or {@link AutoModerationRuleTriggerType.Spam}
 	 */
-	trigger_metadata?: AutoModerationRuleTriggerMetadata;
+	trigger_metadata?: APIAutoModerationRuleTriggerMetadata;
 	/**
 	 * The actions which will execute when this rule is triggered
 	 */

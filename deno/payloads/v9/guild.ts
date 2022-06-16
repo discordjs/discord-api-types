@@ -386,7 +386,7 @@ export enum GuildFeature {
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
 	/**
-	 * Guild has enabled the auto moderation system
+	 * Guild has set up auto moderation rules
 	 */
 	AutoModeration = 'AUTO_MODERATION',
 	/**
