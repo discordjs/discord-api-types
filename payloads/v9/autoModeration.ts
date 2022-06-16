@@ -127,7 +127,7 @@ export enum AutoModerationRuleEventType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-auto-moderation-action-structure
+ * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-auto-moderation-action-structure
  */
 export interface APIAutoModerationAction {
 	/**
@@ -143,7 +143,7 @@ export interface APIAutoModerationAction {
 }
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-action-types
+ * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-action-types
  */
 export enum AutoModerationActionType {
 	/**
@@ -161,7 +161,7 @@ export enum AutoModerationActionType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-action-metadata
+ * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-action-metadata
  */
 export interface AutoModerationActionMetadata {
 	/**
