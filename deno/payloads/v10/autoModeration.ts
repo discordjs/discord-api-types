@@ -83,6 +83,10 @@ export interface AutoModerationRuleTriggerMetadata {
 	/**
 	 * Substrings which will be searched for in content
 	 *
+	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each keyword will be matched
+	 *
+	 * See https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies
+	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
 	 */
 	keyword_filter: string[];
@@ -117,7 +121,7 @@ export enum AutoModerationRuleKeywordPresetType {
  */
 export enum AutoModerationRuleEventType {
 	/**
-	 * When a member sends a message on a guild
+	 * When a member sends or edits a message in the guild
 	 */
 	MessageSend = 1,
 }

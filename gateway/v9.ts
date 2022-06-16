@@ -517,19 +517,19 @@ export interface GatewayAutoModerationActionExecutionDispatchData {
 	/**
 	 * The id of the channel in which user content was posted
 	 */
-	channel_id?: Snowflake | null;
+	channel_id?: Snowflake;
 	/**
 	 * The id of any user message which content belongs to
 	 *
 	 * This field will not be present if message was blocked by AutoMod or content was not part of any message
 	 */
-	message_id?: Snowflake | null;
+	message_id?: Snowflake;
 	/**
 	 * The id of any system auto moderation messages posted as a result of this action
 	 *
 	 * This field will not be present if this event does not correspond to an action with type {@link AutoModerationActionType.SendAlertMessage}
 	 */
-	alert_system_message_id?: Snowflake | null;
+	alert_system_message_id?: Snowflake;
 	/**
 	 * The user generated text content
 	 */
