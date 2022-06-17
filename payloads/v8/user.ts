@@ -147,6 +147,10 @@ export enum UserFlags {
 	 * User has been identified as spammer
 	 */
 	Spammer = 1 << 20,
+	/**
+	 * User's account has been quarantined based on recent activity
+	 */
+	Quarantined = 1 << 44
 }
 
 /**
