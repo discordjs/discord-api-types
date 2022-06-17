@@ -7,6 +7,7 @@ import type {
 	APIAutoModerationRule,
 	APIAutoModerationRuleTriggerMetadata,
 	AutoModerationRuleEventType,
+	AutoModerationRuleTriggerType,
 } from './autoModeration.ts';
 import type { APIChannel, APIOverwrite } from './channel.ts';
 import type {
@@ -365,6 +366,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyStatus
 	| APIAuditLogChangeKeyLocation
 	| APIAuditLogChangeKeyCommunicationDisabledUntil
+	| APIAuditLogChangeKeyTriggerType
 	| APIAuditLogChangeKeyEventType
 	| APIAuditLogChangeKeyTriggerMetadata
 	| APIAuditLogChangeKeyActions
@@ -732,6 +734,11 @@ export type APIAuditLogChangeKeyLocation = AuditLogChangeData<'location', string
  * Returned when a user's timeout is changed
  */
 export type APIAuditLogChangeKeyCommunicationDisabledUntil = AuditLogChangeData<'communication_disabled_until', string>;
+
+/**
+ * Returned when a auto moderation rule's trigger type is changed (only in rule creation or deletion)
+ */
+export type APIAuditLogChangeKeyTriggerType = AuditLogChangeData<'trigger_type', AutoModerationRuleTriggerType>;
 
 /**
  * Returned when a auto moderation rule's event type is changed
