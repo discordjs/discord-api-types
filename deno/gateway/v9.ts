@@ -1601,15 +1601,15 @@ export interface GatewayIdentifyProperties {
 	/**
 	 * Your operating system
 	 */
-	$os: string;
+	os: string;
 	/**
 	 * Your library name
 	 */
-	$browser: string;
+	browser: string;
 	/**
 	 * Your library name
 	 */
-	$device: string;
+	device: string;
 }
 
 /**
