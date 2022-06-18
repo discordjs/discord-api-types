@@ -908,6 +908,10 @@ export interface APIEmbedVideo {
 	 */
 	url?: string;
 	/**
+	 * A proxied url of the video
+	 */
+	proxy_url?: string;
+	/**
 	 * Height of video
 	 */
 	height?: number;
