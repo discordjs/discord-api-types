@@ -535,6 +535,8 @@ export interface GatewayAutoModerationActionExecutionDispatchData {
 	alert_system_message_id?: Snowflake;
 	/**
 	 * The user generated text content
+	 *
+	 * `MESSAGE_CONTENT` (`1 << 15`) gateway intent is required to receive non-empty values from this field
 	 */
 	content: string;
 	/**

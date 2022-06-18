@@ -169,7 +169,7 @@ export interface APIAutoModerationActionMetadata {
 	 *
 	 * Associated action type: {@link AutoModerationActionType.SendAlertMessage}
 	 */
-	channel_id: Snowflake;
+	channel_id?: Snowflake;
 	/**
 	 * Timeout duration in seconds (Maximum of 4 weeks - 2419200 seconds)
 	 *
@@ -177,5 +177,5 @@ export interface APIAutoModerationActionMetadata {
 	 *
 	 * Associated action type: {@link AutoModerationActionType.Timeout}
 	 */
-	duration_seconds: number;
+	duration_seconds?: number;
 }
