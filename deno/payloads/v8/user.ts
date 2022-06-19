@@ -150,7 +150,7 @@ export enum UserFlags {
 	/**
 	 * User's account has been quarantined based on recent activity
 	 */
-	Quarantined = 1 << 44
+	Quarantined = Math.pow(2, 44),
 }
 
 /**
