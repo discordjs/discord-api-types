@@ -519,6 +519,7 @@ export enum MessageType {
 	ThreadStarterMessage,
 	GuildInviteReminder,
 	ContextMenuCommand,
+	AutoModerationAction,
 }
 
 /**

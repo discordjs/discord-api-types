@@ -9,6 +9,7 @@ import type {
 	APIChannel,
 	APIEmoji,
 	APIGuild,
+	APIAutoModerationRule,
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildScheduledEvent,
@@ -28,6 +29,7 @@ import type {
 	GatewayVoiceState,
 	InviteTargetType,
 	PresenceUpdateStatus,
+	GatewayAutoModerationActionExecution as RawGatewayAutoModerationActionExecution,
 } from '../payloads/v10/index';
 import type { Nullable } from '../utils/internals';
 
@@ -252,6 +254,10 @@ export enum GatewayDispatchEvents {
 	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
 	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
 	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
+	AutoModerationRuleCreate = 'AUTO_MODERATION_RULE_CREATE',
+	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
+	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
+	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
 }
 
 export type GatewaySendPayload =
@@ -1522,6 +1528,34 @@ export interface GatewayWebhooksUpdateDispatchData {
 	 */
 	channel_id: Snowflake;
 }
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation
+ */
+export type GatewayAutoModerationRuleDispatch = DataPayload<
+	| GatewayDispatchEvents.AutoModerationRuleCreate
+	| GatewayDispatchEvents.AutoModerationRuleUpdate
+	| GatewayDispatchEvents.AutoModerationRuleDelete,
+	GatewayAutoModerationRuleDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation
+ */
+export type GatewayAutoModerationRuleDispatchData = APIAutoModerationRule;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation
+ */
+export type GatewayAutoModerationActionExecutionDispatch = DataPayload<
+	GatewayDispatchEvents.AutoModerationActionExecution,
+	GatewayAutoModerationActionExecutionDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation
+ */
+export type GatewayAutoModerationActionExecutionDispatchData = RawGatewayAutoModerationActionExecution;
 
 // #endregion Dispatch Payloads
 

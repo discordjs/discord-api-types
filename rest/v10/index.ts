@@ -2,6 +2,7 @@ import type { Snowflake } from '../../globals';
 
 export * from '../common';
 export * from './auditLog';
+export * from './autoModeration';
 export * from './channel';
 export * from './emoji';
 export * from './gateway';
@@ -841,6 +842,25 @@ export const Routes = {
 	 */
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/auto-moderation/rules`
+	 * - POST `/guilds/{guild.id}/auto-moderation/rules`
+	 */
+	autoModerationRules(guildId: Snowflake) {
+		return `/guilds/${guildId}/auto-moderation/rules` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/auto-moderation/rules/{auto_moderation_rule.id}`
+	 * - PATCH `/guilds/{guild.id}/auto-moderation/rules/{auto_moderation_rule.id}`
+	 * - DELETE `/guilds/{guild.id}/auto-moderation/rules/{auto_moderation_rule.id}`
+	 */
+	autoModerationRule(guildId: Snowflake, autoModerationRuleId: Snowflake) {
+		return `/guilds/${guildId}/auto-moderation/rules/${autoModerationRuleId}` as const;
 	},
 };
 
