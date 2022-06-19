@@ -89,13 +89,13 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
 	 */
-	keyword_filter: string[];
+	keyword_filter?: string[];
 	/**
 	 * The internally pre-defined wordsets which will be searched for in content
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
 	 */
-	presets: AutoModerationRuleKeywordPresetType[];
+	presets?: AutoModerationRuleKeywordPresetType[];
 }
 
 /**
