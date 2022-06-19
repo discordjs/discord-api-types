@@ -148,7 +148,7 @@ export enum UserFlags {
 	 */
 	Spammer = 1 << 20,
 	/**
-	 * User's account has been quarantined based on recent activity
+	 * @unstable User's account has been quarantined based on recent activity
 	 */
 	Quarantined = Math.pow(2, 44),
 }
