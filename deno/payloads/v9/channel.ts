@@ -464,7 +464,7 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object
 	 */
-	referenced_message?: Partial<APIMessage> | null;
+	referenced_message?: Omit<APIMessage, 'referenced_message' | 'nonce' | 'member' | 'guild_id'> | null;
 	/**
 	 * Sent if the message is a response to an Interaction
 	 */
