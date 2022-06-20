@@ -150,7 +150,7 @@ export enum UserFlags {
 	/**
 	 * User's account has been quarantined based on recent activity
 	 *
-	 * @unstable This user flag is currently not documented by Discord but has known values which we will try to keep up to date.
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	Quarantined = Math.pow(2, 44),
 }
