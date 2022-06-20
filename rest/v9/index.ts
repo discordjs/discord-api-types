@@ -853,6 +853,8 @@ export const Routes = {
 	},
 };
 
+export const StickerPackApplicationId = '710982414301790216';
+
 export const CDNRoutes = {
 	/**
 	 * Route for:
@@ -930,7 +932,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extension: PNG
 	 */
-	defaultUserAvatar(userDiscriminator: 0 | 1 | 2 | 3 | 4 | 5) {
+	defaultUserAvatar(userDiscriminator: DefaultUserAvatarAssets) {
 		return `/embed/avatars/${userDiscriminator}.png` as const;
 	},
 
@@ -1010,7 +1012,7 @@ export const CDNRoutes = {
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
 	stickerPackBanner(stickerPackBannerAssetId: Snowflake, format: StickerPackBannerFormat) {
-		return `app-assets/710982414301790216/store/${stickerPackBannerAssetId}.${format}` as const;
+		return `/app-assets/${StickerPackApplicationId}/store/${stickerPackBannerAssetId}.${format}` as const;
 	},
 
 	/**
@@ -1067,6 +1069,8 @@ export const CDNRoutes = {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
 	},
 };
+
+export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type EmojiFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type GuildIconFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
