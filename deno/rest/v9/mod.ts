@@ -853,6 +853,262 @@ export const Routes = {
 	},
 };
 
+export const StickerPackApplicationId = '710982414301790216';
+
+export const CDNRoutes = {
+	/**
+	 * Route for:
+	 * - GET `/emojis/{emoji.id}.{png|jpeg|webp|gif}`
+	 *
+	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP, GIF
+	 */
+	emoji(emojiId: Snowflake, format: EmojiFormat) {
+		return `/emojis/${emojiId}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/icons/{guild.id}.{png|jpeg|webp|gif}`
+	 *
+	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP, GIF
+	 */
+	guildIcon(guildId: Snowflake, guildIcon: string, format: GuildIconFormat) {
+		return `icons/${guildId}/${guildIcon}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/splashes/{guild.id}/{guild.splash}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	guildSplash(guildId: Snowflake, guildSplash: string, format: GuildSplashFormat) {
+		return `/splashes/${guildId}/${guildSplash}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/discovery-splashes/{guild.id}/{guild.discovery_splash}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	guildDiscoverySplash(guildId: Snowflake, guildDiscoverySplash: string, format: GuildDiscoverySplashFormat) {
+		return `/discovery-splashes/${guildId}/${guildDiscoverySplash}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/banners/{guild.id}/{guild.banner}.{png|jpeg|webp|gif}`
+	 *
+	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP, GIF
+	 */
+	guildBanner(guildId: Snowflake, guildBanner: string, format: GuildBannerFormat) {
+		return `/banners/${guildId}/${guildBanner}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/banners/{user.id}/{user.banner}.{png|jpeg|webp|gif}`
+	 *
+	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP, GIF
+	 */
+	userBanner(userId: Snowflake, userBanner: string, format: UserBannerFormat) {
+		return `/banners/${userId}/${userBanner}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/embed/avatars/{user.discriminator % 5}.png`
+	 *
+	 * The `userDiscriminator` parameter should be the user discriminator modulo 5 (e.g. 1337 % 5 = 2)
+	 *
+	 * This route supports the extension: PNG
+	 */
+	defaultUserAvatar(userDiscriminator: DefaultUserAvatarAssets) {
+		return `/embed/avatars/${userDiscriminator}.png` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/avatars/{user.id}/{user.avatar}.{png|jpeg|webp|gif}`
+	 *
+	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP, GIF
+	 */
+	userAvatar(userId: Snowflake, userAvatar: string, format: UserAvatarFormat) {
+		return `/avatars/${userId}/${userAvatar}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/users/{user.id}/{guild_member.avatar}.{png|jpeg|webp|gif}`
+	 *
+	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP, GIF
+	 */
+	guildMemberAvatar(guildId: Snowflake, userId: Snowflake, memberAvatar: string, format: GuildMemberAvatarFormat) {
+		return `/guilds/${guildId}/users/${userId}/avatars/${memberAvatar}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/app-icons/{application.id}/{application.icon}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	applicationIcon(applicationId: Snowflake, applicationIcon: string, format: ApplicationIconFormat) {
+		return `/app-icons/${applicationId}/${applicationIcon}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/app-icons/{application.id}/{application.cover_image}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	applicationCover(applicationId: Snowflake, applicationCoverImage: string, format: ApplicationCoverFormat) {
+		return `/app-icons/${applicationId}/${applicationCoverImage}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/app-icons/{application.id}/{application.asset_id}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	applicationAsset(applicationId: Snowflake, applicationAssetId: string, format: ApplicationAssetFormat) {
+		return `/app-icons/${applicationId}/${applicationAssetId}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/app-assets/{application.id}/achievements/{achievement.id}/icons/{achievement.icon}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	achievementIcon(
+		applicationId: Snowflake,
+		achievementId: Snowflake,
+		achievementIconHash: string,
+		format: AchievementIconFormat,
+	) {
+		return `/app-assets/${applicationId}/achievements/${achievementId}/icons/${achievementIconHash}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/app-assets/710982414301790216/store/{sticker_pack.banner.asset_id}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	stickerPackBanner(stickerPackBannerAssetId: Snowflake, format: StickerPackBannerFormat) {
+		return `/app-assets/${StickerPackApplicationId}/store/${stickerPackBannerAssetId}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `team-icons/{team.id}/{team.icon}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	teamIcon(teamId: Snowflake, teamIcon: string, format: TeamIconFormat) {
+		return `/team-icons/${teamId}/${teamIcon}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/stickers/{sticker.id}.{png|json}`
+	 *
+	 * This route supports the extensions: PNG, Lottie
+	 */
+	sticker(stickerId: Snowflake, format: StickerFormat) {
+		return `/stickers/${stickerId}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/role-icons/{role.id}/{role.icon}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	roleIcon(roleId: Snowflake, roleIcon: string, format: RoleIconFormat) {
+		return `/role-icons/${roleId}/${roleIcon}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guild-events/{guild_scheduled_event.id}/{guild_scheduled_event.image}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	guildScheduledEventCover(
+		guildScheduledEventId: Snowflake,
+		guildScheduledEventCoverImage: string,
+		format: GuildScheduledEventCoverFormat,
+	) {
+		return `/guild-events/${guildScheduledEventId}/${guildScheduledEventCoverImage}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/${guild.id}/users/${user.id}/banners/${guild_member.banner}.{png|jpeg|webp|gif}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP, GIF
+	 */
+	guildMemberBanner(guildId: Snowflake, userId: Snowflake, guildMemberBanner: string, format: GuildMemberBannerFormat) {
+		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
+	},
+};
+
+export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
+
+export type EmojiFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+export type GuildIconFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+export type GuildSplashFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type GuildDiscoverySplashFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type GuildBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+export type UserBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+export type DefaultUserAvatar = Extract<ImageFormat, ImageFormat.PNG>;
+export type UserAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+export type GuildMemberAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+export type ApplicationIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type ApplicationCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type StickerFormat = Extract<ImageFormat, ImageFormat.PNG | ImageFormat.Lottie>;
+export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+
+export enum ImageFormat {
+	JPEG = 'jpeg',
+	PNG = 'png',
+	WebP = 'webp',
+	GIF = 'gif',
+	Lottie = 'json',
+}
+
+export interface CDNQuery {
+	/**
+	 * The returned image can have the size changed by using this query parameter
+	 *
+	 * Image size can be any power of two between 16 and 4096
+	 */
+	size?: number;
+}
+
 export const RouteBases = {
 	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',
