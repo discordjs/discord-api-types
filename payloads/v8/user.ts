@@ -145,6 +145,8 @@ export enum UserFlags {
 	BotHTTPInteractions = 1 << 19,
 	/**
 	 * User has been identified as spammer
+	 *
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	Spammer = 1 << 20,
 }
