@@ -851,7 +851,7 @@ export const CDNRoutes = {
 	 *
 	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
 	 */
-	customEmoji(emojiId: Snowflake, format: 'png' | 'jpeg' | 'webp' | 'gif') {
+	emoji(emojiId: Snowflake, format: 'png' | 'jpeg' | 'webp' | 'gif') {
 		return `/emojis/${emojiId}.${format}` as const;
 	},
 
@@ -906,8 +906,10 @@ export const CDNRoutes = {
 	 * - GET `/embed/avatars/{user.discriminator % 5}.png`
 	 *
 	 * The `userDiscriminator` parameter should be the user discriminator modulo 5 (e.g. 1337 % 5 = 2)
+	 *
+	 * The numbers range from only 0 to 5
 	 */
-	defaultUserAvatar(userDiscriminator: Snowflake) {
+	defaultUserAvatar(userDiscriminator: number) {
 		return `/embed/avatars/${userDiscriminator}.png` as const;
 	},
 
