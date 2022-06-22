@@ -545,6 +545,8 @@ export interface GatewayAutoModerationActionExecutionDispatchData {
 	matched_keyword: string | null;
 	/**
 	 * The substring in content that triggered the rule
+	 *
+	 * `MESSAGE_CONTENT` (`1 << 15`) gateway intent is required to receive non-empty values from this field
 	 */
 	matched_content: string | null;
 }
