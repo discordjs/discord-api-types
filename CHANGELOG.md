@@ -1,3 +1,19 @@
+# [0.35.0](https://github.com/discordjs/discord-api-types/compare/0.34.0...0.35.0) (2022-06-23)
+
+### Code Refactoring
+
+- **GatewayIdentifyProperties:** remove `$` prefix from keys ([#493](https://github.com/discordjs/discord-api-types/issues/493)) ([3b10c60](https://github.com/discordjs/discord-api-types/commit/3b10c60faa5943501ab1f7cfa0d5f3c5317cdbbd))
+
+### Features
+
+- **APIEmbedVideo:** add missing `proxy_url` property ([#496](https://github.com/discordjs/discord-api-types/issues/496)) ([56d491f](https://github.com/discordjs/discord-api-types/commit/56d491fa6808d9a8762bff606ca8feb5e11f13a4))
+- **REST:** add `CDNRoutes` ([#502](https://github.com/discordjs/discord-api-types/issues/502)) ([0609886](https://github.com/discordjs/discord-api-types/commit/06098869d552139fadcc204b5ce4e1a7e5352b68))
+- **UserFlags:** add `Quarantined` flag ([#495](https://github.com/discordjs/discord-api-types/issues/495)) ([fc3aa1c](https://github.com/discordjs/discord-api-types/commit/fc3aa1c9110e4730c6b8ba3e36815ecd2da66c68))
+
+### BREAKING CHANGES
+
+- **GatewayIdentifyProperties:** The fields for identify no longer use the `$` prefix for the values.
+
 # [0.34.0](https://github.com/discordjs/discord-api-types/compare/0.33.5...0.34.0) (2022-06-13)
 
 ### Code Refactoring
