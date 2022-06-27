@@ -69,10 +69,6 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 	 * The vanity url code for the guild
 	 */
 	vanity_url_code?: string | null;
-	/**
-	 * `true` if this guild is unavailable due to an outage
-	 */
-	unavailable?: boolean;
 }
 
 /**
