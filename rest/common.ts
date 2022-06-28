@@ -200,6 +200,8 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50109,
 
+	OwnershipCannotBeMovedToABotUser = 50132,
+
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
 	TwoFactorAuthenticationIsRequired = 60003,
