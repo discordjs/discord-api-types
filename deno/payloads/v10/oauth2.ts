@@ -175,3 +175,10 @@ export enum OAuth2PrivateUserScopes {
 	 */
 	Voice = 'voice',
 }
+
+export type OAuth2Scopes =
+	| OAuth2PublicUserScopes
+	| OAuth2GuildScopes
+	| OAuth2OtherScopes
+	| OAuth2RestrictedUserScopes
+	| OAuth2PrivateUserScopes;

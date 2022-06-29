@@ -4,11 +4,8 @@ import type {
 	APIGuild,
 	APIUser,
 	APIWebhook,
-	OAuth2PublicUserScopes,
 	OAuth2GuildScopes,
-	OAuth2OtherScopes,
-	OAuth2RestrictedUserScopes,
-	OAuth2PrivateUserScopes,
+	OAuth2Scopes,
 } from '../../payloads/v10/mod.ts';
 
 /**
@@ -27,13 +24,7 @@ export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 	/**
 	 * the scopes the user has authorized the application for
 	 */
-	scopes: (
-		| OAuth2PublicUserScopes
-		| OAuth2GuildScopes
-		| OAuth2OtherScopes
-		| OAuth2RestrictedUserScopes
-		| OAuth2PrivateUserScopes
-	)[];
+	scopes: OAuth2Scopes[];
 	/**
 	 * when the access token expires
 	 */
