@@ -107,7 +107,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * Bitwise set of permissions the app or bot has within the channel the interaction was sent from
 	 */
-	app_permissions?: string;
+	app_permissions?: Permissions;
 	/**
 	 * The selected language of the invoking user
 	 */
