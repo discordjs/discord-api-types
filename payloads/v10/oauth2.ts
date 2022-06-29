@@ -2,6 +2,11 @@
  * Types extracted from https://discord.com/developers/docs/topics/oauth2
  */
 
+/**
+ * Users can authorize these scopes using the normal OAuth2 process
+ *
+ * See https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes-public-user-scopes
+ */
 export enum OAuth2PublicUserScopes {
 	/**
 	 * Allows your app to read build data for a user's applications
@@ -77,6 +82,11 @@ export enum OAuth2PublicUserScopes {
 	RPCNotificationsRead = 'rpc.notifications.read',
 }
 
+/**
+ * Applications can be added to a guild with these scopes by members with the `Manage Server` permission
+ *
+ * See https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes-guild-scopes
+ */
 export enum OAuth2GuildScopes {
 	/**
 	 * Allows your app to use Application Commands in a guild
@@ -90,6 +100,11 @@ export enum OAuth2GuildScopes {
 	Bot = 'bot',
 }
 
+/**
+ * These scopes can be used to do other actions with Discord's OAuth2 system
+ *
+ * See https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes-other-scopes
+ */
 export enum OAuth2OtherScopes {
 	/**
 	 * Allows your app to update its Application Commands via this bearer token - client credentials grant only
@@ -103,6 +118,11 @@ export enum OAuth2OtherScopes {
 	WebhookIncoming = 'webhook.incoming',
 }
 
+/**
+ * These scopes can be publicly used for application owners and testers. Certain approved apps can use these for all users
+ *
+ * See https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes-restricted-user-scopes
+ */
 export enum OAuth2RestrictedUserScopes {
 	/**
 	 * For local rpc server access, this allows you to control a user's local Discord client
@@ -122,6 +142,11 @@ export enum OAuth2RestrictedUserScopes {
 	RPCVoiceWrite = 'rpc.voice.write',
 }
 
+/**
+ * These scopes can only be used by certain approved apps
+ *
+ * See https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes-private-user-scopes
+ */
 export enum OAuth2PrivateUserScopes {
 	/**
 	 * Allows your app to fetch data from a user's "Now Playing/Recently Played" list

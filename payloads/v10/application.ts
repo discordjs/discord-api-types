@@ -2,7 +2,13 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
-import type { OAuth2Scopes } from './oauth2';
+import type {
+	OAuth2PublicUserScopes,
+	OAuth2GuildScopes,
+	OAuth2OtherScopes,
+	OAuth2RestrictedUserScopes,
+	OAuth2PrivateUserScopes,
+} from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
 import type { Permissions, Snowflake } from '../../globals';
@@ -108,7 +114,13 @@ export interface APIApplication {
 }
 
 export interface APIApplicationInstallParams {
-	scopes: OAuth2Scopes[];
+	scopes: (
+		| OAuth2PublicUserScopes
+		| OAuth2GuildScopes
+		| OAuth2OtherScopes
+		| OAuth2RestrictedUserScopes
+		| OAuth2PrivateUserScopes
+	)[];
 	permissions: Permissions;
 }
 

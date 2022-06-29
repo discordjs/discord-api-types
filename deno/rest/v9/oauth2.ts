@@ -1,5 +1,15 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
-import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from '../../payloads/v9/mod.ts';
+import type {
+	APIApplication,
+	APIGuild,
+	APIUser,
+	APIWebhook,
+	OAuth2PublicUserScopes,
+	OAuth2GuildScopes,
+	OAuth2OtherScopes,
+	OAuth2RestrictedUserScopes,
+	OAuth2PrivateUserScopes,
+} from '../../payloads/v10/mod.ts';
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-bot-application-information
@@ -17,7 +27,13 @@ export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 	/**
 	 * the scopes the user has authorized the application for
 	 */
-	scopes: OAuth2Scopes[];
+	scopes: (
+		| OAuth2PublicUserScopes
+		| OAuth2GuildScopes
+		| OAuth2OtherScopes
+		| OAuth2RestrictedUserScopes
+		| OAuth2PrivateUserScopes
+	)[];
 	/**
 	 * when the access token expires
 	 */
@@ -121,10 +137,10 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 * Needs to include bot for the bot flow
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| OAuth2GuildScopes.Bot
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}`
+		| `${OAuth2GuildScopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The permissions you're requesting
 	 *
@@ -150,10 +166,10 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	 * This assumes you include the `bot` scope alongside others (like `identify` for example)
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| OAuth2GuildScopes.Bot
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}`
+		| `${OAuth2GuildScopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The required permissions bitfield, stringified
 	 */
