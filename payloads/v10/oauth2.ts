@@ -83,7 +83,7 @@ export enum OAuth2PublicUserScopes {
 }
 
 /**
- * Applications can be added to a guild with these scopes by members with the `Manage Server` permission
+ * Applications can be added to a guild with these scopes by members with the `Manage Server` permission, creating an [integration](https://discord.com/developers/docs/resources/guild#integration-object)
  *
  * See https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes-guild-scopes
  */
@@ -98,11 +98,13 @@ export enum OAuth2GuildScopes {
 	 * For oauth2 bots, this puts the bot in the user's selected guild by default
 	 */
 	Bot = 'bot',
+	/**
+	 * This generates a webhook that is returned in the oauth token response for authorization code grants
+	 */
+	WebhookIncoming = 'webhook.incoming',
 }
 
 /**
- * These scopes can be used to do other actions with Discord's OAuth2 system
- *
  * See https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes-other-scopes
  */
 export enum OAuth2OtherScopes {
@@ -112,10 +114,6 @@ export enum OAuth2OtherScopes {
 	 * See https://discord.com/developers/docs/interactions/application-commands
 	 */
 	ApplicationsCommandsUpdate = 'applications.commands.update',
-	/**
-	 * This generates a webhook that is returned in the oauth token response for authorization code grants
-	 */
-	WebhookIncoming = 'webhook.incoming',
 }
 
 /**
