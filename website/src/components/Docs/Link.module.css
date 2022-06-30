@@ -1,0 +1,18 @@
+.linkIcon {
+	height: 15px;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+.linkIconNoMarginRight {
+	margin-right: unset;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+}
+
+.block {
+	display: block;
+}

@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnp/
+
+# Yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml
+
+# Production
+build/
+
+# Generated Files
+.docusaurus/
+.cache-loader/
+docs/Documentation/
+tsconfig.tsbuildinfo
+
+# misc
+.DS_Store
+Thumbs.db
+
+# Local env vars
+.env
+
+# IDE Settings
+.idea/
+.vs/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log

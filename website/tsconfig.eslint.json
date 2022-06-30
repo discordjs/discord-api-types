@@ -1,0 +1,4 @@
+{
+	"extends": "./tsconfig.json",
+	"include": ["./babel.config.js", "docs", "./docusaurus.config.js", "projects", "scripts", "./sidebars.js", "src/**/*.tsx", "static"]
+}

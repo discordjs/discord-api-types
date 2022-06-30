@@ -1,3 +1,94 @@
+# [0.35.0](https://github.com/discordjs/discord-api-types/compare/0.34.0...0.35.0) (2022-06-23)
+
+### Code Refactoring
+
+- **GatewayIdentifyProperties:** remove `$` prefix from keys ([#493](https://github.com/discordjs/discord-api-types/issues/493)) ([3b10c60](https://github.com/discordjs/discord-api-types/commit/3b10c60faa5943501ab1f7cfa0d5f3c5317cdbbd))
+
+### Features
+
+- **APIEmbedVideo:** add missing `proxy_url` property ([#496](https://github.com/discordjs/discord-api-types/issues/496)) ([56d491f](https://github.com/discordjs/discord-api-types/commit/56d491fa6808d9a8762bff606ca8feb5e11f13a4))
+- **REST:** add `CDNRoutes` ([#502](https://github.com/discordjs/discord-api-types/issues/502)) ([0609886](https://github.com/discordjs/discord-api-types/commit/06098869d552139fadcc204b5ce4e1a7e5352b68))
+- **UserFlags:** add `Quarantined` flag ([#495](https://github.com/discordjs/discord-api-types/issues/495)) ([fc3aa1c](https://github.com/discordjs/discord-api-types/commit/fc3aa1c9110e4730c6b8ba3e36815ecd2da66c68))
+
+### BREAKING CHANGES
+
+- **GatewayIdentifyProperties:** The fields for identify no longer use the `$` prefix for the values.
+
+# [0.34.0](https://github.com/discordjs/discord-api-types/compare/0.33.5...0.34.0) (2022-06-13)
+
+### Code Refactoring
+
+- separate `MESSAGE_CREATE` fields from `APIMessage` object ([#434](https://github.com/discordjs/discord-api-types/issues/434)) ([0bb2204](https://github.com/discordjs/discord-api-types/commit/0bb2204b5ddd32b791641a33d52669bc739bc208))
+
+### Features
+
+- add guild mfa endpoint and error `50017` ([#476](https://github.com/discordjs/discord-api-types/issues/476)) ([292c6b5](https://github.com/discordjs/discord-api-types/commit/292c6b58ee9384db2ce06addb80d2ea2bcd32de2))
+- **RESTJSONErrorCodes:** add 220003 error ([#466](https://github.com/discordjs/discord-api-types/issues/466)) ([20653b3](https://github.com/discordjs/discord-api-types/commit/20653b34819f6adf8116bef2a1e5edc3233c4117))
+
+### BREAKING CHANGES
+
+- Certain fields that come only through the gateway are now correctly typed as such
+
+## [0.33.5](https://github.com/discordjs/discord-api-types/compare/0.33.4...0.33.5) (2022-06-07)
+
+### Bug Fixes
+
+- **GatewayGuildCreateDispatch:** add missing `GatewayGuildCreateDispatch` ([#477](https://github.com/discordjs/discord-api-types/issues/477)) ([d268e0b](https://github.com/discordjs/discord-api-types/commit/d268e0bff7429e1cde43174fdf6d2342569860d5))
+- **RESTPostAPIWebhookWithTokenJSONBody:** `thread_name` should be optional ([#479](https://github.com/discordjs/discord-api-types/issues/479)) ([eff8892](https://github.com/discordjs/discord-api-types/commit/eff8892b03656cfc2b709c6c30edb98e38bf2a1e))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `30052` ([#469](https://github.com/discordjs/discord-api-types/issues/469)) ([d854317](https://github.com/discordjs/discord-api-types/commit/d8543177cd978a19daa32fbb183892b6f8c24772))
+
+## [0.33.4](https://github.com/discordjs/discord-api-types/compare/0.33.3...0.33.4) (2022-06-06)
+
+### Features
+
+- **RESTPostAPIWebhookWithTokenJSONBody:** add `thread_name` ([#463](https://github.com/discordjs/discord-api-types/issues/463)) ([8e5f07e](https://github.com/discordjs/discord-api-types/commit/8e5f07e2eebc14e5777dbfb932ef54f252165524))
+
+## [0.33.3](https://github.com/discordjs/discord-api-types/compare/0.33.2...0.33.3) (2022-06-04)
+
+### Bug Fixes
+
+- **AddUndefinedToPossiblyUndefinedProperties:** recurse down objects ([#471](https://github.com/discordjs/discord-api-types/issues/471)) ([43c372d](https://github.com/discordjs/discord-api-types/commit/43c372d81722e48b105d5121a2cfdf614f1e7704))
+
+## [0.33.2](https://github.com/discordjs/discord-api-types/compare/0.33.1...0.33.2) (2022-06-01)
+
+### Bug Fixes
+
+- **docs-site:** website link colors ([#457](https://github.com/discordjs/discord-api-types/issues/457)) ([51e664d](https://github.com/discordjs/discord-api-types/commit/51e664d8e826e7f0aa467c000f3a1707fc283a36))
+- **GatewayGuildCreateDispatch:** add extra fields that were missing ([#458](https://github.com/discordjs/discord-api-types/issues/458)) ([15fcd1b](https://github.com/discordjs/discord-api-types/commit/15fcd1b2a85e8d1e136416a66326a4aadcc301fb))
+- **RestPostAPIBaseApplicationJSONBody:** make `default_member_permissions` optional ([#460](https://github.com/discordjs/discord-api-types/issues/460)) ([6a813be](https://github.com/discordjs/discord-api-types/commit/6a813be83382e1606f1921cf00179fe1ce75c04f))
+
+## [0.33.1](https://github.com/discordjs/discord-api-types/compare/0.33.0...0.33.1) (2022-05-26)
+
+### Bug Fixes
+
+- **RESTPostAPIApplicationGuildCommands:** correct types due to unions ([#447](https://github.com/discordjs/discord-api-types/issues/447)) ([6d85ad6](https://github.com/discordjs/discord-api-types/commit/6d85ad6b1d707b980f9897ea68dd4b7573b3a770))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50600` ([#444](https://github.com/discordjs/discord-api-types/issues/444)) ([5ef49f4](https://github.com/discordjs/discord-api-types/commit/5ef49f41cecaa1d5937428a5c58f1d88bfc61266))
+- **RESTPostAPIGuildChannels:** update post body fields ([#419](https://github.com/discordjs/discord-api-types/issues/419)) ([748db34](https://github.com/discordjs/discord-api-types/commit/748db34e30338cf4a9fd8ce7b86d1d5c7dde63b1))
+
+# [0.33.0](https://github.com/discordjs/discord-api-types/compare/0.32.1...0.33.0) (2022-05-16)
+
+### Code Refactoring
+
+- **GuildFeature:** thread archive durations are no longer boost locked ([#412](https://github.com/discordjs/discord-api-types/issues/412)) ([1737ade](https://github.com/discordjs/discord-api-types/commit/1737adea1fc3d5050db30266e49c63277b7a77fc))
+- separate `GUILD_CREATE` fields from `APIGuild` object ([#423](https://github.com/discordjs/discord-api-types/issues/423)) ([17f5caa](https://github.com/discordjs/discord-api-types/commit/17f5caa671da50a79d61393f5a970ce59c5d875e))
+
+### Features
+
+- add support for application command permissions v2 ([#415](https://github.com/discordjs/discord-api-types/issues/415)) ([d3163ca](https://github.com/discordjs/discord-api-types/commit/d3163ca22e5b7d8292f9f6ccd444aa5c93771d92))
+- **OAuth2Scopes:** add new OAuth2 scopes ([#435](https://github.com/discordjs/discord-api-types/issues/435)) ([8f16f45](https://github.com/discordjs/discord-api-types/commit/8f16f452ac7dc8988617d1211fc6a9547d254795))
+- **rest:** add missing guild routes results ([#438](https://github.com/discordjs/discord-api-types/issues/438)) ([1afce87](https://github.com/discordjs/discord-api-types/commit/1afce87fbef8e43ee040010e36019a4ebc6fecfe))
+
+### BREAKING CHANGES
+
+- APIGuild now correctly shows just the properties that are obtainable through rest/GUILD_UPDATE, while the extra fields have been moved to GatewayGuildCreateDispatchData to correctly represent the data received
+- **GuildFeature:** `SevenDayThreadArchive` and `ThreeDayThreadArchive` have been removed as they are no longer valid
+
 ## [0.32.1](https://github.com/discordjs/discord-api-types/compare/0.32.0...0.32.1) (2022-05-05)
 
 ### Features

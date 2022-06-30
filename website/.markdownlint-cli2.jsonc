@@ -1,0 +1,14 @@
+{
+	"config": {
+		"default": false,
+		"MD001": true,
+		"MD003": true,
+		"MD009": true,
+		"MD011": true,
+		"MD012": true,
+		"MD013": {
+			"line_length": 120
+		}
+	},
+	"globs": ["docs/**/*.{md,mdx}"]
+}

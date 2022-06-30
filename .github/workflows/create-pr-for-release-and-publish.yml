@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
+      - name: Install website dependencies
+        run: pushd website && npm ci --ignore-scripts && popd
+
       - name: Set Git User and Email
         run: |
           git config user.name "github-actions[bot]"
@@ -44,13 +47,15 @@ jobs:
         run: |
           git checkout -b "chore/release/$(jq --raw-output '.version' package.json)"
 
-          # Run changelog generation and deno scripts
+          # Run changelog generation, deno script, website version bump
           npm run ci:pr
 
           # Add all changes, commit and push
           git add --all .
           git commit -m "chore(release): $(jq --raw-output '.version' package.json) 🎉" -m "Build ran for ${GITHUB_SHA}"
           git push -u origin "chore/release/$(jq --raw-output '.version' package.json)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
         run: node ./scripts/actions/create-pr.mjs

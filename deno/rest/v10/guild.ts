@@ -20,6 +20,7 @@ import type {
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildFeature,
+	GuildMFALevel,
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
@@ -49,6 +50,8 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		| 'rate_limit_per_user'
 		| 'default_auto_archive_duration'
 		| 'position'
+		| 'rtc_region'
+		| 'video_quality_mode'
 		| 'flags'
 	>
 > &
@@ -155,6 +158,23 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
  * https://discord.com/developers/docs/resources/guild#create-guild
  */
 export type RESTPostAPIGuildsResult = APIGuild;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
+ */
+export interface RESTPostAPIGuildsMFAJSONBody {
+	/**
+	 * MFA level
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
+	 */
+	level: GuildMFALevel;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
+ */
+export type RESTPostAPIGuildsMFAResult = RESTPostAPIGuildsMFAJSONBody;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild
@@ -828,6 +848,9 @@ export type RESTPatchAPIGuildMemberVerificationJSONBody = AddUndefinedToPossibly
 
 export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
+ */
 export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The id of the channel the user is currently in
@@ -843,6 +866,14 @@ export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPos
 	request_to_speak_timestamp?: string | null;
 }>;
 
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
+ */
+export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = never;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
+ */
 export type RESTPatchAPIGuildVoiceStateUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * The id of the channel the user is currently in
@@ -869,3 +900,8 @@ export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIG
 		 */
 		enabled?: boolean | null;
 	}>;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
+ */
+export type RESTPatchAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;

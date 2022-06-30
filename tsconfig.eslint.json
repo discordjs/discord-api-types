@@ -17,6 +17,7 @@
 		"voice/**/*.ts",
 		"scripts",
 		"deno",
-		"tests/**/*.ts"
+		"tests/**/*.ts",
+		"website"
 	]
 }

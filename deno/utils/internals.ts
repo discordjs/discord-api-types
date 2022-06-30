@@ -7,7 +7,9 @@ export type Nullable<T> = {
  * (since JSON.stringify ignores undefined properties)
  */
 export type AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base> = {
-	[K in keyof Base]: Base[K] extends Exclude<Base[K], undefined> ? Base[K] : Base[K] | undefined;
+	[K in keyof Base]: Base[K] extends Exclude<Base[K], undefined>
+		? AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]>
+		: AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]> | undefined;
 };
 
 export type StrictPartial<Base> = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Partial<Base>>;

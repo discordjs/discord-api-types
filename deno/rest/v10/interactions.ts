@@ -37,7 +37,9 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 		| 'guild_id'
 		| 'name_localized'
 		| 'description_localized'
-	>
+		| 'default_member_permissions'
+	> &
+		Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>
 >;
 
 /**
@@ -101,7 +103,9 @@ export type RESTGetAPIApplicationGuildCommandResult = Omit<APIApplicationCommand
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command
  */
-export type RESTPostAPIApplicationGuildCommandsJSONBody = Omit<RESTPostAPIApplicationCommandsJSONBody, 'dm_permission'>;
+export type RESTPostAPIApplicationGuildCommandsJSONBody =
+	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
+	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command
@@ -112,26 +116,27 @@ export type RESTPostAPIApplicationGuildCommandsResult = Omit<APIApplicationComma
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
 export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<
-	Omit<RESTPostAPIApplicationCommandsJSONBody, 'dm_permission'>
+	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
+	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>
 >;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
-export type RESTPatchAPIApplicationGuildCommandResult = APIApplicationCommand;
+export type RESTPatchAPIApplicationGuildCommandResult = Omit<APIApplicationCommand, 'dm_permission'>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands
  */
-export type RESTPutAPIApplicationGuildCommandsJSONBody = Omit<
-	RESTPostAPIApplicationCommandsJSONBody,
-	'dm_permission'
->[];
+export type RESTPutAPIApplicationGuildCommandsJSONBody = (
+	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
+	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>
+)[];
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands
  */
-export type RESTPutAPIApplicationGuildCommandsResult = APIApplicationCommand[];
+export type RESTPutAPIApplicationGuildCommandsResult = Omit<APIApplicationCommand, 'dm_permission'>[];
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response

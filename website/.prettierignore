@@ -1,0 +1,10 @@
+# Node modules
+node_modules/
+
+# Generated data
+.docusaurus/
+
+# Versioned json
+versioned_sidebars/
+versioned_docs/
+versions.json

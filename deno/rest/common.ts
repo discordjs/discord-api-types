@@ -70,6 +70,8 @@ export enum RESTJSONErrorCodes {
 
 	AnnouncementEditLimitExceeded = 20022,
 
+	UnderMinimumAge = 20024,
+
 	ChannelSendRateLimit = 20028,
 	ServerSendRateLimit,
 
@@ -116,6 +118,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfPinnedThreadsInForumHasBeenReached,
 	MaximumNumberOfTagsInForumHasBeenReached,
 
+	BitrateIsTooHighForChannelOfThisType = 30052,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
@@ -148,6 +152,7 @@ export enum RESTJSONErrorCodes {
 	InvalidToken,
 	NoteWasTooLong,
 	ProvidedTooFewOrTooManyMessagesToDelete,
+	InvalidMFALevel,
 
 	MessageCanOnlyBePinnedInTheChannelItWasSentIn = 50019,
 	InviteCodeInvalidOrTaken,
@@ -195,6 +200,8 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50109,
 
+	YouDoNotHavePermissionToSendThisSticker = 50600,
+
 	TwoFactorAuthenticationIsRequired = 60003,
 
 	NoUsersWithDiscordTagExist = 80004,
@@ -223,6 +230,8 @@ export enum RESTJSONErrorCodes {
 	CannotUpdateAFinishedEvent = 180000,
 
 	FailedToCreateStageNeededForStageEvent = 180002,
+
+	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
 }
 
 /**

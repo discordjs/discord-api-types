@@ -282,6 +282,7 @@ export type GatewayDispatchPayload =
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
 	| GatewayGuildBanModifyDispatch
+	| GatewayGuildCreateDispatch
 	| GatewayGuildDeleteDispatch
 	| GatewayGuildEmojisUpdateDispatch
 	| GatewayGuildIntegrationsUpdateDispatch
@@ -624,13 +625,9 @@ export interface GatewayChannelPinsUpdateDispatchData {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#guild-create
  * https://discord.com/developers/docs/topics/gateway#guild-update
  */
-export type GatewayGuildModifyDispatch = DataPayload<
-	GatewayDispatchEvents.GuildCreate | GatewayDispatchEvents.GuildUpdate,
-	GatewayGuildModifyDispatchData
->;
+export type GatewayGuildModifyDispatch = DataPayload<GatewayDispatchEvents.GuildUpdate, GatewayGuildModifyDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-update
@@ -640,13 +637,13 @@ export type GatewayGuildModifyDispatchData = APIGuild;
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
  */
-export type GatewayGuildCreateDispatch = GatewayGuildModifyDispatch;
+export type GatewayGuildCreateDispatch = DataPayload<GatewayDispatchEvents.GuildCreate, GatewayGuildCreateDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-create
  * https://discord.com/developers/docs/topics/gateway#guild-create-guild-create-extra-fields
  */
-export type GatewayGuildCreateDispatchData = APIGuild & {
+export interface GatewayGuildCreateDispatchData extends APIGuild {
 	/**
 	 * When this guild was joined at
 	 *
@@ -721,7 +718,7 @@ export type GatewayGuildCreateDispatchData = APIGuild & {
 	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
-};
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#guild-update
@@ -1251,7 +1248,7 @@ export type GatewayMessageCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#message-create
  */
-export type GatewayMessageCreateDispatchData = APIMessage;
+export type GatewayMessageCreateDispatchData = Omit<APIMessage, 'mentions'> & GatewayMessageEventExtraFields;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-update
@@ -1264,10 +1261,43 @@ export type GatewayMessageUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway#message-update
  */
-export type GatewayMessageUpdateDispatchData = {
-	id: Snowflake;
-	channel_id: Snowflake;
-} & Partial<APIMessage>;
+export type GatewayMessageUpdateDispatchData = Omit<Partial<APIMessage>, 'mentions'> &
+	GatewayMessageEventExtraFields & {
+		/**
+		 * ID of the message
+		 */
+		id: Snowflake;
+		/**
+		 * ID of the channel the message was sent in
+		 */
+		channel_id: Snowflake;
+	};
+
+export interface GatewayMessageEventExtraFields {
+	/**
+	 * ID of the guild the message was sent in
+	 */
+	guild_id?: Snowflake;
+	/**
+	 * Member properties for this message's author
+	 *
+	 * The member object exists in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 */
+	member?: APIGuildMember;
+	/**
+	 * Users specifically mentioned in the message
+	 *
+	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 */
+	mentions: (APIUser & { member?: Omit<APIGuildMember, 'user'> })[];
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#message-delete
@@ -1695,15 +1725,15 @@ export interface GatewayIdentifyProperties {
 	/**
 	 * Your operating system
 	 */
-	$os: string;
+	os: string;
 	/**
 	 * Your library name
 	 */
-	$browser: string;
+	browser: string;
 	/**
 	 * Your library name
 	 */
-	$device: string;
+	device: string;
 }
 
 /**
