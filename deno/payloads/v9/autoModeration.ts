@@ -83,9 +83,8 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	/**
 	 * Substrings which will be searched for in content
 	 *
-	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each keyword will be matched
-	 *
-	 * See https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies
+	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched.
+	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
 	 */
@@ -96,6 +95,15 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
 	 */
 	presets?: AutoModerationRuleKeywordPresetType[];
+	/**
+	 * Substrings which will be exempt from triggering the preset trigger type
+	 *
+	 * A allowed-word can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched.
+	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
+	 */
+	allow_list: string[];
 }
 
 /**
