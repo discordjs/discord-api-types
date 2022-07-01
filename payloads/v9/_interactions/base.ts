@@ -31,7 +31,7 @@ export interface APIMessageInteraction {
 	 */
 	type: InteractionType;
 	/**
-	 * The name of the ApplicationCommand
+	 * The name of the application command, including subcommands and subcommand groups
 	 */
 	name: string;
 	/**
