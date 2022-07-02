@@ -8,7 +8,7 @@ import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } 
 interface APIApplicationCommandStringOptionBase
 	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.String> {
 	/**
-	 * For option type `STRING`, the minimum allowed length (minimum of 1).
+	 * For option type `STRING`, the minimum allowed length (minimum of 0).
 	 */
 	min_length?: number;
 	/**
