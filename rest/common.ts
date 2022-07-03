@@ -204,6 +204,8 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50109,
 
+	FailedToResizeAssetBelowTheMinimumSize = 50138,
+
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
 	TwoFactorAuthenticationIsRequired = 60003,
