@@ -1,3 +1,9 @@
+## [0.36.1](https://github.com/discordjs/discord-api-types/compare/0.36.0...0.36.1) (2022-07-04)
+
+### Features
+
+- **APIApplicationCommandStringOption:** add `min_length` and `max_length` ([#513](https://github.com/discordjs/discord-api-types/issues/513)) ([2cade98](https://github.com/discordjs/discord-api-types/commit/2cade98ed0a0a074254fbc1580fc56d0e0b3dc9c))
+
 # [0.36.0](https://github.com/discordjs/discord-api-types/compare/0.35.0...0.36.0) (2022-06-30)
 
 ### Features
