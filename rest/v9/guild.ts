@@ -480,7 +480,7 @@ export type RESTPatchAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPro
 	/**
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
-	communication_disabled_until?: string | null;
+	communication_disabled_until?: string;
 }>;
 
 /**
