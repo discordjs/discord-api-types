@@ -136,6 +136,8 @@ export enum RESTJSONErrorCodes {
 
 	ApplicationCommandWithThatNameAlreadyExists = 40041,
 
+	ApplicationInteractionFailedToSend = 40043,
+
 	InteractionHasAlreadyBeenAcknowledged = 40060,
 	TagNamesMustBeUnique,
 
