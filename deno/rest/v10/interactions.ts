@@ -131,6 +131,7 @@ export type RESTPatchAPIApplicationGuildCommandResult = Omit<APIApplicationComma
 export type RESTPutAPIApplicationGuildCommandsJSONBody = (
 	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
 	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>
+	| Pick<Partial<APIApplicationCommand>, 'id'>
 )[];
 
 /**
