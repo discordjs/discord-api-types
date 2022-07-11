@@ -390,10 +390,6 @@ export enum GuildFeature {
 	 */
 	Banner = 'BANNER',
 	/**
-	 * Guild has access to use commerce features (i.e. create store channels)
-	 */
-	Commerce = 'COMMERCE',
-	/**
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	Community = 'COMMUNITY',
