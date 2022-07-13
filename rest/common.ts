@@ -101,8 +101,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfServerCategoriesReached = 30030,
 
 	GuildAlreadyHasTemplate = 30031,
-
-	MaximumThreadParticipants = 30033,
+	MaximumNumberOfApplicationCommandsReached,
+	MaximumThreadParticipants,
 
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
 
