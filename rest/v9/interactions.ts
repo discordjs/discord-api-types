@@ -129,8 +129,10 @@ export type RESTPatchAPIApplicationGuildCommandResult = Omit<APIApplicationComma
  * https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands
  */
 export type RESTPutAPIApplicationGuildCommandsJSONBody = (
-	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
-	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>
+	| (Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'> &
+			Pick<Partial<APIApplicationCommand>, 'id'>)
+	| (Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'> &
+			Pick<Partial<APIApplicationCommand>, 'id'>)
 )[];
 
 /**
