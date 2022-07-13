@@ -46,6 +46,12 @@ export const FormattingPatterns = {
 	 */
 	Role: /<@&(?<id>\d{17,20})>/,
 	/**
+	 * Regular expression for matching a application command mention
+	 *
+	 * The `name` and `id` group properties is present on the `exec` result of this expression
+	 */
+	ApplicationCommand: /<\/(?<name>\w{2,32}):(?<id>\d{17,20})>/,
+	/**
 	 * Regular expression for matching a custom emoji, either static or animated
 	 *
 	 * The `animated`, `name` and `id` group properties are present on the `exec` result of this expression
