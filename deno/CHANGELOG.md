@@ -1,3 +1,10 @@
+## [0.36.2](https://github.com/discordjs/discord-api-types/compare/0.36.1...0.36.2) (2022-07-14)
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `30032` ([#521](https://github.com/discordjs/discord-api-types/issues/521)) ([f2c3451](https://github.com/discordjs/discord-api-types/commit/f2c3451c2a8bc91bcca65372d2944a07a3c34a9a))
+- **RESTPutAPIApplicationGuildCommandsJSONBody:** add missing `id` ([#522](https://github.com/discordjs/discord-api-types/issues/522)) ([4af2ea9](https://github.com/discordjs/discord-api-types/commit/4af2ea91415a5662171d342379c4bd33bfa5a6d5))
+
 ## [0.36.1](https://github.com/discordjs/discord-api-types/compare/0.36.0...0.36.1) (2022-07-04)
 
 ### Features
