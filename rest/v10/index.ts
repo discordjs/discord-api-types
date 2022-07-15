@@ -1,18 +1,20 @@
 import type { Snowflake } from '../../globals';
 
 export * from '../common';
+export * from './achievement';
 export * from './auditLog';
 export * from './channel';
 export * from './emoji';
-export * from './gamesdk';
 export * from './gateway';
 export * from './guild';
 export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
+export * from './lobby';
 export * from './oauth2';
 export * from './stageInstance';
 export * from './sticker';
+export * from './store';
 export * from './template';
 export * from './user';
 export * from './voice';
