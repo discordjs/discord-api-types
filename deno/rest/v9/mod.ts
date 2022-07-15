@@ -1,18 +1,20 @@
 import type { Snowflake } from '../../globals.ts';
 
 export * from '../common.ts';
+export * from './achievement.ts';
 export * from './auditLog.ts';
 export * from './channel.ts';
 export * from './emoji.ts';
-export * from './gamesdk.ts';
 export * from './gateway.ts';
 export * from './guild.ts';
 export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
+export * from './lobby.ts';
 export * from './oauth2.ts';
 export * from './stageInstance.ts';
 export * from './sticker.ts';
+export * from './store.ts';
 export * from './template.ts';
 export * from './user.ts';
 export * from './voice.ts';
