@@ -3,6 +3,7 @@ export * from './application';
 export * from './auditLog';
 export * from './channel';
 export * from './emoji';
+export * from './gamesdk';
 export * from './gateway';
 export * from './guild';
 export * from './guildScheduledEvent';
