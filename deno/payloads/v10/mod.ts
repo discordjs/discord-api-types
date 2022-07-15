@@ -3,6 +3,7 @@ export * from './application.ts';
 export * from './auditLog.ts';
 export * from './channel.ts';
 export * from './emoji.ts';
+export * from './gamesdk.ts';
 export * from './gateway.ts';
 export * from './guild.ts';
 export * from './guildScheduledEvent.ts';
