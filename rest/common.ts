@@ -210,6 +210,8 @@ export enum RESTJSONErrorCodes {
 
 	ReactionWasBlocked = 90001,
 
+	ApplicationNotYetAvailable = 110001,
+
 	APIResourceOverloaded = 130000,
 
 	TheStageIsAlreadyOpen = 150006,
