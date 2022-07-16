@@ -59,7 +59,6 @@ export enum RESTJSONErrorCodes {
 
 	BotsCannotUseThisEndpoint = 20001,
 	OnlyBotsCanUseThisEndpoint,
-	RpcProxyDisallowed,
 
 	ExplicitContentCannotBeSentToTheDesiredRecipient = 20009,
 
@@ -163,8 +162,7 @@ export enum RESTJSONErrorCodes {
 	InviteCodeInvalidOrTaken,
 	CannotExecuteActionOnSystemMessage,
 
-	InvalidClientId = 50023,
-	CannotExecuteActionOnThisChannelType,
+	CannotExecuteActionOnThisChannelType = 50024,
 	InvalidOAuth2AccessToken,
 	MissingRequiredOAuth2Scope,
 
@@ -240,8 +238,7 @@ export enum RESTJSONErrorCodes {
 	FailedToCreateStageNeededForStageEvent = 180002,
 
 	MessageWasBlockedByAutomaticModeration = 200000,
-
-	TitleWasBlockedByAutomaticModeration = 220001,
+	TitleWasBlockedByAutomaticModeration,
 
 	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
 }
