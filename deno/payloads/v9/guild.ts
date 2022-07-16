@@ -386,10 +386,6 @@ export enum GuildFeature {
 	 */
 	Banner = 'BANNER',
 	/**
-	 * Guild has access to use commerce features (i.e. create store channels)
-	 */
-	Commerce = 'COMMERCE',
-	/**
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	Community = 'COMMUNITY',
@@ -409,6 +405,8 @@ export enum GuildFeature {
 	 * Guild is a Student Hub
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 *
+	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
 	Hub = 'HUB',
 	/**
@@ -419,6 +417,8 @@ export enum GuildFeature {
 	 * Guild is in a Student Hub
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 *
+	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
 	LinkedToHub = 'LINKED_TO_HUB',
 	/**
