@@ -200,6 +200,8 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50109,
 
+	OwnershipCannotBeMovedToABotUser = 50132,
+
 	UploadedFileNotFound = 50146,
 
 	YouDoNotHavePermissionToSendThisSticker = 50600,
