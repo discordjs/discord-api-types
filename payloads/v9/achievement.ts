@@ -3,7 +3,6 @@
  */
 
 import type { Snowflake } from '../../globals';
-import type { LocalizationMap } from '../common';
 
 export interface APIAchievement {
 	/**
@@ -15,17 +14,9 @@ export interface APIAchievement {
 	 */
 	name: string;
 	/**
-	 * Localization dictionary for the `name` field
-	 */
-	name_localizations: LocalizationMap | null;
-	/**
 	 * The description of this achievement
 	 */
 	description: string;
-	/**
-	 * Localization dictionary for the `description` field
-	 */
-	description_localizations: LocalizationMap | null;
 	/**
 	 * Whether this achievement is secret
 	 */

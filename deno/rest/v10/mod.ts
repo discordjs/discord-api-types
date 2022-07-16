@@ -845,9 +845,7 @@ export const Routes = {
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
-};
 
-export const GameSDKRoutes = {
 	/**
 	 * Route for:
 	 * - GET `/applications/{application.id}/achievements`
