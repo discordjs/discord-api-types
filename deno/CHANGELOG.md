@@ -1,3 +1,34 @@
+## [0.36.2](https://github.com/discordjs/discord-api-types/compare/0.36.1...0.36.2) (2022-07-14)
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `30032` ([#521](https://github.com/discordjs/discord-api-types/issues/521)) ([f2c3451](https://github.com/discordjs/discord-api-types/commit/f2c3451c2a8bc91bcca65372d2944a07a3c34a9a))
+- **RESTPutAPIApplicationGuildCommandsJSONBody:** add missing `id` ([#522](https://github.com/discordjs/discord-api-types/issues/522)) ([4af2ea9](https://github.com/discordjs/discord-api-types/commit/4af2ea91415a5662171d342379c4bd33bfa5a6d5))
+
+## [0.36.1](https://github.com/discordjs/discord-api-types/compare/0.36.0...0.36.1) (2022-07-04)
+
+### Features
+
+- **APIApplicationCommandStringOption:** add `min_length` and `max_length` ([#513](https://github.com/discordjs/discord-api-types/issues/513)) ([2cade98](https://github.com/discordjs/discord-api-types/commit/2cade98ed0a0a074254fbc1580fc56d0e0b3dc9c))
+
+# [0.36.0](https://github.com/discordjs/discord-api-types/compare/0.35.0...0.36.0) (2022-06-30)
+
+### Features
+
+- **APIBaseInteraction:** add `app_permissions` ([#509](https://github.com/discordjs/discord-api-types/issues/509)) ([0c65d40](https://github.com/discordjs/discord-api-types/commit/0c65d40af00499233830ce272a2a274bcd5b9e8c))
+- **MessageType:** update names ([#498](https://github.com/discordjs/discord-api-types/issues/498)) ([12072b7](https://github.com/discordjs/discord-api-types/commit/12072b70a0c70e1e1f9de920789e26829268de12))
+- **RESTJSONErrorCodes:** add error 20024 ([#480](https://github.com/discordjs/discord-api-types/issues/480)) ([34908aa](https://github.com/discordjs/discord-api-types/commit/34908aa4ceeca4b58276cc207f5bdb77cef04296))
+
+### BREAKING CHANGES
+
+- **MessageType:** The following message types have been renamed:
+
+* `GuildMemberJoin` -> `UserJoin`
+* `UserPremiumGuildSubscription` -> `GuildBoost`
+* `UserPremiumGuildSubscriptionTier1` -> `GuildBoostTier1`
+* `UserPremiumGuildSubscriptionTier2` -> `GuildBoostTier2`
+* `UserPremiumGuildSubscriptionTier3` -> `GuildBoostTier3`
+
 # [0.35.0](https://github.com/discordjs/discord-api-types/compare/0.34.0...0.35.0) (2022-06-23)
 
 ### Code Refactoring

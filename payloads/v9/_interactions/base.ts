@@ -31,7 +31,7 @@ export interface APIMessageInteraction {
 	 */
 	type: InteractionType;
 	/**
-	 * The name of the ApplicationCommand
+	 * The name of the application command, including subcommands and subcommand groups
 	 */
 	name: string;
 	/**
@@ -104,6 +104,10 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * For components, the message they were attached to
 	 */
 	message?: APIMessage;
+	/**
+	 * Bitwise set of permissions the app or bot has within the channel the interaction was sent from
+	 */
+	app_permissions?: Permissions;
 	/**
 	 * The selected language of the invoking user
 	 */
