@@ -101,8 +101,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfServerCategoriesReached = 30030,
 
 	GuildAlreadyHasTemplate = 30031,
-
-	MaximumThreadParticipants = 30033,
+	MaximumNumberOfApplicationCommandsReached,
+	MaximumThreadParticipants,
 
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
 
@@ -206,6 +206,8 @@ export enum RESTJSONErrorCodes {
 
 	FailedToResizeAssetBelowTheMinimumSize = 50138,
 
+	UploadedFileNotFound = 50146,
+
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
 	TwoFactorAuthenticationIsRequired = 60003,
@@ -213,6 +215,8 @@ export enum RESTJSONErrorCodes {
 	NoUsersWithDiscordTagExist = 80004,
 
 	ReactionWasBlocked = 90001,
+
+	ApplicationNotYetAvailable = 110001,
 
 	APIResourceOverloaded = 130000,
 

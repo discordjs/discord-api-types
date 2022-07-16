@@ -533,6 +533,10 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 */
 	large: boolean;
 	/**
+	 * `true` if this guild is unavailable due to an outage
+	 */
+	unavailable?: boolean;
+	/**
 	 * Total number of members in this guild
 	 *
 	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
