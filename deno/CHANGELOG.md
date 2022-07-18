@@ -1,3 +1,13 @@
+## [0.36.3](https://github.com/discordjs/discord-api-types/compare/0.36.2...0.36.3) (2022-07-18)
+
+### Features
+
+- **APIConnection:** add `ConnectionService` to `type` ([#491](https://github.com/discordjs/discord-api-types/issues/491)) ([4577ac2](https://github.com/discordjs/discord-api-types/commit/4577ac2609f4a861505bc41f4293f482db251cdc))
+- **GatewayGuildCreateDispatchData:** add missing `unavailable` ([#504](https://github.com/discordjs/discord-api-types/issues/504)) ([59e2477](https://github.com/discordjs/discord-api-types/commit/59e247729fcd27be839c88516939ec22843781ce))
+- **RESTJSONErrorCodes:** add `ApplicationNotYetAvailable` ([#507](https://github.com/discordjs/discord-api-types/issues/507)) ([09a1141](https://github.com/discordjs/discord-api-types/commit/09a114133c7599cc14d4a0eb61425162091c45ee))
+- **RESTJSONErrorCodes:** add error `50132` ([#505](https://github.com/discordjs/discord-api-types/issues/505)) ([907d88a](https://github.com/discordjs/discord-api-types/commit/907d88ada93221802a4aefe7dc0ca3b2b73f94f0))
+- **RESTJSONErrorCodes:** add error `50146` ([#527](https://github.com/discordjs/discord-api-types/issues/527)) ([e78de0c](https://github.com/discordjs/discord-api-types/commit/e78de0c83ba93145a2302ddea2e55b5050291c52))
+
 ## [0.36.2](https://github.com/discordjs/discord-api-types/compare/0.36.1...0.36.2) (2022-07-14)
 
 ### Features
