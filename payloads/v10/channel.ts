@@ -197,7 +197,7 @@ export interface APIThreadChannel
 	 */
 	thread_metadata?: APIThreadMetadata;
 	/**
-	 * The approximate message count of the thread, does not count above 50 even if there are more messages
+	 * Count of messages (not including starter message and deleted messages) in a thread, stops counting at 100000 (if the thread is created before July 1, 2022, it stops at 50)
 	 */
 	message_count?: number;
 	/**
@@ -222,6 +222,10 @@ export interface APIThreadChannel
 	 * The id of the last message sent in this thread (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * Count of total messages ever sent in a thread. Similar to `message_count` on message creation, but decrement on message deletion
+	 */
+	total_message_sent?: number;
 }
 
 export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
@@ -490,6 +494,10 @@ export interface APIMessage {
 	 * @deprecated Use `sticker_items` instead
 	 */
 	stickers?: APISticker[];
+	/**
+	 * Position of the message in a forum post when it was sent, it will not change upon any message deletion in the parent post
+	 */
+	position?: number;
 }
 
 /**
