@@ -197,7 +197,9 @@ export interface APIThreadChannel
 	 */
 	thread_metadata?: APIThreadMetadata;
 	/**
-	 * Count of messages (not including starter message and deleted messages) in a thread, stops counting at 100000 (if the thread is created before July 1, 2022, it stops at 50)
+	 * Number of messages (not including the initial message or deleted messages) in a thread
+	 *
+	 * If the thread was created before July 1, 2022, it stops counting at 50 messages
 	 */
 	message_count?: number;
 	/**
@@ -223,7 +225,9 @@ export interface APIThreadChannel
 	 */
 	last_message_id?: Snowflake | null;
 	/**
-	 * Count of total messages ever sent in a thread. Similar to `message_count` on message creation, but decrement on message deletion
+	 * Number of messages ever sent in a thread
+	 *
+	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
 	 */
 	total_message_sent?: number;
 }
@@ -495,7 +499,9 @@ export interface APIMessage {
 	 */
 	stickers?: APISticker[];
 	/**
-	 * Position of the message in a forum post when it was sent, it will not change upon any message deletion in the parent post
+	 * A generally increasing integer (there may be gaps or duplicates) that represents the approximate position of the message in a thread
+	 *
+	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
 }
