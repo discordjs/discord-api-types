@@ -128,10 +128,14 @@ export enum RESTJSONErrorCodes {
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
+	ConnectionHasBeenRevoked = 40012,
+
 	TargetUserIsNotConnectedToVoice = 40032,
 	ThisMessageWasAlreadyCrossposted,
 
 	ApplicationCommandWithThatNameAlreadyExists = 40041,
+
+	ApplicationInteractionFailedToSend = 40043,
 
 	InteractionHasAlreadyBeenAcknowledged = 40060,
 	TagNamesMustBeUnique,
@@ -202,6 +206,8 @@ export enum RESTJSONErrorCodes {
 
 	OwnershipCannotBeMovedToABotUser = 50132,
 
+	FailedToResizeAssetBelowTheMinimumSize = 50138,
+
 	UploadedFileNotFound = 50146,
 
 	YouDoNotHavePermissionToSendThisSticker = 50600,
@@ -236,6 +242,9 @@ export enum RESTJSONErrorCodes {
 	CannotUpdateAFinishedEvent = 180000,
 
 	FailedToCreateStageNeededForStageEvent = 180002,
+
+	MessageWasBlockedByAutomaticModeration = 200000,
+	TitleWasBlockedByAutomaticModeration,
 
 	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
 }
