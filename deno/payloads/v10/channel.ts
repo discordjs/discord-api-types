@@ -197,7 +197,9 @@ export interface APIThreadChannel
 	 */
 	thread_metadata?: APIThreadMetadata;
 	/**
-	 * The approximate message count of the thread, does not count above 50 even if there are more messages
+	 * Number of messages (not including the initial message or deleted messages) in a thread
+	 *
+	 * If the thread was created before July 1, 2022, it stops counting at 50 messages
 	 */
 	message_count?: number;
 	/**
@@ -222,6 +224,12 @@ export interface APIThreadChannel
 	 * The id of the last message sent in this thread (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * Number of messages ever sent in a thread
+	 *
+	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
+	 */
+	total_message_sent?: number;
 }
 
 export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
@@ -490,6 +498,12 @@ export interface APIMessage {
 	 * @deprecated Use `sticker_items` instead
 	 */
 	stickers?: APISticker[];
+	/**
+	 * A generally increasing integer (there may be gaps or duplicates) that represents the approximate position of the message in a thread
+	 *
+	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
+	 */
+	position?: number;
 }
 
 /**
