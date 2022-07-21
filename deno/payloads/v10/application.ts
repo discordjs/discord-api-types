@@ -129,4 +129,5 @@ export enum ApplicationFlags {
 	GatewayMessageContent = 1 << 18,
 	GatewayMessageContentLimited = 1 << 19,
 	EmbeddedFirstParty = 1 << 20,
+	ApplicationCommandBadge = 1 << 23,
 }
