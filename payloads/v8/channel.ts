@@ -659,8 +659,8 @@ export interface APIOverwrite {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum OverwriteType {
-	Role,
-	Member,
+	Role = '0',
+	Member = '1',
 }
 
 /**

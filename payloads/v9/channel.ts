@@ -690,8 +690,8 @@ export interface APIOverwrite {
 }
 
 export enum OverwriteType {
-	Role,
-	Member,
+	Role = '0',
+	Member = '1',
 }
 
 /**
