@@ -102,7 +102,7 @@ export enum RESTJSONErrorCodes {
 
 	GuildAlreadyHasTemplate = 30031,
 	MaximumNumberOfApplicationCommandsReached,
-	MaximumThreadParticipants,
+	MaximumThreadParticipantsReached,
 	MaximumDailyApplicationCommandCreatesReached,
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded,
 
