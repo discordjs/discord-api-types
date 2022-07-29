@@ -243,7 +243,8 @@ export type APIChannel =
 	| APIDMChannel
 	| APITextChannel
 	| APINewsChannel
-	| APIVoiceChannel
+	| APIGuildVoiceChannel
+	| APIGuildStageVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
 	| APINewsChannel
