@@ -125,7 +125,7 @@ export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
-export interface APIVoiceChannelBase extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
+interface APIVoiceChannelBase extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -148,8 +148,8 @@ export interface APIVoiceChannelBase extends APIGuildChannel<ChannelType.GuildSt
 	video_quality_mode?: VideoQualityMode;
 }
 
-export type APIVoiceChannel = APIVoiceChannelBase & APITextBasedChannel<ChannelType.GuildVoice>;
-export type APIStageVoiceChannel = Omit<APIVoiceChannelBase, 'video_quality_mode'>;
+export type APIGuildVoiceChannel = APIVoiceChannelBase & APITextBasedChannel<ChannelType.GuildVoice>;
+export type APIGuildStageVoiceChannel = Omit<APIVoiceChannelBase, 'video_quality_mode'>;
 
 interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBasedChannel<T>, 'rate_limit_per_user'> {
 	/**
