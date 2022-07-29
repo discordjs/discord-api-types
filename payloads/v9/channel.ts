@@ -60,6 +60,16 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 	 * The id of the last message sent in this channel (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
+	 *
+	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
+	 */
+	rate_limit_per_user?: number;
 }
 
 export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
@@ -111,23 +121,11 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	last_pin_timestamp?: string | null;
 }
 
-export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildText> {
-	/**
-	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 *
-	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
-	 *
-	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
-	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
-	 */
-	rate_limit_per_user?: number;
-}
-
+export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
-export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
+export interface APIVoiceChannelBase extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -150,7 +148,10 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	video_quality_mode?: VideoQualityMode;
 }
 
-interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+export type APIVoiceChannel = APIVoiceChannelBase & APITextBasedChannel<ChannelType.GuildVoice>;
+export type APIStageVoiceChannel = Omit<APIVoiceChannelBase, 'video_quality_mode'>;
+
+interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBasedChannel<T>, 'rate_limit_per_user'> {
 	/**
 	 * The recipients of the DM
 	 *
