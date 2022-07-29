@@ -669,5 +669,5 @@ export interface RESTGetAPIChannelUsersThreadsArchivedResult extends APIThreadLi
 	/**
 	 * Whether there are potentially additional threads
 	 */
-	has_more: boolean;	
+	has_more: boolean;
 }
