@@ -1,3 +1,13 @@
+# [0.37.0](https://github.com/discordjs/discord-api-types/compare/0.36.3...0.37.0) (2022-07-28)
+
+### Code Refactoring
+
+- **RESTJSONErrorCodes:** use `MaximumThreadParticipantsReached` instead in error code 30033 ([#540](https://github.com/discordjs/discord-api-types/issues/540)) ([cecf17b](https://github.com/discordjs/discord-api-types/commit/cecf17b4158fbebb3ee508518a9e9a7b1297356f))
+
+### BREAKING CHANGES
+
+- **RESTJSONErrorCodes:** `MaximumThreadParticipants` was renamed to `MaximumThreadParticipantsReached` for consistency with the rest of the codes
+
 ## [0.36.3](https://github.com/discordjs/discord-api-types/compare/0.36.2...0.36.3) (2022-07-21)
 
 ### Features
