@@ -62,7 +62,7 @@ export interface APIApplication {
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
-	 * See https://discord.com/developers/docs/game-sdk/applications#get-ticket
+	 * See https://discord.com/developers/docs/game-sdk/applications#getticket
 	 */
 	verify_key: string;
 	/**

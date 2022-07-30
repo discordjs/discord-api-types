@@ -438,7 +438,7 @@ export interface APIMessage {
 	/**
 	 * Sent with Rich Presence-related chat embeds
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-application-structure
+	 * See https://discord.com/developers/docs/resources/application#application-object
 	 */
 	application?: Partial<APIApplication>;
 	/**
@@ -1164,7 +1164,7 @@ export interface APIBaseComponent<T extends ComponentType> {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-types
+ * https://discord.com/developers/docs/interactions/message-components#component-object-component-types
  */
 export enum ComponentType {
 	/**
