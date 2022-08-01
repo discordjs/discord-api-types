@@ -39,7 +39,6 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 	flags?: ChannelFlags;
 }
 
-// TODO: update when text in voice is released
 export type TextChannelType =
 	| ChannelType.DM
 	| ChannelType.GroupDM
@@ -48,7 +47,8 @@ export type TextChannelType =
 	| ChannelType.GuildPrivateThread
 	| ChannelType.GuildNewsThread
 	| ChannelType.GuildText
-	| ChannelType.GuildForum;
+	| ChannelType.GuildForum
+	| ChannelType.GuildVoice;
 
 export type GuildChannelType = Exclude<
 	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildNews,
