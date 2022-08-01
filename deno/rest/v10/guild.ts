@@ -855,7 +855,7 @@ export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPos
 	/**
 	 * The id of the channel the user is currently in
 	 */
-	channel_id: Snowflake;
+	channel_id?: Snowflake;
 	/**
 	 * Toggles the user's suppress state
 	 */
