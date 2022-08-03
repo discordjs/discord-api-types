@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/template
+ * Types extracted from https://discord.com/developers/docs/resources/guild-template
  */
 
 import type { APIUser } from './user.ts';
@@ -7,7 +7,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { RESTPostAPIGuildsJSONBody } from '../../rest/v10/mod.ts';
 
 /**
- * https://discord.com/developers/docs/resources/template#template-object
+ * https://discord.com/developers/docs/resources/guild-template#guild-template-object
  */
 export interface APITemplate {
 	/**

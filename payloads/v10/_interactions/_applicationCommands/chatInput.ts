@@ -108,7 +108,7 @@ export type APIApplicationCommandInteractionDataBasicOption =
 	| APIApplicationCommandInteractionDataAttachmentOption;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
  */
 export interface APIChatInputApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {

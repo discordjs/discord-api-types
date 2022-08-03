@@ -32,7 +32,7 @@ export interface APITeam {
 }
 
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-team-members-object
+ * https://discord.com/developers/docs/topics/teams#data-models-team-member-object
  */
 export interface APITeamMember {
 	/**

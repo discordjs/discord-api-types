@@ -357,7 +357,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<
 export type RESTPatchAPIGuildChannelPositionsResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/guild#list-active-threads
+ * https://discord.com/developers/docs/resources/guild#list-active-guild-threads
  */
 export type RESTGetAPIGuildThreadsResult = Omit<APIThreadList, 'has_more'>;
 

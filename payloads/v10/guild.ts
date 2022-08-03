@@ -769,7 +769,7 @@ export interface APIBan {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#guild-widget-object
  */
 export interface APIGuildWidget {
 	id: Snowflake;
@@ -781,7 +781,7 @@ export interface APIGuildWidget {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget
  */
 export interface APIGuildWidgetChannel {
 	id: Snowflake;
@@ -790,7 +790,7 @@ export interface APIGuildWidgetChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget
  */
 export interface APIGuildWidgetMember {
 	id: string;
