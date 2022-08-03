@@ -235,6 +235,10 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	max_video_channel_users?: number;
 	/**
+	 * The maximum amount of users in a stage video channel
+	 */
+	max_stage_video_channel_users?: number;
+	/**
 	 * **This field is only received from https://discord.com/developers/docs/resources/guild#get-guild with the `with_counts` query parameter set to `true`**
 	 */
 	approximate_member_count?: number;
