@@ -410,6 +410,10 @@ export enum GuildFeature {
 	 */
 	Hub = 'HUB',
 	/**
+	 * Guild has disabled invite usage, preventing users from joining
+	 */
+	InvitesDisabled = 'INVITES_DISABLED',
+	/**
 	 * Guild has access to set an invite splash background
 	 */
 	InviteSplash = 'INVITE_SPLASH',
