@@ -125,7 +125,7 @@ export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
-export interface APIVoiceChannelBase extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
+export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChannel<T> {
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -140,6 +140,11 @@ export interface APIVoiceChannelBase extends APIGuildChannel<ChannelType.GuildSt
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	rtc_region?: string | null;
+}
+
+export interface APIGuildVoiceChannel
+	extends APIVoiceChannelBase<ChannelType.GuildVoice>,
+		APITextBasedChannel<ChannelType.GuildVoice> {
 	/**
 	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
@@ -148,9 +153,7 @@ export interface APIVoiceChannelBase extends APIGuildChannel<ChannelType.GuildSt
 	video_quality_mode?: VideoQualityMode;
 }
 
-export type APIGuildVoiceChannel = APIVoiceChannelBase & APITextBasedChannel<ChannelType.GuildVoice>;
-
-export type APIGuildStageVoiceChannel = Omit<APIVoiceChannelBase, 'video_quality_mode'>;
+export type APIGuildStageVoiceChannel = APIVoiceChannelBase<ChannelType.GuildStageVoice>;
 
 export interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBasedChannel<T>, 'rate_limit_per_user'> {
 	/**
