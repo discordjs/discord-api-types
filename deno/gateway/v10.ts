@@ -410,6 +410,10 @@ export interface GatewayReadyDispatchData {
 	 */
 	session_id: string;
 	/**
+	 * Gateway url for resuming connections
+	 */
+	resume_gateway_url: string;
+	/**
 	 * The shard information associated with this session, if sent when identifying
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#sharding
