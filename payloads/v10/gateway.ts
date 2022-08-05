@@ -240,27 +240,27 @@ export enum ActivityPlatform {
  */
 export enum ActivityType {
 	/**
-	 * Playing {game}
+	 * Playing \{game\}
 	 */
 	Playing,
 	/**
-	 * Streaming {details}
+	 * Streaming \{details\}
 	 */
 	Streaming,
 	/**
-	 * Listening to {name}
+	 * Listening to \{name\}
 	 */
 	Listening,
 	/**
-	 * Watching {details}
+	 * Watching \{details\}
 	 */
 	Watching,
 	/**
-	 * {emoji} {details}
+	 * \{emoji\} \{details\}
 	 */
 	Custom,
 	/**
-	 * Competing in {name}
+	 * Competing in \{name\}
 	 */
 	Competing,
 }

@@ -1,7 +1,7 @@
+import npmToYarn from '@armano/npm-to-yarn';
 import { npmToPnpm } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
-import npmToYarn from 'npm-to-yarn';
 import React, { FC } from 'react';
 import InstallTabButton from './InstallTabButton';
 import styles from './InstallTabs.module.css';

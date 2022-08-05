@@ -38,14 +38,14 @@ export enum OAuth2Scopes {
 	 */
 	Guilds = 'guilds',
 	/**
-	 * Allows [/guilds/{guild.id}/members/{user.id}](https://discord.com/developers/docs/resources/guild#add-guild-member)
+	 * Allows [/guilds/\{guild.id\}/members/\{user.id\}](https://discord.com/developers/docs/resources/guild#add-guild-member)
 	 * to be used for joining users to a guild
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#add-guild-member
 	 */
 	GuildsJoin = 'guilds.join',
 	/**
-	 * Allows /users/@me/guilds/{guild.id}/member to return a user's member information in a guild
+	 * Allows /users/@me/guilds/\{guild.id\}/member to return a user's member information in a guild
 	 *
 	 * See https://discord.com/developers/docs/resources/user#get-current-user-guild-member
 	 */
