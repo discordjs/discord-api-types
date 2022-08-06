@@ -344,6 +344,11 @@ export interface APIMessage {
 	author: APIUser;
 	/**
 	 * Contents of the message
+	 *
+	 * After August 31, 2022, `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent to verified apps,
+	 * this intent is required to receive a non-empty value from this field
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	content: string;
 	/**
@@ -394,12 +399,22 @@ export interface APIMessage {
 	 * Any attached files
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 *
+	 * After August 31, 2022, `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent to verified apps,
+	 * this intent is required to receive a non-empty value from this field
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	attachments: APIAttachment[];
 	/**
 	 * Any embedded content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
+	 * After August 31, 2022, `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent to verified apps,
+	 * this intent is required to receive a non-empty value from this field
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -483,6 +498,11 @@ export interface APIMessage {
 	thread?: APIChannel;
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
+	 *
+	 * After August 31, 2022, `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent to verified apps,
+	 * this intent is required to receive a non-empty value from this field
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
