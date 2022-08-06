@@ -345,8 +345,7 @@ export interface APIMessage {
 	/**
 	 * Contents of the message
 	 *
-	 * `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent for verified apps,
-	 * this intent is required to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` (`1 << 15`) privileged gateway intent is required for verified applications, to receive a non-empty value from this field
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
@@ -400,8 +399,7 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 *
-	 * `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent for verified apps,
-	 * this intent is required to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` (`1 << 15`) privileged gateway intent is required for verified applications, to receive a non-empty value from this field
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
@@ -411,8 +409,7 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 *
-	 * `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent for verified apps,
-	 * this intent is required to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` (`1 << 15`) privileged gateway intent is required for verified applications, to receive a non-empty value from this field
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
@@ -499,8 +496,7 @@ export interface APIMessage {
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 *
-	 * `MESSAGE_CONTENT` (`1 << 15`) will be a privileged intent for verified apps,
-	 * this intent is required to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` (`1 << 15`) privileged gateway intent is required for verified applications, to receive a non-empty value from this field
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
