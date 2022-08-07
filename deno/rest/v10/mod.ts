@@ -1101,6 +1101,7 @@ export interface CDNQuery {
 }
 
 export const RouteBases = {
+	apiBase: 'https://discord.com/api',
 	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',
 	invite: 'https://discord.gg',
@@ -1113,12 +1114,12 @@ export const RouteBases = {
 Object.freeze(RouteBases);
 
 export const OAuth2Routes = {
-	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
-	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
+	authorizationURL: `${RouteBases.apiBase}${Routes.oauth2Authorization()}`,
+	tokenURL: `${RouteBases.apiBase}${Routes.oauth2TokenExchange()}`,
 	/**
 	 * See https://tools.ietf.org/html/rfc7009
 	 */
-	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
+	tokenRevocationURL: `${RouteBases.apiBase}${Routes.oauth2TokenRevocation()}`,
 } as const;
 
 // Freeze OAuth2 route object
