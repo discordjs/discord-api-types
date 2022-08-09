@@ -252,13 +252,13 @@ const config = {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 				additionalLanguages: ['powershell', 'batch']
+			},
+			algolia: {
+				appId: 'TR1O0DBFL9',
+				apiKey: '6822440beca69053ab122881d75064dc',
+				indexName: 'discord-api-types',
+				contextualSearch: false
 			}
-			// algolia: {
-			// 	appId: 'TO_BE_DONE',
-			// 	apiKey: 'TO_BE_DONE',
-			// 	indexName: 'TO_BE_DONE',
-			// 	contextualSearch: false
-			// }
 		})
 };
 
