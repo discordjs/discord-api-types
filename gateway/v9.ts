@@ -820,11 +820,11 @@ export interface GatewayGuildMembersChunkDispatchData {
 	/**
 	 * The chunk index in the expected chunks for this response (`0 <= chunk_index < chunk_count`)
 	 */
-	chunk_index?: number;
+	chunk_index: number;
 	/**
 	 * The total number of expected chunks for this response
 	 */
-	chunk_count?: number;
+	chunk_count: number;
 	/**
 	 * If passing an invalid id to `REQUEST_GUILD_MEMBERS`, it will be returned here
 	 */
