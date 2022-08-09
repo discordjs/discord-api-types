@@ -665,4 +665,9 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 /**
  * https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
  */
-export type RESTGetAPIChannelUsersThreadsArchivedResult = APIThreadList;
+export interface RESTGetAPIChannelUsersThreadsArchivedResult extends APIThreadList {
+	/**
+	 * Whether there are potentially additional threads
+	 */
+	has_more: boolean;
+}
