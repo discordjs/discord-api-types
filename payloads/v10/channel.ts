@@ -345,10 +345,10 @@ export interface APIMessage {
 	/**
 	 * Contents of the message
 	 *
-	 * The **`MESSAGE_CONTENT`** privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
-	 * You also need to specify the intent bit value  (**`1 << 15`**) if you are connecting to the gateway
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
@@ -402,10 +402,10 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 *
-	 * The **`MESSAGE_CONTENT`** privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
-	 * You also need to specify the intent bit value  (**`1 << 15`**) if you are connecting to the gateway
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
@@ -415,10 +415,10 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 *
-	 * The **`MESSAGE_CONTENT`** privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
-	 * You also need to specify the intent bit value  (**`1 << 15`**) if you are connecting to the gateway
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
@@ -505,10 +505,10 @@ export interface APIMessage {
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 *
-	 * The **`MESSAGE_CONTENT`** privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
-	 * You also need to specify the intent bit value  (**`1 << 15`**) if you are connecting to the gateway
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
 	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
