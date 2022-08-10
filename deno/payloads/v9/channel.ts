@@ -350,6 +350,12 @@ export interface APIMessage {
 	author: APIUser;
 	/**
 	 * Contents of the message
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	content: string;
 	/**
@@ -400,12 +406,24 @@ export interface APIMessage {
 	 * Any attached files
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	attachments: APIAttachment[];
 	/**
 	 * Any embedded content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -489,6 +507,12 @@ export interface APIMessage {
 	thread?: APIChannel;
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
