@@ -1,3 +1,17 @@
+## [0.37.2](https://github.com/discordjs/discord-api-types/compare/0.37.1...0.37.2) (2022-08-11)
+
+### Bug Fixes
+
+- **GatewayGuildMembersChunkDispatchData:** make chunk pagination properties mandatory ([#558](https://github.com/discordjs/discord-api-types/issues/558)) ([0e03e39](https://github.com/discordjs/discord-api-types/commit/0e03e39aa2bf8f1b9a58113a3242c4722e64922b))
+- **GatewayRequestGuildMembersData:** limit being required with user_ids ([#559](https://github.com/discordjs/discord-api-types/issues/559)) ([dc3d5df](https://github.com/discordjs/discord-api-types/commit/dc3d5df0a2931eff63991987166634661d5bd1d8))
+- **RESTGetAPIChannelUsersThreadsArchivedResult:** add `has_more` missing field ([#543](https://github.com/discordjs/discord-api-types/issues/543)) ([796f6d8](https://github.com/discordjs/discord-api-types/commit/796f6d8a3b2f55d2a120137801e0450ddf30576e))
+
+### Features
+
+- add search that might or might not work ([f8a9c8b](https://github.com/discordjs/discord-api-types/commit/f8a9c8b5c6bdd73bcbf9dd6fff66fafac2594ba4))
+- **APIVoiceChannel:** support text in voice, properties `last_message_id` and `rate_limit_per_user` ([#544](https://github.com/discordjs/discord-api-types/issues/544)) ([4488d8f](https://github.com/discordjs/discord-api-types/commit/4488d8fd2611a6547fc6149ba1cec5682340a119))
+- **GatewayReadyDispatchData:** add `resume_gateway_url` ([#552](https://github.com/discordjs/discord-api-types/issues/552)) ([9a50367](https://github.com/discordjs/discord-api-types/commit/9a50367dad3a06fbca6e8d1fdd98fbf144595d4e))
+
 ## [0.37.1](https://github.com/discordjs/discord-api-types/compare/0.37.0...0.37.1) (2022-08-04)
 
 # [0.37.0](https://github.com/discordjs/discord-api-types/compare/0.36.3...0.37.0) (2022-07-28)
