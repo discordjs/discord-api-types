@@ -702,7 +702,7 @@ export interface APIGuildIntegration {
 	/**
 	 * The scopes the application has been authorized for
 	 */
-	scopes: OAuth2Scopes[];
+	scopes?: OAuth2Scopes[];
 }
 
 export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
