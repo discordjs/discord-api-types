@@ -48,7 +48,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 *
 	 * Channel types: text, news
 	 */
-	type?: ChannelType.GuildNews | ChannelType.GuildText;
+	type?: ChannelType.GuildAnnouncement | ChannelType.GuildText;
 	/**
 	 * The position of the channel in the left-hand listing
 	 *
@@ -619,9 +619,9 @@ export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThread
 		 *
 		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 		 *
-		 * @default ChannelType.GuildPrivateThread
+		 * @default ChannelType.PrivateThread
 		 */
-		type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+		type?: ChannelType.AnnouncementThread | ChannelType.PublicThread | ChannelType.PrivateThread;
 		/**
 		 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
 		 */
