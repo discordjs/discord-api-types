@@ -247,6 +247,8 @@ export enum RESTJSONErrorCodes {
 	TitleWasBlockedByAutomaticModeration,
 
 	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
+
+	MessageBlockedByHarmfulLinksFilter = 240000,
 }
 
 /**
