@@ -1,3 +1,9 @@
+## [0.37.3](https://github.com/discordjs/discord-api-types/compare/0.37.2...0.37.3) (2022-08-18)
+
+### Features
+
+- **RESTJSONErrorCodes:** add 240000 ([#565](https://github.com/discordjs/discord-api-types/issues/565)) ([5bb50ae](https://github.com/discordjs/discord-api-types/commit/5bb50ae7ea6859845c9d9996f02ac42c61413df0))
+
 ## [0.37.2](https://github.com/discordjs/discord-api-types/compare/0.37.1...0.37.2) (2022-08-11)
 
 ### Bug Fixes
