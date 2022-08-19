@@ -58,3 +58,23 @@ export const PermissionFlagsBits = {
 Object.freeze(PermissionFlagsBits);
 
 export type LocalizationMap = Partial<Record<LocaleString, string | null>>;
+
+/**
+ * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json
+ */
+export interface DiscordErrorData {
+	code: number;
+	message: string;
+	errors?: DiscordError;
+}
+
+interface DiscordErrorFieldInformation {
+	code: string;
+	message: string;
+}
+
+interface DiscordErrorGroupWrapper {
+	_errors: DiscordError[];
+}
+
+type DiscordError = DiscordErrorGroupWrapper | DiscordErrorFieldInformation | { [k: string]: DiscordError } | string;
