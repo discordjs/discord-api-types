@@ -68,12 +68,12 @@ export interface APIError {
 	errors?: DiscordError;
 }
 
-interface DiscordErrorFieldInformation {
+export interface DiscordErrorFieldInformation {
 	code: string;
 	message: string;
 }
 
-interface DiscordErrorGroupWrapper {
+export interface DiscordErrorGroupWrapper {
 	_errors: DiscordError[];
 }
 
