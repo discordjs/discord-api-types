@@ -77,4 +77,8 @@ interface DiscordErrorGroupWrapper {
 	_errors: DiscordError[];
 }
 
-type DiscordError = DiscordErrorGroupWrapper | DiscordErrorFieldInformation | { [k: string]: DiscordError } | string;
+export type DiscordError =
+	| DiscordErrorGroupWrapper
+	| DiscordErrorFieldInformation
+	| { [k: string]: DiscordError }
+	| string;
