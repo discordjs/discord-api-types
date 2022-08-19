@@ -54,6 +54,7 @@ import type {
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 
 export * from './_chatInput/attachment';
+export * from './_chatInput/base';
 export * from './_chatInput/boolean';
 export * from './_chatInput/channel';
 export * from './_chatInput/integer';
