@@ -62,7 +62,7 @@ export type LocalizationMap = Partial<Record<LocaleString, string | null>>;
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json
  */
-export interface DiscordErrorData {
+export interface DiscordAPIError {
 	code: number;
 	message: string;
 	errors?: DiscordError;
