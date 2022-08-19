@@ -257,7 +257,7 @@ const config = {
 				appId: 'TR1O0DBFL9',
 				apiKey: '6822440beca69053ab122881d75064dc',
 				indexName: 'discord-api-types',
-				contextualSearch: false
+				contextualSearch: true
 			}
 		})
 };
