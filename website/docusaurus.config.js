@@ -190,6 +190,7 @@ const config = {
 						items: [
 							{ label: versions.length === 0 ? 'Development Time' : 'next 🚧', to: versions.length === 0 ? 'api' : 'api/next' },
 							...versions.map((version, i) => ({
+								activeBaseRegex: `api/(${version}/)${i === 0 ? '?' : ''}discord-api-types.*`,
 								label: version,
 								to: i === 0 ? 'api' : `api/${version}`
 							}))
