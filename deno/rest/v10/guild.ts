@@ -135,7 +135,7 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	afk_channel_id?: number | Snowflake | null;
 	/**
-	 * AFK timeout in seconds
+	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
 	afk_timeout?: number;
 	/**
@@ -235,7 +235,7 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	afk_channel_id?: Snowflake | null;
 	/**
-	 * AFK timeout in seconds
+	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
 	afk_timeout?: number;
 	/**
