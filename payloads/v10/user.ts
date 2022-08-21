@@ -218,6 +218,7 @@ export enum ConnectionService {
 	Facebook = 'facebook',
 	GitHub = 'github',
 	LeagueOfLegends = 'leagueoflegends',
+	PayPal = 'paypal',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
 	RiotGames = 'riotgames',
