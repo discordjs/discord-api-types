@@ -1,3 +1,10 @@
+## [0.37.4](https://github.com/discordjs/discord-api-types/compare/0.37.3...0.37.4) (2022-08-22)
+
+### Features
+
+- add common JSON error types ([#568](https://github.com/discordjs/discord-api-types/issues/568)) ([956f289](https://github.com/discordjs/discord-api-types/commit/956f289e885763a620cb67a36e7e42683b5c08bf))
+- **ApplicationCommand:** export base chat input types ([#569](https://github.com/discordjs/discord-api-types/issues/569)) ([248484e](https://github.com/discordjs/discord-api-types/commit/248484e55613e2da3f1d659395e1f4c010cb51b5))
+
 ## [0.37.3](https://github.com/discordjs/discord-api-types/compare/0.37.2...0.37.3) (2022-08-18)
 
 ### Features
