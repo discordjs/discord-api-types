@@ -1,3 +1,9 @@
+## [0.37.5](https://github.com/discordjs/discord-api-types/compare/0.37.4...0.37.5) (2022-08-25)
+
+### Features
+
+- **FormattingPatterns:** add `ApplicationCommand` ([#525](https://github.com/discordjs/discord-api-types/issues/525)) ([0098889](https://github.com/discordjs/discord-api-types/commit/00988894995f7ac5e8ddc34125704a230329137c))
+
 ## [0.37.4](https://github.com/discordjs/discord-api-types/compare/0.37.3...0.37.4) (2022-08-22)
 
 ### Features
