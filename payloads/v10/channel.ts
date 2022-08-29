@@ -111,7 +111,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 	/**
-	 * The channel topic (0-1024 characters)
+	 * The channel topic (0-4096 characters for forum channels, 0-1024 characters for all others)
 	 */
 	topic?: string | null;
 	/**
@@ -236,17 +236,32 @@ export interface APIThreadChannel
 	 */
 	total_message_sent?: number;
 	/**
-	 * The ids of the applied tags of the thread in a forum channel
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel
 	 */
 	applied_tags: Snowflake[];
 }
 
 export interface APIGuildForumTag {
+	/**
+	 * The id of the tag
+	 */
 	id: Snowflake;
+	/**
+	 * The name of the tag (0-20 characters)
+	 */
 	name: string;
-	emoji_id: Snowflake;
-	emoji_name: string | null;
+	/**
+	 * Whether this tag can only be added to or removed from threads by a member with the `MANAGE_THREADS` permission
+	 */
 	moderated: boolean;
+	/**
+	 * The id of a guild's custom emoji, or 0 if unset
+	 */
+	emoji_id: Snowflake;
+	/**
+	 * The name of a unicode emoji, or an empty string if unset
+	 */
+	emoji_name: string | null;	
 }
 
 export interface APIGuildForumDefaultReactionEmoji {
@@ -255,7 +270,7 @@ export interface APIGuildForumDefaultReactionEmoji {
 	 */
 	emoji_id: Snowflake;
 	/**
-	 * the name of a unicode emoji or an empty string if unset
+	 * The name of a unicode emoji or an empty string if unset
 	 */
 	emoji_name: string | null;
 }
@@ -270,12 +285,12 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 */
 	template: string;
 	/**
-	 * Amount of seconds a user has to wait before creating a new forum post (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * This field is copied to the thread at creation time and does not live update
 	 */
 	default_thread_rate_limit_per_user?: number;
 	/**
-	 * A default reaction which will appear when creating a post in the forum channel
+	 * The emoji to show in the add reaction button on a thread in a forum channel
 	 */
 	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
 }
