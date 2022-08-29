@@ -1462,6 +1462,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  */
 export enum ChannelFlags {
 	Pinned = 1 << 1,
+	RequireTag = 1 << 4,
 }
 
 /**
