@@ -261,7 +261,7 @@ export interface APIGuildForumTag {
 	/**
 	 * The name of a unicode emoji, or an empty string if unset
 	 */
-	emoji_name: string | null;	
+	emoji_name: string | null;
 }
 
 export interface APIGuildForumDefaultReactionEmoji {
