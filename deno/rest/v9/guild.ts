@@ -573,8 +573,14 @@ export type RESTGetAPIGuildBanResult = APIBan;
 export type RESTPutAPIGuildBanJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Number of days to delete messages for (0-7)
+	 *
+	 * @deprecated use `delete_message_seconds` instead
 	 */
 	delete_message_days?: number;
+	/**
+	 * Number of seconds to delete messages for, between 0 and 604800 (7 days)
+	 */
+	delete_message_seconds?: number;
 	/**
 	 * Reason for the ban
 	 *
@@ -861,7 +867,7 @@ export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPos
 	/**
 	 * The id of the channel the user is currently in
 	 */
-	channel_id: Snowflake;
+	channel_id?: Snowflake;
 	/**
 	 * Toggles the user's suppress state
 	 */
