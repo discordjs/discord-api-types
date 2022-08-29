@@ -279,10 +279,6 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 */
 	available_tags: APIGuildForumTag[];
 	/**
-	 * The guild template associated with this forum channel
-	 */
-	template: string;
-	/**
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
 	 */

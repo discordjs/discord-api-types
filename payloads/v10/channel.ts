@@ -189,8 +189,6 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	last_message_id?: Snowflake | null;
 }
 
-// TODO: wait until official final forums documentation to add right descriptions and other stuff
-
 export interface APIThreadChannel
 	extends APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
 	/**
@@ -280,10 +278,6 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 * The set of tags that can be used in a forum channel
 	 */
 	available_tags: APIGuildForumTag[];
-	/**
-	 * The guild template associated with this forum channel
-	 */
-	template: string;
 	/**
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
