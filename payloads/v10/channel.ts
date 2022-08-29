@@ -189,6 +189,8 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	last_message_id?: Snowflake | null;
 }
 
+// TODO: wait until official final forums documentation to add right descriptions and other stuff
+
 export interface APIThreadChannel
 	extends APIGuildChannel<
 		ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread | ChannelType.GuildNewsThread
@@ -235,9 +237,50 @@ export interface APIThreadChannel
 	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
 	 */
 	total_message_sent?: number;
+	/**
+	 * The ids of the applied tags of the thread in a forum channel
+	 */
+	applied_tags: Snowflake[];
 }
 
-export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
+export interface APIGuildForumTag {
+	id: Snowflake;
+	name: string;
+	emoji_id: Snowflake;
+	emoji_name: string | null;
+	moderated: boolean;
+}
+
+export interface APIGuildForumDefaultReactionEmoji {
+	/**
+	 * The id of a guild's custom emoji, or 0 if unset
+	 */
+	emoji_id: Snowflake;
+	/**
+	 * the name of a unicode emoji or an empty string if unset
+	 */
+	emoji_name: string | null;
+}
+
+export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
+	/**
+	 * The set of tags that can be used in a forum channel
+	 */
+	available_tags: APIGuildForumTag[];
+	/**
+	 * The guild template associated with this forum channel
+	 */
+	template: string;
+	/**
+	 * Amount of seconds a user has to wait before creating a new forum post (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 */
+	default_thread_rate_limit_per_user?: number;
+	/**
+	 * A default reaction which will appear when creating a post in the forum channel
+	 */
+	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
