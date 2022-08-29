@@ -233,9 +233,65 @@ export interface APIThreadChannel
 	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
 	 */
 	total_message_sent?: number;
+	/**
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 */
+	applied_tags: Snowflake[];
 }
 
-export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
+export interface APIGuildForumTag {
+	/**
+	 * The id of the tag
+	 */
+	id: Snowflake;
+	/**
+	 * The name of the tag (0-20 characters)
+	 */
+	name: string;
+	/**
+	 * Whether this tag can only be added to or removed from threads by a member with the `MANAGE_THREADS` permission
+	 */
+	moderated: boolean;
+	/**
+	 * The id of a guild's custom emoji, or 0 if unset
+	 */
+	emoji_id: Snowflake;
+	/**
+	 * The name of a unicode emoji, or an empty string if unset
+	 */
+	emoji_name: string | null;
+}
+
+export interface APIGuildForumDefaultReactionEmoji {
+	/**
+	 * The id of a guild's custom emoji, or 0 if unset
+	 */
+	emoji_id: Snowflake;
+	/**
+	 * The name of a unicode emoji or an empty string if unset
+	 */
+	emoji_name: string | null;
+}
+
+export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
+	/**
+	 * The set of tags that can be used in a forum channel
+	 */
+	available_tags: APIGuildForumTag[];
+	/**
+	 * The guild template associated with this forum channel
+	 */
+	template: string;
+	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
+	/**
+	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 */
+	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
