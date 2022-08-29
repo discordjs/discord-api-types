@@ -42,16 +42,16 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 export type TextChannelType =
 	| ChannelType.DM
 	| ChannelType.GroupDM
-	| ChannelType.GuildNews
-	| ChannelType.GuildPublicThread
-	| ChannelType.GuildPrivateThread
-	| ChannelType.GuildNewsThread
+	| ChannelType.GuildAnnouncement
+	| ChannelType.PublicThread
+	| ChannelType.PrivateThread
+	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
 	| ChannelType.GuildForum
 	| ChannelType.GuildVoice;
 
 export type GuildChannelType = Exclude<
-	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildNews,
+	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildAnnouncement,
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
@@ -122,7 +122,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 }
 
 export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
-export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
+export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
 export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChannel<T> {
@@ -190,9 +190,7 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 }
 
 export interface APIThreadChannel
-	extends APIGuildChannel<
-		ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread | ChannelType.GuildNewsThread
-	> {
+	extends APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -285,19 +283,19 @@ export enum ChannelType {
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/360032008192
 	 */
-	GuildNews,
+	GuildAnnouncement,
 	/**
-	 * A thread channel (public) within a Guild News channel
+	 * A temporary sub-channel within a Guild Announcement channel
 	 */
-	GuildNewsThread = 10,
+	AnnouncementThread = 10,
 	/**
-	 * A public thread channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text channel
 	 */
-	GuildPublicThread,
+	PublicThread,
 	/**
-	 * A private thread channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text channel that is only viewable by those invited and those with the Manage Threads permission
 	 */
-	GuildPrivateThread,
+	PrivateThread,
 	/**
 	 * A voice channel for hosting events with an audience
 	 *
