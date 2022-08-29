@@ -18,6 +18,9 @@ export interface ModalSubmitActionRowComponent
 	components: ModalSubmitComponent[];
 }
 
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure
+ */
 export interface APIModalSubmission {
 	/**
 	 * A developer-defined identifier for the component, max 100 characters
@@ -26,7 +29,7 @@ export interface APIModalSubmission {
 	/**
 	 * A list of child components
 	 */
-	components?: ModalSubmitActionRowComponent[];
+	components: ModalSubmitActionRowComponent[];
 }
 
 /**
