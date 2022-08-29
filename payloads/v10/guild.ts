@@ -4,6 +4,7 @@
 
 import type { APIEmoji } from './emoji';
 import type { PresenceUpdateStatus } from './gateway';
+import type { OAuth2Scopes } from './oauth2';
 import type { APIRole } from './permissions';
 import type { APISticker } from './sticker';
 import type { APIUser } from './user';
@@ -698,6 +699,10 @@ export interface APIGuildIntegration {
 	 * **This field is not provided for `discord` bot integrations.**
 	 */
 	application?: APIGuildIntegrationApplication;
+	/**
+	 * The scopes the application has been authorized for
+	 */
+	scopes?: OAuth2Scopes[];
 }
 
 export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
