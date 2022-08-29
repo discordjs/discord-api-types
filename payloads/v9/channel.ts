@@ -257,7 +257,7 @@ export interface APIGuildForumTag {
 	 */
 	emoji_id: Snowflake;
 	/**
-	 * The name of a unicode emoji, or an empty string if unset
+	 * The unicode character of the emoji
 	 */
 	emoji_name: string | null;
 }
@@ -268,7 +268,7 @@ export interface APIGuildForumDefaultReactionEmoji {
 	 */
 	emoji_id: Snowflake;
 	/**
-	 * The name of a unicode emoji or an empty string if unset
+	 * The unicode character of the emoji
 	 */
 	emoji_name: string | null;
 }
