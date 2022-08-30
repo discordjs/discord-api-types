@@ -1455,7 +1455,14 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
  */
 export enum ChannelFlags {
+	/**
+	 * This thread is pinned to the top of its parent forum channel
+	 */
 	Pinned = 1 << 1,
+	/**
+	 * Whether a tag is required to be specified when creating a thread in a forum channel.
+	 * Tags are specified in the `applied_tags` field
+	 */
 	RequireTag = 1 << 4,
 }
 
