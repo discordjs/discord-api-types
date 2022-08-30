@@ -253,7 +253,7 @@ export interface APIGuildForumTag {
 	 */
 	moderated: boolean;
 	/**
-	 * The id of a guild's custom emoji, or 0 if unset
+	 * The id of a guild's custom emoji
 	 */
 	emoji_id: Snowflake;
 	/**
@@ -264,7 +264,7 @@ export interface APIGuildForumTag {
 
 export interface APIGuildForumDefaultReactionEmoji {
 	/**
-	 * The id of a guild's custom emoji, or 0 if unset
+	 * The id of a guild's custom emoji
 	 */
 	emoji_id: Snowflake;
 	/**

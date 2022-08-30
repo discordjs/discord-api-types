@@ -19,6 +19,8 @@ import type {
 	OverwriteType,
 	ThreadAutoArchiveDuration,
 	VideoQualityMode,
+	APIGuildForumTag,
+	APIGuildForumDefaultReactionEmoji,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 
@@ -56,15 +58,15 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 */
 	position?: number | null;
 	/**
-	 * 0-1024 character channel topic
+	 * 0-1024 character channel topic (0-4096 characters for forum channels)
 	 *
-	 * Channel types: text, news
+	 * Channel types: text, news, forum
 	 */
 	topic?: string | null;
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, voice, news
+	 * Channel types: text, voice, news, forum
 	 */
 	nsfw?: boolean | null;
 	/**
@@ -72,7 +74,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`,
 	 * are unaffected
 	 *
-	 * Channel types: text, newsThread, publicThread, privateThread
+	 * Channel types: text, newsThread, publicThread, privateThread, forum
 	 */
 	rate_limit_per_user?: number | null;
 	/**
@@ -141,6 +143,25 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * Channel types: privateThread
 	 */
 	invitable?: boolean;
+	/**
+	 * The set of tags that can be used in a forum channel
+	 *
+	 * Channel types: forum
+	 */
+	available_tags?: APIGuildForumTag[];
+	/**
+	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 *
+	 * Channel types: forum
+	 */
+	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji;
+	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * This field is copied to the thread at creation time and does not live update
+	 *
+	 * Channel types: text, forum
+	 */
+	default_thread_rate_limit_per_user?: number | null;
 }>;
 
 /**
@@ -603,6 +624,10 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 	 * First message in the forum thread
 	 */
 	message: RESTPostAPIChannelMessageJSONBody;
+	/**
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 */
+	applied_tags?: Snowflake[];
 };
 
 /**
