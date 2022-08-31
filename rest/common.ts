@@ -252,7 +252,7 @@ export enum RESTJSONErrorCodes {
 	TitleWasBlockedByAutomaticModeration,
 
 	WebhooksPostedToForumChannelsMustHaveAThreadNameOrThreadId = 220001,
-	WebhooksPostedToForumChannelsCannotHaveBothAThreadNameOrThreadId,
+	WebhooksPostedToForumChannelsCannotHaveBothAThreadNameAndThreadId,
 	WebhooksCanOnlyCreateThreadsInForumChannels,
 	WebhookServicesCannotBeUsedInForumChannels,
 
