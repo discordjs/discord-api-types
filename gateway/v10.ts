@@ -457,32 +457,32 @@ export type GatewayAutoModerationRuleModifyDispatch = DataPayload<
 export type GatewayAutoModerationRuleModifyDispatchData = APIAutoModerationRule;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#channel-create
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
  */
 export type GatewayAutoModerationRuleCreateDispatch = GatewayAutoModerationRuleModifyDispatch;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#channel-create
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
  */
 export type GatewayAutoModerationRuleCreateDispatchData = GatewayAutoModerationRuleModifyDispatchData;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#channel-update
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
  */
 export type GatewayAutoModerationRuleUpdateDispatch = GatewayAutoModerationRuleModifyDispatch;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#channel-update
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
  */
 export type GatewayAutoModerationRuleUpdateDispatchData = GatewayAutoModerationRuleModifyDispatchData;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#channel-delete
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
  */
 export type GatewayAutoModerationRuleDeleteDispatch = GatewayAutoModerationRuleModifyDispatch;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#channel-delete
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
  */
 export type GatewayAutoModerationRuleDeleteDispatchData = GatewayAutoModerationRuleModifyDispatchData;
 

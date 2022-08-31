@@ -63,17 +63,17 @@ export enum AutoModerationRuleTriggerType {
 	 */
 	Keyword = 1,
 	/**
-	 * Check if content contains any harmful links (Maximum of 1 per guild)
-	 */
-	HarmfulLink,
-	/**
 	 * Check if content represents generic spam (Maximum of 1 per guild)
 	 */
-	Spam,
+	Spam = 3,
 	/**
 	 * Check if content contains words from internal pre-defined wordsets (Maximum of 1 per guild)
 	 */
 	KeywordPreset,
+	/**
+	 * Check if content contains more mentions than allowed (Maximum of 1 per guild)
+	 */
+	MentionSpam,
 }
 
 /**
@@ -104,6 +104,12 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
 	 */
 	allow_list: string[];
+	/**
+	 * Total number of mentions (role & user) allowed per message (Maximum of 50)
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.MentionSpam}
+	 */
+	mention_total_limit?: number;
 }
 
 /**
