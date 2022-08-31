@@ -1,3 +1,21 @@
+# [0.36.0](https://github.com/discordjs/discord-api-types/compare/0.35.0...0.36.0) (2022-06-30)
+
+### Features
+
+- **APIBaseInteraction:** add `app_permissions` ([#509](https://github.com/discordjs/discord-api-types/issues/509)) ([0c65d40](https://github.com/discordjs/discord-api-types/commit/0c65d40af00499233830ce272a2a274bcd5b9e8c))
+- **MessageType:** update names ([#498](https://github.com/discordjs/discord-api-types/issues/498)) ([12072b7](https://github.com/discordjs/discord-api-types/commit/12072b70a0c70e1e1f9de920789e26829268de12))
+- **RESTJSONErrorCodes:** add error 20024 ([#480](https://github.com/discordjs/discord-api-types/issues/480)) ([34908aa](https://github.com/discordjs/discord-api-types/commit/34908aa4ceeca4b58276cc207f5bdb77cef04296))
+
+### BREAKING CHANGES
+
+- **MessageType:** The following message types have been renamed:
+
+* `GuildMemberJoin` -> `UserJoin`
+* `UserPremiumGuildSubscription` -> `GuildBoost`
+* `UserPremiumGuildSubscriptionTier1` -> `GuildBoostTier1`
+* `UserPremiumGuildSubscriptionTier2` -> `GuildBoostTier2`
+* `UserPremiumGuildSubscriptionTier3` -> `GuildBoostTier3`
+
 # [0.35.0](https://github.com/discordjs/discord-api-types/compare/0.34.0...0.35.0) (2022-06-23)
 
 ### Code Refactoring
