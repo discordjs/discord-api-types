@@ -51,7 +51,11 @@ export type TextChannelType =
 	| ChannelType.GuildVoice;
 
 export type GuildChannelType = Exclude<
-	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildAnnouncement,
+	| TextChannelType
+	| ChannelType.GuildVoice
+	| ChannelType.GuildStageVoice
+	| ChannelType.GuildAnnouncement
+	| ChannelType.GuildCategory,
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
