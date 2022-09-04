@@ -50,10 +50,7 @@ export type TextChannelType =
 	| ChannelType.GuildForum
 	| ChannelType.GuildVoice;
 
-export type GuildChannelType = Exclude<
-	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildAnnouncement,
-	ChannelType.DM | ChannelType.GroupDM
->;
+export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
