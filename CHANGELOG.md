@@ -1,3 +1,9 @@
+## [0.37.7](https://github.com/discordjs/discord-api-types/compare/0.37.6...0.37.7) (2022-09-05)
+
+### Bug Fixes
+
+- **ChannelType:** bring back old names ([b08f2e3](https://github.com/discordjs/discord-api-types/commit/b08f2e34dbe9afccca6f565db6c7b27a21453d85))
+
 ## [0.37.6](https://github.com/discordjs/discord-api-types/compare/0.37.5...0.37.6) (2022-09-05)
 
 ### Bug Fixes
