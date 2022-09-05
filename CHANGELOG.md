@@ -1,3 +1,17 @@
+## [0.37.6](https://github.com/discordjs/discord-api-types/compare/0.37.5...0.37.6) (2022-09-05)
+
+### Bug Fixes
+
+- **APIModalSubmission:** `components` is not optional ([#574](https://github.com/discordjs/discord-api-types/issues/574)) ([f69b586](https://github.com/discordjs/discord-api-types/commit/f69b586d0148afd017e6da70ab8d745b6ba04ba4))
+- **GuildChannelType:** add missing `GuildCategory` type ([#579](https://github.com/discordjs/discord-api-types/issues/579)) ([815c68f](https://github.com/discordjs/discord-api-types/commit/815c68fe46034029200a8e2903748a3d2e6af7b9))
+- **RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody:** `channel_id` is optional ([#547](https://github.com/discordjs/discord-api-types/issues/547)) ([b7b855b](https://github.com/discordjs/discord-api-types/commit/b7b855b2005bb3989810850d6e00bec443a15c92))
+
+### Features
+
+- **APIGuildIntegration:** add `scopes` ([#563](https://github.com/discordjs/discord-api-types/issues/563)) ([73d15dd](https://github.com/discordjs/discord-api-types/commit/73d15ddcbbc676efac876602a3cd726bfe4c378a))
+- **ApplicationFlags:** add `ApplicationCommandBadge` ([#537](https://github.com/discordjs/discord-api-types/issues/537)) ([48f0f56](https://github.com/discordjs/discord-api-types/commit/48f0f562bab10d2a1e331474fb963af8631b788b))
+- **RESTPutAPIGuildBanJSONBody:** add `delete_message_seconds` ([#534](https://github.com/discordjs/discord-api-types/issues/534)) ([4e362d5](https://github.com/discordjs/discord-api-types/commit/4e362d52608e99d466b43cd37ec6b6bb1222b660))
+
 ## [0.37.5](https://github.com/discordjs/discord-api-types/compare/0.37.4...0.37.5) (2022-08-25)
 
 ### Features
