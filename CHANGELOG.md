@@ -1,3 +1,9 @@
+## [0.37.8](https://github.com/discordjs/discord-api-types/compare/0.37.7...0.37.8) (2022-09-08)
+
+### Features
+
+- **GuildFeature:** add `InvitesDisabled` ([#549](https://github.com/discordjs/discord-api-types/issues/549)) ([2708cb9](https://github.com/discordjs/discord-api-types/commit/2708cb9dcaa07d19ca71e9ca211e78939b9d1ff4))
+
 ## [0.37.7](https://github.com/discordjs/discord-api-types/compare/0.37.6...0.37.7) (2022-09-05)
 
 ### Bug Fixes
