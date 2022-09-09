@@ -214,13 +214,15 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	BattleNet = 'battlenet',
+	eBay = 'ebay',
 	EpicGames = 'epicgames',
 	Facebook = 'facebook',
 	GitHub = 'github',
 	LeagueOfLegends = 'leagueoflegends',
+	PayPal = 'paypal',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
-	SamsungGalaxy = 'samsunggalaxy',
+	RiotGames = 'riotgames',
 	Spotify = 'spotify',
 	Skype = 'skype',
 	Steam = 'steam',
