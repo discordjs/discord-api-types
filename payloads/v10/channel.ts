@@ -236,6 +236,9 @@ export interface APIThreadChannel
 	applied_tags: Snowflake[];
 }
 
+/**
+ * https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure
+ */
 export interface APIGuildForumTag {
 	/**
 	 * The id of the tag
@@ -259,6 +262,9 @@ export interface APIGuildForumTag {
 	emoji_name: string | null;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/channel#default-reaction-object-default-reaction-structure
+ */
 export interface APIGuildForumDefaultReactionEmoji {
 	/**
 	 * The id of a guild's custom emoji
