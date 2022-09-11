@@ -252,7 +252,7 @@ export interface APIGuildForumTag {
 	/**
 	 * The id of a guild's custom emoji
 	 */
-	emoji_id: Snowflake;
+	emoji_id: Snowflake | null;
 	/**
 	 * The unicode character of the emoji
 	 */
@@ -263,7 +263,7 @@ export interface APIGuildForumDefaultReactionEmoji {
 	/**
 	 * The id of a guild's custom emoji
 	 */
-	emoji_id: Snowflake;
+	emoji_id: Snowflake | null;
 	/**
 	 * The unicode character of the emoji
 	 */
