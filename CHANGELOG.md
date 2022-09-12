@@ -1,3 +1,9 @@
+## [0.37.9](https://github.com/discordjs/discord-api-types/compare/0.37.8...0.37.9) (2022-09-12)
+
+### Features
+
+- **ConnectionService:** add new connections ([#548](https://github.com/discordjs/discord-api-types/issues/548)) ([afd3b55](https://github.com/discordjs/discord-api-types/commit/afd3b55c08b0cf75cc4f5a06d3574b6cf532cb6c))
+
 ## [0.37.8](https://github.com/discordjs/discord-api-types/compare/0.37.7...0.37.8) (2022-09-08)
 
 ### Features
