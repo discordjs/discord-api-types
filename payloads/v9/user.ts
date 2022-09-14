@@ -205,6 +205,10 @@ export interface APIConnection {
 	 */
 	show_activity: boolean;
 	/**
+	 * Whether this connection supports console voice transfer
+	 */
+	two_way_link: boolean;
+	/**
 	 * Visibility of this connection
 	 *
 	 * See https://discord.com/developers/docs/resources/user#connection-object-visibility-types
