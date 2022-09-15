@@ -626,7 +626,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Integration type
 	 */
-	type: APIGuildIntegrationType;
+	type: GuildIntegrationType;
 	/**
 	 * Is this integration enabled
 	 */
@@ -709,7 +709,7 @@ export interface APIGuildIntegration {
 	scopes?: OAuth2Scopes[];
 }
 
-export enum APIGuildIntegrationType {
+export enum GuildIntegrationType {
 	Twitch = "twitch",
 	YouTube = "youtube",
 	Discord = "discord",
