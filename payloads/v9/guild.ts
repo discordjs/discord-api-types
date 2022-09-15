@@ -709,7 +709,11 @@ export interface APIGuildIntegration {
 	scopes?: OAuth2Scopes[];
 }
 
-export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
+export enum APIGuildIntegrationType {
+	Twitch = "twitch",
+	YouTube = "youtube",
+	Discord = "discord",
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
