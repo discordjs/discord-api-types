@@ -1,3 +1,11 @@
+## [0.37.10](https://github.com/discordjs/discord-api-types/compare/0.37.9...0.37.10) (2022-09-15)
+
+### Features
+
+- add `RESTRateLimit` ([#585](https://github.com/discordjs/discord-api-types/issues/585)) ([f4d3f4d](https://github.com/discordjs/discord-api-types/commit/f4d3f4d5b1c1b6e42c2a8f8184f43d67b586c8c1))
+- **APIConnection:** add `two_way_link` ([#546](https://github.com/discordjs/discord-api-types/issues/546)) ([d452f63](https://github.com/discordjs/discord-api-types/commit/d452f6346bd4953a8d777f3818797c4285b1b842))
+- **APIGuild:** document afk timeout values ([#570](https://github.com/discordjs/discord-api-types/issues/570)) ([32f5a7b](https://github.com/discordjs/discord-api-types/commit/32f5a7b9814b69da7fc3772ec1f0307d39cda087))
+
 ## [0.37.9](https://github.com/discordjs/discord-api-types/compare/0.37.8...0.37.9) (2022-09-12)
 
 ### Features
