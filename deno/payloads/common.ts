@@ -78,3 +78,21 @@ export interface RESTErrorGroupWrapper {
 }
 
 export type RESTErrorData = RESTErrorGroupWrapper | RESTErrorFieldInformation | { [k: string]: RESTErrorData } | string;
+
+/**
+ * https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure
+ */
+export interface RESTRateLimit {
+	/**
+	 * A value indicating if you are being globally rate limited or not
+	 */
+	global: boolean;
+	/**
+	 * A message saying you are being rate limited.
+	 */
+	message: string;
+	/**
+	 * The number of seconds to wait before submitting another request.
+	 */
+	retry_after: number;
+}
