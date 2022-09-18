@@ -276,6 +276,20 @@ export interface APIGuildForumDefaultReactionEmoji {
 	emoji_name: string | null;
 }
 
+/**
+ * https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-modes
+ */
+export enum SortOrderMode {
+	/**
+	 * Sort forum posts by activity
+	 */
+	RecentActivity,
+	/**
+	 * Sort forum posts by creation time (from most recent to oldest)
+	 */
+	CreationTime,
+}
+
 export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
 	/**
 	 * The set of tags that can be used in a forum channel
@@ -290,6 +304,10 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 * The emoji to show in the add reaction button on a thread in a forum channel
 	 */
 	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
+	/**
+	 * The default sort order mode used to order posts in a forum channel
+	 */
+	default_sort_order: SortOrderMode;
 }
 
 /**
