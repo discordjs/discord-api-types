@@ -53,7 +53,6 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		| 'rtc_region'
 		| 'video_quality_mode'
 		| 'flags'
-		| 'default_sort_order'
 	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
