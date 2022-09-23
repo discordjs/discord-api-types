@@ -10,7 +10,7 @@ import type {
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
  */
 export interface APIUserApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
@@ -27,7 +27,7 @@ export interface APIUserApplicationCommandInteractionDataResolved {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
  */
 export interface APIMessageApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
@@ -43,7 +43,7 @@ export interface APIMessageApplicationCommandInteractionDataResolved {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
  */
 export type APIContextMenuInteractionData =
 	| APIUserApplicationCommandInteractionData

@@ -418,6 +418,10 @@ export interface GatewayReadyDispatchData {
 	 */
 	session_id: string;
 	/**
+	 * Gateway url for resuming connections
+	 */
+	resume_gateway_url: string;
+	/**
 	 * The shard information associated with this session, if sent when identifying
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#sharding
@@ -656,6 +660,10 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
 	 */
 	large: boolean;
+	/**
+	 * `true` if this guild is unavailable due to an outage
+	 */
+	unavailable?: boolean;
 	/**
 	 * Total number of members in this guild
 	 *
@@ -940,11 +948,11 @@ export interface GatewayGuildMembersChunkDispatchData {
 	/**
 	 * The chunk index in the expected chunks for this response (`0 <= chunk_index < chunk_count`)
 	 */
-	chunk_index?: number;
+	chunk_index: number;
 	/**
 	 * The total number of expected chunks for this response
 	 */
-	chunk_count?: number;
+	chunk_count: number;
 	/**
 	 * If passing an invalid id to `REQUEST_GUILD_MEMBERS`, it will be returned here
 	 */
@@ -1770,31 +1778,15 @@ export interface GatewayRequestGuildMembers {
 	d: GatewayRequestGuildMembersData;
 }
 
-/**
- * https://discord.com/developers/docs/topics/gateway#request-guild-members
- */
-export interface GatewayRequestGuildMembersData {
+export interface GatewayRequestGuildMembersDataBase {
 	/**
 	 * ID of the guild to get members for
 	 */
 	guild_id: Snowflake;
 	/**
-	 * String that username starts with, or an empty string to return all members
-	 */
-	query?: string;
-	/**
-	 * Maximum number of members to send matching the `query`;
-	 * a limit of `0` can be used with an empty string `query` to return all members
-	 */
-	limit: number;
-	/**
 	 * Used to specify if we want the presences of the matched members
 	 */
 	presences?: boolean;
-	/**
-	 * Used to specify which users you wish to fetch
-	 */
-	user_ids?: Snowflake | Snowflake[];
 	/**
 	 * Nonce to identify the Guild Members Chunk response
 	 *
@@ -1804,6 +1796,32 @@ export interface GatewayRequestGuildMembersData {
 	 */
 	nonce?: string;
 }
+
+export interface GatewayRequestGuildMembersDataWithUserIds extends GatewayRequestGuildMembersDataBase {
+	/**
+	 * Used to specify which users you wish to fetch
+	 */
+	user_ids: Snowflake | Snowflake[];
+}
+
+export interface GatewayRequestGuildMembersDataWithQuery extends GatewayRequestGuildMembersDataBase {
+	/**
+	 * String that username starts with, or an empty string to return all members
+	 */
+	query: string;
+	/**
+	 * Maximum number of members to send matching the `query`;
+	 * a limit of `0` can be used with an empty string `query` to return all members
+	 */
+	limit: number;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#request-guild-members
+ */
+export type GatewayRequestGuildMembersData =
+	| GatewayRequestGuildMembersDataWithUserIds
+	| GatewayRequestGuildMembersDataWithQuery;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#update-voice-state

@@ -12,7 +12,7 @@ interface APIApplicationCommandNumberOptionBase
 	 */
 	min_value?: number;
 	/**
-	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 * If the option is an `INTEGER` or `NUMBER` type, the maximum value permitted.
 	 */
 	max_value?: number;
 }

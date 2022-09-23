@@ -101,10 +101,10 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfServerCategoriesReached = 30030,
 
 	GuildAlreadyHasTemplate = 30031,
-
-	MaximumThreadParticipants = 30033,
-
-	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
+	MaximumNumberOfApplicationCommandsReached,
+	MaximumThreadParticipantsReached,
+	MaximumDailyApplicationCommandCreatesReached,
+	MaximumNumberOfNonGuildMemberBansHasBeenExceeded,
 
 	MaximumNumberOfBanFetchesHasBeenReached = 30037,
 	MaximumNumberOfUncompletedGuildScheduledEventsReached,
@@ -128,10 +128,14 @@ export enum RESTJSONErrorCodes {
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
+	ConnectionHasBeenRevoked = 40012,
+
 	TargetUserIsNotConnectedToVoice = 40032,
 	ThisMessageWasAlreadyCrossposted,
 
 	ApplicationCommandWithThatNameAlreadyExists = 40041,
+
+	ApplicationInteractionFailedToSend = 40043,
 
 	InteractionHasAlreadyBeenAcknowledged = 40060,
 	TagNamesMustBeUnique,
@@ -200,6 +204,12 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50109,
 
+	OwnershipCannotBeMovedToABotUser = 50132,
+
+	FailedToResizeAssetBelowTheMinimumSize = 50138,
+
+	UploadedFileNotFound = 50146,
+
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
 	TwoFactorAuthenticationIsRequired = 60003,
@@ -207,6 +217,8 @@ export enum RESTJSONErrorCodes {
 	NoUsersWithDiscordTagExist = 80004,
 
 	ReactionWasBlocked = 90001,
+
+	ApplicationNotYetAvailable = 110001,
 
 	APIResourceOverloaded = 130000,
 
@@ -231,7 +243,12 @@ export enum RESTJSONErrorCodes {
 
 	FailedToCreateStageNeededForStageEvent = 180002,
 
+	MessageWasBlockedByAutomaticModeration = 200000,
+	TitleWasBlockedByAutomaticModeration,
+
 	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
+
+	MessageBlockedByHarmfulLinksFilter = 240000,
 }
 
 /**
