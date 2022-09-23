@@ -736,17 +736,17 @@ export type APIAuditLogChangeKeyLocation = AuditLogChangeData<'location', string
 export type APIAuditLogChangeKeyCommunicationDisabledUntil = AuditLogChangeData<'communication_disabled_until', string>;
 
 /**
- * Returned when a auto moderation rule's trigger type is changed (only in rule creation or deletion)
+ * Returned when an auto moderation rule's trigger type is changed (only in rule creation or deletion)
  */
 export type APIAuditLogChangeKeyTriggerType = AuditLogChangeData<'trigger_type', AutoModerationRuleTriggerType>;
 
 /**
- * Returned when a auto moderation rule's event type is changed
+ * Returned when an auto moderation rule's event type is changed
  */
 export type APIAuditLogChangeKeyEventType = AuditLogChangeData<'event_type', AutoModerationRuleEventType>;
 
 /**
- * Returned when a auto moderation rule's trigger metadata is changed
+ * Returned when an auto moderation rule's trigger metadata is changed
  */
 export type APIAuditLogChangeKeyTriggerMetadata = AuditLogChangeData<
 	'trigger_metadata',
@@ -754,22 +754,22 @@ export type APIAuditLogChangeKeyTriggerMetadata = AuditLogChangeData<
 >;
 
 /**
- * Returned when a auto moderation rule's actions is changed
+ * Returned when an auto moderation rule's actions is changed
  */
 export type APIAuditLogChangeKeyActions = AuditLogChangeData<'actions', APIAutoModerationAction[]>;
 
 /**
- * Returned when a auto moderation rule's enabled status is changed
+ * Returned when an auto moderation rule's enabled status is changed
  */
 export type APIAuditLogChangeKeyEnabled = AuditLogChangeData<'enabled', boolean>;
 
 /**
- * Returned when a auto moderation rule's exempt roles is changed
+ * Returned when an auto moderation rule's exempt roles is changed
  */
 export type APIAuditLogChangeKeyExemptRoles = AuditLogChangeData<'exempt_roles', Snowflake[]>;
 
 /**
- * Returned when a auto moderation rule's exempt channels is changed
+ * Returned when an auto moderation rule's exempt channels is changed
  */
 export type APIAuditLogChangeKeyExemptChannels = AuditLogChangeData<'exempt_channels', Snowflake[]>;
 

@@ -45,7 +45,9 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	 */
 	actions: APIAutoModerationAction[];
 	/**
-	 * Whether this rule is enabled (false by default)
+	 * Whether this rule is enabled
+	 *
+	 * @default false
 	 */
 	enabled?: boolean;
 	/**

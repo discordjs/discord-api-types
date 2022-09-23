@@ -494,7 +494,7 @@ export type GatewayAutoModerationActionExecutionDispatch = DataPayload<
 >;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#auto-moderation-action-execution-auto-moderation-action-execution-event-fields
+ * https://discord.com/developers/docs/topics/gateway-events#auto-moderation-action-execution
  */
 export interface GatewayAutoModerationActionExecutionDispatchData {
 	/**
