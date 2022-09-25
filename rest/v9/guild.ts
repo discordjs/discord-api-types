@@ -55,6 +55,7 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		| 'flags'
 		| 'default_reaction_emoji'
 		| 'available_tags'
+		| 'default_sort_order'
 	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
