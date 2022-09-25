@@ -118,9 +118,9 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	afk_channel_id: Snowflake | null;
 	/**
-	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
+	 * afk timeout in seconds
 	 */
-	afk_timeout: number;
+	afk_timeout: 60 | 300 | 900 | 1800 | 3600;
 	/**
 	 * `true` if the guild widget is enabled
 	 */

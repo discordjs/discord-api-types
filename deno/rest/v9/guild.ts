@@ -138,7 +138,7 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	afk_channel_id?: number | Snowflake | null;
 	/**
-	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
+	 * afk timeout in seconds
 	 */
 	afk_timeout?: number;
 	/**
@@ -238,9 +238,9 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	afk_channel_id?: Snowflake | null;
 	/**
-	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
+	 * afk timeout in seconds
 	 */
-	afk_timeout?: number;
+	afk_timeout?: 60 | 300 | 900 | 1800 | 3600;
 	/**
 	 * base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the guild has `ANIMATED_ICON` feature)
 	 *
