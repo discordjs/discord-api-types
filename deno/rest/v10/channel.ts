@@ -21,6 +21,7 @@ import type {
 	VideoQualityMode,
 	APIGuildForumTag,
 	APIGuildForumDefaultReactionEmoji,
+	SortOrderType,
 } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 
@@ -162,6 +163,12 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * Channel types: text, forum
 	 */
 	default_thread_rate_limit_per_user?: number | null;
+	/**
+	 * The default sort order type used to order posts in forum channels
+	 *
+	 * Channel types: forum
+	 */
+	default_sort_order?: SortOrderType | null;
 }>;
 
 /**
