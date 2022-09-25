@@ -108,7 +108,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 	/**
-	 * The channel topic (0-1024 characters)
+	 * The channel topic (0-4096 characters for forum channels, 0-1024 characters for all others)
 	 */
 	topic?: string | null;
 	/**
@@ -230,9 +230,67 @@ export interface APIThreadChannel
 	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
 	 */
 	total_message_sent?: number;
+	/**
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 */
+	applied_tags: Snowflake[];
 }
 
-export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
+/**
+ * https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure
+ */
+export interface APIGuildForumTag {
+	/**
+	 * The id of the tag
+	 */
+	id: Snowflake;
+	/**
+	 * The name of the tag (0-20 characters)
+	 */
+	name: string;
+	/**
+	 * Whether this tag can only be added to or removed from threads by a member with the `MANAGE_THREADS` permission
+	 */
+	moderated: boolean;
+	/**
+	 * The id of a guild's custom emoji
+	 */
+	emoji_id: Snowflake | null;
+	/**
+	 * The unicode character of the emoji
+	 */
+	emoji_name: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#default-reaction-object-default-reaction-structure
+ */
+export interface APIGuildForumDefaultReactionEmoji {
+	/**
+	 * The id of a guild's custom emoji
+	 */
+	emoji_id: Snowflake | null;
+	/**
+	 * The unicode character of the emoji
+	 */
+	emoji_name: string | null;
+}
+
+export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
+	/**
+	 * The set of tags that can be used in a forum channel
+	 */
+	available_tags: APIGuildForumTag[];
+	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
+	/**
+	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 */
+	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
@@ -1429,7 +1487,15 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
  */
 export enum ChannelFlags {
+	/**
+	 * This thread is pinned to the top of its parent forum channel
+	 */
 	Pinned = 1 << 1,
+	/**
+	 * Whether a tag is required to be specified when creating a thread in a forum channel.
+	 * Tags are specified in the `applied_tags` field
+	 */
+	RequireTag = 1 << 4,
 }
 
 /**

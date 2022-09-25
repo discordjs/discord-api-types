@@ -137,8 +137,13 @@ export enum RESTJSONErrorCodes {
 
 	ApplicationInteractionFailedToSend = 40043,
 
+	CannotSendAMessageInAForumChannel = 40058,
+
 	InteractionHasAlreadyBeenAcknowledged = 40060,
 	TagNamesMustBeUnique,
+
+	ThereAreNoTagsAvailableThatCanBeSetByNonModerators = 40066,
+	TagRequiredToCreateAForumPostInThisChannel,
 
 	MissingAccess = 50001,
 	InvalidAccountType,
@@ -246,7 +251,10 @@ export enum RESTJSONErrorCodes {
 	MessageWasBlockedByAutomaticModeration = 200000,
 	TitleWasBlockedByAutomaticModeration,
 
-	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
+	WebhooksPostedToForumChannelsMustHaveAThreadNameOrThreadId = 220001,
+	WebhooksPostedToForumChannelsCannotHaveBothAThreadNameAndThreadId,
+	WebhooksCanOnlyCreateThreadsInForumChannels,
+	WebhookServicesCannotBeUsedInForumChannels,
 
 	MessageBlockedByHarmfulLinksFilter = 240000,
 }
