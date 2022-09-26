@@ -609,6 +609,10 @@ export interface APIGuildMember {
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null;
+	/**
+	 * Total permissions of the member in the channel, including overwrites, returned when in the interaction object
+	 */
+	permissions?: string;
 }
 
 /**
