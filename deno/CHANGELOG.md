@@ -1,3 +1,10 @@
+## [0.37.11](https://github.com/discordjs/discord-api-types/compare/0.37.10...0.37.11) (2022-09-26)
+
+### Features
+
+- **APIGuildForumChannel:** add `default_sort_order` ([#589](https://github.com/discordjs/discord-api-types/issues/589)) ([143b003](https://github.com/discordjs/discord-api-types/commit/143b003fbe5a86eda225e9da1d0914d6e48cddfd))
+- **APIGuildForumChannel:** update and add missing features ([#575](https://github.com/discordjs/discord-api-types/issues/575)) ([0f118d3](https://github.com/discordjs/discord-api-types/commit/0f118d382f94151b1c9be42620520c91b20a05f6))
+
 ## [0.37.10](https://github.com/discordjs/discord-api-types/compare/0.37.9...0.37.10) (2022-09-15)
 
 ### Features
