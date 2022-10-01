@@ -198,12 +198,32 @@ export enum AuditLogEvent {
 	AutoModerationRuleUpdate,
 	AutoModerationRuleDelete,
 	AutoModerationBlockMessage,
+	AutoModerationFlagToChannel,
+	AutoModerationUserCommunicationDisabled,
 }
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
  */
 export interface APIAuditLogOptions {
+	/**
+	 * Name of the Auto Moderation rule that was triggered
+	 *
+	 * Present from:
+	 * - AUTO_MODERATION_BLOCK_MESSAGE
+	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
+	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 */
+	auto_moderation_rule_name?: string;
+	/**
+	 * Trigger type of the Auto Moderation rule that was triggered
+	 *
+	 * Present from:
+	 * - AUTO_MODERATION_BLOCK_MESSAGE
+	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
+	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 */
+	auto_moderation_rule_trigger_type?: string;
 	/**
 	 * Number of days after which inactive members were kicked
 	 *
@@ -230,6 +250,9 @@ export interface APIAuditLogOptions {
 	 * - STAGE_INSTANCE_CREATE
 	 * - STAGE_INSTANCE_UPDATE
 	 * - STAGE_INSTANCE_DELETE
+	 * - AUTO_MODERATION_BLOCK_MESSAGE
+	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
+	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
 	 */
 	channel_id?: Snowflake;
 

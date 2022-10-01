@@ -81,14 +81,22 @@ export enum AutoModerationRuleTriggerType {
  */
 export interface APIAutoModerationRuleTriggerMetadata {
 	/**
-	 * Substrings which will be searched for in content
+	 * Substrings which will be searched for in content (Maximum of 1000)
 	 *
-	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched.
+	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 30 characters or less
 	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
 	 */
 	keyword_filter?: string[];
+	/**
+	 * Regular expression patterns which will be matched against content (Maximum of 10)
+	 *
+	 * Only Rust flavored regex is currently supported
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
+	 */
+	regex_patterns?: string[];
 	/**
 	 * The internally pre-defined wordsets which will be searched for in content
 	 *
@@ -96,14 +104,14 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 */
 	presets?: AutoModerationRuleKeywordPresetType[];
 	/**
-	 * Substrings which will be exempt from triggering the preset trigger type
+	 * Substrings which will be exempt from triggering the preset trigger type (Maximum of 1000)
 	 *
-	 * A allowed-word can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched.
+	 * A allowed-word can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 30 characters or less
 	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
 	 */
-	allow_list: string[];
+	allow_list?: string[];
 	/**
 	 * Total number of mentions (role & user) allowed per message (Maximum of 50)
 	 *
