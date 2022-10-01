@@ -178,8 +178,10 @@ export interface APIConnection {
 	name: string;
 	/**
 	 * The service of the connection
+	 *
+	 * See https://discord.com/developers/docs/resources/user#connection-object-services
 	 */
-	type: string;
+	type: ConnectionService;
 	/**
 	 * Whether the connection is revoked
 	 */
@@ -203,11 +205,35 @@ export interface APIConnection {
 	 */
 	show_activity: boolean;
 	/**
+	 * Whether this connection supports console voice transfer
+	 */
+	two_way_link: boolean;
+	/**
 	 * Visibility of this connection
 	 *
 	 * See https://discord.com/developers/docs/resources/user#connection-object-visibility-types
 	 */
 	visibility: ConnectionVisibility;
+}
+
+export enum ConnectionService {
+	BattleNet = 'battlenet',
+	eBay = 'ebay',
+	EpicGames = 'epicgames',
+	Facebook = 'facebook',
+	GitHub = 'github',
+	LeagueOfLegends = 'leagueoflegends',
+	PayPal = 'paypal',
+	PlayStationNetwork = 'playstation',
+	Reddit = 'reddit',
+	RiotGames = 'riotgames',
+	Spotify = 'spotify',
+	Skype = 'skype',
+	Steam = 'steam',
+	Twitch = 'twitch',
+	Twitter = 'twitter',
+	Xbox = 'xbox',
+	YouTube = 'youtube',
 }
 
 export enum ConnectionVisibility {

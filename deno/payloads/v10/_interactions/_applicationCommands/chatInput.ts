@@ -54,6 +54,7 @@ import type {
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 
 export * from './_chatInput/attachment.ts';
+export * from './_chatInput/base.ts';
 export * from './_chatInput/boolean.ts';
 export * from './_chatInput/channel.ts';
 export * from './_chatInput/integer.ts';
@@ -108,7 +109,7 @@ export type APIApplicationCommandInteractionDataBasicOption =
 	| APIApplicationCommandInteractionDataAttachmentOption;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
  */
 export interface APIChatInputApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {

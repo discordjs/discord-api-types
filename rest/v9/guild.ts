@@ -135,7 +135,7 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	afk_channel_id?: number | Snowflake | null;
 	/**
-	 * AFK timeout in seconds
+	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
 	afk_timeout?: number;
 	/**
@@ -235,7 +235,7 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 */
 	afk_channel_id?: Snowflake | null;
 	/**
-	 * AFK timeout in seconds
+	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
 	afk_timeout?: number;
 	/**
@@ -357,7 +357,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<
 export type RESTPatchAPIGuildChannelPositionsResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/guild#list-active-threads
+ * https://discord.com/developers/docs/resources/guild#list-active-guild-threads
  */
 export type RESTGetAPIGuildThreadsResult = Omit<APIThreadList, 'has_more'>;
 
@@ -573,8 +573,14 @@ export type RESTGetAPIGuildBanResult = APIBan;
 export type RESTPutAPIGuildBanJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
 	/**
 	 * Number of days to delete messages for (0-7)
+	 *
+	 * @deprecated use `delete_message_seconds` instead
 	 */
 	delete_message_days?: number;
+	/**
+	 * Number of seconds to delete messages for, between 0 and 604800 (7 days)
+	 */
+	delete_message_seconds?: number;
 	/**
 	 * Reason for the ban
 	 *
@@ -861,7 +867,7 @@ export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPos
 	/**
 	 * The id of the channel the user is currently in
 	 */
-	channel_id: Snowflake;
+	channel_id?: Snowflake;
 	/**
 	 * Toggles the user's suppress state
 	 */

@@ -190,6 +190,7 @@ const config = {
 						items: [
 							{ label: versions.length === 0 ? 'Development Time' : 'next 🚧', to: versions.length === 0 ? 'api' : 'api/next' },
 							...versions.map((version, i) => ({
+								activeBaseRegex: `api/(${version}/)${i === 0 ? '?' : ''}discord-api-types.*`,
 								label: version,
 								to: i === 0 ? 'api' : `api/${version}`
 							}))
@@ -252,13 +253,13 @@ const config = {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 				additionalLanguages: ['powershell', 'batch']
+			},
+			algolia: {
+				appId: 'TR1O0DBFL9',
+				apiKey: '6822440beca69053ab122881d75064dc',
+				indexName: 'discord-api-types',
+				contextualSearch: true
 			}
-			// algolia: {
-			// 	appId: 'TO_BE_DONE',
-			// 	apiKey: 'TO_BE_DONE',
-			// 	indexName: 'TO_BE_DONE',
-			// 	contextualSearch: false
-			// }
 		})
 };
 

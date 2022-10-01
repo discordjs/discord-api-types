@@ -4,6 +4,7 @@
 
 import type { APIEmoji } from './emoji.ts';
 import type { PresenceUpdateStatus } from './gateway.ts';
+import type { OAuth2Scopes } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
@@ -69,10 +70,6 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 	 * The vanity url code for the guild
 	 */
 	vanity_url_code?: string | null;
-	/**
-	 * `true` if this guild is unavailable due to an outage
-	 */
-	unavailable?: boolean;
 }
 
 /**
@@ -121,7 +118,7 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	afk_channel_id: Snowflake | null;
 	/**
-	 * afk timeout in seconds
+	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
 	afk_timeout: number;
 	/**
@@ -394,10 +391,6 @@ export enum GuildFeature {
 	 */
 	Banner = 'BANNER',
 	/**
-	 * Guild has access to use commerce features (i.e. create store channels)
-	 */
-	Commerce = 'COMMERCE',
-	/**
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	Community = 'COMMUNITY',
@@ -417,8 +410,14 @@ export enum GuildFeature {
 	 * Guild is a Student Hub
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 *
+	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
 	Hub = 'HUB',
+	/**
+	 * Guild has disabled invite usage, preventing users from joining
+	 */
+	InvitesDisabled = 'INVITES_DISABLED',
 	/**
 	 * Guild has access to set an invite splash background
 	 */
@@ -427,6 +426,8 @@ export enum GuildFeature {
 	 * Guild is in a Student Hub
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 *
+	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
 	LinkedToHub = 'LINKED_TO_HUB',
 	/**
@@ -706,6 +707,10 @@ export interface APIGuildIntegration {
 	 * **This field is not provided for `discord` bot integrations.**
 	 */
 	application?: APIGuildIntegrationApplication;
+	/**
+	 * The scopes the application has been authorized for
+	 */
+	scopes?: OAuth2Scopes[];
 }
 
 export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
@@ -777,7 +782,7 @@ export interface APIBan {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#guild-widget-object
  */
 export interface APIGuildWidget {
 	id: Snowflake;
@@ -789,7 +794,7 @@ export interface APIGuildWidget {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget
  */
 export interface APIGuildWidgetChannel {
 	id: Snowflake;
@@ -798,7 +803,7 @@ export interface APIGuildWidgetChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-example-get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget
  */
 export interface APIGuildWidgetMember {
 	id: string;
