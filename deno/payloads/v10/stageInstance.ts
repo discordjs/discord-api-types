@@ -1,4 +1,3 @@
-import type { APIGuildMember } from './guild.ts';
 import type { Snowflake } from '../../globals.ts';
 
 /**
@@ -43,35 +42,7 @@ export interface APIStageInstance {
  */
 export enum StageInstancePrivacyLevel {
 	/**
-	 * The stage instance is visible publicly, such as on stage discovery
-	 */
-	Public = 1,
-	/**
 	 * The stage instance is visible to only guild members
 	 */
-	GuildOnly,
-}
-
-/**
- * https://discord.com/developers/docs/resources/invite#invite-stage-instance-object-invite-stage-instance-structure
- */
-export interface APIInviteStageInstance {
-	/**
-	 * The topic of the stage instance (1-120 characters)
-	 */
-	topic: string;
-	/**
-	 * The number of users in the stage
-	 */
-	participant_count: number;
-	/**
-	 * The number of users speaking in the stage
-	 */
-	speaker_count: number;
-	/**
-	 * The members speaking in the stage
-	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-structure
-	 */
-	members: APIGuildMember[];
+	GuildOnly = 2,
 }
