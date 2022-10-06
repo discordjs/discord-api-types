@@ -51,7 +51,7 @@ export const FormattingPatterns = {
 	 * The `fullName` (possibly including `name`, `subcommandOrGroup` and `subcommand`) and `id` group properties are present on the `exec` result of this expression
 	 */
 	SlashCommand:
-		/<\/(?<fullName>(?<name>[\w-]{1,32})(?: (?<subcommandOrGroup>[\w-]{1,32}))?(?: (?<subcommand>[\w-]{1,32}))?):(?<id>\d{17,20})>/,
+		/<\/(?<fullName>(?<name>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32})(?: (?<subcommandOrGroup>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?(?: (?<subcommand>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?):(?<id>\d{17,20})>/u,
 	/**
 	 * Regular expression for matching a custom emoji, either static or animated
 	 *
