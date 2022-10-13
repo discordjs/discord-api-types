@@ -1306,13 +1306,29 @@ export enum ComponentType {
 	 */
 	Button,
 	/**
-	 * Select Menu component
+	 * Select menu for picking from defined options
 	 */
-	SelectMenu,
+	StringSelect,
 	/**
 	 * Text Input component
 	 */
 	TextInput,
+	/**
+	 * Select menu for users
+	 */
+	UserSelect,
+	/**
+	 * Select menu for roles
+	 */
+	RoleSelect,
+	/**
+	 * Select menu for users and roles
+	 */
+	MentionableSelect,
+	/**
+	 * Select menu for channels
+	 */
+	ChannelSelect,
 }
 
 /**
@@ -1404,15 +1420,26 @@ export enum TextInputStyle {
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
+export interface APISelectMenuComponent
+	extends APIBaseComponent<
+		| ComponentType.StringSelect
+		| ComponentType.UserSelect
+		| ComponentType.RoleSelect
+		| ComponentType.MentionableSelect
+		| ComponentType.ChannelSelect
+	> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
 	 */
 	custom_id: string;
 	/**
-	 * The choices in the select, max 25
+	 * Specified choices in a select menu (only required and available for StringSelect, max 25)
 	 */
-	options: APISelectMenuOption[];
+	options?: APISelectMenuOption[];
+	/**
+	 * List of channel types to include in the ChannelSelect component
+	 */
+	channel_types?: ChannelType[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 150 characters
 	 */
