@@ -1328,6 +1328,15 @@ export enum ComponentType {
 	 * Select menu for channels
 	 */
 	ChannelSelect,
+
+	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
+
+	/**
+	 * Select menu for picking from defined options
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#StringSelect}
+	 */
+	SelectMenu = 3,
 }
 
 /**
