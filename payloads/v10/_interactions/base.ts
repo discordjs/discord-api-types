@@ -156,3 +156,9 @@ export interface APIInteractionDataResolved {
 	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
 	attachments?: Record<Snowflake, APIAttachment>;
 }
+
+/**
+ * `users` and optional `members` from APIInteractionDataResolved, for user commands and user selects
+ */
+export type APIUserInteractionDataResolved = Required<Pick<APIInteractionDataResolved, 'users'>> &
+	Pick<APIInteractionDataResolved, 'members'>;

@@ -1,4 +1,9 @@
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper, APIInteractionDataResolved } from './base.ts';
+import type {
+	APIDMInteractionWrapper,
+	APIGuildInteractionWrapper,
+	APIInteractionDataResolved,
+	APIUserInteractionDataResolved,
+} from './base.ts';
 import type { Snowflake } from '../../../globals.ts';
 import type { ComponentType } from '../channel.ts';
 import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
@@ -59,7 +64,7 @@ export interface APIMessageStringSelectInteractionData
 export interface APIMessageUserSelectInteractionData
 	extends APIMessageComponentBaseInteractionData<ComponentType.UserSelect> {
 	values: Snowflake[];
-	resolved: Required<Pick<APIInteractionDataResolved, 'users'>>;
+	resolved: APIUserInteractionDataResolved;
 }
 
 export interface APIMessageRoleSelectInteractionData
@@ -71,7 +76,7 @@ export interface APIMessageRoleSelectInteractionData
 export interface APIMessageMentionableSelectInteractionData
 	extends APIMessageComponentBaseInteractionData<ComponentType.MentionableSelect> {
 	values: Snowflake[];
-	resolved: Pick<APIInteractionDataResolved, 'users' | 'roles'>;
+	resolved: Pick<APIInteractionDataResolved, 'users' | 'members' | 'roles'>;
 }
 
 export interface APIMessageChannelSelectInteractionData
