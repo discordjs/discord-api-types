@@ -141,7 +141,13 @@ export function isMessageComponentButtonInteraction(
 export function isMessageComponentSelectMenuInteraction(
 	interaction: APIMessageComponentInteraction,
 ): interaction is APIMessageComponentSelectMenuInteraction {
-	return interaction.data.component_type === ComponentType.SelectMenu;
+	return [
+		ComponentType.StringSelect,
+		ComponentType.UserSelect,
+		ComponentType.RoleSelect,
+		ComponentType.MentionableSelect,
+		ComponentType.ChannelSelect,
+	].includes(interaction.data.component_type);
 }
 
 // Application Commands
