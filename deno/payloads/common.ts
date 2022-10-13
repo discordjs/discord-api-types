@@ -49,6 +49,7 @@ export const PermissionFlagsBits = {
 	SendMessagesInThreads: 1n << 38n,
 	UseEmbeddedActivities: 1n << 39n,
 	ModerateMembers: 1n << 40n,
+	ViewCreatorMonetizationAnalytics: 1n << 41n,
 } as const;
 
 /**
