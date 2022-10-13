@@ -4,7 +4,6 @@ import type { APIMessage } from '../../channel.ts';
 import type { APIUser } from '../../user.ts';
 import type {
 	APIApplicationCommandInteractionWrapper,
-	APIInteractionDataResolvedGuildMember,
 	ApplicationCommandType,
 } from '../applicationCommands.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';

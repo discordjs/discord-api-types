@@ -1305,7 +1305,7 @@ export enum ComponentType {
 	 */
 	Button,
 	/**
-	 * Select menu for picking from defined options
+	 * Select menu for picking from defined text options
 	 */
 	StringSelect,
 	/**
@@ -1332,9 +1332,9 @@ export enum ComponentType {
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
 	/**
-	 * Select menu for picking from defined options
+	 * Select menu for picking from defined text options
 	 *
-	 * @deprecated This is the old name for {@apilink ChannelType#StringSelect}
+	 * @deprecated This is the old name for {@apilink ComponentType#StringSelect}
 	 */
 	SelectMenu = 3,
 }
