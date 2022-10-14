@@ -90,14 +90,6 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 */
 	keyword_filter?: string[];
 	/**
-	 * Regular expression patterns which will be matched against content (Maximum of 10)
-	 *
-	 * Only Rust flavored regex is currently supported
-	 *
-	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
-	 */
-	regex_patterns?: string[];
-	/**
 	 * The internally pre-defined wordsets which will be searched for in content
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
