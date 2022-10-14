@@ -1,3 +1,9 @@
+## [0.37.13](https://github.com/discordjs/discord-api-types/compare/0.37.12...0.37.13) (2022-10-14)
+
+### Features
+
+- **APIAutoModeration:** add support for auto moderation ([#418](https://github.com/discordjs/discord-api-types/issues/418)) ([b216f7a](https://github.com/discordjs/discord-api-types/commit/b216f7a8bee2c02fe0e75189fe31f95973bfbe2e))
+
 ## [0.37.12](https://github.com/discordjs/discord-api-types/compare/0.37.11...0.37.12) (2022-10-06)
 
 ## [0.37.11](https://github.com/discordjs/discord-api-types/compare/0.37.10...0.37.11) (2022-09-26)
