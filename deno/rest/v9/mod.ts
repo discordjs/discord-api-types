@@ -2,6 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 
 export * from '../common.ts';
 export * from './auditLog.ts';
+export * from './autoModeration.ts';
 export * from './channel.ts';
 export * from './emoji.ts';
 export * from './gateway.ts';
@@ -20,6 +21,25 @@ export * from './webhook.ts';
 export const APIVersion = '9';
 
 export const Routes = {
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/auto-moderation/rules`
+	 * - POST `/guilds/{guild.id}/auto-moderation/rules`
+	 */
+	guildAutoModerationRules(guildId: Snowflake) {
+		return `/guilds/${guildId}/auto-moderation/rules`;
+	},
+
+	/**
+	 * Routes for:
+	 * - GET    `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
+	 * - PATCH  `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
+	 * - DELETE `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
+	 */
+	guildAutoModerationRule(guildId: Snowflake, ruleId: Snowflake) {
+		return `/guilds/${guildId}/auto-moderation/rules/${ruleId}`;
+	},
+
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/audit-logs`

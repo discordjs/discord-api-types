@@ -2,6 +2,13 @@
  * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
+import type {
+	APIAutoModerationAction,
+	APIAutoModerationRule,
+	APIAutoModerationRuleTriggerMetadata,
+	AutoModerationRuleEventType,
+	AutoModerationRuleTriggerType,
+} from './autoModeration.ts';
 import type { APIChannel, APIOverwrite } from './channel.ts';
 import type {
 	APIGuildIntegration,
@@ -52,6 +59,12 @@ export interface APIAuditLog {
 	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object
 	 */
 	audit_log_entries: APIAuditLogEntry[];
+	/**
+	 * List of auto moderation rules referenced in the audit log
+	 *
+	 * See https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object
+	 */
+	auto_moderation_rules: APIAutoModerationRule[];
 	/**
 	 * Partial integration objects
 	 *
@@ -180,12 +193,37 @@ export enum AuditLogEvent {
 	ThreadDelete,
 
 	ApplicationCommandPermissionUpdate = 121,
+
+	AutoModerationRuleCreate = 140,
+	AutoModerationRuleUpdate,
+	AutoModerationRuleDelete,
+	AutoModerationBlockMessage,
+	AutoModerationFlagToChannel,
+	AutoModerationUserCommunicationDisabled,
 }
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
  */
 export interface APIAuditLogOptions {
+	/**
+	 * Name of the Auto Moderation rule that was triggered
+	 *
+	 * Present from:
+	 * - AUTO_MODERATION_BLOCK_MESSAGE
+	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
+	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 */
+	auto_moderation_rule_name?: string;
+	/**
+	 * Trigger type of the Auto Moderation rule that was triggered
+	 *
+	 * Present from:
+	 * - AUTO_MODERATION_BLOCK_MESSAGE
+	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
+	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 */
+	auto_moderation_rule_trigger_type?: string;
 	/**
 	 * Number of days after which inactive members were kicked
 	 *
@@ -212,6 +250,9 @@ export interface APIAuditLogOptions {
 	 * - STAGE_INSTANCE_CREATE
 	 * - STAGE_INSTANCE_UPDATE
 	 * - STAGE_INSTANCE_DELETE
+	 * - AUTO_MODERATION_BLOCK_MESSAGE
+	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
+	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
 	 */
 	channel_id?: Snowflake;
 
@@ -347,7 +388,14 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyEntityType
 	| APIAuditLogChangeKeyStatus
 	| APIAuditLogChangeKeyLocation
-	| APIAuditLogChangeKeyCommunicationDisabledUntil;
+	| APIAuditLogChangeKeyCommunicationDisabledUntil
+	| APIAuditLogChangeKeyTriggerType
+	| APIAuditLogChangeKeyEventType
+	| APIAuditLogChangeKeyTriggerMetadata
+	| APIAuditLogChangeKeyActions
+	| APIAuditLogChangeKeyEnabled
+	| APIAuditLogChangeKeyExemptRoles
+	| APIAuditLogChangeKeyExemptChannels;
 
 /**
  * Returned when an entity's name is changed
@@ -709,6 +757,44 @@ export type APIAuditLogChangeKeyLocation = AuditLogChangeData<'location', string
  * Returned when a user's timeout is changed
  */
 export type APIAuditLogChangeKeyCommunicationDisabledUntil = AuditLogChangeData<'communication_disabled_until', string>;
+
+/**
+ * Returned when an auto moderation rule's trigger type is changed (only in rule creation or deletion)
+ */
+export type APIAuditLogChangeKeyTriggerType = AuditLogChangeData<'trigger_type', AutoModerationRuleTriggerType>;
+
+/**
+ * Returned when an auto moderation rule's event type is changed
+ */
+export type APIAuditLogChangeKeyEventType = AuditLogChangeData<'event_type', AutoModerationRuleEventType>;
+
+/**
+ * Returned when an auto moderation rule's trigger metadata is changed
+ */
+export type APIAuditLogChangeKeyTriggerMetadata = AuditLogChangeData<
+	'trigger_metadata',
+	APIAutoModerationRuleTriggerMetadata
+>;
+
+/**
+ * Returned when an auto moderation rule's actions is changed
+ */
+export type APIAuditLogChangeKeyActions = AuditLogChangeData<'actions', APIAutoModerationAction[]>;
+
+/**
+ * Returned when an auto moderation rule's enabled status is changed
+ */
+export type APIAuditLogChangeKeyEnabled = AuditLogChangeData<'enabled', boolean>;
+
+/**
+ * Returned when an auto moderation rule's exempt roles is changed
+ */
+export type APIAuditLogChangeKeyExemptRoles = AuditLogChangeData<'exempt_roles', Snowflake[]>;
+
+/**
+ * Returned when an auto moderation rule's exempt channels is changed
+ */
+export type APIAuditLogChangeKeyExemptChannels = AuditLogChangeData<'exempt_channels', Snowflake[]>;
 
 interface AuditLogChangeData<K extends string, D> {
 	key: K;
