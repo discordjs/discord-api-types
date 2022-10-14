@@ -223,7 +223,7 @@ export interface APIAuditLogOptions {
 	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
 	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
 	 */
-	auto_moderation_rule_trigger_type?: string;
+	auto_moderation_rule_trigger_type?: AuditLogRuleTriggerType;
 	/**
 	 * Number of days after which inactive members were kicked
 	 *
@@ -315,6 +315,8 @@ export enum AuditLogOptionsType {
 	Role = '0',
 	Member = '1',
 }
+
+export type AuditLogRuleTriggerType = `${AutoModerationRuleTriggerType}`;
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
