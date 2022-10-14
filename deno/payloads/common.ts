@@ -58,3 +58,41 @@ export const PermissionFlagsBits = {
 Object.freeze(PermissionFlagsBits);
 
 export type LocalizationMap = Partial<Record<LocaleString, string | null>>;
+
+/**
+ * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json
+ */
+export interface RESTError {
+	code: number;
+	message: string;
+	errors?: RESTErrorData;
+}
+
+export interface RESTErrorFieldInformation {
+	code: string;
+	message: string;
+}
+
+export interface RESTErrorGroupWrapper {
+	_errors: RESTErrorData[];
+}
+
+export type RESTErrorData = RESTErrorGroupWrapper | RESTErrorFieldInformation | { [k: string]: RESTErrorData } | string;
+
+/**
+ * https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure
+ */
+export interface RESTRateLimit {
+	/**
+	 * A value indicating if you are being globally rate limited or not
+	 */
+	global: boolean;
+	/**
+	 * A message saying you are being rate limited.
+	 */
+	message: string;
+	/**
+	 * The number of seconds to wait before submitting another request.
+	 */
+	retry_after: number;
+}

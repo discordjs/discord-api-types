@@ -102,9 +102,9 @@ export enum RESTJSONErrorCodes {
 
 	GuildAlreadyHasTemplate = 30031,
 	MaximumNumberOfApplicationCommandsReached,
-	MaximumThreadParticipants,
-
-	MaximumNumberOfNonGuildMemberBansHasBeenExceeded = 30035,
+	MaximumThreadParticipantsReached,
+	MaximumDailyApplicationCommandCreatesReached,
+	MaximumNumberOfNonGuildMemberBansHasBeenExceeded,
 
 	MaximumNumberOfBanFetchesHasBeenReached = 30037,
 	MaximumNumberOfUncompletedGuildScheduledEventsReached,
@@ -128,13 +128,22 @@ export enum RESTJSONErrorCodes {
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
+	ConnectionHasBeenRevoked = 40012,
+
 	TargetUserIsNotConnectedToVoice = 40032,
 	ThisMessageWasAlreadyCrossposted,
 
 	ApplicationCommandWithThatNameAlreadyExists = 40041,
 
+	ApplicationInteractionFailedToSend = 40043,
+
+	CannotSendAMessageInAForumChannel = 40058,
+
 	InteractionHasAlreadyBeenAcknowledged = 40060,
 	TagNamesMustBeUnique,
+
+	ThereAreNoTagsAvailableThatCanBeSetByNonModerators = 40066,
+	TagRequiredToCreateAForumPostInThisChannel,
 
 	MissingAccess = 50001,
 	InvalidAccountType,
@@ -200,6 +209,10 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50109,
 
+	OwnershipCannotBeMovedToABotUser = 50132,
+
+	FailedToResizeAssetBelowTheMinimumSize = 50138,
+
 	UploadedFileNotFound = 50146,
 
 	YouDoNotHavePermissionToSendThisSticker = 50600,
@@ -209,6 +222,8 @@ export enum RESTJSONErrorCodes {
 	NoUsersWithDiscordTagExist = 80004,
 
 	ReactionWasBlocked = 90001,
+
+	ApplicationNotYetAvailable = 110001,
 
 	APIResourceOverloaded = 130000,
 
@@ -233,7 +248,15 @@ export enum RESTJSONErrorCodes {
 
 	FailedToCreateStageNeededForStageEvent = 180002,
 
-	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
+	MessageWasBlockedByAutomaticModeration = 200000,
+	TitleWasBlockedByAutomaticModeration,
+
+	WebhooksPostedToForumChannelsMustHaveAThreadNameOrThreadId = 220001,
+	WebhooksPostedToForumChannelsCannotHaveBothAThreadNameAndThreadId,
+	WebhooksCanOnlyCreateThreadsInForumChannels,
+	WebhookServicesCannotBeUsedInForumChannels,
+
+	MessageBlockedByHarmfulLinksFilter = 240000,
 }
 
 /**

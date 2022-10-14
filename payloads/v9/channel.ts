@@ -39,27 +39,34 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 	flags?: ChannelFlags;
 }
 
-// TODO: update when text in voice is released
 export type TextChannelType =
 	| ChannelType.DM
 	| ChannelType.GroupDM
-	| ChannelType.GuildNews
-	| ChannelType.GuildPublicThread
-	| ChannelType.GuildPrivateThread
-	| ChannelType.GuildNewsThread
+	| ChannelType.GuildAnnouncement
+	| ChannelType.PublicThread
+	| ChannelType.PrivateThread
+	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
-	| ChannelType.GuildForum;
+	| ChannelType.GuildForum
+	| ChannelType.GuildVoice;
 
-export type GuildChannelType = Exclude<
-	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildNews,
-	ChannelType.DM | ChannelType.GroupDM
->;
+export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * The id of the last message sent in this channel (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
+	 *
+	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
+	 */
+	rate_limit_per_user?: number;
 }
 
 export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
@@ -111,23 +118,11 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	last_pin_timestamp?: string | null;
 }
 
-export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildText> {
-	/**
-	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 *
-	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
-	 *
-	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
-	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
-	 */
-	rate_limit_per_user?: number;
-}
-
-export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
+export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
+export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
-export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
+export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChannel<T> {
 	/**
 	 * The bitrate (in bits) of the voice channel
 	 */
@@ -142,6 +137,11 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	rtc_region?: string | null;
+}
+
+export interface APIGuildVoiceChannel
+	extends APIVoiceChannelBase<ChannelType.GuildVoice>,
+		APITextBasedChannel<ChannelType.GuildVoice> {
 	/**
 	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
@@ -150,7 +150,9 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	video_quality_mode?: VideoQualityMode;
 }
 
-interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+export type APIGuildStageVoiceChannel = APIVoiceChannelBase<ChannelType.GuildStageVoice>;
+
+export interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBasedChannel<T>, 'rate_limit_per_user'> {
 	/**
 	 * The recipients of the DM
 	 *
@@ -185,9 +187,7 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 }
 
 export interface APIThreadChannel
-	extends APIGuildChannel<
-		ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread | ChannelType.GuildNewsThread
-	> {
+	extends APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -197,7 +197,9 @@ export interface APIThreadChannel
 	 */
 	thread_metadata?: APIThreadMetadata;
 	/**
-	 * The approximate message count of the thread, does not count above 50 even if there are more messages
+	 * Number of messages (not including the initial message or deleted messages) in a thread
+	 *
+	 * If the thread was created before July 1, 2022, it stops counting at 50 messages
 	 */
 	message_count?: number;
 	/**
@@ -222,9 +224,91 @@ export interface APIThreadChannel
 	 * The id of the last message sent in this thread (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * Number of messages ever sent in a thread
+	 *
+	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
+	 */
+	total_message_sent?: number;
+	/**
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 */
+	applied_tags: Snowflake[];
 }
 
-export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
+/**
+ * https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure
+ */
+export interface APIGuildForumTag {
+	/**
+	 * The id of the tag
+	 */
+	id: Snowflake;
+	/**
+	 * The name of the tag (0-20 characters)
+	 */
+	name: string;
+	/**
+	 * Whether this tag can only be added to or removed from threads by a member with the `MANAGE_THREADS` permission
+	 */
+	moderated: boolean;
+	/**
+	 * The id of a guild's custom emoji
+	 */
+	emoji_id: Snowflake | null;
+	/**
+	 * The unicode character of the emoji
+	 */
+	emoji_name: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#default-reaction-object-default-reaction-structure
+ */
+export interface APIGuildForumDefaultReactionEmoji {
+	/**
+	 * The id of a guild's custom emoji
+	 */
+	emoji_id: Snowflake | null;
+	/**
+	 * The unicode character of the emoji
+	 */
+	emoji_name: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-types
+ */
+export enum SortOrderType {
+	/**
+	 * Sort forum posts by activity
+	 */
+	LatestActivity,
+	/**
+	 * Sort forum posts by creation time (from most recent to oldest)
+	 */
+	CreationDate,
+}
+
+export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
+	/**
+	 * The set of tags that can be used in a forum channel
+	 */
+	available_tags: APIGuildForumTag[];
+	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
+	/**
+	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 */
+	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
+	/**
+	 * The default sort order type used to order posts in forum channels
+	 */
+	default_sort_order: SortOrderType | null;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
@@ -234,7 +318,8 @@ export type APIChannel =
 	| APIDMChannel
 	| APITextChannel
 	| APINewsChannel
-	| APIVoiceChannel
+	| APIGuildVoiceChannel
+	| APIGuildStageVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
 	| APINewsChannel
@@ -271,19 +356,19 @@ export enum ChannelType {
 	 *
 	 * See https://support.discord.com/hc/en-us/articles/360032008192
 	 */
-	GuildNews,
+	GuildAnnouncement,
 	/**
-	 * A thread channel (public) within a Guild News channel
+	 * A temporary sub-channel within a Guild Announcement channel
 	 */
-	GuildNewsThread = 10,
+	AnnouncementThread = 10,
 	/**
-	 * A public thread channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text channel
 	 */
-	GuildPublicThread,
+	PublicThread,
 	/**
-	 * A private thread channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text channel that is only viewable by those invited and those with the Manage Threads permission
 	 */
-	GuildPrivateThread,
+	PrivateThread,
 	/**
 	 * A voice channel for hosting events with an audience
 	 *
@@ -300,6 +385,34 @@ export enum ChannelType {
 	 * A channel that can only contain threads
 	 */
 	GuildForum,
+
+	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS
+	/**
+	 * A channel that users can follow and crosspost into their own guild
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#GuildAnnouncement}
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/360032008192
+	 */
+	GuildNews = 5,
+	/**
+	 * A temporary sub-channel within a Guild Announcement channel
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#AnnouncementThread}
+	 */
+	GuildNewsThread = 10,
+	/**
+	 * A temporary sub-channel within a Guild Text channel
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#PublicThread}
+	 */
+	GuildPublicThread = 11,
+	/**
+	 * A temporary sub-channel within a Guild Text channel that is only viewable by those invited and those with the Manage Threads permission
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#PrivateThread}
+	 */
+	GuildPrivateThread = 12,
 }
 
 export enum VideoQualityMode {
@@ -336,6 +449,12 @@ export interface APIMessage {
 	author: APIUser;
 	/**
 	 * Contents of the message
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	content: string;
 	/**
@@ -386,12 +505,24 @@ export interface APIMessage {
 	 * Any attached files
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	attachments: APIAttachment[];
 	/**
 	 * Any embedded content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -430,7 +561,7 @@ export interface APIMessage {
 	/**
 	 * Sent with Rich Presence-related chat embeds
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-application-structure
+	 * See https://discord.com/developers/docs/resources/application#application-object
 	 */
 	application?: Partial<APIApplication>;
 	/**
@@ -475,6 +606,12 @@ export interface APIMessage {
 	thread?: APIChannel;
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 *
+	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
@@ -490,6 +627,12 @@ export interface APIMessage {
 	 * @deprecated Use `sticker_items` instead
 	 */
 	stickers?: APISticker[];
+	/**
+	 * A generally increasing integer (there may be gaps or duplicates) that represents the approximate position of the message in a thread
+	 *
+	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
+	 */
+	position?: number;
 }
 
 /**
@@ -519,6 +662,7 @@ export enum MessageType {
 	ThreadStarterMessage,
 	GuildInviteReminder,
 	ContextMenuCommand,
+	AutoModerationAction,
 }
 
 /**
@@ -875,6 +1019,12 @@ export enum EmbedType {
 	 * Link embed
 	 */
 	Link = 'link',
+	/**
+	 * Auto moderation alert embed
+	 *
+	 * @unstable This embed type is currently not documented by Discord, but it is returned in the auto moderation system messages.
+	 */
+	AutoModerationMessage = 'auto_moderation_message',
 }
 
 /**
@@ -1150,7 +1300,7 @@ export interface APIBaseComponent<T extends ComponentType> {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-types
+ * https://discord.com/developers/docs/interactions/message-components#component-object-component-types
  */
 export enum ComponentType {
 	/**
@@ -1361,7 +1511,15 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
  */
 export enum ChannelFlags {
+	/**
+	 * This thread is pinned to the top of its parent forum channel
+	 */
 	Pinned = 1 << 1,
+	/**
+	 * Whether a tag is required to be specified when creating a thread in a forum channel.
+	 * Tags are specified in the `applied_tags` field
+	 */
+	RequireTag = 1 << 4,
 }
 
 /**

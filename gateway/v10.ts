@@ -6,6 +6,8 @@ import type { Snowflake } from '../globals';
 import type { GatewayPresenceUpdate } from '../payloads/v10/gateway';
 import type {
 	APIApplication,
+	APIAutoModerationRule,
+	APIAutoModerationAction,
 	APIChannel,
 	APIEmoji,
 	APIGuild,
@@ -28,6 +30,7 @@ import type {
 	GatewayVoiceState,
 	InviteTargetType,
 	PresenceUpdateStatus,
+	AutoModerationRuleTriggerType,
 } from '../payloads/v10/index';
 import type { Nullable } from '../utils/internals';
 
@@ -190,6 +193,8 @@ export enum GatewayIntentBits {
 	DirectMessageTyping = 1 << 14,
 	MessageContent = 1 << 15,
 	GuildScheduledEvents = 1 << 16,
+	AutoModerationConfiguration = 1 << 20,
+	AutoModerationExecution = 1 << 21,
 }
 
 /**
@@ -252,6 +257,10 @@ export enum GatewayDispatchEvents {
 	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
 	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
 	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
+	AutoModerationRuleCreate = 'AUTO_MODERATION_RULE_CREATE',
+	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
+	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
+	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
 }
 
 export type GatewaySendPayload =
@@ -410,6 +419,10 @@ export interface GatewayReadyDispatchData {
 	 */
 	session_id: string;
 	/**
+	 * Gateway url for resuming connections
+	 */
+	resume_gateway_url: string;
+	/**
 	 * The shard information associated with this session, if sent when identifying
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway#sharding
@@ -427,6 +440,121 @@ export interface GatewayReadyDispatchData {
  * https://discord.com/developers/docs/topics/gateway#resumed
  */
 export type GatewayResumedDispatch = DataPayload<GatewayDispatchEvents.Resumed, never>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
+ */
+export type GatewayAutoModerationRuleModifyDispatch = DataPayload<
+	| GatewayDispatchEvents.AutoModerationRuleCreate
+	| GatewayDispatchEvents.AutoModerationRuleUpdate
+	| GatewayDispatchEvents.AutoModerationRuleDelete,
+	GatewayAutoModerationRuleModifyDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
+ */
+export type GatewayAutoModerationRuleModifyDispatchData = APIAutoModerationRule;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
+ */
+export type GatewayAutoModerationRuleCreateDispatch = GatewayAutoModerationRuleModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-create
+ */
+export type GatewayAutoModerationRuleCreateDispatchData = GatewayAutoModerationRuleModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
+ */
+export type GatewayAutoModerationRuleUpdateDispatch = GatewayAutoModerationRuleModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-update
+ */
+export type GatewayAutoModerationRuleUpdateDispatchData = GatewayAutoModerationRuleModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
+ */
+export type GatewayAutoModerationRuleDeleteDispatch = GatewayAutoModerationRuleModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-rule-delete
+ */
+export type GatewayAutoModerationRuleDeleteDispatchData = GatewayAutoModerationRuleModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#auto-moderation-action-execution
+ */
+export type GatewayAutoModerationActionExecutionDispatch = DataPayload<
+	GatewayDispatchEvents.AutoModerationActionExecution,
+	GatewayAutoModerationActionExecutionDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#auto-moderation-action-execution
+ */
+export interface GatewayAutoModerationActionExecutionDispatchData {
+	/**
+	 * The id of the guild in which action was executed
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The action which was executed
+	 */
+	action: APIAutoModerationAction;
+	/**
+	 * The id of the rule which action belongs to
+	 */
+	rule_id: Snowflake;
+	/**
+	 * The trigger type of rule which was triggered
+	 */
+	rule_trigger_type: AutoModerationRuleTriggerType;
+	/**
+	 * The id of the user which generated the content which triggered the rule
+	 */
+	user_id: Snowflake;
+	/**
+	 * The id of the channel in which user content was posted
+	 */
+	channel_id?: Snowflake;
+	/**
+	 * The id of any user message which content belongs to
+	 *
+	 * This field will not be present if message was blocked by AutoMod or content was not part of any message
+	 */
+	message_id?: Snowflake;
+	/**
+	 * The id of any system auto moderation messages posted as a result of this action
+	 *
+	 * This field will not be present if this event does not correspond to an action with type {@link AutoModerationActionType.SendAlertMessage}
+	 */
+	alert_system_message_id?: Snowflake;
+	/**
+	 * The user generated text content
+	 *
+	 * `MESSAGE_CONTENT` (`1 << 15`) gateway intent is required to receive non-empty values from this field
+	 */
+	content: string;
+	/**
+	 * The word or phrase configured in the rule that triggered the rule
+	 */
+	matched_keyword: string | null;
+	/**
+	 * The substring in content that triggered the rule
+	 *
+	 * `MESSAGE_CONTENT` (`1 << 15`) gateway intent is required to receive non-empty values from this field
+	 */
+	matched_content: string | null;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-create
@@ -533,6 +661,10 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway#guild-create) event**
 	 */
 	large: boolean;
+	/**
+	 * `true` if this guild is unavailable due to an outage
+	 */
+	unavailable?: boolean;
 	/**
 	 * Total number of members in this guild
 	 *
@@ -817,11 +949,11 @@ export interface GatewayGuildMembersChunkDispatchData {
 	/**
 	 * The chunk index in the expected chunks for this response (`0 <= chunk_index < chunk_count`)
 	 */
-	chunk_index?: number;
+	chunk_index: number;
 	/**
 	 * The total number of expected chunks for this response
 	 */
-	chunk_count?: number;
+	chunk_count: number;
 	/**
 	 * If passing an invalid id to `REQUEST_GUILD_MEMBERS`, it will be returned here
 	 */
@@ -1647,31 +1779,15 @@ export interface GatewayRequestGuildMembers {
 	d: GatewayRequestGuildMembersData;
 }
 
-/**
- * https://discord.com/developers/docs/topics/gateway#request-guild-members
- */
-export interface GatewayRequestGuildMembersData {
+export interface GatewayRequestGuildMembersDataBase {
 	/**
 	 * ID of the guild to get members for
 	 */
 	guild_id: Snowflake;
 	/**
-	 * String that username starts with, or an empty string to return all members
-	 */
-	query?: string;
-	/**
-	 * Maximum number of members to send matching the `query`;
-	 * a limit of `0` can be used with an empty string `query` to return all members
-	 */
-	limit: number;
-	/**
 	 * Used to specify if we want the presences of the matched members
 	 */
 	presences?: boolean;
-	/**
-	 * Used to specify which users you wish to fetch
-	 */
-	user_ids?: Snowflake | Snowflake[];
 	/**
 	 * Nonce to identify the Guild Members Chunk response
 	 *
@@ -1681,6 +1797,32 @@ export interface GatewayRequestGuildMembersData {
 	 */
 	nonce?: string;
 }
+
+export interface GatewayRequestGuildMembersDataWithUserIds extends GatewayRequestGuildMembersDataBase {
+	/**
+	 * Used to specify which users you wish to fetch
+	 */
+	user_ids: Snowflake | Snowflake[];
+}
+
+export interface GatewayRequestGuildMembersDataWithQuery extends GatewayRequestGuildMembersDataBase {
+	/**
+	 * String that username starts with, or an empty string to return all members
+	 */
+	query: string;
+	/**
+	 * Maximum number of members to send matching the `query`;
+	 * a limit of `0` can be used with an empty string `query` to return all members
+	 */
+	limit: number;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway#request-guild-members
+ */
+export type GatewayRequestGuildMembersData =
+	| GatewayRequestGuildMembersDataWithUserIds
+	| GatewayRequestGuildMembersDataWithQuery;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#update-voice-state

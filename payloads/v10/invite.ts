@@ -53,7 +53,7 @@ export interface APIInvite {
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
+	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
 	 */
 	target_type?: InviteTargetType;
 	/**
@@ -65,7 +65,7 @@ export interface APIInvite {
 	/**
 	 * The embedded application to open for this voice channel embedded application invite
 	 *
-	 * See https://discord.com/developers/docs/topics/oauth2#application
+	 * See https://discord.com/developers/docs/resources/application#application-object
 	 */
 	target_application?: Partial<APIApplication>;
 	/**

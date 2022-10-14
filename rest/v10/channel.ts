@@ -19,6 +19,9 @@ import type {
 	OverwriteType,
 	ThreadAutoArchiveDuration,
 	VideoQualityMode,
+	APIGuildForumTag,
+	APIGuildForumDefaultReactionEmoji,
+	SortOrderType,
 } from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 
@@ -48,7 +51,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 *
 	 * Channel types: text, news
 	 */
-	type?: ChannelType.GuildNews | ChannelType.GuildText;
+	type?: ChannelType.GuildAnnouncement | ChannelType.GuildText;
 	/**
 	 * The position of the channel in the left-hand listing
 	 *
@@ -56,15 +59,15 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 */
 	position?: number | null;
 	/**
-	 * 0-1024 character channel topic
+	 * 0-1024 character channel topic (0-4096 characters for forum channels)
 	 *
-	 * Channel types: text, news
+	 * Channel types: text, news, forum
 	 */
 	topic?: string | null;
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, voice, news
+	 * Channel types: text, voice, news, forum
 	 */
 	nsfw?: boolean | null;
 	/**
@@ -72,7 +75,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`,
 	 * are unaffected
 	 *
-	 * Channel types: text, newsThread, publicThread, privateThread
+	 * Channel types: text, newsThread, publicThread, privateThread, forum
 	 */
 	rate_limit_per_user?: number | null;
 	/**
@@ -141,6 +144,31 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * Channel types: privateThread
 	 */
 	invitable?: boolean;
+	/**
+	 * The set of tags that can be used in a forum channel
+	 *
+	 * Channel types: forum
+	 */
+	available_tags?: APIGuildForumTag[];
+	/**
+	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 *
+	 * Channel types: forum
+	 */
+	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji;
+	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * This field is copied to the thread at creation time and does not live update
+	 *
+	 * Channel types: text, forum
+	 */
+	default_thread_rate_limit_per_user?: number | null;
+	/**
+	 * The default sort order type used to order posts in forum channels
+	 *
+	 * Channel types: forum
+	 */
+	default_sort_order?: SortOrderType | null;
 }>;
 
 /**
@@ -589,6 +617,10 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 	 * First message in the forum thread
 	 */
 	message: RESTPostAPIChannelMessageJSONBody;
+	/**
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 */
+	applied_tags?: Snowflake[];
 };
 
 /**
@@ -619,9 +651,9 @@ export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThread
 		 *
 		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
 		 *
-		 * @default ChannelType.GuildPrivateThread
+		 * @default ChannelType.PrivateThread
 		 */
-		type?: ChannelType.GuildNewsThread | ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread;
+		type?: ChannelType.AnnouncementThread | ChannelType.PublicThread | ChannelType.PrivateThread;
 		/**
 		 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
 		 */
@@ -665,4 +697,9 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 /**
  * https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
  */
-export type RESTGetAPIChannelUsersThreadsArchivedResult = APIThreadList;
+export interface RESTGetAPIChannelUsersThreadsArchivedResult extends APIThreadList {
+	/**
+	 * Whether there are potentially additional threads
+	 */
+	has_more: boolean;
+}

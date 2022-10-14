@@ -46,6 +46,13 @@ export const FormattingPatterns = {
 	 */
 	Role: /<@&(?<id>\d{17,20})>/,
 	/**
+	 * Regular expression for matching a application command mention
+	 *
+	 * The `fullName` (possibly including `name`, `subcommandOrGroup` and `subcommand`) and `id` group properties are present on the `exec` result of this expression
+	 */
+	SlashCommand:
+		/<\/(?<fullName>(?<name>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32})(?: (?<subcommandOrGroup>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?(?: (?<subcommand>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?):(?<id>\d{17,20})>/u,
+	/**
 	 * Regular expression for matching a custom emoji, either static or animated
 	 *
 	 * The `animated`, `name` and `id` group properties are present on the `exec` result of this expression
