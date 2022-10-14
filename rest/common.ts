@@ -179,6 +179,8 @@ export enum RESTJSONErrorCodes {
 	InvalidFormBodyOrContentType,
 	InviteAcceptedToGuildWithoutTheBotBeingIn,
 
+	InvalidActivityAction = 50039,
+
 	InvalidAPIVersion = 50041,
 
 	FileUploadedExceedsMaximumSize = 50045,
