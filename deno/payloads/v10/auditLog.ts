@@ -223,7 +223,7 @@ export interface APIAuditLogOptions {
 	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
 	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
 	 */
-	auto_moderation_rule_trigger_type?: AutoModerationRuleTriggerType;
+	auto_moderation_rule_trigger_type?: AuditLogRuleTriggerType;
 	/**
 	 * Number of days after which inactive members were kicked
 	 *
