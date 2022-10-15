@@ -27,7 +27,7 @@ export const Routes = {
 	 * - POST `/guilds/{guild.id}/auto-moderation/rules`
 	 */
 	guildAutoModerationRules(guildId: Snowflake) {
-		return `/guilds/${guildId}/auto-moderation/rules`;
+		return `/guilds/${guildId}/auto-moderation/rules` as const;
 	},
 
 	/**
@@ -37,7 +37,7 @@ export const Routes = {
 	 * - DELETE `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
 	 */
 	guildAutoModerationRule(guildId: Snowflake, ruleId: Snowflake) {
-		return `/guilds/${guildId}/auto-moderation/rules/${ruleId}`;
+		return `/guilds/${guildId}/auto-moderation/rules/${ruleId}` as const;
 	},
 
 	/**

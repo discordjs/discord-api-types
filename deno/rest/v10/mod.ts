@@ -2,6 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 
 export * from '../common.ts';
 export * from './auditLog.ts';
+export * from './autoModeration.ts';
 export * from './channel.ts';
 export * from './emoji.ts';
 export * from './gateway.ts';
@@ -26,7 +27,7 @@ export const Routes = {
 	 * - POST `/guilds/{guild.id}/auto-moderation/rules`
 	 */
 	guildAutoModerationRules(guildId: Snowflake) {
-		return `/guilds/${guildId}/auto-moderation/rules`;
+		return `/guilds/${guildId}/auto-moderation/rules` as const;
 	},
 
 	/**
@@ -36,7 +37,7 @@ export const Routes = {
 	 * - DELETE `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
 	 */
 	guildAutoModerationRule(guildId: Snowflake, ruleId: Snowflake) {
-		return `/guilds/${guildId}/auto-moderation/rules/${ruleId}`;
+		return `/guilds/${guildId}/auto-moderation/rules/${ruleId}` as const;
 	},
 
 	/**
