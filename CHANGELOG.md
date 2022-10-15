@@ -1,3 +1,13 @@
+## [0.37.14](https://github.com/discordjs/discord-api-types/compare/0.37.13...0.37.14) (2022-10-15)
+
+### Bug Fixes
+
+- **APIAutoModeration:** export v10 json payloads and correct route types ([#608](https://github.com/discordjs/discord-api-types/issues/608)) ([bce0795](https://github.com/discordjs/discord-api-types/commit/bce07950fdfec7ae5e96ce3158f73cfb5db0a890))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50073` ([#594](https://github.com/discordjs/discord-api-types/issues/594)) ([70826ed](https://github.com/discordjs/discord-api-types/commit/70826ed76e4b4880fb7425a07d04921823954c95))
+
 ## [0.37.13](https://github.com/discordjs/discord-api-types/compare/0.37.12...0.37.13) (2022-10-14)
 
 ### Features
