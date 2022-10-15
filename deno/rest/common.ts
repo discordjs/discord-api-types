@@ -191,7 +191,8 @@ export enum RESTJSONErrorCodes {
 
 	PaymentSourceRequiredToRedeemGift = 50070,
 
-	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
+	CannotModifyASystemWebhook = 50073,
+	CannotDeleteChannelRequiredForCommunityGuilds,
 
 	CannotEditStickersWithinMessage = 50080,
 	InvalidStickerSent,
