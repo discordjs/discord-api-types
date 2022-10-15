@@ -62,11 +62,11 @@ body:
       description: |
         Which version of your runtime of choice are you using?
         If you are using TypeScript, please include its version (`npm list typescript`) as well.
-      placeholder: |
         For Node.js: Run `node --version` in your project directory and paste the output.
         For Deno: Run `deno --version` in your project directory and paste the output.
         For Bun: Run `bun --version` in your project directory and paste the output.
         For Other / Browser: Find the version in your runtime of choice and paste it here.
+      placeholder: v4.2.0
     validations:
       required: true
 
