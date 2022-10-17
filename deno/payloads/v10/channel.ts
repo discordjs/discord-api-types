@@ -362,7 +362,7 @@ export enum ChannelType {
 	 */
 	AnnouncementThread = 10,
 	/**
-	 * A temporary sub-channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text or Guild Forum channel
 	 */
 	PublicThread,
 	/**
