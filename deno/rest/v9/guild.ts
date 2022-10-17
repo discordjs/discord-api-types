@@ -901,6 +901,11 @@ export type RESTPatchAPIGuildVoiceStateUserJSONBody = AddUndefinedToPossiblyUnde
 }>;
 
 /**
+ * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
+ */
+export type RESTPatchAPIGuildVoiceStateUserResult = never;
+
+/**
  * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
  */
 export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;

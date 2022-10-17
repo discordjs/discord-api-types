@@ -19,6 +19,19 @@ import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartia
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
  */
+export interface RESTGetAPIApplicationCommandsQuery {
+	/**
+	 * Whether to include full localization dictionaries (name_localizations and description_localizations)
+	 * in the returned objects, instead of the name_localized and description_localized fields.
+	 *
+	 * @default false
+	 */
+	with_localizations?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
+ */
 export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
 
 /**
