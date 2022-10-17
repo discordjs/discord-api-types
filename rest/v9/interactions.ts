@@ -106,6 +106,11 @@ export type RESTPutAPIApplicationCommandsResult = APIApplicationCommand[];
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
  */
+export type RESTGetAPIApplicationGuildCommandsQuery = RESTGetAPIApplicationCommandsQuery;
+
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
+ */
 export type RESTGetAPIApplicationGuildCommandsResult = Omit<APIApplicationCommand, 'dm_permission'>[];
 
 /**
