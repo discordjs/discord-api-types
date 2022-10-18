@@ -1467,7 +1467,7 @@ export interface APIBaseSelectMenuComponent<
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APIStringSelectMenuComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
+export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
 	/**
 	 * Specified choices in a select menu; max 25
 	 */
@@ -1477,22 +1477,22 @@ export interface APIStringSelectMenuComponent extends APIBaseSelectMenuComponent
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIUserSelectMenuComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
+export type APIUserSelectComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIRoleSelectMenuComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
+export type APIRoleSelectComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIMentionableSelectMenuComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
+export type APIMentionableSelectComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APIChannelSelectMenuComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
+export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
 	/**
 	 * List of channel types to include in the ChannelSelect component
 	 */
@@ -1503,11 +1503,11 @@ export interface APIChannelSelectMenuComponent extends APIBaseSelectMenuComponen
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
 export type APISelectMenuComponent =
-	| APIStringSelectMenuComponent
-	| APIUserSelectMenuComponent
-	| APIRoleSelectMenuComponent
-	| APIMentionableSelectMenuComponent
-	| APIChannelSelectMenuComponent;
+	| APIStringSelectComponent
+	| APIUserSelectComponent
+	| APIRoleSelectComponent
+	| APIMentionableSelectComponent
+	| APIChannelSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
