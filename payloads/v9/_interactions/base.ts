@@ -158,7 +158,17 @@ export interface APIInteractionDataResolved {
 }
 
 /**
+ * @deprecated Renamed to `APIInteractionDataResolved`
+ */
+export type APIChatInputApplicationCommandInteractionDataResolved = APIInteractionDataResolved;
+
+/**
  * `users` and optional `members` from APIInteractionDataResolved, for user commands and user selects
  */
 export type APIUserInteractionDataResolved = Required<Pick<APIInteractionDataResolved, 'users'>> &
 	Pick<APIInteractionDataResolved, 'members'>;
+
+/**
+ * @deprecated Renamed to `APIUserInteractionDataResolved`
+ */
+export type APIUserApplicationCommandInteractionDataResolved = APIUserInteractionDataResolved;
