@@ -1313,13 +1313,38 @@ export enum ComponentType {
 	 */
 	Button,
 	/**
-	 * Select Menu component
+	 * Select menu for picking from defined text options
 	 */
-	SelectMenu,
+	StringSelect,
 	/**
 	 * Text Input component
 	 */
 	TextInput,
+	/**
+	 * Select menu for users
+	 */
+	UserSelect,
+	/**
+	 * Select menu for roles
+	 */
+	RoleSelect,
+	/**
+	 * Select menu for users and roles
+	 */
+	MentionableSelect,
+	/**
+	 * Select menu for channels
+	 */
+	ChannelSelect,
+
+	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
+
+	/**
+	 * Select menu for picking from defined text options
+	 *
+	 * @deprecated This is the old name for {@apilink ComponentType#StringSelect}
+	 */
+	SelectMenu = 3,
 }
 
 /**
@@ -1411,15 +1436,18 @@ export enum TextInputStyle {
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
+export interface APIBaseSelectMenuComponent<
+	T extends
+		| ComponentType.StringSelect
+		| ComponentType.UserSelect
+		| ComponentType.RoleSelect
+		| ComponentType.MentionableSelect
+		| ComponentType.ChannelSelect,
+> extends APIBaseComponent<T> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
 	 */
 	custom_id: string;
-	/**
-	 * The choices in the select, max 25
-	 */
-	options: APISelectMenuOption[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 150 characters
 	 */
@@ -1443,6 +1471,51 @@ export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.S
 	 */
 	disabled?: boolean;
 }
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
+	/**
+	 * Specified choices in a select menu; max 25
+	 */
+	options: APISelectMenuOption[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIUserSelectComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIRoleSelectComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIMentionableSelectComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
+	/**
+	 * List of channel types to include in the ChannelSelect component
+	 */
+	channel_types?: ChannelType[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APISelectMenuComponent =
+	| APIStringSelectComponent
+	| APIUserSelectComponent
+	| APIRoleSelectComponent
+	| APIMentionableSelectComponent
+	| APIChannelSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure

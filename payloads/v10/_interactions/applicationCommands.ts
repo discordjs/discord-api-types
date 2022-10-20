@@ -15,8 +15,6 @@ import type { APIBaseInteraction } from './base';
 import type { InteractionType } from './responses';
 import type { Permissions, Snowflake } from '../../../globals';
 import type { LocalizationMap } from '../../../v10';
-import type { APIPartialChannel, APIThreadMetadata } from '../channel';
-import type { APIGuildMember } from '../guild';
 
 export * from './_applicationCommands/chatInput';
 export * from './_applicationCommands/contextMenu';
@@ -106,22 +104,6 @@ export enum ApplicationCommandType {
 export type APIApplicationCommandInteractionData =
 	| APIChatInputApplicationCommandInteractionData
 	| APIContextMenuInteractionData;
-
-/**
- * https://discord.com/developers/docs/resources/channel#channel-object
- */
-export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
-	thread_metadata?: APIThreadMetadata | null;
-	permissions: Permissions;
-	parent_id?: string | null;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#guild-member-object
- */
-export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
-	permissions: Permissions;
-}
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object

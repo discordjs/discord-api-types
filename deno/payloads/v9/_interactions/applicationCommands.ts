@@ -15,8 +15,6 @@ import type { APIBaseInteraction } from './base.ts';
 import type { InteractionType } from './responses.ts';
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { LocalizationMap } from '../../../v9.ts';
-import type { APIPartialChannel, APIThreadMetadata } from '../channel.ts';
-import type { APIGuildMember } from '../guild.ts';
 
 export * from './_applicationCommands/chatInput.ts';
 export * from './_applicationCommands/contextMenu.ts';
@@ -106,22 +104,6 @@ export enum ApplicationCommandType {
 export type APIApplicationCommandInteractionData =
 	| APIChatInputApplicationCommandInteractionData
 	| APIContextMenuInteractionData;
-
-/**
- * https://discord.com/developers/docs/resources/channel#channel-object
- */
-export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
-	thread_metadata?: APIThreadMetadata | null;
-	permissions: Permissions;
-	parent_id?: string | null;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#guild-member-object
- */
-export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
-	permissions: Permissions;
-}
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
