@@ -159,9 +159,10 @@ export enum UserFlags {
  * https://discord.com/developers/docs/resources/user#user-object-premium-types
  */
 export enum UserPremiumType {
-	NitroBasic,
+	None,
 	NitroClassic,
 	Nitro,
+	NitroBasic,
 }
 
 /**
