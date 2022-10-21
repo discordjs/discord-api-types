@@ -141,6 +141,7 @@ export enum RESTJSONErrorCodes {
 
 	InteractionHasAlreadyBeenAcknowledged = 40060,
 	TagNamesMustBeUnique,
+	ServiceResourceIsBeingRateLimited,
 
 	ThereAreNoTagsAvailableThatCanBeSetByNonModerators = 40066,
 	TagRequiredToCreateAForumPostInThisChannel,
