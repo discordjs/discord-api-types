@@ -394,6 +394,10 @@ export enum GuildFeature {
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	Community = 'COMMUNITY',
+	/*
+	 * Guild has been set as a support server on the App Directory
+	 */
+	DeveloperSupportServer = 'DEVELOPER_SUPPORT_SERVER',
 	/**
 	 * Guild is able to be discovered in the directory
 	 */
