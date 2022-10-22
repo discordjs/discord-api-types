@@ -296,7 +296,7 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 */
 	available_tags: APIGuildForumTag[];
 	/**
-	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * The initial `rate_limit_per_user` to set on newly created threads in a forum channel.
 	 * This field is copied to the thread at creation time and does not live update
 	 */
 	default_thread_rate_limit_per_user?: number;
