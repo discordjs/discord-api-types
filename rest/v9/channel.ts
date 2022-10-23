@@ -160,7 +160,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
 	 *
-	 * Channel types: text, forum
+	 * Channel types: forum
 	 */
 	default_thread_rate_limit_per_user?: number | null;
 	/**
