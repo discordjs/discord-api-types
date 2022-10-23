@@ -279,6 +279,10 @@ export type GatewayReceivePayload =
 	| GatewayDispatchPayload;
 
 export type GatewayDispatchPayload =
+	| GatewayAutoModerationRuleModifyDispatch
+	| GatewayAutoModerationRuleCreateDispatch
+	| GatewayAutoModerationRuleDeleteDispatch
+	| GatewayAutoModerationActionExecutionDispatch
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
 	| GatewayGuildBanModifyDispatch
