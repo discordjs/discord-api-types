@@ -83,6 +83,7 @@ export type RESTErrorData = RESTErrorGroupWrapper | RESTErrorFieldInformation | 
  * https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure
  */
 export interface RESTRateLimit {
+	code?: number;
 	/**
 	 * A value indicating if you are being globally rate limited or not
 	 */
