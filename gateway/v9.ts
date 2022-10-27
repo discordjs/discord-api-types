@@ -6,6 +6,7 @@ import type { Snowflake } from '../globals';
 import type { GatewayPresenceUpdate } from '../payloads/v9/gateway';
 import type {
 	APIApplication,
+	APIApplicationCommandPermission,
 	APIAutoModerationRule,
 	APIAutoModerationAction,
 	APIChannel,
@@ -279,6 +280,11 @@ export type GatewayReceivePayload =
 	| GatewayDispatchPayload;
 
 export type GatewayDispatchPayload =
+	| GatewayApplicationCommandPermissionsUpdateDispatch
+	| GatewayAutoModerationRuleModifyDispatch
+	| GatewayAutoModerationRuleCreateDispatch
+	| GatewayAutoModerationRuleDeleteDispatch
+	| GatewayAutoModerationActionExecutionDispatch
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
 	| GatewayGuildBanModifyDispatch
@@ -553,6 +559,36 @@ export interface GatewayAutoModerationActionExecutionDispatchData {
 	 * `MESSAGE_CONTENT` (`1 << 15`) gateway intent is required to receive non-empty values from this field
 	 */
 	matched_content: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#application-command-permissions-update
+ */
+export type GatewayApplicationCommandPermissionsUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.ApplicationCommandPermissionsUpdate,
+	GatewayApplicationCommandPermissionsUpdateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#application-command-permissions-update
+ */
+export interface GatewayApplicationCommandPermissionsUpdateDispatchData {
+	/**
+	 * ID of the command or the application ID
+	 */
+	id: Snowflake;
+	/**
+	 * ID of the application the command belongs to
+	 */
+	application_id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
+	guild_id: Snowflake;
+	/**
+	 * Permissions for the command in the guild, max of 100
+	 */
+	permissions: APIApplicationCommandPermission[];
 }
 
 /**
