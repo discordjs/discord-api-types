@@ -152,7 +152,7 @@ export enum UserFlags {
 	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
-	Quarantined = Math.pow(2, 44),
+	Quarantined = 17592186044416, // This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
 }
 
 /**
