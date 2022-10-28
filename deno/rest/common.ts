@@ -226,7 +226,7 @@ export enum RESTJSONErrorCodes {
 
 	ReactionWasBlocked = 90001,
 
-	IneligibleForSuscription = 100053,
+	IneligibleForSubscription = 100053,
 
 	ApplicationNotYetAvailable = 110001,
 
