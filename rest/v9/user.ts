@@ -49,9 +49,9 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	 */
 	after?: Snowflake;
 	/**
-	 * Max number of guilds to return (1-100)
+	 * Max number of guilds to return (1-200)
 	 *
-	 * @default 100
+	 * @default 200
 	 */
 	limit?: number;
 }
