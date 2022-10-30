@@ -1,5 +1,7 @@
 /**
- * Types extracted from https://discord.com/developers/docs/topics/gateway
+ * Types extracted from
+ *  - https://discord.com/developers/docs/topics/gateway
+ *  - https://discord.com/developers/docs/topics/gateway-events
  */
 
 import type { APIChannel, APIThreadMember } from './channel.ts';
@@ -58,7 +60,7 @@ export interface APIGatewaySessionStartLimit {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#presence-update-presence-update-event-fields
+ * https://discord.com/developers/docs/topics/gateway-events#presence-update-presence-update-event-fields
  */
 export interface GatewayPresenceUpdate {
 	/**
@@ -81,13 +83,13 @@ export interface GatewayPresenceUpdate {
 	/**
 	 * User's current activities
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object
 	 */
 	activities?: GatewayActivity[];
 	/**
 	 * User's platform-dependent status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#client-status-object
+	 * See https://discord.com/developers/docs/topics/gateway-events#client-status-object
 	 */
 	client_status?: GatewayPresenceClientStatus;
 }
@@ -104,7 +106,7 @@ export enum PresenceUpdateStatus {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#client-status-object
+ * https://discord.com/developers/docs/topics/gateway-events#client-status-object
  */
 export interface GatewayPresenceClientStatus {
 	/**
@@ -122,7 +124,7 @@ export interface GatewayPresenceClientStatus {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-structure
  */
 export interface GatewayActivity {
 	/**
@@ -137,7 +139,7 @@ export interface GatewayActivity {
 	/**
 	 * Activity type
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-types
 	 */
 	type: ActivityType;
 	/**
@@ -177,7 +179,7 @@ export interface GatewayActivity {
 	/**
 	 * The emoji used for a custom status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji
 	 */
 	emoji?: GatewayActivityEmoji;
 	/**
@@ -187,19 +189,19 @@ export interface GatewayActivity {
 	/**
 	 * Information for the current party of the player
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
 	 */
 	party?: GatewayActivityParty;
 	/**
 	 * Images for the presence and their hover texts
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets
 	 */
 	assets?: GatewayActivityAssets;
 	/**
 	 * Secrets for Rich Presence joining and spectating
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets
 	 */
 	secrets?: GatewayActivitySecrets;
 	/**
@@ -209,7 +211,7 @@ export interface GatewayActivity {
 	/**
 	 * Activity flags `OR`d together, describes what the payload includes
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
@@ -236,7 +238,7 @@ export enum ActivityPlatform {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-types
  */
 export enum ActivityType {
 	/**
@@ -266,7 +268,7 @@ export enum ActivityType {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-timestamps
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-timestamps
  */
 export interface GatewayActivityTimestamps {
 	/**
@@ -280,12 +282,12 @@ export interface GatewayActivityTimestamps {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji
  */
 export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'id' | 'animated'>> & Pick<APIEmoji, 'name'>;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
  */
 export interface GatewayActivityParty {
 	/**
@@ -299,19 +301,19 @@ export interface GatewayActivityParty {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets
  */
 export type GatewayActivityAssets = Partial<
 	Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>
 >;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets
  */
 export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags
  */
 export enum ActivityFlags {
 	Instance = 1 << 0,
@@ -337,7 +339,7 @@ export interface GatewayActivityButton {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#thread-list-sync-thread-list-sync-event-fields
+ * https://discord.com/developers/docs/topics/gateway-events#thread-list-sync-thread-list-sync-event-fields
  */
 export interface GatewayThreadListSync {
 	/**
@@ -359,7 +361,7 @@ export interface GatewayThreadListSync {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#thread-members-update-thread-members-update-event-fields
+ * https://discord.com/developers/docs/topics/gateway-events#thread-members-update-thread-members-update-event-fields
  */
 export interface GatewayThreadMembersUpdate {
 	/**
