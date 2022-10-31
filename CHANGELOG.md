@@ -1,3 +1,11 @@
+## [0.37.16](https://github.com/discordjs/discord-api-types/compare/0.37.15...0.37.16) (2022-10-31)
+
+### Bug Fixes
+
+- **docs:** update gateway documentation links ([#628](https://github.com/discordjs/discord-api-types/issues/628)) ([7040d9b](https://github.com/discordjs/discord-api-types/commit/7040d9b33370a5d1d7d3c3cb10a25c0e5fb7d0b8))
+- export `RESTGetAPIVoiceRegionsResult` with the correct name ([#627](https://github.com/discordjs/discord-api-types/issues/627)) ([69aa717](https://github.com/discordjs/discord-api-types/commit/69aa7179028e0a011e6ba246cc1faa55f463c619))
+- **UserFlags:** hardcode the value of `Quarantined` ([#624](https://github.com/discordjs/discord-api-types/issues/624)) ([5091f6e](https://github.com/discordjs/discord-api-types/commit/5091f6e70774fd97ec7dd3ae3f500c3850f81d94))
+
 ## [0.37.15](https://github.com/discordjs/discord-api-types/compare/0.37.14...0.37.15) (2022-10-27)
 
 ### Bug Fixes
