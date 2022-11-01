@@ -235,6 +235,7 @@ export enum ConnectionService {
 	Spotify = 'spotify',
 	Skype = 'skype',
 	Steam = 'steam',
+	TikTok = 'tiktok',
 	Twitch = 'twitch',
 	Twitter = 'twitter',
 	Xbox = 'xbox',
