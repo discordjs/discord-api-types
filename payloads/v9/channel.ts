@@ -1589,6 +1589,10 @@ export enum ChannelFlags {
 	 */
 	Pinned = 1 << 1,
 	/**
+	 * This channel won't appear in a member's Active Now section of Home.
+	 */
+	ActiveChannelsRemoved = 1 << 2,
+	/**
 	 * Whether a tag is required to be specified when creating a thread in a forum channel.
 	 * Tags are specified in the `applied_tags` field
 	 */
