@@ -107,7 +107,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	/**
 	 * Regular expression patterns which will be matched against content (Maximum of 10)
 	 *
-	 * Only Rust flavored regex is currently supported
+	 * Only Rust flavored regex is currently supported (Maximum of 75 characters)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
 	 */
