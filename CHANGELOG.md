@@ -1,3 +1,9 @@
+## [0.37.17](https://github.com/discordjs/discord-api-types/compare/0.37.16...0.37.17) (2022-11-07)
+
+### Features
+
+- **APIAutoMod:** add support for regex matching ([#603](https://github.com/discordjs/discord-api-types/issues/603)) ([88a60f7](https://github.com/discordjs/discord-api-types/commit/88a60f78efb6498d861b33d54c809d9d1b39b3d7))
+
 ## [0.37.16](https://github.com/discordjs/discord-api-types/compare/0.37.15...0.37.16) (2022-10-31)
 
 ### Bug Fixes
