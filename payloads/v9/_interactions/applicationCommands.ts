@@ -84,6 +84,10 @@ export interface APIApplicationCommand {
 	 */
 	default_permission?: boolean;
 	/**
+	 * Indicates whether the command is age-restricted, defaults to `false`
+	 */
+	nsfw?: boolean;
+	/**
 	 * Autoincrementing version identifier updated during substantial record changes
 	 */
 	version: Snowflake;
