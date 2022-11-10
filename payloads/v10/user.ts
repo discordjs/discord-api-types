@@ -148,6 +148,10 @@ export enum UserFlags {
 	 */
 	Spammer = 1 << 20,
 	/**
+	 * User is an [Active Developer](https://discord.com/developers/active-developer)
+	 */
+	ActiveDeveloper = 1 << 22,
+	/**
 	 * User's account has been quarantined based on recent activity
 	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
