@@ -148,7 +148,7 @@ export enum UserFlags {
 	 */
 	Spammer = 1 << 20,
 	/**
-	 * User is an [Active Developer](https://discord.com/developers/active-developer)
+	 * User is an [Active Developer](https://support-dev.discord.com/hc/articles/10113997751447)
 	 */
 	ActiveDeveloper = 1 << 22,
 	/**
