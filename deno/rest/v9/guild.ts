@@ -140,7 +140,7 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: number;
+	afk_timeout?: 60 | 300 | 900 | 1800 | 3600;
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
@@ -240,7 +240,7 @@ export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: number;
+	afk_timeout?: 60 | 300 | 900 | 1800 | 3600;
 	/**
 	 * base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the guild has `ANIMATED_ICON` feature)
 	 *
@@ -899,6 +899,11 @@ export type RESTPatchAPIGuildVoiceStateUserJSONBody = AddUndefinedToPossiblyUnde
 	 */
 	suppress?: boolean;
 }>;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
+ */
+export type RESTPatchAPIGuildVoiceStateUserResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen

@@ -145,7 +145,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 */
 	invitable?: boolean;
 	/**
-	 * The set of tags that can be used in a forum channel
+	 * The set of tags that can be used in a forum channel; limited to 20
 	 *
 	 * Channel types: forum
 	 */
@@ -160,7 +160,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
 	 *
-	 * Channel types: text, forum
+	 * Channel types: forum
 	 */
 	default_thread_rate_limit_per_user?: number | null;
 	/**
@@ -618,7 +618,7 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 	 */
 	message: RESTPostAPIChannelMessageJSONBody;
 	/**
-	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel; limited to 5
 	 */
 	applied_tags?: Snowflake[];
 };

@@ -148,11 +148,19 @@ export enum UserFlags {
 	 */
 	Spammer = 1 << 20,
 	/**
+	 * User is an [Active Developer](https://support-dev.discord.com/hc/articles/10113997751447)
+	 */
+	ActiveDeveloper = 1 << 22,
+	/**
 	 * User's account has been quarantined based on recent activity
 	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 *
+	 * @privateRemarks
+	 *
+	 * This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
 	 */
-	Quarantined = Math.pow(2, 44),
+	Quarantined = 17592186044416,
 }
 
 /**
@@ -162,6 +170,7 @@ export enum UserPremiumType {
 	None,
 	NitroClassic,
 	Nitro,
+	NitroBasic,
 }
 
 /**

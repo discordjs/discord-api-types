@@ -120,7 +120,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout: number;
+	afk_timeout: 60 | 300 | 900 | 1800 | 3600;
 	/**
 	 * `true` if the guild widget is enabled
 	 */
@@ -383,6 +383,10 @@ export enum GuildFeature {
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
 	/**
+	 * Guild has set up auto moderation rules
+	 */
+	AutoModeration = 'AUTO_MODERATION',
+	/**
 	 * Guild has access to set a guild banner image
 	 */
 	Banner = 'BANNER',
@@ -390,6 +394,10 @@ export enum GuildFeature {
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	Community = 'COMMUNITY',
+	/*
+	 * Guild has been set as a support server on the App Directory
+	 */
+	DeveloperSupportServer = 'DEVELOPER_SUPPORT_SERVER',
 	/**
 	 * Guild is able to be discovered in the directory
 	 */

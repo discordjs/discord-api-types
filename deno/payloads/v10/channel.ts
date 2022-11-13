@@ -296,7 +296,7 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 */
 	available_tags: APIGuildForumTag[];
 	/**
-	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
+	 * The initial `rate_limit_per_user` to set on newly created threads in a forum channel.
 	 * This field is copied to the thread at creation time and does not live update
 	 */
 	default_thread_rate_limit_per_user?: number;
@@ -362,7 +362,7 @@ export enum ChannelType {
 	 */
 	AnnouncementThread = 10,
 	/**
-	 * A temporary sub-channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text or Guild Forum channel
 	 */
 	PublicThread,
 	/**
@@ -667,6 +667,7 @@ export enum MessageType {
 	ThreadStarterMessage,
 	GuildInviteReminder,
 	ContextMenuCommand,
+	AutoModerationAction,
 }
 
 /**
@@ -1019,6 +1020,12 @@ export enum EmbedType {
 	 * Link embed
 	 */
 	Link = 'link',
+	/**
+	 * Auto moderation alert embed
+	 *
+	 * @unstable This embed type is currently not documented by Discord, but it is returned in the auto moderation system messages.
+	 */
+	AutoModerationMessage = 'auto_moderation_message',
 }
 
 /**
@@ -1306,13 +1313,38 @@ export enum ComponentType {
 	 */
 	Button,
 	/**
-	 * Select Menu component
+	 * Select menu for picking from defined text options
 	 */
-	SelectMenu,
+	StringSelect,
 	/**
 	 * Text Input component
 	 */
 	TextInput,
+	/**
+	 * Select menu for users
+	 */
+	UserSelect,
+	/**
+	 * Select menu for roles
+	 */
+	RoleSelect,
+	/**
+	 * Select menu for users and roles
+	 */
+	MentionableSelect,
+	/**
+	 * Select menu for channels
+	 */
+	ChannelSelect,
+
+	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
+
+	/**
+	 * Select menu for picking from defined text options
+	 *
+	 * @deprecated This is the old name for {@apilink ComponentType#StringSelect}
+	 */
+	SelectMenu = 3,
 }
 
 /**
@@ -1404,15 +1436,18 @@ export enum TextInputStyle {
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
+export interface APIBaseSelectMenuComponent<
+	T extends
+		| ComponentType.StringSelect
+		| ComponentType.UserSelect
+		| ComponentType.RoleSelect
+		| ComponentType.MentionableSelect
+		| ComponentType.ChannelSelect,
+> extends APIBaseComponent<T> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
 	 */
 	custom_id: string;
-	/**
-	 * The choices in the select, max 25
-	 */
-	options: APISelectMenuOption[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 150 characters
 	 */
@@ -1436,6 +1471,51 @@ export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.S
 	 */
 	disabled?: boolean;
 }
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
+	/**
+	 * Specified choices in a select menu; max 25
+	 */
+	options: APISelectMenuOption[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIUserSelectComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIRoleSelectComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIMentionableSelectComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
+	/**
+	 * List of channel types to include in the ChannelSelect component
+	 */
+	channel_types?: ChannelType[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APISelectMenuComponent =
+	| APIStringSelectComponent
+	| APIUserSelectComponent
+	| APIRoleSelectComponent
+	| APIMentionableSelectComponent
+	| APIChannelSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure

@@ -1,3 +1,49 @@
+## [0.37.17](https://github.com/discordjs/discord-api-types/compare/0.37.16...0.37.17) (2022-11-07)
+
+### Features
+
+- **APIAutoMod:** add support for regex matching ([#603](https://github.com/discordjs/discord-api-types/issues/603)) ([88a60f7](https://github.com/discordjs/discord-api-types/commit/88a60f78efb6498d861b33d54c809d9d1b39b3d7))
+
+## [0.37.16](https://github.com/discordjs/discord-api-types/compare/0.37.15...0.37.16) (2022-10-31)
+
+### Bug Fixes
+
+- **docs:** update gateway documentation links ([#628](https://github.com/discordjs/discord-api-types/issues/628)) ([7040d9b](https://github.com/discordjs/discord-api-types/commit/7040d9b33370a5d1d7d3c3cb10a25c0e5fb7d0b8))
+- export `RESTGetAPIVoiceRegionsResult` with the correct name ([#627](https://github.com/discordjs/discord-api-types/issues/627)) ([69aa717](https://github.com/discordjs/discord-api-types/commit/69aa7179028e0a011e6ba246cc1faa55f463c619))
+- **UserFlags:** hardcode the value of `Quarantined` ([#624](https://github.com/discordjs/discord-api-types/issues/624)) ([5091f6e](https://github.com/discordjs/discord-api-types/commit/5091f6e70774fd97ec7dd3ae3f500c3850f81d94))
+
+## [0.37.15](https://github.com/discordjs/discord-api-types/compare/0.37.14...0.37.15) (2022-10-27)
+
+### Bug Fixes
+
+- `default_thread_rate_limit_per_user` is only for forum channels ([#596](https://github.com/discordjs/discord-api-types/issues/596)) ([88ce291](https://github.com/discordjs/discord-api-types/commit/88ce2910fb3640d9be165ac9f6488cc7e4c32663))
+- add missing gateway dispatch payloads to gateway event union ([#619](https://github.com/discordjs/discord-api-types/issues/619)) ([348dd41](https://github.com/discordjs/discord-api-types/commit/348dd416d1c94231fdfda88fa0ef03b34a384bb4))
+- **APIGuild:** change type of `afk_timeout` to allowed values ([#590](https://github.com/discordjs/discord-api-types/issues/590)) ([aaa57b4](https://github.com/discordjs/discord-api-types/commit/aaa57b4fe96b4f045b312c1a6a2ed17f9fcb3552))
+
+### Features
+
+- add some missing REST types ([#612](https://github.com/discordjs/discord-api-types/issues/612)) ([8d25f23](https://github.com/discordjs/discord-api-types/commit/8d25f233a5366f1d43de942f465e696c73f26c86))
+- **Components:** new select menus ([#602](https://github.com/discordjs/discord-api-types/issues/602)) ([df1452d](https://github.com/discordjs/discord-api-types/commit/df1452dc28f2fddb32a20912ca3ca3634556a3da))
+- **GuildFeature:** add `DeveloperSupportServer` ([#618](https://github.com/discordjs/discord-api-types/issues/618)) ([8c1484e](https://github.com/discordjs/discord-api-types/commit/8c1484ebbe95afbd850b22262d6223b2f3d40017))
+- **RESTJSONErrorCodes:** add 50039 error ([#607](https://github.com/discordjs/discord-api-types/issues/607)) ([131637f](https://github.com/discordjs/discord-api-types/commit/131637fbd20573750a60df2281f94b339443c82c))
+- **UserPremiumType:** add `NitroBasic` ([#616](https://github.com/discordjs/discord-api-types/issues/616)) ([9448e9b](https://github.com/discordjs/discord-api-types/commit/9448e9befdfff38ecbf186e5dc9c1fcd88596422))
+
+## [0.37.14](https://github.com/discordjs/discord-api-types/compare/0.37.13...0.37.14) (2022-10-15)
+
+### Bug Fixes
+
+- **APIAutoModeration:** export v10 json payloads and correct route types ([#608](https://github.com/discordjs/discord-api-types/issues/608)) ([bce0795](https://github.com/discordjs/discord-api-types/commit/bce07950fdfec7ae5e96ce3158f73cfb5db0a890))
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50073` ([#594](https://github.com/discordjs/discord-api-types/issues/594)) ([70826ed](https://github.com/discordjs/discord-api-types/commit/70826ed76e4b4880fb7425a07d04921823954c95))
+
+## [0.37.13](https://github.com/discordjs/discord-api-types/compare/0.37.12...0.37.13) (2022-10-14)
+
+### Features
+
+- **APIAutoModeration:** add support for auto moderation ([#418](https://github.com/discordjs/discord-api-types/issues/418)) ([b216f7a](https://github.com/discordjs/discord-api-types/commit/b216f7a8bee2c02fe0e75189fe31f95973bfbe2e))
+
 ## [0.37.12](https://github.com/discordjs/discord-api-types/compare/0.37.11...0.37.12) (2022-10-06)
 
 ## [0.37.11](https://github.com/discordjs/discord-api-types/compare/0.37.10...0.37.11) (2022-09-26)
