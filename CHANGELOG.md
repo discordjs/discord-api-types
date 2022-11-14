@@ -1,3 +1,9 @@
+## [0.37.18](https://github.com/discordjs/discord-api-types/compare/0.37.17...0.37.18) (2022-11-14)
+
+### Features
+
+- **UserFlags:** add `ActiveDeveloper` ([#638](https://github.com/discordjs/discord-api-types/issues/638)) ([65da837](https://github.com/discordjs/discord-api-types/commit/65da837673142267a92aea28ecd65d3c05aa0706))
+
 ## [0.37.17](https://github.com/discordjs/discord-api-types/compare/0.37.16...0.37.17) (2022-11-07)
 
 ### Features
