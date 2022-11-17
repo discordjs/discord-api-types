@@ -383,7 +383,9 @@ export enum GuildFeature {
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
 	/**
-	 * Guild is using the [old permissions configuration behavior](#DOCS_CHANGE_LOG/upcoming-application-command-permission-changes)
+	 * Guild is using the old permissions configuration behavior
+	 *
+	 * See https://discord.com/developers/docs/change-log#upcoming-application-command-permission-changes
 	 */
 	ApplicationCommandPermissionsV2 = 'APPLICATION_COMMAND_PERMISSIONS_V2',
 	/**
