@@ -383,6 +383,10 @@ export enum GuildFeature {
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
 	/**
+	 * Guild is using the [old permissions configuration behavior](#DOCS_CHANGE_LOG/upcoming-application-command-permission-changes)
+	 */
+	ApplicationCommandPermissionsV2 = 'APPLICATION_COMMAND_PERMISSIONS_V2',
+	/**
 	 * Guild has set up auto moderation rules
 	 */
 	AutoModeration = 'AUTO_MODERATION',
