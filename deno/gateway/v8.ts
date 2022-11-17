@@ -1686,7 +1686,7 @@ export interface GatewayPresenceUpdateData {
 	/**
 	 * The user's activities
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object
+	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object
 	 */
 	activities: GatewayActivityUpdateData[];
 	/**
@@ -1702,7 +1702,7 @@ export interface GatewayPresenceUpdateData {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
+ * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-structure
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'type' | 'url'>;

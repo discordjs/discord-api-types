@@ -34,7 +34,7 @@ if (interaction.type === InteractionType.MessageComponent) {
 		// expectType<APIMessageButtonInteractionData>(data);
 	}
 
-	if (data.component_type === ComponentType.SelectMenu) {
+	if (data.component_type === ComponentType.StringSelect) {
 		// TODO: for some reason, tsd yields a `Parameter type APIMessageSelectMenuInteractionData is not identical to argument type APIMessageSelectMenuInteractionData.` error
 		// expectType<APIMessageSelectMenuInteractionData>(data);
 		expectType<string[]>(data.values);

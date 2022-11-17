@@ -1,4 +1,10 @@
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base.ts';
+import type {
+	APIDMInteractionWrapper,
+	APIGuildInteractionWrapper,
+	APIInteractionDataResolved,
+	APIUserInteractionDataResolved,
+} from './base.ts';
+import type { Snowflake } from '../../../globals.ts';
 import type { ComponentType } from '../channel.ts';
 import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
 
@@ -50,10 +56,41 @@ export interface APIMessageComponentBaseInteractionData<CType extends ComponentT
 
 export type APIMessageButtonInteractionData = APIMessageComponentBaseInteractionData<ComponentType.Button>;
 
-export interface APIMessageSelectMenuInteractionData
-	extends APIMessageComponentBaseInteractionData<ComponentType.SelectMenu> {
+export interface APIMessageStringSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.StringSelect> {
 	values: string[];
 }
+
+export interface APIMessageUserSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.UserSelect> {
+	values: Snowflake[];
+	resolved: APIUserInteractionDataResolved;
+}
+
+export interface APIMessageRoleSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.RoleSelect> {
+	values: Snowflake[];
+	resolved: Required<Pick<APIInteractionDataResolved, 'roles'>>;
+}
+
+export interface APIMessageMentionableSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.MentionableSelect> {
+	values: Snowflake[];
+	resolved: Pick<APIInteractionDataResolved, 'users' | 'members' | 'roles'>;
+}
+
+export interface APIMessageChannelSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.ChannelSelect> {
+	values: Snowflake[];
+	resolved: Required<Pick<APIInteractionDataResolved, 'channels'>>;
+}
+
+export type APIMessageSelectMenuInteractionData =
+	| APIMessageStringSelectInteractionData
+	| APIMessageUserSelectInteractionData
+	| APIMessageRoleSelectInteractionData
+	| APIMessageMentionableSelectInteractionData
+	| APIMessageChannelSelectInteractionData;
 
 export type APIMessageComponentDMInteraction = APIDMInteractionWrapper<APIMessageComponentInteraction>;
 

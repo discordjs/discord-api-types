@@ -1,7 +1,7 @@
 import type { InteractionType } from './responses';
 import type { Permissions, Snowflake } from '../../../globals';
-import type { LocaleString } from '../../../v10';
-import type { APIMessage } from '../channel';
+import type { APIRole, LocaleString } from '../../../v10';
+import type { APIAttachment, APIMessage, APIPartialChannel, APIThreadMetadata } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
 
@@ -129,3 +129,46 @@ export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<Inter
 	'user'
 > &
 	Required<Pick<Original, 'member' | 'guild_id'>>;
+
+/**
+ * https://discord.com/developers/docs/resources/channel#channel-object
+ */
+export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
+	thread_metadata?: APIThreadMetadata | null;
+	permissions: Permissions;
+	parent_id?: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-member-object
+ */
+export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
+	permissions: Permissions;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ */
+export interface APIInteractionDataResolved {
+	users?: Record<Snowflake, APIUser>;
+	roles?: Record<Snowflake, APIRole>;
+	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
+	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
+	attachments?: Record<Snowflake, APIAttachment>;
+}
+
+/**
+ * @deprecated Renamed to `APIInteractionDataResolved`
+ */
+export type APIChatInputApplicationCommandInteractionDataResolved = APIInteractionDataResolved;
+
+/**
+ * `users` and optional `members` from APIInteractionDataResolved, for user commands and user selects
+ */
+export type APIUserInteractionDataResolved = Required<Pick<APIInteractionDataResolved, 'users'>> &
+	Pick<APIInteractionDataResolved, 'members'>;
+
+/**
+ * @deprecated Renamed to `APIUserInteractionDataResolved`
+ */
+export type APIUserApplicationCommandInteractionDataResolved = APIUserInteractionDataResolved;

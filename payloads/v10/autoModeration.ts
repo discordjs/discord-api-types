@@ -105,6 +105,14 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 */
 	allow_list?: string[];
 	/**
+	 * Regular expression patterns which will be matched against content (Maximum of 10)
+	 *
+	 * Only Rust flavored regex is currently supported (Maximum of 75 characters)
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
+	 */
+	regex_patterns?: string[];
+	/**
 	 * Total number of mentions (role & user) allowed per message (Maximum of 50)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.MentionSpam}
