@@ -36,293 +36,293 @@ export enum RPCCloseEventCodes {
  * https://discord.com/developers/docs/topics/rpc#commands-and-events-rpc-commands
  */
 export enum RPCCommands {
-	DISPATCH = 'DISPATCH',
-	AUTHORIZE = 'AUTHORIZE',
-	AUTHENTICATE = 'AUTHENTICATE',
-	GET_GUILD = 'GET_GUILD',
-	GET_GUILDS = 'GET_GUILDS',
-	GET_CHANNEL = 'GET_CHANNEL',
-	GET_CHANNELS = 'GET_CHANNELS',
-	SUBSCRIBE = 'SUBSCRIBE',
-	UNSUBSCRIBE = 'UNSUBSCRIBE',
-	SET_USER_VOICE_SETTINGS = 'SET_USER_VOICE_SETTINGS',
-	SELECT_VOICE_CHANNEL = 'SELECT_VOICE_CHANNEL',
-	GET_SELECTED_VOICE_CHANNEL = 'GET_SELECTED_VOICE_CHANNEL',
-	SELECT_TEXT_CHANNEL = 'SELECT_TEXT_CHANNEL',
-	GET_VOICE_SETTINGS = 'GET_VOICE_SETTINGS',
-	SET_VOICE_SETTINGS = 'SET_VOICE_SETTINGS',
-	SET_CERTIFIED_DEVICES = 'SET_CERTIFIED_DEVICES',
-	SET_ACTIVITY = 'SET_ACTIVITY',
-	SEND_ACTIVITY_JOIN_INVITE = 'SEND_ACTIVITY_JOIN_INVITE',
-	CLOSE_ACTIVITY_JOIN_REQUEST = 'CLOSE_ACTIVITY_JOIN_REQUEST',
+	Dispatch = 'DISPATCH',
+	Authorize = 'AUTHORIZE',
+	Authenticate = 'AUTHENTICATE',
+	GetGuild = 'GET_GUILD',
+	GetGuilds = 'GET_GUILDS',
+	GetChannel = 'GET_CHANNEL',
+	GetChannels = 'GET_CHANNELS',
+	Subscribe = 'SUBSCRIBE',
+	Unsubscribe = 'UNSUBSCRIBE',
+	SetUserVoiceSettings = 'SET_USER_VOICE_SETTINGS',
+	SelectVoiceChannel = 'SELECT_VOICE_CHANNEL',
+	GetSelectedVoiceChannel = 'GET_SELECTED_VOICE_CHANNEL',
+	SelectTextChannel = 'SELECT_TEXT_CHANNEL',
+	GetVoiceSettings = 'GET_VOICE_SETTINGS',
+	SetVoiceSettings = 'SET_VOICE_SETTINGS',
+	SetCertifiedDevices = 'SET_CERTIFIED_DEVICES',
+	SetActivity = 'SET_ACTIVITY',
+	SendActivityJoinInvite = 'SEND_ACTIVITY_JOIN_INVITE',
+	CloseActivityJoinRequest = 'CLOSE_ACTIVITY_JOIN_REQUEST',
 	/**
 	 * @unstable
 	 */
-	CREATE_CHANNEL_INVITE = 'CREATE_CHANNEL_INVITE',
+	CreateChannelInvite = 'CREATE_CHANNEL_INVITE',
 	/**
 	 * @unstable
 	 */
-	GET_RELATIONSHIPS = 'GET_RELATIONSHIPS',
+	GetRelationships = 'GET_RELATIONSHIPS',
 	/**
 	 * @unstable
 	 */
-	GET_USER = 'GET_USER',
+	GetUser = 'GET_USER',
 	/**
 	 * @unstable
 	 */
-	SET_USER_VOICE_SETTINGS_2 = 'SET_USER_VOICE_SETTINGS_2',
+	SetUserVoiceSettings2 = 'SET_USER_VOICE_SETTINGS_2',
 	/**
 	 * @unstable
 	 */
-	SET_VOICE_SETTINGS_2 = 'SET_VOICE_SETTINGS_2',
+	SetVoiceSettings2 = 'SET_VOICE_SETTINGS_2',
 	/**
 	 * @unstable
 	 */
-	CAPTURE_SHORTCUT = 'CAPTURE_SHORTCUT',
+	CaptureShortcut = 'CAPTURE_SHORTCUT',
 	/**
 	 * @unstable
 	 */
-	ACTIVITY_INVITE_USER = 'ACTIVITY_INVITE_USER',
+	ActivityInviteUser = 'ACTIVITY_INVITE_USER',
 	/**
 	 * @unstable
 	 */
-	ACCEPT_ACTIVITY_INVITE = 'ACCEPT_ACTIVITY_INVITE',
+	AcceptActivityInvite = 'ACCEPT_ACTIVITY_INVITE',
 	/**
 	 * @unstable
 	 */
-	INVITE_BROWSER = 'INVITE_BROWSER',
+	InviteBrowser = 'INVITE_BROWSER',
 	/**
 	 * @unstable
 	 */
-	DEEP_LINK = 'DEEP_LINK',
+	DeepLink = 'DEEP_LINK',
 	/**
 	 * @unstable
 	 */
-	CONNECTIONS_CALLBACK = 'CONNECTIONS_CALLBACK',
+	ConnectionsCallback = 'CONNECTIONS_CALLBACK',
 	/**
 	 * @unstable
 	 */
-	BRAINTREE_POPUP_BRIDGE_CALLBACK = 'BRAINTREE_POPUP_BRIDGE_CALLBACK',
+	BraintreePopupBridgeCallback = 'BRAINTREE_POPUP_BRIDGE_CALLBACK',
 	/**
 	 * @unstable
 	 */
-	GIFT_CODE_BROWSER = 'GIFT_CODE_BROWSER',
+	GiftCodeBrowser = 'GIFT_CODE_BROWSER',
 	/**
 	 * @unstable
 	 */
-	GUILD_TEMPLATE_BROWSER = 'GUILD_TEMPLATE_BROWSER',
+	GuildTemplateBrowser = 'GUILD_TEMPLATE_BROWSER',
 	/**
 	 * @unstable
 	 */
-	OVERLAY = 'OVERLAY',
+	Overlay = 'OVERLAY',
 	/**
 	 * @unstable
 	 */
-	BROWSER_HANDOFF = 'BROWSER_HANDOFF',
+	BrowserHandoff = 'BROWSER_HANDOFF',
 	/**
 	 * @unstable
 	 */
-	GET_IMAGE = 'GET_IMAGE',
+	GetImage = 'GET_IMAGE',
 	/**
 	 * @unstable
 	 */
-	CREATE_LOBBY = 'CREATE_LOBBY',
+	CreateLobby = 'CREATE_LOBBY',
 	/**
 	 * @unstable
 	 */
-	UPDATE_LOBBY = 'UPDATE_LOBBY',
+	UpdateLobby = 'UPDATE_LOBBY',
 	/**
 	 * @unstable
 	 */
-	DELETE_LOBBY = 'DELETE_LOBBY',
+	DeleteLobby = 'DELETE_LOBBY',
 	/**
 	 * @unstable
 	 */
-	UPDATE_LOBBY_MEMBER = 'UPDATE_LOBBY_MEMBER',
+	UpdateLobbyMember = 'UPDATE_LOBBY_MEMBER',
 	/**
 	 * @unstable
 	 */
-	CONNECT_TO_LOBBY = 'CONNECT_TO_LOBBY',
+	ConnectToLobby = 'CONNECT_TO_LOBBY',
 	/**
 	 * @unstable
 	 */
-	DISCONNECT_FROM_LOBBY = 'DISCONNECT_FROM_LOBBY',
+	DisconnectFromLobby = 'DISCONNECT_FROM_LOBBY',
 	/**
 	 * @unstable
 	 */
-	SEND_TO_LOBBY = 'SEND_TO_LOBBY',
+	SendToLobby = 'SEND_TO_LOBBY',
 	/**
 	 * @unstable
 	 */
-	SEARCH_LOBBIES = 'SEARCH_LOBBIES',
+	SearchLobbies = 'SEARCH_LOBBIES',
 	/**
 	 * @unstable
 	 */
-	CONNECT_TO_LOBBY_VOICE = 'CONNECT_TO_LOBBY_VOICE',
+	ConnectToLobbyVoice = 'CONNECT_TO_LOBBY_VOICE',
 	/**
 	 * @unstable
 	 */
-	DISCONNECT_FROM_LOBBY_VOICE = 'DISCONNECT_FROM_LOBBY_VOICE',
+	DisconnectFromLobbyVoice = 'DISCONNECT_FROM_LOBBY_VOICE',
 	/**
 	 * @unstable
 	 */
-	SET_OVERLAY_LOCKED = 'SET_OVERLAY_LOCKED',
+	SetOverlayLocked = 'SET_OVERLAY_LOCKED',
 	/**
 	 * @unstable
 	 */
-	OPEN_OVERLAY_ACTIVITY_INVITE = 'OPEN_OVERLAY_ACTIVITY_INVITE',
+	OpenOverlayActivityInvite = 'OPEN_OVERLAY_ACTIVITY_INVITE',
 	/**
 	 * @unstable
 	 */
-	OPEN_OVERLAY_GUILD_INVITE = 'OPEN_OVERLAY_GUILD_INVITE',
+	OpenOverlayGuildInvite = 'OPEN_OVERLAY_GUILD_INVITE',
 	/**
 	 * @unstable
 	 */
-	OPEN_OVERLAY_VOICE_SETTINGS = 'OPEN_OVERLAY_VOICE_SETTINGS',
+	OpenOverlayVoiceSettings = 'OPEN_OVERLAY_VOICE_SETTINGS',
 	/**
 	 * @unstable
 	 */
-	VALIDATE_APPLICATION = 'VALIDATE_APPLICATION',
+	ValidateApplication = 'VALIDATE_APPLICATION',
 	/**
 	 * @unstable
 	 */
-	GET_ENTITLEMENT_TICKET = 'GET_ENTITLEMENT_TICKET',
+	GetEntitlementTicket = 'GET_ENTITLEMENT_TICKET',
 	/**
 	 * @unstable
 	 */
-	GET_APPLICATION_TICKET = 'GET_APPLICATION_TICKET',
+	GetApplicationTicket = 'GET_APPLICATION_TICKET',
 	/**
 	 * @unstable
 	 */
-	START_PURCHASE = 'START_PURCHASE',
+	StartPurchase = 'START_PURCHASE',
 	/**
 	 * @unstable
 	 */
-	GET_SKUS = 'GET_SKUS',
+	GetSkus = 'GET_SKUS',
 	/**
 	 * @unstable
 	 */
-	GET_ENTITLEMENTS = 'GET_ENTITLEMENTS',
+	GetEntitlements = 'GET_ENTITLEMENTS',
 	/**
 	 * @unstable
 	 */
-	GET_NETWORKING_CONFIG = 'GET_NETWORKING_CONFIG',
+	GetNetworkingConfig = 'GET_NETWORKING_CONFIG',
 	/**
 	 * @unstable
 	 */
-	NETWORKING_SYSTEM_METRICS = 'NETWORKING_SYSTEM_METRICS',
+	NetworkingSystemMetrics = 'NETWORKING_SYSTEM_METRICS',
 	/**
 	 * @unstable
 	 */
-	NETWORKING_PEER_METRICS = 'NETWORKING_PEER_METRICS',
+	NetworkingPeerMetrics = 'NETWORKING_PEER_METRICS',
 	/**
 	 * @unstable
 	 */
-	NETWORKING_CREATE_TOKEN = 'NETWORKING_CREATE_TOKEN',
+	NetworkingCreateToken = 'NETWORKING_CREATE_TOKEN',
 	/**
 	 * @unstable
 	 */
-	SET_USER_ACHIEVEMENT = 'SET_USER_ACHIEVEMENT',
+	SetUserAchievement = 'SET_USER_ACHIEVEMENT',
 	/**
 	 * @unstable
 	 */
-	GET_USER_ACHIEVEMENTS = 'GET_USER_ACHIEVEMENTS',
+	GetUserAchievements = 'GET_USER_ACHIEVEMENTS',
 }
 
 /**
  * https://discord.com/developers/docs/topics/rpc#commands-and-events-rpc-events
  */
 export enum RPCEvents {
-	READY = 'READY',
-	ERROR = 'ERROR',
-	GUILD_STATUS = 'GUILD_STATUS',
-	GUILD_CREATE = 'GUILD_CREATE',
-	CHANNEL_CREATE = 'CHANNEL_CREATE',
-	VOICE_CHANNEL_SELECT = 'VOICE_CHANNEL_SELECT',
-	VOICE_STATE_CREATE = 'VOICE_STATE_CREATE',
-	VOICE_STATE_UPDATE = 'VOICE_STATE_UPDATE',
-	VOICE_STATE_DELETE = 'VOICE_STATE_DELETE',
-	VOICE_SETTINGS_UPDATE = 'VOICE_SETTINGS_UPDATE',
-	VOICE_CONNECTION_STATUS = 'VOICE_CONNECTION_STATUS',
-	SPEAKING_START = 'SPEAKING_START',
-	SPEAKING_STOP = 'SPEAKING_STOP',
-	MESSAGE_CREATE = 'MESSAGE_CREATE',
-	MESSAGE_UPDATE = 'MESSAGE_UPDATE',
-	MESSAGE_DELETE = 'MESSAGE_DELETE',
-	NOTIFICATION_CREATE = 'NOTIFICATION_CREATE',
-	ACTIVITY_JOIN = 'ACTIVITY_JOIN',
-	ACTIVITY_SPECTATE = 'ACTIVITY_SPECTATE',
-	ACTIVITY_JOIN_REQUEST = 'ACTIVITY_JOIN_REQUEST',
+	Ready = 'READY',
+	Error = 'ERROR',
+	GuildStatus = 'GUILD_STATUS',
+	GuildCreate = 'GUILD_CREATE',
+	ChannelCreate = 'CHANNEL_CREATE',
+	VoiceChannelSelect = 'VOICE_CHANNEL_SELECT',
+	VoiceStateCreate = 'VOICE_STATE_CREATE',
+	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
+	VoiceStateDelete = 'VOICE_STATE_DELETE',
+	VoiceSettingsUpdate = 'VOICE_SETTINGS_UPDATE',
+	VoiceConnectionStatus = 'VOICE_CONNECTION_STATUS',
+	SpeakingStart = 'SPEAKING_START',
+	SpeakingStop = 'SPEAKING_STOP',
+	MessageCreate = 'MESSAGE_CREATE',
+	MessageUpdate = 'MESSAGE_UPDATE',
+	MessageDelete = 'MESSAGE_DELETE',
+	NotificationCreate = 'NOTIFICATION_CREATE',
+	ActivityJoin = 'ACTIVITY_JOIN',
+	ActivitySpectate = 'ACTIVITY_SPECTATE',
+	ActivityJoinRequest = 'ACTIVITY_JOIN_REQUEST',
 	/**
 	 * @unstable
 	 */
-	CURRENT_USER_UPDATE = 'CURRENT_USER_UPDATE',
+	CurrentUserUpdate = 'CURRENT_USER_UPDATE',
 	/**
 	 * @unstable
 	 */
-	RELATIONSHIP_UPDATE = 'RELATIONSHIP_UPDATE',
+	RelationshipUpdate = 'RELATIONSHIP_UPDATE',
 	/**
 	 * @unstable
 	 */
-	VOICE_SETTINGS_UPDATE_2 = 'VOICE_SETTINGS_UPDATE_2',
+	VoiceSettingsUpdate_2 = 'VOICE_SETTINGS_UPDATE_2',
 	/**
 	 * @unstable
 	 */
-	GAME_JOIN = 'GAME_JOIN',
+	GameJoin = 'GAME_JOIN',
 	/**
 	 * @unstable
 	 */
-	GAME_SPECTATE = 'GAME_SPECTATE',
+	GameSpectate = 'GAME_SPECTATE',
 	/**
 	 * @unstable
 	 */
-	ACTIVITY_INVITE = 'ACTIVITY_INVITE',
+	ActivityInvite = 'ACTIVITY_INVITE',
 	/**
 	 * @unstable
 	 */
-	LOBBY_DELETE = 'LOBBY_DELETE',
+	LobbyDelete = 'LOBBY_DELETE',
 	/**
 	 * @unstable
 	 */
-	LOBBY_UPDATE = 'LOBBY_UPDATE',
+	LobbyUpdate = 'LOBBY_UPDATE',
 	/**
 	 * @unstable
 	 */
-	LOBBY_MEMBER_CONNECT = 'LOBBY_MEMBER_CONNECT',
+	LobbyMemberConnect = 'LOBBY_MEMBER_CONNECT',
 	/**
 	 * @unstable
 	 */
-	LOBBY_MEMBER_DISCONNECT = 'LOBBY_MEMBER_DISCONNECT',
+	LobbyMemberDisconnect = 'LOBBY_MEMBER_DISCONNECT',
 	/**
 	 * @unstable
 	 */
-	LOBBY_MEMBER_UPDATE = 'LOBBY_MEMBER_UPDATE',
+	LobbyMemberUpdate = 'LOBBY_MEMBER_UPDATE',
 	/**
 	 * @unstable
 	 */
-	LOBBY_MESSAGE = 'LOBBY_MESSAGE',
+	LobbyMessage = 'LOBBY_MESSAGE',
 	/**
 	 * @unstable
 	 */
-	CAPTURE_SHORTCUT_CHANGE = 'CAPTURE_SHORTCUT_CHANGE',
+	CaptureShortcutChange = 'CAPTURE_SHORTCUT_CHANGE',
 	/**
 	 * @unstable
 	 */
-	OVERLAY = 'OVERLAY',
+	Overlay = 'OVERLAY',
 	/**
 	 * @unstable
 	 */
-	OVERLAY_UPDATE = 'OVERLAY_UPDATE',
+	OverlayUpdate = 'OVERLAY_UPDATE',
 	/**
 	 * @unstable
 	 */
-	ENTITLEMENT_CREATE = 'ENTITLEMENT_CREATE',
+	EntitlementCreate = 'ENTITLEMENT_CREATE',
 	/**
 	 * @unstable
 	 */
-	ENTITLEMENT_DELETE = 'ENTITLEMENT_DELETE',
+	EntitlementDelete = 'ENTITLEMENT_DELETE',
 	/**
 	 * @unstable
 	 */
-	USER_ACHIEVEMENT_UPDATE = 'USER_ACHIEVEMENT_UPDATE',
+	UserAchievementUpdate = 'USER_ACHIEVEMENT_UPDATE',
 }
