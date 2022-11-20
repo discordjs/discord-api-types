@@ -695,6 +695,16 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/channel#list-public-archived-threads
+ */
+export type RESTGetAPIChannelThreadsArchivedPublicResult = RESTGetAPIChannelUsersThreadsArchivedResult;
+
+/**
+ * https://discord.com/developers/docs/resources/channel#list-private-archived-threads
+ */
+export type RESTGetAPIChannelThreadsArchivedPrivateResult = RESTGetAPIChannelUsersThreadsArchivedResult;
+
+/**
  * https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
  */
 export interface RESTGetAPIChannelUsersThreadsArchivedResult extends APIThreadList {
