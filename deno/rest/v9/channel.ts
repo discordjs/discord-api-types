@@ -709,6 +709,16 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/channel#list-public-archived-threads
+ */
+export type RESTGetAPIChannelThreadsArchivedPublicResult = RESTGetAPIChannelUsersThreadsArchivedResult;
+
+/**
+ * https://discord.com/developers/docs/resources/channel#list-private-archived-threads
+ */
+export type RESTGetAPIChannelThreadsArchivedPrivateResult = RESTGetAPIChannelUsersThreadsArchivedResult;
+
+/**
  * https://discord.com/developers/docs/resources/channel#list-active-threads
  *
  * @deprecated Removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.
