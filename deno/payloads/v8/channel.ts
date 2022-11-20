@@ -86,7 +86,7 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	/**
 	 * Sorting position of the channel
 	 */
-	position?: number;
+	position: number;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
 	 */
