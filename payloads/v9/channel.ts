@@ -348,7 +348,7 @@ export enum ChannelType {
 	/**
 	 * An organizational category that contains up to 50 channels
 	 *
-	 * See https://support.discord.com/hc/articles/115001580171-Channel-Categories-101
+	 * See https://support.discord.com/hc/articles/115001580171
 	 */
 	GuildCategory,
 	/**
@@ -378,7 +378,7 @@ export enum ChannelType {
 	/**
 	 * The channel in a Student Hub containing the listed servers
 	 *
-	 * See https://support.discord.com/hc/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 */
 	GuildDirectory,
 	/**
