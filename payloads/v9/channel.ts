@@ -348,13 +348,13 @@ export enum ChannelType {
 	/**
 	 * An organizational category that contains up to 50 channels
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/115001580171-Channel-Categories-101
+	 * See https://support.discord.com/hc/articles/115001580171
 	 */
 	GuildCategory,
 	/**
 	 * A channel that users can follow and crosspost into their own guild
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360032008192
+	 * See https://support.discord.com/hc/articles/360032008192
 	 */
 	GuildAnnouncement,
 	/**
@@ -372,13 +372,13 @@ export enum ChannelType {
 	/**
 	 * A voice channel for hosting events with an audience
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/1500005513722
+	 * See https://support.discord.com/hc/articles/1500005513722
 	 */
 	GuildStageVoice,
 	/**
 	 * The channel in a Student Hub containing the listed servers
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 */
 	GuildDirectory,
 	/**
@@ -392,7 +392,7 @@ export enum ChannelType {
 	 *
 	 * @deprecated This is the old name for {@apilink ChannelType#GuildAnnouncement}
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360032008192
+	 * See https://support.discord.com/hc/articles/360032008192
 	 */
 	GuildNews = 5,
 	/**
@@ -454,7 +454,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	content: string;
 	/**
@@ -510,7 +510,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	attachments: APIAttachment[];
 	/**
@@ -522,7 +522,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -611,7 +611,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**

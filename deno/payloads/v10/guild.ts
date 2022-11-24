@@ -419,7 +419,7 @@ export enum GuildFeature {
 	/**
 	 * Guild is a Student Hub
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 *
 	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
@@ -435,7 +435,7 @@ export enum GuildFeature {
 	/**
 	 * Guild is in a Student Hub
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 *
 	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
@@ -602,7 +602,7 @@ export interface APIGuildMember {
 	/**
 	 * When the user started boosting the guild
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360028038352-Server-Boosting-
+	 * See https://support.discord.com/hc/articles/360028038352
 	 */
 	premium_since?: string | null;
 	/**
