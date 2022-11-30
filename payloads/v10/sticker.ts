@@ -73,7 +73,7 @@ export enum StickerType {
 	 */
 	Standard = 1,
 	/**
-	 * A sticker uploaded to a guild
+	 * A sticker uploaded to a guild for the guild's members
 	 */
 	Guild,
 }
