@@ -134,7 +134,7 @@ export enum UserFlags {
 	 */
 	VerifiedDeveloper = 1 << 17,
 	/**
-	 * Discord Certified Moderator
+	 * Moderator Programs Alumni
 	 */
 	CertifiedModerator = 1 << 18,
 	/**
