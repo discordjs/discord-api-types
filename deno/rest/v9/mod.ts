@@ -1,6 +1,7 @@
 import type { Snowflake } from '../../globals.ts';
 
 export * from '../common.ts';
+export * from './achievement.ts';
 export * from './auditLog.ts';
 export * from './autoModeration.ts';
 export * from './channel.ts';
@@ -10,9 +11,11 @@ export * from './guild.ts';
 export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
+export * from './lobby.ts';
 export * from './oauth2.ts';
 export * from './stageInstance.ts';
 export * from './sticker.ts';
+export * from './store.ts';
 export * from './template.ts';
 export * from './user.ts';
 export * from './voice.ts';
@@ -870,6 +873,212 @@ export const Routes = {
 	 */
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/achievements`
+	 * - POST `/applications/{application.id}/achievements`
+	 */
+	achievements(applicationId: Snowflake) {
+		return `/applications/${applicationId}/achievements` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/achievements/{achievement.id}`
+	 * - PATCH `/applications/{application.id}/achievements/{achievement.id}`
+	 * - DELETE `/applications/{application.id}/achievements/{achievement.id}`
+	 */
+	achievement(applicationId: Snowflake, achievementId: Snowflake) {
+		return `/applications/${applicationId}/achievements/${achievementId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/lobbies`
+	 */
+	lobbies() {
+		return '/lobbies' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/lobbies/{lobby.id}`
+	 * - DELETE `/lobbies/{lobby.id}`
+	 */
+	lobby(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/lobbies/{lobby.id}/members/{user.id}`
+	 */
+	lobbyMember(lobbyId: Snowflake, userId: Snowflake) {
+		return `/lobbies/${lobbyId}/members/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/lobbies/search`
+	 */
+	lobbySearch() {
+		return `/lobbies/search` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/lobbies/{lobby.id}/send`
+	 */
+	lobbyData(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}/send` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements`
+	 */
+	entitlements(applicationId: Snowflake) {
+		return `/application/${applicationId}/entitlements` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements/{entitlement.id}`
+	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
+	 */
+	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/application/${applicationId}/entitlements/${entitlementId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/skus`
+	 */
+	skus(applicationId: Snowflake) {
+		return `/application/${applicationId}/skus` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/applications/{application.id}/entitlements/{entitlement.id}/consume`
+	 */
+	skuConsume(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/application/${applicationId}/entitlements/${entitlementId}/consume` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PUT `/store/skus/{sku.id}/discounts/{user.id}`
+	 * - DELETE `/store/skus/{sku.id}/discounts/{user.id}`
+	 */
+	purchaseDiscount(skuId: Snowflake, userId: Snowflake) {
+		return `/store/skus/${skuId}/discounts/${userId}` as const;
+	},
+};
+
+export const GameSDKRoutes = {
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/achievements`
+	 * - POST `/applications/{application.id}/achievements`
+	 */
+	achievements(applicationId: Snowflake) {
+		return `/applications/${applicationId}/achievements` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/achievements/{achievement.id}`
+	 * - PATCH `/applications/{application.id}/achievements/{achievement.id}`
+	 * - DELETE `/applications/{application.id}/achievements/{achievement.id}`
+	 */
+	achievement(applicationId: Snowflake, achievementId: Snowflake) {
+		return `/applications/${applicationId}/achievements/${achievementId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/lobbies`
+	 */
+	lobbies() {
+		return '/lobbies' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/lobbies/{lobby.id}`
+	 * - DELETE `/lobbies/{lobby.id}`
+	 */
+	lobby(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/lobbies/{lobby.id}/members/{user.id}`
+	 */
+	lobbyMember(lobbyId: Snowflake, userId: Snowflake) {
+		return `/lobbies/${lobbyId}/members/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/lobbies/search`
+	 */
+	lobbySearch() {
+		return `/lobbies/search` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/lobbies/{lobby.id}/send`
+	 */
+	lobbyData(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}/send` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements`
+	 */
+	entitlements(applicationId: Snowflake) {
+		return `/application/${applicationId}/entitlements` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements/{entitlement.id}`
+	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
+	 */
+	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/application/${applicationId}/entitlements/${entitlementId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/skus`
+	 */
+	skus(applicationId: Snowflake) {
+		return `/application/${applicationId}/skus` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/applications/{application.id}/entitlements/{entitlement.id}/consume`
+	 */
+	skuConsume(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/application/${applicationId}/entitlements/${entitlementId}/consume` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PUT `/store/skus/{sku.id}/discounts/{user.id}`
+	 * - DELETE `/store/skus/{sku.id}/discounts/{user.id}`
+	 */
+	purchaseDiscount(skuId: Snowflake, userId: Snowflake) {
+		return `/store/skus/${skuId}/discounts/${userId}` as const;
 	},
 };
 
