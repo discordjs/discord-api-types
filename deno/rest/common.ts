@@ -218,6 +218,8 @@ export enum RESTJSONErrorCodes {
 
 	UploadedFileNotFound = 50146,
 
+	WeAreInTheProcessOfRollingThisFeatureOut = 50155,
+
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
 	TwoFactorAuthenticationIsRequired = 60003,
