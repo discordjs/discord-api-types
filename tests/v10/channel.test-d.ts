@@ -9,6 +9,6 @@ declare const guildChannel: APIGuildChannel<ChannelType>;
 // Test channel names are properly typed
 // Always non-null present for non-DM channels, always null for DM channel
 expectType<string | null | undefined>(partialChannel.name);
-expectType<string | null | undefined>(groupDMChannel.name);
-expectType<null | undefined>(dmChannel.name);
-expectType<string | undefined>(guildChannel.name);
+expectType<string | null>(groupDMChannel.name);
+expectType<null>(dmChannel.name);
+expectType<string>(guildChannel.name);
