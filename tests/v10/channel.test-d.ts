@@ -1,11 +1,14 @@
 import { expectType } from 'tsd';
 import type { ChannelType, APIPartialChannel, APIGroupDMChannel, APIDMChannel, APIGuildChannel } from '../../v10';
 
-const anything: unknown = null;
+declare const partialChannel: APIPartialChannel;
+declare const groupDMChannel: APIGroupDMChannel;
+declare const dmChannel: APIDMChannel;
+declare const guildChannel: APIGuildChannel<ChannelType>;
 
 // Test channel names are properly typed
 // Always non-null present for non-DM channels, always null for DM channel
-expectType<string | null | undefined>((anything as APIPartialChannel).name);
-expectType<string | null | undefined>((anything as APIGroupDMChannel).name);
-expectType<null | undefined>((anything as APIDMChannel).name);
-expectType<string | undefined>((anything as APIGuildChannel<ChannelType>).name);
+expectType<string | null | undefined>(partialChannel.name);
+expectType<string | null | undefined>(groupDMChannel.name);
+expectType<null | undefined>(dmChannel.name);
+expectType<string | undefined>(guildChannel.name);
