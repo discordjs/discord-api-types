@@ -73,7 +73,7 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 	/**
 	 * The name of the channel (1-100 characters)
 	 */
-	name?: string;
+	name: string;
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
@@ -169,10 +169,14 @@ export interface APIDMChannel extends Omit<APIDMChannelBase<ChannelType.DM>, 'na
 	/**
 	 * The name of the channel (always null for DM channels)
 	 */
-	name?: null;
+	name: null;
 }
 
-export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM> {
+export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.GroupDM>, 'name'> {
+	/**
+	 * The name of the channel (1-100 characters)
+	 */
+	name: string | null;
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
