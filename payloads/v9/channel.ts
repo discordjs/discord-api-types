@@ -25,9 +25,9 @@ export interface APIPartialChannel {
 	 */
 	type: ChannelType;
 	/**
-	 * The name of the channel (2-100 characters)
+	 * The name of the channel (1-100 characters)
 	 */
-	name?: string;
+	name?: string | null;
 }
 
 /**
@@ -69,7 +69,11 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 	rate_limit_per_user?: number;
 }
 
-export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
+export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelBase<T>, 'name'> {
+	/**
+	 * The name of the channel (1-100 characters)
+	 */
+	name: string;
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
@@ -101,7 +105,7 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APIGuildTextChannel<T extends GuildTextChannelType>
-	extends APITextBasedChannel<T>,
+	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
@@ -141,7 +145,7 @@ export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChan
 
 export interface APIGuildVoiceChannel
 	extends APIVoiceChannelBase<ChannelType.GuildVoice>,
-		APITextBasedChannel<ChannelType.GuildVoice> {
+		Omit<APITextBasedChannel<ChannelType.GuildVoice>, 'name'> {
 	/**
 	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
@@ -161,9 +165,18 @@ export interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBas
 	recipients?: APIUser[];
 }
 
-export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
+export interface APIDMChannel extends Omit<APIDMChannelBase<ChannelType.DM>, 'name'> {
+	/**
+	 * The name of the channel (always null for DM channels)
+	 */
+	name: null;
+}
 
 export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.GroupDM>, 'name'> {
+	/**
+	 * The name of the channel (1-100 characters)
+	 */
+	name: string | null;
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
@@ -172,10 +185,6 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 * Icon hash
 	 */
 	icon?: string | null;
-	/**
-	 * The name of the channel (2-100 characters)
-	 */
-	name?: string | null;
 	/**
 	 * ID of the DM creator
 	 */
