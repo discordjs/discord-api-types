@@ -62,6 +62,10 @@ export enum OAuth2Scopes {
 	 */
 	MessagesRead = 'messages.read',
 	/**
+	 * Allows your app to update a user's connection and metadata for the app
+	 */
+	RoleConnectionsWrite = 'role_connections.write',
+	/**
 	 * For local rpc server access, this allows you to control a user's local Discord client - requires Discord approval
 	 */
 	RPC = 'rpc',

@@ -1,6 +1,7 @@
 import type { Snowflake } from '../../globals';
 
 export * from '../common';
+export * from './application';
 export * from './auditLog';
 export * from './autoModeration';
 export * from './channel';
@@ -21,6 +22,14 @@ export * from './webhook';
 export const APIVersion = '10';
 
 export const Routes = {
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/role-connections/metadata`
+	 * - PUT `/applications/{application.id}/role-connections/metadata`
+	 */
+	applicationRoleConnectionMetadata(applicationId: Snowflake) {
+		return `/applications/${applicationId}/role-connections/metadata` as const;
+	},
 	/**
 	 * Route for:
 	 * - GET  `/guilds/{guild.id}/auto-moderation/rules`
@@ -519,6 +528,15 @@ export const Routes = {
 	 */
 	user(userId: Snowflake | '@me' = '@me') {
 		return `/users/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/users/@me/applications/{application.id}/role-connection`
+	 * - PUT `/users/@me/applications/{application.id}/role-connection`
+	 */
+	userApplicationRoleConnection(applicationId: Snowflake) {
+		return `/users/@me/applications/${applicationId}/role-connection` as const;
 	},
 
 	/**

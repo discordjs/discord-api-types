@@ -255,3 +255,21 @@ export enum ConnectionVisibility {
 	 */
 	Everyone,
 }
+
+/**
+ * https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure
+ */
+export interface APIApplicationRoleConnection {
+	/**
+	 * The vanity name of the platform a bot has connected (max 50 characters)
+	 */
+	platform_name: string | null;
+	/**
+	 * The username on the platform a bot has connected (max 100 characters)
+	 */
+	platform_username: string | null;
+	/**
+	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
+	 */
+	metadata: Record<string, string>;
+}
