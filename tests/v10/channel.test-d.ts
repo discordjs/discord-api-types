@@ -1,4 +1,4 @@
-import { expectType, expectError } from 'tsd';
+import { expectType, expectAssignable, expectNotAssignable, expectError } from 'tsd';
 import type {
 	ChannelType,
 	APIPartialChannel,
@@ -11,14 +11,24 @@ import type {
 	APIGuildStageVoiceChannel,
 } from '../../v10';
 
+type AnyGuildChannel = APIGuildChannel<ChannelType>;
+
 declare const partialChannel: APIPartialChannel;
-declare const groupDMChannel: APIGroupDMChannel;
 declare const dmChannel: APIDMChannel;
-declare const guildChannel: APIGuildChannel<ChannelType>;
+declare const groupDMChannel: APIGroupDMChannel;
+declare const guildChannel: AnyGuildChannel;
 declare const guildTextChannel: APITextChannel;
 declare const guildThreadChannel: APIThreadChannel;
 declare const guildVoiceChannel: APIGuildVoiceChannel;
 declare const guildVoiceStageChannel: APIGuildStageVoiceChannel;
+
+// Make sure types follow expected hierarchy
+expectNotAssignable<AnyGuildChannel>(dmChannel);
+expectNotAssignable<AnyGuildChannel>(groupDMChannel);
+expectAssignable<AnyGuildChannel>(guildTextChannel);
+expectAssignable<AnyGuildChannel>(guildThreadChannel);
+expectAssignable<AnyGuildChannel>(guildVoiceChannel);
+expectAssignable<AnyGuildChannel>(guildVoiceStageChannel);
 
 // Test channel names are properly typed
 // Always non-null present for non-DM channels, always null for DM channel
