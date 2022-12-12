@@ -1,3 +1,9 @@
+## [0.37.22](https://github.com/discordjs/discord-api-types/compare/0.37.21...0.37.22) (2022-12-12)
+
+### Bug Fixes
+
+- **APIChannel:** correctly type `name` based on channel type ([#666](https://github.com/discordjs/discord-api-types/issues/666)) ([995126e](https://github.com/discordjs/discord-api-types/commit/995126e2cc1494f9fad2ad7c44ecc87898994e44))
+
 ## [0.37.21](https://github.com/discordjs/discord-api-types/compare/0.37.20...0.37.21) (2022-12-05)
 
 ## [0.37.20](https://github.com/discordjs/discord-api-types/compare/0.37.19...0.37.20) (2022-11-24)
