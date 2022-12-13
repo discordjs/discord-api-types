@@ -25,9 +25,9 @@ export interface APIPartialChannel {
 	 */
 	type: ChannelType;
 	/**
-	 * The name of the channel (2-100 characters)
+	 * The name of the channel (1-100 characters)
 	 */
-	name?: string;
+	name?: string | null;
 }
 
 /**
@@ -69,7 +69,11 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 	rate_limit_per_user?: number;
 }
 
-export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
+export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelBase<T>, 'name'> {
+	/**
+	 * The name of the channel (1-100 characters)
+	 */
+	name: string;
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
@@ -83,7 +87,7 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	/**
 	 * Sorting position of the channel
 	 */
-	position?: number;
+	position: number;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
 	 *
@@ -101,7 +105,7 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APIGuildTextChannel<T extends GuildTextChannelType>
-	extends APITextBasedChannel<T>,
+	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
@@ -141,7 +145,7 @@ export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChan
 
 export interface APIGuildVoiceChannel
 	extends APIVoiceChannelBase<ChannelType.GuildVoice>,
-		APITextBasedChannel<ChannelType.GuildVoice> {
+		Omit<APITextBasedChannel<ChannelType.GuildVoice>, 'name'> {
 	/**
 	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
@@ -161,9 +165,18 @@ export interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBas
 	recipients?: APIUser[];
 }
 
-export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
+export interface APIDMChannel extends Omit<APIDMChannelBase<ChannelType.DM>, 'name'> {
+	/**
+	 * The name of the channel (always null for DM channels)
+	 */
+	name: null;
+}
 
 export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.GroupDM>, 'name'> {
+	/**
+	 * The name of the channel (1-100 characters)
+	 */
+	name: string | null;
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
@@ -172,10 +185,6 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 * Icon hash
 	 */
 	icon?: string | null;
-	/**
-	 * The name of the channel (2-100 characters)
-	 */
-	name?: string | null;
 	/**
 	 * ID of the DM creator
 	 */
@@ -348,13 +357,13 @@ export enum ChannelType {
 	/**
 	 * An organizational category that contains up to 50 channels
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/115001580171-Channel-Categories-101
+	 * See https://support.discord.com/hc/articles/115001580171
 	 */
 	GuildCategory,
 	/**
 	 * A channel that users can follow and crosspost into their own guild
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360032008192
+	 * See https://support.discord.com/hc/articles/360032008192
 	 */
 	GuildAnnouncement,
 	/**
@@ -372,13 +381,13 @@ export enum ChannelType {
 	/**
 	 * A voice channel for hosting events with an audience
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/1500005513722
+	 * See https://support.discord.com/hc/articles/1500005513722
 	 */
 	GuildStageVoice,
 	/**
 	 * The channel in a Student Hub containing the listed servers
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 */
 	GuildDirectory,
 	/**
@@ -393,7 +402,7 @@ export enum ChannelType {
 	 *
 	 * @deprecated This is the old name for {@apilink ChannelType#GuildAnnouncement}
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360032008192
+	 * See https://support.discord.com/hc/articles/360032008192
 	 */
 	GuildNews = 5,
 	/**
@@ -456,7 +465,7 @@ export interface APIMessage {
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	content: string;
 	/**
@@ -513,7 +522,7 @@ export interface APIMessage {
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	attachments: APIAttachment[];
 	/**
@@ -526,7 +535,7 @@ export interface APIMessage {
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -616,7 +625,7 @@ export interface APIMessage {
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
-	 * See https://support-dev.discord.com/hc/en-us/articles/4404772028055
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**

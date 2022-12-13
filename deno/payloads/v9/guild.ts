@@ -383,6 +383,12 @@ export enum GuildFeature {
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
 	/**
+	 * Guild is using the old permissions configuration behavior
+	 *
+	 * See https://discord.com/developers/docs/change-log#upcoming-application-command-permission-changes
+	 */
+	ApplicationCommandPermissionsV2 = 'APPLICATION_COMMAND_PERMISSIONS_V2',
+	/**
 	 * Guild has set up auto moderation rules
 	 */
 	AutoModeration = 'AUTO_MODERATION',
@@ -413,7 +419,7 @@ export enum GuildFeature {
 	/**
 	 * Guild is a Student Hub
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 *
 	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
@@ -429,7 +435,7 @@ export enum GuildFeature {
 	/**
 	 * Guild is in a Student Hub
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 *
 	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
@@ -596,7 +602,7 @@ export interface APIGuildMember {
 	/**
 	 * When the user started boosting the guild
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360028038352-Server-Boosting-
+	 * See https://support.discord.com/hc/articles/360028038352
 	 */
 	premium_since?: string | null;
 	/**

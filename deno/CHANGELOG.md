@@ -1,3 +1,30 @@
+## [0.37.22](https://github.com/discordjs/discord-api-types/compare/0.37.21...0.37.22) (2022-12-12)
+
+### Bug Fixes
+
+- **APIChannel:** correctly type `name` based on channel type ([#666](https://github.com/discordjs/discord-api-types/issues/666)) ([995126e](https://github.com/discordjs/discord-api-types/commit/995126e2cc1494f9fad2ad7c44ecc87898994e44))
+
+## [0.37.21](https://github.com/discordjs/discord-api-types/compare/0.37.20...0.37.21) (2022-12-05)
+
+## [0.37.20](https://github.com/discordjs/discord-api-types/compare/0.37.19...0.37.20) (2022-11-24)
+
+## [0.37.19](https://github.com/discordjs/discord-api-types/compare/0.37.18...0.37.19) (2022-11-21)
+
+### Bug Fixes
+
+- **APIGuildChannel:** make position of guild channel non optional ([#647](https://github.com/discordjs/discord-api-types/issues/647)) ([9d72e82](https://github.com/discordjs/discord-api-types/commit/9d72e82e07e3a3bb9a894081d955bdc5c6b64089))
+- **channel:** add missing type aliases ([#648](https://github.com/discordjs/discord-api-types/issues/648)) ([2695dad](https://github.com/discordjs/discord-api-types/commit/2695dade8be818cf5bacbe69ec9aca0b50b9f9b0))
+
+### Features
+
+- **GuildFeatures:** Add `APPLICATION_COMMAND_PERMISSIONS_V2` ([#646](https://github.com/discordjs/discord-api-types/issues/646)) ([a1869a6](https://github.com/discordjs/discord-api-types/commit/a1869a6a6d4e15adf7a3cf64cade1ed051b330fc))
+
+## [0.37.18](https://github.com/discordjs/discord-api-types/compare/0.37.17...0.37.18) (2022-11-14)
+
+### Features
+
+- **UserFlags:** add `ActiveDeveloper` ([#638](https://github.com/discordjs/discord-api-types/issues/638)) ([65da837](https://github.com/discordjs/discord-api-types/commit/65da837673142267a92aea28ecd65d3c05aa0706))
+
 ## [0.37.17](https://github.com/discordjs/discord-api-types/compare/0.37.16...0.37.17) (2022-11-07)
 
 ### Features
