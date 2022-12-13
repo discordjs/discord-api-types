@@ -1,5 +1,12 @@
 import type { Permissions, Snowflake } from '../../globals';
-import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from '../../payloads/v10/index';
+import type {
+	APIApplication,
+	APIGuild,
+	APIUser,
+	APIWebhook,
+	OAuth2GuildScopes,
+	OAuth2Scopes,
+} from '../../payloads/v10/index';
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-bot-application-information
@@ -121,10 +128,10 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 * Needs to include bot for the bot flow
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| OAuth2GuildScopes.Bot
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}`
+		| `${OAuth2GuildScopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The permissions you're requesting
 	 *
@@ -150,10 +157,10 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	 * This assumes you include the `bot` scope alongside others (like `identify` for example)
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| OAuth2GuildScopes.Bot
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}`
+		| `${OAuth2GuildScopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2GuildScopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The required permissions bitfield, stringified
 	 */
