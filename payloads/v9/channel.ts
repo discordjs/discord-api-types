@@ -58,6 +58,11 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 	 */
 	last_message_id?: Snowflake | null;
 	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
 	 *
@@ -112,14 +117,14 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
+	/**
 	 * The channel topic (0-1024 characters)
 	 */
 	topic?: string | null;
-	/**
-	 * When the last pinned message was pinned.
-	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
-	 */
-	last_pin_timestamp?: string | null;
 }
 
 export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
@@ -145,7 +150,7 @@ export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChan
 
 export interface APIGuildVoiceChannel
 	extends APIVoiceChannelBase<ChannelType.GuildVoice>,
-		Omit<APITextBasedChannel<ChannelType.GuildVoice>, 'name'> {
+		Omit<APITextBasedChannel<ChannelType.GuildVoice>, 'name' | 'last_pin_timestamp'> {
 	/**
 	 * The camera video quality mode of the voice channel, `1` when not present
 	 *
@@ -189,14 +194,14 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 * ID of the DM creator
 	 */
 	owner_id?: Snowflake;
-	/**
-	 * The id of the last message sent in this channel (may not point to an existing or valid message)
-	 */
-	last_message_id?: Snowflake | null;
 }
 
 export interface APIThreadChannel
-	extends APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
+	extends Omit<
+			APITextBasedChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread>,
+			'name'
+		>,
+		APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -216,23 +221,9 @@ export interface APIThreadChannel
 	 */
 	member_count?: number;
 	/**
-	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 *
-	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
-	 *
-	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
-	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
-	 */
-	rate_limit_per_user?: number;
-	/**
 	 * ID of the thread creator
 	 */
 	owner_id?: Snowflake;
-	/**
-	 * The id of the last message sent in this thread (may not point to an existing or valid message)
-	 */
-	last_message_id?: Snowflake | null;
 	/**
 	 * Number of messages ever sent in a thread
 	 *
@@ -305,11 +296,6 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 */
 	available_tags: APIGuildForumTag[];
 	/**
-	 * The initial `rate_limit_per_user` to set on newly created threads in a forum channel.
-	 * This field is copied to the thread at creation time and does not live update
-	 */
-	default_thread_rate_limit_per_user?: number;
-	/**
 	 * The emoji to show in the add reaction button on a thread in a forum channel
 	 */
 	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
@@ -331,7 +317,6 @@ export type APIChannel =
 	| APIGuildStageVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
-	| APINewsChannel
 	| APIGuildForumChannel;
 
 /**
