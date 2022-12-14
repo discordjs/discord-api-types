@@ -1,5 +1,12 @@
 import type { Permissions, Snowflake } from '../../globals';
-import type { APIChannel, APIConnection, APIGuildMember, APIUser, GuildFeature } from '../../payloads/v10/index';
+import type {
+	APIChannel,
+	APIConnection,
+	APIGuildMember,
+	APIUser,
+	APIApplicationRoleConnection,
+	GuildFeature,
+} from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
@@ -94,3 +101,31 @@ export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
  * https://discord.com/developers/docs/resources/user#get-user-connections
  */
 export type RESTGetAPICurrentUserConnectionsResult = APIConnection[];
+
+/**
+ * https://discord.com/developers/docs/resources/user#get-user-application-role-connection
+ */
+export type RESTGetAPICurrentUserApplicationRoleConnectionResult = APIApplicationRoleConnection;
+
+/**
+ * https://discord.com/developers/docs/resources/user#update-user-application-role-connection
+ */
+export interface RESTPutAPICurrentUserApplicationRoleConnectionJSONBody {
+	/**
+	 * The vanity name of the platform a bot has connected (max 50 characters)
+	 */
+	platform_name?: string;
+	/**
+	 * The username on the platform a bot has connected (max 100 characters)
+	 */
+	platform_username?: string;
+	/**
+	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
+	 */
+	metadata?: Record<string, string>;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/user#update-user-application-role-connection
+ */
+export type RESTPutAPICurrentUserApplicationRoleConnectionResult = APIApplicationRoleConnection;

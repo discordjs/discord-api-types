@@ -6,6 +6,7 @@ import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
 import type { Permissions, Snowflake } from '../../globals';
+import type { LocalizationMap } from '../common';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
@@ -105,6 +106,11 @@ export interface APIApplication {
 	 * The application's default custom authorization link, if enabled
 	 */
 	custom_install_url?: string;
+	/**
+	 * The application's role connection verification entry point,
+	 * which when configured will render the app as a verification method in the guild role verification configuration
+	 */
+	role_connections_verification_url?: string;
 }
 
 export interface APIApplicationInstallParams {
@@ -130,4 +136,72 @@ export enum ApplicationFlags {
 	GatewayMessageContentLimited = 1 << 19,
 	EmbeddedFirstParty = 1 << 20,
 	ApplicationCommandBadge = 1 << 23,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-structure
+ */
+export interface APIApplicationRoleConnectionMetadata {
+	/**
+	 * Type of metadata value
+	 */
+	type: ApplicationRoleConnectionMetadataType;
+	/**
+	 * Dictionary key for the metadata field (must be `a-z`, `0-9`, or `_` characters; max 50 characters)
+	 */
+	key: string;
+	/**
+	 * Name of the metadata field (max 100 characters)
+	 */
+	name: string;
+	/**
+	 * Translations of the name
+	 */
+	name_localizations?: LocalizationMap;
+	/**
+	 * Description of the metadata field (max 200 characters)
+	 */
+	description: string;
+	/**
+	 * Translations of the description
+	 */
+	description_localizations?: LocalizationMap;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type
+ */
+export enum ApplicationRoleConnectionMetadataType {
+	/**
+	 * The metadata value (`integer`) is less than or equal to the guild's configured value (`integer`)
+	 */
+	IntegerLessThanOrEqual = 1,
+	/**
+	 * The metadata value (`integer`) is greater than or equal to the guild's configured value (`integer`)
+	 */
+	IntegerGreaterThanOrEqual,
+	/**
+	 * The metadata value (`integer`) is equal to the guild's configured value (`integer`)
+	 */
+	IntegerEqual,
+	/**
+	 * The metadata value (`integer`) is not equal to the guild's configured value (`integer`)
+	 */
+	IntegerNotEqual,
+	/**
+	 * The metadata value (`ISO8601 string`) is less than or equal to the guild's configured value (`integer`; days before current date)
+	 */
+	DatetimeLessThanOrEqual,
+	/**
+	 * The metadata value (`ISO8601 string`) is greater than or equal to the guild's configured value (`integer`; days before current date)
+	 */
+	DatetimeGreaterThanOrEqual,
+	/**
+	 * The metadata value (`integer`) is equal to the guild's configured value (`integer`; `1`)
+	 */
+	BooleanEqual,
+	/**
+	 * The metadata value (`integer`) is not equal to the guild's configured value (`integer`; `1`)
+	 */
+	BooleanNotEqual,
 }
