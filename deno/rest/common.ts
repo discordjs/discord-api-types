@@ -266,6 +266,7 @@ export enum RESTJSONErrorCodes {
  * https://discord.com/developers/docs/reference#locales
  */
 export enum Locale {
+	Indonesian = 'id',
 	EnglishUS = 'en-US',
 	EnglishGB = 'en-GB',
 	Bulgarian = 'bg',
