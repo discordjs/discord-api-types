@@ -204,6 +204,8 @@ export enum RESTJSONErrorCodes {
 	ParameterEarlierThanCreation,
 	CommunityServerChannelsMustBeTextChannels,
 
+	TheEntityTypeOfTheEventIsDifferentFromTheEntityYouAreTryingToStartTheEventFor = 50091,
+
 	ServerNotAvailableInYourLocation = 50095,
 
 	ServerNeedsMonetizationEnabledToPerformThisAction = 50097,
