@@ -114,7 +114,9 @@ export type APIApplicationCommandInteractionData =
  */
 export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
 	APIBaseInteraction<InteractionType.ApplicationCommand, Data> &
-		Required<Pick<APIBaseInteraction<InteractionType.ApplicationCommand, Data>, 'channel_id' | 'data'>>;
+		Required<
+			Pick<APIBaseInteraction<InteractionType.ApplicationCommand, Data>, 'channel_id' | 'data' | 'app_permissions'>
+		>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
