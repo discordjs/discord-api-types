@@ -1,3 +1,17 @@
+## [0.37.23](https://github.com/discordjs/discord-api-types/compare/0.37.22...0.37.23) (2022-12-15)
+
+### Bug Fixes
+
+- **APIChannel:** correctly type present properties based on channel type ([#669](https://github.com/discordjs/discord-api-types/issues/669)) ([2a5413d](https://github.com/discordjs/discord-api-types/commit/2a5413def49dbb413227d9b02be500b9184b731d))
+- **Interactions:** make app_permissions required ([#652](https://github.com/discordjs/discord-api-types/issues/652)) ([89bc0f4](https://github.com/discordjs/discord-api-types/commit/89bc0f40b60434a768abac95188a2e4e47c2acd9))
+
+### Features
+
+- add role connections ([#651](https://github.com/discordjs/discord-api-types/issues/651)) ([d7b666c](https://github.com/discordjs/discord-api-types/commit/d7b666c739bb848ead5a3af09e37e64ed962014b))
+- **APIApplicationCommand:** add `nsfw` field ([#637](https://github.com/discordjs/discord-api-types/issues/637)) ([c3fda99](https://github.com/discordjs/discord-api-types/commit/c3fda99637b4d7688111180f90d6aa41c008ed17))
+- **APIGuildForumChannel:** add `default_forum_layout` ([#658](https://github.com/discordjs/discord-api-types/issues/658)) ([190242a](https://github.com/discordjs/discord-api-types/commit/190242a59d5512fdc766217ec9f7c9c54a7b2dcb))
+- **Locale:** add Indonesian locale ([#643](https://github.com/discordjs/discord-api-types/issues/643)) ([2b75d13](https://github.com/discordjs/discord-api-types/commit/2b75d13b393f8f9011ec68617cb4e9f9d3fa09e7))
+
 ## [0.37.22](https://github.com/discordjs/discord-api-types/compare/0.37.21...0.37.22) (2022-12-12)
 
 ### Bug Fixes
