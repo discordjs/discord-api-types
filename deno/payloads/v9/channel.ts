@@ -295,17 +295,17 @@ export enum SortOrderType {
  */
 export enum ForumLayoutType {
 	/**
-	 * A preferred forum layout hasn't been set by a server admin
+	 * No default has been set for forum channel
 	 */
-	Default,
+	NotSet,
 	/**
-	 * List View: display forum posts in a text-focused list
+	 * Display posts as a list
 	 */
-	List,
+	ListView,
 	/**
-	 * Gallery View: display forum posts in a media-focused gallery
+	 * Display posts as a collection of tiles
 	 */
-	Grid,
+	GalleryView,
 }
 
 export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
@@ -327,7 +327,7 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 */
 	default_sort_order: SortOrderType | null;
 	/**
-	 * The default layout type used to display posts in a forum channel
+	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
 	 */
 	default_forum_layout: ForumLayoutType;
 }
