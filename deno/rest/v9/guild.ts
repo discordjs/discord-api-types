@@ -56,6 +56,7 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		| 'default_reaction_emoji'
 		| 'available_tags'
 		| 'default_sort_order'
+		| 'default_forum_layout'
 	>
 > &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{

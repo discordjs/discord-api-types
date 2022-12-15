@@ -294,6 +294,24 @@ export enum SortOrderType {
 	CreationDate,
 }
 
+/**
+ * https://discord.com/developers/docs/resources/channel/#channel-object-forum-layout-types
+ */
+export enum ForumLayoutType {
+	/**
+	 * No default has been set for forum channel
+	 */
+	NotSet,
+	/**
+	 * Display posts as a list
+	 */
+	ListView,
+	/**
+	 * Display posts as a collection of tiles
+	 */
+	GalleryView,
+}
+
 export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
 	/**
 	 * The set of tags that can be used in a forum channel
@@ -304,9 +322,13 @@ export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.Gu
 	 */
 	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
 	/**
-	 * The default sort order type used to order posts in forum channels
+	 * The default sort order type used to order posts in a forum channel
 	 */
 	default_sort_order: SortOrderType | null;
+	/**
+	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
+	 */
+	default_forum_layout: ForumLayoutType;
 }
 
 /**
