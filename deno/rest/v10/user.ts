@@ -122,7 +122,7 @@ export interface RESTPutAPICurrentUserApplicationRoleConnectionJSONBody {
 	/**
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
-	metadata?: Record<string, string>;
+	metadata?: Record<string, string | number>;
 }
 
 /**
