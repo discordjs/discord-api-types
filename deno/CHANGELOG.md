@@ -1,3 +1,9 @@
+## [0.37.24](https://github.com/discordjs/discord-api-types/compare/0.37.23...0.37.24) (2022-12-19)
+
+### Bug Fixes
+
+- **APIApplicationRoleConnection:** `metadata` values can be numbers ([#673](https://github.com/discordjs/discord-api-types/issues/673)) ([8df9f14](https://github.com/discordjs/discord-api-types/commit/8df9f14a24b714d3b009711eec894cad1e199881))
+
 ## [0.37.23](https://github.com/discordjs/discord-api-types/compare/0.37.22...0.37.23) (2022-12-15)
 
 ### Bug Fixes
