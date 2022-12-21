@@ -120,6 +120,8 @@ export enum RESTJSONErrorCodes {
 
 	BitrateIsTooHighForChannelOfThisType = 30052,
 
+	MaximumNumberOfWebhooksPerGuildReached = 30058,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
