@@ -269,6 +269,10 @@ export interface APIGuild extends APIPartialGuild {
 	 * The type of Student Hub the guild is
 	 */
 	hub_type: GuildHubType | null;
+	/**
+	 * The id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
+	 */
+	safety_alerts_channel_id: Snowflake | null;
 }
 
 /**
@@ -486,6 +490,10 @@ export enum GuildFeature {
 	 * Guild has access to create private threads
 	 */
 	PrivateThreads = 'PRIVATE_THREADS',
+	/**
+	 * Guild has enabled alerts for join raids in the configured safety alerts channel
+	 */
+	RaidAlertsEnabled = 'RAID_ALERTS_ENABLED',
 	RelayEnabled = 'RELAY_ENABLED',
 	/**
 	 * Guild is able to set role icons

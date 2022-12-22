@@ -118,6 +118,12 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.MentionSpam}
 	 */
 	mention_total_limit?: number;
+	/**
+	 * Whether to automatically detect mention raids
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.MentionSpam}
+	 */
+	mention_raid_protection_enabled?: boolean;
 }
 
 /**
