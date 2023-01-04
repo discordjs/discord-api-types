@@ -18,6 +18,10 @@ export interface RESTGetAPIAuditLogQuery {
 	 */
 	before?: Snowflake;
 	/**
+	 * Filter the log after a certain entry ID
+	 */
+	after?: Snowflake;
+	/**
 	 * How many entries are returned (default 50, minimum 1, maximum 100)
 	 *
 	 * @default 50
