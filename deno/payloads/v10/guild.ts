@@ -400,6 +400,14 @@ export enum GuildFeature {
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	Community = 'COMMUNITY',
+	/**
+	 * Guild has enabled monetization
+	 */
+	CreatorMonetizableProvisional = 'CREATOR_MONETIZABLE_PROVISIONAL',
+	/**
+	 * Guild has enabled the role subscription promo page
+	 */
+	CreatorStorePage = 'CREATOR_STORE_PAGE',
 	/*
 	 * Guild has been set as a support server on the App Directory
 	 */
@@ -446,6 +454,8 @@ export enum GuildFeature {
 	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
 	/**
 	 * Guild has enabled monetization
+	 *
+	 * @unstable This feature is no longer documented by Discord
 	 */
 	MonetizationEnabled = 'MONETIZATION_ENABLED',
 	/**
@@ -473,6 +483,14 @@ export enum GuildFeature {
 	 * Guild is able to set role icons
 	 */
 	RoleIcons = 'ROLE_ICONS',
+	/**
+	 * Guild has role subscriptions that can be purchased
+	 */
+	RoleSubscriptionsAvailableForPurchase = 'ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE',
+	/**
+	 * Guild has enabled role subscriptions
+	 */
+	RoleSubscriptionsEnabled = 'ROLE_SUBSCRIPTIONS_ENABLED',
 	/**
 	 * Guild has enabled ticketed events
 	 */
@@ -723,7 +741,7 @@ export interface APIGuildIntegration {
 	scopes?: OAuth2Scopes[];
 }
 
-export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
+export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord' | 'guild_subscription';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
