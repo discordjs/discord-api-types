@@ -237,7 +237,7 @@ export interface APIThreadChannel
 	/**
 	 * The IDs of up to 5 users that are members of the thread
 	 */
-	member_ids_preview: Snowflake[];
+	member_ids_preview?: Snowflake[];
 }
 
 /**
