@@ -84,6 +84,12 @@ export type RESTErrorData = RESTErrorGroupWrapper | RESTErrorFieldInformation | 
  */
 export interface RESTRateLimit {
 	/**
+	 * An error code for some limits
+	 *
+	 * {@link RESTJSONErrorCodes}
+	 */
+	code?: number;
+	/**
 	 * A value indicating if you are being globally rate limited or not
 	 */
 	global: boolean;
