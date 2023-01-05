@@ -234,6 +234,10 @@ export interface APIThreadChannel
 	 * The IDs of the set of tags that have been applied to a thread in a forum channel
 	 */
 	applied_tags: Snowflake[];
+	/**
+	 * The IDs of up to 5 users that are members of the thread
+	 */
+	member_ids_preview: Snowflake[];
 }
 
 /**
