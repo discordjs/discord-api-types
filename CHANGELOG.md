@@ -1,3 +1,12 @@
+## [0.37.26](https://github.com/discordjs/discord-api-types/compare/0.37.25...0.37.26) (2023-01-05)
+
+### Features
+
+- add RESTJSONErrorCode `40062` and RESTRateLimit.code ([#620](https://github.com/discordjs/discord-api-types/issues/620)) ([4a25caf](https://github.com/discordjs/discord-api-types/commit/4a25caf506c685a8e0af630eef3bd3d2735d64ed))
+- **RESTGetAPIAuditLogQuery:** support `after` ([#682](https://github.com/discordjs/discord-api-types/issues/682)) ([bb2ef84](https://github.com/discordjs/discord-api-types/commit/bb2ef843133b29e3042bdfde20b5adb1c3639e01))
+- **RESTJSONErrorCodes:** add error `30058` ([#676](https://github.com/discordjs/discord-api-types/issues/676)) ([921bffd](https://github.com/discordjs/discord-api-types/commit/921bffd1b210b6cf2dc6971e451fa0a9e6f6c185))
+- **RESTJSONErrorCodes:** add error `50067` ([#640](https://github.com/discordjs/discord-api-types/issues/640)) ([6e4a611](https://github.com/discordjs/discord-api-types/commit/6e4a6115ae44aca5c0b61f621ad75829632850f4))
+
 ## [0.37.25](https://github.com/discordjs/discord-api-types/compare/0.37.24...0.37.25) (2022-12-29)
 
 ## [0.37.24](https://github.com/discordjs/discord-api-types/compare/0.37.23...0.37.24) (2022-12-19)
