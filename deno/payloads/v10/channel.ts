@@ -677,6 +677,7 @@ export enum MessageType {
 	GuildBoostTier2,
 	GuildBoostTier3,
 	ChannelFollowAdd,
+
 	GuildDiscoveryDisqualified = 14,
 	GuildDiscoveryRequalified,
 	GuildDiscoveryGracePeriodInitialWarning,
@@ -688,6 +689,29 @@ export enum MessageType {
 	GuildInviteReminder,
 	ContextMenuCommand,
 	AutoModerationAction,
+
+	InteractionPremiumUpsell = 26,
+	/**
+	 * @unstable
+	 */
+	StageStart,
+	/**
+	 * @unstable
+	 */
+	StageEnd,
+	/**
+	 * @unstable
+	 */
+	StageSpeaker,
+	/**
+	 * @unstable
+	 */
+	StageRaiseHand,
+	/**
+	 * @unstable
+	 */
+	StageTopic,
+	GuildApplicationPremiumSubscription,
 }
 
 /**
