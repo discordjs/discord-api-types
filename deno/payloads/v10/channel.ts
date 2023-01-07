@@ -658,6 +658,11 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
+
+	/**
+	 * Data of the role subscription purchase or renewal that prompted this `ROLE_SUBSCRIPTION_PURCHASE` message
+	 */
+	role_subscription_data: APIMessageRoleSubscriptionData | null;
 }
 
 /**
@@ -800,6 +805,13 @@ export enum MessageFlags {
 	 * This message failed to mention some roles and add their members to the thread
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
+}
+
+export interface APIMessageRoleSubscriptionData {
+	role_subscription_listing_id: Snowflake;
+	tier_name: string;
+	total_months_subscribed: number;
+	is_renewal: boolean;
 }
 
 /**

@@ -368,6 +368,14 @@ export enum GuildSystemChannelFlags {
 	 * Hide member join sticker reply buttons
 	 */
 	SuppressJoinNotificationReplies = 1 << 3,
+	/**
+	 * Suppress role subscription purchase and renewal notifications
+	 */
+	SupressRoleSubscriptionPurchaseNotifications = 1 << 4,
+	/**
+	 * Hide role subscription sticker reply buttons
+	 */
+	SuppressRoleSubscriptionPurchaseNotificationReplies = 1 << 5,
 }
 
 /**
