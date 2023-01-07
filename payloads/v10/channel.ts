@@ -662,7 +662,7 @@ export interface APIMessage {
 	/**
 	 * Data of the role subscription purchase or renewal that prompted this `ROLE_SUBSCRIPTION_PURCHASE` message
 	 */
-	role_subscription_data: APIMessageRoleSubscriptionData | null;
+	role_subscription_data?: APIMessageRoleSubscriptionData;
 }
 
 /**
