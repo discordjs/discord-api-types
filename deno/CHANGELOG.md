@@ -1,3 +1,9 @@
+## [0.37.27](https://github.com/discordjs/discord-api-types/compare/0.37.26...0.37.27) (2023-01-09)
+
+### Features
+
+- **MessageType:** add missing types ([#681](https://github.com/discordjs/discord-api-types/issues/681)) ([7d55b33](https://github.com/discordjs/discord-api-types/commit/7d55b33bacb96e156f41fb67a1819c07c8fa959f))
+
 ## [0.37.26](https://github.com/discordjs/discord-api-types/compare/0.37.25...0.37.26) (2023-01-05)
 
 ### Features
