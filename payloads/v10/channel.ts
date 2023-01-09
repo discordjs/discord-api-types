@@ -941,6 +941,8 @@ export interface APIThreadMember {
 	 * Additional information about the user
 	 *
 	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
+	 *
+	 * **This field is only present when `with_member` is set to true when calling `List Thread Members` or `Get Thread Member`**
 	 */
 	member?: APIGuildMember;
 }
