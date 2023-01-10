@@ -662,7 +662,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Is this integration enabled
 	 */
-	enabled?: boolean;
+	enabled: boolean;
 	/**
 	 * Is this integration syncing
 	 *
@@ -698,7 +698,7 @@ export interface APIGuildIntegration {
 	/**
 	 * User for this integration
 	 *
-	 * **This field is not provided for `discord` bot integrations.**
+	 * **Some older integrations may not have an attached user.**
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
