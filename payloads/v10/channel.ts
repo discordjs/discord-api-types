@@ -659,6 +659,11 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
+
+	/**
+	 * Data of the role subscription purchase or renewal that prompted this `ROLE_SUBSCRIPTION_PURCHASE` message
+	 */
+	role_subscription_data?: APIMessageRoleSubscriptionData;
 }
 
 /**
@@ -801,6 +806,28 @@ export enum MessageFlags {
 	 * This message failed to mention some roles and add their members to the thread
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#role-subscription-data-object-role-subscription-data-object-structure
+ */
+export interface APIMessageRoleSubscriptionData {
+	/**
+	 * The id of the SKU and listing the user is subscribed to
+	 */
+	role_subscription_listing_id: Snowflake;
+	/**
+	 * The name of the tier the user is subscribed to
+	 */
+	tier_name: string;
+	/**
+	 * The number of months the user has been subscribed for
+	 */
+	total_months_subscribed: number;
+	/**
+	 * Whether this notification is for a renewal
+	 */
+	is_renewal: boolean;
 }
 
 /**
