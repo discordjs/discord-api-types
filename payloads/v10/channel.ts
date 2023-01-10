@@ -4,6 +4,7 @@
 
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
+import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
@@ -936,6 +937,14 @@ export interface APIThreadMember {
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
 	flags: ThreadMemberFlags;
+	/**
+	 * Additional information about the user
+	 *
+	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
+	 *
+	 * **This field is only present when `with_member` is set to true when calling `List Thread Members` or `Get Thread Member`**
+	 */
+	member?: APIGuildMember;
 }
 
 export enum ThreadMemberFlags {}

@@ -697,6 +697,39 @@ export type RESTPutAPIChannelThreadMembersResult = never;
 export type RESTDeleteAPIChannelThreadMembersResult = never;
 
 /**
+ * https://discord.com/developers/docs/resources/channel#get-thread-member
+ */
+export interface RESTGetAPIChannelThreadMemberQuery {
+	/**
+	 * Whether to include a guild member object for the thread member
+	 */
+	with_member?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#get-thread-member
+ */
+export type RESTGetAPIChannelThreadMemberResult = APIThreadMember;
+
+/**
+ * https://discord.com/developers/docs/resources/channel#list-thread-members
+ */
+export interface RESTGetAPIChannelThreadMembersQuery {
+	/**
+	 * Whether to include a guild member object for each thread member
+	 */
+	with_member?: boolean;
+	/**
+	 * Get thread members after this user ID
+	 */
+	after?: Snowflake;
+	/**
+	 * Max number of thread members to return (1-100). Defaults to 100
+	 */
+	limit?: number;
+}
+
+/**
  * https://discord.com/developers/docs/resources/channel#list-thread-members
  */
 export type RESTGetAPIChannelThreadMembersResult = APIThreadMember[];
