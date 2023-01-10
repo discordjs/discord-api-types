@@ -5,6 +5,8 @@
   color: 'e4f486'
 - name: 'semver:patch'
   color: 'e8be8b'
+- name: 'blocked'
+  color: 'fc1423'
 - name: 'question (please use Discord instead)'
   color: 'd876e3'
 - name: 'regression'
