@@ -80,4 +80,8 @@ export interface APIRoleTags {
 	 * Whether this role is available for purchase
 	 */
 	available_for_purchase?: null;
+	/**
+	 * Whether this role is a guild's linked role
+	 */
+	guild_connections?: null;
 }
