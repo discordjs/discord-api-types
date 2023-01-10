@@ -120,6 +120,8 @@ export enum RESTJSONErrorCodes {
 
 	BitrateIsTooHighForChannelOfThisType = 30052,
 
+	MaximumNumberOfPremiumEmojisReached = 30056,
+
 	MaximumNumberOfWebhooksPerGuildReached = 30058,
 
 	Unauthorized = 40001,
@@ -220,7 +222,9 @@ export enum RESTJSONErrorCodes {
 
 	FailedToResizeAssetBelowTheMinimumSize = 50138,
 
-	UploadedFileNotFound = 50146,
+	CannotMixSubscriptionAndNonSubscriptionRolesForAnEmoji = 50144,
+	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
+	UploadedFileNotFound,
 
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 

@@ -689,8 +689,8 @@ export enum MessageType {
 	GuildInviteReminder,
 	ContextMenuCommand,
 	AutoModerationAction,
-
-	InteractionPremiumUpsell = 26,
+	RoleSubscriptionPurchase,
+	InteractionPremiumUpsell,
 	/**
 	 * @unstable
 	 */
