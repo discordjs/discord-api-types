@@ -1,3 +1,19 @@
+## [0.37.28](https://github.com/discordjs/discord-api-types/compare/0.37.27...0.37.28) (2023-01-12)
+
+### Bug Fixes
+
+- **GuildIntegration:** `enabled` and `user` are present on bots ([#660](https://github.com/discordjs/discord-api-types/issues/660)) ([b10e9bb](https://github.com/discordjs/discord-api-types/commit/b10e9bbe5ab450df065fc78da85d49f335db2b82))
+
+### Features
+
+- Add role subscription data and system channel flags ([#686](https://github.com/discordjs/discord-api-types/issues/686)) ([792c60b](https://github.com/discordjs/discord-api-types/commit/792c60b3328d8440de79546bf43d6b317400c788))
+- **APIRoleTags:** add `guild_connections` ([#675](https://github.com/discordjs/discord-api-types/issues/675)) ([3dbe985](https://github.com/discordjs/discord-api-types/commit/3dbe985b6e05e6aa68248e79f45d550e783bc6a7))
+- **APIThreadMember:** add support for thread member pagination ([#689](https://github.com/discordjs/discord-api-types/issues/689)) ([e2fb5ee](https://github.com/discordjs/discord-api-types/commit/e2fb5ee4886a33bb752a75d5894f726f6f76340f))
+- **ConnectionService:** add TikTok ([#632](https://github.com/discordjs/discord-api-types/issues/632)) ([af06df6](https://github.com/discordjs/discord-api-types/commit/af06df6cae224a60e7a35e356028677e8736ed89))
+- **RESTJSONErrorCodes:** add error `50091` ([#671](https://github.com/discordjs/discord-api-types/issues/671)) ([8869e92](https://github.com/discordjs/discord-api-types/commit/8869e923362740e491f267d71073d4266d36cb42))
+- role subscriptions ([#665](https://github.com/discordjs/discord-api-types/issues/665)) ([0b4058b](https://github.com/discordjs/discord-api-types/commit/0b4058bdd48b74fcd9944dcf4b6f98d5e0bee105))
+- **StickerFormatType:** add `GIF` ([#688](https://github.com/discordjs/discord-api-types/issues/688)) ([a6bcb3f](https://github.com/discordjs/discord-api-types/commit/a6bcb3f0fe7bc4edceee61b7cdab0e46db9c7109))
+
 ## [0.37.27](https://github.com/discordjs/discord-api-types/compare/0.37.26...0.37.27) (2023-01-09)
 
 ### Features
