@@ -32,6 +32,7 @@ import type {
 	InviteTargetType,
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
+	APIAuditLogEntry,
 } from '../payloads/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
 
@@ -261,6 +262,7 @@ export enum GatewayDispatchEvents {
 	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
 	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
 	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
+	AuditLogEntryCreate = 'AUDIT_LOG_ENTRY_CREATE',
 }
 
 export type GatewaySendPayload =
@@ -1689,6 +1691,19 @@ export interface GatewayWebhooksUpdateDispatchData {
 	 */
 	channel_id: Snowflake;
 }
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
+ */
+export type GatewayAuditLogEntryCreateDispatch = DataPayload<
+	GatewayDispatchEvents.AuditLogEntryCreate,
+	GatewayAuditLogEntryCreateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
+ */
+export type GatewayAuditLogEntryCreateDispatchData = APIAuditLogEntry;
 
 // #endregion Dispatch Payloads
 
