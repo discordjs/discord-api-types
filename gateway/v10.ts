@@ -180,7 +180,11 @@ export enum GatewayCloseCodes {
 export enum GatewayIntentBits {
 	Guilds = 1 << 0,
 	GuildMembers = 1 << 1,
-	GuildBans = 1 << 2,
+	GuildModeration = 1 << 2,
+	/**
+	 * @deprecated Use {@link GuildModeration} instead
+	 */
+	GuildBans = GuildModeration,
 	GuildEmojisAndStickers = 1 << 3,
 	GuildIntegrations = 1 << 4,
 	GuildWebhooks = 1 << 5,
