@@ -786,6 +786,20 @@ export type RESTGetAPIGuildInvitesResult = APIExtendedInvite[];
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-integrations
  */
+export interface RESTGetAPIGuildIntegrationsQuery {
+	/**
+	 * When `true`, will only return integrations with registered commands
+	 */
+	has_commands?: boolean;
+	/**
+	 * When `true`, will return the role connections verification url
+	 */
+	include_role_connections_metadata?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-integrations
+ */
 export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
 
 /**
