@@ -192,7 +192,7 @@ export interface APIApplicationRoleConnectionMetadata {
 	 */
 	type: ApplicationRoleConnectionMetadataType;
 	/**
-	 * Dictionary key for the metadata field (must be `a-z`, `0-9`, or `_` characters; 1-0 characters)
+	 * Dictionary key for the metadata field (must be `a-z`, `0-9`, or `_` characters; 1-50 characters)
 	 */
 	key: string;
 	/**
