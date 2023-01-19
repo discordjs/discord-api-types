@@ -89,6 +89,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfEmojisReached,
 
 	MaximumNumberOfReactionsReached = 30010,
+	MaximumNumberOfGroupDMsReached,
 
 	MaximumNumberOfGuildChannelsReached = 30013,
 
