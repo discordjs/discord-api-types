@@ -1708,7 +1708,12 @@ export type GatewayAuditLogEntryCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
  */
-export type GatewayAuditLogEntryCreateDispatchData = APIAuditLogEntry;
+export interface GatewayAuditLogEntryCreateDispatchData extends APIAuditLogEntry {
+	/**
+	 * ID of the guild
+	 */
+	guild_id: Snowflake;
+}
 
 // #endregion Dispatch Payloads
 
