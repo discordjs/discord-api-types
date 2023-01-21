@@ -267,7 +267,7 @@ export enum GatewayDispatchEvents {
 	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
 	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
 	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
-	AuditLogEntryCreate = 'AUDIT_LOG_ENTRY_CREATE',
+	GuildAuditLogEntryCreate = 'GUILD_AUDIT_LOG_ENTRY_CREATE',
 }
 
 export type GatewaySendPayload =
@@ -1700,15 +1700,15 @@ export interface GatewayWebhooksUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
  */
-export type GatewayAuditLogEntryCreateDispatch = DataPayload<
-	GatewayDispatchEvents.AuditLogEntryCreate,
-	GatewayAuditLogEntryCreateDispatchData
+export type GatewayGuildAuditLogEntryCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildAuditLogEntryCreate,
+	GatewayGuildAuditLogEntryCreateDispatchData
 >;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
  */
-export interface GatewayAuditLogEntryCreateDispatchData extends APIAuditLogEntry {
+export interface GatewayGuildAuditLogEntryCreateDispatchData extends APIAuditLogEntry {
 	/**
 	 * ID of the guild
 	 */
