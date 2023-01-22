@@ -182,7 +182,7 @@ export enum GatewayIntentBits {
 	GuildMembers = 1 << 1,
 	GuildModeration = 1 << 2,
 	/**
-	 * @deprecated Use {@link GuildModeration} instead
+	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildModeration}
 	 */
 	GuildBans = GuildModeration,
 	GuildEmojisAndStickers = 1 << 3,
