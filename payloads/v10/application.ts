@@ -192,11 +192,11 @@ export interface APIApplicationRoleConnectionMetadata {
 	 */
 	type: ApplicationRoleConnectionMetadataType;
 	/**
-	 * Dictionary key for the metadata field (must be `a-z`, `0-9`, or `_` characters; max 50 characters)
+	 * Dictionary key for the metadata field (must be `a-z`, `0-9`, or `_` characters; 1-50 characters)
 	 */
 	key: string;
 	/**
-	 * Name of the metadata field (max 100 characters)
+	 * Name of the metadata field (1-100 characters)
 	 */
 	name: string;
 	/**
@@ -204,7 +204,7 @@ export interface APIApplicationRoleConnectionMetadata {
 	 */
 	name_localizations?: LocalizationMap;
 	/**
-	 * Description of the metadata field (max 200 characters)
+	 * Description of the metadata field (1-200 characters)
 	 */
 	description: string;
 	/**
