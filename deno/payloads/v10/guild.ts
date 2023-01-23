@@ -640,6 +640,10 @@ export interface APIGuildMember {
 	 */
 	mute: boolean;
 	/**
+	 * Guild member flags represented as a bit set, defaults to `0`
+	 */
+	flags: GuildMemberFlags;
+	/**
 	 * Whether the user has not yet passed the guild's Membership Screening requirements
 	 *
 	 * *If this field is not present, it can be assumed as `false`.*
@@ -649,6 +653,28 @@ export interface APIGuildMember {
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags
+ */
+export enum GuildMemberFlags {
+	/**
+	 * Member has left and rejoined the guild
+	 */
+	DidRejoin = 1 << 0,
+	/**
+	 * Member has completed onboarding
+	 */
+	CompletedOnboarding = 1 << 1,
+	/**
+	 * Member bypasses guild verification requirements
+	 */
+	BypassesVerification = 1 << 2,
+	/**
+	 * Member has started onboarding
+	 */
+	StartedOnboarding = 1 << 3,
 }
 
 /**
