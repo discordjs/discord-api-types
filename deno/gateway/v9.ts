@@ -32,6 +32,7 @@ import type {
 	InviteTargetType,
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
+	APIAuditLogEntry,
 } from '../payloads/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
 
@@ -179,7 +180,11 @@ export enum GatewayCloseCodes {
 export enum GatewayIntentBits {
 	Guilds = 1 << 0,
 	GuildMembers = 1 << 1,
-	GuildBans = 1 << 2,
+	GuildModeration = 1 << 2,
+	/**
+	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildModeration}
+	 */
+	GuildBans = GuildModeration,
 	GuildEmojisAndStickers = 1 << 3,
 	GuildIntegrations = 1 << 4,
 	GuildWebhooks = 1 << 5,
@@ -261,6 +266,7 @@ export enum GatewayDispatchEvents {
 	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
 	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
 	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
+	GuildAuditLogEntryCreate = 'GUILD_AUDIT_LOG_ENTRY_CREATE',
 }
 
 export type GatewaySendPayload =
@@ -1688,6 +1694,24 @@ export interface GatewayWebhooksUpdateDispatchData {
 	 * The id of the channel
 	 */
 	channel_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
+ */
+export type GatewayGuildAuditLogEntryCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildAuditLogEntryCreate,
+	GatewayGuildAuditLogEntryCreateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
+ */
+export interface GatewayGuildAuditLogEntryCreateDispatchData extends APIAuditLogEntry {
+	/**
+	 * ID of the guild
+	 */
+	guild_id: Snowflake;
 }
 
 // #endregion Dispatch Payloads
