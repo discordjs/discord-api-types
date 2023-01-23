@@ -231,6 +231,7 @@ export enum ConnectionService {
 	EpicGames = 'epicgames',
 	Facebook = 'facebook',
 	GitHub = 'github',
+	Instagram = 'instagram',
 	LeagueOfLegends = 'leagueoflegends',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
