@@ -1,3 +1,10 @@
+## [0.37.30](https://github.com/discordjs/discord-api-types/compare/0.37.29...0.37.30) (2023-01-26)
+
+### Features
+
+- **APIGuildMember:** add support for guild member flags ([#700](https://github.com/discordjs/discord-api-types/issues/700)) ([e902671](https://github.com/discordjs/discord-api-types/commit/e902671411b518504b9adc6b0d7310501fd531ad))
+- **GatewayDispatchEvents:** add `GuildAuditLogEntryCreate` ([#692](https://github.com/discordjs/discord-api-types/issues/692)) ([31ca234](https://github.com/discordjs/discord-api-types/commit/31ca234decd6d62b503aadd88111a2af3778f455))
+
 ## [0.37.29](https://github.com/discordjs/discord-api-types/compare/0.37.28...0.37.29) (2023-01-23)
 
 ## [0.37.28](https://github.com/discordjs/discord-api-types/compare/0.37.27...0.37.28) (2023-01-12)
