@@ -792,6 +792,10 @@ export enum MessageFlags {
 	 * This message failed to mention some roles and add their members to the thread
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
+	/**
+	 * This message will not trigger push and desktop notifications
+	 */
+	SuppressNotifications = 1 << 12,
 }
 
 /**
