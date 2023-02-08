@@ -1,14 +1,13 @@
-import { npmToPnpm } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
+import { npmToPnpm, npmToYarn } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
-import npmToYarn from 'npm-to-yarn';
 import React, { FC } from 'react';
 import InstallTabButton from './InstallTabButton';
 import styles from './InstallTabs.module.css';
 
 const InstallTabs: FC = () => {
 	const npmInstallCommand = 'npm install discord-api-types';
-	const yarnInstallCommand = npmToYarn(npmInstallCommand, 'yarn');
+	const yarnInstallCommand = npmToYarn(npmInstallCommand);
 	const pnpmInstallCommand = npmToPnpm(npmInstallCommand);
 
 	const handleClickInstallButton = async (command: string) => {
