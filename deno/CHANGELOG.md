@@ -1,3 +1,9 @@
+## [0.37.32](https://github.com/discordjs/discord-api-types/compare/0.37.31...0.37.32) (2023-02-09)
+
+### Features
+
+- **MessageType:** add `SuppressNotifications` ([#710](https://github.com/discordjs/discord-api-types/issues/710)) ([b14aea6](https://github.com/discordjs/discord-api-types/commit/b14aea65f886db047ea9fcbd1b8f49f1bc38f594))
+
 ## [0.37.31](https://github.com/discordjs/discord-api-types/compare/0.37.30...0.37.31) (2023-01-30)
 
 ## [0.37.30](https://github.com/discordjs/discord-api-types/compare/0.37.29...0.37.30) (2023-01-26)
