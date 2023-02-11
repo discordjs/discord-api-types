@@ -339,7 +339,8 @@ export type GatewayDispatchPayload =
 	| GatewayUserUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
 	| GatewayVoiceStateUpdateDispatch
-	| GatewayWebhooksUpdateDispatch;
+	| GatewayWebhooksUpdateDispatch
+	| GatewayGuildAuditLogEntryCreateDispatch;
 
 // #region Dispatch Payloads
 
