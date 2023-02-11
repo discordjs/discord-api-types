@@ -1,3 +1,9 @@
+## [0.37.33](https://github.com/discordjs/discord-api-types/compare/0.37.32...0.37.33) (2023-02-11)
+
+### Bug Fixes
+
+- **GatewayDispatchPayload:** add missing GuildAuditLogEntry ([#715](https://github.com/discordjs/discord-api-types/issues/715)) ([602c16e](https://github.com/discordjs/discord-api-types/commit/602c16eee12e85a8052f40c695314a42b1d15979))
+
 ## [0.37.32](https://github.com/discordjs/discord-api-types/compare/0.37.31...0.37.32) (2023-02-09)
 
 ### Features
