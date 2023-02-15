@@ -1020,12 +1020,12 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/app-icons/{application.id}/{application.asset_id}.{png|jpeg|webp}`
+	 * - GET `/app-assets/{application.id}/{application.asset_id}.{png|jpeg|webp}`
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
 	applicationAsset(applicationId: Snowflake, applicationAssetId: string, format: ApplicationAssetFormat) {
-		return `/app-icons/${applicationId}/${applicationAssetId}.${format}` as const;
+		return `/app-assets/${applicationId}/${applicationAssetId}.${format}` as const;
 	},
 
 	/**
@@ -1051,6 +1051,16 @@ export const CDNRoutes = {
 	 */
 	stickerPackBanner(stickerPackBannerAssetId: Snowflake, format: StickerPackBannerFormat) {
 		return `/app-assets/${StickerPackApplicationId}/store/${stickerPackBannerAssetId}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/app-assets/${application.id}/store/${asset.id}.{png|jpeg|webp}}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	storePageAsset(applicationId: Snowflake, assetId: string) {
+		return `/app-assets/${applicationId}/store/${assetId}.png` as const;
 	},
 
 	/**
