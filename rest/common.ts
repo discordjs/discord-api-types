@@ -125,7 +125,8 @@ export enum RESTJSONErrorCodes {
 
 	MaximumNumberOfWebhooksPerGuildReached = 30058,
 
-	TheChannelsForThisGuildAreTooLarge = 30061,
+	MaximumNumberOfChannelPermissionOverwritesReached = 30060,
+	TheChannelsForThisGuildAreTooLarge,
 
 	Unauthorized = 40001,
 	VerifyYourAccount,
