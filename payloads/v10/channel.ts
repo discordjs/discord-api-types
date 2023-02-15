@@ -199,6 +199,10 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 * The id of the last message sent in this channel (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * Whether the channel is managed by an OAuth2 application
+	 */
+	managed?: boolean;
 }
 
 export interface APIThreadChannel
