@@ -371,7 +371,7 @@ export enum GuildSystemChannelFlags {
 	/**
 	 * Suppress role subscription purchase and renewal notifications
 	 */
-	SupressRoleSubscriptionPurchaseNotifications = 1 << 4,
+	SuppressRoleSubscriptionPurchaseNotifications = 1 << 4,
 	/**
 	 * Hide role subscription sticker reply buttons
 	 */
