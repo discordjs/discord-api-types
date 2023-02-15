@@ -690,6 +690,9 @@ export enum MessageType {
 	StageStart,
 	StageEnd,
 	StageSpeaker,
+	/**
+	 * @unstable https://github.com/discord/discord-api-docs/pull/5927#discussion_r1107678548
+	 */
 	StageRaiseHand,
 	StageTopic,
 	GuildApplicationPremiumSubscription,
