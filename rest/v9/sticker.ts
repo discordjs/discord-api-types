@@ -40,7 +40,9 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 	 */
 	tags: string;
 	/**
-	 * The sticker file to upload, must be a PNG, APNG, GIF, or Lottie JSON file, max 500 KB
+	 * The sticker file to upload, must be a PNG, APNG, GIF, or Lottie JSON file, max 512 KB
+	 *
+	 * Uploaded stickers are constrained to 5 seconds in length for animated stickers, and 320 x 320 pixels.
 	 */
 	file: unknown;
 }
