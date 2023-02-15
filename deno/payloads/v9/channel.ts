@@ -683,25 +683,10 @@ export enum MessageType {
 	AutoModerationAction,
 	RoleSubscriptionPurchase,
 	InteractionPremiumUpsell,
-	/**
-	 * @unstable
-	 */
 	StageStart,
-	/**
-	 * @unstable
-	 */
 	StageEnd,
-	/**
-	 * @unstable
-	 */
 	StageSpeaker,
-	/**
-	 * @unstable
-	 */
 	StageRaiseHand,
-	/**
-	 * @unstable
-	 */
 	StageTopic,
 	GuildApplicationPremiumSubscription,
 }
