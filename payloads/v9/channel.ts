@@ -195,6 +195,10 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 * ID of the DM creator
 	 */
 	owner_id?: Snowflake;
+	/**
+	 * Whether the channel is managed by an OAuth2 application
+	 */
+	managed?: boolean;
 }
 
 export interface APIThreadChannel

@@ -89,6 +89,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfEmojisReached,
 
 	MaximumNumberOfReactionsReached = 30010,
+	MaximumNumberOfGroupDMsReached,
 
 	MaximumNumberOfGuildChannelsReached = 30013,
 
@@ -125,6 +126,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfWebhooksPerGuildReached = 30058,
 
 	MaximumNumberOfChannelPermissionOverwritesReached = 30060,
+	TheChannelsForThisGuildAreTooLarge,
 
 	Unauthorized = 40001,
 	VerifyYourAccount,
