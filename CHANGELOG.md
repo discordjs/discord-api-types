@@ -1,3 +1,18 @@
+## [0.37.34](https://github.com/discordjs/discord-api-types/compare/0.37.33...0.37.34) (2023-02-16)
+
+### Bug Fixes
+
+- **GuildSystemChannelFlags:** "suppress" typo ([#719](https://github.com/discordjs/discord-api-types/issues/719)) ([8d37bc5](https://github.com/discordjs/discord-api-types/commit/8d37bc5e30f76552bca402c858cc67bb8a5ddc9c))
+
+### Features
+
+- add `managed` field to `ChannelType.GroupDM` ([#698](https://github.com/discordjs/discord-api-types/issues/698)) ([8477deb](https://github.com/discordjs/discord-api-types/commit/8477deb6a832b0c985fa0f6d1df4b99eaeab2a87))
+- **CDNRoutes:** add `storePageAsset()` ([#695](https://github.com/discordjs/discord-api-types/issues/695)) ([4cf6fd2](https://github.com/discordjs/discord-api-types/commit/4cf6fd2cecd92a9c3ffa32368ccc7b1994295be3))
+- **ConnectionService:** add `instagram` ([#701](https://github.com/discordjs/discord-api-types/issues/701)) ([c65e214](https://github.com/discordjs/discord-api-types/commit/c65e214fddeb3aa959034ac14de39edab38ff0f3))
+- **RESTJSONErrorCodes:** add error `30011` ([#697](https://github.com/discordjs/discord-api-types/issues/697)) ([41b31eb](https://github.com/discordjs/discord-api-types/commit/41b31ebfd62a8dba32da1e748c49877924c0602d))
+- **RESTJSONErrorCodes:** add error `30060` ([#720](https://github.com/discordjs/discord-api-types/issues/720)) ([20153f6](https://github.com/discordjs/discord-api-types/commit/20153f6fe24676d73bcb41e92c6d9d52961f1f73))
+- **RESTJSONErrorCodes:** add error `30061` ([#717](https://github.com/discordjs/discord-api-types/issues/717)) ([d609efc](https://github.com/discordjs/discord-api-types/commit/d609efc746df620925237575dd24fd0f38213f09))
+
 ## [0.37.33](https://github.com/discordjs/discord-api-types/compare/0.37.32...0.37.33) (2023-02-11)
 
 ### Bug Fixes
