@@ -49,7 +49,8 @@ export type TextChannelType =
 	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
 	| ChannelType.GuildForum
-	| ChannelType.GuildVoice;
+	| ChannelType.GuildVoice
+	| ChannelType.GuildStageVoice;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
