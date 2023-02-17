@@ -59,7 +59,7 @@ export interface APIAutoModerationRule {
  */
 export enum AutoModerationRuleTriggerType {
 	/**
-	 * Check if content contains words from a user defined list of keywords (Maximum of 3 per guild)
+	 * Check if content contains words from a user defined list of keywords (Maximum of 6 per guild)
 	 */
 	Keyword = 1,
 	/**
@@ -83,7 +83,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	/**
 	 * Substrings which will be searched for in content (Maximum of 1000)
 	 *
-	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 30 characters or less
+	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 60 characters or less
 	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
@@ -98,7 +98,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	/**
 	 * Substrings which will be exempt from triggering the preset trigger type (Maximum of 1000)
 	 *
-	 * A allowed-word can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 30 characters or less
+	 * A allowed-word can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 60 characters or less
 	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
@@ -107,7 +107,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	/**
 	 * Regular expression patterns which will be matched against content (Maximum of 10)
 	 *
-	 * Only Rust flavored regex is currently supported (Maximum of 75 characters)
+	 * Only Rust flavored regex is currently supported (Maximum of 260 characters)
 	 *
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
 	 */
