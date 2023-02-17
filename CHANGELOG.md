@@ -1,3 +1,9 @@
+## [0.37.35](https://github.com/discordjs/discord-api-types/compare/0.37.34...0.37.35) (2023-02-17)
+
+### Bug Fixes
+
+- `StageRaiseHand` should be unstable ([#722](https://github.com/discordjs/discord-api-types/issues/722)) ([85051ea](https://github.com/discordjs/discord-api-types/commit/85051eaab7e262b4f60e3f5565bf8a7a5225513e))
+
 ## [0.37.34](https://github.com/discordjs/discord-api-types/compare/0.37.33...0.37.34) (2023-02-16)
 
 ### Bug Fixes
