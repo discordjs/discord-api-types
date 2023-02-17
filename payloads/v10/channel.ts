@@ -49,7 +49,8 @@ export type TextChannelType =
 	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
 	| ChannelType.GuildForum
-	| ChannelType.GuildVoice;
+	| ChannelType.GuildVoice
+	| ChannelType.GuildStageVoice;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
@@ -132,13 +133,15 @@ export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
-export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChannel<T> {
+export interface APIVoiceChannelBase<T extends ChannelType>
+	extends APIGuildChannel<T>,
+		Omit<APITextBasedChannel<T>, 'name' | 'last_pin_timestamp'> {
 	/**
-	 * The bitrate (in bits) of the voice channel
+	 * The bitrate (in bits) of the voice or stage channel
 	 */
 	bitrate?: number;
 	/**
-	 * The user limit of the voice channel
+	 * The user limit of the voice or stage channel
 	 */
 	user_limit?: number;
 	/**
@@ -147,18 +150,15 @@ export interface APIVoiceChannelBase<T extends ChannelType> extends APIGuildChan
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	rtc_region?: string | null;
-}
-
-export interface APIGuildVoiceChannel
-	extends APIVoiceChannelBase<ChannelType.GuildVoice>,
-		Omit<APITextBasedChannel<ChannelType.GuildVoice>, 'name' | 'last_pin_timestamp'> {
 	/**
-	 * The camera video quality mode of the voice channel, `1` when not present
+	 * The camera video quality mode of the voice or stage channel, `1` when not present
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
 	video_quality_mode?: VideoQualityMode;
 }
+
+export type APIGuildVoiceChannel = APIVoiceChannelBase<ChannelType.GuildVoice>;
 
 export type APIGuildStageVoiceChannel = APIVoiceChannelBase<ChannelType.GuildStageVoice>;
 
