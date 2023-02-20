@@ -2,7 +2,6 @@
 
 import type { Snowflake } from '../../globals.ts';
 import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v8/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
@@ -41,7 +40,7 @@ export type RESTGetAPIStageInstanceResult = APIStageInstance;
  * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIStageInstanceJSONBody {
 	/**
 	 * The topic of the stage instance (1-120 characters)
 	 */
@@ -50,7 +49,7 @@ export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedP
 	 * The privacy level of the stage instance
 	 */
 	privacy_level?: StageInstancePrivacyLevel | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#update-stage-instance

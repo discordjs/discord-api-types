@@ -1,7 +1,7 @@
 /* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
 
 import type { Snowflake } from '../../globals';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
+import type { StrictPartial } from '../../utils/internals';
 import type {
 	APIGuildScheduledEvent,
 	APIGuildScheduledEventEntityMetadata,
@@ -29,7 +29,7 @@ export type RESTGetAPIGuildScheduledEventsResult = APIGuildScheduledEvent[];
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
  */
-export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildScheduledEventJSONBody {
 	/**
 	 * The stage channel id of the guild event
 	 */
@@ -66,7 +66,7 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 	 * The cover image of the scheduled event
 	 */
 	image?: string | null | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
@@ -91,21 +91,20 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
  */
-export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		/**
-		 * The status of the scheduled event
-		 */
-		status?: GuildScheduledEventStatus | undefined;
-		/**
-		 * The entity metadata of the scheduled event
-		 */
-		entity_metadata?: APIGuildScheduledEventEntityMetadata | null | undefined;
-		/**
-		 * The description of the guild event
-		 */
-		description?: string | null | undefined;
-	}>;
+export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> & {
+	/**
+	 * The status of the scheduled event
+	 */
+	status?: GuildScheduledEventStatus | undefined;
+	/**
+	 * The entity metadata of the scheduled event
+	 */
+	entity_metadata?: APIGuildScheduledEventEntityMetadata | null | undefined;
+	/**
+	 * The description of the guild event
+	 */
+	description?: string | null | undefined;
+};
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event

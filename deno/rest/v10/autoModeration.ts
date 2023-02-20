@@ -8,7 +8,6 @@ import type {
 	APIAutoModerationRuleTriggerMetadata,
 	AutoModerationRuleTriggerType,
 } from '../../payloads/v10/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#list-auto-moderation-rules-for-guild
@@ -23,7 +22,7 @@ export type RESTGetAPIAutoModerationRuleResult = APIAutoModerationRule;
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule
  */
-export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIAutoModerationRuleJSONBody {
 	/**
 	 * The rule name
 	 */
@@ -60,7 +59,7 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	 * The channel ids that shouldn't be affected by this rule (Maximum of 50)
 	 */
 	exempt_channels?: Snowflake[] | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule

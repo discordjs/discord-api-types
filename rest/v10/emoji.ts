@@ -2,7 +2,6 @@
 
 import type { Snowflake } from '../../globals';
 import type { APIEmoji } from '../../payloads/v10/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/emoji#list-guild-emojis
@@ -17,7 +16,7 @@ export type RESTGetAPIGuildEmojiResult = APIEmoji;
 /**
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params
  */
-export type RESTPostAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildEmojiJSONBody {
 	/**
 	 * Name of the emoji
 	 */
@@ -32,7 +31,7 @@ export type RESTPostAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPrope
 	 * Roles for which this emoji will be whitelisted
 	 */
 	roles?: Snowflake[] | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji
@@ -42,7 +41,7 @@ export type RESTPostAPIGuildEmojiResult = APIEmoji;
 /**
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
  */
-export type RESTPatchAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildEmojiJSONBody {
 	/**
 	 * Name of the emoji
 	 */
@@ -51,7 +50,7 @@ export type RESTPatchAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedProp
 	 * Roles for which this emoji will be whitelisted
 	 */
 	roles?: Snowflake[] | null | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji

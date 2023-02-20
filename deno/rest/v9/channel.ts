@@ -26,7 +26,7 @@ import type {
 	SortOrderType,
 	ForumLayoutType,
 } from '../../payloads/v9/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { StrictPartial } from '../../utils/internals.ts';
 
 export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: Snowflake;
@@ -40,7 +40,7 @@ export type RESTGetAPIChannelResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/channel#modify-channel
  */
-export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * 1-100 character channel name
 	 *
@@ -178,7 +178,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * Channel types: forum
 	 */
 	default_forum_layout?: ForumLayoutType | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#modify-channel
@@ -228,20 +228,19 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
  * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  */
 export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
-	Required<Pick<APIMessageReference, 'message_id'>> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+	Required<Pick<APIMessageReference, 'message_id'>> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
 		 * @default true
 		 */
 		fail_if_not_exists?: boolean | undefined;
-	}>;
+	};
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
-export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
@@ -299,7 +298,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 * Message flags combined as a bitfield
 	 */
 	flags?: MessageFlags | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -372,7 +371,7 @@ export type RESTDeleteAPIChannelMessageReactionResult = never;
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
  */
-export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * The new message contents (up to 2000 characters)
 	 */
@@ -419,7 +418,7 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
@@ -497,7 +496,7 @@ export type RESTGetAPIChannelInvitesResult = APIExtendedInvite[];
 /**
  * https://discord.com/developers/docs/resources/channel#create-channel-invite
  */
-export type RESTPostAPIChannelInviteJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIChannelInviteJSONBody {
 	/**
 	 * Duration of invite in seconds before expiry, or 0 for never
 	 *
@@ -541,7 +540,7 @@ export type RESTPostAPIChannelInviteJSONBody = AddUndefinedToPossiblyUndefinedPr
 	 * - The application must have the `EMBEDDED` flag
 	 */
 	target_application_id?: Snowflake | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-channel-invite
@@ -591,7 +590,7 @@ export type RESTDeleteAPIChannelPinResult = never;
 /**
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
  */
-export type RESTPutAPIChannelRecipientJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPutAPIChannelRecipientJSONBody {
 	/**
 	 * Access token of a user that has granted your app the `gdm.join` scope
 	 */
@@ -600,7 +599,7 @@ export type RESTPutAPIChannelRecipientJSONBody = AddUndefinedToPossiblyUndefined
 	 * Nickname of the user being added
 	 */
 	nick?: string | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
@@ -615,7 +614,7 @@ export type RESTDeleteAPIChannelRecipientResult = unknown;
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-from-message
  */
-export type RESTPostAPIChannelMessagesThreadsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
 	 * 1-100 character thread name
 	 */
@@ -630,7 +629,7 @@ export type RESTPostAPIChannelMessagesThreadsJSONBody = AddUndefinedToPossiblyUn
 	 * Amount of seconds a user has to wait before sending another message (0-21600)
 	 */
 	rate_limit_per_user?: number | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
@@ -664,24 +663,23 @@ export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-without-message
  */
-export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		/**
-		 * The type of thread to create
-		 *
-		 * In API v9, `type` defaults to `PRIVATE_THREAD`.
-		 * In a future API version this will be changed to be a required field, with no default.
-		 *
-		 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
-		 *
-		 * @default ChannelType.PrivateThread
-		 */
-		type?: ChannelType.AnnouncementThread | ChannelType.PublicThread | ChannelType.PrivateThread | undefined;
-		/**
-		 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
-		 */
-		invitable?: boolean | undefined;
-	}>;
+export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
+	/**
+	 * The type of thread to create
+	 *
+	 * In API v9, `type` defaults to `PRIVATE_THREAD`.
+	 * In a future API version this will be changed to be a required field, with no default.
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+	 *
+	 * @default ChannelType.PrivateThread
+	 */
+	type?: ChannelType.AnnouncementThread | ChannelType.PublicThread | ChannelType.PrivateThread | undefined;
+	/**
+	 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
+	 */
+	invitable?: boolean | undefined;
+};
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-without-message

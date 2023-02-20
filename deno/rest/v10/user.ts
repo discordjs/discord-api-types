@@ -9,7 +9,6 @@ import type {
 	APIApplicationRoleConnection,
 	GuildFeature,
 } from '../../payloads/v10/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
@@ -29,7 +28,7 @@ export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
  */
-export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPICurrentUserJSONBody {
 	/**
 	 * User's username, if changed may cause the user's discriminator to be randomized
 	 */
@@ -38,7 +37,7 @@ export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPro
 	 * If passed, modifies the user's avatar
 	 */
 	avatar?: string | null | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user

@@ -2,7 +2,6 @@
 
 import type { Snowflake } from '../../globals';
 import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v9/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
@@ -41,7 +40,7 @@ export type RESTGetAPIStageInstanceResult = APIStageInstance;
 /**
  * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
  */
-export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIStageInstanceJSONBody {
 	/**
 	 * The topic of the stage instance (1-120 characters)
 	 */
@@ -50,7 +49,7 @@ export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedP
 	 * The privacy level of the stage instance
 	 */
 	privacy_level?: StageInstancePrivacyLevel | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance

@@ -1,7 +1,6 @@
 /* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
 
 import type { APISticker, APIStickerPack } from '../../payloads/v10/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/sticker#get-sticker
@@ -57,7 +56,7 @@ export type RESTPostAPIGuildStickerResult = APISticker;
 /**
  * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
  */
-export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildStickerJSONBody {
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
@@ -70,7 +69,7 @@ export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPr
 	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
 	tags?: string | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker

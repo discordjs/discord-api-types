@@ -16,7 +16,7 @@ import type {
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
 } from '../../payloads/v10/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { StrictPartial } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
@@ -41,30 +41,27 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
  */
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
-type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Omit<
-		APIApplicationCommand,
-		| 'id'
-		| 'application_id'
-		| 'description'
-		| 'type'
-		| 'version'
-		| 'guild_id'
-		| 'name_localized'
-		| 'description_localized'
-		| 'default_member_permissions'
-	> &
-		Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>
->;
+type RESTPostAPIBaseApplicationCommandsJSONBody = Omit<
+	APIApplicationCommand,
+	| 'id'
+	| 'application_id'
+	| 'description'
+	| 'type'
+	| 'version'
+	| 'guild_id'
+	| 'name_localized'
+	| 'description_localized'
+	| 'default_member_permissions'
+> &
+	Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
-export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		type?: ApplicationCommandType.ChatInput | undefined;
-		description: string;
-	}>;
+export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody & {
+	type?: ApplicationCommandType.ChatInput | undefined;
+	description: string;
+};
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command

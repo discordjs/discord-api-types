@@ -11,11 +11,11 @@ import type {
 	MessageFlags,
 	APIMessageActionRowComponent,
 } from '../../payloads/v9/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals';
+import type { Nullable } from '../../utils/internals';
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
-export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIChannelWebhookJSONBody {
 	/**
 	 * Name of the webhook (1-80 characters)
 	 */
@@ -26,7 +26,7 @@ export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedP
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	avatar?: string | null | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
@@ -56,7 +56,7 @@ export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
  */
-export type RESTPatchAPIWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIWebhookJSONBody {
 	/**
 	 * The default name of the webhook
 	 */
@@ -71,7 +71,7 @@ export type RESTPatchAPIWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * The new channel id this webhook should be moved to
 	 */
 	channel_id?: Snowflake | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
@@ -101,7 +101,7 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
-export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
@@ -152,7 +152,7 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	 * Available only if the webhook is in a forum channel and a thread is not specified in {@link RESTPostAPIWebhookWithTokenQuery.thread_id} query parameter
 	 */
 	thread_name?: string | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
@@ -242,18 +242,18 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
-export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>> & {
-		/**
-		 * Attached files to keep
-		 *
-		 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
-		 *
-		 * See https://discord.com/developers/docs/resources/channel#attachment-object
-		 */
-		attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
-	}
->;
+export type RESTPatchAPIWebhookWithTokenMessageJSONBody = Nullable<
+	Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>
+> & {
+	/**
+	 * Attached files to keep
+	 *
+	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 */
+	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+};
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message

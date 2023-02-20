@@ -1,7 +1,6 @@
 /* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
 
 import type { APISticker, APIStickerPack } from '../../payloads/v8/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -55,7 +54,7 @@ export type RESTPostAPIGuildStickerResult = APISticker;
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildStickerJSONBody {
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
@@ -68,7 +67,7 @@ export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPr
 	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
 	tags?: string | undefined;
-}>;
+}
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

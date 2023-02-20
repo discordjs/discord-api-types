@@ -19,7 +19,7 @@ import type {
 	OverwriteType,
 	VideoQualityMode,
 } from '../../payloads/v8/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { StrictPartial } from '../../utils/internals.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -38,7 +38,7 @@ export type RESTGetAPIChannelResult = APIChannel;
  * https://discord.com/developers/docs/resources/channel#modify-channel
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * 1-100 character channel name
 	 *
@@ -115,7 +115,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
 	video_quality_mode?: VideoQualityMode | null | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#modify-channel
@@ -171,21 +171,20 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
-	Required<Pick<APIMessageReference, 'message_id'>> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+	Required<Pick<APIMessageReference, 'message_id'>> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
 		 * @default true
 		 */
 		fail_if_not_exists?: boolean | undefined;
-	}>;
+	};
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
@@ -243,7 +242,7 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	 * Message flags combined as a bitfield
 	 */
 	flags?: MessageFlags | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -327,7 +326,7 @@ export type RESTDeleteAPIChannelMessageReactionResult = never;
  * https://discord.com/developers/docs/resources/channel#edit-message
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * The new message contents (up to 2000 characters)
 	 */
@@ -374,7 +373,7 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
@@ -461,7 +460,7 @@ export type RESTGetAPIChannelInvitesResult = APIExtendedInvite[];
  * https://discord.com/developers/docs/resources/channel#create-channel-invite
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIChannelInviteJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIChannelInviteJSONBody {
 	/**
 	 * Duration of invite in seconds before expiry, or 0 for never
 	 *
@@ -505,7 +504,7 @@ export type RESTPostAPIChannelInviteJSONBody = AddUndefinedToPossiblyUndefinedPr
 	 * - The application must have the `EMBEDDED` flag
 	 */
 	target_application_id?: Snowflake | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-channel-invite
@@ -564,7 +563,7 @@ export type RESTDeleteAPIChannelPinResult = never;
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPutAPIChannelRecipientJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPutAPIChannelRecipientJSONBody {
 	/**
 	 * Access token of a user that has granted your app the `gdm.join` scope
 	 */
@@ -573,7 +572,7 @@ export type RESTPutAPIChannelRecipientJSONBody = AddUndefinedToPossiblyUndefined
 	 * Nickname of the user being added
 	 */
 	nick?: string | undefined;
-}>;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
