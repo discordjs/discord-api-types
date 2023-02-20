@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../../payloads/v6/index';
 
 /**
@@ -17,8 +19,8 @@ export type RESTGetAPIUserResult = APIUser;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPICurrentUserJSONBody {
-	username?: string;
-	avatar?: string | null;
+	username?: string | undefined;
+	avatar?: string | null | undefined;
 }
 
 /**
@@ -31,9 +33,9 @@ export type RESTPatchAPICurrentUserResult = APIUser;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPICurrentUserGuildsQuery {
-	before?: string;
-	after?: string;
-	limit?: number;
+	before?: string | undefined;
+	after?: string | undefined;
+	limit?: number | undefined;
 }
 
 /**

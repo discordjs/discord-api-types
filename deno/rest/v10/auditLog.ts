@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals.ts';
 import type { APIAuditLog, AuditLogEvent } from '../../payloads/v10/auditLog.ts';
 
@@ -8,25 +10,25 @@ export interface RESTGetAPIAuditLogQuery {
 	/**
 	 * Filter the log for actions made by a user
 	 */
-	user_id?: Snowflake;
+	user_id?: Snowflake | undefined;
 	/**
 	 * The type of audit log events
 	 */
-	action_type?: AuditLogEvent;
+	action_type?: AuditLogEvent | undefined;
 	/**
 	 * Filter the log before a certain entry ID
 	 */
-	before?: Snowflake;
+	before?: Snowflake | undefined;
 	/**
 	 * Filter the log after a certain entry ID
 	 */
-	after?: Snowflake;
+	after?: Snowflake | undefined;
 	/**
 	 * How many entries are returned (default 50, minimum 1, maximum 100)
 	 *
 	 * @default 50
 	 */
-	limit?: number;
+	limit?: number | undefined;
 }
 
 export type RESTGetAPIAuditLogResult = APIAuditLog;

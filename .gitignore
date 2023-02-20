@@ -1,15 +1,25 @@
 node_modules/
 
+# Custom ESLint rules
+.eslintplugin/*
+!.eslintplugin/index.ts
+!.eslintplugin/tsconfig.json
+
 # Don't commit build outputs
 globals.js
 globals.*map
 globals.d.ts
 globals.mjs
 
-./v*.js
-./v*.*map
-./v*.d.ts
-./v*.mjs
+v*.js
+v*.*map
+v*.d.ts
+v*.mjs
+
+deno/**/*.js
+deno/**/*.map
+deno/**/*.d.ts
+deno/**/*.mjs
 
 gateway/**/*.js
 gateway/**/*.map

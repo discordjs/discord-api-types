@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from '../../payloads/v8/mod.ts';
 
@@ -27,7 +29,7 @@ export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 	/**
 	 * the user who has authorized, if the user has authorized with the `identify` scope
 	 */
-	user?: APIUser;
+	user?: APIUser | undefined;
 }
 
 /**
@@ -38,9 +40,9 @@ export interface RESTOAuth2AuthorizationQuery {
 	response_type: 'code';
 	client_id: Snowflake;
 	scope: string;
-	redirect_uri?: string;
-	state?: string;
-	prompt?: 'consent' | 'none';
+	redirect_uri?: string | undefined;
+	state?: string | undefined;
+	prompt?: 'consent' | 'none' | undefined;
 }
 
 /**
@@ -49,7 +51,7 @@ export interface RESTOAuth2AuthorizationQuery {
  */
 export interface RESTOAuth2AuthorizationQueryResult {
 	code: string;
-	state?: string;
+	state?: string | undefined;
 }
 
 /**
@@ -61,7 +63,7 @@ export interface RESTPostOAuth2AccessTokenURLEncodedData {
 	client_secret: string;
 	grant_type: 'authorization_code';
 	code: string;
-	redirect_uri?: string;
+	redirect_uri?: string | undefined;
 }
 
 /**
@@ -100,9 +102,9 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 	response_type: 'token';
 	client_id: Snowflake;
 	scope: string;
-	redirect_uri?: string;
-	state?: string;
-	prompt?: 'consent' | 'none';
+	redirect_uri?: string | undefined;
+	state?: string | undefined;
+	prompt?: 'consent' | 'none' | undefined;
 }
 
 /**
@@ -147,15 +149,15 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions
 	 */
-	permissions?: Permissions;
+	permissions?: Permissions | undefined;
 	/**
 	 * Pre-fills the dropdown picker with a guild for the user
 	 */
-	guild_id?: Snowflake;
+	guild_id?: Snowflake | undefined;
 	/**
 	 * `true` or `false`—disallows the user from changing the guild dropdown
 	 */
-	disable_guild_select?: boolean;
+	disable_guild_select?: boolean | undefined;
 }
 
 /**
@@ -175,11 +177,11 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	/**
 	 * The required permissions bitfield, stringified
 	 */
-	permissions?: Permissions;
-	guild_id?: Snowflake;
-	disable_guild_select?: boolean;
+	permissions?: Permissions | undefined;
+	guild_id?: Snowflake | undefined;
+	disable_guild_select?: boolean | undefined;
 	response_type: string;
-	redirect_uri?: string;
+	redirect_uri?: string | undefined;
 }
 
 /**
@@ -187,7 +189,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
  */
 export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
-	state?: string;
+	state?: string | undefined;
 	guild_id: Snowflake;
 	permissions: Permissions;
 }

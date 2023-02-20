@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals';
 import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v8/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
@@ -20,7 +22,7 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	 *
 	 * @default GuildOnly
 	 */
-	privacy_level?: StageInstancePrivacyLevel;
+	privacy_level?: StageInstancePrivacyLevel | undefined;
 }
 
 /**
@@ -43,11 +45,11 @@ export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * The topic of the stage instance (1-120 characters)
 	 */
-	topic?: string;
+	topic?: string | undefined;
 	/**
 	 * The privacy level of the stage instance
 	 */
-	privacy_level?: StageInstancePrivacyLevel;
+	privacy_level?: StageInstancePrivacyLevel | undefined;
 }>;
 
 /**

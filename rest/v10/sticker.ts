@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { APISticker, APIStickerPack } from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
@@ -59,15 +61,15 @@ export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPr
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
-	name?: string;
+	name?: string | undefined;
 	/**
 	 * Description of the sticker (2-100 characters)
 	 */
-	description?: string | null;
+	description?: string | null | undefined;
 	/**
 	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
-	tags?: string;
+	tags?: string | undefined;
 }>;
 
 /**

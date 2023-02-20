@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { APIGuild, APITemplate } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 
@@ -19,7 +21,7 @@ export type RESTPostAPITemplateCreateGuildJSONBody = AddUndefinedToPossiblyUndef
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	icon?: string;
+	icon?: string | undefined;
 }>;
 
 /**
@@ -43,7 +45,7 @@ export type RESTPostAPIGuildTemplatesJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Description for the template (0-120 characters)
 	 */
-	description?: string | null;
+	description?: string | null | undefined;
 }>;
 
 /**

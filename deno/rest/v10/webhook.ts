@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals.ts';
 import type {
 	APIAllowedMentions,
@@ -23,7 +25,7 @@ export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedP
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	avatar?: string | null;
+	avatar?: string | null | undefined;
 }>;
 
 /**
@@ -58,17 +60,17 @@ export type RESTPatchAPIWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	/**
 	 * The default name of the webhook
 	 */
-	name?: string;
+	name?: string | undefined;
 	/**
 	 * Image for the default webhook avatar
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	avatar?: string | null;
+	avatar?: string | null | undefined;
 	/**
 	 * The new channel id this webhook should be moved to
 	 */
-	channel_id?: Snowflake;
+	channel_id?: Snowflake | undefined;
 }>;
 
 /**
@@ -103,31 +105,31 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
-	content?: string;
+	content?: string | undefined;
 	/**
 	 * Override the default username of the webhook
 	 */
-	username?: string;
+	username?: string | undefined;
 	/**
 	 * Override the default avatar of the webhook
 	 */
-	avatar_url?: string;
+	avatar_url?: string | undefined;
 	/**
 	 * `true` if this is a TTS message
 	 */
-	tts?: boolean;
+	tts?: boolean | undefined;
 	/**
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
-	embeds?: APIEmbed[];
+	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
-	allowed_mentions?: APIAllowedMentions;
+	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
 	 * The components to include with the message
 	 *
@@ -135,21 +137,21 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
-	flags?: MessageFlags;
+	flags?: MessageFlags | undefined;
 	/**
 	 * Name of thread to create
 	 *
 	 * Available only if the webhook is in a forum channel and a thread is not specified in {@link RESTPostAPIWebhookWithTokenQuery.thread_id} query parameter
 	 */
-	thread_name?: string;
+	thread_name?: string | undefined;
 }>;
 
 /**
@@ -160,7 +162,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
 
@@ -174,13 +176,13 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	 *
 	 * @default false
 	 */
-	wait?: boolean;
+	wait?: boolean | undefined;
 	/**
 	 * Send a message to the specified thread within a webhook's channel. The thread will automatically be unarchived.
 	 *
 	 * Available only if the {@link RESTPostAPIWebhookWithTokenJSONBody.thread_name} JSON body property is not specified
 	 */
-	thread_id?: Snowflake;
+	thread_id?: Snowflake | undefined;
 }
 
 /**
@@ -249,7 +251,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossibly
 		 *
 		 * See https://discord.com/developers/docs/resources/channel#attachment-object
 		 */
-		attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
+		attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
 	}
 >;
 
@@ -261,7 +263,7 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 

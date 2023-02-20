@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals.ts';
 import type {
 	APIAutoModerationAction,
@@ -39,7 +41,7 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	 *
 	 * Can be omitted if the trigger type is {@link AutoModerationRuleTriggerType.HarmfulLink} or {@link AutoModerationRuleTriggerType.Spam}
 	 */
-	trigger_metadata?: APIAutoModerationRuleTriggerMetadata;
+	trigger_metadata?: APIAutoModerationRuleTriggerMetadata | undefined;
 	/**
 	 * The actions which will execute when this rule is triggered
 	 */
@@ -49,15 +51,15 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	 *
 	 * @default false
 	 */
-	enabled?: boolean;
+	enabled?: boolean | undefined;
 	/**
 	 * The role ids that shouldn't be affected by this rule (Maximum of 20)
 	 */
-	exempt_roles?: Snowflake[];
+	exempt_roles?: Snowflake[] | undefined;
 	/**
 	 * The channel ids that shouldn't be affected by this rule (Maximum of 50)
 	 */
-	exempt_channels?: Snowflake[];
+	exempt_channels?: Snowflake[] | undefined;
 }>;
 
 /**

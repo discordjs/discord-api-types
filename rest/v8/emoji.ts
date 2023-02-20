@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals';
 import type { APIEmoji } from '../../payloads/v8/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
@@ -32,7 +34,7 @@ export type RESTPostAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedPrope
 	/**
 	 * Roles for which this emoji will be whitelisted
 	 */
-	roles?: Snowflake[];
+	roles?: Snowflake[] | undefined;
 }>;
 
 /**
@@ -49,11 +51,11 @@ export type RESTPatchAPIGuildEmojiJSONBody = AddUndefinedToPossiblyUndefinedProp
 	/**
 	 * Name of the emoji
 	 */
-	name?: string;
+	name?: string | undefined;
 	/**
 	 * Roles for which this emoji will be whitelisted
 	 */
-	roles?: Snowflake[] | null;
+	roles?: Snowflake[] | null | undefined;
 }>;
 
 /**

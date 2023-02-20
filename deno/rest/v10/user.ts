@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
 	APIChannel,
@@ -31,11 +33,11 @@ export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPro
 	/**
 	 * User's username, if changed may cause the user's discriminator to be randomized
 	 */
-	username?: string;
+	username?: string | undefined;
 	/**
 	 * If passed, modifies the user's avatar
 	 */
-	avatar?: string | null;
+	avatar?: string | null | undefined;
 }>;
 
 /**
@@ -50,17 +52,17 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	/**
 	 * Get guilds before this guild ID
 	 */
-	before?: Snowflake;
+	before?: Snowflake | undefined;
 	/**
 	 * Get guilds after this guild ID
 	 */
-	after?: Snowflake;
+	after?: Snowflake | undefined;
 	/**
 	 * Max number of guilds to return (1-200)
 	 *
 	 * @default 200
 	 */
-	limit?: number;
+	limit?: number | undefined;
 }
 
 export interface RESTAPIPartialCurrentUserGuild {
@@ -114,15 +116,15 @@ export interface RESTPutAPICurrentUserApplicationRoleConnectionJSONBody {
 	/**
 	 * The vanity name of the platform a bot has connected (max 50 characters)
 	 */
-	platform_name?: string;
+	platform_name?: string | undefined;
 	/**
 	 * The username on the platform a bot has connected (max 100 characters)
 	 */
-	platform_username?: string;
+	platform_username?: string | undefined;
 	/**
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
-	metadata?: Record<string, string | number>;
+	metadata?: Record<string, string | number> | undefined;
 }
 
 /**

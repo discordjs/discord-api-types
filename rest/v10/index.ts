@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals';
 
 export * from '../common';
@@ -1145,7 +1147,7 @@ export interface CDNQuery {
 	 *
 	 * Image size can be any power of two between 16 and 4096
 	 */
-	size?: number;
+	size?: number | undefined;
 }
 
 export const RouteBases = {

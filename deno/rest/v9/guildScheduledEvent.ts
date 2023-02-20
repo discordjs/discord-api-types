@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 import type {
@@ -16,7 +18,7 @@ export interface RESTGetAPIGuildScheduledEventsQuery {
 	/**
 	 * Whether to include number of users subscribed to each event
 	 */
-	with_user_count?: boolean;
+	with_user_count?: boolean | undefined;
 }
 
 /**
@@ -31,7 +33,7 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 	/**
 	 * The stage channel id of the guild event
 	 */
-	channel_id?: Snowflake;
+	channel_id?: Snowflake | undefined;
 	/**
 	 * The name of the guild event
 	 */
@@ -47,23 +49,23 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 	/**
 	 * The time when the scheduled event is scheduled to end
 	 */
-	scheduled_end_time?: string;
+	scheduled_end_time?: string | undefined;
 	/**
 	 * The description of the guild event
 	 */
-	description?: string;
+	description?: string | undefined;
 	/**
 	 * The scheduled entity type of the guild event
 	 */
-	entity_type?: GuildScheduledEventEntityType;
+	entity_type?: GuildScheduledEventEntityType | undefined;
 	/**
 	 * The entity metadata of the scheduled event
 	 */
-	entity_metadata?: APIGuildScheduledEventEntityMetadata;
+	entity_metadata?: APIGuildScheduledEventEntityMetadata | undefined;
 	/**
 	 * The cover image of the scheduled event
 	 */
-	image?: string | null;
+	image?: string | null | undefined;
 }>;
 
 /**
@@ -78,7 +80,7 @@ export interface RESTGetAPIGuildScheduledEventQuery {
 	/**
 	 * Whether to include number of users subscribed to this event
 	 */
-	with_user_count?: boolean;
+	with_user_count?: boolean | undefined;
 }
 
 /**
@@ -94,15 +96,15 @@ export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIG
 		/**
 		 * The status of the scheduled event
 		 */
-		status?: GuildScheduledEventStatus;
+		status?: GuildScheduledEventStatus | undefined;
 		/**
 		 * The entity metadata of the scheduled event
 		 */
-		entity_metadata?: APIGuildScheduledEventEntityMetadata | null;
+		entity_metadata?: APIGuildScheduledEventEntityMetadata | null | undefined;
 		/**
 		 * The description of the guild event
 		 */
-		description?: string | null;
+		description?: string | null | undefined;
 	}>;
 
 /**
@@ -124,19 +126,19 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
 	 *
 	 * @default 100
 	 */
-	limit?: number;
+	limit?: number | undefined;
 	/**
 	 * Whether to include guild member data if it exists
 	 */
-	with_member?: boolean;
+	with_member?: boolean | undefined;
 	/**
 	 * Consider only users before given user id
 	 */
-	before?: Snowflake;
+	before?: Snowflake | undefined;
 	/**
 	 * Consider only users after given user id
 	 */
-	after?: Snowflake;
+	after?: Snowflake | undefined;
 }
 
 /**

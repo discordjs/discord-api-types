@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { RESTPutAPIChannelPermissionsJSONBody } from './channel';
 import type {
 	APIBan,
@@ -32,9 +34,9 @@ export type APIGuildCreatePartialChannel = Partial<
 	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
 > & {
 	name: string;
-	id?: number | string;
-	parent_id?: number | string;
-	permission_overwrites?: APIGuildCreateOverwrite[];
+	id?: number | string | undefined;
+	parent_id?: number | string | undefined;
+	permission_overwrites?: APIGuildCreateOverwrite[] | undefined;
 };
 
 /**
@@ -50,16 +52,16 @@ export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
  */
 export interface RESTPostAPIGuildsJSONBody {
 	name: string;
-	region?: string;
-	icon?: string;
-	verification_level?: GuildVerificationLevel;
-	default_message_notifications?: GuildDefaultMessageNotifications;
-	explicit_content_filter?: GuildExplicitContentFilter;
-	roles?: APIGuildCreateRole[];
-	channels?: APIGuildCreatePartialChannel[];
-	afk_channel_id?: number | string;
-	afk_timeout?: number;
-	system_channel_id?: number | string;
+	region?: string | undefined;
+	icon?: string | undefined;
+	verification_level?: GuildVerificationLevel | undefined;
+	default_message_notifications?: GuildDefaultMessageNotifications | undefined;
+	explicit_content_filter?: GuildExplicitContentFilter | undefined;
+	roles?: APIGuildCreateRole[] | undefined;
+	channels?: APIGuildCreatePartialChannel[] | undefined;
+	afk_channel_id?: number | string | undefined;
+	afk_timeout?: number | undefined;
+	system_channel_id?: number | string | undefined;
 }
 
 /**
@@ -72,7 +74,7 @@ export type RESTPostAPIGuildsResult = APIGuild;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildQuery {
-	with_counts?: boolean;
+	with_counts?: boolean | undefined;
 }
 
 /**
@@ -91,24 +93,24 @@ export type RESTGetAPIGuildPreviewResult = APIGuildPreview;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIGuildJSONBody {
-	name?: string;
-	region?: string;
-	verification_level?: GuildVerificationLevel;
-	default_message_notifications?: GuildDefaultMessageNotifications;
-	explicit_content_filter?: GuildExplicitContentFilter;
-	afk_channel_id?: string | null;
-	afk_timeout?: number;
-	icon?: string | null;
-	owner_id?: string;
-	splash?: string | null;
-	discovery_splash?: string | null;
-	banner?: string | null;
-	system_channel_id?: string | null;
-	rules_channel_id?: string | null;
-	public_updates_channel_id?: string | null;
-	preferred_locale?: string;
-	features?: GuildFeature[];
-	description?: string | null;
+	name?: string | undefined;
+	region?: string | undefined;
+	verification_level?: GuildVerificationLevel | undefined;
+	default_message_notifications?: GuildDefaultMessageNotifications | undefined;
+	explicit_content_filter?: GuildExplicitContentFilter | undefined;
+	afk_channel_id?: string | null | undefined;
+	afk_timeout?: number | undefined;
+	icon?: string | null | undefined;
+	owner_id?: string | undefined;
+	splash?: string | null | undefined;
+	discovery_splash?: string | null | undefined;
+	banner?: string | null | undefined;
+	system_channel_id?: string | null | undefined;
+	rules_channel_id?: string | null | undefined;
+	public_updates_channel_id?: string | null | undefined;
+	preferred_locale?: string | undefined;
+	features?: GuildFeature[] | undefined;
+	description?: string | null | undefined;
 }
 
 /**
@@ -152,8 +154,8 @@ export type RESTPostAPIGuildChannelResult = APIChannel;
 export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
 	id: string;
 	position: number;
-	lock_permissions?: boolean;
-	parent_id?: string | null;
+	lock_permissions?: boolean | undefined;
+	parent_id?: string | null | undefined;
 }>;
 
 /**
@@ -172,8 +174,8 @@ export type RESTGetAPIGuildMemberResult = APIGuildMember;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildMembersQuery {
-	limit?: number;
-	after?: string;
+	limit?: number | undefined;
+	after?: string | undefined;
 }
 
 /**
@@ -186,7 +188,7 @@ export type RESTGetAPIGuildMembersResult = APIGuildMember[];
  */
 export interface RESTGetAPIGuildMembersSearchQuery {
 	query: string;
-	limit?: number;
+	limit?: number | undefined;
 }
 
 /**
@@ -200,10 +202,10 @@ export type RESTGetAPIGuildMembersSearchResult = APIGuildMember[];
  */
 export interface RESTPutAPIGuildMemberJSONBody {
 	access_token: string;
-	nick?: string;
-	roles?: string[];
-	mute?: boolean;
-	deaf?: boolean;
+	nick?: string | undefined;
+	roles?: string[] | undefined;
+	mute?: boolean | undefined;
+	deaf?: boolean | undefined;
 }
 
 /**
@@ -216,11 +218,11 @@ export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIGuildMemberJSONBody {
-	nick?: string | null;
-	roles?: string[] | null;
-	mute?: boolean | null;
-	deaf?: boolean | null;
-	channel_id?: string | null;
+	nick?: string | null | undefined;
+	roles?: string[] | null | undefined;
+	mute?: boolean | null | undefined;
+	deaf?: boolean | null | undefined;
+	channel_id?: string | null | undefined;
 }
 
 /**
@@ -233,7 +235,7 @@ export type RESTPatchAPIGuildMemberResult = never;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
-	nick?: string | null;
+	nick?: string | null | undefined;
 }
 
 /**
@@ -276,8 +278,8 @@ export type RESTGetAPIGuildBanResult = APIBan;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPutAPIGuildBanJSONBody {
-	delete_message_days?: number;
-	reason?: string;
+	delete_message_days?: number | undefined;
+	reason?: string | undefined;
 }
 
 /**
@@ -302,11 +304,11 @@ export type RESTGetAPIGuildRolesResult = APIRole[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIGuildRoleJSONBody {
-	name?: string | null;
-	permissions?: number | string | null;
-	color?: number | null;
-	hoist?: boolean | null;
-	mentionable?: boolean | null;
+	name?: string | null | undefined;
+	permissions?: number | string | null | undefined;
+	color?: number | null | undefined;
+	hoist?: boolean | null | undefined;
+	mentionable?: boolean | null | undefined;
 }
 
 /**
@@ -320,7 +322,7 @@ export type RESTPostAPIGuildRoleResult = APIRole;
  */
 export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
 	id: string;
-	position?: number;
+	position?: number | undefined;
 }>;
 
 /**
@@ -333,11 +335,11 @@ export type RESTPatchAPIGuildRolePositionsResult = APIRole[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIGuildRoleJSONBody {
-	name?: string;
-	permissions?: number | string;
-	color?: number;
-	hoist?: boolean;
-	mentionable?: boolean;
+	name?: string | undefined;
+	permissions?: number | string | undefined;
+	color?: number | undefined;
+	hoist?: boolean | undefined;
+	mentionable?: boolean | undefined;
 }
 
 /**
@@ -356,14 +358,14 @@ export type RESTDeleteAPIGuildRoleResult = never;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildPruneCountQuery {
-	days?: number;
+	days?: number | undefined;
 	/**
 	 * While this is typed as a string, it represents an array of
 	 * role IDs delimited by commas.
 	 *
 	 * @see https://discord.com/developers/docs/resources/guild#get-guild-prune-count-query-string-params
 	 */
-	include_roles?: string;
+	include_roles?: string | undefined;
 }
 
 /**
@@ -378,9 +380,9 @@ export interface RESTGetAPIGuildPruneCountResult {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIGuildPruneJSONBody {
-	days?: number;
-	compute_prune_count?: boolean;
-	include_roles?: string[];
+	days?: number | undefined;
+	compute_prune_count?: boolean | undefined;
+	include_roles?: string[] | undefined;
 }
 
 /**
@@ -407,7 +409,7 @@ export type RESTGetAPIGuildInvitesResult = APIInvite[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildIntegrationsQuery {
-	include_applications?: boolean;
+	include_applications?: boolean | undefined;
 }
 
 /**
@@ -434,9 +436,9 @@ export type RESTPostAPIGuildIntegrationResult = never;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIGuildIntegrationJSONBody {
-	expire_behavior?: IntegrationExpireBehavior | null;
-	expire_grace_period?: number | null;
-	enable_emoticons?: boolean | null;
+	expire_behavior?: IntegrationExpireBehavior | null | undefined;
+	expire_grace_period?: number | null | undefined;
+	enable_emoticons?: boolean | null | undefined;
 }
 
 /**
@@ -505,7 +507,7 @@ export interface RESTGetAPIGuildVanityUrlResult {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildWidgetImageQuery {
-	style?: GuildWidgetStyle;
+	style?: GuildWidgetStyle | undefined;
 }
 
 /**

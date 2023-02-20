@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Snowflake } from '../../globals';
 import type { APIInvite } from '../../payloads/v10/index';
 
@@ -8,15 +10,15 @@ export interface RESTGetAPIInviteQuery {
 	/**
 	 * Whether the invite should contain approximate member counts
 	 */
-	with_counts?: boolean;
+	with_counts?: boolean | undefined;
 	/**
 	 * Whether the invite should contain the expiration date
 	 */
-	with_expiration?: boolean;
+	with_expiration?: boolean | undefined;
 	/**
 	 * The guild scheduled event to include with the invite
 	 */
-	guild_scheduled_event_id?: Snowflake;
+	guild_scheduled_event_id?: Snowflake | undefined;
 }
 
 export type RESTGetAPIInviteResult = APIInvite;

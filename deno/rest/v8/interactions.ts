@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
 	RESTGetAPIWebhookWithTokenMessageResult,
@@ -38,7 +40,7 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
  */
 export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		type?: ApplicationCommandType.ChatInput;
+		type?: ApplicationCommandType.ChatInput | undefined;
 		description: string;
 	}>;
 
@@ -151,7 +153,7 @@ export type RESTPostAPIInteractionCallbackFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
 
@@ -200,7 +202,7 @@ export type RESTPostAPIInteractionFollowupFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
 

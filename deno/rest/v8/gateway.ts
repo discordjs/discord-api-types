@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { APIGatewayBotInfo, APIGatewayInfo } from '../../payloads/v8/mod.ts';
 
 /**

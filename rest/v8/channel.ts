@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { Permissions, Snowflake } from '../../globals';
 import type {
 	APIActionRowComponent,
@@ -42,7 +44,7 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 *
 	 * Channel types: all
 	 */
-	name?: string;
+	name?: string | undefined;
 
 	/**
 	 * The type of channel; only conversion between `text` and `news`
@@ -50,25 +52,25 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 *
 	 * Channel types: text, news
 	 */
-	type?: ChannelType.GuildNews | ChannelType.GuildText;
+	type?: ChannelType.GuildNews | ChannelType.GuildText | undefined;
 	/**
 	 * The position of the channel in the left-hand listing
 	 *
 	 * Channel types: all
 	 */
-	position?: number | null;
+	position?: number | null | undefined;
 	/**
 	 * 0-1024 character channel topic
 	 *
 	 * Channel types: text, news
 	 */
-	topic?: string | null;
+	topic?: string | null | undefined;
 	/**
 	 * Whether the channel is nsfw
 	 *
 	 * Channel types: text, news, store
 	 */
-	nsfw?: boolean | null;
+	nsfw?: boolean | null | undefined;
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`,
@@ -76,43 +78,43 @@ export type RESTPatchAPIChannelJSONBody = AddUndefinedToPossiblyUndefinedPropert
 	 *
 	 * Channel types: text
 	 */
-	rate_limit_per_user?: number | null;
+	rate_limit_per_user?: number | null | undefined;
 	/**
 	 * The bitrate (in bits) of the voice channel; 8000 to 96000 (128000 for VIP servers)
 	 *
 	 * Channel types: voice
 	 */
-	bitrate?: number | null;
+	bitrate?: number | null | undefined;
 	/**
 	 * The user limit of the voice channel; 0 refers to no limit, 1 to 99 refers to a user limit
 	 *
 	 * Channel types: voice
 	 */
-	user_limit?: number | null;
+	user_limit?: number | null | undefined;
 	/**
 	 * Channel or category-specific permissions
 	 *
 	 * Channel types: all
 	 */
-	permission_overwrites?: APIChannelPatchOverwrite[] | null;
+	permission_overwrites?: APIChannelPatchOverwrite[] | null | undefined;
 	/**
 	 * ID of the new parent category for a channel
 	 *
 	 * Channel types: text, news, store, voice
 	 */
-	parent_id?: Snowflake | null;
+	parent_id?: Snowflake | null | undefined;
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
-	rtc_region?: string | null;
+	rtc_region?: string | null | undefined;
 	/**
 	 * The camera video quality mode of the voice channel
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
-	video_quality_mode?: VideoQualityMode | null;
+	video_quality_mode?: VideoQualityMode | null | undefined;
 }>;
 
 /**
@@ -135,21 +137,21 @@ export interface RESTGetAPIChannelMessagesQuery {
 	/**
 	 * Get messages around this message ID
 	 */
-	around?: Snowflake;
+	around?: Snowflake | undefined;
 	/**
 	 * Get messages before this message ID
 	 */
-	before?: Snowflake;
+	before?: Snowflake | undefined;
 	/**
 	 * Get messages after this message ID
 	 */
-	after?: Snowflake;
+	after?: Snowflake | undefined;
 	/**
 	 * Max number of messages to return (1-100)
 	 *
 	 * @default 50
 	 */
-	limit?: number;
+	limit?: number | undefined;
 }
 
 /**
@@ -176,7 +178,7 @@ export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
 		 *
 		 * @default true
 		 */
-		fail_if_not_exists?: boolean;
+		fail_if_not_exists?: boolean | undefined;
 	}>;
 
 /**
@@ -187,60 +189,60 @@ export type RESTPostAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
-	content?: string;
+	content?: string | undefined;
 	/**
 	 * A nonce that can be used for optimistic message sending
 	 */
-	nonce?: number | string;
+	nonce?: number | string | undefined;
 	/**
 	 * `true` if this is a TTS message
 	 */
-	tts?: boolean;
+	tts?: boolean | undefined;
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
-	embeds?: APIEmbed[];
+	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 * @deprecated Use `embeds` instead
 	 */
-	embed?: APIEmbed;
+	embed?: APIEmbed | undefined;
 	/**
 	 * Allowed mentions for a message
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
-	allowed_mentions?: APIAllowedMentions;
+	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
 	 * Include to make your message a reply
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
 	 */
-	message_reference?: APIMessageReferenceSend;
+	message_reference?: APIMessageReferenceSend | undefined;
 	/**
 	 * The components to include with the message
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
-	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake];
+	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
-	flags?: MessageFlags;
+	flags?: MessageFlags | undefined;
 }>;
 
 /**
@@ -252,7 +254,7 @@ export type RESTPostAPIChannelMessageFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
@@ -294,13 +296,13 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
 	 * Get users after this user ID
 	 */
-	after?: Snowflake;
+	after?: Snowflake | undefined;
 	/**
 	 * Max number of users to return (1-100)
 	 *
 	 * @default 25
 	 */
-	limit?: number;
+	limit?: number | undefined;
 }
 
 /**
@@ -329,20 +331,20 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	/**
 	 * The new message contents (up to 2000 characters)
 	 */
-	content?: string | null;
+	content?: string | null | undefined;
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
-	embeds?: APIEmbed[] | null;
+	embeds?: APIEmbed[] | null | undefined;
 	/**
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 * @deprecated Use `embeds` instead
 	 */
-	embed?: APIEmbed | null;
+	embed?: APIEmbed | null | undefined;
 	/**
 	 * Edit the flags of a message (only `SUPPRESS_EMBEDS` can currently be set/unset)
 	 *
@@ -351,13 +353,13 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
 	 */
-	flags?: MessageFlags | null;
+	flags?: MessageFlags | null | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
-	allowed_mentions?: APIAllowedMentions | null;
+	allowed_mentions?: APIAllowedMentions | null | undefined;
 	/**
 	 * Attached files to keep
 	 *
@@ -365,13 +367,13 @@ export type RESTPatchAPIChannelMessageJSONBody = AddUndefinedToPossiblyUndefined
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
+	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
 	/**
 	 * The components to include with the message
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null;
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null | undefined;
 }>;
 
 /**
@@ -383,7 +385,7 @@ export type RESTPatchAPIChannelMessageFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPatchAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 
@@ -428,7 +430,7 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	 *
 	 * @default "0"
 	 */
-	allow?: Permissions | null;
+	allow?: Permissions | null | undefined;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
@@ -436,7 +438,7 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	 *
 	 * @default "0"
 	 */
-	deny?: Permissions | null;
+	deny?: Permissions | null | undefined;
 	/**
 	 * `0` for a role or `1` for a member
 	 */
@@ -465,44 +467,44 @@ export type RESTPostAPIChannelInviteJSONBody = AddUndefinedToPossiblyUndefinedPr
 	 *
 	 * @default 86400 (24 hours)
 	 */
-	max_age?: number;
+	max_age?: number | undefined;
 	/**
 	 * Max number of uses or 0 for unlimited
 	 *
 	 * @default 0
 	 */
-	max_uses?: number;
+	max_uses?: number | undefined;
 	/**
 	 * Whether this invite only grants temporary membership
 	 *
 	 * @default false
 	 */
-	temporary?: boolean;
+	temporary?: boolean | undefined;
 	/**
 	 * If true, don't try to reuse a similar invite
 	 * (useful for creating many unique one time use invites)
 	 *
 	 * @default false
 	 */
-	unique?: boolean;
+	unique?: boolean | undefined;
 	/**
 	 * The type of target for this voice channel invite
 	 *
 	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
 	 */
-	target_type?: InviteTargetType;
+	target_type?: InviteTargetType | undefined;
 	/**
 	 * The id of the user whose stream to display for this invite
 	 * - Required if `target_type` is 1
 	 * - The user must be streaming in the channel
 	 */
-	target_user_id?: Snowflake;
+	target_user_id?: Snowflake | undefined;
 	/**
 	 * The id of the embedded application to open for this invite
 	 * - Required if `target_type` is 2
 	 * - The application must have the `EMBEDDED` flag
 	 */
-	target_application_id?: Snowflake;
+	target_application_id?: Snowflake | undefined;
 }>;
 
 /**
@@ -570,7 +572,7 @@ export type RESTPutAPIChannelRecipientJSONBody = AddUndefinedToPossiblyUndefined
 	/**
 	 * Nickname of the user being added
 	 */
-	nick?: string;
+	nick?: string | undefined;
 }>;
 
 /**

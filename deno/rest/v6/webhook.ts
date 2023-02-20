@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { APIAllowedMentionsSend } from './channel.ts';
 import type { APIEmbed, APIMessage, APIWebhook } from '../../payloads/v6/mod.ts';
 
@@ -7,7 +9,7 @@ import type { APIEmbed, APIMessage, APIWebhook } from '../../payloads/v6/mod.ts'
  */
 export interface RESTPostAPIChannelWebhookJSONBody {
 	name: string;
-	avatar?: string | null;
+	avatar?: string | null | undefined;
 }
 
 /**
@@ -44,9 +46,9 @@ export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIWebhookJSONBody {
-	name?: string;
-	avatar?: string | null;
-	channel_id?: string;
+	name?: string | undefined;
+	avatar?: string | null | undefined;
+	channel_id?: string | undefined;
 }
 
 /**
@@ -81,12 +83,12 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIWebhookWithTokenJSONBody {
-	content?: string;
-	username?: string;
-	avatar_url?: string;
-	tts?: boolean;
-	embeds?: APIEmbed[];
-	allowed_mentions?: APIAllowedMentionsSend;
+	content?: string | undefined;
+	username?: string | undefined;
+	avatar_url?: string | undefined;
+	tts?: boolean | undefined;
+	embeds?: APIEmbed[] | undefined;
+	allowed_mentions?: APIAllowedMentionsSend | undefined;
 }
 
 /**
@@ -98,7 +100,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 			/**
 			 * The file contents
 			 */
@@ -116,7 +118,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIWebhookWithTokenQuery {
-	wait?: boolean;
+	wait?: boolean | undefined;
 }
 
 /**

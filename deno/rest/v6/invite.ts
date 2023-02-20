@@ -1,3 +1,5 @@
+/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
+
 import type { APIInvite } from '../../payloads/v6/mod.ts';
 
 /**
@@ -5,7 +7,7 @@ import type { APIInvite } from '../../payloads/v6/mod.ts';
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIInviteQuery {
-	with_counts?: boolean;
+	with_counts?: boolean | undefined;
 }
 
 /**

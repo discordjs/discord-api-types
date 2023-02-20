@@ -4,5 +4,6 @@
 	"parserOptions": {
 		"project": "./tsconfig.eslint.json",
 		"extraFileExtensions": [".mjs"]
-	}
+	},
+	"plugins": ["local"]
 }
