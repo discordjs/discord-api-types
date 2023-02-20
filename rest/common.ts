@@ -232,6 +232,8 @@ export enum RESTJSONErrorCodes {
 	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
 	UploadedFileNotFound,
 
+	CannotDeleteGuildSubscriptionIntegration = 50163,
+
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
 	TwoFactorAuthenticationIsRequired = 60003,
