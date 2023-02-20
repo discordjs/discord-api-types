@@ -2,8 +2,6 @@ export type Nullable<T> = {
 	[P in keyof T]: T[P] | null;
 };
 
-export type StrictPartial<Base> = Partial<Base>;
-
 export type StrictRequired<Base> = Required<{ [K in keyof Base]: Exclude<Base[K], undefined> }>;
 
 export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;

@@ -1,7 +1,6 @@
 /* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
 
 import type { APIGuild, APITemplate } from '../../payloads/v8/index';
-import type { StrictPartial } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/template#get-template
@@ -69,7 +68,7 @@ export type RESTPutAPIGuildTemplateSyncResult = APITemplate;
  * https://discord.com/developers/docs/resources/template#modify-guild-template
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildTemplateJSONBody = StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
+export type RESTPatchAPIGuildTemplateJSONBody = Partial<RESTPostAPIGuildTemplatesJSONBody>;
 
 /**
  * https://discord.com/developers/docs/resources/template#modify-guild-template

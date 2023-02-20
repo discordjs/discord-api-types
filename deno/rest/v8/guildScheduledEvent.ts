@@ -1,7 +1,7 @@
 /* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
 
 import type { Snowflake } from '../../globals.ts';
-import type { StrictPartial } from '../../utils/internals.ts';
+
 import type {
 	APIGuildScheduledEvent,
 	APIGuildScheduledEventEntityMetadata,
@@ -98,7 +98,7 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> & {
+export type RESTPatchAPIGuildScheduledEventJSONBody = Partial<RESTPostAPIGuildScheduledEventJSONBody> & {
 	/**
 	 * The status of the scheduled event
 	 */
