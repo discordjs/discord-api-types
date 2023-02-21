@@ -647,7 +647,7 @@ export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-without-message
  */
-export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
+export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
 	 * The type of thread to create
 	 *
@@ -663,7 +663,7 @@ export type RESTPostAPIChannelThreadsJSONBody = RESTPostAPIChannelMessagesThread
 	 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
 	 */
 	invitable?: boolean | undefined;
-};
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#start-thread-without-message

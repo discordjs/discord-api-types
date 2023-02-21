@@ -56,10 +56,10 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = Omit<
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
-export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody & {
+export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type?: ApplicationCommandType.ChatInput | undefined;
 	description: string;
-};
+}
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
