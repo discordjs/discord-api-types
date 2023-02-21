@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { APIAllowedMentionsSend } from './channel.ts';
 import type { APIEmbed, APIMessage, APIWebhook } from '../../payloads/v6/mod.ts';
 

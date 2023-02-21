@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { APISticker, APIStickerPack } from '../../payloads/v10/index';
 
 /**

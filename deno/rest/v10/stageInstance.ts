@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { Snowflake } from '../../globals.ts';
 import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v10/mod.ts';
 

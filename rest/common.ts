@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
  */

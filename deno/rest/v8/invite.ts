@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { Snowflake } from '../../globals.ts';
 import type { APIInvite } from '../../payloads/v8/mod.ts';
 

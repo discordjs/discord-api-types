@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 import type { Permissions, Snowflake } from '../../globals';
 import type {

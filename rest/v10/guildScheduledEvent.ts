@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { Snowflake } from '../../globals';
 import type { StrictPartial } from '../../utils/internals';
 import type {

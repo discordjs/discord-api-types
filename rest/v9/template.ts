@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { APIGuild, APITemplate } from '../../payloads/v9/index';
 import type { StrictPartial } from '../../utils/internals';
 

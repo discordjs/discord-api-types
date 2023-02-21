@@ -1,5 +1,3 @@
-/* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
-
 import type { Snowflake } from '../../globals';
 import type { APIEmoji } from '../../payloads/v8/index';
 

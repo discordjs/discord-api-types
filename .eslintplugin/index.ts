@@ -2,12 +2,28 @@ import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils';
 import * as typescript from 'typescript';
 import * as tsutils from 'tsutils';
 
+type Options = [
+	{
+		interfaceEndings: string[];
+	},
+];
+
 export = {
 	rules: {
-		'explicitly-optional-undefined-properties': ESLintUtils.RuleCreator.withoutDocs({
+		'explicitly-optional-undefined-properties': ESLintUtils.RuleCreator.withoutDocs<Options, 'missingOptional'>({
 			create: (context) => {
+				const { interfaceEndings } = context.options[0];
 				return {
 					TSPropertySignature: (eslNode) => {
+						// The first parent is the TSInterfaceBody, the second is the TSInterfaceDeclaration
+						const interfaceNode = eslNode.parent?.parent;
+						if (interfaceNode && 'id' in interfaceNode && interfaceNode.id?.type === AST_NODE_TYPES.Identifier) {
+							const { name } = interfaceNode.id;
+							if (typeof name === 'string' && !interfaceEndings.some((ending) => name.endsWith(ending))) {
+								return;
+							}
+						}
+
 						// If our prop is optional, we don't need to do anything
 						if (eslNode.optional) {
 							return;
@@ -38,17 +54,39 @@ export = {
 					missingOptional: 'When a property has `| undefined`, it should be marked as optional.',
 				},
 				type: 'problem',
-				schema: [],
+				schema: [
+					{
+						type: 'object',
+						properties: {
+							interfaceEndings: {
+								type: 'array',
+								items: {
+									type: 'string',
+								},
+							},
+						},
+					},
+				],
 			},
-			defaultOptions: [],
+			defaultOptions: [{ interfaceEndings: [] }],
 		}),
-		'explicit-undefined-on-optional-properties': ESLintUtils.RuleCreator.withoutDocs({
+		'explicit-undefined-on-optional-properties': ESLintUtils.RuleCreator.withoutDocs<Options, 'missingUndefined'>({
 			create: (context) => {
+				const { interfaceEndings } = context.options[0];
 				return {
 					// This is done naively because type-checking the node will always include `| undefined`
 					// due to it being optional. ideally, we'd have a way to get the type of the node disregarding
 					// the optional flag, which would make this check a lot more trivial
 					TSPropertySignature: (eslNode) => {
+						// The first parent is the TSInterfaceBody, the second is the TSInterfaceDeclaration
+						const interfaceNode = eslNode.parent?.parent;
+						if (interfaceNode && 'id' in interfaceNode && interfaceNode.id?.type === AST_NODE_TYPES.Identifier) {
+							const { name } = interfaceNode.id;
+							if (typeof name === 'string' && !interfaceEndings.some((ending) => name.endsWith(ending))) {
+								return;
+							}
+						}
+
 						// If our prop is't optional or if it doesn't have a type annotation, we don't need to do anything
 						if (!eslNode.optional || !eslNode.typeAnnotation) {
 							return;
@@ -83,9 +121,21 @@ export = {
 					missingUndefined: 'When a property is optional, explicitly include `undefined` in the union.',
 				},
 				type: 'suggestion',
-				schema: [],
+				schema: [
+					{
+						type: 'object',
+						properties: {
+							interfaceEndings: {
+								type: 'array',
+								items: {
+									type: 'string',
+								},
+							},
+						},
+					},
+				],
 			},
-			defaultOptions: [],
+			defaultOptions: [{ interfaceEndings: [] }],
 		}),
 	},
 };
