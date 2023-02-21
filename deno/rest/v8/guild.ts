@@ -25,7 +25,7 @@ import type {
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 } from '../../payloads/v8/mod.ts';
-import type { Nullable, StrictRequired, UnionToIntersection } from '../../utils/internals.ts';
+import type { Nullable, StrictPartial, StrictRequired, UnionToIntersection } from '../../utils/internals.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -42,7 +42,7 @@ export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGr
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIGuildCreatePartialChannel = Partial<
+export type APIGuildCreatePartialChannel = StrictPartial<
 	Pick<
 		UnionToIntersection<APIGuildChannelResolvable>,
 		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
@@ -801,7 +801,7 @@ export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildWidgetSettingsJSONBody = Partial<APIGuildWidgetSettings>;
+export type RESTPatchAPIGuildWidgetSettingsJSONBody = StrictPartial<APIGuildWidgetSettings>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
@@ -914,7 +914,7 @@ export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
  * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<Partial<APIGuildWelcomeScreen>> & {
+export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIGuildWelcomeScreen>> & {
 	/**
 	 * Whether the welcome screen is enabled
 	 */

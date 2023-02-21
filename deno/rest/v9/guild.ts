@@ -27,14 +27,20 @@ import type {
 	APIDMChannel,
 	APIGroupDMChannel,
 } from '../../payloads/v9/mod.ts';
-import type { DistributiveOmit, DistributivePick, Nullable, StrictRequired } from '../../utils/internals.ts';
+import type {
+	DistributiveOmit,
+	DistributivePick,
+	Nullable,
+	StrictPartial,
+	StrictRequired,
+} from '../../utils/internals.ts';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;
 }
 
 export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
-export type APIGuildCreatePartialChannel = Partial<
+export type APIGuildCreatePartialChannel = StrictPartial<
 	DistributivePick<
 		APIGuildChannelResolvable,
 		| 'type'
@@ -797,7 +803,7 @@ export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
  */
-export type RESTPatchAPIGuildWidgetSettingsJSONBody = Partial<APIGuildWidgetSettings>;
+export type RESTPatchAPIGuildWidgetSettingsJSONBody = StrictPartial<APIGuildWidgetSettings>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
@@ -904,7 +910,7 @@ export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  */
-export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<Partial<APIGuildWelcomeScreen>> & {
+export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIGuildWelcomeScreen>> & {
 	/**
 	 * Whether the welcome screen is enabled
 	 */

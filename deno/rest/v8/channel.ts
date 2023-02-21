@@ -19,6 +19,7 @@ import type {
 	OverwriteType,
 	VideoQualityMode,
 } from '../../payloads/v8/mod.ts';
+import type { StrictPartial } from '../../utils/internals.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -169,7 +170,7 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
  * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIMessageReferenceSend = Partial<APIMessageReference> &
+export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
 	Required<Pick<APIMessageReference, 'message_id'>> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message

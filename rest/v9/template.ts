@@ -1,6 +1,7 @@
 /* eslint local/explicitly-optional-undefined-properties: "error", local/explicit-undefined-on-optional-properties: "error" */
 
 import type { APIGuild, APITemplate } from '../../payloads/v9/index';
+import type { StrictPartial } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/guild-template#get-guild-template
@@ -60,7 +61,7 @@ export type RESTPutAPIGuildTemplateSyncResult = APITemplate;
 /**
  * https://discord.com/developers/docs/resources/guild-template#modify-guild-template
  */
-export type RESTPatchAPIGuildTemplateJSONBody = Partial<RESTPostAPIGuildTemplatesJSONBody>;
+export type RESTPatchAPIGuildTemplateJSONBody = StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
 
 /**
  * https://discord.com/developers/docs/resources/guild-template#modify-guild-template

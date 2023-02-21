@@ -16,6 +16,7 @@ import type {
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
 } from '../../payloads/v10/index';
+import type { StrictPartial } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
@@ -84,7 +85,7 @@ export type RESTPostAPIApplicationCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
  */
-export type RESTPatchAPIApplicationCommandJSONBody = Partial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
@@ -131,7 +132,7 @@ export type RESTPostAPIApplicationGuildCommandsResult = Omit<APIApplicationComma
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = Partial<
+export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<
 	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
 	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>
 >;
