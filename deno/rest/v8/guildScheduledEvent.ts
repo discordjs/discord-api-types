@@ -17,7 +17,7 @@ export interface RESTGetAPIGuildScheduledEventsQuery {
 	/**
 	 * Whether to include number of users subscribed to each event
 	 */
-	with_user_count?: boolean | undefined;
+	with_user_count?: boolean;
 }
 
 /**
@@ -83,7 +83,7 @@ export interface RESTGetAPIGuildScheduledEventQuery {
 	/**
 	 * Whether to include number of users subscribed to this event
 	 */
-	with_user_count?: boolean | undefined;
+	with_user_count?: boolean;
 }
 
 /**
@@ -125,19 +125,19 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
 	 *
 	 * @default 100
 	 */
-	limit?: number | undefined;
+	limit?: number;
 	/**
 	 * Whether to include guild member data if it exists
 	 */
-	with_member?: boolean | undefined;
+	with_member?: boolean;
 	/**
 	 * Consider only users before given user id
 	 */
-	before?: Snowflake | undefined;
+	before?: Snowflake;
 	/**
 	 * Consider only users after given user id
 	 */
-	after?: Snowflake | undefined;
+	after?: Snowflake;
 }
 
 /**

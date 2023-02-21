@@ -1145,7 +1145,7 @@ export interface CDNQuery {
 	 *
 	 * Image size can be any power of two between 16 and 4096
 	 */
-	size?: number | undefined;
+	size?: number;
 }
 
 export const RouteBases = {

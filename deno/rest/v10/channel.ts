@@ -195,21 +195,21 @@ export interface RESTGetAPIChannelMessagesQuery {
 	/**
 	 * Get messages around this message ID
 	 */
-	around?: Snowflake | undefined;
+	around?: Snowflake;
 	/**
 	 * Get messages before this message ID
 	 */
-	before?: Snowflake | undefined;
+	before?: Snowflake;
 	/**
 	 * Get messages after this message ID
 	 */
-	after?: Snowflake | undefined;
+	after?: Snowflake;
 	/**
 	 * Max number of messages to return (1-100)
 	 *
 	 * @default 50
 	 */
-	limit?: number | undefined;
+	limit?: number;
 }
 
 /**
@@ -335,13 +335,13 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
 	 * Get users after this user ID
 	 */
-	after?: Snowflake | undefined;
+	after?: Snowflake;
 	/**
 	 * Max number of users to return (1-100)
 	 *
 	 * @default 25
 	 */
-	limit?: number | undefined;
+	limit?: number;
 }
 
 /**
@@ -687,7 +687,7 @@ export interface RESTGetAPIChannelThreadMemberQuery {
 	/**
 	 * Whether to include a guild member object for the thread member
 	 */
-	with_member?: boolean | undefined;
+	with_member?: boolean;
 }
 
 /**
@@ -702,15 +702,15 @@ export interface RESTGetAPIChannelThreadMembersQuery {
 	/**
 	 * Whether to include a guild member object for each thread member
 	 */
-	with_member?: boolean | undefined;
+	with_member?: boolean;
 	/**
 	 * Get thread members after this user ID
 	 */
-	after?: Snowflake | undefined;
+	after?: Snowflake;
 	/**
 	 * Max number of thread members to return (1-100). Defaults to 100
 	 */
-	limit?: number | undefined;
+	limit?: number;
 }
 
 /**
@@ -725,11 +725,11 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 	/**
 	 * Get threads before this id or ISO8601 timestamp
 	 */
-	before?: Snowflake | string | undefined;
+	before?: Snowflake | string;
 	/**
 	 * Max number of thread to return
 	 */
-	limit?: number | undefined;
+	limit?: number;
 }
 
 /**

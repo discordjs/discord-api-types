@@ -5,10 +5,10 @@ import type { APIAuditLog, AuditLogEvent } from '../../payloads/v6/auditLog';
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIAuditLogQuery {
-	user_id?: string | undefined;
-	action_type?: AuditLogEvent | undefined;
-	before?: string | undefined;
-	limit?: number | undefined;
+	user_id?: string;
+	action_type?: AuditLogEvent;
+	before?: string;
+	limit?: number;
 }
 
 /**

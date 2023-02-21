@@ -72,7 +72,7 @@ export type RESTPostAPIGuildsResult = APIGuild;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildQuery {
-	with_counts?: boolean | undefined;
+	with_counts?: boolean;
 }
 
 /**
@@ -172,8 +172,8 @@ export type RESTGetAPIGuildMemberResult = APIGuildMember;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildMembersQuery {
-	limit?: number | undefined;
-	after?: string | undefined;
+	limit?: number;
+	after?: string;
 }
 
 /**
@@ -186,7 +186,7 @@ export type RESTGetAPIGuildMembersResult = APIGuildMember[];
  */
 export interface RESTGetAPIGuildMembersSearchQuery {
 	query: string;
-	limit?: number | undefined;
+	limit?: number;
 }
 
 /**
@@ -356,14 +356,14 @@ export type RESTDeleteAPIGuildRoleResult = never;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildPruneCountQuery {
-	days?: number | undefined;
+	days?: number;
 	/**
 	 * While this is typed as a string, it represents an array of
 	 * role IDs delimited by commas.
 	 *
 	 * @see https://discord.com/developers/docs/resources/guild#get-guild-prune-count-query-string-params
 	 */
-	include_roles?: string | undefined;
+	include_roles?: string;
 }
 
 /**
@@ -407,7 +407,7 @@ export type RESTGetAPIGuildInvitesResult = APIInvite[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildIntegrationsQuery {
-	include_applications?: boolean | undefined;
+	include_applications?: boolean;
 }
 
 /**
@@ -505,7 +505,7 @@ export interface RESTGetAPIGuildVanityUrlResult {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIGuildWidgetImageQuery {
-	style?: GuildWidgetStyle | undefined;
+	style?: GuildWidgetStyle;
 }
 
 /**

@@ -31,9 +31,9 @@ export type RESTPatchAPICurrentUserResult = APIUser;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPICurrentUserGuildsQuery {
-	before?: string | undefined;
-	after?: string | undefined;
-	limit?: number | undefined;
+	before?: string;
+	after?: string;
+	limit?: number;
 }
 
 /**

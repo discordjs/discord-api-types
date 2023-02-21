@@ -9,21 +9,21 @@ export interface RESTGetAPIAuditLogQuery {
 	/**
 	 * Filter the log for actions made by a user
 	 */
-	user_id?: Snowflake | undefined;
+	user_id?: Snowflake;
 	/**
 	 * The type of audit log events
 	 */
-	action_type?: AuditLogEvent | undefined;
+	action_type?: AuditLogEvent;
 	/**
 	 * Filter the log before a certain entry ID
 	 */
-	before?: Snowflake | undefined;
+	before?: Snowflake;
 	/**
 	 * How many entries are returned (default 50, minimum 1, maximum 100)
 	 *
 	 * @default 50
 	 */
-	limit?: number | undefined;
+	limit?: number;
 }
 
 /**

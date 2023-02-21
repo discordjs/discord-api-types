@@ -41,9 +41,9 @@ export enum AllowedMentionsTypes {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIAllowedMentionsSend {
-	parse?: AllowedMentionsTypes[] | undefined;
-	roles?: string[] | undefined;
-	users?: string[] | undefined;
+	parse?: AllowedMentionsTypes[];
+	roles?: string[];
+	users?: string[];
 }
 
 // #endregion TypeDefs
@@ -84,10 +84,10 @@ export type RESTDeleteAPIChannelResult = APIChannel;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIChannelMessagesQuery {
-	around?: string | undefined;
-	before?: string | undefined;
-	after?: string | undefined;
-	limit?: number | undefined;
+	around?: string;
+	before?: string;
+	after?: string;
+	limit?: number;
 }
 
 /**
@@ -172,9 +172,9 @@ export type RESTDeleteAPIChannelMessageResult = never;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIChannelMessageReactionsQuery {
-	before?: string | undefined;
-	after?: string | undefined;
-	limit?: number | undefined;
+	before?: string;
+	after?: string;
+	limit?: number;
 }
 
 /**

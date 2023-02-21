@@ -174,13 +174,13 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	 *
 	 * @default false
 	 */
-	wait?: boolean | undefined;
+	wait?: boolean;
 	/**
 	 * Send a message to the specified thread within a webhook's channel. The thread will automatically be unarchived.
 	 *
 	 * Available only if the {@link RESTPostAPIWebhookWithTokenJSONBody.thread_name} JSON body property is not specified
 	 */
-	thread_id?: Snowflake | undefined;
+	thread_id?: Snowflake;
 }
 
 /**

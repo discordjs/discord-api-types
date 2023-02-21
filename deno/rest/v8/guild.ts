@@ -164,7 +164,7 @@ export interface RESTGetAPIGuildQuery {
 	 *
 	 * @default false
 	 */
-	with_counts?: boolean | undefined;
+	with_counts?: boolean;
 }
 
 /**
@@ -359,13 +359,13 @@ export interface RESTGetAPIGuildMembersQuery {
 	 *
 	 * @default 1
 	 */
-	limit?: number | undefined;
+	limit?: number;
 	/**
 	 * The highest user id in the previous page
 	 *
 	 * @default 0
 	 */
-	after?: Snowflake | undefined;
+	after?: Snowflake;
 }
 
 /**
@@ -388,7 +388,7 @@ export interface RESTGetAPIGuildMembersSearchQuery {
 	 *
 	 * @default 1
 	 */
-	limit?: number | undefined;
+	limit?: number;
 }
 
 /**
@@ -714,7 +714,7 @@ export interface RESTGetAPIGuildPruneCountQuery {
 	 *
 	 * @default 7
 	 */
-	days?: number | undefined;
+	days?: number;
 	/**
 	 * Role(s) to include
 	 *
@@ -723,7 +723,7 @@ export interface RESTGetAPIGuildPruneCountQuery {
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#get-guild-prune-count-query-string-params
 	 */
-	include_roles?: string | undefined;
+	include_roles?: string;
 }
 
 /**
@@ -832,7 +832,7 @@ export interface RESTGetAPIGuildWidgetImageQuery {
 	 *
 	 * @default "shield"
 	 */
-	style?: GuildWidgetStyle | undefined;
+	style?: GuildWidgetStyle;
 }
 
 /**

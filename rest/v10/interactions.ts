@@ -26,7 +26,7 @@ export interface RESTGetAPIApplicationCommandsQuery {
 	 *
 	 * @default false
 	 */
-	with_localizations?: boolean | undefined;
+	with_localizations?: boolean;
 }
 
 /**

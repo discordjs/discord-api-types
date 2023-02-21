@@ -49,17 +49,17 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	/**
 	 * Get guilds before this guild ID
 	 */
-	before?: Snowflake | undefined;
+	before?: Snowflake;
 	/**
 	 * Get guilds after this guild ID
 	 */
-	after?: Snowflake | undefined;
+	after?: Snowflake;
 	/**
 	 * Max number of guilds to return (1-200)
 	 *
 	 * @default 200
 	 */
-	limit?: number | undefined;
+	limit?: number;
 }
 
 export interface RESTAPIPartialCurrentUserGuild {

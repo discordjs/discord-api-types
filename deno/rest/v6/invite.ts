@@ -5,7 +5,7 @@ import type { APIInvite } from '../../payloads/v6/mod.ts';
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIInviteQuery {
-	with_counts?: boolean | undefined;
+	with_counts?: boolean;
 }
 
 /**

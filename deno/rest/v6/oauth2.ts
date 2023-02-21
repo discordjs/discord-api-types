@@ -14,9 +14,9 @@ export interface RESTOAuth2AuthorizationQuery {
 	response_type: 'code';
 	client_id: string;
 	scope: string;
-	redirect_uri?: string | undefined;
-	state?: string | undefined;
-	prompt?: 'consent' | 'none' | undefined;
+	redirect_uri?: string;
+	state?: string;
+	prompt?: 'consent' | 'none';
 }
 
 /**
@@ -25,7 +25,7 @@ export interface RESTOAuth2AuthorizationQuery {
  */
 export interface RESTOAuth2AuthorizationQueryResult {
 	code: string;
-	state?: string | undefined;
+	state?: string;
 }
 
 /**
@@ -37,7 +37,7 @@ export interface RESTPostOAuth2AccessTokenURIEncodedData {
 	client_secret: string;
 	grant_type: 'authorization_code';
 	code: string;
-	redirect_uri?: string | undefined;
+	redirect_uri?: string;
 	scope: string;
 }
 
@@ -62,7 +62,7 @@ export interface RESTPostOAuth2RefreshTokenURIEncodedData {
 	client_secret: string;
 	grant_type: 'refresh_token';
 	refresh_token: string;
-	redirect_uri?: string | undefined;
+	redirect_uri?: string;
 	scope: string;
 }
 
@@ -76,9 +76,9 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 	response_type: 'token';
 	client_id: string;
 	scope: string;
-	redirect_uri?: string | undefined;
-	state?: string | undefined;
-	prompt?: 'consent' | 'none' | undefined;
+	redirect_uri?: string;
+	state?: string;
+	prompt?: 'consent' | 'none';
 }
 
 /**
@@ -113,9 +113,9 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	/**
 	 * The required permissions bitfield, stringified
 	 */
-	permissions?: string | undefined;
-	guild_id?: string | undefined;
-	disable_guild_select?: boolean | undefined;
+	permissions?: string;
+	guild_id?: string;
+	disable_guild_select?: boolean;
 }
 
 /**
@@ -131,11 +131,11 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	/**
 	 * The required permissions bitfield, stringified
 	 */
-	permissions?: string | undefined;
-	guild_id?: string | undefined;
-	disable_guild_select?: boolean | undefined;
+	permissions?: string;
+	guild_id?: string;
+	disable_guild_select?: boolean;
 	response_type: string;
-	redirect_uri?: string | undefined;
+	redirect_uri?: string;
 }
 
 /**
@@ -143,7 +143,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
  */
 export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
-	state?: string | undefined;
+	state?: string;
 	guild_id: string;
 	permissions: string;
 }

@@ -27,7 +27,7 @@ export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 	/**
 	 * the user who has authorized, if the user has authorized with the `identify` scope
 	 */
-	user?: APIUser | undefined;
+	user?: APIUser;
 }
 
 /**
@@ -38,9 +38,9 @@ export interface RESTOAuth2AuthorizationQuery {
 	response_type: 'code';
 	client_id: Snowflake;
 	scope: string;
-	redirect_uri?: string | undefined;
-	state?: string | undefined;
-	prompt?: 'consent' | 'none' | undefined;
+	redirect_uri?: string;
+	state?: string;
+	prompt?: 'consent' | 'none';
 }
 
 /**
@@ -49,7 +49,7 @@ export interface RESTOAuth2AuthorizationQuery {
  */
 export interface RESTOAuth2AuthorizationQueryResult {
 	code: string;
-	state?: string | undefined;
+	state?: string;
 }
 
 /**
@@ -61,7 +61,7 @@ export interface RESTPostOAuth2AccessTokenURLEncodedData {
 	client_secret: string;
 	grant_type: 'authorization_code';
 	code: string;
-	redirect_uri?: string | undefined;
+	redirect_uri?: string;
 }
 
 /**
@@ -100,9 +100,9 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 	response_type: 'token';
 	client_id: Snowflake;
 	scope: string;
-	redirect_uri?: string | undefined;
-	state?: string | undefined;
-	prompt?: 'consent' | 'none' | undefined;
+	redirect_uri?: string;
+	state?: string;
+	prompt?: 'consent' | 'none';
 }
 
 /**
@@ -147,15 +147,15 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions
 	 */
-	permissions?: Permissions | undefined;
+	permissions?: Permissions;
 	/**
 	 * Pre-fills the dropdown picker with a guild for the user
 	 */
-	guild_id?: Snowflake | undefined;
+	guild_id?: Snowflake;
 	/**
 	 * `true` or `false`—disallows the user from changing the guild dropdown
 	 */
-	disable_guild_select?: boolean | undefined;
+	disable_guild_select?: boolean;
 }
 
 /**
@@ -175,11 +175,11 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	/**
 	 * The required permissions bitfield, stringified
 	 */
-	permissions?: Permissions | undefined;
-	guild_id?: Snowflake | undefined;
-	disable_guild_select?: boolean | undefined;
+	permissions?: Permissions;
+	guild_id?: Snowflake;
+	disable_guild_select?: boolean;
 	response_type: string;
-	redirect_uri?: string | undefined;
+	redirect_uri?: string;
 }
 
 /**
@@ -187,7 +187,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
  */
 export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
-	state?: string | undefined;
+	state?: string;
 	guild_id: Snowflake;
 	permissions: Permissions;
 }
