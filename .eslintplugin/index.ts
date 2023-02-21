@@ -24,7 +24,11 @@ export = {
 							return;
 						}
 
-						context.report({ node: eslNode, messageId: 'missingOptional' });
+						context.report({
+							node: eslNode,
+							messageId: 'missingOptional',
+							fix: (fixer) => fixer.insertTextAfter(eslNode.key, '?'),
+						});
 					},
 				};
 			},
