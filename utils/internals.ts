@@ -2,9 +2,13 @@ export type Nullable<T> = {
 	[P in keyof T]: T[P] | null;
 };
 
-export type StrictPartial<T> = {
-	[P in keyof T]?: T[P] | undefined;
+export type AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base> = {
+	[K in keyof Base]: Base[K] extends Exclude<Base[K], undefined>
+		? AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]>
+		: AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]> | undefined;
 };
+
+export type StrictPartial<Base> = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Partial<Base>>;
 
 export type StrictRequired<Base> = Required<{ [K in keyof Base]: Exclude<Base[K], undefined> }>;
 

@@ -24,7 +24,7 @@ import type {
 	SortOrderType,
 	ForumLayoutType,
 } from '../../payloads/v10/mod.ts';
-import type { StrictPartial } from '../../utils/internals.ts';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 
 export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: Snowflake;
@@ -226,7 +226,7 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
  * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  */
 export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
-	Required<Pick<APIMessageReference, 'message_id'>> & {
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Required<Pick<APIMessageReference, 'message_id'>>> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *

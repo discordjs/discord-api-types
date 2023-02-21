@@ -9,7 +9,7 @@ import type {
 	APIWebhook,
 	MessageFlags,
 } from '../../payloads/v8/index';
-import type { Nullable } from '../../utils/internals';
+import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
@@ -258,8 +258,8 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIWebhookWithTokenMessageJSONBody = Nullable<
-	Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>
+export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>>
 > & {
 	/**
 	 * Attached files to keep
