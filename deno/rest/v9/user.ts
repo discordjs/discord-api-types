@@ -69,6 +69,8 @@ export interface RESTAPIPartialCurrentUserGuild {
 	owner: boolean;
 	features: GuildFeature[];
 	permissions: Permissions;
+	approximate_member_count?: number;
+	approximate_presence_count?: number;
 }
 
 /**
