@@ -202,7 +202,7 @@ export interface APIAutoModerationActionMetadata {
 	 */
 	duration_seconds?: number;
 	/**
-	 * Additional explanation that will be shown to members whenever their message is blocked
+	 * Additional explanation that will be shown to members whenever their message is blocked (Maximum 150 characters)
 	 *
 	 * Associated action type {@link AutoModerationActionType.BlockMessage}
 	 */
