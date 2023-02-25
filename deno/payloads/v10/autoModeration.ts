@@ -169,7 +169,8 @@ export interface APIAutoModerationAction {
  */
 export enum AutoModerationActionType {
 	/**
-	 * Blocks the content of a message according to the rule
+	 * Blocks a member's message and prevents it from being posted.
+	 * A custom explanation can be specified and shown to members whenever their message is blocked
 	 */
 	BlockMessage = 1,
 	/**
@@ -200,4 +201,10 @@ export interface APIAutoModerationActionMetadata {
 	 * Associated action type: {@link AutoModerationActionType.Timeout}
 	 */
 	duration_seconds?: number;
+	/**
+	 * Additional explanation that will be shown to members whenever their message is blocked (Maximum 150 characters)
+	 *
+	 * Associated action type {@link AutoModerationActionType.BlockMessage}
+	 */
+	custom_message?: string;
 }
