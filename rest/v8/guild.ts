@@ -23,13 +23,7 @@ import type {
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 } from '../../payloads/v8/index';
-import type {
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
-	Nullable,
-	StrictPartial,
-	StrictRequired,
-	UnionToIntersection,
-} from '../../utils/internals';
+import type { Nullable, StrictPartial, StrictRequired, UnionToIntersection } from '../../utils/internals';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -51,13 +45,12 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		UnionToIntersection<APIGuildChannelResolvable>,
 		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
 	>
-> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		name: string;
-		id?: number | string;
-		parent_id?: number | string | null;
-		permission_overwrites?: APIGuildCreateOverwrite[];
-	}>;
+> & {
+	name: string;
+	id?: number | string | undefined;
+	parent_id?: number | string | null | undefined;
+	permission_overwrites?: APIGuildCreateOverwrite[] | undefined;
+};
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -70,7 +63,7 @@ export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
  * https://discord.com/developers/docs/resources/guild#create-guild
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * Name of the guild (2-100 characters)
 	 */
@@ -80,31 +73,31 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
-	region?: string;
+	region?: string | undefined;
 	/**
 	 * base64 1024x1024 png/jpeg image for the guild icon
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	icon?: string;
+	icon?: string | undefined;
 	/**
 	 * Verification level
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-verification-level
 	 */
-	verification_level?: GuildVerificationLevel;
+	verification_level?: GuildVerificationLevel | undefined;
 	/**
 	 * Default message notification level
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
 	 */
-	default_message_notifications?: GuildDefaultMessageNotifications;
+	default_message_notifications?: GuildDefaultMessageNotifications | undefined;
 	/**
 	 * Explicit content filter level
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
 	 */
-	explicit_content_filter?: GuildExplicitContentFilter;
+	explicit_content_filter?: GuildExplicitContentFilter | undefined;
 	/**
 	 * New guild roles
 	 *
@@ -117,7 +110,7 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
 	 */
-	roles?: APIGuildCreateRole[];
+	roles?: APIGuildCreateRole[] | undefined;
 	/**
 	 * New guild's channels
 	 *
@@ -130,30 +123,30 @@ export type RESTPostAPIGuildsJSONBody = AddUndefinedToPossiblyUndefinedPropertie
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channels?: APIGuildCreatePartialChannel[];
+	channels?: APIGuildCreatePartialChannel[] | undefined;
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: number | Snowflake | null;
+	afk_channel_id?: number | Snowflake | null | undefined;
 	/**
 	 * AFK timeout in seconds
 	 */
-	afk_timeout?: number;
+	afk_timeout?: number | undefined;
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: number | Snowflake | null;
+	system_channel_id?: number | Snowflake | null | undefined;
 	/**
 	 * System channel flags
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
 	 */
-	system_channel_flags?: GuildSystemChannelFlags;
+	system_channel_flags?: GuildSystemChannelFlags | undefined;
 	/**
 	 * Whether the boosts progress bar should be enabled.
 	 */
-	premium_progress_bar_enabled?: boolean;
-}>;
+	premium_progress_bar_enabled?: boolean | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
@@ -190,106 +183,106 @@ export type RESTGetAPIGuildPreviewResult = APIGuildPreview;
  * https://discord.com/developers/docs/resources/guild#modify-guild
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * New name for the guild (2-100 characters)
 	 */
-	name?: string;
+	name?: string | undefined;
 	/**
 	 * Voice region id
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
-	region?: string | null;
+	region?: string | null | undefined;
 	/**
 	 * Verification level
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-verification-level
 	 */
-	verification_level?: GuildVerificationLevel | null;
+	verification_level?: GuildVerificationLevel | null | undefined;
 	/**
 	 * Default message notification level
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
 	 */
-	default_message_notifications?: GuildDefaultMessageNotifications | null;
+	default_message_notifications?: GuildDefaultMessageNotifications | null | undefined;
 	/**
 	 * Explicit content filter level
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
 	 */
-	explicit_content_filter?: GuildExplicitContentFilter | null;
+	explicit_content_filter?: GuildExplicitContentFilter | null | undefined;
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: Snowflake | null;
+	afk_channel_id?: Snowflake | null | undefined;
 	/**
 	 * AFK timeout in seconds
 	 */
-	afk_timeout?: number;
+	afk_timeout?: number | undefined;
 	/**
 	 * base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the guild has `ANIMATED_ICON` feature)
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	icon?: string | null;
+	icon?: string | null | undefined;
 	/**
 	 * User id to transfer guild ownership to (must be owner)
 	 */
-	owner_id?: Snowflake;
+	owner_id?: Snowflake | undefined;
 	/**
 	 * base64 16:9 png/jpeg image for the guild splash (when the guild has `INVITE_SPLASH` feature)
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	splash?: string | null;
+	splash?: string | null | undefined;
 	/**
 	 * base64 png/jpeg image for the guild discovery splash (when the guild has `DISCOVERABLE` feature)
 	 */
-	discovery_splash?: string | null;
+	discovery_splash?: string | null | undefined;
 	/**
 	 * base64 16:9 png/jpeg image for the guild banner (when the server has the `BANNER` feature; can be animated gif when the server has the `ANIMATED_BANNER` feature)
 	 */
-	banner?: string | null;
+	banner?: string | null | undefined;
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: Snowflake | null;
+	system_channel_id?: Snowflake | null | undefined;
 	/**
 	 * System channel flags
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
 	 */
-	system_channel_flags?: GuildSystemChannelFlags;
+	system_channel_flags?: GuildSystemChannelFlags | undefined;
 	/**
 	 * The id of the channel where Community guilds display rules and/or guidelines
 	 */
-	rules_channel_id?: Snowflake | null;
+	rules_channel_id?: Snowflake | null | undefined;
 	/**
 	 * The id of the channel where admins and moderators of Community guilds receive notices from Discord
 	 */
-	public_updates_channel_id?: Snowflake | null;
+	public_updates_channel_id?: Snowflake | null | undefined;
 	/**
 	 * The preferred locale of a Community guild used in server discovery and notices from Discord; defaults to "en-US"
 	 *
 	 * @default "en-US" (if the value is set to `null`)
 	 */
-	preferred_locale?: string | null;
+	preferred_locale?: string | null | undefined;
 	/**
 	 * Enabled guild features
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-object-guild-features
 	 */
-	features?: GuildFeature[];
+	features?: GuildFeature[] | undefined;
 	/**
 	 * The description for the guild, if the guild is discoverable
 	 */
-	description?: string | null;
+	description?: string | null | undefined;
 	/**
 	 * Whether the boosts progress bar should be enabled.
 	 */
-	premium_progress_bar_enabled?: boolean;
-}>;
+	premium_progress_bar_enabled?: boolean | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild
@@ -325,26 +318,24 @@ export type RESTPostAPIGuildChannelResult = APIChannel;
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		/**
-		 * Channel id
-		 */
-		id: Snowflake;
-		/**
-		 * Sorting position of the channel
-		 */
-		position: number;
-		/**
-		 * Sync channel overwrites with the new parent, when moving to a new `parent_id`
-		 */
-		lock_permissions?: boolean;
-		/**
-		 * The new parent id of this channel
-		 */
-		parent_id?: Snowflake | null;
-	}>
->;
+export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
+	/**
+	 * Channel id
+	 */
+	id: Snowflake;
+	/**
+	 * Sorting position of the channel
+	 */
+	position: number;
+	/**
+	 * Sync channel overwrites with the new parent, when moving to a new `parent_id`
+	 */
+	lock_permissions?: boolean | undefined;
+	/**
+	 * The new parent id of this channel
+	 */
+	parent_id?: Snowflake | null | undefined;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
@@ -409,7 +400,7 @@ export type RESTGetAPIGuildMembersSearchResult = APIGuildMember[];
  * https://discord.com/developers/docs/resources/guild#add-guild-member
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPutAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPutAPIGuildMemberJSONBody {
 	/**
 	 * An oauth2 access token granted with the `guilds.join` to the bot's application for the user you want to add to the guild
 	 */
@@ -419,26 +410,26 @@ export type RESTPutAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPrope
 	 *
 	 * Requires `MANAGE_NICKNAMES` permission
 	 */
-	nick?: string;
+	nick?: string | undefined;
 	/**
 	 * Array of role ids the member is assigned
 	 *
 	 * Requires `MANAGE_ROLES` permission
 	 */
-	roles?: Snowflake[];
+	roles?: Snowflake[] | undefined;
 	/**
 	 * Whether the user is muted in voice channels
 	 *
 	 * Requires `MUTE_MEMBERS` permission
 	 */
-	mute?: boolean;
+	mute?: boolean | undefined;
 	/**
 	 * Whether the user is deafened in voice channels
 	 *
 	 * Requires `DEAFEN_MEMBERS` permission
 	 */
-	deaf?: boolean;
-}>;
+	deaf?: boolean | undefined;
+}
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -449,42 +440,42 @@ export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildMemberJSONBody {
 	/**
 	 * Value to set users nickname to
 	 *
 	 * Requires `MANAGE_NICKNAMES` permission
 	 */
-	nick?: string | null;
+	nick?: string | null | undefined;
 	/**
 	 * Array of role ids the member is assigned
 	 *
 	 * Requires `MANAGE_ROLES` permission
 	 */
-	roles?: Snowflake[] | null;
+	roles?: Snowflake[] | null | undefined;
 	/**
 	 * Whether the user is muted in voice channels. Will throw a 400 if the user is not in a voice channel
 	 *
 	 * Requires `MUTE_MEMBERS` permission
 	 */
-	mute?: boolean | null;
+	mute?: boolean | null | undefined;
 	/**
 	 * Whether the user is deafened in voice channels. Will throw a 400 if the user is not in a voice channel
 	 *
 	 * Requires `DEAFEN_MEMBERS` permission
 	 */
-	deaf?: boolean | null;
+	deaf?: boolean | null | undefined;
 	/**
 	 * ID of channel to move user to (if they are connected to voice)
 	 *
 	 * Requires `MOVE_MEMBERS` permission
 	 */
-	channel_id?: Snowflake | null;
+	channel_id?: Snowflake | null | undefined;
 	/**
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
-	communication_disabled_until?: string | null;
-}>;
+	communication_disabled_until?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#add-guild-member
@@ -498,27 +489,27 @@ export type RESTPatchAPIGuildMemberResult = APIGuildMember;
  * @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPICurrentGuildMemberNicknameJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
 	/**
 	 * Value to set users nickname to
 	 *
 	 * Requires `CHANGE_NICKNAME` permission
 	 */
-	nick?: string | null;
-}>;
+	nick?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-member
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPICurrentGuildMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPICurrentGuildMemberJSONBody {
 	/**
 	 * Value to set users nickname to
 	 *
 	 * Requires `CHANGE_NICKNAME` permission
 	 */
-	nick?: string | null;
-}>;
+	nick?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
@@ -563,18 +554,18 @@ export type RESTGetAPIGuildBanResult = APIBan;
  * https://discord.com/developers/docs/resources/guild#create-guild-ban
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPutAPIGuildBanJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPutAPIGuildBanJSONBody {
 	/**
 	 * Number of days to delete messages for (0-7)
 	 */
-	delete_message_days?: number;
+	delete_message_days?: number | undefined;
 	/**
 	 * Reason for the ban
 	 *
 	 * @deprecated Removed in API v10, use the `X-Audit-Log-Reason` header instead.
 	 */
-	reason?: string;
-}>;
+	reason?: string | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-ban
@@ -598,46 +589,46 @@ export type RESTGetAPIGuildRolesResult = APIRole[];
  * https://discord.com/developers/docs/resources/guild#create-guild-role
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIGuildRoleJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildRoleJSONBody {
 	/**
 	 * Name of the role
 	 *
 	 * @default "new role"
 	 */
-	name?: string | null;
+	name?: string | null | undefined;
 	/**
 	 * Bitwise value of the enabled/disabled permissions
 	 *
 	 * @default "default role permissions in guild"
 	 */
-	permissions?: Permissions | null;
+	permissions?: Permissions | null | undefined;
 	/**
 	 * RGB color value
 	 *
 	 * @default 0
 	 */
-	color?: number | null;
+	color?: number | null | undefined;
 	/**
 	 * Whether the role should be displayed separately in the sidebar
 	 *
 	 * @default false
 	 */
-	hoist?: boolean | null;
+	hoist?: boolean | null | undefined;
 	/**
 	 * The role's icon image (if the guild has the `ROLE_ICONS` feature)
 	 */
-	icon?: string | null;
+	icon?: string | null | undefined;
 	/**
 	 * The role's unicode emoji as a standard emoji (if the guild has the `ROLE_ICONS` feature)
 	 */
-	unicode_emoji?: string | null;
+	unicode_emoji?: string | null | undefined;
 	/**
 	 * Whether the role should be mentionable
 	 *
 	 * @default false
 	 */
-	mentionable?: boolean | null;
-}>;
+	mentionable?: boolean | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-role
@@ -649,18 +640,16 @@ export type RESTPostAPIGuildRoleResult = APIRole;
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildRolePositionsJSONBody = Array<
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		/**
-		 * Role id
-		 */
-		id: Snowflake;
-		/**
-		 * Sorting position of the role
-		 */
-		position?: number;
-	}>
->;
+export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
+	/**
+	 * Role id
+	 */
+	id: Snowflake;
+	/**
+	 * Sorting position of the role
+	 */
+	position?: number | undefined;
+}>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
@@ -672,36 +661,36 @@ export type RESTPatchAPIGuildRolePositionsResult = APIRole[];
  * https://discord.com/developers/docs/resources/guild#modify-guild-role
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildRoleJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildRoleJSONBody {
 	/**
 	 * Name of the role
 	 */
-	name?: string | null;
+	name?: string | null | undefined;
 	/**
 	 * Bitwise value of the enabled/disabled permissions
 	 */
-	permissions?: Permissions | null;
+	permissions?: Permissions | null | undefined;
 	/**
 	 * RGB color value
 	 */
-	color?: number | null;
+	color?: number | null | undefined;
 	/**
 	 * Whether the role should be displayed separately in the sidebar
 	 */
-	hoist?: boolean | null;
+	hoist?: boolean | null | undefined;
 	/**
 	 * The role's icon image (if the guild has the `ROLE_ICONS` feature)
 	 */
-	icon?: string | null;
+	icon?: string | null | undefined;
 	/**
 	 * The role's unicode emoji as a standard emoji (if the guild has the `ROLE_ICONS` feature)
 	 */
-	unicode_emoji?: string | null;
+	unicode_emoji?: string | null | undefined;
 	/**
 	 * Whether the role should be mentionable
 	 */
-	mentionable?: boolean | null;
-}>;
+	mentionable?: boolean | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role
@@ -749,24 +738,24 @@ export interface RESTGetAPIGuildPruneCountResult {
  * https://discord.com/developers/docs/resources/guild#begin-guild-prune
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIGuildPruneJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildPruneJSONBody {
 	/**
 	 * Number of days to count prune for (1 or more)
 	 *
 	 * @default 7
 	 */
-	days?: number;
+	days?: number | undefined;
 	/**
 	 * Whether `pruned is returned, discouraged for large guilds
 	 *
 	 * @default true
 	 */
-	compute_prune_count?: boolean;
+	compute_prune_count?: boolean | undefined;
 	/**
 	 * Role(s) to include
 	 */
-	include_roles?: Snowflake[];
-}>;
+	include_roles?: Snowflake[] | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#begin-guild-prune
@@ -861,20 +850,20 @@ export type RESTGetAPIGuildMemberVerificationResult = APIGuildMembershipScreenin
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildMemberVerificationJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildMemberVerificationJSONBody {
 	/**
 	 * Whether Membership Screening is enabled
 	 */
-	enabled?: boolean;
+	enabled?: boolean | undefined;
 	/**
 	 * Array of field objects serialized in a string
 	 */
-	form_fields?: string;
+	form_fields?: string | undefined;
 	/**
 	 * The server description to show in the screening form
 	 */
-	description?: string | null;
-}>;
+	description?: string | null | undefined;
+}
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -884,7 +873,7 @@ export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreen
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 	/**
 	 * The id of the channel the user is currently in
 	 */
@@ -892,17 +881,17 @@ export type RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody = AddUndefinedToPos
 	/**
 	 * Toggles the user's suppress state
 	 */
-	suppress?: boolean;
+	suppress?: boolean | undefined;
 	/**
 	 * Sets the user's request to speak
 	 */
-	request_to_speak_timestamp?: string | null;
-}>;
+	request_to_speak_timestamp?: string | null | undefined;
+}
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildVoiceStateUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 	/**
 	 * The id of the channel the user is currently in
 	 */
@@ -910,8 +899,8 @@ export type RESTPatchAPIGuildVoiceStateUserJSONBody = AddUndefinedToPossiblyUnde
 	/**
 	 * Toggles the user's suppress state
 	 */
-	suppress?: boolean;
-}>;
+	suppress?: boolean | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
@@ -923,10 +912,9 @@ export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
  * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIGuildWelcomeScreen>> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		/**
-		 * Whether the welcome screen is enabled
-		 */
-		enabled?: boolean | null;
-	}>;
+export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIGuildWelcomeScreen>> & {
+	/**
+	 * Whether the welcome screen is enabled
+	 */
+	enabled?: boolean | null | undefined;
+};

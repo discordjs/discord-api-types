@@ -4,5 +4,10 @@
 	"parserOptions": {
 		"project": "./tsconfig.eslint.json",
 		"extraFileExtensions": [".mjs"]
+	},
+	"plugins": ["local"],
+	"rules": {
+		"local/explicitly-optional-undefined-properties": ["error", { "interfaceEndings": ["JSONBody"] }],
+		"local/explicit-undefined-on-optional-properties": ["error", { "interfaceEndings": ["JSONBody"] }]
 	}
 }

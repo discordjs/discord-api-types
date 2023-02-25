@@ -6,7 +6,6 @@ import type {
 	APIAutoModerationRuleTriggerMetadata,
 	AutoModerationRuleTriggerType,
 } from '../../payloads/v10/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#list-auto-moderation-rules-for-guild
@@ -21,7 +20,7 @@ export type RESTGetAPIAutoModerationRuleResult = APIAutoModerationRule;
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule
  */
-export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIAutoModerationRuleJSONBody {
 	/**
 	 * The rule name
 	 */
@@ -39,7 +38,7 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	 *
 	 * Can be omitted if the trigger type is {@link AutoModerationRuleTriggerType.HarmfulLink} or {@link AutoModerationRuleTriggerType.Spam}
 	 */
-	trigger_metadata?: APIAutoModerationRuleTriggerMetadata;
+	trigger_metadata?: APIAutoModerationRuleTriggerMetadata | undefined;
 	/**
 	 * The actions which will execute when this rule is triggered
 	 */
@@ -49,16 +48,16 @@ export type RESTPostAPIAutoModerationRuleJSONBody = AddUndefinedToPossiblyUndefi
 	 *
 	 * @default false
 	 */
-	enabled?: boolean;
+	enabled?: boolean | undefined;
 	/**
 	 * The role ids that shouldn't be affected by this rule (Maximum of 20)
 	 */
-	exempt_roles?: Snowflake[];
+	exempt_roles?: Snowflake[] | undefined;
 	/**
 	 * The channel ids that shouldn't be affected by this rule (Maximum of 50)
 	 */
-	exempt_channels?: Snowflake[];
-}>;
+	exempt_channels?: Snowflake[] | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule

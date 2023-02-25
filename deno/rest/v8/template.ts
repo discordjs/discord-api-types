@@ -1,5 +1,5 @@
 import type { APIGuild, APITemplate } from '../../payloads/v8/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { StrictPartial } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/template#get-template
@@ -11,7 +11,7 @@ export type RESTGetAPITemplateResult = APITemplate;
  * https://discord.com/developers/docs/resources/template#create-guild-from-template
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPITemplateCreateGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPITemplateCreateGuildJSONBody {
 	/**
 	 * Name of the guild (2-100 characters)
 	 */
@@ -21,8 +21,8 @@ export type RESTPostAPITemplateCreateGuildJSONBody = AddUndefinedToPossiblyUndef
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	icon?: string;
-}>;
+	icon?: string | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/template#create-guild-from-template
@@ -40,7 +40,7 @@ export type RESTGetAPIGuildTemplatesResult = APITemplate[];
  * https://discord.com/developers/docs/resources/template#create-guild-template
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIGuildTemplatesJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildTemplatesJSONBody {
 	/**
 	 * Name of the template (1-100 characters)
 	 */
@@ -48,8 +48,8 @@ export type RESTPostAPIGuildTemplatesJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Description for the template (0-120 characters)
 	 */
-	description?: string | null;
-}>;
+	description?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/template#create-guild-template

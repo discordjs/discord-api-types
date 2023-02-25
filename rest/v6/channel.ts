@@ -53,15 +53,15 @@ export interface APIAllowedMentionsSend {
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIChannelJSONBody {
-	name?: string;
-	type?: ChannelType.GUILD_NEWS | ChannelType.GUILD_TEXT;
-	position?: number | null;
-	topic?: string | null;
-	nsfw?: boolean | null;
-	rate_limit_per_user?: number | null;
-	user_limit?: number | null;
-	permission_overwrites?: APIOverwrite[] | null;
-	parent_id?: string | null;
+	name?: string | undefined;
+	type?: ChannelType.GUILD_NEWS | ChannelType.GUILD_TEXT | undefined;
+	position?: number | null | undefined;
+	topic?: string | null | undefined;
+	nsfw?: boolean | null | undefined;
+	rate_limit_per_user?: number | null | undefined;
+	user_limit?: number | null | undefined;
+	permission_overwrites?: APIOverwrite[] | null | undefined;
+	parent_id?: string | null | undefined;
 }
 
 /**
@@ -100,12 +100,12 @@ export type RESTGetAPIChannelMessagesResult = APIMessage[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIChannelMessageJSONBody {
-	content?: string;
-	nonce?: number | string;
-	tts?: boolean;
-	embed?: APIEmbed;
-	allowed_mentions?: APIAllowedMentionsSend;
-	message_reference?: APIMessageReference;
+	content?: string | undefined;
+	nonce?: number | string | undefined;
+	tts?: boolean | undefined;
+	embed?: APIEmbed | undefined;
+	allowed_mentions?: APIAllowedMentionsSend | undefined;
+	message_reference?: APIMessageReference | undefined;
 }
 
 /**
@@ -117,19 +117,19 @@ export type RESTPostAPIChannelMessageFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 			/**
 			 * The file contents
 			 */
 			file: unknown;
 	  }
 	| {
-			content?: string;
-			nonce?: number | string;
-			tts?: boolean;
-			embed?: APIEmbed;
-			allowed_mentions?: APIAllowedMentionsSend;
-			message_reference?: APIMessageReference;
+			content?: string | undefined;
+			nonce?: number | string | undefined;
+			tts?: boolean | undefined;
+			embed?: APIEmbed | undefined;
+			allowed_mentions?: APIAllowedMentionsSend | undefined;
+			message_reference?: APIMessageReference | undefined;
 			/**
 			 * The file contents
 			 */
@@ -141,10 +141,10 @@ export type RESTPostAPIChannelMessageFormDataBody =
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIChannelMessageJSONBody {
-	content?: string | null;
-	embed?: APIEmbed | null;
-	allowed_mentions?: APIAllowedMentionsSend | null;
-	flags?: MessageFlags | null;
+	content?: string | null | undefined;
+	embed?: APIEmbed | null | undefined;
+	allowed_mentions?: APIAllowedMentionsSend | null | undefined;
+	flags?: MessageFlags | null | undefined;
 }
 
 /**
@@ -240,12 +240,12 @@ export type RESTGetAPIChannelInvitesResult = APIInvite[];
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIChannelInviteJSONBody {
-	max_age?: number;
-	max_uses?: number;
-	temporary?: boolean;
-	unique?: boolean;
-	target_user_id?: string;
-	target_user_type?: InviteTargetUserType;
+	max_age?: number | undefined;
+	max_uses?: number | undefined;
+	temporary?: boolean | undefined;
+	unique?: boolean | undefined;
+	target_user_id?: string | undefined;
+	target_user_type?: InviteTargetUserType | undefined;
 }
 
 /**
@@ -277,7 +277,7 @@ export type RESTDeleteAPIChannelPinResult = never;
  */
 export interface RESTPutAPIChannelRecipientJSONBody {
 	access_token: string;
-	nick?: string;
+	nick?: string | undefined;
 }
 
 /**

@@ -15,7 +15,7 @@ import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } f
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIChannelWebhookJSONBody {
 	/**
 	 * Name of the webhook (1-80 characters)
 	 */
@@ -25,8 +25,8 @@ export type RESTPostAPIChannelWebhookJSONBody = AddUndefinedToPossiblyUndefinedP
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	avatar?: string | null;
-}>;
+	avatar?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
@@ -62,22 +62,22 @@ export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIWebhookJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIWebhookJSONBody {
 	/**
 	 * The default name of the webhook
 	 */
-	name?: string;
+	name?: string | undefined;
 	/**
 	 * Image for the default webhook avatar
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	avatar?: string | null;
+	avatar?: string | null | undefined;
 	/**
 	 * The new channel id this webhook should be moved to
 	 */
-	channel_id?: Snowflake;
-}>;
+	channel_id?: Snowflake | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
@@ -113,35 +113,35 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * The message contents (up to 2000 characters)
 	 */
-	content?: string;
+	content?: string | undefined;
 	/**
 	 * Override the default username of the webhook
 	 */
-	username?: string;
+	username?: string | undefined;
 	/**
 	 * Override the default avatar of the webhook
 	 */
-	avatar_url?: string;
+	avatar_url?: string | undefined;
 	/**
 	 * `true` if this is a TTS message
 	 */
-	tts?: boolean;
+	tts?: boolean | undefined;
 	/**
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
-	embeds?: APIEmbed[];
+	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
-	allowed_mentions?: APIAllowedMentions;
+	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
 	 * The components to include with the message
 	 *
@@ -149,16 +149,16 @@ export type RESTPostAPIWebhookWithTokenJSONBody = AddUndefinedToPossiblyUndefine
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
+	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[];
+	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
-	flags?: MessageFlags;
-}>;
+	flags?: MessageFlags | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
@@ -169,7 +169,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
 
@@ -259,17 +259,17 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>> & {
-		/**
-		 * Attached files to keep
-		 *
-		 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
-		 *
-		 * See https://discord.com/developers/docs/resources/channel#attachment-object
-		 */
-		attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[];
-	}
->;
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>>
+> & {
+	/**
+	 * Attached files to keep
+	 *
+	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 */
+	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+};
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
@@ -280,7 +280,7 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & Record<`files[${bigint}]`, unknown>);
 

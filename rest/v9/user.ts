@@ -7,7 +7,6 @@ import type {
 	APIApplicationRoleConnection,
 	GuildFeature,
 } from '../../payloads/v9/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
@@ -27,16 +26,16 @@ export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
  */
-export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPICurrentUserJSONBody {
 	/**
 	 * User's username, if changed may cause the user's discriminator to be randomized
 	 */
-	username?: string;
+	username?: string | undefined;
 	/**
 	 * If passed, modifies the user's avatar
 	 */
-	avatar?: string | null;
-}>;
+	avatar?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
@@ -114,15 +113,15 @@ export interface RESTPutAPICurrentUserApplicationRoleConnectionJSONBody {
 	/**
 	 * The vanity name of the platform a bot has connected (max 50 characters)
 	 */
-	platform_name?: string;
+	platform_name?: string | undefined;
 	/**
 	 * The username on the platform a bot has connected (max 100 characters)
 	 */
-	platform_username?: string;
+	platform_username?: string | undefined;
 	/**
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
-	metadata?: Record<string, string | number>;
+	metadata?: Record<string, string | number> | undefined;
 }
 
 /**

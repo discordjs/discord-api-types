@@ -22,7 +22,7 @@ export interface RESTPostAPIGuildEmojiJSONBody {
 	 * The image data, read more [here](https://discord.com/developers/docs/reference#image-data)
 	 */
 	image: string;
-	roles?: string[];
+	roles?: string[] | undefined;
 }
 
 /**
@@ -35,8 +35,8 @@ export type RESTPostAPIGuildEmojiResult = APIEmoji;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIGuildEmojiJSONBody {
-	name?: string;
-	roles?: string[] | null;
+	name?: string | undefined;
+	roles?: string[] | null | undefined;
 }
 
 /**
