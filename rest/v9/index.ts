@@ -503,7 +503,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/users/@me/threads/archived/prviate`
+	 * - GET `/channels/{channel.id}/users/@me/threads/archived/private`
 	 */
 	channelJoinedArchivedThreads(channelId: Snowflake) {
 		return `/channels/${channelId}/users/@me/threads/archived/private` as const;
@@ -887,6 +887,14 @@ export const Routes = {
 	 */
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/@me`
+	 */
+	currentApplication() {
+		return '/applications/@me' as const;
 	},
 
 	/**

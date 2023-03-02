@@ -2,8 +2,12 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
+<<<<<<< HEAD
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type { LocalizationMap } from '../common.ts';
+=======
+import type { APIPartialGuild } from './guild.ts';
+>>>>>>> 2335be5 (feat(APIApplication): approx guild count and get self application endpoint)
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
@@ -111,6 +115,14 @@ export interface APIApplication {
 	 * which when configured will render the app as a verification method in the guild role verification configuration
 	 */
 	role_connections_verification_url?: string;
+	/**
+	 * An approximate count of the bots guild membership
+	 */
+	approximate_guild_count?: number;
+	/**
+	 * A partial object of the associated guild
+	 */
+	guild?: APIPartialGuild;
 }
 
 export interface APIApplicationInstallParams {
