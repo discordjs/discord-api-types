@@ -1,3 +1,9 @@
+## [0.37.36](https://github.com/discordjs/discord-api-types/compare/0.37.35...0.37.36) (2023-03-13)
+
+### Features
+
+- **AutoModeration:** add `custom_message` field support ([#727](https://github.com/discordjs/discord-api-types/issues/727)) ([0d47c69](https://github.com/discordjs/discord-api-types/commit/0d47c69ca80909205f14004aaf26645f367c06d0))
+
 ## [0.37.35](https://github.com/discordjs/discord-api-types/compare/0.37.34...0.37.35) (2023-02-17)
 
 ### Bug Fixes
