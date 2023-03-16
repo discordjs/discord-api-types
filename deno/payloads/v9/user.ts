@@ -102,6 +102,14 @@ export enum UserFlags {
 	 */
 	BugHunterLevel1 = 1 << 3,
 	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	MFASMS = 1 << 4,
+	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	PremiumPromoDismissed = 1 << 5,
+	/**
 	 * House Bravery Member
 	 */
 	HypeSquadOnlineHouse1 = 1 << 6,
@@ -121,6 +129,10 @@ export enum UserFlags {
 	 * User is a [team](https://discord.com/developers/docs/topics/teams)
 	 */
 	TeamPseudoUser = 1 << 10,
+	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	HasUnreadUrgentMessages = 1 << 13,
 	/**
 	 * Bug Hunter Level 2
 	 */
@@ -148,6 +160,10 @@ export enum UserFlags {
 	 */
 	Spammer = 1 << 20,
 	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	DisablePremium = 1 << 21,
+	/**
 	 * User is an [Active Developer](https://support-dev.discord.com/hc/articles/10113997751447)
 	 */
 	ActiveDeveloper = 1 << 22,
@@ -161,6 +177,22 @@ export enum UserFlags {
 	 * This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
 	 */
 	Quarantined = 17592186044416,
+	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 *
+	 * @privateRemarks
+	 *
+	 * This value would be 1 << 50, but bit shifting above 1 << 30 requires bigints
+	 */
+	Collaborator = 1125899906842624,
+	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 *
+	 * @privateRemarks
+	 *
+	 * This value would be 1 << 51, but bit shifting above 1 << 30 requires bigints
+	 */
+	RestrictedCollaborator = 2251799813685248,
 }
 
 /**

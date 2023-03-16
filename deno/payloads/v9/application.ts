@@ -133,7 +133,15 @@ export enum ApplicationFlags {
 	/**
 	 * @unstable
 	 */
+	EmbeddedIAP = 1 << 3,
+	/**
+	 * @unstable
+	 */
 	GroupDMCreate = 1 << 4,
+	/**
+	 * @unstable
+	 */
+	ApplicationAutoModerationRuleCreateBadge = 1 << 6,
 	/**
 	 * @unstable
 	 */

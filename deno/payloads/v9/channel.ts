@@ -785,9 +785,17 @@ export enum MessageFlags {
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
 	/**
+	 * @unstable
+	 */
+	ShouldShowLinkNotDiscordWarning = 1 << 10,
+	/**
 	 * This message will not trigger push and desktop notifications
 	 */
 	SuppressNotifications = 1 << 12,
+	/**
+	 * @unstable
+	 */
+	IsVoiceMessage = 1 << 13,
 }
 
 /**
@@ -934,7 +942,24 @@ export interface APIThreadMember {
 	member?: APIGuildMember;
 }
 
-export enum ThreadMemberFlags {}
+export enum ThreadMemberFlags {
+	/**
+	 * @unstable
+	 */
+	HasInteracted = 1 << 0,
+	/**
+	 * @unstable
+	 */
+	AllMessages = 1 << 1,
+	/**
+	 * @unstable
+	 */
+	OnlyMentions = 1 << 2,
+	/**
+	 * @unstable
+	 */
+	NoMessages = 1 << 3,
+}
 
 export interface APIThreadList {
 	/**
@@ -1630,14 +1655,38 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  */
 export enum ChannelFlags {
 	/**
+	 * @unstable
+	 */
+	GuildFeedRemoved = 1 << 0,
+	/**
 	 * This thread is pinned to the top of its parent forum channel
 	 */
 	Pinned = 1 << 1,
+	/**
+	 * @unstable
+	 */
+	ActiveChannelsRemoved = 1 << 2,
 	/**
 	 * Whether a tag is required to be specified when creating a thread in a forum channel.
 	 * Tags are specified in the `applied_tags` field
 	 */
 	RequireTag = 1 << 4,
+	/**
+	 * @unstable
+	 */
+	IsSpam = 1 << 5,
+	/**
+	 * @unstable
+	 */
+	IsGuildResourceChannel = 1 << 7,
+	/**
+	 * @unstable
+	 */
+	ClydeAI = 1 << 8,
+	/**
+	 * @unstable
+	 */
+	IsScheduledForDeletion = 1 << 9,
 }
 
 /**

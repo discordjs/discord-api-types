@@ -675,6 +675,22 @@ export enum GuildMemberFlags {
 	 * Member has started onboarding
 	 */
 	StartedOnboarding = 1 << 3,
+	/**
+	 * @unstable
+	 */
+	StartedHomeActions = 1 << 5,
+	/**
+	 * @unstable
+	 */
+	CompletedHomeActions = 1 << 6,
+	/**
+	 * @unstable
+	 */
+	AutomodQuarantinedUsernameOrGuildNickname = 1 << 7,
+	/**
+	 * @unstable
+	 */
+	AutomodQuarantinedBio = 1 << 8,
 }
 
 /**
