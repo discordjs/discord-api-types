@@ -799,7 +799,7 @@ export enum MessageFlags {
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
 	/**
-	 * @unstable
+	 * @unstable This message flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	ShouldShowLinkNotDiscordWarning = 1 << 10,
 	/**
@@ -807,7 +807,7 @@ export enum MessageFlags {
 	 */
 	SuppressNotifications = 1 << 12,
 	/**
-	 * @unstable
+	 * @unstable This message flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	IsVoiceMessage = 1 << 13,
 }
@@ -980,19 +980,19 @@ export interface APIThreadMember {
 
 export enum ThreadMemberFlags {
 	/**
-	 * @unstable
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	HasInteracted = 1 << 0,
 	/**
-	 * @unstable
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	AllMessages = 1 << 1,
 	/**
-	 * @unstable
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	OnlyMentions = 1 << 2,
 	/**
-	 * @unstable
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	NoMessages = 1 << 3,
 }
@@ -1687,7 +1687,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  */
 export enum ChannelFlags {
 	/**
-	 * @unstable
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	GuildFeedRemoved = 1 << 0,
 	/**
@@ -1695,7 +1695,7 @@ export enum ChannelFlags {
 	 */
 	Pinned = 1 << 1,
 	/**
-	 * @unstable
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	ActiveChannelsRemoved = 1 << 2,
 	/**
@@ -1704,19 +1704,19 @@ export enum ChannelFlags {
 	 */
 	RequireTag = 1 << 4,
 	/**
-	 * @unstable
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	IsSpam = 1 << 5,
 	/**
-	 * @unstable
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	IsGuildResourceChannel = 1 << 7,
 	/**
-	 * @unstable
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	ClydeAI = 1 << 8,
 	/**
-	 * @unstable
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	IsScheduledForDeletion = 1 << 9,
 }
