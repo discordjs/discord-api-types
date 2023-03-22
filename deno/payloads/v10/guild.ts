@@ -675,6 +675,22 @@ export enum GuildMemberFlags {
 	 * Member has started onboarding
 	 */
 	StartedOnboarding = 1 << 3,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	StartedHomeActions = 1 << 5,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	CompletedHomeActions = 1 << 6,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	AutomodQuarantinedUsernameOrGuildNickname = 1 << 7,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	AutomodQuarantinedBio = 1 << 8,
 }
 
 /**
