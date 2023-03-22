@@ -56,6 +56,7 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 		| 'available_tags'
 		| 'default_sort_order'
 		| 'default_forum_layout'
+		| 'default_thread_rate_limit_per_user'
 	>
 > & {
 	name: string;
