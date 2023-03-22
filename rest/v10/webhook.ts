@@ -240,7 +240,7 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/webhook#get-webhook-message-query-string-params
  */
-export interface RESTGetAPIWebhookWithTokenQuery {
+export interface RESTGetAPIWebhookWithTokenMessageQuery {
 	thread_id?: string;
 }
 
