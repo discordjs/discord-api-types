@@ -236,11 +236,13 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	max_video_channel_users?: number;
 	/**
-	 * **This field is only received from https://discord.com/developers/docs/resources/guild#get-guild with the `with_counts` query parameter set to `true`**
+	 * Approximate number of members in this guild,
+	 * returned from the `GET /guilds/<id>` and `/users/@me/guilds` (OAuth2) endpoints when `with_counts` is `true`
 	 */
 	approximate_member_count?: number;
 	/**
-	 * **This field is only received from https://discord.com/developers/docs/resources/guild#get-guild with the `with_counts` query parameter set to `true`**
+	 * Approximate number of non-offline members in this guild,
+	 * returned from the `GET /guilds/<id>` and `/users/@me/guilds` (OAuth2) endpoints when `with_counts` is `true`
 	 */
 	approximate_presence_count?: number;
 	/**
