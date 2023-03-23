@@ -1,3 +1,15 @@
+## [0.37.37](https://github.com/discordjs/discord-api-types/compare/0.37.36...0.37.37) (2023-03-23)
+
+### Bug Fixes
+
+- add missing `RESTGetAPIWebhookWithTokenQuery` ([#735](https://github.com/discordjs/discord-api-types/issues/735)) ([2a78a51](https://github.com/discordjs/discord-api-types/commit/2a78a517d2a3511913a8b2b74bba942db097b577))
+
+### Features
+
+- add various new flags ([#733](https://github.com/discordjs/discord-api-types/issues/733)) ([4723d29](https://github.com/discordjs/discord-api-types/commit/4723d29c9ee17c3efa8e8e86351754dee13428ef))
+- **RESTGetAPICurrentUserGuildsQuery:** add `with_counts` ([#641](https://github.com/discordjs/discord-api-types/issues/641)) ([0cd9b0d](https://github.com/discordjs/discord-api-types/commit/0cd9b0debbf17f60267bf2f42349fcebea5bf588))
+- **RESTPostAPIGuildChannelJSONBody:** add `default_thread_rate_limit_per_user` ([#730](https://github.com/discordjs/discord-api-types/issues/730)) ([8f9370d](https://github.com/discordjs/discord-api-types/commit/8f9370d2592d6a450820bee52fe153eb00ba830f))
+
 ## [0.37.36](https://github.com/discordjs/discord-api-types/compare/0.37.35...0.37.36) (2023-03-13)
 
 ### Features
