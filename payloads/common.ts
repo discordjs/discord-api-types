@@ -38,7 +38,11 @@ export const PermissionFlagsBits = {
 	ManageNicknames: 1n << 27n,
 	ManageRoles: 1n << 28n,
 	ManageWebhooks: 1n << 29n,
+	/**
+	 * @deprecated This is the old name for {@apilink PermissionFlagsBits#ManageGuildExpressions}
+	 */
 	ManageEmojisAndStickers: 1n << 30n,
+	ManageGuildExpressions: 1n << 30n,
 	UseApplicationCommands: 1n << 31n,
 	RequestToSpeak: 1n << 32n,
 	ManageEvents: 1n << 33n,
@@ -49,6 +53,8 @@ export const PermissionFlagsBits = {
 	SendMessagesInThreads: 1n << 38n,
 	UseEmbeddedActivities: 1n << 39n,
 	ModerateMembers: 1n << 40n,
+	ViewCreatorMonetizationAnalytics: 1n << 41n,
+	UseSoundboard: 1n << 42n,
 } as const;
 
 /**
