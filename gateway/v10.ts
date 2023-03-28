@@ -255,6 +255,7 @@ export enum GatewayDispatchEvents {
 	ThreadUpdate = 'THREAD_UPDATE',
 	TypingStart = 'TYPING_START',
 	UserUpdate = 'USER_UPDATE',
+	VoiceChannelEffectSend = 'VOICE_CHANNEL_EFFECT_SEND',
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
@@ -338,6 +339,7 @@ export type GatewayDispatchPayload =
 	| GatewayThreadModifyDispatch
 	| GatewayTypingStartDispatch
 	| GatewayUserUpdateDispatch
+	| GatewayVoiceChannelEffectSendDispatch
 	| GatewayVoiceServerUpdateDispatch
 	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch
@@ -1632,6 +1634,56 @@ export type GatewayUserUpdateDispatch = DataPayload<GatewayDispatchEvents.UserUp
  * https://discord.com/developers/docs/topics/gateway-events#user-update
  */
 export type GatewayUserUpdateDispatchData = APIUser;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send
+ */
+export type GatewayVoiceChannelEffectSendDispatch = DataPayload<
+	GatewayDispatchEvents.VoiceChannelEffectSend,
+	GatewayVoiceChannelEffectSendDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send
+ */
+export interface GatewayVoiceChannelEffectSendDispatchData {
+	/**
+	 * ID of the channel the effect was sent in
+	 */
+	channel_id: Snowflake;
+	/**
+	 * ID of the guild the effect was sent in
+	 */
+	guild_id: Snowflake;
+	/**
+	 * ID of the user who sent the effect
+	 */
+	user_id: Snowflake;
+	/**
+	 * The emoji sent, for emoji reaction effects
+	 */
+	emoji?: APIEmoji | null;
+	/**
+	 * The type of emoji animation, for emoji reaction effects
+	 * See https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send-animation-types
+	 */
+	animation_type?: VoiceChannelEffectSendAnimationType;
+	/**
+	 * The ID of the emoji animation, for emoji reaction effects
+	 */
+	animation_id?: number;
+}
+
+enum VoiceChannelEffectSendAnimationType {
+	/**
+	 * A fun animation, sent by a Nitro subscriber
+	 */
+	PREMIUM,
+	/**
+	 * The standard animation
+	 */
+	BASIC,
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#voice-state-update
