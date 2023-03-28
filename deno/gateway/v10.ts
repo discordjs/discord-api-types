@@ -1674,15 +1674,15 @@ export interface GatewayVoiceChannelEffectSendDispatchData {
 	animation_id?: number;
 }
 
-enum VoiceChannelEffectSendAnimationType {
+export enum VoiceChannelEffectSendAnimationType {
 	/**
 	 * A fun animation, sent by a Nitro subscriber
 	 */
-	PREMIUM,
+	Premium,
 	/**
 	 * The standard animation
 	 */
-	BASIC,
+	Basic,
 }
 
 /**
