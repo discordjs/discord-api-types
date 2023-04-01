@@ -879,6 +879,14 @@ export const Routes = {
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/${guild.id}/onboarding`
+	 */
+	guildOnboarding(guildId: Snowflake) {
+		return `/guilds/${guildId}/onboarding` as const;
+	},
 };
 
 export const StickerPackApplicationId = '710982414301790216';
