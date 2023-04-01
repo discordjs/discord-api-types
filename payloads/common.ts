@@ -55,6 +55,7 @@ export const PermissionFlagsBits = {
 	ModerateMembers: 1n << 40n,
 	ViewCreatorMonetizationAnalytics: 1n << 41n,
 	UseSoundboard: 1n << 42n,
+	UseExternalSounds: 1n << 45n,
 } as const;
 
 /**
