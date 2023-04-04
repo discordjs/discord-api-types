@@ -1,7 +1,7 @@
 import type { InteractionType } from './responses';
 import type { Permissions, Snowflake } from '../../../globals';
 import type { APIRole, LocaleString } from '../../../v9';
-import type { APIAttachment, APIMessage, APIPartialChannel, APIThreadMetadata } from '../channel';
+import type { APIAttachment, APIChannel, APIMessage, APIPartialChannel, APIThreadMetadata } from '../channel';
 import type { APIGuildMember } from '../guild';
 import type { APIUser } from '../user';
 
@@ -80,6 +80,12 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	guild_id?: Snowflake;
 	/**
 	 * The channel it was sent from
+	 */
+	channel?: Partial<APIChannel> & Pick<APIChannel, 'id' | 'type'>;
+	/**
+	 * The id of the channel it was sent from
+	 *
+	 * @deprecated Use {@apilink APIBaseInteraction#channel} instead
 	 */
 	channel_id?: Snowflake;
 	/**
