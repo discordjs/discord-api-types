@@ -1,7 +1,7 @@
 import type { InteractionType } from './responses.ts';
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { APIRole, LocaleString } from '../../../v9.ts';
-import type { APIAttachment, APIMessage, APIPartialChannel, APIThreadMetadata } from '../channel.ts';
+import type { APIAttachment, APIChannel, APIMessage, APIPartialChannel, APIThreadMetadata } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
 
@@ -80,6 +80,12 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	guild_id?: Snowflake;
 	/**
 	 * The channel it was sent from
+	 */
+	channel?: Partial<APIChannel> & Pick<APIChannel, 'id' | 'type'>;
+	/**
+	 * The id of the channel it was sent from
+	 *
+	 * @deprecated Use {@apilink APIBaseInteraction#channel} instead
 	 */
 	channel_id?: Snowflake;
 	/**
