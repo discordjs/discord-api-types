@@ -823,7 +823,7 @@ export interface APIReaction {
 	/**
 	 * The reaction count details object
 	 */
-	count_details: ReactionCountDetails;
+	count_details: APIReactionCountDetails;
 	/**
 	 * Whether the current user reacted using this emoji
 	 */
@@ -847,7 +847,7 @@ export interface APIReaction {
 /**
  * https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure
  */
-export interface ReactionCountDetails {
+export interface APIReactionCountDetails {
 	/**
 	 * Count of super reactions
 	 */
