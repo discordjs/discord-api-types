@@ -139,7 +139,7 @@ export enum ApplicationFlags {
 	 */
 	GroupDMCreate = 1 << 4,
 	/**
-	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Indicates if an app uses the Auto Moderation API
 	 */
 	ApplicationAutoModerationRuleCreateBadge = 1 << 6,
 	/**
