@@ -829,10 +829,6 @@ export interface APIReaction {
 	 */
 	me: boolean;
 	/**
-	 * Whether the current user reacted with super reaction using this emoji
-	 */
-	me_burst: boolean;
-	/**
 	 * Emoji information
 	 *
 	 * See https://discord.com/developers/docs/resources/emoji#emoji-object
