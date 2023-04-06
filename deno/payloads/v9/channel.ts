@@ -821,15 +821,41 @@ export interface APIReaction {
 	 */
 	count: number;
 	/**
+	 * The reaction count details object
+	 */
+	count_details: ReactionCountDetails;
+	/**
 	 * Whether the current user reacted using this emoji
 	 */
 	me: boolean;
+	/**
+	 * Whether the current user reacted with super reaction using this emoji
+	 */
+	me_burst: boolean;
 	/**
 	 * Emoji information
 	 *
 	 * See https://discord.com/developers/docs/resources/emoji#emoji-object
 	 */
 	emoji: APIPartialEmoji;
+	/**
+	 * HEX colors used for super reaction
+	 */
+	burst_colors: string[];
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure
+ */
+export interface ReactionCountDetails {
+	/**
+	 * Count of super reactions
+	 */
+	burst: number;
+	/**
+	 * Count of normal reactions
+	 */
+	normal: number;
 }
 
 /**

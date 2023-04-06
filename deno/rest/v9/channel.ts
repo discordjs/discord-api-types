@@ -320,6 +320,16 @@ export type RESTPostAPIChannelMessageResult = APIMessage;
  */
 export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 
+/*
+ * https://discord.com/developers/docs/resources/channel#create-reaction
+ */
+export interface RESTPutAPIChannelMessageReactionQuery {
+	/**
+	 * Whether to establish this reaction as a super reaction
+	 */
+	burst?: boolean;
+}
+
 /**
  * https://discord.com/developers/docs/resources/channel#create-reaction
  */
