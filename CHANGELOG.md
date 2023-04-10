@@ -1,3 +1,10 @@
+## [0.37.38](https://github.com/discordjs/discord-api-types/compare/0.37.37...0.37.38) (2023-04-10)
+
+### Features
+
+- **APIBaseInteraction:** add `channel` ([#741](https://github.com/discordjs/discord-api-types/issues/741)) ([311b7a2](https://github.com/discordjs/discord-api-types/commit/311b7a2eb9bdc6ad9d6ed7af2b7faf6f95631698))
+- **RESTJSONErrorCodes:** add error `50163` ([#725](https://github.com/discordjs/discord-api-types/issues/725)) ([9074621](https://github.com/discordjs/discord-api-types/commit/9074621085d0e2d7b32b82c0bf0604e3cf42bbdf))
+
 ## [0.37.37](https://github.com/discordjs/discord-api-types/compare/0.37.36...0.37.37) (2023-03-23)
 
 ### Bug Fixes
