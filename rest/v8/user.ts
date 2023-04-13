@@ -1,6 +1,5 @@
 import type { Permissions, Snowflake } from '../../globals';
 import type { APIChannel, APIConnection, APIGuildMember, APIUser, GuildFeature } from '../../payloads/v8/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
@@ -24,16 +23,16 @@ export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
  * https://discord.com/developers/docs/resources/user#modify-current-user
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPICurrentUserJSONBody {
 	/**
 	 * User's username, if changed may cause the user's discriminator to be randomized
 	 */
-	username?: string;
+	username?: string | undefined;
 	/**
 	 * If passed, modifies the user's avatar
 	 */
-	avatar?: string | null;
-}>;
+	avatar?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user

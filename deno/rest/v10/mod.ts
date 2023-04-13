@@ -1,7 +1,9 @@
 import type { Snowflake } from '../../globals.ts';
 
 export * from '../common.ts';
+export * from './application.ts';
 export * from './auditLog.ts';
+export * from './autoModeration.ts';
 export * from './channel.ts';
 export * from './emoji.ts';
 export * from './gateway.ts';
@@ -20,6 +22,33 @@ export * from './webhook.ts';
 export const APIVersion = '10';
 
 export const Routes = {
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/role-connections/metadata`
+	 * - PUT `/applications/{application.id}/role-connections/metadata`
+	 */
+	applicationRoleConnectionMetadata(applicationId: Snowflake) {
+		return `/applications/${applicationId}/role-connections/metadata` as const;
+	},
+	/**
+	 * Route for:
+	 * - GET  `/guilds/{guild.id}/auto-moderation/rules`
+	 * - POST `/guilds/{guild.id}/auto-moderation/rules`
+	 */
+	guildAutoModerationRules(guildId: Snowflake) {
+		return `/guilds/${guildId}/auto-moderation/rules` as const;
+	},
+
+	/**
+	 * Routes for:
+	 * - GET    `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
+	 * - PATCH  `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
+	 * - DELETE `/guilds/{guild.id}/auto-moderation/rules/{rule.id}`
+	 */
+	guildAutoModerationRule(guildId: Snowflake, ruleId: Snowflake) {
+		return `/guilds/${guildId}/auto-moderation/rules/${ruleId}` as const;
+	},
+
 	/**
 	 * Route for:
 	 * - GET `/guilds/{guild.id}/audit-logs`
@@ -503,6 +532,15 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/users/@me/applications/{application.id}/role-connection`
+	 * - PUT `/users/@me/applications/{application.id}/role-connection`
+	 */
+	userApplicationRoleConnection(applicationId: Snowflake) {
+		return `/users/@me/applications/${applicationId}/role-connection` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/users/@me/guilds`
 	 */
 	userGuilds() {
@@ -973,12 +1011,12 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/app-icons/{application.id}/{application.asset_id}.{png|jpeg|webp}`
+	 * - GET `/app-assets/{application.id}/{application.asset_id}.{png|jpeg|webp}`
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
 	applicationAsset(applicationId: Snowflake, applicationAssetId: string, format: ApplicationAssetFormat) {
-		return `/app-icons/${applicationId}/${applicationAssetId}.${format}` as const;
+		return `/app-assets/${applicationId}/${applicationAssetId}.${format}` as const;
 	},
 
 	/**
@@ -1008,6 +1046,16 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
+	 * - GET `/app-assets/${application.id}/store/${asset.id}.{png|jpeg|webp}}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	storePageAsset(applicationId: Snowflake, assetId: string) {
+		return `/app-assets/${applicationId}/store/${assetId}.png` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `team-icons/{team.id}/{team.icon}.{png|jpeg|webp}`
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
@@ -1020,7 +1068,7 @@ export const CDNRoutes = {
 	 * Route for:
 	 * - GET `/stickers/{sticker.id}.{png|json}`
 	 *
-	 * This route supports the extensions: PNG, Lottie
+	 * This route supports the extensions: PNG, Lottie, GIF
 	 */
 	sticker(stickerId: Snowflake, format: StickerFormat) {
 		return `/stickers/${stickerId}.${format}` as const;
@@ -1078,7 +1126,7 @@ export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.Lottie | I
 export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type StickerFormat = Extract<ImageFormat, ImageFormat.PNG | ImageFormat.Lottie>;
+export type StickerFormat = Extract<ImageFormat, ImageFormat.PNG | ImageFormat.Lottie | ImageFormat.GIF>;
 export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;

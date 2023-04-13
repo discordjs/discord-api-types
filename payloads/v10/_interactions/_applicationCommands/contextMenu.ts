@@ -1,13 +1,8 @@
 import type { APIBaseApplicationCommandInteractionData } from './internals';
 import type { Snowflake } from '../../../../globals';
 import type { APIMessage } from '../../channel';
-import type { APIUser } from '../../user';
-import type {
-	APIApplicationCommandInteractionWrapper,
-	APIInteractionDataResolvedGuildMember,
-	ApplicationCommandType,
-} from '../applicationCommands';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
+import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper, APIUserInteractionDataResolved } from '../base';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
@@ -15,15 +10,7 @@ import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../bas
 export interface APIUserApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
 	target_id: Snowflake;
-	resolved: APIUserApplicationCommandInteractionDataResolved;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
- */
-export interface APIUserApplicationCommandInteractionDataResolved {
-	users: Record<Snowflake, APIUser>;
-	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
+	resolved: APIUserInteractionDataResolved;
 }
 
 /**

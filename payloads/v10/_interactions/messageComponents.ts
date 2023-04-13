@@ -1,4 +1,10 @@
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
+import type {
+	APIDMInteractionWrapper,
+	APIGuildInteractionWrapper,
+	APIInteractionDataResolved,
+	APIUserInteractionDataResolved,
+} from './base';
+import type { Snowflake } from '../../../globals';
 import type { ComponentType } from '../channel';
 import type { APIBaseInteraction, InteractionType } from '../interactions';
 
@@ -9,7 +15,7 @@ export type APIMessageComponentInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageComponentInteractionData>,
-			'channel_id' | 'data' | 'message'
+			'channel' | 'channel_id' | 'data' | 'app_permissions' | 'message'
 		>
 	>;
 
@@ -20,7 +26,7 @@ export type APIMessageComponentButtonInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageButtonInteractionData>,
-			'channel_id' | 'data' | 'message'
+			'channel' | 'channel_id' | 'data' | 'app_permissions' | 'message'
 		>
 	>;
 
@@ -31,7 +37,7 @@ export type APIMessageComponentSelectMenuInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageSelectMenuInteractionData>,
-			'channel_id' | 'data' | 'message'
+			'channel' | 'channel_id' | 'data' | 'app_permissions' | 'message'
 		>
 	>;
 
@@ -50,10 +56,41 @@ export interface APIMessageComponentBaseInteractionData<CType extends ComponentT
 
 export type APIMessageButtonInteractionData = APIMessageComponentBaseInteractionData<ComponentType.Button>;
 
-export interface APIMessageSelectMenuInteractionData
-	extends APIMessageComponentBaseInteractionData<ComponentType.SelectMenu> {
+export interface APIMessageStringSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.StringSelect> {
 	values: string[];
 }
+
+export interface APIMessageUserSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.UserSelect> {
+	values: Snowflake[];
+	resolved: APIUserInteractionDataResolved;
+}
+
+export interface APIMessageRoleSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.RoleSelect> {
+	values: Snowflake[];
+	resolved: Required<Pick<APIInteractionDataResolved, 'roles'>>;
+}
+
+export interface APIMessageMentionableSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.MentionableSelect> {
+	values: Snowflake[];
+	resolved: Pick<APIInteractionDataResolved, 'users' | 'members' | 'roles'>;
+}
+
+export interface APIMessageChannelSelectInteractionData
+	extends APIMessageComponentBaseInteractionData<ComponentType.ChannelSelect> {
+	values: Snowflake[];
+	resolved: Required<Pick<APIInteractionDataResolved, 'channels'>>;
+}
+
+export type APIMessageSelectMenuInteractionData =
+	| APIMessageStringSelectInteractionData
+	| APIMessageUserSelectInteractionData
+	| APIMessageRoleSelectInteractionData
+	| APIMessageMentionableSelectInteractionData
+	| APIMessageChannelSelectInteractionData;
 
 export type APIMessageComponentDMInteraction = APIDMInteractionWrapper<APIMessageComponentInteraction>;
 

@@ -4,6 +4,7 @@
 
 import type { APIEmoji } from './emoji.ts';
 import type { PresenceUpdateStatus } from './gateway.ts';
+import type { OAuth2Scopes } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
@@ -117,9 +118,9 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	afk_channel_id: Snowflake | null;
 	/**
-	 * afk timeout in seconds
+	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout: number;
+	afk_timeout: 60 | 300 | 900 | 1800 | 3600;
 	/**
 	 * `true` if the guild widget is enabled
 	 */
@@ -239,11 +240,13 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	max_stage_video_channel_users?: number;
 	/**
-	 * **This field is only received from https://discord.com/developers/docs/resources/guild#get-guild with the `with_counts` query parameter set to `true`**
+	 * Approximate number of members in this guild,
+	 * returned from the `GET /guilds/<id>` and `/users/@me/guilds` (OAuth2) endpoints when `with_counts` is `true`
 	 */
 	approximate_member_count?: number;
 	/**
-	 * **This field is only received from https://discord.com/developers/docs/resources/guild#get-guild with the `with_counts` query parameter set to `true`**
+	 * Approximate number of non-offline members in this guild,
+	 * returned from the `GET /guilds/<id>` and `/users/@me/guilds` (OAuth2) endpoints when `with_counts` is `true`
 	 */
 	approximate_presence_count?: number;
 	/**
@@ -371,6 +374,14 @@ export enum GuildSystemChannelFlags {
 	 * Hide member join sticker reply buttons
 	 */
 	SuppressJoinNotificationReplies = 1 << 3,
+	/**
+	 * Suppress role subscription purchase and renewal notifications
+	 */
+	SuppressRoleSubscriptionPurchaseNotifications = 1 << 4,
+	/**
+	 * Hide role subscription sticker reply buttons
+	 */
+	SuppressRoleSubscriptionPurchaseNotificationReplies = 1 << 5,
 }
 
 /**
@@ -386,6 +397,16 @@ export enum GuildFeature {
 	 */
 	AnimatedIcon = 'ANIMATED_ICON',
 	/**
+	 * Guild is using the old permissions configuration behavior
+	 *
+	 * See https://discord.com/developers/docs/change-log#upcoming-application-command-permission-changes
+	 */
+	ApplicationCommandPermissionsV2 = 'APPLICATION_COMMAND_PERMISSIONS_V2',
+	/**
+	 * Guild has set up auto moderation rules
+	 */
+	AutoModeration = 'AUTO_MODERATION',
+	/**
 	 * Guild has access to set a guild banner image
 	 */
 	Banner = 'BANNER',
@@ -393,6 +414,18 @@ export enum GuildFeature {
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
 	 */
 	Community = 'COMMUNITY',
+	/**
+	 * Guild has enabled monetization
+	 */
+	CreatorMonetizableProvisional = 'CREATOR_MONETIZABLE_PROVISIONAL',
+	/**
+	 * Guild has enabled the role subscription promo page
+	 */
+	CreatorStorePage = 'CREATOR_STORE_PAGE',
+	/*
+	 * Guild has been set as a support server on the App Directory
+	 */
+	DeveloperSupportServer = 'DEVELOPER_SUPPORT_SERVER',
 	/**
 	 * Guild is able to be discovered in the directory
 	 */
@@ -408,11 +441,15 @@ export enum GuildFeature {
 	/**
 	 * Guild is a Student Hub
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 *
 	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
 	Hub = 'HUB',
+	/**
+	 * Guild has disabled invite usage, preventing users from joining
+	 */
+	InvitesDisabled = 'INVITES_DISABLED',
 	/**
 	 * Guild has access to set an invite splash background
 	 */
@@ -420,7 +457,7 @@ export enum GuildFeature {
 	/**
 	 * Guild is in a Student Hub
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 *
 	 * @unstable This feature is currently not documented by Discord, but has known value
 	 */
@@ -431,6 +468,8 @@ export enum GuildFeature {
 	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
 	/**
 	 * Guild has enabled monetization
+	 *
+	 * @unstable This feature is no longer documented by Discord
 	 */
 	MonetizationEnabled = 'MONETIZATION_ENABLED',
 	/**
@@ -458,6 +497,14 @@ export enum GuildFeature {
 	 * Guild is able to set role icons
 	 */
 	RoleIcons = 'ROLE_ICONS',
+	/**
+	 * Guild has role subscriptions that can be purchased
+	 */
+	RoleSubscriptionsAvailableForPurchase = 'ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE',
+	/**
+	 * Guild has enabled role subscriptions
+	 */
+	RoleSubscriptionsEnabled = 'ROLE_SUBSCRIPTIONS_ENABLED',
 	/**
 	 * Guild has enabled ticketed events
 	 */
@@ -587,7 +634,7 @@ export interface APIGuildMember {
 	/**
 	 * When the user started boosting the guild
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360028038352-Server-Boosting-
+	 * See https://support.discord.com/hc/articles/360028038352
 	 */
 	premium_since?: string | null;
 	/**
@@ -599,6 +646,10 @@ export interface APIGuildMember {
 	 */
 	mute: boolean;
 	/**
+	 * Guild member flags represented as a bit set, defaults to `0`
+	 */
+	flags: GuildMemberFlags;
+	/**
 	 * Whether the user has not yet passed the guild's Membership Screening requirements
 	 *
 	 * *If this field is not present, it can be assumed as `false`.*
@@ -608,6 +659,44 @@ export interface APIGuildMember {
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags
+ */
+export enum GuildMemberFlags {
+	/**
+	 * Member has left and rejoined the guild
+	 */
+	DidRejoin = 1 << 0,
+	/**
+	 * Member has completed onboarding
+	 */
+	CompletedOnboarding = 1 << 1,
+	/**
+	 * Member bypasses guild verification requirements
+	 */
+	BypassesVerification = 1 << 2,
+	/**
+	 * Member has started onboarding
+	 */
+	StartedOnboarding = 1 << 3,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	StartedHomeActions = 1 << 5,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	CompletedHomeActions = 1 << 6,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	AutomodQuarantinedUsernameOrGuildNickname = 1 << 7,
+	/**
+	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	AutomodQuarantinedBio = 1 << 8,
 }
 
 /**
@@ -629,7 +718,7 @@ export interface APIGuildIntegration {
 	/**
 	 * Is this integration enabled
 	 */
-	enabled?: boolean;
+	enabled: boolean;
 	/**
 	 * Is this integration syncing
 	 *
@@ -665,7 +754,7 @@ export interface APIGuildIntegration {
 	/**
 	 * User for this integration
 	 *
-	 * **This field is not provided for `discord` bot integrations.**
+	 * **Some older integrations may not have an attached user.**
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
@@ -702,9 +791,13 @@ export interface APIGuildIntegration {
 	 * **This field is not provided for `discord` bot integrations.**
 	 */
 	application?: APIGuildIntegrationApplication;
+	/**
+	 * The scopes the application has been authorized for
+	 */
+	scopes?: OAuth2Scopes[];
 }
 
-export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord';
+export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord' | 'guild_subscription';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors

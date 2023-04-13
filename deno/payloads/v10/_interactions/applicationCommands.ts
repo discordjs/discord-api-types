@@ -15,8 +15,6 @@ import type { APIBaseInteraction } from './base.ts';
 import type { InteractionType } from './responses.ts';
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { LocalizationMap } from '../../../v10.ts';
-import type { APIPartialChannel, APIThreadMetadata } from '../channel.ts';
-import type { APIGuildMember } from '../guild.ts';
 
 export * from './_applicationCommands/chatInput.ts';
 export * from './_applicationCommands/contextMenu.ts';
@@ -86,6 +84,10 @@ export interface APIApplicationCommand {
 	 */
 	default_permission?: boolean;
 	/**
+	 * Indicates whether the command is age-restricted, defaults to `false`
+	 */
+	nsfw?: boolean;
+	/**
 	 * Autoincrementing version identifier updated during substantial record changes
 	 */
 	version: Snowflake;
@@ -108,27 +110,16 @@ export type APIApplicationCommandInteractionData =
 	| APIContextMenuInteractionData;
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object
- */
-export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
-	thread_metadata?: APIThreadMetadata | null;
-	permissions: Permissions;
-	parent_id?: string | null;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#guild-member-object
- */
-export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
-	permissions: Permissions;
-}
-
-/**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
 	APIBaseInteraction<InteractionType.ApplicationCommand, Data> &
-		Required<Pick<APIBaseInteraction<InteractionType.ApplicationCommand, Data>, 'channel_id' | 'data'>>;
+		Required<
+			Pick<
+				APIBaseInteraction<InteractionType.ApplicationCommand, Data>,
+				'channel' | 'channel_id' | 'data' | 'app_permissions'
+			>
+		>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object

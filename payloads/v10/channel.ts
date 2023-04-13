@@ -4,6 +4,7 @@
 
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
+import type { APIGuildMember } from './guild';
 import type { APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
@@ -25,9 +26,9 @@ export interface APIPartialChannel {
 	 */
 	type: ChannelType;
 	/**
-	 * The name of the channel (2-100 characters)
+	 * The name of the channel (1-100 characters)
 	 */
-	name?: string;
+	name?: string | null;
 }
 
 /**
@@ -39,30 +40,47 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 	flags?: ChannelFlags;
 }
 
-// TODO: update when text in voice is released
 export type TextChannelType =
 	| ChannelType.DM
 	| ChannelType.GroupDM
-	| ChannelType.GuildNews
-	| ChannelType.GuildPublicThread
-	| ChannelType.GuildPrivateThread
-	| ChannelType.GuildNewsThread
+	| ChannelType.GuildAnnouncement
+	| ChannelType.PublicThread
+	| ChannelType.PrivateThread
+	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
-	| ChannelType.GuildForum;
+	| ChannelType.GuildForum
+	| ChannelType.GuildVoice
+	| ChannelType.GuildStageVoice;
 
-export type GuildChannelType = Exclude<
-	TextChannelType | ChannelType.GuildVoice | ChannelType.GuildStageVoice | ChannelType.GuildNews,
-	ChannelType.DM | ChannelType.GroupDM
->;
+export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * The id of the last message sent in this channel (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+	/**
+	 * Amount of seconds a user has to wait before sending another message (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
+	 *
+	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
+	 */
+	rate_limit_per_user?: number;
 }
 
-export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
+export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelBase<T>, 'name'> {
+	/**
+	 * The name of the channel (1-100 characters)
+	 */
+	name: string;
 	/**
 	 * The id of the guild (may be missing for some channel objects received over gateway guild dispatches)
 	 */
@@ -76,7 +94,7 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	/**
 	 * Sorting position of the channel
 	 */
-	position?: number;
+	position: number;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
 	 *
@@ -94,46 +112,36 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APIGuildTextChannel<T extends GuildTextChannelType>
-	extends APITextBasedChannel<T>,
+	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 	/**
-	 * The channel topic (0-1024 characters)
+	 * The initial `rate_limit_per_user` to set on newly created threads.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
+	/**
+	 * The channel topic (0-4096 characters for forum channels, 0-1024 characters for all others)
 	 */
 	topic?: string | null;
-	/**
-	 * When the last pinned message was pinned.
-	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
-	 */
-	last_pin_timestamp?: string | null;
 }
 
-export interface APITextChannel extends APIGuildTextChannel<ChannelType.GuildText> {
-	/**
-	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 *
-	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
-	 *
-	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
-	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
-	 */
-	rate_limit_per_user?: number;
-}
-
-export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildNews>;
+export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
+export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
 export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
 
-export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageVoice | ChannelType.GuildVoice> {
+export interface APIVoiceChannelBase<T extends ChannelType>
+	extends APIGuildChannel<T>,
+		Omit<APITextBasedChannel<T>, 'name' | 'last_pin_timestamp'> {
 	/**
-	 * The bitrate (in bits) of the voice channel
+	 * The bitrate (in bits) of the voice or stage channel
 	 */
 	bitrate?: number;
 	/**
-	 * The user limit of the voice channel
+	 * The user limit of the voice or stage channel
 	 */
 	user_limit?: number;
 	/**
@@ -143,14 +151,18 @@ export interface APIVoiceChannel extends APIGuildChannel<ChannelType.GuildStageV
 	 */
 	rtc_region?: string | null;
 	/**
-	 * The camera video quality mode of the voice channel, `1` when not present
+	 * The camera video quality mode of the voice or stage channel, `1` when not present
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
 	video_quality_mode?: VideoQualityMode;
 }
 
-interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T> {
+export type APIGuildVoiceChannel = APIVoiceChannelBase<ChannelType.GuildVoice>;
+
+export type APIGuildStageVoiceChannel = APIVoiceChannelBase<ChannelType.GuildStageVoice>;
+
+export interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBasedChannel<T>, 'rate_limit_per_user'> {
 	/**
 	 * The recipients of the DM
 	 *
@@ -159,9 +171,18 @@ interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T>
 	recipients?: APIUser[];
 }
 
-export type APIDMChannel = APIDMChannelBase<ChannelType.DM>;
+export interface APIDMChannel extends Omit<APIDMChannelBase<ChannelType.DM>, 'name'> {
+	/**
+	 * The name of the channel (always null for DM channels)
+	 */
+	name: null;
+}
 
 export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.GroupDM>, 'name'> {
+	/**
+	 * The name of the channel (1-100 characters)
+	 */
+	name: string | null;
 	/**
 	 * Application id of the group DM creator if it is bot-created
 	 */
@@ -171,10 +192,6 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 */
 	icon?: string | null;
 	/**
-	 * The name of the channel (2-100 characters)
-	 */
-	name?: string | null;
-	/**
 	 * ID of the DM creator
 	 */
 	owner_id?: Snowflake;
@@ -182,12 +199,18 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 * The id of the last message sent in this channel (may not point to an existing or valid message)
 	 */
 	last_message_id?: Snowflake | null;
+	/**
+	 * Whether the channel is managed by an OAuth2 application
+	 */
+	managed?: boolean;
 }
 
 export interface APIThreadChannel
-	extends APIGuildChannel<
-		ChannelType.GuildPublicThread | ChannelType.GuildPrivateThread | ChannelType.GuildNewsThread
-	> {
+	extends Omit<
+			APITextBasedChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread>,
+			'name'
+		>,
+		APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -207,32 +230,111 @@ export interface APIThreadChannel
 	 */
 	member_count?: number;
 	/**
-	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
-	 *
-	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
-	 *
-	 * For thread channels, `rate_limit_per_user` is only returned if the field is set to a non-zero and non-null value.
-	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
-	 */
-	rate_limit_per_user?: number;
-	/**
 	 * ID of the thread creator
 	 */
 	owner_id?: Snowflake;
-	/**
-	 * The id of the last message sent in this thread (may not point to an existing or valid message)
-	 */
-	last_message_id?: Snowflake | null;
 	/**
 	 * Number of messages ever sent in a thread
 	 *
 	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
 	 */
 	total_message_sent?: number;
+	/**
+	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 */
+	applied_tags: Snowflake[];
 }
 
-export type APIGuildForumChannel = APIGuildTextChannel<ChannelType.GuildForum>;
+/**
+ * https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure
+ */
+export interface APIGuildForumTag {
+	/**
+	 * The id of the tag
+	 */
+	id: Snowflake;
+	/**
+	 * The name of the tag (0-20 characters)
+	 */
+	name: string;
+	/**
+	 * Whether this tag can only be added to or removed from threads by a member with the `MANAGE_THREADS` permission
+	 */
+	moderated: boolean;
+	/**
+	 * The id of a guild's custom emoji
+	 */
+	emoji_id: Snowflake | null;
+	/**
+	 * The unicode character of the emoji
+	 */
+	emoji_name: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#default-reaction-object-default-reaction-structure
+ */
+export interface APIGuildForumDefaultReactionEmoji {
+	/**
+	 * The id of a guild's custom emoji
+	 */
+	emoji_id: Snowflake | null;
+	/**
+	 * The unicode character of the emoji
+	 */
+	emoji_name: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-types
+ */
+export enum SortOrderType {
+	/**
+	 * Sort forum posts by activity
+	 */
+	LatestActivity,
+	/**
+	 * Sort forum posts by creation time (from most recent to oldest)
+	 */
+	CreationDate,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel/#channel-object-forum-layout-types
+ */
+export enum ForumLayoutType {
+	/**
+	 * No default has been set for forum channel
+	 */
+	NotSet,
+	/**
+	 * Display posts as a list
+	 */
+	ListView,
+	/**
+	 * Display posts as a collection of tiles
+	 */
+	GalleryView,
+}
+
+export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
+	/**
+	 * The set of tags that can be used in a forum channel
+	 */
+	available_tags: APIGuildForumTag[];
+	/**
+	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 */
+	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
+	/**
+	 * The default sort order type used to order posts in a forum channel
+	 */
+	default_sort_order: SortOrderType | null;
+	/**
+	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
+	 */
+	default_forum_layout: ForumLayoutType;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
@@ -242,10 +344,10 @@ export type APIChannel =
 	| APIDMChannel
 	| APITextChannel
 	| APINewsChannel
-	| APIVoiceChannel
+	| APIGuildVoiceChannel
+	| APIGuildStageVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
-	| APINewsChannel
 	| APIGuildForumChannel;
 
 /**
@@ -271,43 +373,72 @@ export enum ChannelType {
 	/**
 	 * An organizational category that contains up to 50 channels
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/115001580171-Channel-Categories-101
+	 * See https://support.discord.com/hc/articles/115001580171
 	 */
 	GuildCategory,
 	/**
 	 * A channel that users can follow and crosspost into their own guild
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/360032008192
+	 * See https://support.discord.com/hc/articles/360032008192
 	 */
-	GuildNews,
+	GuildAnnouncement,
 	/**
-	 * A thread channel (public) within a Guild News channel
+	 * A temporary sub-channel within a Guild Announcement channel
 	 */
-	GuildNewsThread = 10,
+	AnnouncementThread = 10,
 	/**
-	 * A public thread channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text or Guild Forum channel
 	 */
-	GuildPublicThread,
+	PublicThread,
 	/**
-	 * A private thread channel within a Guild Text channel
+	 * A temporary sub-channel within a Guild Text channel that is only viewable by those invited and those with the Manage Threads permission
 	 */
-	GuildPrivateThread,
+	PrivateThread,
 	/**
 	 * A voice channel for hosting events with an audience
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/1500005513722
+	 * See https://support.discord.com/hc/articles/1500005513722
 	 */
 	GuildStageVoice,
 	/**
 	 * The channel in a Student Hub containing the listed servers
 	 *
-	 * See https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ
+	 * See https://support.discord.com/hc/articles/4406046651927
 	 */
 	GuildDirectory,
 	/**
 	 * A channel that can only contain threads
 	 */
 	GuildForum,
+
+	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
+
+	/**
+	 * A channel that users can follow and crosspost into their own guild
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#GuildAnnouncement}
+	 *
+	 * See https://support.discord.com/hc/articles/360032008192
+	 */
+	GuildNews = 5,
+	/**
+	 * A temporary sub-channel within a Guild Announcement channel
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#AnnouncementThread}
+	 */
+	GuildNewsThread = 10,
+	/**
+	 * A temporary sub-channel within a Guild Text channel
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#PublicThread}
+	 */
+	GuildPublicThread = 11,
+	/**
+	 * A temporary sub-channel within a Guild Text channel that is only viewable by those invited and those with the Manage Threads permission
+	 *
+	 * @deprecated This is the old name for {@apilink ChannelType#PrivateThread}
+	 */
+	GuildPrivateThread = 12,
 }
 
 export enum VideoQualityMode {
@@ -344,6 +475,13 @@ export interface APIMessage {
 	author: APIUser;
 	/**
 	 * Contents of the message
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
+	 *
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	content: string;
 	/**
@@ -394,12 +532,26 @@ export interface APIMessage {
 	 * Any attached files
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
+	 *
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	attachments: APIAttachment[];
 	/**
 	 * Any embedded content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
+	 *
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -483,6 +635,13 @@ export interface APIMessage {
 	thread?: APIChannel;
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
+	 *
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
 	/**
@@ -504,6 +663,11 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
+
+	/**
+	 * Data of the role subscription purchase or renewal that prompted this `ROLE_SUBSCRIPTION_PURCHASE` message
+	 */
+	role_subscription_data?: APIMessageRoleSubscriptionData;
 }
 
 /**
@@ -523,6 +687,7 @@ export enum MessageType {
 	GuildBoostTier2,
 	GuildBoostTier3,
 	ChannelFollowAdd,
+
 	GuildDiscoveryDisqualified = 14,
 	GuildDiscoveryRequalified,
 	GuildDiscoveryGracePeriodInitialWarning,
@@ -533,6 +698,18 @@ export enum MessageType {
 	ThreadStarterMessage,
 	GuildInviteReminder,
 	ContextMenuCommand,
+	AutoModerationAction,
+	RoleSubscriptionPurchase,
+	InteractionPremiumUpsell,
+	StageStart,
+	StageEnd,
+	StageSpeaker,
+	/**
+	 * @unstable https://github.com/discord/discord-api-docs/pull/5927#discussion_r1107678548
+	 */
+	StageRaiseHand,
+	StageTopic,
+	GuildApplicationPremiumSubscription,
 }
 
 /**
@@ -621,6 +798,40 @@ export enum MessageFlags {
 	 * This message failed to mention some roles and add their members to the thread
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
+	/**
+	 * @unstable This message flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	ShouldShowLinkNotDiscordWarning = 1 << 10,
+	/**
+	 * This message will not trigger push and desktop notifications
+	 */
+	SuppressNotifications = 1 << 12,
+	/**
+	 * @unstable This message flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	IsVoiceMessage = 1 << 13,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#role-subscription-data-object-role-subscription-data-object-structure
+ */
+export interface APIMessageRoleSubscriptionData {
+	/**
+	 * The id of the SKU and listing the user is subscribed to
+	 */
+	role_subscription_listing_id: Snowflake;
+	/**
+	 * The name of the tier the user is subscribed to
+	 */
+	tier_name: string;
+	/**
+	 * The number of months the user has been subscribed for
+	 */
+	total_months_subscribed: number;
+	/**
+	 * Whether this notification is for a renewal
+	 */
+	is_renewal: boolean;
 }
 
 /**
@@ -757,9 +968,34 @@ export interface APIThreadMember {
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
 	flags: ThreadMemberFlags;
+	/**
+	 * Additional information about the user
+	 *
+	 * **This field is omitted on the member sent within each thread in the `GUILD_CREATE` event**
+	 *
+	 * **This field is only present when `with_member` is set to true when calling `List Thread Members` or `Get Thread Member`**
+	 */
+	member?: APIGuildMember;
 }
 
-export enum ThreadMemberFlags {}
+export enum ThreadMemberFlags {
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	HasInteracted = 1 << 0,
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	AllMessages = 1 << 1,
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	OnlyMentions = 1 << 2,
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	NoMessages = 1 << 3,
+}
 
 export interface APIThreadList {
 	/**
@@ -885,6 +1121,12 @@ export enum EmbedType {
 	 * Link embed
 	 */
 	Link = 'link',
+	/**
+	 * Auto moderation alert embed
+	 *
+	 * @unstable This embed type is currently not documented by Discord, but it is returned in the auto moderation system messages.
+	 */
+	AutoModerationMessage = 'auto_moderation_message',
 }
 
 /**
@@ -1172,13 +1414,38 @@ export enum ComponentType {
 	 */
 	Button,
 	/**
-	 * Select Menu component
+	 * Select menu for picking from defined text options
 	 */
-	SelectMenu,
+	StringSelect,
 	/**
 	 * Text Input component
 	 */
 	TextInput,
+	/**
+	 * Select menu for users
+	 */
+	UserSelect,
+	/**
+	 * Select menu for roles
+	 */
+	RoleSelect,
+	/**
+	 * Select menu for users and roles
+	 */
+	MentionableSelect,
+	/**
+	 * Select menu for channels
+	 */
+	ChannelSelect,
+
+	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
+
+	/**
+	 * Select menu for picking from defined text options
+	 *
+	 * @deprecated This is the old name for {@apilink ComponentType#StringSelect}
+	 */
+	SelectMenu = 3,
 }
 
 /**
@@ -1270,15 +1537,18 @@ export enum TextInputStyle {
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.SelectMenu> {
+export interface APIBaseSelectMenuComponent<
+	T extends
+		| ComponentType.StringSelect
+		| ComponentType.UserSelect
+		| ComponentType.RoleSelect
+		| ComponentType.MentionableSelect
+		| ComponentType.ChannelSelect,
+> extends APIBaseComponent<T> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
 	 */
 	custom_id: string;
-	/**
-	 * The choices in the select, max 25
-	 */
-	options: APISelectMenuOption[];
 	/**
 	 * Custom placeholder text if nothing is selected, max 150 characters
 	 */
@@ -1302,6 +1572,51 @@ export interface APISelectMenuComponent extends APIBaseComponent<ComponentType.S
 	 */
 	disabled?: boolean;
 }
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
+	/**
+	 * Specified choices in a select menu; max 25
+	 */
+	options: APISelectMenuOption[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIUserSelectComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIRoleSelectComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APIMentionableSelectComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
+	/**
+	 * List of channel types to include in the ChannelSelect component
+	 */
+	channel_types?: ChannelType[];
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menus
+ */
+export type APISelectMenuComponent =
+	| APIStringSelectComponent
+	| APIUserSelectComponent
+	| APIRoleSelectComponent
+	| APIMentionableSelectComponent
+	| APIChannelSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
@@ -1371,7 +1686,39 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
  */
 export enum ChannelFlags {
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	GuildFeedRemoved = 1 << 0,
+	/**
+	 * This thread is pinned to the top of its parent forum channel
+	 */
 	Pinned = 1 << 1,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	ActiveChannelsRemoved = 1 << 2,
+	/**
+	 * Whether a tag is required to be specified when creating a thread in a forum channel.
+	 * Tags are specified in the `applied_tags` field
+	 */
+	RequireTag = 1 << 4,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	IsSpam = 1 << 5,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	IsGuildResourceChannel = 1 << 7,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	ClydeAI = 1 << 8,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	IsScheduledForDeletion = 1 << 9,
 }
 
 /**

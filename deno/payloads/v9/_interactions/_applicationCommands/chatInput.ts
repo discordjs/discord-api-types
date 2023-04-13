@@ -43,17 +43,12 @@ import type {
 	APIApplicationCommandUserOption,
 } from './_chatInput/user.ts';
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
-import type { Snowflake } from '../../../../globals.ts';
-import type { APIAttachment, APIRole, APIUser } from '../../mod.ts';
-import type {
-	APIApplicationCommandInteractionWrapper,
-	APIInteractionDataResolvedChannel,
-	APIInteractionDataResolvedGuildMember,
-	ApplicationCommandType,
-} from '../applicationCommands.ts';
+import type { APIInteractionDataResolved } from '../../mod.ts';
+import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 
 export * from './_chatInput/attachment.ts';
+export * from './_chatInput/base.ts';
 export * from './_chatInput/boolean.ts';
 export * from './_chatInput/channel.ts';
 export * from './_chatInput/integer.ts';
@@ -113,18 +108,7 @@ export type APIApplicationCommandInteractionDataBasicOption =
 export interface APIChatInputApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
 	options?: APIApplicationCommandInteractionDataOption[];
-	resolved?: APIChatInputApplicationCommandInteractionDataResolved;
-}
-
-/**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
- */
-export interface APIChatInputApplicationCommandInteractionDataResolved {
-	users?: Record<Snowflake, APIUser>;
-	roles?: Record<Snowflake, APIRole>;
-	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
-	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
-	attachments?: Record<Snowflake, APIAttachment>;
+	resolved?: APIInteractionDataResolved;
 }
 
 /**

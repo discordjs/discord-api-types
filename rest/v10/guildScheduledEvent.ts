@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
+import type { StrictPartial } from '../../utils/internals';
 import type {
 	APIGuildScheduledEvent,
 	APIGuildScheduledEventEntityMetadata,
@@ -27,11 +27,11 @@ export type RESTGetAPIGuildScheduledEventsResult = APIGuildScheduledEvent[];
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
  */
-export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildScheduledEventJSONBody {
 	/**
 	 * The stage channel id of the guild event
 	 */
-	channel_id?: Snowflake;
+	channel_id?: Snowflake | undefined;
 	/**
 	 * The name of the guild event
 	 */
@@ -47,24 +47,24 @@ export type RESTPostAPIGuildScheduledEventJSONBody = AddUndefinedToPossiblyUndef
 	/**
 	 * The time when the scheduled event is scheduled to end
 	 */
-	scheduled_end_time?: string;
+	scheduled_end_time?: string | undefined;
 	/**
 	 * The description of the guild event
 	 */
-	description?: string;
+	description?: string | undefined;
 	/**
 	 * The scheduled entity type of the guild event
 	 */
-	entity_type?: GuildScheduledEventEntityType;
+	entity_type?: GuildScheduledEventEntityType | undefined;
 	/**
 	 * The entity metadata of the scheduled event
 	 */
-	entity_metadata?: APIGuildScheduledEventEntityMetadata;
+	entity_metadata?: APIGuildScheduledEventEntityMetadata | undefined;
 	/**
 	 * The cover image of the scheduled event
 	 */
-	image?: string | null;
-}>;
+	image?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
@@ -89,21 +89,20 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
  */
-export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		/**
-		 * The status of the scheduled event
-		 */
-		status?: GuildScheduledEventStatus;
-		/**
-		 * The entity metadata of the scheduled event
-		 */
-		entity_metadata?: APIGuildScheduledEventEntityMetadata | null;
-		/**
-		 * The description of the guild event
-		 */
-		description?: string | null;
-	}>;
+export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> & {
+	/**
+	 * The status of the scheduled event
+	 */
+	status?: GuildScheduledEventStatus | undefined;
+	/**
+	 * The entity metadata of the scheduled event
+	 */
+	entity_metadata?: APIGuildScheduledEventEntityMetadata | null | undefined;
+	/**
+	 * The description of the guild event
+	 */
+	description?: string | null | undefined;
+};
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event

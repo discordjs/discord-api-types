@@ -89,6 +89,7 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfEmojisReached,
 
 	MaximumNumberOfReactionsReached = 30010,
+	MaximumNumberOfGroupDMsReached,
 
 	MaximumNumberOfGuildChannelsReached = 30013,
 
@@ -120,6 +121,13 @@ export enum RESTJSONErrorCodes {
 
 	BitrateIsTooHighForChannelOfThisType = 30052,
 
+	MaximumNumberOfPremiumEmojisReached = 30056,
+
+	MaximumNumberOfWebhooksPerGuildReached = 30058,
+
+	MaximumNumberOfChannelPermissionOverwritesReached = 30060,
+	TheChannelsForThisGuildAreTooLarge,
+
 	Unauthorized = 40001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
@@ -137,8 +145,14 @@ export enum RESTJSONErrorCodes {
 
 	ApplicationInteractionFailedToSend = 40043,
 
+	CannotSendAMessageInAForumChannel = 40058,
+
 	InteractionHasAlreadyBeenAcknowledged = 40060,
 	TagNamesMustBeUnique,
+	ServiceResourceIsBeingRateLimited,
+
+	ThereAreNoTagsAvailableThatCanBeSetByNonModerators = 40066,
+	TagRequiredToCreateAForumPostInThisChannel,
 
 	MissingAccess = 50001,
 	InvalidAccountType,
@@ -174,6 +188,8 @@ export enum RESTJSONErrorCodes {
 	InvalidFormBodyOrContentType,
 	InviteAcceptedToGuildWithoutTheBotBeingIn,
 
+	InvalidActivityAction = 50039,
+
 	InvalidAPIVersion = 50041,
 
 	FileUploadedExceedsMaximumSize = 50045,
@@ -182,11 +198,13 @@ export enum RESTJSONErrorCodes {
 	CannotSelfRedeemThisGift = 50054,
 	InvalidGuild,
 
-	InvalidMessageType = 50068,
+	InvalidRequestOrigin = 50067,
+	InvalidMessageType,
 
 	PaymentSourceRequiredToRedeemGift = 50070,
 
-	CannotDeleteChannelRequiredForCommunityGuilds = 50074,
+	CannotModifyASystemWebhook = 50073,
+	CannotDeleteChannelRequiredForCommunityGuilds,
 
 	CannotEditStickersWithinMessage = 50080,
 	InvalidStickerSent,
@@ -195,6 +213,8 @@ export enum RESTJSONErrorCodes {
 	InvalidThreadNotificationSettings,
 	ParameterEarlierThanCreation,
 	CommunityServerChannelsMustBeTextChannels,
+
+	TheEntityTypeOfTheEventIsDifferentFromTheEntityYouAreTryingToStartTheEventFor = 50091,
 
 	ServerNotAvailableInYourLocation = 50095,
 
@@ -208,7 +228,11 @@ export enum RESTJSONErrorCodes {
 
 	FailedToResizeAssetBelowTheMinimumSize = 50138,
 
-	UploadedFileNotFound = 50146,
+	CannotMixSubscriptionAndNonSubscriptionRolesForAnEmoji = 50144,
+	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
+	UploadedFileNotFound,
+
+	CannotDeleteGuildSubscriptionIntegration = 50163,
 
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
@@ -246,13 +270,19 @@ export enum RESTJSONErrorCodes {
 	MessageWasBlockedByAutomaticModeration = 200000,
 	TitleWasBlockedByAutomaticModeration,
 
-	WebhooksCanOnlyCreateThreadsInForumChannels = 220003,
+	WebhooksPostedToForumChannelsMustHaveAThreadNameOrThreadId = 220001,
+	WebhooksPostedToForumChannelsCannotHaveBothAThreadNameAndThreadId,
+	WebhooksCanOnlyCreateThreadsInForumChannels,
+	WebhookServicesCannotBeUsedInForumChannels,
+
+	MessageBlockedByHarmfulLinksFilter = 240000,
 }
 
 /**
  * https://discord.com/developers/docs/reference#locales
  */
 export enum Locale {
+	Indonesian = 'id',
 	EnglishUS = 'en-US',
 	EnglishGB = 'en-GB',
 	Bulgarian = 'bg',

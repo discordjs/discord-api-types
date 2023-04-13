@@ -1,6 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
 import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v10/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
@@ -19,11 +18,11 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	 *
 	 * @default GuildOnly
 	 */
-	privacy_level?: StageInstancePrivacyLevel;
+	privacy_level?: StageInstancePrivacyLevel | undefined;
 	/**
 	 * Notify @everyone that a stage instance has started
 	 */
-	send_start_notification?: boolean;
+	send_start_notification?: boolean | undefined;
 }
 
 /**
@@ -39,16 +38,16 @@ export type RESTGetAPIStageInstanceResult = APIStageInstance;
 /**
  * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
  */
-export type RESTPatchAPIStageInstanceJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIStageInstanceJSONBody {
 	/**
 	 * The topic of the stage instance (1-120 characters)
 	 */
-	topic?: string;
+	topic?: string | undefined;
 	/**
 	 * The privacy level of the stage instance
 	 */
-	privacy_level?: StageInstancePrivacyLevel;
-}>;
+	privacy_level?: StageInstancePrivacyLevel | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance

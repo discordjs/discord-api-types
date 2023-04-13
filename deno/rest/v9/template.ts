@@ -1,5 +1,5 @@
 import type { APIGuild, APITemplate } from '../../payloads/v9/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { StrictPartial } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild-template#get-guild-template
@@ -9,7 +9,7 @@ export type RESTGetAPITemplateResult = APITemplate;
 /**
  * https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template
  */
-export type RESTPostAPITemplateCreateGuildJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPITemplateCreateGuildJSONBody {
 	/**
 	 * Name of the guild (2-100 characters)
 	 */
@@ -19,8 +19,8 @@ export type RESTPostAPITemplateCreateGuildJSONBody = AddUndefinedToPossiblyUndef
 	 *
 	 * See https://discord.com/developers/docs/reference#image-data
 	 */
-	icon?: string;
-}>;
+	icon?: string | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template
@@ -35,7 +35,7 @@ export type RESTGetAPIGuildTemplatesResult = APITemplate[];
 /**
  * https://discord.com/developers/docs/resources/guild-template#create-guild-template
  */
-export type RESTPostAPIGuildTemplatesJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPostAPIGuildTemplatesJSONBody {
 	/**
 	 * Name of the template (1-100 characters)
 	 */
@@ -43,8 +43,8 @@ export type RESTPostAPIGuildTemplatesJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Description for the template (0-120 characters)
 	 */
-	description?: string | null;
-}>;
+	description?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/guild-template#create-guild-template

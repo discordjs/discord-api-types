@@ -38,7 +38,11 @@ export const PermissionFlagsBits = {
 	ManageNicknames: 1n << 27n,
 	ManageRoles: 1n << 28n,
 	ManageWebhooks: 1n << 29n,
+	/**
+	 * @deprecated This is the old name for {@apilink PermissionFlagsBits#ManageGuildExpressions}
+	 */
 	ManageEmojisAndStickers: 1n << 30n,
+	ManageGuildExpressions: 1n << 30n,
 	UseApplicationCommands: 1n << 31n,
 	RequestToSpeak: 1n << 32n,
 	ManageEvents: 1n << 33n,
@@ -49,6 +53,12 @@ export const PermissionFlagsBits = {
 	SendMessagesInThreads: 1n << 38n,
 	UseEmbeddedActivities: 1n << 39n,
 	ModerateMembers: 1n << 40n,
+	ViewCreatorMonetizationAnalytics: 1n << 41n,
+	UseSoundboard: 1n << 42n,
+	/**
+	 * @unstable This permission flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	UseExternalSounds: 1n << 45n,
 } as const;
 
 /**
@@ -58,3 +68,47 @@ export const PermissionFlagsBits = {
 Object.freeze(PermissionFlagsBits);
 
 export type LocalizationMap = Partial<Record<LocaleString, string | null>>;
+
+/**
+ * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json
+ */
+export interface RESTError {
+	code: number;
+	message: string;
+	errors?: RESTErrorData;
+}
+
+export interface RESTErrorFieldInformation {
+	code: string;
+	message: string;
+}
+
+export interface RESTErrorGroupWrapper {
+	_errors: RESTErrorData[];
+}
+
+export type RESTErrorData = RESTErrorGroupWrapper | RESTErrorFieldInformation | { [k: string]: RESTErrorData } | string;
+
+/**
+ * https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure
+ */
+export interface RESTRateLimit {
+	/**
+	 * An error code for some limits
+	 *
+	 * {@link RESTJSONErrorCodes}
+	 */
+	code?: number;
+	/**
+	 * A value indicating if you are being globally rate limited or not
+	 */
+	global: boolean;
+	/**
+	 * A message saying you are being rate limited.
+	 */
+	message: string;
+	/**
+	 * The number of seconds to wait before submitting another request.
+	 */
+	retry_after: number;
+}

@@ -1,6 +1,12 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
-import type { APIChannel, APIConnection, APIGuildMember, APIUser, GuildFeature } from '../../payloads/v10/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
+import type {
+	APIChannel,
+	APIConnection,
+	APIGuildMember,
+	APIUser,
+	APIApplicationRoleConnection,
+	GuildFeature,
+} from '../../payloads/v10/mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
@@ -20,16 +26,16 @@ export type RESTGetCurrentUserGuildMemberResult = APIGuildMember;
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
  */
-export type RESTPatchAPICurrentUserJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPICurrentUserJSONBody {
 	/**
 	 * User's username, if changed may cause the user's discriminator to be randomized
 	 */
-	username?: string;
+	username?: string | undefined;
 	/**
 	 * If passed, modifies the user's avatar
 	 */
-	avatar?: string | null;
-}>;
+	avatar?: string | null | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
@@ -49,11 +55,17 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	 */
 	after?: Snowflake;
 	/**
-	 * Max number of guilds to return (1-100)
+	 * Max number of guilds to return (1-200)
 	 *
-	 * @default 100
+	 * @default 200
 	 */
 	limit?: number;
+	/**
+	 * Include approximate member and presence counts in response
+	 *
+	 * @default false
+	 */
+	with_counts?: boolean;
 }
 
 export interface RESTAPIPartialCurrentUserGuild {
@@ -63,6 +75,8 @@ export interface RESTAPIPartialCurrentUserGuild {
 	owner: boolean;
 	features: GuildFeature[];
 	permissions: Permissions;
+	approximate_member_count?: number;
+	approximate_presence_count?: number;
 }
 
 /**
@@ -94,3 +108,31 @@ export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
  * https://discord.com/developers/docs/resources/user#get-user-connections
  */
 export type RESTGetAPICurrentUserConnectionsResult = APIConnection[];
+
+/**
+ * https://discord.com/developers/docs/resources/user#get-user-application-role-connection
+ */
+export type RESTGetAPICurrentUserApplicationRoleConnectionResult = APIApplicationRoleConnection;
+
+/**
+ * https://discord.com/developers/docs/resources/user#update-user-application-role-connection
+ */
+export interface RESTPutAPICurrentUserApplicationRoleConnectionJSONBody {
+	/**
+	 * The vanity name of the platform a bot has connected (max 50 characters)
+	 */
+	platform_name?: string | undefined;
+	/**
+	 * The username on the platform a bot has connected (max 100 characters)
+	 */
+	platform_username?: string | undefined;
+	/**
+	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
+	 */
+	metadata?: Record<string, string | number> | undefined;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/user#update-user-application-role-connection
+ */
+export type RESTPutAPICurrentUserApplicationRoleConnectionResult = APIApplicationRoleConnection;

@@ -17,8 +17,8 @@ export type RESTGetAPIUserResult = APIUser;
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPICurrentUserJSONBody {
-	username?: string;
-	avatar?: string | null;
+	username?: string | undefined;
+	avatar?: string | null | undefined;
 }
 
 /**

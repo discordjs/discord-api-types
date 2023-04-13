@@ -1,0 +1,20 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"alwaysStrict": true,
+		"lib": ["esnext"],
+		"module": "commonjs",
+		"noUnusedParameters": true,
+		"sourceMap": true,
+		"declaration": false,
+		"noUnusedLocals": true,
+		"removeComments": false,
+		"target": "ES2020",
+		"importsNotUsedAsValues": "error",
+		"strictNullChecks": true,
+		"preserveConstEnums": true,
+		"exactOptionalPropertyTypes": true,
+		"skipLibCheck": true
+	},
+	"include": ["./index.ts"]
+}

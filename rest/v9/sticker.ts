@@ -1,5 +1,4 @@
 import type { APISticker, APIStickerPack } from '../../payloads/v9/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/sticker#get-sticker
@@ -40,7 +39,9 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 	 */
 	tags: string;
 	/**
-	 * The sticker file to upload, must be a PNG, APNG, or Lottie JSON file, max 500 KB
+	 * The sticker file to upload, must be a PNG, APNG, GIF, or Lottie JSON file, max 512 KB
+	 *
+	 * Uploaded stickers are constrained to 5 seconds in length for animated stickers, and 320 x 320 pixels.
 	 */
 	file: unknown;
 }
@@ -53,20 +54,20 @@ export type RESTPostAPIGuildStickerResult = APISticker;
 /**
  * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
  */
-export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildStickerJSONBody {
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
-	name?: string;
+	name?: string | undefined;
 	/**
 	 * Description of the sticker (2-100 characters)
 	 */
-	description?: string | null;
+	description?: string | null | undefined;
 	/**
 	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
-	tags?: string;
-}>;
+	tags?: string | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/sticker#modify-guild-sticker

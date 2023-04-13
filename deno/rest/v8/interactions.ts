@@ -36,11 +36,10 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		type?: ApplicationCommandType.ChatInput;
-		description: string;
-	}>;
+export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
+	type?: ApplicationCommandType.ChatInput | undefined;
+	description: string;
+}
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
@@ -151,7 +150,7 @@ export type RESTPostAPIInteractionCallbackFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
 
@@ -200,7 +199,7 @@ export type RESTPostAPIInteractionFollowupFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
 

@@ -102,6 +102,14 @@ export enum UserFlags {
 	 */
 	BugHunterLevel1 = 1 << 3,
 	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	MFASMS = 1 << 4,
+	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	PremiumPromoDismissed = 1 << 5,
+	/**
 	 * House Bravery Member
 	 */
 	HypeSquadOnlineHouse1 = 1 << 6,
@@ -122,6 +130,10 @@ export enum UserFlags {
 	 */
 	TeamPseudoUser = 1 << 10,
 	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	HasUnreadUrgentMessages = 1 << 13,
+	/**
 	 * Bug Hunter Level 2
 	 */
 	BugHunterLevel2 = 1 << 14,
@@ -134,7 +146,7 @@ export enum UserFlags {
 	 */
 	VerifiedDeveloper = 1 << 17,
 	/**
-	 * Discord Certified Moderator
+	 * Moderator Programs Alumni
 	 */
 	CertifiedModerator = 1 << 18,
 	/**
@@ -148,11 +160,39 @@ export enum UserFlags {
 	 */
 	Spammer = 1 << 20,
 	/**
-	 * User's account has been quarantined based on recent activity
-	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
-	Quarantined = Math.pow(2, 44),
+	DisablePremium = 1 << 21,
+	/**
+	 * User is an [Active Developer](https://support-dev.discord.com/hc/articles/10113997751447)
+	 */
+	ActiveDeveloper = 1 << 22,
+	/**
+	 * User's account has been [quarantined](https://support.discord.com/hc/articles/6461420677527) based on recent activity
+	 *
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 *
+	 * @privateRemarks
+	 *
+	 * This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
+	 */
+	Quarantined = 17592186044416,
+	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 *
+	 * @privateRemarks
+	 *
+	 * This value would be 1 << 50, but bit shifting above 1 << 30 requires bigints
+	 */
+	Collaborator = 1125899906842624,
+	/**
+	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 *
+	 * @privateRemarks
+	 *
+	 * This value would be 1 << 51, but bit shifting above 1 << 30 requires bigints
+	 */
+	RestrictedCollaborator = 2251799813685248,
 }
 
 /**
@@ -162,6 +202,7 @@ export enum UserPremiumType {
 	None,
 	NitroClassic,
 	Nitro,
+	NitroBasic,
 }
 
 /**
@@ -205,6 +246,10 @@ export interface APIConnection {
 	 */
 	show_activity: boolean;
 	/**
+	 * Whether this connection supports console voice transfer
+	 */
+	two_way_link: boolean;
+	/**
 	 * Visibility of this connection
 	 *
 	 * See https://discord.com/developers/docs/resources/user#connection-object-visibility-types
@@ -214,16 +259,20 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	BattleNet = 'battlenet',
+	eBay = 'ebay',
 	EpicGames = 'epicgames',
 	Facebook = 'facebook',
 	GitHub = 'github',
+	Instagram = 'instagram',
 	LeagueOfLegends = 'leagueoflegends',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
-	SamsungGalaxy = 'samsunggalaxy',
+	RiotGames = 'riotgames',
+	PayPal = 'paypal',
 	Spotify = 'spotify',
 	Skype = 'skype',
 	Steam = 'steam',
+	TikTok = 'tiktok',
 	Twitch = 'twitch',
 	Twitter = 'twitter',
 	Xbox = 'xbox',
@@ -239,4 +288,22 @@ export enum ConnectionVisibility {
 	 * Visible to everyone
 	 */
 	Everyone,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure
+ */
+export interface APIApplicationRoleConnection {
+	/**
+	 * The vanity name of the platform a bot has connected (max 50 characters)
+	 */
+	platform_name: string | null;
+	/**
+	 * The username on the platform a bot has connected (max 100 characters)
+	 */
+	platform_username: string | null;
+	/**
+	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
+	 */
+	metadata: Record<string, string | number>;
 }

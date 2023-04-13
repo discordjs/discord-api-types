@@ -19,6 +19,19 @@ import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartia
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
  */
+export interface RESTGetAPIApplicationCommandsQuery {
+	/**
+	 * Whether to include full localization dictionaries (name_localizations and description_localizations)
+	 * in the returned objects, instead of the name_localized and description_localized fields.
+	 *
+	 * @default false
+	 */
+	with_localizations?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
+ */
 export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
 
 /**
@@ -45,11 +58,10 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
-export type RESTPostAPIChatInputApplicationCommandsJSONBody = RESTPostAPIBaseApplicationCommandsJSONBody &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
-		type?: ApplicationCommandType.ChatInput;
-		description: string;
-	}>;
+export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
+	type?: ApplicationCommandType.ChatInput | undefined;
+	description: string;
+}
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
@@ -89,6 +101,11 @@ export type RESTPutAPIApplicationCommandsJSONBody = RESTPostAPIApplicationComman
  * https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
  */
 export type RESTPutAPIApplicationCommandsResult = APIApplicationCommand[];
+
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
+ */
+export type RESTGetAPIApplicationGuildCommandsQuery = RESTGetAPIApplicationCommandsQuery;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
@@ -153,7 +170,7 @@ export type RESTPostAPIInteractionCallbackFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
 
@@ -195,7 +212,7 @@ export type RESTPostAPIInteractionFollowupFormDataBody =
 			/**
 			 * JSON stringified message body
 			 */
-			payload_json?: string;
+			payload_json?: string | undefined;
 	  } & Record<`files[${bigint}]`, unknown>)
 	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
 

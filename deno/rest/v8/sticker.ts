@@ -1,5 +1,4 @@
 import type { APISticker, APIStickerPack } from '../../payloads/v8/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface } from '../../utils/internals.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -53,20 +52,20 @@ export type RESTPostAPIGuildStickerResult = APISticker;
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildStickerJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<{
+export interface RESTPatchAPIGuildStickerJSONBody {
 	/**
 	 * Name of the sticker (2-30 characters)
 	 */
-	name?: string;
+	name?: string | undefined;
 	/**
 	 * Description of the sticker (2-100 characters)
 	 */
-	description?: string | null;
+	description?: string | null | undefined;
 	/**
 	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
 	 */
-	tags?: string;
-}>;
+	tags?: string | undefined;
+}
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

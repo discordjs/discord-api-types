@@ -72,4 +72,16 @@ export interface APIRoleTags {
 	 * The id of the integration this role belongs to
 	 */
 	integration_id?: Snowflake;
+	/**
+	 * The id of this role's subscription sku and listing
+	 */
+	subscription_listing_id?: Snowflake;
+	/**
+	 * Whether this role is available for purchase
+	 */
+	available_for_purchase?: null;
+	/**
+	 * Whether this role is a guild's linked role
+	 */
+	guild_connections?: null;
 }
