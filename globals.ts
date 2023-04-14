@@ -1,7 +1,16 @@
 /**
  * https://discord.com/developers/docs/reference#snowflakes
  */
-export type Snowflake = string;
+export type Snowflake =
+	| Snowflake17
+	| Snowflake18
+	| Snowflake19
+	| Snowflake20;
+
+type Snowflake17 = `${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}`;
+type Snowflake18 = `${Snowflake17}${number}`;
+type Snowflake19 = `${Snowflake18}${number}`;
+type Snowflake20 = `${Snowflake19}${number}`;
 
 /**
  * https://discord.com/developers/docs/topics/permissions
