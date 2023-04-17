@@ -1292,7 +1292,7 @@ export interface APIAttachment {
 	/**
 	 * The duration of the audio file (currently for voice messages)
 	 */
-	duration_seconds?: number;
+	duration_secs?: number;
 	/**
 	 * Base64 encoded bytearray representing a sampled waveform (currently for voice messages)
 	 */
