@@ -1,3 +1,13 @@
+## [0.37.39](https://github.com/discordjs/discord-api-types/compare/0.37.38...0.37.39) (2023-04-17)
+
+### Bug Fixes
+
+- **RESTPostAPIChannelMessagesThreadsJSONBody:** mark `auto_archive_duration` as optional ([ca6a95d](https://github.com/discordjs/discord-api-types/commit/ca6a95d69c7b93f564f10cce422faf5ea4133be7))
+
+### Features
+
+- **APIGuild:** add `max_stage_video_channel_users` ([#550](https://github.com/discordjs/discord-api-types/issues/550)) ([9a66d21](https://github.com/discordjs/discord-api-types/commit/9a66d21f4913c63ed7c192cf9340febe603bf516))
+
 ## [0.37.38](https://github.com/discordjs/discord-api-types/compare/0.37.37...0.37.38) (2023-04-10)
 
 ### Features
