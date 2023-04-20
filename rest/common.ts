@@ -232,7 +232,13 @@ export enum RESTJSONErrorCodes {
 	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
 	UploadedFileNotFound,
 
-	CannotDeleteGuildSubscriptionIntegration = 50163,
+	VoiceMessagesDoNotSupportAdditionalContent = 50159,
+	VoiceMessagesMustHaveASingleAudioAttachment,
+	VoiceMessagesMustHaveSupportingMetadata,
+	VoiceMessagesCannotBeEdited,
+	CannotDeleteGuildSubscriptionIntegration,
+
+	YouCannotSendVoiceMessagesInThisChannel = 50173,
 
 	YouDoNotHavePermissionToSendThisSticker = 50600,
 
