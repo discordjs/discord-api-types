@@ -807,7 +807,7 @@ export enum MessageFlags {
 	 */
 	SuppressNotifications = 1 << 12,
 	/**
-	 * @unstable This message flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * This message is a voice message
 	 */
 	IsVoiceMessage = 1 << 13,
 }
@@ -1321,6 +1321,14 @@ export interface APIAttachment {
 	 * Whether this attachment is ephemeral
 	 */
 	ephemeral?: boolean;
+	/**
+	 * The duration of the audio file (currently for voice messages)
+	 */
+	duration_secs?: number;
+	/**
+	 * Base64 encoded bytearray representing a sampled waveform (currently for voice messages)
+	 */
+	waveform?: string;
 }
 
 /**

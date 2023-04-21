@@ -59,6 +59,7 @@ export const PermissionFlagsBits = {
 	 * @unstable This permission flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	UseExternalSounds: 1n << 45n,
+	SendVoiceMessages: 1n << 46n,
 } as const;
 
 /**
