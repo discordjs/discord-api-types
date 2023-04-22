@@ -261,6 +261,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
 	 * @deprecated Use `embeds` instead
 	 */
 	embed?: APIEmbed | undefined;
@@ -384,6 +385,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
 	 * @deprecated Use `embeds` instead
 	 */
 	embed?: APIEmbed | null | undefined;

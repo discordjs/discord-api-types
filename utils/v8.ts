@@ -1,4 +1,4 @@
-import {
+import type {
 	APIApplicationCommandDMInteraction,
 	APIApplicationCommandGuildInteraction,
 	APIApplicationCommandInteraction,
@@ -11,13 +11,14 @@ import {
 	APIMessageComponentDMInteraction,
 	APIMessageComponentGuildInteraction,
 	APIMessageComponentInteraction,
-	ButtonStyle,
 } from '../payloads/v8/index';
+import { ButtonStyle } from '../payloads/v8/index';
 
 // Interactions
 
 /**
  * A type-guard check for DM interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the interaction was received in a DM channel
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -28,6 +29,7 @@ export function isDMInteraction(interaction: APIInteraction): interaction is API
 
 /**
  * A type-guard check for guild interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the interaction was received in a guild
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -40,6 +42,7 @@ export function isGuildInteraction(interaction: APIInteraction): interaction is 
 
 /**
  * A type-guard check for DM application command interactions
+ *
  * @param interaction The application command interaction to check against
  * @returns A boolean that indicates if the application command interaction was received in a DM channel
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -52,6 +55,7 @@ export function isApplicationCommandDMInteraction(
 
 /**
  * A type-guard check for guild application command interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the application command interaction was received in a guild
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -66,6 +70,7 @@ export function isApplicationCommandGuildInteraction(
 
 /**
  * A type-guard check for DM message component interactions
+ *
  * @param interaction The message component interaction to check against
  * @returns A boolean that indicates if the message component interaction was received in a DM channel
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -78,6 +83,7 @@ export function isMessageComponentDMInteraction(
 
 /**
  * A type-guard check for guild message component interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the message component interaction was received in a guild
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -92,6 +98,7 @@ export function isMessageComponentGuildInteraction(
 
 /**
  * A type-guard check for buttons that have a `url` attached to them.
+ *
  * @param component The button to check against
  * @returns A boolean that indicates if the button has a `url` attached to it
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -102,7 +109,8 @@ export function isLinkButton(component: APIButtonComponent): component is APIBut
 
 /**
  * A type-guard check for buttons that have a `custom_id` attached to them.
- * @param button The button to check against
+ *
+ * @param component The button to check against
  * @returns A boolean that indicates if the button has a `custom_id` attached to it
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

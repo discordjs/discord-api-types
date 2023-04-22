@@ -98,7 +98,7 @@ export enum GatewayCloseCodes {
 	/**
 	 * We're not sure what went wrong. Try reconnecting?
 	 */
-	UnknownError = 4000,
+	UnknownError = 4_000,
 	/**
 	 * You sent an invalid Gateway opcode or an invalid payload for an opcode. Don't do that!
 	 *
@@ -132,7 +132,7 @@ export enum GatewayCloseCodes {
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway-events#resume
 	 */
-	InvalidSeq = 4007,
+	InvalidSeq = 4_007,
 	/**
 	 * Woah nelly! You're sending payloads to us too quickly. Slow it down! You will be disconnected on receiving this
 	 */

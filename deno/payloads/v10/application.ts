@@ -2,11 +2,11 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
+import type { Permissions, Snowflake } from '../../globals.ts';
+import type { LocalizationMap } from '../common.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
-import type { Permissions, Snowflake } from '../../globals.ts';
-import type { LocalizationMap } from '../common.ts';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object

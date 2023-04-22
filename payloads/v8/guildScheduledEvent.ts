@@ -1,6 +1,6 @@
+import type { Snowflake } from '../../globals';
 import type { APIGuildMember } from './guild';
 import type { APIUser } from './user';
-import type { Snowflake } from '../../globals';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -100,6 +100,7 @@ export interface APIExternalGuildScheduledEvent
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIGuildScheduledEvent =
@@ -109,6 +110,7 @@ export type APIGuildScheduledEvent =
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildScheduledEventEntityMetadata {
@@ -120,6 +122,7 @@ export interface APIGuildScheduledEventEntityMetadata {
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildScheduledEventEntityType {
@@ -130,6 +133,7 @@ export enum GuildScheduledEventEntityType {
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-status
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildScheduledEventStatus {
@@ -141,6 +145,7 @@ export enum GuildScheduledEventStatus {
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-privacy-level
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum GuildScheduledEventPrivacyLevel {
@@ -152,6 +157,7 @@ export enum GuildScheduledEventPrivacyLevel {
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIGuildScheduledEventUser {

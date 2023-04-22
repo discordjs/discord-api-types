@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/channel
  */
 
+import type { Permissions, Snowflake } from '../../globals';
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
@@ -9,7 +10,6 @@ import type { APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
-import type { Permissions, Snowflake } from '../../globals';
 
 /**
  * Not documented, but partial only includes id, name, and type
@@ -426,6 +426,7 @@ export enum ChannelType {
 	 *
 	 * @deprecated This is the old name for {@apilink ChannelType#AnnouncementThread}
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
 	GuildNewsThread = 10,
 	/**
 	 * A temporary sub-channel within a Guild Text channel
@@ -654,6 +655,7 @@ export interface APIMessage {
 	 * The stickers sent with the message
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 *
 	 * @deprecated Use `sticker_items` instead
 	 */
 	stickers?: APISticker[];
@@ -937,9 +939,9 @@ export interface APIThreadMetadata {
 
 export enum ThreadAutoArchiveDuration {
 	OneHour = 60,
-	OneDay = 1440,
-	ThreeDays = 4320,
-	OneWeek = 10080,
+	OneDay = 1_440,
+	ThreeDays = 4_320,
+	OneWeek = 10_080,
 }
 
 /**
@@ -1094,6 +1096,7 @@ export interface APIEmbed {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+ *
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
 export enum EmbedType {
