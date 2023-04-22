@@ -1,8 +1,8 @@
-import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 import type { Snowflake } from '../../../../globals.ts';
 import type { APIMessage } from '../../channel.ts';
 import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper, APIUserInteractionDataResolved } from '../base.ts';
+import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data

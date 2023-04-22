@@ -1,7 +1,7 @@
-import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v10';
 import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
 import type { MessageFlags } from '../index';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type

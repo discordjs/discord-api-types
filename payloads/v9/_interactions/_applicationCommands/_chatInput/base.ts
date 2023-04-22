@@ -1,5 +1,5 @@
-import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
 import type { LocalizationMap } from '../../../../../v9';
+import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
 
 export interface APIApplicationCommandOptionBase<Type extends ApplicationCommandOptionType> {
 	type: Type;
