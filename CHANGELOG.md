@@ -1,3 +1,9 @@
+## [0.37.40](https://github.com/discordjs/discord-api-types/compare/0.37.39...0.37.40) (2023-04-24)
+
+### Features
+
+- add support for voice messages ([#749](https://github.com/discordjs/discord-api-types/issues/749)) ([3dac5b9](https://github.com/discordjs/discord-api-types/commit/3dac5b93e7568ba2fbd3bc30d229d2df80f96eed))
+
 ## [0.37.39](https://github.com/discordjs/discord-api-types/compare/0.37.38...0.37.39) (2023-04-17)
 
 ### Bug Fixes
