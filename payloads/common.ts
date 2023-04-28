@@ -255,6 +255,10 @@ export const PermissionFlagsBits = {
 	 */
 	UseSoundboard: 1n << 42n,
 	/**
+	 * Allows for creating emojis, stickers, and soundboard sounds
+	 */
+	CreateGuildExpressions: 1n << 43n,
+	/**
 	 * Allows the usage of custom soundboard sounds from other servers
 	 *
 	 * Applies to channel types: Voice
