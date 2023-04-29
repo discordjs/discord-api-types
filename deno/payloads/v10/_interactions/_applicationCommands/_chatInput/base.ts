@@ -22,6 +22,7 @@ export type APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
 > =
 	| (Base & {
 			autocomplete: true;
+			choices?: never[];
 	  })
 	| (Base & {
 			autocomplete?: false;
