@@ -31,11 +31,11 @@ export default function Home(): JSX.Element {
 	return (
 		<>
 			<HeadTags />
-			<Layout title="Home" description={siteConfig.tagline}>
+			<Layout description={siteConfig.tagline} title="Home">
 				<SWRConfig
 					value={{
-						// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
-						fetcher: (resource: string, init: RequestInit) => fetch(resource, init).then((res) => res.json())
+						// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access, promise/prefer-await-to-then
+						fetcher: async (resource: string, init: RequestInit) => fetch(resource, init).then(async (res) => res.json())
 					}}
 				>
 					<HomePageHeader />

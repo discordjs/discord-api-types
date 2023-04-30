@@ -27,6 +27,7 @@
 	],
 	"rules": {
 		"@typescript-eslint/consistent-type-definitions": ["error", "interface"],
-		"import/extensions": "off"
+		"import/extensions": "off",
+		"no-restricted-globals": "off"
 	}
 }
