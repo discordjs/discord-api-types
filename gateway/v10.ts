@@ -976,6 +976,11 @@ export type GatewayGuildMembersChunkDispatch = DataPayload<
 >;
 
 /**
+ * https://discord.com/developers/docs/topics/gateway-events#update-presence
+ */
+export type GatewayGuildMembersChunkPresence = Omit<RawGatewayPresenceUpdate, 'guild_id'>;
+
+/**
  * https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk
  */
 export interface GatewayGuildMembersChunkDispatchData {
@@ -1006,7 +1011,7 @@ export interface GatewayGuildMembersChunkDispatchData {
 	 *
 	 * See https://discord.com/developers/docs/topics/gateway-events#update-presence
 	 */
-	presences?: RawGatewayPresenceUpdate[];
+	presences?: GatewayGuildMembersChunkPresence[];
 	/**
 	 * The nonce used in the Guild Members Request
 	 *
