@@ -1,3 +1,10 @@
+## [0.37.41](https://github.com/discordjs/discord-api-types/compare/0.37.40...0.37.41) (2023-05-01)
+
+### Bug Fixes
+
+- **GatewayGuildMembersChunkDispatchData:** Omit `guild_id` for presences ([#761](https://github.com/discordjs/discord-api-types/issues/761)) ([5079b16](https://github.com/discordjs/discord-api-types/commit/5079b164db3ac3bda25675a553a586f099555667))
+- **types:** move `types` condition to the front ([#763](https://github.com/discordjs/discord-api-types/issues/763)) ([9dce6ed](https://github.com/discordjs/discord-api-types/commit/9dce6ed392b64e602c3cc05946bc0f30bac7279e))
+
 ## [0.37.40](https://github.com/discordjs/discord-api-types/compare/0.37.39...0.37.40) (2023-04-24)
 
 ### Features
