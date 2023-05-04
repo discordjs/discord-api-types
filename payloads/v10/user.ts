@@ -18,9 +18,13 @@ export interface APIUser {
 	 */
 	username: string;
 	/**
-	 * The user's 4-digit discord-tag
+	 * The user's Discord-tag
 	 */
 	discriminator: string;
+	/**
+	 * The user's display name, if it is set. For bots, this is the application name
+	 */
+	global_name: string | null;
 	/**
 	 * The user's avatar hash
 	 *

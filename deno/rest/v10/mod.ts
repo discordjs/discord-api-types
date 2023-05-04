@@ -954,14 +954,14 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/embed/avatars/{user.discriminator % 5}.png`
+	 * - GET `/embed/avatars/{(user_id << 22) % 5}.png`
 	 *
-	 * The `userDiscriminator` parameter should be the user discriminator modulo 5 (e.g. 1337 % 5 = 2)
+	 * The `userId` parameter should be the (user_id >> 22) % 5
 	 *
 	 * This route supports the extension: PNG
 	 */
-	defaultUserAvatar(userDiscriminator: DefaultUserAvatarAssets) {
-		return `/embed/avatars/${userDiscriminator}.png` as const;
+	defaultUserAvatar(userId: DefaultUserAvatarAssets) {
+		return `/embed/avatars/${userId}.png` as const;
 	},
 
 	/**
