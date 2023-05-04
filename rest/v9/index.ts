@@ -963,7 +963,7 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/embed/avatars/{(user_id << 22) % 5}.png`
+	 * - GET `/embed/avatars/{(user_id >> 22) % 5}.png`
 	 *
 	 * The `userId` parameter should be the (user_id >> 22) % 5
 	 *
