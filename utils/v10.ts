@@ -1,4 +1,4 @@
-import {
+import type {
 	APIApplicationCommandDMInteraction,
 	APIApplicationCommandGuildInteraction,
 	APIApplicationCommandInteraction,
@@ -15,16 +15,14 @@ import {
 	APIMessageComponentGuildInteraction,
 	APIMessageComponentInteraction,
 	APIMessageComponentSelectMenuInteraction,
-	ApplicationCommandType,
-	ButtonStyle,
-	ComponentType,
-	InteractionType,
 } from '../payloads/v10/index';
+import { ApplicationCommandType, ButtonStyle, ComponentType, InteractionType } from '../payloads/v10/index';
 
 // Interactions
 
 /**
  * A type-guard check for DM interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the interaction was received in a DM channel
  */
@@ -34,6 +32,7 @@ export function isDMInteraction(interaction: APIInteraction): interaction is API
 
 /**
  * A type-guard check for guild interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the interaction was received in a guild
  */
@@ -45,6 +44,7 @@ export function isGuildInteraction(interaction: APIInteraction): interaction is 
 
 /**
  * A type-guard check for DM application command interactions
+ *
  * @param interaction The application command interaction to check against
  * @returns A boolean that indicates if the application command interaction was received in a DM channel
  */
@@ -56,6 +56,7 @@ export function isApplicationCommandDMInteraction(
 
 /**
  * A type-guard check for guild application command interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the application command interaction was received in a guild
  */
@@ -69,6 +70,7 @@ export function isApplicationCommandGuildInteraction(
 
 /**
  * A type-guard check for DM message component interactions
+ *
  * @param interaction The message component interaction to check against
  * @returns A boolean that indicates if the message component interaction was received in a DM channel
  */
@@ -80,6 +82,7 @@ export function isMessageComponentDMInteraction(
 
 /**
  * A type-guard check for guild message component interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the message component interaction was received in a guild
  */
@@ -93,6 +96,7 @@ export function isMessageComponentGuildInteraction(
 
 /**
  * A type-guard check for buttons that have a `url` attached to them.
+ *
  * @param component The button to check against
  * @returns A boolean that indicates if the button has a `url` attached to it
  */
@@ -102,7 +106,8 @@ export function isLinkButton(component: APIButtonComponent): component is APIBut
 
 /**
  * A type-guard check for buttons that have a `custom_id` attached to them.
- * @param button The button to check against
+ *
+ * @param component The button to check against
  * @returns A boolean that indicates if the button has a `custom_id` attached to it
  */
 export function isInteractionButton(component: APIButtonComponent): component is APIButtonComponentWithCustomId {
@@ -113,6 +118,7 @@ export function isInteractionButton(component: APIButtonComponent): component is
 
 /**
  * A type-guard check for message component interactions
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the interaction is a message component
  */
@@ -124,6 +130,7 @@ export function isMessageComponentInteraction(
 
 /**
  * A type-guard check for button message component interactions
+ *
  * @param interaction The message component interaction to check against
  * @returns A boolean that indicates if the message component is a button
  */
@@ -135,6 +142,7 @@ export function isMessageComponentButtonInteraction(
 
 /**
  * A type-guard check for select menu message component interactions
+ *
  * @param interaction The message component interaction to check against
  * @returns A boolean that indicates if the message component is a select menu
  */
@@ -154,6 +162,7 @@ export function isMessageComponentSelectMenuInteraction(
 
 /**
  * A type-guard check for chat input application commands.
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the interaction is a chat input application command
  */
@@ -165,6 +174,7 @@ export function isChatInputApplicationCommandInteraction(
 
 /**
  * A type-guard check for context menu application commands.
+ *
  * @param interaction The interaction to check against
  * @returns A boolean that indicates if the interaction is a context menu application command
  */

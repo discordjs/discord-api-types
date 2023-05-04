@@ -4,7 +4,7 @@
 export enum RESTJSONErrorCodes {
 	GeneralError,
 
-	UnknownAccount = 10001,
+	UnknownAccount = 10_001,
 	UnknownApplication,
 	UnknownChannel,
 	UnknownGuild,
@@ -21,9 +21,9 @@ export enum RESTJSONErrorCodes {
 	UnknownWebhook,
 	UnknownWebhookService,
 
-	UnknownSession = 10020,
+	UnknownSession = 10_020,
 
-	UnknownBan = 10026,
+	UnknownBan = 10_026,
 	UnknownSKU,
 	UnknownStoreListing,
 	UnknownEntitlement,
@@ -32,22 +32,22 @@ export enum RESTJSONErrorCodes {
 	UnknownBranch,
 	UnknownStoreDirectoryLayout,
 
-	UnknownRedistributable = 10036,
+	UnknownRedistributable = 10_036,
 
-	UnknownGiftCode = 10038,
+	UnknownGiftCode = 10_038,
 
-	UnknownStream = 10049,
+	UnknownStream = 10_049,
 	UnknownPremiumServerSubscribeCooldown,
 
-	UnknownGuildTemplate = 10057,
+	UnknownGuildTemplate = 10_057,
 
-	UnknownDiscoverableServerCategory = 10059,
+	UnknownDiscoverableServerCategory = 10_059,
 	UnknownSticker,
 
-	UnknownInteraction = 10062,
+	UnknownInteraction = 10_062,
 	UnknownApplicationCommand,
 
-	UnknownVoiceState = 10065,
+	UnknownVoiceState = 10_065,
 	UnknownApplicationCommandPermissions,
 	UnknownStageInstance,
 	UnknownGuildMemberVerificationForm,
@@ -55,80 +55,80 @@ export enum RESTJSONErrorCodes {
 	UnknownGuildScheduledEvent,
 	UnknownGuildScheduledEventUser,
 
-	UnknownTag = 10087,
+	UnknownTag = 10_087,
 
-	BotsCannotUseThisEndpoint = 20001,
+	BotsCannotUseThisEndpoint = 20_001,
 	OnlyBotsCanUseThisEndpoint,
 
-	ExplicitContentCannotBeSentToTheDesiredRecipient = 20009,
+	ExplicitContentCannotBeSentToTheDesiredRecipient = 20_009,
 
-	NotAuthorizedToPerformThisActionOnThisApplication = 20012,
+	NotAuthorizedToPerformThisActionOnThisApplication = 20_012,
 
-	ActionCannotBePerformedDueToSlowmodeRateLimit = 20016,
+	ActionCannotBePerformedDueToSlowmodeRateLimit = 20_016,
 	TheMazeIsntMeantForYou,
 	OnlyTheOwnerOfThisAccountCanPerformThisAction,
 
-	AnnouncementEditLimitExceeded = 20022,
+	AnnouncementEditLimitExceeded = 20_022,
 
-	UnderMinimumAge = 20024,
+	UnderMinimumAge = 20_024,
 
-	ChannelSendRateLimit = 20028,
+	ChannelSendRateLimit = 20_028,
 	ServerSendRateLimit,
 
-	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20031,
+	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20_031,
 
-	GuildPremiumSubscriptionLevelTooLow = 20035,
+	GuildPremiumSubscriptionLevelTooLow = 20_035,
 
-	MaximumNumberOfGuildsReached = 30001,
+	MaximumNumberOfGuildsReached = 30_001,
 	MaximumNumberOfFriendsReached,
 	MaximumNumberOfPinsReachedForTheChannel,
 	MaximumNumberOfRecipientsReached,
 	MaximumNumberOfGuildRolesReached,
 
-	MaximumNumberOfWebhooksReached = 30007,
+	MaximumNumberOfWebhooksReached = 30_007,
 	MaximumNumberOfEmojisReached,
 
-	MaximumNumberOfReactionsReached = 30010,
+	MaximumNumberOfReactionsReached = 30_010,
 	MaximumNumberOfGroupDMsReached,
 
-	MaximumNumberOfGuildChannelsReached = 30013,
+	MaximumNumberOfGuildChannelsReached = 30_013,
 
-	MaximumNumberOfAttachmentsInAMessageReached = 30015,
+	MaximumNumberOfAttachmentsInAMessageReached = 30_015,
 	MaximumNumberOfInvitesReached,
 
-	MaximumNumberOfAnimatedEmojisReached = 30018,
+	MaximumNumberOfAnimatedEmojisReached = 30_018,
 	MaximumNumberOfServerMembersReached,
 
-	MaximumNumberOfServerCategoriesReached = 30030,
+	MaximumNumberOfServerCategoriesReached = 30_030,
 
-	GuildAlreadyHasTemplate = 30031,
+	GuildAlreadyHasTemplate = 30_031,
 	MaximumNumberOfApplicationCommandsReached,
 	MaximumThreadParticipantsReached,
 	MaximumDailyApplicationCommandCreatesReached,
 	MaximumNumberOfNonGuildMemberBansHasBeenExceeded,
 
-	MaximumNumberOfBanFetchesHasBeenReached = 30037,
+	MaximumNumberOfBanFetchesHasBeenReached = 30_037,
 	MaximumNumberOfUncompletedGuildScheduledEventsReached,
 
-	MaximumNumberOfStickersReached = 30039,
+	MaximumNumberOfStickersReached = 30_039,
 	MaximumNumberOfPruneRequestsHasBeenReached,
 
-	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30042,
+	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30_042,
 
-	MaximumNumberOfEditsToMessagesOlderThanOneHourReached = 30046,
+	MaximumNumberOfEditsToMessagesOlderThanOneHourReached = 30_046,
 	MaximumNumberOfPinnedThreadsInForumHasBeenReached,
 	MaximumNumberOfTagsInForumHasBeenReached,
 
-	BitrateIsTooHighForChannelOfThisType = 30052,
+	BitrateIsTooHighForChannelOfThisType = 30_052,
 
-	MaximumNumberOfPremiumEmojisReached = 30056,
+	MaximumNumberOfPremiumEmojisReached = 30_056,
 
-	MaximumNumberOfWebhooksPerGuildReached = 30058,
+	MaximumNumberOfWebhooksPerGuildReached = 30_058,
 
-	MaximumNumberOfChannelPermissionOverwritesReached = 30060,
+	MaximumNumberOfChannelPermissionOverwritesReached = 30_060,
 	TheChannelsForThisGuildAreTooLarge,
 
-	Unauthorized = 40001,
+	Unauthorized = 40_001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
 	SendMessagesHasBeenTemporarilyDisabled,
@@ -136,25 +136,25 @@ export enum RESTJSONErrorCodes {
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
-	ConnectionHasBeenRevoked = 40012,
+	ConnectionHasBeenRevoked = 40_012,
 
-	TargetUserIsNotConnectedToVoice = 40032,
+	TargetUserIsNotConnectedToVoice = 40_032,
 	ThisMessageWasAlreadyCrossposted,
 
-	ApplicationCommandWithThatNameAlreadyExists = 40041,
+	ApplicationCommandWithThatNameAlreadyExists = 40_041,
 
-	ApplicationInteractionFailedToSend = 40043,
+	ApplicationInteractionFailedToSend = 40_043,
 
-	CannotSendAMessageInAForumChannel = 40058,
+	CannotSendAMessageInAForumChannel = 40_058,
 
-	InteractionHasAlreadyBeenAcknowledged = 40060,
+	InteractionHasAlreadyBeenAcknowledged = 40_060,
 	TagNamesMustBeUnique,
 	ServiceResourceIsBeingRateLimited,
 
-	ThereAreNoTagsAvailableThatCanBeSetByNonModerators = 40066,
+	ThereAreNoTagsAvailableThatCanBeSetByNonModerators = 40_066,
 	TagRequiredToCreateAForumPostInThisChannel,
 
-	MissingAccess = 50001,
+	MissingAccess = 50_001,
 	InvalidAccountType,
 	CannotExecuteActionOnDMChannel,
 	GuildWidgetDisabled,
@@ -172,96 +172,96 @@ export enum RESTJSONErrorCodes {
 	ProvidedTooFewOrTooManyMessagesToDelete,
 	InvalidMFALevel,
 
-	MessageCanOnlyBePinnedInTheChannelItWasSentIn = 50019,
+	MessageCanOnlyBePinnedInTheChannelItWasSentIn = 50_019,
 	InviteCodeInvalidOrTaken,
 	CannotExecuteActionOnSystemMessage,
 
-	CannotExecuteActionOnThisChannelType = 50024,
+	CannotExecuteActionOnThisChannelType = 50_024,
 	InvalidOAuth2AccessToken,
 	MissingRequiredOAuth2Scope,
 
-	InvalidWebhookToken = 50027,
+	InvalidWebhookToken = 50_027,
 	InvalidRole,
 
-	InvalidRecipients = 50033,
+	InvalidRecipients = 50_033,
 	OneOfTheMessagesProvidedWasTooOldForBulkDelete,
 	InvalidFormBodyOrContentType,
 	InviteAcceptedToGuildWithoutTheBotBeingIn,
 
-	InvalidActivityAction = 50039,
+	InvalidActivityAction = 50_039,
 
-	InvalidAPIVersion = 50041,
+	InvalidAPIVersion = 50_041,
 
-	FileUploadedExceedsMaximumSize = 50045,
+	FileUploadedExceedsMaximumSize = 50_045,
 	InvalidFileUploaded,
 
-	CannotSelfRedeemThisGift = 50054,
+	CannotSelfRedeemThisGift = 50_054,
 	InvalidGuild,
 
-	InvalidRequestOrigin = 50067,
+	InvalidRequestOrigin = 50_067,
 	InvalidMessageType,
 
-	PaymentSourceRequiredToRedeemGift = 50070,
+	PaymentSourceRequiredToRedeemGift = 50_070,
 
-	CannotModifyASystemWebhook = 50073,
+	CannotModifyASystemWebhook = 50_073,
 	CannotDeleteChannelRequiredForCommunityGuilds,
 
-	CannotEditStickersWithinMessage = 50080,
+	CannotEditStickersWithinMessage = 50_080,
 	InvalidStickerSent,
 
-	InvalidActionOnArchivedThread = 50083,
+	InvalidActionOnArchivedThread = 50_083,
 	InvalidThreadNotificationSettings,
 	ParameterEarlierThanCreation,
 	CommunityServerChannelsMustBeTextChannels,
 
-	TheEntityTypeOfTheEventIsDifferentFromTheEntityYouAreTryingToStartTheEventFor = 50091,
+	TheEntityTypeOfTheEventIsDifferentFromTheEntityYouAreTryingToStartTheEventFor = 50_091,
 
-	ServerNotAvailableInYourLocation = 50095,
+	ServerNotAvailableInYourLocation = 50_095,
 
-	ServerNeedsMonetizationEnabledToPerformThisAction = 50097,
+	ServerNeedsMonetizationEnabledToPerformThisAction = 50_097,
 
-	ServerNeedsMoreBoostsToPerformThisAction = 50101,
+	ServerNeedsMoreBoostsToPerformThisAction = 50_101,
 
-	RequestBodyContainsInvalidJSON = 50109,
+	RequestBodyContainsInvalidJSON = 50_109,
 
-	OwnershipCannotBeMovedToABotUser = 50132,
+	OwnershipCannotBeMovedToABotUser = 50_132,
 
-	FailedToResizeAssetBelowTheMinimumSize = 50138,
+	FailedToResizeAssetBelowTheMinimumSize = 50_138,
 
-	CannotMixSubscriptionAndNonSubscriptionRolesForAnEmoji = 50144,
+	CannotMixSubscriptionAndNonSubscriptionRolesForAnEmoji = 50_144,
 	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
 	UploadedFileNotFound,
 
-	VoiceMessagesDoNotSupportAdditionalContent = 50159,
+	VoiceMessagesDoNotSupportAdditionalContent = 50_159,
 	VoiceMessagesMustHaveASingleAudioAttachment,
 	VoiceMessagesMustHaveSupportingMetadata,
 	VoiceMessagesCannotBeEdited,
 	CannotDeleteGuildSubscriptionIntegration,
 
-	YouCannotSendVoiceMessagesInThisChannel = 50173,
+	YouCannotSendVoiceMessagesInThisChannel = 50_173,
 
-	YouDoNotHavePermissionToSendThisSticker = 50600,
+	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
-	TwoFactorAuthenticationIsRequired = 60003,
+	TwoFactorAuthenticationIsRequired = 60_003,
 
-	NoUsersWithDiscordTagExist = 80004,
+	NoUsersWithDiscordTagExist = 80_004,
 
-	ReactionWasBlocked = 90001,
+	ReactionWasBlocked = 90_001,
 
-	ApplicationNotYetAvailable = 110001,
+	ApplicationNotYetAvailable = 110_001,
 
-	APIResourceOverloaded = 130000,
+	APIResourceOverloaded = 130_000,
 
-	TheStageIsAlreadyOpen = 150006,
+	TheStageIsAlreadyOpen = 150_006,
 
-	CannotReplyWithoutPermissionToReadMessageHistory = 160002,
+	CannotReplyWithoutPermissionToReadMessageHistory = 160_002,
 
-	ThreadAlreadyCreatedForMessage = 160004,
+	ThreadAlreadyCreatedForMessage = 160_004,
 	ThreadLocked,
 	MaximumActiveThreads,
 	MaximumActiveAnnouncementThreads,
 
-	InvalidJSONForUploadedLottieFile = 170001,
+	InvalidJSONForUploadedLottieFile = 170_001,
 	UploadedLottiesCannotContainRasterizedImages,
 	StickerMaximumFramerateExceeded,
 	StickerFrameCountExceedsMaximumOf1000Frames,
@@ -269,19 +269,19 @@ export enum RESTJSONErrorCodes {
 	StickerFramerateIsTooSmallOrTooLarge,
 	StickerAnimationDurationExceedsMaximumOf5Seconds,
 
-	CannotUpdateAFinishedEvent = 180000,
+	CannotUpdateAFinishedEvent = 180_000,
 
-	FailedToCreateStageNeededForStageEvent = 180002,
+	FailedToCreateStageNeededForStageEvent = 180_002,
 
-	MessageWasBlockedByAutomaticModeration = 200000,
+	MessageWasBlockedByAutomaticModeration = 200_000,
 	TitleWasBlockedByAutomaticModeration,
 
-	WebhooksPostedToForumChannelsMustHaveAThreadNameOrThreadId = 220001,
+	WebhooksPostedToForumChannelsMustHaveAThreadNameOrThreadId = 220_001,
 	WebhooksPostedToForumChannelsCannotHaveBothAThreadNameAndThreadId,
 	WebhooksCanOnlyCreateThreadsInForumChannels,
 	WebhookServicesCannotBeUsedInForumChannels,
 
-	MessageBlockedByHarmfulLinksFilter = 240000,
+	MessageBlockedByHarmfulLinksFilter = 240_000,
 }
 
 /**

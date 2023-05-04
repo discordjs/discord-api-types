@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/voice
  */
 
-import type { APIGuildMember } from './guild';
 import type { Snowflake } from '../../globals';
+import type { APIGuildMember } from './guild';
 
 /**
  * https://discord.com/developers/docs/resources/voice#voice-state-object

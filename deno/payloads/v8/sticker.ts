@@ -2,11 +2,12 @@
  * Types extracted from https://discord.com/developers/docs/resources/sticker
  */
 
-import type { APIUser } from './user.ts';
 import type { Snowflake } from '../../globals.ts';
+import type { APIUser } from './user.ts';
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APISticker {
@@ -32,6 +33,7 @@ export interface APISticker {
 	tags: string;
 	/**
 	 * Previously the sticker asset hash, now an empty string
+	 *
 	 * @deprecated
 	 */
 	asset: '';
@@ -67,6 +69,7 @@ export interface APISticker {
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum StickerType {
@@ -82,6 +85,7 @@ export enum StickerType {
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum StickerFormatType {
@@ -92,12 +96,14 @@ export enum StickerFormatType {
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-item-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIStickerItem = Pick<APISticker, 'id' | 'name' | 'format_type'>;
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-pack-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIStickerPack {

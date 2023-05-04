@@ -17,6 +17,7 @@ import type { APIWebhook } from './webhook.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIAuditLog {
@@ -28,6 +29,7 @@ export interface APIAuditLog {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIAuditLogEntry {
@@ -42,6 +44,7 @@ export interface APIAuditLogEntry {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum AuditLogEvent {
@@ -92,6 +95,7 @@ export enum AuditLogEvent {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIAuditLogOptions {
@@ -168,6 +172,7 @@ export enum AuditLogOptionsType {
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChange =
@@ -224,60 +229,70 @@ export type APIAuditLogChange =
 
 /**
  * Returned when a guild's name is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyName = AuditLogChangeData<'name', string>;
 
 /**
  * Returned when a guild's icon is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyIconHash = AuditLogChangeData<'icon_hash', string>;
 
 /**
  * Returned when a guild's splash is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeySplashHash = AuditLogChangeData<'splash_hash', string>;
 
 /**
  * Returned when a guild's owner ID is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyOwnerID = AuditLogChangeData<'owner_id', string>;
 
 /**
  * Returned when a guild's region is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyRegion = AuditLogChangeData<'region', string>;
 
 /**
  * Returned when a guild's afk_channel_id is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyAFKChannelID = AuditLogChangeData<'afk_channel_id', string>;
 
 /**
  * Returned when a guild's afk_timeout is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyAFKTimeout = AuditLogChangeData<'afk_timeout', number>;
 
 /**
  * Returned when a guild's mfa_level is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyMFALevel = AuditLogChangeData<'mfa_level', GuildMFALevel>;
 
 /**
  * Returned when a guild's verification_level is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyVerificationLevel = AuditLogChangeData<'verification_level', GuildVerificationLevel>;
 
 /**
  * Returned when a guild's explicit_content_filter is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyExplicitContentFilter = AuditLogChangeData<
@@ -287,6 +302,7 @@ export type APIAuditLogChangeKeyExplicitContentFilter = AuditLogChangeData<
 
 /**
  * Returned when a guild's default_message_notifications is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyDefaultMessageNotifications = AuditLogChangeData<
@@ -296,78 +312,91 @@ export type APIAuditLogChangeKeyDefaultMessageNotifications = AuditLogChangeData
 
 /**
  * Returned when a guild's vanity_url_code is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyVanityURLCode = AuditLogChangeData<'vanity_url_code', string>;
 
 /**
  * Returned when new role(s) are added
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKey$Add = AuditLogChangeData<'$add', APIRole[]>;
 
 /**
  * Returned when role(s) are removed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKey$Remove = AuditLogChangeData<'$remove', APIRole[]>;
 
 /**
  * Returned when there is a change in number of days after which inactive and role-unassigned members are kicked
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyPruneDeleteDays = AuditLogChangeData<'prune_delete_days', number>;
 
 /**
  * Returned when a guild's widget is enabled
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyWidgetEnabled = AuditLogChangeData<'widget_enabled', boolean>;
 
 /**
  * Returned when a guild's widget_channel_id is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyWidgetChannelID = AuditLogChangeData<'widget_channel_id', string>;
 
 /**
  * Returned when a guild's system_channel_id is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeySystemChannelID = AuditLogChangeData<'system_channel_id', string>;
 
 /**
  * Returned when a channel's position is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyPosition = AuditLogChangeData<'position', number>;
 
 /**
  * Returned when a channel's topic is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyTopic = AuditLogChangeData<'topic', string>;
 
 /**
  * Returned when a voice channel's bitrate is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyBitrate = AuditLogChangeData<'bitrate', number>;
 
 /**
  * Returned when a channel's permission overwrites is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyPermissionOverwrites = AuditLogChangeData<'permission_overwrites', APIOverwrite[]>;
 
 /**
  * Returned when a channel's NSFW restriction is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyNSFW = AuditLogChangeData<'nsfw', boolean>;
 
 /**
  * The application ID of the added or removed Webhook or Bot
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyApplicationID = AuditLogChangeData<'application_id', string>;
@@ -375,12 +404,14 @@ export type APIAuditLogChangeKeyApplicationID = AuditLogChangeData<'application_
 /**
  * Returned when a channel's amount of seconds a user has to wait before sending another message
  * is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyRateLimitPerUser = AuditLogChangeData<'rate_limit_per_user', number>;
 
 /**
  * Returned when a permission bitfield is changed
+ *
  * @deprecated Use `permissions_new` instead
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -388,30 +419,35 @@ export type APIAuditLogChangeKeyPermissions = AuditLogChangeData<'permissions', 
 
 /**
  * Returned when a permission bitfield is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyPermissionsNew = AuditLogChangeData<'permissions_new', string>;
 
 /**
  * Returned when a role's color is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyColor = AuditLogChangeData<'color', number>;
 
 /**
  * Returned when a role's hoist status is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyHoist = AuditLogChangeData<'hoist', boolean>;
 
 /**
  * Returned when a role's mentionable status is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyMentionable = AuditLogChangeData<'mentionable', boolean>;
 
 /**
  * Returned when an overwrite's allowed permissions bitfield is changed
+ *
  * @deprecated Use `allow_new` instead
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -419,12 +455,14 @@ export type APIAuditLogChangeKeyAllow = AuditLogChangeData<'allow', number>;
 
 /**
  * Returned when an overwrite's allowed permissions bitfield is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyAllowNew = AuditLogChangeData<'allow_new', string>;
 
 /**
  * Returned when an overwrite's denied permissions bitfield is changed
+ *
  * @deprecated Use `deny_new` instead
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -432,78 +470,91 @@ export type APIAuditLogChangeKeyDeny = AuditLogChangeData<'deny', number>;
 
 /**
  * Returned when an overwrite's denied permissions bitfield is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyDenyNew = AuditLogChangeData<'deny_new', string>;
 
 /**
  * Returned when an invite's code is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyCode = AuditLogChangeData<'code', string>;
 
 /**
  * Returned when an invite's channel_id is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyChannelID = AuditLogChangeData<'channel_id', string>;
 
 /**
  * Returned when an invite's inviter_id is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyInviterID = AuditLogChangeData<'inviter_id', string>;
 
 /**
  * Returned when an invite's max_uses is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyMaxUses = AuditLogChangeData<'max_uses', number>;
 
 /**
  * Returned when an invite's uses is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyUses = AuditLogChangeData<'uses', number>;
 
 /**
  * Returned when an invite's max_age is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyMaxAge = AuditLogChangeData<'max_age', number>;
 
 /**
  * Returned when an invite's temporary status is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyTemporary = AuditLogChangeData<'temporary', boolean>;
 
 /**
  * Returned when a user's deaf status is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyDeaf = AuditLogChangeData<'deaf', boolean>;
 
 /**
  * Returned when a user's mute status is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyMute = AuditLogChangeData<'mute', boolean>;
 
 /**
  * Returned when a user's nick is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyNick = AuditLogChangeData<'mute', boolean>;
 
 /**
  * Returned when a user's avatar_hash is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyAvatarHash = AuditLogChangeData<'avatar_hash', string>;
 
 /**
  * The ID of the changed entity - sometimes used in conjunction with other keys
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIAuditLogChangeKeyID {
@@ -514,24 +565,28 @@ export interface APIAuditLogChangeKeyID {
 
 /**
  * The type of entity created
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyType = AuditLogChangeData<'type', ChannelType | string>;
 
 /**
  * Returned when an integration's enable_emoticons is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyEnableEmoticons = AuditLogChangeData<'enable_emoticons', boolean>;
 
 /**
  * Returned when an integration's expire_behavior is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyExpireBehavior = AuditLogChangeData<'expire_behavior', IntegrationExpireBehavior>;
 
 /**
  * Returned when an integration's expire_grace_period is changed
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChangeKeyExpireGracePeriod = AuditLogChangeData<'expire_grace_period', number>;

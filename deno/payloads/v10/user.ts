@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
-import type { APIGuildIntegration } from './guild.ts';
 import type { Snowflake } from '../../globals.ts';
+import type { APIGuildIntegration } from './guild.ts';
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object
@@ -171,28 +171,25 @@ export enum UserFlags {
 	 * User's account has been [quarantined](https://support.discord.com/hc/articles/6461420677527) based on recent activity
 	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
-	 *
 	 * @privateRemarks
 	 *
 	 * This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
 	 */
-	Quarantined = 17592186044416,
+	Quarantined = 17_592_186_044_416,
 	/**
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
-	 *
 	 * @privateRemarks
 	 *
 	 * This value would be 1 << 50, but bit shifting above 1 << 30 requires bigints
 	 */
-	Collaborator = 1125899906842624,
+	Collaborator = 1_125_899_906_842_624,
 	/**
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
-	 *
 	 * @privateRemarks
 	 *
 	 * This value would be 1 << 51, but bit shifting above 1 << 30 requires bigints
 	 */
-	RestrictedCollaborator = 2251799813685248,
+	RestrictedCollaborator = 2_251_799_813_685_248,
 }
 
 /**

@@ -1,13 +1,20 @@
 {
-	"extends": "marine/prettier/node",
+	"extends": ["neon/common", "neon/node", "neon/typescript", "neon/prettier"],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"project": "./tsconfig.eslint.json",
-		"extraFileExtensions": [".mjs"]
+		"project": "./tsconfig.eslint.json"
 	},
 	"plugins": ["local"],
 	"rules": {
+		"local/explicit-undefined-on-optional-properties": ["error", { "interfaceEndings": ["JSONBody"] }],
 		"local/explicitly-optional-undefined-properties": ["error", { "interfaceEndings": ["JSONBody"] }],
-		"local/explicit-undefined-on-optional-properties": ["error", { "interfaceEndings": ["JSONBody"] }]
+		"@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+		"@typescript-eslint/prefer-literal-enum-member": "off",
+		"@typescript-eslint/sort-type-union-intersection-members": "off",
+		"import/extensions": "off",
+		"tsdoc/syntax": "off",
+		"typescript-sort-keys/interface": "off",
+		"typescript-sort-keys/string-enum": "off",
+		"unicorn/prefer-math-trunc": "off"
 	}
 }

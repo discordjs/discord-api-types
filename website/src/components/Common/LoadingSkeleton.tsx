@@ -1,6 +1,7 @@
 import { useColorMode } from '@docusaurus/theme-common';
 import clsx from 'clsx';
-import React, { CSSProperties, FC, memo } from 'react';
+import type { CSSProperties, FC } from 'react';
+import React, { memo } from 'react';
 import styles from './LoadingSkeleton.module.css';
 
 const LoadingSkeleton: FC<CSSProperties> = (props) => {

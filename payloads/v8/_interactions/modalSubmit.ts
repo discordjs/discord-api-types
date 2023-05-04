@@ -40,6 +40,7 @@ export interface APIModalSubmission {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission> &
@@ -47,12 +48,14 @@ export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.Modal
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalSubmitDMInteraction = APIDMInteractionWrapper<APIModalSubmitInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIModalSubmitGuildInteraction = APIGuildInteractionWrapper<APIModalSubmitInteraction>;

@@ -4,7 +4,8 @@
  * This source code is licensed under the MIT license found in the
  * THIRD_PARTY_LICENSE file in the `website` directory of this source tree.
  */
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import Feature from './Features/Feature';
 import StatisticsFeature from './Features/StatisticsFeature';
 import type { FeatureItem } from './Features/Types';
@@ -25,13 +26,11 @@ const FeatureList: FeatureItem[] = [
 	{
 		title: 'Key Features',
 		description: (
-			<>
-				<ul>
-					<li>Supports both Node.js and Deno</li>
-					<li>Supports both CommonJS and ESM</li>
-					<li>Receives updates as fast as they are documented</li>
-				</ul>
-			</>
+			<ul>
+				<li>Supports both Node.js and Deno</li>
+				<li>Supports both CommonJS and ESM</li>
+				<li>Receives updates as fast as they are documented</li>
+			</ul>
 		)
 	}
 ];

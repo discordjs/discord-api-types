@@ -3,6 +3,7 @@ import type { APIInvite } from '../../payloads/v8/mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/invite#get-invite
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTGetAPIInviteQuery {
@@ -27,6 +28,7 @@ export type RESTGetAPIInviteResult = APIInvite;
 
 /**
  * https://discord.com/developers/docs/resources/invite#delete-invite
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIInviteResult = APIInvite;

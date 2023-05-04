@@ -18,7 +18,7 @@ await writeFile(bigJsonPath, JSON.stringify(parsed));
 
 console.log(`✅ Website version created for ${json.version}`);
 
-const versionsJsonPath = new URL('./versions.json', cwd);
+const versionsJsonPath = new URL('versions.json', cwd);
 
 /** @type {string[]} */
 const allVersions = JSON.parse(await readFile(versionsJsonPath, 'utf8'));
@@ -27,8 +27,8 @@ const versionToDelete = allVersions.pop();
 
 await writeFile(versionsJsonPath, JSON.stringify(allVersions, null, 2));
 
-await rm(new URL(`./versioned_docs/version-${versionToDelete}`, cwd), { force: true, recursive: true });
-await rm(new URL(`./versioned_sidebars/version-${versionToDelete}-sidebars.json`, cwd), {
+await rm(new URL(`versioned_docs/version-${versionToDelete}`, cwd), { force: true, recursive: true });
+await rm(new URL(`versioned_sidebars/version-${versionToDelete}-sidebars.json`, cwd), {
 	force: true,
 	recursive: true,
 });

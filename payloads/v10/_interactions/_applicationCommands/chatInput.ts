@@ -1,3 +1,6 @@
+import type { APIInteractionDataResolved } from '../../index';
+import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
 	APIApplicationCommandAttachmentOption,
 	APIApplicationCommandInteractionDataAttachmentOption,
@@ -43,9 +46,6 @@ import type {
 	APIApplicationCommandUserOption,
 } from './_chatInput/user';
 import type { APIBaseApplicationCommandInteractionData } from './internals';
-import type { APIInteractionDataResolved } from '../../index';
-import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 
 export * from './_chatInput/attachment';
 export * from './_chatInput/base';

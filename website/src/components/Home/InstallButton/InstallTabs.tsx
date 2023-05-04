@@ -2,45 +2,46 @@ import { npmToPnpm } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 import npmToYarn from 'npm-to-yarn';
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import InstallTabButton from './InstallTabButton';
 import styles from './InstallTabs.module.css';
+
+async function handleClickInstallButton(command: string) {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+	await window.navigator.clipboard.writeText(command);
+}
 
 const InstallTabs: FC = () => {
 	const npmInstallCommand = 'npm install discord-api-types';
 	const yarnInstallCommand = npmToYarn(npmInstallCommand, 'yarn');
 	const pnpmInstallCommand = npmToPnpm(npmInstallCommand);
 
-	const handleClickInstallButton = async (command: string) => {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-		await window.navigator.clipboard.writeText(command);
-	};
-
 	return (
 		<div className={styles.buttons}>
-			<Tabs groupId="npm2yarn2pnpm" className={styles.tabs}>
-				<TabItem value="npm" label="npm" default>
+			<Tabs className={styles.tabs} groupId="npm2yarn2pnpm">
+				<TabItem default label="npm" value="npm">
 					<InstallTabButton
-						installCommand={npmInstallCommand}
 						handleClickInstallButton={() => {
 							void handleClickInstallButton(npmInstallCommand);
 						}}
+						installCommand={npmInstallCommand}
 					/>
 				</TabItem>
-				<TabItem value="yarn" label="yarn">
+				<TabItem label="yarn" value="yarn">
 					<InstallTabButton
-						installCommand={yarnInstallCommand}
 						handleClickInstallButton={() => {
 							void handleClickInstallButton(yarnInstallCommand);
 						}}
+						installCommand={yarnInstallCommand}
 					/>
 				</TabItem>
-				<TabItem value="pnpm" label="pnpm">
+				<TabItem label="pnpm" value="pnpm">
 					<InstallTabButton
-						installCommand={pnpmInstallCommand}
 						handleClickInstallButton={() => {
 							void handleClickInstallButton(pnpmInstallCommand);
 						}}
+						installCommand={pnpmInstallCommand}
 					/>
 				</TabItem>
 			</Tabs>
