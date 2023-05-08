@@ -4,10 +4,10 @@
  *  - https://discord.com/developers/docs/topics/gateway-events
  */
 
+import type { Snowflake } from '../../globals';
 import type { APIChannel, APIThreadMember } from './channel';
 import type { APIEmoji } from './emoji';
 import type { APIUser } from './user';
-import type { Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway

@@ -1,4 +1,3 @@
-import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 import type { Snowflake } from '../../../../globals.ts';
 import type { APIMessage } from '../../channel.ts';
 import type { APIUser } from '../../user.ts';
@@ -8,9 +7,11 @@ import type {
 	ApplicationCommandType,
 } from '../applicationCommands.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
+import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUserApplicationCommandInteractionData
@@ -21,6 +22,7 @@ export interface APIUserApplicationCommandInteractionData
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUserApplicationCommandInteractionDataResolved {
@@ -30,6 +32,7 @@ export interface APIUserApplicationCommandInteractionDataResolved {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageApplicationCommandInteractionData
@@ -40,6 +43,7 @@ export interface APIMessageApplicationCommandInteractionData
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageApplicationCommandInteractionDataResolved {
@@ -48,6 +52,7 @@ export interface APIMessageApplicationCommandInteractionDataResolved {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuInteractionData =
@@ -56,6 +61,7 @@ export type APIContextMenuInteractionData =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIUserApplicationCommandInteraction =
@@ -63,12 +69,14 @@ export type APIUserApplicationCommandInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIUserApplicationCommandDMInteraction = APIDMInteractionWrapper<APIUserApplicationCommandInteraction>;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIUserApplicationCommandGuildInteraction =
@@ -76,6 +84,7 @@ export type APIUserApplicationCommandGuildInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageApplicationCommandInteraction =
@@ -83,6 +92,7 @@ export type APIMessageApplicationCommandInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageApplicationCommandDMInteraction =
@@ -90,6 +100,7 @@ export type APIMessageApplicationCommandDMInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIMessageApplicationCommandGuildInteraction =
@@ -97,12 +108,14 @@ export type APIMessageApplicationCommandGuildInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuInteraction = APIUserApplicationCommandInteraction | APIMessageApplicationCommandInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuDMInteraction =
@@ -111,6 +124,7 @@ export type APIContextMenuDMInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuGuildInteraction =

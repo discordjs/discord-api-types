@@ -11,6 +11,7 @@ import type { GatewayVoiceState } from './voice';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIUnavailableGuild {
@@ -99,6 +100,7 @@ export interface APIGuild extends APIPartialGuild {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildDefaultMessageNotifications {
@@ -108,6 +110,7 @@ export enum GuildDefaultMessageNotifications {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildExplicitContentFilter {
@@ -118,6 +121,7 @@ export enum GuildExplicitContentFilter {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildMFALevel {
@@ -127,6 +131,7 @@ export enum GuildMFALevel {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-verification-level
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildVerificationLevel {
@@ -139,6 +144,7 @@ export enum GuildVerificationLevel {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-premium-tier
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildPremiumTier {
@@ -150,6 +156,7 @@ export enum GuildPremiumTier {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildSystemChannelFlags {
@@ -159,6 +166,7 @@ export enum GuildSystemChannelFlags {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-object-guild-features
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildFeature {
@@ -180,6 +188,7 @@ export enum GuildFeature {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-preview-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGuildPreview {
@@ -202,6 +211,7 @@ export type APIGuildWidget = APIGuildWidgetSettings;
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-widget-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGuildWidgetSettings {
@@ -211,6 +221,7 @@ export interface APIGuildWidgetSettings {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGuildMember {
@@ -225,6 +236,7 @@ export interface APIGuildMember {
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGuildIntegration {
@@ -247,6 +259,7 @@ export interface APIGuildIntegration {
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum IntegrationExpireBehavior {
@@ -256,6 +269,7 @@ export enum IntegrationExpireBehavior {
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-account-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIIntegrationAccount {
@@ -265,6 +279,7 @@ export interface APIIntegrationAccount {
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-application-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIGuildIntegrationApplication {
@@ -278,6 +293,7 @@ export interface APIGuildIntegrationApplication {
 
 /**
  * https://discord.com/developers/docs/resources/guild#ban-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIBan {
@@ -287,6 +303,7 @@ export interface APIBan {
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum GuildWidgetStyle {

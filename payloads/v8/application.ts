@@ -2,13 +2,14 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
+import type { Permissions, Snowflake } from '../../globals';
 import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
-import type { Permissions, Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIApplication {
@@ -116,6 +117,7 @@ export interface APIApplicationInstallParams {
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-flags
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ApplicationFlags {

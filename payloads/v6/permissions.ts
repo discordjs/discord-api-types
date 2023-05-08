@@ -9,6 +9,7 @@
  * convert them in a number by wrapping it in `Number()`, however be careful as any
  * further bits added may cause issues if done so. Try to use BigInts as much as possible
  * or modules that can replicate them in some way.
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export const PermissionFlagsBits = {
@@ -22,37 +23,39 @@ export const PermissionFlagsBits = {
 	VIEW_AUDIT_LOG: 128n,
 	PRIORITY_SPEAKER: 256n,
 	STREAM: 512n,
-	VIEW_CHANNEL: 1024n,
-	SEND_MESSAGES: 2048n,
-	SEND_TTS_MESSAGES: 4096n,
-	MANAGE_MESSAGES: 8192n,
-	EMBED_LINKS: 16384n,
-	ATTACH_FILES: 32768n,
-	READ_MESSAGE_HISTORY: 65536n,
-	MENTION_EVERYONE: 131072n,
-	USE_EXTERNAL_EMOJIS: 262144n,
-	VIEW_GUILD_INSIGHTS: 524288n,
-	CONNECT: 1048576n,
-	SPEAK: 2097152n,
-	MUTE_MEMBERS: 4194304n,
-	DEAFEN_MEMBERS: 8388608n,
-	MOVE_MEMBERS: 16777216n,
-	USE_VAD: 33554432n,
-	CHANGE_NICKNAME: 67108864n,
-	MANAGE_NICKNAMES: 134217728n,
-	MANAGE_ROLES: 268435456n,
-	MANAGE_WEBHOOKS: 536870912n,
-	MANAGE_EMOJIS: 1073741824n,
+	VIEW_CHANNEL: 1_024n,
+	SEND_MESSAGES: 2_048n,
+	SEND_TTS_MESSAGES: 4_096n,
+	MANAGE_MESSAGES: 8_192n,
+	EMBED_LINKS: 16_384n,
+	ATTACH_FILES: 32_768n,
+	READ_MESSAGE_HISTORY: 65_536n,
+	MENTION_EVERYONE: 131_072n,
+	USE_EXTERNAL_EMOJIS: 262_144n,
+	VIEW_GUILD_INSIGHTS: 524_288n,
+	CONNECT: 1_048_576n,
+	SPEAK: 2_097_152n,
+	MUTE_MEMBERS: 4_194_304n,
+	DEAFEN_MEMBERS: 8_388_608n,
+	MOVE_MEMBERS: 16_777_216n,
+	USE_VAD: 33_554_432n,
+	CHANGE_NICKNAME: 67_108_864n,
+	MANAGE_NICKNAMES: 134_217_728n,
+	MANAGE_ROLES: 268_435_456n,
+	MANAGE_WEBHOOKS: 536_870_912n,
+	MANAGE_EMOJIS: 1_073_741_824n,
 } as const;
 
 /**
  * Freeze the object of bits, preventing any modifications to it.
+ *
  * @internal
  */
 Object.freeze(PermissionFlagsBits);
 
 /**
  * https://discord.com/developers/docs/topics/permissions#role-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIRole {

@@ -1,6 +1,6 @@
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
 import type { ComponentType } from '../channel';
 import type { APIBaseInteraction, InteractionType } from '../interactions';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from './base';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

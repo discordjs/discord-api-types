@@ -1,3 +1,5 @@
+import type { Permissions, Snowflake } from '../../../globals.ts';
+import type { LocalizationMap } from '../../../v9.ts';
 import type {
 	APIApplicationCommandOption,
 	APIChatInputApplicationCommandDMInteraction,
@@ -13,8 +15,6 @@ import type {
 } from './_applicationCommands/contextMenu.ts';
 import type { APIBaseInteraction } from './base.ts';
 import type { InteractionType } from './responses.ts';
-import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { LocalizationMap } from '../../../v9.ts';
 
 export * from './_applicationCommands/chatInput.ts';
 export * from './_applicationCommands/contextMenu.ts';
@@ -80,6 +80,7 @@ export interface APIApplicationCommand {
 	 * Whether the command is enabled by default when the app is added to a guild
 	 *
 	 * If missing, this property should be assumed as `true`
+	 *
 	 * @deprecated Use `dm_permission` and/or `default_member_permissions` instead
 	 */
 	default_permission?: boolean;

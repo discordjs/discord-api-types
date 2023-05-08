@@ -1,4 +1,3 @@
-import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
 	APIBan,
@@ -32,6 +31,7 @@ import type {
 	StrictPartial,
 	StrictRequired,
 } from '../../utils/internals.ts';
+import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 
 export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;
@@ -110,12 +110,13 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * New guild roles
 	 *
-	 * **When using this parameter, the first member of the array is used to change properties of the guild's @everyone role.
-	 * If you are trying to bootstrap a guild with additional roles, keep this in mind.**
+	 * @remarks
+	 * When using this parameter, the first member of the array is used to change properties of the guild's `@everyone` role.
+	 * If you are trying to bootstrap a guild with additional roles, keep this in mind.
 	 *
-	 * *When using this parameter, the required `id` field within each role object is an integer placeholder,
+	 * Also, the required `id` field within each role object is an integer placeholder,
 	 * and will be replaced by the API upon consumption. Its purpose is to allow you to overwrite a role's permissions
-	 * in a channel when also passing in channels with the channels array.*
+	 * in a channel when also passing in channels with the channels array.
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
 	 */
@@ -123,9 +124,10 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * New guild's channels
 	 *
-	 * **When using the channels parameter, the `position` field is ignored, and none of the default channels are created.**
+	 * @remarks
+	 * When using the channels parameter, the `position` field is ignored, and none of the default channels are created.
 	 *
-	 * *When using the channels parameter, the `id` field within each channel object may be set to an integer placeholder,
+	 * Also, the `id` field within each channel object may be set to an integer placeholder,
 	 * and will be replaced by the API upon consumption. Its purpose is to allow you to create `GUILD_CATEGORY` channels
 	 * by setting the `parent_id` field on any children to the category's id field.
 	 * Category channels must be listed before any children.*
@@ -140,7 +142,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: 60 | 300 | 900 | 1800 | 3600 | undefined;
+	afk_timeout?: 60 | 300 | 900 | 1_800 | 3_600 | undefined;
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
@@ -240,7 +242,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: 60 | 300 | 900 | 1800 | 3600 | undefined;
+	afk_timeout?: 60 | 300 | 900 | 1_800 | 3_600 | undefined;
 	/**
 	 * base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the guild has `ANIMATED_ICON` feature)
 	 *
@@ -333,7 +335,7 @@ export type RESTPostAPIGuildChannelResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  */
-export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
+export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 	/**
 	 * Channel id
 	 */
@@ -350,7 +352,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
 	 * The new parent id of this channel
 	 */
 	parent_id?: Snowflake | null | undefined;
-}>;
+}[];
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
@@ -657,7 +659,7 @@ export type RESTPostAPIGuildRoleResult = APIRole;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
  */
-export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
+export type RESTPatchAPIGuildRolePositionsJSONBody = {
 	/**
 	 * Role id
 	 */
@@ -666,7 +668,7 @@ export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
 	 * Sorting position of the role
 	 */
 	position?: number | undefined;
-}>;
+}[];
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions

@@ -1,5 +1,5 @@
-import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 import type { LocalizationMap } from '../../../../../v9.ts';
+import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 
 export interface APIApplicationCommandOptionBase<Type extends ApplicationCommandOptionType> {
 	type: Type;
@@ -22,6 +22,7 @@ export type APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
 > =
 	| (Base & {
 			autocomplete: true;
+			choices?: [];
 	  })
 	| (Base & {
 			autocomplete?: false;

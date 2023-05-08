@@ -82,6 +82,7 @@ export interface APIInvite {
 	expires_at?: string | null;
 	/**
 	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
+	 *
 	 * @deprecated
 	 */
 	stage_instance?: APIInviteStageInstance;

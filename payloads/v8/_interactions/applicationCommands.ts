@@ -1,3 +1,6 @@
+import type { Permissions, Snowflake } from '../../../globals';
+import type { APIPartialChannel } from '../channel';
+import type { APIGuildMember } from '../guild';
 import type {
 	APIApplicationCommandOption,
 	APIChatInputApplicationCommandDMInteraction,
@@ -13,9 +16,6 @@ import type {
 } from './_applicationCommands/contextMenu';
 import type { APIBaseInteraction } from './base';
 import type { InteractionType } from './responses';
-import type { Permissions, Snowflake } from '../../../globals';
-import type { APIPartialChannel } from '../channel';
-import type { APIGuildMember } from '../guild';
 
 export * from './_applicationCommands/chatInput';
 export * from './_applicationCommands/contextMenu';
@@ -23,6 +23,7 @@ export * from './_applicationCommands/permissions';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIApplicationCommand {
@@ -68,6 +69,7 @@ export interface APIApplicationCommand {
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum ApplicationCommandType {
@@ -78,6 +80,7 @@ export enum ApplicationCommandType {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteractionData =
@@ -86,6 +89,7 @@ export type APIApplicationCommandInteractionData =
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
@@ -94,6 +98,7 @@ export interface APIInteractionDataResolvedChannel extends Required<APIPartialCh
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
@@ -102,6 +107,7 @@ export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMemb
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
@@ -110,12 +116,14 @@ export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationC
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteraction = APIChatInputApplicationCommandInteraction | APIContextMenuInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandDMInteraction =
@@ -124,6 +132,7 @@ export type APIApplicationCommandDMInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandGuildInteraction =

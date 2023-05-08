@@ -4,10 +4,10 @@
  *  - https://discord.com/developers/docs/topics/gateway-events
  */
 
+import type { Snowflake } from '../../globals';
 import type { APIChannel, APIThreadMember } from './channel';
 import type { APIEmoji } from './emoji';
 import type { APIUser } from './user';
-import type { Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway
@@ -129,6 +129,7 @@ export interface GatewayPresenceClientStatus {
 export interface GatewayActivity {
 	/**
 	 * The activity's id
+	 *
 	 * @unstable
 	 */
 	id: string;
@@ -156,11 +157,13 @@ export interface GatewayActivity {
 	timestamps?: GatewayActivityTimestamps;
 	/**
 	 * The Spotify song id
+	 *
 	 * @unstable
 	 */
 	sync_id?: string;
 	/**
 	 * The platform this activity is being done on
+	 *
 	 * @unstable You can use {@link ActivityPlatform} as a stepping stone, but this might be inaccurate
 	 */
 	platform?: string;
