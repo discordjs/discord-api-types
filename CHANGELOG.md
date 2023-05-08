@@ -1,3 +1,9 @@
+## [0.37.42](https://github.com/discordjs/discord-api-types/compare/0.37.41...0.37.42) (2023-05-08)
+
+### Bug Fixes
+
+- allow sending empty choices with autocomplete: true ([#762](https://github.com/discordjs/discord-api-types/issues/762)) ([0e6b19d](https://github.com/discordjs/discord-api-types/commit/0e6b19d2bcfe6e9806d3d20125668b3464845517))
+
 ## [0.37.41](https://github.com/discordjs/discord-api-types/compare/0.37.40...0.37.41) (2023-05-01)
 
 ### Bug Fixes
