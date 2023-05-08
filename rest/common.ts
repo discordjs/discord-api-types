@@ -247,7 +247,7 @@ export enum RESTJSONErrorCodes {
 	NoUsersWithDiscordTagExist = 80_004,
 
 	ReactionWasBlocked = 90_001,
-  UserCannotUseBurstReactions,
+	UserCannotUseBurstReactions,
 
 	ApplicationNotYetAvailable = 110_001,
 
