@@ -240,6 +240,8 @@ export enum RESTJSONErrorCodes {
 
 	YouCannotSendVoiceMessagesInThisChannel = 50_173,
 
+	TheUserAccountMustFirstBeVerified = 50_178,
+
 	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
 	TwoFactorAuthenticationIsRequired = 60_003,
