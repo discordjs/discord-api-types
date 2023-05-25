@@ -2,6 +2,7 @@ import type { APIAuditLog, AuditLogEvent } from '../../payloads/v6/auditLog.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPIAuditLogQuery {

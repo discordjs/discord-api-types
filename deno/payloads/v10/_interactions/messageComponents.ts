@@ -1,12 +1,12 @@
+import type { Snowflake } from '../../../globals.ts';
+import type { ComponentType } from '../channel.ts';
+import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
 import type {
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,
 	APIInteractionDataResolved,
 	APIUserInteractionDataResolved,
 } from './base.ts';
-import type { Snowflake } from '../../../globals.ts';
-import type { ComponentType } from '../channel.ts';
-import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
 
 export type APIMessageComponentInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,

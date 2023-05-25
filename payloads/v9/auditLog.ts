@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
+import type { Snowflake } from '../../globals';
 import type {
 	APIAutoModerationAction,
 	APIAutoModerationRule,
@@ -29,7 +30,6 @@ import type { StageInstancePrivacyLevel } from './stageInstance';
 import type { StickerFormatType } from './sticker';
 import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
-import type { Snowflake } from '../../globals';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure

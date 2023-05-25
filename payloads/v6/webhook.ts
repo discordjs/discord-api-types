@@ -8,6 +8,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#webhook-object
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIWebhook {

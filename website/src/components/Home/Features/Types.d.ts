@@ -1,18 +1,18 @@
 import type { ReactNode } from 'react';
 
 export interface FeatureItem {
-	title: string;
 	description: ReactNode;
+	title: string;
 }
 
 export interface NpmData {
-	start: string;
+	downloads: {
+		day: string;
+		downloads: number;
+	}[];
 	end: string;
 	package: string;
-	downloads: Array<{
-		downloads: number;
-		day: string;
-	}>;
+	start: string;
 }
 
 export interface RepoData {

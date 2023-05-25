@@ -2,13 +2,13 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
+import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { PresenceUpdateStatus } from './gateway.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIUser } from './user.ts';
-import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
@@ -110,6 +110,7 @@ export interface APIGuild extends APIPartialGuild {
 	 * Voice region id for the guild
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 *
 	 * @deprecated This field has been deprecated in favor of `rtc_region` on the channel.
 	 */
 	region: string;
@@ -120,7 +121,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout: 60 | 300 | 900 | 1800 | 3600;
+	afk_timeout: 60 | 300 | 900 | 1_800 | 3_600;
 	/**
 	 * `true` if the guild widget is enabled
 	 */
@@ -652,7 +653,7 @@ export interface APIGuildMember {
 	/**
 	 * Whether the user has not yet passed the guild's Membership Screening requirements
 	 *
-	 * *If this field is not present, it can be assumed as `false`.*
+	 * @remarks If this field is not present, it can be assumed as `false`.
 	 */
 	pending?: boolean;
 	/**

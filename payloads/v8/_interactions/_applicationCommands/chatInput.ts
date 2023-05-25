@@ -1,3 +1,12 @@
+import type { Snowflake } from '../../../../globals';
+import type { APIAttachment, APIRole, APIUser } from '../../index';
+import type {
+	APIApplicationCommandInteractionWrapper,
+	APIInteractionDataResolvedChannel,
+	APIInteractionDataResolvedGuildMember,
+	ApplicationCommandType,
+} from '../applicationCommands';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
 	APIApplicationCommandAttachmentOption,
 	APIApplicationCommandInteractionDataAttachmentOption,
@@ -43,15 +52,6 @@ import type {
 	APIApplicationCommandUserOption,
 } from './_chatInput/user';
 import type { APIBaseApplicationCommandInteractionData } from './internals';
-import type { Snowflake } from '../../../../globals';
-import type { APIAttachment, APIRole, APIUser } from '../../index';
-import type {
-	APIApplicationCommandInteractionWrapper,
-	APIInteractionDataResolvedChannel,
-	APIInteractionDataResolvedGuildMember,
-	ApplicationCommandType,
-} from '../applicationCommands';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 
 export * from './_chatInput/attachment';
 export * from './_chatInput/boolean';
@@ -68,6 +68,7 @@ export * from './_chatInput/user';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandBasicOption =
@@ -83,6 +84,7 @@ export type APIApplicationCommandBasicOption =
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandOption =
@@ -92,6 +94,7 @@ export type APIApplicationCommandOption =
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIApplicationCommandInteractionDataOption =
@@ -115,6 +118,7 @@ export type APIApplicationCommandInteractionDataBasicOption =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIChatInputApplicationCommandInteractionData
@@ -125,6 +129,7 @@ export interface APIChatInputApplicationCommandInteractionData
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIChatInputApplicationCommandInteractionDataResolved {
@@ -137,6 +142,7 @@ export interface APIChatInputApplicationCommandInteractionDataResolved {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChatInputApplicationCommandInteraction =
@@ -144,6 +150,7 @@ export type APIChatInputApplicationCommandInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChatInputApplicationCommandDMInteraction =
@@ -151,6 +158,7 @@ export type APIChatInputApplicationCommandDMInteraction =
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChatInputApplicationCommandGuildInteraction =

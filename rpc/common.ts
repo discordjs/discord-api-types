@@ -2,9 +2,9 @@
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes
  */
 export enum RPCErrorCodes {
-	UnknownError = 1000,
-	InvalidPayload = 4000,
-	InvalidCommand = 4002,
+	UnknownError = 1_000,
+	InvalidPayload = 4_000,
+	InvalidCommand = 4_002,
 	InvalidGuild,
 	InvalidEvent,
 	InvalidChannel,
@@ -13,7 +13,7 @@ export enum RPCErrorCodes {
 	InvalidOrigin,
 	InvalidToken,
 	InvalidUser,
-	OAuth2Error = 5000,
+	OAuth2Error = 5_000,
 	SelectChannelTimedOut,
 	GetGuildTimedOut,
 	SelectVoiceForceRequired,
@@ -24,7 +24,7 @@ export enum RPCErrorCodes {
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
  */
 export enum RPCCloseEventCodes {
-	InvalidClientId = 4000,
+	InvalidClientId = 4_000,
 	InvalidOrigin,
 	RateLimited,
 	TokenRevoked,
