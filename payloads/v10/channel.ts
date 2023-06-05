@@ -1490,6 +1490,10 @@ export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBa
 	 * The status of the button
 	 */
 	disabled?: boolean;
+	/**
+	 * The Custom ID of the button
+	 */
+	customId: string;
 }
 
 export interface APIMessageComponentEmoji {
