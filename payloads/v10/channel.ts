@@ -1493,7 +1493,7 @@ export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBa
 	/**
 	 * The Custom ID of the button
 	 */
-	customId: string;
+	custom_id: string;
 }
 
 export interface APIMessageComponentEmoji {
