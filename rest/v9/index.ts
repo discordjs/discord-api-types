@@ -963,14 +963,16 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/embed/avatars/{(user_id >> 22) % 5}.png`
+	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The `userId` parameter should be the (user_id >> 22) % 5
+	 * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log/unique-usernames-on-discord).
+	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
+	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *
 	 * This route supports the extension: PNG
 	 */
-	defaultUserAvatar(userId: DefaultUserAvatarAssets) {
-		return `/embed/avatars/${userId}.png` as const;
+	defaultUserAvatar(index: DefaultUserAvatarAssets) {
+		return `/embed/avatars/${index}.png` as const;
 	},
 
 	/**
