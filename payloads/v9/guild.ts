@@ -3,7 +3,7 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals';
-import type { APIEmoji } from './emoji';
+import type { APIEmoji, APIPartialEmoji } from './emoji';
 import type { PresenceUpdateStatus } from './gateway';
 import type { OAuth2Scopes } from './oauth2';
 import type { APIRole } from './permissions';
@@ -990,4 +990,99 @@ export enum MembershipScreeningFieldType {
 	 * Server Rules
 	 */
 	Terms = 'TERMS',
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-guild-onboarding-structure
+ */
+export interface APIGuildOnboarding {
+	/**
+	 * Id of the guild this onboarding is part of
+	 */
+	guild_id: Snowflake;
+	/**
+	 * Prompts shown during onboarding and in customize community
+	 */
+	prompts: APIGuildOnboardingPrompt[];
+	/**
+	 * Channel ids that members get opted into automatically
+	 */
+	default_channel_ids: Snowflake[];
+	/**
+	 * Whether onboarding is enabled in the guild
+	 */
+	enabled: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure
+ */
+export interface APIGuildOnboardingPrompt {
+	/**
+	 * Id of the prompt
+	 */
+	id: Snowflake;
+	/**
+	 * Options available within the prompt
+	 */
+	options: APIGuildOnboardingPromptOption[];
+	/**
+	 * Title of the prompt
+	 */
+	title: string;
+	/**
+	 * Indicates whether users are limited to selecting one option for the prompt
+	 */
+	single_select: boolean;
+	/**
+	 * Indicates whether the prompt is required before a user completes the onboarding flow
+	 */
+	required: boolean;
+	/**
+	 * Indicates whether the prompt is present in the onboarding flow.
+	 * If `false`, the prompt will only appear in the Channels & Roles tab
+	 */
+	in_onboarding: boolean;
+	/**
+	 * Type of prompt
+	 */
+	type: GuildOnboardingPromptType;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure
+ */
+export interface APIGuildOnboardingPromptOption {
+	/**
+	 * Id of the prompt option
+	 */
+	id: Snowflake;
+	/**
+	 * Ids for channels a member is added to when the option is selected
+	 */
+	channel_ids: Snowflake[];
+	/**
+	 * Ids for roles assigned to a member when the option is selected
+	 */
+	role_ids: Snowflake[];
+	/**
+	 * Emoji of the option
+	 */
+	emoji: APIPartialEmoji;
+	/**
+	 * Title of the option
+	 */
+	title: string;
+	/**
+	 * Description of the option
+	 */
+	description: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types
+ */
+export enum GuildOnboardingPromptType {
+	MultipleChoice,
+	Dropdown,
 }
