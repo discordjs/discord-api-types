@@ -224,7 +224,8 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50_109,
 
-	OwnershipCannotBeMovedToABotUser = 50_132,
+	OwnerCannotBePendingMember = 50_131,
+	OwnershipCannotBeMovedToABotUser,
 
 	FailedToResizeAssetBelowTheMinimumSize = 50_138,
 
