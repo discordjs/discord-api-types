@@ -494,7 +494,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/users/@me/threads/archived/prviate`
+	 * - GET `/channels/{channel.id}/users/@me/threads/archived/private`
 	 */
 	channelJoinedArchivedThreads(channelId: Snowflake) {
 		return `/channels/${channelId}/users/@me/threads/archived/private` as const;
@@ -882,17 +882,18 @@ export const Routes = {
 
 	/**
 	 * Route for:
-<<<<<<< HEAD
 	 * - GET `/guilds/${guild.id}/onboarding`
 	 */
 	guildOnboarding(guildId: Snowflake) {
 		return `/guilds/${guildId}/onboarding` as const;
-=======
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/applications/@me`
 	 */
 	currentApplication() {
 		return '/applications/@me' as const;
->>>>>>> 2335be5 (feat(APIApplication): approx guild count and get self application endpoint)
 	},
 };
 

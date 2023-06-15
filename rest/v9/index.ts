@@ -891,18 +891,18 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/applications/@me`
-	 */
-	currentApplication() {
-		return '/applications/@me' as const;
-	},
-
-	/**
-	 * Route for:
 	 * - GET `/guilds/${guild.id}/onboarding`
 	 */
 	guildOnboarding(guildId: Snowflake) {
 		return `/guilds/${guildId}/onboarding` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/@me`
+	 */
+	currentApplication() {
+		return '/applications/@me' as const;
 	},
 };
 

@@ -880,6 +880,13 @@ export const Routes = {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
 
+	/**
+	 * Route for:
+	 * - GET `/guilds/${guild.id}/onboarding`
+	 */
+	guildOnboarding(guildId: Snowflake) {
+		return `/guilds/${guildId}/onboarding` as const;
+	},
 
 	/**
 	 * Route for:
@@ -887,14 +894,6 @@ export const Routes = {
 	 */
 	currentApplication() {
 		return '/applications/@me' as const;
-	},
-
-	/**
-	 * Route for:
-	 * - GET `/guilds/${guild.id}/onboarding`
-	 */
-	guildOnboarding(guildId: Snowflake) {
-		return `/guilds/${guildId}/onboarding` as const;
 	},
 };
 
