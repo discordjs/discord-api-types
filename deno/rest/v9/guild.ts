@@ -7,6 +7,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildMembershipScreening,
+	APIGuildOnboarding,
 	APIGuildPreview,
 	APIGuildWelcomeScreen,
 	APIGuildWidget,
@@ -922,3 +923,8 @@ export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIG
  * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  */
 export type RESTPatchAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-onboarding
+ */
+export type RESTGetAPIGuildOnboardingResult = APIGuildOnboarding;

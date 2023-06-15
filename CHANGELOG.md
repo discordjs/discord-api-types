@@ -1,3 +1,15 @@
+## [0.37.44](https://github.com/discordjs/discord-api-types/compare/0.37.43...0.37.44) (2023-06-15)
+
+### Features
+
+- guild onboarding ([#713](https://github.com/discordjs/discord-api-types/issues/713)) ([eced39c](https://github.com/discordjs/discord-api-types/commit/eced39cc3fa305e336d5752827812cb790ac485d))
+
+## [0.37.43](https://github.com/discordjs/discord-api-types/compare/0.37.42...0.37.43) (2023-05-29)
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50178` ([#752](https://github.com/discordjs/discord-api-types/issues/752)) ([30fb497](https://github.com/discordjs/discord-api-types/commit/30fb4978b76f30a00453470f643d71e8f1d1f817))
+
 ## [0.37.42](https://github.com/discordjs/discord-api-types/compare/0.37.41...0.37.42) (2023-05-08)
 
 ### Bug Fixes
