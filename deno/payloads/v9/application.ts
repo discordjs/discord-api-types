@@ -2,11 +2,11 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
+import type { Permissions, Snowflake } from '../../globals.ts';
+import type { LocalizationMap } from '../common.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
-import type { Permissions, Snowflake } from '../../globals.ts';
-import type { LocalizationMap } from '../common.ts';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
@@ -123,19 +123,27 @@ export interface APIApplicationInstallParams {
  */
 export enum ApplicationFlags {
 	/**
-	 * @unstable
+	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	EmbeddedReleased = 1 << 1,
 	/**
-	 * @unstable
+	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	ManagedEmoji = 1 << 2,
 	/**
-	 * @unstable
+	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	EmbeddedIAP = 1 << 3,
+	/**
+	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	GroupDMCreate = 1 << 4,
 	/**
-	 * @unstable
+	 * Indicates if an app uses the Auto Moderation API
+	 */
+	ApplicationAutoModerationRuleCreateBadge = 1 << 6,
+	/**
+	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	RPCHasConnected = 1 << 11,
 	/**
@@ -174,7 +182,7 @@ export enum ApplicationFlags {
 	 */
 	GatewayMessageContentLimited = 1 << 19,
 	/**
-	 * @unstable
+	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	EmbeddedFirstParty = 1 << 20,
 	/**

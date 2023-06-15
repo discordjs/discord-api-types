@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/sticker
  */
 
-import type { APIUser } from './user.ts';
 import type { Snowflake } from '../../globals.ts';
+import type { APIUser } from './user.ts';
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object
@@ -31,6 +31,7 @@ export interface APISticker {
 	tags: string;
 	/**
 	 * Previously the sticker asset hash, now an empty string
+	 *
 	 * @deprecated
 	 */
 	asset?: '';

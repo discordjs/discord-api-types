@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/channel
  */
 
+import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIApplication } from './application.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIGuildMember } from './guild.ts';
@@ -9,7 +10,6 @@ import type { APIMessageInteraction } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker, APIStickerItem } from './sticker.ts';
 import type { APIUser } from './user.ts';
-import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * Not documented, but partial only includes id, name, and type
@@ -421,6 +421,7 @@ export enum ChannelType {
 	 *
 	 * @deprecated This is the old name for {@apilink ChannelType#AnnouncementThread}
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
 	GuildNewsThread = 10,
 	/**
 	 * A temporary sub-channel within a Guild Text channel
@@ -645,6 +646,7 @@ export interface APIMessage {
 	 * The stickers sent with the message
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 *
 	 * @deprecated Use `sticker_items` instead
 	 */
 	stickers?: APISticker[];
@@ -785,9 +787,17 @@ export enum MessageFlags {
 	 */
 	FailedToMentionSomeRolesInThread = 1 << 8,
 	/**
+	 * @unstable This message flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	ShouldShowLinkNotDiscordWarning = 1 << 10,
+	/**
 	 * This message will not trigger push and desktop notifications
 	 */
 	SuppressNotifications = 1 << 12,
+	/**
+	 * This message is a voice message
+	 */
+	IsVoiceMessage = 1 << 13,
 }
 
 /**
@@ -893,9 +903,9 @@ export interface APIThreadMetadata {
 
 export enum ThreadAutoArchiveDuration {
 	OneHour = 60,
-	OneDay = 1440,
-	ThreeDays = 4320,
-	OneWeek = 10080,
+	OneDay = 1_440,
+	ThreeDays = 4_320,
+	OneWeek = 10_080,
 }
 
 /**
@@ -934,7 +944,24 @@ export interface APIThreadMember {
 	member?: APIGuildMember;
 }
 
-export enum ThreadMemberFlags {}
+export enum ThreadMemberFlags {
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	HasInteracted = 1 << 0,
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	AllMessages = 1 << 1,
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	OnlyMentions = 1 << 2,
+	/**
+	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	NoMessages = 1 << 3,
+}
 
 export interface APIThreadList {
 	/**
@@ -1037,6 +1064,7 @@ export interface APIEmbed {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+ *
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
 export enum EmbedType {
@@ -1264,6 +1292,14 @@ export interface APIAttachment {
 	 * Whether this attachment is ephemeral
 	 */
 	ephemeral?: boolean;
+	/**
+	 * The duration of the audio file (currently for voice messages)
+	 */
+	duration_secs?: number;
+	/**
+	 * Base64 encoded bytearray representing a sampled waveform (currently for voice messages)
+	 */
+	waveform?: string;
 }
 
 /**
@@ -1630,14 +1666,38 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  */
 export enum ChannelFlags {
 	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	GuildFeedRemoved = 1 << 0,
+	/**
 	 * This thread is pinned to the top of its parent forum channel
 	 */
 	Pinned = 1 << 1,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	ActiveChannelsRemoved = 1 << 2,
 	/**
 	 * Whether a tag is required to be specified when creating a thread in a forum channel.
 	 * Tags are specified in the `applied_tags` field
 	 */
 	RequireTag = 1 << 4,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	IsSpam = 1 << 5,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	IsGuildResourceChannel = 1 << 7,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	ClydeAI = 1 << 8,
+	/**
+	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
+	IsScheduledForDeletion = 1 << 9,
 }
 
 /**

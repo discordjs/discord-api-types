@@ -1,12 +1,12 @@
+import type { Snowflake } from '../../../globals.ts';
+import type { ComponentType } from '../channel.ts';
+import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
 import type {
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,
 	APIInteractionDataResolved,
 	APIUserInteractionDataResolved,
 } from './base.ts';
-import type { Snowflake } from '../../../globals.ts';
-import type { ComponentType } from '../channel.ts';
-import type { APIBaseInteraction, InteractionType } from '../interactions.ts';
 
 export type APIMessageComponentInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,
@@ -15,7 +15,7 @@ export type APIMessageComponentInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageComponentInteractionData>,
-			'channel_id' | 'data' | 'app_permissions' | 'message'
+			'channel' | 'channel_id' | 'data' | 'app_permissions' | 'message'
 		>
 	>;
 
@@ -26,7 +26,7 @@ export type APIMessageComponentButtonInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageButtonInteractionData>,
-			'channel_id' | 'data' | 'app_permissions' | 'message'
+			'channel' | 'channel_id' | 'data' | 'app_permissions' | 'message'
 		>
 	>;
 
@@ -37,7 +37,7 @@ export type APIMessageComponentSelectMenuInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageSelectMenuInteractionData>,
-			'channel_id' | 'data' | 'app_permissions' | 'message'
+			'channel' | 'channel_id' | 'data' | 'app_permissions' | 'message'
 		>
 	>;
 

@@ -1,3 +1,6 @@
+import type { APIInteractionDataResolved } from '../../mod.ts';
+import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands.ts';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 import type {
 	APIApplicationCommandAttachmentOption,
 	APIApplicationCommandInteractionDataAttachmentOption,
@@ -43,9 +46,6 @@ import type {
 	APIApplicationCommandUserOption,
 } from './_chatInput/user.ts';
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
-import type { APIInteractionDataResolved } from '../../mod.ts';
-import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands.ts';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 
 export * from './_chatInput/attachment.ts';
 export * from './_chatInput/base.ts';

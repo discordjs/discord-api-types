@@ -288,6 +288,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
+	 *
 	 * @deprecated Use {@link Routes.guildMember} instead.
 	 */
 	guildCurrentMemberNickname(guildId: Snowflake) {
@@ -524,7 +525,7 @@ export const Routes = {
 	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userId='@me'] The user ID, defaulted to `@me`
+	 * @param [userId] The user ID, defaulted to `@me`
 	 */
 	user(userId: Snowflake | '@me' = '@me') {
 		return `/users/${userId}` as const;
@@ -636,8 +637,6 @@ export const Routes = {
 	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/@original`
 	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
 	 * - DELETE `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
-	 *
-	 * @param [messageId='@original'] The message ID to change, defaulted to `@original`
 	 */
 	webhookMessage(webhookId: Snowflake, webhookToken: string, messageId: Snowflake | '@original' = '@original') {
 		return `/webhooks/${webhookId}/${webhookToken}/messages/${messageId}` as const;
@@ -880,6 +879,14 @@ export const Routes = {
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/${guild.id}/onboarding`
+	 */
+	guildOnboarding(guildId: Snowflake) {
+		return `/guilds/${guildId}/onboarding` as const;
+	},
 };
 
 export const StickerPackApplicationId = '710982414301790216';
@@ -955,14 +962,16 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/embed/avatars/{user.discriminator % 5}.png`
+	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The `userDiscriminator` parameter should be the user discriminator modulo 5 (e.g. 1337 % 5 = 2)
+	 * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log#unique-usernames-on-discord).
+	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
+	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *
 	 * This route supports the extension: PNG
 	 */
-	defaultUserAvatar(userDiscriminator: DefaultUserAvatarAssets) {
-		return `/embed/avatars/${userDiscriminator}.png` as const;
+	defaultUserAvatar(index: DefaultUserAvatarAssets) {
+		return `/embed/avatars/${index}.png` as const;
 	},
 
 	/**

@@ -61,7 +61,7 @@ export enum VoiceCloseCodes {
 	/**
 	 * You sent an invalid opcode
 	 */
-	UnknownOpcode = 4001,
+	UnknownOpcode = 4_001,
 	/**
 	 * You sent a invalid payload in your identifying to the Gateway
 	 */
@@ -85,11 +85,11 @@ export enum VoiceCloseCodes {
 	/**
 	 * Your session has timed out
 	 */
-	SessionTimeout = 4009,
+	SessionTimeout = 4_009,
 	/**
 	 * We can't find the server you're trying to connect to
 	 */
-	ServerNotFound = 4011,
+	ServerNotFound = 4_011,
 	/**
 	 * We didn't recognize the protocol you sent
 	 */
@@ -97,7 +97,7 @@ export enum VoiceCloseCodes {
 	/**
 	 * Either the channel was deleted, you were kicked, or the main gateway session was dropped. Should not reconnect
 	 */
-	Disconnected = 4014,
+	Disconnected = 4_014,
 	/**
 	 * The server crashed. Our bad! Try resuming
 	 */

@@ -26,6 +26,7 @@ export type APIInviteGuild = Pick<
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInvite {
@@ -93,6 +94,7 @@ export interface APIInvite {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InviteTargetType {
@@ -102,6 +104,7 @@ export enum InviteTargetType {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIExtendedInvite extends APIInvite {

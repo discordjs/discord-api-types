@@ -60,6 +60,12 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	 * @default 200
 	 */
 	limit?: number;
+	/**
+	 * Include approximate member and presence counts in response
+	 *
+	 * @default false
+	 */
+	with_counts?: boolean;
 }
 
 export interface RESTAPIPartialCurrentUserGuild {
@@ -69,6 +75,8 @@ export interface RESTAPIPartialCurrentUserGuild {
 	owner: boolean;
 	features: GuildFeature[];
 	permissions: Permissions;
+	approximate_member_count?: number;
+	approximate_presence_count?: number;
 }
 
 /**

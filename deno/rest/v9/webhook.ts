@@ -238,6 +238,13 @@ export type RESTPostAPIWebhookWithTokenGitHubWaitResult = APIMessage;
 export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 
 /**
+ * https://discord.com/developers/docs/resources/webhook#get-webhook-message-query-string-params
+ */
+export interface RESTGetAPIWebhookWithTokenMessageQuery {
+	thread_id?: string;
+}
+
+/**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<

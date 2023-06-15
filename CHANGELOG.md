@@ -1,3 +1,63 @@
+## [0.37.44](https://github.com/discordjs/discord-api-types/compare/0.37.43...0.37.44) (2023-06-15)
+
+### Features
+
+- guild onboarding ([#713](https://github.com/discordjs/discord-api-types/issues/713)) ([eced39c](https://github.com/discordjs/discord-api-types/commit/eced39cc3fa305e336d5752827812cb790ac485d))
+
+## [0.37.43](https://github.com/discordjs/discord-api-types/compare/0.37.42...0.37.43) (2023-05-29)
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50178` ([#752](https://github.com/discordjs/discord-api-types/issues/752)) ([30fb497](https://github.com/discordjs/discord-api-types/commit/30fb4978b76f30a00453470f643d71e8f1d1f817))
+
+## [0.37.42](https://github.com/discordjs/discord-api-types/compare/0.37.41...0.37.42) (2023-05-08)
+
+### Bug Fixes
+
+- allow sending empty choices with autocomplete: true ([#762](https://github.com/discordjs/discord-api-types/issues/762)) ([0e6b19d](https://github.com/discordjs/discord-api-types/commit/0e6b19d2bcfe6e9806d3d20125668b3464845517))
+
+## [0.37.41](https://github.com/discordjs/discord-api-types/compare/0.37.40...0.37.41) (2023-05-01)
+
+### Bug Fixes
+
+- **GatewayGuildMembersChunkDispatchData:** Omit `guild_id` for presences ([#761](https://github.com/discordjs/discord-api-types/issues/761)) ([5079b16](https://github.com/discordjs/discord-api-types/commit/5079b164db3ac3bda25675a553a586f099555667))
+- **types:** move `types` condition to the front ([#763](https://github.com/discordjs/discord-api-types/issues/763)) ([9dce6ed](https://github.com/discordjs/discord-api-types/commit/9dce6ed392b64e602c3cc05946bc0f30bac7279e))
+
+## [0.37.40](https://github.com/discordjs/discord-api-types/compare/0.37.39...0.37.40) (2023-04-24)
+
+### Features
+
+- add support for voice messages ([#749](https://github.com/discordjs/discord-api-types/issues/749)) ([3dac5b9](https://github.com/discordjs/discord-api-types/commit/3dac5b93e7568ba2fbd3bc30d229d2df80f96eed))
+
+## [0.37.39](https://github.com/discordjs/discord-api-types/compare/0.37.38...0.37.39) (2023-04-17)
+
+### Bug Fixes
+
+- **RESTPostAPIChannelMessagesThreadsJSONBody:** mark `auto_archive_duration` as optional ([ca6a95d](https://github.com/discordjs/discord-api-types/commit/ca6a95d69c7b93f564f10cce422faf5ea4133be7))
+
+### Features
+
+- **APIGuild:** add `max_stage_video_channel_users` ([#550](https://github.com/discordjs/discord-api-types/issues/550)) ([9a66d21](https://github.com/discordjs/discord-api-types/commit/9a66d21f4913c63ed7c192cf9340febe603bf516))
+
+## [0.37.38](https://github.com/discordjs/discord-api-types/compare/0.37.37...0.37.38) (2023-04-10)
+
+### Features
+
+- **APIBaseInteraction:** add `channel` ([#741](https://github.com/discordjs/discord-api-types/issues/741)) ([311b7a2](https://github.com/discordjs/discord-api-types/commit/311b7a2eb9bdc6ad9d6ed7af2b7faf6f95631698))
+- **RESTJSONErrorCodes:** add error `50163` ([#725](https://github.com/discordjs/discord-api-types/issues/725)) ([9074621](https://github.com/discordjs/discord-api-types/commit/9074621085d0e2d7b32b82c0bf0604e3cf42bbdf))
+
+## [0.37.37](https://github.com/discordjs/discord-api-types/compare/0.37.36...0.37.37) (2023-03-23)
+
+### Bug Fixes
+
+- add missing `RESTGetAPIWebhookWithTokenQuery` ([#735](https://github.com/discordjs/discord-api-types/issues/735)) ([2a78a51](https://github.com/discordjs/discord-api-types/commit/2a78a517d2a3511913a8b2b74bba942db097b577))
+
+### Features
+
+- add various new flags ([#733](https://github.com/discordjs/discord-api-types/issues/733)) ([4723d29](https://github.com/discordjs/discord-api-types/commit/4723d29c9ee17c3efa8e8e86351754dee13428ef))
+- **RESTGetAPICurrentUserGuildsQuery:** add `with_counts` ([#641](https://github.com/discordjs/discord-api-types/issues/641)) ([0cd9b0d](https://github.com/discordjs/discord-api-types/commit/0cd9b0debbf17f60267bf2f42349fcebea5bf588))
+- **RESTPostAPIGuildChannelJSONBody:** add `default_thread_rate_limit_per_user` ([#730](https://github.com/discordjs/discord-api-types/issues/730)) ([8f9370d](https://github.com/discordjs/discord-api-types/commit/8f9370d2592d6a450820bee52fe153eb00ba830f))
+
 ## [0.37.36](https://github.com/discordjs/discord-api-types/compare/0.37.35...0.37.36) (2023-03-13)
 
 ### Features

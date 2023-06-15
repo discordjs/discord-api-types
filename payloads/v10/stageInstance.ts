@@ -1,5 +1,5 @@
-import type { APIGuildMember } from './guild';
 import type { Snowflake } from '../../globals';
+import type { APIGuildMember } from './guild';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object
@@ -29,6 +29,7 @@ export interface APIStageInstance {
 	privacy_level: StageInstancePrivacyLevel;
 	/**
 	 * Whether or not stage discovery is disabled
+	 *
 	 * @deprecated
 	 */
 	discoverable_disabled: boolean;
