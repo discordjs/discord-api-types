@@ -1,3 +1,9 @@
+## [0.37.46](https://github.com/discordjs/discord-api-types/compare/0.37.45...0.37.46) (2023-06-19)
+
+### Features
+
+- **RESTJSONErrorCodes:** add error `50131` ([#753](https://github.com/discordjs/discord-api-types/issues/753)) ([300e31b](https://github.com/discordjs/discord-api-types/commit/300e31b51490c81bfd96c2ed5e0f810a7e3ee4ae))
+
 ## [0.37.45](https://github.com/discordjs/discord-api-types/compare/0.37.44...0.37.45) (2023-06-15)
 
 ## [0.37.44](https://github.com/discordjs/discord-api-types/compare/0.37.43...0.37.44) (2023-06-15)
