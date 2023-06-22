@@ -621,8 +621,6 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	name: string;
 	/**
 	 * The amount of time in minutes to wait before automatically archiving the thread
-	 *
-	 * The 3 day and 7 day archive durations require the server to be boosted. The [guild features](https://discord.com/developers/docs/resources/guild#guild-object-guild-features) will indicate if a server is able to use those settings.
 	 */
 	auto_archive_duration?: ThreadAutoArchiveDuration | undefined;
 	/**
