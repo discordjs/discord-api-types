@@ -498,9 +498,9 @@ export enum GuildFeature {
 	 */
 	PrivateThreads = 'PRIVATE_THREADS',
 	/**
-	 * Guild has enabled alerts for join raids in the configured safety alerts channel
+	 * Guild has disabled alerts for join raids in the configured safety alerts channel
 	 */
-	RaidAlertsEnabled = 'RAID_ALERTS_ENABLED',
+	RaidAlertsDisabled = 'RAID_ALERTS_DISABLED',
 	RelayEnabled = 'RELAY_ENABLED',
 	/**
 	 * Guild is able to set role icons
