@@ -306,6 +306,10 @@ export interface RESTPatchAPIGuildJSONBody {
 	 * Whether the boosts progress bar should be enabled.
 	 */
 	premium_progress_bar_enabled?: boolean | undefined;
+	/**
+	 * The id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
+	 */
+	safety_alerts_channel_id?: Snowflake | null | undefined;
 }
 
 /**

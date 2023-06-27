@@ -470,6 +470,11 @@ export type APIAuditLogChangeKeyRulesChannelId = AuditLogChangeData<'rules_chann
 export type APIAuditLogChangeKeyPublicUpdatesChannelId = AuditLogChangeData<'public_updates_channel_id', string>;
 
 /**
+ * Returned when a guild's safety_alerts_channel_id is changed
+ */
+export type APIAuditLogChangeKeySafetyAlertsChannelId = AuditLogChangeData<'safety_alerts_channel_id', string>;
+
+/**
  * Returned when a guild's mfa_level is changed
  */
 export type APIAuditLogChangeKeyMFALevel = AuditLogChangeData<'mfa_level', GuildMFALevel>;
