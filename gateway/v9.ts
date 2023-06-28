@@ -1659,18 +1659,30 @@ export interface GatewayVoiceChannelEffectSendDispatchData {
 	 */
 	user_id: Snowflake;
 	/**
-	 * The emoji sent, for emoji reaction effects
+	 * The emoji sent, for emoji reaction and soundboard effects
 	 */
 	emoji?: APIEmoji | null;
 	/**
-	 * The type of emoji animation, for emoji reaction effects
+	 * The type of emoji animation, for emoji reaction and soundboard effects
 	 * See https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send-animation-types
 	 */
 	animation_type?: VoiceChannelEffectSendAnimationType;
 	/**
-	 * The ID of the emoji animation, for emoji reaction effects
+	 * The ID of the emoji animation, for emoji reaction and soundboard effects
 	 */
 	animation_id?: number;
+	/**
+	 * The ID of the soundboard sound, for soundboard effects
+	 */
+	sound_id?: Snowflake;
+	/**
+	 * The filename of the soundboard default sound, for soundboard effects
+	 */
+	sound_override_path?: string | null;
+	/**
+	 * The volume of the soundboard sound, from 0 to 1, for soundboard effects
+	 */
+	sound_volume?: number;
 }
 
 export enum VoiceChannelEffectSendAnimationType {
