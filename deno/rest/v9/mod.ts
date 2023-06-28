@@ -896,6 +896,31 @@ export const Routes = {
 	guildOnboarding(guildId: Snowflake) {
 		return `/guilds/${guildId}/onboarding` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-default-sounds`
+	 */
+	soundboardDefaultSounds() {
+		return '/soundboard-default-sounds' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/guilds/${guild.id}/soundboard-sounds`
+	 */
+	guildSoundboardSounds(guildId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/guilds/${guild.id}/soundboard-sounds/${sound.id}`
+	 * - DELETE `/guilds/${guild.id}/soundboard-sounds/${sound.id}`
+	 */
+	guildSoundboardSound(guildId: Snowflake, soundId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds/${soundId}` as const;
+	},
 };
 
 export const StickerPackApplicationId = '710982414301790216';
@@ -1124,6 +1149,22 @@ export const CDNRoutes = {
 	 */
 	guildMemberBanner(guildId: Snowflake, userId: Snowflake, guildMemberBanner: string, format: GuildMemberBannerFormat) {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-sounds/${sound.id}`
+	 */
+	soundboardSound(soundId: Snowflake) {
+		return `/soundboard-sounds/${soundId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-default-sounds/${sound.override_path}`
+	 */
+	soundboardDefaultSound(soundOverridePath: string) {
+		return `/soundboard-default-sounds/${soundOverridePath}` as const;
 	},
 };
 

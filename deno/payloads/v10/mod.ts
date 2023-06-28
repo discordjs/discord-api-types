@@ -11,6 +11,7 @@ export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
 export * from './permissions.ts';
+export * from './soundboard.ts';
 export * from './stageInstance.ts';
 export * from './sticker.ts';
 export * from './teams.ts';

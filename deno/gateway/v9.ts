@@ -33,6 +33,7 @@ import type {
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
 	APIAuditLogEntry,
+	APISoundboardSound,
 } from '../payloads/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
 
@@ -89,6 +90,10 @@ export enum GatewayOpcodes {
 	 * Sent in response to receiving a heartbeat to acknowledge that it has been received
 	 */
 	HeartbeatAck,
+	/**
+	 * Request information about soundboard sounds in a set of guilds
+	 */
+	RequestSoundboardSounds = 31,
 }
 
 /**
@@ -207,10 +212,15 @@ export enum GatewayIntentBits {
  */
 export enum GatewayDispatchEvents {
 	ApplicationCommandPermissionsUpdate = 'APPLICATION_COMMAND_PERMISSIONS_UPDATE',
+	AutoModerationRuleCreate = 'AUTO_MODERATION_RULE_CREATE',
+	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
+	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
+	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
 	ChannelCreate = 'CHANNEL_CREATE',
 	ChannelDelete = 'CHANNEL_DELETE',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
 	ChannelUpdate = 'CHANNEL_UPDATE',
+	GuildAuditLogEntryCreate = 'GUILD_AUDIT_LOG_ENTRY_CREATE',
 	GuildBanAdd = 'GUILD_BAN_ADD',
 	GuildBanRemove = 'GUILD_BAN_REMOVE',
 	GuildCreate = 'GUILD_CREATE',
@@ -224,6 +234,14 @@ export enum GatewayDispatchEvents {
 	GuildRoleCreate = 'GUILD_ROLE_CREATE',
 	GuildRoleDelete = 'GUILD_ROLE_DELETE',
 	GuildRoleUpdate = 'GUILD_ROLE_UPDATE',
+	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
+	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
+	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
+	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
+	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
+	GuildSoundboardSoundCreate = 'GUILD_SOUNDBOARD_SOUND_CREATE',
+	GuildSoundboardSoundUpdate = 'GUILD_SOUNDBOARD_SOUND_UPDATE',
+	GuildSoundboardSoundDelete = 'GUILD_SOUNDBOARD_SOUND_DELETE',
 	GuildStickersUpdate = 'GUILD_STICKERS_UPDATE',
 	GuildUpdate = 'GUILD_UPDATE',
 	IntegrationCreate = 'INTEGRATION_CREATE',
@@ -241,6 +259,7 @@ export enum GatewayDispatchEvents {
 	MessageReactionRemoveEmoji = 'MESSAGE_REACTION_REMOVE_EMOJI',
 	MessageUpdate = 'MESSAGE_UPDATE',
 	PresenceUpdate = 'PRESENCE_UPDATE',
+	SoundboardSounds = 'SOUNDBOARD_SOUNDS',
 	StageInstanceCreate = 'STAGE_INSTANCE_CREATE',
 	StageInstanceDelete = 'STAGE_INSTANCE_DELETE',
 	StageInstanceUpdate = 'STAGE_INSTANCE_UPDATE',
@@ -257,16 +276,6 @@ export enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
-	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
-	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
-	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
-	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
-	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
-	AutoModerationRuleCreate = 'AUTO_MODERATION_RULE_CREATE',
-	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
-	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
-	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
-	GuildAuditLogEntryCreate = 'GUILD_AUDIT_LOG_ENTRY_CREATE',
 }
 
 export type GatewaySendPayload =
@@ -275,7 +284,8 @@ export type GatewaySendPayload =
 	| GatewayUpdatePresence
 	| GatewayVoiceStateUpdate
 	| GatewayResume
-	| GatewayRequestGuildMembers;
+	| GatewayRequestGuildMembers
+	| GatewayRequestSoundboardSounds;
 
 export type GatewayReceivePayload =
 	| GatewayHello
@@ -293,6 +303,7 @@ export type GatewayDispatchPayload =
 	| GatewayAutoModerationActionExecutionDispatch
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
+	| GatewayGuildAuditLogEntryCreateDispatch
 	| GatewayGuildBanModifyDispatch
 	| GatewayGuildCreateDispatch
 	| GatewayGuildDeleteDispatch
@@ -310,6 +321,9 @@ export type GatewayDispatchPayload =
 	| GatewayGuildScheduledEventDeleteDispatch
 	| GatewayGuildScheduledEventUserAddDispatch
 	| GatewayGuildScheduledEventUserRemoveDispatch
+	| GatewayGuildSoundboardSoundCreateDispatch
+	| GatewayGuildSoundboardSoundUpdateDispatch
+	| GatewayGuildSoundboardSoundDeleteDispatch
 	| GatewayGuildStickersUpdateDispatch
 	| GatewayIntegrationCreateDispatch
 	| GatewayIntegrationDeleteDispatch
@@ -326,6 +340,7 @@ export type GatewayDispatchPayload =
 	| GatewayMessageReactionRemoveEmojiDispatch
 	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewaySoundboardSoundsDispatch
 	| GatewayStageInstanceCreateDispatch
 	| GatewayStageInstanceDeleteDispatch
 	| GatewayStageInstanceUpdateDispatch
@@ -339,8 +354,7 @@ export type GatewayDispatchPayload =
 	| GatewayUserUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
 	| GatewayVoiceStateUpdateDispatch
-	| GatewayWebhooksUpdateDispatch
-	| GatewayGuildAuditLogEntryCreateDispatch;
+	| GatewayWebhooksUpdateDispatch;
 
 // #region Dispatch Payloads
 
@@ -1087,46 +1101,146 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	role_id: Snowflake;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create
+ */
 export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventCreate,
 	GatewayGuildScheduledEventCreateDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create
+ */
 export type GatewayGuildScheduledEventCreateDispatchData = APIGuildScheduledEvent;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-update
+ */
 export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUpdate,
 	GatewayGuildScheduledEventUpdateDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-update
+ */
 export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildScheduledEvent;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-delete
+ */
 export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventDelete,
 	GatewayGuildScheduledEventDeleteDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-delete
+ */
 export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add
+ */
 export type GatewayGuildScheduledEventUserAddDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUserAdd,
 	GatewayGuildScheduledEventUserAddDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add
+ */
 export interface GatewayGuildScheduledEventUserAddDispatchData {
 	guild_scheduled_event_id: Snowflake;
 	user_id: Snowflake;
 	guild_id: Snowflake;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-remove
+ */
 export type GatewayGuildScheduledEventUserRemoveDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUserRemove,
 	GatewayGuildScheduledEventUserAddDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-remove
+ */
 export interface GatewayGuildScheduledEventUserRemoveDispatchData {
 	guild_scheduled_event_id: Snowflake;
 	user_id: Snowflake;
+	guild_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-create
+ */
+export type GatewayGuildSoundboardSoundCreateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildSoundboardSoundCreate,
+	GatewayGuildSoundboardSoundCreateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-create
+ */
+export type GatewayGuildSoundboardSoundCreateDispatchData = APISoundboardSound;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-update
+ */
+export type GatewayGuildSoundboardSoundUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.GuildSoundboardSoundUpdate,
+	GatewayGuildSoundboardSoundUpdateDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-update
+ */
+export type GatewayGuildSoundboardSoundUpdateDispatchData = APISoundboardSound;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-delete
+ */
+export type GatewayGuildSoundboardSoundDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.GuildSoundboardSoundDelete,
+	GatewayGuildSoundboardSoundDeleteDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-delete
+ */
+export interface GatewayGuildSoundboardSoundDeleteDispatchData {
+	/**
+	 * ID of the sound that was deleted
+	 */
+	sound_id: Snowflake;
+	/**
+	 * ID of the guild the sound was in
+	 */
+	guild_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#soundboard-sounds
+ */
+export type GatewaySoundboardSoundsDispatch = DataPayload<
+	GatewayDispatchEvents.SoundboardSounds,
+	GatewaySoundboardSoundsDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#soundboard-sounds
+ */
+export interface GatewaySoundboardSoundsDispatchData {
+	/**
+	 * The guild's soundboard sounds
+	 */
+	soundboard_sounds: APISoundboardSound[];
+	/**
+	 * ID of the guild
+	 */
 	guild_id: Snowflake;
 }
 
@@ -1888,6 +2002,24 @@ export interface GatewayRequestGuildMembersDataWithQuery extends GatewayRequestG
 export type GatewayRequestGuildMembersData =
 	| GatewayRequestGuildMembersDataWithUserIds
 	| GatewayRequestGuildMembersDataWithQuery;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#request-soundboard-sounds
+ */
+export interface GatewayRequestSoundboardSounds {
+	op: GatewayOpcodes.RequestSoundboardSounds;
+	d: GatewayRequestSoundboardSoundsData;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#request-soundboard-sounds
+ */
+export interface GatewayRequestSoundboardSoundsData {
+	/**
+	 * IDs of the guilds to get soundboard sounds for
+	 */
+	guild_ids: Snowflake[];
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#update-voice-state
