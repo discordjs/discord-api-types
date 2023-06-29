@@ -1,3 +1,9 @@
+## [0.37.47](https://github.com/discordjs/discord-api-types/compare/0.37.46...0.37.47) (2023-06-29)
+
+### Features
+
+- **Guild:** add join raid and mention raid protection ([#677](https://github.com/discordjs/discord-api-types/issues/677)) ([844ad56](https://github.com/discordjs/discord-api-types/commit/844ad568c4e6bb379aee59e4e2256a8281276991))
+
 ## [0.37.46](https://github.com/discordjs/discord-api-types/compare/0.37.45...0.37.46) (2023-06-19)
 
 ### Features
