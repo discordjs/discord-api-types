@@ -1668,7 +1668,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 */
 	custom_id: string;
 	/**
-	 * Text that appears on top of the text input field, max 80 characters
+	 * Text that appears on top of the text input field, max 45 characters
 	 */
 	label: string;
 	/**
