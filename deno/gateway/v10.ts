@@ -1421,7 +1421,10 @@ export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDis
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove
  */
-export type GatewayMessageReactionRemoveDispatch = ReactionData<GatewayDispatchEvents.MessageReactionRemove, 'member'>;
+export type GatewayMessageReactionRemoveDispatch = ReactionData<
+	GatewayDispatchEvents.MessageReactionRemove,
+	'member' | 'message_author_id'
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove
@@ -2024,6 +2027,10 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			 * See https://discord.com/developers/docs/resources/emoji#emoji-object
 			 */
 			emoji: APIEmoji;
+			/**
+			 * The id of the user that posted the message that was reacted to
+			 */
+			message_author_id?: Snowflake;
 		},
 		O
 	>
