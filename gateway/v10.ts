@@ -2030,7 +2030,7 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			/**
 			 * The id of the user that posted the message that was reacted to
 			 */
-			message_author_id: Snowflake;
+			message_author_id?: Snowflake;
 		},
 		O
 	>
