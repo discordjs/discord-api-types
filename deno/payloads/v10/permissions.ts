@@ -54,6 +54,10 @@ export interface APIRole {
 	 * The tags this role has
 	 */
 	tags?: APIRoleTags;
+	/**
+	 * Role flags
+	 */
+	flags: RoleFlags;
 }
 
 /**
@@ -84,4 +88,11 @@ export interface APIRoleTags {
 	 * Whether this role is a guild's linked role
 	 */
 	guild_connections?: null;
+}
+
+export enum RoleFlags {
+	/**
+	 * Role can be selected by members in an onboarding prompt
+	 */
+	InPrompt = 1 << 0,
 }
