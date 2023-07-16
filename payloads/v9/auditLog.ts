@@ -200,6 +200,9 @@ export enum AuditLogEvent {
 	AutoModerationBlockMessage,
 	AutoModerationFlagToChannel,
 	AutoModerationUserCommunicationDisabled,
+
+	CreatorMonetizationRequestCreated = 150,
+	CreatorMonetizationTermsAccepted,
 }
 
 /**
