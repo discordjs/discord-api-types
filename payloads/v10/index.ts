@@ -11,6 +11,7 @@ export * from './interactions';
 export * from './invite';
 export * from './oauth2';
 export * from './permissions';
+export * from './soundboard';
 export * from './stageInstance';
 export * from './sticker';
 export * from './teams';

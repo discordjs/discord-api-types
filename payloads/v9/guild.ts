@@ -507,6 +507,10 @@ export enum GuildFeature {
 	 */
 	RoleSubscriptionsEnabled = 'ROLE_SUBSCRIPTIONS_ENABLED',
 	/**
+	 * Guild has created soundboard sounds
+	 */
+	Soundboard = 'SOUNDBOARD',
+	/**
 	 * Guild has enabled ticketed events
 	 */
 	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
