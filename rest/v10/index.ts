@@ -1000,6 +1000,16 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
+	 * - GET `/avatar-decorations/{user.id}/{user.avatar_decoration}.png`
+	 *
+	 * This route supports the extension: PNG
+	 */
+	userAvatarDecoration(userId: Snowflake, userAvatarDecoration: string) {
+		return `/avatar-decorations/${userId}/${userAvatarDecoration}.png` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/app-icons/{application.id}/{application.icon}.{png|jpeg|webp}`
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
