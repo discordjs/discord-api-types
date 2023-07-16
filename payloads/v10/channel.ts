@@ -1332,6 +1332,20 @@ export interface APIAttachment {
 	 * Base64 encoded bytearray representing a sampled waveform (currently for voice messages)
 	 */
 	waveform?: string;
+	/**
+	 * Attachment flags combined as a bitfield
+	 */
+	flags?: AttachmentFlags;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure-attachment-flags
+ */
+export enum AttachmentFlags {
+	/**
+	 * This attachment has been edited using the remix feature on mobile
+	 */
+	IsRemix = 1 << 2,
 }
 
 /**
