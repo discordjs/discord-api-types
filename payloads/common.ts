@@ -182,7 +182,7 @@ export const PermissionFlagsBits = {
 	 */
 	ManageEmojisAndStickers: 1n << 30n,
 	/**
-	 * Allows management and editing of emojis, stickers, and soundboard sounds
+	 * Allows for editing and deleting emojis, stickers, and soundboard sounds created by all users
 	 */
 	ManageGuildExpressions: 1n << 30n,
 	/**
@@ -198,7 +198,7 @@ export const PermissionFlagsBits = {
 	 */
 	RequestToSpeak: 1n << 32n,
 	/**
-	 * Allows for creating, editing, and deleting scheduled events
+	 * Allows for editing and deleting scheduled events created by all users
 	 *
 	 * Applies to channel types: Voice, Stage
 	 */
@@ -254,6 +254,16 @@ export const PermissionFlagsBits = {
 	 * Applies to channel types: Voice
 	 */
 	UseSoundboard: 1n << 42n,
+	/**
+	 * Allows for creating emojis, stickers, and soundboard sounds, and editing and deleting those created by the current user
+	 */
+	CreateGuildExpressions: 1n << 43n,
+	/**
+	 * Allows for creating scheduled events, and editing and deleting those created by the current user
+	 *
+	 * Applies to channel types: Voice, Stage
+	 */
+	CreateEvents: 1n << 44n,
 	/**
 	 * Allows the usage of custom soundboard sounds from other servers
 	 *
