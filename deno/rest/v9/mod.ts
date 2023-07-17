@@ -839,6 +839,16 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/sticker-packs`
 	 */
+	stickerPacks() {
+		return '/sticker-packs' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/sticker-packs`
+	 *
+	 * @deprecated Use {@link Routes.stickerPacks} instead.
+	 */
 	nitroStickerPacks() {
 		return '/sticker-packs' as const;
 	},
