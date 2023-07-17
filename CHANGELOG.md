@@ -1,3 +1,14 @@
+## [0.37.49](https://github.com/discordjs/discord-api-types/compare/0.37.48...0.37.49) (2023-07-17)
+
+### Features
+
+- **APIApplication:** approx guild count and get self application endpoint ([#728](https://github.com/discordjs/discord-api-types/issues/728)) ([874f135](https://github.com/discordjs/discord-api-types/commit/874f13573b35fe1e5e40549d007aebe5ec3bbcc0))
+- **APIAttachment:** add `flags` ([#783](https://github.com/discordjs/discord-api-types/issues/783)) ([7f9a7e5](https://github.com/discordjs/discord-api-types/commit/7f9a7e5b94529fbcd254ffdd1fcac1ceff62e890))
+- **APIRole:** role flags ([#782](https://github.com/discordjs/discord-api-types/issues/782)) ([488b5ad](https://github.com/discordjs/discord-api-types/commit/488b5adf04d3b2c7f457bea787c2a5d1b0bf8ba6))
+- **APIUser:** add avatar decorations ([#664](https://github.com/discordjs/discord-api-types/issues/664)) ([f556455](https://github.com/discordjs/discord-api-types/commit/f556455ba6e396e1b798e85f71d2a58e1aacf043))
+- **AuditLogEvent:** Add creator monetisation events ([#787](https://github.com/discordjs/discord-api-types/issues/787)) ([47f78bc](https://github.com/discordjs/discord-api-types/commit/47f78bcc691ee6d551f2eb441e427384a928dd11))
+- **GatewayMessageReactionAddDispatch:** add `message_author_id` ([#754](https://github.com/discordjs/discord-api-types/issues/754)) ([82d7024](https://github.com/discordjs/discord-api-types/commit/82d7024dfd0e30178e9e38647bfa882fdddd1681))
+
 ## [0.37.48](https://github.com/discordjs/discord-api-types/compare/0.37.47...0.37.48) (2023-07-10)
 
 ## [0.37.47](https://github.com/discordjs/discord-api-types/compare/0.37.46...0.37.47) (2023-06-29)
