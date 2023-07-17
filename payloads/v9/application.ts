@@ -113,7 +113,8 @@ export interface APIApplication {
 	 */
 	role_connections_verification_url?: string;
 	/**
-	 * An approximate count of the bot's guild membership
+	 * An approximate count of the app's guild membership
+	 * s
 	 */
 	approximate_guild_count?: number;
 	/**
