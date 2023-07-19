@@ -1028,6 +1028,10 @@ export interface APIGuildOnboarding {
 	 * Whether onboarding is enabled in the guild
 	 */
 	enabled: boolean;
+	/**
+	 * Current mode of onboarding
+	 */
+	mode: GuildOnboardingMode;
 }
 
 /**
@@ -1093,6 +1097,20 @@ export interface APIGuildOnboardingPromptOption {
 	 * Description of the option
 	 */
 	description: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-mode
+ */
+export enum GuildOnboardingMode {
+	/**
+	 * Counts only Default Channels towards constraints
+	 */
+	OnboardingDefault,
+	/**
+	 * Counts Default Channels and Questions towards constraints
+	 */
+	OnboardingAdvanced,
 }
 
 /**

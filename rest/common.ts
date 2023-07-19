@@ -285,6 +285,9 @@ export enum RESTJSONErrorCodes {
 	WebhookServicesCannotBeUsedInForumChannels,
 
 	MessageBlockedByHarmfulLinksFilter = 240_000,
+
+	CannotEnableOnboardingRequirementsAreNotMet = 350_000,
+	CannotUpdateOnboardingWhileBelowRequirements,
 }
 
 /**

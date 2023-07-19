@@ -926,3 +926,16 @@ export type RESTPatchAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
  * https://discord.com/developers/docs/resources/guild#get-guild-onboarding
  */
 export type RESTGetAPIGuildOnboardingResult = APIGuildOnboarding;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
+ */
+export type RESTPutAPIGuildOnboardingJSONBody = Pick<
+	APIGuildOnboarding,
+	'default_channel_ids' | 'enabled' | 'mode' | 'prompts'
+>;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
+ */
+export type RESTPutAPIGuildOnboardingResult = APIGuildOnboarding;
