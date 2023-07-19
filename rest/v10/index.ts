@@ -883,6 +883,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET `/guilds/${guild.id}/onboarding`
+	 * - PUT `/guilds/${guild.id}/onboarding`
 	 */
 	guildOnboarding(guildId: Snowflake) {
 		return `/guilds/${guildId}/onboarding` as const;
