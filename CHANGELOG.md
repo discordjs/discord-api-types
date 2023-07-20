@@ -1,3 +1,9 @@
+## [0.37.50](https://github.com/discordjs/discord-api-types/compare/0.37.49...0.37.50) (2023-07-20)
+
+### Features
+
+- onboarding updates, mode field, and error codes ([#773](https://github.com/discordjs/discord-api-types/issues/773)) ([773556a](https://github.com/discordjs/discord-api-types/commit/773556aa329750839262874b4af6c4113d9906d3))
+
 ## [0.37.49](https://github.com/discordjs/discord-api-types/compare/0.37.48...0.37.49) (2023-07-17)
 
 ### Features
