@@ -112,14 +112,14 @@ export type RESTPatchAPIWebhookWithTokenResult = RESTGetAPIWebhookWithTokenResul
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIWebhookResult = never;
+export type RESTDeleteAPIWebhookResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook-with-token
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIWebhookWithTokenResult = never;
+export type RESTDeleteAPIWebhookWithTokenResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
@@ -211,7 +211,7 @@ export interface RESTPostAPIWebhookWithTokenQuery {
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIWebhookWithTokenResult = never;
+export type RESTPostAPIWebhookWithTokenResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -235,7 +235,7 @@ export type RESTPostAPIWebhookWithTokenSlackQuery = RESTPostAPIWebhookWithTokenQ
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIWebhookWithTokenSlackResult = never;
+export type RESTPostAPIWebhookWithTokenSlackResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -259,7 +259,7 @@ export type RESTPostAPIWebhookWithTokenGitHubQuery = RESTPostAPIWebhookWithToken
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPostAPIWebhookWithTokenGitHubResult = never;
+export type RESTPostAPIWebhookWithTokenGitHubResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -322,4 +322,4 @@ export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIWebhookWithTokenMessageResult = never;
+export type RESTDeleteAPIWebhookWithTokenMessageResult<NoContent extends unknown = never> = NoContent;

@@ -304,7 +304,7 @@ export type RESTPatchAPIGuildResult = APIGuild;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildResult = never;
+export type RESTDeleteAPIGuildResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-channels
@@ -356,7 +356,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = {
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildChannelPositionsResult = never;
+export type RESTPatchAPIGuildChannelPositionsResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-member
@@ -454,7 +454,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
+export type RESTPutAPIGuildMemberResult<NoContent extends unknown = never> = APIGuildMember | NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
@@ -548,21 +548,21 @@ export type RESTPatchAPICurrentGuildMemberNicknameResult =
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPutAPIGuildMemberRoleResult = never;
+export type RESTPutAPIGuildMemberRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-member-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildMemberRoleResult = never;
+export type RESTDeleteAPIGuildMemberRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-member
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildMemberResult = never;
+export type RESTDeleteAPIGuildMemberResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-bans
@@ -601,14 +601,14 @@ export interface RESTPutAPIGuildBanJSONBody {
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPutAPIGuildBanResult = never;
+export type RESTPutAPIGuildBanResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-ban
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildBanResult = never;
+export type RESTDeleteAPIGuildBanResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-roles
@@ -741,7 +741,7 @@ export type RESTPatchAPIGuildRoleResult = APIRole;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildRoleResult = never;
+export type RESTDeleteAPIGuildRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-prune-count
@@ -834,7 +834,7 @@ export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildIntegrationResult = never;
+export type RESTDeleteAPIGuildIntegrationResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-settings

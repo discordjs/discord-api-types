@@ -57,4 +57,4 @@ export type RESTPatchAPIStageInstanceResult = APIStageInstance;
 /**
  * https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance
  */
-export type RESTDeleteAPIStageInstanceResult = never;
+export type RESTDeleteAPIStageInstanceResult<NoContent extends unknown = never> = NoContent;

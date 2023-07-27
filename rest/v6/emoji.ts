@@ -53,4 +53,4 @@ export type RESTPatchAPIGuildEmojiResult = APIEmoji;
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIGuildEmojiResult = never;
+export type RESTDeleteAPIGuildEmojiResult<NoContent extends unknown = never> = NoContent;

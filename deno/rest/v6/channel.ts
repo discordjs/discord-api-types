@@ -173,7 +173,7 @@ export type RESTPatchAPIChannelMessageResult = APIMessage;
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIChannelMessageResult = never;
+export type RESTDeleteAPIChannelMessageResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-reactions
@@ -194,17 +194,17 @@ export type RESTGetAPIChannelMessageReactionsResult = APIUser[];
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPutAPIChannelMessageReactionResult = never;
+export type RESTPutAPIChannelMessageReactionResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIChannelMessageReactionResult = never;
+export type RESTDeleteAPIChannelMessageReactionResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIChannelAllMessageReactionsResult = never;
+export type RESTDeleteAPIChannelAllMessageReactionsResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
@@ -218,7 +218,7 @@ export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
+export type RESTPostAPIChannelMessagesBulkDeleteResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
@@ -234,12 +234,12 @@ export interface RESTPutAPIChannelPermissionsJSONBody {
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPutAPIChannelPermissionsResult = never;
+export type RESTPutAPIChannelPermissionsResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIChannelPermissionsResult = never;
+export type RESTDeleteAPIChannelPermissionsResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-channel-invites
@@ -265,7 +265,7 @@ export interface RESTPostAPIChannelInviteJSONBody {
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPostAPIChannelTypingResult = never;
+export type RESTPostAPIChannelTypingResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-pinned-messages
@@ -279,12 +279,12 @@ export type RESTGetAPIChannelPinsResult = APIMessage[];
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPutAPIChannelPinResult = never;
+export type RESTPutAPIChannelPinResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIChannelPinResult = never;
+export type RESTDeleteAPIChannelPinResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient

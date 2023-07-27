@@ -75,4 +75,4 @@ export type RESTPatchAPIGuildStickerResult = APISticker;
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildStickerResult = never;
+export type RESTDeleteAPIGuildStickerResult<NoContent extends unknown = never> = NoContent;

@@ -91,7 +91,7 @@ export type RESTGetAPICurrentUserGuildsResult = RESTAPIPartialCurrentUserGuild[]
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPICurrentUserGuildResult = never;
+export type RESTDeleteAPICurrentUserGuildResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/user#create-dm

@@ -58,4 +58,4 @@ export type RESTPatchAPIGuildEmojiResult = APIEmoji;
 /**
  * https://discord.com/developers/docs/resources/emoji#delete-guild-emoji
  */
-export type RESTDeleteAPIGuildEmojiResult = never;
+export type RESTDeleteAPIGuildEmojiResult<NoContent extends unknown = never> = NoContent;
