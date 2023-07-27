@@ -649,7 +649,7 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 };
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
+ * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
  */
 export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
