@@ -4,7 +4,7 @@
 
 import type { Permissions, Snowflake } from '../../globals';
 import type { APIEmoji, APIPartialEmoji } from './emoji';
-import type { PresenceUpdateStatus } from './gateway';
+import type { PresenceUpdateReceiveStatus } from './gateway';
 import type { OAuth2Scopes } from './oauth2';
 import type { APIRole } from './permissions';
 import type { APISticker } from './sticker';
@@ -903,7 +903,7 @@ export interface APIGuildWidgetMember {
 	username: string;
 	discriminator: string;
 	avatar: string | null;
-	status: PresenceUpdateStatus;
+	status: PresenceUpdateReceiveStatus;
 	activity?: { name: string };
 	avatar_url: string;
 }

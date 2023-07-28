@@ -4,7 +4,7 @@
 
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIEmoji, APIPartialEmoji } from './emoji.ts';
-import type { PresenceUpdateStatus } from './gateway.ts';
+import type { PresenceUpdateReceiveStatus } from './gateway.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
@@ -895,7 +895,7 @@ export interface APIGuildWidgetMember {
 	username: string;
 	discriminator: string;
 	avatar: string | null;
-	status: PresenceUpdateStatus;
+	status: PresenceUpdateReceiveStatus;
 	activity?: { name: string };
 	avatar_url: string;
 }
