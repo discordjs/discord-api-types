@@ -1,3 +1,9 @@
+## [0.37.51](https://github.com/discordjs/discord-api-types/compare/0.37.50...0.37.51) (2023-07-31)
+
+### Bug Fixes
+
+- **Presence:** cannot receive invisible status ([#799](https://github.com/discordjs/discord-api-types/issues/799)) ([1071d24](https://github.com/discordjs/discord-api-types/commit/1071d24362bbf1d39d528f73c3233f22aee99778))
+
 ## [0.37.50](https://github.com/discordjs/discord-api-types/compare/0.37.49...0.37.50) (2023-07-20)
 
 ### Features
