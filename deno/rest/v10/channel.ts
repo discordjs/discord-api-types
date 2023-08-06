@@ -61,7 +61,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	position?: number | null | undefined;
 	/**
-	 * 0-1024 character channel topic (0-4096 characters for forum & media channels)
+	 * 0-1024 character channel topic (0-4096 characters for thread-only channels)
 	 *
 	 * Channel types: text, news, forum, media
 	 */
@@ -69,7 +69,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, voice, news, forum
+	 * Channel types: text, voice, news, forum, media
 	 */
 	nsfw?: boolean | null | undefined;
 	/**
@@ -145,7 +145,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	flags?: ChannelFlags | undefined;
 	/**
-	 * The set of tags that can be used in a forum or media channel; limited to 20
+	 * The set of tags that can be used in a thread-only channel; limited to 20
 	 *
 	 * Channel types: forum, media
 	 */
@@ -157,7 +157,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	invitable?: boolean | undefined;
 	/**
-	 * The emoji to show in the add reaction button on a thread in a forum or media channel
+	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 *
 	 * Channel types: forum, media
 	 */
@@ -170,7 +170,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	default_thread_rate_limit_per_user?: number | null | undefined;
 	/**
-	 * The default sort order type used to order posts in a forum channel
+	 * The default sort order type used to order posts in a thread-only channel
 	 *
 	 * Channel types: forum, media
 	 */

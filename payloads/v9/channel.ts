@@ -125,7 +125,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_thread_rate_limit_per_user?: number;
 	/**
-	 * The channel topic (0-1024 characters)
+	 * The channel topic (0-4096 characters for thread-only channels, 0-1024 characters for all others)
 	 */
 	topic?: string | null;
 }
@@ -237,7 +237,7 @@ export interface APIThreadChannel
 	 */
 	total_message_sent?: number;
 	/**
-	 * The IDs of the set of tags that have been applied to a thread in a forum or media channel
+	 * The IDs of the set of tags that have been applied to a thread in a thread-only channel
 	 */
 	applied_tags: Snowflake[];
 }
@@ -314,30 +314,30 @@ export enum ForumLayoutType {
 	GalleryView,
 }
 
-export interface APIBaseGuildForumChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
+export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
 	extends APIGuildTextChannel<T> {
 	/**
-	 * The set of tags that can be used in a forum or media channel
+	 * The set of tags that can be used in a thread-only channel
 	 */
 	available_tags: APIGuildForumTag[];
 	/**
-	 * The emoji to show in the add reaction button on a thread in a forum or media channel
+	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 */
 	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
 	/**
-	 * The default sort order type used to order posts in a forum or media channel
+	 * The default sort order type used to order posts in a thread-only channel
 	 */
 	default_sort_order: SortOrderType | null;
 }
 
-export interface APIGuildForumChannel extends APIBaseGuildForumChannel<ChannelType.GuildForum> {
+export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.GuildForum> {
 	/**
 	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
 	 */
 	default_forum_layout: ForumLayoutType;
 }
 
-export type APIGuildMediaChannel = APIBaseGuildForumChannel<ChannelType.GuildMedia>;
+export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
