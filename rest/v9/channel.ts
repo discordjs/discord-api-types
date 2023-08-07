@@ -149,7 +149,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: forum, media
 	 */
-	available_tags?: APIGuildForumTag[] | undefined;
+	available_tags?: (Partial<APIGuildForumTag> & Pick<APIGuildForumTag, 'name'>)[] | undefined;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread
 	 *
