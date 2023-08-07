@@ -150,7 +150,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: forum
 	 */
-	available_tags?: APIGuildForumTag[] | undefined;
+	available_tags?: (Partial<APIGuildForumTag> & Pick<APIGuildForumTag, 'name'>)[] | undefined;
 	/**
 	 * The emoji to show in the add reaction button on a thread in a forum channel
 	 *
