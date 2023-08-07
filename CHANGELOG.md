@@ -1,3 +1,9 @@
+## [0.37.52](https://github.com/discordjs/discord-api-types/compare/0.37.51...0.37.52) (2023-08-07)
+
+### Bug Fixes
+
+- **RESTPatchAPIChannelJSONBody:** `available_tags` requires `name` only ([#802](https://github.com/discordjs/discord-api-types/issues/802)) ([5261124](https://github.com/discordjs/discord-api-types/commit/52611242fb73ac56d8cfedd8953ce558bf6e842e))
+
 ## [0.37.51](https://github.com/discordjs/discord-api-types/compare/0.37.50...0.37.51) (2023-07-31)
 
 ### Bug Fixes
