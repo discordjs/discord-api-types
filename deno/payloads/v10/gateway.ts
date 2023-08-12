@@ -181,7 +181,7 @@ export interface GatewayActivity {
 	 */
 	details?: string | null;
 	/**
-	 * The user's current party status
+	 * The user's current party status, or the text used for a custom status
 	 */
 	state?: string | null;
 	/**
