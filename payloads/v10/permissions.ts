@@ -90,6 +90,9 @@ export interface APIRoleTags {
 	guild_connections?: null;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/permissions#role-object-role-flags
+ */
 export enum RoleFlags {
 	/**
 	 * Role can be selected by members in an onboarding prompt
