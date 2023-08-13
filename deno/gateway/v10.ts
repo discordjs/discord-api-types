@@ -1960,7 +1960,7 @@ export interface GatewayPresenceUpdateData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-structure
  */
-export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'type' | 'url'>;
+export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'state' | 'type' | 'url'>;
 
 // #endregion Sendable Payloads
 
