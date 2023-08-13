@@ -254,7 +254,7 @@ export enum ActivityType {
 	 */
 	Watching,
 	/**
-	 * {emoji} {details}
+	 * {emoji} {state}
 	 */
 	Custom,
 	/**
