@@ -449,7 +449,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 	deaf?: boolean | undefined;
 }
 
-export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
+export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member

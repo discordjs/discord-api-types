@@ -454,7 +454,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
+export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
