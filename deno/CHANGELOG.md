@@ -1,3 +1,9 @@
+## [0.37.53](https://github.com/discordjs/discord-api-types/compare/0.37.52...0.37.53) (2023-08-14)
+
+### Features
+
+- **GatewayActivityUpdateData:** allow sending state ([#801](https://github.com/discordjs/discord-api-types/issues/801)) ([e095e09](https://github.com/discordjs/discord-api-types/commit/e095e09b0b5e3c85107705de124858e1fbb29bf0))
+
 ## [0.37.52](https://github.com/discordjs/discord-api-types/compare/0.37.51...0.37.52) (2023-08-07)
 
 ### Bug Fixes
