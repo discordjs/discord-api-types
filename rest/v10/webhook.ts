@@ -89,12 +89,12 @@ export type RESTPatchAPIWebhookWithTokenResult = RESTGetAPIWebhookWithTokenResul
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook
  */
-export type RESTDeleteAPIWebhookResult = never;
+export type RESTDeleteAPIWebhookResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook-with-token
  */
-export type RESTDeleteAPIWebhookWithTokenResult = never;
+export type RESTDeleteAPIWebhookWithTokenResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
@@ -186,7 +186,7 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
-export type RESTPostAPIWebhookWithTokenResult = never;
+export type RESTPostAPIWebhookWithTokenResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -204,7 +204,7 @@ export type RESTPostAPIWebhookWithTokenSlackQuery = RESTPostAPIWebhookWithTokenQ
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook
  */
-export type RESTPostAPIWebhookWithTokenSlackResult = never;
+export type RESTPostAPIWebhookWithTokenSlackResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -222,7 +222,7 @@ export type RESTPostAPIWebhookWithTokenGitHubQuery = RESTPostAPIWebhookWithToken
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook
  */
-export type RESTPostAPIWebhookWithTokenGitHubResult = never;
+export type RESTPostAPIWebhookWithTokenGitHubResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -280,4 +280,4 @@ export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook-message
  */
-export type RESTDeleteAPIWebhookWithTokenMessageResult = never;
+export type RESTDeleteAPIWebhookWithTokenMessageResult<NoContent extends unknown = never> = NoContent;

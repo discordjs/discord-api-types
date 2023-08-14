@@ -65,4 +65,4 @@ export type RESTPatchAPIStageInstanceResult = APIStageInstance;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIStageInstanceResult = never;
+export type RESTDeleteAPIStageInstanceResult<NoContent extends unknown = never> = NoContent;

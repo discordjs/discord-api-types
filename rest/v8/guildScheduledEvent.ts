@@ -122,7 +122,7 @@ export type RESTPatchAPIGuildScheduledEventResult = APIGuildScheduledEvent;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTDeleteAPIGuildScheduledEventResult = never;
+export type RESTDeleteAPIGuildScheduledEventResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users

@@ -320,7 +320,7 @@ export type RESTPatchAPIGuildResult = APIGuild;
 /**
  * https://discord.com/developers/docs/resources/guild#delete-guild
  */
-export type RESTDeleteAPIGuildResult = never;
+export type RESTDeleteAPIGuildResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-channels
@@ -362,7 +362,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  */
-export type RESTPatchAPIGuildChannelPositionsResult = never;
+export type RESTPatchAPIGuildChannelPositionsResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#list-active-guild-threads
@@ -449,7 +449,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 	deaf?: boolean | undefined;
 }
 
-export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
+export type RESTPutAPIGuildMemberResult<NoContent extends unknown = never> = APIGuildMember | NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
@@ -533,17 +533,17 @@ export type RESTPatchAPICurrentGuildMemberNicknameResult =
 /**
  * https://discord.com/developers/docs/resources/guild#add-guild-member-role
  */
-export type RESTPutAPIGuildMemberRoleResult = never;
+export type RESTPutAPIGuildMemberRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-member-role
  */
-export type RESTDeleteAPIGuildMemberRoleResult = never;
+export type RESTDeleteAPIGuildMemberRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-member
  */
-export type RESTDeleteAPIGuildMemberResult = never;
+export type RESTDeleteAPIGuildMemberResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-bans
@@ -594,12 +594,12 @@ export interface RESTPutAPIGuildBanJSONBody {
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-ban
  */
-export type RESTPutAPIGuildBanResult = never;
+export type RESTPutAPIGuildBanResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-ban
  */
-export type RESTDeleteAPIGuildBanResult = never;
+export type RESTDeleteAPIGuildBanResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-roles
@@ -716,7 +716,7 @@ export type RESTPatchAPIGuildRoleResult = APIRole;
 /**
  * https://discord.com/developers/docs/resources/guild#delete-guild-role
  */
-export type RESTDeleteAPIGuildRoleResult = never;
+export type RESTDeleteAPIGuildRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-prune-count
@@ -793,7 +793,7 @@ export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
 /**
  * https://discord.com/developers/docs/resources/guild#delete-guild-integration
  */
-export type RESTDeleteAPIGuildIntegrationResult = never;
+export type RESTDeleteAPIGuildIntegrationResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-settings
@@ -881,7 +881,7 @@ export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
  */
-export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = never;
+export type RESTPatchAPIGuildVoiceStateCurrentMemberResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
@@ -900,7 +900,7 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 /**
  * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
  */
-export type RESTPatchAPIGuildVoiceStateUserResult = never;
+export type RESTPatchAPIGuildVoiceStateUserResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen

@@ -125,7 +125,7 @@ export type RESTPatchAPIGuildResult = APIGuild;
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIGuildResult = never;
+export type RESTDeleteAPIGuildResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-channels
@@ -167,7 +167,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPatchAPIGuildChannelPositionsResult = never;
+export type RESTPatchAPIGuildChannelPositionsResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-member
@@ -238,7 +238,7 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPatchAPIGuildMemberResult = never;
+export type RESTPatchAPIGuildMemberResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
@@ -259,21 +259,21 @@ export type RESTPatchAPICurrentGuildMemberNicknameResult = Required<RESTPatchAPI
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPutAPIGuildMemberRoleResult = never;
+export type RESTPutAPIGuildMemberRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-member-role
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIGuildMemberRoleResult = never;
+export type RESTDeleteAPIGuildMemberRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-member
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIGuildMemberResult = never;
+export type RESTDeleteAPIGuildMemberResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-bans
@@ -302,14 +302,14 @@ export interface RESTPutAPIGuildBanJSONBody {
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPutAPIGuildBanResult = never;
+export type RESTPutAPIGuildBanResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#remove-guild-ban
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIGuildBanResult = never;
+export type RESTDeleteAPIGuildBanResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-roles
@@ -374,7 +374,7 @@ export type RESTPatchAPIGuildRoleResult = APIRole;
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIGuildRoleResult = never;
+export type RESTDeleteAPIGuildRoleResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-prune-count
@@ -458,7 +458,7 @@ export interface RESTPostAPIGuildIntegrationJSONBody {
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPostAPIGuildIntegrationResult = never;
+export type RESTPostAPIGuildIntegrationResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-integration
@@ -474,21 +474,21 @@ export interface RESTPatchAPIGuildIntegrationJSONBody {
 /**
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPatchAPIGuildIntegrationResult = never;
+export type RESTPatchAPIGuildIntegrationResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#delete-guild-integration
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTDeleteAPIGuildIntegrationResult = never;
+export type RESTDeleteAPIGuildIntegrationResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/guild#sync-guild-integration
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
-export type RESTPostAPIGuildIntegrationSyncResult = never;
+export type RESTPostAPIGuildIntegrationSyncResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * @deprecated Renamed to RESTGetAPIGuildWidgetSettingsResult

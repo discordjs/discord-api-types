@@ -77,4 +77,4 @@ export type RESTPatchAPIGuildStickerResult = APISticker;
 /**
  * https://discord.com/developers/docs/resources/sticker#delete-guild-sticker
  */
-export type RESTDeleteAPIGuildStickerResult = never;
+export type RESTDeleteAPIGuildStickerResult<NoContent extends unknown = never> = NoContent;

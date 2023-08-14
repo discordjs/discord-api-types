@@ -321,17 +321,17 @@ export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/channel#create-reaction
  */
-export type RESTPutAPIChannelMessageReactionResult = never;
+export type RESTPutAPIChannelMessageReactionResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#delete-own-reaction
  */
-export type RESTDeleteAPIChannelMessageOwnReaction = never;
+export type RESTDeleteAPIChannelMessageOwnReaction<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#delete-user-reaction
  */
-export type RESTDeleteAPIChannelMessageUserReactionResult = never;
+export type RESTDeleteAPIChannelMessageUserReactionResult<NoContent extends unknown = never> = NoContent;
 
 /*
  * https://discord.com/developers/docs/resources/channel#get-reactions
@@ -357,12 +357,12 @@ export type RESTGetAPIChannelMessageReactionUsersResult = APIUser[];
 /**
  * https://discord.com/developers/docs/resources/channel#delete-all-reactions
  */
-export type RESTDeleteAPIChannelAllMessageReactionsResult = never;
+export type RESTDeleteAPIChannelAllMessageReactionsResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#delete-all-reactions-for-emoji
  */
-export type RESTDeleteAPIChannelMessageReactionResult = never;
+export type RESTDeleteAPIChannelMessageReactionResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
@@ -429,7 +429,7 @@ export type RESTPatchAPIChannelMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/channel#delete-message
  */
-export type RESTDeleteAPIChannelMessageResult = never;
+export type RESTDeleteAPIChannelMessageResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
@@ -444,7 +444,7 @@ export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 /**
  * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
  */
-export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
+export type RESTPostAPIChannelMessagesBulkDeleteResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
@@ -475,7 +475,7 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 /**
  * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
  */
-export type RESTPutAPIChannelPermissionResult = never;
+export type RESTPutAPIChannelPermissionResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-channel-invites
@@ -539,7 +539,7 @@ export type RESTPostAPIChannelInviteResult = APIExtendedInvite;
 /**
  * https://discord.com/developers/docs/resources/channel#delete-channel-permission
  */
-export type RESTDeleteAPIChannelPermissionResult = never;
+export type RESTDeleteAPIChannelPermissionResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#follow-news-channel
@@ -559,7 +559,7 @@ export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;
 /**
  * https://discord.com/developers/docs/resources/channel#trigger-typing-indicator
  */
-export type RESTPostAPIChannelTypingResult = never;
+export type RESTPostAPIChannelTypingResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-pinned-messages
@@ -569,12 +569,12 @@ export type RESTGetAPIChannelPinsResult = APIMessage[];
 /**
  * https://discord.com/developers/docs/resources/channel#pin-message
  */
-export type RESTPutAPIChannelPinResult = never;
+export type RESTPutAPIChannelPinResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#unpin-message
  */
-export type RESTDeleteAPIChannelPinResult = never;
+export type RESTDeleteAPIChannelPinResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
@@ -676,12 +676,12 @@ export type RESTPostAPIChannelThreadsResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/channel#join-thread
  */
-export type RESTPutAPIChannelThreadMembersResult = never;
+export type RESTPutAPIChannelThreadMembersResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#leave-thread
  */
-export type RESTDeleteAPIChannelThreadMembersResult = never;
+export type RESTDeleteAPIChannelThreadMembersResult<NoContent extends unknown = never> = NoContent;
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-thread-member
