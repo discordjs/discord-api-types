@@ -266,6 +266,12 @@ export const PermissionFlagsBits = {
 	 * Applies to channel types: Text, Voice, Stage
 	 */
 	SendVoiceMessages: 1n << 46n,
+	/**
+	 * Allows members to interact with the Clyde AI bot
+	 *
+	 * Applies to channel types: Text, Voice, Stage
+	 */
+	UseClydeAI: 1n << 47n,
 } as const;
 
 /**
