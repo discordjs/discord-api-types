@@ -23,6 +23,7 @@ import type {
 	APIGuildForumDefaultReactionEmoji,
 	SortOrderType,
 	ForumLayoutType,
+	ChannelFlags,
 } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
 
@@ -60,15 +61,15 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	position?: number | null | undefined;
 	/**
-	 * 0-1024 character channel topic (0-4096 characters for forum channels)
+	 * 0-1024 character channel topic (0-4096 characters for thread-only channels)
 	 *
-	 * Channel types: text, news, forum
+	 * Channel types: text, news, forum, media
 	 */
 	topic?: string | null | undefined;
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, voice, news, forum
+	 * Channel types: text, voice, news, forum, media
 	 */
 	nsfw?: boolean | null | undefined;
 	/**
@@ -76,7 +77,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`,
 	 * are unaffected
 	 *
-	 * Channel types: text, newsThread, publicThread, privateThread, forum
+	 * Channel types: text, newsThread, publicThread, privateThread, forum, media
 	 */
 	rate_limit_per_user?: number | null | undefined;
 	/**
@@ -100,7 +101,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * ID of the new parent category for a channel
 	 *
-	 * Channel types: text, voice, news
+	 * Channel types: text, voice, news, stage, forum, media
 	 */
 	parent_id?: Snowflake | null | undefined;
 	/**
@@ -136,9 +137,19 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 *
-	 * Channel types: text, news
+	 * Channel types: text, news, forum, media
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration | undefined;
+	/**
+	 * Channel flags combined as a bit field.
+	 */
+	flags?: ChannelFlags | undefined;
+	/**
+	 * The set of tags that can be used in a thread-only channel; limited to 20
+	 *
+	 * Channel types: forum, media
+	 */
+	available_tags?: (Partial<APIGuildForumTag> & Pick<APIGuildForumTag, 'name'>)[] | undefined;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread
 	 *
@@ -146,28 +157,22 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	invitable?: boolean | undefined;
 	/**
-	 * The set of tags that can be used in a forum channel; limited to 20
+	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 *
-	 * Channel types: forum
-	 */
-	available_tags?: (Partial<APIGuildForumTag> & Pick<APIGuildForumTag, 'name'>)[] | undefined;
-	/**
-	 * The emoji to show in the add reaction button on a thread in a forum channel
-	 *
-	 * Channel types: forum
+	 * Channel types: forum, media
 	 */
 	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji | undefined;
 	/**
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
 	 *
-	 * Channel types: forum
+	 * Channel types: text, forum, media
 	 */
 	default_thread_rate_limit_per_user?: number | null | undefined;
 	/**
-	 * The default sort order type used to order posts in a forum channel
+	 * The default sort order type used to order posts in a thread-only channel
 	 *
-	 * Channel types: forum
+	 * Channel types: forum, media
 	 */
 	default_sort_order?: SortOrderType | null | undefined;
 	/**
@@ -614,25 +619,25 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
+ * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-media-channel
  */
 export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
-	 * First message in the forum thread
+	 * The initial message of the thread
 	 */
 	message: RESTPostAPIChannelMessageJSONBody;
 	/**
-	 * The IDs of the set of tags that have been applied to a thread in a forum channel; limited to 5
+	 * The IDs of the set of tags to apply to the thread; limited to 5
 	 */
 	applied_tags?: Snowflake[] | undefined;
 };
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
+ * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
  */
 export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
-	 * First message in the forum thread
+	 * The initial message of the thread
 	 */
 	message: string;
 };

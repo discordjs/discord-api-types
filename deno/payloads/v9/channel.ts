@@ -50,7 +50,8 @@ export type TextChannelType =
 	| ChannelType.GuildText
 	| ChannelType.GuildForum
 	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice;
+	| ChannelType.GuildStageVoice
+	| ChannelType.GuildMedia;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
@@ -124,7 +125,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_thread_rate_limit_per_user?: number;
 	/**
-	 * The channel topic (0-1024 characters)
+	 * The channel topic (0-4096 characters for thread-only channels, 0-1024 characters for all others)
 	 */
 	topic?: string | null;
 }
@@ -236,7 +237,7 @@ export interface APIThreadChannel
 	 */
 	total_message_sent?: number;
 	/**
-	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 * The IDs of the set of tags that have been applied to a thread in a thread-only channel
 	 */
 	applied_tags: Snowflake[];
 }
@@ -313,24 +314,30 @@ export enum ForumLayoutType {
 	GalleryView,
 }
 
-export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
+export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
+	extends APIGuildTextChannel<T> {
 	/**
-	 * The set of tags that can be used in a forum channel
+	 * The set of tags that can be used in a thread-only channel
 	 */
 	available_tags: APIGuildForumTag[];
 	/**
-	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 */
 	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
 	/**
-	 * The default sort order type used to order posts in a forum channel
+	 * The default sort order type used to order posts in a thread-only channel
 	 */
 	default_sort_order: SortOrderType | null;
+}
+
+export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.GuildForum> {
 	/**
 	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
 	 */
 	default_forum_layout: ForumLayoutType;
 }
+
+export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
@@ -344,7 +351,8 @@ export type APIChannel =
 	| APIGuildStageVoiceChannel
 	| APIGuildCategoryChannel
 	| APIThreadChannel
-	| APIGuildForumChannel;
+	| APIGuildForumChannel
+	| APIGuildMediaChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
@@ -406,6 +414,12 @@ export enum ChannelType {
 	 * A channel that can only contain threads
 	 */
 	GuildForum,
+	/**
+	 * A channel like forum channels but contains media for server subscriptions
+	 *
+	 * See https://creator-support.discord.com/hc/articles/14346342766743
+	 */
+	GuildMedia,
 
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS
 	/**
@@ -1712,6 +1726,10 @@ export enum ChannelFlags {
 	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	IsScheduledForDeletion = 1 << 9,
+	/**
+	 * Whether media download options are hidden.
+	 */
+	HideMediaDownloadOptions = 1 << 15,
 }
 
 /**
