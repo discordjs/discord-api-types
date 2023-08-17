@@ -1,3 +1,13 @@
+## [0.37.54](https://github.com/discordjs/discord-api-types/compare/0.37.53...0.37.54) (2023-08-17)
+
+### Bug Fixes
+
+- **Guild:** union with never type ([#797](https://github.com/discordjs/discord-api-types/issues/797)) ([b919e72](https://github.com/discordjs/discord-api-types/commit/b919e721bca4ff19340a40b58f6a20d34641bb05))
+
+### Features
+
+- Add Media channels ([#777](https://github.com/discordjs/discord-api-types/issues/777)) ([138b9f2](https://github.com/discordjs/discord-api-types/commit/138b9f2bf2fa7dcaada81de222543fa8a03bd52f))
+
 ## [0.37.53](https://github.com/discordjs/discord-api-types/compare/0.37.52...0.37.53) (2023-08-14)
 
 ### Features
