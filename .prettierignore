@@ -15,3 +15,6 @@ website/build
 *.js
 *.d.ts
 *.mjs
+
+# Miscellaneous
+CODEOWNERS

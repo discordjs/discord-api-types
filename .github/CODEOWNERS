@@ -1,0 +1,10 @@
+* @vladfrangu
+
+/*.ts @discordjs/discord-api-types @discordjs/core
+gateway/ @discordjs/discord-api-types @discordjs/core
+payloads/ @discordjs/discord-api-types @discordjs/core
+rest/ @discordjs/discord-api-types @discordjs/core
+rpc/ @discordjs/discord-api-types @discordjs/core
+tests/ @discordjs/discord-api-types @discordjs/core
+utils/ @discordjs/discord-api-types @discordjs/core
+voice/ @discordjs/discord-api-types @discordjs/core
