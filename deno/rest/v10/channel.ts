@@ -289,7 +289,14 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
+	attachments?:
+		| (Pick<APIAttachment, 'description'> & {
+				/**
+				 * Attachment id or a number that matches `n` in `files[n]`
+				 */
+				id: Snowflake | number;
+		  } & Partial<Pick<APIAttachment, 'filename'>>)[]
+		| undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
