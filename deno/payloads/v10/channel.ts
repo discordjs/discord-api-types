@@ -869,17 +869,21 @@ export interface APIFollowedChannel {
  */
 export interface APIReaction {
 	/**
-	 * Times this emoji has been used to react
+	 * Total number of times this emoji has been used to react (including super reacts)
 	 */
 	count: number;
 	/**
-	 * The reaction count details object
+	 * Reaction count details object
 	 */
 	count_details: APIReactionCountDetails;
 	/**
 	 * Whether the current user reacted using this emoji
 	 */
 	me: boolean;
+	/**
+	 * Whether the current user super-reacted using this emoji
+	 */
+	me_burst: boolean;
 	/**
 	 * Emoji information
 	 *
