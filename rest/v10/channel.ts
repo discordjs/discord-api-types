@@ -340,7 +340,7 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
 	 * The reaction type (0 for normal and 1 for super)
 	 */
-	type: number;
+	type: ReactionType;
 	/**
 	 * Get users after this user ID
 	 */
@@ -351,6 +351,11 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	 * @default 25
 	 */
 	limit?: number;
+}
+
+export enum ReactionType {
+	Normal,
+	Super,
 }
 
 /**
