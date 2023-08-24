@@ -346,6 +346,10 @@ export type RESTDeleteAPIChannelMessageUserReactionResult = never;
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
+	 * The reaction type (0 for normal and 1 for super)
+	 */
+	type: number;
+	/**
 	 * Get users after this user ID
 	 */
 	after?: Snowflake;
