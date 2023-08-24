@@ -70,7 +70,7 @@ export interface APISticker {
  */
 export enum StickerType {
 	/**
-	 * An official sticker in a pack, part of Nitro or in a removed purchasable pack
+	 * An official sticker in a pack
 	 */
 	Standard = 1,
 	/**
