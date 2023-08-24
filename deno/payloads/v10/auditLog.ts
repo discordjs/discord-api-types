@@ -200,6 +200,9 @@ export enum AuditLogEvent {
 	AutoModerationBlockMessage,
 	AutoModerationFlagToChannel,
 	AutoModerationUserCommunicationDisabled,
+
+	CreatorMonetizationRequestCreated = 150,
+	CreatorMonetizationTermsAccepted,
 }
 
 /**
@@ -468,6 +471,11 @@ export type APIAuditLogChangeKeyRulesChannelId = AuditLogChangeData<'rules_chann
  * Returned when a guild's public_updates_channel_id is changed
  */
 export type APIAuditLogChangeKeyPublicUpdatesChannelId = AuditLogChangeData<'public_updates_channel_id', string>;
+
+/**
+ * Returned when a guild's safety_alerts_channel_id is changed
+ */
+export type APIAuditLogChangeKeySafetyAlertsChannelId = AuditLogChangeData<'safety_alerts_channel_id', string>;
 
 /**
  * Returned when a guild's mfa_level is changed

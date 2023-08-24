@@ -79,7 +79,7 @@ export interface GatewayPresenceUpdate {
 	/**
 	 * Either "idle", "dnd", "online", or "offline"
 	 */
-	status?: PresenceUpdateStatus;
+	status?: PresenceUpdateReceiveStatus;
 	/**
 	 * User's current activities
 	 *
@@ -94,6 +94,9 @@ export interface GatewayPresenceUpdate {
 	client_status?: GatewayPresenceClientStatus;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#update-presence-status-types
+ */
 export enum PresenceUpdateStatus {
 	Online = 'online',
 	DoNotDisturb = 'dnd',
@@ -105,6 +108,8 @@ export enum PresenceUpdateStatus {
 	Offline = 'offline',
 }
 
+export type PresenceUpdateReceiveStatus = Exclude<PresenceUpdateStatus, PresenceUpdateStatus.Invisible>;
+
 /**
  * https://discord.com/developers/docs/topics/gateway-events#client-status-object
  */
@@ -112,15 +117,15 @@ export interface GatewayPresenceClientStatus {
 	/**
 	 * The user's status set for an active desktop (Windows, Linux, Mac) application session
 	 */
-	desktop?: PresenceUpdateStatus;
+	desktop?: PresenceUpdateReceiveStatus;
 	/**
 	 * The user's status set for an active mobile (iOS, Android) application session
 	 */
-	mobile?: PresenceUpdateStatus;
+	mobile?: PresenceUpdateReceiveStatus;
 	/**
 	 * The user's status set for an active web (browser, bot account) application session
 	 */
-	web?: PresenceUpdateStatus;
+	web?: PresenceUpdateReceiveStatus;
 }
 
 /**
@@ -176,7 +181,7 @@ export interface GatewayActivity {
 	 */
 	details?: string | null;
 	/**
-	 * The user's current party status
+	 * The user's current party status, or the text used for a custom status
 	 */
 	state?: string | null;
 	/**
@@ -261,7 +266,7 @@ export enum ActivityType {
 	 */
 	Watching,
 	/**
-	 * {emoji} {details}
+	 * {emoji} {state}
 	 */
 	Custom,
 	/**

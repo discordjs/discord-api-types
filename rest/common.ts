@@ -224,7 +224,8 @@ export enum RESTJSONErrorCodes {
 
 	RequestBodyContainsInvalidJSON = 50_109,
 
-	OwnershipCannotBeMovedToABotUser = 50_132,
+	OwnerCannotBePendingMember = 50_131,
+	OwnershipCannotBeMovedToABotUser,
 
 	FailedToResizeAssetBelowTheMinimumSize = 50_138,
 
@@ -239,6 +240,8 @@ export enum RESTJSONErrorCodes {
 	CannotDeleteGuildSubscriptionIntegration,
 
 	YouCannotSendVoiceMessagesInThisChannel = 50_173,
+
+	TheUserAccountMustFirstBeVerified = 50_178,
 
 	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
@@ -283,6 +286,9 @@ export enum RESTJSONErrorCodes {
 	WebhookServicesCannotBeUsedInForumChannels,
 
 	MessageBlockedByHarmfulLinksFilter = 240_000,
+
+	CannotEnableOnboardingRequirementsAreNotMet = 350_000,
+	CannotUpdateOnboardingWhileBelowRequirements,
 }
 
 /**

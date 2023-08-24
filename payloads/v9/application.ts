@@ -4,6 +4,7 @@
 
 import type { Permissions, Snowflake } from '../../globals';
 import type { LocalizationMap } from '../common';
+import type { APIPartialGuild } from './guild';
 import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
@@ -111,6 +112,15 @@ export interface APIApplication {
 	 * which when configured will render the app as a verification method in the guild role verification configuration
 	 */
 	role_connections_verification_url?: string;
+	/**
+	 * An approximate count of the app's guild membership
+	 * s
+	 */
+	approximate_guild_count?: number;
+	/**
+	 * A partial object of the associated guild
+	 */
+	guild?: APIPartialGuild;
 }
 
 export interface APIApplicationInstallParams {

@@ -18,9 +18,13 @@ export interface APIUser {
 	 */
 	username: string;
 	/**
-	 * The user's 4-digit discord-tag
+	 * The user's Discord-tag
 	 */
 	discriminator: string;
+	/**
+	 * The user's display name, if it is set. For bots, this is the application name
+	 */
+	global_name: string | null;
 	/**
 	 * The user's avatar hash
 	 *
@@ -79,6 +83,12 @@ export interface APIUser {
 	 * See https://discord.com/developers/docs/resources/user#user-object-user-flags
 	 */
 	public_flags?: UserFlags;
+	/**
+	 * The user's avatar decoration hash
+	 *
+	 * See https://discord.com/developers/docs/reference#image-formatting
+	 */
+	avatar_decoration?: string | null;
 }
 
 /**

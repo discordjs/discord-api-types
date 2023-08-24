@@ -503,7 +503,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/users/@me/threads/archived/prviate`
+	 * - GET `/channels/{channel.id}/users/@me/threads/archived/private`
 	 */
 	channelJoinedArchivedThreads(channelId: Snowflake) {
 		return `/channels/${channelId}/users/@me/threads/archived/private` as const;
@@ -888,6 +888,23 @@ export const Routes = {
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/${guild.id}/onboarding`
+	 * - PUT `/guilds/${guild.id}/onboarding`
+	 */
+	guildOnboarding(guildId: Snowflake) {
+		return `/guilds/${guildId}/onboarding` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/@me`
+	 */
+	currentApplication() {
+		return '/applications/@me' as const;
+	},
 };
 
 export const StickerPackApplicationId = '710982414301790216';
@@ -963,14 +980,16 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/embed/avatars/{user.discriminator % 5}.png`
+	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The `userDiscriminator` parameter should be the user discriminator modulo 5 (e.g. 1337 % 5 = 2)
+	 * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log#unique-usernames-on-discord).
+	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
+	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *
 	 * This route supports the extension: PNG
 	 */
-	defaultUserAvatar(userDiscriminator: DefaultUserAvatarAssets) {
-		return `/embed/avatars/${userDiscriminator}.png` as const;
+	defaultUserAvatar(index: DefaultUserAvatarAssets) {
+		return `/embed/avatars/${index}.png` as const;
 	},
 
 	/**
@@ -995,6 +1014,16 @@ export const CDNRoutes = {
 	 */
 	guildMemberAvatar(guildId: Snowflake, userId: Snowflake, memberAvatar: string, format: GuildMemberAvatarFormat) {
 		return `/guilds/${guildId}/users/${userId}/avatars/${memberAvatar}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/avatar-decorations/{user.id}/{user.avatar_decoration}.png`
+	 *
+	 * This route supports the extension: PNG
+	 */
+	userAvatarDecoration(userId: Snowflake, userAvatarDecoration: string) {
+		return `/avatar-decorations/${userId}/${userAvatarDecoration}.png` as const;
 	},
 
 	/**

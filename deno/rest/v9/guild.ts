@@ -7,6 +7,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildMembershipScreening,
+	APIGuildOnboarding,
 	APIGuildPreview,
 	APIGuildWelcomeScreen,
 	APIGuildWidget,
@@ -305,6 +306,10 @@ export interface RESTPatchAPIGuildJSONBody {
 	 * Whether the boosts progress bar should be enabled.
 	 */
 	premium_progress_bar_enabled?: boolean | undefined;
+	/**
+	 * The id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
+	 */
+	safety_alerts_channel_id?: Snowflake | null | undefined;
 }
 
 /**
@@ -444,7 +449,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 	deaf?: boolean | undefined;
 }
 
-export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
+export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
@@ -922,3 +927,21 @@ export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIG
  * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  */
 export type RESTPatchAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-onboarding
+ */
+export type RESTGetAPIGuildOnboardingResult = APIGuildOnboarding;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
+ */
+export type RESTPutAPIGuildOnboardingJSONBody = Pick<
+	APIGuildOnboarding,
+	'default_channel_ids' | 'enabled' | 'mode' | 'prompts'
+>;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
+ */
+export type RESTPutAPIGuildOnboardingResult = APIGuildOnboarding;

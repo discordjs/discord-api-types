@@ -255,7 +255,9 @@ export const PermissionFlagsBits = {
 	 */
 	UseSoundboard: 1n << 42n,
 	/**
-	 * @unstable This permission flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Allows the usage of custom soundboard sounds from other servers
+	 *
+	 * Applies to channel types: Voice
 	 */
 	UseExternalSounds: 1n << 45n,
 	/**
