@@ -43,6 +43,8 @@ export interface APITeamMember {
 	membership_state: TeamMemberMembershipState;
 	/**
 	 * Will always be `["*"]`
+	 *
+	 * @deprecated
 	 */
 	permissions: ['*'];
 	/**
