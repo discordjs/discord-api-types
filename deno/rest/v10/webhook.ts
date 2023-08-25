@@ -5,11 +5,11 @@ import type {
 	APIEmbed,
 	APIMessage,
 	APIWebhook,
-	APIAttachment,
 	MessageFlags,
 	APIMessageActionRowComponent,
 } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
+import type { RESTAPIAttachment } from './channel.ts';
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
@@ -139,7 +139,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
@@ -257,7 +257,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossibly
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
 };
 
 /**

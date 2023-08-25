@@ -2,7 +2,6 @@ import type { Permissions, Snowflake } from '../../globals';
 import type {
 	APIActionRowComponent,
 	APIAllowedMentions,
-	APIAttachment,
 	APIChannel,
 	APIEmbed,
 	APIExtendedInvite,
@@ -241,6 +240,24 @@ export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
 	};
 
 /**
+ * https://discord.com/developers/docs/resources/channel#attachment-object
+ */
+export interface RESTAPIAttachment {
+	/**
+	 * Attachment id or a number that matches `n` in `files[n]`
+	 */
+	id: Snowflake | number;
+	/**
+	 * Name of the file
+	 */
+	filename?: string | undefined;
+	/**
+	 * Description of the file
+	 */
+	description?: string | undefined;
+}
+
+/**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
 export interface RESTPostAPIChannelMessageJSONBody {
@@ -289,7 +306,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
@@ -400,7 +417,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * The components to include with the message
 	 *

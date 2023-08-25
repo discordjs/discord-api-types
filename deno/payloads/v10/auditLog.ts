@@ -13,6 +13,7 @@ import type {
 import type { APIChannel, APIOverwrite } from './channel.ts';
 import type {
 	APIGuildIntegration,
+	APIGuildIntegrationType,
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildMFALevel,
@@ -312,6 +313,15 @@ export interface APIAuditLogOptions {
 	 * **Present only if the {@link APIAuditLogOptions#type entry type} is "0"**
 	 */
 	role_name?: string;
+
+	/**
+	 * Type of integration which performed the action
+	 *
+	 * Present from:
+	 * - MEMBER_KICK
+	 * - MEMBER_ROLE_UPDATE
+	 */
+	integration_type?: APIGuildIntegrationType;
 }
 
 export enum AuditLogOptionsType {
