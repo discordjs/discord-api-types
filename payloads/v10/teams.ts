@@ -43,6 +43,8 @@ export interface APITeamMember {
 	membership_state: TeamMemberMembershipState;
 	/**
 	 * Will always be `["*"]`
+	 *
+	 * @deprecated
 	 */
 	permissions: ['*'];
 	/**
@@ -55,6 +57,12 @@ export interface APITeamMember {
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	user: APIUser;
+	/**
+	 * The user's role in the team.
+	 *
+	 * See https://discord.com/developers/docs/topics/teams#team-member-roles
+	 */
+	role: TeamMemberRole;
 }
 
 /**
@@ -63,4 +71,14 @@ export interface APITeamMember {
 export enum TeamMemberMembershipState {
 	Invited = 1,
 	Accepted,
+}
+
+/**
+ * https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types
+ */
+export enum TeamMemberRole {
+	Owner = 'owner',
+	Admin = 'admin',
+	Developer = 'developer',
+	ReadOnly = 'read_only',
 }
