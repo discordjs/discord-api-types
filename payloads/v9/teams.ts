@@ -77,7 +77,6 @@ export enum TeamMemberMembershipState {
  * https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types
  */
 export enum TeamMemberRole {
-	Owner = 'owner',
 	Admin = 'admin',
 	Developer = 'developer',
 	ReadOnly = 'read_only',
