@@ -1,3 +1,15 @@
+## [0.37.56](https://github.com/discordjs/discord-api-types/compare/0.37.55...0.37.56) (2023-08-31)
+
+### Bug Fixes
+
+- **RESTPostAPIChannelMessageJSONBody:** `number` for attachment ids ([#811](https://github.com/discordjs/discord-api-types/issues/811)) ([1eb0161](https://github.com/discordjs/discord-api-types/commit/1eb01618a3d7421012b0423aea7a8bde032c08fc))
+- standard stickers are now free ([#789](https://github.com/discordjs/discord-api-types/issues/789)) ([018d889](https://github.com/discordjs/discord-api-types/commit/018d889d9aeb35b64dd914ade9ac93e8b98390ac))
+
+### Features
+
+- add support for teams update ([#813](https://github.com/discordjs/discord-api-types/issues/813)) ([a26629c](https://github.com/discordjs/discord-api-types/commit/a26629c0e83504299af4bc5eb85e101c63b9ced8))
+- **APIAuditLogOptions:** add `integration_type` ([#809](https://github.com/discordjs/discord-api-types/issues/809)) ([31c8549](https://github.com/discordjs/discord-api-types/commit/31c8549fe3e461ad120a3af434e27c61091bbb9c))
+
 ## [0.37.55](https://github.com/discordjs/discord-api-types/compare/0.37.54...0.37.55) (2023-08-24)
 
 ## [0.37.54](https://github.com/discordjs/discord-api-types/compare/0.37.53...0.37.54) (2023-08-17)
