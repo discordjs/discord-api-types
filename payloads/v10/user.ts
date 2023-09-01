@@ -266,6 +266,7 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	BattleNet = 'battlenet',
+	Domain = 'domain',
 	eBay = 'ebay',
 	EpicGames = 'epicgames',
 	Facebook = 'facebook',
@@ -276,8 +277,8 @@ export enum ConnectionService {
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
 	RiotGames = 'riotgames',
-	Spotify = 'spotify',
 	Skype = 'skype',
+	Spotify = 'spotify',
 	Steam = 'steam',
 	TikTok = 'tiktok',
 	Twitch = 'twitch',
