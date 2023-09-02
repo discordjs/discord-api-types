@@ -276,6 +276,12 @@ export const PermissionFlagsBits = {
 	 * Applies to channel types: Text, Voice, Stage
 	 */
 	SendVoiceMessages: 1n << 46n,
+	/**
+	 * Allows setting voice channel status
+	 *
+	 * Applies to channel types: Voice
+	 */
+	SetVoiceChannelStatus: 1n << 48n,
 } as const;
 
 /**

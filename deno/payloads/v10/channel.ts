@@ -126,6 +126,10 @@ export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelT
 	 * The channel topic (0-1024 characters)
 	 */
 	topic?: string | null;
+	/**
+	 * The voice channel status (0-500 characters)
+	 */
+	status?: string | null;
 }
 
 export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;

@@ -270,6 +270,7 @@ export enum GatewayDispatchEvents {
 	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
 	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
 	GuildAuditLogEntryCreate = 'GUILD_AUDIT_LOG_ENTRY_CREATE',
+	VoiceChannelStatusUpdate = 'VOICE_CHANNEL_STATUS_UPDATE',
 	EntitlementCreate = 'ENTITLEMENT_CREATE',
 	EntitlementUpdate = 'ENTITLEMENT_UPDATE',
 	EntitlementDelete = 'ENTITLEMENT_DELETE',
@@ -1811,6 +1812,32 @@ export interface GatewayGuildAuditLogEntryCreateDispatchData extends APIAuditLog
 	 * ID of the guild
 	 */
 	guild_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#voice-channel-status-update
+ */
+export type GatewayVoiceChannelStatusUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.VoiceChannelStatusUpdate,
+	GatewayVoiceChannelStatusUpdateDispatchDate
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#voice-channel-status-update
+ */
+export interface GatewayVoiceChannelStatusUpdateDispatchDate {
+	/**
+	 * The id of the channel
+	 */
+	id: Snowflake;
+	/**
+	 * The id of the guild
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The new voice channel status
+	 */
+	status: string | null;
 }
 
 // #endregion Dispatch Payloads

@@ -204,6 +204,9 @@ export enum AuditLogEvent {
 
 	CreatorMonetizationRequestCreated = 150,
 	CreatorMonetizationTermsAccepted,
+
+	VoiceChannelStatusUpdate = 192,
+	VoiceChannelStatusDelete,
 }
 
 /**
@@ -257,6 +260,8 @@ export interface APIAuditLogOptions {
 	 * - AUTO_MODERATION_BLOCK_MESSAGE
 	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
 	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 * - VOICE_CHANNEL_STATUS_UPDATE
+	 * - VOICE_CHANNEL_STATUS_DELETE
 	 */
 	channel_id?: Snowflake;
 
@@ -322,6 +327,13 @@ export interface APIAuditLogOptions {
 	 * - MEMBER_ROLE_UPDATE
 	 */
 	integration_type?: APIGuildIntegrationType;
+	/**
+	 * The new voice channel status
+	 *
+	 * Present from:
+	 * - VOICE_CHANNEL_STATUS_UPDATE
+	 */
+	status?: string;
 }
 
 export enum AuditLogOptionsType {
