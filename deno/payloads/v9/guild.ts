@@ -419,7 +419,7 @@ export enum GuildFeature {
 	 * Guild has enabled the role subscription promo page
 	 */
 	CreatorStorePage = 'CREATOR_STORE_PAGE',
-	/*
+	/**
 	 * Guild has been set as a support server on the App Directory
 	 */
 	DeveloperSupportServer = 'DEVELOPER_SUPPORT_SERVER',
