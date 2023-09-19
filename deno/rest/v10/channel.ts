@@ -350,7 +350,7 @@ export type RESTDeleteAPIChannelMessageOwnReaction = never;
  */
 export type RESTDeleteAPIChannelMessageUserReactionResult = never;
 
-/*
+/**
  * https://discord.com/developers/docs/resources/channel#get-reactions
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
@@ -738,7 +738,7 @@ export interface RESTGetAPIChannelThreadMembersQuery {
  */
 export type RESTGetAPIChannelThreadMembersResult = APIThreadMember[];
 
-/*
+/**
  * https://discord.com/developers/docs/resources/channel#list-public-archived-threads
  */
 export interface RESTGetAPIChannelThreadsArchivedQuery {
