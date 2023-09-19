@@ -280,6 +280,10 @@ export interface APIGuild extends APIPartialGuild {
 	 * The id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
 	 */
 	safety_alerts_channel_id: Snowflake | null;
+	/**
+	 * The incidents data for this guild
+	 */
+	incidents_data: APIIncidentsData | null;
 }
 
 /**
@@ -1111,4 +1115,15 @@ export enum GuildOnboardingMode {
 export enum GuildOnboardingPromptType {
 	MultipleChoice,
 	Dropdown,
+}
+
+export interface APIIncidentsData {
+	/**
+	 * When invites get enabled again
+	 */
+	invites_disabled_until: string | null;
+	/**
+	 * When direct messages get enabled again
+	 */
+	dms_disabled_until: string | null;
 }
