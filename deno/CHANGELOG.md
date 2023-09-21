@@ -1,3 +1,9 @@
+## [0.37.57](https://github.com/discordjs/discord-api-types/compare/0.37.56...0.37.57) (2023-09-21)
+
+### Features
+
+- **ConnectionService:** support twitter rebrand update ([#819](https://github.com/discordjs/discord-api-types/issues/819)) ([32ba5ce](https://github.com/discordjs/discord-api-types/commit/32ba5ce36ce3b89293d540b06b74c2643ced7119))
+
 ## [0.37.56](https://github.com/discordjs/discord-api-types/compare/0.37.55...0.37.56) (2023-08-31)
 
 ### Bug Fixes
