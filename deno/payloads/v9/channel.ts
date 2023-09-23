@@ -5,7 +5,7 @@
 import type { APIApplication } from './application.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIGuildMember } from './guild.ts';
-import type { APIMessageInteraction } from './interactions.ts';
+import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker, APIStickerItem } from './sticker.ts';
 import type { APIUser } from './user.ts';
@@ -654,6 +654,12 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
+	/**
+	 * Data for users, members, channels, and roles in the message's auto-populated select menus
+	 *
+	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+	 */
+	resolved?: APIInteractionDataResolved;
 }
 
 /**

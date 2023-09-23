@@ -5,7 +5,7 @@
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
-import type { APIMessageInteraction } from './interactions';
+import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
@@ -663,11 +663,16 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
-
 	/**
 	 * Data of the role subscription purchase or renewal that prompted this `ROLE_SUBSCRIPTION_PURCHASE` message
 	 */
 	role_subscription_data?: APIMessageRoleSubscriptionData;
+	/**
+	 * Data for users, members, channels, and roles in the message's auto-populated select menus
+	 *
+	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+	 */
+	resolved?: APIInteractionDataResolved;
 }
 
 /**
