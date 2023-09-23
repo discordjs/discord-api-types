@@ -653,7 +653,7 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-media-channel
+ * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
  */
 export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
