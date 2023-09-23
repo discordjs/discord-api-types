@@ -206,12 +206,11 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	managed?: boolean;
 }
 
+export type ThreadChannelType = ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread;
+
 export interface APIThreadChannel
-	extends Omit<
-			APITextBasedChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread>,
-			'name'
-		>,
-		APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
+	extends Omit<APITextBasedChannel<ThreadChannelType>, 'name'>,
+		APIGuildChannel<ThreadChannelType> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
