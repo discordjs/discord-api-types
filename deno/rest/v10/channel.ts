@@ -180,6 +180,11 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: forum
 	 */
 	default_forum_layout?: ForumLayoutType | undefined;
+	/**
+	 * the IDs of the set of tags that have been applied to a thread in a
+	 * GUILD_FORUM or a GUILD_MEDIA channel; limited to 5
+	 */
+	applied_tags?: Snowflake[] | undefined;
 }
 
 /**
