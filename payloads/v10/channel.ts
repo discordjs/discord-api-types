@@ -1578,7 +1578,7 @@ export interface APIBaseSelectMenuComponent<
 	disabled?: boolean;
 }
 
-export interface APIAutoPopulatedSelectMenuComponent<
+export interface APIBaseAutoPopulatedSelectMenuComponent<
 	T extends
 		| ComponentType.UserSelect
 		| ComponentType.RoleSelect
@@ -1605,7 +1605,7 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIUserSelectComponent = APIAutoPopulatedSelectMenuComponent<
+export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.UserSelect,
 	SelectMenuDefaultValueType.User
 >;
@@ -1613,7 +1613,7 @@ export type APIUserSelectComponent = APIAutoPopulatedSelectMenuComponent<
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIRoleSelectComponent = APIAutoPopulatedSelectMenuComponent<
+export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.RoleSelect,
 	SelectMenuDefaultValueType.Role
 >;
@@ -1621,7 +1621,7 @@ export type APIRoleSelectComponent = APIAutoPopulatedSelectMenuComponent<
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIMentionableSelectComponent = APIAutoPopulatedSelectMenuComponent<
+export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.MentionableSelect,
 	SelectMenuDefaultValueType.User | SelectMenuDefaultValueType.Role
 >;
@@ -1630,7 +1630,7 @@ export type APIMentionableSelectComponent = APIAutoPopulatedSelectMenuComponent<
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
 export interface APIChannelSelectComponent
-	extends APIAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
+	extends APIBaseAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
 	/**
 	 * List of channel types to include in the ChannelSelect component
 	 */
@@ -1653,6 +1653,12 @@ export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType>
 	type: T;
 	id: Snowflake;
 }
+
+export type APIAutoPopulatedSelectMenuComponent =
+	| APIChannelSelectComponent
+	| APIMentionableSelectComponent
+	| APIRoleSelectComponent
+	| APIUserSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
