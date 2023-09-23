@@ -182,8 +182,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	default_forum_layout?: ForumLayoutType | undefined;
 	/**
-	 * The IDs of the set of tags that have been applied to a thread in a
-	 * GUILD_FORUM or a GUILD_MEDIA channel; limited to 5
+	 * The ids of the set of tags that have been applied to a thread-only channel; limited to 5
 	 *
 	 * Channel types: forum, media
 	 */
