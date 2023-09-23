@@ -18,4 +18,3 @@ export * from './template.ts';
 export * from './user.ts';
 export * from './voice.ts';
 export * from './webhook.ts';
-//# sourceMappingURL=index.d.ts.map
