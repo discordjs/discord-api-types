@@ -6,7 +6,7 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
-import type { APIMessageInteraction } from './interactions';
+import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
@@ -670,6 +670,12 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
+	/**
+	 * Data for users, members, channels, and roles in the message's auto-populated select menus
+	 *
+	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+	 */
+	resolved?: APIInteractionDataResolved;
 }
 
 /**
@@ -1580,6 +1586,20 @@ export interface APIBaseSelectMenuComponent<
 	disabled?: boolean;
 }
 
+export interface APIBaseAutoPopulatedSelectMenuComponent<
+	T extends
+		| ComponentType.UserSelect
+		| ComponentType.RoleSelect
+		| ComponentType.MentionableSelect
+		| ComponentType.ChannelSelect,
+	D extends SelectMenuDefaultValueType,
+> extends APIBaseSelectMenuComponent<T> {
+	/**
+	 * List of default values for auto-populated select menu components
+	 */
+	default_values?: APISelectMenuDefaultValue<D>[];
+}
+
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
@@ -1593,27 +1613,60 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIUserSelectComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
+export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.UserSelect,
+	SelectMenuDefaultValueType.User
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIRoleSelectComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
+export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.RoleSelect,
+	SelectMenuDefaultValueType.Role
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIMentionableSelectComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
+export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.MentionableSelect,
+	SelectMenuDefaultValueType.User | SelectMenuDefaultValueType.Role
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
+export interface APIChannelSelectComponent
+	extends APIBaseAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
 	/**
 	 * List of channel types to include in the ChannelSelect component
 	 */
 	channel_types?: ChannelType[];
 }
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ */
+export enum SelectMenuDefaultValueType {
+	Channel = 'channel',
+	Role = 'role',
+	User = 'user',
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ */
+export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType> {
+	type: T;
+	id: Snowflake;
+}
+
+export type APIAutoPopulatedSelectMenuComponent =
+	| APIChannelSelectComponent
+	| APIMentionableSelectComponent
+	| APIRoleSelectComponent
+	| APIUserSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
