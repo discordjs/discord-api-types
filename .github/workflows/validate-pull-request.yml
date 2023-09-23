@@ -1,0 +1,41 @@
+name: Validate Pull Request
+on:
+  pull_request:
+jobs:
+  deno:
+    name: Ensure Deno types are synchronized
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version-file: package.json
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Run Check Script
+        run: node ./scripts/actions/report-deno-not-ran.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  validate-supported-versions:
+    runs-on: ubuntu-latest
+    name: Disallow unsupported API versions
+    steps:
+      - name: Check for unsupported API changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PATTERNS="gateway/v6.ts|gateway/v8.ts|payloads/v6/|payloads/v8/|rest/v6/|rest/v8/|rpc/v8.ts|utils/v8.ts|voice/v8.ts|^v6.ts$|^v8.ts$"
+
+          if gh pr view ${{ github.event.pull_request.number }} --repo ${{github.repository}} --json files --jq ".files[].path | select(test(\"$PATTERNS\"))" | grep -q .; then
+            echo "::error::Unsupported API versions modified. Please make changes to current API versions only."
+            exit 1
+          fi
