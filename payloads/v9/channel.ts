@@ -1553,11 +1553,12 @@ export interface APIAutoPopulatedSelectMenuComponent<
 		| ComponentType.RoleSelect
 		| ComponentType.MentionableSelect
 		| ComponentType.ChannelSelect,
+	D extends SelectMenuDefaultValueType,
 > extends APIBaseSelectMenuComponent<T> {
 	/**
 	 * List of default values for auto-populated select menu components
 	 */
-	default_values?: APISelectMenuDefaultValue[];
+	default_values?: APISelectMenuDefaultValue<D>[];
 }
 
 /**
@@ -1573,22 +1574,32 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIUserSelectComponent = APIAutoPopulatedSelectMenuComponent<ComponentType.UserSelect>;
+export type APIUserSelectComponent = APIAutoPopulatedSelectMenuComponent<
+	ComponentType.UserSelect,
+	SelectMenuDefaultValueType.User
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIRoleSelectComponent = APIAutoPopulatedSelectMenuComponent<ComponentType.RoleSelect>;
+export type APIRoleSelectComponent = APIAutoPopulatedSelectMenuComponent<
+	ComponentType.RoleSelect,
+	SelectMenuDefaultValueType.Role
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIMentionableSelectComponent = APIAutoPopulatedSelectMenuComponent<ComponentType.MentionableSelect>;
+export type APIMentionableSelectComponent = APIAutoPopulatedSelectMenuComponent<
+	ComponentType.MentionableSelect,
+	SelectMenuDefaultValueType.User | SelectMenuDefaultValueType.Role
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APIChannelSelectComponent extends APIAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect> {
+export interface APIChannelSelectComponent
+	extends APIAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
 	/**
 	 * List of channel types to include in the ChannelSelect component
 	 */
@@ -1607,8 +1618,8 @@ export enum SelectMenuDefaultValueType {
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
  */
-export interface APISelectMenuDefaultValue {
-	type: SelectMenuDefaultValueType;
+export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType> {
+	type: T;
 	id: Snowflake;
 }
 
