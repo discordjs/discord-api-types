@@ -81,7 +81,8 @@ const config = {
 						},
 						slug: 'discord-api-types'
 					}
-				]
+				],
+				gitRefName: 'main',
 			})
 		]
 	],
