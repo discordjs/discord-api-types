@@ -17,6 +17,7 @@ import type {
 	MessageFlags,
 	OverwriteType,
 	ThreadAutoArchiveDuration,
+	ThreadChannelType,
 	VideoQualityMode,
 	APIGuildForumTag,
 	APIGuildForumDefaultReactionEmoji,
@@ -678,7 +679,7 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	 *
 	 * @default ChannelType.PrivateThread
 	 */
-	type?: ChannelType.AnnouncementThread | ChannelType.PublicThread | ChannelType.PrivateThread | undefined;
+	type?: ThreadChannelType | undefined;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
 	 */
