@@ -181,6 +181,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: forum
 	 */
 	default_forum_layout?: ForumLayoutType | undefined;
+	/**
+	 * The ids of the set of tags that have been applied to a thread-only channel; limited to 5
+	 *
+	 * Channel types: forum, media
+	 */
+	applied_tags?: Snowflake[] | undefined;
 }
 
 /**
