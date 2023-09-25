@@ -1,3 +1,13 @@
+## [0.37.58](https://github.com/discordjs/discord-api-types/compare/0.37.57...0.37.58) (2023-09-25)
+
+### Bug Fixes
+
+- **RESTPatchAPIChannelJSONBody:** add missing `applied_tags` field ([#828](https://github.com/discordjs/discord-api-types/issues/828)) ([a4cdbbf](https://github.com/discordjs/discord-api-types/commit/a4cdbbfdf87f32e6108140260f163afeca3e0788))
+
+### Features
+
+- default select menu values ([#824](https://github.com/discordjs/discord-api-types/issues/824)) ([1290c94](https://github.com/discordjs/discord-api-types/commit/1290c942abdd8c2d9bf97aa2807f45073970f823))
+
 ## [0.37.57](https://github.com/discordjs/discord-api-types/compare/0.37.56...0.37.57) (2023-09-21)
 
 ### Features
