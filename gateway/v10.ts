@@ -346,7 +346,6 @@ export type GatewayDispatchPayload =
 	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch
 	| GatewayGuildAuditLogEntryCreateDispatch
-	| GatewayEntitlementCreateDispatch
 	| GatewayEntitlementModifyDispatch
 	| GatewayEntitlementDeleteDispatch;
 
@@ -680,29 +679,18 @@ export interface GatewayChannelPinsUpdateDispatchData {
 }
 
 /**
+ * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
  * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
  */
-export type GatewayEntitlementModifyDispatchData = APIEntitlement;
+export type GatewayEntitlementUpdateDispatchData = APIEntitlement;
 
 /**
+ * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
  * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
  */
 export type GatewayEntitlementModifyDispatch = DataPayload<
-	GatewayDispatchEvents.EntitlementUpdate,
-	GatewayEntitlementCreateDispatchData
->;
-
-/**
- * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
- */
-export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispatchData;
-
-/**
- * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
- */
-export type GatewayEntitlementCreateDispatch = DataPayload<
-	GatewayDispatchEvents.EntitlementCreate,
-	GatewayEntitlementCreateDispatchData
+	GatewayDispatchEvents.EntitlementCreate | GatewayDispatchEvents.EntitlementUpdate,
+	GatewayEntitlementUpdateDispatchData
 >;
 
 // TODO: The payload isn't documented anywhere or tested in any specific way, so it is based on a speculation

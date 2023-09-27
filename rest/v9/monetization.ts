@@ -55,18 +55,18 @@ export interface RESTPostAPIEntitlementQuery {
 	/**
 	 * Where to create the entitlement
 	 */
-	owner_type: APITestEntitlementOwnerType | undefined;
+	owner_type: APIEntitlementOwnerType | undefined;
 }
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export type RESTPostAPITestEntitlementResult = Exclude<APIEntitlement, 'subscription_id' | 'starts_at' | 'ends_at'>;
+export type RESTPostAPIEntitlementResult = Exclude<APIEntitlement, 'subscription_id' | 'starts_at' | 'ends_at'>;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export enum APITestEntitlementOwnerType {
+export enum APIEntitlementOwnerType {
 	GuildSubscription = 1,
 	UserSubscription,
 }
@@ -74,7 +74,7 @@ export enum APITestEntitlementOwnerType {
 /**
  * https://discord.com/developers/docs/monetization/entitlements#delete-test-entitlement
  */
-export type RESTDeleteAPITestEntitlementResult = never;
+export type RESTDeleteAPIEntitlementResult = never;
 
 /**
  * https://discord.com/developers/docs/monetization/skus#list-skus
