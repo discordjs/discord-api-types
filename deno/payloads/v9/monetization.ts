@@ -67,6 +67,20 @@ export interface APISKU {
 	 * System-generated URL slug based on the SKU's name
 	 */
 	slug: string;
+	/**
+	 * SKU flags combined as a bitfield
+	 *
+	 * See https://en.wikipedia.org/wiki/Bit_field
+	 */
+	flags: SKUFlags;
+}
+
+/**
+ * https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags
+ */
+export enum SKUFlags {
+	ServerSubscriptions = 1 << 7,
+	UserSubscriptions = 1 << 8,
 }
 
 export enum SKUType {

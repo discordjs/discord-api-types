@@ -1,5 +1,6 @@
 import type { Snowflake } from '../../globals.ts';
 import type { APIEntitlement, APISKU } from '../../v10.ts';
+import type { SKUFlags } from '../../v9.ts';
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#list-entitlements
@@ -86,14 +87,6 @@ export interface RESTGetAPISKUsQuery {
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
 	flags?: SKUFlags | undefined;
-}
-
-/**
- * https://discord.com/developers/docs/monetization/skus#list-skus
- */
-export enum SKUFlags {
-	ServerSubscriptions = 1 << 7,
-	UserSubscriptions = 1 << 8,
 }
 
 /**
