@@ -29,6 +29,7 @@ export type RESTPatchCurrentApplicationJSONBody = StrictPartial<
 		APIApplication,
 		| 'custom_install_url'
 		| 'description'
+		| 'flags'
 		| 'role_connections_verification_url'
 		| 'install_params'
 		| 'interactions_endpoint_url'
