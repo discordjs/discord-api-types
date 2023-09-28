@@ -682,7 +682,7 @@ export interface GatewayChannelPinsUpdateDispatchData {
  * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
  * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
  */
-export type GatewayEntitlementUpdateDispatchData = APIEntitlement;
+export type GatewayEntitlementModifyDispatchData = APIEntitlement;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
@@ -690,13 +690,33 @@ export type GatewayEntitlementUpdateDispatchData = APIEntitlement;
  */
 export type GatewayEntitlementModifyDispatch = DataPayload<
 	GatewayDispatchEvents.EntitlementCreate | GatewayDispatchEvents.EntitlementUpdate,
-	GatewayEntitlementUpdateDispatchData
+	GatewayEntitlementModifyDispatchData
 >;
+
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
+ */
+export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
+ */
+export type GatewayEntitlementCreateDispatch = GatewayEntitlementModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
+ */
+export type GatewayEntitlementUpdateDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
+ */
+export type GatewayEntitlementUpdateDispatch = GatewayEntitlementModifyDispatch;
 
 // TODO: The payload isn't documented anywhere or tested in any specific way, so it is based on a speculation
 export type GatewayEntitlementDeleteDispatchData = Partial<APIEntitlement> & {
 	/**
-	 * ID of the message
+	 * ID of the entitlement
 	 */
 	id: Snowflake;
 };

@@ -24,7 +24,7 @@ export interface APIEntitlement {
 	/**
 	 * Type of entitlement
 	 */
-	type: APIEntitlementType;
+	type: EntitlementType;
 	/**
 	 * Not applicable for App Subscriptions. Subscriptions are not consumed and will be false
 	 */
@@ -39,7 +39,7 @@ export interface APIEntitlement {
 	ends_at?: number;
 }
 
-export enum APIEntitlementType {
+export enum EntitlementType {
 	/**
 	 * Entitlement was purchased as an app subscription
 	 */
@@ -54,7 +54,7 @@ export interface APISKU {
 	/**
 	 * Type of SKU
 	 */
-	type: APISKUType;
+	type: SKUType;
 	/**
 	 * ID of the parent application
 	 */
@@ -69,7 +69,7 @@ export interface APISKU {
 	slug: string;
 }
 
-export enum APISKUType {
+export enum SKUType {
 	/**
 	 * Represents a recurring subscription
 	 */

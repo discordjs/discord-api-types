@@ -4,7 +4,7 @@ import type { APIEntitlement, APISKU } from '../../v10.ts';
 /**
  * https://discord.com/developers/docs/monetization/entitlements#list-entitlements
  */
-export interface RESTListAPIEntitlementsQuery {
+export interface RESTGetAPIEntitlementsQuery {
 	/**
 	 * User ID to look up entitlements for
 	 */
@@ -38,30 +38,30 @@ export interface RESTListAPIEntitlementsQuery {
 /**
  * https://discord.com/developers/docs/monetization/entitlements#list-entitlements
  */
-export type RESTListAPIEntitlementsResult = APIEntitlement[];
+export type RESTGetAPIEntitlementsResult = APIEntitlement[];
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export interface RESTPostAPIEntitlementQuery {
+export interface RESTPostAPIEntitlementBody {
 	/**
 	 * ID of the SKU to grant the entitlement to
 	 */
-	sku_id: Snowflake | undefined;
+	sku_id: Snowflake;
 	/**
 	 * ID of the guild or user to grant the entitlement to
 	 */
-	owner_id: Snowflake | undefined;
+	owner_id: Snowflake;
 	/**
 	 * Where to create the entitlement
 	 */
-	owner_type: APIEntitlementOwnerType | undefined;
+	owner_type: APIEntitlementOwnerType;
 }
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export type RESTPostAPIEntitlementResult = Exclude<APIEntitlement, 'subscription_id' | 'starts_at' | 'ends_at'>;
+export type RESTPostAPIEntitlementResult = Omit<APIEntitlement, 'subscription_id' | 'starts_at' | 'ends_at'>;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
@@ -79,13 +79,24 @@ export type RESTDeleteAPIEntitlementResult = never;
 /**
  * https://discord.com/developers/docs/monetization/skus#list-skus
  */
-export interface RESTListAPISKUsQuery {
+export interface RESTGetAPISKUsQuery {
 	/**
-	 * Available flags: Server Subscriptions: 1 << 7, User Subscriptions: 1 << 8
+	 * SKU flags combined as a bitfield
+	 *
+	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	flags?: number | undefined;
+	flags?: SKUFlags | undefined;
 }
+
 /**
  * https://discord.com/developers/docs/monetization/skus#list-skus
  */
-export type RESTListAPISKUsResult = APISKU[];
+export enum SKUFlags {
+	ServerSubscriptions = 1 << 7,
+	UserSubscriptions = 1 << 8,
+}
+
+/**
+ * https://discord.com/developers/docs/monetization/skus#list-skus
+ */
+export type RESTGetAPISKUsResult = APISKU[];
