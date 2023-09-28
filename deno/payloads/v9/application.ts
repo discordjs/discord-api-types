@@ -121,7 +121,7 @@ export interface APIApplication {
 	 */
 	role_connections_verification_url?: string;
 	/**
-	 * Up to 5 tags describing the content and functionality of the application
+	 * Up to 5 tags of max 20 characters each describing the content and functionality of the application
 	 */
 	tags?: [string, string?, string?, string?, string?];
 	/**
