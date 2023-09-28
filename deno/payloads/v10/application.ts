@@ -104,7 +104,7 @@ export interface APIApplication {
 	 */
 	flags: ApplicationFlags;
 	/**
-	 * An approximate count of the app's guild membership
+	 * Approximate count of guilds the application has been added to
 	 */
 	approximate_guild_count?: number;
 	/**
