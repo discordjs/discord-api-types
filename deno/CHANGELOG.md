@@ -1,3 +1,9 @@
+## [0.37.59](https://github.com/discordjs/discord-api-types/compare/0.37.58...0.37.59) (2023-10-02)
+
+### Features
+
+- **RESTPostAPIStageInstanceJSONBody:** add `guild_scheduled_event_id` ([#656](https://github.com/discordjs/discord-api-types/issues/656)) ([ecef5b4](https://github.com/discordjs/discord-api-types/commit/ecef5b492bd54b3c61c04a6784fd39c29e282780))
+
 ## [0.37.58](https://github.com/discordjs/discord-api-types/compare/0.37.57...0.37.58) (2023-09-25)
 
 ### Bug Fixes
