@@ -902,6 +902,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET `/applications/@me`
+	 * - PATCH `/applications/@me`
 	 */
 	currentApplication() {
 		return '/applications/@me' as const;

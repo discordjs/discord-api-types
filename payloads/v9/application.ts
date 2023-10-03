@@ -42,6 +42,10 @@ export interface APIApplication {
 	 */
 	bot_require_code_grant: boolean;
 	/**
+	 * Partial user object for the bot user associated with the application
+	 */
+	bot?: APIUser;
+	/**
 	 * The url of the application's terms of service
 	 */
 	terms_of_service_url?: string;
@@ -60,7 +64,7 @@ export interface APIApplication {
 	 *
 	 * @deprecated This field will be removed in v11
 	 */
-	summary: string;
+	summary: '';
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
@@ -77,6 +81,10 @@ export interface APIApplication {
 	 * If this application is a game sold on Discord, this field will be the guild to which it has been linked
 	 */
 	guild_id?: Snowflake;
+	/**
+	 * A partial object of the associated guild
+	 */
+	guild?: APIPartialGuild;
 	/**
 	 * If this application is a game sold on Discord, this field will be the id of the "Game SKU" that is created, if exists
 	 */
@@ -96,7 +104,24 @@ export interface APIApplication {
 	 */
 	flags: ApplicationFlags;
 	/**
-	 * Up to 5 tags describing the content and functionality of the application
+	 * Approximate count of guilds the application has been added to
+	 */
+	approximate_guild_count?: number;
+	/**
+	 * Array of redirect URIs for the application
+	 */
+	redirect_uris?: string[];
+	/**
+	 * The interactions endpoint URL for the application
+	 */
+	interactions_endpoint_url?: string;
+	/**
+	 * The application's role connection verification entry point,
+	 * which when configured will render the app as a verification method in the guild role verification configuration
+	 */
+	role_connections_verification_url?: string;
+	/**
+	 * Up to 5 tags of max 20 characters each describing the content and functionality of the application
 	 */
 	tags?: [string, string?, string?, string?, string?];
 	/**
@@ -107,20 +132,6 @@ export interface APIApplication {
 	 * The application's default custom authorization link, if enabled
 	 */
 	custom_install_url?: string;
-	/**
-	 * The application's role connection verification entry point,
-	 * which when configured will render the app as a verification method in the guild role verification configuration
-	 */
-	role_connections_verification_url?: string;
-	/**
-	 * An approximate count of the app's guild membership
-	 * s
-	 */
-	approximate_guild_count?: number;
-	/**
-	 * A partial object of the associated guild
-	 */
-	guild?: APIPartialGuild;
 }
 
 export interface APIApplicationInstallParams {
