@@ -1,3 +1,9 @@
+## [0.37.60](https://github.com/discordjs/discord-api-types/compare/0.37.59...0.37.60) (2023-10-05)
+
+### Features
+
+- Application patch and new properties ([#810](https://github.com/discordjs/discord-api-types/issues/810)) ([17f42e0](https://github.com/discordjs/discord-api-types/commit/17f42e0b38d431505ee56cdeb0bb85bff94e97c6))
+
 ## [0.37.59](https://github.com/discordjs/discord-api-types/compare/0.37.58...0.37.59) (2023-10-02)
 
 ### Features
