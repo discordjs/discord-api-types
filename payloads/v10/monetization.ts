@@ -14,10 +14,6 @@ export interface APIEntitlement {
 	 */
 	user_id?: Snowflake;
 	/**
-	 * ID of the guild that is granted access to the entitlement's sku
-	 */
-	guild_id?: Snowflake;
-	/**
 	 * ID of the parent application
 	 */
 	application_id: Snowflake;
@@ -26,9 +22,9 @@ export interface APIEntitlement {
 	 */
 	type: EntitlementType;
 	/**
-	 * Not applicable for App Subscriptions. Subscriptions are not consumed and will be false
+	 * Entitlement was deleted
 	 */
-	consumed: boolean;
+	deleted: boolean;
 	/**
 	 * Start date at which the entitlement is valid. Not present when using test entitlements.
 	 */
@@ -72,16 +68,18 @@ export interface APISKU {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	flags: SKUFlags;
+	flags: SKUFlag;
 }
 
 /**
  * https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags
  */
-export enum SKUFlags {
-	ServerSubscriptions = 1 << 7,
+export enum SKUFlag {
+	Available = 1 << 2,
+	GuildSubscriptions = 1 << 7,
 	UserSubscriptions = 1 << 8,
 }
+
 export enum SKUType {
 	/**
 	 * Represents a recurring subscription

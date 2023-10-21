@@ -1,6 +1,6 @@
 import type { Snowflake } from '../../globals';
 import type { APIEntitlement, APISKU } from '../../v10';
-import type { SKUFlags } from '../../v9';
+import type { SKUFlag } from '../../v9';
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#list-entitlements
@@ -15,11 +15,11 @@ export interface RESTGetAPIEntitlementsQuery {
 	 */
 	sku_ids?: Snowflake[] | undefined;
 	/**
-	 * Retrieve entitlements before this time
+	 * Retrieve entitlements before this entitlement ID
 	 */
 	before?: Snowflake | undefined;
 	/**
-	 * Retrieve entitlements after this time
+	 * Retrieve entitlements after this entitlement ID
 	 */
 	after?: Snowflake | undefined;
 	/**
@@ -86,7 +86,7 @@ export interface RESTGetAPISKUsQuery {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	flags?: SKUFlags | undefined;
+	flags?: SKUFlag | undefined;
 }
 
 /**
