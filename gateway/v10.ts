@@ -722,12 +722,9 @@ export type GatewayEntitlementUpdateDispatch = GatewayEntitlementModifyDispatch;
 export type GatewayEntitlementDeleteDispatchData = GatewayEntitlementModifyDispatchData;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#deleted-entitlement
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
  */
-export type GatewayEntitlementDeleteDispatch = DataPayload<
-	GatewayDispatchEvents.EntitlementDelete,
-	GatewayEntitlementDeleteDispatchData
->;
+export type GatewayEntitlementDeleteDispatch = GatewayEntitlementModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-create
