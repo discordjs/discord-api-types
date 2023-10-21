@@ -926,7 +926,7 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/applications/{application.id}/skus`
 	 */
-	listSKUs(applicationId: Snowflake) {
+	skus(applicationId: Snowflake) {
 		return `/applications/${applicationId}/skus` as const;
 	},
 };

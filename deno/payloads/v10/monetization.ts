@@ -14,6 +14,10 @@ export interface APIEntitlement {
 	 */
 	user_id?: Snowflake;
 	/**
+	 * ID of the guild that is granted access to the entitlement's sku
+	 */
+	guild_id?: Snowflake;
+	/**
 	 * ID of the parent application
 	 */
 	application_id: Snowflake;
@@ -22,7 +26,7 @@ export interface APIEntitlement {
 	 */
 	type: EntitlementType;
 	/**
-	 * Entitlement was deleted
+	 * Whether the entitlement was deleted
 	 */
 	deleted: boolean;
 	/**
@@ -35,6 +39,9 @@ export interface APIEntitlement {
 	ends_at?: number;
 }
 
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types
+ */
 export enum EntitlementType {
 	/**
 	 * Entitlement was purchased as an app subscription
@@ -42,6 +49,9 @@ export enum EntitlementType {
 	ApplicationSubscription = 8,
 }
 
+/**
+ * https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure
+ */
 export interface APISKU {
 	/**
 	 * ID of SKU
@@ -75,9 +85,19 @@ export interface APISKU {
  * https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags
  */
 export enum SKUFlag {
+	/**
+	 * SKU is available for purchase
+	 */
 	Available = 1 << 2,
-	GuildSubscriptions = 1 << 7,
-	UserSubscriptions = 1 << 8,
+	/**
+	 * Recurring SKU that can be purchased by a user and applied to a single server.
+	 * Grants access to every user in that server.
+	 */
+	GuildSubscription = 1 << 7,
+	/**
+	 * Recurring SKU purchased by a user for themselves. Grants access to the purchasing user in every server.
+	 */
+	UserSubscription = 1 << 8,
 }
 
 export enum SKUType {

@@ -345,8 +345,7 @@ export type GatewayDispatchPayload =
 	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch
 	| GatewayGuildAuditLogEntryCreateDispatch
-	| GatewayEntitlementModifyDispatch
-	| GatewayEntitlementDeleteDispatch;
+	| GatewayEntitlementModifyDispatch;
 
 // #region Dispatch Payloads
 
@@ -678,47 +677,48 @@ export interface GatewayChannelPinsUpdateDispatchData {
 }
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
- * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
  */
 export type GatewayEntitlementModifyDispatchData = APIEntitlement;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
- * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
  */
 export type GatewayEntitlementModifyDispatch = DataPayload<
-	GatewayDispatchEvents.EntitlementCreate | GatewayDispatchEvents.EntitlementUpdate,
+	| GatewayDispatchEvents.EntitlementCreate
+	| GatewayDispatchEvents.EntitlementUpdate
+	| GatewayDispatchEvents.EntitlementDelete,
 	GatewayEntitlementModifyDispatchData
 >;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
  */
 export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispatchData;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#new-entitlement
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
  */
 export type GatewayEntitlementCreateDispatch = GatewayEntitlementModifyDispatch;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
  */
 export type GatewayEntitlementUpdateDispatchData = GatewayEntitlementModifyDispatchData;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#updated-entitlement
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
  */
 export type GatewayEntitlementUpdateDispatch = GatewayEntitlementModifyDispatch;
 
-// TODO: The payload isn't documented anywhere or tested in any specific way, so it is based on a speculation
-export type GatewayEntitlementDeleteDispatchData = Partial<APIEntitlement> & {
-	/**
-	 * ID of the entitlement
-	 */
-	id: Snowflake;
-};
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementDeleteDispatchData = GatewayEntitlementModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#deleted-entitlement

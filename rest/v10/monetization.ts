@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals';
-import type { APIEntitlement, APISKU, SKUFlag } from '../../v10';
+import type { APIEntitlement, APISKU } from '../../v10';
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#list-entitlements
@@ -11,8 +11,9 @@ export interface RESTGetAPIEntitlementsQuery {
 	user_id?: Snowflake | undefined;
 	/**
 	 * Optional list of SKU IDs to check entitlements for
+	 * Comma-delimited set of snowflakes
 	 */
-	sku_ids?: Snowflake[] | undefined;
+	sku_ids?: string | undefined;
 	/**
 	 * Retrieve entitlements before this entitlement ID
 	 */
@@ -22,7 +23,9 @@ export interface RESTGetAPIEntitlementsQuery {
 	 */
 	after?: Snowflake | undefined;
 	/**
-	 * Number of entitlements to return, 1-100, default 100
+	 * Number of entitlements to return (1-100)
+	 *
+	 * @default 100
 	 */
 	limit?: number | undefined;
 	/**
@@ -53,40 +56,28 @@ export interface RESTPostAPIEntitlementBody {
 	 */
 	owner_id: Snowflake;
 	/**
-	 * Where to create the entitlement
+	 * The type of entitlement owner
 	 */
-	owner_type: APIEntitlementOwnerType;
+	owner_type: EntitlementOwnerType;
 }
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export type RESTPostAPIEntitlementResult = Omit<APIEntitlement, 'subscription_id' | 'starts_at' | 'ends_at'>;
+export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'subscription_id' | 'starts_at' | 'ends_at'>>;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export enum APIEntitlementOwnerType {
-	GuildSubscription = 1,
-	UserSubscription,
+export enum EntitlementOwnerType {
+	Guild = 1,
+	User,
 }
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#delete-test-entitlement
  */
 export type RESTDeleteAPIEntitlementResult = never;
-
-/**
- * https://discord.com/developers/docs/monetization/skus#list-skus
- */
-export interface RESTGetAPISKUsQuery {
-	/**
-	 * SKU flags combined as a bitfield
-	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
-	 */
-	flags?: SKUFlag | undefined;
-}
 
 /**
  * https://discord.com/developers/docs/monetization/skus#list-skus
