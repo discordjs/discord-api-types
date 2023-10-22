@@ -1,5 +1,8 @@
 import type { Snowflake } from '../../globals.ts';
 
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure
+ */
 export interface APIEntitlement {
 	/**
 	 * ID of the entitlement
@@ -32,11 +35,11 @@ export interface APIEntitlement {
 	/**
 	 * Start date at which the entitlement is valid. Not present when using test entitlements.
 	 */
-	starts_at?: number;
+	starts_at?: string;
 	/**
 	 * Date at which the entitlement is no longer valid. Not present when using test entitlements.
 	 */
-	ends_at?: number;
+	ends_at?: string;
 }
 
 /**
