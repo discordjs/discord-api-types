@@ -64,7 +64,7 @@ export interface RESTPostAPIEntitlementBody {
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'subscription_id' | 'starts_at' | 'ends_at'>>;
+export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'starts_at' | 'ends_at'>>;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
