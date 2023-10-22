@@ -33,6 +33,7 @@ import type {
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
 	APIAuditLogEntry,
+	APIEntitlement,
 } from '../payloads/v10/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
 
@@ -268,6 +269,9 @@ export enum GatewayDispatchEvents {
 	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
 	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
 	GuildAuditLogEntryCreate = 'GUILD_AUDIT_LOG_ENTRY_CREATE',
+	EntitlementCreate = 'ENTITLEMENT_CREATE',
+	EntitlementUpdate = 'ENTITLEMENT_UPDATE',
+	EntitlementDelete = 'ENTITLEMENT_DELETE',
 }
 
 export type GatewaySendPayload =
@@ -341,7 +345,8 @@ export type GatewayDispatchPayload =
 	| GatewayVoiceServerUpdateDispatch
 	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch
-	| GatewayGuildAuditLogEntryCreateDispatch;
+	| GatewayGuildAuditLogEntryCreateDispatch
+	| GatewayEntitlementModifyDispatch;
 
 // #region Dispatch Payloads
 
@@ -671,6 +676,55 @@ export interface GatewayChannelPinsUpdateDispatchData {
 	 */
 	last_pin_timestamp?: string | null;
 }
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementModifyDispatchData = APIEntitlement;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementModifyDispatch = DataPayload<
+	| GatewayDispatchEvents.EntitlementCreate
+	| GatewayDispatchEvents.EntitlementUpdate
+	| GatewayDispatchEvents.EntitlementDelete,
+	GatewayEntitlementModifyDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ */
+export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ */
+export type GatewayEntitlementCreateDispatch = GatewayEntitlementModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ */
+export type GatewayEntitlementUpdateDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ */
+export type GatewayEntitlementUpdateDispatch = GatewayEntitlementModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementDeleteDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementDeleteDispatch = GatewayEntitlementModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-create

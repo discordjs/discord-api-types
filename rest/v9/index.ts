@@ -18,6 +18,7 @@ export * from './template';
 export * from './user';
 export * from './voice';
 export * from './webhook';
+export * from './monetization';
 
 export const APIVersion = '9';
 
@@ -915,6 +916,28 @@ export const Routes = {
 	 */
 	currentApplication() {
 		return '/applications/@me' as const;
+	},
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements`
+	 * - POST `/applications/{application.id}/entitlements`
+	 */
+	entitlements(applicationId: Snowflake) {
+		return `/applications/${applicationId}/entitlements` as const;
+	},
+	/**
+	 * Route for:
+	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
+	 */
+	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/applications/${applicationId}/entitlements/${entitlementId}` as const;
+	},
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/skus`
+	 */
+	skus(applicationId: Snowflake) {
+		return `/applications/${applicationId}/skus` as const;
 	},
 };
 

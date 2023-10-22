@@ -24,7 +24,8 @@ export type APIInteractionResponse =
 	| APIInteractionResponseDeferredMessageUpdate
 	| APIInteractionResponseUpdateMessage
 	| APIApplicationCommandAutocompleteResponse
-	| APIModalInteractionResponse;
+	| APIModalInteractionResponse
+	| APIPremiumRequiredInteractionResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
@@ -38,6 +39,10 @@ export interface APIApplicationCommandAutocompleteResponse {
 export interface APIModalInteractionResponse {
 	type: InteractionResponseType.Modal;
 	data: APIModalInteractionResponseCallbackData;
+}
+
+export interface APIPremiumRequiredInteractionResponse {
+	type: InteractionResponseType.PremiumRequired;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -91,6 +96,10 @@ export enum InteractionResponseType {
 	 * Respond to an interaction with an modal for a user to fill-out
 	 */
 	Modal,
+	/**
+	 * Respond to an interaction with an upgrade button, only available for apps with monetization enabled
+	 */
+	PremiumRequired,
 }
 
 /**

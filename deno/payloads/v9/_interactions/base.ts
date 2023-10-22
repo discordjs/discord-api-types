@@ -10,6 +10,7 @@ import type {
 	ThreadChannelType,
 } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
+import type { APIEntitlement } from '../monetization.ts';
 import type { APIUser } from '../user.ts';
 import type { InteractionType } from './responses.ts';
 
@@ -130,6 +131,10 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * The guild's preferred locale, if invoked in a guild
 	 */
 	guild_locale?: LocaleString;
+	/**
+	 * For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
+	 */
+	entitlements: APIEntitlement[];
 }
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
