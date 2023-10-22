@@ -78,13 +78,13 @@ export interface APISKU {
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
-	flags: SKUFlag;
+	flags: SKUFlags;
 }
 
 /**
  * https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags
  */
-export enum SKUFlag {
+export enum SKUFlags {
 	/**
 	 * SKU is available for purchase
 	 */

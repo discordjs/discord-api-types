@@ -33,7 +33,7 @@ export interface RESTGetAPIEntitlementsQuery {
 	 */
 	guild_id?: Snowflake | undefined;
 	/**
-	 * Whether entitlements should be omitted
+	 * Whether ended entitlements should be omitted
 	 */
 	exclude_ended?: boolean | undefined;
 }
