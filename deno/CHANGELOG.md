@@ -1,3 +1,9 @@
+## [0.37.61](https://github.com/discordjs/discord-api-types/compare/0.37.60...0.37.61) (2023-10-23)
+
+### Features
+
+- premium app subscriptions ([#833](https://github.com/discordjs/discord-api-types/issues/833)) ([ba08061](https://github.com/discordjs/discord-api-types/commit/ba080619170b484f671011abe3b0a61c0e69cca9))
+
 ## [0.37.60](https://github.com/discordjs/discord-api-types/compare/0.37.59...0.37.60) (2023-10-05)
 
 ### Features
