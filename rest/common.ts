@@ -154,6 +154,8 @@ export enum RESTJSONErrorCodes {
 	ThereAreNoTagsAvailableThatCanBeSetByNonModerators = 40_066,
 	TagRequiredToCreateAForumPostInThisChannel,
 
+	AnEntitlementHasAlreadyBeenGrantedForThisResource = 40_074,
+
 	MissingAccess = 50_001,
 	InvalidAccountType,
 	CannotExecuteActionOnDMChannel,
@@ -197,6 +199,8 @@ export enum RESTJSONErrorCodes {
 
 	CannotSelfRedeemThisGift = 50_054,
 	InvalidGuild,
+
+	InvalidSKU = 50_057,
 
 	InvalidRequestOrigin = 50_067,
 	InvalidMessageType,
