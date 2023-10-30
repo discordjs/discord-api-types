@@ -1,3 +1,9 @@
+## [0.37.62](https://github.com/discordjs/discord-api-types/compare/0.37.61...0.37.62) (2023-10-30)
+
+### Features
+
+- **RESTJSONErrorCodes:** add `40074` and `50057` ([#844](https://github.com/discordjs/discord-api-types/issues/844)) ([28ed370](https://github.com/discordjs/discord-api-types/commit/28ed3701e6105d0d15fb988194c13079a27e4369))
+
 ## [0.37.61](https://github.com/discordjs/discord-api-types/compare/0.37.60...0.37.61) (2023-10-23)
 
 ### Features
