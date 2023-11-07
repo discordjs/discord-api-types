@@ -939,20 +939,20 @@ export type RESTPutAPIGuildOnboardingJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Prompts shown during onboarding and in customize community
 	 */
-	prompts?: APIModifyGuildOnboardingPromptData[] | undefined;
+	prompts?: RESTAPIModifyGuildOnboardingPromptData[] | undefined;
 };
 
-export type APIModifyGuildOnboardingPromptData = Pick<APIGuildOnboardingPrompt, 'id' | 'title'> &
+export type RESTAPIModifyGuildOnboardingPromptData = Pick<APIGuildOnboardingPrompt, 'id' | 'title'> &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 		Partial<Omit<APIGuildOnboardingPrompt, 'id' | 'title' | 'options' | 'guild_id'>>
 	> & {
 		/**
 		 * Options available within the prompt
 		 */
-		options: APIModifyGuildOnboardingPromptOptionData[];
+		options: RESTAPIModifyGuildOnboardingPromptOptionData[];
 	};
 
-export type APIModifyGuildOnboardingPromptOptionData = Pick<APIGuildOnboardingPromptOption, 'title'> &
+export type RESTAPIModifyGuildOnboardingPromptOptionData = Pick<APIGuildOnboardingPromptOption, 'title'> &
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 		Partial<Omit<APIGuildOnboardingPromptOption, 'title' | 'emoji' | 'guild_id'>>
 	> & {
