@@ -24,8 +24,11 @@ import type {
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
+	APIGuildOnboardingPrompt,
+	APIGuildOnboardingPromptOption,
 } from '../../payloads/v10/index';
 import type {
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
 	DistributiveOmit,
 	DistributivePick,
 	Nullable,
@@ -930,10 +933,42 @@ export type RESTGetAPIGuildOnboardingResult = APIGuildOnboarding;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
  */
-export type RESTPutAPIGuildOnboardingJSONBody = Pick<
-	APIGuildOnboarding,
-	'default_channel_ids' | 'enabled' | 'mode' | 'prompts'
->;
+export type RESTPutAPIGuildOnboardingJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Partial<Pick<APIGuildOnboarding, 'default_channel_ids' | 'enabled' | 'mode'>>
+> & {
+	/**
+	 * Prompts shown during onboarding and in customize community
+	 */
+	prompts?: RESTAPIModifyGuildOnboardingPromptData[] | undefined;
+};
+
+export type RESTAPIModifyGuildOnboardingPromptData = Pick<APIGuildOnboardingPrompt, 'id' | 'title'> &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+		Partial<Omit<APIGuildOnboardingPrompt, 'id' | 'title' | 'options' | 'guild_id'>>
+	> & {
+		/**
+		 * Options available within the prompt
+		 */
+		options: RESTAPIModifyGuildOnboardingPromptOptionData[];
+	};
+
+export type RESTAPIModifyGuildOnboardingPromptOptionData = Pick<APIGuildOnboardingPromptOption, 'title'> &
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+		Partial<Omit<APIGuildOnboardingPromptOption, 'title' | 'emoji' | 'guild_id'>>
+	> & {
+		/**
+		 * Emoji id
+		 */
+		emoji_id?: Snowflake | null | undefined;
+		/**
+		 * Emoji name
+		 */
+		emoji_name?: string | null | undefined;
+		/**
+		 * Whether this emoji is animated
+		 */
+		emoji_animated?: boolean | null | undefined;
+	};
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
