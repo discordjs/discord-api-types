@@ -28,11 +28,11 @@ export interface APIWebhook {
 	 */
 	channel_id: Snowflake;
 	/**
-	 * The user this webhook was created by (not returned when getting a webhook with its token)
+	 * The user this webhook was created by
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
-	user?: APIUser;
+	user: APIUser;
 	/**
 	 * The default name of the webhook
 	 */
