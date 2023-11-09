@@ -1,3 +1,9 @@
+## [0.37.63](https://github.com/discordjs/discord-api-types/compare/0.37.62...0.37.63) (2023-11-09)
+
+### Bug Fixes
+
+- **RESTPutAPIGuildOnboardingJSONBody:** optional keys and flattened emoji ([#839](https://github.com/discordjs/discord-api-types/issues/839)) ([a8efb19](https://github.com/discordjs/discord-api-types/commit/a8efb1949ad4b554d5c59f7b55a251ee12abc93d))
+
 ## [0.37.62](https://github.com/discordjs/discord-api-types/compare/0.37.61...0.37.62) (2023-10-30)
 
 ### Features
