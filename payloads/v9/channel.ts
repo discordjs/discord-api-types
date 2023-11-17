@@ -48,10 +48,8 @@ export type TextChannelType =
 	| ChannelType.PrivateThread
 	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
-	| ChannelType.GuildForum
 	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice
-	| ChannelType.GuildMedia;
+	| ChannelType.GuildStageVoice;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
@@ -112,7 +110,7 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannelType>
+export interface APIGuildTextChannel<T extends GuildTextChannelType | ChannelType.GuildForum | ChannelType.GuildMedia>
 	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
