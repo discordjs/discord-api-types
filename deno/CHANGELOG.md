@@ -1,3 +1,9 @@
+## [0.37.64](https://github.com/discordjs/discord-api-types/compare/0.37.63...0.37.64) (2023-11-20)
+
+### Features
+
+- **PermissionFlagsBits:** split up expressions and events perms ([#790](https://github.com/discordjs/discord-api-types/issues/790)) ([ca05ee5](https://github.com/discordjs/discord-api-types/commit/ca05ee5eb21acdba866de7997cbf980d598e3ee1))
+
 ## [0.37.63](https://github.com/discordjs/discord-api-types/compare/0.37.62...0.37.63) (2023-11-09)
 
 ### Bug Fixes
