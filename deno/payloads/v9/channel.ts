@@ -48,10 +48,8 @@ export type TextChannelType =
 	| ChannelType.PrivateThread
 	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
-	| ChannelType.GuildForum
 	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice
-	| ChannelType.GuildMedia;
+	| ChannelType.GuildStageVoice;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
@@ -112,7 +110,7 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannelType>
+export interface APIGuildTextChannel<T extends GuildTextChannelType | ChannelType.GuildForum | ChannelType.GuildMedia>
 	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
@@ -125,7 +123,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_thread_rate_limit_per_user?: number;
 	/**
-	 * The channel topic (0-4096 characters for thread-only channels, 0-1024 characters for all others)
+	 * The channel topic (0-1024 characters)
 	 */
 	topic?: string | null;
 }
@@ -314,11 +312,40 @@ export enum ForumLayoutType {
 }
 
 export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
-	extends APIGuildTextChannel<T> {
+	extends APIGuildChannel<T> {
+	/**
+	 * The channel topic (0-4096 characters)
+	 */
+	topic?: string | null;
+	/**
+	 * The id of the last thread created in this channel (may not point to an existing or valid thread)
+	 */
+	last_message_id?: Snowflake | null;
+	/**
+	 * Amount of seconds a user has to wait before creating another thread (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
+	 */
+	rate_limit_per_user?: number;
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+	/**
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
+	 */
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 	/**
 	 * The set of tags that can be used in a thread-only channel
 	 */
 	available_tags: APIGuildForumTag[];
+	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
 	/**
 	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 */
