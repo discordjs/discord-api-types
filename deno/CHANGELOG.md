@@ -1,3 +1,9 @@
+## [0.37.65](https://github.com/discordjs/discord-api-types/compare/0.37.64...0.37.65) (2023-11-23)
+
+### Bug Fixes
+
+- **TextChannelType:** Remove forum and media channels ([#849](https://github.com/discordjs/discord-api-types/issues/849)) ([9574881](https://github.com/discordjs/discord-api-types/commit/957488134e48c482324e9678dd53c11bf946b6cd))
+
 ## [0.37.64](https://github.com/discordjs/discord-api-types/compare/0.37.63...0.37.64) (2023-11-20)
 
 ### Features
