@@ -156,6 +156,8 @@ export enum RESTJSONErrorCodes {
 
 	AnEntitlementHasAlreadyBeenGrantedForThisResource = 40_074,
 
+	CloudflareIsBlockingYourRequest = 40_333,
+
 	MissingAccess = 50_001,
 	InvalidAccountType,
 	CannotExecuteActionOnDMChannel,
