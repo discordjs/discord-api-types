@@ -2,9 +2,9 @@
 	"files.eol": "\n",
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.codeActionsOnSave": {
-		"source.organizeImports": false,
-		"source.fixAll": true,
-		"source.fixAll.eslint": true
+		"source.organizeImports": "never",
+		"source.fixAll": "explicit",
+		"source.fixAll.eslint": "explicit"
 	},
 	"cSpell.enableFiletypes": ["mdx"]
 }
