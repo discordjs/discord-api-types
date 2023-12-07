@@ -1,3 +1,9 @@
+## [0.37.66](https://github.com/discordjs/discord-api-types/compare/0.37.65...0.37.66) (2023-12-07)
+
+### Features
+
+- **RESTPostAPIWebhookWithTokenJSONBody:** add `applied_tags` ([#855](https://github.com/discordjs/discord-api-types/issues/855)) ([b4226bb](https://github.com/discordjs/discord-api-types/commit/b4226bb708763ebe04d9f7abcafa148bb5588ba4))
+
 ## [0.37.65](https://github.com/discordjs/discord-api-types/compare/0.37.64...0.37.65) (2023-11-23)
 
 ### Bug Fixes
