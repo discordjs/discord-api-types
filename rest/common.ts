@@ -324,6 +324,7 @@ export enum Locale {
 	Romanian = 'ro',
 	Russian = 'ru',
 	SpanishES = 'es-ES',
+	SpanishLATAM = 'es-419',
 	Swedish = 'sv-SE',
 	Thai = 'th',
 	Turkish = 'tr',
