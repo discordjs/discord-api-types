@@ -33,6 +33,7 @@ import type {
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
 	APIAuditLogEntry,
+	ChannelType,
 } from '../payloads/v9/index';
 import type { Nullable } from '../utils/internals';
 import type { APIEntitlement } from '../v10';
@@ -338,7 +339,9 @@ export type GatewayDispatchPayload =
 	| GatewayThreadListSyncDispatch
 	| GatewayThreadMembersUpdateDispatch
 	| GatewayThreadMemberUpdateDispatch
-	| GatewayThreadModifyDispatch
+	| GatewayThreadCreateDispatch
+	| GatewayThreadUpdateDispatch
+	| GatewayThreadDeleteDispatch
 	| GatewayTypingStartDispatch
 	| GatewayUserUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
@@ -1608,18 +1611,11 @@ export type GatewayThreadMemberUpdateDispatchData = APIThreadMember & { guild_id
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
- * https://discord.com/developers/docs/topics/gateway-events#thread-update
- * https://discord.com/developers/docs/topics/gateway-events#thread-delete
  */
-export type GatewayThreadModifyDispatch = DataPayload<
-	GatewayDispatchEvents.ThreadCreate | GatewayDispatchEvents.ThreadDelete | GatewayDispatchEvents.ThreadUpdate,
-	GatewayChannelModifyDispatchData
+export type GatewayThreadCreateDispatch = DataPayload<
+	GatewayDispatchEvents.ThreadCreate,
+	GatewayThreadCreateDispatchData
 >;
-
-/**
- * https://discord.com/developers/docs/topics/gateway-events#thread-create
- */
-export type GatewayThreadCreateDispatch = GatewayChannelModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
@@ -1634,22 +1630,47 @@ export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-update
  */
-export type GatewayThreadUpdateDispatch = GatewayChannelModifyDispatch;
+export type GatewayThreadUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.ThreadUpdate,
+	GatewayThreadUpdateDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-update
  */
-export type GatewayThreadUpdateDispatchData = GatewayChannelModifyDispatchData;
+export type GatewayThreadUpdateDispatchData = APIThreadChannel;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-delete
  */
-export type GatewayThreadDeleteDispatch = GatewayChannelModifyDispatch;
+export type GatewayThreadDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.ThreadDelete,
+	GatewayThreadDeleteDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-delete
  */
-export type GatewayThreadDeleteDispatchData = GatewayChannelModifyDispatchData;
+export interface GatewayThreadDeleteDispatchData {
+	/**
+	 * The id of the channel
+	 */
+	id: Snowflake;
+	/**
+	 * The id of the guild
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The id of the parent channel of the thread
+	 */
+	parent_id: Snowflake;
+	/**
+	 * The type of the channel
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+	 */
+	type: ChannelType;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#typing-start
