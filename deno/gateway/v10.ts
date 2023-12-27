@@ -1611,6 +1611,20 @@ export type GatewayThreadMemberUpdateDispatch = DataPayload<
 export type GatewayThreadMemberUpdateDispatchData = APIThreadMember & { guild_id: Snowflake };
 
 /**
+ * @deprecated This type doesn't accurately reflect the Discord API.
+ * Use {@apilink GatewayThreadCreateDispatch},
+ * {@apilink GatewayThreadUpdateDispatch}, or
+ * {@apilink GatewayThreadDeleteDispatch} instead.
+ * https://discord.com/developers/docs/topics/gateway-events#thread-create
+ * https://discord.com/developers/docs/topics/gateway-events#thread-update
+ * https://discord.com/developers/docs/topics/gateway-events#thread-delete
+ */
+export type GatewayThreadModifyDispatch = DataPayload<
+	GatewayDispatchEvents.ThreadCreate | GatewayDispatchEvents.ThreadDelete | GatewayDispatchEvents.ThreadUpdate,
+	GatewayChannelModifyDispatchData
+>;
+
+/**
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
  */
 export type GatewayThreadCreateDispatch = DataPayload<
