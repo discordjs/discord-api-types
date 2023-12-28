@@ -1,3 +1,9 @@
+## [0.37.67](https://github.com/discordjs/discord-api-types/compare/0.37.66...0.37.67) (2023-12-28)
+
+### Bug Fixes
+
+- **GatewayThreadDispatch:** properly type thread create/update/delete dispatches ([#861](https://github.com/discordjs/discord-api-types/issues/861)) ([819d852](https://github.com/discordjs/discord-api-types/commit/819d85207ae7e07322e404a5ef9e3eb283b4aa03))
+
 ## [0.37.66](https://github.com/discordjs/discord-api-types/compare/0.37.65...0.37.66) (2023-12-07)
 
 ### Features
