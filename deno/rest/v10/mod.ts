@@ -1112,8 +1112,8 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	storePageAsset(applicationId: Snowflake, assetId: string) {
-		return `/app-assets/${applicationId}/store/${assetId}.png` as const;
+	storePageAsset(applicationId: Snowflake, assetId: string, format: StorePageAssetFormat) {
+		return `/app-assets/${applicationId}/store/${assetId}.${format}` as const;
 	},
 
 	/**
@@ -1188,6 +1188,7 @@ export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.Lottie | I
 export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type StickerFormat = Extract<ImageFormat, ImageFormat.PNG | ImageFormat.Lottie | ImageFormat.GIF>;
 export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
