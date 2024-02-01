@@ -943,7 +943,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	emoji<TFormat extends EmojiFormat>(emojiId: Snowflake, format: TFormat) {
+	emoji<Format extends EmojiFormat>(emojiId: Snowflake, format: Format) {
 		return `/emojis/${emojiId}.${format}` as const;
 	},
 
@@ -955,7 +955,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildIcon<TFormat extends GuildIconFormat>(guildId: Snowflake, guildIcon: string, format: TFormat) {
+	guildIcon<Format extends GuildIconFormat>(guildId: Snowflake, guildIcon: string, format: Format) {
 		return `icons/${guildId}/${guildIcon}.${format}` as const;
 	},
 
@@ -965,7 +965,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	guildSplash<TFormat extends GuildSplashFormat>(guildId: Snowflake, guildSplash: string, format: TFormat) {
+	guildSplash<Format extends GuildSplashFormat>(guildId: Snowflake, guildSplash: string, format: Format) {
 		return `/splashes/${guildId}/${guildSplash}.${format}` as const;
 	},
 
@@ -975,10 +975,10 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	guildDiscoverySplash<TFormat extends GuildDiscoverySplashFormat>(
+	guildDiscoverySplash<Format extends GuildDiscoverySplashFormat>(
 		guildId: Snowflake,
 		guildDiscoverySplash: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/discovery-splashes/${guildId}/${guildDiscoverySplash}.${format}` as const;
 	},
@@ -991,7 +991,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildBanner<TFormat extends GuildBannerFormat>(guildId: Snowflake, guildBanner: string, format: TFormat) {
+	guildBanner<Format extends GuildBannerFormat>(guildId: Snowflake, guildBanner: string, format: Format) {
 		return `/banners/${guildId}/${guildBanner}.${format}` as const;
 	},
 
@@ -1003,7 +1003,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	userBanner<TFormat extends UserBannerFormat>(userId: Snowflake, userBanner: string, format: TFormat) {
+	userBanner<Format extends UserBannerFormat>(userId: Snowflake, userBanner: string, format: Format) {
 		return `/banners/${userId}/${userBanner}.${format}` as const;
 	},
 
@@ -1017,7 +1017,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extension: PNG
 	 */
-	defaultUserAvatar<TIndex extends DefaultUserAvatarAssets>(index: TIndex) {
+	defaultUserAvatar<Index extends DefaultUserAvatarAssets>(index: Index) {
 		return `/embed/avatars/${index}.png` as const;
 	},
 
@@ -1029,7 +1029,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	userAvatar<TFormat extends UserAvatarFormat>(userId: Snowflake, userAvatar: string, format: TFormat) {
+	userAvatar<Format extends UserAvatarFormat>(userId: Snowflake, userAvatar: string, format: Format) {
 		return `/avatars/${userId}/${userAvatar}.${format}` as const;
 	},
 
@@ -1041,11 +1041,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildMemberAvatar<TFormat extends GuildMemberAvatarFormat>(
+	guildMemberAvatar<Format extends GuildMemberAvatarFormat>(
 		guildId: Snowflake,
 		userId: Snowflake,
 		memberAvatar: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/guilds/${guildId}/users/${userId}/avatars/${memberAvatar}.${format}` as const;
 	},
@@ -1066,10 +1066,10 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	applicationIcon<TFormat extends ApplicationIconFormat>(
+	applicationIcon<Format extends ApplicationIconFormat>(
 		applicationId: Snowflake,
 		applicationIcon: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/app-icons/${applicationId}/${applicationIcon}.${format}` as const;
 	},
@@ -1080,10 +1080,10 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	applicationCover<TFormat extends ApplicationCoverFormat>(
+	applicationCover<Format extends ApplicationCoverFormat>(
 		applicationId: Snowflake,
 		applicationCoverImage: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/app-icons/${applicationId}/${applicationCoverImage}.${format}` as const;
 	},
@@ -1094,10 +1094,10 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	applicationAsset<TFormat extends ApplicationAssetFormat>(
+	applicationAsset<Format extends ApplicationAssetFormat>(
 		applicationId: Snowflake,
 		applicationAssetId: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/app-assets/${applicationId}/${applicationAssetId}.${format}` as const;
 	},
@@ -1108,11 +1108,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	achievementIcon<TFormat extends AchievementIconFormat>(
+	achievementIcon<Format extends AchievementIconFormat>(
 		applicationId: Snowflake,
 		achievementId: Snowflake,
 		achievementIconHash: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/app-assets/${applicationId}/achievements/${achievementId}/icons/${achievementIconHash}.${format}` as const;
 	},
@@ -1123,7 +1123,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	stickerPackBanner<TFormat extends StickerPackBannerFormat>(stickerPackBannerAssetId: Snowflake, format: TFormat) {
+	stickerPackBanner<Format extends StickerPackBannerFormat>(stickerPackBannerAssetId: Snowflake, format: Format) {
 		return `/app-assets/${StickerPackApplicationId}/store/${stickerPackBannerAssetId}.${format}` as const;
 	},
 
@@ -1133,7 +1133,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	storePageAsset<TFormat extends StorePageAssetFormat>(applicationId: Snowflake, assetId: string, format: TFormat) {
+	storePageAsset<Format extends StorePageAssetFormat>(applicationId: Snowflake, assetId: string, format: Format) {
 		return `/app-assets/${applicationId}/store/${assetId}.${format}` as const;
 	},
 
@@ -1143,7 +1143,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	teamIcon<TFormat extends TeamIconFormat>(teamId: Snowflake, teamIcon: string, format: TFormat) {
+	teamIcon<Format extends TeamIconFormat>(teamId: Snowflake, teamIcon: string, format: Format) {
 		return `/team-icons/${teamId}/${teamIcon}.${format}` as const;
 	},
 
@@ -1153,7 +1153,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, Lottie, GIF
 	 */
-	sticker<TFormat extends StickerFormat>(stickerId: Snowflake, format: TFormat) {
+	sticker<Format extends StickerFormat>(stickerId: Snowflake, format: Format) {
 		return `/stickers/${stickerId}.${format}` as const;
 	},
 
@@ -1163,7 +1163,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	roleIcon<TFormat extends RoleIconFormat>(roleId: Snowflake, roleIcon: string, format: TFormat) {
+	roleIcon<Format extends RoleIconFormat>(roleId: Snowflake, roleIcon: string, format: Format) {
 		return `/role-icons/${roleId}/${roleIcon}.${format}` as const;
 	},
 
@@ -1173,10 +1173,10 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	guildScheduledEventCover<TFormat extends GuildScheduledEventCoverFormat>(
+	guildScheduledEventCover<Format extends GuildScheduledEventCoverFormat>(
 		guildScheduledEventId: Snowflake,
 		guildScheduledEventCoverImage: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/guild-events/${guildScheduledEventId}/${guildScheduledEventCoverImage}.${format}` as const;
 	},
@@ -1187,11 +1187,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildMemberBanner<TFormat extends GuildMemberBannerFormat>(
+	guildMemberBanner<Format extends GuildMemberBannerFormat>(
 		guildId: Snowflake,
 		userId: Snowflake,
 		guildMemberBanner: string,
-		format: TFormat,
+		format: Format,
 	) {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
 	},
