@@ -934,6 +934,14 @@ export const Routes = {
 
 export const StickerPackApplicationId = '710982414301790216';
 
+export enum ImageFormat {
+	JPEG = 'jpeg',
+	PNG = 'png',
+	WebP = 'webp',
+	GIF = 'gif',
+	Lottie = 'json',
+}
+
 export const CDNRoutes = {
 	/**
 	 * Route for:
@@ -1133,7 +1141,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	storePageAsset<Format extends StorePageAssetFormat>(applicationId: Snowflake, assetId: string, format: Format) {
+	storePageAsset(applicationId: Snowflake, assetId: string, format: StorePageAssetFormat = ImageFormat.PNG) {
 		return `/app-assets/${applicationId}/store/${assetId}.${format}` as const;
 	},
 
@@ -1219,14 +1227,6 @@ export type StickerFormat = Extract<ImageFormat, ImageFormat.PNG | ImageFormat.L
 export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
 export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-
-export enum ImageFormat {
-	JPEG = 'jpeg',
-	PNG = 'png',
-	WebP = 'webp',
-	GIF = 'gif',
-	Lottie = 'json',
-}
 
 export interface CDNQuery {
 	/**
