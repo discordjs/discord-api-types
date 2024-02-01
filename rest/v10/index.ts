@@ -1141,7 +1141,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	storePageAsset<Format extends StorePageAssetFormat>(
+	storePageAsset<Format extends StorePageAssetFormat = ImageFormat.PNG>(
 		applicationId: Snowflake,
 		assetId: string,
 		format: Format = ImageFormat.PNG as Format,
