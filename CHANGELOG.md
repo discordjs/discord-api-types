@@ -1,3 +1,10 @@
+## [0.37.68](https://github.com/discordjs/discord-api-types/compare/0.37.67...0.37.68) (2024-02-05)
+
+### Bug Fixes
+
+- **CDNRoutes:** fix store page wrong extension ([#867](https://github.com/discordjs/discord-api-types/issues/867)) ([6f541d5](https://github.com/discordjs/discord-api-types/commit/6f541d58d278f1e610916250c003c1344831e3ad))
+- **CDNRoutes:** make format optional and default to png ([#869](https://github.com/discordjs/discord-api-types/issues/869)) ([55efcca](https://github.com/discordjs/discord-api-types/commit/55efcca4f8480f96243d9d802ce632833ac8e3ff))
+
 ## [0.37.67](https://github.com/discordjs/discord-api-types/compare/0.37.66...0.37.67) (2023-12-28)
 
 ### Bug Fixes
