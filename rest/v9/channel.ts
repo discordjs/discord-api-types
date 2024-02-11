@@ -327,7 +327,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 */
 	flags?: MessageFlags | undefined;
 	/**
-	 * If true and nonce is present, it will be checked for uniqueness in the past few minutes.
+	 * If `true` and nonce is present, it will be checked for uniqueness in the past few minutes.
 	 * If another message was created by the same author with the same nonce, that message will be returned and no new message will be created.
 	 */
 	enforce_nonce?: boolean | undefined;
