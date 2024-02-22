@@ -17,6 +17,7 @@ import type {
 	MessageFlags,
 	OverwriteType,
 	ThreadAutoArchiveDuration,
+	ThreadChannelType,
 	VideoQualityMode,
 	APIGuildForumTag,
 	APIGuildForumDefaultReactionEmoji,
@@ -180,6 +181,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: forum
 	 */
 	default_forum_layout?: ForumLayoutType | undefined;
+	/**
+	 * The ids of the set of tags that have been applied to a thread-only channel; limited to 5
+	 *
+	 * Channel types: forum, media
+	 */
+	applied_tags?: Snowflake[] | undefined;
 }
 
 /**
@@ -319,6 +326,11 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * Message flags combined as a bitfield
 	 */
 	flags?: MessageFlags | undefined;
+	/**
+	 * If `true` and nonce is present, it will be checked for uniqueness in the past few minutes.
+	 * If another message was created by the same author with the same nonce, that message will be returned and no new message will be created.
+	 */
+	enforce_nonce?: boolean | undefined;
 }
 
 /**
@@ -358,7 +370,7 @@ export type RESTDeleteAPIChannelMessageOwnReaction = never;
  */
 export type RESTDeleteAPIChannelMessageUserReactionResult = never;
 
-/*
+/**
  * https://discord.com/developers/docs/resources/channel#get-reactions
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
@@ -661,7 +673,7 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-media-channel
+ * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
  */
 export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
@@ -703,7 +715,7 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	 *
 	 * @default ChannelType.PrivateThread
 	 */
-	type?: ChannelType.AnnouncementThread | ChannelType.PublicThread | ChannelType.PrivateThread | undefined;
+	type?: ThreadChannelType | undefined;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
 	 */
@@ -763,7 +775,7 @@ export interface RESTGetAPIChannelThreadMembersQuery {
  */
 export type RESTGetAPIChannelThreadMembersResult = APIThreadMember[];
 
-/*
+/**
  * https://discord.com/developers/docs/resources/channel#list-public-archived-threads
  */
 export interface RESTGetAPIChannelThreadsArchivedQuery {

@@ -735,22 +735,22 @@ export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', bool
  */
 export type APIAuditLogChangeKeyGuildId = AuditLogChangeData<'guild_id', Snowflake>;
 
-/*
+/**
  * Returned when a thread's archive status is changed
  */
 export type APIAuditLogChangeKeyArchived = AuditLogChangeData<'archived', boolean>;
 
-/*
+/**
  * Returned when a thread's lock status is changed
  */
 export type APIAuditLogChangeKeyLocked = AuditLogChangeData<'locked', boolean>;
 
-/*
+/**
  * Returned when a thread's auto archive duration is changed
  */
 export type APIAuditLogChangeKeyAutoArchiveDuration = AuditLogChangeData<'auto_archive_duration', number>;
 
-/*
+/**
  * Returned when a channel's default auto archive duration for newly created threads is changed
  */
 export type APIAuditLogChangeKeyDefaultAutoArchiveDuration = AuditLogChangeData<

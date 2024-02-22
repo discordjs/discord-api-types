@@ -6,7 +6,7 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
-import type { APIMessageInteraction } from './interactions';
+import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
@@ -48,10 +48,8 @@ export type TextChannelType =
 	| ChannelType.PrivateThread
 	| ChannelType.AnnouncementThread
 	| ChannelType.GuildText
-	| ChannelType.GuildForum
 	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice
-	| ChannelType.GuildMedia;
+	| ChannelType.GuildStageVoice;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
@@ -112,7 +110,7 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannelType>
+export interface APIGuildTextChannel<T extends GuildTextChannelType | ChannelType.GuildForum | ChannelType.GuildMedia>
 	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
@@ -125,7 +123,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_thread_rate_limit_per_user?: number;
 	/**
-	 * The channel topic (0-4096 characters for thread-only channels, 0-1024 characters for all others)
+	 * The channel topic (0-1024 characters)
 	 */
 	topic?: string | null;
 }
@@ -202,12 +200,11 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	managed?: boolean;
 }
 
+export type ThreadChannelType = ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread;
+
 export interface APIThreadChannel
-	extends Omit<
-			APITextBasedChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread>,
-			'name'
-		>,
-		APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
+	extends Omit<APITextBasedChannel<ThreadChannelType>, 'name'>,
+		APIGuildChannel<ThreadChannelType> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -315,11 +312,40 @@ export enum ForumLayoutType {
 }
 
 export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
-	extends APIGuildTextChannel<T> {
+	extends APIGuildChannel<T> {
+	/**
+	 * The channel topic (0-4096 characters)
+	 */
+	topic?: string | null;
+	/**
+	 * The id of the last thread created in this channel (may not point to an existing or valid thread)
+	 */
+	last_message_id?: Snowflake | null;
+	/**
+	 * Amount of seconds a user has to wait before creating another thread (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
+	 */
+	rate_limit_per_user?: number;
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+	/**
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
+	 */
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
 	/**
 	 * The set of tags that can be used in a thread-only channel
 	 */
 	available_tags: APIGuildForumTag[];
+	/**
+	 * The initial `rate_limit_per_user` to set on newly created threads.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
 	/**
 	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 */
@@ -670,6 +696,12 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
+	/**
+	 * Data for users, members, channels, and roles in the message's auto-populated select menus
+	 *
+	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+	 */
+	resolved?: APIInteractionDataResolved;
 }
 
 /**
@@ -1606,6 +1638,20 @@ export interface APIBaseSelectMenuComponent<
 	disabled?: boolean;
 }
 
+export interface APIBaseAutoPopulatedSelectMenuComponent<
+	T extends
+		| ComponentType.UserSelect
+		| ComponentType.RoleSelect
+		| ComponentType.MentionableSelect
+		| ComponentType.ChannelSelect,
+	D extends SelectMenuDefaultValueType,
+> extends APIBaseSelectMenuComponent<T> {
+	/**
+	 * List of default values for auto-populated select menu components
+	 */
+	default_values?: APISelectMenuDefaultValue<D>[];
+}
+
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
@@ -1619,27 +1665,60 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIUserSelectComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
+export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.UserSelect,
+	SelectMenuDefaultValueType.User
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIRoleSelectComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
+export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.RoleSelect,
+	SelectMenuDefaultValueType.Role
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIMentionableSelectComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
+export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.MentionableSelect,
+	SelectMenuDefaultValueType.User | SelectMenuDefaultValueType.Role
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
+export interface APIChannelSelectComponent
+	extends APIBaseAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
 	/**
 	 * List of channel types to include in the ChannelSelect component
 	 */
 	channel_types?: ChannelType[];
 }
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ */
+export enum SelectMenuDefaultValueType {
+	Channel = 'channel',
+	Role = 'role',
+	User = 'user',
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ */
+export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType> {
+	type: T;
+	id: Snowflake;
+}
+
+export type APIAutoPopulatedSelectMenuComponent =
+	| APIChannelSelectComponent
+	| APIMentionableSelectComponent
+	| APIRoleSelectComponent
+	| APIUserSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus

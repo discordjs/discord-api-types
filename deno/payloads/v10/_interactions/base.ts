@@ -1,7 +1,16 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { APIRole, LocaleString } from '../../../v10.ts';
-import type { APIAttachment, APIChannel, APIMessage, APIPartialChannel, APIThreadMetadata } from '../channel.ts';
+import type {
+	APIAttachment,
+	APIChannel,
+	APIMessage,
+	APIPartialChannel,
+	APIThreadChannel,
+	ChannelType,
+	ThreadChannelType,
+} from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
+import type { APIEntitlement } from '../monetization.ts';
 import type { APIUser } from '../user.ts';
 import type { InteractionType } from './responses.ts';
 
@@ -122,6 +131,10 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * The guild's preferred locale, if invoked in a guild
 	 */
 	guild_locale?: LocaleString;
+	/**
+	 * For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
+	 */
+	entitlements: APIEntitlement[];
 }
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
@@ -136,14 +149,18 @@ export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<Inter
 > &
 	Required<Pick<Original, 'member' | 'guild_id'>>;
 
+export interface APIInteractionDataResolvedChannelBase<T extends ChannelType> extends Required<APIPartialChannel> {
+	type: T;
+	permissions: Permissions;
+}
+
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object
  */
-export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
-	thread_metadata?: APIThreadMetadata | null;
-	permissions: Permissions;
-	parent_id?: string | null;
-}
+export type APIInteractionDataResolvedChannel =
+	| APIInteractionDataResolvedChannelBase<Exclude<ChannelType, ThreadChannelType>>
+	| (APIInteractionDataResolvedChannelBase<ThreadChannelType> &
+			Pick<APIThreadChannel, 'thread_metadata' | 'parent_id'>);
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object

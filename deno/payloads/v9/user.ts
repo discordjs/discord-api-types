@@ -281,7 +281,11 @@ export enum ConnectionService {
 	Steam = 'steam',
 	TikTok = 'tiktok',
 	Twitch = 'twitch',
-	Twitter = 'twitter',
+	X = 'twitter',
+	/**
+	 * @deprecated This is the old name for {@apilink ConnectionService#X}
+	 */
+	Twitter = X,
 	Xbox = 'xbox',
 	YouTube = 'youtube',
 }

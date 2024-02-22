@@ -150,6 +150,10 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * Available only if the webhook is in a forum channel and a thread is not specified in {@link RESTPostAPIWebhookWithTokenQuery.thread_id} query parameter
 	 */
 	thread_name?: string | undefined;
+	/**
+	 * Array of tag ids to apply to the thread
+	 */
+	applied_tags?: Snowflake[] | undefined;
 }
 
 /**

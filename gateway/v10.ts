@@ -33,6 +33,8 @@ import type {
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
 	APIAuditLogEntry,
+	APIEntitlement,
+	ChannelType,
 } from '../payloads/v10/index';
 import type { Nullable } from '../utils/internals';
 
@@ -268,6 +270,9 @@ export enum GatewayDispatchEvents {
 	AutoModerationRuleDelete = 'AUTO_MODERATION_RULE_DELETE',
 	AutoModerationActionExecution = 'AUTO_MODERATION_ACTION_EXECUTION',
 	GuildAuditLogEntryCreate = 'GUILD_AUDIT_LOG_ENTRY_CREATE',
+	EntitlementCreate = 'ENTITLEMENT_CREATE',
+	EntitlementUpdate = 'ENTITLEMENT_UPDATE',
+	EntitlementDelete = 'ENTITLEMENT_DELETE',
 }
 
 export type GatewaySendPayload =
@@ -335,13 +340,16 @@ export type GatewayDispatchPayload =
 	| GatewayThreadListSyncDispatch
 	| GatewayThreadMembersUpdateDispatch
 	| GatewayThreadMemberUpdateDispatch
-	| GatewayThreadModifyDispatch
+	| GatewayThreadCreateDispatch
+	| GatewayThreadUpdateDispatch
+	| GatewayThreadDeleteDispatch
 	| GatewayTypingStartDispatch
 	| GatewayUserUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
 	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch
-	| GatewayGuildAuditLogEntryCreateDispatch;
+	| GatewayGuildAuditLogEntryCreateDispatch
+	| GatewayEntitlementModifyDispatch;
 
 // #region Dispatch Payloads
 
@@ -671,6 +679,55 @@ export interface GatewayChannelPinsUpdateDispatchData {
 	 */
 	last_pin_timestamp?: string | null;
 }
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementModifyDispatchData = APIEntitlement;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementModifyDispatch = DataPayload<
+	| GatewayDispatchEvents.EntitlementCreate
+	| GatewayDispatchEvents.EntitlementUpdate
+	| GatewayDispatchEvents.EntitlementDelete,
+	GatewayEntitlementModifyDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ */
+export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
+ */
+export type GatewayEntitlementCreateDispatch = GatewayEntitlementModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ */
+export type GatewayEntitlementUpdateDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
+ */
+export type GatewayEntitlementUpdateDispatch = GatewayEntitlementModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementDeleteDispatchData = GatewayEntitlementModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
+ */
+export type GatewayEntitlementDeleteDispatch = GatewayEntitlementModifyDispatch;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-create
@@ -1554,6 +1611,10 @@ export type GatewayThreadMemberUpdateDispatch = DataPayload<
 export type GatewayThreadMemberUpdateDispatchData = APIThreadMember & { guild_id: Snowflake };
 
 /**
+ * @deprecated This type doesn't accurately reflect the Discord API.
+ * Use {@apilink GatewayThreadCreateDispatch},
+ * {@apilink GatewayThreadUpdateDispatch}, or
+ * {@apilink GatewayThreadDeleteDispatch} instead.
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
  * https://discord.com/developers/docs/topics/gateway-events#thread-update
  * https://discord.com/developers/docs/topics/gateway-events#thread-delete
@@ -1566,7 +1627,10 @@ export type GatewayThreadModifyDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
  */
-export type GatewayThreadCreateDispatch = GatewayChannelModifyDispatch;
+export type GatewayThreadCreateDispatch = DataPayload<
+	GatewayDispatchEvents.ThreadCreate,
+	GatewayThreadCreateDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
@@ -1581,22 +1645,47 @@ export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-update
  */
-export type GatewayThreadUpdateDispatch = GatewayChannelModifyDispatch;
+export type GatewayThreadUpdateDispatch = DataPayload<
+	GatewayDispatchEvents.ThreadUpdate,
+	GatewayThreadUpdateDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-update
  */
-export type GatewayThreadUpdateDispatchData = GatewayChannelModifyDispatchData;
+export type GatewayThreadUpdateDispatchData = APIThreadChannel;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-delete
  */
-export type GatewayThreadDeleteDispatch = GatewayChannelModifyDispatch;
+export type GatewayThreadDeleteDispatch = DataPayload<
+	GatewayDispatchEvents.ThreadDelete,
+	GatewayThreadDeleteDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-delete
  */
-export type GatewayThreadDeleteDispatchData = GatewayChannelModifyDispatchData;
+export interface GatewayThreadDeleteDispatchData {
+	/**
+	 * The id of the channel
+	 */
+	id: Snowflake;
+	/**
+	 * The id of the guild
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The id of the parent channel of the thread
+	 */
+	parent_id: Snowflake;
+	/**
+	 * The type of the channel
+	 *
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+	 */
+	type: ChannelType;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#typing-start

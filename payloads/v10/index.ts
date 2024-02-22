@@ -18,3 +18,4 @@ export * from './template';
 export * from './user';
 export * from './voice';
 export * from './webhook';
+export * from './monetization';
