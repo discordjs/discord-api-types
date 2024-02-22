@@ -1480,7 +1480,7 @@ export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDis
  */
 export type GatewayMessageReactionRemoveDispatch = ReactionData<
 	GatewayDispatchEvents.MessageReactionRemove,
-	'member' | 'message_author_id' | 'burst_colors'
+	'member' | 'message_author_id'
 >;
 
 /**
@@ -2120,14 +2120,6 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			 * The id of the user that posted the message that was reacted to
 			 */
 			message_author_id?: Snowflake;
-			/**
-			 * True if this is a super-reaction
-			 */
-			burst: boolean;
-			/**
-			 * Colors used for super-reaction animation in "#rrggbb" format
-			 */
-			burst_colors?: string[];
 		},
 		O
 	>
