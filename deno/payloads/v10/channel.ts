@@ -904,7 +904,7 @@ export interface APIReaction {
 	 */
 	count: number;
 	/**
-	 * An object detailing the individual reaction counts for different types of reactions 
+	 * An object detailing the individual reaction counts for different types of reactions
 	 */
 	count_details: APIReactionCountDetails;
 	/**
