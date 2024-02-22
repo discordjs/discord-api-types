@@ -367,6 +367,10 @@ export type RESTDeleteAPIChannelMessageUserReactionResult = never;
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
+	 * The reaction type (0 for normal and 1 for super)
+	 */
+	type: ReactionType;
+	/**
 	 * Get users after this user ID
 	 */
 	after?: Snowflake;
@@ -376,6 +380,14 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	 * @default 25
 	 */
 	limit?: number;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#get-reactions-reaction-types
+ */
+export enum ReactionType {
+	Normal,
+	Super,
 }
 
 /**
