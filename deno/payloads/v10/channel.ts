@@ -904,7 +904,7 @@ export interface APIReaction {
 	 */
 	count: number;
 	/**
-	 * Reaction count details object
+	 * An object detailing the individual reaction counts for different types of reactions 
 	 */
 	count_details: APIReactionCountDetails;
 	/**
@@ -922,7 +922,7 @@ export interface APIReaction {
 	 */
 	emoji: APIPartialEmoji;
 	/**
-	 * HEX colors used for super reaction
+	 * Hexadecimal colors used for this super reaction
 	 */
 	burst_colors: string[];
 }
