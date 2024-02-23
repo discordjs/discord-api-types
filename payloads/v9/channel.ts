@@ -865,19 +865,45 @@ export interface APIFollowedChannel {
  */
 export interface APIReaction {
 	/**
-	 * Times this emoji has been used to react
+	 * Total number of times this emoji has been used to react (including super reacts)
 	 */
 	count: number;
+	/**
+	 * An object detailing the individual reaction counts for different types of reactions
+	 */
+	count_details: APIReactionCountDetails;
 	/**
 	 * Whether the current user reacted using this emoji
 	 */
 	me: boolean;
+	/**
+	 * Whether the current user super-reacted using this emoji
+	 */
+	me_burst: boolean;
 	/**
 	 * Emoji information
 	 *
 	 * See https://discord.com/developers/docs/resources/emoji#emoji-object
 	 */
 	emoji: APIPartialEmoji;
+	/**
+	 * Hexadecimal colors used for this super reaction
+	 */
+	burst_colors: string[];
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure
+ */
+export interface APIReactionCountDetails {
+	/**
+	 * Count of super reactions
+	 */
+	burst: number;
+	/**
+	 * Count of normal reactions
+	 */
+	normal: number;
 }
 
 /**
