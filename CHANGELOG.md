@@ -1,3 +1,9 @@
+## [0.37.71](https://github.com/discordjs/discord-api-types/compare/0.37.70...0.37.71) (2024-02-26)
+
+### Features
+
+- add initial support for super reactions ([#744](https://github.com/discordjs/discord-api-types/issues/744)) ([150dc46](https://github.com/discordjs/discord-api-types/commit/150dc46b8739ca9cf10a46bb48d390f70c679b6e))
+
 ## [0.37.70](https://github.com/discordjs/discord-api-types/compare/0.37.69...0.37.70) (2024-02-15)
 
 ### Features
