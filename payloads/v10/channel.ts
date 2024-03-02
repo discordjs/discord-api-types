@@ -1766,7 +1766,7 @@ export type APISelectMenuComponent =
  */
 export interface APISelectMenuOption {
 	/**
-	 * The user-facing name of the option (max 25 chars)
+	 * The user-facing name of the option (max 100 chars)
 	 */
 	label: string;
 	/**
@@ -1774,7 +1774,7 @@ export interface APISelectMenuOption {
 	 */
 	value: string;
 	/**
-	 * An additional description of the option (max 50 chars)
+	 * An additional description of the option (max 100 chars)
 	 */
 	description?: string;
 	/**
