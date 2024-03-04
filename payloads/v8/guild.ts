@@ -790,7 +790,7 @@ export interface APIGuildIntegration {
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIGuildInteractionType = 'twitch' | 'youtube' | 'discord';
+export type APIGuildInteractionType = 'discord' | 'twitch' | 'youtube';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors

@@ -176,56 +176,56 @@ export enum AuditLogOptionsType {
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIAuditLogChange =
-	| APIAuditLogChangeKeyName
-	| APIAuditLogChangeKeyIconHash
-	| APIAuditLogChangeKeySplashHash
-	| APIAuditLogChangeKeyOwnerID
-	| APIAuditLogChangeKeyRegion
-	| APIAuditLogChangeKeyAFKChannelID
-	| APIAuditLogChangeKeyAFKTimeout
-	| APIAuditLogChangeKeyMFALevel
-	| APIAuditLogChangeKeyVerificationLevel
-	| APIAuditLogChangeKeyExplicitContentFilter
-	| APIAuditLogChangeKeyDefaultMessageNotifications
-	| APIAuditLogChangeKeyVanityURLCode
 	| APIAuditLogChangeKey$Add
 	| APIAuditLogChangeKey$Remove
-	| APIAuditLogChangeKeyPruneDeleteDays
-	| APIAuditLogChangeKeyWidgetEnabled
-	| APIAuditLogChangeKeyWidgetChannelID
-	| APIAuditLogChangeKeySystemChannelID
-	| APIAuditLogChangeKeyPosition
-	| APIAuditLogChangeKeyTopic
-	| APIAuditLogChangeKeyBitrate
-	| APIAuditLogChangeKeyPermissionOverwrites
-	| APIAuditLogChangeKeyNSFW
-	| APIAuditLogChangeKeyApplicationID
-	| APIAuditLogChangeKeyRateLimitPerUser
-	| APIAuditLogChangeKeyPermissions
-	| APIAuditLogChangeKeyPermissionsNew
-	| APIAuditLogChangeKeyColor
-	| APIAuditLogChangeKeyHoist
-	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyAFKChannelID
+	| APIAuditLogChangeKeyAFKTimeout
 	| APIAuditLogChangeKeyAllow
 	| APIAuditLogChangeKeyAllowNew
+	| APIAuditLogChangeKeyApplicationID
+	| APIAuditLogChangeKeyAvatarHash
+	| APIAuditLogChangeKeyBitrate
+	| APIAuditLogChangeKeyChannelID
+	| APIAuditLogChangeKeyCode
+	| APIAuditLogChangeKeyColor
+	| APIAuditLogChangeKeyDeaf
+	| APIAuditLogChangeKeyDefaultMessageNotifications
 	| APIAuditLogChangeKeyDeny
 	| APIAuditLogChangeKeyDenyNew
-	| APIAuditLogChangeKeyCode
-	| APIAuditLogChangeKeyChannelID
-	| APIAuditLogChangeKeyInviterID
-	| APIAuditLogChangeKeyMaxUses
-	| APIAuditLogChangeKeyUses
-	| APIAuditLogChangeKeyMaxAge
-	| APIAuditLogChangeKeyTemporary
-	| APIAuditLogChangeKeyDeaf
-	| APIAuditLogChangeKeyMute
-	| APIAuditLogChangeKeyNick
-	| APIAuditLogChangeKeyAvatarHash
-	| APIAuditLogChangeKeyID
-	| APIAuditLogChangeKeyType
 	| APIAuditLogChangeKeyEnableEmoticons
 	| APIAuditLogChangeKeyExpireBehavior
-	| APIAuditLogChangeKeyExpireGracePeriod;
+	| APIAuditLogChangeKeyExpireGracePeriod
+	| APIAuditLogChangeKeyExplicitContentFilter
+	| APIAuditLogChangeKeyHoist
+	| APIAuditLogChangeKeyIconHash
+	| APIAuditLogChangeKeyID
+	| APIAuditLogChangeKeyInviterID
+	| APIAuditLogChangeKeyMaxAge
+	| APIAuditLogChangeKeyMaxUses
+	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyMFALevel
+	| APIAuditLogChangeKeyMute
+	| APIAuditLogChangeKeyName
+	| APIAuditLogChangeKeyNick
+	| APIAuditLogChangeKeyNSFW
+	| APIAuditLogChangeKeyOwnerID
+	| APIAuditLogChangeKeyPermissionOverwrites
+	| APIAuditLogChangeKeyPermissions
+	| APIAuditLogChangeKeyPermissionsNew
+	| APIAuditLogChangeKeyPosition
+	| APIAuditLogChangeKeyPruneDeleteDays
+	| APIAuditLogChangeKeyRateLimitPerUser
+	| APIAuditLogChangeKeyRegion
+	| APIAuditLogChangeKeySplashHash
+	| APIAuditLogChangeKeySystemChannelID
+	| APIAuditLogChangeKeyTemporary
+	| APIAuditLogChangeKeyTopic
+	| APIAuditLogChangeKeyType
+	| APIAuditLogChangeKeyUses
+	| APIAuditLogChangeKeyVanityURLCode
+	| APIAuditLogChangeKeyVerificationLevel
+	| APIAuditLogChangeKeyWidgetChannelID
+	| APIAuditLogChangeKeyWidgetEnabled;
 
 /**
  * Returned when a guild's name is changed

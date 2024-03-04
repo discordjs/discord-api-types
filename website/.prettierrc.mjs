@@ -1,6 +1,6 @@
-const sapphirePrettierConfig = require('@sapphire/prettier-config');
+import sapphirePrettierConfig from '@sapphire/prettier-config';
 
-module.exports = {
+export default {
 	...sapphirePrettierConfig,
 	overrides: [
 		...sapphirePrettierConfig.overrides,

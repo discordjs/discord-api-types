@@ -150,8 +150,8 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 */
 	scope:
 		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The permissions you're requesting
@@ -181,8 +181,8 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	 */
 	scope:
 		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The required permissions bitfield, stringified

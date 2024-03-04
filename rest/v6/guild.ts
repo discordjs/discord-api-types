@@ -29,7 +29,7 @@ export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionsJSO
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type APIGuildCreatePartialChannel = Partial<
-	Pick<APIChannel, 'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'>
+	Pick<APIChannel, 'bitrate' | 'nsfw' | 'rate_limit_per_user' | 'topic' | 'type' | 'user_limit'>
 > & {
 	name: string;
 	id?: number | string | undefined;
@@ -142,7 +142,7 @@ export type RESTGetAPIGuildChannelsResult = APIChannel[];
 export type RESTPostAPIGuildChannelJSONBody = Partial<
 	Pick<
 		APIChannel,
-		'type' | 'permission_overwrites' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user' | 'parent_id'
+		'bitrate' | 'nsfw' | 'parent_id' | 'permission_overwrites' | 'rate_limit_per_user' | 'topic' | 'type' | 'user_limit'
 	>
 > &
 	Required<Pick<APIChannel, 'name'>>;

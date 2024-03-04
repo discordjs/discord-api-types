@@ -271,70 +271,70 @@ export enum AuditLogOptionsType {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIAuditLogChange =
-	| APIAuditLogChangeKeyName
-	| APIAuditLogChangeKeyDescription
-	| APIAuditLogChangeKeyIconHash
-	| APIAuditLogChangeKeySplashHash
-	| APIAuditLogChangeKeyDiscoverySplashHash
-	| APIAuditLogChangeKeyBannerHash
-	| APIAuditLogChangeKeyOwnerId
-	| APIAuditLogChangeKeyRegion
-	| APIAuditLogChangeKeyPreferredLocale
-	| APIAuditLogChangeKeyAFKChannelId
-	| APIAuditLogChangeKeyAFKTimeout
-	| APIAuditLogChangeKeyRulesChannelId
-	| APIAuditLogChangeKeyPublicUpdatesChannelId
-	| APIAuditLogChangeKeyMFALevel
-	| APIAuditLogChangeKeyVerificationLevel
-	| APIAuditLogChangeKeyExplicitContentFilter
-	| APIAuditLogChangeKeyDefaultMessageNotifications
-	| APIAuditLogChangeKeyVanityURLCode
 	| APIAuditLogChangeKey$Add
 	| APIAuditLogChangeKey$Remove
-	| APIAuditLogChangeKeyPruneDeleteDays
-	| APIAuditLogChangeKeyWidgetEnabled
-	| APIAuditLogChangeKeyWidgetChannelId
-	| APIAuditLogChangeKeySystemChannelId
-	| APIAuditLogChangeKeyPosition
-	| APIAuditLogChangeKeyTopic
-	| APIAuditLogChangeKeyBitrate
-	| APIAuditLogChangeKeyPermissionOverwrites
-	| APIAuditLogChangeKeyNSFW
-	| APIAuditLogChangeKeyApplicationId
-	| APIAuditLogChangeKeyRateLimitPerUser
-	| APIAuditLogChangeKeyPermissions
-	| APIAuditLogChangeKeyColor
-	| APIAuditLogChangeKeyHoist
-	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyAFKChannelId
+	| APIAuditLogChangeKeyAFKTimeout
 	| APIAuditLogChangeKeyAllow
-	| APIAuditLogChangeKeyDeny
-	| APIAuditLogChangeKeyCode
-	| APIAuditLogChangeKeyChannelId
-	| APIAuditLogChangeKeyInviterId
-	| APIAuditLogChangeKeyMaxUses
-	| APIAuditLogChangeKeyUses
-	| APIAuditLogChangeKeyMaxAge
-	| APIAuditLogChangeKeyTemporary
-	| APIAuditLogChangeKeyDeaf
-	| APIAuditLogChangeKeyMute
-	| APIAuditLogChangeKeyNick
-	| APIAuditLogChangeKeyAvatarHash
-	| APIAuditLogChangeKeyId
-	| APIAuditLogChangeKeyType
-	| APIAuditLogChangeKeyEnableEmoticons
-	| APIAuditLogChangeKeyExpireBehavior
-	| APIAuditLogChangeKeyExpireGracePeriod
-	| APIAuditLogChangeKeyUserLimit
-	| APIAuditLogChangeKeyPrivacyLevel
-	| APIAuditLogChangeKeyTags
-	| APIAuditLogChangeKeyFormatType
+	| APIAuditLogChangeKeyApplicationId
 	| APIAuditLogChangeKeyAsset
 	| APIAuditLogChangeKeyAvailable
-	| APIAuditLogChangeKeyGuildId
+	| APIAuditLogChangeKeyAvatarHash
+	| APIAuditLogChangeKeyBannerHash
+	| APIAuditLogChangeKeyBitrate
+	| APIAuditLogChangeKeyChannelId
+	| APIAuditLogChangeKeyCode
+	| APIAuditLogChangeKeyColor
+	| APIAuditLogChangeKeyCommunicationDisabledUntil
+	| APIAuditLogChangeKeyDeaf
+	| APIAuditLogChangeKeyDefaultMessageNotifications
+	| APIAuditLogChangeKeyDeny
+	| APIAuditLogChangeKeyDescription
+	| APIAuditLogChangeKeyDiscoverySplashHash
+	| APIAuditLogChangeKeyEnableEmoticons
 	| APIAuditLogChangeKeyEntityType
-	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeyExpireBehavior
+	| APIAuditLogChangeKeyExpireGracePeriod
+	| APIAuditLogChangeKeyExplicitContentFilter
+	| APIAuditLogChangeKeyFormatType
+	| APIAuditLogChangeKeyGuildId
+	| APIAuditLogChangeKeyHoist
+	| APIAuditLogChangeKeyIconHash
+	| APIAuditLogChangeKeyId
+	| APIAuditLogChangeKeyInviterId
 	| APIAuditLogChangeKeyLocation
-	| APIAuditLogChangeKeyCommunicationDisabledUntil;
+	| APIAuditLogChangeKeyMaxAge
+	| APIAuditLogChangeKeyMaxUses
+	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyMFALevel
+	| APIAuditLogChangeKeyMute
+	| APIAuditLogChangeKeyName
+	| APIAuditLogChangeKeyNick
+	| APIAuditLogChangeKeyNSFW
+	| APIAuditLogChangeKeyOwnerId
+	| APIAuditLogChangeKeyPermissionOverwrites
+	| APIAuditLogChangeKeyPermissions
+	| APIAuditLogChangeKeyPosition
+	| APIAuditLogChangeKeyPreferredLocale
+	| APIAuditLogChangeKeyPrivacyLevel
+	| APIAuditLogChangeKeyPruneDeleteDays
+	| APIAuditLogChangeKeyPublicUpdatesChannelId
+	| APIAuditLogChangeKeyRateLimitPerUser
+	| APIAuditLogChangeKeyRegion
+	| APIAuditLogChangeKeyRulesChannelId
+	| APIAuditLogChangeKeySplashHash
+	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeySystemChannelId
+	| APIAuditLogChangeKeyTags
+	| APIAuditLogChangeKeyTemporary
+	| APIAuditLogChangeKeyTopic
+	| APIAuditLogChangeKeyType
+	| APIAuditLogChangeKeyUserLimit
+	| APIAuditLogChangeKeyUses
+	| APIAuditLogChangeKeyVanityURLCode
+	| APIAuditLogChangeKeyVerificationLevel
+	| APIAuditLogChangeKeyWidgetChannelId
+	| APIAuditLogChangeKeyWidgetEnabled;
 
 /**
  * Returned when an entity's name is changed

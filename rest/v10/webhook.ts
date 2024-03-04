@@ -160,13 +160,13 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIWebhookWithTokenJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-query-string-params
@@ -252,7 +252,7 @@ export interface RESTGetAPIWebhookWithTokenMessageQuery {
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>>
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'allowed_mentions' | 'components' | 'content' | 'embeds'>>
 > & {
 	/**
 	 * Attached files to keep
@@ -268,13 +268,13 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossibly
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIWebhookWithTokenMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message

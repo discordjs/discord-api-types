@@ -335,82 +335,82 @@ export type AuditLogRuleTriggerType = `${AutoModerationRuleTriggerType}`;
  * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
  */
 export type APIAuditLogChange =
-	| APIAuditLogChangeKeyName
-	| APIAuditLogChangeKeyDescription
-	| APIAuditLogChangeKeyIconHash
-	| APIAuditLogChangeKeyImageHash
-	| APIAuditLogChangeKeySplashHash
-	| APIAuditLogChangeKeyDiscoverySplashHash
-	| APIAuditLogChangeKeyBannerHash
-	| APIAuditLogChangeKeyOwnerId
-	| APIAuditLogChangeKeyRegion
-	| APIAuditLogChangeKeyPreferredLocale
-	| APIAuditLogChangeKeyAFKChannelId
-	| APIAuditLogChangeKeyAFKTimeout
-	| APIAuditLogChangeKeyRulesChannelId
-	| APIAuditLogChangeKeyPublicUpdatesChannelId
-	| APIAuditLogChangeKeyMFALevel
-	| APIAuditLogChangeKeyVerificationLevel
-	| APIAuditLogChangeKeyExplicitContentFilter
-	| APIAuditLogChangeKeyDefaultMessageNotifications
-	| APIAuditLogChangeKeyVanityURLCode
 	| APIAuditLogChangeKey$Add
 	| APIAuditLogChangeKey$Remove
-	| APIAuditLogChangeKeyPruneDeleteDays
-	| APIAuditLogChangeKeyWidgetEnabled
-	| APIAuditLogChangeKeyWidgetChannelId
-	| APIAuditLogChangeKeySystemChannelId
-	| APIAuditLogChangeKeyPosition
-	| APIAuditLogChangeKeyTopic
-	| APIAuditLogChangeKeyBitrate
-	| APIAuditLogChangeKeyPermissionOverwrites
-	| APIAuditLogChangeKeyNSFW
-	| APIAuditLogChangeKeyApplicationId
-	| APIAuditLogChangeKeyRateLimitPerUser
-	| APIAuditLogChangeKeyPermissions
-	| APIAuditLogChangeKeyColor
-	| APIAuditLogChangeKeyHoist
-	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyActions
+	| APIAuditLogChangeKeyAFKChannelId
+	| APIAuditLogChangeKeyAFKTimeout
 	| APIAuditLogChangeKeyAllow
-	| APIAuditLogChangeKeyDeny
-	| APIAuditLogChangeKeyCode
-	| APIAuditLogChangeKeyChannelId
-	| APIAuditLogChangeKeyInviterId
-	| APIAuditLogChangeKeyMaxUses
-	| APIAuditLogChangeKeyUses
-	| APIAuditLogChangeKeyMaxAge
-	| APIAuditLogChangeKeyTemporary
-	| APIAuditLogChangeKeyDeaf
-	| APIAuditLogChangeKeyMute
-	| APIAuditLogChangeKeyNick
+	| APIAuditLogChangeKeyApplicationId
+	| APIAuditLogChangeKeyArchived
+	| APIAuditLogChangeKeyAsset
+	| APIAuditLogChangeKeyAutoArchiveDuration
+	| APIAuditLogChangeKeyAvailable
 	| APIAuditLogChangeKeyAvatarHash
-	| APIAuditLogChangeKeyId
-	| APIAuditLogChangeKeyType
+	| APIAuditLogChangeKeyBannerHash
+	| APIAuditLogChangeKeyBitrate
+	| APIAuditLogChangeKeyChannelId
+	| APIAuditLogChangeKeyCode
+	| APIAuditLogChangeKeyColor
+	| APIAuditLogChangeKeyCommunicationDisabledUntil
+	| APIAuditLogChangeKeyDeaf
+	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
+	| APIAuditLogChangeKeyDefaultMessageNotifications
+	| APIAuditLogChangeKeyDeny
+	| APIAuditLogChangeKeyDescription
+	| APIAuditLogChangeKeyDiscoverySplashHash
+	| APIAuditLogChangeKeyEnabled
 	| APIAuditLogChangeKeyEnableEmoticons
+	| APIAuditLogChangeKeyEntityType
+	| APIAuditLogChangeKeyEventType
+	| APIAuditLogChangeKeyExemptChannels
+	| APIAuditLogChangeKeyExemptRoles
 	| APIAuditLogChangeKeyExpireBehavior
 	| APIAuditLogChangeKeyExpireGracePeriod
-	| APIAuditLogChangeKeyUserLimit
-	| APIAuditLogChangeKeyPrivacyLevel
-	| APIAuditLogChangeKeyTags
+	| APIAuditLogChangeKeyExplicitContentFilter
 	| APIAuditLogChangeKeyFormatType
-	| APIAuditLogChangeKeyAsset
-	| APIAuditLogChangeKeyAvailable
 	| APIAuditLogChangeKeyGuildId
-	| APIAuditLogChangeKeyArchived
-	| APIAuditLogChangeKeyLocked
-	| APIAuditLogChangeKeyAutoArchiveDuration
-	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
-	| APIAuditLogChangeKeyEntityType
-	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeyHoist
+	| APIAuditLogChangeKeyIconHash
+	| APIAuditLogChangeKeyId
+	| APIAuditLogChangeKeyImageHash
+	| APIAuditLogChangeKeyInviterId
 	| APIAuditLogChangeKeyLocation
-	| APIAuditLogChangeKeyCommunicationDisabledUntil
-	| APIAuditLogChangeKeyTriggerType
-	| APIAuditLogChangeKeyEventType
+	| APIAuditLogChangeKeyLocked
+	| APIAuditLogChangeKeyMaxAge
+	| APIAuditLogChangeKeyMaxUses
+	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyMFALevel
+	| APIAuditLogChangeKeyMute
+	| APIAuditLogChangeKeyName
+	| APIAuditLogChangeKeyNick
+	| APIAuditLogChangeKeyNSFW
+	| APIAuditLogChangeKeyOwnerId
+	| APIAuditLogChangeKeyPermissionOverwrites
+	| APIAuditLogChangeKeyPermissions
+	| APIAuditLogChangeKeyPosition
+	| APIAuditLogChangeKeyPreferredLocale
+	| APIAuditLogChangeKeyPrivacyLevel
+	| APIAuditLogChangeKeyPruneDeleteDays
+	| APIAuditLogChangeKeyPublicUpdatesChannelId
+	| APIAuditLogChangeKeyRateLimitPerUser
+	| APIAuditLogChangeKeyRegion
+	| APIAuditLogChangeKeyRulesChannelId
+	| APIAuditLogChangeKeySplashHash
+	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeySystemChannelId
+	| APIAuditLogChangeKeyTags
+	| APIAuditLogChangeKeyTemporary
+	| APIAuditLogChangeKeyTopic
 	| APIAuditLogChangeKeyTriggerMetadata
-	| APIAuditLogChangeKeyActions
-	| APIAuditLogChangeKeyEnabled
-	| APIAuditLogChangeKeyExemptRoles
-	| APIAuditLogChangeKeyExemptChannels;
+	| APIAuditLogChangeKeyTriggerType
+	| APIAuditLogChangeKeyType
+	| APIAuditLogChangeKeyUserLimit
+	| APIAuditLogChangeKeyUses
+	| APIAuditLogChangeKeyVanityURLCode
+	| APIAuditLogChangeKeyVerificationLevel
+	| APIAuditLogChangeKeyWidgetChannelId
+	| APIAuditLogChangeKeyWidgetEnabled;
 
 /**
  * Returned when an entity's name is changed

@@ -19,6 +19,7 @@ const previousReleases = await octokit.repos.listReleases({
 });
 
 // Releases are sorted from newest to oldest, this should work™️
+// eslint-disable-next-line no-shadow -- are you stupid or are you high, line 80 is in fuck all compared to you
 const previousRelease = previousReleases.data.find((release) => !release.draft);
 console.log('👀 Previous release version:', previousRelease?.tag_name);
 

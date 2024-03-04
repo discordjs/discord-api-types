@@ -15,6 +15,7 @@
 		"tsdoc/syntax": "off",
 		"typescript-sort-keys/interface": "off",
 		"typescript-sort-keys/string-enum": "off",
-		"unicorn/prefer-math-trunc": "off"
+		"unicorn/prefer-math-trunc": "off",
+		"jsdoc/no-undefined-types": "off"
 	}
 }

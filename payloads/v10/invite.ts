@@ -11,17 +11,17 @@ import type { APIUser } from './user';
 
 export type APIInviteGuild = Pick<
 	APIGuild,
-	| 'id'
-	| 'name'
-	| 'splash'
 	| 'banner'
-	| 'icon'
-	| 'vanity_url_code'
 	| 'description'
 	| 'features'
-	| 'verification_level'
+	| 'icon'
+	| 'id'
+	| 'name'
 	| 'nsfw_level'
 	| 'premium_subscription_count'
+	| 'splash'
+	| 'vanity_url_code'
+	| 'verification_level'
 >;
 
 /**

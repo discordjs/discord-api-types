@@ -473,7 +473,7 @@ export const Routes = {
 
 		parts.push('threads');
 
-		return parts.join('/') as `/channels/${Snowflake}/threads` | `/channels/${Snowflake}/messages/${Snowflake}/threads`;
+		return parts.join('/') as `/channels/${Snowflake}/messages/${Snowflake}/threads` | `/channels/${Snowflake}/threads`;
 	},
 
 	/**
@@ -489,7 +489,7 @@ export const Routes = {
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
-	channelThreads(channelId: Snowflake, archivedStatus: 'public' | 'private') {
+	channelThreads(channelId: Snowflake, archivedStatus: 'private' | 'public') {
 		return `/channels/${channelId}/threads/archived/${archivedStatus}` as const;
 	},
 
@@ -516,8 +516,8 @@ export const Routes = {
 		if (userId) parts.push(userId);
 
 		return parts.join('/') as
-			| `/channels/${Snowflake}/thread-members`
-			| `/channels/${Snowflake}/thread-members/${Snowflake | '@me'}`;
+			| `/channels/${Snowflake}/thread-members/${Snowflake | '@me'}`
+			| `/channels/${Snowflake}/thread-members`;
 	},
 
 	/**
@@ -623,7 +623,7 @@ export const Routes = {
 
 		if (webhookToken) parts.push(webhookToken);
 
-		return parts.join('/') as `/webhooks/${Snowflake}` | `/webhooks/${Snowflake}/${string}`;
+		return parts.join('/') as `/webhooks/${Snowflake}/${string}` | `/webhooks/${Snowflake}`;
 	},
 
 	/**
@@ -1213,23 +1213,23 @@ export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type EmojiFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type GuildIconFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-export type GuildSplashFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type GuildDiscoverySplashFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type GuildSplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type GuildDiscoverySplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type UserBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type DefaultUserAvatar = Extract<ImageFormat, ImageFormat.PNG>;
 export type UserAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type GuildMemberAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-export type ApplicationIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type ApplicationCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type StickerFormat = Extract<ImageFormat, ImageFormat.PNG | ImageFormat.Lottie | ImageFormat.GIF>;
-export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type ApplicationIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type ApplicationCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StickerFormat = Extract<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie | ImageFormat.PNG>;
+export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 
 export interface CDNQuery {

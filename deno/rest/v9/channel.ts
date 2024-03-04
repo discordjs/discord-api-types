@@ -236,8 +236,10 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  */
-export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Required<Pick<APIMessageReference, 'message_id'>>> & {
+export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Required<Pick<APIMessageReference, 'message_id'>>
+> &
+	StrictPartial<APIMessageReference> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
@@ -317,7 +319,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
-	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake] | undefined;
+	sticker_ids?: [Snowflake, Snowflake, Snowflake] | [Snowflake, Snowflake] | [Snowflake] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */
@@ -337,13 +339,13 @@ export interface RESTPostAPIChannelMessageJSONBody {
  * https://discord.com/developers/docs/resources/channel#create-message
  */
 export type RESTPostAPIChannelMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIChannelMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -458,13 +460,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
  * https://discord.com/developers/docs/resources/channel#edit-message
  */
 export type RESTPatchAPIChannelMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPatchAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIChannelMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message

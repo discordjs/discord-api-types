@@ -123,7 +123,7 @@ export interface GatewayActivityTimestamps {
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
-export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'name' | 'animated'>> & Pick<APIEmoji, 'id'>;
+export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'animated' | 'name'>> & Pick<APIEmoji, 'id'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
@@ -149,7 +149,7 @@ export type GatewayActivityAssets = Partial<
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
-export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
+export type GatewayActivitySecrets = Partial<Record<'join' | 'match' | 'spectate', string>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags

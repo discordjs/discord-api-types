@@ -1,9 +1,9 @@
 node_modules/
 
 # Custom ESLint rules
-.eslintplugin/*
-!.eslintplugin/index.ts
-!.eslintplugin/tsconfig.json
+.eslint-plugin-local/*
+!.eslint-plugin-local/index.ts
+!.eslint-plugin-local/tsconfig.json
 
 # Don't commit build outputs
 globals.js

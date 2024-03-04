@@ -277,27 +277,29 @@ export enum GatewayDispatchEvents {
 export type GatewaySendPayload =
 	| GatewayHeartbeat
 	| GatewayIdentify
-	| GatewayUpdatePresence
-	| GatewayVoiceStateUpdate
+	| GatewayRequestGuildMembers
 	| GatewayResume
-	| GatewayRequestGuildMembers;
+	| GatewayUpdatePresence
+	| GatewayVoiceStateUpdate;
 
 export type GatewayReceivePayload =
-	| GatewayHello
-	| GatewayHeartbeatRequest
+	| GatewayDispatchPayload
 	| GatewayHeartbeatAck
+	| GatewayHeartbeatRequest
+	| GatewayHello
 	| GatewayInvalidSession
-	| GatewayReconnect
-	| GatewayDispatchPayload;
+	| GatewayReconnect;
 
 export type GatewayDispatchPayload =
 	| GatewayApplicationCommandPermissionsUpdateDispatch
-	| GatewayAutoModerationRuleModifyDispatch
+	| GatewayAutoModerationActionExecutionDispatch
 	| GatewayAutoModerationRuleCreateDispatch
 	| GatewayAutoModerationRuleDeleteDispatch
-	| GatewayAutoModerationActionExecutionDispatch
+	| GatewayAutoModerationRuleModifyDispatch
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
+	| GatewayEntitlementModifyDispatch
+	| GatewayGuildAuditLogEntryCreateDispatch
 	| GatewayGuildBanModifyDispatch
 	| GatewayGuildCreateDispatch
 	| GatewayGuildDeleteDispatch
@@ -311,8 +313,8 @@ export type GatewayDispatchPayload =
 	| GatewayGuildRoleDeleteDispatch
 	| GatewayGuildRoleModifyDispatch
 	| GatewayGuildScheduledEventCreateDispatch
-	| GatewayGuildScheduledEventUpdateDispatch
 	| GatewayGuildScheduledEventDeleteDispatch
+	| GatewayGuildScheduledEventUpdateDispatch
 	| GatewayGuildScheduledEventUserAddDispatch
 	| GatewayGuildScheduledEventUserRemoveDispatch
 	| GatewayGuildStickersUpdateDispatch
@@ -331,24 +333,22 @@ export type GatewayDispatchPayload =
 	| GatewayMessageReactionRemoveEmojiDispatch
 	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewayReadyDispatch
+	| GatewayResumedDispatch
 	| GatewayStageInstanceCreateDispatch
 	| GatewayStageInstanceDeleteDispatch
 	| GatewayStageInstanceUpdateDispatch
-	| GatewayReadyDispatch
-	| GatewayResumedDispatch
+	| GatewayThreadCreateDispatch
+	| GatewayThreadDeleteDispatch
 	| GatewayThreadListSyncDispatch
 	| GatewayThreadMembersUpdateDispatch
 	| GatewayThreadMemberUpdateDispatch
-	| GatewayThreadCreateDispatch
 	| GatewayThreadUpdateDispatch
-	| GatewayThreadDeleteDispatch
 	| GatewayTypingStartDispatch
 	| GatewayUserUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
 	| GatewayVoiceStateUpdateDispatch
-	| GatewayWebhooksUpdateDispatch
-	| GatewayGuildAuditLogEntryCreateDispatch
-	| GatewayEntitlementModifyDispatch;
+	| GatewayWebhooksUpdateDispatch;
 
 // #region Dispatch Payloads
 
@@ -453,7 +453,7 @@ export interface GatewayReadyDispatchData {
 	 *
 	 * See https://discord.com/developers/docs/resources/application#application-object
 	 */
-	application: Pick<APIApplication, 'id' | 'flags'>;
+	application: Pick<APIApplication, 'flags' | 'id'>;
 }
 
 /**
@@ -468,8 +468,8 @@ export type GatewayResumedDispatch = DataPayload<GatewayDispatchEvents.Resumed, 
  */
 export type GatewayAutoModerationRuleModifyDispatch = DataPayload<
 	| GatewayDispatchEvents.AutoModerationRuleCreate
-	| GatewayDispatchEvents.AutoModerationRuleUpdate
-	| GatewayDispatchEvents.AutoModerationRuleDelete,
+	| GatewayDispatchEvents.AutoModerationRuleDelete
+	| GatewayDispatchEvents.AutoModerationRuleUpdate,
 	GatewayAutoModerationRuleModifyDispatchData
 >;
 
@@ -693,8 +693,8 @@ export type GatewayEntitlementModifyDispatchData = APIEntitlement;
  */
 export type GatewayEntitlementModifyDispatch = DataPayload<
 	| GatewayDispatchEvents.EntitlementCreate
-	| GatewayDispatchEvents.EntitlementUpdate
-	| GatewayDispatchEvents.EntitlementDelete,
+	| GatewayDispatchEvents.EntitlementDelete
+	| GatewayDispatchEvents.EntitlementUpdate,
 	GatewayEntitlementModifyDispatchData
 >;
 
@@ -1013,10 +1013,10 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-update
  */
-export type GatewayGuildMemberUpdateDispatchData = Omit<APIGuildMember, 'deaf' | 'mute' | 'user' | 'joined_at'> &
+export type GatewayGuildMemberUpdateDispatchData = Nullable<Pick<APIGuildMember, 'joined_at'>> &
+	Omit<APIGuildMember, 'deaf' | 'joined_at' | 'mute' | 'user'> &
 	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
-	Required<Pick<APIGuildMember, 'user'>> &
-	Nullable<Pick<APIGuildMember, 'joined_at'>> & {
+	Required<Pick<APIGuildMember, 'user'>> & {
 		/**
 		 * The id of the guild
 		 */
@@ -1361,7 +1361,7 @@ export type GatewayMessageCreateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-create
  */
-export type GatewayMessageCreateDispatchData = Omit<APIMessage, 'mentions'> & GatewayMessageEventExtraFields;
+export type GatewayMessageCreateDispatchData = GatewayMessageEventExtraFields & Omit<APIMessage, 'mentions'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-update
@@ -1374,8 +1374,8 @@ export type GatewayMessageUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-update
  */
-export type GatewayMessageUpdateDispatchData = Omit<Partial<APIMessage>, 'mentions'> &
-	GatewayMessageEventExtraFields & {
+export type GatewayMessageUpdateDispatchData = GatewayMessageEventExtraFields &
+	Omit<Partial<APIMessage>, 'mentions'> & {
 		/**
 		 * ID of the message
 		 */
@@ -1978,8 +1978,8 @@ export interface GatewayRequestGuildMembersDataWithQuery extends GatewayRequestG
  * https://discord.com/developers/docs/topics/gateway-events#request-guild-members
  */
 export type GatewayRequestGuildMembersData =
-	| GatewayRequestGuildMembersDataWithUserIds
-	| GatewayRequestGuildMembersDataWithQuery;
+	| GatewayRequestGuildMembersDataWithQuery
+	| GatewayRequestGuildMembersDataWithUserIds;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#update-voice-state
@@ -2072,7 +2072,7 @@ interface BasePayload {
 	t?: string;
 }
 
-type NonDispatchPayload = Omit<BasePayload, 't' | 's'> & {
+type NonDispatchPayload = Omit<BasePayload, 's' | 't'> & {
 	t: null;
 	s: null;
 };

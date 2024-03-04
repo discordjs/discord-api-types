@@ -99,7 +99,7 @@ export enum StickerFormatType {
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIStickerItem = Pick<APISticker, 'id' | 'name' | 'format_type'>;
+export type APIStickerItem = Pick<APISticker, 'format_type' | 'id' | 'name'>;
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-pack-object

@@ -45,22 +45,22 @@ export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGr
 export type APIGuildCreatePartialChannel = StrictPartial<
 	DistributivePick<
 		APIGuildChannelResolvable,
-		| 'type'
-		| 'topic'
-		| 'nsfw'
-		| 'bitrate'
-		| 'user_limit'
-		| 'rate_limit_per_user'
-		| 'default_auto_archive_duration'
-		| 'position'
-		| 'rtc_region'
-		| 'video_quality_mode'
-		| 'flags'
-		| 'default_reaction_emoji'
 		| 'available_tags'
-		| 'default_sort_order'
+		| 'bitrate'
+		| 'default_auto_archive_duration'
 		| 'default_forum_layout'
+		| 'default_reaction_emoji'
+		| 'default_sort_order'
 		| 'default_thread_rate_limit_per_user'
+		| 'flags'
+		| 'nsfw'
+		| 'position'
+		| 'rate_limit_per_user'
+		| 'rtc_region'
+		| 'topic'
+		| 'type'
+		| 'user_limit'
+		| 'video_quality_mode'
 	>
 > & {
 	name: string;
@@ -142,15 +142,15 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: number | Snowflake | null | undefined;
+	afk_channel_id?: Snowflake | number | null | undefined;
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: 60 | 300 | 900 | 1_800 | 3_600 | undefined;
+	afk_timeout?: 1_800 | 3_600 | 60 | 300 | 900 | undefined;
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: number | Snowflake | null | undefined;
+	system_channel_id?: Snowflake | number | null | undefined;
 	/**
 	 * System channel flags
 	 *
@@ -246,7 +246,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: 60 | 300 | 900 | 1_800 | 3_600 | undefined;
+	afk_timeout?: 1_800 | 3_600 | 60 | 300 | 900 | undefined;
 	/**
 	 * base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the guild has `ANIMATED_ICON` feature)
 	 *
@@ -948,20 +948,20 @@ export type RESTPutAPIGuildOnboardingJSONBody = AddUndefinedToPossiblyUndefinedP
 	prompts?: RESTAPIModifyGuildOnboardingPromptData[] | undefined;
 };
 
-export type RESTAPIModifyGuildOnboardingPromptData = Pick<APIGuildOnboardingPrompt, 'id' | 'title'> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-		Partial<Omit<APIGuildOnboardingPrompt, 'id' | 'title' | 'options' | 'guild_id'>>
-	> & {
+export type RESTAPIModifyGuildOnboardingPromptData = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Partial<Omit<APIGuildOnboardingPrompt, 'guild_id' | 'id' | 'options' | 'title'>>
+> &
+	Pick<APIGuildOnboardingPrompt, 'id' | 'title'> & {
 		/**
 		 * Options available within the prompt
 		 */
 		options: RESTAPIModifyGuildOnboardingPromptOptionData[];
 	};
 
-export type RESTAPIModifyGuildOnboardingPromptOptionData = Pick<APIGuildOnboardingPromptOption, 'title'> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-		Partial<Omit<APIGuildOnboardingPromptOption, 'title' | 'emoji' | 'guild_id'>>
-	> & {
+export type RESTAPIModifyGuildOnboardingPromptOptionData = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Partial<Omit<APIGuildOnboardingPromptOption, 'emoji' | 'guild_id' | 'title'>>
+> &
+	Pick<APIGuildOnboardingPromptOption, 'title'> & {
 		/**
 		 * Emoji id
 		 */

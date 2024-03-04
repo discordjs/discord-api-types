@@ -227,7 +227,7 @@ export interface GatewayActivity {
 	/**
 	 * The custom buttons shown in the Rich Presence (max 2)
 	 */
-	buttons?: string[] | GatewayActivityButton[];
+	buttons?: GatewayActivityButton[] | string[];
 }
 
 /**
@@ -292,7 +292,7 @@ export interface GatewayActivityTimestamps {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji
  */
-export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'id' | 'animated'>> & Pick<APIEmoji, 'name'>;
+export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'animated' | 'id'>> & Pick<APIEmoji, 'name'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
@@ -318,7 +318,7 @@ export type GatewayActivityAssets = Partial<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets
  */
-export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
+export type GatewayActivitySecrets = Partial<Record<'join' | 'match' | 'spectate', string>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags
