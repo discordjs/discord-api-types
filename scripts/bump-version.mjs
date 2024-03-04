@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { execSync } from 'node:child_process';
 import process from 'node:process';
-import { promisify } from 'node:util';
 import { Octokit } from '@octokit/action';
 import conventionalRecommendedBump from 'conventional-recommended-bump';
 
+console.log('🚀 Running the release script...');
+
 const lastCommitMessage = execSync('git log -1 --pretty=%B', { encoding: 'utf8' });
+
+console.log(`ℹ️ Last commit message: ${lastCommitMessage}`);
 
 if (lastCommitMessage.startsWith('chore(release)')) {
 	console.log('Preventing the action from completing as there are no new commits to release.');
@@ -18,11 +21,14 @@ const conventionalReleaseTypesTo0Ver = new Map([
 	['patch', 'patch'],
 ]);
 
-const asyncConventionalRecommendBump = promisify(conventionalRecommendedBump);
+console.log('ℹ️ Getting the recommended bump level...');
 
-const result = await asyncConventionalRecommendBump({ preset: 'angular' }, undefined);
+const result = await conventionalRecommendedBump({ preset: 'angular' });
+
+console.log('ℹ️ Got the recommended bump level:', result);
 
 if (!result.releaseType) {
+	console.log('help');
 	throw new Error('No recommended bump level found');
 }
 
