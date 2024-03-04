@@ -22,12 +22,12 @@ export enum InteractionType {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIInteractionResponse =
-	| APIInteractionResponsePong
+	| APIApplicationCommandAutocompleteResponse
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponsePong
 	| APIInteractionResponseUpdateMessage
-	| APIApplicationCommandAutocompleteResponse
 	| APIModalInteractionResponse;
 
 /**
@@ -127,7 +127,7 @@ export enum InteractionResponseType {
  */
 export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
-	'username' | 'avatar_url'
+	'avatar_url' | 'username'
 > & { flags?: MessageFlags };
 
 /**

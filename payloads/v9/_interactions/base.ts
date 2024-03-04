@@ -16,15 +16,15 @@ import type { InteractionType } from './responses';
 
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,
-	| 'roles'
-	| 'premium_since'
-	| 'pending'
-	| 'nick'
-	| 'mute'
-	| 'joined_at'
-	| 'deaf'
-	| 'communication_disabled_until'
 	| 'avatar'
+	| 'communication_disabled_until'
+	| 'deaf'
+	| 'joined_at'
+	| 'mute'
+	| 'nick'
+	| 'pending'
+	| 'premium_since'
+	| 'roles'
 >;
 
 /**
@@ -139,7 +139,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,
-	'member' | 'guild_id'
+	'guild_id' | 'member'
 > &
 	Required<Pick<Original, 'user'>>;
 
@@ -147,7 +147,7 @@ export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<Inter
 	Original,
 	'user'
 > &
-	Required<Pick<Original, 'member' | 'guild_id'>>;
+	Required<Pick<Original, 'guild_id' | 'member'>>;
 
 export interface APIInteractionDataResolvedChannelBase<T extends ChannelType> extends Required<APIPartialChannel> {
 	type: T;
@@ -160,12 +160,12 @@ export interface APIInteractionDataResolvedChannelBase<T extends ChannelType> ex
 export type APIInteractionDataResolvedChannel =
 	| APIInteractionDataResolvedChannelBase<Exclude<ChannelType, ThreadChannelType>>
 	| (APIInteractionDataResolvedChannelBase<ThreadChannelType> &
-			Pick<APIThreadChannel, 'thread_metadata' | 'parent_id'>);
+			Pick<APIThreadChannel, 'parent_id' | 'thread_metadata'>);
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
  */
-export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
+export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'deaf' | 'mute' | 'user'> {
 	permissions: Permissions;
 }
 
@@ -188,8 +188,8 @@ export type APIChatInputApplicationCommandInteractionDataResolved = APIInteracti
 /**
  * `users` and optional `members` from APIInteractionDataResolved, for user commands and user selects
  */
-export type APIUserInteractionDataResolved = Required<Pick<APIInteractionDataResolved, 'users'>> &
-	Pick<APIInteractionDataResolved, 'members'>;
+export type APIUserInteractionDataResolved = Pick<APIInteractionDataResolved, 'members'> &
+	Required<Pick<APIInteractionDataResolved, 'users'>>;
 
 /**
  * @deprecated Renamed to `APIUserInteractionDataResolved`

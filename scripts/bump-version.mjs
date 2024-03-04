@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { execSync } from 'node:child_process';
+import process from 'node:process';
 import { promisify } from 'node:util';
 import { Octokit } from '@octokit/action';
 import conventionalRecommendedBump from 'conventional-recommended-bump';
@@ -17,10 +18,9 @@ const conventionalReleaseTypesTo0Ver = new Map([
 	['patch', 'patch'],
 ]);
 
-/** @type {(options: import('conventional-recommended-bump').Options) => Promise<import('conventional-recommended-bump').Callback.Recommendation>} */
 const asyncConventionalRecommendBump = promisify(conventionalRecommendedBump);
 
-const result = await asyncConventionalRecommendBump({ preset: 'angular' });
+const result = await asyncConventionalRecommendBump({ preset: 'angular' }, undefined);
 
 if (!result.releaseType) {
 	throw new Error('No recommended bump level found');

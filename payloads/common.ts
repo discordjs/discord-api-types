@@ -305,7 +305,7 @@ export interface RESTErrorGroupWrapper {
 	_errors: RESTErrorData[];
 }
 
-export type RESTErrorData = RESTErrorGroupWrapper | RESTErrorFieldInformation | { [k: string]: RESTErrorData } | string;
+export type RESTErrorData = RESTErrorFieldInformation | RESTErrorGroupWrapper | string | { [k: string]: RESTErrorData };
 
 /**
  * https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { execSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
-import process from "node:process";
+import process from 'node:process';
 import { Octokit } from '@octokit/action';
 
 const octokit = new Octokit();
@@ -62,8 +62,10 @@ const messageBody = [
 
 for (const file of diff) {
 	messageBody.push(
-		`- [Node: \`${file.slice(5)}\`](https://github.com/${process.env.GITHUB_REPOSITORY}/blob/${process.env.GITHUB_SHA
-		}/${file.slice(5)}) - [Deno: \`${file}\`](https://github.com/${process.env.GITHUB_REPOSITORY}/blob/${process.env.GITHUB_SHA
+		`- [Node: \`${file.slice(5)}\`](https://github.com/${process.env.GITHUB_REPOSITORY}/blob/${
+			process.env.GITHUB_SHA
+		}/${file.slice(5)}) - [Deno: \`${file}\`](https://github.com/${process.env.GITHUB_REPOSITORY}/blob/${
+			process.env.GITHUB_SHA
 		}/${file})`,
 	);
 }

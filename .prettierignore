@@ -18,3 +18,6 @@ website/build
 
 # Miscellaneous
 CODEOWNERS
+
+# Format all of scripts
+!scripts/**/*

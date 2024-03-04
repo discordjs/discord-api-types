@@ -118,7 +118,7 @@ export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationC
 		Required<
 			Pick<
 				APIBaseInteraction<InteractionType.ApplicationCommand, Data>,
-				'channel' | 'channel_id' | 'data' | 'app_permissions'
+				'app_permissions' | 'channel_id' | 'channel' | 'data'
 			>
 		>;
 
