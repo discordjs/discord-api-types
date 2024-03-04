@@ -65,6 +65,8 @@ jobs:
   create_release:
     name: Create release and publish
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     if: github.repository_owner == 'discordjs' && github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release)') && !contains(github.event.head_commit.message, '[skip ci]')
 
     steps:
