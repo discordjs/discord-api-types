@@ -18,6 +18,7 @@ website/build
 
 # Miscellaneous
 CODEOWNERS
+renovate.json
 
 # Format all of scripts
 !scripts/**/*
