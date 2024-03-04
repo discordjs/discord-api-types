@@ -8,16 +8,20 @@ on:
 
 jobs:
   publish:
+    concurrency:
+      group: publish-next
+      cancel-in-progress: true
+
     name: Publish @next release to npm
     runs-on: ubuntu-latest
     permissions:
       id-token: write
     if: github.repository_owner == 'discordjs' && !(github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release)'))
     steps:
-      - name: Cancel previous publish attempts
-        uses: styfle/cancel-workflow-action@0.12.1
-        with:
-          access_token: ${{ github.token }}
+      # - name: Cancel previous publish attempts
+      #   uses: styfle/cancel-workflow-action@0.12.1
+      #   with:
+      #     access_token: ${{ github.token }}
 
       - name: Checkout repository
         uses: actions/checkout@v4
