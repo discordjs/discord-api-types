@@ -1,19 +1,8 @@
 {
-	"compileOnSave": true,
+	"extends": "../tsconfig.json",
 	"compilerOptions": {
-		"alwaysStrict": true,
-		"lib": ["esnext"],
-		"module": "commonjs",
-		"noUnusedParameters": true,
-		"sourceMap": true,
 		"declaration": false,
-		"noUnusedLocals": true,
-		"removeComments": false,
-		"target": "ES2020",
-		"importsNotUsedAsValues": "error",
-		"strictNullChecks": true,
-		"preserveConstEnums": true,
-		"exactOptionalPropertyTypes": true,
+		"declarationMap": false,
 		"skipLibCheck": true
 	},
 	"include": ["./index.ts"]
