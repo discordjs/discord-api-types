@@ -35,7 +35,7 @@ const schema = [
 			},
 		},
 	},
-];
+] as const;
 
 export = {
 	rules: {
