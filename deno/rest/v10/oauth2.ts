@@ -196,4 +196,5 @@ export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
 }
 
 export type RESTPostOAuth2AccessTokenWithBotAndGuildsAndWebhookIncomingScopeResult =
-	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult & RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;
+	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult &
+		RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;

@@ -142,7 +142,14 @@ export type RESTGetAPIGuildChannelsResult = APIChannel[];
 export type RESTPostAPIGuildChannelJSONBody = Partial<
 	Pick<
 		APIChannel,
-		'bitrate' | 'nsfw' | 'parent_id' | 'permission_overwrites' | 'rate_limit_per_user' | 'topic' | 'type' | 'user_limit'
+		| 'bitrate'
+		| 'nsfw'
+		| 'parent_id'
+		| 'permission_overwrites'
+		| 'rate_limit_per_user'
+		| 'topic'
+		| 'type'
+		| 'user_limit'
 	>
 > &
 	Required<Pick<APIChannel, 'name'>>;

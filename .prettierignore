@@ -19,6 +19,8 @@ website/build
 # Miscellaneous
 CODEOWNERS
 renovate.json
+CHANGELOG.md
 
 # Format all of scripts
 !scripts/**/*
+!.prettierrc.mjs
