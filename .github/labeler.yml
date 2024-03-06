@@ -1,16 +1,15 @@
 chore:
-  - all:
-      - changed-files:
-          - all-globs-to-any-file:
-              - '*'
-              - '!deno/**/*'
-              - '!gateway/**/*'
-              - '!payloads/**/*'
-              - '!rest/**/*'
-              - '!rpc/**/*'
-              - '!tests/**/*'
-              - '!utils/**/*'
-              - '!voice/**/*'
+  - changed-files:
+      - all-globs-to-any-file:
+          - '*'
+          - '!deno/**/*'
+          - '!gateway/**/*'
+          - '!payloads/**/*'
+          - '!rest/**/*'
+          - '!rpc/**/*'
+          - '!tests/**/*'
+          - '!utils/**/*'
+          - '!voice/**/*'
 
 ci:
   - changed-files:
