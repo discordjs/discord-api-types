@@ -3,7 +3,7 @@ chore:
       - changed-files:
           - any-glob-to-any-file:
               - '*'
-          - all-globs-to-any-files:
+          - all-globs-to-any-file:
               - '!deno/**/*'
               - '!gateway/**/*'
               - '!payloads/**/*'
