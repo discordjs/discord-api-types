@@ -473,7 +473,9 @@ export const Routes = {
 
 		parts.push('threads');
 
-		return parts.join('/') as `/channels/${Snowflake}/messages/${Snowflake}/threads` | `/channels/${Snowflake}/threads`;
+		return parts.join('/') as
+			| `/channels/${Snowflake}/messages/${Snowflake}/threads`
+			| `/channels/${Snowflake}/threads`;
 	},
 
 	/**

@@ -182,6 +182,7 @@ export function isContextMenuApplicationCommandInteraction(
 	interaction: APIApplicationCommandInteraction,
 ): interaction is APIContextMenuInteraction {
 	return (
-		interaction.data.type === ApplicationCommandType.Message || interaction.data.type === ApplicationCommandType.User
+		interaction.data.type === ApplicationCommandType.Message ||
+		interaction.data.type === ApplicationCommandType.User
 	);
 }
