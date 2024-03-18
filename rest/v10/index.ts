@@ -910,6 +910,7 @@ export const Routes = {
 	currentApplication() {
 		return '/applications/@me' as const;
 	},
+
 	/**
 	 * Route for:
 	 * - GET `/applications/{application.id}/entitlements`
@@ -918,6 +919,7 @@ export const Routes = {
 	entitlements(applicationId: Snowflake) {
 		return `/applications/${applicationId}/entitlements` as const;
 	},
+
 	/**
 	 * Route for:
 	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
@@ -925,12 +927,21 @@ export const Routes = {
 	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
 		return `/applications/${applicationId}/entitlements/${entitlementId}` as const;
 	},
+
 	/**
 	 * Route for:
 	 * - GET `/applications/{application.id}/skus`
 	 */
 	skus(applicationId: Snowflake) {
 		return `/applications/${applicationId}/skus` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/guilds/{guild.id}/bulk-ban`
+	 */
+	guildBulkBan(guildId: Snowflake) {
+		return `/guilds/${guildId}/bulk-ban` as const;
 	},
 };
 
