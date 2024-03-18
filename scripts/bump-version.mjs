@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
-import { execSync } from 'node:child_process';
+import { execSync, spawnSync } from 'node:child_process';
 import process from 'node:process';
 import { Octokit } from '@octokit/action';
 import conventionalRecommendedBump from 'conventional-recommended-bump';
+
+const IGNORED_COMMIT_AUTHORS = ['renovate[bot]'];
+const RELEASE_COMMIT_PREFIX = 'chore(release):';
 
 console.log('🚀 Running the release script...');
 
@@ -10,9 +13,34 @@ const lastCommitMessage = execSync('git log -1 --pretty=%B', { encoding: 'utf8' 
 
 console.log(`ℹ️ Last commit message: ${lastCommitMessage}`);
 
-if (lastCommitMessage.startsWith('chore(release)')) {
+if (lastCommitMessage.startsWith(RELEASE_COMMIT_PREFIX)) {
 	console.log('Preventing the action from completing as there are no new commits to release.');
 	process.exit(1);
+}
+
+const lastReleaseCommitHash = execSync(`git log -1 --grep="${RELEASE_COMMIT_PREFIX}" --pretty=%H`, {
+	encoding: 'utf8',
+});
+
+if (lastReleaseCommitHash) {
+	console.log(`ℹ️ Last release commit hash: ${lastReleaseCommitHash}`);
+
+	const commitAuthorsAfterLastReleaseProcess = spawnSync(
+		'git',
+		['log', `${lastReleaseCommitHash.trim()}..HEAD`, '--pretty=%an'],
+		{ encoding: 'utf8' },
+	);
+
+	const commitAuthorsAfterLastRelease = commitAuthorsAfterLastReleaseProcess.stdout.split('\n').filter(Boolean);
+
+	console.log(`ℹ️ Authors after the last release: ${commitAuthorsAfterLastRelease.join(', ')}`);
+
+	if (commitAuthorsAfterLastRelease.every((author) => IGNORED_COMMIT_AUTHORS.includes(author))) {
+		console.log(
+			'Preventing the action from completing as all commits after the last release were made by ignored authors.',
+		);
+		process.exit(1);
+	}
 }
 
 const conventionalReleaseTypesTo0Ver = new Map([
@@ -64,7 +92,7 @@ const pullRequests = await octokit.pulls.list({
 
 const previousPullRequest = pullRequests.data.find(
 	// Find release PRs made by GitHub actions
-	({ title, user }) => title.startsWith(`chore(release):`) && user?.id === 41_898_282,
+	({ title, user }) => title.startsWith(RELEASE_COMMIT_PREFIX) && user?.id === 41_898_282,
 );
 
 if (previousPullRequest) {
