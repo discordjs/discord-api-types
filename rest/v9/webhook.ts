@@ -7,6 +7,7 @@ import type {
 	APIWebhook,
 	MessageFlags,
 	APIMessageActionRowComponent,
+	APIPoll,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals';
 import type { RESTAPIAttachment } from './channel';
@@ -154,6 +155,10 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * Array of tag ids to apply to the thread
 	 */
 	applied_tags?: Snowflake[] | undefined;
+	/**
+	 * A poll!
+	 */
+	poll?: APIPoll | undefined;
 }
 
 /**

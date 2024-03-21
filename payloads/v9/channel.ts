@@ -8,6 +8,7 @@ import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
+import type { APIPoll } from './poll';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
 
@@ -702,6 +703,10 @@ export interface APIMessage {
 	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
 	 */
 	resolved?: APIInteractionDataResolved;
+	/**
+	 * A poll!
+	 */
+	poll?: APIPoll;
 }
 
 /**

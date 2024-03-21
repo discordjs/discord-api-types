@@ -12,6 +12,7 @@ export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
 export * from './oauth2';
+export * from './poll';
 export * from './stageInstance';
 export * from './sticker';
 export * from './template';

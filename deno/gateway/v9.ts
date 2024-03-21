@@ -259,6 +259,8 @@ export enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
+	MessagePollVotedAdd = 'MESSAGE_POLL_VOTED_ADD',
+	MessagePollVotedRemove = 'MESSAGE_POLL_VOTED_REMOVE',
 	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
 	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
 	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
@@ -2049,6 +2051,33 @@ export interface GatewayPresenceUpdateData {
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-structure
  */
 export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'state' | 'type' | 'url'>;
+
+export interface GatewayMessagePollVoteData {
+	/**
+	 * ID of the user
+	 */
+	user_id: Snowflake;
+	/**
+	 * ID of the channel
+	 */
+	channel_id: Snowflake;
+	/**
+	 * ID of the message
+	 */
+	message_id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
+	guild_id?: Snowflake;
+	/**
+	 * ID of the answer
+	 */
+	answer_id: number;
+}
+
+export type GatewayMessagePollVoteAdd = GatewayMessagePollVoteData;
+
+export type GatewayMessagePollVoteRemove = GatewayMessagePollVoteData;
 
 // #endregion Sendable Payloads
 

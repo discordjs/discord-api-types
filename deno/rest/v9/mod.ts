@@ -12,6 +12,7 @@ export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
+export * from './poll.ts';
 export * from './stageInstance.ts';
 export * from './sticker.ts';
 export * from './template.ts';
