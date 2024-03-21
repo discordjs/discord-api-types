@@ -464,6 +464,22 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/channels/{channel.id}/poll/{message.id}/answers/{answer_id}`
+	 */
+	pollAnswerVoters(channelId: Snowflake, messageId: Snowflake, answerId: string) {
+		return `/channels/${channelId}/polls/${messageId}/answers/${answerId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/channels/{channel.id}/poll/{message.id}/expire`
+	 */
+	expirePoll(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/polls/${messageId}/expire` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - POST `/channels/{channel.id}/threads`
 	 * - POST `/channels/{channel.id}/messages/{message.id}/threads`
 	 */

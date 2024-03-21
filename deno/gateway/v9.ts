@@ -259,8 +259,8 @@ export enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
-	MessagePollVotedAdd = 'MESSAGE_POLL_VOTED_ADD',
-	MessagePollVotedRemove = 'MESSAGE_POLL_VOTED_REMOVE',
+	MessagePollVoteAdd = 'MESSAGE_POLL_VOTE_ADD',
+	MessagePollVoteRemove = 'MESSAGE_POLL_VOTE_REMOVE',
 	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
 	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
 	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
@@ -329,6 +329,8 @@ export type GatewayDispatchPayload =
 	| GatewayMessageCreateDispatch
 	| GatewayMessageDeleteBulkDispatch
 	| GatewayMessageDeleteDispatch
+	| GatewayMessagePollVoteAddDispatch
+	| GatewayMessagePollVoteRemoveDispatch
 	| GatewayMessageReactionAddDispatch
 	| GatewayMessageReactionRemoveAllDispatch
 	| GatewayMessageReactionRemoveDispatch
@@ -2075,9 +2077,21 @@ export interface GatewayMessagePollVoteData {
 	answer_id: number;
 }
 
-export type GatewayMessagePollVoteAdd = GatewayMessagePollVoteData;
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add
+ */
+export type GatewayMessagePollVoteAddDispatch = DataPayload<
+	GatewayDispatchEvents.MessagePollVoteAdd,
+	GatewayMessagePollVoteData
+>;
 
-export type GatewayMessagePollVoteRemove = GatewayMessagePollVoteData;
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove
+ */
+export type GatewayMessagePollVoteRemoveDispatch = DataPayload<
+	GatewayDispatchEvents.MessagePollVoteRemove,
+	GatewayMessagePollVoteData
+>;
 
 // #endregion Sendable Payloads
 

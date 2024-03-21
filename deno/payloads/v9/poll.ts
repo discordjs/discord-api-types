@@ -27,7 +27,7 @@ export interface APIPoll {
 	/**
 	 * The layout type of the poll
 	 */
-	layout_type: APIPollLayoutType;
+	layout_type: PollLayoutType;
 	/**
 	 * The results of the poll
 	 */
@@ -37,7 +37,7 @@ export interface APIPoll {
 /**
  * https://discord.com/developers/docs/resources/poll#layout-type
  */
-export enum APIPollLayoutType {
+export enum PollLayoutType {
 	/**
 	 * The, uhm, default layout type
 	 */
@@ -81,9 +81,9 @@ export interface APIPollResults {
 	 */
 	is_finalized: boolean;
 	/**
-	 * The counts of each answer
+	 * The counts for each answer
 	 */
-	answer_counts: APIPollAnswerCount;
+	answer_counts: APIPollAnswerCount[];
 }
 
 /**
