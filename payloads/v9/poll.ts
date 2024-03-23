@@ -13,7 +13,7 @@ export interface APIPoll {
 	 */
 	question: APIPollMedia;
 	/**
-	 * Each of the answers available in the poll
+	 * Each of the answers available in the poll, up to 10
 	 */
 	answers: APIPollAnswer[];
 	/**
@@ -50,6 +50,8 @@ export enum PollLayoutType {
 export interface APIPollMedia {
 	/**
 	 * The text of the field
+	 *
+	 * The maximum length is `300` for the question, and `55` for any answer
 	 */
 	text?: string;
 	/**
@@ -63,7 +65,9 @@ export interface APIPollMedia {
  */
 export interface APIPollAnswer {
 	/**
-	 * The ID of the answer
+	 * The ID of the answer. Starts at `1` for the first answer and goes up sequentially
+	 *
+	 * Only sent as part of responses from Discord's API/Gateway
 	 */
 	answer_id: number;
 	/**

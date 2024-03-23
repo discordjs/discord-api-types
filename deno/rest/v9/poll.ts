@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
-import type { APIMessage, APIUser } from '../../v9.ts';
+import type { APIMessage, APIPoll, APIUser } from '../../v9.ts';
 
 /**
  * https://discord.com/developers/docs/resources/poll#get-answer-voters
@@ -18,11 +18,21 @@ export interface RESTGetAPIPollAnswerVotersQuery {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/poll#poll-create-request-object-poll-create-request-object-structure
+ */
+export interface RESTAPIPollCreate extends Omit<APIPoll, 'expiry' | 'results'> {
+	/**
+	 * Number of hours the poll should be open for, up to 7 days
+	 */
+	duration: number;
+}
+
+/**
  * https://discord.com/developers/docs/resources/poll#get-answer-voters
  */
 export interface RESTGetAPIPollAnswerVotersResult {
 	/**
-	 * Users who created to this answer
+	 * Users who voted for this answer
 	 */
 	users: APIUser[];
 }

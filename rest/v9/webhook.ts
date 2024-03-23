@@ -7,10 +7,10 @@ import type {
 	APIWebhook,
 	MessageFlags,
 	APIMessageActionRowComponent,
-	APIPoll,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals';
 import type { RESTAPIAttachment } from './channel';
+import type { RESTAPIPollCreate } from './poll';
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
@@ -158,7 +158,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * A poll!
 	 */
-	poll?: APIPoll | undefined;
+	poll?: RESTAPIPollCreate | undefined;
 }
 
 /**

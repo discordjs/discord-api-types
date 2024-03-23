@@ -718,6 +718,13 @@ export interface APIMessage {
 	resolved?: APIInteractionDataResolved;
 	/**
 	 * A poll!
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
+	 *
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	poll?: APIPoll;
 }
