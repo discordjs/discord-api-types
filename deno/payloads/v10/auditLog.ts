@@ -548,7 +548,10 @@ export type APIAuditLogChangeKeyWidgetChannelId = AuditLogChangeData<'widget_cha
 /**
  * Returned when a guild's system_channel_flags is changed
  */
-export type APIAuditLogChangeKeySystemChannelFlags = AuditLogChangeData<'system_channel_flags', GuildSystemChannelFlags>;
+export type APIAuditLogChangeKeySystemChannelFlags = AuditLogChangeData<
+	'system_channel_flags',
+	GuildSystemChannelFlags
+>;
 
 /**
  * Returned when a guild's system_channel_id is changed
