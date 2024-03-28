@@ -10,6 +10,7 @@ import type {
 } from '../../payloads/v10/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
 import type { RESTAPIAttachment } from './channel.ts';
+import type { RESTAPIPollCreate } from './poll.ts';
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
@@ -154,6 +155,10 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * Array of tag ids to apply to the thread
 	 */
 	applied_tags?: Snowflake[] | undefined;
+	/**
+	 * A poll!
+	 */
+	poll?: RESTAPIPollCreate | undefined;
 }
 
 /**
