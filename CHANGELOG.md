@@ -1,3 +1,12 @@
+## [0.37.77](https://github.com/discordjs/discord-api-types/compare/0.37.76...0.37.77) (2024-03-28)
+
+
+### Features
+
+* **APIAuditLogChange:** add `APIAuditLogChangeKeySystemChannelFlags` ([#933](https://github.com/discordjs/discord-api-types/issues/933)) ([47c9ad0](https://github.com/discordjs/discord-api-types/commit/47c9ad0e7043c098d103107e95f8a97e67ad3eb4))
+
+
+
 ## [0.37.76](https://github.com/discordjs/discord-api-types/compare/0.37.75...0.37.76) (2024-03-21)
 
 
