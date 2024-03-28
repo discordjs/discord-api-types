@@ -6,7 +6,7 @@ import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIApplication } from './application.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIGuildMember } from './guild.ts';
-import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions.ts';
+import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker, APIStickerItem } from './sticker.ts';
 import type { APIUser } from './user.ts';
@@ -667,7 +667,13 @@ export interface APIMessage {
 	 */
 	referenced_message?: APIMessage | null;
 	/**
+	 * Sent if the message is sent as a result of an interaction
+	 */
+	interaction_metadata?: APIMessageInteractionMetadata;
+	/**
 	 * Sent if the message is a response to an Interaction
+	 *
+	 * @deprecated In favor of `interaction_metadata`
 	 */
 	interaction?: APIMessageInteraction;
 	/**

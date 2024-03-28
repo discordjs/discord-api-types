@@ -6,7 +6,7 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
-import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
+import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions';
 import type { APIRole } from './permissions';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
@@ -667,7 +667,13 @@ export interface APIMessage {
 	 */
 	referenced_message?: APIMessage | null;
 	/**
+	 * Sent if the message is sent as a result of an interaction
+	 */
+	interaction_metadata?: APIMessageInteractionMetadata;
+	/**
 	 * Sent if the message is a response to an Interaction
+	 *
+	 * @deprecated In favor of `interaction_metadata`
 	 */
 	interaction?: APIMessageInteraction;
 	/**
