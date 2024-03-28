@@ -49,7 +49,7 @@ export type RESTGetAPIWebhookResult = APIWebhook;
 /**
  * https://discord.com/developers/docs/resources/webhook#get-webhook-with-token
  */
-export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
+export type RESTGetAPIWebhookWithTokenResult = APIWebhook;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
