@@ -35,6 +35,10 @@ export interface RESTPatchAPICurrentUserJSONBody {
 	 * If passed, modifies the user's avatar
 	 */
 	avatar?: string | null | undefined;
+	/**
+	 * If passed, modifies the user's banner
+	 */
+	banner?: string | null | undefined;
 }
 
 /**
