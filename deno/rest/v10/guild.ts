@@ -605,6 +605,34 @@ export type RESTPutAPIGuildBanResult = never;
 export type RESTDeleteAPIGuildBanResult = never;
 
 /**
+ * https://discord.com/developers/docs/resources/guild#bulk-guild-ban
+ */
+export interface RESTPostAPIGuildBulkBanJSONBody {
+	/**
+	 * List of user ids to ban (max 200)
+	 */
+	user_ids: Snowflake[];
+	/**
+	 * Number of seconds to delete messages for, between 0 and 604800 (7 days)
+	 */
+	delete_message_seconds?: number | undefined;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#bulk-guild-ban
+ */
+export interface RESTPostAPIGuildBulkBanResult {
+	/**
+	 * List of user ids, that were successfully banned
+	 */
+	banned_users: Snowflake[];
+	/**
+	 * List of user ids, that were not banned
+	 */
+	failed_users: Snowflake[];
+}
+
+/**
  * https://discord.com/developers/docs/resources/guild#get-guild-roles
  */
 export type RESTGetAPIGuildRolesResult = APIRole[];
