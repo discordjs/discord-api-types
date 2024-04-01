@@ -152,7 +152,7 @@
 		"prettier": "^3.2.5",
 		"pretty-quick": "^4.0.0",
 		"rimraf": "^5.0.5",
-		"tsd": "^0.30.7",
+		"tsd": "^0.31.0",
 		"tsutils": "^3.21.0",
 		"typescript": "^5.3.3"
 	},
