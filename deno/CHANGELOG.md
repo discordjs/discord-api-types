@@ -1,3 +1,15 @@
+## [0.37.78](https://github.com/discordjs/discord-api-types/compare/0.37.77...0.37.78) (2024-04-01)
+
+
+### Features
+
+* bot banners ([#906](https://github.com/discordjs/discord-api-types/issues/906)) ([495148d](https://github.com/discordjs/discord-api-types/commit/495148dc466fcc3cd47ff62377369a97a9cec13d))
+* **Guild:** add `RESTPostAPIGuildBulkBan` result and json body ([#910](https://github.com/discordjs/discord-api-types/issues/910)) ([61ce329](https://github.com/discordjs/discord-api-types/commit/61ce329f614d5bc923c3ab4d2b318aa2e66c767b))
+* **RESTJSONErrorCodes:** Add `500_000` ([#908](https://github.com/discordjs/discord-api-types/issues/908)) ([4db44b5](https://github.com/discordjs/discord-api-types/commit/4db44b553d7164415b9f20468716beb5223fcec0))
+* **Routes:** Add `guildBulkBan()` route ([#909](https://github.com/discordjs/discord-api-types/issues/909)) ([7dcad58](https://github.com/discordjs/discord-api-types/commit/7dcad582ce2fa16ac7bde35f5b158648c2c7c9bf))
+
+
+
 ## [0.37.77](https://github.com/discordjs/discord-api-types/compare/0.37.76...0.37.77) (2024-03-28)
 
 
