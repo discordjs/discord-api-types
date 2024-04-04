@@ -1,3 +1,12 @@
+## [0.37.79](https://github.com/discordjs/discord-api-types/compare/0.37.78...0.37.79) (2024-04-04)
+
+
+### Features
+
+* **ConnectionService:** add bungie connection ([#907](https://github.com/discordjs/discord-api-types/issues/907)) ([22b5f47](https://github.com/discordjs/discord-api-types/commit/22b5f4778778baec7f414c4b253e96b0949de948))
+
+
+
 ## [0.37.78](https://github.com/discordjs/discord-api-types/compare/0.37.77...0.37.78) (2024-04-01)
 
 
