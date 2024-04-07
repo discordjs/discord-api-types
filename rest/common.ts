@@ -293,9 +293,9 @@ export enum RESTJSONErrorCodes {
 
 	CannotEnableOnboardingRequirementsAreNotMet = 350_000,
 	CannotUpdateOnboardingWhileBelowRequirements,
-  
-  FailedToBanUsers = 500_000,
-  
+
+	FailedToBanUsers = 500_000,
+
 	PollVotingBlocked = 520_000,
 	PollExpired,
 	InvalidChannelTypeForPollCreation,
