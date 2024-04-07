@@ -4,7 +4,7 @@
 	"semanticCommits": "enabled",
 	"lockFileMaintenance": {
 		"enabled": true,
-		"schedule": ["before 1pm"]
+		"schedule": ["before 1pm every friday"]
 	},
 	"ignorePaths": ["website/"],
 	"packageRules": [
@@ -15,5 +15,5 @@
 			"groupSlug": "all-non-major"
 		}
 	],
-	"schedule": ["every weekday"]
+	"schedule": ["before 1pm every friday"]
 }
