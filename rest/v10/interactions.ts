@@ -54,7 +54,9 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 		| 'type'
 		| 'version'
 	> &
-		Partial<Pick<APIApplicationCommand, 'contexts' | 'default_member_permissions' | 'integration_types'>>
+		Partial<Pick<APIApplicationCommand, 'default_member_permissions' | 'integration_types'>> & {
+			contexts: Exclude<APIApplicationCommand['contexts'], null>;
+		}
 >;
 
 /**

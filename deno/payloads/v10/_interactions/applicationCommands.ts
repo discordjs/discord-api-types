@@ -93,11 +93,11 @@ export interface APIApplicationCommand {
 	/**
 	 * Installation context(s) where the command is available, only for globally-scoped commands. Defaults to `GUILD_INSTALL (0)`
 	 */
-	integration_types: ApplicationIntegrationType[];
+	integration_types?: ApplicationIntegrationType[];
 	/**
 	 * Interaction context(s) where the command can be used, only for globally-scoped commands. By default, all interaction context types included for new commands.
 	 */
-	contexts: InteractionContextType[] | null; // TODO: is this normal? https://github.com/discord/discord-api-docs/issues/6744
+	contexts?: InteractionContextType[] | null;
 	/**
 	 * Autoincrementing version identifier updated during substantial record changes
 	 */
