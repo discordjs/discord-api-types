@@ -303,7 +303,6 @@ export enum RESTJSONErrorCodes {
 	CannotUseAnEmojiIncludedWithAPoll,
 
 	CannotExpireANonPollMessage = 520_006,
-	PollIsAlreadyExpired,
 }
 
 /**
