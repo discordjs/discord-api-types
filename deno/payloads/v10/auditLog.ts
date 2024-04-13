@@ -17,6 +17,7 @@ import type {
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildMFALevel,
+	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	IntegrationExpireBehavior,
 } from './guild.ts';
@@ -398,6 +399,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyRulesChannelId
 	| APIAuditLogChangeKeySplashHash
 	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeySystemChannelFlags
 	| APIAuditLogChangeKeySystemChannelId
 	| APIAuditLogChangeKeyTags
 	| APIAuditLogChangeKeyTemporary
@@ -542,6 +544,14 @@ export type APIAuditLogChangeKeyWidgetEnabled = AuditLogChangeData<'widget_enabl
  * Returned when a guild's widget_channel_id is changed
  */
 export type APIAuditLogChangeKeyWidgetChannelId = AuditLogChangeData<'widget_channel_id', Snowflake>;
+
+/**
+ * Returned when a guild's system_channel_flags is changed
+ */
+export type APIAuditLogChangeKeySystemChannelFlags = AuditLogChangeData<
+	'system_channel_flags',
+	GuildSystemChannelFlags
+>;
 
 /**
  * Returned when a guild's system_channel_id is changed

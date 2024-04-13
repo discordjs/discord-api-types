@@ -4,7 +4,7 @@ import process from 'node:process';
 import { Octokit } from '@octokit/action';
 import conventionalRecommendedBump from 'conventional-recommended-bump';
 
-const IGNORED_COMMIT_AUTHORS = ['renovate[bot]'];
+const IGNORED_COMMIT_AUTHORS = ['renovate[bot]', 'dependabot[bot]'];
 const RELEASE_COMMIT_PREFIX = 'chore(release):';
 
 console.log('🚀 Running the release script...');

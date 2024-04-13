@@ -293,6 +293,8 @@ export enum RESTJSONErrorCodes {
 
 	CannotEnableOnboardingRequirementsAreNotMet = 350_000,
 	CannotUpdateOnboardingWhileBelowRequirements,
+
+	FailedToBanUsers = 500_000,
 }
 
 /**
