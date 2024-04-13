@@ -1817,6 +1817,45 @@ export interface GatewayGuildAuditLogEntryCreateDispatchData extends APIAuditLog
 	guild_id: Snowflake;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add
+ */
+export type GatewayMessagePollVoteAddDispatch = DataPayload<
+	GatewayDispatchEvents.MessagePollVoteAdd,
+	GatewayMessagePollVoteDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove
+ */
+export type GatewayMessagePollVoteRemoveDispatch = DataPayload<
+	GatewayDispatchEvents.MessagePollVoteRemove,
+	GatewayMessagePollVoteDispatchData
+>;
+
+export interface GatewayMessagePollVoteDispatchData {
+	/**
+	 * ID of the user
+	 */
+	user_id: Snowflake;
+	/**
+	 * ID of the channel
+	 */
+	channel_id: Snowflake;
+	/**
+	 * ID of the message
+	 */
+	message_id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
+	guild_id?: Snowflake;
+	/**
+	 * ID of the answer
+	 */
+	answer_id: number;
+}
+
 // #endregion Dispatch Payloads
 
 // #region Sendable Payloads
@@ -2054,45 +2093,6 @@ export interface GatewayPresenceUpdateData {
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-structure
  */
 export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'state' | 'type' | 'url'>;
-
-export interface GatewayMessagePollVoteData {
-	/**
-	 * ID of the user
-	 */
-	user_id: Snowflake;
-	/**
-	 * ID of the channel
-	 */
-	channel_id: Snowflake;
-	/**
-	 * ID of the message
-	 */
-	message_id: Snowflake;
-	/**
-	 * ID of the guild
-	 */
-	guild_id?: Snowflake;
-	/**
-	 * ID of the answer
-	 */
-	answer_id: number;
-}
-
-/**
- * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add
- */
-export type GatewayMessagePollVoteAddDispatch = DataPayload<
-	GatewayDispatchEvents.MessagePollVoteAdd,
-	GatewayMessagePollVoteData
->;
-
-/**
- * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove
- */
-export type GatewayMessagePollVoteRemoveDispatch = DataPayload<
-	GatewayDispatchEvents.MessagePollVoteRemove,
-	GatewayMessagePollVoteData
->;
 
 // #endregion Sendable Payloads
 
