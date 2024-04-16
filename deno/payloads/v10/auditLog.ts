@@ -523,12 +523,12 @@ export type APIAuditLogChangeKeyVanityURLCode = AuditLogChangeData<'vanity_url_c
 /**
  * Returned when new role(s) are added
  */
-export type APIAuditLogChangeKey$Add = AuditLogChangeData<'$add', APIRole[]>;
+export type APIAuditLogChangeKey$Add = AuditLogChangeData<'$add', Pick<APIRole, "id" | "name">[]>;
 
 /**
  * Returned when role(s) are removed
  */
-export type APIAuditLogChangeKey$Remove = AuditLogChangeData<'$remove', APIRole[]>;
+export type APIAuditLogChangeKey$Remove = AuditLogChangeData<'$remove', Pick<APIRole, "id" | "name">[]>;
 
 /**
  * Returned when there is a change in number of days after which inactive and role-unassigned members are kicked
