@@ -31,7 +31,7 @@ export interface APIPoll {
 	/**
 	 * The results of the poll
 	 */
-	results: APIPollResults;
+	results?: APIPollResults;
 }
 
 /**
@@ -66,8 +66,6 @@ export interface APIPollMedia {
 export interface APIPollAnswer {
 	/**
 	 * The ID of the answer. Starts at `1` for the first answer and goes up sequentially
-	 *
-	 * Only sent as part of responses from Discord's API/Gateway
 	 */
 	answer_id: number;
 	/**

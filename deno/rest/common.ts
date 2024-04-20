@@ -300,7 +300,7 @@ export enum RESTJSONErrorCodes {
 	PollExpired,
 	InvalidChannelTypeForPollCreation,
 	CannotEditAPollMessage,
-	CannotUseAnEmojiIncludedWithAPoll,
+	CannotUseAnEmojiIncludedWithThePoll,
 
 	CannotExpireANonPollMessage = 520_006,
 }

@@ -20,7 +20,7 @@ export interface RESTGetAPIPollAnswerVotersQuery {
 /**
  * https://discord.com/developers/docs/resources/poll#poll-create-request-object-poll-create-request-object-structure
  */
-export interface RESTAPIPollCreate extends Omit<APIPoll, 'expiry' | 'results'> {
+export interface RESTAPIPollCreate extends Omit<APIPoll, 'answer_id' | 'expiry' | 'results'> {
 	/**
 	 * Number of hours the poll should be open for, up to 7 days
 	 */
