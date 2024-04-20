@@ -466,7 +466,7 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/channels/{channel.id}/polls/{message.id}/answers/{answer_id}`
 	 */
-	pollAnswerVoters(channelId: Snowflake, messageId: Snowflake, answerId: string) {
+	pollAnswerVoters(channelId: Snowflake, messageId: Snowflake, answerId: number) {
 		return `/channels/${channelId}/polls/${messageId}/answers/${answerId}` as const;
 	},
 
