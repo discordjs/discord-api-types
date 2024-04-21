@@ -295,6 +295,14 @@ export enum RESTJSONErrorCodes {
 	CannotUpdateOnboardingWhileBelowRequirements,
 
 	FailedToBanUsers = 500_000,
+
+	PollVotingBlocked = 520_000,
+	PollExpired,
+	InvalidChannelTypeForPollCreation,
+	CannotEditAPollMessage,
+	CannotUseAnEmojiIncludedWithThePoll,
+
+	CannotExpireANonPollMessage = 520_006,
 }
 
 /**

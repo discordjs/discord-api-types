@@ -12,6 +12,7 @@ export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
 export * from './oauth2.ts';
+export * from './poll.ts';
 export * from './stageInstance.ts';
 export * from './sticker.ts';
 export * from './template.ts';
@@ -459,6 +460,22 @@ export const Routes = {
 	 */
 	guildTemplate(guildId: Snowflake, code: string) {
 		return `/guilds/${guildId}/templates/${code}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/channels/{channel.id}/polls/{message.id}/answers/{answer_id}`
+	 */
+	pollAnswerVoters(channelId: Snowflake, messageId: Snowflake, answerId: number) {
+		return `/channels/${channelId}/polls/${messageId}/answers/${answerId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/channels/{channel.id}/polls/{message.id}/expire`
+	 */
+	expirePoll(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/polls/${messageId}/expire` as const;
 	},
 
 	/**

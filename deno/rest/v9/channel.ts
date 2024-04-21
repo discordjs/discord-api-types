@@ -26,6 +26,7 @@ import type {
 	ChannelFlags,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { RESTAPIPollCreate } from './poll.ts';
 
 export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: Snowflake;
@@ -333,6 +334,10 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * If another message was created by the same author with the same nonce, that message will be returned and no new message will be created.
 	 */
 	enforce_nonce?: boolean | undefined;
+	/**
+	 * A poll!
+	 */
+	poll?: RESTAPIPollCreate | undefined;
 }
 
 /**
