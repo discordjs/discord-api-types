@@ -71,7 +71,7 @@ export interface APIPollAnswer {
 	/**
 	 * The data of the answer
 	 */
-	media: APIPollMedia;
+	poll_media: APIPollMedia;
 }
 
 /**
