@@ -1,3 +1,12 @@
+## [0.37.81](https://github.com/discordjs/discord-api-types/compare/0.37.80...0.37.81) (2024-04-22)
+
+
+### Bug Fixes
+
+* **Polls:** correct APIPollAnswer properties ([#962](https://github.com/discordjs/discord-api-types/issues/962)) ([308d7d4](https://github.com/discordjs/discord-api-types/commit/308d7d40f45b7e3e78a6b13350d3ad7c8fd81b47))
+
+
+
 ## [0.37.80](https://github.com/discordjs/discord-api-types/compare/0.37.79...0.37.80) (2024-04-22)
 
 
