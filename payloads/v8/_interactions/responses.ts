@@ -1,10 +1,11 @@
-import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v8';
 import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
 import type { MessageFlags } from '../index';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InteractionType {
@@ -17,15 +18,16 @@ export enum InteractionType {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIInteractionResponse =
-	| APIInteractionResponsePong
+	| APIApplicationCommandAutocompleteResponse
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponsePong
 	| APIInteractionResponseUpdateMessage
-	| APIApplicationCommandAutocompleteResponse
 	| APIModalInteractionResponse;
 
 /**
@@ -84,6 +86,7 @@ export interface APIInteractionResponseUpdateMessage {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InteractionResponseType {
@@ -119,11 +122,12 @@ export enum InteractionResponseType {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
-	'username' | 'avatar_url'
+	'avatar_url' | 'username'
 > & { flags?: MessageFlags };
 
 /**
@@ -135,6 +139,7 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIModalInteractionResponseCallbackData {

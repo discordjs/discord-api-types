@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/webhook
  */
 
-import type { APIPartialChannel, APIPartialGuild, APIUser } from './mod.ts';
 import type { Snowflake } from '../../globals.ts';
+import type { APIPartialChannel, APIPartialGuild, APIUser } from './mod.ts';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#webhook-object

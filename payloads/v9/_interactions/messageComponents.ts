@@ -1,12 +1,12 @@
+import type { Snowflake } from '../../../globals';
+import type { ComponentType } from '../channel';
+import type { APIBaseInteraction, InteractionType } from '../interactions';
 import type {
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,
 	APIInteractionDataResolved,
 	APIUserInteractionDataResolved,
 } from './base';
-import type { Snowflake } from '../../../globals';
-import type { ComponentType } from '../channel';
-import type { APIBaseInteraction, InteractionType } from '../interactions';
 
 export type APIMessageComponentInteraction = APIBaseInteraction<
 	InteractionType.MessageComponent,
@@ -15,7 +15,7 @@ export type APIMessageComponentInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageComponentInteractionData>,
-			'channel_id' | 'data' | 'app_permissions' | 'message'
+			'app_permissions' | 'channel_id' | 'channel' | 'data' | 'message'
 		>
 	>;
 
@@ -26,7 +26,7 @@ export type APIMessageComponentButtonInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageButtonInteractionData>,
-			'channel_id' | 'data' | 'app_permissions' | 'message'
+			'app_permissions' | 'channel_id' | 'channel' | 'data' | 'message'
 		>
 	>;
 
@@ -37,7 +37,7 @@ export type APIMessageComponentSelectMenuInteraction = APIBaseInteraction<
 	Required<
 		Pick<
 			APIBaseInteraction<InteractionType.MessageComponent, APIMessageSelectMenuInteractionData>,
-			'channel_id' | 'data' | 'app_permissions' | 'message'
+			'app_permissions' | 'channel_id' | 'channel' | 'data' | 'message'
 		>
 	>;
 
@@ -76,7 +76,7 @@ export interface APIMessageRoleSelectInteractionData
 export interface APIMessageMentionableSelectInteractionData
 	extends APIMessageComponentBaseInteractionData<ComponentType.MentionableSelect> {
 	values: Snowflake[];
-	resolved: Pick<APIInteractionDataResolved, 'users' | 'members' | 'roles'>;
+	resolved: Pick<APIInteractionDataResolved, 'members' | 'roles' | 'users'>;
 }
 
 export interface APIMessageChannelSelectInteractionData
@@ -86,11 +86,11 @@ export interface APIMessageChannelSelectInteractionData
 }
 
 export type APIMessageSelectMenuInteractionData =
-	| APIMessageStringSelectInteractionData
-	| APIMessageUserSelectInteractionData
-	| APIMessageRoleSelectInteractionData
+	| APIMessageChannelSelectInteractionData
 	| APIMessageMentionableSelectInteractionData
-	| APIMessageChannelSelectInteractionData;
+	| APIMessageRoleSelectInteractionData
+	| APIMessageStringSelectInteractionData
+	| APIMessageUserSelectInteractionData;
 
 export type APIMessageComponentDMInteraction = APIDMInteractionWrapper<APIMessageComponentInteraction>;
 

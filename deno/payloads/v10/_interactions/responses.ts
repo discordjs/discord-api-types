@@ -1,7 +1,7 @@
-import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v10.ts';
 import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel.ts';
 import type { MessageFlags } from '../mod.ts';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -18,13 +18,14 @@ export enum InteractionType {
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
  */
 export type APIInteractionResponse =
-	| APIInteractionResponsePong
+	| APIApplicationCommandAutocompleteResponse
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponsePong
 	| APIInteractionResponseUpdateMessage
-	| APIApplicationCommandAutocompleteResponse
-	| APIModalInteractionResponse;
+	| APIModalInteractionResponse
+	| APIPremiumRequiredInteractionResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
@@ -38,6 +39,10 @@ export interface APIApplicationCommandAutocompleteResponse {
 export interface APIModalInteractionResponse {
 	type: InteractionResponseType.Modal;
 	data: APIModalInteractionResponseCallbackData;
+}
+
+export interface APIPremiumRequiredInteractionResponse {
+	type: InteractionResponseType.PremiumRequired;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -91,6 +96,10 @@ export enum InteractionResponseType {
 	 * Respond to an interaction with an modal for a user to fill-out
 	 */
 	Modal,
+	/**
+	 * Respond to an interaction with an upgrade button, only available for apps with monetization enabled
+	 */
+	PremiumRequired,
 }
 
 /**
@@ -98,7 +107,7 @@ export enum InteractionResponseType {
  */
 export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
-	'username' | 'avatar_url'
+	'avatar_url' | 'username'
 > & { flags?: MessageFlags };
 
 export interface APICommandAutocompleteInteractionResponseCallbackData {

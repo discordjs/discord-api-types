@@ -23,6 +23,10 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	 * Notify @everyone that a stage instance has started
 	 */
 	send_start_notification?: boolean | undefined;
+	/**
+	 * The guild scheduled event associated with this stage instance
+	 */
+	guild_scheduled_event_id?: Snowflake | undefined;
 }
 
 /**

@@ -1,8 +1,9 @@
-import type { APIAllowedMentionsSend } from './channel';
 import type { APIEmbed, APIMessage, APIWebhook } from '../../payloads/v6/index';
+import type { APIAllowedMentionsSend } from './channel';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIChannelWebhookJSONBody {
@@ -17,30 +18,35 @@ export type RESTPostAPIChannelWebhookResult = APIWebhook;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-channel-webhooks
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIChannelWebhooksResult = APIWebhook[];
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-guild-webhooks
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIGuildWebhooksResult = APIWebhook[];
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-webhook
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIWebhookResult = APIWebhook;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#get-webhook-with-token
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPIWebhookJSONBody {
@@ -56,6 +62,7 @@ export type RESTPatchAPIWebhookResult = APIWebhook;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook-with-token
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPatchAPIWebhookWithTokenJSONBody = Omit<RESTPatchAPIWebhookJSONBody, 'channel_id'>;
@@ -67,6 +74,7 @@ export type RESTPatchAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#delete-webhook
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTDeleteAPIWebhookResult = never;
@@ -78,6 +86,7 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIWebhookWithTokenJSONBody {
@@ -91,6 +100,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
@@ -113,6 +123,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPIWebhookWithTokenQuery {
@@ -135,12 +146,14 @@ export type RESTPostAPIWebhookWithTokenWaitResult = APIMessage;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-querystring-params
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPostAPIWebhookWithTokenSlackQuery = RESTPostAPIWebhookWithTokenQuery;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTPostAPIWebhookWithTokenGitHubQuery = RESTPostAPIWebhookWithTokenQuery;

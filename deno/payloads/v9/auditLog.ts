@@ -2,6 +2,7 @@
  * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
+import type { Snowflake } from '../../globals.ts';
 import type {
 	APIAutoModerationAction,
 	APIAutoModerationRule,
@@ -12,9 +13,11 @@ import type {
 import type { APIChannel, APIOverwrite } from './channel.ts';
 import type {
 	APIGuildIntegration,
+	APIGuildIntegrationType,
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildMFALevel,
+	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	IntegrationExpireBehavior,
 } from './guild.ts';
@@ -29,7 +32,6 @@ import type { StageInstancePrivacyLevel } from './stageInstance.ts';
 import type { StickerFormatType } from './sticker.ts';
 import type { APIUser } from './user.ts';
 import type { APIWebhook } from './webhook.ts';
-import type { Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
@@ -200,6 +202,9 @@ export enum AuditLogEvent {
 	AutoModerationBlockMessage,
 	AutoModerationFlagToChannel,
 	AutoModerationUserCommunicationDisabled,
+
+	CreatorMonetizationRequestCreated = 150,
+	CreatorMonetizationTermsAccepted,
 }
 
 /**
@@ -309,6 +314,15 @@ export interface APIAuditLogOptions {
 	 * **Present only if the {@link APIAuditLogOptions#type entry type} is "0"**
 	 */
 	role_name?: string;
+
+	/**
+	 * Type of integration which performed the action
+	 *
+	 * Present from:
+	 * - MEMBER_KICK
+	 * - MEMBER_ROLE_UPDATE
+	 */
+	integration_type?: APIGuildIntegrationType;
 }
 
 export enum AuditLogOptionsType {
@@ -322,82 +336,83 @@ export type AuditLogRuleTriggerType = `${AutoModerationRuleTriggerType}`;
  * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
  */
 export type APIAuditLogChange =
-	| APIAuditLogChangeKeyName
-	| APIAuditLogChangeKeyDescription
-	| APIAuditLogChangeKeyIconHash
-	| APIAuditLogChangeKeyImageHash
-	| APIAuditLogChangeKeySplashHash
-	| APIAuditLogChangeKeyDiscoverySplashHash
-	| APIAuditLogChangeKeyBannerHash
-	| APIAuditLogChangeKeyOwnerId
-	| APIAuditLogChangeKeyRegion
-	| APIAuditLogChangeKeyPreferredLocale
-	| APIAuditLogChangeKeyAFKChannelId
-	| APIAuditLogChangeKeyAFKTimeout
-	| APIAuditLogChangeKeyRulesChannelId
-	| APIAuditLogChangeKeyPublicUpdatesChannelId
-	| APIAuditLogChangeKeyMFALevel
-	| APIAuditLogChangeKeyVerificationLevel
-	| APIAuditLogChangeKeyExplicitContentFilter
-	| APIAuditLogChangeKeyDefaultMessageNotifications
-	| APIAuditLogChangeKeyVanityURLCode
 	| APIAuditLogChangeKey$Add
 	| APIAuditLogChangeKey$Remove
-	| APIAuditLogChangeKeyPruneDeleteDays
-	| APIAuditLogChangeKeyWidgetEnabled
-	| APIAuditLogChangeKeyWidgetChannelId
-	| APIAuditLogChangeKeySystemChannelId
-	| APIAuditLogChangeKeyPosition
-	| APIAuditLogChangeKeyTopic
-	| APIAuditLogChangeKeyBitrate
-	| APIAuditLogChangeKeyPermissionOverwrites
-	| APIAuditLogChangeKeyNSFW
-	| APIAuditLogChangeKeyApplicationId
-	| APIAuditLogChangeKeyRateLimitPerUser
-	| APIAuditLogChangeKeyPermissions
-	| APIAuditLogChangeKeyColor
-	| APIAuditLogChangeKeyHoist
-	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyActions
+	| APIAuditLogChangeKeyAFKChannelId
+	| APIAuditLogChangeKeyAFKTimeout
 	| APIAuditLogChangeKeyAllow
-	| APIAuditLogChangeKeyDeny
-	| APIAuditLogChangeKeyCode
-	| APIAuditLogChangeKeyChannelId
-	| APIAuditLogChangeKeyInviterId
-	| APIAuditLogChangeKeyMaxUses
-	| APIAuditLogChangeKeyUses
-	| APIAuditLogChangeKeyMaxAge
-	| APIAuditLogChangeKeyTemporary
-	| APIAuditLogChangeKeyDeaf
-	| APIAuditLogChangeKeyMute
-	| APIAuditLogChangeKeyNick
+	| APIAuditLogChangeKeyApplicationId
+	| APIAuditLogChangeKeyArchived
+	| APIAuditLogChangeKeyAsset
+	| APIAuditLogChangeKeyAutoArchiveDuration
+	| APIAuditLogChangeKeyAvailable
 	| APIAuditLogChangeKeyAvatarHash
-	| APIAuditLogChangeKeyId
-	| APIAuditLogChangeKeyType
+	| APIAuditLogChangeKeyBannerHash
+	| APIAuditLogChangeKeyBitrate
+	| APIAuditLogChangeKeyChannelId
+	| APIAuditLogChangeKeyCode
+	| APIAuditLogChangeKeyColor
+	| APIAuditLogChangeKeyCommunicationDisabledUntil
+	| APIAuditLogChangeKeyDeaf
+	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
+	| APIAuditLogChangeKeyDefaultMessageNotifications
+	| APIAuditLogChangeKeyDeny
+	| APIAuditLogChangeKeyDescription
+	| APIAuditLogChangeKeyDiscoverySplashHash
+	| APIAuditLogChangeKeyEnabled
 	| APIAuditLogChangeKeyEnableEmoticons
+	| APIAuditLogChangeKeyEntityType
+	| APIAuditLogChangeKeyEventType
+	| APIAuditLogChangeKeyExemptChannels
+	| APIAuditLogChangeKeyExemptRoles
 	| APIAuditLogChangeKeyExpireBehavior
 	| APIAuditLogChangeKeyExpireGracePeriod
-	| APIAuditLogChangeKeyUserLimit
-	| APIAuditLogChangeKeyPrivacyLevel
-	| APIAuditLogChangeKeyTags
+	| APIAuditLogChangeKeyExplicitContentFilter
 	| APIAuditLogChangeKeyFormatType
-	| APIAuditLogChangeKeyAsset
-	| APIAuditLogChangeKeyAvailable
 	| APIAuditLogChangeKeyGuildId
-	| APIAuditLogChangeKeyArchived
-	| APIAuditLogChangeKeyLocked
-	| APIAuditLogChangeKeyAutoArchiveDuration
-	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
-	| APIAuditLogChangeKeyEntityType
-	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeyHoist
+	| APIAuditLogChangeKeyIconHash
+	| APIAuditLogChangeKeyId
+	| APIAuditLogChangeKeyImageHash
+	| APIAuditLogChangeKeyInviterId
 	| APIAuditLogChangeKeyLocation
-	| APIAuditLogChangeKeyCommunicationDisabledUntil
-	| APIAuditLogChangeKeyTriggerType
-	| APIAuditLogChangeKeyEventType
+	| APIAuditLogChangeKeyLocked
+	| APIAuditLogChangeKeyMaxAge
+	| APIAuditLogChangeKeyMaxUses
+	| APIAuditLogChangeKeyMentionable
+	| APIAuditLogChangeKeyMFALevel
+	| APIAuditLogChangeKeyMute
+	| APIAuditLogChangeKeyName
+	| APIAuditLogChangeKeyNick
+	| APIAuditLogChangeKeyNSFW
+	| APIAuditLogChangeKeyOwnerId
+	| APIAuditLogChangeKeyPermissionOverwrites
+	| APIAuditLogChangeKeyPermissions
+	| APIAuditLogChangeKeyPosition
+	| APIAuditLogChangeKeyPreferredLocale
+	| APIAuditLogChangeKeyPrivacyLevel
+	| APIAuditLogChangeKeyPruneDeleteDays
+	| APIAuditLogChangeKeyPublicUpdatesChannelId
+	| APIAuditLogChangeKeyRateLimitPerUser
+	| APIAuditLogChangeKeyRegion
+	| APIAuditLogChangeKeyRulesChannelId
+	| APIAuditLogChangeKeySplashHash
+	| APIAuditLogChangeKeyStatus
+	| APIAuditLogChangeKeySystemChannelFlags
+	| APIAuditLogChangeKeySystemChannelId
+	| APIAuditLogChangeKeyTags
+	| APIAuditLogChangeKeyTemporary
+	| APIAuditLogChangeKeyTopic
 	| APIAuditLogChangeKeyTriggerMetadata
-	| APIAuditLogChangeKeyActions
-	| APIAuditLogChangeKeyEnabled
-	| APIAuditLogChangeKeyExemptRoles
-	| APIAuditLogChangeKeyExemptChannels;
+	| APIAuditLogChangeKeyTriggerType
+	| APIAuditLogChangeKeyType
+	| APIAuditLogChangeKeyUserLimit
+	| APIAuditLogChangeKeyUses
+	| APIAuditLogChangeKeyVanityURLCode
+	| APIAuditLogChangeKeyVerificationLevel
+	| APIAuditLogChangeKeyWidgetChannelId
+	| APIAuditLogChangeKeyWidgetEnabled;
 
 /**
  * Returned when an entity's name is changed
@@ -470,6 +485,11 @@ export type APIAuditLogChangeKeyRulesChannelId = AuditLogChangeData<'rules_chann
 export type APIAuditLogChangeKeyPublicUpdatesChannelId = AuditLogChangeData<'public_updates_channel_id', string>;
 
 /**
+ * Returned when a guild's safety_alerts_channel_id is changed
+ */
+export type APIAuditLogChangeKeySafetyAlertsChannelId = AuditLogChangeData<'safety_alerts_channel_id', string>;
+
+/**
  * Returned when a guild's mfa_level is changed
  */
 export type APIAuditLogChangeKeyMFALevel = AuditLogChangeData<'mfa_level', GuildMFALevel>;
@@ -524,6 +544,14 @@ export type APIAuditLogChangeKeyWidgetEnabled = AuditLogChangeData<'widget_enabl
  * Returned when a guild's widget_channel_id is changed
  */
 export type APIAuditLogChangeKeyWidgetChannelId = AuditLogChangeData<'widget_channel_id', Snowflake>;
+
+/**
+ * Returned when a guild's system_channel_flags is changed
+ */
+export type APIAuditLogChangeKeySystemChannelFlags = AuditLogChangeData<
+	'system_channel_flags',
+	GuildSystemChannelFlags
+>;
 
 /**
  * Returned when a guild's system_channel_id is changed
@@ -717,22 +745,22 @@ export type APIAuditLogChangeKeyAvailable = AuditLogChangeData<'available', bool
  */
 export type APIAuditLogChangeKeyGuildId = AuditLogChangeData<'guild_id', Snowflake>;
 
-/*
+/**
  * Returned when a thread's archive status is changed
  */
 export type APIAuditLogChangeKeyArchived = AuditLogChangeData<'archived', boolean>;
 
-/*
+/**
  * Returned when a thread's lock status is changed
  */
 export type APIAuditLogChangeKeyLocked = AuditLogChangeData<'locked', boolean>;
 
-/*
+/**
  * Returned when a thread's auto archive duration is changed
  */
 export type APIAuditLogChangeKeyAutoArchiveDuration = AuditLogChangeData<'auto_archive_duration', number>;
 
-/*
+/**
  * Returned when a channel's default auto archive duration for newly created threads is changed
  */
 export type APIAuditLogChangeKeyDefaultAutoArchiveDuration = AuditLogChangeData<

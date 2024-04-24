@@ -1,3 +1,5 @@
+import type { Permissions, Snowflake } from '../../../globals';
+import type { LocalizationMap } from '../../../v10';
 import type {
 	APIApplicationCommandOption,
 	APIChatInputApplicationCommandDMInteraction,
@@ -13,8 +15,6 @@ import type {
 } from './_applicationCommands/contextMenu';
 import type { APIBaseInteraction } from './base';
 import type { InteractionType } from './responses';
-import type { Permissions, Snowflake } from '../../../globals';
-import type { LocalizationMap } from '../../../v10';
 
 export * from './_applicationCommands/chatInput';
 export * from './_applicationCommands/contextMenu';
@@ -80,6 +80,7 @@ export interface APIApplicationCommand {
 	 * Whether the command is enabled by default when the app is added to a guild
 	 *
 	 * If missing, this property should be assumed as `true`
+	 *
 	 * @deprecated Use `dm_permission` and/or `default_member_permissions` instead
 	 */
 	default_permission?: boolean;
@@ -115,7 +116,10 @@ export type APIApplicationCommandInteractionData =
 export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationCommandInteractionData> =
 	APIBaseInteraction<InteractionType.ApplicationCommand, Data> &
 		Required<
-			Pick<APIBaseInteraction<InteractionType.ApplicationCommand, Data>, 'channel_id' | 'data' | 'app_permissions'>
+			Pick<
+				APIBaseInteraction<InteractionType.ApplicationCommand, Data>,
+				'app_permissions' | 'channel_id' | 'channel' | 'data'
+			>
 		>;
 
 /**

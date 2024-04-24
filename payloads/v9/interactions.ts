@@ -32,26 +32,26 @@ export * from './_interactions/responses';
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export type APIInteraction =
-	| APIPingInteraction
+	| APIApplicationCommandAutocompleteInteraction
 	| APIApplicationCommandInteraction
 	| APIMessageComponentInteraction
-	| APIApplicationCommandAutocompleteInteraction
-	| APIModalSubmitInteraction;
+	| APIModalSubmitInteraction
+	| APIPingInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export type APIDMInteraction =
+	| APIApplicationCommandAutocompleteDMInteraction
 	| APIApplicationCommandDMInteraction
 	| APIMessageComponentDMInteraction
-	| APIApplicationCommandAutocompleteDMInteraction
 	| APIModalSubmitDMInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export type APIGuildInteraction =
+	| APIApplicationCommandAutocompleteGuildInteraction
 	| APIApplicationCommandGuildInteraction
 	| APIMessageComponentGuildInteraction
-	| APIApplicationCommandAutocompleteGuildInteraction
 	| APIModalSubmitGuildInteraction;

@@ -7,6 +7,7 @@ import type { APIUser } from './user';
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#get-current-application-information-response-structure
+ *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export interface APIApplication {

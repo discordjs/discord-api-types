@@ -2,7 +2,6 @@ import type { Permissions, Snowflake } from '../../globals';
 import type {
 	APIActionRowComponent,
 	APIAllowedMentions,
-	APIAttachment,
 	APIChannel,
 	APIEmbed,
 	APIExtendedInvite,
@@ -18,13 +17,16 @@ import type {
 	MessageFlags,
 	OverwriteType,
 	ThreadAutoArchiveDuration,
+	ThreadChannelType,
 	VideoQualityMode,
 	APIGuildForumTag,
 	APIGuildForumDefaultReactionEmoji,
 	SortOrderType,
 	ForumLayoutType,
+	ChannelFlags,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
+import type { RESTAPIPollCreate } from './poll';
 
 export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: Snowflake;
@@ -60,15 +62,15 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	position?: number | null | undefined;
 	/**
-	 * 0-1024 character channel topic (0-4096 characters for forum channels)
+	 * 0-1024 character channel topic (0-4096 characters for thread-only channels)
 	 *
-	 * Channel types: text, news, forum
+	 * Channel types: text, news, forum, media
 	 */
 	topic?: string | null | undefined;
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, voice, news, forum
+	 * Channel types: text, voice, news, forum, media
 	 */
 	nsfw?: boolean | null | undefined;
 	/**
@@ -76,7 +78,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`,
 	 * are unaffected
 	 *
-	 * Channel types: text, newsThread, publicThread, privateThread, forum
+	 * Channel types: text, newsThread, publicThread, privateThread, forum, media
 	 */
 	rate_limit_per_user?: number | null | undefined;
 	/**
@@ -100,7 +102,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * ID of the new parent category for a channel
 	 *
-	 * Channel types: text, voice, news
+	 * Channel types: text, voice, news, stage, forum, media
 	 */
 	parent_id?: Snowflake | null | undefined;
 	/**
@@ -136,9 +138,19 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 *
-	 * Channel types: text, news
+	 * Channel types: text, news, forum, media
 	 */
 	default_auto_archive_duration?: ThreadAutoArchiveDuration | undefined;
+	/**
+	 * Channel flags combined as a bit field.
+	 */
+	flags?: ChannelFlags | undefined;
+	/**
+	 * The set of tags that can be used in a thread-only channel; limited to 20
+	 *
+	 * Channel types: forum, media
+	 */
+	available_tags?: (Partial<APIGuildForumTag> & Pick<APIGuildForumTag, 'name'>)[] | undefined;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread
 	 *
@@ -146,28 +158,22 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	invitable?: boolean | undefined;
 	/**
-	 * The set of tags that can be used in a forum channel; limited to 20
+	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 *
-	 * Channel types: forum
-	 */
-	available_tags?: APIGuildForumTag[] | undefined;
-	/**
-	 * The emoji to show in the add reaction button on a thread in a forum channel
-	 *
-	 * Channel types: forum
+	 * Channel types: forum, media
 	 */
 	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji | undefined;
 	/**
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
 	 *
-	 * Channel types: forum
+	 * Channel types: text, forum, media
 	 */
 	default_thread_rate_limit_per_user?: number | null | undefined;
 	/**
-	 * The default sort order type used to order posts in a forum channel
+	 * The default sort order type used to order posts in a thread-only channel
 	 *
-	 * Channel types: forum
+	 * Channel types: forum, media
 	 */
 	default_sort_order?: SortOrderType | null | undefined;
 	/**
@@ -176,6 +182,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: forum
 	 */
 	default_forum_layout?: ForumLayoutType | undefined;
+	/**
+	 * The ids of the set of tags that have been applied to a thread-only channel; limited to 5
+	 *
+	 * Channel types: forum, media
+	 */
+	applied_tags?: Snowflake[] | undefined;
 }
 
 /**
@@ -225,8 +237,10 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  */
-export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Required<Pick<APIMessageReference, 'message_id'>>> & {
+export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Required<Pick<APIMessageReference, 'message_id'>>
+> &
+	StrictPartial<APIMessageReference> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
@@ -234,6 +248,24 @@ export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
 		 */
 		fail_if_not_exists?: boolean | undefined;
 	};
+
+/**
+ * https://discord.com/developers/docs/resources/channel#attachment-object
+ */
+export interface RESTAPIAttachment {
+	/**
+	 * Attachment id or a number that matches `n` in `files[n]`
+	 */
+	id: Snowflake | number;
+	/**
+	 * Name of the file
+	 */
+	filename?: string | undefined;
+	/**
+	 * Description of the file
+	 */
+	description?: string | undefined;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -261,6 +293,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
 	 * @deprecated Use `embeds` instead
 	 */
 	embed?: APIEmbed | undefined;
@@ -287,28 +320,37 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
-	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake] | undefined;
+	sticker_ids?: [Snowflake, Snowflake, Snowflake] | [Snowflake, Snowflake] | [Snowflake] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
 	flags?: MessageFlags | undefined;
+	/**
+	 * If `true` and nonce is present, it will be checked for uniqueness in the past few minutes.
+	 * If another message was created by the same author with the same nonce, that message will be returned and no new message will be created.
+	 */
+	enforce_nonce?: boolean | undefined;
+	/**
+	 * A poll!
+	 */
+	poll?: RESTAPIPollCreate | undefined;
 }
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
  */
 export type RESTPostAPIChannelMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIChannelMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -335,7 +377,7 @@ export type RESTDeleteAPIChannelMessageOwnReaction = never;
  */
 export type RESTDeleteAPIChannelMessageUserReactionResult = never;
 
-/*
+/**
  * https://discord.com/developers/docs/resources/channel#get-reactions
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
@@ -384,6 +426,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 * Embedded `rich` content
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 *
 	 * @deprecated Use `embeds` instead
 	 */
 	embed?: APIEmbed | null | undefined;
@@ -409,7 +452,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * The components to include with the message
 	 *
@@ -422,13 +465,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
  * https://discord.com/developers/docs/resources/channel#edit-message
  */
 export type RESTPatchAPIChannelMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPatchAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIChannelMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message
@@ -619,10 +662,8 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	name: string;
 	/**
 	 * The amount of time in minutes to wait before automatically archiving the thread
-	 *
-	 * The 3 day and 7 day archive durations require the server to be boosted. The [guild features](https://discord.com/developers/docs/resources/guild#guild-object-guild-features) will indicate if a server is able to use those settings.
 	 */
-	auto_archive_duration: ThreadAutoArchiveDuration;
+	auto_archive_duration?: ThreadAutoArchiveDuration | undefined;
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600)
 	 */
@@ -630,25 +671,25 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
+ * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
  */
 export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
-	 * First message in the forum thread
+	 * The initial message of the thread
 	 */
 	message: RESTPostAPIChannelMessageJSONBody;
 	/**
-	 * The IDs of the set of tags that have been applied to a thread in a forum channel; limited to 5
+	 * The IDs of the set of tags to apply to the thread; limited to 5
 	 */
 	applied_tags?: Snowflake[] | undefined;
 };
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-channel
+ * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
  */
 export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
-	 * First message in the forum thread
+	 * The initial message of the thread
 	 */
 	message: string;
 };
@@ -672,7 +713,7 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	 *
 	 * @default ChannelType.PrivateThread
 	 */
-	type?: ChannelType.AnnouncementThread | ChannelType.PublicThread | ChannelType.PrivateThread | undefined;
+	type?: ThreadChannelType | undefined;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread; only available when creating a private thread
 	 */
@@ -732,7 +773,7 @@ export interface RESTGetAPIChannelThreadMembersQuery {
  */
 export type RESTGetAPIChannelThreadMembersResult = APIThreadMember[];
 
-/*
+/**
  * https://discord.com/developers/docs/resources/channel#list-public-archived-threads
  */
 export interface RESTGetAPIChannelThreadsArchivedQuery {

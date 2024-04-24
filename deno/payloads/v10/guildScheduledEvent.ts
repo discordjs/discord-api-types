@@ -1,6 +1,6 @@
+import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 import type { APIUser } from './user.ts';
-import type { Snowflake } from '../../globals.ts';
 
 interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType> {
 	/**
@@ -90,9 +90,9 @@ export interface APIExternalGuildScheduledEvent
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-structure
  */
 export type APIGuildScheduledEvent =
+	| APIExternalGuildScheduledEvent
 	| APIStageInstanceGuildScheduledEvent
-	| APIVoiceGuildScheduledEvent
-	| APIExternalGuildScheduledEvent;
+	| APIVoiceGuildScheduledEvent;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata

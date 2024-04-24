@@ -4,10 +4,10 @@
  *  - https://discord.com/developers/docs/topics/gateway-events
  */
 
+import type { Snowflake } from '../../globals.ts';
 import type { APIChannel, APIThreadMember } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { APIUser } from './user.ts';
-import type { Snowflake } from '../../globals.ts';
 
 /**
  * https://discord.com/developers/docs/topics/gateway#get-gateway
@@ -79,7 +79,7 @@ export interface GatewayPresenceUpdate {
 	/**
 	 * Either "idle", "dnd", "online", or "offline"
 	 */
-	status?: PresenceUpdateStatus;
+	status?: PresenceUpdateReceiveStatus;
 	/**
 	 * User's current activities
 	 *
@@ -94,6 +94,9 @@ export interface GatewayPresenceUpdate {
 	client_status?: GatewayPresenceClientStatus;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#update-presence-status-types
+ */
 export enum PresenceUpdateStatus {
 	Online = 'online',
 	DoNotDisturb = 'dnd',
@@ -105,6 +108,8 @@ export enum PresenceUpdateStatus {
 	Offline = 'offline',
 }
 
+export type PresenceUpdateReceiveStatus = Exclude<PresenceUpdateStatus, PresenceUpdateStatus.Invisible>;
+
 /**
  * https://discord.com/developers/docs/topics/gateway-events#client-status-object
  */
@@ -112,15 +117,15 @@ export interface GatewayPresenceClientStatus {
 	/**
 	 * The user's status set for an active desktop (Windows, Linux, Mac) application session
 	 */
-	desktop?: PresenceUpdateStatus;
+	desktop?: PresenceUpdateReceiveStatus;
 	/**
 	 * The user's status set for an active mobile (iOS, Android) application session
 	 */
-	mobile?: PresenceUpdateStatus;
+	mobile?: PresenceUpdateReceiveStatus;
 	/**
 	 * The user's status set for an active web (browser, bot account) application session
 	 */
-	web?: PresenceUpdateStatus;
+	web?: PresenceUpdateReceiveStatus;
 }
 
 /**
@@ -129,6 +134,7 @@ export interface GatewayPresenceClientStatus {
 export interface GatewayActivity {
 	/**
 	 * The activity's id
+	 *
 	 * @unstable
 	 */
 	id: string;
@@ -156,11 +162,13 @@ export interface GatewayActivity {
 	timestamps?: GatewayActivityTimestamps;
 	/**
 	 * The Spotify song id
+	 *
 	 * @unstable
 	 */
 	sync_id?: string;
 	/**
 	 * The platform this activity is being done on
+	 *
 	 * @unstable You can use {@link ActivityPlatform} as a stepping stone, but this might be inaccurate
 	 */
 	platform?: string;
@@ -173,7 +181,7 @@ export interface GatewayActivity {
 	 */
 	details?: string | null;
 	/**
-	 * The user's current party status
+	 * The user's current party status, or the text used for a custom status
 	 */
 	state?: string | null;
 	/**
@@ -219,7 +227,7 @@ export interface GatewayActivity {
 	/**
 	 * The custom buttons shown in the Rich Presence (max 2)
 	 */
-	buttons?: string[] | GatewayActivityButton[];
+	buttons?: GatewayActivityButton[] | string[];
 }
 
 /**
@@ -258,7 +266,7 @@ export enum ActivityType {
 	 */
 	Watching,
 	/**
-	 * {emoji} {details}
+	 * {emoji} {state}
 	 */
 	Custom,
 	/**
@@ -284,7 +292,7 @@ export interface GatewayActivityTimestamps {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji
  */
-export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'id' | 'animated'>> & Pick<APIEmoji, 'name'>;
+export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'animated' | 'id'>> & Pick<APIEmoji, 'name'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
@@ -310,7 +318,7 @@ export type GatewayActivityAssets = Partial<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets
  */
-export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
+export type GatewayActivitySecrets = Partial<Record<'join' | 'match' | 'spectate', string>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags

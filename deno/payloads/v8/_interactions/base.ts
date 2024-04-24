@@ -1,28 +1,29 @@
-import type { InteractionType } from './responses.ts';
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { LocaleString } from '../../../v8.ts';
 import type { APIMessage } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
 import type { APIUser } from '../user.ts';
+import type { InteractionType } from './responses.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,
-	| 'roles'
-	| 'premium_since'
-	| 'pending'
-	| 'nick'
-	| 'mute'
-	| 'joined_at'
-	| 'deaf'
-	| 'communication_disabled_until'
 	| 'avatar'
+	| 'communication_disabled_until'
+	| 'deaf'
+	| 'joined_at'
+	| 'mute'
+	| 'nick'
+	| 'pending'
+	| 'premium_since'
+	| 'roles'
 >;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIMessageInteraction {
@@ -50,6 +51,7 @@ export interface APIMessageInteraction {
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInteractionGuildMember extends APIGuildMember {
@@ -61,6 +63,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIBaseInteraction<Type extends InteractionType, Data> {
@@ -125,7 +128,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
  */
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,
-	'member' | 'guild_id'
+	'guild_id' | 'member'
 > &
 	Required<Pick<Original, 'user'>>;
 
@@ -136,4 +139,4 @@ export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<Inter
 	Original,
 	'user'
 > &
-	Required<Pick<Original, 'member' | 'guild_id'>>;
+	Required<Pick<Original, 'guild_id' | 'member'>>;

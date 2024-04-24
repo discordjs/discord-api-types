@@ -1,12 +1,4 @@
 import type {
-	RESTDeleteAPIWebhookWithTokenMessageResult,
-	RESTGetAPIWebhookWithTokenMessageResult,
-	RESTPatchAPIWebhookWithTokenMessageFormDataBody,
-	RESTPatchAPIWebhookWithTokenMessageJSONBody,
-	RESTPatchAPIWebhookWithTokenMessageResult,
-	RESTPostAPIWebhookWithTokenWaitResult,
-} from './webhook';
-import type {
 	APIApplicationCommand,
 	APIApplicationCommandPermission,
 	APIGuildApplicationCommandPermissions,
@@ -15,6 +7,14 @@ import type {
 	ApplicationCommandType,
 } from '../../payloads/v9/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
+import type {
+	RESTDeleteAPIWebhookWithTokenMessageResult,
+	RESTGetAPIWebhookWithTokenMessageResult,
+	RESTPatchAPIWebhookWithTokenMessageFormDataBody,
+	RESTPatchAPIWebhookWithTokenMessageJSONBody,
+	RESTPatchAPIWebhookWithTokenMessageResult,
+	RESTPostAPIWebhookWithTokenWaitResult,
+} from './webhook';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
@@ -42,15 +42,15 @@ export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Omit<
 		APIApplicationCommand,
-		| 'id'
 		| 'application_id'
+		| 'default_member_permissions'
+		| 'description_localized'
 		| 'description'
+		| 'guild_id'
+		| 'id'
+		| 'name_localized'
 		| 'type'
 		| 'version'
-		| 'guild_id'
-		| 'name_localized'
-		| 'description_localized'
-		| 'default_member_permissions'
 	> &
 		Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>
 >;
@@ -67,7 +67,7 @@ export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPos
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
 export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
-	type: ApplicationCommandType.User | ApplicationCommandType.Message;
+	type: ApplicationCommandType.Message | ApplicationCommandType.User;
 }
 
 /**
@@ -166,13 +166,13 @@ export type RESTPostAPIInteractionCallbackJSONBody = APIInteractionResponse;
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
  */
 export type RESTPostAPIInteractionCallbackFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIInteractionCallbackJSONBody);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response
@@ -208,13 +208,13 @@ export type RESTPostAPIInteractionFollowupJSONBody = APIInteractionResponseCallb
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message
  */
 export type RESTPostAPIInteractionFollowupFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIInteractionFollowupJSONBody);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message

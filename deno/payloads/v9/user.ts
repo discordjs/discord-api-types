@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
-import type { APIGuildIntegration } from './guild.ts';
 import type { Snowflake } from '../../globals.ts';
+import type { APIGuildIntegration } from './guild.ts';
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object
@@ -18,9 +18,13 @@ export interface APIUser {
 	 */
 	username: string;
 	/**
-	 * The user's 4-digit discord-tag
+	 * The user's Discord-tag
 	 */
 	discriminator: string;
+	/**
+	 * The user's display name, if it is set. For bots, this is the application name
+	 */
+	global_name: string | null;
 	/**
 	 * The user's avatar hash
 	 *
@@ -79,6 +83,12 @@ export interface APIUser {
 	 * See https://discord.com/developers/docs/resources/user#user-object-user-flags
 	 */
 	public_flags?: UserFlags;
+	/**
+	 * The user's avatar decoration hash
+	 *
+	 * See https://discord.com/developers/docs/reference#image-formatting
+	 */
+	avatar_decoration?: string | null;
 }
 
 /**
@@ -171,28 +181,25 @@ export enum UserFlags {
 	 * User's account has been [quarantined](https://support.discord.com/hc/articles/6461420677527) based on recent activity
 	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
-	 *
 	 * @privateRemarks
 	 *
 	 * This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
 	 */
-	Quarantined = 17592186044416,
+	Quarantined = 17_592_186_044_416,
 	/**
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
-	 *
 	 * @privateRemarks
 	 *
 	 * This value would be 1 << 50, but bit shifting above 1 << 30 requires bigints
 	 */
-	Collaborator = 1125899906842624,
+	Collaborator = 1_125_899_906_842_624,
 	/**
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
-	 *
 	 * @privateRemarks
 	 *
 	 * This value would be 1 << 51, but bit shifting above 1 << 30 requires bigints
 	 */
-	RestrictedCollaborator = 2251799813685248,
+	RestrictedCollaborator = 2_251_799_813_685_248,
 }
 
 /**
@@ -259,6 +266,7 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	BattleNet = 'battlenet',
+	BungieNet = 'bungie',
 	eBay = 'ebay',
 	EpicGames = 'epicgames',
 	Facebook = 'facebook',
@@ -274,7 +282,11 @@ export enum ConnectionService {
 	Steam = 'steam',
 	TikTok = 'tiktok',
 	Twitch = 'twitch',
-	Twitter = 'twitter',
+	X = 'twitter',
+	/**
+	 * @deprecated This is the old name for {@apilink ConnectionService#X}
+	 */
+	Twitter = X,
 	Xbox = 'xbox',
 	YouTube = 'youtube',
 }
@@ -305,5 +317,5 @@ export interface APIApplicationRoleConnection {
 	/**
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
-	metadata: Record<string, string | number>;
+	metadata: Record<string, number | string>;
 }
