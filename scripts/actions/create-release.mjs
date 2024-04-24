@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/restrict-template-expressions */
 import { readFile } from 'node:fs/promises';
-import process from "node:process";
-import { URL } from "node:url";
+import process from 'node:process';
+import { URL } from 'node:url';
 import { Octokit } from '@octokit/action';
 
 const packageJson = JSON.parse(await readFile(new URL('../../package.json', import.meta.url), { encoding: 'utf8' }));
@@ -19,6 +19,7 @@ const previousReleases = await octokit.repos.listReleases({
 });
 
 // Releases are sorted from newest to oldest, this should work™️
+// eslint-disable-next-line no-shadow -- are you stupid or are you high, line 80 is in fuck all compared to you
 const previousRelease = previousReleases.data.find((release) => !release.draft);
 console.log('👀 Previous release version:', previousRelease?.tag_name);
 

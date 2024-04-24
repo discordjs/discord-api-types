@@ -518,7 +518,7 @@ export const Routes = {
 
 		if (webhookToken) parts.push(webhookToken);
 
-		return parts.join('/') as `/webhooks/${Snowflake}` | `/webhooks/${Snowflake}/${string}`;
+		return parts.join('/') as `/webhooks/${Snowflake}/${string}` | `/webhooks/${Snowflake}`;
 	},
 
 	/**

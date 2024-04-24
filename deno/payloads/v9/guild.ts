@@ -121,7 +121,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout: 60 | 300 | 900 | 1_800 | 3_600;
+	afk_timeout: 1_800 | 3_600 | 60 | 300 | 900;
 	/**
 	 * `true` if the guild widget is enabled
 	 */
@@ -798,7 +798,7 @@ export interface APIGuildIntegration {
 	scopes?: OAuth2Scopes[];
 }
 
-export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord' | 'guild_subscription';
+export type APIGuildIntegrationType = 'discord' | 'guild_subscription' | 'twitch' | 'youtube';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors

@@ -266,6 +266,7 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	BattleNet = 'battlenet',
+	BungieNet = 'bungie',
 	eBay = 'ebay',
 	EpicGames = 'epicgames',
 	Facebook = 'facebook',
@@ -316,5 +317,5 @@ export interface APIApplicationRoleConnection {
 	/**
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
-	metadata: Record<string, string | number>;
+	metadata: Record<string, number | string>;
 }

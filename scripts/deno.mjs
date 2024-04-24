@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { copyFile, mkdir, opendir, readFile, rm, writeFile } from 'node:fs/promises';
+import { URL } from 'node:url';
 
 const baseDirectory = new URL('../', import.meta.url);
 const denoPath = new URL('deno/', baseDirectory);
@@ -16,16 +17,18 @@ await mkdir(denoPath);
  * @param {string} source The raw source
  */
 function convertImports(source) {
-	return source.replace(
+	return source.replaceAll(
 		/from '(.*)'/g,
 		/**
+		 * @param _ Something
 		 * @param {string} importPath The path to import from
 		 */ (_, importPath) => {
-			if (importPath === '..' || importPath === '../') importPath = '../mod.ts';
-			if (importPath.includes('index')) importPath = importPath.replace('index', 'mod');
-			if (!importPath.endsWith('.ts')) importPath += '.ts';
+			let actualImportPath = importPath;
+			if (importPath === '..' || importPath === '../') actualImportPath = '../mod.ts';
+			if (importPath.includes('index')) actualImportPath = importPath.replace('index', 'mod');
+			if (!importPath.endsWith('.ts')) actualImportPath += '.ts';
 
-			return `from '${importPath}'`;
+			return `from '${actualImportPath}'`;
 		},
 	);
 }

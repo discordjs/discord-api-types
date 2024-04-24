@@ -53,11 +53,11 @@ export type TextChannelType = ChannelType.DM | ChannelType.GroupDM | ChannelType
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GuildChannelType = Exclude<
-	| TextChannelType
-	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice
 	| ChannelType.GuildNews
-	| ChannelType.GuildStore,
+	| ChannelType.GuildStageVoice
+	| ChannelType.GuildStore
+	| ChannelType.GuildVoice
+	| TextChannelType,
 	ChannelType.DM | ChannelType.GroupDM
 >;
 
@@ -218,14 +218,14 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIChannel =
-	| APIGroupDMChannel
 	| APIDMChannel
-	| APITextChannel
-	| APINewsChannel
-	| APIGuildStoreChannel
-	| APIVoiceChannel
+	| APIGroupDMChannel
 	| APIGuildCategoryChannel
-	| APINewsChannel;
+	| APIGuildStoreChannel
+	| APINewsChannel
+	| APINewsChannel
+	| APITextChannel
+	| APIVoiceChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
@@ -397,7 +397,7 @@ export interface APIMessage {
 	 * **You will not receive this from further fetches. This is received only once from a `MESSAGE_CREATE`
 	 * event to ensure it got sent**
 	 */
-	nonce?: string | number;
+	nonce?: number | string;
 	/**
 	 * Whether this message is pinned
 	 */
@@ -1170,7 +1170,7 @@ export interface APIMessageComponentEmoji {
  */
 export interface APIButtonComponentWithCustomId
 	extends APIButtonComponentBase<
-		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
+		ButtonStyle.Danger | ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success
 	> {
 	/**
 	 * The custom_id to be sent in the interaction when clicked
@@ -1327,11 +1327,11 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIMessageComponent = APIMessageActionRowComponent | APIActionRowComponent<APIMessageActionRowComponent>;
+export type APIMessageComponent = APIActionRowComponent<APIMessageActionRowComponent> | APIMessageActionRowComponent;
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIModalComponent = APIModalActionRowComponent | APIActionRowComponent<APIModalActionRowComponent>;
+export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

@@ -31,7 +31,7 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
 type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Omit<APIApplicationCommand, 'id' | 'application_id' | 'description' | 'type' | 'version' | 'guild_id'>
+	Omit<APIApplicationCommand, 'application_id' | 'description' | 'guild_id' | 'id' | 'type' | 'version'>
 >;
 
 /**
@@ -50,7 +50,7 @@ export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPos
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
-	type: ApplicationCommandType.User | ApplicationCommandType.Message;
+	type: ApplicationCommandType.Message | ApplicationCommandType.User;
 }
 
 /**
@@ -166,13 +166,13 @@ export type RESTPostAPIInteractionCallbackJSONBody = APIInteractionResponse;
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIInteractionCallbackFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIInteractionCallbackJSONBody);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response
@@ -222,13 +222,13 @@ export type RESTPostAPIInteractionFollowupJSONBody = APIInteractionResponseCallb
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIInteractionFollowupFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIInteractionFollowupJSONBody);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message

@@ -77,25 +77,25 @@ import { APIUser } from 'https://cdn.skypack.dev/discord-api-types/v10?dts';
 
 The exports of each API version is split into three main parts:
 
-- Everything exported with the `API` prefix represents a payload you may get from the REST API _or_ the Gateway.
+-   Everything exported with the `API` prefix represents a payload you may get from the REST API _or_ the Gateway.
 
-- Everything exported with the `Gateway` prefix represents data that ONLY comes from or is directly related to the Gateway.
+-   Everything exported with the `Gateway` prefix represents data that ONLY comes from or is directly related to the Gateway.
 
-- Everything exported with the `REST` prefix represents data that ONLY comes from or is directly related to the REST API.
+-   Everything exported with the `REST` prefix represents data that ONLY comes from or is directly related to the REST API.
 
-  - For endpoint options, they will follow the following structure: `REST<HTTP Method><Type><Query|(JSON|FormData)Body|Result>` where the type represents what it will return.
+    -   For endpoint options, they will follow the following structure: `REST<HTTP Method><Type><Query|(JSON|FormData)Body|Result>` where the type represents what it will return.
 
-    - For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
+        -   For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
 
-    - Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
+        -   Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
 
-  - If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
+    -   If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
 
-    - Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore it. This does **not** account for errors.
+        -   Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore it. This does **not** account for errors.
 
-- Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route object).
+-   Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route object).
 
-- There may be types exported that are identical for all versions. These will be exported as is and can be found in the `globals` file. They will still be prefixed accordingly as described above.
+-   There may be types exported that are identical for all versions. These will be exported as is and can be found in the `globals` file. They will still be prefixed accordingly as described above.
 
 **A note about how types are documented**: This package will add types only for known and documented properties that are present in Discord's [API Documentation repository](https://github.com/discord/discord-api-docs),
 that are mentioned in an open pull request, or known through other means _and have received the green light to be used_.

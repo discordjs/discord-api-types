@@ -35,6 +35,10 @@ export interface RESTPatchAPICurrentUserJSONBody {
 	 * If passed, modifies the user's avatar
 	 */
 	avatar?: string | null | undefined;
+	/**
+	 * If passed, modifies the user's banner
+	 */
+	banner?: string | null | undefined;
 }
 
 /**
@@ -129,7 +133,7 @@ export interface RESTPutAPICurrentUserApplicationRoleConnectionJSONBody {
 	/**
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
-	metadata?: Record<string, string | number> | undefined;
+	metadata?: Record<string, number | string> | undefined;
 }
 
 /**

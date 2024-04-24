@@ -78,7 +78,7 @@ export interface APIMessage {
 	attachments: APIAttachment[];
 	embeds: APIEmbed[];
 	reactions?: APIReaction[];
-	nonce?: string | number;
+	nonce?: number | string;
 	pinned: boolean;
 	webhook_id?: string;
 	type: MessageType;

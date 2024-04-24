@@ -1,58 +1,83 @@
 chore:
-  - any: ['*']
-    all:
-      [
-        '!deno/**/*',
-        '!gateway/**/*',
-        '!payloads/**/*',
-        '!rest/**/*',
-        '!rpc/**/*',
-        '!tests/**/*',
-        '!utils/**/*',
-        '!voice/**/*',
-      ]
+  - changed-files:
+      - all-globs-to-any-file:
+          - '*'
+          - '!deno/**/*'
+          - '!gateway/**/*'
+          - '!payloads/**/*'
+          - '!rest/**/*'
+          - '!rpc/**/*'
+          - '!tests/**/*'
+          - '!utils/**/*'
+          - '!voice/**/*'
 
 ci:
-  - .github/**/*
-  - .husky/**/*
-  - scripts/actions/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**/*
+          - .husky/**/*
+          - scripts/actions/**/*
 
 dependencies:
-  - package.json
-  - package-lock.json
-  - website/package.json
-  - website/package-lock.json
+  - changed-files:
+      - any-glob-to-any-file:
+          - package.json
+          - package-lock.json
+          - website/package.json
+          - website/package-lock.json
 
 'topic:deno':
-  - scripts/deno.mjs
-  - scripts/actions/report-deno-not-ran.mjs
+  - changed-files:
+      - any-glob-to-any-file:
+          - scripts/deno.mjs
+          - scripts/actions/report-deno-not-ran.mjs
 
 'topic:gateway':
-  - gateway/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - gateway/**/*
 
 'topic:payloads':
-  - payloads/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - payloads/**/*
 
 'topic:rest':
-  - rest/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - rest/**/*
 
 'topic:rpc':
-  - rpc/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - rpc/**/*
 
 'topic:scripts':
-  - scripts/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - scripts/**/*
 
 'topic:tests':
-  - tests/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - tests/**/*
 
 'topic:utils':
-  - utils/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - utils/**/*
 
 'topic:voice':
-  - voice/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - voice/**/*
 
 'topic:globals':
-  - globals.ts
+  - changed-files:
+      - any-glob-to-any-file:
+          - globals.ts
 
 'topic:website':
-  - website/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - website/**/*

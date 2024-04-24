@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { execSync } from 'node:child_process';
 import { readFile, rm, writeFile } from 'node:fs/promises';
+import { URL } from 'node:url';
 
 const cwd = new URL('../website/', import.meta.url);
 const json = JSON.parse(await readFile(new URL('../package.json', import.meta.url), { encoding: 'utf8' }));

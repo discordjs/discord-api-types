@@ -10,15 +10,15 @@ import type { InteractionType } from './responses.ts';
  */
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,
-	| 'roles'
-	| 'premium_since'
-	| 'pending'
-	| 'nick'
-	| 'mute'
-	| 'joined_at'
-	| 'deaf'
-	| 'communication_disabled_until'
 	| 'avatar'
+	| 'communication_disabled_until'
+	| 'deaf'
+	| 'joined_at'
+	| 'mute'
+	| 'nick'
+	| 'pending'
+	| 'premium_since'
+	| 'roles'
 >;
 
 /**
@@ -128,7 +128,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
  */
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,
-	'member' | 'guild_id'
+	'guild_id' | 'member'
 > &
 	Required<Pick<Original, 'user'>>;
 
@@ -139,4 +139,4 @@ export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<Inter
 	Original,
 	'user'
 > &
-	Required<Pick<Original, 'member' | 'guild_id'>>;
+	Required<Pick<Original, 'guild_id' | 'member'>>;
