@@ -205,6 +205,12 @@ export enum AuditLogEvent {
 
 	CreatorMonetizationRequestCreated = 150,
 	CreatorMonetizationTermsAccepted,
+
+	OnboardingPromptCreate = 163,
+	OnboardingPromptUpdate,
+	OnboardingPromptDelete,
+	OnboardingCreate,
+	OnboardingUpdate,
 }
 
 /**
