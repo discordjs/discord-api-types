@@ -10,6 +10,10 @@ jobs:
   check_deno:
     name: Ensure Deno types are in sync with the code
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
       - name: Checkout Project
         uses: actions/checkout@v4
