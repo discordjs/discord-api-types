@@ -83,3 +83,8 @@ export type RESTDeleteAPIEntitlementResult = never;
  * https://discord.com/developers/docs/monetization/skus#list-skus
  */
 export type RESTGetAPISKUsResult = APISKU[];
+
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#consume-an-entitlement
+ */
+export type RESTPostAPIEntitlementConsumeResult = never;
