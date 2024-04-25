@@ -40,6 +40,10 @@ export interface APIEntitlement {
 	 * Date at which the entitlement is no longer valid. Not present when using test entitlements.
 	 */
 	ends_at?: string;
+	/**
+	 * For consumable items, whether or not the entitlement has been consumed
+	 */
+	consumed?: boolean;
 }
 
 /**
@@ -47,9 +51,37 @@ export interface APIEntitlement {
  */
 export enum EntitlementType {
 	/**
+	 * Entitlement was purchased by user
+	 */
+	Purchase = 1,
+	/**
+	 * Entitlement for Discord Nitro subscription
+	 */
+	PremiumSubscription,
+	/**
+	 * Entitlement was gifted by developer
+	 */
+	DeveloperGift,
+	/**
+	 * Entitlement was purchased by a dev in application test mode
+	 */
+	TestModePurchase,
+	/**
+	 * Entitlement was granted when the SKU was free
+	 */
+	FreePurchase,
+	/**
+	 * Entitlement was gifted by another user
+	 */
+	UserGift,
+	/**
+	 * Entitlement was claimed by user for free as a Nitro Subscriber
+	 */
+	PremiumPurchase,
+	/**
 	 * Entitlement was purchased as an app subscription
 	 */
-	ApplicationSubscription = 8,
+	ApplicationSubscription,
 }
 
 /**
@@ -104,6 +136,14 @@ export enum SKUFlags {
 }
 
 export enum SKUType {
+	/**
+	 * Durable one-time purchase
+	 */
+	Durable = 2,
+	/**
+	 * Consumable one-time purchase
+	 */
+	Consumable = 3,
 	/**
 	 * Represents a recurring subscription
 	 */

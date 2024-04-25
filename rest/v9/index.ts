@@ -969,6 +969,14 @@ export const Routes = {
 	guildBulkBan(guildId: Snowflake) {
 		return `/guilds/${guildId}/bulk-ban` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - POST `/applications/${application.id}/entitlements/${entitlement.id}/consume`
+	 */
+	consumeEntitlement(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/applications/${applicationId}/entitlements/${entitlementId}/consume` as const;
+	},
 };
 
 export const StickerPackApplicationId = '710982414301790216';
