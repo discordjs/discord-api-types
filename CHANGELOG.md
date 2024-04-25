@@ -1,3 +1,14 @@
+## [0.37.82](https://github.com/discordjs/discord-api-types/compare/0.37.81...0.37.82) (2024-04-25)
+
+
+### Features
+
+* **APIInvite:** add `type` ([#858](https://github.com/discordjs/discord-api-types/issues/858)) ([c4ee790](https://github.com/discordjs/discord-api-types/commit/c4ee7907c2acf334e898862ed3d7d468dbdaaf5f))
+* **AuditLogEvent:** onboarding events ([#795](https://github.com/discordjs/discord-api-types/issues/795)) ([fddb225](https://github.com/discordjs/discord-api-types/commit/fddb2257db7aac29129ec5d941c46fba167e2de8))
+* **ConnectionService:** add `domain` ([#818](https://github.com/discordjs/discord-api-types/issues/818)) ([3ae6d72](https://github.com/discordjs/discord-api-types/commit/3ae6d722fd0b5aa18eb932a51172bba144c2d4ff))
+
+
+
 ## [0.37.81](https://github.com/discordjs/discord-api-types/compare/0.37.80...0.37.81) (2024-04-22)
 
 
