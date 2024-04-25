@@ -849,8 +849,8 @@ export type APIAuditLogChangeKeyDefaultReactionEmoji = AuditLogChangeData<
 export type APIAuditLogChangeKeyFlags = AuditLogChangeData<'flags', number>;
 
 /**
- * Returned when a thread's amount of seconds a user has to wait before sending another message
- * is changed
+ * Returned when a thread's amount of seconds a user has to wait before creating another thread
+ * gets changed
  */
 export type APIAuditLogChangeKeyDefaultThreadRateLimitPerUser = AuditLogChangeData<
 	'default_thread_rate_limit_per_user',
