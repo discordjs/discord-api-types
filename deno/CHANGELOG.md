@@ -1,3 +1,13 @@
+## [0.37.83](https://github.com/discordjs/discord-api-types/compare/0.37.82...0.37.83) (2024-04-27)
+
+
+### Features
+
+* **APIAuditLogChange:** add missing keys ([#964](https://github.com/discordjs/discord-api-types/issues/964)) ([4e37de7](https://github.com/discordjs/discord-api-types/commit/4e37de7f72ad6b9502d3e3db97b10910d9970a92))
+* one time premium app purchases ([#966](https://github.com/discordjs/discord-api-types/issues/966)) ([c9f2c5b](https://github.com/discordjs/discord-api-types/commit/c9f2c5b020b4c7a36330fe06463106e9cfd38fca))
+
+
+
 ## [0.37.82](https://github.com/discordjs/discord-api-types/compare/0.37.81...0.37.82) (2024-04-25)
 
 
