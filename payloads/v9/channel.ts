@@ -714,6 +714,10 @@ export interface APIMessage {
 	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	poll?: APIPoll;
+	/**
+	 * The message associated with the message_reference. This is a minimal subset of fields in a message (e.g. author is excluded.)
+	 */
+	message_snapshots?: APIMessageSnapshot[];
 }
 
 /**
@@ -781,6 +785,10 @@ export interface APIMessageActivity {
  */
 export interface APIMessageReference {
 	/**
+	 * Type of reference
+	 */
+	type?: MessageReferenceType;
+	/**
 	 * ID of the originating message
 	 */
 	message_id?: Snowflake;
@@ -802,6 +810,20 @@ export enum MessageActivityType {
 	Spectate,
 	Listen,
 	JoinRequest = 5,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-reference-types
+ */
+export enum MessageReferenceType {
+	/**
+	 * A standard reference used by replies
+	 */
+	Default = 0,
+	/**
+	 * Reference used to point to a message at a point in time
+	 */
+	Forward = 1,
 }
 
 /**
@@ -1807,6 +1829,20 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 }
 
 /**
+ * https://discord.com/developers/docs/resources/channel#message-snapshot-object
+ */
+export interface APIMessageSnapshot {
+	/**
+	 * Subset of the message object fields
+	 */
+	message: APIMessageSnapshotFields;
+	/**
+	 * Id of the origin message's guild
+	 */
+	guild_id?: Snowflake;
+}
+
+/**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
  */
 export enum ChannelFlags {
@@ -1864,3 +1900,8 @@ export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuCom
 
 // Modal components
 export type APIModalActionRowComponent = APITextInputComponent;
+
+export type APIMessageSnapshotFields = Pick<
+	APIMessage,
+	'content' | 'embeds' | 'attachments' | 'timestamp' | 'edited_timestamp' | 'flags'
+>;
