@@ -2,6 +2,10 @@ export type Nullable<T> = {
 	[P in keyof T]: T[P] | null;
 };
 
+export type NonNullableFields<T> = {
+	[P in keyof T]: NonNullable<T[P]>;
+};
+
 export type AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base> = {
 	[K in keyof Base]: Base[K] extends Exclude<Base[K], undefined> ?
 		AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]>

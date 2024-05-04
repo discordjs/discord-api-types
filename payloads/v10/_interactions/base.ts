@@ -27,9 +27,9 @@ export interface APIMessageInteractionMetadata {
 	 */
 	type: InteractionType;
 	/**
-	 * ID of the user who triggered the interaction
+	 * User who triggered the interaction
 	 */
-	user_id: Snowflake;
+	user: APIUser;
 	/**
 	 * IDs for installation context(s) related to an interaction. Details in Authorizing Integration Owners Object
 	 */
@@ -174,9 +174,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 }
 
 export type APIAuthorizingIntegrationOwnersMap = {
-	// TODO: is number 0 a bug? https://github.com/discord/discord-api-docs/issues/6745
-	[key in ApplicationIntegrationType]?: key extends ApplicationIntegrationType.GuildInstall ? Snowflake | 0
-	:	Snowflake;
+	[key in ApplicationIntegrationType]?: Snowflake;
 };
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
