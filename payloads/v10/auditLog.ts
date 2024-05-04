@@ -10,7 +10,7 @@ import type {
 	AutoModerationRuleEventType,
 	AutoModerationRuleTriggerType,
 } from './autoModeration';
-import type { APIChannel, APIOverwrite } from './channel';
+import type { APIChannel, APIGuildForumDefaultReactionEmoji, APIGuildForumTag, APIOverwrite } from './channel';
 import type {
 	APIGuildIntegration,
 	APIGuildIntegrationType,
@@ -205,6 +205,12 @@ export enum AuditLogEvent {
 
 	CreatorMonetizationRequestCreated = 150,
 	CreatorMonetizationTermsAccepted,
+
+	OnboardingPromptCreate = 163,
+	OnboardingPromptUpdate,
+	OnboardingPromptDelete,
+	OnboardingCreate,
+	OnboardingUpdate,
 }
 
 /**
@@ -347,6 +353,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyAsset
 	| APIAuditLogChangeKeyAutoArchiveDuration
 	| APIAuditLogChangeKeyAvailable
+	| APIAuditLogChangeKeyAvailableTags
 	| APIAuditLogChangeKeyAvatarHash
 	| APIAuditLogChangeKeyBannerHash
 	| APIAuditLogChangeKeyBitrate
@@ -357,6 +364,8 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyDeaf
 	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
 	| APIAuditLogChangeKeyDefaultMessageNotifications
+	| APIAuditLogChangeKeyDefaultReactionEmoji
+	| APIAuditLogChangeKeyDefaultThreadRateLimitPerUser
 	| APIAuditLogChangeKeyDeny
 	| APIAuditLogChangeKeyDescription
 	| APIAuditLogChangeKeyDiscoverySplashHash
@@ -369,6 +378,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyExpireBehavior
 	| APIAuditLogChangeKeyExpireGracePeriod
 	| APIAuditLogChangeKeyExplicitContentFilter
+	| APIAuditLogChangeKeyFlags
 	| APIAuditLogChangeKeyFormatType
 	| APIAuditLogChangeKeyGuildId
 	| APIAuditLogChangeKeyHoist
@@ -825,6 +835,33 @@ export type APIAuditLogChangeKeyExemptRoles = AuditLogChangeData<'exempt_roles',
  * Returned when an auto moderation rule's exempt channels is changed
  */
 export type APIAuditLogChangeKeyExemptChannels = AuditLogChangeData<'exempt_channels', Snowflake[]>;
+
+/**
+ * Returned when a guild forum's available tags gets changed
+ */
+export type APIAuditLogChangeKeyAvailableTags = AuditLogChangeData<'available_tags', APIGuildForumTag[]>;
+
+/**
+ * Returned when a guild forum's default reaction emoji gets changed
+ */
+export type APIAuditLogChangeKeyDefaultReactionEmoji = AuditLogChangeData<
+	'default_reaction_emoji',
+	APIGuildForumDefaultReactionEmoji
+>;
+
+/**
+ * Returned when a channel flag gets changed
+ */
+export type APIAuditLogChangeKeyFlags = AuditLogChangeData<'flags', number>;
+
+/**
+ * Returned when a thread's amount of seconds a user has to wait before creating another thread
+ * gets changed
+ */
+export type APIAuditLogChangeKeyDefaultThreadRateLimitPerUser = AuditLogChangeData<
+	'default_thread_rate_limit_per_user',
+	number
+>;
 
 interface AuditLogChangeData<K extends string, D> {
 	key: K;

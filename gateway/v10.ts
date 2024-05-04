@@ -203,6 +203,8 @@ export enum GatewayIntentBits {
 	GuildScheduledEvents = 1 << 16,
 	AutoModerationConfiguration = 1 << 20,
 	AutoModerationExecution = 1 << 21,
+	GuildMessagePolls = 1 << 24,
+	DirectMessagePolls = 1 << 25,
 }
 
 /**
@@ -260,6 +262,8 @@ export enum GatewayDispatchEvents {
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
+	MessagePollVoteAdd = 'MESSAGE_POLL_VOTE_ADD',
+	MessagePollVoteRemove = 'MESSAGE_POLL_VOTE_REMOVE',
 	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
 	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
 	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
@@ -328,6 +332,8 @@ export type GatewayDispatchPayload =
 	| GatewayMessageCreateDispatch
 	| GatewayMessageDeleteBulkDispatch
 	| GatewayMessageDeleteDispatch
+	| GatewayMessagePollVoteAddDispatch
+	| GatewayMessagePollVoteRemoveDispatch
 	| GatewayMessageReactionAddDispatch
 	| GatewayMessageReactionRemoveAllDispatch
 	| GatewayMessageReactionRemoveDispatch
@@ -1811,6 +1817,45 @@ export interface GatewayGuildAuditLogEntryCreateDispatchData extends APIAuditLog
 	 * ID of the guild
 	 */
 	guild_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add
+ */
+export type GatewayMessagePollVoteAddDispatch = DataPayload<
+	GatewayDispatchEvents.MessagePollVoteAdd,
+	GatewayMessagePollVoteDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove
+ */
+export type GatewayMessagePollVoteRemoveDispatch = DataPayload<
+	GatewayDispatchEvents.MessagePollVoteRemove,
+	GatewayMessagePollVoteDispatchData
+>;
+
+export interface GatewayMessagePollVoteDispatchData {
+	/**
+	 * ID of the user
+	 */
+	user_id: Snowflake;
+	/**
+	 * ID of the channel
+	 */
+	channel_id: Snowflake;
+	/**
+	 * ID of the message
+	 */
+	message_id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
+	guild_id?: Snowflake;
+	/**
+	 * ID of the answer
+	 */
+	answer_id: number;
 }
 
 // #endregion Dispatch Payloads

@@ -12,6 +12,7 @@ export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
 export * from './oauth2';
+export * from './poll';
 export * from './stageInstance';
 export * from './sticker';
 export * from './template';
@@ -459,6 +460,22 @@ export const Routes = {
 	 */
 	guildTemplate(guildId: Snowflake, code: string) {
 		return `/guilds/${guildId}/templates/${code}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/channels/{channel.id}/polls/{message.id}/answers/{answer_id}`
+	 */
+	pollAnswerVoters(channelId: Snowflake, messageId: Snowflake, answerId: number) {
+		return `/channels/${channelId}/polls/${messageId}/answers/${answerId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/channels/{channel.id}/polls/{message.id}/expire`
+	 */
+	expirePoll(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/polls/${messageId}/expire` as const;
 	},
 
 	/**
@@ -942,6 +959,14 @@ export const Routes = {
 	 */
 	guildBulkBan(guildId: Snowflake) {
 		return `/guilds/${guildId}/bulk-ban` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/applications/${application.id}/entitlements/${entitlement.id}/consume`
+	 */
+	consumeEntitlement(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/applications/${applicationId}/entitlements/${entitlementId}/consume` as const;
 	},
 };
 
