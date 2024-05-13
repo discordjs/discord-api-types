@@ -104,9 +104,9 @@ export interface APIExternalGuildScheduledEvent
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIGuildScheduledEvent =
+	| APIExternalGuildScheduledEvent
 	| APIStageInstanceGuildScheduledEvent
-	| APIVoiceGuildScheduledEvent
-	| APIExternalGuildScheduledEvent;
+	| APIVoiceGuildScheduledEvent;
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata

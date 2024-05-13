@@ -18,12 +18,12 @@ export enum InteractionType {
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
  */
 export type APIInteractionResponse =
-	| APIInteractionResponsePong
+	| APIApplicationCommandAutocompleteResponse
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponsePong
 	| APIInteractionResponseUpdateMessage
-	| APIApplicationCommandAutocompleteResponse
 	| APIModalInteractionResponse
 	| APIPremiumRequiredInteractionResponse;
 
@@ -107,7 +107,7 @@ export enum InteractionResponseType {
  */
 export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
-	'username' | 'avatar_url'
+	'avatar_url' | 'username'
 > & { flags?: MessageFlags };
 
 export interface APICommandAutocompleteInteractionResponseCallbackData {

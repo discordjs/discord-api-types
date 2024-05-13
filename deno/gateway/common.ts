@@ -3,6 +3,6 @@
  */
 export interface GatewayURLQuery {
 	v: string;
-	encoding: 'json' | 'etf';
+	encoding: 'etf' | 'json';
 	compress?: 'zlib-stream';
 }

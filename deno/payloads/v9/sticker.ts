@@ -92,7 +92,7 @@ export enum StickerFormatType {
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-item-object
  */
-export type APIStickerItem = Pick<APISticker, 'id' | 'name' | 'format_type'>;
+export type APIStickerItem = Pick<APISticker, 'format_type' | 'id' | 'name'>;
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-pack-object

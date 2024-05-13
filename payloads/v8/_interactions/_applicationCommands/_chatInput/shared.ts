@@ -22,7 +22,7 @@ export enum ApplicationCommandOptionType {
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export interface APIApplicationCommandOptionChoice<ValueType = string | number> {
+export interface APIApplicationCommandOptionChoice<ValueType = number | string> {
 	name: string;
 	value: ValueType;
 }

@@ -276,6 +276,12 @@ export const PermissionFlagsBits = {
 	 * Applies to channel types: Text, Voice, Stage
 	 */
 	SendVoiceMessages: 1n << 46n,
+	/**
+	 * Allows sending polls
+	 *
+	 * Applies to channel types: Text, Voice, Stage
+	 */
+	SendPolls: 1n << 49n,
 } as const;
 
 /**
@@ -305,7 +311,7 @@ export interface RESTErrorGroupWrapper {
 	_errors: RESTErrorData[];
 }
 
-export type RESTErrorData = RESTErrorGroupWrapper | RESTErrorFieldInformation | { [k: string]: RESTErrorData } | string;
+export type RESTErrorData = RESTErrorFieldInformation | RESTErrorGroupWrapper | string | { [k: string]: RESTErrorData };
 
 /**
  * https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure

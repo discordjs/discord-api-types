@@ -54,6 +54,6 @@ export enum ApplicationCommandPermissionType {
  */
 export const APIApplicationCommandPermissionsConstant = {
 	// eslint-disable-next-line unicorn/prefer-native-coercion-functions
-	Everyone: (guildId: string | bigint): Snowflake => String(guildId),
-	AllChannels: (guildId: string | bigint): Snowflake => String(BigInt(guildId) - 1n),
+	Everyone: (guildId: bigint | string): Snowflake => String(guildId),
+	AllChannels: (guildId: bigint | string): Snowflake => String(BigInt(guildId) - 1n),
 };

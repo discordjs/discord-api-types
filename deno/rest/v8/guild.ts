@@ -43,7 +43,7 @@ export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGr
 export type APIGuildCreatePartialChannel = StrictPartial<
 	Pick<
 		UnionToIntersection<APIGuildChannelResolvable>,
-		'type' | 'topic' | 'nsfw' | 'bitrate' | 'user_limit' | 'rate_limit_per_user'
+		'bitrate' | 'nsfw' | 'rate_limit_per_user' | 'topic' | 'type' | 'user_limit'
 	>
 > & {
 	name: string;
@@ -130,7 +130,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: number | Snowflake | null | undefined;
+	afk_channel_id?: Snowflake | number | null | undefined;
 	/**
 	 * AFK timeout in seconds
 	 */
@@ -138,7 +138,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: number | Snowflake | null | undefined;
+	system_channel_id?: Snowflake | number | null | undefined;
 	/**
 	 * System channel flags
 	 *

@@ -56,8 +56,8 @@ export interface APIMessageApplicationCommandInteractionDataResolved {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuInteractionData =
-	| APIUserApplicationCommandInteractionData
-	| APIMessageApplicationCommandInteractionData;
+	| APIMessageApplicationCommandInteractionData
+	| APIUserApplicationCommandInteractionData;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
@@ -111,7 +111,7 @@ export type APIMessageApplicationCommandGuildInteraction =
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIContextMenuInteraction = APIUserApplicationCommandInteraction | APIMessageApplicationCommandInteraction;
+export type APIContextMenuInteraction = APIMessageApplicationCommandInteraction | APIUserApplicationCommandInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
@@ -119,8 +119,8 @@ export type APIContextMenuInteraction = APIUserApplicationCommandInteraction | A
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuDMInteraction =
-	| APIUserApplicationCommandDMInteraction
-	| APIMessageApplicationCommandDMInteraction;
+	| APIMessageApplicationCommandDMInteraction
+	| APIUserApplicationCommandDMInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
@@ -128,5 +128,5 @@ export type APIContextMenuDMInteraction =
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIContextMenuGuildInteraction =
-	| APIUserApplicationCommandGuildInteraction
-	| APIMessageApplicationCommandGuildInteraction;
+	| APIMessageApplicationCommandGuildInteraction
+	| APIUserApplicationCommandGuildInteraction;

@@ -150,8 +150,8 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 */
 	scope:
 		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The permissions you're requesting
@@ -181,8 +181,8 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	 */
 	scope:
 		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
+		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
 		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
 	/**
 	 * The required permissions bitfield, stringified
@@ -236,4 +236,5 @@ export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostOAuth2AccessTokenWithBotAndGuildsAndWebhookIncomingScopeResult =
-	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult & RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;
+	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult &
+		RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;

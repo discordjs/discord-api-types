@@ -219,7 +219,7 @@ export interface GatewayActivity {
 	/**
 	 * The custom buttons shown in the Rich Presence (max 2)
 	 */
-	buttons?: string[] | GatewayActivityButton[];
+	buttons?: GatewayActivityButton[] | string[];
 }
 
 /**
@@ -284,7 +284,7 @@ export interface GatewayActivityTimestamps {
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'id' | 'animated'>> & Pick<APIEmoji, 'name'>;
+export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'animated' | 'id'>> & Pick<APIEmoji, 'name'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
@@ -316,7 +316,7 @@ export type GatewayActivityAssets = Partial<
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type GatewayActivitySecrets = Partial<Record<'join' | 'spectate' | 'match', string>>;
+export type GatewayActivitySecrets = Partial<Record<'join' | 'match' | 'spectate', string>>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags

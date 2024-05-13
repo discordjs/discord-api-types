@@ -166,7 +166,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
+	attachments?: (Partial<Pick<APIAttachment, 'filename'>> & Pick<APIAttachment, 'description' | 'id'>)[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
@@ -179,13 +179,13 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIWebhookWithTokenJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
@@ -284,7 +284,7 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>>
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'allowed_mentions' | 'components' | 'content' | 'embeds'>>
 > & {
 	/**
 	 * Attached files to keep
@@ -293,7 +293,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossibly
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+	attachments?: (Partial<Pick<APIAttachment, 'description' | 'filename'>> & Pick<APIAttachment, 'id'>)[] | undefined;
 };
 
 /**
@@ -302,13 +302,13 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossibly
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIWebhookWithTokenMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message

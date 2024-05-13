@@ -8,6 +8,7 @@ import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
 import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
 import type { APIRole } from './permissions';
+import type { APIPoll } from './poll';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
 
@@ -41,15 +42,15 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 }
 
 export type TextChannelType =
+	| ChannelType.AnnouncementThread
 	| ChannelType.DM
 	| ChannelType.GroupDM
 	| ChannelType.GuildAnnouncement
-	| ChannelType.PublicThread
-	| ChannelType.PrivateThread
-	| ChannelType.AnnouncementThread
+	| ChannelType.GuildStageVoice
 	| ChannelType.GuildText
 	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice;
+	| ChannelType.PrivateThread
+	| ChannelType.PublicThread;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
@@ -110,7 +111,7 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannelType | ChannelType.GuildForum | ChannelType.GuildMedia>
+export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia | GuildTextChannelType>
 	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
@@ -134,7 +135,7 @@ export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>
 
 export interface APIVoiceChannelBase<T extends ChannelType>
 	extends APIGuildChannel<T>,
-		Omit<APITextBasedChannel<T>, 'name' | 'last_pin_timestamp'> {
+		Omit<APITextBasedChannel<T>, 'last_pin_timestamp' | 'name'> {
 	/**
 	 * The bitrate (in bits) of the voice or stage channel
 	 */
@@ -200,7 +201,7 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	managed?: boolean;
 }
 
-export type ThreadChannelType = ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread;
+export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
 
 export interface APIThreadChannel
 	extends Omit<APITextBasedChannel<ThreadChannelType>, 'name'>,
@@ -369,16 +370,16 @@ export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
 export type APIChannel =
-	| APIGroupDMChannel
 	| APIDMChannel
-	| APITextChannel
-	| APINewsChannel
-	| APIGuildVoiceChannel
-	| APIGuildStageVoiceChannel
+	| APIGroupDMChannel
 	| APIGuildCategoryChannel
-	| APIThreadChannel
 	| APIGuildForumChannel
-	| APIGuildMediaChannel;
+	| APIGuildMediaChannel
+	| APIGuildStageVoiceChannel
+	| APIGuildVoiceChannel
+	| APINewsChannel
+	| APITextChannel
+	| APIThreadChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
@@ -599,7 +600,7 @@ export interface APIMessage {
 	 * **You will not receive this from further fetches. This is received only once from a `MESSAGE_CREATE`
 	 * event to ensure it got sent**
 	 */
-	nonce?: string | number;
+	nonce?: number | string;
 	/**
 	 * Whether this message is pinned
 	 */
@@ -702,6 +703,17 @@ export interface APIMessage {
 	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
 	 */
 	resolved?: APIInteractionDataResolved;
+	/**
+	 * A poll!
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
+	 *
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
+	 */
+	poll?: APIPoll;
 }
 
 /**
@@ -865,19 +877,45 @@ export interface APIFollowedChannel {
  */
 export interface APIReaction {
 	/**
-	 * Times this emoji has been used to react
+	 * Total number of times this emoji has been used to react (including super reacts)
 	 */
 	count: number;
+	/**
+	 * An object detailing the individual reaction counts for different types of reactions
+	 */
+	count_details: APIReactionCountDetails;
 	/**
 	 * Whether the current user reacted using this emoji
 	 */
 	me: boolean;
+	/**
+	 * Whether the current user super-reacted using this emoji
+	 */
+	me_burst: boolean;
 	/**
 	 * Emoji information
 	 *
 	 * See https://discord.com/developers/docs/resources/emoji#emoji-object
 	 */
 	emoji: APIPartialEmoji;
+	/**
+	 * Hexadecimal colors used for this super reaction
+	 */
+	burst_colors: string[];
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure
+ */
+export interface APIReactionCountDetails {
+	/**
+	 * Count of super reactions
+	 */
+	burst: number;
+	/**
+	 * Count of normal reactions
+	 */
+	normal: number;
 }
 
 /**
@@ -1537,7 +1575,7 @@ export interface APIMessageComponentEmoji {
 
 export interface APIButtonComponentWithCustomId
 	extends APIButtonComponentBase<
-		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
+		ButtonStyle.Danger | ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success
 	> {
 	/**
 	 * The custom_id to be sent in the interaction when clicked
@@ -1578,11 +1616,11 @@ export enum TextInputStyle {
  */
 export interface APIBaseSelectMenuComponent<
 	T extends
-		| ComponentType.StringSelect
-		| ComponentType.UserSelect
-		| ComponentType.RoleSelect
+		| ComponentType.ChannelSelect
 		| ComponentType.MentionableSelect
-		| ComponentType.ChannelSelect,
+		| ComponentType.RoleSelect
+		| ComponentType.StringSelect
+		| ComponentType.UserSelect,
 > extends APIBaseComponent<T> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
@@ -1614,10 +1652,10 @@ export interface APIBaseSelectMenuComponent<
 
 export interface APIBaseAutoPopulatedSelectMenuComponent<
 	T extends
-		| ComponentType.UserSelect
-		| ComponentType.RoleSelect
+		| ComponentType.ChannelSelect
 		| ComponentType.MentionableSelect
-		| ComponentType.ChannelSelect,
+		| ComponentType.RoleSelect
+		| ComponentType.UserSelect,
 	D extends SelectMenuDefaultValueType,
 > extends APIBaseSelectMenuComponent<T> {
 	/**
@@ -1657,7 +1695,7 @@ export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
  */
 export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.MentionableSelect,
-	SelectMenuDefaultValueType.User | SelectMenuDefaultValueType.Role
+	SelectMenuDefaultValueType.Role | SelectMenuDefaultValueType.User
 >;
 
 /**
@@ -1698,18 +1736,18 @@ export type APIAutoPopulatedSelectMenuComponent =
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
 export type APISelectMenuComponent =
-	| APIStringSelectComponent
-	| APIUserSelectComponent
-	| APIRoleSelectComponent
+	| APIChannelSelectComponent
 	| APIMentionableSelectComponent
-	| APIChannelSelectComponent;
+	| APIRoleSelectComponent
+	| APIStringSelectComponent
+	| APIUserSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
  */
 export interface APISelectMenuOption {
 	/**
-	 * The user-facing name of the option (max 25 chars)
+	 * The user-facing name of the option (max 100 chars)
 	 */
 	label: string;
 	/**
@@ -1717,7 +1755,7 @@ export interface APISelectMenuOption {
 	 */
 	value: string;
 	/**
-	 * An additional description of the option (max 50 chars)
+	 * An additional description of the option (max 100 chars)
 	 */
 	description?: string;
 	/**
@@ -1814,8 +1852,8 @@ export enum ChannelFlags {
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageComponent = APIMessageActionRowComponent | APIActionRowComponent<APIMessageActionRowComponent>;
-export type APIModalComponent = APIModalActionRowComponent | APIActionRowComponent<APIModalActionRowComponent>;
+export type APIMessageComponent = APIActionRowComponent<APIMessageActionRowComponent> | APIMessageActionRowComponent;
+export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
 
 export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
 

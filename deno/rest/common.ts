@@ -256,6 +256,7 @@ export enum RESTJSONErrorCodes {
 	NoUsersWithDiscordTagExist = 80_004,
 
 	ReactionWasBlocked = 90_001,
+	UserCannotUseBurstReactions,
 
 	ApplicationNotYetAvailable = 110_001,
 
@@ -294,6 +295,16 @@ export enum RESTJSONErrorCodes {
 
 	CannotEnableOnboardingRequirementsAreNotMet = 350_000,
 	CannotUpdateOnboardingWhileBelowRequirements,
+
+	FailedToBanUsers = 500_000,
+
+	PollVotingBlocked = 520_000,
+	PollExpired,
+	InvalidChannelTypeForPollCreation,
+	CannotEditAPollMessage,
+	CannotUseAnEmojiIncludedWithThePoll,
+
+	CannotExpireANonPollMessage = 520_006,
 }
 
 /**
@@ -326,6 +337,7 @@ export enum Locale {
 	Romanian = 'ro',
 	Russian = 'ru',
 	SpanishES = 'es-ES',
+	SpanishLATAM = 'es-419',
 	Swedish = 'sv-SE',
 	Thai = 'th',
 	Turkish = 'tr',

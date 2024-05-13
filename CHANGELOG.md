@@ -1,3 +1,129 @@
+## [0.37.83](https://github.com/discordjs/discord-api-types/compare/0.37.82...0.37.83) (2024-04-27)
+
+
+### Features
+
+* **APIAuditLogChange:** add missing keys ([#964](https://github.com/discordjs/discord-api-types/issues/964)) ([4e37de7](https://github.com/discordjs/discord-api-types/commit/4e37de7f72ad6b9502d3e3db97b10910d9970a92))
+* one time premium app purchases ([#966](https://github.com/discordjs/discord-api-types/issues/966)) ([c9f2c5b](https://github.com/discordjs/discord-api-types/commit/c9f2c5b020b4c7a36330fe06463106e9cfd38fca))
+
+
+
+## [0.37.82](https://github.com/discordjs/discord-api-types/compare/0.37.81...0.37.82) (2024-04-25)
+
+
+### Features
+
+* **APIInvite:** add `type` ([#858](https://github.com/discordjs/discord-api-types/issues/858)) ([c4ee790](https://github.com/discordjs/discord-api-types/commit/c4ee7907c2acf334e898862ed3d7d468dbdaaf5f))
+* **AuditLogEvent:** onboarding events ([#795](https://github.com/discordjs/discord-api-types/issues/795)) ([fddb225](https://github.com/discordjs/discord-api-types/commit/fddb2257db7aac29129ec5d941c46fba167e2de8))
+* **ConnectionService:** add `domain` ([#818](https://github.com/discordjs/discord-api-types/issues/818)) ([3ae6d72](https://github.com/discordjs/discord-api-types/commit/3ae6d722fd0b5aa18eb932a51172bba144c2d4ff))
+
+
+
+## [0.37.81](https://github.com/discordjs/discord-api-types/compare/0.37.80...0.37.81) (2024-04-22)
+
+
+### Bug Fixes
+
+* **Polls:** correct APIPollAnswer properties ([#962](https://github.com/discordjs/discord-api-types/issues/962)) ([308d7d4](https://github.com/discordjs/discord-api-types/commit/308d7d40f45b7e3e78a6b13350d3ad7c8fd81b47))
+
+
+
+## [0.37.80](https://github.com/discordjs/discord-api-types/compare/0.37.79...0.37.80) (2024-04-22)
+
+
+### Features
+
+* add support for polls ([#925](https://github.com/discordjs/discord-api-types/issues/925)) ([a36449a](https://github.com/discordjs/discord-api-types/commit/a36449a0283b733c59f5fdc0d6c3f2f786f0514d))
+
+
+
+## [0.37.79](https://github.com/discordjs/discord-api-types/compare/0.37.78...0.37.79) (2024-04-04)
+
+
+### Features
+
+* **ConnectionService:** add bungie connection ([#907](https://github.com/discordjs/discord-api-types/issues/907)) ([22b5f47](https://github.com/discordjs/discord-api-types/commit/22b5f4778778baec7f414c4b253e96b0949de948))
+
+
+
+## [0.37.78](https://github.com/discordjs/discord-api-types/compare/0.37.77...0.37.78) (2024-04-01)
+
+
+### Features
+
+* bot banners ([#906](https://github.com/discordjs/discord-api-types/issues/906)) ([495148d](https://github.com/discordjs/discord-api-types/commit/495148dc466fcc3cd47ff62377369a97a9cec13d))
+* **Guild:** add `RESTPostAPIGuildBulkBan` result and json body ([#910](https://github.com/discordjs/discord-api-types/issues/910)) ([61ce329](https://github.com/discordjs/discord-api-types/commit/61ce329f614d5bc923c3ab4d2b318aa2e66c767b))
+* **RESTJSONErrorCodes:** Add `500_000` ([#908](https://github.com/discordjs/discord-api-types/issues/908)) ([4db44b5](https://github.com/discordjs/discord-api-types/commit/4db44b553d7164415b9f20468716beb5223fcec0))
+* **Routes:** Add `guildBulkBan()` route ([#909](https://github.com/discordjs/discord-api-types/issues/909)) ([7dcad58](https://github.com/discordjs/discord-api-types/commit/7dcad582ce2fa16ac7bde35f5b158648c2c7c9bf))
+
+
+
+## [0.37.77](https://github.com/discordjs/discord-api-types/compare/0.37.76...0.37.77) (2024-03-28)
+
+
+### Features
+
+* **APIAuditLogChange:** add `APIAuditLogChangeKeySystemChannelFlags` ([#933](https://github.com/discordjs/discord-api-types/issues/933)) ([47c9ad0](https://github.com/discordjs/discord-api-types/commit/47c9ad0e7043c098d103107e95f8a97e67ad3eb4))
+
+
+
+## [0.37.76](https://github.com/discordjs/discord-api-types/compare/0.37.75...0.37.76) (2024-03-21)
+
+
+
+## [0.37.75](https://github.com/discordjs/discord-api-types/compare/0.37.74...0.37.75) (2024-03-18)
+
+
+
+## [0.37.74](https://github.com/discordjs/discord-api-types/compare/0.37.73...0.37.74) (2024-03-14)
+
+
+
+## [0.37.73](https://github.com/discordjs/discord-api-types/compare/0.37.71...0.37.73) (2024-03-07)
+
+
+
+## [0.37.72](https://github.com/discordjs/discord-api-types/compare/0.37.71...0.37.72) (2024-03-07)
+
+
+
+## [0.37.71](https://github.com/discordjs/discord-api-types/compare/0.37.70...0.37.71) (2024-02-26)
+
+### Features
+
+- add initial support for super reactions ([#744](https://github.com/discordjs/discord-api-types/issues/744)) ([150dc46](https://github.com/discordjs/discord-api-types/commit/150dc46b8739ca9cf10a46bb48d390f70c679b6e))
+
+## [0.37.70](https://github.com/discordjs/discord-api-types/compare/0.37.69...0.37.70) (2024-02-15)
+
+### Features
+
+- **RESTPostAPIChannelMessageJSONBody:** add enforce_nonce ([#874](https://github.com/discordjs/discord-api-types/issues/874)) ([9564941](https://github.com/discordjs/discord-api-types/commit/9564941b3ae51c8bc9b1f915d66b43775089db18))
+
+## [0.37.69](https://github.com/discordjs/discord-api-types/compare/0.37.68...0.37.69) (2024-02-08)
+
+### Features
+
+- **Locale:** add `SpanishLATAM` ([#859](https://github.com/discordjs/discord-api-types/issues/859)) ([0cfe05d](https://github.com/discordjs/discord-api-types/commit/0cfe05dad8271513a2ef58e4f183c530555c7c2d))
+
+## [0.37.68](https://github.com/discordjs/discord-api-types/compare/0.37.67...0.37.68) (2024-02-05)
+
+### Bug Fixes
+
+- **CDNRoutes:** fix store page wrong extension ([#867](https://github.com/discordjs/discord-api-types/issues/867)) ([6f541d5](https://github.com/discordjs/discord-api-types/commit/6f541d58d278f1e610916250c003c1344831e3ad))
+- **CDNRoutes:** make format optional and default to png ([#869](https://github.com/discordjs/discord-api-types/issues/869)) ([55efcca](https://github.com/discordjs/discord-api-types/commit/55efcca4f8480f96243d9d802ce632833ac8e3ff))
+
+## [0.37.67](https://github.com/discordjs/discord-api-types/compare/0.37.66...0.37.67) (2023-12-28)
+
+### Bug Fixes
+
+- **GatewayThreadDispatch:** properly type thread create/update/delete dispatches ([#861](https://github.com/discordjs/discord-api-types/issues/861)) ([819d852](https://github.com/discordjs/discord-api-types/commit/819d85207ae7e07322e404a5ef9e3eb283b4aa03))
+
+## [0.37.66](https://github.com/discordjs/discord-api-types/compare/0.37.65...0.37.66) (2023-12-07)
+
+### Features
+
+- **RESTPostAPIWebhookWithTokenJSONBody:** add `applied_tags` ([#855](https://github.com/discordjs/discord-api-types/issues/855)) ([b4226bb](https://github.com/discordjs/discord-api-types/commit/b4226bb708763ebe04d9f7abcafa148bb5588ba4))
+
 ## [0.37.65](https://github.com/discordjs/discord-api-types/compare/0.37.64...0.37.65) (2023-11-23)
 
 ### Bug Fixes

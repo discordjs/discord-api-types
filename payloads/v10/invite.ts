@@ -11,17 +11,17 @@ import type { APIUser } from './user';
 
 export type APIInviteGuild = Pick<
 	APIGuild,
-	| 'id'
-	| 'name'
-	| 'splash'
 	| 'banner'
-	| 'icon'
-	| 'vanity_url_code'
 	| 'description'
 	| 'features'
-	| 'verification_level'
+	| 'icon'
+	| 'id'
+	| 'name'
 	| 'nsfw_level'
 	| 'premium_subscription_count'
+	| 'splash'
+	| 'vanity_url_code'
+	| 'verification_level'
 >;
 
 /**
@@ -90,6 +90,19 @@ export interface APIInvite {
 	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */
 	guild_scheduled_event?: APIGuildScheduledEvent;
+	/**
+	 * The invite type
+	 */
+	type: InviteType;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/invite#invite-object-invite-types
+ */
+export enum InviteType {
+	Guild,
+	GroupDM,
+	Friend,
 }
 
 /**

@@ -176,8 +176,10 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIMessageReferenceSend = StrictPartial<APIMessageReference> &
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Required<Pick<APIMessageReference, 'message_id'>>> & {
+export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Required<Pick<APIMessageReference, 'message_id'>>
+> &
+	StrictPartial<APIMessageReference> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
@@ -241,11 +243,11 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
-	sticker_ids?: [Snowflake] | [Snowflake, Snowflake] | [Snowflake, Snowflake, Snowflake] | undefined;
+	sticker_ids?: [Snowflake, Snowflake, Snowflake] | [Snowflake, Snowflake] | [Snowflake] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
+	attachments?: (Partial<Pick<APIAttachment, 'filename'>> & Pick<APIAttachment, 'description' | 'id'>)[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
@@ -258,13 +260,13 @@ export interface RESTPostAPIChannelMessageJSONBody {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIChannelMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/channel#create-message
@@ -386,7 +388,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+	attachments?: (Partial<Pick<APIAttachment, 'description' | 'filename'>> & Pick<APIAttachment, 'id'>)[] | undefined;
 	/**
 	 * The components to include with the message
 	 *
@@ -401,13 +403,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIChannelMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPatchAPIChannelMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIChannelMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/channel#edit-message

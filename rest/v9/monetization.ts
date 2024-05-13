@@ -64,7 +64,7 @@ export interface RESTPostAPIEntitlementBody {
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'starts_at' | 'ends_at'>>;
+export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'ends_at' | 'starts_at'>>;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
@@ -83,3 +83,8 @@ export type RESTDeleteAPIEntitlementResult = never;
  * https://discord.com/developers/docs/monetization/skus#list-skus
  */
 export type RESTGetAPISKUsResult = APISKU[];
+
+/**
+ * https://discord.com/developers/docs/monetization/entitlements#consume-an-entitlement
+ */
+export type RESTPostAPIEntitlementConsumeResult = never;

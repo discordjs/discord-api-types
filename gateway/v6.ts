@@ -184,56 +184,56 @@ export enum GatewayDispatchEvents {
 export type GatewaySendPayload =
 	| GatewayHeartbeat
 	| GatewayIdentify
-	| GatewayUpdatePresence
-	| GatewayVoiceStateUpdate
+	| GatewayRequestGuildMembers
 	| GatewayResume
-	| GatewayRequestGuildMembers;
+	| GatewayUpdatePresence
+	| GatewayVoiceStateUpdate;
 
 /**
  * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayReceivePayload =
-	| GatewayHello
-	| GatewayHeartbeatRequest
+	| GatewayDispatchPayload
 	| GatewayHeartbeatAck
+	| GatewayHeartbeatRequest
+	| GatewayHello
 	| GatewayInvalidSession
-	| GatewayReconnect
-	| GatewayDispatchPayload;
+	| GatewayReconnect;
 
 /**
  * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayDispatchPayload =
-	| GatewayReadyDispatch
-	| GatewayResumedDispatch
 	| GatewayChannelModifyDispatch
 	| GatewayChannelPinsUpdateDispatch
-	| GatewayGuildModifyDispatch
-	| GatewayGuildDeleteDispatch
 	| GatewayGuildBanModifyDispatch
+	| GatewayGuildDeleteDispatch
 	| GatewayGuildEmojisUpdateDispatch
 	| GatewayGuildIntegrationsUpdateDispatch
 	| GatewayGuildMemberAddDispatch
 	| GatewayGuildMemberRemoveDispatch
-	| GatewayGuildMemberUpdateDispatch
 	| GatewayGuildMembersChunkDispatch
-	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildMemberUpdateDispatch
+	| GatewayGuildModifyDispatch
 	| GatewayGuildRoleDeleteDispatch
+	| GatewayGuildRoleModifyDispatch
 	| GatewayInviteCreateDispatch
 	| GatewayInviteDeleteDispatch
 	| GatewayMessageCreateDispatch
-	| GatewayMessageUpdateDispatch
-	| GatewayMessageDeleteDispatch
 	| GatewayMessageDeleteBulkDispatch
+	| GatewayMessageDeleteDispatch
 	| GatewayMessageReactionAddDispatch
-	| GatewayMessageReactionRemoveDispatch
 	| GatewayMessageReactionRemoveAllDispatch
+	| GatewayMessageReactionRemoveDispatch
 	| GatewayMessageReactionRemoveEmojiDispatch
+	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewayReadyDispatch
+	| GatewayResumedDispatch
 	| GatewayTypingStartDispatch
 	| GatewayUserUpdateDispatch
-	| GatewayVoiceStateUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
+	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch;
 
 // #region Dispatch Payloads
@@ -571,7 +571,7 @@ export type GatewayMessageCreateDispatch = DataPayload<GatewayDispatchEvents.Mes
  */
 export type GatewayMessageUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.MessageUpdate,
-	{ id: string; channel_id: string } & Partial<APIMessage>
+	Partial<APIMessage> & { id: string; channel_id: string }
 >;
 
 /**
@@ -768,11 +768,11 @@ export interface GatewayResume {
 export interface GatewayRequestGuildMembers {
 	op: GatewayOPCodes.RequestGuildMembers;
 	d: {
-		guild_id: string | string[];
+		guild_id: string[] | string;
 		query?: string;
 		limit: number;
 		presences?: boolean;
-		user_ids?: string | string[];
+		user_ids?: string[] | string;
 		nonce?: string;
 	};
 }
