@@ -669,6 +669,8 @@ export interface APIMessage {
 	referenced_message?: APIMessage | null;
 	/**
 	 * Sent if the message is sent as a result of an interaction
+	 *
+	 * @unstable
 	 */
 	interaction_metadata?: APIMessageInteractionMetadata;
 	/**

@@ -131,6 +131,8 @@ export interface APIApplication {
 	install_params?: APIApplicationInstallParams;
 	/**
 	 * Default scopes and permissions for each supported installation context. Value for each key is an integration type configuration object
+	 *
+	 * @unstable
 	 */
 	integration_types_config?: APIApplicationIntegrationTypesConfigMap;
 	/**

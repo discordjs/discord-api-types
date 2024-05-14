@@ -91,11 +91,15 @@ export interface APIApplicationCommand {
 	 */
 	nsfw?: boolean;
 	/**
-	 * Installation context(s) where the command is available, only for globally-scoped commands. Defaults to `GUILD_INSTALL (0)`
+	 * In preview. Installation context(s) where the command is available, only for globally-scoped commands. Defaults to `GUILD_INSTALL (0)`
+	 *
+	 * @unstable
 	 */
 	integration_types?: ApplicationIntegrationType[];
 	/**
-	 * Interaction context(s) where the command can be used, only for globally-scoped commands. By default, all interaction context types included for new commands.
+	 * In Preview. Interaction context(s) where the command can be used, only for globally-scoped commands. By default, all interaction context types included for new commands.
+	 *
+	 * @unstable
 	 */
 	contexts?: InteractionContextType[] | null;
 	/**
