@@ -169,7 +169,13 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
 	 */
 	entitlements: APIEntitlement[];
+	/**
+	 * Mapping of installation contexts that the interaction was authorized for to related user or guild IDs.
+	 */
 	authorizing_integration_owners: APIAuthorizingIntegrationOwnersMap;
+	/**
+	 * Context where the interaction was triggered from
+	 */
 	context?: InteractionContextType;
 }
 
