@@ -888,7 +888,7 @@ export enum MessageFlags {
  */
 export interface APIMessageCall {
 	/**
-	 * Array of user object ids that participated in the call
+	 * Array of user ids that participated in the call
 	 */
 	participants: Snowflake[];
 	/**
