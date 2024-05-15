@@ -877,9 +877,9 @@ export interface APIMessageCall {
 	 */
 	participants: Snowflake[];
 	/**
-	 * Time when call ended
+	 * ISO8601 timestamp when the call ended
 	 */
-	ended_timestamp?: number | null;
+	ended_timestamp?: string | null;
 }
 
 /**
