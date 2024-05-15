@@ -735,6 +735,10 @@ export interface APIMessage {
 	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
 	poll?: APIPoll;
+	/**
+	 * The call associated with the message
+	 */
+	call?: APIMessageCall;
 }
 
 /**
@@ -877,6 +881,20 @@ export enum MessageFlags {
 	 * This message is a voice message
 	 */
 	IsVoiceMessage = 1 << 13,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-call-object-message-call-object-structure
+ */
+export interface APIMessageCall {
+	/**
+	 * Array of user object ids that participated in the call
+	 */
+	participants: Snowflake[];
+	/**
+	 * Time when call ended
+	 */
+	ended_timestamp?: number | null;
 }
 
 /**
