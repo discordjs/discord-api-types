@@ -6,7 +6,11 @@ import type {
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
 } from '../../payloads/v9/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type {
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
+	NonNullableFields,
+	StrictPartial,
+} from '../../utils/internals.ts';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
 	RESTGetAPIWebhookWithTokenMessageResult,
@@ -43,16 +47,21 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 	Omit<
 		APIApplicationCommand,
 		| 'application_id'
+		| 'contexts'
 		| 'default_member_permissions'
 		| 'description_localized'
 		| 'description'
 		| 'guild_id'
 		| 'id'
+		| 'integration_types'
 		| 'name_localized'
 		| 'type'
 		| 'version'
 	> &
-		Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>
+		Partial<
+			NonNullableFields<Pick<APIApplicationCommand, 'contexts'>> &
+				Pick<APIApplicationCommand, 'default_member_permissions' | 'integration_types'>
+		>
 >;
 
 /**

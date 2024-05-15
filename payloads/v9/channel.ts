@@ -6,7 +6,7 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
-import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
+import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions';
 import type { APIRole } from './permissions';
 import type { APIPoll } from './poll';
 import type { APISticker, APIStickerItem } from './sticker';
@@ -659,6 +659,12 @@ export interface APIMessage {
 	 * See https://discord.com/developers/docs/resources/channel#message-object
 	 */
 	referenced_message?: APIMessage | null;
+	/**
+	 * Sent if the message is sent as a result of an interaction
+	 *
+	 * @unstable
+	 */
+	interaction_metadata?: APIMessageInteractionMetadata;
 	/**
 	 * Sent if the message is a response to an Interaction
 	 */

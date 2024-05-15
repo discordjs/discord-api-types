@@ -32,6 +32,7 @@ export type RESTPatchCurrentApplicationJSONBody = StrictPartial<
 			| 'description'
 			| 'flags'
 			| 'install_params'
+			| 'integration_types_config'
 			| 'interactions_endpoint_url'
 			| 'role_connections_verification_url'
 			| 'tags'
