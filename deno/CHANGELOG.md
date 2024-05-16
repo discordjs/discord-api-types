@@ -1,3 +1,14 @@
+## [0.37.84](https://github.com/discordjs/discord-api-types/compare/0.37.83...0.37.84) (2024-05-16)
+
+
+### Features
+
+* **RESTJSONErrorCodes:** add error code 40333 ([#854](https://github.com/discordjs/discord-api-types/issues/854)) ([65eebd9](https://github.com/discordjs/discord-api-types/commit/65eebd92d636d4ea8e3319c8df84208f1d6ce94f))
+* support avatar decorations ([#834](https://github.com/discordjs/discord-api-types/issues/834)) ([7650ce4](https://github.com/discordjs/discord-api-types/commit/7650ce4f7244c04f30e31938965e5023aa858945))
+* user-installable apps ([#921](https://github.com/discordjs/discord-api-types/issues/921)) ([c457b8d](https://github.com/discordjs/discord-api-types/commit/c457b8d0596561fd1122e1d96bd168b322de368e))
+
+
+
 ## [0.37.83](https://github.com/discordjs/discord-api-types/compare/0.37.82...0.37.83) (2024-04-27)
 
 
