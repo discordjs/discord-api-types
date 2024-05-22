@@ -382,9 +382,9 @@ export type RESTDeleteAPIChannelMessageUserReactionResult = never;
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
-	 * The reaction type (0 for normal and 1 for super)
+	 * The reaction type
 	 */
-	type: ReactionType;
+	type?: ReactionType;
 	/**
 	 * Get users after this user ID
 	 */
