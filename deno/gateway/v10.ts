@@ -36,6 +36,7 @@ import type {
 	APIEntitlement,
 	ChannelType,
 } from '../payloads/v10/mod.ts';
+import type { ReactionType } from '../rest/v10/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
 
 export * from './common.ts';
@@ -1486,7 +1487,7 @@ export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDis
  */
 export type GatewayMessageReactionRemoveDispatch = ReactionData<
 	GatewayDispatchEvents.MessageReactionRemove,
-	'member' | 'message_author_id' | 'burst_colors'
+	'burst_colors' | 'member' | 'message_author_id'
 >;
 
 /**
@@ -2173,6 +2174,10 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			 * Colors used for super-reaction animation in "#rrggbb" format
 			 */
 			burst_colors: string[];
+			/**
+			 * The type of reaction
+			 */
+			type: ReactionType;
 		},
 		O
 	>

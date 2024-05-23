@@ -35,6 +35,7 @@ import type {
 	APIAuditLogEntry,
 	ChannelType,
 } from '../payloads/v9/mod.ts';
+import type { ReactionType } from '../rest/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
 import type { APIEntitlement } from '../v10.ts';
 
@@ -88,6 +89,7 @@ export enum GatewayOpcodes {
 	 */
 	Hello,
 	/**
+	 * Re
 	 * Sent in response to receiving a heartbeat to acknowledge that it has been received
 	 */
 	HeartbeatAck,
@@ -1485,7 +1487,7 @@ export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDis
  */
 export type GatewayMessageReactionRemoveDispatch = ReactionData<
 	GatewayDispatchEvents.MessageReactionRemove,
-	'member' | 'message_author_id' | 'burst_colors'
+	'burst_colors' | 'member' | 'message_author_id'
 >;
 
 /**
@@ -2172,6 +2174,10 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			 * Colors used for super-reaction animation in "#rrggbb" format
 			 */
 			burst_colors?: string[];
+			/**
+			 * The type of reaction
+			 */
+			type: ReactionType;
 		},
 		O
 	>
