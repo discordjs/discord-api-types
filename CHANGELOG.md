@@ -1,3 +1,14 @@
+## [0.37.85](https://github.com/discordjs/discord-api-types/compare/0.37.84...0.37.85) (2024-05-23)
+
+
+### Features
+
+* add gateway events payload for super reactions ([#878](https://github.com/discordjs/discord-api-types/issues/878)) ([16a6a46](https://github.com/discordjs/discord-api-types/commit/16a6a4683204cbf101372a233e235ebf6cb4df4e))
+* add type query param for get reactions endpoint ([#879](https://github.com/discordjs/discord-api-types/issues/879)) ([ddb2bde](https://github.com/discordjs/discord-api-types/commit/ddb2bde07776f0b9f370ab8ff6bf5c95be0138fd))
+* **APIMessage:** add `call` ([#983](https://github.com/discordjs/discord-api-types/issues/983)) ([79d9875](https://github.com/discordjs/discord-api-types/commit/79d9875c5d480b4ff4817edfecb58cd5c19c0d7b))
+
+
+
 ## [0.37.84](https://github.com/discordjs/discord-api-types/compare/0.37.83...0.37.84) (2024-05-16)
 
 
