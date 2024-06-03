@@ -98,6 +98,8 @@ export enum InteractionResponseType {
 	Modal,
 	/**
 	 * Respond to an interaction with an upgrade button, only available for apps with monetization enabled
+	 *
+	 * @deprecated
 	 */
 	PremiumRequired,
 }

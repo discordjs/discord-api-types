@@ -1625,6 +1625,7 @@ export enum ButtonStyle {
 	Success,
 	Danger,
 	Link,
+	Premium,
 }
 
 /**
