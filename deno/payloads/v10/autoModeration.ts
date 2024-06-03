@@ -75,7 +75,7 @@ export enum AutoModerationRuleTriggerType {
 	 */
 	MentionSpam,
 	/**
-	 * Check if member profile contains words from a user defined list of keywords
+	 * Check if member profile contains words from a user defined list of keywords (Maximum of 1 per guild)
 	 */
 	MemberProfile,
 }
@@ -157,7 +157,7 @@ export enum AutoModerationRuleEventType {
 	 */
 	MessageSend = 1,
 	/**
-	 * When a member edits their profile 
+	 * When a member edits their profile
 	 */
 	MemberUpdate,
 }
