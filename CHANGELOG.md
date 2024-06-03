@@ -1,3 +1,17 @@
+## [0.37.87](https://github.com/discordjs/discord-api-types/compare/0.37.86...0.37.87) (2024-06-03)
+
+
+### Bug Fixes
+
+* Correct types for `APIAuditLogChangeKey$Add` and `APIAuditLogChangeKey$Remove` ([#955](https://github.com/discordjs/discord-api-types/issues/955)) ([f859a96](https://github.com/discordjs/discord-api-types/commit/f859a96974e3188a18df575466e09b32fb70fbda))
+
+
+### Features
+
+* **AutoModeration:** add blocking words in member profile ([#740](https://github.com/discordjs/discord-api-types/issues/740)) ([5097460](https://github.com/discordjs/discord-api-types/commit/509746003a5544fc1b1a28a5a58a3cfe27e200ca))
+
+
+
 ## [0.37.86](https://github.com/discordjs/discord-api-types/compare/0.37.85...0.37.86) (2024-05-27)
 
 
