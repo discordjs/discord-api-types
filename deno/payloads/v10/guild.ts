@@ -621,7 +621,7 @@ export interface APIGuildMember {
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
-	user?: APIUser;
+	user: APIUser;
 	/**
 	 * This users guild nickname
 	 */

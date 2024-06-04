@@ -1407,7 +1407,7 @@ export interface GatewayMessageEventExtraFields {
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
 	 */
-	member?: APIGuildMember;
+	member?: Omit<APIGuildMember, 'user'>;
 	/**
 	 * Users specifically mentioned in the message
 	 *
