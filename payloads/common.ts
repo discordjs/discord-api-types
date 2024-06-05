@@ -282,6 +282,12 @@ export const PermissionFlagsBits = {
 	 * Applies to channel types: Text, Voice, Stage
 	 */
 	SendPolls: 1n << 49n,
+	/**
+	 * Allows using user installed apps not installed to the server. When disabled, users will still be allowed to use their apps but the responses will be ephemeral.
+	 *
+	 * Applies to channel types: Text, Voice, Stage
+	 */
+	UseExternalApps: 1n << 50n,
 } as const;
 
 /**
