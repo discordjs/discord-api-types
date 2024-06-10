@@ -211,6 +211,9 @@ export enum AuditLogEvent {
 	OnboardingPromptDelete,
 	OnboardingCreate,
 	OnboardingUpdate,
+
+	HomeSettingsCreate = 190,
+	HomeSettingsUpdate,
 }
 
 /**

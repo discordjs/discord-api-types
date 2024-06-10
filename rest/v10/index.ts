@@ -1294,6 +1294,7 @@ export interface CDNQuery {
 export const RouteBases = {
 	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',
+	media: 'https://media.discordapp.net',
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',
 	gift: 'https://discord.gift',

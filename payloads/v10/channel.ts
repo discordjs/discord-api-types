@@ -781,6 +781,11 @@ export enum MessageType {
 	StageRaiseHand,
 	StageTopic,
 	GuildApplicationPremiumSubscription,
+
+	GuildIncidentAlertModeEnabled = 36,
+	GuildIncidentAlertModeDisabled,
+	GuildIncidentReportRaid,
+	GuildIncidentReportFalseAlarm,
 }
 
 /**
