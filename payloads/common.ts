@@ -283,7 +283,7 @@ export const PermissionFlagsBits = {
 	 */
 	SendPolls: 1n << 49n,
 	/**
-	 * Allows using user installed apps not installed to the server. When disabled, users will still be allowed to use their apps but the responses will be ephemeral.
+	 * Allows user-installed apps to send public responses. When disabled, users will still be allowed to use their apps but the responses will be ephemeral. This only applies to apps not also installed to the server
 	 *
 	 * Applies to channel types: Text, Voice, Stage
 	 */
