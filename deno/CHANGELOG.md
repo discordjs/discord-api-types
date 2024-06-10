@@ -1,3 +1,19 @@
+## [0.37.88](https://github.com/discordjs/discord-api-types/compare/0.37.87...0.37.88) (2024-06-10)
+
+
+### Bug Fixes
+
+* **APIGuildMember:** make user required and omit in messages ([#998](https://github.com/discordjs/discord-api-types/issues/998)) ([98544fa](https://github.com/discordjs/discord-api-types/commit/98544fa56aa7d6e98b23ead4e898a5f8424a437a))
+
+
+### Features
+
+* **AuditLogEvent:** home settings events ([#1000](https://github.com/discordjs/discord-api-types/issues/1000)) ([c6a72a5](https://github.com/discordjs/discord-api-types/commit/c6a72a55e5aa77413cfdb639b1c89b1a0774b624))
+* **MessageType:** add incident related types ([#1004](https://github.com/discordjs/discord-api-types/issues/1004)) ([173f9ed](https://github.com/discordjs/discord-api-types/commit/173f9ed0fa9daf838c050aa246bc533f4c788c3b))
+* **RouteBases:** Add media URL ([#1001](https://github.com/discordjs/discord-api-types/issues/1001)) ([fdc0408](https://github.com/discordjs/discord-api-types/commit/fdc04089e17e682c7db46990580a853c7b852957))
+
+
+
 ## [0.37.87](https://github.com/discordjs/discord-api-types/compare/0.37.86...0.37.87) (2024-06-03)
 
 
