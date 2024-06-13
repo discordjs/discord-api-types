@@ -1,3 +1,12 @@
+## [0.37.89](https://github.com/discordjs/discord-api-types/compare/0.37.88...0.37.89) (2024-06-13)
+
+
+### Features
+
+* Add use external apps permission ([#999](https://github.com/discordjs/discord-api-types/issues/999)) ([d63bea7](https://github.com/discordjs/discord-api-types/commit/d63bea7dfc748472b2e5ed4e2d45752acc1a3d2a))
+
+
+
 ## [0.37.88](https://github.com/discordjs/discord-api-types/compare/0.37.87...0.37.88) (2024-06-10)
 
 
