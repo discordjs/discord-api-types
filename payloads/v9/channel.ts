@@ -1619,7 +1619,18 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 	url: string;
 }
 
-export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithURL;
+export interface APIButtonComponentWithSKUId
+	extends Omit<APIButtonComponentBase<ButtonStyle.Premium>, 'custom_id' | 'emoji' | 'label'> {
+	/**
+	 * The id for a purchasable SKU
+	 */
+	sku_id: Snowflake;
+}
+
+export type APIButtonComponent =
+	| APIButtonComponentWithCustomId
+	| APIButtonComponentWithSKUId
+	| APIButtonComponentWithURL;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
@@ -1630,6 +1641,7 @@ export enum ButtonStyle {
 	Success,
 	Danger,
 	Link,
+	Premium,
 }
 
 /**
