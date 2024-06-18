@@ -1,3 +1,12 @@
+## [0.37.90](https://github.com/discordjs/discord-api-types/compare/0.37.89...0.37.90) (2024-06-18)
+
+
+### Features
+
+* add premium buttons ([#1010](https://github.com/discordjs/discord-api-types/issues/1010)) ([088dbe0](https://github.com/discordjs/discord-api-types/commit/088dbe016fdb72fb751931938bf7240c34fa64c0))
+
+
+
 ## [0.37.89](https://github.com/discordjs/discord-api-types/compare/0.37.88...0.37.89) (2024-06-13)
 
 
