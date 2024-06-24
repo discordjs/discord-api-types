@@ -122,7 +122,7 @@
 		"types",
 		"discordjs"
 	],
-	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
+	"author": "Vlad Frangu <me@vladfrangu.dev>",
 	"license": "MIT",
 	"files": [
 		"{gateway,payloads,rest,rpc,voice,utils}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
