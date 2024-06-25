@@ -1372,6 +1372,10 @@ export interface APIAttachment {
 	 */
 	filename: string;
 	/**
+	 * The title of the file
+	 */
+	title?: string;
+	/**
 	 * Description for the file
 	 */
 	description?: string;
