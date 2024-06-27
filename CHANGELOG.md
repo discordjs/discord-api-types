@@ -1,3 +1,12 @@
+## [0.37.91](https://github.com/discordjs/discord-api-types/compare/0.37.90...0.37.91) (2024-06-27)
+
+
+### Features
+
+* **APIAttachment:** add `title` ([#1015](https://github.com/discordjs/discord-api-types/issues/1015)) ([897fd90](https://github.com/discordjs/discord-api-types/commit/897fd90bf2705d6ff5eebbb21fa8e735fc1e1e22))
+
+
+
 ## [0.37.90](https://github.com/discordjs/discord-api-types/compare/0.37.89...0.37.90) (2024-06-18)
 
 
