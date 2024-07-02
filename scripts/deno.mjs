@@ -18,6 +18,7 @@ await mkdir(denoPath);
  */
 function convertImports(source) {
 	return source.replaceAll(
+		// eslint-disable-next-line prefer-named-capture-group
 		/from '(.*)'/g,
 		/**
 		 * @param _ Something
