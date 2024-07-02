@@ -22,10 +22,14 @@ export interface APIPoll {
 	expiry: string;
 	/**
 	 * Whether a user can select multiple answers
+	 *
+	 * @default false
 	 */
 	allow_multiselect: boolean;
 	/**
 	 * The layout type of the poll
+	 *
+	 * @default PollLayoutType.Default
 	 */
 	layout_type: PollLayoutType;
 	/**
