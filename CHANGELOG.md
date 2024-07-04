@@ -1,3 +1,12 @@
+## [0.37.92](https://github.com/discordjs/discord-api-types/compare/0.37.91...0.37.92) (2024-07-04)
+
+
+### Bug Fixes
+
+* **RESTAPIPollCreate:** optional properties ([#1022](https://github.com/discordjs/discord-api-types/issues/1022)) ([c05998d](https://github.com/discordjs/discord-api-types/commit/c05998de274ef7a8d570db9d23c9ad9c228eeccc))
+
+
+
 ## [0.37.91](https://github.com/discordjs/discord-api-types/compare/0.37.90...0.37.91) (2024-06-27)
 
 
