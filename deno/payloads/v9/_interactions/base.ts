@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { APIRole, LocaleString } from '../../../v9.ts';
+import type { APIRole, ApplicationIntegrationType, InteractionContextType, LocaleString } from '../../../v9.ts';
 import type {
 	APIAttachment,
 	APIChannel,
@@ -13,6 +13,40 @@ import type { APIGuildMember } from '../guild.ts';
 import type { APIEntitlement } from '../monetization.ts';
 import type { APIUser } from '../user.ts';
 import type { InteractionType } from './responses.ts';
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
+ */
+export interface APIMessageInteractionMetadata {
+	/**
+	 * ID of the interaction
+	 */
+	id: Snowflake;
+	/**
+	 * Type of interaction
+	 */
+	type: InteractionType;
+	/**
+	 * User who triggered the interaction
+	 */
+	user: APIUser;
+	/**
+	 * IDs for installation context(s) related to an interaction. Details in Authorizing Integration Owners Object
+	 */
+	authorizing_integration_owners: APIAuthorizingIntegrationOwnersMap;
+	/**
+	 * ID of the original response message, present only on follow-up messages
+	 */
+	original_response_message_id?: Snowflake;
+	/**
+	 * ID of the message that contained interactive component, present only on messages created from component interactions
+	 */
+	interacted_message_id?: Snowflake;
+	/**
+	 * Metadata for the interaction that was used to open the modal, present only on modal submit interactions
+	 */
+	triggering_interaction_metadata?: APIMessageInteractionMetadata;
+}
 
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,
@@ -122,7 +156,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * Bitwise set of permissions the app or bot has within the channel the interaction was sent from
 	 */
-	app_permissions?: Permissions;
+	app_permissions: Permissions;
 	/**
 	 * The selected language of the invoking user
 	 */
@@ -135,7 +169,19 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
 	 */
 	entitlements: APIEntitlement[];
+	/**
+	 * Mapping of installation contexts that the interaction was authorized for to related user or guild IDs.
+	 */
+	authorizing_integration_owners: APIAuthorizingIntegrationOwnersMap;
+	/**
+	 * Context where the interaction was triggered from
+	 */
+	context?: InteractionContextType;
 }
+
+export type APIAuthorizingIntegrationOwnersMap = {
+	[key in ApplicationIntegrationType]?: Snowflake;
+};
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,

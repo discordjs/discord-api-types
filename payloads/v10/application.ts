@@ -5,6 +5,7 @@
 import type { Permissions, Snowflake } from '../../globals';
 import type { LocalizationMap } from '../common';
 import type { APIPartialGuild } from './guild';
+import type { ApplicationIntegrationType } from './interactions';
 import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
@@ -129,6 +130,12 @@ export interface APIApplication {
 	 */
 	install_params?: APIApplicationInstallParams;
 	/**
+	 * Default scopes and permissions for each supported installation context. Value for each key is an integration type configuration object
+	 *
+	 * @unstable
+	 */
+	integration_types_config?: APIApplicationIntegrationTypesConfigMap;
+	/**
 	 * The application's default custom authorization link, if enabled
 	 */
 	custom_install_url?: string;
@@ -138,6 +145,14 @@ export interface APIApplicationInstallParams {
 	scopes: OAuth2Scopes[];
 	permissions: Permissions;
 }
+
+export interface APIApplicationIntegrationTypeConfiguration {
+	oauth2_install_params?: APIApplicationInstallParams;
+}
+
+export type APIApplicationIntegrationTypesConfigMap = {
+	[key in ApplicationIntegrationType]?: APIApplicationIntegrationTypeConfiguration;
+};
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-flags

@@ -6,7 +6,7 @@ import type { Permissions, Snowflake } from '../../globals';
 import type { APIApplication } from './application';
 import type { APIPartialEmoji } from './emoji';
 import type { APIGuildMember } from './guild';
-import type { APIInteractionDataResolved, APIMessageInteraction } from './interactions';
+import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions';
 import type { APIRole } from './permissions';
 import type { APIPoll } from './poll';
 import type { APISticker, APIStickerItem } from './sticker';
@@ -660,6 +660,12 @@ export interface APIMessage {
 	 */
 	referenced_message?: APIMessage | null;
 	/**
+	 * Sent if the message is sent as a result of an interaction
+	 *
+	 * @unstable
+	 */
+	interaction_metadata?: APIMessageInteractionMetadata;
+	/**
 	 * Sent if the message is a response to an Interaction
 	 */
 	interaction?: APIMessageInteraction;
@@ -718,6 +724,10 @@ export interface APIMessage {
 	 * The message associated with the message_reference. This is a minimal subset of fields in a message (e.g. author is excluded.)
 	 */
 	message_snapshots?: APIMessageSnapshot[];
+	/**
+	 * The call associated with the message
+	 */
+	call?: APIMessageCall;
 }
 
 /**
@@ -760,6 +770,11 @@ export enum MessageType {
 	StageRaiseHand,
 	StageTopic,
 	GuildApplicationPremiumSubscription,
+
+	GuildIncidentAlertModeEnabled = 36,
+	GuildIncidentAlertModeDisabled,
+	GuildIncidentReportRaid,
+	GuildIncidentReportFalseAlarm,
 }
 
 /**
@@ -878,6 +893,20 @@ export enum MessageFlags {
 	 * This message is a voice message
 	 */
 	IsVoiceMessage = 1 << 13,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-call-object-message-call-object-structure
+ */
+export interface APIMessageCall {
+	/**
+	 * Array of user ids that participated in the call
+	 */
+	participants: Snowflake[];
+	/**
+	 * ISO8601 timestamp when the call ended
+	 */
+	ended_timestamp?: string | null;
 }
 
 /**
@@ -1365,6 +1394,10 @@ export interface APIAttachment {
 	 */
 	filename: string;
 	/**
+	 * The title of the file
+	 */
+	title?: string;
+	/**
 	 * Description for the file
 	 */
 	description?: string;
@@ -1612,7 +1645,18 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 	url: string;
 }
 
-export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithURL;
+export interface APIButtonComponentWithSKUId
+	extends Omit<APIButtonComponentBase<ButtonStyle.Premium>, 'custom_id' | 'emoji' | 'label'> {
+	/**
+	 * The id for a purchasable SKU
+	 */
+	sku_id: Snowflake;
+}
+
+export type APIButtonComponent =
+	| APIButtonComponentWithCustomId
+	| APIButtonComponentWithSKUId
+	| APIButtonComponentWithURL;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
@@ -1623,6 +1667,7 @@ export enum ButtonStyle {
 	Success,
 	Danger,
 	Link,
+	Premium,
 }
 
 /**

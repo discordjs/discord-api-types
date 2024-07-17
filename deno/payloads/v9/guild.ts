@@ -8,7 +8,7 @@ import type { PresenceUpdateReceiveStatus } from './gateway.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
-import type { APIUser } from './user.ts';
+import type { APIAvatarDecorationData, APIUser } from './user.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
@@ -613,7 +613,7 @@ export interface APIGuildMember {
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
-	user?: APIUser;
+	user: APIUser;
 	/**
 	 * This users guild nickname
 	 */
@@ -660,6 +660,12 @@ export interface APIGuildMember {
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null;
+	/**
+	 * The data for the member's guild avatar decoration
+	 *
+	 * See https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
+	 */
+	avatar_decoration_data?: APIAvatarDecorationData | null;
 }
 
 /**

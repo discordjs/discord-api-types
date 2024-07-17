@@ -1,3 +1,95 @@
+## [0.37.92](https://github.com/discordjs/discord-api-types/compare/0.37.91...0.37.92) (2024-07-04)
+
+
+### Bug Fixes
+
+* **RESTAPIPollCreate:** optional properties ([#1022](https://github.com/discordjs/discord-api-types/issues/1022)) ([c05998d](https://github.com/discordjs/discord-api-types/commit/c05998de274ef7a8d570db9d23c9ad9c228eeccc))
+
+
+
+## [0.37.91](https://github.com/discordjs/discord-api-types/compare/0.37.90...0.37.91) (2024-06-27)
+
+
+### Features
+
+* **APIAttachment:** add `title` ([#1015](https://github.com/discordjs/discord-api-types/issues/1015)) ([897fd90](https://github.com/discordjs/discord-api-types/commit/897fd90bf2705d6ff5eebbb21fa8e735fc1e1e22))
+
+
+
+## [0.37.90](https://github.com/discordjs/discord-api-types/compare/0.37.89...0.37.90) (2024-06-18)
+
+
+### Features
+
+* add premium buttons ([#1010](https://github.com/discordjs/discord-api-types/issues/1010)) ([088dbe0](https://github.com/discordjs/discord-api-types/commit/088dbe016fdb72fb751931938bf7240c34fa64c0))
+
+
+
+## [0.37.89](https://github.com/discordjs/discord-api-types/compare/0.37.88...0.37.89) (2024-06-13)
+
+
+### Features
+
+* Add use external apps permission ([#999](https://github.com/discordjs/discord-api-types/issues/999)) ([d63bea7](https://github.com/discordjs/discord-api-types/commit/d63bea7dfc748472b2e5ed4e2d45752acc1a3d2a))
+
+
+
+## [0.37.88](https://github.com/discordjs/discord-api-types/compare/0.37.87...0.37.88) (2024-06-10)
+
+
+### Bug Fixes
+
+* **APIGuildMember:** make user required and omit in messages ([#998](https://github.com/discordjs/discord-api-types/issues/998)) ([98544fa](https://github.com/discordjs/discord-api-types/commit/98544fa56aa7d6e98b23ead4e898a5f8424a437a))
+
+
+### Features
+
+* **AuditLogEvent:** home settings events ([#1000](https://github.com/discordjs/discord-api-types/issues/1000)) ([c6a72a5](https://github.com/discordjs/discord-api-types/commit/c6a72a55e5aa77413cfdb639b1c89b1a0774b624))
+* **MessageType:** add incident related types ([#1004](https://github.com/discordjs/discord-api-types/issues/1004)) ([173f9ed](https://github.com/discordjs/discord-api-types/commit/173f9ed0fa9daf838c050aa246bc533f4c788c3b))
+* **RouteBases:** Add media URL ([#1001](https://github.com/discordjs/discord-api-types/issues/1001)) ([fdc0408](https://github.com/discordjs/discord-api-types/commit/fdc04089e17e682c7db46990580a853c7b852957))
+
+
+
+## [0.37.87](https://github.com/discordjs/discord-api-types/compare/0.37.86...0.37.87) (2024-06-03)
+
+
+### Bug Fixes
+
+* Correct types for `APIAuditLogChangeKey$Add` and `APIAuditLogChangeKey$Remove` ([#955](https://github.com/discordjs/discord-api-types/issues/955)) ([f859a96](https://github.com/discordjs/discord-api-types/commit/f859a96974e3188a18df575466e09b32fb70fbda))
+
+
+### Features
+
+* **AutoModeration:** add blocking words in member profile ([#740](https://github.com/discordjs/discord-api-types/issues/740)) ([5097460](https://github.com/discordjs/discord-api-types/commit/509746003a5544fc1b1a28a5a58a3cfe27e200ca))
+
+
+
+## [0.37.86](https://github.com/discordjs/discord-api-types/compare/0.37.85...0.37.86) (2024-05-27)
+
+
+
+## [0.37.85](https://github.com/discordjs/discord-api-types/compare/0.37.84...0.37.85) (2024-05-23)
+
+
+### Features
+
+* add gateway events payload for super reactions ([#878](https://github.com/discordjs/discord-api-types/issues/878)) ([16a6a46](https://github.com/discordjs/discord-api-types/commit/16a6a4683204cbf101372a233e235ebf6cb4df4e))
+* add type query param for get reactions endpoint ([#879](https://github.com/discordjs/discord-api-types/issues/879)) ([ddb2bde](https://github.com/discordjs/discord-api-types/commit/ddb2bde07776f0b9f370ab8ff6bf5c95be0138fd))
+* **APIMessage:** add `call` ([#983](https://github.com/discordjs/discord-api-types/issues/983)) ([79d9875](https://github.com/discordjs/discord-api-types/commit/79d9875c5d480b4ff4817edfecb58cd5c19c0d7b))
+
+
+
+## [0.37.84](https://github.com/discordjs/discord-api-types/compare/0.37.83...0.37.84) (2024-05-16)
+
+
+### Features
+
+* **RESTJSONErrorCodes:** add error code 40333 ([#854](https://github.com/discordjs/discord-api-types/issues/854)) ([65eebd9](https://github.com/discordjs/discord-api-types/commit/65eebd92d636d4ea8e3319c8df84208f1d6ce94f))
+* support avatar decorations ([#834](https://github.com/discordjs/discord-api-types/issues/834)) ([7650ce4](https://github.com/discordjs/discord-api-types/commit/7650ce4f7244c04f30e31938965e5023aa858945))
+* user-installable apps ([#921](https://github.com/discordjs/discord-api-types/issues/921)) ([c457b8d](https://github.com/discordjs/discord-api-types/commit/c457b8d0596561fd1122e1d96bd168b322de368e))
+
+
+
 ## [0.37.83](https://github.com/discordjs/discord-api-types/compare/0.37.82...0.37.83) (2024-04-27)
 
 

@@ -2,7 +2,7 @@
 	"name": "discord-api-types-website",
 	"version": "1.0.0",
 	"description": "Website for discord-api-types, hosted on https://discord-api-types.dev",
-	"author": "Vlad Frangu <kingdgrizzle@gmail.com>",
+	"author": "Vlad Frangu <me@vladfrangu.dev>",
 	"license": "MIT",
 	"private": true,
 	"scripts": {

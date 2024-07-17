@@ -1101,9 +1101,21 @@ export const CDNRoutes = {
 	 * - GET `/avatar-decorations/{user.id}/{user.avatar_decoration}.png`
 	 *
 	 * This route supports the extension: PNG
+	 *
+	 * @deprecated Use {@link CDNRoutes.avatarDecoration} instead.
 	 */
 	userAvatarDecoration(userId: Snowflake, userAvatarDecoration: string) {
 		return `/avatar-decorations/${userId}/${userAvatarDecoration}.png` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/avatar-decoration-presets/{avatar_decoration_data_asset}.png`
+	 *
+	 * This route supports the extension: PNG
+	 */
+	avatarDecoration(avatarDecorationDataAsset: string) {
+		return `/avatar-decoration-presets/${avatarDecorationDataAsset}.png` as const;
 	},
 
 	/**
@@ -1282,6 +1294,7 @@ export interface CDNQuery {
 export const RouteBases = {
 	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',
+	media: 'https://media.discordapp.net',
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',
 	gift: 'https://discord.gift',

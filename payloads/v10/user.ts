@@ -87,8 +87,16 @@ export interface APIUser {
 	 * The user's avatar decoration hash
 	 *
 	 * See https://discord.com/developers/docs/reference#image-formatting
+	 *
+	 * @deprecated Use `avatar_decoration_data` instead
 	 */
 	avatar_decoration?: string | null;
+	/**
+	 * The data for the user's avatar decoration
+	 *
+	 * See https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
+	 */
+	avatar_decoration_data?: APIAvatarDecorationData | null;
 }
 
 /**
@@ -319,4 +327,20 @@ export interface APIApplicationRoleConnection {
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
 	metadata: Record<string, number | string>;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
+ */
+export interface APIAvatarDecorationData {
+	/**
+	 * The avatar decoration hash
+	 *
+	 * See https://discord.com/developers/docs/reference#image-formatting
+	 */
+	asset: string;
+	/**
+	 * The id of the avatar decoration's SKU
+	 */
+	sku_id: Snowflake;
 }

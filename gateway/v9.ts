@@ -35,6 +35,7 @@ import type {
 	APIAuditLogEntry,
 	ChannelType,
 } from '../payloads/v9/index';
+import type { ReactionType } from '../rest/v9/index';
 import type { Nullable } from '../utils/internals';
 import type { APIEntitlement } from '../v10';
 
@@ -1405,7 +1406,7 @@ export interface GatewayMessageEventExtraFields {
 	 *
 	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
 	 */
-	member?: APIGuildMember;
+	member?: Omit<APIGuildMember, 'user'>;
 	/**
 	 * Users specifically mentioned in the message
 	 *
@@ -1485,7 +1486,7 @@ export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDis
  */
 export type GatewayMessageReactionRemoveDispatch = ReactionData<
 	GatewayDispatchEvents.MessageReactionRemove,
-	'member' | 'message_author_id'
+	'burst_colors' | 'member' | 'message_author_id'
 >;
 
 /**
@@ -2164,6 +2165,18 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			 * The id of the user that posted the message that was reacted to
 			 */
 			message_author_id?: Snowflake;
+			/**
+			 * True if this is a super-reaction
+			 */
+			burst: boolean;
+			/**
+			 * Colors used for super-reaction animation in "#rrggbb" format
+			 */
+			burst_colors?: string[];
+			/**
+			 * The type of reaction
+			 */
+			type: ReactionType;
 		},
 		O
 	>
