@@ -1903,5 +1903,13 @@ export type APIModalActionRowComponent = APITextInputComponent;
 
 export type APIMessageSnapshotFields = Pick<
 	APIMessage,
-	'attachments' | 'content' | 'edited_timestamp' | 'embeds' | 'flags' | 'timestamp'
+	| 'attachments'
+	| 'content'
+	| 'edited_timestamp'
+	| 'embeds'
+	| 'flags'
+	| 'mention_roles'
+	| 'mentions'
+	| 'timestamp'
+	| 'type'
 >;
