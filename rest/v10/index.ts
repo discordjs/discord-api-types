@@ -995,14 +995,14 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/icons/{guild.id}.{png|jpeg|webp|gif}`
+	 * - GET `/icons/{guild.id}.{png|jpeg|webp|gif}`
 	 *
 	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
 	guildIcon<Format extends GuildIconFormat>(guildId: Snowflake, guildIcon: string, format: Format) {
-		return `icons/${guildId}/${guildIcon}.${format}` as const;
+		return `/icons/${guildId}/${guildIcon}.${format}` as const;
 	},
 
 	/**
