@@ -1210,7 +1210,7 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `team-icons/{team.id}/{team.icon}.{png|jpeg|webp}`
+	 * - GET `/team-icons/{team.id}/{team.icon}.{png|jpeg|webp}`
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
