@@ -32,6 +32,7 @@ export const Routes = {
 	applicationRoleConnectionMetadata(applicationId: Snowflake) {
 		return `/applications/${applicationId}/role-connections/metadata` as const;
 	},
+
 	/**
 	 * Route for:
 	 * - GET  `/guilds/{guild.id}/auto-moderation/rules`
@@ -912,8 +913,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/${guild.id}/onboarding`
-	 * - PUT `/guilds/${guild.id}/onboarding`
+	 * - GET `/guilds/{guild.id}/onboarding`
+	 * - PUT `/guilds/{guild.id}/onboarding`
 	 */
 	guildOnboarding(guildId: Snowflake) {
 		return `/guilds/${guildId}/onboarding` as const;
@@ -963,10 +964,29 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - POST `/applications/${application.id}/entitlements/${entitlement.id}/consume`
+	 * - POST `/applications/{application.id}/entitlements/{entitlement.id}/consume`
 	 */
 	consumeEntitlement(applicationId: Snowflake, entitlementId: Snowflake) {
 		return `/applications/${applicationId}/entitlements/${entitlementId}/consume` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/emojis`
+	 * - POST `/applications/{application.id}/emojis`
+	 */
+	applicationEmojis(applicationId: Snowflake) {
+		return `/applications/${applicationId}/emojis` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/emojis/{emoji.id}`
+	 * - PATCH `/applications/{application.id}/emojis/{emoji.id}`
+	 * - DELETE `/applications/{application.id}/emojis/{emoji.id}`
+	 */
+	applicationEmoji(applicationId: Snowflake, emojiId: Snowflake) {
+		return `/applications/${applicationId}/emojis/${emojiId}` as const;
 	},
 };
 
