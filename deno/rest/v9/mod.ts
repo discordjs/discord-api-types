@@ -1004,7 +1004,7 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/icons/{guild.id}.{png|jpeg|webp|gif}`
+	 * - GET `/icons/{guild.id}/{guild.icon}.{png|jpeg|webp|gif}`
 	 *
 	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
 	 *
