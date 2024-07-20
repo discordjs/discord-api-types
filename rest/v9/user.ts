@@ -76,6 +76,7 @@ export interface RESTAPIPartialCurrentUserGuild {
 	id: Snowflake;
 	name: string;
 	icon: string | null;
+	banner: string | null;
 	owner: boolean;
 	features: GuildFeature[];
 	permissions: Permissions;
