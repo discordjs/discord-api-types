@@ -59,3 +59,40 @@ export type RESTPatchAPIGuildEmojiResult = APIEmoji;
  * https://discord.com/developers/docs/resources/emoji#delete-guild-emoji
  */
 export type RESTDeleteAPIGuildEmojiResult = never;
+
+/**
+ * https://discord.com/developers/docs/resources/emoji#list-application-emojis
+ */
+export interface RESTGetAPIApplicationEmojisResult {
+	items: APIEmoji[];
+}
+
+/**
+ * https://discord.com/developers/docs/resources/emoji#get-application-emoji
+ */
+export type RESTGetAPIApplicationEmojiResult = APIEmoji;
+
+/**
+ * https://discord.com/developers/docs/resources/emoji#create-application-emoji-json-params
+ */
+export type RESTPostAPIApplicationEmojiJSONBody = Pick<RESTPostAPIGuildEmojiJSONBody, 'image' | 'name'>;
+
+/**
+ * https://discord.com/developers/docs/resources/emoji#create-application-emoji
+ */
+export type RESTPostAPIApplicationEmojiResult = APIEmoji;
+
+/**
+ * https://discord.com/developers/docs/resources/emoji#modify-application-emoji
+ */
+export type RESTPatchAPIApplicationEmojiJSONBody = Pick<RESTPatchAPIGuildEmojiJSONBody, 'name'>;
+
+/**
+ * https://discord.com/developers/docs/resources/emoji#modify-application-emoji
+ */
+export type RESTPatchAPIApplicationEmojiResult = APIEmoji;
+
+/**
+ * https://discord.com/developers/docs/resources/emoji#delete-application-emoji
+ */
+export type RESTDeleteAPIApplicationEmojiResult = never;
