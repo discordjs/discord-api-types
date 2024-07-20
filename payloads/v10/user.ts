@@ -286,6 +286,7 @@ export enum ConnectionService {
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
 	RiotGames = 'riotgames',
+	Roblox = 'roblox',
 	Spotify = 'spotify',
 	Skype = 'skype',
 	Steam = 'steam',
