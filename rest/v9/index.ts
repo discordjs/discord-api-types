@@ -997,7 +997,7 @@ export const Routes = {
 	applicationEmoji(applicationId: Snowflake, emojiId: Snowflake) {
 		return `/applications/${applicationId}/emojis/${emojiId}` as const;
 	},
-} satisfies Record<string, (...args: unknown[]) => `/${string}`>;
+};
 
 export const StickerPackApplicationId = '710982414301790216';
 
@@ -1286,7 +1286,7 @@ export const CDNRoutes = {
 	) {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
 	},
-} satisfies Record<string, (...args: unknown[]) => `/${string}`>;
+};
 
 export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 

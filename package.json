@@ -113,7 +113,7 @@
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"test:lint": "prettier --check . && eslint --ext mjs,ts \"{gateway,payloads,rest,rpc,voice,utils}/**/*.ts\" \"{globals,v*}.ts\" \"scripts/**/*.mjs\"",
 		"pretest:types": "tsc",
-		"test:types": "tsd -t ./v10.d.ts",
+		"test:types": "tsd -t ./v10.d.ts && tsd -t ./v9.d.ts",
 		"posttest:types": "npm run clean:node"
 	},
 	"keywords": [
