@@ -1,3 +1,20 @@
+## [0.37.93](https://github.com/discordjs/discord-api-types/compare/0.37.92...0.37.93) (2024-07-22)
+
+
+### Bug Fixes
+
+* **CDNRoutes:** inconsistency in route and wrong JSDoc ([#1033](https://github.com/discordjs/discord-api-types/issues/1033)) ([eb7b3d9](https://github.com/discordjs/discord-api-types/commit/eb7b3d90dd6a847b80d051006a597e77d70caab2))
+
+
+### Features
+
+* add support for message forwarding ([#971](https://github.com/discordjs/discord-api-types/issues/971)) ([2c1ff0e](https://github.com/discordjs/discord-api-types/commit/2c1ff0ea3443fb500315d6c69674a875a11addf6))
+* application emojis ([#1036](https://github.com/discordjs/discord-api-types/issues/1036)) ([5f22a6b](https://github.com/discordjs/discord-api-types/commit/5f22a6bacabef6b11e170a6f67694359bb3180e8))
+* **ConnectionService:** add `Roblox` ([#1032](https://github.com/discordjs/discord-api-types/issues/1032)) ([4f66b4d](https://github.com/discordjs/discord-api-types/commit/4f66b4dd049d2ace638374c09a06272bd517ad3a))
+* **RESTAPIPartialCurrentUserGuild:** add `banner` ([#1028](https://github.com/discordjs/discord-api-types/issues/1028)) ([da9496f](https://github.com/discordjs/discord-api-types/commit/da9496f291fff364b8d35b02363b93933c19823a))
+
+
+
 ## [0.37.92](https://github.com/discordjs/discord-api-types/compare/0.37.91...0.37.92) (2024-07-04)
 
 
