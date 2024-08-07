@@ -892,48 +892,6 @@ export interface RESTPatchAPIGuildMemberVerificationJSONBody {
 export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
 /**
- * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
- */
-export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
-	/**
-	 * The id of the channel the user is currently in
-	 */
-	channel_id?: Snowflake | undefined;
-	/**
-	 * Toggles the user's suppress state
-	 */
-	suppress?: boolean | undefined;
-	/**
-	 * Sets the user's request to speak
-	 */
-	request_to_speak_timestamp?: string | null | undefined;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
- */
-export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = never;
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
- */
-export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
-	/**
-	 * The id of the channel the user is currently in
-	 */
-	channel_id: Snowflake;
-	/**
-	 * Toggles the user's suppress state
-	 */
-	suppress?: boolean | undefined;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
- */
-export type RESTPatchAPIGuildVoiceStateUserResult = never;
-
-/**
  * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
  */
 export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
