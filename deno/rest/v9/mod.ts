@@ -620,15 +620,6 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/voice-states/@me`
-	 * - GET `/guilds/{guild.id}/voice-states/{user.id}`
-	 */
-	voiceState(guildId: Snowflake, userId: Snowflake | '@me' = '@me') {
-		return `/guilds/${guildId}/voice-states/${userId}` as const;
-	},
-
-	/**
-	 * Route for:
 	 * - GET  `/channels/{channel.id}/webhooks`
 	 * - POST `/channels/{channel.id}/webhooks`
 	 */
@@ -805,6 +796,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/voice-states/@me`
+	 * - GET `/guilds/{guild.id}/voice-states/{user.id}`
 	 * - PATCH `/guilds/{guild.id}/voice-states/@me`
 	 * - PATCH `/guilds/{guild.id}/voice-states/{user.id}`
 	 */
