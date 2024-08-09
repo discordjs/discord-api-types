@@ -41,6 +41,14 @@ export interface RESTOAuth2AuthorizationQuery {
 }
 
 /**
+ * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-token-revocation-example
+ */
+export interface RESTPostOAuth2TokenRevocationQuery {
+	token: string;
+	token_type_hint?: 'access_token' | 'refresh_token';
+}
+
+/**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
 export interface RESTOAuth2AuthorizationQueryResult {
