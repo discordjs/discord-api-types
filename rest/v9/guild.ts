@@ -746,6 +746,11 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/guild#get-guild-role
+ */
+export type RESTGetAPIGuildRoleResult = APIRole;
+
+/**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role
  */
 export type RESTPatchAPIGuildRoleResult = APIRole;

@@ -345,6 +345,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET    `/guilds/{guild.id}/roles/{role.id}`
 	 * - PATCH  `/guilds/{guild.id}/roles/{role.id}`
 	 * - DELETE `/guilds/{guild.id}/roles/{role.id}`
 	 */
