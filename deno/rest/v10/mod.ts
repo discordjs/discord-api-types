@@ -858,6 +858,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/sticker-packs/{pack.id}`
+	 */
+	stickerPack(packId: Snowflake) {
+		return `/sticker-packs/${packId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/sticker-packs`
 	 *
 	 * @deprecated Use {@link Routes.stickerPacks} instead.
