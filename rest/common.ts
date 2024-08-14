@@ -43,8 +43,8 @@ export enum RESTJSONErrorCodes {
 
 	UnknownDiscoverableServerCategory = 10_059,
 	UnknownSticker,
-
-	UnknownInteraction = 10_062,
+	UnknownStickerPack,
+	UnknownInteraction,
 	UnknownApplicationCommand,
 
 	UnknownVoiceState = 10_065,
