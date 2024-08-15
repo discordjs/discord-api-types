@@ -3,6 +3,7 @@ import type { StrictPartial } from '../../utils/internals';
 import type {
 	APIGuildScheduledEvent,
 	APIGuildScheduledEventEntityMetadata,
+	APIGuildScheduledEventRecurrenceRule,
 	APIGuildScheduledEventUser,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventPrivacyLevel,
@@ -64,6 +65,10 @@ export interface RESTPostAPIGuildScheduledEventJSONBody {
 	 * The cover image of the scheduled event
 	 */
 	image?: string | null | undefined;
+	/**
+	 * The definition for how often this event should recur
+	 */
+	recurrence_rule?: APIGuildScheduledEventRecurrenceRule | undefined;
 }
 
 /**
