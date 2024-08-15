@@ -2,11 +2,12 @@ import type { Snowflake } from '../../globals.ts';
 import type { StrictPartial } from '../../utils/internals.ts';
 import type {
 	APIGuildScheduledEvent,
+	APIGuildScheduledEventEntityMetadata,
+	APIGuildScheduledEventRecurrenceRule,
+	APIGuildScheduledEventUser,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventPrivacyLevel,
-	APIGuildScheduledEventEntityMetadata,
 	GuildScheduledEventStatus,
-	APIGuildScheduledEventUser,
 } from '../../v9.ts';
 
 /**
@@ -64,6 +65,10 @@ export interface RESTPostAPIGuildScheduledEventJSONBody {
 	 * The cover image of the scheduled event
 	 */
 	image?: string | null | undefined;
+	/**
+	 * The definition for how often this event should recur
+	 */
+	recurrence_rule?: APIGuildScheduledEventRecurrenceRule | undefined;
 }
 
 /**
