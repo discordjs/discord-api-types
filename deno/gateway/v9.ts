@@ -1021,9 +1021,9 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-update
  */
 export type GatewayGuildMemberUpdateDispatchData = Nullable<Pick<APIGuildMember, 'joined_at'>> &
-	Omit<APIGuildMember, 'deaf' | 'joined_at' | 'mute' | 'user'> &
-	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
-	Required<Pick<APIGuildMember, 'user'>> & {
+	Omit<APIGuildMember, 'deaf' | 'flags' | 'joined_at' | 'mute' | 'user'> &
+	Partial<Pick<APIGuildMember, 'deaf' | 'flags' | 'mute'>> &
+	Required<Pick<APIGuildMember, 'avatar' | 'banner' | 'user'>> & {
 		/**
 		 * The id of the guild
 		 */
