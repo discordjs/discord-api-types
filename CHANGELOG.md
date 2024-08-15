@@ -1,3 +1,15 @@
+## [0.37.94](https://github.com/discordjs/discord-api-types/compare/0.37.93...0.37.94) (2024-08-15)
+
+
+### Features
+
+* add Get Sticker Pack endpoint ([#1053](https://github.com/discordjs/discord-api-types/issues/1053)) ([822956f](https://github.com/discordjs/discord-api-types/commit/822956fe788f8eeda5da683189973bd6667cbc96))
+* **APIApplication:** `approximate_user_install_count` ([#1052](https://github.com/discordjs/discord-api-types/issues/1052)) ([d504763](https://github.com/discordjs/discord-api-types/commit/d5047639e691cc26e865cc6c06a312e09f0fb4c7))
+* **RESTOAuth2:** add RESTPostOAuth2TokenRevocationQuery ([#1050](https://github.com/discordjs/discord-api-types/issues/1050)) ([6ead98b](https://github.com/discordjs/discord-api-types/commit/6ead98b78218830fee308a0425d9078957a662b2))
+* **Routes:** get method on role endpoint ([#1051](https://github.com/discordjs/discord-api-types/issues/1051)) ([ea1a6c3](https://github.com/discordjs/discord-api-types/commit/ea1a6c3c86ec0d4c663e2191a488a3716ecdd7cc))
+
+
+
 ## [0.37.93](https://github.com/discordjs/discord-api-types/compare/0.37.92...0.37.93) (2024-07-22)
 
 
