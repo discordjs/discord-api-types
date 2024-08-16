@@ -1237,6 +1237,10 @@ export enum EmbedType {
 	 * @unstable This embed type is currently not documented by Discord, but it is returned in the auto moderation system messages.
 	 */
 	AutoModerationMessage = 'auto_moderation_message',
+	/**
+	 * Poll result embed
+	 */
+	PollResult = 'poll_result',
 }
 
 /**
