@@ -797,6 +797,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/voice-states/@me`
+	 * - GET `/guilds/{guild.id}/voice-states/{user.id}`
 	 * - PATCH `/guilds/{guild.id}/voice-states/@me`
 	 * - PATCH `/guilds/{guild.id}/voice-states/{user.id}`
 	 */
