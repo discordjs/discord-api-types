@@ -1,3 +1,19 @@
+## [0.37.95](https://github.com/discordjs/discord-api-types/compare/0.37.94...0.37.95) (2024-08-19)
+
+
+### Bug Fixes
+
+* interface name ([#1059](https://github.com/discordjs/discord-api-types/issues/1059)) ([147e459](https://github.com/discordjs/discord-api-types/commit/147e459a16c8b0e15a0dd50f75d62c6dd9098815))
+
+
+### Features
+
+* recurring scheduled events ([#1058](https://github.com/discordjs/discord-api-types/issues/1058)) ([fbfbc6b](https://github.com/discordjs/discord-api-types/commit/fbfbc6b23f2696f6db5fad8ea1543327d5b3cf07))
+* **RESTJSONErrorCodes:** `UnknownStickerPack` ([#1055](https://github.com/discordjs/discord-api-types/issues/1055)) ([906dd8e](https://github.com/discordjs/discord-api-types/commit/906dd8e241be6acdf4d6d7b10ce4e7c139b0fd8b))
+* **Routes:** voice state endpoint ([#1046](https://github.com/discordjs/discord-api-types/issues/1046)) ([1b1a865](https://github.com/discordjs/discord-api-types/commit/1b1a865efe4d95b34055616ed18dc3613b58f317))
+
+
+
 ## [0.37.94](https://github.com/discordjs/discord-api-types/compare/0.37.93...0.37.94) (2024-08-15)
 
 
