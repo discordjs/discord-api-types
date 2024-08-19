@@ -97,7 +97,9 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 export type RESTPatchAPIGuildScheduledEventJSONBody = Nullable<
 	Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
 > &
-	StrictPartial<Omit<RESTPostAPIGuildScheduledEventJSONBody, 'recurrence_rule'>> & {
+	StrictPartial<
+		Omit<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
+	> & {
 		/**
 		 * The status of the scheduled event
 		 */
