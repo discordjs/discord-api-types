@@ -26,11 +26,16 @@ import type {
 	ChannelFlags,
 } from '../../payloads/v10/index';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
-import type { RESTAPIPollCreate } from './poll';
+import type { RESTAPIPoll } from './poll';
 
-export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
+export interface RESTAPIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: Snowflake;
 }
+
+/**
+ * @deprecated Use {@link RESTAPIChannelPatchOverwrite} instead
+ */
+export type APIChannelPatchOverwrite = RESTAPIChannelPatchOverwrite;
 
 /**
  * https://discord.com/developers/docs/resources/channel#get-channel
@@ -98,7 +103,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: all excluding newsThread, publicThread, privateThread
 	 */
-	permission_overwrites?: APIChannelPatchOverwrite[] | null | undefined;
+	permission_overwrites?: RESTAPIChannelPatchOverwrite[] | null | undefined;
 	/**
 	 * ID of the new parent category for a channel
 	 *
@@ -237,7 +242,7 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  */
-export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+export type RESTAPIMessageReference = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Required<Pick<APIMessageReference, 'message_id'>>
 > &
 	StrictPartial<APIMessageReference> & {
@@ -248,6 +253,11 @@ export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesO
 		 */
 		fail_if_not_exists?: boolean | undefined;
 	};
+
+/**
+ * @deprecated Use {@link RESTAPIMessageReference} instead
+ */
+export type APIMessageReferenceSend = RESTAPIMessageReference;
 
 /**
  * https://discord.com/developers/docs/resources/channel#attachment-object
@@ -300,7 +310,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
 	 */
-	message_reference?: APIMessageReferenceSend | undefined;
+	message_reference?: RESTAPIMessageReference | undefined;
 	/**
 	 * The components to include with the message
 	 *
@@ -329,7 +339,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * A poll!
 	 */
-	poll?: RESTAPIPollCreate | undefined;
+	poll?: RESTAPIPoll | undefined;
 }
 
 /**
@@ -362,7 +372,12 @@ export type RESTPutAPIChannelMessageReactionResult = never;
 /**
  * https://discord.com/developers/docs/resources/channel#delete-own-reaction
  */
-export type RESTDeleteAPIChannelMessageOwnReaction = never;
+export type RESTDeleteAPIChannelMessageOwnReactionResult = never;
+
+/**
+ * @deprecated Use {@link RESTDeleteAPIChannelMessageOwnReactionResult} instead
+ */
+export type RESTDeleteAPIChannelMessageOwnReaction = RESTDeleteAPIChannelMessageOwnReactionResult;
 
 /**
  * https://discord.com/developers/docs/resources/channel#delete-user-reaction

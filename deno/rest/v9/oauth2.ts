@@ -51,10 +51,15 @@ export interface RESTPostOAuth2TokenRevocationQuery {
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
-export interface RESTOAuth2AuthorizationQueryResult {
+export interface RESTPostOAuth2AuthorizationQueryResult {
 	code: string;
 	state?: string;
 }
+
+/**
+ * @deprecated Use {@link RESTPostOAuth2AuthorizationQueryResult} instead
+ */
+export type RESTOAuth2AuthorizationQueryResult = RESTPostOAuth2AuthorizationQueryResult;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example

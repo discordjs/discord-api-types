@@ -17,5 +17,54 @@
 		"typescript-sort-keys/string-enum": "off",
 		"unicorn/prefer-math-trunc": "off",
 		"jsdoc/no-undefined-types": "off"
-	}
+	},
+	"overrides": [
+		{
+			"files": ["rest/v10/*.ts", "rest/v9/*.ts"],
+			"excludedFiles": ["rest/v10/index.ts", "rest/v9/index.ts"],
+			"rules": {
+				"local/rest-type-naming-convention": [
+					"error",
+					{
+						"whitelist": [
+							"RESTAPIAttachment",
+							"RESTAPIChannelPatchOverwrite",
+							"RESTAPIGuildChannelResolvable",
+							"RESTAPIGuildCreateOverwrite",
+							"RESTAPIGuildCreatePartialChannel",
+							"RESTAPIGuildCreateRole",
+							"RESTAPIGuildOnboardingPrompt",
+							"RESTAPIGuildOnboardingPromptOption",
+							"RESTAPIMessageReference",
+							"RESTAPIPartialCurrentUserGuild",
+							"RESTAPIPoll",
+
+							"RESTOAuth2AdvancedBotAuthorizationQuery",
+							"RESTOAuth2AdvancedBotAuthorizationQueryResult",
+							"RESTOAuth2AuthorizationQuery",
+							"RESTOAuth2BotAuthorizationQuery",
+							"RESTOAuth2ImplicitAuthorizationQuery",
+							"RESTOAuth2ImplicitAuthorizationURLFragmentResult",
+
+							// Deprecated types
+							"APIChannelPatchOverwrite",
+							"APIGuildChannelResolvable",
+							"APIGuildCreateOverwrite",
+							"APIGuildCreatePartialChannel",
+							"APIGuildCreateRole",
+							"APIMessageReferenceSend",
+							"GetAPIVoiceRegionsResult",
+							"RESTAPIModifyGuildOnboardingPromptData",
+							"RESTAPIModifyGuildOnboardingPromptOptionData",
+							"RESTAPIPollCreate",
+							"RESTDeleteAPIChannelMessageOwnReaction",
+							"RESTGetAPIStickerPack",
+							"RESTOAuth2AuthorizationQueryResult",
+							"RESTPostAPIEntitlementBody"
+						]
+					}
+				]
+			}
+		}
+	]
 }

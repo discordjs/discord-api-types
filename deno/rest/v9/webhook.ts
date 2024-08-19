@@ -10,7 +10,7 @@ import type {
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
 import type { RESTAPIAttachment } from './channel.ts';
-import type { RESTAPIPollCreate } from './poll.ts';
+import type { RESTAPIPoll } from './poll.ts';
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
@@ -158,7 +158,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * A poll!
 	 */
-	poll?: RESTAPIPollCreate | undefined;
+	poll?: RESTAPIPoll | undefined;
 }
 
 /**
