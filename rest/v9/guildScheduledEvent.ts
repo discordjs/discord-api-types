@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals';
-import type { StrictPartial } from '../../utils/internals';
+import type { Nullable, StrictPartial } from '../../utils/internals';
 import type {
 	APIGuildScheduledEvent,
 	APIGuildScheduledEventEntityMetadata,
@@ -94,20 +94,15 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
  */
-export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> & {
-	/**
-	 * The status of the scheduled event
-	 */
-	status?: GuildScheduledEventStatus | undefined;
-	/**
-	 * The entity metadata of the scheduled event
-	 */
-	entity_metadata?: APIGuildScheduledEventEntityMetadata | null | undefined;
-	/**
-	 * The description of the guild event
-	 */
-	description?: string | null | undefined;
-};
+export type RESTPatchAPIGuildScheduledEventJSONBody = Nullable<
+	Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
+> &
+	StrictPartial<Omit<RESTPostAPIGuildScheduledEventJSONBody, 'recurrence_rule'>> & {
+		/**
+		 * The status of the scheduled event
+		 */
+		status?: GuildScheduledEventStatus | undefined;
+	};
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
