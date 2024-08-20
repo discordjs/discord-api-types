@@ -1,3 +1,13 @@
+## [0.37.96](https://github.com/discordjs/discord-api-types/compare/0.37.95...0.37.96) (2024-08-20)
+
+
+### Bug Fixes
+
+* nullable `recurrence_rule` on patch ([#1063](https://github.com/discordjs/discord-api-types/issues/1063)) ([19d2aeb](https://github.com/discordjs/discord-api-types/commit/19d2aeb4a82dc781558240a674c36eadce270abf))
+* nullable fields for scheduled event editing ([#1064](https://github.com/discordjs/discord-api-types/issues/1064)) ([f67043b](https://github.com/discordjs/discord-api-types/commit/f67043b3f46eea7286e959d223b78d140deac318))
+
+
+
 ## [0.37.95](https://github.com/discordjs/discord-api-types/compare/0.37.94...0.37.95) (2024-08-19)
 
 
