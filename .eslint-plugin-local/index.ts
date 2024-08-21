@@ -37,6 +37,9 @@ const schema = [
 	},
 ] as const;
 
+const REST_TYPE_NAME_REGEX =
+	/^REST(?:Get|Patch|Post|Put|Delete)\w+(?:JSONBody|FormDataBody|URLEncodedData|Result|Query)$/;
+
 export = {
 	rules: {
 		'explicitly-optional-undefined-properties': ESLintUtils.RuleCreator.withoutDocs<Options, 'missingOptional'>({
@@ -149,9 +152,6 @@ export = {
 							return;
 						}
 
-						const REST_TYPE_NAME_REGEX =
-							/^REST(?:Get|Patch|Post|Put|Delete)\w+(?:JSONBody|FormDataBody|URLEncodedData|Result|Query)$/;
-
 						if (!REST_TYPE_NAME_REGEX.test(name)) {
 							context.report({
 								node: node.id,
@@ -164,7 +164,7 @@ export = {
 			},
 			meta: {
 				messages: {
-					invalidName: '{{ name }} does not match REST type naming convention',
+					invalidName: `{{ name }} does not match REST type naming convention. Must match ${REST_TYPE_NAME_REGEX.source}.`,
 				},
 				type: 'problem',
 				schema: [
