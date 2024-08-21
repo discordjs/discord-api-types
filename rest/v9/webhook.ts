@@ -267,6 +267,13 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossibly
 	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
+	/**
+	 * A poll!
+	 *
+	 * @remarks
+	 * Polls can only be added when editing a deferred interaction response.
+	 */
+	poll?: RESTAPIPoll | undefined;
 };
 
 /**
