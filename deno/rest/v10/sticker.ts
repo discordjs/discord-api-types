@@ -15,7 +15,12 @@ export interface RESTGetStickerPacksResult {
 /**
  * https://discord.com/developers/docs/resources/sticker#get-sticker-pack
  */
-export type RESTGetAPIStickerPack = APIStickerPack;
+export type RESTGetAPIStickerPackResult = APIStickerPack;
+
+/**
+ * @deprecated Use {@link RESTGetAPIStickerPackResult} instead
+ */
+export type RESTGetAPIStickerPack = RESTGetAPIStickerPackResult;
 
 /**
  * https://discord.com/developers/docs/resources/sticker#list-sticker-packs

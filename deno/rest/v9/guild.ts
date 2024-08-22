@@ -37,14 +37,25 @@ import type {
 } from '../../utils/internals.ts';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 
-export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
+export interface RESTAPIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;
 }
 
-export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
-export type APIGuildCreatePartialChannel = StrictPartial<
+/**
+ * @deprecated Use {@link RESTAPIGuildCreateOverwrite} instead
+ */
+export type APIGuildCreateOverwrite = RESTAPIGuildCreateOverwrite;
+
+export type RESTAPIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
+
+/**
+ * @deprecated Use {@link RESTAPIGuildChannelResolvable} instead
+ */
+export type APIGuildChannelResolvable = RESTAPIGuildChannelResolvable;
+
+export type RESTAPIGuildCreatePartialChannel = StrictPartial<
 	DistributivePick<
-		APIGuildChannelResolvable,
+		RESTAPIGuildChannelResolvable,
 		| 'available_tags'
 		| 'bitrate'
 		| 'default_auto_archive_duration'
@@ -66,12 +77,22 @@ export type APIGuildCreatePartialChannel = StrictPartial<
 	name: string;
 	id?: number | string | undefined;
 	parent_id?: number | string | null | undefined;
-	permission_overwrites?: APIGuildCreateOverwrite[] | undefined;
+	permission_overwrites?: RESTAPIGuildCreateOverwrite[] | undefined;
 };
 
-export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
+/**
+ * @deprecated Use {@link RESTAPIGuildCreatePartialChannel} instead
+ */
+export type APIGuildCreatePartialChannel = RESTAPIGuildCreatePartialChannel;
+
+export interface RESTAPIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 	id: number | string;
 }
+
+/**
+ * @deprecated Use {@link RESTAPIGuildCreateRole} instead
+ */
+export type APIGuildCreateRole = RESTAPIGuildCreateRole;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
@@ -124,7 +145,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
 	 */
-	roles?: APIGuildCreateRole[] | undefined;
+	roles?: RESTAPIGuildCreateRole[] | undefined;
 	/**
 	 * New guild's channels
 	 *
@@ -138,7 +159,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channels?: APIGuildCreatePartialChannel[] | undefined;
+	channels?: RESTAPIGuildCreatePartialChannel[] | undefined;
 	/**
 	 * ID for afk channel
 	 */
@@ -333,7 +354,7 @@ export type RESTGetAPIGuildChannelsResult = APIChannel[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
  */
-export type RESTPostAPIGuildChannelJSONBody = DistributiveOmit<APIGuildCreatePartialChannel, 'id'>;
+export type RESTPostAPIGuildChannelJSONBody = DistributiveOmit<RESTAPIGuildCreatePartialChannel, 'id'>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
@@ -936,20 +957,25 @@ export type RESTPutAPIGuildOnboardingJSONBody = AddUndefinedToPossiblyUndefinedP
 	/**
 	 * Prompts shown during onboarding and in customize community
 	 */
-	prompts?: RESTAPIModifyGuildOnboardingPromptData[] | undefined;
+	prompts?: RESTAPIGuildOnboardingPrompt[] | undefined;
 };
 
-export type RESTAPIModifyGuildOnboardingPromptData = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+export type RESTAPIGuildOnboardingPrompt = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Partial<Omit<APIGuildOnboardingPrompt, 'guild_id' | 'id' | 'options' | 'title'>>
 > &
 	Pick<APIGuildOnboardingPrompt, 'id' | 'title'> & {
 		/**
 		 * Options available within the prompt
 		 */
-		options: RESTAPIModifyGuildOnboardingPromptOptionData[];
+		options: RESTAPIGuildOnboardingPromptOption[];
 	};
 
-export type RESTAPIModifyGuildOnboardingPromptOptionData = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+/**
+ * @deprecated Use {@link RESTAPIGuildOnboardingPrompt} instead.
+ */
+export type RESTAPIModifyGuildOnboardingPromptData = RESTAPIGuildOnboardingPrompt;
+
+export type RESTAPIGuildOnboardingPromptOption = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Partial<Omit<APIGuildOnboardingPromptOption, 'emoji' | 'guild_id' | 'title'>>
 > &
 	Pick<APIGuildOnboardingPromptOption, 'title'> & {
@@ -966,6 +992,11 @@ export type RESTAPIModifyGuildOnboardingPromptOptionData = AddUndefinedToPossibl
 		 */
 		emoji_animated?: boolean | null | undefined;
 	};
+
+/**
+ * @deprecated Use {@link RESTAPIGuildOnboardingPromptOption} instead.
+ */
+export type RESTAPIModifyGuildOnboardingPromptOptionData = RESTAPIGuildOnboardingPromptOption;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding

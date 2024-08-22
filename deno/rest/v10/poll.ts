@@ -20,7 +20,7 @@ export interface RESTGetAPIPollAnswerVotersQuery {
 /**
  * https://discord.com/developers/docs/resources/poll#poll-create-request-object-poll-create-request-object-structure
  */
-export interface RESTAPIPollCreate
+export interface RESTAPIPoll
 	extends Omit<APIPoll, 'allow_multiselect' | 'answers' | 'expiry' | 'layout_type' | 'results'>,
 		Partial<Pick<APIPoll, 'allow_multiselect' | 'layout_type'>> {
 	/**
@@ -34,6 +34,11 @@ export interface RESTAPIPollCreate
 	 */
 	duration?: number;
 }
+
+/**
+ * @deprecated Use {@link RESTAPIPoll} instead
+ */
+export type RESTAPIPollCreate = RESTAPIPoll;
 
 /**
  * https://discord.com/developers/docs/resources/poll#get-answer-voters

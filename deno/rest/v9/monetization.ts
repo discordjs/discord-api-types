@@ -46,7 +46,7 @@ export type RESTGetAPIEntitlementsResult = APIEntitlement[];
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
  */
-export interface RESTPostAPIEntitlementBody {
+export interface RESTPostAPIEntitlementJSONBody {
 	/**
 	 * ID of the SKU to grant the entitlement to
 	 */
@@ -60,6 +60,11 @@ export interface RESTPostAPIEntitlementBody {
 	 */
 	owner_type: EntitlementOwnerType;
 }
+
+/**
+ * @deprecated Use {@link RESTPostAPIEntitlementJSONBody} instead
+ */
+export type RESTPostAPIEntitlementBody = RESTPostAPIEntitlementJSONBody;
 
 /**
  * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
