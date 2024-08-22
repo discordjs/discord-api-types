@@ -38,7 +38,7 @@ const schema = [
 ] as const;
 
 const REST_TYPE_NAME_REGEX =
-	/^REST(?:Get|Patch|Post|Put|Delete)\w+(?:JSONBody|FormDataBody|URLEncodedData|Result|Query)$/;
+	/^REST(?:Get|Patch|Post|Put|Delete)[a-zA-Z0-9]+(?:JSONBody|FormDataBody|URLEncodedData|Result|Query)$/;
 
 export = {
 	rules: {
