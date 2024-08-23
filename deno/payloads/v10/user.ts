@@ -273,6 +273,7 @@ export interface APIConnection {
 }
 
 export enum ConnectionService {
+	AmazonMusic = 'amazon-music',
 	BattleNet = 'battlenet',
 	BungieNet = 'bungie',
 	Domain = 'domain',
