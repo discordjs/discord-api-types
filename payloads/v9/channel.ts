@@ -567,7 +567,7 @@ export interface APIMessage {
 	/**
 	 * Any attached files
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
 	 *
 	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
 	 *
@@ -1382,7 +1382,7 @@ export interface APIEmbedField {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
+ * https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
  */
 export interface APIAttachment {
 	/**
