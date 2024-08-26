@@ -1,3 +1,12 @@
+## [0.37.98](https://github.com/discordjs/discord-api-types/compare/0.37.97...0.37.98) (2024-08-26)
+
+
+### Features
+
+* **RESTAPIAttachment:** add more properties ([#1073](https://github.com/discordjs/discord-api-types/issues/1073)) ([f019f0f](https://github.com/discordjs/discord-api-types/commit/f019f0fe97ad47471dd6656e5fb148dc5761e1e0))
+
+
+
 ## [0.37.97](https://github.com/discordjs/discord-api-types/compare/0.37.96...0.37.97) (2024-08-22)
 
 
