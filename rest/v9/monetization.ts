@@ -1,8 +1,8 @@
 import type { Snowflake } from '../../globals';
-import type { APIEntitlement, APISKU } from '../../v10';
+import type { APIEntitlement, APISKU, APISubscription } from '../../v9';
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#list-entitlements
+ * https://discord.com/developers/docs/resources/entitlement#list-entitlements
  */
 export interface RESTGetAPIEntitlementsQuery {
 	/**
@@ -39,12 +39,12 @@ export interface RESTGetAPIEntitlementsQuery {
 }
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#list-entitlements
+ * https://discord.com/developers/docs/resources/entitlement#list-entitlements
  */
 export type RESTGetAPIEntitlementsResult = APIEntitlement[];
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
+ * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
  */
 export interface RESTPostAPIEntitlementJSONBody {
 	/**
@@ -67,12 +67,12 @@ export interface RESTPostAPIEntitlementJSONBody {
 export type RESTPostAPIEntitlementBody = RESTPostAPIEntitlementJSONBody;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
+ * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
  */
 export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'ends_at' | 'starts_at'>>;
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#create-test-entitlement
+ * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
  */
 export enum EntitlementOwnerType {
 	Guild = 1,
@@ -80,16 +80,50 @@ export enum EntitlementOwnerType {
 }
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#delete-test-entitlement
+ * https://discord.com/developers/docs/resources/entitlement#delete-test-entitlement
  */
 export type RESTDeleteAPIEntitlementResult = never;
 
 /**
- * https://discord.com/developers/docs/monetization/skus#list-skus
+ * https://discord.com/developers/docs/resources/sku#list-skus
  */
 export type RESTGetAPISKUsResult = APISKU[];
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#consume-an-entitlement
+ * https://discord.com/developers/docs/resources/entitlement#consume-an-entitlement
  */
 export type RESTPostAPIEntitlementConsumeResult = never;
+
+/**
+ * https://discord.com/developers/docs/resources/subscription#query-string-params
+ */
+export interface RESTGetAPISKUSubscriptionsQuery {
+	/**
+	 * List subscriptions before this ID
+	 */
+	before?: Snowflake | undefined;
+	/**
+	 * List subscriptions after this ID
+	 */
+	after?: Snowflake | undefined;
+	/**
+	 * Number of subscriptions to return (1-100)
+	 *
+	 * @default 50
+	 */
+	limit?: number | undefined;
+	/**
+	 * User ID for which to return subscriptions. Required except for OAuth queries.
+	 */
+	user_id?: Snowflake | undefined;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions
+ */
+export type RESTGetAPISKUSubscriptionsResult = APISubscription[];
+
+/**
+ * https://discord.com/developers/docs/resources/subscription#get-sku-subscription
+ */
+export type RESTGetAPISKUSubscriptionResult = APISubscription;

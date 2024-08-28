@@ -278,6 +278,9 @@ export enum GatewayDispatchEvents {
 	EntitlementCreate = 'ENTITLEMENT_CREATE',
 	EntitlementUpdate = 'ENTITLEMENT_UPDATE',
 	EntitlementDelete = 'ENTITLEMENT_DELETE',
+	SubscriptionCreate = 'SUBSCRIPTION_CREATE',
+	SubscriptionUpdate = 'SUBSCRIPTION_UPDATE',
+	SubscriptionDelete = 'SUBSCRIPTION_DELETE',
 }
 
 export type GatewaySendPayload =
@@ -709,7 +712,9 @@ export type GatewayEntitlementModifyDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
  */
-export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispatchData;
+export type GatewayEntitlementCreateDispatchData = Omit<GatewayEntitlementModifyDispatchData, 'ends_at'> & {
+	ends_at: GatewayEntitlementModifyDispatchData['ends_at'] | null;
+};
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#entitlement-create
