@@ -681,7 +681,7 @@ export enum GuildMemberFlags {
 	 */
 	CompletedOnboarding = 1 << 1,
 	/**
-	 * Member bypasses guild verification requirements
+	 * Member is exempt from guild verification requirements
 	 */
 	BypassesVerification = 1 << 2,
 	/**
@@ -689,21 +689,29 @@ export enum GuildMemberFlags {
 	 */
 	StartedOnboarding = 1 << 3,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Member is a guest and can only access the voice channel they were invited to
+	 */
+	IsGuest = 1 << 4,
+	/**
+	 * Member has started Server Guide new member actions
 	 */
 	StartedHomeActions = 1 << 5,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Member has completed Server Guide new member actions
 	 */
 	CompletedHomeActions = 1 << 6,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Member's username, display name, or nickname is blocked by AutoMod
 	 */
 	AutomodQuarantinedUsernameOrGuildNickname = 1 << 7,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * @deprecated
 	 */
 	AutomodQuarantinedBio = 1 << 8,
+	/**
+	 * Member has dismissed the DM settings upsell
+	 */
+	DmSettingsUpsellAcknowledged = 1 << 9,
 }
 
 /**
