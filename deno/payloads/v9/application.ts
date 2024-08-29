@@ -64,6 +64,7 @@ export interface APIApplication {
 	 * An empty string
 	 *
 	 * @deprecated This field will be removed in v11
+	 * @unstable This field is no longer documented by Discord and will be removed in v11
 	 */
 	summary: '';
 	/**
