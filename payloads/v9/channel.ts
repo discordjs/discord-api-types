@@ -490,7 +490,7 @@ export enum VideoQualityMode {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-structure
+ * https://discord.com/developers/docs/resources/message#message-object-message-structure
  */
 export interface APIMessage {
 	/**
@@ -561,13 +561,13 @@ export interface APIMessage {
 	 *
 	 * If no mentions in the message meet these requirements, this field will not be sent
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-mention-object
+	 * See https://discord.com/developers/docs/resources/message#channel-mention-object
 	 */
 	mention_channels?: APIChannelMention[];
 	/**
 	 * Any attached files
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/message#attachment-object
 	 *
 	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
 	 *
@@ -579,7 +579,7 @@ export interface APIMessage {
 	/**
 	 * Any embedded content
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/message#embed-object
 	 *
 	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
 	 *
@@ -591,7 +591,7 @@ export interface APIMessage {
 	/**
 	 * Reactions to the message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#reaction-object
+	 * See https://discord.com/developers/docs/resources/message#reaction-object
 	 */
 	reactions?: APIReaction[];
 	/**
@@ -612,13 +612,13 @@ export interface APIMessage {
 	/**
 	 * Type of message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-types
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-types
 	 */
 	type: MessageType;
 	/**
 	 * Sent with Rich Presence-related chat embeds
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
 	 */
 	activity?: APIMessageActivity;
 	/**
@@ -634,13 +634,13 @@ export interface APIMessage {
 	/**
 	 * Reference data sent with crossposted messages, replies, pins, and thread starter messages
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+	 * See https://discord.com/developers/docs/resources/message#message-reference-object-message-reference-structure
 	 */
 	message_reference?: APIMessageReference;
 	/**
 	 * Message flags combined as a bitfield
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-flags
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
@@ -656,7 +656,7 @@ export interface APIMessage {
 	 *
 	 * If the field exists but is `null`, the referenced message was deleted
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object
+	 * See https://discord.com/developers/docs/resources/message#message-object
 	 */
 	referenced_message?: APIMessage | null;
 	/**
@@ -731,7 +731,7 @@ export interface APIMessage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-types
+ * https://discord.com/developers/docs/resources/message#message-object-message-types
  */
 export enum MessageType {
 	Default,
@@ -778,13 +778,13 @@ export enum MessageType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
+ * https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
  */
 export interface APIMessageActivity {
 	/**
 	 * Type of message activity
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-activity-types
 	 */
 	type: MessageActivityType;
 	/**
@@ -796,7 +796,7 @@ export interface APIMessageActivity {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/message#message-reference-object-message-reference-structure
  */
 export interface APIMessageReference {
 	/**
@@ -818,7 +818,7 @@ export interface APIMessageReference {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+ * https://discord.com/developers/docs/resources/message#message-object-message-activity-types
  */
 export enum MessageActivityType {
 	Join = 1,
@@ -828,7 +828,7 @@ export enum MessageActivityType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-types
+ * https://discord.com/developers/docs/resources/message#message-reference-types
  */
 export enum MessageReferenceType {
 	/**
@@ -842,7 +842,7 @@ export enum MessageReferenceType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-flags
+ * https://discord.com/developers/docs/resources/message#message-object-message-flags
  */
 export enum MessageFlags {
 	/**
@@ -896,7 +896,7 @@ export enum MessageFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-call-object-message-call-object-structure
+ * https://discord.com/developers/docs/resources/message#message-call-object-message-call-object-structure
  */
 export interface APIMessageCall {
 	/**
@@ -924,7 +924,7 @@ export interface APIFollowedChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure
+ * https://discord.com/developers/docs/resources/message#reaction-object-reaction-structure
  */
 export interface APIReaction {
 	/**
@@ -956,7 +956,7 @@ export interface APIReaction {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure
+ * https://discord.com/developers/docs/resources/message#reaction-count-details-object-reaction-count-details-structure
  */
 export interface APIReactionCountDetails {
 	/**
@@ -1114,7 +1114,7 @@ export interface APIThreadList {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-structure
  *
  * Length limit: 6000 characters
  */
@@ -1130,7 +1130,7 @@ export interface APIEmbed {
 	 *
 	 * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-types
 	 */
 	type?: EmbedType;
 	/**
@@ -1154,37 +1154,37 @@ export interface APIEmbed {
 	/**
 	 * Footer information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-footer-structure
 	 */
 	footer?: APIEmbedFooter;
 	/**
 	 * Image information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-image-structure
 	 */
 	image?: APIEmbedImage;
 	/**
 	 * Thumbnail information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure
 	 */
 	thumbnail?: APIEmbedThumbnail;
 	/**
 	 * Video information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-video-structure
 	 */
 	video?: APIEmbedVideo;
 	/**
 	 * Provider information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure
 	 */
 	provider?: APIEmbedProvider;
 	/**
 	 * Author information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-author-structure
 	 */
 	author?: APIEmbedAuthor;
 	/**
@@ -1192,13 +1192,13 @@ export interface APIEmbed {
 	 *
 	 * Length limit: 25 field objects
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-field-structure
 	 */
 	fields?: APIEmbedField[];
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-types
  *
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
@@ -1236,7 +1236,7 @@ export enum EmbedType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure
  */
 export interface APIEmbedThumbnail {
 	/**
@@ -1258,7 +1258,7 @@ export interface APIEmbedThumbnail {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-video-structure
  */
 export interface APIEmbedVideo {
 	/**
@@ -1280,7 +1280,7 @@ export interface APIEmbedVideo {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-image-structure
  */
 export interface APIEmbedImage {
 	/**
@@ -1302,7 +1302,7 @@ export interface APIEmbedImage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure
  */
 export interface APIEmbedProvider {
 	/**
@@ -1316,7 +1316,7 @@ export interface APIEmbedProvider {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-author-structure
  */
 export interface APIEmbedAuthor {
 	/**
@@ -1340,7 +1340,7 @@ export interface APIEmbedAuthor {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-footer-structure
  */
 export interface APIEmbedFooter {
 	/**
@@ -1360,7 +1360,7 @@ export interface APIEmbedFooter {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-field-structure
  */
 export interface APIEmbedField {
 	/**
@@ -1382,7 +1382,7 @@ export interface APIEmbedField {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
+ * https://discord.com/developers/docs/resources/message#attachment-object
  */
 export interface APIAttachment {
 	/**
@@ -1446,7 +1446,7 @@ export interface APIAttachment {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure-attachment-flags
+ * https://discord.com/developers/docs/resources/message#attachment-object-attachment-flags
  */
 export enum AttachmentFlags {
 	/**
@@ -1456,7 +1456,7 @@ export enum AttachmentFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure
+ * https://discord.com/developers/docs/resources/message#channel-mention-object-channel-mention-structure
  */
 export interface APIChannelMention {
 	/**
@@ -1480,7 +1480,7 @@ export interface APIChannelMention {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
+ * https://discord.com/developers/docs/resources/message#allowed-mentions-object-allowed-mention-types
  */
 export enum AllowedMentionsTypes {
 	/**
@@ -1498,13 +1498,13 @@ export enum AllowedMentionsTypes {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
+ * https://discord.com/developers/docs/resources/message#allowed-mentions-object-allowed-mentions-structure
  */
 export interface APIAllowedMentions {
 	/**
 	 * An array of allowed mention types to parse from the content
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
+	 * See https://discord.com/developers/docs/resources/message#allowed-mentions-object-allowed-mention-types
 	 */
 	parse?: AllowedMentionsTypes[];
 	/**
@@ -1874,7 +1874,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-snapshot-object
+ * https://discord.com/developers/docs/resources/message#message-snapshot-object
  */
 export interface APIMessageSnapshot {
 	/**

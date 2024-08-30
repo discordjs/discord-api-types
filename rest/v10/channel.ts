@@ -201,7 +201,7 @@ export type RESTPatchAPIChannelResult = APIChannel;
 export type RESTDeleteAPIChannelResult = APIChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel-messages
+ * https://discord.com/developers/docs/resources/message#get-channel-messages
  */
 export interface RESTGetAPIChannelMessagesQuery {
 	/**
@@ -225,17 +225,17 @@ export interface RESTGetAPIChannelMessagesQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel-messages
+ * https://discord.com/developers/docs/resources/message#get-channel-messages
  */
 export type RESTGetAPIChannelMessagesResult = APIMessage[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel-message
+ * https://discord.com/developers/docs/resources/message#get-channel-message
  */
 export type RESTGetAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/message#message-reference-structure
  */
 export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Required<Pick<APIMessageReference, 'message_id'>>
@@ -250,7 +250,7 @@ export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesO
 	};
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object
+ * https://discord.com/developers/docs/resources/message#attachment-object
  */
 export interface RESTAPIAttachment {
 	/**
@@ -268,7 +268,7 @@ export interface RESTAPIAttachment {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-message
+ * https://discord.com/developers/docs/resources/message#create-message
  */
 export interface RESTPostAPIChannelMessageJSONBody {
 	/**
@@ -286,19 +286,19 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/message#embed-object
 	 */
 	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for a message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
+	 * See https://discord.com/developers/docs/resources/message#allowed-mentions-object
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
 	 * Include to make your message a reply
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+	 * See https://discord.com/developers/docs/resources/message#message-reference-structure
 	 */
 	message_reference?: APIMessageReferenceSend | undefined;
 	/**
@@ -333,7 +333,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-message
+ * https://discord.com/developers/docs/resources/message#create-message
  */
 export type RESTPostAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & {
@@ -345,32 +345,32 @@ export type RESTPostAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIChannelMessageJSONBody);
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-message
+ * https://discord.com/developers/docs/resources/message#create-message
  */
 export type RESTPostAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#crosspost-message
+ * https://discord.com/developers/docs/resources/message#crosspost-message
  */
 export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-reaction
+ * https://discord.com/developers/docs/resources/message#create-reaction
  */
 export type RESTPutAPIChannelMessageReactionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-own-reaction
+ * https://discord.com/developers/docs/resources/message#delete-own-reaction
  */
 export type RESTDeleteAPIChannelMessageOwnReaction = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-user-reaction
+ * https://discord.com/developers/docs/resources/message#delete-user-reaction
  */
 export type RESTDeleteAPIChannelMessageUserReactionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-reactions
+ * https://discord.com/developers/docs/resources/message#get-reactions
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
@@ -390,7 +390,7 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-reactions-reaction-types
+ * https://discord.com/developers/docs/resources/message#get-reactions-reaction-types
  */
 export enum ReactionType {
 	Normal,
@@ -398,22 +398,22 @@ export enum ReactionType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-reactions
+ * https://discord.com/developers/docs/resources/message#get-reactions
  */
 export type RESTGetAPIChannelMessageReactionUsersResult = APIUser[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-all-reactions
+ * https://discord.com/developers/docs/resources/message#delete-all-reactions
  */
 export type RESTDeleteAPIChannelAllMessageReactionsResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-all-reactions-for-emoji
+ * https://discord.com/developers/docs/resources/message#delete-all-reactions-for-emoji
  */
 export type RESTDeleteAPIChannelMessageReactionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-message
+ * https://discord.com/developers/docs/resources/message#edit-message
  */
 export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
@@ -423,7 +423,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/message#embed-object
 	 */
 	embeds?: APIEmbed[] | null | undefined;
 	/**
@@ -432,13 +432,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 * When specifying flags, ensure to include all previously set flags/bits
 	 * in addition to ones that you are modifying
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-flags
 	 */
 	flags?: MessageFlags | null | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
+	 * See https://discord.com/developers/docs/resources/message#allowed-mentions-object
 	 */
 	allowed_mentions?: APIAllowedMentions | null | undefined;
 	/**
@@ -446,7 +446,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/message#attachment-object
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
@@ -458,7 +458,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-message
+ * https://discord.com/developers/docs/resources/message#edit-message
  */
 export type RESTPatchAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & {
@@ -470,17 +470,17 @@ export type RESTPatchAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIChannelMessageJSONBody);
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-message
+ * https://discord.com/developers/docs/resources/message#edit-message
  */
 export type RESTPatchAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-message
+ * https://discord.com/developers/docs/resources/message#delete-message
  */
 export type RESTDeleteAPIChannelMessageResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
+ * https://discord.com/developers/docs/resources/message#bulk-delete-messages
  */
 export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 	/**
@@ -490,7 +490,7 @@ export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
+ * https://discord.com/developers/docs/resources/message#bulk-delete-messages
  */
 export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
 
@@ -590,7 +590,7 @@ export type RESTPostAPIChannelInviteResult = APIExtendedInvite;
 export type RESTDeleteAPIChannelPermissionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#follow-news-channel
+ * https://discord.com/developers/docs/resources/channel#follow-announcement-channel
  */
 export interface RESTPostAPIChannelFollowersJSONBody {
 	/**
@@ -600,7 +600,7 @@ export interface RESTPostAPIChannelFollowersJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#follow-news-channel
+ * https://discord.com/developers/docs/resources/channel#follow-announcement-channel
  */
 export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;
 

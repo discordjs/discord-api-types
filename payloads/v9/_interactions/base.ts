@@ -15,7 +15,7 @@ import type { APIUser } from '../user';
 import type { InteractionType } from './responses';
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
+ * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object
  */
 export interface APIMessageInteractionMetadata {
 	/**
