@@ -257,6 +257,7 @@ export type RESTAPIMessageReference = AddUndefinedToPossiblyUndefinedPropertiesO
 
 /**
  * https://discord.com/developers/docs/resources/message#attachment-object
+ *
  * @deprecated Use {@link RESTAPIMessageReference} instead
  */
 export type APIMessageReferenceSend = RESTAPIMessageReference;
