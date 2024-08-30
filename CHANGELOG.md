@@ -1,3 +1,54 @@
+## [0.37.98](https://github.com/discordjs/discord-api-types/compare/0.37.97...0.37.98) (2024-08-26)
+
+
+### Features
+
+* **RESTAPIAttachment:** add more properties ([#1073](https://github.com/discordjs/discord-api-types/issues/1073)) ([f019f0f](https://github.com/discordjs/discord-api-types/commit/f019f0fe97ad47471dd6656e5fb148dc5761e1e0))
+
+
+
+## [0.37.97](https://github.com/discordjs/discord-api-types/compare/0.37.96...0.37.97) (2024-08-22)
+
+
+
+## [0.37.96](https://github.com/discordjs/discord-api-types/compare/0.37.95...0.37.96) (2024-08-20)
+
+
+### Bug Fixes
+
+* nullable `recurrence_rule` on patch ([#1063](https://github.com/discordjs/discord-api-types/issues/1063)) ([19d2aeb](https://github.com/discordjs/discord-api-types/commit/19d2aeb4a82dc781558240a674c36eadce270abf))
+* nullable fields for scheduled event editing ([#1064](https://github.com/discordjs/discord-api-types/issues/1064)) ([f67043b](https://github.com/discordjs/discord-api-types/commit/f67043b3f46eea7286e959d223b78d140deac318))
+
+
+
+## [0.37.95](https://github.com/discordjs/discord-api-types/compare/0.37.94...0.37.95) (2024-08-19)
+
+
+### Bug Fixes
+
+* interface name ([#1059](https://github.com/discordjs/discord-api-types/issues/1059)) ([147e459](https://github.com/discordjs/discord-api-types/commit/147e459a16c8b0e15a0dd50f75d62c6dd9098815))
+
+
+### Features
+
+* recurring scheduled events ([#1058](https://github.com/discordjs/discord-api-types/issues/1058)) ([fbfbc6b](https://github.com/discordjs/discord-api-types/commit/fbfbc6b23f2696f6db5fad8ea1543327d5b3cf07))
+* **RESTJSONErrorCodes:** `UnknownStickerPack` ([#1055](https://github.com/discordjs/discord-api-types/issues/1055)) ([906dd8e](https://github.com/discordjs/discord-api-types/commit/906dd8e241be6acdf4d6d7b10ce4e7c139b0fd8b))
+* **Routes:** voice state endpoint ([#1046](https://github.com/discordjs/discord-api-types/issues/1046)) ([1b1a865](https://github.com/discordjs/discord-api-types/commit/1b1a865efe4d95b34055616ed18dc3613b58f317))
+
+
+
+## [0.37.94](https://github.com/discordjs/discord-api-types/compare/0.37.93...0.37.94) (2024-08-15)
+
+
+### Features
+
+* add Get Sticker Pack endpoint ([#1053](https://github.com/discordjs/discord-api-types/issues/1053)) ([822956f](https://github.com/discordjs/discord-api-types/commit/822956fe788f8eeda5da683189973bd6667cbc96))
+* **APIApplication:** `approximate_user_install_count` ([#1052](https://github.com/discordjs/discord-api-types/issues/1052)) ([d504763](https://github.com/discordjs/discord-api-types/commit/d5047639e691cc26e865cc6c06a312e09f0fb4c7))
+* **RESTOAuth2:** add RESTPostOAuth2TokenRevocationQuery ([#1050](https://github.com/discordjs/discord-api-types/issues/1050)) ([6ead98b](https://github.com/discordjs/discord-api-types/commit/6ead98b78218830fee308a0425d9078957a662b2))
+* **Routes:** get method on role endpoint ([#1051](https://github.com/discordjs/discord-api-types/issues/1051)) ([ea1a6c3](https://github.com/discordjs/discord-api-types/commit/ea1a6c3c86ec0d4c663e2191a488a3716ecdd7cc))
+
+
+
 ## [0.37.93](https://github.com/discordjs/discord-api-types/compare/0.37.92...0.37.93) (2024-07-22)
 
 

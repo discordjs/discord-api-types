@@ -28,7 +28,7 @@ import type {
 	GatewayPresenceUpdate as RawGatewayPresenceUpdate,
 	GatewayThreadListSync as RawGatewayThreadListSync,
 	GatewayThreadMembersUpdate as RawGatewayThreadMembersUpdate,
-	GatewayVoiceState,
+	APIVoiceState,
 	InviteTargetType,
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
@@ -784,7 +784,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-state-object
 	 */
-	voice_states: Omit<GatewayVoiceState, 'guild_id'>[];
+	voice_states: Omit<APIVoiceState, 'guild_id'>[];
 	/**
 	 * Users in the guild
 	 *
@@ -1747,7 +1747,7 @@ export type GatewayVoiceStateUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#voice-state-update
  */
-export type GatewayVoiceStateUpdateDispatchData = GatewayVoiceState;
+export type GatewayVoiceStateUpdateDispatchData = APIVoiceState;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#voice-server-update

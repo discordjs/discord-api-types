@@ -345,6 +345,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET    `/guilds/{guild.id}/roles/{role.id}`
 	 * - PATCH  `/guilds/{guild.id}/roles/{role.id}`
 	 * - DELETE `/guilds/{guild.id}/roles/{role.id}`
 	 */
@@ -787,6 +788,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/voice-states/@me`
+	 * - GET `/guilds/{guild.id}/voice-states/{user.id}`
 	 * - PATCH `/guilds/{guild.id}/voice-states/@me`
 	 * - PATCH `/guilds/{guild.id}/voice-states/{user.id}`
 	 */
@@ -853,6 +856,14 @@ export const Routes = {
 	 */
 	stickerPacks() {
 		return '/sticker-packs' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/sticker-packs/{pack.id}`
+	 */
+	stickerPack(packId: Snowflake) {
+		return `/sticker-packs/${packId}` as const;
 	},
 
 	/**

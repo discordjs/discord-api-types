@@ -37,6 +37,9 @@ const schema = [
 	},
 ] as const;
 
+const REST_TYPE_NAME_REGEX =
+	/^REST(?:Get|Patch|Post|Put|Delete)[a-zA-Z0-9]+(?:JSONBody|FormDataBody|URLEncodedData|Result|Query)$/;
+
 export = {
 	rules: {
 		'explicitly-optional-undefined-properties': ESLintUtils.RuleCreator.withoutDocs<Options, 'missingOptional'>({
@@ -130,6 +133,55 @@ export = {
 				schema: schema,
 			},
 			defaultOptions: [{ interfaceEndings: [] }],
+		}),
+		'rest-type-naming-convention': ESLintUtils.RuleCreator.withoutDocs<[{ whitelist: string[] }], 'invalidName'>({
+			create: (context) => {
+				const { whitelist } = context.options[0];
+				const whitelistSet = new Set(whitelist);
+
+				return {
+					'TSTypeAliasDeclaration, TSInterfaceDeclaration': (
+						node: TSESTree.TSTypeAliasDeclaration | TSESTree.TSInterfaceDeclaration,
+					) => {
+						if (node.id.type !== AST_NODE_TYPES.Identifier) {
+							return;
+						}
+
+						const { name } = node.id;
+						if (whitelistSet.has(name)) {
+							return;
+						}
+
+						if (!REST_TYPE_NAME_REGEX.test(name)) {
+							context.report({
+								node: node.id,
+								messageId: 'invalidName',
+								data: { name },
+							});
+						}
+					},
+				};
+			},
+			meta: {
+				messages: {
+					invalidName: `{{ name }} does not match REST type naming convention. Must match ${REST_TYPE_NAME_REGEX.source}.`,
+				},
+				type: 'problem',
+				schema: [
+					{
+						type: 'object',
+						properties: {
+							whitelist: {
+								type: 'array',
+								items: {
+									type: 'string',
+								},
+							},
+						},
+					},
+				] as const,
+			},
+			defaultOptions: [{ whitelist: [] }],
 		}),
 	},
 };
