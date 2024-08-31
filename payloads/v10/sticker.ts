@@ -33,6 +33,7 @@ export interface APISticker {
 	 * Previously the sticker asset hash, now an empty string
 	 *
 	 * @deprecated
+	 * @unstable This field is no longer documented by Discord and will be removed in v11
 	 */
 	asset?: '';
 	/**
