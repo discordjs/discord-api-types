@@ -92,14 +92,10 @@ export interface APIApplicationCommand {
 	nsfw?: boolean;
 	/**
 	 * Installation context(s) where the command is available, only for globally-scoped commands. Defaults to `GUILD_INSTALL ([0])`
-	 *
-	 * @unstable
 	 */
 	integration_types?: ApplicationIntegrationType[];
 	/**
 	 * Interaction context(s) where the command can be used, only for globally-scoped commands. By default, all interaction context types included for new commands `[0,1,2]`.
-	 *
-	 * @unstable
 	 */
 	contexts?: InteractionContextType[] | null;
 	/**
@@ -124,11 +120,11 @@ export enum ApplicationIntegrationType {
 	/**
 	 * App is installable to servers
 	 */
-	GuildInstall = 0,
+	GuildInstall,
 	/**
 	 * App is installable to users
 	 */
-	UserInstall = 1,
+	UserInstall,
 }
 
 /**
@@ -138,15 +134,15 @@ export enum InteractionContextType {
 	/**
 	 * Interaction can be used within servers
 	 */
-	Guild = 0,
+	Guild,
 	/**
 	 * Interaction can be used within DMs with the app's bot user
 	 */
-	BotDM = 1,
+	BotDM,
 	/**
 	 * Interaction can be used within Group DMs and DMs other than the app's bot user
 	 */
-	PrivateChannel = 2,
+	PrivateChannel,
 }
 
 /**

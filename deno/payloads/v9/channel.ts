@@ -661,8 +661,6 @@ export interface APIMessage {
 	referenced_message?: APIMessage | null;
 	/**
 	 * Sent if the message is sent as a result of an interaction
-	 *
-	 * @unstable
 	 */
 	interaction_metadata?: APIMessageInteractionMetadata;
 	/**
@@ -834,11 +832,11 @@ export enum MessageReferenceType {
 	/**
 	 * A standard reference used by replies
 	 */
-	Default = 0,
+	Default,
 	/**
 	 * Reference used to point to a message at a point in time
 	 */
-	Forward = 1,
+	Forward,
 }
 
 /**
