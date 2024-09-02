@@ -1,3 +1,13 @@
+## [0.37.99](https://github.com/discordjs/discord-api-types/compare/0.37.98...0.37.99) (2024-09-02)
+
+
+### Features
+
+* **GuildMemberFlags:** `IsGuest` and `DmSettingsUpsellAcknowledged` ([#1079](https://github.com/discordjs/discord-api-types/issues/1079)) ([2803e8d](https://github.com/discordjs/discord-api-types/commit/2803e8df2f2105099a1dc6e04193355a926718b9))
+* remove unstable from stable fields ([#1086](https://github.com/discordjs/discord-api-types/issues/1086)) ([4b64f84](https://github.com/discordjs/discord-api-types/commit/4b64f84ddf0390f0a8979f57623c5f8c9051484d))
+
+
+
 ## [0.37.98](https://github.com/discordjs/discord-api-types/compare/0.37.97...0.37.98) (2024-08-26)
 
 
