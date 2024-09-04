@@ -93,6 +93,18 @@ export const FormattingPatterns = {
 	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
 	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[DFRTdft])>/,
+	/**
+	 * Regular expression for matching a guild navigation mention
+	 *
+	 * The `type` group property is present on the `exec` result of this expression
+	 */
+	GuildNavigation: /<id:(?<type>customize|browse|guide|linked-roles)>/,
+	/**
+	 * Regular expression for matching a linked role mention
+	 *
+	 * The `id` group property is present on the `exec` result of this expression
+	 */
+	LinkedRole: /<id:linked-roles:(?<id>\d{17,20})>/,
 } as const;
 
 /**
