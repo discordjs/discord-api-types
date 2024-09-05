@@ -999,6 +999,22 @@ export const Routes = {
 	applicationEmoji(applicationId: Snowflake, emojiId: Snowflake) {
 		return `/applications/${applicationId}/emojis/${emojiId}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/skus/{sku.id}/subscriptions`
+	 */
+	skuSubscriptions(skuId: Snowflake) {
+		return `/skus/${skuId}/subscriptions` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/skus/{sku.id}/subscriptions/${subscription.id}`
+	 */
+	skuSubscription(skuId: Snowflake, subscriptionId: Snowflake) {
+		return `/skus/${skuId}/subscriptions/${subscriptionId}` as const;
+	},
 };
 
 export const StickerPackApplicationId = '710982414301790216';
