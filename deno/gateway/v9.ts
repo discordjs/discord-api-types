@@ -858,7 +858,14 @@ export type GatewayGuildDeleteDispatch = DataPayload<GatewayDispatchEvents.Guild
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-delete
  */
-export type GatewayGuildDeleteDispatchData = APIUnavailableGuild;
+export interface GatewayGuildDeleteDispatchData extends Omit<APIUnavailableGuild, 'unavailable'> {
+	/**
+	 * `true` if this guild is unavailable due to an outage
+	 *
+	 * If the field is not set, the user was removed from the guild.
+	 */
+	unavailable?: true;
+}
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-ban-add
