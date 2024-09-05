@@ -119,12 +119,12 @@ export interface APIApplication {
 	/**
 	 * The interactions endpoint URL for the application
 	 */
-	interactions_endpoint_url?: string;
+	interactions_endpoint_url?: string | null;
 	/**
 	 * The application's role connection verification entry point,
 	 * which when configured will render the app as a verification method in the guild role verification configuration
 	 */
-	role_connections_verification_url?: string;
+	role_connections_verification_url?: string | null;
 	/**
 	 * Up to 5 tags of max 20 characters each describing the content and functionality of the application
 	 */
