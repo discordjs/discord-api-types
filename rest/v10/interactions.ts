@@ -1,3 +1,4 @@
+import type { Snowflake } from '../../globals';
 import type {
 	APIApplicationCommand,
 	APIApplicationCommandPermission,
@@ -5,6 +6,9 @@ import type {
 	APIInteractionResponse,
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
+	InteractionResponseType,
+	APIMessage,
+	InteractionType,
 } from '../../payloads/v10/index';
 import type {
 	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
@@ -174,6 +178,16 @@ export type RESTPostAPIInteractionCallbackJSONBody = APIInteractionResponse;
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
  */
+export interface RESTPostAPIInteractionCallbackQuery {
+	/**
+	 * Whether to include a interaction callback response as the response instead of a 204
+	 */
+	with_response?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
+ */
 export type RESTPostAPIInteractionCallbackFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & {
 			/**
@@ -182,6 +196,90 @@ export type RESTPostAPIInteractionCallbackFormDataBody =
 			payload_json?: string | undefined;
 	  })
 	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIInteractionCallbackJSONBody);
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
+ */
+export type RESTPostAPIInteractionCallbackResult = never;
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-response-object
+ */
+export interface RESTPostAPIInteractionCallbackWithResponseResult {
+	/**
+	 * The interaction object associated with the interaction
+	 */
+	interaction: RESTAPIInteractionCallbackObject;
+	/**
+	 * The resource that was created by the interaction response
+	 */
+	resource?: RESTAPIInteractionCallbackResourceObject;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-object
+ */
+export interface RESTAPIInteractionCallbackObject {
+	/**
+	 * ID of the interaction
+	 */
+	id: Snowflake;
+	/**
+	 * Interaction type
+	 */
+	type: InteractionType;
+	/**
+	 * Instance ID of the Activity if one was launched or joined
+	 */
+	activity_instance_id?: string;
+	/**
+	 * ID of the message that was created by the interaction
+	 */
+	response_message_id?: Snowflake;
+	/**
+	 * Whether or not the message is in a loading state
+	 */
+	response_message_loading?: boolean;
+	/**
+	 * Whether or not the response message was ephemeral
+	 */
+	response_message_ephemeral?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-resource-object
+ */
+export interface RESTAPIInteractionCallbackResourceObject {
+	/**
+	 * Interaction callback type
+	 */
+	type: InteractionResponseType;
+	/**
+	 * Represents the Activity launched by this interaction
+	 *
+	 * @remarks
+	 * Only present if `type` is {@link InteractionResponseType.LaunchActivity}
+	 */
+	activity_instance?: RESTAPIInteractionCallbackActivityInstanceResource;
+	/**
+	 * Message created by the interaction
+	 *
+	 * @remarks
+	 * Only present if `type` is {@link InteractionResponseType.ChannelMessageWithSource}
+	 * or {@link InteractionResponseType.UpdateMessage}
+	 */
+	message?: APIMessage;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-activity-instance-resource
+ */
+export interface RESTAPIInteractionCallbackActivityInstanceResource {
+	/**
+	 * Instance ID of the Activity if one was launched or joined.
+	 */
+	id: string;
+}
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response

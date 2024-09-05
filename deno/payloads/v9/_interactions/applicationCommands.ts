@@ -102,15 +102,35 @@ export interface APIApplicationCommand {
 	 * Autoincrementing version identifier updated during substantial record changes
 	 */
 	version: Snowflake;
+	/**
+	 * Determines whether the interaction is handled by the app's interactions handler or by Discord
+	 *
+	 * @remarks
+	 * This is only available for {@link ApplicationCommandType.PrimaryEntryPoint} commands
+	 */
+	handler?: EntryPointCommandHandlerType;
 }
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
  */
 export enum ApplicationCommandType {
+	/**
+	 * Slash commands; a text-based command that shows up when a user types `/`
+	 */
 	ChatInput = 1,
+	/**
+	 * A UI-based command that shows up when you right click or tap on a user
+	 */
 	User,
+	/**
+	 * A UI-based command that shows up when you right click or tap on a message
+	 */
 	Message,
+	/**
+	 * A UI-based command that represents the primary way to invoke an app's Activity
+	 */
+	PrimaryEntryPoint,
 }
 
 /**
@@ -143,6 +163,21 @@ export enum InteractionContextType {
 	 * Interaction can be used within Group DMs and DMs other than the app's bot user
 	 */
 	PrivateChannel,
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-entry-point-command-handler-types
+ */
+export enum EntryPointCommandHandlerType {
+	/**
+	 * The app handles the interaction using an interaction token
+	 */
+	AppHandler = 1,
+	/**
+	 * Discord handles the interaction by launching an Activity and sending a follow-up message without coordinating with
+	 * the app
+	 */
+	DiscordLaunchActivity,
 }
 
 /**
