@@ -1914,6 +1914,13 @@ export interface APIMessageSnapshot {
 	message: APIMessageSnapshotFields;
 	/**
 	 * Id of the origin message's guild
+	 *
+	 * @deprecated This field doesn't accurately reflect the Discord API as it doesn't exist nor is documented and will
+	 * be removed in the next major version.
+	 *
+	 * It was added in {@link https://github.com/discord/discord-api-docs/pull/6833/commits/d18f72d06d62e6b1d51ca2c1ef308ddc29ff3348 | d18f72d}
+	 * but was later removed before the PR ({@link https://github.com/discord/discord-api-docs/pull/6833 | discord-api-docs#6833}) was merged.
+	 * See {@link https://github.com/discordjs/discord-api-types/pull/1084 | discord-api-types#1084} for more information.
 	 */
 	guild_id?: Snowflake;
 }
