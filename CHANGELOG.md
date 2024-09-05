@@ -1,3 +1,26 @@
+## [0.37.100](https://github.com/discordjs/discord-api-types/compare/0.37.99...0.37.100) (2024-09-05)
+
+
+### Bug Fixes
+
+* **APIMessageSnapshot:** mark `guild_id` as deprecated ([#1084](https://github.com/discordjs/discord-api-types/issues/1084)) ([3f3fe21](https://github.com/discordjs/discord-api-types/commit/3f3fe21e153f2fbe6c76ba1cc916367551b175b6))
+* **GatewayGuildDeleteDispatchData:** make `unavailable` optional ([#1092](https://github.com/discordjs/discord-api-types/issues/1092)) ([258fb72](https://github.com/discordjs/discord-api-types/commit/258fb72f38c0513030dc5e1ae60e34fc3f83006d))
+* replace deprecated `RESTAPIPollCreate` with `RESTAPIPoll` ([#1091](https://github.com/discordjs/discord-api-types/issues/1091)) ([d3b5187](https://github.com/discordjs/discord-api-types/commit/d3b5187c77f845eba29ab56de41408bcea7e9cb4))
+
+
+### Features
+
+* add subscriptions ([#1078](https://github.com/discordjs/discord-api-types/issues/1078)) ([8f78190](https://github.com/discordjs/discord-api-types/commit/8f781909f1f5a0d1db8c3e134f4e9e1e22837277))
+* **APIMessageSnapshotFields:** add more fields ([#1085](https://github.com/discordjs/discord-api-types/issues/1085)) ([3de4ca8](https://github.com/discordjs/discord-api-types/commit/3de4ca8933be23ac05bf780957aea99e4a70c2fe))
+* **ConnectionService:** add Amazon Music connection ([#1074](https://github.com/discordjs/discord-api-types/issues/1074)) ([011d439](https://github.com/discordjs/discord-api-types/commit/011d439971e1f5ee11ba7caea5ed10131cafd6a6))
+* entry point commands and interaction callback response ([#1077](https://github.com/discordjs/discord-api-types/issues/1077)) ([b4b70d8](https://github.com/discordjs/discord-api-types/commit/b4b70d8bdcdbc175497366e6bb74dd3bc22c6738))
+* **FormattingPatterns:** `GuildNavigation` and `LinkedRole` ([#1089](https://github.com/discordjs/discord-api-types/issues/1089)) ([0938b66](https://github.com/discordjs/discord-api-types/commit/0938b664cef8fd3758506a2f689bb20ead616bb4))
+* **MessageType:** `PurchaseNotification` and `PollResult` ([#1040](https://github.com/discordjs/discord-api-types/issues/1040)) ([344274b](https://github.com/discordjs/discord-api-types/commit/344274b56c25b9a35a64fc61b170c177ee702e95))
+* **RESTJSONErrorCodes:** add `40018`, `40019`, and `40094` ([#1056](https://github.com/discordjs/discord-api-types/issues/1056)) ([93e649a](https://github.com/discordjs/discord-api-types/commit/93e649a20de0fda31b3276f8affb3cf6890ea693))
+* **RESTPatchAPIWebhookWithTokenMessageJSONBody:** `poll` ([#1067](https://github.com/discordjs/discord-api-types/issues/1067)) ([f770290](https://github.com/discordjs/discord-api-types/commit/f7702907172f84b57175b6f6c80eb2de210f6a7b))
+
+
+
 ## [0.37.99](https://github.com/discordjs/discord-api-types/compare/0.37.98...0.37.99) (2024-09-02)
 
 
