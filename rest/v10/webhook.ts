@@ -273,7 +273,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossibly
 	 * @remarks
 	 * Polls can only be added when editing a deferred interaction response.
 	 */
-	poll?: RESTAPIPollCreate | undefined;
+	poll?: RESTAPIPoll | undefined;
 };
 
 /**
