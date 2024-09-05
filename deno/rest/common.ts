@@ -138,6 +138,9 @@ export enum RESTJSONErrorCodes {
 
 	ConnectionHasBeenRevoked = 40_012,
 
+	OnlyConsumableSKUsCanBeConsumed = 40_018,
+	YouCanOnlyDeleteSandboxEntitlements,
+
 	TargetUserIsNotConnectedToVoice = 40_032,
 	ThisMessageWasAlreadyCrossposted,
 
@@ -155,6 +158,8 @@ export enum RESTJSONErrorCodes {
 	TagRequiredToCreateAForumPostInThisChannel,
 
 	AnEntitlementHasAlreadyBeenGrantedForThisResource = 40_074,
+
+	ThisInteractionHasHitTheMaximumNumberOfFollowUpMessages = 40_094,
 
 	CloudflareIsBlockingYourRequest = 40_333,
 
