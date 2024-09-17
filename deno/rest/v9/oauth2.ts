@@ -134,10 +134,10 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 * Needs to include bot for the bot flow
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| `${OAuth2Scopes.Bot} ${string}`
+		| `${OAuth2Scopes.Bot}`
+		| `${string} ${OAuth2Scopes.Bot} ${string}`
+		| `${string} ${OAuth2Scopes.Bot}`;
 	/**
 	 * The permissions you're requesting
 	 *
@@ -163,10 +163,10 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	 * This assumes you include the `bot` scope alongside others (like `identify` for example)
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| `${OAuth2Scopes.Bot} ${string}`
+		| `${OAuth2Scopes.Bot}`
+		| `${string} ${OAuth2Scopes.Bot} ${string}`
+		| `${string} ${OAuth2Scopes.Bot}`;
 	/**
 	 * The required permissions bitfield, stringified
 	 */
