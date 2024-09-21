@@ -34,6 +34,7 @@ import type {
 	AutoModerationRuleTriggerType,
 	APIAuditLogEntry,
 	ChannelType,
+	APISubscription,
 } from '../payloads/v9/mod.ts';
 import type { ReactionType } from '../rest/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
@@ -348,6 +349,7 @@ export type GatewayDispatchPayload =
 	| GatewayStageInstanceCreateDispatch
 	| GatewayStageInstanceDeleteDispatch
 	| GatewayStageInstanceUpdateDispatch
+	| GatewaySubscriptionModifyDispatch
 	| GatewayThreadCreateDispatch
 	| GatewayThreadDeleteDispatch
 	| GatewayThreadListSyncDispatch
@@ -615,6 +617,55 @@ export interface GatewayApplicationCommandPermissionsUpdateDispatchData {
 	 */
 	permissions: APIApplicationCommandPermission[];
 }
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-create
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-update
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-delete
+ */
+export type GatewaySubscriptionModifyDispatch = DataPayload<
+	| GatewayDispatchEvents.SubscriptionCreate
+	| GatewayDispatchEvents.SubscriptionDelete
+	| GatewayDispatchEvents.SubscriptionUpdate,
+	GatewaySubscriptionModifyDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-create
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-update
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-delete
+ */
+export type GatewaySubscriptionModifyDispatchData = APISubscription;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-create
+ */
+export type GatewaySubscriptionCreateDispatch = GatewaySubscriptionModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-create
+ */
+export type GatewaySubscriptionCreateDispatchData = GatewaySubscriptionModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-update
+ */
+export type GatewaySubscriptionUpdateDispatch = GatewaySubscriptionModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-update
+ */
+export type GatewaySubscriptionUpdateDispatchData = GatewaySubscriptionModifyDispatchData;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-delete
+ */
+export type GatewaySubscriptionDeleteDispatch = GatewaySubscriptionModifyDispatch;
+
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#subscription-delete
+ */
+export type GatewaySubscriptionDeleteDispatchData = GatewaySubscriptionModifyDispatchData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#channel-create
