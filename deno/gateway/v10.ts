@@ -1832,9 +1832,8 @@ export interface GatewayVoiceChannelEffectSendDispatchData {
 	emoji?: APIEmoji | null;
 	/**
 	 * The type of emoji animation, for emoji reaction and soundboard effects
-	 * See https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send-animation-types
 	 */
-	animation_type?: VoiceChannelEffectSendAnimationType;
+	animation_type?: VoiceChannelEffectSendAnimationType | null;
 	/**
 	 * The ID of the emoji animation, for emoji reaction and soundboard effects
 	 */
@@ -1842,17 +1841,16 @@ export interface GatewayVoiceChannelEffectSendDispatchData {
 	/**
 	 * The ID of the soundboard sound, for soundboard effects
 	 */
-	sound_id?: Snowflake;
-	/**
-	 * The filename of the soundboard default sound, for soundboard effects
-	 */
-	sound_override_path?: string | null;
+	sound_id?: Snowflake | number;
 	/**
 	 * The volume of the soundboard sound, from 0 to 1, for soundboard effects
 	 */
 	sound_volume?: number;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send-animation-types
+ */
 export enum VoiceChannelEffectSendAnimationType {
 	/**
 	 * A fun animation, sent by a Nitro subscriber
