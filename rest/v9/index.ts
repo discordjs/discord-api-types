@@ -12,12 +12,14 @@ export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
 export * from './oauth2';
+export * from './poll';
 export * from './stageInstance';
 export * from './sticker';
 export * from './template';
 export * from './user';
 export * from './voice';
 export * from './webhook';
+export * from './monetization';
 
 export const APIVersion = '9';
 
@@ -30,6 +32,7 @@ export const Routes = {
 	applicationRoleConnectionMetadata(applicationId: Snowflake) {
 		return `/applications/${applicationId}/role-connections/metadata` as const;
 	},
+
 	/**
 	 * Route for:
 	 * - GET  `/guilds/{guild.id}/auto-moderation/rules`
@@ -288,6 +291,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
+	 *
 	 * @deprecated Use {@link Routes.guildMember} instead.
 	 */
 	guildCurrentMemberNickname(guildId: Snowflake) {
@@ -341,6 +345,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET    `/guilds/{guild.id}/roles/{role.id}`
 	 * - PATCH  `/guilds/{guild.id}/roles/{role.id}`
 	 * - DELETE `/guilds/{guild.id}/roles/{role.id}`
 	 */
@@ -461,6 +466,22 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/channels/{channel.id}/polls/{message.id}/answers/{answer_id}`
+	 */
+	pollAnswerVoters(channelId: Snowflake, messageId: Snowflake, answerId: number) {
+		return `/channels/${channelId}/polls/${messageId}/answers/${answerId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/channels/{channel.id}/polls/{message.id}/expire`
+	 */
+	expirePoll(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/polls/${messageId}/expire` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - POST `/channels/{channel.id}/threads`
 	 * - POST `/channels/{channel.id}/messages/{message.id}/threads`
 	 */
@@ -471,7 +492,9 @@ export const Routes = {
 
 		parts.push('threads');
 
-		return parts.join('/') as `/channels/${Snowflake}/threads` | `/channels/${Snowflake}/messages/${Snowflake}/threads`;
+		return parts.join('/') as
+			| `/channels/${Snowflake}/messages/${Snowflake}/threads`
+			| `/channels/${Snowflake}/threads`;
 	},
 
 	/**
@@ -489,7 +512,7 @@ export const Routes = {
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
-	channelThreads(channelId: Snowflake, archived?: 'public' | 'private') {
+	channelThreads(channelId: Snowflake, archived?: 'private' | 'public') {
 		const parts = ['', 'channels', channelId, 'threads'];
 
 		if (archived) parts.push('archived', archived);
@@ -497,12 +520,12 @@ export const Routes = {
 
 		return parts.join('/') as
 			| `/channels/${Snowflake}/threads/active`
-			| `/channels/${Snowflake}/threads/archived/${'public' | 'private'}`;
+			| `/channels/${Snowflake}/threads/archived/${'private' | 'public'}`;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `/channels/{channel.id}/users/@me/threads/archived/prviate`
+	 * - GET `/channels/{channel.id}/users/@me/threads/archived/private`
 	 */
 	channelJoinedArchivedThreads(channelId: Snowflake) {
 		return `/channels/${channelId}/users/@me/threads/archived/private` as const;
@@ -523,8 +546,8 @@ export const Routes = {
 		if (userId) parts.push(userId);
 
 		return parts.join('/') as
-			| `/channels/${Snowflake}/thread-members`
-			| `/channels/${Snowflake}/thread-members/${Snowflake | '@me'}`;
+			| `/channels/${Snowflake}/thread-members/${Snowflake | '@me'}`
+			| `/channels/${Snowflake}/thread-members`;
 	},
 
 	/**
@@ -533,7 +556,7 @@ export const Routes = {
 	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userId='@me'] The user ID, defaulted to `@me`
+	 * @param [userId] The user ID, defaulted to `@me`
 	 */
 	user(userId: Snowflake | '@me' = '@me') {
 		return `/users/${userId}` as const;
@@ -630,7 +653,7 @@ export const Routes = {
 
 		if (webhookToken) parts.push(webhookToken);
 
-		return parts.join('/') as `/webhooks/${Snowflake}` | `/webhooks/${Snowflake}/${string}`;
+		return parts.join('/') as `/webhooks/${Snowflake}/${string}` | `/webhooks/${Snowflake}`;
 	},
 
 	/**
@@ -645,8 +668,6 @@ export const Routes = {
 	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/@original`
 	 * - PATCH  `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
 	 * - DELETE `/webhooks/{application.id}/{interaction.token}/messages/{message.id}`
-	 *
-	 * @param [messageId='@original'] The message ID to change, defaulted to `@original`
 	 */
 	webhookMessage(webhookId: Snowflake, webhookToken: string, messageId: Snowflake | '@original' = '@original') {
 		return `/webhooks/${webhookId}/${webhookToken}/messages/${messageId}` as const;
@@ -776,6 +797,8 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/voice-states/@me`
+	 * - GET `/guilds/{guild.id}/voice-states/{user.id}`
 	 * - PATCH `/guilds/{guild.id}/voice-states/@me`
 	 * - PATCH `/guilds/{guild.id}/voice-states/{user.id}`
 	 */
@@ -840,6 +863,24 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/sticker-packs`
 	 */
+	stickerPacks() {
+		return '/sticker-packs' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/sticker-packs/{pack.id}`
+	 */
+	stickerPack(packId: Snowflake) {
+		return `/sticker-packs/${packId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/sticker-packs`
+	 *
+	 * @deprecated Use {@link Routes.stickerPacks} instead.
+	 */
 	nitroStickerPacks() {
 		return '/sticker-packs' as const;
 	},
@@ -889,9 +930,111 @@ export const Routes = {
 	guildScheduledEventUsers(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/onboarding`
+	 * - PUT `/guilds/{guild.id}/onboarding`
+	 */
+	guildOnboarding(guildId: Snowflake) {
+		return `/guilds/${guildId}/onboarding` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/@me`
+	 * - PATCH `/applications/@me`
+	 */
+	currentApplication() {
+		return '/applications/@me' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements`
+	 * - POST `/applications/{application.id}/entitlements`
+	 */
+	entitlements(applicationId: Snowflake) {
+		return `/applications/${applicationId}/entitlements` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
+	 */
+	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/applications/${applicationId}/entitlements/${entitlementId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/skus`
+	 */
+	skus(applicationId: Snowflake) {
+		return `/applications/${applicationId}/skus` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/guilds/{guild.id}/bulk-ban`
+	 */
+	guildBulkBan(guildId: Snowflake) {
+		return `/guilds/${guildId}/bulk-ban` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/applications/{application.id}/entitlements/{entitlement.id}/consume`
+	 */
+	consumeEntitlement(applicationId: Snowflake, entitlementId: Snowflake) {
+		return `/applications/${applicationId}/entitlements/${entitlementId}/consume` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/emojis`
+	 * - POST `/applications/{application.id}/emojis`
+	 */
+	applicationEmojis(applicationId: Snowflake) {
+		return `/applications/${applicationId}/emojis` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/emojis/{emoji.id}`
+	 * - PATCH `/applications/{application.id}/emojis/{emoji.id}`
+	 * - DELETE `/applications/{application.id}/emojis/{emoji.id}`
+	 */
+	applicationEmoji(applicationId: Snowflake, emojiId: Snowflake) {
+		return `/applications/${applicationId}/emojis/${emojiId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/skus/{sku.id}/subscriptions`
+	 */
+	skuSubscriptions(skuId: Snowflake) {
+		return `/skus/${skuId}/subscriptions` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/skus/{sku.id}/subscriptions/${subscription.id}`
+	 */
+	skuSubscription(skuId: Snowflake, subscriptionId: Snowflake) {
+		return `/skus/${skuId}/subscriptions/${subscriptionId}` as const;
+	},
 };
 
 export const StickerPackApplicationId = '710982414301790216';
+
+export enum ImageFormat {
+	JPEG = 'jpeg',
+	PNG = 'png',
+	WebP = 'webp',
+	GIF = 'gif',
+	Lottie = 'json',
+}
 
 export const CDNRoutes = {
 	/**
@@ -902,20 +1045,20 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	emoji(emojiId: Snowflake, format: EmojiFormat) {
+	emoji<Format extends EmojiFormat>(emojiId: Snowflake, format: Format) {
 		return `/emojis/${emojiId}.${format}` as const;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/icons/{guild.id}.{png|jpeg|webp|gif}`
+	 * - GET `/icons/{guild.id}/{guild.icon}.{png|jpeg|webp|gif}`
 	 *
 	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildIcon(guildId: Snowflake, guildIcon: string, format: GuildIconFormat) {
-		return `icons/${guildId}/${guildIcon}.${format}` as const;
+	guildIcon<Format extends GuildIconFormat>(guildId: Snowflake, guildIcon: string, format: Format) {
+		return `/icons/${guildId}/${guildIcon}.${format}` as const;
 	},
 
 	/**
@@ -924,7 +1067,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	guildSplash(guildId: Snowflake, guildSplash: string, format: GuildSplashFormat) {
+	guildSplash<Format extends GuildSplashFormat>(guildId: Snowflake, guildSplash: string, format: Format) {
 		return `/splashes/${guildId}/${guildSplash}.${format}` as const;
 	},
 
@@ -934,7 +1077,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	guildDiscoverySplash(guildId: Snowflake, guildDiscoverySplash: string, format: GuildDiscoverySplashFormat) {
+	guildDiscoverySplash<Format extends GuildDiscoverySplashFormat>(
+		guildId: Snowflake,
+		guildDiscoverySplash: string,
+		format: Format,
+	) {
 		return `/discovery-splashes/${guildId}/${guildDiscoverySplash}.${format}` as const;
 	},
 
@@ -946,7 +1093,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildBanner(guildId: Snowflake, guildBanner: string, format: GuildBannerFormat) {
+	guildBanner<Format extends GuildBannerFormat>(guildId: Snowflake, guildBanner: string, format: Format) {
 		return `/banners/${guildId}/${guildBanner}.${format}` as const;
 	},
 
@@ -958,20 +1105,22 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	userBanner(userId: Snowflake, userBanner: string, format: UserBannerFormat) {
+	userBanner<Format extends UserBannerFormat>(userId: Snowflake, userBanner: string, format: Format) {
 		return `/banners/${userId}/${userBanner}.${format}` as const;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `/embed/avatars/{user.discriminator % 5}.png`
+	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The `userDiscriminator` parameter should be the user discriminator modulo 5 (e.g. 1337 % 5 = 2)
+	 * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log#unique-usernames-on-discord).
+	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
+	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *
 	 * This route supports the extension: PNG
 	 */
-	defaultUserAvatar(userDiscriminator: DefaultUserAvatarAssets) {
-		return `/embed/avatars/${userDiscriminator}.png` as const;
+	defaultUserAvatar<Index extends DefaultUserAvatarAssets>(index: Index) {
+		return `/embed/avatars/${index}.png` as const;
 	},
 
 	/**
@@ -982,20 +1131,47 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	userAvatar(userId: Snowflake, userAvatar: string, format: UserAvatarFormat) {
+	userAvatar<Format extends UserAvatarFormat>(userId: Snowflake, userAvatar: string, format: Format) {
 		return `/avatars/${userId}/${userAvatar}.${format}` as const;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `/guilds/{guild.id}/users/{user.id}/{guild_member.avatar}.{png|jpeg|webp|gif}`
+	 * - GET `/guilds/{guild.id}/users/{user.id}/avatars/{guild_member.avatar}.{png|jpeg|webp|gif}`
 	 *
 	 * As this route supports GIFs, the hash will begin with `a_` if it is available in GIF format
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildMemberAvatar(guildId: Snowflake, userId: Snowflake, memberAvatar: string, format: GuildMemberAvatarFormat) {
+	guildMemberAvatar<Format extends GuildMemberAvatarFormat>(
+		guildId: Snowflake,
+		userId: Snowflake,
+		memberAvatar: string,
+		format: Format,
+	) {
 		return `/guilds/${guildId}/users/${userId}/avatars/${memberAvatar}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/avatar-decorations/{user.id}/{user.avatar_decoration}.png`
+	 *
+	 * This route supports the extension: PNG
+	 *
+	 * @deprecated Use {@link CDNRoutes.avatarDecoration} instead.
+	 */
+	userAvatarDecoration(userId: Snowflake, userAvatarDecoration: string) {
+		return `/avatar-decorations/${userId}/${userAvatarDecoration}.png` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/avatar-decoration-presets/{avatar_decoration_data_asset}.png`
+	 *
+	 * This route supports the extension: PNG
+	 */
+	avatarDecoration(avatarDecorationDataAsset: string) {
+		return `/avatar-decoration-presets/${avatarDecorationDataAsset}.png` as const;
 	},
 
 	/**
@@ -1004,7 +1180,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	applicationIcon(applicationId: Snowflake, applicationIcon: string, format: ApplicationIconFormat) {
+	applicationIcon<Format extends ApplicationIconFormat>(
+		applicationId: Snowflake,
+		applicationIcon: string,
+		format: Format,
+	) {
 		return `/app-icons/${applicationId}/${applicationIcon}.${format}` as const;
 	},
 
@@ -1014,7 +1194,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	applicationCover(applicationId: Snowflake, applicationCoverImage: string, format: ApplicationCoverFormat) {
+	applicationCover<Format extends ApplicationCoverFormat>(
+		applicationId: Snowflake,
+		applicationCoverImage: string,
+		format: Format,
+	) {
 		return `/app-icons/${applicationId}/${applicationCoverImage}.${format}` as const;
 	},
 
@@ -1024,7 +1208,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	applicationAsset(applicationId: Snowflake, applicationAssetId: string, format: ApplicationAssetFormat) {
+	applicationAsset<Format extends ApplicationAssetFormat>(
+		applicationId: Snowflake,
+		applicationAssetId: string,
+		format: Format,
+	) {
 		return `/app-assets/${applicationId}/${applicationAssetId}.${format}` as const;
 	},
 
@@ -1034,11 +1222,11 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	achievementIcon(
+	achievementIcon<Format extends AchievementIconFormat>(
 		applicationId: Snowflake,
 		achievementId: Snowflake,
 		achievementIconHash: string,
-		format: AchievementIconFormat,
+		format: Format,
 	) {
 		return `/app-assets/${applicationId}/achievements/${achievementId}/icons/${achievementIconHash}.${format}` as const;
 	},
@@ -1049,7 +1237,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	stickerPackBanner(stickerPackBannerAssetId: Snowflake, format: StickerPackBannerFormat) {
+	stickerPackBanner<Format extends StickerPackBannerFormat>(stickerPackBannerAssetId: Snowflake, format: Format) {
 		return `/app-assets/${StickerPackApplicationId}/store/${stickerPackBannerAssetId}.${format}` as const;
 	},
 
@@ -1059,17 +1247,21 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	storePageAsset(applicationId: Snowflake, assetId: string) {
-		return `/app-assets/${applicationId}/store/${assetId}.png` as const;
+	storePageAsset<Format extends StorePageAssetFormat = ImageFormat.PNG>(
+		applicationId: Snowflake,
+		assetId: string,
+		format: Format = ImageFormat.PNG as Format,
+	) {
+		return `/app-assets/${applicationId}/store/${assetId}.${format}` as const;
 	},
 
 	/**
 	 * Route for:
-	 * - GET `team-icons/{team.id}/{team.icon}.{png|jpeg|webp}`
+	 * - GET `/team-icons/{team.id}/{team.icon}.{png|jpeg|webp}`
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	teamIcon(teamId: Snowflake, teamIcon: string, format: TeamIconFormat) {
+	teamIcon<Format extends TeamIconFormat>(teamId: Snowflake, teamIcon: string, format: Format) {
 		return `/team-icons/${teamId}/${teamIcon}.${format}` as const;
 	},
 
@@ -1079,7 +1271,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, Lottie, GIF
 	 */
-	sticker(stickerId: Snowflake, format: StickerFormat) {
+	sticker<Format extends StickerFormat>(stickerId: Snowflake, format: Format) {
 		return `/stickers/${stickerId}.${format}` as const;
 	},
 
@@ -1089,7 +1281,7 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	roleIcon(roleId: Snowflake, roleIcon: string, format: RoleIconFormat) {
+	roleIcon<Format extends RoleIconFormat>(roleId: Snowflake, roleIcon: string, format: Format) {
 		return `/role-icons/${roleId}/${roleIcon}.${format}` as const;
 	},
 
@@ -1099,10 +1291,10 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
-	guildScheduledEventCover(
+	guildScheduledEventCover<Format extends GuildScheduledEventCoverFormat>(
 		guildScheduledEventId: Snowflake,
 		guildScheduledEventCoverImage: string,
-		format: GuildScheduledEventCoverFormat,
+		format: Format,
 	) {
 		return `/guild-events/${guildScheduledEventId}/${guildScheduledEventCoverImage}.${format}` as const;
 	},
@@ -1113,7 +1305,12 @@ export const CDNRoutes = {
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP, GIF
 	 */
-	guildMemberBanner(guildId: Snowflake, userId: Snowflake, guildMemberBanner: string, format: GuildMemberBannerFormat) {
+	guildMemberBanner<Format extends GuildMemberBannerFormat>(
+		guildId: Snowflake,
+		userId: Snowflake,
+		guildMemberBanner: string,
+		format: Format,
+	) {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
 	},
 };
@@ -1122,31 +1319,24 @@ export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type EmojiFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type GuildIconFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-export type GuildSplashFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type GuildDiscoverySplashFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type GuildSplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type GuildDiscoverySplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type UserBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type DefaultUserAvatar = Extract<ImageFormat, ImageFormat.PNG>;
 export type UserAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type GuildMemberAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-export type ApplicationIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type ApplicationCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type StickerFormat = Extract<ImageFormat, ImageFormat.PNG | ImageFormat.Lottie | ImageFormat.GIF>;
-export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
-export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.Lottie | ImageFormat.GIF>;
+export type ApplicationIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type ApplicationCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StickerFormat = Extract<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie | ImageFormat.PNG>;
+export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-
-export enum ImageFormat {
-	JPEG = 'jpeg',
-	PNG = 'png',
-	WebP = 'webp',
-	GIF = 'gif',
-	Lottie = 'json',
-}
 
 export interface CDNQuery {
 	/**

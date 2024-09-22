@@ -20,7 +20,7 @@ export enum ApplicationCommandOptionType {
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
  */
-export interface APIApplicationCommandOptionChoice<ValueType = string | number> {
+export interface APIApplicationCommandOptionChoice<ValueType = number | string> {
 	name: string;
 	name_localizations?: LocalizationMap | null;
 	value: ValueType;

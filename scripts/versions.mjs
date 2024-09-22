@@ -24,23 +24,21 @@ await Promise.allSettled(
 
 		// Voice
 		'v4',
-	]
-		.map((version) => [
-			fileToESMWrapperCall('gateway', version),
-			fileToESMWrapperCall(`payloads/${version}`, 'index'),
-			fileToESMWrapperCall(`rest/${version}`, 'index'),
+	].flatMap((version) => [
+		fileToESMWrapperCall('gateway', version),
+		fileToESMWrapperCall(`payloads/${version}`, 'index'),
+		fileToESMWrapperCall(`rest/${version}`, 'index'),
 
-			// Voice
-			fileToESMWrapperCall('voice', version),
+		// Voice
+		fileToESMWrapperCall('voice', version),
 
-			// RPC
-			fileToESMWrapperCall('rpc', version),
+		// RPC
+		fileToESMWrapperCall('rpc', version),
 
-			// Utils
-			fileToESMWrapperCall('utils', version),
+		// Utils
+		fileToESMWrapperCall('utils', version),
 
-			// Shortcuts
-			fileToESMWrapperCall('', version),
-		])
-		.flat(),
+		// Shortcuts
+		fileToESMWrapperCall('', version),
+	]),
 );

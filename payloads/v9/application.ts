@@ -2,11 +2,13 @@
  * Types extracted from https://discord.com/developers/docs/resources/application
  */
 
+import type { Permissions, Snowflake } from '../../globals';
+import type { LocalizationMap } from '../common';
+import type { APIPartialGuild } from './guild';
+import type { ApplicationIntegrationType } from './interactions';
 import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
-import type { Permissions, Snowflake } from '../../globals';
-import type { LocalizationMap } from '../common';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
@@ -41,6 +43,10 @@ export interface APIApplication {
 	 */
 	bot_require_code_grant: boolean;
 	/**
+	 * Partial user object for the bot user associated with the application
+	 */
+	bot?: APIUser;
+	/**
 	 * The url of the application's terms of service
 	 */
 	terms_of_service_url?: string;
@@ -58,8 +64,9 @@ export interface APIApplication {
 	 * An empty string
 	 *
 	 * @deprecated This field will be removed in v11
+	 * @unstable This field is no longer documented by Discord and will be removed in v11
 	 */
-	summary: string;
+	summary: '';
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
@@ -76,6 +83,10 @@ export interface APIApplication {
 	 * If this application is a game sold on Discord, this field will be the guild to which it has been linked
 	 */
 	guild_id?: Snowflake;
+	/**
+	 * A partial object of the associated guild
+	 */
+	guild?: APIPartialGuild;
 	/**
 	 * If this application is a game sold on Discord, this field will be the id of the "Game SKU" that is created, if exists
 	 */
@@ -95,7 +106,28 @@ export interface APIApplication {
 	 */
 	flags: ApplicationFlags;
 	/**
-	 * Up to 5 tags describing the content and functionality of the application
+	 * Approximate count of guilds the application has been added to
+	 */
+	approximate_guild_count?: number;
+	/**
+	 * Approximate count of users that have installed the app
+	 */
+	approximate_user_install_count?: number;
+	/**
+	 * Array of redirect URIs for the application
+	 */
+	redirect_uris?: string[];
+	/**
+	 * The interactions endpoint URL for the application
+	 */
+	interactions_endpoint_url?: string | null;
+	/**
+	 * The application's role connection verification entry point,
+	 * which when configured will render the app as a verification method in the guild role verification configuration
+	 */
+	role_connections_verification_url?: string | null;
+	/**
+	 * Up to 5 tags of max 20 characters each describing the content and functionality of the application
 	 */
 	tags?: [string, string?, string?, string?, string?];
 	/**
@@ -103,20 +135,27 @@ export interface APIApplication {
 	 */
 	install_params?: APIApplicationInstallParams;
 	/**
+	 * Default scopes and permissions for each supported installation context. Value for each key is an integration type configuration object
+	 */
+	integration_types_config?: APIApplicationIntegrationTypesConfigMap;
+	/**
 	 * The application's default custom authorization link, if enabled
 	 */
 	custom_install_url?: string;
-	/**
-	 * The application's role connection verification entry point,
-	 * which when configured will render the app as a verification method in the guild role verification configuration
-	 */
-	role_connections_verification_url?: string;
 }
 
 export interface APIApplicationInstallParams {
 	scopes: OAuth2Scopes[];
 	permissions: Permissions;
 }
+
+export interface APIApplicationIntegrationTypeConfiguration {
+	oauth2_install_params?: APIApplicationInstallParams;
+}
+
+export type APIApplicationIntegrationTypesConfigMap = {
+	[key in ApplicationIntegrationType]?: APIApplicationIntegrationTypeConfiguration;
+};
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-flags
@@ -139,7 +178,7 @@ export enum ApplicationFlags {
 	 */
 	GroupDMCreate = 1 << 4,
 	/**
-	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Indicates if an app uses the Auto Moderation API
 	 */
 	ApplicationAutoModerationRuleCreateBadge = 1 << 6,
 	/**

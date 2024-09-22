@@ -1,3 +1,20 @@
+import type { Snowflake } from '../../globals';
+import type {
+	APIApplicationCommand,
+	APIApplicationCommandPermission,
+	APIGuildApplicationCommandPermissions,
+	APIInteractionResponse,
+	APIInteractionResponseCallbackData,
+	ApplicationCommandType,
+	InteractionResponseType,
+	APIMessage,
+	InteractionType,
+} from '../../payloads/v10/index';
+import type {
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
+	NonNullableFields,
+	StrictPartial,
+} from '../../utils/internals';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
 	RESTGetAPIWebhookWithTokenMessageResult,
@@ -6,15 +23,6 @@ import type {
 	RESTPatchAPIWebhookWithTokenMessageResult,
 	RESTPostAPIWebhookWithTokenWaitResult,
 } from './webhook';
-import type {
-	APIApplicationCommand,
-	APIApplicationCommandPermission,
-	APIGuildApplicationCommandPermissions,
-	APIInteractionResponse,
-	APIInteractionResponseCallbackData,
-	ApplicationCommandType,
-} from '../../payloads/v10/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
@@ -42,17 +50,22 @@ export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Omit<
 		APIApplicationCommand,
-		| 'id'
 		| 'application_id'
+		| 'contexts'
+		| 'default_member_permissions'
+		| 'description_localized'
 		| 'description'
+		| 'guild_id'
+		| 'id'
+		| 'integration_types'
+		| 'name_localized'
 		| 'type'
 		| 'version'
-		| 'guild_id'
-		| 'name_localized'
-		| 'description_localized'
-		| 'default_member_permissions'
 	> &
-		Partial<Pick<APIApplicationCommand, 'default_member_permissions'>>
+		Partial<
+			NonNullableFields<Pick<APIApplicationCommand, 'contexts'>> &
+				Pick<APIApplicationCommand, 'default_member_permissions' | 'integration_types'>
+		>
 >;
 
 /**
@@ -67,7 +80,7 @@ export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPos
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
 export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
-	type: ApplicationCommandType.User | ApplicationCommandType.Message;
+	type: ApplicationCommandType.Message | ApplicationCommandType.User;
 }
 
 /**
@@ -165,14 +178,108 @@ export type RESTPostAPIInteractionCallbackJSONBody = APIInteractionResponse;
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
  */
+export interface RESTPostAPIInteractionCallbackQuery {
+	/**
+	 * Whether to include a interaction callback response as the response instead of a 204
+	 */
+	with_response?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
+ */
 export type RESTPostAPIInteractionCallbackFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIInteractionCallbackJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIInteractionCallbackJSONBody);
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
+ */
+export type RESTPostAPIInteractionCallbackResult = never;
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-response-object
+ */
+export interface RESTPostAPIInteractionCallbackWithResponseResult {
+	/**
+	 * The interaction object associated with the interaction
+	 */
+	interaction: RESTAPIInteractionCallbackObject;
+	/**
+	 * The resource that was created by the interaction response
+	 */
+	resource?: RESTAPIInteractionCallbackResourceObject;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-object
+ */
+export interface RESTAPIInteractionCallbackObject {
+	/**
+	 * ID of the interaction
+	 */
+	id: Snowflake;
+	/**
+	 * Interaction type
+	 */
+	type: InteractionType;
+	/**
+	 * Instance ID of the Activity if one was launched or joined
+	 */
+	activity_instance_id?: string;
+	/**
+	 * ID of the message that was created by the interaction
+	 */
+	response_message_id?: Snowflake;
+	/**
+	 * Whether or not the message is in a loading state
+	 */
+	response_message_loading?: boolean;
+	/**
+	 * Whether or not the response message was ephemeral
+	 */
+	response_message_ephemeral?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-resource-object
+ */
+export interface RESTAPIInteractionCallbackResourceObject {
+	/**
+	 * Interaction callback type
+	 */
+	type: InteractionResponseType;
+	/**
+	 * Represents the Activity launched by this interaction
+	 *
+	 * @remarks
+	 * Only present if `type` is {@link InteractionResponseType.LaunchActivity}
+	 */
+	activity_instance?: RESTAPIInteractionCallbackActivityInstanceResource;
+	/**
+	 * Message created by the interaction
+	 *
+	 * @remarks
+	 * Only present if `type` is {@link InteractionResponseType.ChannelMessageWithSource}
+	 * or {@link InteractionResponseType.UpdateMessage}
+	 */
+	message?: APIMessage;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-activity-instance-resource
+ */
+export interface RESTAPIInteractionCallbackActivityInstanceResource {
+	/**
+	 * Instance ID of the Activity if one was launched or joined.
+	 */
+	id: string;
+}
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response
@@ -208,13 +315,13 @@ export type RESTPostAPIInteractionFollowupJSONBody = APIInteractionResponseCallb
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message
  */
 export type RESTPostAPIInteractionFollowupFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIInteractionFollowupJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIInteractionFollowupJSONBody);
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message

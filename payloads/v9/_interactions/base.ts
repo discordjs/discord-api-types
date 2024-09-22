@@ -1,21 +1,64 @@
-import type { InteractionType } from './responses';
 import type { Permissions, Snowflake } from '../../../globals';
-import type { APIRole, LocaleString } from '../../../v9';
-import type { APIAttachment, APIMessage, APIPartialChannel, APIThreadMetadata } from '../channel';
+import type { APIRole, ApplicationIntegrationType, InteractionContextType, LocaleString } from '../../../v9';
+import type {
+	APIAttachment,
+	APIChannel,
+	APIMessage,
+	APIPartialChannel,
+	APIThreadChannel,
+	ChannelType,
+	ThreadChannelType,
+} from '../channel';
 import type { APIGuildMember } from '../guild';
+import type { APIEntitlement } from '../monetization';
 import type { APIUser } from '../user';
+import type { InteractionType } from './responses';
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
+ */
+export interface APIMessageInteractionMetadata {
+	/**
+	 * ID of the interaction
+	 */
+	id: Snowflake;
+	/**
+	 * Type of interaction
+	 */
+	type: InteractionType;
+	/**
+	 * User who triggered the interaction
+	 */
+	user: APIUser;
+	/**
+	 * IDs for installation context(s) related to an interaction. Details in Authorizing Integration Owners Object
+	 */
+	authorizing_integration_owners: APIAuthorizingIntegrationOwnersMap;
+	/**
+	 * ID of the original response message, present only on follow-up messages
+	 */
+	original_response_message_id?: Snowflake;
+	/**
+	 * ID of the message that contained interactive component, present only on messages created from component interactions
+	 */
+	interacted_message_id?: Snowflake;
+	/**
+	 * Metadata for the interaction that was used to open the modal, present only on modal submit interactions
+	 */
+	triggering_interaction_metadata?: APIMessageInteractionMetadata;
+}
 
 export type PartialAPIMessageInteractionGuildMember = Pick<
 	APIGuildMember,
-	| 'roles'
-	| 'premium_since'
-	| 'pending'
-	| 'nick'
-	| 'mute'
-	| 'joined_at'
-	| 'deaf'
-	| 'communication_disabled_until'
 	| 'avatar'
+	| 'communication_disabled_until'
+	| 'deaf'
+	| 'joined_at'
+	| 'mute'
+	| 'nick'
+	| 'pending'
+	| 'premium_since'
+	| 'roles'
 >;
 
 /**
@@ -81,6 +124,12 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * The channel it was sent from
 	 */
+	channel?: Partial<APIChannel> & Pick<APIChannel, 'id' | 'type'>;
+	/**
+	 * The id of the channel it was sent from
+	 *
+	 * @deprecated Use {@apilink APIBaseInteraction#channel} instead
+	 */
 	channel_id?: Snowflake;
 	/**
 	 * Guild member data for the invoking user, including permissions
@@ -107,7 +156,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * Bitwise set of permissions the app or bot has within the channel the interaction was sent from
 	 */
-	app_permissions?: Permissions;
+	app_permissions: Permissions;
 	/**
 	 * The selected language of the invoking user
 	 */
@@ -116,11 +165,27 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * The guild's preferred locale, if invoked in a guild
 	 */
 	guild_locale?: LocaleString;
+	/**
+	 * For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
+	 */
+	entitlements: APIEntitlement[];
+	/**
+	 * Mapping of installation contexts that the interaction was authorized for to related user or guild IDs.
+	 */
+	authorizing_integration_owners: APIAuthorizingIntegrationOwnersMap;
+	/**
+	 * Context where the interaction was triggered from
+	 */
+	context?: InteractionContextType;
 }
+
+export type APIAuthorizingIntegrationOwnersMap = {
+	[key in ApplicationIntegrationType]?: Snowflake;
+};
 
 export type APIDMInteractionWrapper<Original extends APIBaseInteraction<InteractionType, unknown>> = Omit<
 	Original,
-	'member' | 'guild_id'
+	'guild_id' | 'member'
 > &
 	Required<Pick<Original, 'user'>>;
 
@@ -128,21 +193,25 @@ export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<Inter
 	Original,
 	'user'
 > &
-	Required<Pick<Original, 'member' | 'guild_id'>>;
+	Required<Pick<Original, 'guild_id' | 'member'>>;
+
+export interface APIInteractionDataResolvedChannelBase<T extends ChannelType> extends Required<APIPartialChannel> {
+	type: T;
+	permissions: Permissions;
+}
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object
  */
-export interface APIInteractionDataResolvedChannel extends Required<APIPartialChannel> {
-	thread_metadata?: APIThreadMetadata | null;
-	permissions: Permissions;
-	parent_id?: string | null;
-}
+export type APIInteractionDataResolvedChannel =
+	| APIInteractionDataResolvedChannelBase<Exclude<ChannelType, ThreadChannelType>>
+	| (APIInteractionDataResolvedChannelBase<ThreadChannelType> &
+			Pick<APIThreadChannel, 'parent_id' | 'thread_metadata'>);
 
 /**
  * https://discord.com/developers/docs/resources/guild#guild-member-object
  */
-export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'user' | 'deaf' | 'mute'> {
+export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'deaf' | 'mute' | 'user'> {
 	permissions: Permissions;
 }
 
@@ -165,8 +234,8 @@ export type APIChatInputApplicationCommandInteractionDataResolved = APIInteracti
 /**
  * `users` and optional `members` from APIInteractionDataResolved, for user commands and user selects
  */
-export type APIUserInteractionDataResolved = Required<Pick<APIInteractionDataResolved, 'users'>> &
-	Pick<APIInteractionDataResolved, 'members'>;
+export type APIUserInteractionDataResolved = Pick<APIInteractionDataResolved, 'members'> &
+	Required<Pick<APIInteractionDataResolved, 'users'>>;
 
 /**
  * @deprecated Renamed to `APIUserInteractionDataResolved`

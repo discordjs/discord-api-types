@@ -1,4 +1,3 @@
-import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 import type { Permissions, Snowflake } from '../../globals';
 import type {
 	APIBan,
@@ -10,6 +9,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildMembershipScreening,
+	APIGuildOnboarding,
 	APIGuildPreview,
 	APIGuildWelcomeScreen,
 	APIGuildWidget,
@@ -24,50 +24,75 @@ import type {
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	GuildWidgetStyle,
+	APIGuildOnboardingPrompt,
+	APIGuildOnboardingPromptOption,
 } from '../../payloads/v10/index';
 import type {
+	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
 	DistributiveOmit,
 	DistributivePick,
 	Nullable,
 	StrictPartial,
 	StrictRequired,
 } from '../../utils/internals';
+import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 
-export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
+export interface RESTAPIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;
 }
 
-export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
-export type APIGuildCreatePartialChannel = StrictPartial<
+/**
+ * @deprecated Use {@link RESTAPIGuildCreateOverwrite} instead
+ */
+export type APIGuildCreateOverwrite = RESTAPIGuildCreateOverwrite;
+
+export type RESTAPIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGroupDMChannel>;
+
+/**
+ * @deprecated Use {@link RESTAPIGuildChannelResolvable} instead
+ */
+export type APIGuildChannelResolvable = RESTAPIGuildChannelResolvable;
+
+export type RESTAPIGuildCreatePartialChannel = StrictPartial<
 	DistributivePick<
-		APIGuildChannelResolvable,
-		| 'type'
-		| 'topic'
-		| 'nsfw'
-		| 'bitrate'
-		| 'user_limit'
-		| 'rate_limit_per_user'
-		| 'default_auto_archive_duration'
-		| 'position'
-		| 'rtc_region'
-		| 'video_quality_mode'
-		| 'flags'
-		| 'default_reaction_emoji'
+		RESTAPIGuildChannelResolvable,
 		| 'available_tags'
-		| 'default_sort_order'
+		| 'bitrate'
+		| 'default_auto_archive_duration'
 		| 'default_forum_layout'
+		| 'default_reaction_emoji'
+		| 'default_sort_order'
 		| 'default_thread_rate_limit_per_user'
+		| 'flags'
+		| 'nsfw'
+		| 'position'
+		| 'rate_limit_per_user'
+		| 'rtc_region'
+		| 'topic'
+		| 'type'
+		| 'user_limit'
+		| 'video_quality_mode'
 	>
 > & {
 	name: string;
 	id?: number | string | undefined;
 	parent_id?: number | string | null | undefined;
-	permission_overwrites?: APIGuildCreateOverwrite[] | undefined;
+	permission_overwrites?: RESTAPIGuildCreateOverwrite[] | undefined;
 };
 
-export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
+/**
+ * @deprecated Use {@link RESTAPIGuildCreatePartialChannel} instead
+ */
+export type APIGuildCreatePartialChannel = RESTAPIGuildCreatePartialChannel;
+
+export interface RESTAPIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 	id: number | string;
 }
+
+/**
+ * @deprecated Use {@link RESTAPIGuildCreateRole} instead
+ */
+export type APIGuildCreateRole = RESTAPIGuildCreateRole;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
@@ -110,41 +135,43 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * New guild roles
 	 *
-	 * **When using this parameter, the first member of the array is used to change properties of the guild's @everyone role.
-	 * If you are trying to bootstrap a guild with additional roles, keep this in mind.**
+	 * @remarks
+	 * When using this parameter, the first member of the array is used to change properties of the guild's `@everyone` role.
+	 * If you are trying to bootstrap a guild with additional roles, keep this in mind.
 	 *
-	 * *When using this parameter, the required `id` field within each role object is an integer placeholder,
+	 * Also, the required `id` field within each role object is an integer placeholder,
 	 * and will be replaced by the API upon consumption. Its purpose is to allow you to overwrite a role's permissions
-	 * in a channel when also passing in channels with the channels array.*
+	 * in a channel when also passing in channels with the channels array.
 	 *
 	 * See https://discord.com/developers/docs/topics/permissions#role-object
 	 */
-	roles?: APIGuildCreateRole[] | undefined;
+	roles?: RESTAPIGuildCreateRole[] | undefined;
 	/**
 	 * New guild's channels
 	 *
-	 * **When using the channels parameter, the `position` field is ignored, and none of the default channels are created.**
+	 * @remarks
+	 * When using the channels parameter, the `position` field is ignored, and none of the default channels are created.
 	 *
-	 * *When using the channels parameter, the `id` field within each channel object may be set to an integer placeholder,
+	 * Also, the `id` field within each channel object may be set to an integer placeholder,
 	 * and will be replaced by the API upon consumption. Its purpose is to allow you to create `GUILD_CATEGORY` channels
 	 * by setting the `parent_id` field on any children to the category's id field.
-	 * Category channels must be listed before any children.*
+	 * Category channels must be listed before any children.
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channels?: APIGuildCreatePartialChannel[] | undefined;
+	channels?: RESTAPIGuildCreatePartialChannel[] | undefined;
 	/**
 	 * ID for afk channel
 	 */
-	afk_channel_id?: number | Snowflake | null | undefined;
+	afk_channel_id?: Snowflake | number | null | undefined;
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: 60 | 300 | 900 | 1800 | 3600 | undefined;
+	afk_timeout?: 1_800 | 3_600 | 60 | 300 | 900 | undefined;
 	/**
 	 * The id of the channel where guild notices such as welcome messages and boost events are posted
 	 */
-	system_channel_id?: number | Snowflake | null | undefined;
+	system_channel_id?: Snowflake | number | null | undefined;
 	/**
 	 * System channel flags
 	 *
@@ -240,7 +267,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout?: 60 | 300 | 900 | 1800 | 3600 | undefined;
+	afk_timeout?: 1_800 | 3_600 | 60 | 300 | 900 | undefined;
 	/**
 	 * base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the guild has `ANIMATED_ICON` feature)
 	 *
@@ -303,6 +330,10 @@ export interface RESTPatchAPIGuildJSONBody {
 	 * Whether the boosts progress bar should be enabled.
 	 */
 	premium_progress_bar_enabled?: boolean | undefined;
+	/**
+	 * The id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
+	 */
+	safety_alerts_channel_id?: Snowflake | null | undefined;
 }
 
 /**
@@ -323,7 +354,7 @@ export type RESTGetAPIGuildChannelsResult = APIChannel[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
  */
-export type RESTPostAPIGuildChannelJSONBody = DistributiveOmit<APIGuildCreatePartialChannel, 'id'>;
+export type RESTPostAPIGuildChannelJSONBody = DistributiveOmit<RESTAPIGuildCreatePartialChannel, 'id'>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-channel
@@ -333,7 +364,7 @@ export type RESTPostAPIGuildChannelResult = APIChannel;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  */
-export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
+export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 	/**
 	 * Channel id
 	 */
@@ -350,7 +381,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = Array<{
 	 * The new parent id of this channel
 	 */
 	parent_id?: Snowflake | null | undefined;
-}>;
+}[];
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
@@ -442,7 +473,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 	deaf?: boolean | undefined;
 }
 
-export type RESTPutAPIGuildMemberResult = APIGuildMember | never;
+export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
@@ -595,6 +626,34 @@ export type RESTPutAPIGuildBanResult = never;
 export type RESTDeleteAPIGuildBanResult = never;
 
 /**
+ * https://discord.com/developers/docs/resources/guild#bulk-guild-ban
+ */
+export interface RESTPostAPIGuildBulkBanJSONBody {
+	/**
+	 * List of user ids to ban (max 200)
+	 */
+	user_ids: Snowflake[];
+	/**
+	 * Number of seconds to delete messages for, between 0 and 604800 (7 days)
+	 */
+	delete_message_seconds?: number | undefined;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#bulk-guild-ban
+ */
+export interface RESTPostAPIGuildBulkBanResult {
+	/**
+	 * List of user ids, that were successfully banned
+	 */
+	banned_users: Snowflake[];
+	/**
+	 * List of user ids, that were not banned
+	 */
+	failed_users: Snowflake[];
+}
+
+/**
  * https://discord.com/developers/docs/resources/guild#get-guild-roles
  */
 export type RESTGetAPIGuildRolesResult = APIRole[];
@@ -651,7 +710,7 @@ export type RESTPostAPIGuildRoleResult = APIRole;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
  */
-export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
+export type RESTPatchAPIGuildRolePositionsJSONBody = {
 	/**
 	 * Role id
 	 */
@@ -660,7 +719,7 @@ export type RESTPatchAPIGuildRolePositionsJSONBody = Array<{
 	 * Sorting position of the role
 	 */
 	position?: number | undefined;
-}>;
+}[];
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
@@ -700,6 +759,11 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	 */
 	mentionable?: boolean | null | undefined;
 }
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-role
+ */
+export type RESTGetAPIGuildRoleResult = APIRole;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role
@@ -854,48 +918,6 @@ export interface RESTPatchAPIGuildMemberVerificationJSONBody {
 export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
 /**
- * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
- */
-export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
-	/**
-	 * The id of the channel the user is currently in
-	 */
-	channel_id?: Snowflake | undefined;
-	/**
-	 * Toggles the user's suppress state
-	 */
-	suppress?: boolean | undefined;
-	/**
-	 * Sets the user's request to speak
-	 */
-	request_to_speak_timestamp?: string | null | undefined;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
- */
-export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = never;
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
- */
-export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
-	/**
-	 * The id of the channel the user is currently in
-	 */
-	channel_id: Snowflake;
-	/**
-	 * Toggles the user's suppress state
-	 */
-	suppress?: boolean | undefined;
-}
-
-/**
- * https://discord.com/developers/docs/resources/guild#modify-user-voice-state
- */
-export type RESTPatchAPIGuildVoiceStateUserResult = never;
-
-/**
  * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
  */
 export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
@@ -914,3 +936,63 @@ export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIG
  * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  */
 export type RESTPatchAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#get-guild-onboarding
+ */
+export type RESTGetAPIGuildOnboardingResult = APIGuildOnboarding;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
+ */
+export type RESTPutAPIGuildOnboardingJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Partial<Pick<APIGuildOnboarding, 'default_channel_ids' | 'enabled' | 'mode'>>
+> & {
+	/**
+	 * Prompts shown during onboarding and in customize community
+	 */
+	prompts?: RESTAPIGuildOnboardingPrompt[] | undefined;
+};
+
+export type RESTAPIGuildOnboardingPrompt = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Partial<Omit<APIGuildOnboardingPrompt, 'guild_id' | 'id' | 'options' | 'title'>>
+> &
+	Pick<APIGuildOnboardingPrompt, 'id' | 'title'> & {
+		/**
+		 * Options available within the prompt
+		 */
+		options: RESTAPIGuildOnboardingPromptOption[];
+	};
+
+/**
+ * @deprecated Use {@link RESTAPIGuildOnboardingPrompt} instead.
+ */
+export type RESTAPIModifyGuildOnboardingPromptData = RESTAPIGuildOnboardingPrompt;
+
+export type RESTAPIGuildOnboardingPromptOption = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	Partial<Omit<APIGuildOnboardingPromptOption, 'emoji' | 'guild_id' | 'title'>>
+> &
+	Pick<APIGuildOnboardingPromptOption, 'title'> & {
+		/**
+		 * Emoji id
+		 */
+		emoji_id?: Snowflake | null | undefined;
+		/**
+		 * Emoji name
+		 */
+		emoji_name?: string | null | undefined;
+		/**
+		 * Whether this emoji is animated
+		 */
+		emoji_animated?: boolean | null | undefined;
+	};
+
+/**
+ * @deprecated Use {@link RESTAPIGuildOnboardingPromptOption} instead.
+ */
+export type RESTAPIModifyGuildOnboardingPromptOptionData = RESTAPIGuildOnboardingPromptOption;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
+ */
+export type RESTPutAPIGuildOnboardingResult = APIGuildOnboarding;

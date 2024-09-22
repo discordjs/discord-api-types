@@ -1,7 +1,7 @@
-import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v10';
 import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
 import type { MessageFlags } from '../index';
+import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
@@ -18,13 +18,14 @@ export enum InteractionType {
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
  */
 export type APIInteractionResponse =
-	| APIInteractionResponsePong
+	| APIApplicationCommandAutocompleteResponse
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponsePong
 	| APIInteractionResponseUpdateMessage
-	| APIApplicationCommandAutocompleteResponse
-	| APIModalInteractionResponse;
+	| APIModalInteractionResponse
+	| APIPremiumRequiredInteractionResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
@@ -38,6 +39,10 @@ export interface APIApplicationCommandAutocompleteResponse {
 export interface APIModalInteractionResponse {
 	type: InteractionResponseType.Modal;
 	data: APIModalInteractionResponseCallbackData;
+}
+
+export interface APIPremiumRequiredInteractionResponse {
+	type: InteractionResponseType.PremiumRequired;
 }
 
 export interface APIInteractionResponseChannelMessageWithSource {
@@ -91,6 +96,20 @@ export enum InteractionResponseType {
 	 * Respond to an interaction with an modal for a user to fill-out
 	 */
 	Modal,
+	/**
+	 * Respond to an interaction with an upgrade button, only available for apps with monetization enabled
+	 *
+	 * @deprecated See https://discord.com/developers/docs/change-log#premium-apps-new-premium-button-style-deep-linking-url-schemes
+	 */
+	PremiumRequired,
+
+	/**
+	 * Launch the Activity associated with the app.
+	 *
+	 * @remarks
+	 * Only available for apps with Activities enabled
+	 */
+	LaunchActivity = 12,
 }
 
 /**
@@ -98,7 +117,7 @@ export enum InteractionResponseType {
  */
 export type APIInteractionResponseCallbackData = Omit<
 	RESTPostAPIWebhookWithTokenJSONBody,
-	'username' | 'avatar_url'
+	'avatar_url' | 'username'
 > & { flags?: MessageFlags };
 
 export interface APICommandAutocompleteInteractionResponseCallbackData {

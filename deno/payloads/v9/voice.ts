@@ -2,13 +2,20 @@
  * Types extracted from https://discord.com/developers/docs/resources/voice
  */
 
-import type { APIGuildMember } from './guild.ts';
 import type { Snowflake } from '../../globals.ts';
+import type { APIGuildMember } from './guild.ts';
+
+/**
+ * https://discord.com/developers/docs/resources/voice#voice-state-object
+ *
+ * @deprecated This is deprecated, use {@apilink APIVoiceState}
+ */
+export type GatewayVoiceState = APIVoiceState;
 
 /**
  * https://discord.com/developers/docs/resources/voice#voice-state-object
  */
-export interface GatewayVoiceState {
+export interface APIVoiceState {
 	/**
 	 * The guild id this voice state is for
 	 */

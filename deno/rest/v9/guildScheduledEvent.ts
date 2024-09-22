@@ -1,12 +1,13 @@
 import type { Snowflake } from '../../globals.ts';
-import type { StrictPartial } from '../../utils/internals.ts';
+import type { Nullable, StrictPartial } from '../../utils/internals.ts';
 import type {
 	APIGuildScheduledEvent,
+	APIGuildScheduledEventEntityMetadata,
+	APIGuildScheduledEventRecurrenceRule,
+	APIGuildScheduledEventUser,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventPrivacyLevel,
-	APIGuildScheduledEventEntityMetadata,
 	GuildScheduledEventStatus,
-	APIGuildScheduledEventUser,
 } from '../../v9.ts';
 
 /**
@@ -64,6 +65,10 @@ export interface RESTPostAPIGuildScheduledEventJSONBody {
 	 * The cover image of the scheduled event
 	 */
 	image?: string | null | undefined;
+	/**
+	 * The definition for how often this event should recur
+	 */
+	recurrence_rule?: APIGuildScheduledEventRecurrenceRule | undefined;
 }
 
 /**
@@ -89,20 +94,17 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
  */
-export type RESTPatchAPIGuildScheduledEventJSONBody = StrictPartial<RESTPostAPIGuildScheduledEventJSONBody> & {
-	/**
-	 * The status of the scheduled event
-	 */
-	status?: GuildScheduledEventStatus | undefined;
-	/**
-	 * The entity metadata of the scheduled event
-	 */
-	entity_metadata?: APIGuildScheduledEventEntityMetadata | null | undefined;
-	/**
-	 * The description of the guild event
-	 */
-	description?: string | null | undefined;
-};
+export type RESTPatchAPIGuildScheduledEventJSONBody = Nullable<
+	Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
+> &
+	StrictPartial<
+		Omit<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
+	> & {
+		/**
+		 * The status of the scheduled event
+		 */
+		status?: GuildScheduledEventStatus | undefined;
+	};
 
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event

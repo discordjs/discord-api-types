@@ -6,11 +6,28 @@ import type { APISticker, APIStickerPack } from '../../payloads/v9/mod.ts';
 export type RESTGetAPIStickerResult = APISticker;
 
 /**
- * https://discord.com/developers/docs/resources/sticker#list-nitro-sticker-packs
+ * https://discord.com/developers/docs/resources/sticker#list-sticker-packs
  */
-export interface RESTGetNitroStickerPacksResult {
+export interface RESTGetStickerPacksResult {
 	sticker_packs: APIStickerPack[];
 }
+
+/**
+ * https://discord.com/developers/docs/resources/sticker#get-sticker-pack
+ */
+export type RESTGetAPIStickerPackResult = APIStickerPack;
+
+/**
+ * @deprecated Use {@link RESTGetAPIStickerPackResult} instead
+ */
+export type RESTGetAPIStickerPack = RESTGetAPIStickerPackResult;
+
+/**
+ * https://discord.com/developers/docs/resources/sticker#list-sticker-packs
+ *
+ * @deprecated Use `RESTGetStickerPacksResult` instead
+ */
+export type RESTGetNitroStickerPacksResult = RESTGetStickerPacksResult;
 
 /**
  * https://discord.com/developers/docs/resources/sticker#list-guild-stickers

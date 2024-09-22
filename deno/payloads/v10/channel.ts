@@ -2,14 +2,15 @@
  * Types extracted from https://discord.com/developers/docs/resources/channel
  */
 
+import type { Permissions, Snowflake } from '../../globals.ts';
 import type { APIApplication } from './application.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIGuildMember } from './guild.ts';
-import type { APIMessageInteraction } from './interactions.ts';
+import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
+import type { APIPoll } from './poll.ts';
 import type { APISticker, APIStickerItem } from './sticker.ts';
 import type { APIUser } from './user.ts';
-import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
  * Not documented, but partial only includes id, name, and type
@@ -41,16 +42,15 @@ export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel
 }
 
 export type TextChannelType =
+	| ChannelType.AnnouncementThread
 	| ChannelType.DM
 	| ChannelType.GroupDM
 	| ChannelType.GuildAnnouncement
-	| ChannelType.PublicThread
-	| ChannelType.PrivateThread
-	| ChannelType.AnnouncementThread
+	| ChannelType.GuildStageVoice
 	| ChannelType.GuildText
-	| ChannelType.GuildForum
 	| ChannelType.GuildVoice
-	| ChannelType.GuildStageVoice;
+	| ChannelType.PrivateThread
+	| ChannelType.PublicThread;
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
@@ -111,7 +111,7 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APIGuildTextChannel<T extends GuildTextChannelType>
+export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia | GuildTextChannelType>
 	extends Omit<APITextBasedChannel<T>, 'name'>,
 		APIGuildChannel<T> {
 	/**
@@ -124,7 +124,7 @@ export interface APIGuildTextChannel<T extends GuildTextChannelType>
 	 */
 	default_thread_rate_limit_per_user?: number;
 	/**
-	 * The channel topic (0-4096 characters for forum channels, 0-1024 characters for all others)
+	 * The channel topic (0-1024 characters)
 	 */
 	topic?: string | null;
 }
@@ -135,7 +135,7 @@ export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>
 
 export interface APIVoiceChannelBase<T extends ChannelType>
 	extends APIGuildChannel<T>,
-		Omit<APITextBasedChannel<T>, 'name' | 'last_pin_timestamp'> {
+		Omit<APITextBasedChannel<T>, 'last_pin_timestamp' | 'name'> {
 	/**
 	 * The bitrate (in bits) of the voice or stage channel
 	 */
@@ -205,12 +205,11 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	managed?: boolean;
 }
 
+export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
+
 export interface APIThreadChannel
-	extends Omit<
-			APITextBasedChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread>,
-			'name'
-		>,
-		APIGuildChannel<ChannelType.PublicThread | ChannelType.PrivateThread | ChannelType.AnnouncementThread> {
+	extends Omit<APITextBasedChannel<ThreadChannelType>, 'name'>,
+		APIGuildChannel<ThreadChannelType> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -240,7 +239,7 @@ export interface APIThreadChannel
 	 */
 	total_message_sent?: number;
 	/**
-	 * The IDs of the set of tags that have been applied to a thread in a forum channel
+	 * The IDs of the set of tags that have been applied to a thread in a thread-only channel
 	 */
 	applied_tags: Snowflake[];
 }
@@ -317,38 +316,74 @@ export enum ForumLayoutType {
 	GalleryView,
 }
 
-export interface APIGuildForumChannel extends APIGuildTextChannel<ChannelType.GuildForum> {
+export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
+	extends APIGuildChannel<T> {
 	/**
-	 * The set of tags that can be used in a forum channel
+	 * The channel topic (0-4096 characters)
+	 */
+	topic?: string | null;
+	/**
+	 * The id of the last thread created in this channel (may not point to an existing or valid thread)
+	 */
+	last_message_id?: Snowflake | null;
+	/**
+	 * Amount of seconds a user has to wait before creating another thread (0-21600);
+	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 *
+	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
+	 */
+	rate_limit_per_user?: number;
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+	/**
+	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
+	 */
+	default_auto_archive_duration?: ThreadAutoArchiveDuration;
+	/**
+	 * The set of tags that can be used in a thread-only channel
 	 */
 	available_tags: APIGuildForumTag[];
 	/**
-	 * The emoji to show in the add reaction button on a thread in a forum channel
+	 * The initial `rate_limit_per_user` to set on newly created threads.
+	 * This field is copied to the thread at creation time and does not live update
+	 */
+	default_thread_rate_limit_per_user?: number;
+	/**
+	 * The emoji to show in the add reaction button on a thread in a thread-only channel
 	 */
 	default_reaction_emoji: APIGuildForumDefaultReactionEmoji | null;
 	/**
-	 * The default sort order type used to order posts in a forum channel
+	 * The default sort order type used to order posts in a thread-only channel
 	 */
 	default_sort_order: SortOrderType | null;
+}
+
+export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.GuildForum> {
 	/**
 	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
 	 */
 	default_forum_layout: ForumLayoutType;
 }
 
+export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
+
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
 export type APIChannel =
-	| APIGroupDMChannel
 	| APIDMChannel
-	| APITextChannel
-	| APINewsChannel
-	| APIGuildVoiceChannel
-	| APIGuildStageVoiceChannel
+	| APIGroupDMChannel
 	| APIGuildCategoryChannel
-	| APIThreadChannel
-	| APIGuildForumChannel;
+	| APIGuildForumChannel
+	| APIGuildMediaChannel
+	| APIGuildStageVoiceChannel
+	| APIGuildVoiceChannel
+	| APINewsChannel
+	| APITextChannel
+	| APIThreadChannel;
 
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
@@ -410,6 +445,12 @@ export enum ChannelType {
 	 * A channel that can only contain threads
 	 */
 	GuildForum,
+	/**
+	 * A channel like forum channels but contains media for server subscriptions
+	 *
+	 * See https://creator-support.discord.com/hc/articles/14346342766743
+	 */
+	GuildMedia,
 
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
@@ -426,6 +467,7 @@ export enum ChannelType {
 	 *
 	 * @deprecated This is the old name for {@apilink ChannelType#AnnouncementThread}
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
 	GuildNewsThread = 10,
 	/**
 	 * A temporary sub-channel within a Guild Text channel
@@ -531,7 +573,7 @@ export interface APIMessage {
 	/**
 	 * Any attached files
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
 	 *
 	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
@@ -566,7 +608,7 @@ export interface APIMessage {
 	 * **You will not receive this from further fetches. This is received only once from a `MESSAGE_CREATE`
 	 * event to ensure it got sent**
 	 */
-	nonce?: string | number;
+	nonce?: number | string;
 	/**
 	 * Whether this message is pinned
 	 */
@@ -626,7 +668,13 @@ export interface APIMessage {
 	 */
 	referenced_message?: APIMessage | null;
 	/**
+	 * Sent if the message is sent as a result of an interaction
+	 */
+	interaction_metadata?: APIMessageInteractionMetadata;
+	/**
 	 * Sent if the message is a response to an Interaction
+	 *
+	 * @deprecated In favor of `interaction_metadata`
 	 */
 	interaction?: APIMessageInteraction;
 	/**
@@ -654,6 +702,7 @@ export interface APIMessage {
 	 * The stickers sent with the message
 	 *
 	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 *
 	 * @deprecated Use `sticker_items` instead
 	 */
 	stickers?: APISticker[];
@@ -663,11 +712,35 @@ export interface APIMessage {
 	 * It can be used to estimate the relative position of the message in a thread in company with `total_message_sent` on parent thread
 	 */
 	position?: number;
-
 	/**
 	 * Data of the role subscription purchase or renewal that prompted this `ROLE_SUBSCRIPTION_PURCHASE` message
 	 */
 	role_subscription_data?: APIMessageRoleSubscriptionData;
+	/**
+	 * Data for users, members, channels, and roles in the message's auto-populated select menus
+	 *
+	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+	 */
+	resolved?: APIInteractionDataResolved;
+	/**
+	 * A poll!
+	 *
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
+	 *
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
+	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
+	 *
+	 * See https://support-dev.discord.com/hc/articles/4404772028055
+	 */
+	poll?: APIPoll;
+	/**
+	 * The message associated with the message_reference. This is a minimal subset of fields in a message (e.g. author is excluded.)
+	 */
+	message_snapshots?: APIMessageSnapshot[];
+	/**
+	 * The call associated with the message
+	 */
+	call?: APIMessageCall;
 }
 
 /**
@@ -710,6 +783,15 @@ export enum MessageType {
 	StageRaiseHand,
 	StageTopic,
 	GuildApplicationPremiumSubscription,
+
+	GuildIncidentAlertModeEnabled = 36,
+	GuildIncidentAlertModeDisabled,
+	GuildIncidentReportRaid,
+	GuildIncidentReportFalseAlarm,
+
+	PurchaseNotification = 44,
+
+	PollResult = 46,
 }
 
 /**
@@ -735,6 +817,10 @@ export interface APIMessageActivity {
  */
 export interface APIMessageReference {
 	/**
+	 * Type of reference
+	 */
+	type?: MessageReferenceType;
+	/**
 	 * ID of the originating message
 	 */
 	message_id?: Snowflake;
@@ -756,6 +842,20 @@ export enum MessageActivityType {
 	Spectate,
 	Listen,
 	JoinRequest = 5,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-reference-types
+ */
+export enum MessageReferenceType {
+	/**
+	 * A standard reference used by replies
+	 */
+	Default,
+	/**
+	 * Reference used to point to a message at a point in time
+	 */
+	Forward,
 }
 
 /**
@@ -807,9 +907,23 @@ export enum MessageFlags {
 	 */
 	SuppressNotifications = 1 << 12,
 	/**
-	 * @unstable This message flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * This message is a voice message
 	 */
 	IsVoiceMessage = 1 << 13,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-call-object-message-call-object-structure
+ */
+export interface APIMessageCall {
+	/**
+	 * Array of user ids that participated in the call
+	 */
+	participants: Snowflake[];
+	/**
+	 * ISO8601 timestamp when the call ended
+	 */
+	ended_timestamp?: string | null;
 }
 
 /**
@@ -853,19 +967,45 @@ export interface APIFollowedChannel {
  */
 export interface APIReaction {
 	/**
-	 * Times this emoji has been used to react
+	 * Total number of times this emoji has been used to react (including super reacts)
 	 */
 	count: number;
+	/**
+	 * An object detailing the individual reaction counts for different types of reactions
+	 */
+	count_details: APIReactionCountDetails;
 	/**
 	 * Whether the current user reacted using this emoji
 	 */
 	me: boolean;
+	/**
+	 * Whether the current user super-reacted using this emoji
+	 */
+	me_burst: boolean;
 	/**
 	 * Emoji information
 	 *
 	 * See https://discord.com/developers/docs/resources/emoji#emoji-object
 	 */
 	emoji: APIPartialEmoji;
+	/**
+	 * Hexadecimal colors used for this super reaction
+	 */
+	burst_colors: string[];
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure
+ */
+export interface APIReactionCountDetails {
+	/**
+	 * Count of super reactions
+	 */
+	burst: number;
+	/**
+	 * Count of normal reactions
+	 */
+	normal: number;
 }
 
 /**
@@ -937,9 +1077,9 @@ export interface APIThreadMetadata {
 
 export enum ThreadAutoArchiveDuration {
 	OneHour = 60,
-	OneDay = 1440,
-	ThreeDays = 4320,
-	OneWeek = 10080,
+	OneDay = 1_440,
+	ThreeDays = 4_320,
+	OneWeek = 10_080,
 }
 
 /**
@@ -1094,6 +1234,7 @@ export interface APIEmbed {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+ *
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
 export enum EmbedType {
@@ -1127,6 +1268,10 @@ export enum EmbedType {
 	 * @unstable This embed type is currently not documented by Discord, but it is returned in the auto moderation system messages.
 	 */
 	AutoModerationMessage = 'auto_moderation_message',
+	/**
+	 * Poll result embed
+	 */
+	PollResult = 'poll_result',
 }
 
 /**
@@ -1276,7 +1421,7 @@ export interface APIEmbedField {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
+ * https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
  */
 export interface APIAttachment {
 	/**
@@ -1287,6 +1432,10 @@ export interface APIAttachment {
 	 * Name of file attached
 	 */
 	filename: string;
+	/**
+	 * The title of the file
+	 */
+	title?: string;
 	/**
 	 * Description for the file
 	 */
@@ -1321,6 +1470,28 @@ export interface APIAttachment {
 	 * Whether this attachment is ephemeral
 	 */
 	ephemeral?: boolean;
+	/**
+	 * The duration of the audio file (currently for voice messages)
+	 */
+	duration_secs?: number;
+	/**
+	 * Base64 encoded bytearray representing a sampled waveform (currently for voice messages)
+	 */
+	waveform?: string;
+	/**
+	 * Attachment flags combined as a bitfield
+	 */
+	flags?: AttachmentFlags;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure-attachment-flags
+ */
+export enum AttachmentFlags {
+	/**
+	 * This attachment has been edited using the remix feature on mobile
+	 */
+	IsRemix = 1 << 2,
 }
 
 /**
@@ -1498,7 +1669,7 @@ export interface APIMessageComponentEmoji {
 
 export interface APIButtonComponentWithCustomId
 	extends APIButtonComponentBase<
-		ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success | ButtonStyle.Danger
+		ButtonStyle.Danger | ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success
 	> {
 	/**
 	 * The custom_id to be sent in the interaction when clicked
@@ -1513,7 +1684,18 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 	url: string;
 }
 
-export type APIButtonComponent = APIButtonComponentWithCustomId | APIButtonComponentWithURL;
+export interface APIButtonComponentWithSKUId
+	extends Omit<APIButtonComponentBase<ButtonStyle.Premium>, 'custom_id' | 'emoji' | 'label'> {
+	/**
+	 * The id for a purchasable SKU
+	 */
+	sku_id: Snowflake;
+}
+
+export type APIButtonComponent =
+	| APIButtonComponentWithCustomId
+	| APIButtonComponentWithSKUId
+	| APIButtonComponentWithURL;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
@@ -1524,6 +1706,7 @@ export enum ButtonStyle {
 	Success,
 	Danger,
 	Link,
+	Premium,
 }
 
 /**
@@ -1539,11 +1722,11 @@ export enum TextInputStyle {
  */
 export interface APIBaseSelectMenuComponent<
 	T extends
-		| ComponentType.StringSelect
-		| ComponentType.UserSelect
-		| ComponentType.RoleSelect
+		| ComponentType.ChannelSelect
 		| ComponentType.MentionableSelect
-		| ComponentType.ChannelSelect,
+		| ComponentType.RoleSelect
+		| ComponentType.StringSelect
+		| ComponentType.UserSelect,
 > extends APIBaseComponent<T> {
 	/**
 	 * A developer-defined identifier for the select menu, max 100 characters
@@ -1573,6 +1756,20 @@ export interface APIBaseSelectMenuComponent<
 	disabled?: boolean;
 }
 
+export interface APIBaseAutoPopulatedSelectMenuComponent<
+	T extends
+		| ComponentType.ChannelSelect
+		| ComponentType.MentionableSelect
+		| ComponentType.RoleSelect
+		| ComponentType.UserSelect,
+	D extends SelectMenuDefaultValueType,
+> extends APIBaseSelectMenuComponent<T> {
+	/**
+	 * List of default values for auto-populated select menu components
+	 */
+	default_values?: APISelectMenuDefaultValue<D>[];
+}
+
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
@@ -1586,22 +1783,32 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIUserSelectComponent = APIBaseSelectMenuComponent<ComponentType.UserSelect>;
+export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.UserSelect,
+	SelectMenuDefaultValueType.User
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIRoleSelectComponent = APIBaseSelectMenuComponent<ComponentType.RoleSelect>;
+export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.RoleSelect,
+	SelectMenuDefaultValueType.Role
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export type APIMentionableSelectComponent = APIBaseSelectMenuComponent<ComponentType.MentionableSelect>;
+export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.MentionableSelect,
+	SelectMenuDefaultValueType.Role | SelectMenuDefaultValueType.User
+>;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
-export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<ComponentType.ChannelSelect> {
+export interface APIChannelSelectComponent
+	extends APIBaseAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
 	/**
 	 * List of channel types to include in the ChannelSelect component
 	 */
@@ -1609,21 +1816,44 @@ export interface APIChannelSelectComponent extends APIBaseSelectMenuComponent<Co
 }
 
 /**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ */
+export enum SelectMenuDefaultValueType {
+	Channel = 'channel',
+	Role = 'role',
+	User = 'user',
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ */
+export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType> {
+	type: T;
+	id: Snowflake;
+}
+
+export type APIAutoPopulatedSelectMenuComponent =
+	| APIChannelSelectComponent
+	| APIMentionableSelectComponent
+	| APIRoleSelectComponent
+	| APIUserSelectComponent;
+
+/**
  * https://discord.com/developers/docs/interactions/message-components#select-menus
  */
 export type APISelectMenuComponent =
-	| APIStringSelectComponent
-	| APIUserSelectComponent
-	| APIRoleSelectComponent
+	| APIChannelSelectComponent
 	| APIMentionableSelectComponent
-	| APIChannelSelectComponent;
+	| APIRoleSelectComponent
+	| APIStringSelectComponent
+	| APIUserSelectComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
  */
 export interface APISelectMenuOption {
 	/**
-	 * The user-facing name of the option (max 25 chars)
+	 * The user-facing name of the option (max 100 chars)
 	 */
 	label: string;
 	/**
@@ -1631,7 +1861,7 @@ export interface APISelectMenuOption {
 	 */
 	value: string;
 	/**
-	 * An additional description of the option (max 50 chars)
+	 * An additional description of the option (max 100 chars)
 	 */
 	description?: string;
 	/**
@@ -1657,7 +1887,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 */
 	custom_id: string;
 	/**
-	 * Text that appears on top of the text input field, max 80 characters
+	 * Text that appears on top of the text input field, max 45 characters
 	 */
 	label: string;
 	/**
@@ -1680,6 +1910,27 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 * Whether or not this text input is required or not
 	 */
 	required?: boolean;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#message-snapshot-object
+ */
+export interface APIMessageSnapshot {
+	/**
+	 * Subset of the message object fields
+	 */
+	message: APIMessageSnapshotFields;
+	/**
+	 * Id of the origin message's guild
+	 *
+	 * @deprecated This field doesn't accurately reflect the Discord API as it doesn't exist nor is documented and will
+	 * be removed in the next major version.
+	 *
+	 * It was added in {@link https://github.com/discord/discord-api-docs/pull/6833/commits/d18f72d06d62e6b1d51ca2c1ef308ddc29ff3348 | d18f72d}
+	 * but was later removed before the PR ({@link https://github.com/discord/discord-api-docs/pull/6833 | discord-api-docs#6833}) was merged.
+	 * See {@link https://github.com/discordjs/discord-api-types/pull/1084 | discord-api-types#1084} for more information.
+	 */
+	guild_id?: Snowflake;
 }
 
 /**
@@ -1719,13 +1970,17 @@ export enum ChannelFlags {
 	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	IsScheduledForDeletion = 1 << 9,
+	/**
+	 * Whether media download options are hidden.
+	 */
+	HideMediaDownloadOptions = 1 << 15,
 }
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageComponent = APIMessageActionRowComponent | APIActionRowComponent<APIMessageActionRowComponent>;
-export type APIModalComponent = APIModalActionRowComponent | APIActionRowComponent<APIModalActionRowComponent>;
+export type APIMessageComponent = APIActionRowComponent<APIMessageActionRowComponent> | APIMessageActionRowComponent;
+export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
 
 export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
 
@@ -1736,3 +1991,19 @@ export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuCom
 
 // Modal components
 export type APIModalActionRowComponent = APITextInputComponent;
+
+export type APIMessageSnapshotFields = Pick<
+	APIMessage,
+	| 'attachments'
+	| 'components'
+	| 'content'
+	| 'edited_timestamp'
+	| 'embeds'
+	| 'flags'
+	| 'mention_roles'
+	| 'mentions'
+	| 'sticker_items'
+	| 'stickers'
+	| 'timestamp'
+	| 'type'
+>;

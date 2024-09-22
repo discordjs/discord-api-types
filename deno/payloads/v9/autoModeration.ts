@@ -74,6 +74,10 @@ export enum AutoModerationRuleTriggerType {
 	 * Check if content contains more mentions than allowed (Maximum of 1 per guild)
 	 */
 	MentionSpam,
+	/**
+	 * Check if member profile contains words from a user defined list of keywords (Maximum of 1 per guild)
+	 */
+	MemberProfile,
 }
 
 /**
@@ -86,7 +90,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 * A keyword can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 60 characters or less
 	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
 	 *
-	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
+	 * Associated trigger types: {@link AutoModerationRuleTriggerType.Keyword}, {@link AutoModerationRuleTriggerType.MemberProfile}
 	 */
 	keyword_filter?: string[];
 	/**
@@ -101,7 +105,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 * A allowed-word can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 60 characters or less
 	 * See [keyword matching strategies](https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-matching-strategies)
 	 *
-	 * Associated trigger type: {@link AutoModerationRuleTriggerType.KeywordPreset}
+	 * Associated trigger types: {@link AutoModerationRuleTriggerType.Keyword}, {@link AutoModerationRuleTriggerType.KeywordPreset}, {@link AutoModerationRuleTriggerType.MemberProfile}
 	 */
 	allow_list?: string[];
 	/**
@@ -109,7 +113,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 *
 	 * Only Rust flavored regex is currently supported (Maximum of 260 characters)
 	 *
-	 * Associated trigger type: {@link AutoModerationRuleTriggerType.Keyword}
+	 * Associated trigger types: {@link AutoModerationRuleTriggerType.Keyword}, {@link AutoModerationRuleTriggerType.MemberProfile}
 	 */
 	regex_patterns?: string[];
 	/**
@@ -118,6 +122,12 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 * Associated trigger type: {@link AutoModerationRuleTriggerType.MentionSpam}
 	 */
 	mention_total_limit?: number;
+	/**
+	 * Whether to automatically detect mention raids
+	 *
+	 * Associated trigger type: {@link AutoModerationRuleTriggerType.MentionSpam}
+	 */
+	mention_raid_protection_enabled?: boolean;
 }
 
 /**
@@ -146,6 +156,10 @@ export enum AutoModerationRuleEventType {
 	 * When a member sends or edits a message in the guild
 	 */
 	MessageSend = 1,
+	/**
+	 * When a member edits their profile
+	 */
+	MemberUpdate,
 }
 
 /**
@@ -181,6 +195,10 @@ export enum AutoModerationActionType {
 	 * Timeout user for specified duration, this action type can be set if the bot has `MODERATE_MEMBERS` permission
 	 */
 	Timeout,
+	/**
+	 * Prevents a member from using text, voice, or other interactions
+	 */
+	BlockMemberInteraction,
 }
 
 /**

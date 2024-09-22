@@ -41,12 +41,25 @@ export interface RESTOAuth2AuthorizationQuery {
 }
 
 /**
+ * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-token-revocation-example
+ */
+export interface RESTPostOAuth2TokenRevocationQuery {
+	token: string;
+	token_type_hint?: 'access_token' | 'refresh_token';
+}
+
+/**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  */
-export interface RESTOAuth2AuthorizationQueryResult {
+export interface RESTPostOAuth2AuthorizationQueryResult {
 	code: string;
 	state?: string;
 }
+
+/**
+ * @deprecated Use {@link RESTPostOAuth2AuthorizationQueryResult} instead
+ */
+export type RESTOAuth2AuthorizationQueryResult = RESTPostOAuth2AuthorizationQueryResult;
 
 /**
  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
@@ -121,10 +134,10 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 * Needs to include bot for the bot flow
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| `${OAuth2Scopes.Bot} ${string}`
+		| `${OAuth2Scopes.Bot}`
+		| `${string} ${OAuth2Scopes.Bot} ${string}`
+		| `${string} ${OAuth2Scopes.Bot}`;
 	/**
 	 * The permissions you're requesting
 	 *
@@ -150,10 +163,10 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	 * This assumes you include the `bot` scope alongside others (like `identify` for example)
 	 */
 	scope:
-		| OAuth2Scopes.Bot
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}`
-		| `${OAuth2Scopes.Bot}${' ' | '%20'}${string}`
-		| `${string}${' ' | '%20'}${OAuth2Scopes.Bot}${string}${' ' | '%20'}`;
+		| `${OAuth2Scopes.Bot} ${string}`
+		| `${OAuth2Scopes.Bot}`
+		| `${string} ${OAuth2Scopes.Bot} ${string}`
+		| `${string} ${OAuth2Scopes.Bot}`;
 	/**
 	 * The required permissions bitfield, stringified
 	 */
@@ -196,4 +209,5 @@ export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
 }
 
 export type RESTPostOAuth2AccessTokenWithBotAndGuildsAndWebhookIncomingScopeResult =
-	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult & RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;
+	RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult &
+		RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult;

@@ -30,31 +30,34 @@ export * from './_interactions/responses.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIInteraction =
-	| APIPingInteraction
+	| APIApplicationCommandAutocompleteInteraction
 	| APIApplicationCommandInteraction
 	| APIMessageComponentInteraction
-	| APIApplicationCommandAutocompleteInteraction
-	| APIModalSubmitInteraction;
+	| APIModalSubmitInteraction
+	| APIPingInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIDMInteraction =
+	| APIApplicationCommandAutocompleteDMInteraction
 	| APIApplicationCommandDMInteraction
 	| APIMessageComponentDMInteraction
-	| APIApplicationCommandAutocompleteDMInteraction
 	| APIModalSubmitDMInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIGuildInteraction =
+	| APIApplicationCommandAutocompleteGuildInteraction
 	| APIApplicationCommandGuildInteraction
 	| APIMessageComponentGuildInteraction
-	| APIApplicationCommandAutocompleteGuildInteraction
 	| APIModalSubmitGuildInteraction;

@@ -2,13 +2,13 @@
  * Types extracted from https://discord.com/developers/docs/resources/guild
  */
 
-import type { APIEmoji } from './emoji.ts';
-import type { PresenceUpdateStatus } from './gateway.ts';
+import type { Permissions, Snowflake } from '../../globals.ts';
+import type { APIEmoji, APIPartialEmoji } from './emoji.ts';
+import type { PresenceUpdateReceiveStatus } from './gateway.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
-import type { APIUser } from './user.ts';
-import type { Permissions, Snowflake } from '../../globals.ts';
+import type { APIAvatarDecorationData, APIUser } from './user.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
@@ -110,6 +110,7 @@ export interface APIGuild extends APIPartialGuild {
 	 * Voice region id for the guild
 	 *
 	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 *
 	 * @deprecated This field has been deprecated in favor of `rtc_region` on the channel.
 	 */
 	region: string;
@@ -120,7 +121,7 @@ export interface APIGuild extends APIPartialGuild {
 	/**
 	 * afk timeout in seconds, can be set to: `60`, `300`, `900`, `1800`, `3600`
 	 */
-	afk_timeout: 60 | 300 | 900 | 1800 | 3600;
+	afk_timeout: 1_800 | 3_600 | 60 | 300 | 900;
 	/**
 	 * `true` if the guild widget is enabled
 	 */
@@ -236,6 +237,10 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	max_video_channel_users?: number;
 	/**
+	 * The maximum amount of users in a stage video channel
+	 */
+	max_stage_video_channel_users?: number;
+	/**
 	 * Approximate number of members in this guild,
 	 * returned from the `GET /guilds/<id>` and `/users/@me/guilds` (OAuth2) endpoints when `with_counts` is `true`
 	 */
@@ -271,6 +276,10 @@ export interface APIGuild extends APIPartialGuild {
 	 * The type of Student Hub the guild is
 	 */
 	hub_type: GuildHubType | null;
+	/**
+	 * The id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
+	 */
+	safety_alerts_channel_id: Snowflake | null;
 }
 
 /**
@@ -418,7 +427,7 @@ export enum GuildFeature {
 	 * Guild has enabled the role subscription promo page
 	 */
 	CreatorStorePage = 'CREATOR_STORE_PAGE',
-	/*
+	/**
 	 * Guild has been set as a support server on the App Directory
 	 */
 	DeveloperSupportServer = 'DEVELOPER_SUPPORT_SERVER',
@@ -488,6 +497,10 @@ export enum GuildFeature {
 	 * Guild has access to create private threads
 	 */
 	PrivateThreads = 'PRIVATE_THREADS',
+	/**
+	 * Guild has disabled alerts for join raids in the configured safety alerts channel
+	 */
+	RaidAlertsDisabled = 'RAID_ALERTS_DISABLED',
 	RelayEnabled = 'RELAY_ENABLED',
 	/**
 	 * Guild is able to set role icons
@@ -608,7 +621,7 @@ export interface APIGuildMember {
 	 *
 	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
-	user?: APIUser;
+	user: APIUser;
 	/**
 	 * This users guild nickname
 	 */
@@ -648,13 +661,19 @@ export interface APIGuildMember {
 	/**
 	 * Whether the user has not yet passed the guild's Membership Screening requirements
 	 *
-	 * *If this field is not present, it can be assumed as `false`.*
+	 * @remarks If this field is not present, it can be assumed as `false`.
 	 */
 	pending?: boolean;
 	/**
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null;
+	/**
+	 * The data for the member's guild avatar decoration
+	 *
+	 * See https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
+	 */
+	avatar_decoration_data?: APIAvatarDecorationData | null;
 }
 
 /**
@@ -670,7 +689,7 @@ export enum GuildMemberFlags {
 	 */
 	CompletedOnboarding = 1 << 1,
 	/**
-	 * Member bypasses guild verification requirements
+	 * Member is exempt from guild verification requirements
 	 */
 	BypassesVerification = 1 << 2,
 	/**
@@ -678,21 +697,29 @@ export enum GuildMemberFlags {
 	 */
 	StartedOnboarding = 1 << 3,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Member is a guest and can only access the voice channel they were invited to
+	 */
+	IsGuest = 1 << 4,
+	/**
+	 * Member has started Server Guide new member actions
 	 */
 	StartedHomeActions = 1 << 5,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Member has completed Server Guide new member actions
 	 */
 	CompletedHomeActions = 1 << 6,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * Member's username, display name, or nickname is blocked by AutoMod
 	 */
 	AutomodQuarantinedUsernameOrGuildNickname = 1 << 7,
 	/**
-	 * @unstable This guild member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * @deprecated
 	 */
 	AutomodQuarantinedBio = 1 << 8,
+	/**
+	 * Member has dismissed the DM settings upsell
+	 */
+	DmSettingsUpsellAcknowledged = 1 << 9,
 }
 
 /**
@@ -793,7 +820,7 @@ export interface APIGuildIntegration {
 	scopes?: OAuth2Scopes[];
 }
 
-export type APIGuildIntegrationType = 'twitch' | 'youtube' | 'discord' | 'guild_subscription';
+export type APIGuildIntegrationType = 'discord' | 'guild_subscription' | 'twitch' | 'youtube';
 
 /**
  * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
@@ -890,7 +917,7 @@ export interface APIGuildWidgetMember {
 	username: string;
 	discriminator: string;
 	avatar: string | null;
-	status: PresenceUpdateStatus;
+	status: PresenceUpdateReceiveStatus;
 	activity?: { name: string };
 	avatar_url: string;
 }
@@ -993,4 +1020,117 @@ export enum MembershipScreeningFieldType {
 	 * Server Rules
 	 */
 	Terms = 'TERMS',
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-guild-onboarding-structure
+ */
+export interface APIGuildOnboarding {
+	/**
+	 * Id of the guild this onboarding is part of
+	 */
+	guild_id: Snowflake;
+	/**
+	 * Prompts shown during onboarding and in customize community
+	 */
+	prompts: APIGuildOnboardingPrompt[];
+	/**
+	 * Channel ids that members get opted into automatically
+	 */
+	default_channel_ids: Snowflake[];
+	/**
+	 * Whether onboarding is enabled in the guild
+	 */
+	enabled: boolean;
+	/**
+	 * Current mode of onboarding
+	 */
+	mode: GuildOnboardingMode;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure
+ */
+export interface APIGuildOnboardingPrompt {
+	/**
+	 * Id of the prompt
+	 */
+	id: Snowflake;
+	/**
+	 * Options available within the prompt
+	 */
+	options: APIGuildOnboardingPromptOption[];
+	/**
+	 * Title of the prompt
+	 */
+	title: string;
+	/**
+	 * Indicates whether users are limited to selecting one option for the prompt
+	 */
+	single_select: boolean;
+	/**
+	 * Indicates whether the prompt is required before a user completes the onboarding flow
+	 */
+	required: boolean;
+	/**
+	 * Indicates whether the prompt is present in the onboarding flow.
+	 * If `false`, the prompt will only appear in the Channels & Roles tab
+	 */
+	in_onboarding: boolean;
+	/**
+	 * Type of prompt
+	 */
+	type: GuildOnboardingPromptType;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure
+ */
+export interface APIGuildOnboardingPromptOption {
+	/**
+	 * Id of the prompt option
+	 */
+	id: Snowflake;
+	/**
+	 * Ids for channels a member is added to when the option is selected
+	 */
+	channel_ids: Snowflake[];
+	/**
+	 * Ids for roles assigned to a member when the option is selected
+	 */
+	role_ids: Snowflake[];
+	/**
+	 * Emoji of the option
+	 */
+	emoji: APIPartialEmoji;
+	/**
+	 * Title of the option
+	 */
+	title: string;
+	/**
+	 * Description of the option
+	 */
+	description: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-mode
+ */
+export enum GuildOnboardingMode {
+	/**
+	 * Counts only Default Channels towards constraints
+	 */
+	OnboardingDefault,
+	/**
+	 * Counts Default Channels and Questions towards constraints
+	 */
+	OnboardingAdvanced,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types
+ */
+export enum GuildOnboardingPromptType {
+	MultipleChoice,
+	Dropdown,
 }

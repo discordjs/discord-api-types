@@ -2,8 +2,8 @@
  * Types extracted from https://discord.com/developers/docs/resources/sticker
  */
 
-import type { APIUser } from './user.ts';
 import type { Snowflake } from '../../globals.ts';
+import type { APIUser } from './user.ts';
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-object
@@ -31,7 +31,9 @@ export interface APISticker {
 	tags: string;
 	/**
 	 * Previously the sticker asset hash, now an empty string
+	 *
 	 * @deprecated
+	 * @unstable This field is no longer documented by Discord and will be removed in v11
 	 */
 	asset?: '';
 	/**
@@ -69,7 +71,7 @@ export interface APISticker {
  */
 export enum StickerType {
 	/**
-	 * An official sticker in a pack, part of Nitro or in a removed purchasable pack
+	 * An official sticker in a pack
 	 */
 	Standard = 1,
 	/**
@@ -91,7 +93,7 @@ export enum StickerFormatType {
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-item-object
  */
-export type APIStickerItem = Pick<APISticker, 'id' | 'name' | 'format_type'>;
+export type APIStickerItem = Pick<APISticker, 'format_type' | 'id' | 'name'>;
 
 /**
  * https://discord.com/developers/docs/resources/sticker#sticker-pack-object

@@ -1,3 +1,6 @@
+import type { APIInteractionDataResolved } from '../../index';
+import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands';
+import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 import type {
 	APIApplicationCommandAttachmentOption,
 	APIApplicationCommandInteractionDataAttachmentOption,
@@ -43,9 +46,6 @@ import type {
 	APIApplicationCommandUserOption,
 } from './_chatInput/user';
 import type { APIBaseApplicationCommandInteractionData } from './internals';
-import type { APIInteractionDataResolved } from '../../index';
-import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands';
-import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base';
 
 export * from './_chatInput/attachment';
 export * from './_chatInput/base';
@@ -65,42 +65,42 @@ export * from './_chatInput/user';
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  */
 export type APIApplicationCommandBasicOption =
-	| APIApplicationCommandStringOption
-	| APIApplicationCommandIntegerOption
+	| APIApplicationCommandAttachmentOption
 	| APIApplicationCommandBooleanOption
-	| APIApplicationCommandUserOption
 	| APIApplicationCommandChannelOption
-	| APIApplicationCommandRoleOption
+	| APIApplicationCommandIntegerOption
 	| APIApplicationCommandMentionableOption
 	| APIApplicationCommandNumberOption
-	| APIApplicationCommandAttachmentOption;
+	| APIApplicationCommandRoleOption
+	| APIApplicationCommandStringOption
+	| APIApplicationCommandUserOption;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  */
 export type APIApplicationCommandOption =
-	| APIApplicationCommandSubcommandOption
+	| APIApplicationCommandBasicOption
 	| APIApplicationCommandSubcommandGroupOption
-	| APIApplicationCommandBasicOption;
+	| APIApplicationCommandSubcommandOption;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
  */
 export type APIApplicationCommandInteractionDataOption =
-	| APIApplicationCommandInteractionDataSubcommandOption
+	| APIApplicationCommandInteractionDataBasicOption
 	| APIApplicationCommandInteractionDataSubcommandGroupOption
-	| APIApplicationCommandInteractionDataBasicOption;
+	| APIApplicationCommandInteractionDataSubcommandOption;
 
 export type APIApplicationCommandInteractionDataBasicOption =
-	| APIApplicationCommandInteractionDataStringOption
-	| APIApplicationCommandInteractionDataIntegerOption
+	| APIApplicationCommandInteractionDataAttachmentOption
 	| APIApplicationCommandInteractionDataBooleanOption
-	| APIApplicationCommandInteractionDataUserOption
 	| APIApplicationCommandInteractionDataChannelOption
-	| APIApplicationCommandInteractionDataRoleOption
+	| APIApplicationCommandInteractionDataIntegerOption
 	| APIApplicationCommandInteractionDataMentionableOption
 	| APIApplicationCommandInteractionDataNumberOption
-	| APIApplicationCommandInteractionDataAttachmentOption;
+	| APIApplicationCommandInteractionDataRoleOption
+	| APIApplicationCommandInteractionDataStringOption
+	| APIApplicationCommandInteractionDataUserOption;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data

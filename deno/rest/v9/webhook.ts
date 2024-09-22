@@ -5,11 +5,12 @@ import type {
 	APIEmbed,
 	APIMessage,
 	APIWebhook,
-	APIAttachment,
 	MessageFlags,
 	APIMessageActionRowComponent,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
+import type { RESTAPIAttachment } from './channel.ts';
+import type { RESTAPIPoll } from './poll.ts';
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
@@ -139,7 +140,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * Attachment objects with filename and description
 	 */
-	attachments?: (Pick<APIAttachment, 'id' | 'description'> & Partial<Pick<APIAttachment, 'filename'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * Message flags combined as a bitfield
 	 */
@@ -150,19 +151,27 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 * Available only if the webhook is in a forum channel and a thread is not specified in {@link RESTPostAPIWebhookWithTokenQuery.thread_id} query parameter
 	 */
 	thread_name?: string | undefined;
+	/**
+	 * Array of tag ids to apply to the thread
+	 */
+	applied_tags?: Snowflake[] | undefined;
+	/**
+	 * A poll!
+	 */
+	poll?: RESTAPIPoll | undefined;
 }
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPostAPIWebhookWithTokenJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIWebhookWithTokenJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
@@ -248,29 +257,36 @@ export interface RESTGetAPIWebhookWithTokenMessageQuery {
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'content' | 'embeds' | 'allowed_mentions' | 'components'>>
+	Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'allowed_mentions' | 'components' | 'content' | 'embeds'>>
 > & {
 	/**
 	 * Attached files to keep
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
 	 */
-	attachments?: (Pick<APIAttachment, 'id'> & Partial<Pick<APIAttachment, 'filename' | 'description'>>)[] | undefined;
+	attachments?: RESTAPIAttachment[] | undefined;
+	/**
+	 * A poll!
+	 *
+	 * @remarks
+	 * Polls can only be added when editing a deferred interaction response.
+	 */
+	poll?: RESTAPIPoll | undefined;
 };
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
-	| ({
+	| (Record<`files[${bigint}]`, unknown> & {
 			/**
 			 * JSON stringified message body
 			 */
 			payload_json?: string | undefined;
-	  } & Record<`files[${bigint}]`, unknown>)
-	| (RESTPatchAPIWebhookWithTokenMessageJSONBody & Record<`files[${bigint}]`, unknown>);
+	  })
+	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIWebhookWithTokenMessageJSONBody);
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message

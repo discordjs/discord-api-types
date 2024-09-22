@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { execSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
+import process from 'node:process';
 import { Octokit } from '@octokit/action';
 
 const octokit = new Octokit();
@@ -37,7 +38,7 @@ if (!diff.length) {
 		repo: REPOSITORY,
 	});
 
-	const lastReviewByBot = allReviews.data.filter((item) => item.user?.id === 41898282).at(-1);
+	const lastReviewByBot = allReviews.data.filter((item) => item.user?.id === 41_898_282).at(-1);
 
 	if (lastReviewByBot?.state === 'CHANGES_REQUESTED') {
 		await octokit.pulls.dismissReview({

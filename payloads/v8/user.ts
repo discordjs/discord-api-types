@@ -2,11 +2,12 @@
  * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
-import type { APIGuildIntegration } from './guild';
 import type { Snowflake } from '../../globals';
+import type { APIGuildIntegration } from './guild';
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIUser {
@@ -84,6 +85,7 @@ export interface APIUser {
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-user-flags
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum UserFlags {
@@ -154,11 +156,12 @@ export enum UserFlags {
 	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
-	Quarantined = Math.pow(2, 44),
+	Quarantined = 2 ** 44,
 }
 
 /**
  * https://discord.com/developers/docs/resources/user#user-object-premium-types
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum UserPremiumType {
@@ -169,6 +172,7 @@ export enum UserPremiumType {
 
 /**
  * https://discord.com/developers/docs/resources/user#connection-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIConnection {

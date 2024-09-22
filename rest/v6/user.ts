@@ -2,18 +2,21 @@ import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../../pay
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPICurrentUserResult = APIUser;
 
 /**
  * https://discord.com/developers/docs/resources/user#get-user
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIUserResult = APIUser;
 
 /**
  * https://discord.com/developers/docs/resources/user#modify-current-user
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPatchAPICurrentUserJSONBody {
@@ -28,6 +31,7 @@ export type RESTPatchAPICurrentUserResult = APIUser;
 
 /**
  * https://discord.com/developers/docs/resources/user#get-current-user-guilds
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTGetAPICurrentUserGuildsQuery {
@@ -59,12 +63,14 @@ export type RESTGetAPICurrentUserGuildsResult = RESTAPIPartialCurrentUserGuild[]
 
 /**
  * https://discord.com/developers/docs/resources/user#leave-guild
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTDeleteAPICurrentUserGuildResult = never;
 
 /**
  * https://discord.com/developers/docs/resources/user#create-dm
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
@@ -78,6 +84,7 @@ export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
 
 /**
  * https://discord.com/developers/docs/resources/user#get-user-connections
+ *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPICurrentUserConnectionsResult = APIConnection[];

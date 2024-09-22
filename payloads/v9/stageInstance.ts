@@ -1,5 +1,5 @@
-import type { APIGuildMember } from './guild';
 import type { Snowflake } from '../../globals';
+import type { APIGuildMember } from './guild';
 
 /**
  * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object
@@ -29,6 +29,7 @@ export interface APIStageInstance {
 	privacy_level: StageInstancePrivacyLevel;
 	/**
 	 * Whether or not stage discovery is disabled
+	 *
 	 * @deprecated
 	 */
 	discoverable_disabled: boolean;
@@ -44,6 +45,7 @@ export interface APIStageInstance {
 export enum StageInstancePrivacyLevel {
 	/**
 	 * The stage instance is visible publicly, such as on stage discovery
+	 *
 	 * @deprecated
 	 */
 	Public = 1,
@@ -55,6 +57,7 @@ export enum StageInstancePrivacyLevel {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-stage-instance-object-invite-stage-instance-structure
+ *
  * @deprecated
  */
 export interface APIInviteStageInstance {

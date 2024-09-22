@@ -15,3 +15,24 @@ website/build
 *.js
 *.d.ts
 *.mjs
+
+# Miscellaneous
+CODEOWNERS
+renovate.json
+CHANGELOG.md
+
+# Format all of scripts
+!scripts/**/*
+!.prettierrc.mjs
+
+# Deprecated versions
+gateway/v6/*
+payloads/v6/*
+rest/v6/*
+v6.ts
+
+gateway/v8/*
+payloads/v8/*
+rest/v8/*
+utils/v8.ts
+v8.ts

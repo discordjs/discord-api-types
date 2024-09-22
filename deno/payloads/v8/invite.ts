@@ -11,21 +11,22 @@ import type { APIUser } from './user.ts';
 
 export type APIInviteGuild = Pick<
 	APIGuild,
-	| 'id'
-	| 'name'
-	| 'splash'
 	| 'banner'
-	| 'icon'
-	| 'vanity_url_code'
 	| 'description'
 	| 'features'
-	| 'verification_level'
+	| 'icon'
+	| 'id'
+	| 'name'
 	| 'nsfw_level'
 	| 'premium_subscription_count'
+	| 'splash'
+	| 'vanity_url_code'
+	| 'verification_level'
 >;
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIInvite {
@@ -93,6 +94,7 @@ export interface APIInvite {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export enum InviteTargetType {
@@ -102,6 +104,7 @@ export enum InviteTargetType {
 
 /**
  * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface APIExtendedInvite extends APIInvite {
