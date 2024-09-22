@@ -793,7 +793,7 @@ export type GatewayEntitlementDeleteDispatchData = GatewayEntitlementModifyDispa
 export type GatewayEntitlementDeleteDispatch = GatewayEntitlementModifyDispatch;
 
 /**
- * https://discord.com/developers/docs/topics/gateway-events#guild-create
+ * https://discord.com/developers/docs/topics/gateway-events#guild-update
  */
 export type GatewayGuildModifyDispatch = DataPayload<GatewayDispatchEvents.GuildUpdate, GatewayGuildModifyDispatchData>;
 
@@ -1215,43 +1215,73 @@ export interface GatewayGuildRoleDeleteDispatchData {
 	role_id: Snowflake;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create
+ */
 export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventCreate,
 	GatewayGuildScheduledEventCreateDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create
+ */
 export type GatewayGuildScheduledEventCreateDispatchData = APIGuildScheduledEvent;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-update
+ */
 export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUpdate,
 	GatewayGuildScheduledEventUpdateDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-update
+ */
 export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildScheduledEvent;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-delete
+ */
 export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventDelete,
 	GatewayGuildScheduledEventDeleteDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-delete
+ */
 export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add
+ */
 export type GatewayGuildScheduledEventUserAddDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUserAdd,
 	GatewayGuildScheduledEventUserAddDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add
+ */
 export interface GatewayGuildScheduledEventUserAddDispatchData {
 	guild_scheduled_event_id: Snowflake;
 	user_id: Snowflake;
 	guild_id: Snowflake;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-remove
+ */
 export type GatewayGuildScheduledEventUserRemoveDispatch = DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUserRemove,
 	GatewayGuildScheduledEventUserAddDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-remove
+ */
 export interface GatewayGuildScheduledEventUserRemoveDispatchData {
 	guild_scheduled_event_id: Snowflake;
 	user_id: Snowflake;
@@ -1457,6 +1487,9 @@ export type GatewayMessageUpdateDispatchData = GatewayMessageEventExtraFields &
 		channel_id: Snowflake;
 	};
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-create-message-create-extra-fields
+ */
 export interface GatewayMessageEventExtraFields {
 	/**
 	 * ID of the guild the message was sent in
@@ -1899,6 +1932,10 @@ export type GatewayMessagePollVoteRemoveDispatch = DataPayload<
 	GatewayMessagePollVoteDispatchData
 >;
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add
+ * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove
+ */
 export interface GatewayMessagePollVoteDispatchData {
 	/**
 	 * ID of the user
@@ -2046,6 +2083,9 @@ export interface GatewayRequestGuildMembers {
 	d: GatewayRequestGuildMembersData;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#request-guild-members
+ */
 export interface GatewayRequestGuildMembersDataBase {
 	/**
 	 * ID of the guild to get members for
@@ -2065,6 +2105,9 @@ export interface GatewayRequestGuildMembersDataBase {
 	nonce?: string;
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#request-guild-members
+ */
 export interface GatewayRequestGuildMembersDataWithUserIds extends GatewayRequestGuildMembersDataBase {
 	/**
 	 * Used to specify which users you wish to fetch
@@ -2072,6 +2115,9 @@ export interface GatewayRequestGuildMembersDataWithUserIds extends GatewayReques
 	user_ids: Snowflake | Snowflake[];
 }
 
+/**
+ * https://discord.com/developers/docs/topics/gateway-events#request-guild-members
+ */
 export interface GatewayRequestGuildMembersDataWithQuery extends GatewayRequestGuildMembersDataBase {
 	/**
 	 * String that username starts with, or an empty string to return all members
