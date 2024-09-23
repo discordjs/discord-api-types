@@ -1,3 +1,18 @@
+## [0.37.101](https://github.com/discordjs/discord-api-types/compare/0.37.100...0.37.101) (2024-09-23)
+
+
+### Bug Fixes
+
+* **rest/oauth2:** correct string literal types containing bot scope ([#1101](https://github.com/discordjs/discord-api-types/issues/1101)) ([2ae2324](https://github.com/discordjs/discord-api-types/commit/2ae232477a1362eb0bd5c4aeee4a97bfbca7b2a2))
+
+
+### Features
+
+* add `VoiceChannelEffectSend` event ([#739](https://github.com/discordjs/discord-api-types/issues/739)) ([240226f](https://github.com/discordjs/discord-api-types/commit/240226f3d2d32df378400671a6bf31ceb2468a3c))
+* missing subscription dispatch types ([#1105](https://github.com/discordjs/discord-api-types/issues/1105)) ([2b653a0](https://github.com/discordjs/discord-api-types/commit/2b653a00b3acb04979b7656142f3d8ef986fd561))
+
+
+
 ## [0.37.100](https://github.com/discordjs/discord-api-types/compare/0.37.99...0.37.100) (2024-09-05)
 
 
