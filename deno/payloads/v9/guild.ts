@@ -526,6 +526,10 @@ export enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
+	/**
+	 * Guild has created soundboard sounds
+	 */
+	Soundboard = 'SOUNDBOARD',
 }
 
 /**
