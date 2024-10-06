@@ -23,6 +23,7 @@ import type {
 } from './guild';
 import type {
 	APIGuildScheduledEvent,
+	APIGuildScheduledEventRecurrenceRule,
 	GuildScheduledEventEntityType,
 	GuildScheduledEventStatus,
 } from './guildScheduledEvent';
@@ -408,6 +409,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyPruneDeleteDays
 	| APIAuditLogChangeKeyPublicUpdatesChannelId
 	| APIAuditLogChangeKeyRateLimitPerUser
+	| APIAuditLogChangeKeyRecurrenceRule
 	| APIAuditLogChangeKeyRegion
 	| APIAuditLogChangeKeyRulesChannelId
 	| APIAuditLogChangeKeySplashHash
@@ -606,6 +608,11 @@ export type APIAuditLogChangeKeyApplicationId = AuditLogChangeData<'application_
  * is changed
  */
 export type APIAuditLogChangeKeyRateLimitPerUser = AuditLogChangeData<'rate_limit_per_user', number>;
+
+/**
+ *  Returned when a guild scheduled event's recurrence_rule is changed
+ */
+export type APIAuditLogChangeKeyRecurrenceRule = AuditLogChangeData<'recurrence_rule', APIGuildScheduledEventRecurrenceRule>
 
 /**
  * Returned when a permission bitfield is changed
