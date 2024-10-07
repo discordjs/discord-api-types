@@ -612,7 +612,10 @@ export type APIAuditLogChangeKeyRateLimitPerUser = AuditLogChangeData<'rate_limi
 /**
  *  Returned when a guild scheduled event's recurrence_rule is changed
  */
-export type APIAuditLogChangeKeyRecurrenceRule = AuditLogChangeData<'recurrence_rule', APIGuildScheduledEventRecurrenceRule>
+export type APIAuditLogChangeKeyRecurrenceRule = AuditLogChangeData<
+	'recurrence_rule',
+	APIGuildScheduledEventRecurrenceRule
+>;
 
 /**
  * Returned when a permission bitfield is changed
