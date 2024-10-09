@@ -22,6 +22,7 @@ export enum RESTJSONErrorCodes {
 	UnknownWebhookService,
 
 	UnknownSession = 10_020,
+	UnknownAsset,
 
 	UnknownBan = 10_026,
 	UnknownSKU,
@@ -234,6 +235,9 @@ export enum RESTJSONErrorCodes {
 	ServerNeedsMoreBoostsToPerformThisAction = 50_101,
 
 	RequestBodyContainsInvalidJSON = 50_109,
+	ProvidedFileIsInvalid,
+
+	ProvidedFileDurationExceedsMaximumLength = 50_124,
 
 	OwnerCannotBePendingMember = 50_131,
 	OwnershipCannotBeMovedToABotUser,

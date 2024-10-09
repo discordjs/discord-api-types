@@ -11,15 +11,16 @@ export * from './guild.ts';
 export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
+export * from './monetization.ts';
 export * from './oauth2.ts';
 export * from './poll.ts';
+export * from './soundboard.ts';
 export * from './stageInstance.ts';
 export * from './sticker.ts';
 export * from './template.ts';
 export * from './user.ts';
 export * from './voice.ts';
 export * from './webhook.ts';
-export * from './monetization.ts';
 
 export const APIVersion = '10';
 
@@ -1010,10 +1011,45 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/skus/{sku.id}/subscriptions/${subscription.id}`
+	 * - GET `/skus/{sku.id}/subscriptions/{subscription.id}`
 	 */
 	skuSubscription(skuId: Snowflake, subscriptionId: Snowflake) {
 		return `/skus/${skuId}/subscriptions/${subscriptionId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/channels/{channel.id}/send-soundboard-sound`
+	 */
+	sendSoundboardSound(channelId: Snowflake) {
+		return `/channels/${channelId}/send-soundboard-sound` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-default-sounds`
+	 */
+	soundboardDefaultSounds() {
+		return '/soundboard-default-sounds' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/soundboard-sounds`
+	 * - POST `/guilds/{guild.id}/soundboard-sounds`
+	 */
+	guildSoundboardSounds(guildId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 * - PATCH `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 * - DELETE `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 */
+	guildSoundboardSound(guildId: Snowflake, soundId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds/${soundId}` as const;
 	},
 };
 
@@ -1303,6 +1339,14 @@ export const CDNRoutes = {
 		format: Format,
 	) {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-sounds/${sound.id}`
+	 */
+	soundboardSound(soundId: Snowflake) {
+		return `/soundboard-sounds/${soundId}` as const;
 	},
 };
 
