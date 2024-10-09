@@ -1,4 +1,3 @@
-import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
 import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
@@ -6,6 +5,7 @@ import type {
 	ComponentType,
 	InteractionType,
 } from '../index';
+import type { APIActionRowComponent, APIModalActionRowComponent } from '../message';
 
 export interface ModalSubmitComponent {
 	type: ComponentType;

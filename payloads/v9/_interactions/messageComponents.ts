@@ -1,6 +1,6 @@
 import type { Snowflake } from '../../../globals';
-import type { ComponentType } from '../channel';
 import type { APIBaseInteraction, InteractionType } from '../interactions';
+import type { ComponentType } from '../message';
 import type {
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,

@@ -1,6 +1,6 @@
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9.ts';
-import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel.ts';
 import type { MessageFlags } from '../mod.ts';
+import type { APIActionRowComponent, APIModalActionRowComponent } from '../message.ts';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**

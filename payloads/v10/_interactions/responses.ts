@@ -1,6 +1,6 @@
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v10';
-import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
 import type { MessageFlags } from '../index';
+import type { APIActionRowComponent, APIModalActionRowComponent } from '../message';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**

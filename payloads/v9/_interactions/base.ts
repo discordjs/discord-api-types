@@ -1,21 +1,14 @@
 import type { Permissions, Snowflake } from '../../../globals';
 import type { APIRole, ApplicationIntegrationType, InteractionContextType, LocaleString } from '../../../v9';
-import type {
-	APIAttachment,
-	APIChannel,
-	APIMessage,
-	APIPartialChannel,
-	APIThreadChannel,
-	ChannelType,
-	ThreadChannelType,
-} from '../channel';
+import type { APIChannel, APIPartialChannel, APIThreadChannel, ChannelType, ThreadChannelType } from '../channel';
 import type { APIGuildMember } from '../guild';
+import type { APIMessage, APIAttachment } from '../message';
 import type { APIEntitlement } from '../monetization';
 import type { APIUser } from '../user';
 import type { InteractionType } from './responses';
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
+ * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object
  */
 export interface APIMessageInteractionMetadata {
 	/**

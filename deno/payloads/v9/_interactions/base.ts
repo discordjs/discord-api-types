@@ -1,21 +1,14 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { APIRole, ApplicationIntegrationType, InteractionContextType, LocaleString } from '../../../v9.ts';
-import type {
-	APIAttachment,
-	APIChannel,
-	APIMessage,
-	APIPartialChannel,
-	APIThreadChannel,
-	ChannelType,
-	ThreadChannelType,
-} from '../channel.ts';
+import type { APIChannel, APIPartialChannel, APIThreadChannel, ChannelType, ThreadChannelType } from '../channel.ts';
 import type { APIGuildMember } from '../guild.ts';
+import type { APIMessage, APIAttachment } from '../message.ts';
 import type { APIEntitlement } from '../monetization.ts';
 import type { APIUser } from '../user.ts';
 import type { InteractionType } from './responses.ts';
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
+ * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object
  */
 export interface APIMessageInteractionMetadata {
 	/**
