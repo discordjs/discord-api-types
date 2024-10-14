@@ -1,3 +1,13 @@
+## [0.37.102](https://github.com/discordjs/discord-api-types/compare/0.37.101...0.37.102) (2024-10-14)
+
+
+### Features
+
+* recurrence rule change key on audit logs ([#1112](https://github.com/discordjs/discord-api-types/issues/1112)) ([4746e8d](https://github.com/discordjs/discord-api-types/commit/4746e8d48600edf905037a9cb9507884876d9508))
+* soundboard ([#1113](https://github.com/discordjs/discord-api-types/issues/1113)) ([8d46830](https://github.com/discordjs/discord-api-types/commit/8d468300467db1c0a1726b4dfc6e92018e40e800))
+
+
+
 ## [0.37.101](https://github.com/discordjs/discord-api-types/compare/0.37.100...0.37.101) (2024-09-23)
 
 
