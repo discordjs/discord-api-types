@@ -377,6 +377,8 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyDeny
 	| APIAuditLogChangeKeyDescription
 	| APIAuditLogChangeKeyDiscoverySplashHash
+	| APIAuditLogChangeKeyEmojiId
+	| APIAuditLogChangeKeyEmojiName
 	| APIAuditLogChangeKeyEnabled
 	| APIAuditLogChangeKeyEnableEmoticons
 	| APIAuditLogChangeKeyEntityType
@@ -417,6 +419,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyRecurrenceRule
 	| APIAuditLogChangeKeyRegion
 	| APIAuditLogChangeKeyRulesChannelId
+	| APIAuditLogChangeKeySoundId
 	| APIAuditLogChangeKeySplashHash
 	| APIAuditLogChangeKeyStatus
 	| APIAuditLogChangeKeySystemChannelFlags
@@ -427,10 +430,12 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyTriggerMetadata
 	| APIAuditLogChangeKeyTriggerType
 	| APIAuditLogChangeKeyType
+	| APIAuditLogChangeKeyUserId
 	| APIAuditLogChangeKeyUserLimit
 	| APIAuditLogChangeKeyUses
 	| APIAuditLogChangeKeyVanityURLCode
 	| APIAuditLogChangeKeyVerificationLevel
+	| APIAuditLogChangeKeyVolume
 	| APIAuditLogChangeKeyWidgetChannelId
 	| APIAuditLogChangeKeyWidgetEnabled;
 
@@ -885,6 +890,31 @@ export type APIAuditLogChangeKeyDefaultThreadRateLimitPerUser = AuditLogChangeDa
 	'default_thread_rate_limit_per_user',
 	number
 >;
+
+/**
+ * Returned when a soundboard is create or deleted
+ */
+export type APIAuditLogChangeKeySoundId = AuditLogChangeData<'sound_id', Snowflake>;
+
+/**
+ * Returned when a soundboard's volume is changed
+ */
+export type APIAuditLogChangeKeyVolume = AuditLogChangeData<'volume', number>;
+
+/**
+ * Returned when a soundboard's custom emoji is changed
+ */
+export type APIAuditLogChangeKeyEmojiId = AuditLogChangeData<'emoji_id', Snowflake>;
+
+/**
+ * Returned when a soundboard's unicode emoji is changed
+ */
+export type APIAuditLogChangeKeyEmojiName = AuditLogChangeData<'emoji_name', string>;
+
+/**
+ * Returned when a sounboard is created
+ */
+export type APIAuditLogChangeKeyUserId = AuditLogChangeData<'user_id', Snowflake>;
 
 interface AuditLogChangeData<K extends string, D> {
 	key: K;
