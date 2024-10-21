@@ -1,3 +1,13 @@
+## [0.37.103](https://github.com/discordjs/discord-api-types/compare/0.37.102...0.37.103) (2024-10-21)
+
+
+### Features
+
+* audit log change key for boost bar ([#1120](https://github.com/discordjs/discord-api-types/issues/1120)) ([0fe6059](https://github.com/discordjs/discord-api-types/commit/0fe605975312829702df02b6432fce6d58a00e1f))
+* soundboard audit log events ([#1122](https://github.com/discordjs/discord-api-types/issues/1122)) ([76fc8f0](https://github.com/discordjs/discord-api-types/commit/76fc8f035b4c92329896eb8110eaa8d640bf8ec8))
+
+
+
 ## [0.37.102](https://github.com/discordjs/discord-api-types/compare/0.37.101...0.37.102) (2024-10-14)
 
 
