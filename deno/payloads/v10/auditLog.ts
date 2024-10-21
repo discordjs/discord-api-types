@@ -405,6 +405,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyPermissions
 	| APIAuditLogChangeKeyPosition
 	| APIAuditLogChangeKeyPreferredLocale
+	| APIAuditLogChangeKeyPremiumProgressBarEnabled
 	| APIAuditLogChangeKeyPrivacyLevel
 	| APIAuditLogChangeKeyPruneDeleteDays
 	| APIAuditLogChangeKeyPublicUpdatesChannelId
@@ -534,6 +535,11 @@ export type APIAuditLogChangeKeyDefaultMessageNotifications = AuditLogChangeData
  * Returned when a guild's vanity_url_code is changed
  */
 export type APIAuditLogChangeKeyVanityURLCode = AuditLogChangeData<'vanity_url_code', string>;
+
+/**
+ * Returned when a guild's boost progress bar is enabled
+ */
+export type APIAuditLogChangeKeyPremiumProgressBarEnabled = AuditLogChangeData<'premium_progress_bar_enabled', boolean>;
 
 /**
  * Returned when new role(s) are added
