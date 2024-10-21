@@ -197,6 +197,10 @@ export enum AuditLogEvent {
 
 	ApplicationCommandPermissionUpdate = 121,
 
+	SoundboardSoundCreate = 130,
+	SoundboardSoundUpdate,
+	SoundboardSoundDelete,
+
 	AutoModerationRuleCreate = 140,
 	AutoModerationRuleUpdate,
 	AutoModerationRuleDelete,
