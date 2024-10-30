@@ -9,6 +9,7 @@ import type { ApplicationIntegrationType } from './interactions';
 import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
+import type { WebhookEventType } from './webhook';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
@@ -142,6 +143,18 @@ export interface APIApplication {
 	 * The application's default custom authorization link, if enabled
 	 */
 	custom_install_url?: string;
+	/**
+	 * Event webhook URL for the app to receive webhook events
+	 */
+	event_webhooks_url?: string | null;
+	/**
+	 * If webhook events are enabled for the app.
+	 */
+	event_webhooks_status: ApplicationEventWebhookStatus;
+	/**
+	 * List of webhook event types the app subscribes to
+	 */
+	event_webhooks_types?: WebhookEventType[];
 }
 
 export interface APIApplicationInstallParams {
@@ -296,4 +309,22 @@ export enum ApplicationRoleConnectionMetadataType {
 	 * The metadata value (`integer`) is not equal to the guild's configured value (`integer`; `1`)
 	 */
 	BooleanNotEqual,
+}
+
+/**
+ * https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status
+ */
+export enum ApplicationEventWebhookStatus {
+	/**
+	 * Webhook events are disabled by developer
+	 */
+	Disabled = 1,
+	/**
+	 * Webhook events are enabled by developer
+	 */
+	Enabled,
+	/**
+	 * Webhook events are disabled by Discord, usually due to inactivity
+	 */
+	DisabledByDiscord,
 }
