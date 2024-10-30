@@ -17,7 +17,12 @@ import type { InteractionType } from './responses';
 /**
  * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
  */
-export interface APIMessageInteractionMetadata {
+export type APIMessageInteractionMetadata =
+	| APIApplicationCommandInteractionMetadata
+	| APIMessageComponentInteractionMetadata
+	| APIModalSubmitInteractionMetadata;
+
+interface APIBaseInteractionMetadata<Type extends InteractionType> {
 	/**
 	 * ID of the interaction
 	 */
@@ -25,27 +30,56 @@ export interface APIMessageInteractionMetadata {
 	/**
 	 * Type of interaction
 	 */
-	type: InteractionType;
+	type: Type;
 	/**
 	 * User who triggered the interaction
 	 */
 	user: APIUser;
 	/**
-	 * IDs for installation context(s) related to an interaction. Details in Authorizing Integration Owners Object
+	 * IDs for installation context(s) related to an interaction
 	 */
 	authorizing_integration_owners: APIAuthorizingIntegrationOwnersMap;
 	/**
 	 * ID of the original response message, present only on follow-up messages
 	 */
 	original_response_message_id?: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-application-command-interaction-metadata-structure
+ */
+export interface APIApplicationCommandInteractionMetadata
+	extends APIBaseInteractionMetadata<InteractionType.ApplicationCommand> {
 	/**
-	 * ID of the message that contained interactive component, present only on messages created from component interactions
+	 * The user the command was run on, present only on user commands interactions
 	 */
-	interacted_message_id?: Snowflake;
+	target_user?: APIUser;
 	/**
-	 * Metadata for the interaction that was used to open the modal, present only on modal submit interactions
+	 * The ID of the message the command was run on, present only on message command interactions.
+	 * The original response message will also have `message_reference` and `referenced_message` pointing to this message.
 	 */
-	triggering_interaction_metadata?: APIMessageInteractionMetadata;
+	target_message_id?: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-message-command-interaction-metadata-structure
+ */
+export interface APIMessageComponentInteractionMetadata
+	extends APIBaseInteractionMetadata<InteractionType.MessageComponent> {
+	/**
+	 * ID of the message that contained the interactive component
+	 */
+	interacted_message_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-modal-submit-interaction-metadata-structure
+ */
+export interface APIModalSubmitInteractionMetadata extends APIBaseInteractionMetadata<InteractionType.ModalSubmit> {
+	/**
+	 * Metadata for the interaction that was used to open the modal
+	 */
+	triggering_interaction_metadata: APIApplicationCommandInteractionMetadata | APIMessageComponentInteractionMetadata;
 }
 
 export type PartialAPIMessageInteractionGuildMember = Pick<
