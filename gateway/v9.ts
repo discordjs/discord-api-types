@@ -194,7 +194,11 @@ export enum GatewayIntentBits {
 	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildModeration}
 	 */
 	GuildBans = GuildModeration,
-	GuildEmojisAndStickers = 1 << 3,
+	GuildExpressions = 1 << 3,
+	/**
+	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildExpressions}
+	 */
+	GuildEmojisAndStickers = GuildExpressions,
 	GuildIntegrations = 1 << 4,
 	GuildWebhooks = 1 << 5,
 	GuildInvites = 1 << 6,
@@ -252,6 +256,7 @@ export enum GatewayDispatchEvents {
 	GuildSoundboardSoundDelete = 'GUILD_SOUNDBOARD_SOUND_DELETE',
 	GuildSoundboardSoundsUpdate = 'GUILD_SOUNDBOARD_SOUNDS_UPDATE',
 	GuildSoundboardSoundUpdate = 'GUILD_SOUNDBOARD_SOUND_UPDATE',
+	SoundboardSounds = 'SOUNDBOARD_SOUNDS',
 	GuildStickersUpdate = 'GUILD_STICKERS_UPDATE',
 	GuildUpdate = 'GUILD_UPDATE',
 	IntegrationCreate = 'INTEGRATION_CREATE',
@@ -361,6 +366,7 @@ export type GatewayDispatchPayload =
 	| GatewayPresenceUpdateDispatch
 	| GatewayReadyDispatch
 	| GatewayResumedDispatch
+	| GatewaySoundboardSoundsDispatch
 	| GatewayStageInstanceCreateDispatch
 	| GatewayStageInstanceDeleteDispatch
 	| GatewayStageInstanceUpdateDispatch
@@ -902,9 +908,17 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
 	 *
-	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 * See https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
+	/**
+	 * The soundboard sounds in the guild
+	 *
+	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 *
+	 * See https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object
+	 */
+	soundboard_sounds: APISoundboardSound[];
 }
 
 /**
@@ -1363,6 +1377,28 @@ export type GatewayGuildSoundboardSoundsUpdateDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sounds-update
  */
 export interface GatewayGuildSoundboardSoundsUpdateDispatchData {
+	/**
+	 * The guild's soundboard sounds
+	 */
+	soundboard_sounds: APISoundboardSound[];
+	/**
+	 * The id of the guild
+	 */
+	guild_id: Snowflake;
+}
+
+/**
+ * https://discord.com/developers/docs/events/gateway-events#soundboard-sounds
+ */
+export type GatewaySoundboardSoundsDispatch = DataPayload<
+	GatewayDispatchEvents.SoundboardSounds,
+	GatewaySoundboardSoundsDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/events/gateway-events#soundboard-sounds
+ */
+export interface GatewaySoundboardSoundsDispatchData {
 	/**
 	 * The guild's soundboard sounds
 	 */

@@ -58,6 +58,8 @@ export enum RESTJSONErrorCodes {
 
 	UnknownTag = 10_087,
 
+	UnknownSound = 10_097,
+
 	BotsCannotUseThisEndpoint = 20_001,
 	OnlyBotsCanUseThisEndpoint,
 
@@ -116,7 +118,8 @@ export enum RESTJSONErrorCodes {
 
 	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30_042,
 
-	MaximumNumberOfEditsToMessagesOlderThanOneHourReached = 30_046,
+	MaximumNumberOfSoundboardSoundsReached = 30_045,
+	MaximumNumberOfEditsToMessagesOlderThanOneHourReached,
 	MaximumNumberOfPinnedThreadsInForumHasBeenReached,
 	MaximumNumberOfTagsInForumHasBeenReached,
 
@@ -237,7 +240,8 @@ export enum RESTJSONErrorCodes {
 	RequestBodyContainsInvalidJSON = 50_109,
 	ProvidedFileIsInvalid,
 
-	ProvidedFileDurationExceedsMaximumLength = 50_124,
+	ProvidedFileTypeIsInvalid = 50_123,
+	ProvidedFileDurationExceedsMaximumLength,
 
 	OwnerCannotBePendingMember = 50_131,
 	OwnershipCannotBeMovedToABotUser,
@@ -248,6 +252,8 @@ export enum RESTJSONErrorCodes {
 	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
 	UploadedFileNotFound,
 
+	SpecifiedEmojiIsInvalid = 50_151,
+
 	VoiceMessagesDoNotSupportAdditionalContent = 50_159,
 	VoiceMessagesMustHaveASingleAudioAttachment,
 	VoiceMessagesMustHaveSupportingMetadata,
@@ -257,6 +263,8 @@ export enum RESTJSONErrorCodes {
 	YouCannotSendVoiceMessagesInThisChannel = 50_173,
 
 	TheUserAccountMustFirstBeVerified = 50_178,
+
+	ProvidedFileDoesNotHaveAValidDuration = 50_192,
 
 	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
