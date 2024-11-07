@@ -1,3 +1,13 @@
+## [0.37.104](https://github.com/discordjs/discord-api-types/compare/0.37.103...0.37.104) (2024-11-07)
+
+
+### Bug Fixes
+
+* add missing soundboard types ([#1134](https://github.com/discordjs/discord-api-types/issues/1134)) ([88d8bed](https://github.com/discordjs/discord-api-types/commit/88d8bed1caa88b604fec8f60ae1450f556c26c8e))
+* **isInteractionButton:** handle `ButtonStyle.Premium` ([#1135](https://github.com/discordjs/discord-api-types/issues/1135)) ([736479c](https://github.com/discordjs/discord-api-types/commit/736479cab3332f6be122965963d37c8d4c99fc7f))
+
+
+
 ## [0.37.103](https://github.com/discordjs/discord-api-types/compare/0.37.102...0.37.103) (2024-10-21)
 
 
