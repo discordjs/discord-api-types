@@ -1,4 +1,4 @@
-import type { LocaleString } from '../rest/common.ts';
+import type { Locale } from '../rest/common.ts';
 
 /**
  * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
@@ -297,7 +297,7 @@ export const PermissionFlagsBits = {
  */
 Object.freeze(PermissionFlagsBits);
 
-export type LocalizationMap = Partial<Record<LocaleString, string | null>>;
+export type LocalizationMap = Partial<Record<Locale, string | null>>;
 
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json

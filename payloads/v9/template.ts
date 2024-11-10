@@ -3,6 +3,7 @@
  */
 
 import type { Snowflake } from '../../globals';
+import type { Locale } from '../../rest/common';
 import type { RESTPostAPIGuildsJSONBody } from '../../rest/v9/index';
 import type { APIUser } from './user';
 
@@ -60,6 +61,6 @@ export interface APITemplate {
 
 export interface APITemplateSerializedSourceGuild extends Omit<RESTPostAPIGuildsJSONBody, 'icon'> {
 	description: string | null;
-	preferred_locale: string;
+	preferred_locale: Locale;
 	icon_hash: string | null;
 }

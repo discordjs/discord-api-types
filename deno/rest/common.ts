@@ -362,4 +362,7 @@ export enum Locale {
 	Vietnamese = 'vi',
 }
 
+/**
+ * @deprecated Use {@apilink Locale} instead.
+ */
 export type LocaleString = `${Locale}`;
