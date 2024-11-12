@@ -1596,17 +1596,7 @@ export type GatewayMessageUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-update
  */
-export type GatewayMessageUpdateDispatchData = GatewayMessageEventExtraFields &
-	Omit<Partial<APIMessage>, 'mentions'> & {
-		/**
-		 * ID of the message
-		 */
-		id: Snowflake;
-		/**
-		 * ID of the channel the message was sent in
-		 */
-		channel_id: Snowflake;
-	};
+export type GatewayMessageUpdateDispatchData = GatewayMessageEventExtraFields & Omit<APIMessage, 'mentions'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-create-message-create-extra-fields
