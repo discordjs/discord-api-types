@@ -301,7 +301,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
-	 * Include to make your message a reply
+	 * Include to reference another message (reply, forward, etc.)
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
 	 */
