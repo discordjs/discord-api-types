@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../../globals';
-import type { APIRole, ApplicationIntegrationType, InteractionContextType, LocaleString } from '../../../v10';
+import type { APIRole, ApplicationIntegrationType, InteractionContextType, Locale } from '../../../v10';
 import type {
 	APIAttachment,
 	APIChannel,
@@ -160,11 +160,11 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * The selected language of the invoking user
 	 */
-	locale: LocaleString;
+	locale: Locale;
 	/**
 	 * The guild's preferred locale, if invoked in a guild
 	 */
-	guild_locale?: LocaleString;
+	guild_locale?: Locale;
 	/**
 	 * For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
 	 */

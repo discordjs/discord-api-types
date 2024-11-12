@@ -3,6 +3,7 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals';
+import type { Locale } from '../../rest/common';
 import type { APIEmoji, APIPartialEmoji } from './emoji';
 import type { PresenceUpdateReceiveStatus } from './gateway';
 import type { OAuth2Scopes } from './oauth2';
@@ -227,7 +228,7 @@ export interface APIGuild extends APIPartialGuild {
 	 *
 	 * @default "en-US"
 	 */
-	preferred_locale: string;
+	preferred_locale: Locale;
 	/**
 	 * The id of the channel where admins and moderators of Community guilds receive notices from Discord
 	 */
