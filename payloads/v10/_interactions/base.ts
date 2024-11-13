@@ -9,7 +9,7 @@ import type {
 	ChannelType,
 	ThreadChannelType,
 } from '../channel';
-import type { APIGuildMember } from '../guild';
+import type { APIGuildMember, APIPartialInteractionGuild } from '../guild';
 import type { APIEntitlement } from '../monetization';
 import type { APIUser } from '../user';
 import type { InteractionType } from './responses';
@@ -118,7 +118,11 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 */
 	data?: Data;
 	/**
-	 * The guild it was sent from
+	 * Guild that the interaction was sent from
+	 */
+	guild?: APIPartialInteractionGuild;
+	/**
+	 * Guild that the interaction was sent from
 	 */
 	guild_id?: Snowflake;
 	/**

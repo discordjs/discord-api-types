@@ -284,6 +284,19 @@ export interface APIGuild extends APIPartialGuild {
 }
 
 /**
+ * https://discord.com/developers/docs/resources/guild#guild-object-guild-structure
+ */
+export interface APIPartialInteractionGuild extends Pick<APIGuild, 'features' | 'id'> {
+	/**
+	 * The preferred locale of a Community guild; used in guild discovery and notices from Discord; defaults to "en-US"
+	 *
+	 * @unstable https://github.com/discord/discord-api-docs/issues/6938
+	 * @default "en-US"
+	 */
+	locale: Locale;
+}
+
+/**
  * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
  */
 export enum GuildDefaultMessageNotifications {
