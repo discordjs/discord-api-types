@@ -290,7 +290,7 @@ export interface APIPartialInteractionGuild extends Pick<APIGuild, 'features' | 
 	/**
 	 * The preferred locale of a Community guild; used in guild discovery and notices from Discord; defaults to "en-US"
 	 *
-	 * @remarks This field may change in the future due to https://github.com/discord/discord-api-docs/issues/6938.
+	 * @unstable https://github.com/discord/discord-api-docs/issues/6938
 	 * @default "en-US"
 	 */
 	locale: Locale;
