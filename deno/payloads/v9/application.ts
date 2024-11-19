@@ -9,7 +9,7 @@ import type { ApplicationIntegrationType } from './interactions.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
-import type { WebhookEventType } from './webhook.ts';
+import type { ApplicationWebhookEventType } from './webhook.ts';
 
 /**
  * https://discord.com/developers/docs/resources/application#application-object
@@ -154,7 +154,7 @@ export interface APIApplication {
 	/**
 	 * List of webhook event types the app subscribes to
 	 */
-	event_webhooks_types?: WebhookEventType[];
+	event_webhooks_types?: ApplicationWebhookEventType[];
 }
 
 export interface APIApplicationInstallParams {
