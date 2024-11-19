@@ -952,6 +952,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements/{entitlement.id}`
 	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
 	 */
 	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {

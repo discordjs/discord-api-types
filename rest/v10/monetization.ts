@@ -36,12 +36,21 @@ export interface RESTGetAPIEntitlementsQuery {
 	 * Whether ended entitlements should be omitted
 	 */
 	exclude_ended?: boolean | undefined;
+	/**
+	 * Whether deleted entitlements should be omitted
+	 */
+	exclude_deleted?: boolean | undefined;
 }
 
 /**
  * https://discord.com/developers/docs/resources/entitlement#list-entitlements
  */
 export type RESTGetAPIEntitlementsResult = APIEntitlement[];
+
+/**
+ * https://discord.com/developers/docs/resources/entitlement#get-entitlement
+ */
+export type RESTGetAPIEntitlementResult = APIEntitlement[];
 
 /**
  * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
