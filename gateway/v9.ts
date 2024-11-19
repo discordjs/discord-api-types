@@ -36,6 +36,8 @@ import type {
 	ChannelType,
 	APISubscription,
 	APISoundboardSound,
+	GuildChannelType,
+	ThreadChannelType,
 } from '../payloads/v9/index';
 import type { ReactionType } from '../rest/v9/index';
 import type { Nullable } from '../utils/internals';
@@ -878,7 +880,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channels: APIChannel[];
+	channels: (APIChannel & { type: Exclude<GuildChannelType, ThreadChannelType> })[];
 	/**
 	 * Threads in the guild
 	 *
@@ -886,7 +888,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	threads: APIChannel[];
+	threads: (APIChannel & { type: ThreadChannelType })[];
 	/**
 	 * Presences of the members in the guild, will only include non-offline members if the size is greater than `large_threshold`
 	 *
