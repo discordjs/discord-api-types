@@ -50,7 +50,7 @@ export type RESTGetAPIEntitlementsResult = APIEntitlement[];
 /**
  * https://discord.com/developers/docs/resources/entitlement#get-entitlement
  */
-export type RESTGetAPIEntitlementResult = APIEntitlement[];
+export type RESTGetAPIEntitlementResult = APIEntitlement;
 
 /**
  * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
