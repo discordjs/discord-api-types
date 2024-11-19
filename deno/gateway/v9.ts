@@ -878,7 +878,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channels: APIChannel[];
+	channels: (APIChannel & { type: Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM> })[];
 	/**
 	 * Threads in the guild
 	 *
@@ -886,7 +886,9 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	threads: APIChannel[];
+	threads: (APIChannel & {
+		type: ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
+	})[];
 	/**
 	 * Presences of the members in the guild, will only include non-offline members if the size is greater than `large_threshold`
 	 *
