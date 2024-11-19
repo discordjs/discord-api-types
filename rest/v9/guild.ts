@@ -35,6 +35,7 @@ import type {
 	StrictPartial,
 	StrictRequired,
 } from '../../utils/internals';
+import type { Locale } from '../common';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel';
 
 export interface RESTAPIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
@@ -315,7 +316,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	 *
 	 * @default "en-US" (if the value is set to `null`)
 	 */
-	preferred_locale?: string | null | undefined;
+	preferred_locale?: Locale | null | undefined;
 	/**
 	 * Enabled guild features
 	 *

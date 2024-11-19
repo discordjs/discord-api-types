@@ -1,5 +1,5 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
-import type { APIRole, ApplicationIntegrationType, InteractionContextType, LocaleString } from '../../../v9.ts';
+import type { APIRole, ApplicationIntegrationType, InteractionContextType, Locale } from '../../../v9.ts';
 import type {
 	APIAttachment,
 	APIChannel,
@@ -9,7 +9,7 @@ import type {
 	ChannelType,
 	ThreadChannelType,
 } from '../channel.ts';
-import type { APIGuildMember } from '../guild.ts';
+import type { APIGuildMember, APIPartialInteractionGuild } from '../guild.ts';
 import type { APIEntitlement } from '../monetization.ts';
 import type { APIUser } from '../user.ts';
 import type { InteractionType } from './responses.ts';
@@ -118,7 +118,11 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 */
 	data?: Data;
 	/**
-	 * The guild it was sent from
+	 * Guild that the interaction was sent from
+	 */
+	guild?: APIPartialInteractionGuild;
+	/**
+	 * Guild that the interaction was sent from
 	 */
 	guild_id?: Snowflake;
 	/**
@@ -160,11 +164,11 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * The selected language of the invoking user
 	 */
-	locale: LocaleString;
+	locale: Locale;
 	/**
 	 * The guild's preferred locale, if invoked in a guild
 	 */
-	guild_locale?: LocaleString;
+	guild_locale?: Locale;
 	/**
 	 * For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
 	 */

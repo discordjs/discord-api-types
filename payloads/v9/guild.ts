@@ -3,6 +3,7 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals';
+import type { Locale } from '../../rest/common';
 import type { APIEmoji, APIPartialEmoji } from './emoji';
 import type { PresenceUpdateReceiveStatus } from './gateway';
 import type { OAuth2Scopes } from './oauth2';
@@ -227,7 +228,7 @@ export interface APIGuild extends APIPartialGuild {
 	 *
 	 * @default "en-US"
 	 */
-	preferred_locale: string;
+	preferred_locale: Locale;
 	/**
 	 * The id of the channel where admins and moderators of Community guilds receive notices from Discord
 	 */
@@ -280,6 +281,19 @@ export interface APIGuild extends APIPartialGuild {
 	 * The id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
 	 */
 	safety_alerts_channel_id: Snowflake | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/guild#guild-object-guild-structure
+ */
+export interface APIPartialInteractionGuild extends Pick<APIGuild, 'features' | 'id'> {
+	/**
+	 * The preferred locale of a Community guild; used in guild discovery and notices from Discord; defaults to "en-US"
+	 *
+	 * @unstable https://github.com/discord/discord-api-docs/issues/6938
+	 * @default "en-US"
+	 */
+	locale: Locale;
 }
 
 /**
@@ -464,6 +478,10 @@ export enum GuildFeature {
 	 */
 	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
 	/**
+	 * Guild has increased custom soundboard sound slots
+	 */
+	MoreSoundboard = 'MORE_SOUNDBOARD',
+	/**
 	 * Guild has enabled monetization
 	 *
 	 * @unstable This feature is no longer documented by Discord
@@ -507,6 +525,10 @@ export enum GuildFeature {
 	 */
 	RoleSubscriptionsEnabled = 'ROLE_SUBSCRIPTIONS_ENABLED',
 	/**
+	 * Guild has created soundboard sounds
+	 */
+	Soundboard = 'SOUNDBOARD',
+	/**
 	 * Guild has enabled ticketed events
 	 */
 	TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
@@ -526,10 +548,6 @@ export enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
-	/**
-	 * Guild has created soundboard sounds
-	 */
-	Soundboard = 'SOUNDBOARD',
 }
 
 /**
@@ -626,6 +644,10 @@ export interface APIGuildMember {
 	 * The member's guild avatar hash
 	 */
 	avatar?: string | null;
+	/**
+	 * The member's guild banner hash
+	 */
+	banner?: string | null;
 	/**
 	 * Array of role object ids
 	 *

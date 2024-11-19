@@ -1,6 +1,6 @@
 {
 	"name": "discord-api-types",
-	"version": "0.37.103",
+	"version": "0.37.105",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
 	"homepage": "https://discord-api-types.dev",
 	"exports": {
@@ -136,7 +136,7 @@
 		"@octokit/webhooks-types": "^7.3.2",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@types/conventional-recommended-bump": "^9.0.3",
-		"@types/node": "^20.11.24",
+		"@types/node": "^22.0.0",
 		"@typescript-eslint/utils": "^8.0.0",
 		"conventional-changelog-cli": "^4.1.0",
 		"conventional-recommended-bump": "^9.0.0",

@@ -1,3 +1,24 @@
+## [0.37.105](https://github.com/discordjs/discord-api-types/compare/0.37.104...0.37.105) (2024-11-14)
+
+
+### Features
+
+* **_interactions:** Support partial guild objects ([#1142](https://github.com/discordjs/discord-api-types/issues/1142)) ([408165e](https://github.com/discordjs/discord-api-types/commit/408165e96fdd08d56183cf3c5348ee08e8aec056))
+* full message object on message update ([#1140](https://github.com/discordjs/discord-api-types/issues/1140)) ([3512262](https://github.com/discordjs/discord-api-types/commit/35122621946ab797d4c0b83cecdec1c3df05b6e0))
+* guild member banners ([#1057](https://github.com/discordjs/discord-api-types/issues/1057)) ([3f489f1](https://github.com/discordjs/discord-api-types/commit/3f489f18dccf5efe9e4983e66606998fafffc4dd))
+
+
+
+## [0.37.104](https://github.com/discordjs/discord-api-types/compare/0.37.103...0.37.104) (2024-11-07)
+
+
+### Bug Fixes
+
+* add missing soundboard types ([#1134](https://github.com/discordjs/discord-api-types/issues/1134)) ([88d8bed](https://github.com/discordjs/discord-api-types/commit/88d8bed1caa88b604fec8f60ae1450f556c26c8e))
+* **isInteractionButton:** handle `ButtonStyle.Premium` ([#1135](https://github.com/discordjs/discord-api-types/issues/1135)) ([736479c](https://github.com/discordjs/discord-api-types/commit/736479cab3332f6be122965963d37c8d4c99fc7f))
+
+
+
 ## [0.37.103](https://github.com/discordjs/discord-api-types/compare/0.37.102...0.37.103) (2024-10-21)
 
 

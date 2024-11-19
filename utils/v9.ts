@@ -111,7 +111,7 @@ export function isLinkButton(component: APIButtonComponent): component is APIBut
  * @returns A boolean that indicates if the button has a `custom_id` attached to it
  */
 export function isInteractionButton(component: APIButtonComponent): component is APIButtonComponentWithCustomId {
-	return component.style !== ButtonStyle.Link;
+	return ![ButtonStyle.Link, ButtonStyle.Premium].includes(component.style);
 }
 
 // Message Components

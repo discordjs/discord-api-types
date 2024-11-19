@@ -36,6 +36,8 @@ import type {
 	ChannelType,
 	APISubscription,
 	APISoundboardSound,
+	GuildChannelType,
+	ThreadChannelType,
 } from '../payloads/v9/mod.ts';
 import type { ReactionType } from '../rest/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
@@ -194,7 +196,11 @@ export enum GatewayIntentBits {
 	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildModeration}
 	 */
 	GuildBans = GuildModeration,
-	GuildEmojisAndStickers = 1 << 3,
+	GuildExpressions = 1 << 3,
+	/**
+	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildExpressions}
+	 */
+	GuildEmojisAndStickers = GuildExpressions,
 	GuildIntegrations = 1 << 4,
 	GuildWebhooks = 1 << 5,
 	GuildInvites = 1 << 6,
@@ -252,6 +258,7 @@ export enum GatewayDispatchEvents {
 	GuildSoundboardSoundDelete = 'GUILD_SOUNDBOARD_SOUND_DELETE',
 	GuildSoundboardSoundsUpdate = 'GUILD_SOUNDBOARD_SOUNDS_UPDATE',
 	GuildSoundboardSoundUpdate = 'GUILD_SOUNDBOARD_SOUND_UPDATE',
+	SoundboardSounds = 'SOUNDBOARD_SOUNDS',
 	GuildStickersUpdate = 'GUILD_STICKERS_UPDATE',
 	GuildUpdate = 'GUILD_UPDATE',
 	IntegrationCreate = 'INTEGRATION_CREATE',
@@ -361,6 +368,7 @@ export type GatewayDispatchPayload =
 	| GatewayPresenceUpdateDispatch
 	| GatewayReadyDispatch
 	| GatewayResumedDispatch
+	| GatewaySoundboardSoundsDispatch
 	| GatewayStageInstanceCreateDispatch
 	| GatewayStageInstanceDeleteDispatch
 	| GatewayStageInstanceUpdateDispatch
@@ -872,7 +880,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channels: APIChannel[];
+	channels: (APIChannel & { type: Exclude<GuildChannelType, ThreadChannelType> })[];
 	/**
 	 * Threads in the guild
 	 *
@@ -880,7 +888,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	threads: APIChannel[];
+	threads: (APIChannel & { type: ThreadChannelType })[];
 	/**
 	 * Presences of the members in the guild, will only include non-offline members if the size is greater than `large_threshold`
 	 *
@@ -902,9 +910,17 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
 	 *
-	 * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 * See https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
+	/**
+	 * The soundboard sounds in the guild
+	 *
+	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 *
+	 * See https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object
+	 */
+	soundboard_sounds: APISoundboardSound[];
 }
 
 /**
@@ -1100,9 +1116,9 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-update
  */
 export type GatewayGuildMemberUpdateDispatchData = Nullable<Pick<APIGuildMember, 'joined_at'>> &
-	Omit<APIGuildMember, 'deaf' | 'joined_at' | 'mute' | 'user'> &
-	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
-	Required<Pick<APIGuildMember, 'user'>> & {
+	Omit<APIGuildMember, 'deaf' | 'flags' | 'joined_at' | 'mute' | 'user'> &
+	Partial<Pick<APIGuildMember, 'deaf' | 'flags' | 'mute'>> &
+	Required<Pick<APIGuildMember, 'avatar' | 'banner' | 'user'>> & {
 		/**
 		 * The id of the guild
 		 */
@@ -1374,6 +1390,28 @@ export interface GatewayGuildSoundboardSoundsUpdateDispatchData {
 }
 
 /**
+ * https://discord.com/developers/docs/events/gateway-events#soundboard-sounds
+ */
+export type GatewaySoundboardSoundsDispatch = DataPayload<
+	GatewayDispatchEvents.SoundboardSounds,
+	GatewaySoundboardSoundsDispatchData
+>;
+
+/**
+ * https://discord.com/developers/docs/events/gateway-events#soundboard-sounds
+ */
+export interface GatewaySoundboardSoundsDispatchData {
+	/**
+	 * The guild's soundboard sounds
+	 */
+	soundboard_sounds: APISoundboardSound[];
+	/**
+	 * The id of the guild
+	 */
+	guild_id: Snowflake;
+}
+
+/**
  * https://discord.com/developers/docs/topics/gateway-events#integration-create
  */
 export type GatewayIntegrationCreateDispatch = DataPayload<
@@ -1560,17 +1598,7 @@ export type GatewayMessageUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-update
  */
-export type GatewayMessageUpdateDispatchData = GatewayMessageEventExtraFields &
-	Omit<Partial<APIMessage>, 'mentions'> & {
-		/**
-		 * ID of the message
-		 */
-		id: Snowflake;
-		/**
-		 * ID of the channel the message was sent in
-		 */
-		channel_id: Snowflake;
-	};
+export type GatewayMessageUpdateDispatchData = GatewayMessageEventExtraFields & Omit<APIMessage, 'mentions'>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-create-message-create-extra-fields
