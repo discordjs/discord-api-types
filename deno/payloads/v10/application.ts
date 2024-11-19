@@ -148,7 +148,7 @@ export interface APIApplication {
 	 */
 	event_webhooks_url?: string | null;
 	/**
-	 * If webhook events are enabled for the app.
+	 * If webhook events are enabled for the app
 	 */
 	event_webhooks_status: ApplicationWebhookEventStatus;
 	/**
