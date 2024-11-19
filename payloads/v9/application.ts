@@ -150,7 +150,7 @@ export interface APIApplication {
 	/**
 	 * If webhook events are enabled for the app.
 	 */
-	event_webhooks_status: ApplicationEventWebhookStatus;
+	event_webhooks_status: ApplicationWebhookEventStatus;
 	/**
 	 * List of webhook event types the app subscribes to
 	 */
@@ -314,7 +314,7 @@ export enum ApplicationRoleConnectionMetadataType {
 /**
  * https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status
  */
-export enum ApplicationEventWebhookStatus {
+export enum ApplicationWebhookEventStatus {
 	/**
 	 * Webhook events are disabled by developer
 	 */
