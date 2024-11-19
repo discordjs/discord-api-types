@@ -3,8 +3,8 @@
  */
 
 import type { Snowflake } from '../../globals';
-import type { APIEntitlement } from '../v9';
 import type {
+	APIEntitlement,
 	APIGuild,
 	APIPartialChannel,
 	APIPartialGuild,
@@ -72,61 +72,26 @@ export interface APIWebhook {
 }
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#payload-structure
+ * https://discord.com/developers/docs/events/webhook-events#webhook-event-payloads
  */
-export interface APIEventWebhookEventBase<EventType extends WebhookEventType, Data> {
-	/**
-	 * Version scheme for the webhook event. Currently always 1
-	 */
-	version: 1;
-	/**
-	 * ID of your app
-	 */
-	application_id: string;
-	/**
-	 * Type of webhook, either 0 for PING or 1 for webhook events
-	 */
-	type: EventWebhookType;
-	/**
-	 * Event data payload
-	 */
-	event?: APIEventWebhookEventBodyBase<EventType, Data>;
-}
-
-export type APIEventWebhookEvent =
-	| APIEventWebhookApplicationAuthorized
-	| APIEventWebhookEntitlementCreated
-	| APIEventWebhookQuestUserEnrollment;
+export type APIWebhookEvent =
+	| APIWebhookEventBase<ApplicationWebhookType.Event, APIWebhookEventBody>
+	| APIWebhookEventBase<ApplicationWebhookType.Ping, never>;
 
 /**
  * https://discord.com/developers/docs/events/webhook-events#event-body-object
  */
-export interface APIEventWebhookEventBodyBase<EventType extends WebhookEventType, Data> {
-	/**
-	 * Event type
-	 */
-	type: EventType;
-	/**
-	 * Timestamp of when the event occurred in ISO8601 format
-	 */
-	timestamp: string;
-	/**
-	 * Data for the event. The shape depends on the event type
-	 */
-	data?: Data;
-}
+export type APIWebhookEventBody =
+	| APIWebhookEventEventBase<
+			ApplicationWebhookEventType.ApplicationAuthorized,
+			APIWebhookEventApplicationAuthorizedData
+	  >
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementCreate, APIWebhookEventEntitlementCreateData>
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.QuestUserEnrollment, APIWebhookEventQuestUserEnrollmentData>;
 
-export type APIEventWebhookEventBody =
-	| APIEventWebhookApplicationAuthorizedData
-	| APIEventWebhookEntitlementCreatedData
-	| APIEventWebhookQuestUserEnrollmentData;
-
-/**
- * https://discord.com/developers/docs/events/webhook-events#application-authorized-application-authorized-structure
- */
-export interface APIEventWebhookApplicationAuthorizedData {
+export interface APIWebhookEventApplicationAuthorizedData {
 	/**
-	 * Installation context for the authorization.
+	 * Installation context for the authorization. Either guild (`0`) if installed to a server or user (`1`) if installed to a user's account
 	 */
 	integration_type?: ApplicationIntegrationType;
 	/**
@@ -138,49 +103,38 @@ export interface APIEventWebhookApplicationAuthorizedData {
 	 */
 	scopes: OAuth2Scopes[];
 	/**
-	 * Server which app was authorized for (when integration type is 0)
+	 * Server which app was authorized for (when integration type is `0`)
 	 */
 	guild?: APIGuild;
 }
 
-/**
- * https://discord.com/developers/docs/events/webhook-events#application-authorized
- */
-export type APIEventWebhookApplicationAuthorized = APIEventWebhookEventBase<
-	WebhookEventType.ApplicationAuthorized,
-	APIEventWebhookApplicationAuthorizedData
->;
+export type APIWebhookEventEntitlementCreateData = APIEntitlement;
 
-/**
- * https://discord.com/developers/docs/events/webhook-events#entitlement-create-entitlement-create-structure
- */
-export type APIEventWebhookEntitlementCreatedData = APIEntitlement;
+export type APIWebhookEventQuestUserEnrollmentData = never;
 
-/**
- * https://discord.com/developers/docs/events/webhook-events#entitlement-create
- */
-export type APIEventWebhookEntitlementCreated = APIEventWebhookEventBase<
-	WebhookEventType.EntitlementCreate,
-	APIEventWebhookEntitlementCreatedData
->;
-
-/**
- * https://discord.com/developers/docs/events/webhook-events#quest-user-enrollment
- */
-export type APIEventWebhookQuestUserEnrollmentData = never;
-
-/**
- * https://discord.com/developers/docs/events/webhook-events#quest-user-enrollment
- */
-export type APIEventWebhookQuestUserEnrollment = APIEventWebhookEventBase<
-	WebhookEventType.QuestUserEnrollment,
-	APIEventWebhookQuestUserEnrollmentData
->;
+interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
+	/**
+	 * Version scheme for the webhook event. Currently always `1`
+	 */
+	version: 1;
+	/**
+	 * ID of your app
+	 */
+	application_id: Snowflake;
+	/**
+	 * Type of webhook
+	 */
+	type: Type;
+	/**
+	 * Event data payload
+	 */
+	event: Event;
+}
 
 /**
  * https://discord.com/developers/docs/events/webhook-events#webhook-types
  */
-export enum EventWebhookType {
+export enum ApplicationWebhookType {
 	/**
 	 * PING event sent to verify your Webhook Event URL is active
 	 */
@@ -191,10 +145,25 @@ export enum EventWebhookType {
 	Event,
 }
 
+interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventType, Data> {
+	/**
+	 * Event type
+	 */
+	type: Type;
+	/**
+	 * Timestamp of when the event occurred in ISO8601 format
+	 */
+	timestamp: string;
+	/**
+	 * Data for the event. The shape depends on the event type
+	 */
+	data: Data;
+}
+
 /**
  * https://discord.com/developers/docs/events/webhook-events#event-types
  */
-export enum WebhookEventType {
+export enum ApplicationWebhookEventType {
 	/**
 	 * Sent when an app was authorized by a user to a server or their account
 	 */
