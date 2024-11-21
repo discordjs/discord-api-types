@@ -1,3 +1,12 @@
+## [0.37.107](https://github.com/discordjs/discord-api-types/compare/0.37.106...0.37.107) (2024-11-21)
+
+
+### Bug Fixes
+
+* **security:** escape path parameters ([1ba3472](https://github.com/discordjs/discord-api-types/commit/1ba34729386c9b9dece237e761114f6d1ef11143))
+
+
+
 ## [0.37.106](https://github.com/discordjs/discord-api-types/compare/0.37.105...0.37.106) (2024-11-21)
 
 
