@@ -1062,6 +1062,17 @@ export const Routes = {
 	},
 };
 
+for (const [key, fn] of Object.entries(Routes)) {
+	Routes[key] = (...args: string[]) => {
+		const escaped = args.map((arg) => encodeURIComponent(arg));
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(Routes);
+
 export const StickerPackApplicationId = '710982414301790216';
 
 export enum ImageFormat {
@@ -1358,6 +1369,17 @@ export const CDNRoutes = {
 		return `/soundboard-sounds/${soundId}` as const;
 	},
 };
+
+for (const [key, fn] of Object.entries(CDNRoutes)) {
+	CDNRoutes[key] = (...args: string[]) => {
+		const escaped = args.map((arg) => encodeURIComponent(arg));
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(CDNRoutes);
 
 export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 
