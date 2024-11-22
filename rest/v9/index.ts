@@ -1063,8 +1063,8 @@ export const Routes = {
 };
 
 for (const [key, fn] of Object.entries(Routes)) {
-	Routes[key] = (...args: string[]) => {
-		const escaped = args.map((arg) => encodeURIComponent(arg));
+	Routes[key as keyof typeof Routes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => arg && encodeURIComponent(arg));
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
 	};
@@ -1371,8 +1371,8 @@ export const CDNRoutes = {
 };
 
 for (const [key, fn] of Object.entries(CDNRoutes)) {
-	CDNRoutes[key] = (...args: string[]) => {
-		const escaped = args.map((arg) => encodeURIComponent(arg));
+	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (number | string | undefined)[]) => {
+		const escaped = args.map((arg) => arg && encodeURIComponent(arg));
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
 	};
