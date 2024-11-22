@@ -1,5 +1,5 @@
-import { expectAssignable } from 'tsd';
 import type { APIGuildOnboarding, RESTPutAPIGuildOnboardingJSONBody } from '../../v10';
+import { expectAssignable } from '../__utils__/type-assertions';
 
 declare const onboarding: APIGuildOnboarding;
 

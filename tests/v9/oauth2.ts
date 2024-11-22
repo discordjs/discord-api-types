@@ -1,21 +1,22 @@
-import { expectAssignable, expectNotAssignable } from 'tsd';
-import type { OAuth2Scopes, RESTOAuth2BotAuthorizationQuery, RESTOAuth2AdvancedBotAuthorizationQuery } from '../../v10';
+import type { OAuth2Scopes, RESTOAuth2BotAuthorizationQuery, RESTOAuth2AdvancedBotAuthorizationQuery } from '../../v9';
+import { expectAssignable, expectNotAssignable } from '../__utils__/type-assertions';
 
 declare const validBotScope:
 	| OAuth2Scopes.Bot
-	| 'bot'
-	| 'bot identify'
+	| 'applications.commands bot identify'
 	| 'applications.commands bot'
-	| 'applications.commands bot identify';
+	| 'bot identify'
+	| 'bot';
 declare const invalidBotScope:
 	| OAuth2Scopes.ApplicationsCommands
-	| 'applications.commands'
+	| ''
 	| 'applications.commands identify'
-	| 'bot%20identify'
-	| '';
+	| 'applications.commands';
 
 expectAssignable<RESTOAuth2BotAuthorizationQuery['scope']>(validBotScope);
+// @ts-expect-error - invalid scope
 expectNotAssignable<RESTOAuth2BotAuthorizationQuery['scope']>(invalidBotScope);
 
 expectAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(validBotScope);
+// @ts-expect-error - invalid scope
 expectNotAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(invalidBotScope);
