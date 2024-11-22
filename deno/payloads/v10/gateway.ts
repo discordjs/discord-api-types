@@ -5,7 +5,7 @@
  */
 
 import type { Snowflake } from '../../globals.ts';
-import type { APIChannel, APIThreadMember } from './channel.ts';
+import type { APIThreadChannel, APIThreadMember } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
 import type { APIUser } from './user.ts';
 
@@ -361,7 +361,7 @@ export interface GatewayThreadListSync {
 	/**
 	 * Array of the synced threads
 	 */
-	threads: APIChannel[];
+	threads: APIThreadChannel[];
 	/**
 	 * The member objects for the client user in each joined thread that was synced
 	 */
