@@ -1,3 +1,12 @@
+## [0.37.108](https://github.com/discordjs/discord-api-types/compare/0.37.107...0.37.108) (2024-11-25)
+
+
+### Features
+
+* webhook events ([#1128](https://github.com/discordjs/discord-api-types/issues/1128)) ([ced86e4](https://github.com/discordjs/discord-api-types/commit/ced86e4b42c170c855ee148fb9bdb699ddf1a15b))
+
+
+
 ## [0.37.107](https://github.com/discordjs/discord-api-types/compare/0.37.106...0.37.107) (2024-11-21)
 
 
