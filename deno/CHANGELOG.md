@@ -1,3 +1,12 @@
+## [0.37.109](https://github.com/discordjs/discord-api-types/compare/0.37.108...0.37.109) (2024-11-26)
+
+
+### Features
+
+* New entitlement endpoint behaviour ([#1145](https://github.com/discordjs/discord-api-types/issues/1145)) ([079fcd6](https://github.com/discordjs/discord-api-types/commit/079fcd6c006759193ea0b4b97d0d5a34c0459041))
+
+
+
 ## [0.37.108](https://github.com/discordjs/discord-api-types/compare/0.37.107...0.37.108) (2024-11-25)
 
 
