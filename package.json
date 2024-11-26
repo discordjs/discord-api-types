@@ -1,6 +1,6 @@
 {
 	"name": "discord-api-types",
-	"version": "0.37.105",
+	"version": "0.37.108",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
 	"homepage": "https://discord-api-types.dev",
 	"exports": {
@@ -112,9 +112,7 @@
 		"prepare": "tsc -p ./.eslint-plugin-local && (is-ci || husky)",
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"test:lint": "prettier --check . && eslint --ext mjs,ts \"{gateway,payloads,rest,rpc,voice,utils}/**/*.ts\" \"{globals,v*}.ts\" \"scripts/**/*.mjs\"",
-		"pretest:types": "tsc",
-		"test:types": "tsd -t ./v10.d.ts && tsd -t ./v9.d.ts",
-		"posttest:types": "npm run clean:node"
+		"test:types": "tsc -p tests"
 	},
 	"keywords": [
 		"discord",
@@ -152,9 +150,8 @@
 		"prettier": "^3.2.5",
 		"pretty-quick": "^4.0.0",
 		"rimraf": "^6.0.0",
-		"tsd": "^0.31.0",
 		"tsutils": "^3.21.0",
-		"typescript": "^5.3.3"
+		"typescript": "^5.6.3"
 	},
 	"publishConfig": {
 		"provenance": true

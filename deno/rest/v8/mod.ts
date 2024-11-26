@@ -777,6 +777,17 @@ export const Routes = {
 	},
 };
 
+for (const [key, fn] of Object.entries(Routes)) {
+	Routes[key] = (...args: string[]) => {
+		const escaped = args.map((arg) => encodeURIComponent(arg));
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(Routes);
+
 export const RouteBases = {
 	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',

@@ -1,3 +1,25 @@
+## [0.37.108](https://github.com/discordjs/discord-api-types/compare/0.37.107...0.37.108) (2024-11-25)
+
+
+### Features
+
+* webhook events ([#1128](https://github.com/discordjs/discord-api-types/issues/1128)) ([ced86e4](https://github.com/discordjs/discord-api-types/commit/ced86e4b42c170c855ee148fb9bdb699ddf1a15b))
+
+
+
+## [0.37.107](https://github.com/discordjs/discord-api-types/compare/0.37.106...0.37.107) (2024-11-21)
+
+
+### Bug Fixes
+
+* **security:** escape path parameters ([1ba3472](https://github.com/discordjs/discord-api-types/commit/1ba34729386c9b9dece237e761114f6d1ef11143))
+
+
+
+## [0.37.106](https://github.com/discordjs/discord-api-types/compare/0.37.105...0.37.106) (2024-11-21)
+
+
+
 ## [0.37.105](https://github.com/discordjs/discord-api-types/compare/0.37.104...0.37.105) (2024-11-14)
 
 
