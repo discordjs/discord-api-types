@@ -194,8 +194,5 @@
 				"pascal-case"
 			]
 		}
-	},
-	"tsd": {
-		"directory": "tests"
 	}
 }
