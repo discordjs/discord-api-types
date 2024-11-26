@@ -33,15 +33,24 @@ export interface RESTGetAPIEntitlementsQuery {
 	 */
 	guild_id?: Snowflake | undefined;
 	/**
-	 * Whether ended entitlements should be omitted
+	 * Whether ended entitlements should be omitted. Defaults to `false`, ended entitlements are included by default
 	 */
 	exclude_ended?: boolean | undefined;
+	/**
+	 * Whether deleted entitlements should be omitted. Defaults to `true`, deleted entitlements are not included by default
+	 */
+	exclude_deleted?: boolean | undefined;
 }
 
 /**
  * https://discord.com/developers/docs/resources/entitlement#list-entitlements
  */
 export type RESTGetAPIEntitlementsResult = APIEntitlement[];
+
+/**
+ * https://discord.com/developers/docs/resources/entitlement#get-entitlement
+ */
+export type RESTGetAPIEntitlementResult = APIEntitlement;
 
 /**
  * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
