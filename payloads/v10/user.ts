@@ -276,6 +276,7 @@ export enum ConnectionService {
 	AmazonMusic = 'amazon-music',
 	BattleNet = 'battlenet',
 	BungieNet = 'bungie',
+	Crunchyroll = 'crunchyroll',
 	Domain = 'domain',
 	eBay = 'ebay',
 	EpicGames = 'epicgames',
