@@ -1,3 +1,12 @@
+## [0.37.110](https://github.com/discordjs/discord-api-types/compare/0.37.109...0.37.110) (2024-11-28)
+
+
+### Features
+
+* add Chrunchyroll ([#1159](https://github.com/discordjs/discord-api-types/issues/1159)) ([92b1ce2](https://github.com/discordjs/discord-api-types/commit/92b1ce2faee4c4b43bfe524e78cfde1fbbfa5792))
+
+
+
 ## [0.37.109](https://github.com/discordjs/discord-api-types/compare/0.37.108...0.37.109) (2024-11-26)
 
 
