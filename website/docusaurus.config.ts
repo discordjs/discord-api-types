@@ -2,7 +2,8 @@
 
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import type typedocPluginFunction from 'docusaurus-plugin-typedoc-api';
+import type typedocPluginFunction from '@apify/docusaurus-plugin-typedoc-api/src/index.ts';
+import type { Options as RedirectOptions } from '@docusaurus/plugin-client-redirects';
 import { convertNpmToPackageManagers } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
 import { ts2esm2cjs } from '@sapphire/docusaurus-plugin-ts2esm2cjs';
 import { themes } from 'prism-react-renderer';
@@ -25,7 +26,7 @@ const config: Config = {
 	title: 'discord-api-types documentation',
 	url: BaseUrl,
 	baseUrl: '/',
-	// Weirdly it's complaining about /api/next, but those routes are perfectly valid 🤷
+	// Banner at the top of `/api/next` route redirects to the wrong URL
 	onBrokenLinks: 'warn',
 	onBrokenMarkdownLinks: 'throw',
 	onDuplicateRoutes: 'throw',
@@ -62,7 +63,7 @@ const config: Config = {
 			}
 		],
 		[
-			'docusaurus-plugin-typedoc-api',
+			'@apify/docusaurus-plugin-typedoc-api',
 			{
 				projectRoot: fileURLToPath(new URL('../', import.meta.url)),
 				packages: [
@@ -81,6 +82,17 @@ const config: Config = {
 				rehypePlugins: [],
 				remarkPlugins: []
 			} satisfies Partial<TypedocPluginOptions>
+		],
+		[
+			'@docusaurus/plugin-client-redirects',
+			{
+				redirects: [
+					{
+						from: '/api',
+						to: `/api/discord-api-types-${defaultApiVersion}`
+					}
+				]
+			} satisfies RedirectOptions
 		]
 	],
 
