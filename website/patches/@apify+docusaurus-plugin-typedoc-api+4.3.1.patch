@@ -1,7 +1,7 @@
-diff --git a/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js b/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
-index 4e5f7b3..80b1c0e 100644
---- a/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
-+++ b/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
+diff --git a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
+index e85a672..3287970 100644
+--- a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
++++ b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
 @@ -71,11 +71,13 @@ function extractSidebar(packages, scopes, changelogs, sortSidebar) {
      // Always include the overview as the 1st item
      const indexHref = pkg.entryPoints.find(entry => entry.index)?.reflection.permalink ?? '';
@@ -21,10 +21,10 @@ index 4e5f7b3..80b1c0e 100644
      if (pkg.changelogPath && changelogs) {
        subItems.push({
          href: utils.normalizeUrl([indexHref, 'changelog']),
-diff --git a/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/url.js b/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/url.js
+diff --git a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js
 index efff9c4..2956729 100644
---- a/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/url.js
-+++ b/node_modules/docusaurus-plugin-typedoc-api/lib/plugin/url.js
+--- a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js
++++ b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js
 @@ -29,9 +29,11 @@ function getKindSlug(decl) {
  }
  function getPackageSlug(pkgConfig, importPath, isSinglePackage) {
