@@ -1,4 +1,4 @@
-import { ClipboardCopyIcon } from '@heroicons/react/outline';
+import { ClipboardIcon } from '@heroicons/react/24/outline';
 import Tippy from '@tippyjs/react';
 import clsx from 'clsx';
 import type { FC } from 'react';
@@ -7,7 +7,7 @@ import styles from './InstallTabButton.module.css';
 
 interface Props {
 	handleClickInstallButton(): void;
-	installCommand: string;
+	readonly installCommand: string;
 }
 
 const InstallTabButton: FC<Props> = ({ installCommand, handleClickInstallButton }) => {
@@ -33,7 +33,7 @@ const InstallTabButton: FC<Props> = ({ installCommand, handleClickInstallButton 
 			>
 				<div className={clsx(styles.buttonContent)}>
 					{installCommand}
-					<ClipboardCopyIcon className={styles.copyIcon} />
+					<ClipboardIcon className={styles.copyIcon} />
 				</div>
 			</button>
 		</Tippy>
