@@ -192,7 +192,7 @@ const config: Config = {
 						...versions.map((version, index) => ({
 							activeBaseRegex: `api/(${version}/)${index === 0 ? '?' : ''}discord-api-types.*`,
 							label: version,
-							to: index === 0 ? `api/discord-api-types-${version}` : `api/${version}/discord-api-types-${version}`
+							to: index === 0 ? `api/discord-api-types-${defaultApiVersion}` : `api/${version}/discord-api-types-${defaultApiVersion}`
 						}))
 					]
 				},
