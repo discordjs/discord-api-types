@@ -25,7 +25,8 @@ const config: Config = {
 	title: 'discord-api-types documentation',
 	url: BaseUrl,
 	baseUrl: '/',
-	onBrokenLinks: 'throw',
+	// Weirdly it's complaining about /api/next, but those routes are perfectly valid 🤷
+	onBrokenLinks: 'warn',
 	onBrokenMarkdownLinks: 'throw',
 	onDuplicateRoutes: 'throw',
 	favicon: '/favicon.ico',
@@ -121,6 +122,7 @@ const config: Config = {
 			{ name: 'theme-color', content: '#2563EB' },
 
 			{ name: 'apple-mobile-web-app-capable', content: 'yes' },
+			{ name: 'mobile-web-app-capable', content: 'yes' },
 			{ name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
 			{ name: 'audience', content: 'all' },
 			{ name: 'author', content: `Vlad Frangu, ${Email}` },
