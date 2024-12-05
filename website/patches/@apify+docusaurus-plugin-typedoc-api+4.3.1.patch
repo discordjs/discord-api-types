@@ -1,0 +1,42 @@
+diff --git a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
+index e85a672..3287970 100644
+--- a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
++++ b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/sidebar.js
+@@ -71,11 +71,13 @@ function extractSidebar(packages, scopes, changelogs, sortSidebar) {
+     // Always include the overview as the 1st item
+     const indexHref = pkg.entryPoints.find(entry => entry.index)?.reflection.permalink ?? '';
+     subItems = subItems.sort((a, d) => sortSidebar('label' in a ? a.label : '', 'label' in d ? d.label : ''));
+-    subItems.unshift({
+-      href: indexHref,
+-      label: 'Overview',
+-      type: 'link'
+-    });
++    // DAPI-TYPES START - Remove overview as it has no use
++    // subItems.unshift({
++    //   href: indexHref,
++    //   label: 'Overview',
++    //   type: 'link'
++    // });
++    // DAPI-TYPES END
+     if (pkg.changelogPath && changelogs) {
+       subItems.push({
+         href: utils.normalizeUrl([indexHref, 'changelog']),
+diff --git a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js
+index efff9c4..2956729 100644
+--- a/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js
++++ b/node_modules/@apify/docusaurus-plugin-typedoc-api/lib/plugin/url.js
+@@ -29,9 +29,11 @@ function getKindSlug(decl) {
+ }
+ function getPackageSlug(pkgConfig, importPath, isSinglePackage) {
+   // Monorepo with 1 package has special handling
+-  if (isSinglePackage && pkgConfig.packageSlug !== '.') {
+-    return '.';
+-  }
++// DAPI-TYPES START - This breaks the website since we are a single-package, multiple entrypoint module
++//   if (isSinglePackage && pkgConfig.packageSlug !== '.') {
++//     return '.';
++//   }
++// DAPI-TYPES END
+ 
+   // packages/foo -> foo
+   const slug = pkgConfig.packageSlug ?? path__default.default.basename(pkgConfig.packagePath);

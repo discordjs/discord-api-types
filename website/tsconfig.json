@@ -1,5 +1,5 @@
 {
-	"extends": "@sapphire/ts-config",
+	"extends": ["@sapphire/ts-config"],
 	"compilerOptions": {
 		"allowJs": true,
 		"baseUrl": ".",

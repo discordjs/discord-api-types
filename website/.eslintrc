@@ -2,7 +2,7 @@
 	"root": true,
 	"extends": ["neon/common", "neon/node", "neon/typescript", "neon/react", "neon/jsx", "neon/jsx-a11y", "neon/prettier"],
 	"parserOptions": {
-		"ecmaVersion": 2020,
+		"ecmaVersion": 2022,
 		"sourceType": "module",
 		"ecmaFeatures": {
 			"jsx": true
@@ -28,6 +28,9 @@
 	"rules": {
 		"@typescript-eslint/consistent-type-definitions": ["error", "interface"],
 		"import/extensions": "off",
-		"no-restricted-globals": "off"
+		"no-restricted-globals": "off",
+		"tsdoc/syntax": "off",
+		"@typescript-eslint/unbound-method": "off",
+		"import/order": "off"
 	}
 }
