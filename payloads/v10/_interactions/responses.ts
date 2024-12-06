@@ -18,14 +18,7 @@ export enum InteractionType {
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
  */
 export type APIInteractionResponse =
-	| APIApplicationCommandAutocompleteResponse
-	| APIInteractionResponseChannelMessageWithSource
-	| APIInteractionResponseDeferredChannelMessageWithSource
-	| APIInteractionResponseDeferredMessageUpdate
-	| APIInteractionResponsePong
-	| APIInteractionResponseUpdateMessage
-	| APIModalInteractionResponse
-	| APIPremiumRequiredInteractionResponse;
+	APIApplicationCommandAutocompleteResponse | APIInteractionResponseChannelMessageWithSource | APIInteractionResponseDeferredChannelMessageWithSource | APIInteractionResponseDeferredMessageUpdate | APIInteractionResponseLaunchActivity | APIInteractionResponsePong | APIInteractionResponseUpdateMessage | APIModalInteractionResponse | APIPremiumRequiredInteractionResponse;
 
 export interface APIInteractionResponsePong {
 	type: InteractionResponseType.Pong;
@@ -62,6 +55,10 @@ export interface APIInteractionResponseDeferredMessageUpdate {
 export interface APIInteractionResponseUpdateMessage {
 	type: InteractionResponseType.UpdateMessage;
 	data?: APIInteractionResponseCallbackData;
+}
+
+export interface APIInteractionResponseLaunchActivity {
+	type: InteractionResponseType.LaunchActivity;
 }
 
 /**
