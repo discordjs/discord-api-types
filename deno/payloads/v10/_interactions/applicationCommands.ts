@@ -13,12 +13,19 @@ import type {
 	APIContextMenuInteraction,
 	APIContextMenuInteractionData,
 } from './_applicationCommands/contextMenu.ts';
+import type {
+	APIPrimaryEntryPointCommandDMInteraction,
+	APIPrimaryEntryPointCommandGuildInteraction,
+	APIPrimaryEntryPointCommandInteraction,
+	APIPrimaryEntryPointCommandInteractionData,
+} from './_applicationCommands/entryPoint.ts';
 import type { APIBaseInteraction } from './base.ts';
 import type { InteractionType } from './responses.ts';
 
 export * from './_applicationCommands/chatInput.ts';
 export * from './_applicationCommands/contextMenu.ts';
 export * from './_applicationCommands/permissions.ts';
+export * from './_applicationCommands/entryPoint.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object
@@ -185,7 +192,8 @@ export enum EntryPointCommandHandlerType {
  */
 export type APIApplicationCommandInteractionData =
 	| APIChatInputApplicationCommandInteractionData
-	| APIContextMenuInteractionData;
+	| APIContextMenuInteractionData
+	| APIPrimaryEntryPointCommandInteractionData;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
@@ -202,18 +210,23 @@ export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationC
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
-export type APIApplicationCommandInteraction = APIChatInputApplicationCommandInteraction | APIContextMenuInteraction;
+export type APIApplicationCommandInteraction =
+	| APIChatInputApplicationCommandInteraction
+	| APIContextMenuInteraction
+	| APIPrimaryEntryPointCommandInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export type APIApplicationCommandDMInteraction =
 	| APIChatInputApplicationCommandDMInteraction
-	| APIContextMenuDMInteraction;
+	| APIContextMenuDMInteraction
+	| APIPrimaryEntryPointCommandDMInteraction;
 
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  */
 export type APIApplicationCommandGuildInteraction =
 	| APIChatInputApplicationCommandGuildInteraction
-	| APIContextMenuGuildInteraction;
+	| APIContextMenuGuildInteraction
+	| APIPrimaryEntryPointCommandGuildInteraction;
