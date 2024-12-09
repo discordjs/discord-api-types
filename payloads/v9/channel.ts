@@ -895,6 +895,10 @@ export enum MessageFlags {
 	 * This message is a voice message
 	 */
 	IsVoiceMessage = 1 << 13,
+	/**
+	 * This message has a snapshot (via Message Forwarding)
+	 */
+	HasSnapshot = 1 << 14,
 }
 
 /**
