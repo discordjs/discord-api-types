@@ -178,6 +178,10 @@ export interface APISubscription {
 	 */
 	entitlement_ids: Snowflake[];
 	/**
+	 * List of SKUs that this user will be subscribed to at renewal
+	 */
+	renewal_sku_ids: Snowflake[] | null;
+	/**
 	 * Start of the current subscription period
 	 */
 	current_period_start: string;
