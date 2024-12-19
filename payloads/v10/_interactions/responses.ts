@@ -22,6 +22,7 @@ export type APIInteractionResponse =
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponseLaunchActivity
 	| APIInteractionResponsePong
 	| APIInteractionResponseUpdateMessage
 	| APIModalInteractionResponse
@@ -62,6 +63,10 @@ export interface APIInteractionResponseDeferredMessageUpdate {
 export interface APIInteractionResponseUpdateMessage {
 	type: InteractionResponseType.UpdateMessage;
 	data?: APIInteractionResponseCallbackData;
+}
+
+export interface APIInteractionResponseLaunchActivity {
+	type: InteractionResponseType.LaunchActivity;
 }
 
 /**
