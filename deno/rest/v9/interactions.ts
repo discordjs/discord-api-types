@@ -86,9 +86,18 @@ export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTP
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
  */
+export interface RESTPostAPIPrimaryEntryPointApplicationCommandJSONBody
+	extends RESTPostAPIBaseApplicationCommandsJSONBody {
+	type: ApplicationCommandType.PrimaryEntryPoint;
+}
+
+/**
+ * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
+ */
 export type RESTPostAPIApplicationCommandsJSONBody =
 	| RESTPostAPIChatInputApplicationCommandsJSONBody
-	| RESTPostAPIContextMenuApplicationCommandsJSONBody;
+	| RESTPostAPIContextMenuApplicationCommandsJSONBody
+	| RESTPostAPIPrimaryEntryPointApplicationCommandJSONBody;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
