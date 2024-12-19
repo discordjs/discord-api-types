@@ -1,3 +1,12 @@
+## [0.37.112](https://github.com/discordjs/discord-api-types/compare/0.37.111...0.37.112) (2024-12-19)
+
+
+### Features
+
+* **APISubscription:** add `renewal_sku_ids` ([#1172](https://github.com/discordjs/discord-api-types/issues/1172)) ([fb7c6b8](https://github.com/discordjs/discord-api-types/commit/fb7c6b8903bded49c379ba61a520818ba5ab15ba))
+
+
+
 ## [0.37.111](https://github.com/discordjs/discord-api-types/compare/0.37.110...0.37.111) (2024-12-09)
 
 
