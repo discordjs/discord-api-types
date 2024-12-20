@@ -136,7 +136,7 @@
 		"@types/conventional-recommended-bump": "^9.0.3",
 		"@types/node": "^22.0.0",
 		"@typescript-eslint/utils": "^8.0.0",
-		"conventional-changelog-cli": "^4.1.0",
+		"conventional-changelog-cli": "^5.0.0",
 		"conventional-recommended-bump": "^9.0.0",
 		"eslint": "^8.57.0",
 		"eslint-config-neon": "^0.1.59",
