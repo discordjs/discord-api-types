@@ -3,7 +3,7 @@
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type typedocPluginFunction from '@apify/docusaurus-plugin-typedoc-api/src/index.ts';
-import type { Options as RedirectOptions } from '@docusaurus/plugin-client-redirects';
+// import type { Options as RedirectOptions } from '@docusaurus/plugin-client-redirects';
 import { convertNpmToPackageManagers } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
 import { ts2esm2cjs } from '@sapphire/docusaurus-plugin-ts2esm2cjs';
 import { themes } from 'prism-react-renderer';
@@ -82,18 +82,18 @@ const config: Config = {
 				rehypePlugins: [],
 				remarkPlugins: []
 			} satisfies Partial<TypedocPluginOptions>
-		],
-		[
-			'@docusaurus/plugin-client-redirects',
-			{
-				redirects: [
-					{
-						from: '/api',
-						to: `/api/discord-api-types-${defaultApiVersion}`
-					}
-				]
-			} satisfies RedirectOptions
 		]
+		// [
+		// 	'@docusaurus/plugin-client-redirects',
+		// 	{
+		// 		redirects: [
+		// 			{
+		// 				from: '/api',
+		// 				to: `/api/discord-api-types-${defaultApiVersion}`
+		// 			}
+		// 		]
+		// 	} satisfies RedirectOptions
+		// ]
 	],
 
 	presets: [
