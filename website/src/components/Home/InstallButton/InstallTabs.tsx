@@ -1,7 +1,6 @@
-import { npmToPnpm } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
+import { npmToPnpm, npmToYarn, npmToBun } from '@sapphire/docusaurus-plugin-npm2yarn2pnpm';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
-import npmToYarn from 'npm-to-yarn';
 import type { FC } from 'react';
 import React from 'react';
 import InstallTabButton from './InstallTabButton';
@@ -14,8 +13,10 @@ async function handleClickInstallButton(command: string) {
 
 const InstallTabs: FC = () => {
 	const npmInstallCommand = 'npm install discord-api-types';
-	const yarnInstallCommand = npmToYarn(npmInstallCommand, 'yarn');
+	const yarnInstallCommand = npmToYarn(npmInstallCommand);
 	const pnpmInstallCommand = npmToPnpm(npmInstallCommand);
+	const bunInstallCommand = npmToBun(npmInstallCommand);
+	const denoInstallCommand = 'deno install npm:discord-api-types';
 
 	return (
 		<div className={styles.buttons}>
@@ -42,6 +43,22 @@ const InstallTabs: FC = () => {
 							void handleClickInstallButton(pnpmInstallCommand);
 						}}
 						installCommand={pnpmInstallCommand}
+					/>
+				</TabItem>
+				<TabItem label="bun" value="bun">
+					<InstallTabButton
+						handleClickInstallButton={() => {
+							void handleClickInstallButton(bunInstallCommand);
+						}}
+						installCommand={bunInstallCommand}
+					/>
+				</TabItem>
+				<TabItem label="deno" value="deno">
+					<InstallTabButton
+						handleClickInstallButton={() => {
+							void handleClickInstallButton(denoInstallCommand);
+						}}
+						installCommand={denoInstallCommand}
 					/>
 				</TabItem>
 			</Tabs>
