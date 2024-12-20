@@ -16,6 +16,7 @@ const InstallTabs: FC = () => {
 	const yarnInstallCommand = npmToYarn(npmInstallCommand);
 	const pnpmInstallCommand = npmToPnpm(npmInstallCommand);
 	const bunInstallCommand = npmToBun(npmInstallCommand);
+	const denoInstallCommand = 'deno install npm:discord-api-types';
 
 	return (
 		<div className={styles.buttons}>
@@ -50,6 +51,14 @@ const InstallTabs: FC = () => {
 							void handleClickInstallButton(bunInstallCommand);
 						}}
 						installCommand={bunInstallCommand}
+					/>
+				</TabItem>
+				<TabItem label="deno" value="deno">
+					<InstallTabButton
+						handleClickInstallButton={() => {
+							void handleClickInstallButton(denoInstallCommand);
+						}}
+						installCommand={denoInstallCommand}
 					/>
 				</TabItem>
 			</Tabs>
