@@ -1,3 +1,18 @@
+## [0.37.113](https://github.com/discordjs/discord-api-types/compare/0.37.112...0.37.113) (2024-12-22)
+
+
+### Bug Fixes
+
+* skip encoded url parts from re-encoding ([fc4e7be](https://github.com/discordjs/discord-api-types/commit/fc4e7bebc50fe67a0aa5c49a95793e53d3ff0da9))
+
+
+### Features
+
+* **ConnectionService:** `Bluesky` and `Mastodon` ([#1174](https://github.com/discordjs/discord-api-types/issues/1174)) ([61592d6](https://github.com/discordjs/discord-api-types/commit/61592d6a85232a6d675a6faeddc096ae3467df6a))
+* **payloads:** add entrypoint command payloads ([#1166](https://github.com/discordjs/discord-api-types/issues/1166)) ([bcb13de](https://github.com/discordjs/discord-api-types/commit/bcb13de75b6b45e2a5c1ebde5fa77719123b7993))
+
+
+
 ## [0.37.112](https://github.com/discordjs/discord-api-types/compare/0.37.111...0.37.112) (2024-12-19)
 
 
