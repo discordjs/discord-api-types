@@ -1,4 +1,5 @@
 import type { Snowflake } from '../../globals';
+import { urlSafeCharacters } from '../../utils/internals';
 
 export * from '../common';
 export * from './application';
@@ -1056,7 +1057,18 @@ export const Routes = {
 
 for (const [key, fn] of Object.entries(Routes)) {
 	Routes[key as keyof typeof Routes] = (...args: (boolean | number | string | undefined)[]) => {
-		const escaped = args.map((arg) => arg && encodeURIComponent(arg));
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
 	};
@@ -1363,8 +1375,19 @@ export const CDNRoutes = {
 };
 
 for (const [key, fn] of Object.entries(CDNRoutes)) {
-	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (number | string | undefined)[]) => {
-		const escaped = args.map((arg) => arg && encodeURIComponent(arg));
+	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
 	};

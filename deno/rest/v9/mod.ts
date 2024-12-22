@@ -1,4 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
+import { urlSafeCharacters } from '../../utils/internals.ts';
 
 export * from '../common.ts';
 export * from './application.ts';
@@ -1065,7 +1066,18 @@ export const Routes = {
 
 for (const [key, fn] of Object.entries(Routes)) {
 	Routes[key as keyof typeof Routes] = (...args: (boolean | number | string | undefined)[]) => {
-		const escaped = args.map((arg) => arg && encodeURIComponent(arg));
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
 	};
@@ -1372,8 +1384,19 @@ export const CDNRoutes = {
 };
 
 for (const [key, fn] of Object.entries(CDNRoutes)) {
-	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (number | string | undefined)[]) => {
-		const escaped = args.map((arg) => arg && encodeURIComponent(arg));
+	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
 	};
@@ -1398,8 +1421,8 @@ export type ApplicationCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | Imag
 export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
-export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type StickerFormat = Extract<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie | ImageFormat.PNG>;
 export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
@@ -1417,6 +1440,7 @@ export interface CDNQuery {
 export const RouteBases = {
 	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',
+	media: 'https://media.discordapp.net',
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',
 	gift: 'https://discord.gift',

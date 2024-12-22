@@ -39,3 +39,5 @@ export type DistributiveOmit<T, K extends DistributiveKeys<T>> =
 	T extends unknown ? { [P in keyof Omit_<T, K>]: Omit_<T, K>[P] } : never;
 
 type Omit_<T, K> = Omit<T, Extract<keyof T, K>>;
+
+export const urlSafeCharacters = /^[\d%A-Za-z-]+$/g;

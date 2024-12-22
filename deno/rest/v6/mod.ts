@@ -1,3 +1,5 @@
+import { urlSafeCharacters } from '../../utils/internals.ts';
+
 export * from '../common.ts';
 
 export * from './auditLog.ts';
@@ -521,8 +523,19 @@ export const Routes = {
 };
 
 for (const [key, fn] of Object.entries(Routes)) {
-	Routes[key] = (...args: string[]) => {
-		const escaped = args.map((arg) => encodeURIComponent(arg));
+	Routes[key] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
 	};
