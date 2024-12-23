@@ -40,4 +40,14 @@ export type DistributiveOmit<T, K extends DistributiveKeys<T>> =
 
 type Omit_<T, K> = Omit<T, Extract<keyof T, K>>;
 
-export const urlSafeCharacters = /^[\d%A-Za-z-]+$/g;
+const pattern = /^[\d%A-Za-z-]+$/g;
+
+export const urlSafeCharacters = {
+	test(input: string) {
+		const result = pattern.test(input);
+
+		pattern.lastIndex = 0;
+
+		return result;
+	},
+};
