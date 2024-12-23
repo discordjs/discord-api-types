@@ -1,3 +1,12 @@
+## [0.37.114](https://github.com/discordjs/discord-api-types/compare/0.37.113...0.37.114) (2024-12-23)
+
+
+### Bug Fixes
+
+* reset pattern index after testing an input ([ee53ef7](https://github.com/discordjs/discord-api-types/commit/ee53ef7306e73d6b9bf341503231186ef27403fb)), closes [/github.com/discordjs/discord-api-types/issues/1181#issuecomment-2558971449](https://github.com//github.com/discordjs/discord-api-types/issues/1181/issues/issuecomment-2558971449)
+
+
+
 ## [0.37.113](https://github.com/discordjs/discord-api-types/compare/0.37.112...0.37.113) (2024-12-22)
 
 
