@@ -1162,10 +1162,6 @@ export interface APIEmbed {
 	title?: string;
 	/**
 	 * Type of embed (always "rich" for webhook embeds)
-	 *
-	 * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-types
 	 */
 	type?: EmbedType;
 	/**
@@ -1234,8 +1230,6 @@ export interface APIEmbed {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
- *
- * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
 export enum EmbedType {
 	/**
