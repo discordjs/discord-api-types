@@ -1229,7 +1229,7 @@ export interface APIEmbed {
 }
 
 /**
- * https://discord.com/developers/docs/resources/message#embed-object-embed-types
+ * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  */
 export enum EmbedType {
 	/**
