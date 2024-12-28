@@ -10,9 +10,6 @@ jobs:
   check_deno:
     name: Ensure Deno types are in sync with the code
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
 
     steps:
       - name: Checkout Project
@@ -29,4 +26,4 @@ jobs:
       - name: Run Check Script
         run: node ./scripts/actions/report-deno-not-ran.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DENO_GH_PAT }}
