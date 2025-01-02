@@ -1,3 +1,7 @@
+## [0.37.115](https://github.com/discordjs/discord-api-types/compare/0.37.114...0.37.115) (2025-01-02)
+
+
+
 ## [0.37.114](https://github.com/discordjs/discord-api-types/compare/0.37.113...0.37.114) (2024-12-23)
 
 
