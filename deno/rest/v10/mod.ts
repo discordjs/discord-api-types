@@ -935,6 +935,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - PUT `/guilds/${guild.id}/incident-actions`
+	 */
+	guildIncidentActions(guildId: Snowflake) {
+		return `/guilds/${guildId}/incident-actions` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/applications/@me`
 	 * - PATCH `/applications/@me`
 	 */
