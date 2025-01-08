@@ -1,12 +1,11 @@
 import type { Snowflake } from '../../globals.ts';
 import type {
 	APIAllowedMentions,
-	APIActionRowComponent,
 	APIEmbed,
 	APIMessage,
 	APIWebhook,
 	MessageFlags,
-	APIMessageActionRowComponent,
+	APIMessageTopLevelComponent,
 } from '../../payloads/v9/mod.ts';
 import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, Nullable } from '../../utils/internals.ts';
 import type { RESTAPIAttachment } from './channel.ts';
@@ -136,7 +135,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 *
 	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
+	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */

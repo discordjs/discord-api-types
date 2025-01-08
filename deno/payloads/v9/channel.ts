@@ -196,6 +196,10 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 	 */
 	owner_id?: Snowflake;
 	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+	/**
 	 * Whether the channel is managed by an OAuth2 application
 	 */
 	managed?: boolean;
@@ -448,7 +452,8 @@ export enum ChannelType {
 	 */
 	GuildMedia,
 
-	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS
+	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
+
 	/**
 	 * A channel that users can follow and crosspost into their own guild
 	 *
@@ -513,9 +518,9 @@ export interface APIMessage {
 	/**
 	 * Contents of the message
 	 *
-	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 *
 	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
@@ -569,9 +574,9 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
 	 *
-	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 *
 	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
@@ -581,9 +586,9 @@ export interface APIMessage {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 *
-	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 *
 	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
@@ -665,6 +670,8 @@ export interface APIMessage {
 	interaction_metadata?: APIMessageInteractionMetadata;
 	/**
 	 * Sent if the message is a response to an Interaction
+	 *
+	 * @deprecated In favor of `interaction_metadata`
 	 */
 	interaction?: APIMessageInteraction;
 	/**
@@ -674,13 +681,13 @@ export interface APIMessage {
 	/**
 	 * Sent if the message contains components like buttons, action rows, or other interactive components
 	 *
-	 * The `MESSAGE_CONTENT` privileged gateway intent will become required after **August 31, 2022** for verified applications to receive a non-empty value from this field
+	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
-	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**
+	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
 	 *
 	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
+	components?: APIMessageTopLevelComponent[];
 	/**
 	 * Sent if the message contains stickers
 	 *
@@ -702,6 +709,10 @@ export interface APIMessage {
 	 */
 	position?: number;
 	/**
+	 * Data of the role subscription purchase or renewal that prompted this `ROLE_SUBSCRIPTION_PURCHASE` message
+	 */
+	role_subscription_data?: APIMessageRoleSubscriptionData;
+	/**
 	 * Data for users, members, channels, and roles in the message's auto-populated select menus
 	 *
 	 * See https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
@@ -713,7 +724,6 @@ export interface APIMessage {
 	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot > Privileged Gateway Intents**.
-	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
 	 * See https://support-dev.discord.com/hc/articles/4404772028055
 	 */
@@ -895,6 +905,10 @@ export enum MessageFlags {
 	 * This message is a voice message
 	 */
 	IsVoiceMessage = 1 << 13,
+	/**
+	 * This flag is required to use new components
+	 */
+	IsComponentsV2 = 1 << 15,
 }
 
 /**
@@ -909,6 +923,28 @@ export interface APIMessageCall {
 	 * ISO8601 timestamp when the call ended
 	 */
 	ended_timestamp?: string | null;
+}
+
+/**
+ * https://discord.com/developers/docs/resources/channel#role-subscription-data-object-role-subscription-data-object-structure
+ */
+export interface APIMessageRoleSubscriptionData {
+	/**
+	 * The id of the SKU and listing the user is subscribed to
+	 */
+	role_subscription_listing_id: Snowflake;
+	/**
+	 * The name of the tier the user is subscribed to
+	 */
+	tier_name: string;
+	/**
+	 * The number of months the user has been subscribed for
+	 */
+	total_months_subscribed: number;
+	/**
+	 * Whether this notification is for a renewal
+	 */
+	is_renewal: boolean;
 }
 
 /**
@@ -1537,6 +1573,10 @@ export interface APIBaseComponent<T extends ComponentType> {
 	 * The type of the component
 	 */
 	type: T;
+	/**
+	 * int32, auto generated via increment if not provided
+	 */
+	id?: number;
 }
 
 /**
@@ -1575,6 +1615,13 @@ export enum ComponentType {
 	 * Select menu for channels
 	 */
 	ChannelSelect,
+	Section,
+	TextDisplay,
+	Thumbnail,
+	MediaGallery,
+	File,
+	Separator,
+	Container = 17,
 
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
@@ -1879,6 +1926,62 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	required?: boolean;
 }
 
+export interface APIUnfurledMediaItem {
+	/**
+	 * Supports arbitrary urls _and_ attachment://<filename> references
+	 */
+	url: string;
+}
+
+export interface APISectionComponent extends APIBaseComponent<ComponentType.Section> {
+	components: APITextDisplayComponent[];
+	accessory: APIThumbnailComponent;
+}
+
+export interface APITextDisplayComponent extends APIBaseComponent<ComponentType.TextDisplay> {
+	content: string;
+}
+
+export interface APIThumbnailComponent extends APIBaseComponent<ComponentType.Thumbnail> {
+	media: APIUnfurledMediaItem;
+	description?: string | null;
+	spoiler?: boolean;
+}
+
+export interface APIMediaGalleryItem {
+	media: APIUnfurledMediaItem;
+	description?: string | null;
+	spoiler?: boolean;
+}
+
+export interface APIMediaGalleryComponent extends APIBaseComponent<ComponentType.MediaGallery> {
+	items: APIMediaGalleryItem[];
+}
+
+export enum SeparatorSpacingSize {
+	Small = 1,
+	Large,
+}
+
+export interface APISeparatorComponent extends APIBaseComponent<ComponentType.Separator> {
+	divider?: boolean;
+	spacing?: SeparatorSpacingSize;
+}
+
+export interface APIFileComponent extends APIBaseComponent<ComponentType.File> {
+	/**
+	 * The APIUnfurledMediaItem ONLY supports attachment://<filename> references
+	 */
+	file: APIUnfurledMediaItem;
+	spoiler?: boolean;
+}
+
+export interface APIContainerComponent extends APIBaseComponent<ComponentType.Container> {
+	accent_color?: number | null;
+	spoiler?: boolean;
+	components: APIContainerInnerComponent[];
+}
+
 /**
  * https://discord.com/developers/docs/resources/channel#message-snapshot-object
  */
@@ -1946,7 +2049,7 @@ export enum ChannelFlags {
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageComponent = APIActionRowComponent<APIMessageActionRowComponent> | APIMessageActionRowComponent;
+export type APIMessageComponent = APIMessageActionRowComponent | APIMessageTopLevelComponent | APIThumbnailComponent;
 export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
 
 export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
@@ -1958,6 +2061,16 @@ export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuCom
 
 // Modal components
 export type APIModalActionRowComponent = APITextInputComponent;
+
+export type APIContainerInnerComponent =
+	| APIActionRowComponent<APIMessageActionRowComponent>
+	| APIFileComponent
+	| APIMediaGalleryComponent
+	| APISectionComponent
+	| APISeparatorComponent
+	| APITextDisplayComponent;
+
+export type APIMessageTopLevelComponent = APIContainerComponent | APIContainerInnerComponent;
 
 export type APIMessageSnapshotFields = Pick<
 	APIMessage,
