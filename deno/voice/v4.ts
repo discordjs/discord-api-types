@@ -106,4 +106,8 @@ export enum VoiceCloseCodes {
 	 * We didn't recognize your encryption
 	 */
 	UnknownEncryptionMode,
+	/**
+	 * You sent a malformed request
+	 */
+	BadRequest = 4_020,
 }
