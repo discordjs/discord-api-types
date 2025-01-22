@@ -11,7 +11,9 @@ export interface APIApplicationCommandSubcommandGroupOption
 	options?: APIApplicationCommandSubcommandOption[];
 }
 
-export interface APIApplicationCommandInteractionDataSubcommandGroupOption<Type extends InteractionType> {
+export interface APIApplicationCommandInteractionDataSubcommandGroupOption<
+	Type extends InteractionType = InteractionType,
+> {
 	name: string;
 	type: ApplicationCommandOptionType.SubcommandGroup;
 	options: APIApplicationCommandInteractionDataSubcommandOption<Type>[];

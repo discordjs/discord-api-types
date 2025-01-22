@@ -23,7 +23,7 @@ export type APIApplicationCommandIntegerOption = APIApplicationCommandOptionWith
 	APIApplicationCommandOptionChoice<number>
 >;
 
-export interface APIApplicationCommandInteractionDataIntegerOption<Type extends InteractionType>
+export interface APIApplicationCommandInteractionDataIntegerOption<Type extends InteractionType = InteractionType>
 	extends APIInteractionDataOptionBase<
 		ApplicationCommandOptionType.Integer,
 		Type extends InteractionType.ApplicationCommandAutocomplete ? string : number

@@ -8,7 +8,7 @@ export interface APIApplicationCommandSubcommandOption
 	options?: APIApplicationCommandBasicOption[];
 }
 
-export interface APIApplicationCommandInteractionDataSubcommandOption<Type extends InteractionType> {
+export interface APIApplicationCommandInteractionDataSubcommandOption<Type extends InteractionType = InteractionType> {
 	name: string;
 	type: ApplicationCommandOptionType.Subcommand;
 	options?: APIApplicationCommandInteractionDataBasicOption<Type>[];

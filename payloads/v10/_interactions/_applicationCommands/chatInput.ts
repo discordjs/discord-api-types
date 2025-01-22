@@ -86,12 +86,12 @@ export type APIApplicationCommandOption =
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
  */
-export type APIApplicationCommandInteractionDataOption<Type extends InteractionType> =
+export type APIApplicationCommandInteractionDataOption<Type extends InteractionType = InteractionType> =
 	| APIApplicationCommandInteractionDataBasicOption<Type>
 	| APIApplicationCommandInteractionDataSubcommandGroupOption<Type>
 	| APIApplicationCommandInteractionDataSubcommandOption<Type>;
 
-export type APIApplicationCommandInteractionDataBasicOption<Type extends InteractionType> =
+export type APIApplicationCommandInteractionDataBasicOption<Type extends InteractionType = InteractionType> =
 	| APIApplicationCommandInteractionDataAttachmentOption
 	| APIApplicationCommandInteractionDataBooleanOption
 	| APIApplicationCommandInteractionDataChannelOption
