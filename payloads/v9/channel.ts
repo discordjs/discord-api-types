@@ -1276,6 +1276,14 @@ export interface APIEmbedThumbnail {
 	 * Width of thumbnail
 	 */
 	width?: number;
+	/**
+	 * Embed media flags combined as a bitfield
+	 *
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-media-flags
+	 *
+	 * See https://en.wikipedia.org/wiki/Bit_field
+	 */
+	flags?: EmbedMediaFlags;
 }
 
 /**
