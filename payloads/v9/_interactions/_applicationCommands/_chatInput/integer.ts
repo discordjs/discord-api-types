@@ -1,3 +1,4 @@
+import type { InteractionType } from '../../responses';
 import type {
 	APIApplicationCommandOptionBase,
 	APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper,
@@ -22,7 +23,10 @@ export type APIApplicationCommandIntegerOption = APIApplicationCommandOptionWith
 	APIApplicationCommandOptionChoice<number>
 >;
 
-export interface APIApplicationCommandInteractionDataIntegerOption
-	extends APIInteractionDataOptionBase<ApplicationCommandOptionType.Integer, number> {
+export interface APIApplicationCommandInteractionDataIntegerOption<Type extends InteractionType>
+	extends APIInteractionDataOptionBase<
+		ApplicationCommandOptionType.Integer,
+		Type extends InteractionType.ApplicationCommandAutocomplete ? string : number
+	> {
 	focused?: boolean;
 }

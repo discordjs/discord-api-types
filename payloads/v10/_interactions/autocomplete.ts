@@ -1,6 +1,6 @@
 import type {
 	APIBaseInteraction,
-	APIChatInputApplicationCommandInteractionData,
+	APIAutocompleteApplicationCommandInteractionData,
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,
 	InteractionType,
@@ -8,13 +8,13 @@ import type {
 
 export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	InteractionType.ApplicationCommandAutocomplete,
-	APIChatInputApplicationCommandInteractionData
+	APIAutocompleteApplicationCommandInteractionData
 > &
 	Required<
 		Pick<
 			APIBaseInteraction<
 				InteractionType.ApplicationCommandAutocomplete,
-				Required<Pick<APIChatInputApplicationCommandInteractionData, 'options'>>
+				Required<Pick<APIAutocompleteApplicationCommandInteractionData, 'options'>>
 			>,
 			'data'
 		>
