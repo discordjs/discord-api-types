@@ -1,6 +1,5 @@
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9.ts';
 import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel.ts';
-import type { MessageFlags } from '../mod.ts';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**
@@ -22,6 +21,7 @@ export type APIInteractionResponse =
 	| APIInteractionResponseChannelMessageWithSource
 	| APIInteractionResponseDeferredChannelMessageWithSource
 	| APIInteractionResponseDeferredMessageUpdate
+	| APIInteractionResponseLaunchActivity
 	| APIInteractionResponsePong
 	| APIInteractionResponseUpdateMessage
 	| APIModalInteractionResponse
@@ -62,6 +62,10 @@ export interface APIInteractionResponseDeferredMessageUpdate {
 export interface APIInteractionResponseUpdateMessage {
 	type: InteractionResponseType.UpdateMessage;
 	data?: APIInteractionResponseCallbackData;
+}
+
+export interface APIInteractionResponseLaunchActivity {
+	type: InteractionResponseType.LaunchActivity;
 }
 
 /**
@@ -115,10 +119,7 @@ export enum InteractionResponseType {
 /**
  * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
  */
-export type APIInteractionResponseCallbackData = Omit<
-	RESTPostAPIWebhookWithTokenJSONBody,
-	'avatar_url' | 'username'
-> & { flags?: MessageFlags };
+export type APIInteractionResponseCallbackData = Omit<RESTPostAPIWebhookWithTokenJSONBody, 'avatar_url' | 'username'>;
 
 export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];

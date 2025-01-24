@@ -1,3 +1,108 @@
+## [0.37.117](https://github.com/discordjs/discord-api-types/compare/0.37.116...0.37.117) (2025-01-20)
+
+
+
+## [0.37.116](https://github.com/discordjs/discord-api-types/compare/0.37.115...0.37.116) (2025-01-16)
+
+
+### Features
+
+* **VoiceCloseCodes:** add `BadRequest` ([#1191](https://github.com/discordjs/discord-api-types/issues/1191)) ([d9b6935](https://github.com/discordjs/discord-api-types/commit/d9b6935b01665db70ddf8971be5ee42c96f12706))
+
+
+
+## [0.37.115](https://github.com/discordjs/discord-api-types/compare/0.37.114...0.37.115) (2025-01-02)
+
+
+
+## [0.37.114](https://github.com/discordjs/discord-api-types/compare/0.37.113...0.37.114) (2024-12-23)
+
+
+### Bug Fixes
+
+* reset pattern index after testing an input ([ee53ef7](https://github.com/discordjs/discord-api-types/commit/ee53ef7306e73d6b9bf341503231186ef27403fb)), closes [/github.com/discordjs/discord-api-types/issues/1181#issuecomment-2558971449](https://github.com//github.com/discordjs/discord-api-types/issues/1181/issues/issuecomment-2558971449)
+
+
+
+## [0.37.113](https://github.com/discordjs/discord-api-types/compare/0.37.112...0.37.113) (2024-12-22)
+
+
+### Bug Fixes
+
+* skip encoded url parts from re-encoding ([fc4e7be](https://github.com/discordjs/discord-api-types/commit/fc4e7bebc50fe67a0aa5c49a95793e53d3ff0da9))
+
+
+### Features
+
+* **ConnectionService:** `Bluesky` and `Mastodon` ([#1174](https://github.com/discordjs/discord-api-types/issues/1174)) ([61592d6](https://github.com/discordjs/discord-api-types/commit/61592d6a85232a6d675a6faeddc096ae3467df6a))
+* **payloads:** add entrypoint command payloads ([#1166](https://github.com/discordjs/discord-api-types/issues/1166)) ([bcb13de](https://github.com/discordjs/discord-api-types/commit/bcb13de75b6b45e2a5c1ebde5fa77719123b7993))
+
+
+
+## [0.37.112](https://github.com/discordjs/discord-api-types/compare/0.37.111...0.37.112) (2024-12-19)
+
+
+### Features
+
+* **APISubscription:** add `renewal_sku_ids` ([#1172](https://github.com/discordjs/discord-api-types/issues/1172)) ([fb7c6b8](https://github.com/discordjs/discord-api-types/commit/fb7c6b8903bded49c379ba61a520818ba5ab15ba))
+
+
+
+## [0.37.111](https://github.com/discordjs/discord-api-types/compare/0.37.110...0.37.111) (2024-12-09)
+
+
+
+## [0.37.110](https://github.com/discordjs/discord-api-types/compare/0.37.109...0.37.110) (2024-11-28)
+
+
+### Features
+
+* add Chrunchyroll ([#1159](https://github.com/discordjs/discord-api-types/issues/1159)) ([92b1ce2](https://github.com/discordjs/discord-api-types/commit/92b1ce2faee4c4b43bfe524e78cfde1fbbfa5792))
+
+
+
+## [0.37.109](https://github.com/discordjs/discord-api-types/compare/0.37.108...0.37.109) (2024-11-26)
+
+
+### Features
+
+* New entitlement endpoint behaviour ([#1145](https://github.com/discordjs/discord-api-types/issues/1145)) ([079fcd6](https://github.com/discordjs/discord-api-types/commit/079fcd6c006759193ea0b4b97d0d5a34c0459041))
+
+
+
+## [0.37.108](https://github.com/discordjs/discord-api-types/compare/0.37.107...0.37.108) (2024-11-25)
+
+
+### Features
+
+* webhook events ([#1128](https://github.com/discordjs/discord-api-types/issues/1128)) ([ced86e4](https://github.com/discordjs/discord-api-types/commit/ced86e4b42c170c855ee148fb9bdb699ddf1a15b))
+
+
+
+## [0.37.107](https://github.com/discordjs/discord-api-types/compare/0.37.106...0.37.107) (2024-11-21)
+
+
+### Bug Fixes
+
+* **security:** escape path parameters ([1ba3472](https://github.com/discordjs/discord-api-types/commit/1ba34729386c9b9dece237e761114f6d1ef11143))
+
+
+
+## [0.37.106](https://github.com/discordjs/discord-api-types/compare/0.37.105...0.37.106) (2024-11-21)
+
+
+
+## [0.37.105](https://github.com/discordjs/discord-api-types/compare/0.37.104...0.37.105) (2024-11-14)
+
+
+### Features
+
+* **_interactions:** Support partial guild objects ([#1142](https://github.com/discordjs/discord-api-types/issues/1142)) ([408165e](https://github.com/discordjs/discord-api-types/commit/408165e96fdd08d56183cf3c5348ee08e8aec056))
+* full message object on message update ([#1140](https://github.com/discordjs/discord-api-types/issues/1140)) ([3512262](https://github.com/discordjs/discord-api-types/commit/35122621946ab797d4c0b83cecdec1c3df05b6e0))
+* guild member banners ([#1057](https://github.com/discordjs/discord-api-types/issues/1057)) ([3f489f1](https://github.com/discordjs/discord-api-types/commit/3f489f18dccf5efe9e4983e66606998fafffc4dd))
+
+
+
 ## [0.37.104](https://github.com/discordjs/discord-api-types/compare/0.37.103...0.37.104) (2024-11-07)
 
 

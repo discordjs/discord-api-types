@@ -275,7 +275,9 @@ export interface APIConnection {
 export enum ConnectionService {
 	AmazonMusic = 'amazon-music',
 	BattleNet = 'battlenet',
+	Bluesky = 'bluesky',
 	BungieNet = 'bungie',
+	Crunchyroll = 'crunchyroll',
 	Domain = 'domain',
 	eBay = 'ebay',
 	EpicGames = 'epicgames',
@@ -283,6 +285,7 @@ export enum ConnectionService {
 	GitHub = 'github',
 	Instagram = 'instagram',
 	LeagueOfLegends = 'leagueoflegends',
+	Mastodon = 'mastodon',
 	PayPal = 'paypal',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',

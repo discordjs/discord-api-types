@@ -1,4 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
+import { urlSafeCharacters } from '../../utils/internals.ts';
 
 export * from '../common.ts';
 export * from './application.ts';
@@ -952,6 +953,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements/{entitlement.id}`
 	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
 	 */
 	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
@@ -1052,6 +1054,28 @@ export const Routes = {
 		return `/guilds/${guildId}/soundboard-sounds/${soundId}` as const;
 	},
 };
+
+for (const [key, fn] of Object.entries(Routes)) {
+	Routes[key as keyof typeof Routes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(Routes);
 
 export const StickerPackApplicationId = '710982414301790216';
 
@@ -1349,6 +1373,28 @@ export const CDNRoutes = {
 		return `/soundboard-sounds/${soundId}` as const;
 	},
 };
+
+for (const [key, fn] of Object.entries(CDNRoutes)) {
+	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(CDNRoutes);
 
 export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 

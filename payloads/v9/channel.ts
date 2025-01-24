@@ -1031,7 +1031,7 @@ export interface APIThreadMetadata {
 	/**
 	 * Whether the thread is locked; when a thread is locked, only users with `MANAGE_THREADS` can unarchive it
 	 */
-	locked?: boolean;
+	locked: boolean;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread; only available on private threads
 	 */
@@ -1133,10 +1133,6 @@ export interface APIEmbed {
 	title?: string;
 	/**
 	 * Type of embed (always "rich" for webhook embeds)
-	 *
-	 * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-types
 	 */
 	type?: EmbedType;
 	/**
@@ -1205,8 +1201,6 @@ export interface APIEmbed {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
- *
- * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
 export enum EmbedType {
 	/**

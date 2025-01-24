@@ -1,6 +1,6 @@
 name: Feature request
 description: Request a feature for the discord-api-types library (we accept documented features of the official Discord developer API only!)
-labels: [discussion]
+labels: [feature request]
 body:
   - type: markdown
     attributes:

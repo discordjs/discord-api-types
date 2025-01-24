@@ -36,6 +36,8 @@ import type {
 	ChannelType,
 	APISubscription,
 	APISoundboardSound,
+	GuildChannelType,
+	ThreadChannelType,
 } from '../payloads/v9/mod.ts';
 import type { ReactionType } from '../rest/v9/mod.ts';
 import type { Nullable } from '../utils/internals.ts';
@@ -704,7 +706,10 @@ export type GatewayChannelModifyDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway-events#channel-update
  * https://discord.com/developers/docs/topics/gateway-events#channel-delete
  */
-export type GatewayChannelModifyDispatchData = APIChannel;
+export type GatewayChannelModifyDispatchData = APIChannel & {
+	type: Exclude<GuildChannelType, ThreadChannelType>;
+	guild_id: Snowflake;
+};
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#channel-create
@@ -878,7 +883,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	channels: APIChannel[];
+	channels: (APIChannel & { type: Exclude<GuildChannelType, ThreadChannelType> })[];
 	/**
 	 * Threads in the guild
 	 *
@@ -886,7 +891,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
-	threads: APIChannel[];
+	threads: (APIChannel & { type: ThreadChannelType })[];
 	/**
 	 * Presences of the members in the guild, will only include non-offline members if the size is greater than `large_threshold`
 	 *
@@ -1114,9 +1119,9 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-update
  */
 export type GatewayGuildMemberUpdateDispatchData = Nullable<Pick<APIGuildMember, 'joined_at'>> &
-	Omit<APIGuildMember, 'deaf' | 'joined_at' | 'mute' | 'user'> &
-	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
-	Required<Pick<APIGuildMember, 'user'>> & {
+	Omit<APIGuildMember, 'deaf' | 'flags' | 'joined_at' | 'mute' | 'user'> &
+	Partial<Pick<APIGuildMember, 'deaf' | 'flags' | 'mute'>> &
+	Required<Pick<APIGuildMember, 'avatar' | 'banner' | 'user'>> & {
 		/**
 		 * The id of the guild
 		 */
@@ -1835,7 +1840,7 @@ export type GatewayThreadMemberUpdateDispatchData = APIThreadMember & { guild_id
  */
 export type GatewayThreadModifyDispatch = DataPayload<
 	GatewayDispatchEvents.ThreadCreate | GatewayDispatchEvents.ThreadDelete | GatewayDispatchEvents.ThreadUpdate,
-	GatewayChannelModifyDispatchData
+	APIThreadChannel
 >;
 
 /**
