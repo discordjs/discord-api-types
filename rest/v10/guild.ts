@@ -997,3 +997,17 @@ export type RESTAPIModifyGuildOnboardingPromptOptionData = RESTAPIGuildOnboardin
  * https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
  */
 export type RESTPutAPIGuildOnboardingResult = APIGuildOnboarding;
+
+/**
+ * https://discord.com/developers/docs/resources/guild#modify-incidents-actions
+ */
+export interface RESTPutAPIGuildIncidentActionsJSONBody {
+	/**
+	 * When invites will be enabled again
+	 */
+	invites_disabled_until?: string | undefined;
+	/**
+	 * When direct messages will be enabled again
+	 */
+	dms_disabled_until?: string | undefined;
+}
