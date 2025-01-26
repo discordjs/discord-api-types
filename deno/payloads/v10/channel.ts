@@ -1936,7 +1936,7 @@ export interface APIUnfurledMediaItem {
 
 export interface APISectionComponent extends APIBaseComponent<ComponentType.Section> {
 	components: APITextDisplayComponent[];
-	accessory: APIThumbnailComponent;
+	accessory: APIButtonComponent | APIThumbnailComponent;
 }
 
 export interface APITextDisplayComponent extends APIBaseComponent<ComponentType.TextDisplay> {
