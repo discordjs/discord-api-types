@@ -1,3 +1,16 @@
+## [0.37.117](https://github.com/discordjs/discord-api-types/compare/0.37.116...0.37.117) (2025-01-20)
+
+
+
+## [0.37.116](https://github.com/discordjs/discord-api-types/compare/0.37.115...0.37.116) (2025-01-16)
+
+
+### Features
+
+* **VoiceCloseCodes:** add `BadRequest` ([#1191](https://github.com/discordjs/discord-api-types/issues/1191)) ([d9b6935](https://github.com/discordjs/discord-api-types/commit/d9b6935b01665db70ddf8971be5ee42c96f12706))
+
+
+
 ## [0.37.115](https://github.com/discordjs/discord-api-types/compare/0.37.114...0.37.115) (2025-01-02)
 
 

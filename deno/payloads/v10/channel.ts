@@ -911,6 +911,10 @@ export enum MessageFlags {
 	 */
 	IsVoiceMessage = 1 << 13,
 	/**
+	 * This message has a snapshot (via Message Forwarding)
+	 */
+	HasSnapshot = 1 << 14,
+	/**
 	 * This flag is required to use new components
 	 */
 	IsComponentsV2 = 1 << 15,
@@ -1166,10 +1170,6 @@ export interface APIEmbed {
 	title?: string;
 	/**
 	 * Type of embed (always "rich" for webhook embeds)
-	 *
-	 * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
-	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-types
 	 */
 	type?: EmbedType;
 	/**
@@ -1238,8 +1238,6 @@ export interface APIEmbed {
 
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
- *
- * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
 export enum EmbedType {
 	/**
