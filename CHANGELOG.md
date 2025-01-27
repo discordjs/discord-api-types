@@ -1,3 +1,13 @@
+## [0.37.118](https://github.com/discordjs/discord-api-types/compare/0.37.117...0.37.118) (2025-01-27)
+
+
+### Features
+
+* **APIGuild:** add `incidents_data` ([#822](https://github.com/discordjs/discord-api-types/issues/822)) ([8fe9c07](https://github.com/discordjs/discord-api-types/commit/8fe9c072b3188c51bb3713dae640ba227a266438))
+* **MessageFlags:** add HasSnapshot ([#1141](https://github.com/discordjs/discord-api-types/issues/1141)) ([d446be5](https://github.com/discordjs/discord-api-types/commit/d446be5ecdcc3889e30a8af1ce2ac598ffe1b49d))
+
+
+
 ## [0.37.117](https://github.com/discordjs/discord-api-types/compare/0.37.116...0.37.117) (2025-01-20)
 
 
