@@ -1,3 +1,12 @@
+## [0.37.119](https://github.com/discordjs/discord-api-types/compare/0.37.118...0.37.119) (2025-02-02)
+
+
+### Bug Fixes
+
+* route escaping round three ([d5cdb37](https://github.com/discordjs/discord-api-types/commit/d5cdb37a8f06128e472f1ef13ec4d7823f956e7d))
+
+
+
 ## [0.37.118](https://github.com/discordjs/discord-api-types/compare/0.37.117...0.37.118) (2025-01-27)
 
 
