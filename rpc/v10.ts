@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import type {
 	APIMessage,
 	APIPartialChannel,
@@ -327,7 +328,6 @@ export interface RPCAuthenticateResultData {
 	application: RPCOAuth2Application;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RPCGetGuildsArgs {}
 
 /**
@@ -532,6 +532,11 @@ export type RPCSelectVoiceChannelResultData = RPCGetChannelResultData | null;
 export type RPCGetSelectedVoiceChannelResultData = RPCGetChannelResultData | null;
 
 /**
+ * https://discord.com/developers/docs/topics/rpc#getselectedvoicechannel
+ */
+export interface RPCGetSelectedVoiceChannelArgs {}
+
+/**
  * @unstable
  */
 export interface RPCGetUserResultData {}
@@ -690,7 +695,7 @@ export interface RPCUnsubscribeResultData {
 	/**
 	 * event name now unsubscribed from
 	 */
-	event: RPCEvents;
+	evt: RPCEvents;
 }
 /**
  * https://discord.com/developers/docs/topics/rpc#unsubscribe
@@ -742,7 +747,6 @@ export interface RPCCaptureShortcutResultData {}
  */
 export interface RPCCaptureShortcutArgs {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RPCCloseActivityRequestResultData {}
 /**
  * https://discord.com/developers/docs/topics/rpc#closeactivityrequest-close-activity-request-argument-structure
@@ -1892,3 +1896,1085 @@ export interface RPCVoiceStateUpdateDispatchData {
 	 */
 	pan: RPCVoicePan;
 }
+
+export interface BaseRPCMessage<Cmd extends RPCCommands> {
+	cmd: Cmd;
+}
+
+export interface RPCCommandMessage<Cmd extends RPCCommands> extends BaseRPCMessage<Cmd> {
+	nonce: string;
+}
+
+export interface RPCSubscribeMessage<
+	Evt extends RPCEvents,
+	Cmd extends RPCCommands.Subscribe | RPCCommands.Unsubscribe = RPCCommands.Subscribe | RPCCommands.Unsubscribe,
+> extends RPCCommandMessage<Cmd> {
+	evt: Evt;
+}
+
+export interface RPCCommandAuthorizePayload extends RPCCommandMessage<RPCCommands.Authorize> {
+	args: RPCAuthorizeArgs;
+}
+
+export interface RPCCommandAuthenticatePayload extends RPCCommandMessage<RPCCommands.Authenticate> {
+	args: RPCAuthenticateArgs;
+}
+
+export interface RPCCommandGetChannelPayload extends RPCCommandMessage<RPCCommands.GetChannel> {
+	args: RPCGetChannelArgs;
+}
+
+export interface RPCCommandGetChannelsPayload extends RPCCommandMessage<RPCCommands.GetChannels> {
+	args: RPCGetChannelsArgs;
+}
+
+export interface RPCCommandGetGuildPayload extends RPCCommandMessage<RPCCommands.GetGuild> {
+	args: RPCGetGuildArgs;
+}
+
+export interface RPCCommandGetGuildsPayload extends RPCCommandMessage<RPCCommands.GetGuilds> {
+	args: RPCGetGuildsArgs;
+}
+
+export interface RPCCommandGetUserPayload extends RPCCommandMessage<RPCCommands.GetUser> {
+	args: RPCGetUserArgs;
+}
+
+export interface RPCCommandGetVoiceSettingsPayload extends RPCCommandMessage<RPCCommands.GetVoiceSettings> {
+	args: RPCGetVoiceSettingsArgs;
+}
+
+export interface RPCCommandSelectTextChannelPayload extends RPCCommandMessage<RPCCommands.SelectTextChannel> {
+	args: RPCSelectTextChannelArgs;
+}
+
+export interface RPCCommandSelectVoiceChannelPayload extends RPCCommandMessage<RPCCommands.SelectVoiceChannel> {
+	args: RPCSelectVoiceChannelArgs;
+}
+
+export interface RPCCommandSetActivityPayload extends RPCCommandMessage<RPCCommands.SetActivity> {
+	args: RPCSetActivityArgs;
+}
+
+export interface RPCCommandSetVoiceSettingsPayload extends RPCCommandMessage<RPCCommands.SetVoiceSettings> {
+	args: RPCSetVoiceSettingsArgs;
+}
+
+export type RPCCommandSubscribePayload =
+	| RPCSubscribeActivityInvite
+	| RPCSubscribeActivityJoin
+	| RPCSubscribeActivityJoinRequest
+	| RPCSubscribeActivitySpectate
+	| RPCSubscribeCaptureShortcutChange
+	| RPCSubscribeChannelCreate
+	| RPCSubscribeCurrentUserUpdate
+	| RPCSubscribeEntitlementCreate
+	| RPCSubscribeEntitlementDelete
+	| RPCSubscribeGameJoin
+	| RPCSubscribeGameSpectate
+	| RPCSubscribeGuildCreate
+	| RPCSubscribeGuildStatus
+	| RPCSubscribeLobbyDelete
+	| RPCSubscribeLobbyMemberConnect
+	| RPCSubscribeLobbyMemberDisconnect
+	| RPCSubscribeLobbyMemberUpdate
+	| RPCSubscribeLobbyMessage
+	| RPCSubscribeLobbyUpdate
+	| RPCSubscribeMessageCreate
+	| RPCSubscribeMessageDelete
+	| RPCSubscribeMessageUpdate
+	| RPCSubscribeNotificationCreate
+	| RPCSubscribeOverlay
+	| RPCSubscribeOverlayUpdate
+	| RPCSubscribeRelationshipUpdate
+	| RPCSubscribeSpeakingStart
+	| RPCSubscribeSpeakingStop
+	| RPCSubscribeUserAchievementUpdate
+	| RPCSubscribeVoiceChannelSelect
+	| RPCSubscribeVoiceConnectionStatus
+	| RPCSubscribeVoiceSettingsUpdate
+	| RPCSubscribeVoiceSettingsUpdate2
+	| RPCSubscribeVoiceStateCreate
+	| RPCSubscribeVoiceStateDelete
+	| RPCSubscribeVoiceStateUpdate;
+
+export type RPCCommandUnsubscribePayload = RPCCommandSubscribePayload;
+
+export interface RPCCommandAcceptActivityInvitePayload extends RPCCommandMessage<RPCCommands.AcceptActivityInvite> {
+	args: RPCAcceptActivityInviteArgs;
+}
+
+export interface RPCCommandActivityInviteUserPayload extends RPCCommandMessage<RPCCommands.ActivityInviteUser> {
+	args: RPCActivityInviteUserArgs;
+}
+
+export interface RPCCommandBraintreePopupBridgeCallbackPayload
+	extends RPCCommandMessage<RPCCommands.BraintreePopupBridgeCallback> {
+	args: RPCBraintreePopupBridgeCallbackArgs;
+}
+
+export interface RPCCommandBrowserPayload extends RPCCommandMessage<RPCCommands.BrowserHandoff> {
+	args: RPCBrowserHandoffArgs;
+}
+
+export interface RPCCommandCaptureShortcutPayload extends RPCCommandMessage<RPCCommands.CaptureShortcut> {
+	args: RPCCaptureShortcutArgs;
+}
+
+export interface RPCCommandCloseActivityJoinRequestPayload extends RPCCommandMessage<RPCCommands.CloseActivityRequest> {
+	args: RPCCloseActivityRequestArgs;
+}
+
+export interface RPCCommandConnectToLobbyPayload extends RPCCommandMessage<RPCCommands.ConnectToLobby> {
+	args: RPCConnectToLobbyArgs;
+}
+
+export interface RPCCommandConnectToLobbyVoicePayload extends RPCCommandMessage<RPCCommands.ConnectToLobbyVoice> {
+	args: RPCConnectToLobbyVoiceArgs;
+}
+
+export interface RPCCommandConnectionsCallbackPayload extends RPCCommandMessage<RPCCommands.ConnectionsCallback> {
+	args: RPCConnectionsCallbackArgs;
+}
+
+export interface RPCCommandCreateChannelInvitePayload extends RPCCommandMessage<RPCCommands.CreateChannelInvite> {
+	args: RPCCreateChannelInviteArgs;
+}
+
+export interface RPCCommandCreateLobbyPayload extends RPCCommandMessage<RPCCommands.CreateLobby> {
+	args: RPCCreateLobbyArgs;
+}
+
+export interface RPCCommandDeepLinkPayload extends RPCCommandMessage<RPCCommands.DeepLink> {
+	args: RPCDeepLinkArgs;
+}
+
+export interface RPCCommandDeleteLobbyPayload extends RPCCommandMessage<RPCCommands.DeleteLobby> {
+	args: RPCDeleteLobbyArgs;
+}
+
+export interface RPCCommandDisconnectFromLobbyPayload extends RPCCommandMessage<RPCCommands.DisconnectFromLobby> {
+	args: RPCDisconnectFromLobbyArgs;
+}
+
+export interface RPCCommandDisconnectFromLobbyVoicePayload
+	extends RPCCommandMessage<RPCCommands.DisconnectFromLobbyVoice> {
+	args: RPCDisconnectFromLobbyVoiceArgs;
+}
+
+export interface RPCCommandGetApplicationTicketPayload extends RPCCommandMessage<RPCCommands.GetApplicationTicket> {
+	args: RPCGetApplicationTicketArgs;
+}
+
+export interface RPCCommandGetEntitlementTicketPayload extends RPCCommandMessage<RPCCommands.GetEntitlementTicket> {
+	args: RPCGetEntitlementTicketArgs;
+}
+
+export interface RPCCommandGetEntitlementsPayload extends RPCCommandMessage<RPCCommands.GetEntitlements> {
+	args: RPCGetEntitlementsArgs;
+}
+
+export interface RPCCommandGetImagePayload extends RPCCommandMessage<RPCCommands.GetImage> {
+	args: RPCGetImageArgs;
+}
+
+export interface RPCCommandGetNetworkingConfigPayload extends RPCCommandMessage<RPCCommands.GetNetworkingConfig> {
+	args: RPCGetNetworkingConfigArgs;
+}
+
+export interface RPCCommandGetRelationshipsPayload extends RPCCommandMessage<RPCCommands.GetRelationships> {
+	args: RPCGetRelationshipsArgs;
+}
+
+export interface RPCCommandGetSelectedVoiceChannelPayload
+	extends RPCCommandMessage<RPCCommands.GetSelectedVoiceChannel> {
+	args: RPCGetSelectedVoiceChannelArgs;
+}
+
+export interface RPCCommandGetSkusPayload extends RPCCommandMessage<RPCCommands.GetSkus> {
+	args: RPCGetSkusArgs;
+}
+
+export interface RPCCommandGetUserAchievementsPayload extends RPCCommandMessage<RPCCommands.GetUserAchievements> {
+	args: RPCGetUserAchievementsArgs;
+}
+
+export interface RPCCommandGiftCodeBrowserPayload extends RPCCommandMessage<RPCCommands.GiftCodeBrowser> {
+	args: RPCGiftCodeBrowserArgs;
+}
+
+export interface RPCCommandGuildTemplateBrowserPayload extends RPCCommandMessage<RPCCommands.GuildTemplateBrowser> {
+	args: RPCGuildTemplateBrowserArgs;
+}
+
+export interface RPCCommandInviteBrowserPayload extends RPCCommandMessage<RPCCommands.InviteBrowser> {
+	args: RPCInviteBrowserArgs;
+}
+
+export interface RPCCommandNetworkingCreateTokenPayload extends RPCCommandMessage<RPCCommands.NetworkingCreateToken> {
+	args: RPCNetworkingCreateTokenArgs;
+}
+
+export interface RPCCommandNetworkingPeerMetricsPayload extends RPCCommandMessage<RPCCommands.NetworkingPeerMetrics> {
+	args: RPCNetworkingPeerMetricsArgs;
+}
+
+export interface RPCCommandNetworkingSystemMetricsPayload
+	extends RPCCommandMessage<RPCCommands.NetworkingSystemMetrics> {
+	args: RPCNetworkingSystemMetricsArgs;
+}
+
+export interface RPCCommandOpenOverlayActivityInvitePayload
+	extends RPCCommandMessage<RPCCommands.OpenOverlayActivityInvite> {
+	args: RPCOpenOverlayActivityInviteArgs;
+}
+
+export interface RPCCommandOpenOverlayGuildInvitePayload extends RPCCommandMessage<RPCCommands.OpenOverlayGuildInvite> {
+	args: RPCOpenOverlayGuildInviteArgs;
+}
+
+export interface RPCCommandOpenOverlayVoiceSettingsPayload
+	extends RPCCommandMessage<RPCCommands.OpenOverlayVoiceSettings> {
+	args: RPCOpenOverlayVoiceSettingsArgs;
+}
+
+export interface RPCCommandOverlayPayload extends RPCCommandMessage<RPCCommands.Overlay> {
+	args: RPCOverlayArgs;
+}
+
+export interface RPCCommandSearchLobbiesPayload extends RPCCommandMessage<RPCCommands.SearchLobbies> {
+	args: RPCSearchLobbiesArgs;
+}
+
+export interface RPCCommandSendActivityJoinInvitePayload extends RPCCommandMessage<RPCCommands.SendActivityJoinInvite> {
+	args: RPCSendActivityJoinInviteArgs;
+}
+
+export interface RPCCommandSendToLobbyPayload extends RPCCommandMessage<RPCCommands.SendToLobby> {
+	args: RPCSendToLobbyArgs;
+}
+
+export interface RPCCommandSetCertifiedDevicesPayload extends RPCCommandMessage<RPCCommands.SetCertifiedDevices> {
+	args: RPCSetCertifiedDevicesArgs;
+}
+
+export interface RPCCommandSetOverlayLockedPayload extends RPCCommandMessage<RPCCommands.SetOverlayLocked> {
+	args: RPCSetOverlayLockedArgs;
+}
+
+export interface RPCCommandSetUserAchievementPayload extends RPCCommandMessage<RPCCommands.SetUserAchievement> {
+	args: RPCSetUserAchievementArgs;
+}
+
+export interface RPCCommandSetUserVoiceSettingsPayload extends RPCCommandMessage<RPCCommands.SetUserVoiceSettings> {
+	args: RPCSetUserVoiceSettingsArgs;
+}
+
+export interface RPCCommandSetUserVoiceSettings2Payload extends RPCCommandMessage<RPCCommands.SetUserVoiceSettings2> {
+	args: RPCSetUserVoiceSettings2Args;
+}
+
+export interface RPCCommandSetVoiceSettings2Payload extends RPCCommandMessage<RPCCommands.SetVoiceSettings2> {
+	args: RPCSetVoiceSettings2Args;
+}
+
+export interface RPCCommandStartPurchasePayload extends RPCCommandMessage<RPCCommands.StartPurchase> {
+	args: RPCStartPurchaseArgs;
+}
+
+export interface RPCCommandUpdateLobbyPayload extends RPCCommandMessage<RPCCommands.UpdateLobby> {
+	args: RPCUpdateLobbyArgs;
+}
+
+export interface RPCCommandUpdateLobbyMemberPayload extends RPCCommandMessage<RPCCommands.UpdateLobbyMember> {
+	args: RPCUpdateLobbyMemberArgs;
+}
+
+export interface RPCCommandValidateApplicationPayload extends RPCCommandMessage<RPCCommands.ValidateApplication> {
+	args: RPCValidateApplicationArgs;
+}
+
+export interface RPCSubscribeActivityInvite extends RPCSubscribeMessage<RPCEvents.ActivityInvite> {
+	args: RPCSubscribeActivityInviteArgs;
+	evt: RPCEvents.ActivityInvite;
+}
+
+export interface RPCSubscribeActivityJoin extends RPCSubscribeMessage<RPCEvents.ActivityJoin> {
+	args: RPCSubscribeActivityJoinArgs;
+	evt: RPCEvents.ActivityJoin;
+}
+
+export interface RPCSubscribeActivityJoinRequest extends RPCSubscribeMessage<RPCEvents.ActivityJoinRequest> {
+	args: RPCSubscribeActivityJoinRequestArgs;
+	evt: RPCEvents.ActivityJoinRequest;
+}
+
+export interface RPCSubscribeActivitySpectate extends RPCSubscribeMessage<RPCEvents.ActivitySpectate> {
+	args: RPCSubscribeActivitySpectateArgs;
+	evt: RPCEvents.ActivitySpectate;
+}
+
+export interface RPCSubscribeCaptureShortcutChange extends RPCSubscribeMessage<RPCEvents.CaptureShortcutChange> {
+	args: RPCSubscribeCaptureShortcutChangeArgs;
+	evt: RPCEvents.CaptureShortcutChange;
+}
+
+export interface RPCSubscribeChannelCreate extends RPCSubscribeMessage<RPCEvents.ChannelCreate> {
+	args: RPCSubscribeChannelCreateArgs;
+	evt: RPCEvents.ChannelCreate;
+}
+
+export interface RPCSubscribeCurrentUserUpdate extends RPCSubscribeMessage<RPCEvents.CurrentUserUpdate> {
+	args: RPCSubscribeCurrentUserUpdateArgs;
+	evt: RPCEvents.CurrentUserUpdate;
+}
+
+export interface RPCSubscribeEntitlementCreate extends RPCSubscribeMessage<RPCEvents.EntitlementCreate> {
+	args: RPCSubscribeEntitlementCreateArgs;
+	evt: RPCEvents.EntitlementCreate;
+}
+
+export interface RPCSubscribeEntitlementDelete extends RPCSubscribeMessage<RPCEvents.EntitlementDelete> {
+	args: RPCSubscribeEntitlementDeleteArgs;
+	evt: RPCEvents.EntitlementDelete;
+}
+
+export interface RPCSubscribeGameJoin extends RPCSubscribeMessage<RPCEvents.GameJoin> {
+	args: RPCSubscribeGameJoinArgs;
+	evt: RPCEvents.GameJoin;
+}
+
+export interface RPCSubscribeGameSpectate extends RPCSubscribeMessage<RPCEvents.GameSpectate> {
+	args: RPCSubscribeGameSpectateArgs;
+	evt: RPCEvents.GameSpectate;
+}
+
+export interface RPCSubscribeGuildCreate extends RPCSubscribeMessage<RPCEvents.GuildCreate> {
+	args: RPCSubscribeGuildCreateArgs;
+	evt: RPCEvents.GuildCreate;
+}
+
+export interface RPCSubscribeGuildStatus extends RPCSubscribeMessage<RPCEvents.GuildStatus> {
+	args: RPCSubscribeGuildStatusArgs;
+	evt: RPCEvents.GuildStatus;
+}
+
+export interface RPCSubscribeLobbyDelete extends RPCSubscribeMessage<RPCEvents.LobbyDelete> {
+	args: RPCSubscribeLobbyDeleteArgs;
+	evt: RPCEvents.LobbyDelete;
+}
+
+export interface RPCSubscribeLobbyMemberConnect extends RPCSubscribeMessage<RPCEvents.LobbyMemberConnect> {
+	args: RPCSubscribeLobbyMemberConnectArgs;
+	evt: RPCEvents.LobbyMemberConnect;
+}
+
+export interface RPCSubscribeLobbyMemberDisconnect extends RPCSubscribeMessage<RPCEvents.LobbyMemberDisconnect> {
+	args: RPCSubscribeLobbyMemberDisconnectArgs;
+	evt: RPCEvents.LobbyMemberDisconnect;
+}
+
+export interface RPCSubscribeLobbyMemberUpdate extends RPCSubscribeMessage<RPCEvents.LobbyMemberUpdate> {
+	args: RPCSubscribeLobbyMemberUpdateArgs;
+	evt: RPCEvents.LobbyMemberUpdate;
+}
+
+export interface RPCSubscribeLobbyMessage extends RPCSubscribeMessage<RPCEvents.LobbyMessage> {
+	args: RPCSubscribeLobbyMessageArgs;
+	evt: RPCEvents.LobbyMessage;
+}
+
+export interface RPCSubscribeLobbyUpdate extends RPCSubscribeMessage<RPCEvents.LobbyUpdate> {
+	args: RPCSubscribeLobbyUpdateArgs;
+	evt: RPCEvents.LobbyUpdate;
+}
+
+export interface RPCSubscribeMessageCreate extends RPCSubscribeMessage<RPCEvents.MessageCreate> {
+	args: RPCSubscribeMessageCreateArgs;
+	evt: RPCEvents.MessageCreate;
+}
+
+export interface RPCSubscribeMessageDelete extends RPCSubscribeMessage<RPCEvents.MessageDelete> {
+	args: RPCSubscribeMessageDeleteArgs;
+	evt: RPCEvents.MessageDelete;
+}
+
+export interface RPCSubscribeMessageUpdate extends RPCSubscribeMessage<RPCEvents.MessageUpdate> {
+	args: RPCSubscribeMessageUpdateArgs;
+	evt: RPCEvents.MessageUpdate;
+}
+
+export interface RPCSubscribeNotificationCreate extends RPCSubscribeMessage<RPCEvents.NotificationCreate> {
+	args: RPCSubscribeNotificationCreateArgs;
+	evt: RPCEvents.NotificationCreate;
+}
+
+export interface RPCSubscribeOverlay extends RPCSubscribeMessage<RPCEvents.Overlay> {
+	args: RPCSubscribeOverlayArgs;
+	evt: RPCEvents.Overlay;
+}
+
+export interface RPCSubscribeOverlayUpdate extends RPCSubscribeMessage<RPCEvents.OverlayUpdate> {
+	args: RPCSubscribeOverlayUpdateArgs;
+	evt: RPCEvents.OverlayUpdate;
+}
+
+export interface RPCSubscribeRelationshipUpdate extends RPCSubscribeMessage<RPCEvents.RelationshipUpdate> {
+	args: RPCSubscribeRelationshipUpdateArgs;
+	evt: RPCEvents.RelationshipUpdate;
+}
+
+export interface RPCSubscribeSpeakingStart extends RPCSubscribeMessage<RPCEvents.SpeakingStart> {
+	args: RPCSubscribeSpeakingStartArgs;
+	evt: RPCEvents.SpeakingStart;
+}
+
+export interface RPCSubscribeSpeakingStop extends RPCSubscribeMessage<RPCEvents.SpeakingStop> {
+	args: RPCSubscribeSpeakingStopArgs;
+	evt: RPCEvents.SpeakingStop;
+}
+
+export interface RPCSubscribeUserAchievementUpdate extends RPCSubscribeMessage<RPCEvents.UserAchievementUpdate> {
+	args: RPCSubscribeUserAchievementUpdateArgs;
+	evt: RPCEvents.UserAchievementUpdate;
+}
+
+export interface RPCSubscribeVoiceChannelSelect extends RPCSubscribeMessage<RPCEvents.VoiceChannelSelect> {
+	args: RPCSubscribeVoiceChannelSelectArgs;
+	evt: RPCEvents.VoiceChannelSelect;
+}
+
+export interface RPCSubscribeVoiceConnectionStatus extends RPCSubscribeMessage<RPCEvents.VoiceConnectionStatus> {
+	args: RPCSubscribeVoiceConnectionStatusArgs;
+	evt: RPCEvents.VoiceConnectionStatus;
+}
+
+export interface RPCSubscribeVoiceSettingsUpdate extends RPCSubscribeMessage<RPCEvents.VoiceSettingsUpdate> {
+	args: RPCSubscribeVoiceSettingsUpdateArgs;
+	evt: RPCEvents.VoiceSettingsUpdate;
+}
+
+export interface RPCSubscribeVoiceSettingsUpdate2 extends RPCSubscribeMessage<RPCEvents.VoiceSettingsUpdate2> {
+	args: RPCSubscribeVoiceSettingsUpdate2Args;
+	evt: RPCEvents.VoiceSettingsUpdate2;
+}
+
+export interface RPCSubscribeVoiceStateCreate extends RPCSubscribeMessage<RPCEvents.VoiceStateCreate> {
+	args: RPCSubscribeVoiceStateCreateArgs;
+	evt: RPCEvents.VoiceStateCreate;
+}
+
+export interface RPCSubscribeVoiceStateDelete extends RPCSubscribeMessage<RPCEvents.VoiceStateDelete> {
+	args: RPCSubscribeVoiceStateDeleteArgs;
+	evt: RPCEvents.VoiceStateDelete;
+}
+
+export interface RPCSubscribeVoiceStateUpdate extends RPCSubscribeMessage<RPCEvents.VoiceStateUpdate> {
+	args: RPCSubscribeVoiceStateUpdateArgs;
+	evt: RPCEvents.VoiceStateUpdate;
+}
+
+export interface RPCAuthorizeResult extends RPCCommandMessage<RPCCommands.Authorize> {
+	data: RPCAuthorizeResultData;
+}
+
+export interface RPCAuthenticateResult extends RPCCommandMessage<RPCCommands.Authenticate> {
+	data: RPCAuthenticateResultData;
+}
+
+export interface RPCGetChannelResult extends RPCCommandMessage<RPCCommands.GetChannel> {
+	data: RPCGetChannelResultData;
+}
+
+export interface RPCGetChannelsResult extends RPCCommandMessage<RPCCommands.GetChannels> {
+	data: RPCGetChannelsResultData;
+}
+
+export interface RPCGetGuildResult extends RPCCommandMessage<RPCCommands.GetGuild> {
+	data: RPCGetGuildResultData;
+}
+
+export interface RPCGetGuildsResult extends RPCCommandMessage<RPCCommands.GetGuilds> {
+	data: RPCGetGuildsResultData;
+}
+
+export interface RPCGetUserResult extends RPCCommandMessage<RPCCommands.GetUser> {
+	data: RPCGetUserResultData;
+}
+
+export interface RPCGetVoiceSettingsResult extends RPCCommandMessage<RPCCommands.GetVoiceSettings> {
+	data: RPCGetVoiceSettingsResultData;
+}
+
+export interface RPCSelectTextChannelResult extends RPCCommandMessage<RPCCommands.SelectTextChannel> {
+	data: RPCSelectTextChannelResultData;
+}
+
+export interface RPCSelectVoiceChannelResult extends RPCCommandMessage<RPCCommands.SelectVoiceChannel> {
+	data: RPCSelectVoiceChannelResultData;
+}
+
+export interface RPCSetActivityResult extends RPCCommandMessage<RPCCommands.SetActivity> {
+	data: RPCSetActivityResultData;
+}
+
+export interface RPCSetVoiceSettingsResult extends RPCCommandMessage<RPCCommands.SetVoiceSettings> {
+	data: RPCSetVoiceSettingsResultData;
+}
+
+export interface RPCSubscribeResult extends RPCCommandMessage<RPCCommands.Subscribe> {
+	data: RPCSubscribeResultData;
+}
+
+export interface RPCUnsubscribeResult extends RPCCommandMessage<RPCCommands.Unsubscribe> {
+	data: RPCUnsubscribeResultData;
+}
+
+export interface RPCAcceptActivityInviteResult extends RPCCommandMessage<RPCCommands.AcceptActivityInvite> {
+	data: RPCAcceptActivityInviteResultData;
+}
+
+export interface RPCActivityInviteUserResult extends RPCCommandMessage<RPCCommands.ActivityInviteUser> {
+	data: RPCActivityInviteUserResultData;
+}
+
+export interface RPCBraintreePopupBridgeCallbackResult
+	extends RPCCommandMessage<RPCCommands.BraintreePopupBridgeCallback> {
+	data: RPCBraintreePopupBridgeCallbackResultData;
+}
+
+export interface RPCBrowserResult extends RPCCommandMessage<RPCCommands.BrowserHandoff> {
+	data: RPCBrowserHandoffResultData;
+}
+
+export interface RPCCaptureShortcutResult extends RPCCommandMessage<RPCCommands.CaptureShortcut> {
+	data: RPCCaptureShortcutResultData;
+}
+
+export interface RPCCloseActivityRequestResult extends RPCCommandMessage<RPCCommands.CloseActivityRequest> {
+	data: RPCCloseActivityRequestResultData;
+}
+
+export interface RPCConnectToLobbyResult extends RPCCommandMessage<RPCCommands.ConnectToLobby> {
+	data: RPCConnectToLobbyResultData;
+}
+
+export interface RPCConnectToLobbyVoiceResult extends RPCCommandMessage<RPCCommands.ConnectToLobbyVoice> {
+	data: RPCConnectToLobbyVoiceResultData;
+}
+
+export interface RPCConnectionsCallbackResult extends RPCCommandMessage<RPCCommands.ConnectionsCallback> {
+	data: RPCConnectionsCallbackResultData;
+}
+
+export interface RPCCreateChannelInviteResult extends RPCCommandMessage<RPCCommands.CreateChannelInvite> {
+	data: RPCCreateChannelInviteResultData;
+}
+
+export interface RPCCreateLobbyResult extends RPCCommandMessage<RPCCommands.CreateLobby> {
+	data: RPCCreateLobbyResultData;
+}
+
+export interface RPCDeepLinkResult extends RPCCommandMessage<RPCCommands.DeepLink> {
+	data: RPCDeepLinkResultData;
+}
+
+export interface RPCDeleteLobbyResult extends RPCCommandMessage<RPCCommands.DeleteLobby> {
+	data: RPCDeleteLobbyResultData;
+}
+
+export interface RPCDisconnectFromLobbyResult extends RPCCommandMessage<RPCCommands.DisconnectFromLobby> {
+	data: RPCDisconnectFromLobbyResultData;
+}
+
+export interface RPCDisconnectFromLobbyVoiceResult extends RPCCommandMessage<RPCCommands.DisconnectFromLobbyVoice> {
+	data: RPCDisconnectFromLobbyVoiceResultData;
+}
+
+export interface RPCGetApplicationTicketResult extends RPCCommandMessage<RPCCommands.GetApplicationTicket> {
+	data: RPCGetApplicationTicketResultData;
+}
+
+export interface RPCGetEntitlementTicketResult extends RPCCommandMessage<RPCCommands.GetEntitlementTicket> {
+	data: RPCGetEntitlementTicketResultData;
+}
+
+export interface RPCGetEntitlementsResult extends RPCCommandMessage<RPCCommands.GetEntitlements> {
+	data: RPCGetEntitlementsResultData;
+}
+
+export interface RPCGetImageResult extends RPCCommandMessage<RPCCommands.GetImage> {
+	data: RPCGetImageResultData;
+}
+
+export interface RPCGetNetworkingConfigResult extends RPCCommandMessage<RPCCommands.GetNetworkingConfig> {
+	data: RPCGetNetworkingConfigResultData;
+}
+
+export interface RPCGetRelationshipsResult extends RPCCommandMessage<RPCCommands.GetRelationships> {
+	data: RPCGetRelationshipsResultData;
+}
+
+export interface RPCGetSelectedVoiceChannelResult extends RPCCommandMessage<RPCCommands.GetSelectedVoiceChannel> {
+	data: RPCGetSelectedVoiceChannelResultData;
+}
+
+export interface RPCGetSkusResult extends RPCCommandMessage<RPCCommands.GetSkus> {
+	data: RPCGetSkusResultData;
+}
+
+export interface RPCGetUserAchievementsResult extends RPCCommandMessage<RPCCommands.GetUserAchievements> {
+	data: RPCGetUserAchievementsResultData;
+}
+
+export interface RPCGiftCodeBrowserResult extends RPCCommandMessage<RPCCommands.GiftCodeBrowser> {
+	data: RPCGiftCodeBrowserResultData;
+}
+
+export interface RPCGuildTemplateBrowserResult extends RPCCommandMessage<RPCCommands.GuildTemplateBrowser> {
+	data: RPCGuildTemplateBrowserResultData;
+}
+
+export interface RPCInviteBrowserResult extends RPCCommandMessage<RPCCommands.InviteBrowser> {
+	data: RPCInviteBrowserResultData;
+}
+
+export interface RPCNetworkingCreateTokenResult extends RPCCommandMessage<RPCCommands.NetworkingCreateToken> {
+	data: RPCNetworkingCreateTokenResultData;
+}
+
+export interface RPCNetworkingPeerMetricsResult extends RPCCommandMessage<RPCCommands.NetworkingPeerMetrics> {
+	data: RPCNetworkingPeerMetricsResultData;
+}
+
+export interface RPCNetworkingSystemMetricsResult extends RPCCommandMessage<RPCCommands.NetworkingSystemMetrics> {
+	data: RPCNetworkingSystemMetricsResultData;
+}
+
+export interface RPCOpenOverlayActivityInviteResult extends RPCCommandMessage<RPCCommands.OpenOverlayActivityInvite> {
+	data: RPCOpenOverlayActivityInviteResultData;
+}
+
+export interface RPCOpenOverlayGuildInviteResult extends RPCCommandMessage<RPCCommands.OpenOverlayGuildInvite> {
+	data: RPCOpenOverlayGuildInviteResultData;
+}
+
+export interface RPCOpenOverlayVoiceSettingsResult extends RPCCommandMessage<RPCCommands.OpenOverlayVoiceSettings> {
+	data: RPCOpenOverlayVoiceSettingsResultData;
+}
+
+export interface RPCOverlayResult extends RPCCommandMessage<RPCCommands.Overlay> {
+	data: RPCOverlayResultData;
+}
+
+export interface RPCSearchLobbiesResult extends RPCCommandMessage<RPCCommands.SearchLobbies> {
+	data: RPCSearchLobbiesResultData;
+}
+
+export interface RPCSendActivityJoinInviteResult extends RPCCommandMessage<RPCCommands.SendActivityJoinInvite> {
+	data: RPCSendActivityJoinInviteResultData;
+}
+
+export interface RPCSendToLobbyResult extends RPCCommandMessage<RPCCommands.SendToLobby> {
+	data: RPCSendToLobbyResultData;
+}
+
+export interface RPCSetCertifiedDevicesResult extends RPCCommandMessage<RPCCommands.SetCertifiedDevices> {
+	data: RPCSetCertifiedDevicesResultData;
+}
+
+export interface RPCSetOverlayLockedResult extends RPCCommandMessage<RPCCommands.SetOverlayLocked> {
+	data: RPCSetOverlayLockedResultData;
+}
+
+export interface RPCSetUserAchievementResult extends RPCCommandMessage<RPCCommands.SetUserAchievement> {
+	data: RPCSetUserAchievementResultData;
+}
+
+export interface RPCSetUserVoiceSettingsResult extends RPCCommandMessage<RPCCommands.SetUserVoiceSettings> {
+	data: RPCSetUserVoiceSettingsResultData;
+}
+
+export interface RPCSetUserVoiceSettings2Result extends RPCCommandMessage<RPCCommands.SetUserVoiceSettings2> {
+	data: RPCSetUserVoiceSettings2ResultData;
+}
+
+export interface RPCSetVoiceSettings2Result extends RPCCommandMessage<RPCCommands.SetVoiceSettings2> {
+	data: RPCSetVoiceSettings2ResultData;
+}
+
+export interface RPCStartPurchaseResult extends RPCCommandMessage<RPCCommands.StartPurchase> {
+	data: RPCStartPurchaseResultData;
+}
+
+export interface RPCUpdateLobbyResult extends RPCCommandMessage<RPCCommands.UpdateLobby> {
+	data: RPCUpdateLobbyResultData;
+}
+
+export interface RPCUpdateLobbyMemberResult extends RPCCommandMessage<RPCCommands.UpdateLobbyMember> {
+	data: RPCUpdateLobbyMemberResultData;
+}
+
+export interface RPCValidateApplicationResult extends RPCCommandMessage<RPCCommands.ValidateApplication> {
+	data: RPCValidateApplicationResultData;
+}
+
+export type RPCCommandsResult =
+	| RPCAcceptActivityInviteResult
+	| RPCActivityInviteUserResult
+	| RPCAuthenticateResult
+	| RPCAuthorizeResult
+	| RPCBraintreePopupBridgeCallbackResult
+	| RPCBrowserResult
+	| RPCCaptureShortcutResult
+	| RPCCloseActivityRequestResult
+	| RPCConnectionsCallbackResult
+	| RPCConnectToLobbyResult
+	| RPCConnectToLobbyVoiceResult
+	| RPCCreateChannelInviteResult
+	| RPCCreateLobbyResult
+	| RPCDeepLinkResult
+	| RPCDeleteLobbyResult
+	| RPCDisconnectFromLobbyResult
+	| RPCDisconnectFromLobbyVoiceResult
+	| RPCGetApplicationTicketResult
+	| RPCGetChannelResult
+	| RPCGetChannelsResult
+	| RPCGetEntitlementsResult
+	| RPCGetEntitlementTicketResult
+	| RPCGetGuildResult
+	| RPCGetGuildsResult
+	| RPCGetImageResult
+	| RPCGetNetworkingConfigResult
+	| RPCGetRelationshipsResult
+	| RPCGetSelectedVoiceChannelResult
+	| RPCGetSkusResult
+	| RPCGetUserAchievementsResult
+	| RPCGetUserResult
+	| RPCGetVoiceSettingsResult
+	| RPCGiftCodeBrowserResult
+	| RPCGuildTemplateBrowserResult
+	| RPCInviteBrowserResult
+	| RPCNetworkingCreateTokenResult
+	| RPCNetworkingPeerMetricsResult
+	| RPCNetworkingSystemMetricsResult
+	| RPCOpenOverlayActivityInviteResult
+	| RPCOpenOverlayGuildInviteResult
+	| RPCOpenOverlayVoiceSettingsResult
+	| RPCOverlayResult
+	| RPCSearchLobbiesResult
+	| RPCSelectTextChannelResult
+	| RPCSelectVoiceChannelResult
+	| RPCSendActivityJoinInviteResult
+	| RPCSendToLobbyResult
+	| RPCSetActivityResult
+	| RPCSetCertifiedDevicesResult
+	| RPCSetOverlayLockedResult
+	| RPCSetUserAchievementResult
+	| RPCSetUserVoiceSettings2Result
+	| RPCSetUserVoiceSettingsResult
+	| RPCSetVoiceSettings2Result
+	| RPCSetVoiceSettingsResult
+	| RPCStartPurchaseResult
+	| RPCSubscribeResult
+	| RPCUnsubscribeResult
+	| RPCUpdateLobbyMemberResult
+	| RPCUpdateLobbyResult
+	| RPCValidateApplicationResult;
+
+export interface RPCActivityInviteDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCActivityInviteDispatchData;
+	evt: RPCEvents.ActivityInvite;
+}
+
+export interface RPCActivityJoinDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCActivityJoinDispatchData;
+	evt: RPCEvents.ActivityJoin;
+}
+
+export interface RPCActivityJoinRequestDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCActivityJoinRequestDispatchData;
+	evt: RPCEvents.ActivityJoinRequest;
+}
+
+export interface RPCActivitySpectateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCActivitySpectateDispatchData;
+	evt: RPCEvents.ActivitySpectate;
+}
+
+export interface RPCCaptureShortcutChangeDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCCaptureShortcutChangeDispatchData;
+	evt: RPCEvents.CaptureShortcutChange;
+}
+
+export interface RPCChannelCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCChannelCreateDispatchData;
+	evt: RPCEvents.ChannelCreate;
+}
+
+export interface RPCCurrentUserUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCCurrentUserUpdateDispatchData;
+	evt: RPCEvents.CurrentUserUpdate;
+}
+
+export interface RPCEntitlementCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCEntitlementCreateDispatchData;
+	evt: RPCEvents.EntitlementCreate;
+}
+
+export interface RPCEntitlementDeleteDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCEntitlementDeleteDispatchData;
+	evt: RPCEvents.EntitlementDelete;
+}
+
+export interface RPCErrorDispatch<
+	Cmd extends Exclude<RPCCommands, RPCCommands.Dispatch> = Exclude<RPCCommands, RPCCommands.Dispatch>,
+> extends RPCCommandMessage<Cmd> {
+	data: RPCErrorDispatchData;
+	evt: RPCEvents.Error;
+}
+
+export interface RPCGameJoinDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCGameJoinDispatchData;
+	evt: RPCEvents.GameJoin;
+}
+
+export interface RPCGameSpectateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCGameSpectateDispatchData;
+	evt: RPCEvents.GameSpectate;
+}
+
+export interface RPCGuildCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCGuildCreateDispatchData;
+	evt: RPCEvents.GuildCreate;
+}
+
+export interface RPCGuildStatusDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCGuildStatusDispatchData;
+	evt: RPCEvents.GuildStatus;
+}
+
+export interface RPCLobbyDeleteDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCLobbyDeleteDispatchData;
+	evt: RPCEvents.LobbyDelete;
+}
+
+export interface RPCLobbyMemberConnectDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCLobbyMemberConnectDispatchData;
+	evt: RPCEvents.LobbyMemberConnect;
+}
+
+export interface RPCLobbyMemberDisconnectDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCLobbyMemberDisconnectDispatchData;
+	evt: RPCEvents.LobbyMemberDisconnect;
+}
+
+export interface RPCLobbyMemberUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCLobbyMemberUpdateDispatchData;
+	evt: RPCEvents.LobbyMemberUpdate;
+}
+
+export interface RPCLobbyMessageDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCLobbyMessageDispatchData;
+	evt: RPCEvents.LobbyMessage;
+}
+
+export interface RPCLobbyUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCLobbyUpdateDispatchData;
+	evt: RPCEvents.LobbyUpdate;
+}
+
+export interface RPCMessageCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCMessageCreateDispatchData;
+	evt: RPCEvents.MessageCreate;
+}
+
+export interface RPCMessageDeleteDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCMessageDeleteDispatchData;
+	evt: RPCEvents.MessageDelete;
+}
+
+export interface RPCMessageUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCMessageUpdateDispatchData;
+	evt: RPCEvents.MessageUpdate;
+}
+
+export interface RPCNotificationCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCNotificationCreateDispatchData;
+	evt: RPCEvents.NotificationCreate;
+}
+
+export interface RPCOverlayDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCOverlayDispatchData;
+	evt: RPCEvents.Overlay;
+}
+
+export interface RPCOverlayUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCOverlayUpdateDispatchData;
+	evt: RPCEvents.OverlayUpdate;
+}
+
+export interface RPCReadyDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCReadyDispatchData;
+	evt: RPCEvents.Ready;
+}
+
+export interface RPCRelationshipUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCRelationshipUpdateDispatchData;
+	evt: RPCEvents.RelationshipUpdate;
+}
+
+export interface RPCSpeakingStartDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCSpeakingStartDispatchData;
+	evt: RPCEvents.SpeakingStart;
+}
+
+export interface RPCSpeakingStopDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCSpeakingStopDispatchData;
+	evt: RPCEvents.SpeakingStop;
+}
+
+export interface RPCUserAchievementUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCUserAchievementUpdateDispatchData;
+	evt: RPCEvents.UserAchievementUpdate;
+}
+
+export interface RPCVoiceChannelSelectDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCVoiceChannelSelectDispatchData;
+	evt: RPCEvents.VoiceChannelSelect;
+}
+
+export interface RPCVoiceConnectionStatusDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCVoiceConnectionStatusDispatchData;
+	evt: RPCEvents.VoiceConnectionStatus;
+}
+
+export interface RPCVoiceSettingsUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCVoiceSettingsUpdateDispatchData;
+	evt: RPCEvents.VoiceSettingsUpdate;
+}
+
+export interface RPCVoiceSettingsUpdate2Dispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCVoiceSettingsUpdate2DispatchData;
+	evt: RPCEvents.VoiceSettingsUpdate2;
+}
+
+export interface RPCVoiceStateCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCVoiceStateCreateDispatchData;
+	evt: RPCEvents.VoiceStateCreate;
+}
+
+export interface RPCVoiceStateDeleteDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCVoiceStateDeleteDispatchData;
+	evt: RPCEvents.VoiceStateDelete;
+}
+
+export interface RPCVoiceStateUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
+	data: RPCVoiceStateUpdateDispatchData;
+	evt: RPCEvents.VoiceStateUpdate;
+}
+
+export type RPCEventsDispatch =
+	| RPCActivityInviteDispatch
+	| RPCActivityJoinDispatch
+	| RPCActivityJoinRequestDispatch
+	| RPCActivitySpectateDispatch
+	| RPCCaptureShortcutChangeDispatch
+	| RPCChannelCreateDispatch
+	| RPCCurrentUserUpdateDispatch
+	| RPCEntitlementCreateDispatch
+	| RPCEntitlementDeleteDispatch
+	| RPCErrorDispatch
+	| RPCGameJoinDispatch
+	| RPCGameSpectateDispatch
+	| RPCGuildCreateDispatch
+	| RPCGuildStatusDispatch
+	| RPCLobbyDeleteDispatch
+	| RPCLobbyMemberConnectDispatch
+	| RPCLobbyMemberDisconnectDispatch
+	| RPCLobbyMemberUpdateDispatch
+	| RPCLobbyMessageDispatch
+	| RPCLobbyUpdateDispatch
+	| RPCMessageCreateDispatch
+	| RPCMessageDeleteDispatch
+	| RPCMessageUpdateDispatch
+	| RPCNotificationCreateDispatch
+	| RPCOverlayDispatch
+	| RPCOverlayUpdateDispatch
+	| RPCReadyDispatch
+	| RPCRelationshipUpdateDispatch
+	| RPCSpeakingStartDispatch
+	| RPCSpeakingStopDispatch
+	| RPCUserAchievementUpdateDispatch
+	| RPCVoiceChannelSelectDispatch
+	| RPCVoiceConnectionStatusDispatch
+	| RPCVoiceSettingsUpdate2Dispatch
+	| RPCVoiceSettingsUpdateDispatch
+	| RPCVoiceStateCreateDispatch
+	| RPCVoiceStateDeleteDispatch
+	| RPCVoiceStateUpdateDispatch;
+
+export type RPCMessage = RPCCommandsResult | RPCEventsDispatch;
+
+export type RPCMessagePayload =
+	| RPCCommandAcceptActivityInvitePayload
+	| RPCCommandActivityInviteUserPayload
+	| RPCCommandAuthenticatePayload
+	| RPCCommandAuthorizePayload
+	| RPCCommandBraintreePopupBridgeCallbackPayload
+	| RPCCommandBrowserPayload
+	| RPCCommandCaptureShortcutPayload
+	| RPCCommandCloseActivityJoinRequestPayload
+	| RPCCommandConnectionsCallbackPayload
+	| RPCCommandConnectToLobbyPayload
+	| RPCCommandConnectToLobbyVoicePayload
+	| RPCCommandCreateChannelInvitePayload
+	| RPCCommandCreateLobbyPayload
+	| RPCCommandDeepLinkPayload
+	| RPCCommandDeleteLobbyPayload
+	| RPCCommandDisconnectFromLobbyPayload
+	| RPCCommandDisconnectFromLobbyVoicePayload
+	| RPCCommandGetApplicationTicketPayload
+	| RPCCommandGetChannelPayload
+	| RPCCommandGetChannelsPayload
+	| RPCCommandGetEntitlementsPayload
+	| RPCCommandGetEntitlementTicketPayload
+	| RPCCommandGetGuildPayload
+	| RPCCommandGetGuildsPayload
+	| RPCCommandGetImagePayload
+	| RPCCommandGetNetworkingConfigPayload
+	| RPCCommandGetRelationshipsPayload
+	| RPCCommandGetSelectedVoiceChannelPayload
+	| RPCCommandGetSkusPayload
+	| RPCCommandGetUserAchievementsPayload
+	| RPCCommandGetUserPayload
+	| RPCCommandGetVoiceSettingsPayload
+	| RPCCommandGiftCodeBrowserPayload
+	| RPCCommandGuildTemplateBrowserPayload
+	| RPCCommandInviteBrowserPayload
+	| RPCCommandNetworkingCreateTokenPayload
+	| RPCCommandNetworkingPeerMetricsPayload
+	| RPCCommandNetworkingSystemMetricsPayload
+	| RPCCommandOpenOverlayActivityInvitePayload
+	| RPCCommandOpenOverlayGuildInvitePayload
+	| RPCCommandOpenOverlayVoiceSettingsPayload
+	| RPCCommandOverlayPayload
+	| RPCCommandSearchLobbiesPayload
+	| RPCCommandSelectTextChannelPayload
+	| RPCCommandSelectVoiceChannelPayload
+	| RPCCommandSendActivityJoinInvitePayload
+	| RPCCommandSendToLobbyPayload
+	| RPCCommandSetActivityPayload
+	| RPCCommandSetCertifiedDevicesPayload
+	| RPCCommandSetOverlayLockedPayload
+	| RPCCommandSetUserAchievementPayload
+	| RPCCommandSetUserVoiceSettings2Payload
+	| RPCCommandSetUserVoiceSettingsPayload
+	| RPCCommandSetVoiceSettings2Payload
+	| RPCCommandSetVoiceSettingsPayload
+	| RPCCommandStartPurchasePayload
+	| RPCCommandSubscribePayload
+	| RPCCommandUnsubscribePayload
+	| RPCCommandUpdateLobbyMemberPayload
+	| RPCCommandUpdateLobbyPayload
+	| RPCCommandValidateApplicationPayload;
