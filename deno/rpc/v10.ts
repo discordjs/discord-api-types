@@ -624,7 +624,7 @@ export interface RPCSetActivityArgs {
 	/**
 	 * the rich presence to assign to the user
 	 */
-	activity: Omit<GatewayActivity, 'name' | 'state' | 'type' | 'url'>;
+	activity?: Omit<GatewayActivity, 'name' | 'type' | 'url'>;
 }
 
 /**
@@ -1017,6 +1017,21 @@ export interface RPCSendActivityJoinInviteResultData {}
 export interface RPCSendActivityJoinInviteArgs {
 	/**
 	 * the id of the requesting user
+	 */
+	user_id: Snowflake;
+}
+
+/**
+ * @unstable
+ */
+export interface RPCSendActivityJoinRequestResultData {}
+
+/**
+ * @unstable
+ */
+export interface RPCSendActivityJoinRequestArgs {
+	/**
+	 * the id of the user to request to join
 	 */
 	user_id: Snowflake;
 }
