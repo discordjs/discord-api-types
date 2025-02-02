@@ -40,7 +40,8 @@ export type DistributiveOmit<T, K extends DistributiveKeys<T>> =
 
 type Omit_<T, K> = Omit<T, Extract<keyof T, K>>;
 
-const pattern = /^[\d%A-Za-z-]+$/g;
+// eslint-disable-next-line unicorn/better-regex
+const pattern = /^[\d%A-Za-z-_]+$/g;
 
 export const urlSafeCharacters = {
 	test(input: string) {
