@@ -1925,11 +1925,26 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	required?: boolean;
 }
 
+export enum UnfurledMediaItemLoadingState {
+	Unknown,
+	Loading,
+	LoadedSuccess,
+	LoadedNotFound,
+}
+
 export interface APIUnfurledMediaItem {
 	/**
 	 * Supports arbitrary urls _and_ attachment://<filename> references
 	 */
 	url: string;
+	proxy_url?: string;
+	width?: number | null;
+	height?: number | null;
+	placeholder?: string | null;
+	placeholder_version?: number | null;
+	content_type?: string | null;
+	loading_state?: UnfurledMediaItemLoadingState;
+	flags?: number;
 }
 
 export interface APISectionComponent extends APIBaseComponent<ComponentType.Section> {
