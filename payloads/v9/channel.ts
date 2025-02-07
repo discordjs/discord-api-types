@@ -1619,7 +1619,8 @@ export enum ComponentType {
 	MediaGallery,
 	File,
 	Separator,
-	Container = 17,
+	ContentInventoryEntry = 16,
+	Container,
 
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
