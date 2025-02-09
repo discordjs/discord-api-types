@@ -54,7 +54,7 @@ export enum RPCDeviceType {
 	VideoInput = 'videoinput',
 }
 
-export interface BaseRPCDevice<Type extends RPCDeviceType> {
+export interface BaseRPCCertifiedDevice<Type extends RPCDeviceType> {
 	/**
 	 * the type of device
 	 */
@@ -80,9 +80,9 @@ export interface BaseRPCDevice<Type extends RPCDeviceType> {
 /**
  * https://discord.com/developers/docs/topics/rpc#setcertifieddevices-device-object
  */
-export type RPCDevice<Type extends RPCDeviceType = RPCDeviceType> =
+export type RPCCertifiedDevice<Type extends RPCDeviceType = RPCDeviceType> =
 	Type extends RPCDeviceType.AudioInput ?
-		BaseRPCDevice<Type> & {
+		BaseRPCCertifiedDevice<Type> & {
 			/**
 			 * if the device's native echo cancellation is enabled
 			 */
@@ -100,7 +100,7 @@ export type RPCDevice<Type extends RPCDeviceType = RPCDeviceType> =
 			 */
 			hardware_mute: boolean;
 		}
-	:	BaseRPCDevice<Type>;
+	:	BaseRPCCertifiedDevice<Type>;
 
 export interface RPCVoiceAvailableDevice {
 	/**
@@ -250,6 +250,11 @@ export enum LobbyType {
 	Private = 1,
 	Public,
 }
+
+/**
+ * @unstable
+ */
+export type RPCLobbyMetadata = unknown;
 
 /**
  * @unstable

@@ -7,9 +7,11 @@ import type {
 	APIVoiceState,
 	ChannelType,
 	GatewayActivity,
+	LobbyType,
 	OAuth2Scopes,
-	RPCDevice,
+	RPCCertifiedDevice,
 	RPCErrorCodes,
+	RPCLobbyMetadata,
 	RPCOAuth2Application,
 	RPCVoiceSettingsInput,
 	RPCVoiceSettingsMode,
@@ -624,7 +626,10 @@ export interface RPCSetActivityArgs {
 	/**
 	 * the rich presence to assign to the user
 	 */
-	activity?: Omit<GatewayActivity, 'name' | 'type' | 'url'>;
+	activity?: Partial<
+		Omit<GatewayActivity, 'created_at' | 'id' | 'name' | 'timestamps' | 'type' | 'url'> &
+			Partial<Pick<GatewayActivity, 'timestamps'>>
+	>;
 }
 
 /**
@@ -1053,7 +1058,7 @@ export interface RPCSetCertifiedDevicesArgs {
 	/**
 	 * a list of devices for your manufacturer, in order of priority
 	 */
-	devices: RPCDevice[];
+	devices: RPCCertifiedDevice[];
 }
 
 /**
@@ -1108,7 +1113,28 @@ export interface RPCUpdateLobbyResultData {}
 /**
  * @unstable
  */
-export interface RPCUpdateLobbyArgs {}
+export interface RPCUpdateLobbyArgs {
+	/**
+	 * id of the lobby to update
+	 */
+	id: Snowflake;
+	/**
+	 * lobby type
+	 */
+	type: LobbyType;
+	/**
+	 * id of the owner of the lobby
+	 */
+	owner_id: Snowflake;
+	/**
+	 * capacity of the lobby
+	 */
+	capacity: number;
+	/**
+	 * metadata for the lobby
+	 */
+	metadata: RPCLobbyMetadata;
+}
 
 /**
  * @unstable
