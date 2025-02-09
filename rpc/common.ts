@@ -1,4 +1,13 @@
 import type { Snowflake } from '../globals';
+import type { APIUser } from '../v10';
+
+/**
+ * @unstable
+ */
+export enum RPCCaptureShortcutAction {
+	Start = 'START',
+	Stop = 'STOP',
+}
 
 /**
  * https://discord.com/developers/docs/topics/rpc#authenticate-oauth2-application-structure
@@ -266,6 +275,24 @@ export enum RelationshipType {
 	PendingIncoming,
 	PendingOutgoing,
 	Implicit,
+}
+
+/**
+ * @unstable
+ */
+export interface Relationship {
+	/**
+	 * the id of the user
+	 */
+	id: Snowflake;
+	/**
+	 * relationship type
+	 */
+	type: RelationshipType;
+	/**
+	 * user
+	 */
+	user: APIUser;
 }
 
 /**

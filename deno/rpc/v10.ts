@@ -9,6 +9,8 @@ import type {
 	GatewayActivity,
 	LobbyType,
 	OAuth2Scopes,
+	Relationship,
+	RPCCaptureShortcutAction,
 	RPCCertifiedDevice,
 	RPCErrorCodes,
 	RPCLobbyMetadata,
@@ -750,7 +752,9 @@ export interface RPCCaptureShortcutResultData {}
 /**
  * @unstable
  */
-export interface RPCCaptureShortcutArgs {}
+export interface RPCCaptureShortcutArgs {
+	action: RPCCaptureShortcutAction;
+}
 
 export interface RPCCloseActivityRequestResultData {}
 /**
@@ -892,7 +896,7 @@ export interface RPCGetNetworkingConfigArgs {}
 /**
  * @unstable
  */
-export interface RPCGetRelationshipsResultData {}
+export type RPCGetRelationshipsResultData = Relationship[];
 /**
  * @unstable
  */
@@ -1534,8 +1538,12 @@ export interface RPCActivitySpectateDispatchData {
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface RPCCaptureShortcutChangeDispatchData {}
+export interface RPCCaptureShortcutChangeDispatchData {
+	/**
+	 * the shortcut the user has pressed
+	 */
+	shortcut: string;
+}
 
 /**
  * https://discord.com/developers/docs/topics/rpc#channelcreate-channel-create-dispatch-data-structure
