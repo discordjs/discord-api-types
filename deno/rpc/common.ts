@@ -1,5 +1,55 @@
 import type { Snowflake } from '../globals.ts';
-import type { APIUser } from '../v10.ts';
+import type { APIMessage, APIUser } from '../v10.ts';
+
+/**
+ * @unstable
+ */
+export interface RPCAPIMessageParsedContentOriginalMatch {
+	0: string;
+	index: 0;
+}
+
+/**
+ * @unstable
+ */
+export interface RPCAPIMessageParsedContentText {
+	type: 'text';
+	originalMatch: RPCAPIMessageParsedContentOriginalMatch;
+	content: string;
+}
+
+/**
+ * @unstable
+ */
+export interface RPCAPIMessageParsedContentMention {
+	type: 'mention';
+	userId: Snowflake;
+	channelId: Snowflake;
+	guildId: Snowflake;
+	/**
+	 * same as `userId`
+	 */
+	parsedUserId: Snowflake;
+	content: Omit<RPCAPIMessageParsedContentText, 'originalMatch'>;
+}
+
+/**
+ * @unstable
+ */
+export interface RPCAPIMessage extends Omit<APIMessage, 'channel_id'> {
+	/**
+	 * the nickname of the user who sent the message
+	 */
+	nick?: string;
+	/**
+	 * the color of the author's name
+	 */
+	author_color?: number;
+	/**
+	 * the content of the message parsed into an array
+	 */
+	content_parsed: (RPCAPIMessageParsedContentMention | RPCAPIMessageParsedContentText)[];
+}
 
 /**
  * @unstable

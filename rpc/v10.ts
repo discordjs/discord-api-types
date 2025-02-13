@@ -287,10 +287,6 @@ export interface RPCAuthorizeArgs {
 	 */
 	client_id: string;
 	/**
-	 * one-time use RPC token
-	 */
-	rpc_token: string;
-	/**
 	 * scopes to authorize
 	 */
 	scopes: OAuth2Scopes[];
@@ -629,8 +625,7 @@ export interface RPCSetActivityArgs {
 	 * the rich presence to assign to the user
 	 */
 	activity?: Partial<
-		Omit<GatewayActivity, 'created_at' | 'id' | 'name' | 'timestamps' | 'type' | 'url'> &
-			Partial<Pick<GatewayActivity, 'timestamps'>>
+		Omit<GatewayActivity, 'created_at' | 'id' | 'timestamps'> & Partial<Pick<GatewayActivity, 'timestamps'>>
 	>;
 }
 
