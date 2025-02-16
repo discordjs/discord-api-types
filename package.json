@@ -139,7 +139,7 @@
 		"conventional-changelog-cli": "^4.1.0",
 		"conventional-recommended-bump": "^9.0.0",
 		"eslint": "^8.57.0",
-		"eslint-config-neon": "^0.1.59",
+		"eslint-config-neon": "^0.2.0",
 		"eslint-import-resolver-typescript": "^3.6.1",
 		"eslint-plugin-local": "^6.0.0",
 		"gen-esm-wrapper": "^1.1.3",
