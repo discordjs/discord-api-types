@@ -13,7 +13,7 @@ import type {
 	APIModalSubmission,
 	APIUser,
 } from '../../v10';
-import { ComponentType, InteractionType } from '../../v10';
+import { ApplicationCommandOptionType, ApplicationCommandType, ComponentType, InteractionType } from '../../v10';
 import { expectAssignable } from '../__utils__/type-assertions';
 
 declare const interaction: APIInteraction;
@@ -24,6 +24,20 @@ if (interaction.type === InteractionType.ApplicationCommand) {
 	const { data } = interaction;
 	expectAssignable<APIApplicationCommandInteractionData>(data);
 	expectAssignable<Snowflake | undefined>(data.guild_id);
+
+	if (data.type === ApplicationCommandType.ChatInput) {
+		if (data.options?.[0]?.type === ApplicationCommandOptionType.String) {
+			expectAssignable<string>(data.options[0].value);
+		}
+
+		if (data.options?.[0]?.type === ApplicationCommandOptionType.Integer) {
+			expectAssignable<number>(data.options[0].value);
+		}
+
+		if (data.options?.[0]?.type === ApplicationCommandOptionType.Number) {
+			expectAssignable<number>(data.options[0].value);
+		}
+	}
 }
 
 if (interaction.type === InteractionType.MessageComponent) {
@@ -42,6 +56,18 @@ if (interaction.type === InteractionType.MessageComponent) {
 
 if (interaction.type === InteractionType.ApplicationCommandAutocomplete) {
 	expectAssignable<APIApplicationCommandAutocompleteInteraction['data']>(interaction.data);
+
+	if (interaction.data.options[0]?.type === ApplicationCommandOptionType.String) {
+		expectAssignable<string>(interaction.data.options[0].value);
+	}
+
+	if (interaction.data.options[0]?.type === ApplicationCommandOptionType.Integer) {
+		expectAssignable<string>(interaction.data.options[0].value);
+	}
+
+	if (interaction.data.options[0]?.type === ApplicationCommandOptionType.Number) {
+		expectAssignable<string>(interaction.data.options[0].value);
+	}
 }
 
 if (interaction.type === InteractionType.ModalSubmit) {
