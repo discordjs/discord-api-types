@@ -9,6 +9,7 @@ import type { APIGuildMember } from './guild.ts';
 import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
 import type { APIPoll } from './poll.ts';
+import type { APISoundboardSound } from './soundboard.ts';
 import type { APISticker, APIStickerItem } from './sticker.ts';
 import type { APIUser } from './user.ts';
 
@@ -741,6 +742,10 @@ export interface APIMessage {
 	 * The call associated with the message
 	 */
 	call?: APIMessageCall;
+	/**
+	 * Sent if the message contains soundmojis
+	 */
+	soundboard_sounds?: APISoundboardSound[];
 }
 
 /**
