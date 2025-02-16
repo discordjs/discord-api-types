@@ -6,7 +6,8 @@
 }
 
 .lightLoadingSkeleton {
-	background: linear-gradient(0.25turn, transparent, #fff, transparent), linear-gradient(#eee, #eee), linear-gradient(#eee, #eee),
+	background:
+		linear-gradient(0.25turn, transparent, #fff, transparent), linear-gradient(#eee, #eee), linear-gradient(#eee, #eee),
 		linear-gradient(#eee, #eee), linear-gradient(#eee, #eee), linear-gradient(#eee, #eee);
 	background-repeat: no-repeat;
 	background-size:
@@ -26,7 +27,8 @@
 }
 
 .darkLoadingSkeleton {
-	background: linear-gradient(0.25turn, transparent, #444, transparent), linear-gradient(#333, #333), linear-gradient(#333, #333),
+	background:
+		linear-gradient(0.25turn, transparent, #444, transparent), linear-gradient(#333, #333), linear-gradient(#333, #333),
 		linear-gradient(#333, #333), linear-gradient(#333, #333), linear-gradient(#333, #333);
 	background-repeat: no-repeat;
 	background-size:
