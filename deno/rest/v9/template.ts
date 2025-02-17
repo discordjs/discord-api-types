@@ -1,5 +1,5 @@
 import type { APIGuild, APITemplate } from '../../payloads/v9/mod.ts';
-import type { StrictPartial } from '../../utils/internals.ts';
+import type { _StrictPartial } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/guild-template#get-guild-template
@@ -17,7 +17,7 @@ export interface RESTPostAPITemplateCreateGuildJSONBody {
 	/**
 	 * base64 1024x1024 png/jpeg image for the guild icon
 	 *
-	 * See https://discord.com/developers/docs/reference#image-data
+	 * @see {@link https://discord.com/developers/docs/reference#image-data}
 	 */
 	icon?: string | undefined;
 }
@@ -59,7 +59,7 @@ export type RESTPutAPIGuildTemplateSyncResult = APITemplate;
 /**
  * https://discord.com/developers/docs/resources/guild-template#modify-guild-template
  */
-export type RESTPatchAPIGuildTemplateJSONBody = StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
+export type RESTPatchAPIGuildTemplateJSONBody = _StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
 
 /**
  * https://discord.com/developers/docs/resources/guild-template#modify-guild-template

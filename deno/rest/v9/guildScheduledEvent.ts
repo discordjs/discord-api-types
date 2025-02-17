@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
-import type { Nullable, StrictPartial } from '../../utils/internals.ts';
+import type { _Nullable, _StrictPartial } from '../../utils/internals.ts';
 import type {
 	APIGuildScheduledEvent,
 	APIGuildScheduledEventEntityMetadata,
@@ -94,10 +94,10 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
  */
-export type RESTPatchAPIGuildScheduledEventJSONBody = Nullable<
+export type RESTPatchAPIGuildScheduledEventJSONBody = _Nullable<
 	Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
 > &
-	StrictPartial<
+	_StrictPartial<
 		Omit<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
 	> & {
 		/**
@@ -123,7 +123,7 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
 	/**
 	 * Number of users to receive from the event
 	 *
-	 * @default 100
+	 * @defaultValue `100`
 	 */
 	limit?: number;
 	/**

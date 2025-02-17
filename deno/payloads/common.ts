@@ -178,7 +178,7 @@ export const PermissionFlagsBits = {
 	/**
 	 * Allows management and editing of emojis, stickers, and soundboard sounds
 	 *
-	 * @deprecated This is the old name for {@apilink PermissionFlagsBits#ManageGuildExpressions}
+	 * @deprecated This is the old name for {@link PermissionFlagsBits.ManageGuildExpressions}
 	 */
 	ManageEmojisAndStickers: 1n << 30n,
 	/**
@@ -234,7 +234,7 @@ export const PermissionFlagsBits = {
 	 */
 	SendMessagesInThreads: 1n << 38n,
 	/**
-	 * Allows for using Activities (applications with the {@apilink ApplicationFlags.Embedded} flag) in a voice channel
+	 * Allows for using Activities (applications with the {@link ApplicationFlags.Embedded} flag) in a voice channel
 	 *
 	 * Applies to channel types: Voice
 	 */

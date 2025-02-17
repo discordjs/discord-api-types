@@ -23,13 +23,13 @@ export interface APIPoll {
 	/**
 	 * Whether a user can select multiple answers
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	allow_multiselect: boolean;
 	/**
 	 * The layout type of the poll
 	 *
-	 * @default PollLayoutType.Default
+	 * @defaultValue `PollLayoutType.Default`
 	 */
 	layout_type: PollLayoutType;
 	/**

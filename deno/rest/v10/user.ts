@@ -61,13 +61,13 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	/**
 	 * Max number of guilds to return (1-200)
 	 *
-	 * @default 200
+	 * @defaultValue `200`
 	 */
 	limit?: number;
 	/**
 	 * Include approximate member and presence counts in response
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	with_counts?: boolean;
 }

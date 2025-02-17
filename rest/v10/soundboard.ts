@@ -48,13 +48,13 @@ export interface RESTPostAPIGuildSoundboardSoundJSONBody {
 	/**
 	 * The data uri of the mp3 or ogg sound data, base64 encoded, similar to image data
 	 *
-	 * See https://discord.com/developers/docs/reference#image-data
+	 * @see {@link https://discord.com/developers/docs/reference#image-data}
 	 */
 	sound: string;
 	/**
 	 * The volume of the soundboard sound, from 0 to 1
 	 *
-	 * @default 1
+	 * @defaultValue `1`
 	 */
 	volume?: number | null | undefined;
 	/**
@@ -83,7 +83,7 @@ export interface RESTPatchAPIGuildSoundboardSoundJSONBody {
 	/**
 	 * The volume of the soundboard sound, from 0 to 1
 	 *
-	 * @default 1
+	 * @defaultValue `1`
 	 */
 	volume?: number | null | undefined;
 	/**

@@ -26,6 +26,7 @@ export * from './_applicationCommands/chatInput.ts';
 export * from './_applicationCommands/contextMenu.ts';
 export * from './_applicationCommands/permissions.ts';
 export * from './_applicationCommands/entryPoint.ts';
+export * from './_applicationCommands/internals.ts';
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#application-command-object

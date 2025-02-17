@@ -25,7 +25,7 @@ export type APIMessageInteractionMetadata =
 /**
  * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
  */
-interface APIBaseInteractionMetadata<Type extends InteractionType> {
+export interface APIBaseInteractionMetadata<Type extends InteractionType> {
 	/**
 	 * ID of the interaction
 	 */
@@ -169,7 +169,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * The id of the channel it was sent from
 	 *
-	 * @deprecated Use {@apilink APIBaseInteraction#channel} instead
+	 * @deprecated Use {@link APIBaseInteraction.channel} instead
 	 */
 	channel_id?: Snowflake;
 	/**

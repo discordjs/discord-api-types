@@ -1,5 +1,5 @@
 import type { APIApplication, APIApplicationRoleConnectionMetadata } from '../../payloads/v9/application.ts';
-import type { StrictPartial, Nullable } from '../../utils/internals.ts';
+import type { _StrictPartial, _Nullable } from '../../utils/internals.ts';
 
 /**
  * https://discord.com/developers/docs/resources/application-role-connection-metadata#get-application-role-connection-metadata-records
@@ -24,8 +24,8 @@ export type RESTGetCurrentApplicationResult = APIApplication;
 /**
  * https://discord.com/developers/docs/resources/application#edit-current-application
  */
-export type RESTPatchCurrentApplicationJSONBody = StrictPartial<
-	Nullable<Pick<APIApplication, 'cover_image' | 'icon'>> &
+export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
+	_Nullable<Pick<APIApplication, 'cover_image' | 'icon'>> &
 		Pick<
 			APIApplication,
 			| 'custom_install_url'

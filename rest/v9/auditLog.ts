@@ -24,7 +24,7 @@ export interface RESTGetAPIAuditLogQuery {
 	/**
 	 * How many entries are returned (default 50, minimum 1, maximum 100)
 	 *
-	 * @default 50
+	 * @defaultValue `50`
 	 */
 	limit?: number;
 }

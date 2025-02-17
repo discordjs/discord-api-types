@@ -25,7 +25,7 @@ export interface RESTGetAPIEntitlementsQuery {
 	/**
 	 * Number of entitlements to return (1-100)
 	 *
-	 * @default 100
+	 * @defaultValue `100`
 	 */
 	limit?: number | undefined;
 	/**
@@ -118,7 +118,7 @@ export interface RESTGetAPISKUSubscriptionsQuery {
 	/**
 	 * Number of subscriptions to return (1-100)
 	 *
-	 * @default 50
+	 * @defaultValue `50`
 	 */
 	limit?: number | undefined;
 	/**

@@ -24,7 +24,7 @@ export interface APIWebhook {
 	/**
 	 * The type of the webhook
 	 *
-	 * See https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types
+	 * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types}
 	 */
 	type: WebhookType;
 	/**
@@ -38,7 +38,7 @@ export interface APIWebhook {
 	/**
 	 * The user this webhook was created by (not returned when getting a webhook with its token)
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user?: APIUser;
 	/**
@@ -112,7 +112,7 @@ export type APIWebhookEventEntitlementCreateData = APIEntitlement;
 
 export type APIWebhookEventQuestUserEnrollmentData = never;
 
-interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
+export interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
 	/**
 	 * Version scheme for the webhook event. Currently always `1`
 	 */
@@ -145,7 +145,7 @@ export enum ApplicationWebhookType {
 	Event,
 }
 
-interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventType, Data> {
+export interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventType, Data> {
 	/**
 	 * Event type
 	 */

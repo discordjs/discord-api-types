@@ -26,13 +26,13 @@ export interface APIGatewayBotInfo extends APIGatewayInfo {
 	/**
 	 * The recommended number of shards to use when connecting
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#sharding
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#sharding}
 	 */
 	shards: number;
 	/**
 	 * Information on the current session start limit
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#session-start-limit-object
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#session-start-limit-object}
 	 */
 	session_start_limit: APIGatewaySessionStartLimit;
 }
@@ -69,7 +69,7 @@ export interface GatewayPresenceUpdate {
 	 * **The user object within this event can be partial, the only field which must be sent is the `id` field,
 	 * everything else is optional.**
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user: Partial<APIUser> & Pick<APIUser, 'id'>;
 	/**
@@ -83,13 +83,13 @@ export interface GatewayPresenceUpdate {
 	/**
 	 * User's current activities
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object}
 	 */
 	activities?: GatewayActivity[];
 	/**
 	 * User's platform-dependent status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#client-status-object
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#client-status-object}
 	 */
 	client_status?: GatewayPresenceClientStatus;
 }
@@ -143,7 +143,7 @@ export interface GatewayActivity {
 	/**
 	 * Activity type
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-types
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-types}
 	 */
 	type: ActivityType;
 	/**
@@ -178,26 +178,26 @@ export interface GatewayActivity {
 	/**
 	 * The emoji used for a custom status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji}
 	 */
 	emoji?: GatewayActivityEmoji;
 	session_id?: string;
 	/**
 	 * Information for the current party of the player
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party}
 	 */
 	party?: GatewayActivityParty;
 	/**
 	 * Images for the presence and their hover texts
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets}
 	 */
 	assets?: GatewayActivityAssets;
 	/**
 	 * Secrets for Rich Presence joining and spectating
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets}
 	 */
 	secrets?: GatewayActivitySecrets;
 	/**
@@ -207,9 +207,8 @@ export interface GatewayActivity {
 	/**
 	 * Activity flags `OR`d together, describes what the payload includes
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags
-	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	flags?: ActivityFlags;
 	/**
@@ -238,27 +237,27 @@ export enum ActivityPlatform {
  */
 export enum ActivityType {
 	/**
-	 * Playing {game}
+	 * Playing \{game\}
 	 */
 	Playing,
 	/**
-	 * Streaming {details}
+	 * Streaming \{details\}
 	 */
 	Streaming,
 	/**
-	 * Listening to {name}
+	 * Listening to \{name\}
 	 */
 	Listening,
 	/**
-	 * Watching {details}
+	 * Watching \{details\}
 	 */
 	Watching,
 	/**
-	 * {emoji} {state}
+	 * \{emoji\} \{state\}
 	 */
 	Custom,
 	/**
-	 * Competing in {name}
+	 * Competing in \{name\}
 	 */
 	Competing,
 }

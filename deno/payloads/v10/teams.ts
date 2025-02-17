@@ -38,7 +38,7 @@ export interface APITeamMember {
 	/**
 	 * The user's membership state on the team
 	 *
-	 * See https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
+	 * @see {@link https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum}
 	 */
 	membership_state: TeamMemberMembershipState;
 	/**
@@ -54,13 +54,13 @@ export interface APITeamMember {
 	/**
 	 * The avatar, discriminator, id, and username of the user
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user: APIUser;
 	/**
 	 * The user's role in the team.
 	 *
-	 * See https://discord.com/developers/docs/topics/teams#team-member-roles
+	 * @see {@link https://discord.com/developers/docs/topics/teams#team-member-roles}
 	 */
 	role: TeamMemberRole;
 }

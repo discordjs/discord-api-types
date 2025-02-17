@@ -103,7 +103,8 @@ export enum InteractionResponseType {
 	/**
 	 * Respond to an interaction with an upgrade button, only available for apps with monetization enabled
 	 *
-	 * @deprecated See https://discord.com/developers/docs/change-log#premium-apps-new-premium-button-style-deep-linking-url-schemes
+	 * @deprecated Send a button with Premium type instead.
+	 * {@link https://discord.com/developers/docs/change-log#premium-apps-new-premium-button-style-deep-linking-url-schemes | Learn more here}
 	 */
 	PremiumRequired,
 

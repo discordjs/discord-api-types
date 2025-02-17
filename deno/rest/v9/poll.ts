@@ -12,7 +12,7 @@ export interface RESTGetAPIPollAnswerVotersQuery {
 	/**
 	 * Max number of users to return (1-100)
 	 *
-	 * @default 25
+	 * @defaultValue `25`
 	 */
 	limit?: number;
 }
@@ -30,7 +30,7 @@ export interface RESTAPIPoll
 	/**
 	 * Number of hours the poll should be open for, up to 32 days
 	 *
-	 * @default 24
+	 * @defaultValue `24`
 	 */
 	duration?: number;
 }

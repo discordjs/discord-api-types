@@ -363,6 +363,6 @@ export enum Locale {
 }
 
 /**
- * @deprecated Use {@apilink Locale} instead.
+ * @deprecated Use {@link Locale} instead.
  */
 export type LocaleString = `${Locale}`;

@@ -549,7 +549,7 @@ export const Routes = {
 	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userId] The user ID, defaulted to `@me`
+	 * @param [userId] - The user ID, defaulted to `@me`
 	 */
 	user(userId: Snowflake | '@me' = '@me') {
 		return `/users/${userId}` as const;
@@ -1172,7 +1172,7 @@ export const CDNRoutes = {
 	 * Route for:
 	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log#unique-usernames-on-discord).
+	 * The value for `index` parameter depends on whether the user is {@link https://discord.com/developers/docs/change-log#unique-usernames-on-discord | migrated to the new username system}.
 	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
 	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *
@@ -1453,7 +1453,7 @@ export const OAuth2Routes = {
 	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
 	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
-	 * See https://tools.ietf.org/html/rfc7009
+	 * @see {@link https://tools.ietf.org/html/rfc7009}
 	 */
 	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;

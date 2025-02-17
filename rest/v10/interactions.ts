@@ -11,9 +11,9 @@ import type {
 	InteractionType,
 } from '../../payloads/v10/index';
 import type {
-	AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
-	NonNullableFields,
-	StrictPartial,
+	_AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
+	_NonNullableFields,
+	_StrictPartial,
 } from '../../utils/internals';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
@@ -32,7 +32,7 @@ export interface RESTGetAPIApplicationCommandsQuery {
 	 * Whether to include full localization dictionaries (name_localizations and description_localizations)
 	 * in the returned objects, instead of the name_localized and description_localized fields.
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	with_localizations?: boolean;
 }
@@ -47,7 +47,7 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
  */
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
-type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+export type RESTPostAPIBaseApplicationCommandsJSONBody = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Omit<
 		APIApplicationCommand,
 		| 'application_id'
@@ -63,7 +63,7 @@ type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefine
 		| 'version'
 	> &
 		Partial<
-			NonNullableFields<Pick<APIApplicationCommand, 'contexts'>> &
+			_NonNullableFields<Pick<APIApplicationCommand, 'contexts'>> &
 				Pick<APIApplicationCommand, 'default_member_permissions' | 'integration_types'>
 		>
 >;
@@ -107,7 +107,7 @@ export type RESTPostAPIApplicationCommandsResult = APIApplicationCommand;
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
  */
-export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationCommandJSONBody = _StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
@@ -154,7 +154,7 @@ export type RESTPostAPIApplicationGuildCommandsResult = Omit<APIApplicationComma
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
  */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<
+export type RESTPatchAPIApplicationGuildCommandJSONBody = _StrictPartial<
 	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
 	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>
 >;

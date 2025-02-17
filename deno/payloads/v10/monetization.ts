@@ -111,7 +111,7 @@ export interface APISKU {
 	/**
 	 * SKU flags combined as a bitfield
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	flags: SKUFlags;
 }

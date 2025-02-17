@@ -24,13 +24,14 @@ export interface APIStageInstance {
 	/**
 	 * The privacy level of the stage instance
 	 *
-	 * See https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level
+	 * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level}
 	 */
 	privacy_level: StageInstancePrivacyLevel;
 	/**
 	 * Whether or not stage discovery is disabled
 	 *
 	 * @deprecated
+	 * {@link https://github.com/discord/discord-api-docs/pull/4296 | discord-api-docs#4296}
 	 */
 	discoverable_disabled: boolean;
 	/**
@@ -47,6 +48,7 @@ export enum StageInstancePrivacyLevel {
 	 * The stage instance is visible publicly, such as on stage discovery
 	 *
 	 * @deprecated
+	 * {@link https://github.com/discord/discord-api-docs/pull/4296 | discord-api-docs#4296}
 	 */
 	Public = 1,
 	/**
@@ -59,6 +61,7 @@ export enum StageInstancePrivacyLevel {
  * https://discord.com/developers/docs/resources/invite#invite-stage-instance-object-invite-stage-instance-structure
  *
  * @deprecated
+ * {@link https://github.com/discord/discord-api-docs/pull/4479 | discord-api-docs#4479}
  */
 export interface APIInviteStageInstance {
 	/**
@@ -76,7 +79,7 @@ export interface APIInviteStageInstance {
 	/**
 	 * The members speaking in the stage
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-structure
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-structure}
 	 */
 	members: APIGuildMember[];
 }

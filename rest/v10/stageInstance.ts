@@ -16,11 +16,11 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	/**
 	 * The privacy level of the stage instance
 	 *
-	 * @default GuildOnly
+	 * @defaultValue `StageInstancePrivacyLevel.GuildOnly`
 	 */
 	privacy_level?: StageInstancePrivacyLevel | undefined;
 	/**
-	 * Notify @everyone that a stage instance has started
+	 * Notify `@everyone` that a stage instance has started
 	 */
 	send_start_notification?: boolean | undefined;
 	/**

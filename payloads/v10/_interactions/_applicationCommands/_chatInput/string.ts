@@ -5,7 +5,7 @@ import type {
 } from './base';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
 
-interface APIApplicationCommandStringOptionBase
+export interface APIApplicationCommandStringOptionBase
 	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.String> {
 	/**
 	 * For option type `STRING`, the minimum allowed length (minimum of `0`, maximum of `6000`).

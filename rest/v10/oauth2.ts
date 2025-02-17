@@ -141,7 +141,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	/**
 	 * The permissions you're requesting
 	 *
-	 * See https://discord.com/developers/docs/topics/permissions
+	 * @see {@link https://discord.com/developers/docs/topics/permissions}
 	 */
 	permissions?: Permissions;
 	/**

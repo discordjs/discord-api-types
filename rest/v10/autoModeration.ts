@@ -36,7 +36,7 @@ export interface RESTPostAPIAutoModerationRuleJSONBody {
 	/**
 	 * The rule trigger metadata
 	 *
-	 * Can be omitted if the trigger type is {@link AutoModerationRuleTriggerType.HarmfulLink} or {@link AutoModerationRuleTriggerType.Spam}
+	 * Can be omitted if the trigger type is {@link AutoModerationRuleTriggerType.Spam}
 	 */
 	trigger_metadata?: APIAutoModerationRuleTriggerMetadata | undefined;
 	/**
@@ -46,7 +46,7 @@ export interface RESTPostAPIAutoModerationRuleJSONBody {
 	/**
 	 * Whether this rule is enabled
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	enabled?: boolean | undefined;
 	/**

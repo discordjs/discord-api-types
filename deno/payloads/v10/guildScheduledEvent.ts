@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 import type { APIUser } from './user.ts';
 
-interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType> {
+export interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType> {
 	/**
 	 * The id of the guild event
 	 */
@@ -91,7 +91,7 @@ export interface APIGuildScheduledEventRecurrenceRule {
 	frequency: GuildScheduledEventRecurrenceRuleFrequency;
 	/**
 	 * The spacing between the events, defined by `frequency`.
-	 * For example, `frequency` of {@apilink GuildScheduledEventRecurrenceRuleFrequency#Weekly} and an `interval` of `2`
+	 * For example, `frequency` of {@link GuildScheduledEventRecurrenceRuleFrequency.Weekly} and an `interval` of `2`
 	 * would be "every-other week"
 	 */
 	interval: number;

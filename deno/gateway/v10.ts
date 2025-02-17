@@ -41,7 +41,7 @@ import type {
 	ThreadChannelType,
 } from '../payloads/v10/mod.ts';
 import type { ReactionType } from '../rest/v10/mod.ts';
-import type { Nullable } from '../utils/internals.ts';
+import type { _Nullable } from '../utils/internals.ts';
 
 export * from './common.ts';
 
@@ -113,25 +113,25 @@ export enum GatewayCloseCodes {
 	/**
 	 * You sent an invalid Gateway opcode or an invalid payload for an opcode. Don't do that!
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#payload-structure
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#payload-structure}
 	 */
 	UnknownOpcode,
 	/**
 	 * You sent an invalid payload to us. Don't do that!
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#sending-events
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#sending-events}
 	 */
 	DecodeError,
 	/**
 	 * You sent us a payload prior to identifying
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#identify
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#identify}
 	 */
 	NotAuthenticated,
 	/**
 	 * The account token sent with your identify payload is incorrect
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#identify
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#identify}
 	 */
 	AuthenticationFailed,
 	/**
@@ -141,7 +141,7 @@ export enum GatewayCloseCodes {
 	/**
 	 * The sequence sent when resuming the session was invalid. Reconnect and start a new session
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#resume
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#resume}
 	 */
 	InvalidSeq = 4_007,
 	/**
@@ -155,13 +155,13 @@ export enum GatewayCloseCodes {
 	/**
 	 * You sent us an invalid shard when identifying
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#sharding
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#sharding}
 	 */
 	InvalidShard,
 	/**
 	 * The session would have handled too many guilds - you are required to shard your connection in order to connect
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#sharding
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#sharding}
 	 */
 	ShardingRequired,
 	/**
@@ -171,16 +171,15 @@ export enum GatewayCloseCodes {
 	/**
 	 * You sent an invalid intent for a Gateway Intent. You may have incorrectly calculated the bitwise value
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#gateway-intents
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#gateway-intents}
 	 */
 	InvalidIntents,
 	/**
 	 * You sent a disallowed intent for a Gateway Intent. You may have tried to specify an intent that you have not
 	 * enabled or are not whitelisted for
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#gateway-intents
-	 *
-	 * See https://discord.com/developers/docs/topics/gateway#privileged-intents
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#gateway-intents}
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#privileged-intents}
 	 */
 	DisallowedIntents,
 }
@@ -193,12 +192,12 @@ export enum GatewayIntentBits {
 	GuildMembers = 1 << 1,
 	GuildModeration = 1 << 2,
 	/**
-	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildModeration}
+	 * @deprecated This is the old name for {@link GatewayIntentBits.GuildModeration}
 	 */
 	GuildBans = GuildModeration,
 	GuildExpressions = 1 << 3,
 	/**
-	 * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildExpressions}
+	 * @deprecated This is the old name for {@link GatewayIntentBits.GuildExpressions}
 	 */
 	GuildEmojisAndStickers = GuildExpressions,
 	GuildIntegrations = 1 << 4,
@@ -392,7 +391,7 @@ export type GatewayDispatchPayload =
 /**
  * https://discord.com/developers/docs/topics/gateway-events#hello
  */
-export interface GatewayHello extends NonDispatchPayload {
+export interface GatewayHello extends _NonDispatchPayload {
 	op: GatewayOpcodes.Hello;
 	d: GatewayHelloData;
 }
@@ -410,7 +409,7 @@ export interface GatewayHelloData {
 /**
  * https://discord.com/developers/docs/topics/gateway#sending-heartbeats
  */
-export interface GatewayHeartbeatRequest extends NonDispatchPayload {
+export interface GatewayHeartbeatRequest extends _NonDispatchPayload {
 	op: GatewayOpcodes.Heartbeat;
 	d: never;
 }
@@ -418,7 +417,7 @@ export interface GatewayHeartbeatRequest extends NonDispatchPayload {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#heartbeat
  */
-export interface GatewayHeartbeatAck extends NonDispatchPayload {
+export interface GatewayHeartbeatAck extends _NonDispatchPayload {
 	op: GatewayOpcodes.HeartbeatAck;
 	d: never;
 }
@@ -426,7 +425,7 @@ export interface GatewayHeartbeatAck extends NonDispatchPayload {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#invalid-session
  */
-export interface GatewayInvalidSession extends NonDispatchPayload {
+export interface GatewayInvalidSession extends _NonDispatchPayload {
 	op: GatewayOpcodes.InvalidSession;
 	d: GatewayInvalidSessionData;
 }
@@ -439,7 +438,7 @@ export type GatewayInvalidSessionData = boolean;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#reconnect
  */
-export interface GatewayReconnect extends NonDispatchPayload {
+export interface GatewayReconnect extends _NonDispatchPayload {
 	op: GatewayOpcodes.Reconnect;
 	d: never;
 }
@@ -447,7 +446,7 @@ export interface GatewayReconnect extends NonDispatchPayload {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#ready
  */
-export type GatewayReadyDispatch = DataPayload<GatewayDispatchEvents.Ready, GatewayReadyDispatchData>;
+export type GatewayReadyDispatch = _DataPayload<GatewayDispatchEvents.Ready, GatewayReadyDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#ready
@@ -456,19 +455,19 @@ export interface GatewayReadyDispatchData {
 	/**
 	 * Gateway version
 	 *
-	 * See https://discord.com/developers/docs/reference#api-versioning
+	 * @see {@link https://discord.com/developers/docs/reference#api-versioning}
 	 */
 	v: number;
 	/**
 	 * Information about the user including email
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user: APIUser;
 	/**
 	 * The guilds the user is in
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#unavailable-guild-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#unavailable-guild-object}
 	 */
 	guilds: APIUnavailableGuild[];
 	/**
@@ -482,13 +481,13 @@ export interface GatewayReadyDispatchData {
 	/**
 	 * The shard information associated with this session, if sent when identifying
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#sharding
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#sharding}
 	 */
 	shard?: [shard_id: number, shard_count: number];
 	/**
 	 * Contains `id` and `flags`
 	 *
-	 * See https://discord.com/developers/docs/resources/application#application-object
+	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
 	 */
 	application: Pick<APIApplication, 'flags' | 'id'>;
 }
@@ -496,14 +495,14 @@ export interface GatewayReadyDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#resumed
  */
-export type GatewayResumedDispatch = DataPayload<GatewayDispatchEvents.Resumed, never>;
+export type GatewayResumedDispatch = _DataPayload<GatewayDispatchEvents.Resumed, never>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create
  * https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-update
  * https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-delete
  */
-export type GatewayAutoModerationRuleModifyDispatch = DataPayload<
+export type GatewayAutoModerationRuleModifyDispatch = _DataPayload<
 	| GatewayDispatchEvents.AutoModerationRuleCreate
 	| GatewayDispatchEvents.AutoModerationRuleDelete
 	| GatewayDispatchEvents.AutoModerationRuleUpdate,
@@ -550,7 +549,7 @@ export type GatewayAutoModerationRuleDeleteDispatchData = GatewayAutoModerationR
 /**
  * https://discord.com/developers/docs/topics/gateway-events#auto-moderation-action-execution
  */
-export type GatewayAutoModerationActionExecutionDispatch = DataPayload<
+export type GatewayAutoModerationActionExecutionDispatch = _DataPayload<
 	GatewayDispatchEvents.AutoModerationActionExecution,
 	GatewayAutoModerationActionExecutionDispatchData
 >;
@@ -616,7 +615,7 @@ export interface GatewayAutoModerationActionExecutionDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#application-command-permissions-update
  */
-export type GatewayApplicationCommandPermissionsUpdateDispatch = DataPayload<
+export type GatewayApplicationCommandPermissionsUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.ApplicationCommandPermissionsUpdate,
 	GatewayApplicationCommandPermissionsUpdateDispatchData
 >;
@@ -648,7 +647,7 @@ export interface GatewayApplicationCommandPermissionsUpdateDispatchData {
  * https://discord.com/developers/docs/topics/gateway-events#subscription-update
  * https://discord.com/developers/docs/topics/gateway-events#subscription-delete
  */
-export type GatewaySubscriptionModifyDispatch = DataPayload<
+export type GatewaySubscriptionModifyDispatch = _DataPayload<
 	| GatewayDispatchEvents.SubscriptionCreate
 	| GatewayDispatchEvents.SubscriptionDelete
 	| GatewayDispatchEvents.SubscriptionUpdate,
@@ -697,7 +696,7 @@ export type GatewaySubscriptionDeleteDispatchData = GatewaySubscriptionModifyDis
  * https://discord.com/developers/docs/topics/gateway-events#channel-update
  * https://discord.com/developers/docs/topics/gateway-events#channel-delete
  */
-export type GatewayChannelModifyDispatch = DataPayload<
+export type GatewayChannelModifyDispatch = _DataPayload<
 	GatewayDispatchEvents.ChannelCreate | GatewayDispatchEvents.ChannelDelete | GatewayDispatchEvents.ChannelUpdate,
 	GatewayChannelModifyDispatchData
 >;
@@ -745,7 +744,7 @@ export type GatewayChannelDeleteDispatchData = GatewayChannelModifyDispatchData;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#channel-pins-update
  */
-export type GatewayChannelPinsUpdateDispatch = DataPayload<
+export type GatewayChannelPinsUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.ChannelPinsUpdate,
 	GatewayChannelPinsUpdateDispatchData
 >;
@@ -780,7 +779,7 @@ export type GatewayEntitlementModifyDispatchData = APIEntitlement;
  * https://discord.com/developers/docs/topics/gateway-events#entitlement-update
  * https://discord.com/developers/docs/topics/gateway-events#entitlement-delete
  */
-export type GatewayEntitlementModifyDispatch = DataPayload<
+export type GatewayEntitlementModifyDispatch = _DataPayload<
 	| GatewayDispatchEvents.EntitlementCreate
 	| GatewayDispatchEvents.EntitlementDelete
 	| GatewayDispatchEvents.EntitlementUpdate,
@@ -822,7 +821,10 @@ export type GatewayEntitlementDeleteDispatch = GatewayEntitlementModifyDispatch;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-update
  */
-export type GatewayGuildModifyDispatch = DataPayload<GatewayDispatchEvents.GuildUpdate, GatewayGuildModifyDispatchData>;
+export type GatewayGuildModifyDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildUpdate,
+	GatewayGuildModifyDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-update
@@ -832,7 +834,10 @@ export type GatewayGuildModifyDispatchData = APIGuild;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-create
  */
-export type GatewayGuildCreateDispatch = DataPayload<GatewayDispatchEvents.GuildCreate, GatewayGuildCreateDispatchData>;
+export type GatewayGuildCreateDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildCreate,
+	GatewayGuildCreateDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-create
@@ -842,13 +847,13 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	/**
 	 * When this guild was joined at
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 */
 	joined_at: string;
 	/**
 	 * `true` if this is considered a large guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 */
 	large: boolean;
 	/**
@@ -858,71 +863,71 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	/**
 	 * Total number of members in this guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 */
 	member_count: number;
 	/**
 	 * States of members currently in voice channels; lacks the `guild_id` key
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/resources/voice#voice-state-object
+	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
 	 */
 	voice_states: Omit<APIVoiceState, 'guild_id'>[];
 	/**
 	 * Users in the guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
 	members: APIGuildMember[];
 	/**
 	 * Channels in the guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object}
 	 */
 	channels: (APIChannel & { type: Exclude<GuildChannelType, ThreadChannelType> })[];
 	/**
 	 * Threads in the guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object}
 	 */
 	threads: (APIChannel & { type: ThreadChannelType })[];
 	/**
 	 * Presences of the members in the guild, will only include non-offline members if the size is greater than `large_threshold`
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#presence-update
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#presence-update}
 	 */
 	presences: GatewayPresenceUpdate[];
 	/**
 	 * The stage instances in the guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-stage-instance-structure
+	 * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-stage-instance-structure}
 	 */
 	stage_instances: APIStageInstance[];
 	/**
 	 * The scheduled events in the guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object}
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
 	/**
 	 * The soundboard sounds in the guild
 	 *
-	 * **This field is only sent within the [GUILD_CREATE](https://discord.com/developers/docs/topics/gateway-events#guild-create) event**
+	 * **This field is only sent within the {@link https://discord.com/developers/docs/topics/gateway-events#guild-create | GUILD_CREATE} event**
 	 *
-	 * See https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object
+	 * @see {@link https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object}
 	 */
 	soundboard_sounds: APISoundboardSound[];
 }
@@ -940,7 +945,10 @@ export type GatewayGuildUpdateDispatchData = GatewayGuildModifyDispatchData;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-delete
  */
-export type GatewayGuildDeleteDispatch = DataPayload<GatewayDispatchEvents.GuildDelete, GatewayGuildDeleteDispatchData>;
+export type GatewayGuildDeleteDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildDelete,
+	GatewayGuildDeleteDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-delete
@@ -958,7 +966,7 @@ export interface GatewayGuildDeleteDispatchData extends Omit<APIUnavailableGuild
  * https://discord.com/developers/docs/topics/gateway-events#guild-ban-add
  * https://discord.com/developers/docs/topics/gateway-events#guild-ban-remove
  */
-export type GatewayGuildBanModifyDispatch = DataPayload<
+export type GatewayGuildBanModifyDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildBanAdd | GatewayDispatchEvents.GuildBanRemove,
 	GatewayGuildBanModifyDispatchData
 >;
@@ -975,7 +983,7 @@ export interface GatewayGuildBanModifyDispatchData {
 	/**
 	 * The banned user
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user: APIUser;
 }
@@ -1003,7 +1011,7 @@ export type GatewayGuildBanRemoveDispatchData = GatewayGuildBanModifyDispatchDat
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-emojis-update
  */
-export type GatewayGuildEmojisUpdateDispatch = DataPayload<
+export type GatewayGuildEmojisUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildEmojisUpdate,
 	GatewayGuildEmojisUpdateDispatchData
 >;
@@ -1019,7 +1027,7 @@ export interface GatewayGuildEmojisUpdateDispatchData {
 	/**
 	 * Array of emojis
 	 *
-	 * See https://discord.com/developers/docs/resources/emoji#emoji-object
+	 * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object}
 	 */
 	emojis: APIEmoji[];
 }
@@ -1027,7 +1035,7 @@ export interface GatewayGuildEmojisUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-stickers-update
  */
-export type GatewayGuildStickersUpdateDispatch = DataPayload<
+export type GatewayGuildStickersUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildStickersUpdate,
 	GatewayGuildStickersUpdateDispatchData
 >;
@@ -1043,7 +1051,7 @@ export interface GatewayGuildStickersUpdateDispatchData {
 	/**
 	 * Array of stickers
 	 *
-	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
 	 */
 	stickers: APISticker[];
 }
@@ -1051,7 +1059,7 @@ export interface GatewayGuildStickersUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-integrations-update
  */
-export type GatewayGuildIntegrationsUpdateDispatch = DataPayload<
+export type GatewayGuildIntegrationsUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildIntegrationsUpdate,
 	GatewayGuildIntegrationsUpdateDispatchData
 >;
@@ -1069,7 +1077,7 @@ export interface GatewayGuildIntegrationsUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-add
  */
-export type GatewayGuildMemberAddDispatch = DataPayload<
+export type GatewayGuildMemberAddDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildMemberAdd,
 	GatewayGuildMemberAddDispatchData
 >;
@@ -1087,7 +1095,7 @@ export interface GatewayGuildMemberAddDispatchData extends APIGuildMember {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-remove
  */
-export type GatewayGuildMemberRemoveDispatch = DataPayload<
+export type GatewayGuildMemberRemoveDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildMemberRemove,
 	GatewayGuildMemberRemoveDispatchData
 >;
@@ -1103,7 +1111,7 @@ export interface GatewayGuildMemberRemoveDispatchData {
 	/**
 	 * The user who was removed
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user: APIUser;
 }
@@ -1111,7 +1119,7 @@ export interface GatewayGuildMemberRemoveDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-update
  */
-export type GatewayGuildMemberUpdateDispatch = DataPayload<
+export type GatewayGuildMemberUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildMemberUpdate,
 	GatewayGuildMemberUpdateDispatchData
 >;
@@ -1119,7 +1127,7 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-member-update
  */
-export type GatewayGuildMemberUpdateDispatchData = Nullable<Pick<APIGuildMember, 'joined_at'>> &
+export type GatewayGuildMemberUpdateDispatchData = _Nullable<Pick<APIGuildMember, 'joined_at'>> &
 	Omit<APIGuildMember, 'deaf' | 'flags' | 'joined_at' | 'mute' | 'user'> &
 	Partial<Pick<APIGuildMember, 'deaf' | 'flags' | 'mute'>> &
 	Required<Pick<APIGuildMember, 'avatar' | 'banner' | 'user'>> & {
@@ -1132,7 +1140,7 @@ export type GatewayGuildMemberUpdateDispatchData = Nullable<Pick<APIGuildMember,
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk
  */
-export type GatewayGuildMembersChunkDispatch = DataPayload<
+export type GatewayGuildMembersChunkDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildMembersChunk,
 	GatewayGuildMembersChunkDispatchData
 >;
@@ -1153,7 +1161,7 @@ export interface GatewayGuildMembersChunkDispatchData {
 	/**
 	 * Set of guild members
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
 	members: APIGuildMember[];
 	/**
@@ -1171,13 +1179,13 @@ export interface GatewayGuildMembersChunkDispatchData {
 	/**
 	 * If passing true to `REQUEST_GUILD_MEMBERS`, presences of the returned members will be here
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#update-presence
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#update-presence}
 	 */
 	presences?: GatewayGuildMembersChunkPresence[];
 	/**
 	 * The nonce used in the Guild Members Request
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#request-guild-members
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#request-guild-members}
 	 */
 	nonce?: string;
 }
@@ -1186,7 +1194,7 @@ export interface GatewayGuildMembersChunkDispatchData {
  * https://discord.com/developers/docs/topics/gateway-events#guild-role-create
  * https://discord.com/developers/docs/topics/gateway-events#guild-role-update
  */
-export type GatewayGuildRoleModifyDispatch = DataPayload<
+export type GatewayGuildRoleModifyDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildRoleCreate | GatewayDispatchEvents.GuildRoleUpdate,
 	GatewayGuildRoleModifyDispatchData
 >;
@@ -1203,7 +1211,7 @@ export interface GatewayGuildRoleModifyDispatchData {
 	/**
 	 * The role created or updated
 	 *
-	 * See https://discord.com/developers/docs/topics/permissions#role-object
+	 * @see {@link https://discord.com/developers/docs/topics/permissions#role-object}
 	 */
 	role: APIRole;
 }
@@ -1231,7 +1239,7 @@ export type GatewayGuildRoleUpdateDispatchData = GatewayGuildRoleModifyDispatchD
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-role-delete
  */
-export type GatewayGuildRoleDeleteDispatch = DataPayload<
+export type GatewayGuildRoleDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildRoleDelete,
 	GatewayGuildRoleDeleteDispatchData
 >;
@@ -1253,7 +1261,7 @@ export interface GatewayGuildRoleDeleteDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create
  */
-export type GatewayGuildScheduledEventCreateDispatch = DataPayload<
+export type GatewayGuildScheduledEventCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventCreate,
 	GatewayGuildScheduledEventCreateDispatchData
 >;
@@ -1266,7 +1274,7 @@ export type GatewayGuildScheduledEventCreateDispatchData = APIGuildScheduledEven
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-update
  */
-export type GatewayGuildScheduledEventUpdateDispatch = DataPayload<
+export type GatewayGuildScheduledEventUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUpdate,
 	GatewayGuildScheduledEventUpdateDispatchData
 >;
@@ -1279,7 +1287,7 @@ export type GatewayGuildScheduledEventUpdateDispatchData = APIGuildScheduledEven
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-delete
  */
-export type GatewayGuildScheduledEventDeleteDispatch = DataPayload<
+export type GatewayGuildScheduledEventDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventDelete,
 	GatewayGuildScheduledEventDeleteDispatchData
 >;
@@ -1292,7 +1300,7 @@ export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEven
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add
  */
-export type GatewayGuildScheduledEventUserAddDispatch = DataPayload<
+export type GatewayGuildScheduledEventUserAddDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUserAdd,
 	GatewayGuildScheduledEventUserAddDispatchData
 >;
@@ -1309,7 +1317,7 @@ export interface GatewayGuildScheduledEventUserAddDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-remove
  */
-export type GatewayGuildScheduledEventUserRemoveDispatch = DataPayload<
+export type GatewayGuildScheduledEventUserRemoveDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUserRemove,
 	GatewayGuildScheduledEventUserAddDispatchData
 >;
@@ -1326,7 +1334,7 @@ export interface GatewayGuildScheduledEventUserRemoveDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-create
  */
-export type GatewayGuildSoundboardSoundCreateDispatch = DataPayload<
+export type GatewayGuildSoundboardSoundCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildSoundboardSoundCreate,
 	GatewayGuildSoundboardSoundCreateDispatchData
 >;
@@ -1339,7 +1347,7 @@ export type GatewayGuildSoundboardSoundCreateDispatchData = APISoundboardSound;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-update
  */
-export type GatewayGuildSoundboardSoundUpdateDispatch = DataPayload<
+export type GatewayGuildSoundboardSoundUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildSoundboardSoundUpdate,
 	GatewayGuildSoundboardSoundUpdateDispatchData
 >;
@@ -1352,7 +1360,7 @@ export type GatewayGuildSoundboardSoundUpdateDispatchData = APISoundboardSound;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sound-delete
  */
-export type GatewayGuildSoundboardSoundDeleteDispatch = DataPayload<
+export type GatewayGuildSoundboardSoundDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildSoundboardSoundDelete,
 	GatewayGuildSoundboardSoundDeleteDispatchData
 >;
@@ -1374,7 +1382,7 @@ export interface GatewayGuildSoundboardSoundDeleteDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-soundboard-sounds-update
  */
-export type GatewayGuildSoundboardSoundsUpdateDispatch = DataPayload<
+export type GatewayGuildSoundboardSoundsUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildSoundboardSoundsUpdate,
 	GatewayGuildSoundboardSoundsUpdateDispatchData
 >;
@@ -1396,7 +1404,7 @@ export interface GatewayGuildSoundboardSoundsUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/events/gateway-events#soundboard-sounds
  */
-export type GatewaySoundboardSoundsDispatch = DataPayload<
+export type GatewaySoundboardSoundsDispatch = _DataPayload<
 	GatewayDispatchEvents.SoundboardSounds,
 	GatewaySoundboardSoundsDispatchData
 >;
@@ -1418,7 +1426,7 @@ export interface GatewaySoundboardSoundsDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#integration-create
  */
-export type GatewayIntegrationCreateDispatch = DataPayload<
+export type GatewayIntegrationCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.IntegrationCreate,
 	GatewayIntegrationCreateDispatchData
 >;
@@ -1431,7 +1439,7 @@ export type GatewayIntegrationCreateDispatchData = APIGuildIntegration & { guild
 /**
  * https://discord.com/developers/docs/topics/gateway-events#integration-update
  */
-export type GatewayIntegrationUpdateDispatch = DataPayload<
+export type GatewayIntegrationUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.IntegrationUpdate,
 	GatewayIntegrationUpdateDispatchData
 >;
@@ -1444,7 +1452,7 @@ export type GatewayIntegrationUpdateDispatchData = APIGuildIntegration & { guild
 /**
  * https://discord.com/developers/docs/topics/gateway-events#integration-update
  */
-export type GatewayIntegrationDeleteDispatch = DataPayload<
+export type GatewayIntegrationDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.IntegrationDelete,
 	GatewayIntegrationDeleteDispatchData
 >;
@@ -1470,7 +1478,7 @@ export interface GatewayIntegrationDeleteDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#interaction-create
  */
-export type GatewayInteractionCreateDispatch = DataPayload<
+export type GatewayInteractionCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.InteractionCreate,
 	GatewayInteractionCreateDispatchData
 >;
@@ -1483,7 +1491,7 @@ export type GatewayInteractionCreateDispatchData = APIInteraction;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#invite-create
  */
-export type GatewayInviteCreateDispatch = DataPayload<
+export type GatewayInviteCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.InviteCreate,
 	GatewayInviteCreateDispatchData
 >;
@@ -1499,7 +1507,7 @@ export interface GatewayInviteCreateDispatchData {
 	/**
 	 * The unique invite code
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object
+	 * @see {@link https://discord.com/developers/docs/resources/invite#invite-object}
 	 */
 	code: string;
 	/**
@@ -1513,7 +1521,7 @@ export interface GatewayInviteCreateDispatchData {
 	/**
 	 * The user that created the invite
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	inviter?: APIUser;
 	/**
@@ -1527,13 +1535,13 @@ export interface GatewayInviteCreateDispatchData {
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+	 * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
 	 */
 	target_type?: InviteTargetType;
 	/**
 	 * The user whose stream to display for this voice channel stream invite
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	target_user?: APIUser;
 	/**
@@ -1553,7 +1561,7 @@ export interface GatewayInviteCreateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#invite-delete
  */
-export type GatewayInviteDeleteDispatch = DataPayload<
+export type GatewayInviteDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.InviteDelete,
 	GatewayInviteDeleteDispatchData
 >;
@@ -1573,7 +1581,7 @@ export interface GatewayInviteDeleteDispatchData {
 	/**
 	 * The unique invite code
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object
+	 * @see {@link https://discord.com/developers/docs/resources/invite#invite-object}
 	 */
 	code: string;
 }
@@ -1581,7 +1589,7 @@ export interface GatewayInviteDeleteDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-create
  */
-export type GatewayMessageCreateDispatch = DataPayload<
+export type GatewayMessageCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.MessageCreate,
 	GatewayMessageCreateDispatchData
 >;
@@ -1594,7 +1602,7 @@ export type GatewayMessageCreateDispatchData = GatewayMessageEventExtraFields & 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-update
  */
-export type GatewayMessageUpdateDispatch = DataPayload<
+export type GatewayMessageUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.MessageUpdate,
 	GatewayMessageUpdateDispatchData
 >;
@@ -1618,7 +1626,7 @@ export interface GatewayMessageEventExtraFields {
 	 * The member object exists in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
 	 * from text-based guild channels
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
 	member?: Omit<APIGuildMember, 'user'>;
 	/**
@@ -1627,8 +1635,8 @@ export interface GatewayMessageEventExtraFields {
 	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
 	 * from text-based guild channels
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
 	mentions: (APIUser & { member?: Omit<APIGuildMember, 'user'> })[];
 }
@@ -1636,7 +1644,7 @@ export interface GatewayMessageEventExtraFields {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-delete
  */
-export type GatewayMessageDeleteDispatch = DataPayload<
+export type GatewayMessageDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.MessageDelete,
 	GatewayMessageDeleteDispatchData
 >;
@@ -1662,7 +1670,7 @@ export interface GatewayMessageDeleteDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-delete-bulk
  */
-export type GatewayMessageDeleteBulkDispatch = DataPayload<
+export type GatewayMessageDeleteBulkDispatch = _DataPayload<
 	GatewayDispatchEvents.MessageDeleteBulk,
 	GatewayMessageDeleteBulkDispatchData
 >;
@@ -1688,7 +1696,7 @@ export interface GatewayMessageDeleteBulkDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-add
  */
-export type GatewayMessageReactionAddDispatch = ReactionData<GatewayDispatchEvents.MessageReactionAdd>;
+export type GatewayMessageReactionAddDispatch = GatewayMessageReactionData<GatewayDispatchEvents.MessageReactionAdd>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-add
@@ -1698,7 +1706,7 @@ export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDis
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove
  */
-export type GatewayMessageReactionRemoveDispatch = ReactionData<
+export type GatewayMessageReactionRemoveDispatch = GatewayMessageReactionData<
 	GatewayDispatchEvents.MessageReactionRemove,
 	'burst_colors' | 'member' | 'message_author_id'
 >;
@@ -1711,7 +1719,7 @@ export type GatewayMessageReactionRemoveDispatchData = GatewayMessageReactionRem
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-all
  */
-export type GatewayMessageReactionRemoveAllDispatch = DataPayload<
+export type GatewayMessageReactionRemoveAllDispatch = _DataPayload<
 	GatewayDispatchEvents.MessageReactionRemoveAll,
 	GatewayMessageReactionRemoveAllDispatchData
 >;
@@ -1719,12 +1727,12 @@ export type GatewayMessageReactionRemoveAllDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-all
  */
-export type GatewayMessageReactionRemoveAllDispatchData = MessageReactionRemoveData;
+export type GatewayMessageReactionRemoveAllDispatchData = GatewayMessageReactionRemoveData;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-emoji
  */
-export type GatewayMessageReactionRemoveEmojiDispatch = DataPayload<
+export type GatewayMessageReactionRemoveEmojiDispatch = _DataPayload<
 	GatewayDispatchEvents.MessageReactionRemoveEmoji,
 	GatewayMessageReactionRemoveEmojiDispatchData
 >;
@@ -1732,7 +1740,7 @@ export type GatewayMessageReactionRemoveEmojiDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-emoji
  */
-export interface GatewayMessageReactionRemoveEmojiDispatchData extends MessageReactionRemoveData {
+export interface GatewayMessageReactionRemoveEmojiDispatchData extends GatewayMessageReactionRemoveData {
 	/**
 	 * The emoji that was removed
 	 */
@@ -1742,7 +1750,7 @@ export interface GatewayMessageReactionRemoveEmojiDispatchData extends MessageRe
 /**
  * https://discord.com/developers/docs/topics/gateway-events#presence-update
  */
-export type GatewayPresenceUpdateDispatch = DataPayload<
+export type GatewayPresenceUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.PresenceUpdate,
 	GatewayPresenceUpdateDispatchData
 >;
@@ -1755,7 +1763,7 @@ export type GatewayPresenceUpdateDispatchData = RawGatewayPresenceUpdate;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#stage-instance-create
  */
-export type GatewayStageInstanceCreateDispatch = DataPayload<
+export type GatewayStageInstanceCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.StageInstanceCreate,
 	GatewayStageInstanceCreateDispatchData
 >;
@@ -1768,7 +1776,7 @@ export type GatewayStageInstanceCreateDispatchData = APIStageInstance;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#stage-instance-delete
  */
-export type GatewayStageInstanceDeleteDispatch = DataPayload<
+export type GatewayStageInstanceDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.StageInstanceDelete,
 	GatewayStageInstanceDeleteDispatchData
 >;
@@ -1781,7 +1789,7 @@ export type GatewayStageInstanceDeleteDispatchData = APIStageInstance;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#stage-instance-update
  */
-export type GatewayStageInstanceUpdateDispatch = DataPayload<
+export type GatewayStageInstanceUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.StageInstanceUpdate,
 	GatewayStageInstanceUpdateDispatchData
 >;
@@ -1794,7 +1802,7 @@ export type GatewayStageInstanceUpdateDispatchData = APIStageInstance;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-list-sync
  */
-export type GatewayThreadListSyncDispatch = DataPayload<
+export type GatewayThreadListSyncDispatch = _DataPayload<
 	GatewayDispatchEvents.ThreadListSync,
 	GatewayThreadListSyncDispatchData
 >;
@@ -1807,7 +1815,7 @@ export type GatewayThreadListSyncDispatchData = RawGatewayThreadListSync;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-members-update
  */
-export type GatewayThreadMembersUpdateDispatch = DataPayload<
+export type GatewayThreadMembersUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.ThreadMembersUpdate,
 	GatewayThreadMembersUpdateDispatchData
 >;
@@ -1820,7 +1828,7 @@ export type GatewayThreadMembersUpdateDispatchData = RawGatewayThreadMembersUpda
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-member-update
  */
-export type GatewayThreadMemberUpdateDispatch = DataPayload<
+export type GatewayThreadMemberUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.ThreadMemberUpdate,
 	GatewayThreadMemberUpdateDispatchData
 >;
@@ -1832,14 +1840,14 @@ export type GatewayThreadMemberUpdateDispatchData = APIThreadMember & { guild_id
 
 /**
  * @deprecated This type doesn't accurately reflect the Discord API.
- * Use {@apilink GatewayThreadCreateDispatch},
- * {@apilink GatewayThreadUpdateDispatch}, or
- * {@apilink GatewayThreadDeleteDispatch} instead.
+ * Use {@link GatewayThreadCreateDispatch},
+ * {@link GatewayThreadUpdateDispatch}, or
+ * {@link GatewayThreadDeleteDispatch} instead.
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
  * https://discord.com/developers/docs/topics/gateway-events#thread-update
  * https://discord.com/developers/docs/topics/gateway-events#thread-delete
  */
-export type GatewayThreadModifyDispatch = DataPayload<
+export type GatewayThreadModifyDispatch = _DataPayload<
 	GatewayDispatchEvents.ThreadCreate | GatewayDispatchEvents.ThreadDelete | GatewayDispatchEvents.ThreadUpdate,
 	APIThreadChannel
 >;
@@ -1847,7 +1855,7 @@ export type GatewayThreadModifyDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-create
  */
-export type GatewayThreadCreateDispatch = DataPayload<
+export type GatewayThreadCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.ThreadCreate,
 	GatewayThreadCreateDispatchData
 >;
@@ -1865,7 +1873,7 @@ export interface GatewayThreadCreateDispatchData extends APIThreadChannel {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-update
  */
-export type GatewayThreadUpdateDispatch = DataPayload<
+export type GatewayThreadUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.ThreadUpdate,
 	GatewayThreadUpdateDispatchData
 >;
@@ -1878,7 +1886,7 @@ export type GatewayThreadUpdateDispatchData = APIThreadChannel;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#thread-delete
  */
-export type GatewayThreadDeleteDispatch = DataPayload<
+export type GatewayThreadDeleteDispatch = _DataPayload<
 	GatewayDispatchEvents.ThreadDelete,
 	GatewayThreadDeleteDispatchData
 >;
@@ -1902,7 +1910,7 @@ export interface GatewayThreadDeleteDispatchData {
 	/**
 	 * The type of the channel
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
 	 */
 	type: ChannelType;
 }
@@ -1910,7 +1918,10 @@ export interface GatewayThreadDeleteDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#typing-start
  */
-export type GatewayTypingStartDispatch = DataPayload<GatewayDispatchEvents.TypingStart, GatewayTypingStartDispatchData>;
+export type GatewayTypingStartDispatch = _DataPayload<
+	GatewayDispatchEvents.TypingStart,
+	GatewayTypingStartDispatchData
+>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#typing-start
@@ -1935,7 +1946,7 @@ export interface GatewayTypingStartDispatchData {
 	/**
 	 * The member who started typing if this happened in a guild
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
 	member?: APIGuildMember;
 }
@@ -1943,7 +1954,7 @@ export interface GatewayTypingStartDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#user-update
  */
-export type GatewayUserUpdateDispatch = DataPayload<GatewayDispatchEvents.UserUpdate, GatewayUserUpdateDispatchData>;
+export type GatewayUserUpdateDispatch = _DataPayload<GatewayDispatchEvents.UserUpdate, GatewayUserUpdateDispatchData>;
 
 /**
  * https://discord.com/developers/docs/topics/gateway-events#user-update
@@ -1953,7 +1964,7 @@ export type GatewayUserUpdateDispatchData = APIUser;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send
  */
-export type GatewayVoiceChannelEffectSendDispatch = DataPayload<
+export type GatewayVoiceChannelEffectSendDispatch = _DataPayload<
 	GatewayDispatchEvents.VoiceChannelEffectSend,
 	GatewayVoiceChannelEffectSendDispatchData
 >;
@@ -2013,7 +2024,7 @@ export enum VoiceChannelEffectSendAnimationType {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#voice-state-update
  */
-export type GatewayVoiceStateUpdateDispatch = DataPayload<
+export type GatewayVoiceStateUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.VoiceStateUpdate,
 	GatewayVoiceStateUpdateDispatchData
 >;
@@ -2026,7 +2037,7 @@ export type GatewayVoiceStateUpdateDispatchData = APIVoiceState;
 /**
  * https://discord.com/developers/docs/topics/gateway-events#voice-server-update
  */
-export type GatewayVoiceServerUpdateDispatch = DataPayload<
+export type GatewayVoiceServerUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.VoiceServerUpdate,
 	GatewayVoiceServerUpdateDispatchData
 >;
@@ -2056,7 +2067,7 @@ export interface GatewayVoiceServerUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#webhooks-update
  */
-export type GatewayWebhooksUpdateDispatch = DataPayload<
+export type GatewayWebhooksUpdateDispatch = _DataPayload<
 	GatewayDispatchEvents.WebhooksUpdate,
 	GatewayWebhooksUpdateDispatchData
 >;
@@ -2078,7 +2089,7 @@ export interface GatewayWebhooksUpdateDispatchData {
 /**
  * https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create
  */
-export type GatewayGuildAuditLogEntryCreateDispatch = DataPayload<
+export type GatewayGuildAuditLogEntryCreateDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildAuditLogEntryCreate,
 	GatewayGuildAuditLogEntryCreateDispatchData
 >;
@@ -2096,7 +2107,7 @@ export interface GatewayGuildAuditLogEntryCreateDispatchData extends APIAuditLog
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add
  */
-export type GatewayMessagePollVoteAddDispatch = DataPayload<
+export type GatewayMessagePollVoteAddDispatch = _DataPayload<
 	GatewayDispatchEvents.MessagePollVoteAdd,
 	GatewayMessagePollVoteDispatchData
 >;
@@ -2104,7 +2115,7 @@ export type GatewayMessagePollVoteAddDispatch = DataPayload<
 /**
  * https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove
  */
-export type GatewayMessagePollVoteRemoveDispatch = DataPayload<
+export type GatewayMessagePollVoteRemoveDispatch = _DataPayload<
 	GatewayDispatchEvents.MessagePollVoteRemove,
 	GatewayMessagePollVoteDispatchData
 >;
@@ -2172,38 +2183,38 @@ export interface GatewayIdentifyData {
 	/**
 	 * Connection properties
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#identify-identify-connection-properties
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#identify-identify-connection-properties}
 	 */
 	properties: GatewayIdentifyProperties;
 	/**
 	 * Whether this connection supports compression of packets
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	compress?: boolean;
 	/**
 	 * Value between 50 and 250, total number of members where the gateway will stop sending
 	 * offline members in the guild member list
 	 *
-	 * @default 50
+	 * @defaultValue `50`
 	 */
 	large_threshold?: number;
 	/**
 	 * Used for Guild Sharding
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#sharding
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#sharding}
 	 */
 	shard?: [shard_id: number, shard_count: number];
 	/**
 	 * Presence structure for initial presence information
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#update-presence
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#update-presence}
 	 */
 	presence?: GatewayPresenceUpdateData;
 	/**
 	 * The Gateway Intents you wish to receive
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#gateway-intents
+	 * @see {@link https://discord.com/developers/docs/topics/gateway#gateway-intents}
 	 */
 	intents: number;
 }
@@ -2277,7 +2288,7 @@ export interface GatewayRequestGuildMembersDataBase {
 	 *
 	 * Nonce can only be up to 32 bytes. If you send an invalid nonce it will be ignored and the reply member_chunk(s) will not have a `nonce` set.
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk}
 	 */
 	nonce?: string;
 }
@@ -2381,13 +2392,13 @@ export interface GatewayPresenceUpdateData {
 	/**
 	 * The user's activities
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#activity-object
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object}
 	 */
 	activities: GatewayActivityUpdateData[];
 	/**
 	 * The user's new status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway-events#update-presence-status-types
+	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#update-presence-status-types}
 	 */
 	status: PresenceUpdateStatus;
 	/**
@@ -2404,7 +2415,7 @@ export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'state' |
 // #endregion Sendable Payloads
 
 // #region Shared
-interface BasePayload {
+export interface _BasePayload {
 	/**
 	 * Opcode for the payload
 	 */
@@ -2423,18 +2434,18 @@ interface BasePayload {
 	t?: string;
 }
 
-type NonDispatchPayload = Omit<BasePayload, 's' | 't'> & {
+export type _NonDispatchPayload = Omit<_BasePayload, 's' | 't'> & {
 	t: null;
 	s: null;
 };
 
-interface DataPayload<Event extends GatewayDispatchEvents, D = unknown> extends BasePayload {
+export interface _DataPayload<Event extends GatewayDispatchEvents, D = unknown> extends _BasePayload {
 	op: GatewayOpcodes.Dispatch;
 	t: Event;
 	d: D;
 }
 
-type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = DataPayload<
+export type GatewayMessageReactionData<E extends GatewayDispatchEvents, O extends string = never> = _DataPayload<
 	E,
 	Omit<
 		{
@@ -2457,13 +2468,13 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 			/**
 			 * The member who reacted if this happened in a guild
 			 *
-			 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+			 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 			 */
 			member?: APIGuildMember;
 			/**
 			 * The emoji used to react
 			 *
-			 * See https://discord.com/developers/docs/resources/emoji#emoji-object
+			 * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object}
 			 */
 			emoji: APIEmoji;
 			/**
@@ -2487,7 +2498,7 @@ type ReactionData<E extends GatewayDispatchEvents, O extends string = never> = D
 	>
 >;
 
-interface MessageReactionRemoveData {
+export interface GatewayMessageReactionRemoveData {
 	/**
 	 * The id of the channel
 	 */

@@ -32,20 +32,20 @@ export interface APISticker {
 	/**
 	 * Previously the sticker asset hash, now an empty string
 	 *
-	 * @deprecated
+	 * @deprecated This field is no longer documented by Discord and will be removed in v11
 	 * @unstable This field is no longer documented by Discord and will be removed in v11
 	 */
 	asset?: '';
 	/**
 	 * Type of sticker
 	 *
-	 * See https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types
+	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types}
 	 */
 	type: StickerType;
 	/**
 	 * Type of sticker format
 	 *
-	 * See https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
+	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types}
 	 */
 	format_type: StickerFormatType;
 	/**

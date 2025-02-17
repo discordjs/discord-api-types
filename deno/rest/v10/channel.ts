@@ -26,7 +26,7 @@ import type {
 	ChannelFlags,
 	APIAttachment,
 } from '../../payloads/v10/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _StrictPartial } from '../../utils/internals.ts';
 import type { RESTAPIPoll } from './poll.ts';
 
 export interface RESTAPIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
@@ -114,13 +114,13 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
-	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-region-object}
 	 */
 	rtc_region?: string | null | undefined;
 	/**
 	 * The camera video quality mode of the voice channel
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes}
 	 */
 	video_quality_mode?: VideoQualityMode | null | undefined;
 	/**
@@ -225,7 +225,7 @@ export interface RESTGetAPIChannelMessagesQuery {
 	/**
 	 * Max number of messages to return (1-100)
 	 *
-	 * @default 50
+	 * @defaultValue `50`
 	 */
 	limit?: number;
 }
@@ -243,14 +243,14 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
 /**
  * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
  */
-export type RESTAPIMessageReference = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+export type RESTAPIMessageReference = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Required<Pick<APIMessageReference, 'message_id'>>
 > &
-	StrictPartial<APIMessageReference> & {
+	_StrictPartial<APIMessageReference> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
-		 * @default true
+		 * @defaultValue `true`
 		 */
 		fail_if_not_exists?: boolean | undefined;
 	};
@@ -291,31 +291,31 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#embed-object}
 	 */
 	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for a message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object}
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
 	 * Include to make your message a reply or a forward
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+	 * @see {@link https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure}
 	 */
 	message_reference?: RESTAPIMessageReference | undefined;
 	/**
 	 * The components to include with the message
 	 *
-	 * See https://discord.com/developers/docs/interactions/message-components#component-object
+	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
-	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
 	 */
 	sticker_ids?: [Snowflake, Snowflake, Snowflake] | [Snowflake, Snowflake] | [Snowflake] | undefined;
 	/**
@@ -394,7 +394,7 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
 	 * Max number of users to return (1-100)
 	 *
-	 * @default 25
+	 * @defaultValue `25`
 	 */
 	limit?: number;
 }
@@ -433,7 +433,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#embed-object}
 	 */
 	embeds?: APIEmbed[] | null | undefined;
 	/**
@@ -442,13 +442,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 * When specifying flags, ensure to include all previously set flags/bits
 	 * in addition to ones that you are modifying
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
+	 * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-flags}
 	 */
 	flags?: MessageFlags | null | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object}
 	 */
 	allowed_mentions?: APIAllowedMentions | null | undefined;
 	/**
@@ -456,13 +456,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * See https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
+	 * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * The components to include with the message
 	 *
-	 * See https://discord.com/developers/docs/interactions/message-components#component-object
+	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null | undefined;
 }
@@ -511,17 +511,15 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 	/**
 	 * The bitwise value of all allowed permissions
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
-	 *
-	 * @default "0"
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 * @defaultValue `"0"`
 	 */
 	allow?: Permissions | null | undefined;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
-	 *
-	 * @default "0"
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 * @defaultValue `"0"`
 	 */
 	deny?: Permissions | null | undefined;
 	/**
@@ -547,32 +545,32 @@ export interface RESTPostAPIChannelInviteJSONBody {
 	/**
 	 * Duration of invite in seconds before expiry, or 0 for never
 	 *
-	 * @default 86400 (24 hours)
+	 * @defaultValue `86400` (24 hours)
 	 */
 	max_age?: number | undefined;
 	/**
 	 * Max number of uses or 0 for unlimited
 	 *
-	 * @default 0
+	 * @defaultValue `0`
 	 */
 	max_uses?: number | undefined;
 	/**
 	 * Whether this invite only grants temporary membership
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	temporary?: boolean | undefined;
 	/**
 	 * If true, don't try to reuse a similar invite
 	 * (useful for creating many unique one time use invites)
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	unique?: boolean | undefined;
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+	 * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
 	 */
 	target_type?: InviteTargetType | undefined;
 	/**
@@ -715,9 +713,8 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	 * In API v9 and v10, `type` defaults to `PRIVATE_THREAD`.
 	 * In a future API version this will be changed to be a required field, with no default.
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
-	 *
-	 * @default ChannelType.PrivateThread
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
+	 * @defaultValue `ChannelType.PrivateThread`
 	 */
 	type?: ThreadChannelType | undefined;
 	/**

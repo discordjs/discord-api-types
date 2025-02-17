@@ -8,7 +8,7 @@ import type { APIGuildMember } from './guild.ts';
 /**
  * https://discord.com/developers/docs/resources/voice#voice-state-object
  *
- * @deprecated This is deprecated, use {@apilink APIVoiceState}
+ * @deprecated This is deprecated, use {@link APIVoiceState}
  */
 export type GatewayVoiceState = APIVoiceState;
 
@@ -31,7 +31,7 @@ export interface APIVoiceState {
 	/**
 	 * The guild member this voice state is for
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
 	member?: APIGuildMember;
 	/**
