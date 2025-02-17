@@ -1950,7 +1950,7 @@ export interface APIUnfurledMediaItem {
 
 export interface APISectionComponent extends APIBaseComponent<ComponentType.Section> {
 	components: APITextDisplayComponent[];
-	accessory: APIButtonComponent | APIThumbnailComponent;
+	accessory: APISectionAccessoryComponent;
 }
 
 export interface APITextDisplayComponent extends APIBaseComponent<ComponentType.TextDisplay> {
@@ -2064,7 +2064,10 @@ export enum ChannelFlags {
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageComponent = APIMessageActionRowComponent | APIMessageTopLevelComponent | APIThumbnailComponent;
+export type APIMessageComponent =
+	| APIMessageActionRowComponent
+	| APIMessageTopLevelComponent
+	| APISectionAccessoryComponent;
 export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
 
 export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
@@ -2076,6 +2079,8 @@ export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuCom
 
 // Modal components
 export type APIModalActionRowComponent = APITextInputComponent;
+
+export type APISectionAccessoryComponent = APIButtonComponent | APIThumbnailComponent;
 
 export type APIContainerInnerComponent =
 	| APIActionRowComponent<APIMessageActionRowComponent>

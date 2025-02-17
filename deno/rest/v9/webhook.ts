@@ -189,6 +189,13 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	 * Available only if the {@link RESTPostAPIWebhookWithTokenJSONBody.thread_name} JSON body property is not specified
 	 */
 	thread_id?: Snowflake;
+	/**
+	 * Whether to allow sending (non-interactive) components for non-application-owned webhooks
+	 * (defaults to `false`; ignored for application-owned webhooks)
+	 *
+	 * @default false
+	 */
+	with_components?: boolean;
 }
 
 /**
@@ -286,6 +293,11 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 			payload_json?: string | undefined;
 	  })
 	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIWebhookWithTokenMessageJSONBody);
+
+/**
+ * https://discord.com/developers/docs/resources/webhook#edit-webhook-message-query-string-params
+ */
+export type RESTPatchAPIWebhookWithTokenMessageQuery = Exclude<RESTPostAPIWebhookWithTokenQuery, 'wait'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
