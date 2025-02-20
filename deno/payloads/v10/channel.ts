@@ -1636,7 +1636,7 @@ export enum ComponentType {
 /**
  * https://discord.com/developers/docs/interactions/message-components#action-rows
  */
-export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
+export interface APIActionRowComponent<T extends APIComponentInActionRow>
 	extends APIBaseComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
@@ -1994,7 +1994,7 @@ export interface APIFileComponent extends APIBaseComponent<ComponentType.File> {
 export interface APIContainerComponent extends APIBaseComponent<ComponentType.Container> {
 	accent_color?: number | null;
 	spoiler?: boolean;
-	components: APIContainerInnerComponent[];
+	components: APIComponentInContainer[];
 }
 
 /**
@@ -2062,35 +2062,57 @@ export enum ChannelFlags {
 }
 
 /**
+ * All components that can appear in messages.
+ *
+ * For more specific sets, see {@link APIMessageTopLevelComponent}, {@link APIComponentInMessageActionRow}, {@link APIComponentInContainer}, and {@link APISectionAccessoryComponent}
+ *
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
 export type APIMessageComponent =
-	| APIMessageActionRowComponent
-	| APIMessageTopLevelComponent
-	| APISectionAccessoryComponent;
-export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
-
-export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
+	| APIActionRowComponent<APIComponentInMessageActionRow>
+	| APIButtonComponent
+	| APIContainerComponent
+	| APIFileComponent
+	| APIMediaGalleryComponent
+	| APISectionComponent
+	| APISelectMenuComponent
+	| APISeparatorComponent
+	| APITextDisplayComponent
+	| APIThumbnailComponent;
 
 /**
  * https://discord.com/developers/docs/interactions/message-components#message-components
  */
-export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuComponent;
-
-// Modal components
-export type APIModalActionRowComponent = APITextInputComponent;
-
-export type APISectionAccessoryComponent = APIButtonComponent | APIThumbnailComponent;
-
-export type APIContainerInnerComponent =
-	| APIActionRowComponent<APIMessageActionRowComponent>
+export type APIMessageTopLevelComponent =
+	| APIActionRowComponent<APIComponentInMessageActionRow>
+	| APIContainerComponent
 	| APIFileComponent
 	| APIMediaGalleryComponent
 	| APISectionComponent
 	| APISeparatorComponent
 	| APITextDisplayComponent;
 
-export type APIMessageTopLevelComponent = APIContainerComponent | APIContainerInnerComponent;
+export type APIModalComponent = APIActionRowComponent<APIComponentInModalActionRow> | APIComponentInModalActionRow;
+
+export type APIComponentInActionRow = APIComponentInMessageActionRow | APIComponentInModalActionRow;
+
+/**
+ * https://discord.com/developers/docs/interactions/message-components#message-components
+ */
+export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
+
+// Modal components
+export type APIComponentInModalActionRow = APITextInputComponent;
+
+export type APISectionAccessoryComponent = APIButtonComponent | APIThumbnailComponent;
+
+export type APIComponentInContainer =
+	| APIActionRowComponent<APIComponentInMessageActionRow>
+	| APIFileComponent
+	| APIMediaGalleryComponent
+	| APISectionComponent
+	| APISeparatorComponent
+	| APITextDisplayComponent;
 
 export type APIMessageSnapshotFields = Pick<
 	APIMessage,
