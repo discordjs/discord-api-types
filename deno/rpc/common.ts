@@ -2,6 +2,21 @@ import type { Snowflake } from '../globals.ts';
 import type { APIMessage, APIUser } from '../v10.ts';
 
 /**
+ * @unstable the ping object for the `VOICE_CONNECTION_STATUS` dispatched `pings` field,
+ * but discord's documentation incorrectly documents it as an 'array of integers'.
+ */
+export interface RPCVoiceConnectionStatusPing {
+	/**
+	 * the time the ping was sent
+	 */
+	time: number;
+	/**
+	 * the latency of the ping (in ms)
+	 */
+	value: number;
+}
+
+/**
  * @unstable
  */
 export interface RPCAPIMessageParsedContentOriginalMatch {
@@ -49,14 +64,6 @@ export interface RPCAPIMessage extends Omit<APIMessage, 'channel_id'> {
 	 * the content of the message parsed into an array
 	 */
 	content_parsed: (RPCAPIMessageParsedContentMention | RPCAPIMessageParsedContentText)[];
-}
-
-/**
- * @unstable
- */
-export enum RPCCaptureShortcutAction {
-	Start = 'START',
-	Stop = 'STOP',
 }
 
 /**
@@ -257,6 +264,14 @@ export interface RPCVoiceSettingsMode {
 	 * threshold for voice activity (in dB) (min: -100.0, max: 0.0)
 	 */
 	threshold: number;
+	/**
+	 * shortcut key combos for PTT
+	 */
+	shortcut: RPCVoiceShortcutKeyCombo;
+	/**
+	 * the PTT release delay (in ms) (min: 0, max: 2000)
+	 */
+	delay: number;
 }
 
 export enum VoiceConnectionStates {

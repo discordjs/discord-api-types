@@ -10,11 +10,12 @@ import type {
 	LobbyType,
 	OAuth2Scopes,
 	Relationship,
-	RPCCaptureShortcutAction,
+	RPCAPIMessage,
 	RPCCertifiedDevice,
 	RPCErrorCodes,
 	RPCLobbyMetadata,
 	RPCOAuth2Application,
+	RPCVoiceConnectionStatusPing,
 	RPCVoiceSettingsInput,
 	RPCVoiceSettingsMode,
 	RPCVoiceSettingsOutput,
@@ -54,7 +55,6 @@ export enum RPCCommands {
 	 * @unstable
 	 */
 	BrowserHandoff = 'BROWSER_HANDOFF',
-	CaptureShortcut = 'CAPTURE_SHORTCUT',
 	/**
 	 * 	used to reject a Rich Presence Ask to Join request
 	 */
@@ -539,11 +539,16 @@ export interface RPCGetSelectedVoiceChannelArgs {}
 /**
  * @unstable
  */
-export interface RPCGetUserResultData {}
+export type RPCGetUserResultData = APIUser;
 /**
  * @unstable
  */
-export interface RPCGetUserArgs {}
+export interface RPCGetUserArgs {
+	/**
+	 * @unstable id of the user to get
+	 */
+	id: Snowflake;
+}
 
 /**
  * https://discord.com/developers/docs/topics/rpc#getvoicesettings-get-voice-settings-response-structure
@@ -657,7 +662,6 @@ export type RPCSubscribeArgs =
 	| RPCSubscribeActivityJoinArgs
 	| RPCSubscribeActivityJoinRequestArgs
 	| RPCSubscribeActivitySpectateArgs
-	| RPCSubscribeCaptureShortcutChangeArgs
 	| RPCSubscribeChannelCreateArgs
 	| RPCSubscribeCurrentUserUpdateArgs
 	| RPCSubscribeEntitlementCreateArgs
@@ -740,17 +744,6 @@ export interface RPCBrowserHandoffResultData {}
  */
 export interface RPCBrowserHandoffArgs {}
 
-/**
- * @unstable
- */
-export interface RPCCaptureShortcutResultData {}
-/**
- * @unstable
- */
-export interface RPCCaptureShortcutArgs {
-	action: RPCCaptureShortcutAction;
-}
-
 export interface RPCCloseActivityRequestResultData {}
 /**
  * https://discord.com/developers/docs/topics/rpc#closeactivityrequest-close-activity-request-argument-structure
@@ -769,7 +762,16 @@ export interface RPCConnectToLobbyResultData {}
 /**
  * @unstable
  */
-export interface RPCConnectToLobbyArgs {}
+export interface RPCConnectToLobbyArgs {
+	/**
+	 * @unstable id of the lobby to connect to
+	 */
+	id: Snowflake;
+	/**
+	 * @unstable secret for the lobby
+	 */
+	secret: string;
+}
 
 /**
  * @unstable
@@ -873,11 +875,33 @@ export interface RPCGetEntitlementsArgs {}
 /**
  * @unstable
  */
-export interface RPCGetImageResultData {}
+export interface RPCGetImageResultData {
+	/**
+	 * @unstable base64 image data
+	 */
+	data_url: string;
+}
 /**
  * @unstable
  */
-export interface RPCGetImageArgs {}
+export interface RPCGetImageArgs {
+	/**
+	 * @unstable image type
+	 */
+	type: 'user';
+	/**
+	 * @unstable id of the image
+	 */
+	id: Snowflake;
+	/**
+	 * @unstable image format
+	 */
+	format: 'jpg' | 'png' | 'webp';
+	/**
+	 * @unstable size of the image
+	 */
+	size: number;
+}
 
 /**
  * @unstable
@@ -976,7 +1000,16 @@ export interface RPCOpenOverlayActivityInviteResultData {}
 /**
  * @unstable
  */
-export interface RPCOpenOverlayActivityInviteArgs {}
+export interface RPCOpenOverlayActivityInviteArgs {
+	/**
+	 * @unstable
+	 */
+	type: 1;
+	/**
+	 * @unstable process id
+	 */
+	pid: number;
+}
 
 /**
  * @unstable
@@ -985,7 +1018,16 @@ export interface RPCOpenOverlayGuildInviteResultData {}
 /**
  * @unstable
  */
-export interface RPCOpenOverlayGuildInviteArgs {}
+export interface RPCOpenOverlayGuildInviteArgs {
+	/**
+	 * @unstable guild invite code
+	 */
+	code: string;
+	/**
+	 * @unstable process id
+	 */
+	pid: number;
+}
 
 /**
  * @unstable
@@ -994,7 +1036,12 @@ export interface RPCOpenOverlayVoiceSettingsResultData {}
 /**
  * @unstable
  */
-export interface RPCOpenOverlayVoiceSettingsArgs {}
+export interface RPCOpenOverlayVoiceSettingsArgs {
+	/**
+	 * @unstable process id
+	 */
+	pid: number;
+}
 
 /**
  * @unstable
@@ -1047,7 +1094,16 @@ export interface RPCSendToLobbyResultData {}
 /**
  * @unstable
  */
-export interface RPCSendToLobbyArgs {}
+export interface RPCSendToLobbyArgs {
+	/**
+	 * @unstable id of the lobby to send to
+	 */
+	id: Snowflake;
+	/**
+	 * @unstable data to send
+	 */
+	data: unknown;
+}
 
 export type RPCSetCertifiedDevicesResultData = null;
 /**
@@ -1103,7 +1159,12 @@ export interface RPCStartPurchaseResultData {}
 /**
  * @unstable
  */
-export interface RPCStartPurchaseArgs {}
+export interface RPCStartPurchaseArgs {
+	/**
+	 * id of the sku
+	 */
+	sku_id: Snowflake;
+}
 
 /**
  * @unstable
@@ -1120,19 +1181,19 @@ export interface RPCUpdateLobbyArgs {
 	/**
 	 * lobby type
 	 */
-	type: LobbyType;
+	type?: LobbyType;
 	/**
 	 * id of the owner of the lobby
 	 */
-	owner_id: Snowflake;
+	owner_id?: Snowflake;
 	/**
 	 * capacity of the lobby
 	 */
-	capacity: number;
+	capacity?: number;
 	/**
 	 * metadata for the lobby
 	 */
-	metadata: RPCLobbyMetadata;
+	metadata?: RPCLobbyMetadata;
 }
 
 /**
@@ -1142,7 +1203,20 @@ export interface RPCUpdateLobbyMemberResultData {}
 /**
  * @unstable
  */
-export interface RPCUpdateLobbyMemberArgs {}
+export interface RPCUpdateLobbyMemberArgs {
+	/**
+	 * @unstable id of the lobby the member is from
+	 */
+	lobby_id: Snowflake;
+	/**
+	 * @unstable id of the member to update
+	 */
+	user_id: Snowflake;
+	/**
+	 * @unstable metadata for the member
+	 */
+	metadata?: RPCLobbyMetadata;
+}
 
 /**
  * @unstable
@@ -1164,10 +1238,6 @@ export enum RPCEvents {
 	ActivityJoin = 'ACTIVITY_JOIN',
 	ActivityJoinRequest = 'ACTIVITY_JOIN_REQUEST',
 	ActivitySpectate = 'ACTIVITY_SPECTATE',
-	/**
-	 * @unstable
-	 */
-	CaptureShortcutChange = 'CAPTURE_SHORTCUT_CHANGE',
 	ChannelCreate = 'CHANNEL_CREATE',
 	CurrentUserUpdate = 'CURRENT_USER_UPDATE',
 	/**
@@ -1280,12 +1350,6 @@ export type RPCSubscribeActivityJoinRequestArgs = Record<string, never>;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeActivitySpectateArgs = Record<string, never>;
-
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeCaptureShortcutChangeArgs = Record<string, never>;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeChannelCreateArgs = Record<string, never>;
@@ -1531,16 +1595,6 @@ export interface RPCActivitySpectateDispatchData {
 }
 
 /**
- * @unstable
- */
-export interface RPCCaptureShortcutChangeDispatchData {
-	/**
-	 * the shortcut the user has pressed
-	 */
-	shortcut: string;
-}
-
-/**
  * https://discord.com/developers/docs/topics/rpc#channelcreate-channel-create-dispatch-data-structure
  */
 export interface RPCChannelCreateDispatchData {
@@ -1713,7 +1767,7 @@ export interface RPCNotificationCreateDispatchData {
 	/**
 	 * message that generated this notification
 	 */
-	message: APIMessage;
+	message: RPCAPIMessage;
 	/**
 	 * icon url of the notification
 	 */
@@ -1787,6 +1841,11 @@ export interface RPCSpeakingStartDispatchData {
 	 * id of user who started speaking
 	 */
 	user_id: Snowflake;
+	/**
+	 * @unstable
+	 * id of channel where user is speaking
+	 */
+	channel_id: Snowflake;
 }
 
 /**
@@ -1797,6 +1856,11 @@ export interface RPCSpeakingStopDispatchData {
 	 * id of user who stopped speaking
 	 */
 	user_id: Snowflake;
+	/**
+	 * @unstable
+	 * id of channel where user is speaking
+	 */
+	channel_id: Snowflake;
 }
 
 /**
@@ -1809,31 +1873,31 @@ export interface RPCUserAchievementUpdateDispatchData {}
  */
 export interface RPCVoiceChannelSelectDispatchData {
 	/**
-	 * id of channel (`null` if none)
+	 * id of channel (`null` if leaving channel)
 	 */
 	channel_id: Snowflake | null;
 	/**
-	 * id of guild (`null` if none)
+	 * id of guild (`null` if not in a guild. field is omitted when leaving any voice channel)
 	 */
-	guild_id: Snowflake | null;
+	guild_id?: Snowflake | null;
 }
 
 /**
  * https://discord.com/developers/docs/topics/rpc#voiceconnectionstatus-voice-connection-status-dispatch-data-structure
  */
-export interface RPCVoiceConnectionStatusDispatchData {
+export interface RPCVoiceConnectionStatusDispatchData<State extends VoiceConnectionStates = VoiceConnectionStates> {
 	/**
 	 * voice connection states
 	 */
-	state: VoiceConnectionStates;
+	state: State;
 	/**
 	 * hostname of the connected voice server
 	 */
-	hostname: string;
+	hostname: State extends VoiceConnectionStates.AwaitingEndpoint ? null : string;
 	/**
-	 * last 20 pings (in ms)
+	 * all of the accumulated pings since connection
 	 */
-	pings: number[];
+	pings: RPCVoiceConnectionStatusPing[];
 	/**
 	 * average ping (in ms)
 	 */
@@ -1849,7 +1913,28 @@ export type RPCVoiceSettingsUpdateDispatchData = RPCGetVoiceSettingsResultData;
 /**
  * @unstable
  */
-export type RPCVoiceSettingsUpdate2DispatchData = RPCGetVoiceSettingsResultData;
+export interface RPCVoiceSettingsUpdate2DispatchData {
+	/**
+	 * @unstable
+	 */
+	input_mode: Pick<RPCVoiceSettingsMode, 'shortcut' | 'type'>;
+	/**
+	 * @unstable
+	 */
+	local_mutes: unknown[];
+	/**
+	 * @unstable
+	 */
+	local_volumes: unknown;
+	/**
+	 * @unstable
+	 */
+	self_mute: boolean;
+	/**
+	 * @unstable
+	 */
+	self_deaf: boolean;
+}
 
 /**
  * https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-example-voice-state-dispatch-payload
@@ -1858,7 +1943,7 @@ export interface RPCVoiceStateCreateDispatchData {
 	/**
 	 * voice state of user
 	 */
-	voice_state: APIVoiceState;
+	voice_state: Pick<APIVoiceState, 'deaf' | 'mute' | 'self_deaf' | 'self_mute' | 'suppress'>;
 	/**
 	 * user who joined voice channel
 	 */
@@ -2009,7 +2094,6 @@ export type RPCCommandSubscribePayload =
 	| RPCSubscribeActivityJoin
 	| RPCSubscribeActivityJoinRequest
 	| RPCSubscribeActivitySpectate
-	| RPCSubscribeCaptureShortcutChange
 	| RPCSubscribeChannelCreate
 	| RPCSubscribeCurrentUserUpdate
 	| RPCSubscribeEntitlementCreate
@@ -2059,10 +2143,6 @@ export interface RPCCommandBraintreePopupBridgeCallbackPayload
 
 export interface RPCCommandBrowserPayload extends RPCCommandMessage<RPCCommands.BrowserHandoff> {
 	args: RPCBrowserHandoffArgs;
-}
-
-export interface RPCCommandCaptureShortcutPayload extends RPCCommandMessage<RPCCommands.CaptureShortcut> {
-	args: RPCCaptureShortcutArgs;
 }
 
 export interface RPCCommandCloseActivityJoinRequestPayload extends RPCCommandMessage<RPCCommands.CloseActivityRequest> {
@@ -2256,11 +2336,6 @@ export interface RPCSubscribeActivityJoinRequest extends RPCSubscribeMessage<RPC
 export interface RPCSubscribeActivitySpectate extends RPCSubscribeMessage<RPCEvents.ActivitySpectate> {
 	args: RPCSubscribeActivitySpectateArgs;
 	evt: RPCEvents.ActivitySpectate;
-}
-
-export interface RPCSubscribeCaptureShortcutChange extends RPCSubscribeMessage<RPCEvents.CaptureShortcutChange> {
-	args: RPCSubscribeCaptureShortcutChangeArgs;
-	evt: RPCEvents.CaptureShortcutChange;
 }
 
 export interface RPCSubscribeChannelCreate extends RPCSubscribeMessage<RPCEvents.ChannelCreate> {
@@ -2491,10 +2566,6 @@ export interface RPCBrowserResult extends RPCCommandMessage<RPCCommands.BrowserH
 	data: RPCBrowserHandoffResultData;
 }
 
-export interface RPCCaptureShortcutResult extends RPCCommandMessage<RPCCommands.CaptureShortcut> {
-	data: RPCCaptureShortcutResultData;
-}
-
 export interface RPCCloseActivityRequestResult extends RPCCommandMessage<RPCCommands.CloseActivityRequest> {
 	data: RPCCloseActivityRequestResultData;
 }
@@ -2670,7 +2741,6 @@ export type RPCCommandsResult =
 	| RPCAuthorizeResult
 	| RPCBraintreePopupBridgeCallbackResult
 	| RPCBrowserResult
-	| RPCCaptureShortcutResult
 	| RPCCloseActivityRequestResult
 	| RPCConnectionsCallbackResult
 	| RPCConnectToLobbyResult
@@ -2744,11 +2814,6 @@ export interface RPCActivityJoinRequestDispatch extends BaseRPCMessage<RPCComman
 export interface RPCActivitySpectateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
 	data: RPCActivitySpectateDispatchData;
 	evt: RPCEvents.ActivitySpectate;
-}
-
-export interface RPCCaptureShortcutChangeDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCCaptureShortcutChangeDispatchData;
-	evt: RPCEvents.CaptureShortcutChange;
 }
 
 export interface RPCChannelCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
@@ -2923,7 +2988,6 @@ export type RPCEventsDispatch =
 	| RPCActivityJoinDispatch
 	| RPCActivityJoinRequestDispatch
 	| RPCActivitySpectateDispatch
-	| RPCCaptureShortcutChangeDispatch
 	| RPCChannelCreateDispatch
 	| RPCCurrentUserUpdateDispatch
 	| RPCEntitlementCreateDispatch
@@ -2967,7 +3031,6 @@ export type RPCMessagePayload =
 	| RPCCommandAuthorizePayload
 	| RPCCommandBraintreePopupBridgeCallbackPayload
 	| RPCCommandBrowserPayload
-	| RPCCommandCaptureShortcutPayload
 	| RPCCommandCloseActivityJoinRequestPayload
 	| RPCCommandConnectionsCallbackPayload
 	| RPCCommandConnectToLobbyPayload
