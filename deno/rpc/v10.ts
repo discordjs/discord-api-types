@@ -170,10 +170,6 @@ export enum RPCCommands {
 	 */
 	Overlay = 'OVERLAY',
 	/**
-	 * @unstable
-	 */
-	SearchLobbies = 'SEARCH_LOBBIES',
-	/**
 	 * Used to join or leave a text channel, group dm, or dm
 	 */
 	SelectTextChannel = 'SELECT_TEXT_CHANNEL',
@@ -959,15 +955,6 @@ export interface RPCOverlayResultData {}
  * @unstable
  */
 export interface RPCOverlayArgs {}
-
-/**
- * @unstable
- */
-export interface RPCSearchLobbiesResultData {}
-/**
- * @unstable
- */
-export interface RPCSearchLobbiesArgs {}
 
 export interface RPCSendActivityJoinInviteResultData {}
 /**
@@ -1948,10 +1935,6 @@ export interface RPCCommandOverlayPayload extends RPCCommandMessage<RPCCommands.
 	args: RPCOverlayArgs;
 }
 
-export interface RPCCommandSearchLobbiesPayload extends RPCCommandMessage<RPCCommands.SearchLobbies> {
-	args: RPCSearchLobbiesArgs;
-}
-
 export interface RPCCommandSendActivityJoinInvitePayload extends RPCCommandMessage<RPCCommands.SendActivityJoinInvite> {
 	args: RPCSendActivityJoinInviteArgs;
 }
@@ -2285,10 +2268,6 @@ export interface RPCOverlayResult extends RPCCommandMessage<RPCCommands.Overlay>
 	data: RPCOverlayResultData;
 }
 
-export interface RPCSearchLobbiesResult extends RPCCommandMessage<RPCCommands.SearchLobbies> {
-	data: RPCSearchLobbiesResultData;
-}
-
 export interface RPCSendActivityJoinInviteResult extends RPCCommandMessage<RPCCommands.SendActivityJoinInvite> {
 	data: RPCSendActivityJoinInviteResultData;
 }
@@ -2356,7 +2335,6 @@ export type RPCCommandsResult =
 	| RPCOpenOverlayGuildInviteResult
 	| RPCOpenOverlayVoiceSettingsResult
 	| RPCOverlayResult
-	| RPCSearchLobbiesResult
 	| RPCSelectTextChannelResult
 	| RPCSelectVoiceChannelResult
 	| RPCSendActivityJoinInviteResult
@@ -2593,7 +2571,6 @@ export type RPCMessagePayload =
 	| RPCCommandOpenOverlayGuildInvitePayload
 	| RPCCommandOpenOverlayVoiceSettingsPayload
 	| RPCCommandOverlayPayload
-	| RPCCommandSearchLobbiesPayload
 	| RPCCommandSelectTextChannelPayload
 	| RPCCommandSelectVoiceChannelPayload
 	| RPCCommandSendActivityJoinInvitePayload
