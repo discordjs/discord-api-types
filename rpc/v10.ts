@@ -246,7 +246,7 @@ export interface RPCAuthorizeArgs {
 	/**
 	 * 	username to create a guest account with if the user does not have Discord
 	 */
-	username: string;
+	username?: string;
 }
 
 /**
