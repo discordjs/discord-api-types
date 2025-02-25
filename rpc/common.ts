@@ -1,17 +1,17 @@
 import type { Snowflake } from '../globals';
-import type { APIMessage, APIUser } from '../v10';
+import type { APIMessage, APIUser, RPCVoiceConnectionStatusDispatchData } from '../v10';
 
 /**
- * @unstable the ping object for the `VOICE_CONNECTION_STATUS` dispatched `pings` field,
+ * @unstable The ping object for the `VOICE_CONNECTION_STATUS` dispatched {@link RPCVoiceConnectionStatusDispatchData.pings} field,
  * but discord's documentation incorrectly documents it as an 'array of integers'.
  */
 export interface RPCVoiceConnectionStatusPing {
 	/**
-	 * the time the ping was sent
+	 * The time the ping was sent
 	 */
 	time: number;
 	/**
-	 * the latency of the ping (in ms)
+	 * The latency of the ping in milliseconds
 	 */
 	value: number;
 }
@@ -42,9 +42,9 @@ export interface RPCAPIMessageParsedContentMention {
 	channelId: Snowflake;
 	guildId: Snowflake;
 	/**
-	 * same as `userId`
+	 * Same as {@link RPCAPIMessageParsedContentMention.userId}
 	 */
-	parsedUserId: Snowflake;
+	parsedUserId: RPCAPIMessageParsedContentMention['userId'];
 	content: Omit<RPCAPIMessageParsedContentText, 'originalMatch'>;
 }
 
@@ -53,15 +53,15 @@ export interface RPCAPIMessageParsedContentMention {
  */
 export interface RPCAPIMessage extends Omit<APIMessage, 'channel_id'> {
 	/**
-	 * the nickname of the user who sent the message
+	 * The nickname of the user who sent the message
 	 */
 	nick?: string;
 	/**
-	 * the color of the author's name
+	 * The color of the author's name
 	 */
 	author_color?: number;
 	/**
-	 * the content of the message parsed into an array
+	 * The content of the message parsed into an array
 	 */
 	content_parsed: (RPCAPIMessageParsedContentMention | RPCAPIMessageParsedContentText)[];
 }
@@ -83,7 +83,7 @@ export interface RPCOAuth2Application {
 	 */
 	id: Snowflake;
 	/**
-	 * Array of rpc origin urls
+	 * Array of RPC origin urls
 	 */
 	rpc_origins: string[];
 	/**
@@ -94,22 +94,22 @@ export interface RPCOAuth2Application {
 
 export interface RPCDeviceVendor {
 	/**
-	 * name of the vendor
+	 * Name of the vendor
 	 */
 	name: string;
 	/**
-	 * url for the vendor
+	 * Url for the vendor
 	 */
 	url: string;
 }
 
 export interface RPCDeviceModel {
 	/**
-	 * name of the model
+	 * Name of the model
 	 */
 	name: string;
 	/**
-	 * url for the model
+	 * Url for the model
 	 */
 	url: string;
 }
@@ -122,19 +122,19 @@ export enum RPCDeviceType {
 
 export interface BaseRPCCertifiedDevice<Type extends RPCDeviceType> {
 	/**
-	 * the type of device
+	 * The type of device
 	 */
 	type: Type;
 	/**
-	 * the device's Windows UUID
+	 * The device's Windows UUID
 	 */
 	id: string;
 	/**
-	 * the hardware vendor
+	 * The hardware vendor
 	 */
 	vendor: RPCDeviceVendor;
 	/**
-	 * the model of the product
+	 * The model of the product
 	 */
 	model: RPCDeviceModel;
 	/**
@@ -150,19 +150,19 @@ export type RPCCertifiedDevice<Type extends RPCDeviceType = RPCDeviceType> =
 	Type extends RPCDeviceType.AudioInput ?
 		BaseRPCCertifiedDevice<Type> & {
 			/**
-			 * if the device's native echo cancellation is enabled
+			 * If the device's native echo cancellation is enabled
 			 */
 			echo_cancellation: boolean;
 			/**
-			 * if the device's native noise suppression is enabled
+			 * If the device's native noise suppression is enabled
 			 */
 			noise_suppression: boolean;
 			/**
-			 * if the device's native automatic gain control is enabled
+			 * If the device's native automatic gain control is enabled
 			 */
 			automatic_gain_control: boolean;
 			/**
-			 * if the device is hardware muted
+			 * If the device is hardware muted
 			 */
 			hardware_mute: boolean;
 		}
@@ -170,11 +170,11 @@ export type RPCCertifiedDevice<Type extends RPCDeviceType = RPCDeviceType> =
 
 export interface RPCVoiceAvailableDevice {
 	/**
-	 * device id
+	 * Device id
 	 */
 	id: string;
 	/**
-	 * device name
+	 * Device name
 	 */
 	name: string;
 }
@@ -184,15 +184,15 @@ export interface RPCVoiceAvailableDevice {
  */
 export interface RPCVoiceSettingsInput {
 	/**
-	 * device id
+	 * Device id
 	 */
 	device_id: string;
 	/**
-	 * input voice level (min: 0.0, max: 100.0)
+	 * Input voice level (min: 0.0, max: 100.0)
 	 */
 	volume: number;
 	/**
-	 * array of read-only device objects containing `id` and `name` string keys
+	 * Array of read-only device objects containing `id` and `name` string keys
 	 */
 	available_devices: RPCVoiceAvailableDevice[];
 }
@@ -202,15 +202,15 @@ export interface RPCVoiceSettingsInput {
  */
 export interface RPCVoiceSettingsOutput {
 	/**
-	 * device id
+	 * Device id
 	 */
 	device_id: string;
 	/**
-	 * input voice level (min: 0.0, max: 200.0)
+	 * Input voice level (min: 0.0, max: 200.0)
 	 */
 	volume: number;
 	/**
-	 * array of read-only device objects containing `id` and `name` string keys
+	 * Array of read-only device objects containing `id` and `name` string keys
 	 */
 	available_devices: RPCVoiceAvailableDevice[];
 }
@@ -235,15 +235,15 @@ export enum RPCVoiceShortcutKeyComboKeyType {
  */
 export interface RPCVoiceShortcutKeyCombo {
 	/**
-	 * type of key
+	 * Type of key
 	 */
 	type: RPCVoiceShortcutKeyComboKeyType;
 	/**
-	 * key code
+	 * Key code
 	 */
 	code: number;
 	/**
-	 * key name
+	 * Key name
 	 */
 	name: string;
 }
@@ -253,23 +253,23 @@ export interface RPCVoiceShortcutKeyCombo {
  */
 export interface RPCVoiceSettingsMode {
 	/**
-	 * voice setting mode type (can be `PUSH_TO_TALK` or `VOICE_ACTIVITY`)
+	 * Voice setting mode type (can be `PUSH_TO_TALK` or `VOICE_ACTIVITY`)
 	 */
 	type: RPCVoiceSettingsModeType;
 	/**
-	 * voice activity threshold automatically sets its threshold
+	 * Voice activity threshold automatically sets its threshold
 	 */
 	auto_threshold: boolean;
 	/**
-	 * threshold for voice activity (in dB) (min: -100.0, max: 0.0)
+	 * Threshold for voice activity (in dB) (min: -100.0, max: 0.0)
 	 */
 	threshold: number;
 	/**
-	 * shortcut key combos for PTT
+	 * Shortcut key combos for PTT
 	 */
 	shortcut: RPCVoiceShortcutKeyCombo;
 	/**
-	 * the PTT release delay (in ms) (min: 0, max: 2000)
+	 * The PTT release delay (in ms) (min: 0, max: 2000)
 	 */
 	delay: number;
 }
@@ -334,15 +334,15 @@ export enum RelationshipType {
  */
 export interface Relationship {
 	/**
-	 * the id of the user
+	 * The id of the user
 	 */
 	id: Snowflake;
 	/**
-	 * relationship type
+	 * Relationship type
 	 */
 	type: RelationshipType;
 	/**
-	 * user
+	 * User
 	 */
 	user: APIUser;
 }

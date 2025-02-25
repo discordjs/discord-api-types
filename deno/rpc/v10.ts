@@ -240,7 +240,7 @@ export interface RPCAuthorizeArgs {
 	 */
 	client_id: string;
 	/**
-	 * scopes to authorize
+	 * Scopes to authorize
 	 */
 	scopes: OAuth2Scopes[];
 	/**
@@ -424,7 +424,7 @@ export interface RPCVoicePan {
 /**
  * https://discord.com/developers/docs/topics/rpc#setuservoicesettings
  *
- * @note Discord only supports a single modifier of voice settings at a time over RPC. If an app changes voice settings, it will lock voice settings so that other apps connected simultaneously lose the ability to change voice settings. Settings reset to what they were before being changed after the controlling app disconnects. When an app that has previously set voice settings connects, the client will swap to that app's configured voice settings and lock voice settings again.
+ * @remarks Discord only supports a single modifier of voice settings at a time over RPC. If an app changes voice settings, it will lock voice settings so that other apps connected simultaneously lose the ability to change voice settings. Settings reset to what they were before being changed after the controlling app disconnects. When an app that has previously set voice settings connects, the client will swap to that app's configured voice settings and lock voice settings again.
  */
 export interface RPCSetUserVoiceSettingsArgs {
 	/**
@@ -498,7 +498,7 @@ export type RPCGetUserResultData = APIUser;
  */
 export interface RPCGetUserArgs {
 	/**
-	 * @unstable id of the user to get
+	 * @unstable Id of the user to get
 	 */
 	id: Snowflake;
 }
@@ -508,43 +508,43 @@ export interface RPCGetUserArgs {
  */
 export interface RPCGetVoiceSettingsResultData {
 	/**
-	 * input settings
+	 * Input settings
 	 */
 	input: RPCVoiceSettingsInput;
 	/**
-	 * output settings
+	 * Output settings
 	 */
 	output: RPCVoiceSettingsOutput;
 	/**
-	 * voice mode settings
+	 * Voice mode settings
 	 */
 	mode: RPCVoiceSettingsMode;
 	/**
-	 * state of automatic gain control
+	 * State of automatic gain control
 	 */
 	automatic_gain_control: boolean;
 	/**
-	 * state of echo cancellation
+	 * State of echo cancellation
 	 */
 	echo_cancellation: boolean;
 	/**
-	 * state of noise suppression
+	 * State of noise suppression
 	 */
 	noise_suppression: boolean;
 	/**
-	 * state of voice quality of service
+	 * State of voice quality of service
 	 */
 	qos: boolean;
 	/**
-	 * state of silence warning notice
+	 * State of silence warning notice
 	 */
 	silence_warning: boolean;
 	/**
-	 * state of self-deafen
+	 * State of self-deafen
 	 */
 	deaf: boolean;
 	/**
-	 * state of self-mute
+	 * State of self-mute
 	 */
 	mute: boolean;
 }
@@ -552,7 +552,7 @@ export interface RPCGetVoiceSettingsResultData {
 export interface RPCGetVoiceSettingsArgs {}
 
 /**
- * Returns the [Get Channel](https://discord.com/developers/docs/topics/rpc#getchannel) response, or `null` if none.
+ * Returns the {@link https://discord.com/developers/docs/topics/rpc#getchannel | Get Channel} response, or `null` if none.
  */
 export type RPCSelectTextChannelResultData = RPCGetChannelResultData | null;
 /**
@@ -560,11 +560,11 @@ export type RPCSelectTextChannelResultData = RPCGetChannelResultData | null;
  */
 export interface RPCSelectTextChannelArgs {
 	/**
-	 * channel id to join (or `null` to leave)
+	 * Channel id to join (or `null` to leave)
 	 */
 	channel_id: Snowflake | null;
 	/**
-	 * asynchronously join channel with time to wait before timing out
+	 * Asynchronously join channel with time to wait before timing out
 	 */
 	timeout?: number;
 }
@@ -576,11 +576,11 @@ export interface RPCSetActivityResultData {}
  */
 export interface RPCSetActivityArgs {
 	/**
-	 * the application's process id
+	 * The application's process id
 	 */
 	pid: number;
 	/**
-	 * the rich presence to assign to the user
+	 * The rich presence to assign to the user
 	 */
 	activity?: Partial<
 		Omit<GatewayActivity, 'created_at' | 'id' | 'timestamps'> & Partial<Pick<GatewayActivity, 'timestamps'>>
@@ -594,7 +594,7 @@ export type RPCSetVoiceSettingsResultData = RPCGetVoiceSettingsResultData;
 /**
  * https://discord.com/developers/docs/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure
  *
- * @note Discord only supports a single modifier of voice settings at a time over RPC. If an app changes voice settings, it will lock voice settings so that other apps connected simultaneously lose the ability to change voice settings. Settings reset to what they were before being changed after the controlling app disconnects. When an app that has previously set voice settings connects, the client will swap to that app's configured voice settings and lock voice settings again.
+ * @remarks Discord only supports a single modifier of voice settings at a time over RPC. If an app changes voice settings, it will lock voice settings so that other apps connected simultaneously lose the ability to change voice settings. Settings reset to what they were before being changed after the controlling app disconnects. When an app that has previously set voice settings connects, the client will swap to that app's configured voice settings and lock voice settings again.
  */
 export type RPCSetVoiceSettingsArgs = RPCGetVoiceSettingsResultData;
 
@@ -603,7 +603,7 @@ export type RPCSetVoiceSettingsArgs = RPCGetVoiceSettingsResultData;
  */
 export interface RPCSubscribeResultData {
 	/**
-	 * event name now subscribed to
+	 * Event name now subscribed to
 	 */
 	evt: RPCEvents;
 }
@@ -645,7 +645,7 @@ export type RPCSubscribeArgs =
  */
 export interface RPCUnsubscribeResultData {
 	/**
-	 * event name now unsubscribed from
+	 * Event name now unsubscribed from
 	 */
 	evt: RPCEvents;
 }
@@ -663,23 +663,23 @@ export interface RPCAcceptActivityInviteResultData {}
  */
 export interface RPCAcceptActivityInviteArgs {
 	/**
-	 * @unstable invite type
+	 * @unstable Invite type
 	 */
 	type: 1;
 	/**
-	 * @unstable id of the user who sent the invite
+	 * @unstable Id of the user who sent the invite
 	 */
 	user_id: Snowflake;
 	/**
-	 * @unstable id of the session
+	 * @unstable Id of the session
 	 */
 	session_id: Snowflake;
 	/**
-	 * @unstable id of the channel that the invite comes from
+	 * @unstable Id of the channel that the invite comes from
 	 */
 	channel_id: Snowflake;
 	/**
-	 * @unstable id of the message that the invite comes from
+	 * @unstable Id of the message that the invite comes from
 	 */
 	message_id: Snowflake;
 }
@@ -693,15 +693,15 @@ export interface RPCActivityInviteUserResultData {}
  */
 export interface RPCActivityInviteUserArgs {
 	/**
-	 * @unstable invite type
+	 * @unstable Invite type
 	 */
 	type: 1;
 	/**
-	 * @unstable id of the user to invite
+	 * @unstable Id of the user to invite
 	 */
 	user_id: Snowflake;
 	/**
-	 * @unstable process id
+	 * @unstable Process id
 	 */
 	pid: number;
 }
@@ -730,7 +730,7 @@ export interface RPCCloseActivityJoinRequestResultData {}
  */
 export interface RPCCloseActivityJoinRequestArgs {
 	/**
-	 * the id of the requesting user
+	 * The id of the requesting user
 	 */
 	user_id: Snowflake;
 }
@@ -745,40 +745,40 @@ export interface RPCConnectionsCallbackResultData {}
 export interface RPCConnectionsCallbackArgs {}
 
 /**
- * @unstable channel invite
+ * @unstable Channel invite
  */
 export type RPCCreateChannelInviteResultData = APIInvite & {
 	/**
-	 * @unstable timestamp of when the invite was created
+	 * @unstable Timestamp of when the invite was created
 	 */
 	created_at: string;
 	/**
-	 * @unstable max age of the invite
+	 * @unstable Max age of the invite
 	 */
 	max_age: number;
 	/**
-	 * @unstable max uses of the invite
+	 * @unstable Max uses of the invite
 	 */
 	max_uses: number;
 	/**
-	 * @unstable whether the invite is temporary
+	 * @unstable Whether the invite is temporary
 	 */
 	temporary: boolean;
 	/**
-	 * @unstable uses of the invite
+	 * @unstable Uses of the invite
 	 */
 	uses: number;
 	/**
-	 * @unstable id of the guild
+	 * @unstable Id of the guild
 	 */
 	guild_id: Snowflake;
 };
 /**
- * @unstable arguments to create channel invite
+ * @unstable Arguments to create channel invite
  */
 export interface RPCCreateChannelInviteArgs {
 	/**
-	 * id of the channel to create an invite for
+	 * Id of the channel to create an invite for
 	 */
 	channel_id: Snowflake;
 }
@@ -824,7 +824,7 @@ export interface RPCGetEntitlementsArgs {}
  */
 export interface RPCGetImageResultData {
 	/**
-	 * @unstable base64 image data
+	 * @unstable Base64 image data
 	 */
 	data_url: string;
 }
@@ -833,19 +833,19 @@ export interface RPCGetImageResultData {
  */
 export interface RPCGetImageArgs {
 	/**
-	 * @unstable image type
+	 * @unstable Image type
 	 */
 	type: 'user';
 	/**
-	 * @unstable id of the image
+	 * @unstable Id of the image
 	 */
 	id: Snowflake;
 	/**
-	 * @unstable image format
+	 * @unstable Image format
 	 */
 	format: 'jpg' | 'png' | 'webp';
 	/**
-	 * @unstable size of the image
+	 * @unstable Size of the image
 	 */
 	size: 1_024 | 16 | 32 | 64 | 128 | 256 | 512;
 }
@@ -944,7 +944,7 @@ export interface RPCOpenOverlayActivityInviteArgs {
 	 */
 	type: 1;
 	/**
-	 * @unstable process id
+	 * @unstable Process id
 	 */
 	pid: number;
 }
@@ -958,11 +958,11 @@ export interface RPCOpenOverlayGuildInviteResultData {}
  */
 export interface RPCOpenOverlayGuildInviteArgs {
 	/**
-	 * @unstable guild invite code
+	 * @unstable Guild invite code
 	 */
 	code: string;
 	/**
-	 * @unstable process id
+	 * @unstable Process id
 	 */
 	pid: number;
 }
@@ -976,7 +976,7 @@ export interface RPCOpenOverlayVoiceSettingsResultData {}
  */
 export interface RPCOpenOverlayVoiceSettingsArgs {
 	/**
-	 * @unstable process id
+	 * @unstable Process id
 	 */
 	pid: number;
 }
@@ -996,7 +996,7 @@ export interface RPCSendActivityJoinInviteResultData {}
  */
 export interface RPCSendActivityJoinInviteArgs {
 	/**
-	 * the id of the requesting user
+	 * The id of the requesting user
 	 */
 	user_id: Snowflake;
 }
@@ -1007,7 +1007,7 @@ export type RPCSetCertifiedDevicesResultData = null;
  */
 export interface RPCSetCertifiedDevicesArgs {
 	/**
-	 * a list of devices for your manufacturer, in order of priority
+	 * A list of devices for your manufacturer, in order of priority
 	 */
 	devices: RPCCertifiedDevice[];
 }
@@ -1021,11 +1021,11 @@ export interface RPCSetOverlayLockedResultData {}
  */
 export interface RPCSetOverlayLockedArgs {
 	/**
-	 * @unstable whether the overlay is locked
+	 * @unstable Whether the overlay is locked
 	 */
 	locked: boolean;
 	/**
-	 * @unstable process id
+	 * @unstable Process id
 	 */
 	pid: number;
 }
@@ -1057,7 +1057,7 @@ export interface RPCStartPurchaseResultData {}
  */
 export interface RPCStartPurchaseArgs {
 	/**
-	 * id of the sku
+	 * Id of the sku
 	 */
 	sku_id: Snowflake;
 }
@@ -1116,7 +1116,7 @@ export enum RPCEvents {
 	 */
 	MessageUpdate = 'MESSAGE_UPDATE',
 	/**
-	 * This event requires the `rpc.notifications.read` [OAuth2 scope](https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes).
+	 * This event requires the `rpc.notifications.read` {@link https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes | OAuth2 scope}.
 	 */
 	NotificationCreate = 'NOTIFICATION_CREATE',
 	/**
@@ -1200,7 +1200,7 @@ export type RPCSubscribeGuildCreateArgs = Record<string, never>;
  */
 export interface RPCSubscribeGuildStatusArgs {
 	/**
-	 * id of guild to listen to updates of
+	 * Id of guild to listen to updates of
 	 */
 	guild_id: Snowflake;
 }
@@ -1210,7 +1210,7 @@ export interface RPCSubscribeGuildStatusArgs {
  */
 export interface RPCSubscribeMessageCreateArgs {
 	/**
-	 * id of channel to listen to updates of
+	 * Id of channel to listen to updates of
 	 */
 	channel_id: Snowflake;
 }
@@ -1220,7 +1220,7 @@ export interface RPCSubscribeMessageCreateArgs {
  */
 export interface RPCSubscribeMessageDeleteArgs {
 	/**
-	 * id of channel to listen to updates of
+	 * Id of channel to listen to updates of
 	 */
 	channel_id: Snowflake;
 }
@@ -1230,7 +1230,7 @@ export interface RPCSubscribeMessageDeleteArgs {
  */
 export interface RPCSubscribeMessageUpdateArgs {
 	/**
-	 * id of channel to listen to updates of
+	 * Id of channel to listen to updates of
 	 */
 	channel_id: Snowflake;
 }
@@ -1257,7 +1257,7 @@ export type RPCSubscribeRelationshipUpdateArgs = Record<string, never>;
  */
 export interface RPCSubscribeSpeakingStartArgs {
 	/**
-	 * id of channel to listen to updates of
+	 * Id of channel to listen to updates of
 	 */
 	channel_id: Snowflake;
 }
@@ -1267,7 +1267,7 @@ export interface RPCSubscribeSpeakingStartArgs {
  */
 export interface RPCSubscribeSpeakingStopArgs {
 	/**
-	 * id of channel to listen to updates of
+	 * Id of channel to listen to updates of
 	 */
 	channel_id: Snowflake;
 }
@@ -1301,7 +1301,7 @@ export interface RPCSubscribeVoiceStateCreateArgs {
  */
 export interface RPCSubscribeVoiceStateDeleteArgs {
 	/**
-	 * id of channel to listen to updates of
+	 * Id of channel to listen to updates of
 	 */
 	channel_id: Snowflake;
 }
@@ -1311,7 +1311,7 @@ export interface RPCSubscribeVoiceStateDeleteArgs {
  */
 export interface RPCSubscribeVoiceStateUpdateArgs {
 	/**
-	 * id of channel to listen to updates of
+	 * Id of channel to listen to updates of
 	 */
 	channel_id: Snowflake;
 }
@@ -1327,7 +1327,7 @@ export interface RPCActivityInviteDispatchData {}
  */
 export interface RPCActivityJoinDispatchData {
 	/**
-	 * the [`join_secret`](https://discord.com/developers/docs/developer-tools/game-sdk#activitysecrets-struct) for the given invite
+	 * The {@link https://discord.com/developers/docs/developer-tools/game-sdk#activitysecrets-struct | `join_secret`} for the given invite
 	 */
 	secret: string;
 }
@@ -1337,7 +1337,7 @@ export interface RPCActivityJoinDispatchData {
  */
 export interface RPCActivityJoinRequestDispatchData {
 	/**
-	 * information about the user requesting to join
+	 * Information about the user requesting to join
 	 */
 	user: APIUser;
 }
@@ -1347,7 +1347,7 @@ export interface RPCActivityJoinRequestDispatchData {
  */
 export interface RPCActivitySpectateDispatchData {
 	/**
-	 * the [`spectate_secret`](https://discord.com/developers/docs/developer-tools/game-sdk#activitysecrets-struct) for the given invite
+	 * The {@link https://discord.com/developers/docs/developer-tools/game-sdk#activitysecrets-struct | `spectate_secret`} for the given invite
 	 */
 	secret: string;
 }
@@ -1357,15 +1357,15 @@ export interface RPCActivitySpectateDispatchData {
  */
 export interface RPCChannelCreateDispatchData {
 	/**
-	 * channel id
+	 * Channel id
 	 */
 	id: Snowflake;
 	/**
-	 * name of the channel
+	 * Name of the channel
 	 */
 	name: string;
 	/**
-	 * channel type
+	 * Channel type
 	 */
 	type: ChannelType;
 }
@@ -1417,11 +1417,11 @@ export interface RPCGameSpectateDispatchData {}
  */
 export interface RPCGuildCreateDispatchData {
 	/**
-	 * guild id
+	 * Guild id
 	 */
 	id: Snowflake;
 	/**
-	 * name of the guild
+	 * Name of the guild
 	 */
 	name: string;
 }
@@ -1431,11 +1431,11 @@ export interface RPCGuildCreateDispatchData {
  */
 export interface RPCGuildStatusDispatchData {
 	/**
-	 * guild with requested id
+	 * Guild with requested id
 	 */
 	guild: APIPartialGuild;
 	/**
-	 * number of online users in guild
+	 * Number of online users in guild
 	 *
 	 * @deprecated This will always be 0
 	 */
@@ -1447,7 +1447,7 @@ export interface RPCGuildStatusDispatchData {
  */
 export interface RPCMessageCreateDispatchData {
 	/**
-	 * id of channel where message was sent
+	 * Id of channel where message was sent
 	 */
 	channel_id: Snowflake;
 	/**
@@ -1461,11 +1461,11 @@ export interface RPCMessageCreateDispatchData {
  */
 export interface RPCMessageDeleteDispatchData {
 	/**
-	 * id of channel where message was deleted
+	 * Id of channel where message was deleted
 	 */
 	channel_id: Snowflake;
 	/**
-	 * message that was deleted (only id)
+	 * Message that was deleted (only id)
 	 */
 	message: Pick<APIMessage, 'id'>;
 }
@@ -1475,7 +1475,7 @@ export interface RPCMessageDeleteDispatchData {
  */
 export interface RPCMessageUpdateDispatchData {
 	/**
-	 * id of channel where message was updated
+	 * Id of channel where message was updated
 	 */
 	channel_id: Snowflake;
 	/**
@@ -1489,23 +1489,23 @@ export interface RPCMessageUpdateDispatchData {
  */
 export interface RPCNotificationCreateDispatchData {
 	/**
-	 * id of channel where notification occurred
+	 * Id of channel where notification occurred
 	 */
 	channel_id: Snowflake;
 	/**
-	 * message that generated this notification
+	 * Message that generated this notification
 	 */
 	message: RPCAPIMessage;
 	/**
-	 * icon url of the notification
+	 * Icon url of the notification
 	 */
 	icon_url: string;
 	/**
-	 * title of the notification
+	 * Title of the notification
 	 */
 	title: string;
 	/**
-	 * body of the notification
+	 * Body of the notification
 	 */
 	body: string;
 }
@@ -1525,15 +1525,15 @@ export interface RPCOverlayUpdateDispatchData {}
  */
 export interface RPCServerConfiguration {
 	/**
-	 * server's cdn
+	 * Server's cdn
 	 */
 	cdn_host: string;
 	/**
-	 * server's api endpoint
+	 * Server's api endpoint
 	 */
 	api_endpoint: string;
 	/**
-	 * server's environment
+	 * Server's environment
 	 */
 	environment: string;
 }
@@ -1547,11 +1547,11 @@ export interface RPCReadyDispatchData {
 	 */
 	v: 1;
 	/**
-	 * server configuration
+	 * Server configuration
 	 */
 	config: RPCServerConfiguration;
 	/**
-	 * the user to whom you are connected
+	 * The user to whom you are connected
 	 */
 	user: APIUser;
 }
@@ -1566,7 +1566,7 @@ export interface RPCRelationshipUpdateDispatchData {}
  */
 export interface RPCSpeakingStartDispatchData {
 	/**
-	 * id of user who started speaking
+	 * Id of user who started speaking
 	 */
 	user_id: Snowflake;
 	/**
@@ -1581,7 +1581,7 @@ export interface RPCSpeakingStartDispatchData {
  */
 export interface RPCSpeakingStopDispatchData {
 	/**
-	 * id of user who stopped speaking
+	 * Id of user who stopped speaking
 	 */
 	user_id: Snowflake;
 	/**
@@ -1596,11 +1596,11 @@ export interface RPCSpeakingStopDispatchData {
  */
 export interface RPCVoiceChannelSelectDispatchData {
 	/**
-	 * id of channel (`null` if leaving channel)
+	 * Id of channel (`null` if leaving channel)
 	 */
 	channel_id: Snowflake | null;
 	/**
-	 * id of guild (`null` if not in a guild. field is omitted when leaving any voice channel)
+	 * Id of guild (`null` if not in a guild. field is omitted when leaving any voice channel)
 	 */
 	guild_id?: Snowflake | null;
 }
@@ -1610,23 +1610,23 @@ export interface RPCVoiceChannelSelectDispatchData {
  */
 export interface RPCVoiceConnectionStatusDispatchData<State extends VoiceConnectionStates = VoiceConnectionStates> {
 	/**
-	 * voice connection states
+	 * Voice connection states
 	 */
 	state: State;
 	/**
-	 * hostname of the connected voice server
+	 * Hostname of the connected voice server
 	 */
 	hostname: State extends VoiceConnectionStates.AwaitingEndpoint ? null : string;
 	/**
-	 * all of the accumulated pings since connection
+	 * All of the accumulated pings since connection
 	 */
 	pings: RPCVoiceConnectionStatusPing[];
 	/**
-	 * average ping (in ms)
+	 * Average ping (in ms)
 	 */
 	average_ping: number;
 	/**
-	 * last ping (in ms)
+	 * Last ping (in ms)
 	 */
 	last_ping: number;
 }
@@ -1664,27 +1664,27 @@ export interface RPCVoiceSettingsUpdate2DispatchData {
  */
 export interface RPCVoiceStateCreateDispatchData {
 	/**
-	 * voice state of user
+	 * Voice state of user
 	 */
 	voice_state: Pick<APIVoiceState, 'deaf' | 'mute' | 'self_deaf' | 'self_mute' | 'suppress'>;
 	/**
-	 * user who joined voice channel
+	 * User who joined voice channel
 	 */
 	user: APIUser;
 	/**
-	 * nickname of user
+	 * Nickname of user
 	 */
 	nick: string;
 	/**
-	 * volume of user
+	 * Volume of user
 	 */
 	volume: number;
 	/**
-	 * is user muted for the client user
+	 * Is user muted for the client user
 	 */
 	mute: boolean;
 	/**
-	 * pan of user
+	 * Pan of user
 	 */
 	pan: RPCVoicePan;
 }
@@ -1694,27 +1694,27 @@ export interface RPCVoiceStateCreateDispatchData {
  */
 export interface RPCVoiceStateDeleteDispatchData {
 	/**
-	 * voice state of user
+	 * Voice state of user
 	 */
 	voice_state: APIVoiceState;
 	/**
-	 * user who joined voice channel
+	 * User who joined voice channel
 	 */
 	user: APIUser;
 	/**
-	 * nickname of user
+	 * Nickname of user
 	 */
 	nick: string;
 	/**
-	 * volume of user
+	 * Volume of user
 	 */
 	volume: number;
 	/**
-	 * is user muted for the client user
+	 * Is user muted for the client user
 	 */
 	mute: boolean;
 	/**
-	 * pan of user
+	 * Pan of user
 	 */
 	pan: RPCVoicePan;
 }
@@ -1724,27 +1724,27 @@ export interface RPCVoiceStateDeleteDispatchData {
  */
 export interface RPCVoiceStateUpdateDispatchData {
 	/**
-	 * voice state of user
+	 * Voice state of user
 	 */
 	voice_state: APIVoiceState;
 	/**
-	 * user who joined voice channel
+	 * User who joined voice channel
 	 */
 	user: APIUser;
 	/**
-	 * nickname of user
+	 * Nickname of user
 	 */
 	nick: string;
 	/**
-	 * volume of user
+	 * Volume of user
 	 */
 	volume: number;
 	/**
-	 * is user muted for the client user
+	 * Is user muted for the client user
 	 */
 	mute: boolean;
 	/**
-	 * pan of user
+	 * Pan of user
 	 */
 	pan: RPCVoicePan;
 }
