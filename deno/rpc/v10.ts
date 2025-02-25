@@ -627,12 +627,6 @@ export type RPCSubscribeArgs =
 	| RPCSubscribeGameSpectateArgs
 	| RPCSubscribeGuildCreateArgs
 	| RPCSubscribeGuildStatusArgs
-	| RPCSubscribeLobbyDeleteArgs
-	| RPCSubscribeLobbyMemberConnectArgs
-	| RPCSubscribeLobbyMemberDisconnectArgs
-	| RPCSubscribeLobbyMemberUpdateArgs
-	| RPCSubscribeLobbyMessageArgs
-	| RPCSubscribeLobbyUpdateArgs
 	| RPCSubscribeMessageCreateArgs
 	| RPCSubscribeMessageDeleteArgs
 	| RPCSubscribeMessageUpdateArgs
@@ -714,33 +708,6 @@ export interface RPCCloseActivityRequestArgs {
 /**
  * @unstable
  */
-export interface RPCConnectToLobbyResultData {}
-/**
- * @unstable
- */
-export interface RPCConnectToLobbyArgs {
-	/**
-	 * @unstable id of the lobby to connect to
-	 */
-	id: Snowflake;
-	/**
-	 * @unstable secret for the lobby
-	 */
-	secret: string;
-}
-
-/**
- * @unstable
- */
-export interface RPCConnectToLobbyVoiceResultData {}
-/**
- * @unstable
- */
-export interface RPCConnectToLobbyVoiceArgs {}
-
-/**
- * @unstable
- */
 export interface RPCConnectionsCallbackResultData {}
 /**
  * @unstable
@@ -789,47 +756,11 @@ export interface RPCCreateChannelInviteArgs {
 /**
  * @unstable
  */
-export interface RPCCreateLobbyResultData {}
-/**
- * @unstable
- */
-export interface RPCCreateLobbyArgs {}
-
-/**
- * @unstable
- */
 export interface RPCDeepLinkResultData {}
 /**
  * @unstable
  */
 export interface RPCDeepLinkArgs {}
-
-/**
- * @unstable
- */
-export interface RPCDeleteLobbyResultData {}
-/**
- * @unstable
- */
-export interface RPCDeleteLobbyArgs {}
-
-/**
- * @unstable
- */
-export interface RPCDisconnectFromLobbyResultData {}
-/**
- * @unstable
- */
-export interface RPCDisconnectFromLobbyArgs {}
-
-/**
- * @unstable
- */
-export interface RPCDisconnectFromLobbyVoiceResultData {}
-/**
- * @unstable
- */
-export interface RPCDisconnectFromLobbyVoiceArgs {}
 
 /**
  * @unstable
@@ -1049,24 +980,6 @@ export interface RPCSendActivityJoinInviteArgs {
 	user_id: Snowflake;
 }
 
-/**
- * @unstable
- */
-export interface RPCSendToLobbyResultData {}
-/**
- * @unstable
- */
-export interface RPCSendToLobbyArgs {
-	/**
-	 * @unstable id of the lobby to send to
-	 */
-	id: Snowflake;
-	/**
-	 * @unstable data to send
-	 */
-	data: unknown;
-}
-
 export type RPCSetCertifiedDevicesResultData = null;
 /**
  * https://discord.com/developers/docs/topics/rpc#setcertifieddevices-set-certified-devices-argument-structure
@@ -1281,42 +1194,6 @@ export interface RPCSubscribeGuildStatusArgs {
 	 */
 	guild_id: Snowflake;
 }
-
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeLobbyDeleteArgs = Record<string, never>;
-
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeLobbyMemberConnectArgs = Record<string, never>;
-
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeLobbyMemberDisconnectArgs = Record<string, never>;
-
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeLobbyMemberUpdateArgs = Record<string, never>;
-
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeLobbyMessageArgs = Record<string, never>;
-
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeLobbyUpdateArgs = Record<string, never>;
 
 /**
  * https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-message-argument-structure
@@ -1558,36 +1435,6 @@ export interface RPCGuildStatusDispatchData {
 	 */
 	online: number;
 }
-
-/**
- * @unstable
- */
-export interface RPCLobbyDeleteDispatchData {}
-
-/**
- * @unstable
- */
-export interface RPCLobbyMemberConnectDispatchData {}
-
-/**
- * @unstable
- */
-export interface RPCLobbyMemberDisconnectDispatchData {}
-
-/**
- * @unstable
- */
-export interface RPCLobbyMemberUpdateDispatchData {}
-
-/**
- * @unstable
- */
-export interface RPCLobbyMessageDispatchData {}
-
-/**
- * @unstable
- */
-export interface RPCLobbyUpdateDispatchData {}
 
 /**
  * https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-example-message-dispatch-payload
