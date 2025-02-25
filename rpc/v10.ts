@@ -1124,52 +1124,41 @@ export enum RPCEvents {
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeActivityInviteArgs = Record<string, never>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeActivityJoinArgs = Record<string, never>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeActivityJoinRequestArgs = Record<string, never>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeActivitySpectateArgs = Record<string, never>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeChannelCreateArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeCurrentUserUpdateArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeEntitlementCreateArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeEntitlementDeleteArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeGameJoinArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeGameSpectateArgs = Record<string, never>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeGuildCreateArgs = Record<string, never>;
 
 /**
@@ -1212,25 +1201,21 @@ export interface RPCSubscribeMessageUpdateArgs {
 	channel_id: Snowflake;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeNotificationCreateArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeOverlayArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeOverlayUpdateArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeRelationshipUpdateArgs = Record<string, never>;
 
 /**
