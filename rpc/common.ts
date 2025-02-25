@@ -320,19 +320,6 @@ export enum VoiceConnectionStates {
 /**
  * @unstable
  */
-export enum LobbyType {
-	Private = 1,
-	Public,
-}
-
-/**
- * @unstable
- */
-export type RPCLobbyMetadata = unknown;
-
-/**
- * @unstable
- */
 export enum RelationshipType {
 	None,
 	Friend,
@@ -427,14 +414,6 @@ export enum RPCErrorCodes {
 	/**
 	 * @unstable
 	 */
-	InvalidLobby,
-	/**
-	 * @unstable
-	 */
-	InvalidLobbySecret,
-	/**
-	 * @unstable
-	 */
 	InvalidEntitlement,
 	/**
 	 * @unstable
@@ -468,10 +447,6 @@ export enum RPCErrorCodes {
 	 * @unstable
 	 */
 	NoEligibleActivity,
-	/**
-	 * @unstable
-	 */
-	LobbyFull,
 	/**
 	 * @unstable
 	 */

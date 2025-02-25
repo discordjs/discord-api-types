@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import type {
+	APIInvite,
 	APIMessage,
 	APIPartialChannel,
 	APIPartialGuild,
@@ -7,13 +8,11 @@ import type {
 	APIVoiceState,
 	ChannelType,
 	GatewayActivity,
-	LobbyType,
 	OAuth2Scopes,
 	Relationship,
 	RPCAPIMessage,
 	RPCCertifiedDevice,
 	RPCErrorCodes,
-	RPCLobbyMetadata,
 	RPCOAuth2Application,
 	RPCVoiceConnectionStatusPing,
 	RPCVoiceSettingsInput,
@@ -57,16 +56,10 @@ export enum RPCCommands {
 	BrowserHandoff = 'BROWSER_HANDOFF',
 	/**
 	 * 	used to reject a Rich Presence Ask to Join request
+	 *
+	 * @unstable the documented similarly named command `CLOSE_ACTIVITY_REQUEST` does not exist, but `CLOSE_ACTIVITY_JOIN_REQUEST` does
 	 */
-	CloseActivityRequest = 'CLOSE_ACTIVITY_REQUEST',
-	/**
-	 * @unstable
-	 */
-	ConnectToLobby = 'CONNECT_TO_LOBBY',
-	/**
-	 * @unstable
-	 */
-	ConnectToLobbyVoice = 'CONNECT_TO_LOBBY_VOICE',
+	CloseActivityJoinRequest = 'CLOSE_ACTIVITY_JOIN_REQUEST',
 	/**
 	 * @unstable
 	 */
@@ -75,23 +68,7 @@ export enum RPCCommands {
 	/**
 	 * @unstable
 	 */
-	CreateLobby = 'CREATE_LOBBY',
-	/**
-	 * @unstable
-	 */
 	DeepLink = 'DEEP_LINK',
-	/**
-	 * @unstable
-	 */
-	DeleteLobby = 'DELETE_LOBBY',
-	/**
-	 * @unstable
-	 */
-	DisconnectFromLobby = 'DISCONNECT_FROM_LOBBY',
-	/**
-	 * @unstable
-	 */
-	DisconnectFromLobbyVoice = 'DISCONNECT_FROM_LOBBY_VOICE',
 	/**
 	 * Event dispatch
 	 */
@@ -148,10 +125,6 @@ export enum RPCCommands {
 	 * @unstable
 	 */
 	GetUser = 'GET_USER',
-	/**
-	 * @unstable
-	 */
-	GetUserAchievements = 'GET_USER_ACHIEVEMENTS',
 	/**
 	 * Used to retrieve the client's voice settings
 	 */
@@ -213,10 +186,6 @@ export enum RPCCommands {
 	 */
 	SendActivityJoinInvite = 'SEND_ACTIVITY_JOIN_INVITE',
 	/**
-	 * @unstable
-	 */
-	SendToLobby = 'SEND_TO_LOBBY',
-	/**
 	 * Used to update a user's Rich Presence
 	 */
 	SetActivity = 'SET_ACTIVITY',
@@ -228,10 +197,6 @@ export enum RPCCommands {
 	 * @unstable
 	 */
 	SetOverlayLocked = 'SET_OVERLAY_LOCKED',
-	/**
-	 * @unstable
-	 */
-	SetUserAchievement = 'SET_USER_ACHIEVEMENT',
 	/**
 	 * Used to change voice settings of users in voice channels
 	 */
@@ -254,14 +219,6 @@ export enum RPCCommands {
 	 * Used to unsubscribe from an RPC event
 	 */
 	Unsubscribe = 'UNSUBSCRIBE',
-	/**
-	 * @unstable
-	 */
-	UpdateLobby = 'UPDATE_LOBBY',
-	/**
-	 * @unstable
-	 */
-	UpdateLobbyMember = 'UPDATE_LOBBY_MEMBER',
 	/**
 	 * @unstable
 	 */
@@ -685,7 +642,6 @@ export type RPCSubscribeArgs =
 	| RPCSubscribeRelationshipUpdateArgs
 	| RPCSubscribeSpeakingStartArgs
 	| RPCSubscribeSpeakingStopArgs
-	| RPCSubscribeUserAchievementUpdateArgs
 	| RPCSubscribeVoiceChannelSelectArgs
 	| RPCSubscribeVoiceConnectionStatusArgs
 	| RPCSubscribeVoiceSettingsUpdate2Args
@@ -792,13 +748,43 @@ export interface RPCConnectionsCallbackResultData {}
 export interface RPCConnectionsCallbackArgs {}
 
 /**
- * @unstable
+ * @unstable channel invite
  */
-export interface RPCCreateChannelInviteResultData {}
+export type RPCCreateChannelInviteResultData = APIInvite & {
+	/**
+	 * @unstable timestamp of when the invite was created
+	 */
+	created_at: string;
+	/**
+	 * @unstable max age of the invite
+	 */
+	max_age: number;
+	/**
+	 * @unstable max uses of the invite
+	 */
+	max_uses: number;
+	/**
+	 * @unstable whether the invite is temporary
+	 */
+	temporary: boolean;
+	/**
+	 * @unstable uses of the invite
+	 */
+	uses: number;
+	/**
+	 * @unstable id of the guild
+	 */
+	guild_id: Snowflake;
+};
 /**
- * @unstable
+ * @unstable arguments to create channel invite
  */
-export interface RPCCreateChannelInviteArgs {}
+export interface RPCCreateChannelInviteArgs {
+	/**
+	 * id of the channel to create an invite for
+	 */
+	channel_id: Snowflake;
+}
 
 /**
  * @unstable
@@ -924,20 +910,11 @@ export interface RPCGetRelationshipsArgs {}
 /**
  * @unstable
  */
-export interface RPCGetSkusResultData {}
+export type RPCGetSkusResultData = unknown[];
 /**
  * @unstable
  */
 export interface RPCGetSkusArgs {}
-
-/**
- * @unstable
- */
-export interface RPCGetUserAchievementsResultData {}
-/**
- * @unstable
- */
-export interface RPCGetUserAchievementsArgs {}
 
 /**
  * @unstable
@@ -1075,21 +1052,6 @@ export interface RPCSendActivityJoinInviteArgs {
 /**
  * @unstable
  */
-export interface RPCSendActivityJoinRequestResultData {}
-
-/**
- * @unstable
- */
-export interface RPCSendActivityJoinRequestArgs {
-	/**
-	 * the id of the user to request to join
-	 */
-	user_id: Snowflake;
-}
-
-/**
- * @unstable
- */
 export interface RPCSendToLobbyResultData {}
 /**
  * @unstable
@@ -1123,16 +1085,16 @@ export interface RPCSetOverlayLockedResultData {}
 /**
  * @unstable
  */
-export interface RPCSetOverlayLockedArgs {}
-
-/**
- * @unstable
- */
-export interface RPCSetUserAchievementResultData {}
-/**
- * @unstable
- */
-export interface RPCSetUserAchievementArgs {}
+export interface RPCSetOverlayLockedArgs {
+	/**
+	 * @unstable whether the overlay is locked
+	 */
+	locked: boolean;
+	/**
+	 * @unstable process id
+	 */
+	pid: number;
+}
 
 /**
  * @unstable
@@ -1164,58 +1126,6 @@ export interface RPCStartPurchaseArgs {
 	 * id of the sku
 	 */
 	sku_id: Snowflake;
-}
-
-/**
- * @unstable
- */
-export interface RPCUpdateLobbyResultData {}
-/**
- * @unstable
- */
-export interface RPCUpdateLobbyArgs {
-	/**
-	 * id of the lobby to update
-	 */
-	id: Snowflake;
-	/**
-	 * lobby type
-	 */
-	type?: LobbyType;
-	/**
-	 * id of the owner of the lobby
-	 */
-	owner_id?: Snowflake;
-	/**
-	 * capacity of the lobby
-	 */
-	capacity?: number;
-	/**
-	 * metadata for the lobby
-	 */
-	metadata?: RPCLobbyMetadata;
-}
-
-/**
- * @unstable
- */
-export interface RPCUpdateLobbyMemberResultData {}
-/**
- * @unstable
- */
-export interface RPCUpdateLobbyMemberArgs {
-	/**
-	 * @unstable id of the lobby the member is from
-	 */
-	lobby_id: Snowflake;
-	/**
-	 * @unstable id of the member to update
-	 */
-	user_id: Snowflake;
-	/**
-	 * @unstable metadata for the member
-	 */
-	metadata?: RPCLobbyMetadata;
 }
 
 /**
@@ -1260,30 +1170,6 @@ export enum RPCEvents {
 	GuildCreate = 'GUILD_CREATE',
 	GuildStatus = 'GUILD_STATUS',
 	/**
-	 * @unstable
-	 */
-	LobbyDelete = 'LOBBY_DELETE',
-	/**
-	 * @unstable
-	 */
-	LobbyMemberConnect = 'LOBBY_MEMBER_CONNECT',
-	/**
-	 * @unstable
-	 */
-	LobbyMemberDisconnect = 'LOBBY_MEMBER_DISCONNECT',
-	/**
-	 * @unstable
-	 */
-	LobbyMemberUpdate = 'LOBBY_MEMBER_UPDATE',
-	/**
-	 * @unstable
-	 */
-	LobbyMessage = 'LOBBY_MESSAGE',
-	/**
-	 * @unstable
-	 */
-	LobbyUpdate = 'LOBBY_UPDATE',
-	/**
 	 * Dispatches message objects, with the exception of deletions, which only contains the id in the message object.
 	 */
 	MessageCreate = 'MESSAGE_CREATE',
@@ -1314,7 +1200,6 @@ export enum RPCEvents {
 	RelationshipUpdate = 'RELATIONSHIP_UPDATE',
 	SpeakingStart = 'SPEAKING_START',
 	SpeakingStop = 'SPEAKING_STOP',
-	UserAchievementUpdate = 'USER_ACHIEVEMENT_UPDATE',
 	VoiceChannelSelect = 'VOICE_CHANNEL_SELECT',
 	VoiceConnectionStatus = 'VOICE_CONNECTION_STATUS',
 	VoiceSettingsUpdate = 'VOICE_SETTINGS_UPDATE',
@@ -1504,28 +1389,18 @@ export interface RPCSubscribeSpeakingStopArgs {
 	channel_id: Snowflake;
 }
 
-/**
- * @unstable
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export type RPCSubscribeUserAchievementUpdateArgs = Record<string, never>;
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeVoiceChannelSelectArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeVoiceConnectionStatusArgs = Record<string, never>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeVoiceSettingsUpdateArgs = Record<string, never>;
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export type RPCSubscribeVoiceSettingsUpdate2Args = Record<string, never>;
 
 /**
@@ -1864,11 +1739,6 @@ export interface RPCSpeakingStopDispatchData {
 }
 
 /**
- * @unstable
- */
-export interface RPCUserAchievementUpdateDispatchData {}
-
-/**
  * https://discord.com/developers/docs/topics/rpc#voicechannelselect-voice-channel-select-dispatch-data-structure
  */
 export interface RPCVoiceChannelSelectDispatchData {
@@ -2102,12 +1972,6 @@ export type RPCCommandSubscribePayload =
 	| RPCSubscribeGameSpectate
 	| RPCSubscribeGuildCreate
 	| RPCSubscribeGuildStatus
-	| RPCSubscribeLobbyDelete
-	| RPCSubscribeLobbyMemberConnect
-	| RPCSubscribeLobbyMemberDisconnect
-	| RPCSubscribeLobbyMemberUpdate
-	| RPCSubscribeLobbyMessage
-	| RPCSubscribeLobbyUpdate
 	| RPCSubscribeMessageCreate
 	| RPCSubscribeMessageDelete
 	| RPCSubscribeMessageUpdate
@@ -2117,7 +1981,6 @@ export type RPCCommandSubscribePayload =
 	| RPCSubscribeRelationshipUpdate
 	| RPCSubscribeSpeakingStart
 	| RPCSubscribeSpeakingStop
-	| RPCSubscribeUserAchievementUpdate
 	| RPCSubscribeVoiceChannelSelect
 	| RPCSubscribeVoiceConnectionStatus
 	| RPCSubscribeVoiceSettingsUpdate
@@ -2145,16 +2008,9 @@ export interface RPCCommandBrowserPayload extends RPCCommandMessage<RPCCommands.
 	args: RPCBrowserHandoffArgs;
 }
 
-export interface RPCCommandCloseActivityJoinRequestPayload extends RPCCommandMessage<RPCCommands.CloseActivityRequest> {
+export interface RPCCommandCloseActivityJoinRequestPayload
+	extends RPCCommandMessage<RPCCommands.CloseActivityJoinRequest> {
 	args: RPCCloseActivityRequestArgs;
-}
-
-export interface RPCCommandConnectToLobbyPayload extends RPCCommandMessage<RPCCommands.ConnectToLobby> {
-	args: RPCConnectToLobbyArgs;
-}
-
-export interface RPCCommandConnectToLobbyVoicePayload extends RPCCommandMessage<RPCCommands.ConnectToLobbyVoice> {
-	args: RPCConnectToLobbyVoiceArgs;
 }
 
 export interface RPCCommandConnectionsCallbackPayload extends RPCCommandMessage<RPCCommands.ConnectionsCallback> {
@@ -2165,25 +2021,8 @@ export interface RPCCommandCreateChannelInvitePayload extends RPCCommandMessage<
 	args: RPCCreateChannelInviteArgs;
 }
 
-export interface RPCCommandCreateLobbyPayload extends RPCCommandMessage<RPCCommands.CreateLobby> {
-	args: RPCCreateLobbyArgs;
-}
-
 export interface RPCCommandDeepLinkPayload extends RPCCommandMessage<RPCCommands.DeepLink> {
 	args: RPCDeepLinkArgs;
-}
-
-export interface RPCCommandDeleteLobbyPayload extends RPCCommandMessage<RPCCommands.DeleteLobby> {
-	args: RPCDeleteLobbyArgs;
-}
-
-export interface RPCCommandDisconnectFromLobbyPayload extends RPCCommandMessage<RPCCommands.DisconnectFromLobby> {
-	args: RPCDisconnectFromLobbyArgs;
-}
-
-export interface RPCCommandDisconnectFromLobbyVoicePayload
-	extends RPCCommandMessage<RPCCommands.DisconnectFromLobbyVoice> {
-	args: RPCDisconnectFromLobbyVoiceArgs;
 }
 
 export interface RPCCommandGetApplicationTicketPayload extends RPCCommandMessage<RPCCommands.GetApplicationTicket> {
@@ -2217,10 +2056,6 @@ export interface RPCCommandGetSelectedVoiceChannelPayload
 
 export interface RPCCommandGetSkusPayload extends RPCCommandMessage<RPCCommands.GetSkus> {
 	args: RPCGetSkusArgs;
-}
-
-export interface RPCCommandGetUserAchievementsPayload extends RPCCommandMessage<RPCCommands.GetUserAchievements> {
-	args: RPCGetUserAchievementsArgs;
 }
 
 export interface RPCCommandGiftCodeBrowserPayload extends RPCCommandMessage<RPCCommands.GiftCodeBrowser> {
@@ -2274,20 +2109,12 @@ export interface RPCCommandSendActivityJoinInvitePayload extends RPCCommandMessa
 	args: RPCSendActivityJoinInviteArgs;
 }
 
-export interface RPCCommandSendToLobbyPayload extends RPCCommandMessage<RPCCommands.SendToLobby> {
-	args: RPCSendToLobbyArgs;
-}
-
 export interface RPCCommandSetCertifiedDevicesPayload extends RPCCommandMessage<RPCCommands.SetCertifiedDevices> {
 	args: RPCSetCertifiedDevicesArgs;
 }
 
 export interface RPCCommandSetOverlayLockedPayload extends RPCCommandMessage<RPCCommands.SetOverlayLocked> {
 	args: RPCSetOverlayLockedArgs;
-}
-
-export interface RPCCommandSetUserAchievementPayload extends RPCCommandMessage<RPCCommands.SetUserAchievement> {
-	args: RPCSetUserAchievementArgs;
 }
 
 export interface RPCCommandSetUserVoiceSettingsPayload extends RPCCommandMessage<RPCCommands.SetUserVoiceSettings> {
@@ -2304,14 +2131,6 @@ export interface RPCCommandSetVoiceSettings2Payload extends RPCCommandMessage<RP
 
 export interface RPCCommandStartPurchasePayload extends RPCCommandMessage<RPCCommands.StartPurchase> {
 	args: RPCStartPurchaseArgs;
-}
-
-export interface RPCCommandUpdateLobbyPayload extends RPCCommandMessage<RPCCommands.UpdateLobby> {
-	args: RPCUpdateLobbyArgs;
-}
-
-export interface RPCCommandUpdateLobbyMemberPayload extends RPCCommandMessage<RPCCommands.UpdateLobbyMember> {
-	args: RPCUpdateLobbyMemberArgs;
 }
 
 export interface RPCCommandValidateApplicationPayload extends RPCCommandMessage<RPCCommands.ValidateApplication> {
@@ -2378,36 +2197,6 @@ export interface RPCSubscribeGuildStatus extends RPCSubscribeMessage<RPCEvents.G
 	evt: RPCEvents.GuildStatus;
 }
 
-export interface RPCSubscribeLobbyDelete extends RPCSubscribeMessage<RPCEvents.LobbyDelete> {
-	args: RPCSubscribeLobbyDeleteArgs;
-	evt: RPCEvents.LobbyDelete;
-}
-
-export interface RPCSubscribeLobbyMemberConnect extends RPCSubscribeMessage<RPCEvents.LobbyMemberConnect> {
-	args: RPCSubscribeLobbyMemberConnectArgs;
-	evt: RPCEvents.LobbyMemberConnect;
-}
-
-export interface RPCSubscribeLobbyMemberDisconnect extends RPCSubscribeMessage<RPCEvents.LobbyMemberDisconnect> {
-	args: RPCSubscribeLobbyMemberDisconnectArgs;
-	evt: RPCEvents.LobbyMemberDisconnect;
-}
-
-export interface RPCSubscribeLobbyMemberUpdate extends RPCSubscribeMessage<RPCEvents.LobbyMemberUpdate> {
-	args: RPCSubscribeLobbyMemberUpdateArgs;
-	evt: RPCEvents.LobbyMemberUpdate;
-}
-
-export interface RPCSubscribeLobbyMessage extends RPCSubscribeMessage<RPCEvents.LobbyMessage> {
-	args: RPCSubscribeLobbyMessageArgs;
-	evt: RPCEvents.LobbyMessage;
-}
-
-export interface RPCSubscribeLobbyUpdate extends RPCSubscribeMessage<RPCEvents.LobbyUpdate> {
-	args: RPCSubscribeLobbyUpdateArgs;
-	evt: RPCEvents.LobbyUpdate;
-}
-
 export interface RPCSubscribeMessageCreate extends RPCSubscribeMessage<RPCEvents.MessageCreate> {
 	args: RPCSubscribeMessageCreateArgs;
 	evt: RPCEvents.MessageCreate;
@@ -2451,11 +2240,6 @@ export interface RPCSubscribeSpeakingStart extends RPCSubscribeMessage<RPCEvents
 export interface RPCSubscribeSpeakingStop extends RPCSubscribeMessage<RPCEvents.SpeakingStop> {
 	args: RPCSubscribeSpeakingStopArgs;
 	evt: RPCEvents.SpeakingStop;
-}
-
-export interface RPCSubscribeUserAchievementUpdate extends RPCSubscribeMessage<RPCEvents.UserAchievementUpdate> {
-	args: RPCSubscribeUserAchievementUpdateArgs;
-	evt: RPCEvents.UserAchievementUpdate;
 }
 
 export interface RPCSubscribeVoiceChannelSelect extends RPCSubscribeMessage<RPCEvents.VoiceChannelSelect> {
@@ -2566,16 +2350,8 @@ export interface RPCBrowserResult extends RPCCommandMessage<RPCCommands.BrowserH
 	data: RPCBrowserHandoffResultData;
 }
 
-export interface RPCCloseActivityRequestResult extends RPCCommandMessage<RPCCommands.CloseActivityRequest> {
+export interface RPCCloseActivityRequestResult extends RPCCommandMessage<RPCCommands.CloseActivityJoinRequest> {
 	data: RPCCloseActivityRequestResultData;
-}
-
-export interface RPCConnectToLobbyResult extends RPCCommandMessage<RPCCommands.ConnectToLobby> {
-	data: RPCConnectToLobbyResultData;
-}
-
-export interface RPCConnectToLobbyVoiceResult extends RPCCommandMessage<RPCCommands.ConnectToLobbyVoice> {
-	data: RPCConnectToLobbyVoiceResultData;
 }
 
 export interface RPCConnectionsCallbackResult extends RPCCommandMessage<RPCCommands.ConnectionsCallback> {
@@ -2586,24 +2362,8 @@ export interface RPCCreateChannelInviteResult extends RPCCommandMessage<RPCComma
 	data: RPCCreateChannelInviteResultData;
 }
 
-export interface RPCCreateLobbyResult extends RPCCommandMessage<RPCCommands.CreateLobby> {
-	data: RPCCreateLobbyResultData;
-}
-
 export interface RPCDeepLinkResult extends RPCCommandMessage<RPCCommands.DeepLink> {
 	data: RPCDeepLinkResultData;
-}
-
-export interface RPCDeleteLobbyResult extends RPCCommandMessage<RPCCommands.DeleteLobby> {
-	data: RPCDeleteLobbyResultData;
-}
-
-export interface RPCDisconnectFromLobbyResult extends RPCCommandMessage<RPCCommands.DisconnectFromLobby> {
-	data: RPCDisconnectFromLobbyResultData;
-}
-
-export interface RPCDisconnectFromLobbyVoiceResult extends RPCCommandMessage<RPCCommands.DisconnectFromLobbyVoice> {
-	data: RPCDisconnectFromLobbyVoiceResultData;
 }
 
 export interface RPCGetApplicationTicketResult extends RPCCommandMessage<RPCCommands.GetApplicationTicket> {
@@ -2636,10 +2396,6 @@ export interface RPCGetSelectedVoiceChannelResult extends RPCCommandMessage<RPCC
 
 export interface RPCGetSkusResult extends RPCCommandMessage<RPCCommands.GetSkus> {
 	data: RPCGetSkusResultData;
-}
-
-export interface RPCGetUserAchievementsResult extends RPCCommandMessage<RPCCommands.GetUserAchievements> {
-	data: RPCGetUserAchievementsResultData;
 }
 
 export interface RPCGiftCodeBrowserResult extends RPCCommandMessage<RPCCommands.GiftCodeBrowser> {
@@ -2690,20 +2446,12 @@ export interface RPCSendActivityJoinInviteResult extends RPCCommandMessage<RPCCo
 	data: RPCSendActivityJoinInviteResultData;
 }
 
-export interface RPCSendToLobbyResult extends RPCCommandMessage<RPCCommands.SendToLobby> {
-	data: RPCSendToLobbyResultData;
-}
-
 export interface RPCSetCertifiedDevicesResult extends RPCCommandMessage<RPCCommands.SetCertifiedDevices> {
 	data: RPCSetCertifiedDevicesResultData;
 }
 
 export interface RPCSetOverlayLockedResult extends RPCCommandMessage<RPCCommands.SetOverlayLocked> {
 	data: RPCSetOverlayLockedResultData;
-}
-
-export interface RPCSetUserAchievementResult extends RPCCommandMessage<RPCCommands.SetUserAchievement> {
-	data: RPCSetUserAchievementResultData;
 }
 
 export interface RPCSetUserVoiceSettingsResult extends RPCCommandMessage<RPCCommands.SetUserVoiceSettings> {
@@ -2722,14 +2470,6 @@ export interface RPCStartPurchaseResult extends RPCCommandMessage<RPCCommands.St
 	data: RPCStartPurchaseResultData;
 }
 
-export interface RPCUpdateLobbyResult extends RPCCommandMessage<RPCCommands.UpdateLobby> {
-	data: RPCUpdateLobbyResultData;
-}
-
-export interface RPCUpdateLobbyMemberResult extends RPCCommandMessage<RPCCommands.UpdateLobbyMember> {
-	data: RPCUpdateLobbyMemberResultData;
-}
-
 export interface RPCValidateApplicationResult extends RPCCommandMessage<RPCCommands.ValidateApplication> {
 	data: RPCValidateApplicationResultData;
 }
@@ -2743,14 +2483,8 @@ export type RPCCommandsResult =
 	| RPCBrowserResult
 	| RPCCloseActivityRequestResult
 	| RPCConnectionsCallbackResult
-	| RPCConnectToLobbyResult
-	| RPCConnectToLobbyVoiceResult
 	| RPCCreateChannelInviteResult
-	| RPCCreateLobbyResult
 	| RPCDeepLinkResult
-	| RPCDeleteLobbyResult
-	| RPCDisconnectFromLobbyResult
-	| RPCDisconnectFromLobbyVoiceResult
 	| RPCGetApplicationTicketResult
 	| RPCGetChannelResult
 	| RPCGetChannelsResult
@@ -2763,7 +2497,6 @@ export type RPCCommandsResult =
 	| RPCGetRelationshipsResult
 	| RPCGetSelectedVoiceChannelResult
 	| RPCGetSkusResult
-	| RPCGetUserAchievementsResult
 	| RPCGetUserResult
 	| RPCGetVoiceSettingsResult
 	| RPCGiftCodeBrowserResult
@@ -2780,11 +2513,9 @@ export type RPCCommandsResult =
 	| RPCSelectTextChannelResult
 	| RPCSelectVoiceChannelResult
 	| RPCSendActivityJoinInviteResult
-	| RPCSendToLobbyResult
 	| RPCSetActivityResult
 	| RPCSetCertifiedDevicesResult
 	| RPCSetOverlayLockedResult
-	| RPCSetUserAchievementResult
 	| RPCSetUserVoiceSettings2Result
 	| RPCSetUserVoiceSettingsResult
 	| RPCSetVoiceSettings2Result
@@ -2792,8 +2523,6 @@ export type RPCCommandsResult =
 	| RPCStartPurchaseResult
 	| RPCSubscribeResult
 	| RPCUnsubscribeResult
-	| RPCUpdateLobbyMemberResult
-	| RPCUpdateLobbyResult
 	| RPCValidateApplicationResult;
 
 export interface RPCActivityInviteDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
@@ -2863,36 +2592,6 @@ export interface RPCGuildStatusDispatch extends BaseRPCMessage<RPCCommands.Dispa
 	evt: RPCEvents.GuildStatus;
 }
 
-export interface RPCLobbyDeleteDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCLobbyDeleteDispatchData;
-	evt: RPCEvents.LobbyDelete;
-}
-
-export interface RPCLobbyMemberConnectDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCLobbyMemberConnectDispatchData;
-	evt: RPCEvents.LobbyMemberConnect;
-}
-
-export interface RPCLobbyMemberDisconnectDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCLobbyMemberDisconnectDispatchData;
-	evt: RPCEvents.LobbyMemberDisconnect;
-}
-
-export interface RPCLobbyMemberUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCLobbyMemberUpdateDispatchData;
-	evt: RPCEvents.LobbyMemberUpdate;
-}
-
-export interface RPCLobbyMessageDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCLobbyMessageDispatchData;
-	evt: RPCEvents.LobbyMessage;
-}
-
-export interface RPCLobbyUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCLobbyUpdateDispatchData;
-	evt: RPCEvents.LobbyUpdate;
-}
-
 export interface RPCMessageCreateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
 	data: RPCMessageCreateDispatchData;
 	evt: RPCEvents.MessageCreate;
@@ -2941,11 +2640,6 @@ export interface RPCSpeakingStartDispatch extends BaseRPCMessage<RPCCommands.Dis
 export interface RPCSpeakingStopDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
 	data: RPCSpeakingStopDispatchData;
 	evt: RPCEvents.SpeakingStop;
-}
-
-export interface RPCUserAchievementUpdateDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
-	data: RPCUserAchievementUpdateDispatchData;
-	evt: RPCEvents.UserAchievementUpdate;
 }
 
 export interface RPCVoiceChannelSelectDispatch extends BaseRPCMessage<RPCCommands.Dispatch> {
@@ -2997,12 +2691,6 @@ export type RPCEventsDispatch =
 	| RPCGameSpectateDispatch
 	| RPCGuildCreateDispatch
 	| RPCGuildStatusDispatch
-	| RPCLobbyDeleteDispatch
-	| RPCLobbyMemberConnectDispatch
-	| RPCLobbyMemberDisconnectDispatch
-	| RPCLobbyMemberUpdateDispatch
-	| RPCLobbyMessageDispatch
-	| RPCLobbyUpdateDispatch
 	| RPCMessageCreateDispatch
 	| RPCMessageDeleteDispatch
 	| RPCMessageUpdateDispatch
@@ -3013,7 +2701,6 @@ export type RPCEventsDispatch =
 	| RPCRelationshipUpdateDispatch
 	| RPCSpeakingStartDispatch
 	| RPCSpeakingStopDispatch
-	| RPCUserAchievementUpdateDispatch
 	| RPCVoiceChannelSelectDispatch
 	| RPCVoiceConnectionStatusDispatch
 	| RPCVoiceSettingsUpdate2Dispatch
@@ -3033,14 +2720,8 @@ export type RPCMessagePayload =
 	| RPCCommandBrowserPayload
 	| RPCCommandCloseActivityJoinRequestPayload
 	| RPCCommandConnectionsCallbackPayload
-	| RPCCommandConnectToLobbyPayload
-	| RPCCommandConnectToLobbyVoicePayload
 	| RPCCommandCreateChannelInvitePayload
-	| RPCCommandCreateLobbyPayload
 	| RPCCommandDeepLinkPayload
-	| RPCCommandDeleteLobbyPayload
-	| RPCCommandDisconnectFromLobbyPayload
-	| RPCCommandDisconnectFromLobbyVoicePayload
 	| RPCCommandGetApplicationTicketPayload
 	| RPCCommandGetChannelPayload
 	| RPCCommandGetChannelsPayload
@@ -3053,7 +2734,6 @@ export type RPCMessagePayload =
 	| RPCCommandGetRelationshipsPayload
 	| RPCCommandGetSelectedVoiceChannelPayload
 	| RPCCommandGetSkusPayload
-	| RPCCommandGetUserAchievementsPayload
 	| RPCCommandGetUserPayload
 	| RPCCommandGetVoiceSettingsPayload
 	| RPCCommandGiftCodeBrowserPayload
@@ -3070,11 +2750,9 @@ export type RPCMessagePayload =
 	| RPCCommandSelectTextChannelPayload
 	| RPCCommandSelectVoiceChannelPayload
 	| RPCCommandSendActivityJoinInvitePayload
-	| RPCCommandSendToLobbyPayload
 	| RPCCommandSetActivityPayload
 	| RPCCommandSetCertifiedDevicesPayload
 	| RPCCommandSetOverlayLockedPayload
-	| RPCCommandSetUserAchievementPayload
 	| RPCCommandSetUserVoiceSettings2Payload
 	| RPCCommandSetUserVoiceSettingsPayload
 	| RPCCommandSetVoiceSettings2Payload
@@ -3082,6 +2760,4 @@ export type RPCMessagePayload =
 	| RPCCommandStartPurchasePayload
 	| RPCCommandSubscribePayload
 	| RPCCommandUnsubscribePayload
-	| RPCCommandUpdateLobbyMemberPayload
-	| RPCCommandUpdateLobbyPayload
 	| RPCCommandValidateApplicationPayload;
