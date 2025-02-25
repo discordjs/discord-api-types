@@ -661,7 +661,28 @@ export interface RPCAcceptActivityInviteResultData {}
 /**
  * @unstable
  */
-export interface RPCAcceptActivityInviteArgs {}
+export interface RPCAcceptActivityInviteArgs {
+	/**
+	 * @unstable invite type
+	 */
+	type: 1;
+	/**
+	 * @unstable id of the user who sent the invite
+	 */
+	user_id: Snowflake;
+	/**
+	 * @unstable id of the session
+	 */
+	session_id: Snowflake;
+	/**
+	 * @unstable id of the channel that the invite comes from
+	 */
+	channel_id: Snowflake;
+	/**
+	 * @unstable id of the message that the invite comes from
+	 */
+	message_id: Snowflake;
+}
 
 /**
  * @unstable
@@ -670,7 +691,20 @@ export interface RPCActivityInviteUserResultData {}
 /**
  * @unstable
  */
-export interface RPCActivityInviteUserArgs {}
+export interface RPCActivityInviteUserArgs {
+	/**
+	 * @unstable invite type
+	 */
+	type: 1;
+	/**
+	 * @unstable id of the user to invite
+	 */
+	user_id: Snowflake;
+	/**
+	 * @unstable process id
+	 */
+	pid: number;
+}
 
 /**
  * @unstable
@@ -690,11 +724,11 @@ export interface RPCBrowserHandoffResultData {}
  */
 export interface RPCBrowserHandoffArgs {}
 
-export interface RPCCloseActivityRequestResultData {}
+export interface RPCCloseActivityJoinRequestResultData {}
 /**
  * https://discord.com/developers/docs/topics/rpc#closeactivityrequest-close-activity-request-argument-structure
  */
-export interface RPCCloseActivityRequestArgs {
+export interface RPCCloseActivityJoinRequestArgs {
 	/**
 	 * the id of the requesting user
 	 */
@@ -813,7 +847,7 @@ export interface RPCGetImageArgs {
 	/**
 	 * @unstable size of the image
 	 */
-	size: number;
+	size: 1_024 | 16 | 32 | 64 | 128 | 256 | 512;
 }
 
 /**
@@ -1829,7 +1863,7 @@ export interface RPCCommandBrowserPayload extends RPCCommandMessage<RPCCommands.
 
 export interface RPCCommandCloseActivityJoinRequestPayload
 	extends RPCCommandMessage<RPCCommands.CloseActivityJoinRequest> {
-	args: RPCCloseActivityRequestArgs;
+	args: RPCCloseActivityJoinRequestArgs;
 }
 
 export interface RPCCommandConnectionsCallbackPayload extends RPCCommandMessage<RPCCommands.ConnectionsCallback> {
@@ -2165,8 +2199,8 @@ export interface RPCBrowserResult extends RPCCommandMessage<RPCCommands.BrowserH
 	data: RPCBrowserHandoffResultData;
 }
 
-export interface RPCCloseActivityRequestResult extends RPCCommandMessage<RPCCommands.CloseActivityJoinRequest> {
-	data: RPCCloseActivityRequestResultData;
+export interface RPCCloseActivityJoinRequestResult extends RPCCommandMessage<RPCCommands.CloseActivityJoinRequest> {
+	data: RPCCloseActivityJoinRequestResultData;
 }
 
 export interface RPCConnectionsCallbackResult extends RPCCommandMessage<RPCCommands.ConnectionsCallback> {
@@ -2292,7 +2326,7 @@ export type RPCCommandsResult =
 	| RPCAuthorizeResult
 	| RPCBraintreePopupBridgeCallbackResult
 	| RPCBrowserResult
-	| RPCCloseActivityRequestResult
+	| RPCCloseActivityJoinRequestResult
 	| RPCConnectionsCallbackResult
 	| RPCCreateChannelInviteResult
 	| RPCDeepLinkResult
