@@ -238,7 +238,7 @@ export interface RPCAuthorizeArgs {
 	/**
 	 * OAuth2 application id
 	 */
-	client_id: string;
+	client_id: Snowflake;
 	/**
 	 * Scopes to authorize
 	 */
@@ -453,7 +453,7 @@ export type RPCSetUserVoiceSettingsResultData = Required<RPCSetUserVoiceSettings
 /**
  * https://discord.com/developers/docs/topics/rpc#selectvoicechannel-select-voice-channel-argument-structure
  *
- * @warning When trying to join the user to a voice channel, you will receive a `5003` error coded response if the user is already in a voice channel. The `force` parameter should only be specified in response to the case where a user is already in a voice channel and they have approved to be moved by your app to a new voice channel.
+ * @remarks When trying to join the user to a voice channel, you will receive a {@link RPCErrorCodes.SelectVoiceForceRequired} error coded response if the user is already in a voice channel. The `force` parameter should only be specified in response to the case where a user is already in a voice channel and they have approved to be moved by your app to a new voice channel.
  */
 export interface RPCSelectVoiceChannelArgs {
 	/**
@@ -493,6 +493,7 @@ export interface RPCGetSelectedVoiceChannelArgs {}
  * @unstable
  */
 export type RPCGetUserResultData = APIUser;
+
 /**
  * @unstable
  */
@@ -548,13 +549,14 @@ export interface RPCGetVoiceSettingsResultData {
 	 */
 	mute: boolean;
 }
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+
 export interface RPCGetVoiceSettingsArgs {}
 
 /**
  * Returns the {@link https://discord.com/developers/docs/topics/rpc#getchannel | Get Channel} response, or `null` if none.
  */
 export type RPCSelectTextChannelResultData = RPCGetChannelResultData | null;
+
 /**
  * https://discord.com/developers/docs/topics/rpc#selecttextchannel-select-text-channel-argument-structure
  */
@@ -569,8 +571,8 @@ export interface RPCSelectTextChannelArgs {
 	timeout?: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RPCSetActivityResultData {}
+
 /**
  * https://discord.com/developers/docs/topics/rpc#setactivity-set-activity-argument-structure
  */
@@ -582,15 +584,14 @@ export interface RPCSetActivityArgs {
 	/**
 	 * The rich presence to assign to the user
 	 */
-	activity?: Partial<
-		Omit<GatewayActivity, 'created_at' | 'id' | 'timestamps'> & Partial<Pick<GatewayActivity, 'timestamps'>>
-	>;
+	activity?: Partial<Omit<GatewayActivity, 'created_at' | 'id'>>;
 }
 
 /**
  * https://discord.com/developers/docs/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure
  */
 export type RPCSetVoiceSettingsResultData = RPCGetVoiceSettingsResultData;
+
 /**
  * https://discord.com/developers/docs/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure
  *
@@ -607,6 +608,7 @@ export interface RPCSubscribeResultData {
 	 */
 	evt: RPCEvents;
 }
+
 /**
  * https://discord.com/developers/docs/topics/rpc#subscribe
  */
@@ -649,6 +651,7 @@ export interface RPCUnsubscribeResultData {
 	 */
 	evt: RPCEvents;
 }
+
 /**
  * https://discord.com/developers/docs/topics/rpc#unsubscribe
  */
@@ -658,6 +661,7 @@ export type RPCUnsubscribeArgs = RPCSubscribeArgs;
  * @unstable
  */
 export interface RPCAcceptActivityInviteResultData {}
+
 /**
  * @unstable
  */
@@ -688,6 +692,7 @@ export interface RPCAcceptActivityInviteArgs {
  * @unstable
  */
 export interface RPCActivityInviteUserResultData {}
+
 /**
  * @unstable
  */
@@ -710,6 +715,7 @@ export interface RPCActivityInviteUserArgs {
  * @unstable
  */
 export interface RPCBraintreePopupBridgeCallbackResultData {}
+
 /**
  * @unstable
  */
@@ -719,12 +725,14 @@ export interface RPCBraintreePopupBridgeCallbackArgs {}
  * @unstable
  */
 export interface RPCBrowserHandoffResultData {}
+
 /**
  * @unstable
  */
 export interface RPCBrowserHandoffArgs {}
 
 export interface RPCCloseActivityJoinRequestResultData {}
+
 /**
  * https://discord.com/developers/docs/topics/rpc#closeactivityrequest-close-activity-request-argument-structure
  */
@@ -739,6 +747,7 @@ export interface RPCCloseActivityJoinRequestArgs {
  * @unstable
  */
 export interface RPCConnectionsCallbackResultData {}
+
 /**
  * @unstable
  */
@@ -773,6 +782,7 @@ export type RPCCreateChannelInviteResultData = APIInvite & {
 	 */
 	guild_id: Snowflake;
 };
+
 /**
  * @unstable Arguments to create channel invite
  */
@@ -787,6 +797,7 @@ export interface RPCCreateChannelInviteArgs {
  * @unstable
  */
 export interface RPCDeepLinkResultData {}
+
 /**
  * @unstable
  */
@@ -796,6 +807,7 @@ export interface RPCDeepLinkArgs {}
  * @unstable
  */
 export interface RPCGetApplicationTicketResultData {}
+
 /**
  * @unstable
  */
@@ -805,6 +817,7 @@ export interface RPCGetApplicationTicketArgs {}
  * @unstable
  */
 export interface RPCGetEntitlementTicketResultData {}
+
 /**
  * @unstable
  */
@@ -814,6 +827,7 @@ export interface RPCGetEntitlementTicketArgs {}
  * @unstable
  */
 export interface RPCGetEntitlementsResultData {}
+
 /**
  * @unstable
  */
@@ -828,6 +842,7 @@ export interface RPCGetImageResultData {
 	 */
 	data_url: string;
 }
+
 /**
  * @unstable
  */
@@ -854,6 +869,7 @@ export interface RPCGetImageArgs {
  * @unstable
  */
 export interface RPCGetNetworkingConfigResultData {}
+
 /**
  * @unstable
  */
@@ -863,6 +879,7 @@ export interface RPCGetNetworkingConfigArgs {}
  * @unstable
  */
 export type RPCGetRelationshipsResultData = Relationship[];
+
 /**
  * @unstable
  */
@@ -872,6 +889,7 @@ export interface RPCGetRelationshipsArgs {}
  * @unstable
  */
 export type RPCGetSkusResultData = unknown[];
+
 /**
  * @unstable
  */
@@ -881,6 +899,7 @@ export interface RPCGetSkusArgs {}
  * @unstable
  */
 export interface RPCGiftCodeBrowserResultData {}
+
 /**
  * @unstable
  */
@@ -890,6 +909,7 @@ export interface RPCGiftCodeBrowserArgs {}
  * @unstable
  */
 export interface RPCGuildTemplateBrowserResultData {}
+
 /**
  * @unstable
  */
@@ -899,6 +919,7 @@ export interface RPCGuildTemplateBrowserArgs {}
  * @unstable
  */
 export interface RPCInviteBrowserResultData {}
+
 /**
  * @unstable
  */
@@ -908,6 +929,7 @@ export interface RPCInviteBrowserArgs {}
  * @unstable
  */
 export interface RPCNetworkingCreateTokenResultData {}
+
 /**
  * @unstable
  */
@@ -917,6 +939,7 @@ export interface RPCNetworkingCreateTokenArgs {}
  * @unstable
  */
 export interface RPCNetworkingPeerMetricsResultData {}
+
 /**
  * @unstable
  */
@@ -926,6 +949,7 @@ export interface RPCNetworkingPeerMetricsArgs {}
  * @unstable
  */
 export interface RPCNetworkingSystemMetricsResultData {}
+
 /**
  * @unstable
  */
@@ -935,6 +959,7 @@ export interface RPCNetworkingSystemMetricsArgs {}
  * @unstable
  */
 export interface RPCOpenOverlayActivityInviteResultData {}
+
 /**
  * @unstable
  */
@@ -953,6 +978,7 @@ export interface RPCOpenOverlayActivityInviteArgs {
  * @unstable
  */
 export interface RPCOpenOverlayGuildInviteResultData {}
+
 /**
  * @unstable
  */
@@ -971,6 +997,7 @@ export interface RPCOpenOverlayGuildInviteArgs {
  * @unstable
  */
 export interface RPCOpenOverlayVoiceSettingsResultData {}
+
 /**
  * @unstable
  */
@@ -985,12 +1012,14 @@ export interface RPCOpenOverlayVoiceSettingsArgs {
  * @unstable
  */
 export interface RPCOverlayResultData {}
+
 /**
  * @unstable
  */
 export interface RPCOverlayArgs {}
 
 export interface RPCSendActivityJoinInviteResultData {}
+
 /**
  * https://discord.com/developers/docs/topics/rpc#sendactivityjoininvite-send-activity-join-invite-argument-structure
  */
@@ -1002,6 +1031,7 @@ export interface RPCSendActivityJoinInviteArgs {
 }
 
 export type RPCSetCertifiedDevicesResultData = null;
+
 /**
  * https://discord.com/developers/docs/topics/rpc#setcertifieddevices-set-certified-devices-argument-structure
  */
@@ -1016,6 +1046,7 @@ export interface RPCSetCertifiedDevicesArgs {
  * @unstable
  */
 export interface RPCSetOverlayLockedResultData {}
+
 /**
  * @unstable
  */
@@ -1034,6 +1065,7 @@ export interface RPCSetOverlayLockedArgs {
  * @unstable
  */
 export type RPCSetUserVoiceSettings2ResultData = RPCSetUserVoiceSettingsResultData;
+
 /**
  * @unstable
  */
@@ -1043,6 +1075,7 @@ export type RPCSetUserVoiceSettings2Args = RPCSetUserVoiceSettingsArgs;
  * @unstable
  */
 export type RPCSetVoiceSettings2ResultData = RPCSetVoiceSettingsResultData;
+
 /**
  * @unstable
  */
@@ -1052,6 +1085,7 @@ export type RPCSetVoiceSettings2Args = RPCSetVoiceSettingsArgs;
  * @unstable
  */
 export interface RPCStartPurchaseResultData {}
+
 /**
  * @unstable
  */
@@ -1066,6 +1100,7 @@ export interface RPCStartPurchaseArgs {
  * @unstable
  */
 export interface RPCValidateApplicationResultData {}
+
 /**
  * @unstable
  */
@@ -1319,7 +1354,6 @@ export interface RPCSubscribeVoiceStateUpdateArgs {
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RPCActivityInviteDispatchData {}
 
 /**
@@ -1373,19 +1407,16 @@ export interface RPCChannelCreateDispatchData {
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RPCCurrentUserUpdateDispatchData {}
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RPCEntitlementCreateDispatchData {}
 
 /**
  * @unstable
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RPCEntitlementDeleteDispatchData {}
 
 /**
@@ -1437,9 +1468,9 @@ export interface RPCGuildStatusDispatchData {
 	/**
 	 * Number of online users in guild
 	 *
-	 * @deprecated This will always be 0
+	 * @deprecated This will always be `0`
 	 */
-	online: number;
+	online: 0;
 }
 
 /**
@@ -1453,7 +1484,7 @@ export interface RPCMessageCreateDispatchData {
 	/**
 	 * 	message that was created
 	 */
-	message: APIMessage;
+	message: RPCAPIMessage;
 }
 
 /**
@@ -1467,7 +1498,7 @@ export interface RPCMessageDeleteDispatchData {
 	/**
 	 * Message that was deleted (only id)
 	 */
-	message: Pick<APIMessage, 'id'>;
+	message: Pick<RPCAPIMessage, 'id'>;
 }
 
 /**
@@ -1481,7 +1512,7 @@ export interface RPCMessageUpdateDispatchData {
 	/**
 	 * 	message that was updated
 	 */
-	message: APIMessage;
+	message: RPCAPIMessage;
 }
 
 /**

@@ -70,15 +70,15 @@ export enum OAuth2Scopes {
 	 */
 	RPC = 'rpc',
 	/**
-	 * for local rpc server access, this allows you to update a user's activity - requires Discord approval
+	 * For local rpc server access, this allows you to update a user's activity - requires Discord approval
 	 */
 	RPCActivitiesWrite = 'rpc.activities.write',
 	/**
-	 * for local rpc server access, this allows you to read a user's voice settings and listen for voice events - requires Discord approval
+	 * For local rpc server access, this allows you to read a user's voice settings and listen for voice events - requires Discord approval
 	 */
 	RPCVoiceRead = 'rpc.voice.read',
 	/**
-	 * for local rpc server access, this allows you to update a user's voice settings - requires Discord approval
+	 * For local rpc server access, this allows you to update a user's voice settings - requires Discord approval
 	 */
 	RPCVoiceWrite = 'rpc.voice.write',
 	/**

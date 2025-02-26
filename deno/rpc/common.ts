@@ -253,7 +253,7 @@ export interface RPCVoiceShortcutKeyCombo {
  */
 export interface RPCVoiceSettingsMode {
 	/**
-	 * Voice setting mode type (can be `PUSH_TO_TALK` or `VOICE_ACTIVITY`)
+	 * Voice setting mode type
 	 */
 	type: RPCVoiceSettingsModeType;
 	/**
