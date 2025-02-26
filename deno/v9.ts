@@ -3,4 +3,5 @@ export * from './globals.ts';
 export * from './payloads/v9/mod.ts';
 export * from './rest/v9/mod.ts';
 export * from './rpc/v9.ts';
+export * from './utils/internals.ts';
 export * as Utils from './utils/v9.ts';

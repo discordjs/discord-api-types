@@ -1,5 +1,5 @@
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes}
  */
 export enum RPCErrorCodes {
 	UnknownError = 1_000,
@@ -21,7 +21,7 @@ export enum RPCErrorCodes {
 }
 
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes}
  */
 export enum RPCCloseEventCodes {
 	InvalidClientId = 4_000,

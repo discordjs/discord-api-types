@@ -5,7 +5,7 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
 
 /**
- * https://discord.com/developers/docs/topics/permissions#role-object
+ * @see {@link https://discord.com/developers/docs/topics/permissions#role-object}
  */
 export interface APIRole {
 	/**
@@ -39,7 +39,7 @@ export interface APIRole {
 	/**
 	 * Permission bit set
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	permissions: Permissions;
 	/**
@@ -61,7 +61,7 @@ export interface APIRole {
 }
 
 /**
- * https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure
+ * @see {@link https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure}
  */
 export interface APIRoleTags {
 	/**
@@ -91,7 +91,7 @@ export interface APIRoleTags {
 }
 
 /**
- * https://discord.com/developers/docs/topics/permissions#role-object-role-flags
+ * @see {@link https://discord.com/developers/docs/topics/permissions#role-object-role-flags}
  */
 export enum RoleFlags {
 	/**

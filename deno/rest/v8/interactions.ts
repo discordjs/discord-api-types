@@ -6,7 +6,7 @@ import type {
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
 } from '../../payloads/v8/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _StrictPartial } from '../../utils/internals.ts';
 import type {
 	RESTDeleteAPIWebhookWithTokenMessageResult,
 	RESTGetAPIWebhookWithTokenMessageResult,
@@ -30,7 +30,7 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
  */
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
-type RESTPostAPIBaseApplicationCommandsJSONBody = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+type RESTPostAPIBaseApplicationCommandsJSONBody = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Omit<APIApplicationCommand, 'application_id' | 'description' | 'guild_id' | 'id' | 'type' | 'version'>
 >;
 
@@ -74,7 +74,7 @@ export type RESTPostAPIApplicationCommandsResult = APIApplicationCommand;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIApplicationCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationCommandJSONBody = _StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
@@ -130,7 +130,7 @@ export type RESTPostAPIApplicationGuildCommandsResult = APIApplicationCommand;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
+export type RESTPatchAPIApplicationGuildCommandJSONBody = _StrictPartial<RESTPostAPIApplicationCommandsJSONBody>;
 
 /**
  * https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command

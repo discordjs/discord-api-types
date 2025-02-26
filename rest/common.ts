@@ -1,5 +1,5 @@
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes}
  */
 export enum RESTJSONErrorCodes {
 	GeneralError,
@@ -325,7 +325,7 @@ export enum RESTJSONErrorCodes {
 }
 
 /**
- * https://discord.com/developers/docs/reference#locales
+ * @see {@link https://discord.com/developers/docs/reference#locales}
  */
 export enum Locale {
 	Indonesian = 'id',
@@ -363,6 +363,6 @@ export enum Locale {
 }
 
 /**
- * @deprecated Use {@apilink Locale} instead.
+ * @deprecated Use {@link Locale} instead.
  */
 export type LocaleString = `${Locale}`;

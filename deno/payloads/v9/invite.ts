@@ -25,7 +25,7 @@ export type APIInviteGuild = Pick<
 >;
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object}
  */
 export interface APIInvite {
 	/**
@@ -35,37 +35,37 @@ export interface APIInvite {
 	/**
 	 * The guild this invite is for
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-object}
 	 */
 	guild?: APIInviteGuild;
 	/**
 	 * The channel this invite is for
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object}
 	 */
 	channel: Required<APIPartialChannel> | null;
 	/**
 	 * The user who created the invite
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	inviter?: APIUser;
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+	 * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
 	 */
 	target_type?: InviteTargetType;
 	/**
 	 * The user whose stream to display for this voice channel stream invite
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	target_user?: APIUser;
 	/**
 	 * The embedded application to open for this voice channel embedded application invite
 	 *
-	 * See https://discord.com/developers/docs/resources/application#application-object
+	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
 	 */
 	target_application?: Partial<APIApplication>;
 	/**
@@ -84,6 +84,7 @@ export interface APIInvite {
 	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
 	 *
 	 * @deprecated
+	 * {@link https://github.com/discord/discord-api-docs/pull/4479 | discord-api-docs#4479}
 	 */
 	stage_instance?: APIInviteStageInstance;
 	/**
@@ -97,7 +98,7 @@ export interface APIInvite {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object-invite-types
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-types}
  */
 export enum InviteType {
 	Guild,
@@ -106,7 +107,7 @@ export enum InviteType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
  */
 export enum InviteTargetType {
 	Stream = 1,
@@ -114,7 +115,7 @@ export enum InviteTargetType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-metadata-object}
  */
 export interface APIExtendedInvite extends APIInvite {
 	/**

@@ -1,31 +1,31 @@
 import type { APIApplication, APIApplicationRoleConnectionMetadata } from '../../payloads/v9/application';
-import type { StrictPartial, Nullable } from '../../utils/internals';
+import type { _StrictPartial, _Nullable } from '../../utils/internals';
 
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#get-application-role-connection-metadata-records
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#get-application-role-connection-metadata-records}
  */
 export type RESTGetAPIApplicationRoleConnectionMetadataResult = APIApplicationRoleConnectionMetadata[];
 
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#update-application-role-connection-metadata-records
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#update-application-role-connection-metadata-records}
  */
 export type RESTPutAPIApplicationRoleConnectionMetadataJSONBody = APIApplicationRoleConnectionMetadata[];
 
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#update-application-role-connection-metadata-records
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#update-application-role-connection-metadata-records}
  */
 export type RESTPutAPIApplicationRoleConnectionMetadataResult = APIApplicationRoleConnectionMetadata[];
 
 /**
- * https://discord.com/developers/docs/resources/application#get-current-application
+ * @see {@link https://discord.com/developers/docs/resources/application#get-current-application}
  */
 export type RESTGetCurrentApplicationResult = APIApplication;
 
 /**
- * https://discord.com/developers/docs/resources/application#edit-current-application
+ * @see {@link https://discord.com/developers/docs/resources/application#edit-current-application}
  */
-export type RESTPatchCurrentApplicationJSONBody = StrictPartial<
-	Nullable<Pick<APIApplication, 'cover_image' | 'icon'>> &
+export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
+	_Nullable<Pick<APIApplication, 'cover_image' | 'icon'>> &
 		Pick<
 			APIApplication,
 			| 'custom_install_url'
@@ -40,6 +40,6 @@ export type RESTPatchCurrentApplicationJSONBody = StrictPartial<
 >;
 
 /**
- * https://discord.com/developers/docs/resources/application#edit-current-application
+ * @see {@link https://discord.com/developers/docs/resources/application#edit-current-application}
  */
 export type RESTPatchCurrentApplicationResult = APIApplication;

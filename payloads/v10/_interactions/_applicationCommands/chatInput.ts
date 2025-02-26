@@ -62,7 +62,7 @@ export * from './_chatInput/subcommandGroup';
 export * from './_chatInput/user';
 
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}
  */
 export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandAttachmentOption
@@ -76,7 +76,7 @@ export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandUserOption;
 
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}
  */
 export type APIApplicationCommandOption =
 	| APIApplicationCommandBasicOption
@@ -84,7 +84,7 @@ export type APIApplicationCommandOption =
 	| APIApplicationCommandSubcommandOption;
 
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure}
  */
 export type APIApplicationCommandInteractionDataOption =
 	| APIApplicationCommandInteractionDataBasicOption
@@ -103,7 +103,7 @@ export type APIApplicationCommandInteractionDataBasicOption =
 	| APIApplicationCommandInteractionDataUserOption;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export interface APIChatInputApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
@@ -112,19 +112,19 @@ export interface APIChatInputApplicationCommandInteractionData
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIChatInputApplicationCommandInteraction>;

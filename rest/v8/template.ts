@@ -1,5 +1,5 @@
 import type { APIGuild, APITemplate } from '../../payloads/v8/index';
-import type { StrictPartial } from '../../utils/internals';
+import type { _StrictPartial } from '../../utils/internals';
 
 /**
  * https://discord.com/developers/docs/resources/template#get-template
@@ -75,7 +75,7 @@ export type RESTPutAPIGuildTemplateSyncResult = APITemplate;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildTemplateJSONBody = StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
+export type RESTPatchAPIGuildTemplateJSONBody = _StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
 
 /**
  * https://discord.com/developers/docs/resources/template#modify-guild-template

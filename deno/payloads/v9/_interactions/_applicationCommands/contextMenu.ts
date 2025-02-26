@@ -5,7 +5,7 @@ import type { APIDMInteractionWrapper, APIGuildInteractionWrapper, APIUserIntera
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export interface APIUserApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
@@ -14,7 +14,7 @@ export interface APIUserApplicationCommandInteractionData
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export interface APIMessageApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
@@ -23,68 +23,68 @@ export interface APIMessageApplicationCommandInteractionData
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure}
  */
 export interface APIMessageApplicationCommandInteractionDataResolved {
 	messages: Record<Snowflake, APIMessage>;
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export type APIContextMenuInteractionData =
 	| APIMessageApplicationCommandInteractionData
 	| APIUserApplicationCommandInteractionData;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIUserApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIUserApplicationCommandInteractionData>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIUserApplicationCommandDMInteraction = APIDMInteractionWrapper<APIUserApplicationCommandInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIUserApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIUserApplicationCommandInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIMessageApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIMessageApplicationCommandInteractionData>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIMessageApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIMessageApplicationCommandInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIMessageApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIMessageApplicationCommandInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIContextMenuInteraction = APIMessageApplicationCommandInteraction | APIUserApplicationCommandInteraction;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIContextMenuDMInteraction =
 	| APIMessageApplicationCommandDMInteraction
 	| APIUserApplicationCommandDMInteraction;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIContextMenuGuildInteraction =
 	| APIMessageApplicationCommandGuildInteraction

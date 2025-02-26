@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIStageInstance, StageInstancePrivacyLevel } from '../../payloads/v9/mod.ts';
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#create-stage-instance}
  */
 export interface RESTPostAPIStageInstanceJSONBody {
 	/**
@@ -16,11 +16,11 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	/**
 	 * The privacy level of the stage instance
 	 *
-	 * @default GuildOnly
+	 * @defaultValue `StageInstancePrivacyLevel.GuildOnly`
 	 */
 	privacy_level?: StageInstancePrivacyLevel | undefined;
 	/**
-	 * Notify @everyone that a stage instance has started
+	 * Notify `@everyone` that a stage instance has started
 	 */
 	send_start_notification?: boolean | undefined;
 	/**
@@ -30,17 +30,17 @@ export interface RESTPostAPIStageInstanceJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#create-stage-instance}
  */
 export type RESTPostAPIStageInstanceResult = APIStageInstance;
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#get-stage-instance
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#get-stage-instance}
  */
 export type RESTGetAPIStageInstanceResult = APIStageInstance;
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance}
  */
 export interface RESTPatchAPIStageInstanceJSONBody {
 	/**
@@ -54,11 +54,11 @@ export interface RESTPatchAPIStageInstanceJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance}
  */
 export type RESTPatchAPIStageInstanceResult = APIStageInstance;
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance}
  */
 export type RESTDeleteAPIStageInstanceResult = never;

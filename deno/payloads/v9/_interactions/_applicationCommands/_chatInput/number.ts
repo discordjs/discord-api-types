@@ -5,7 +5,7 @@ import type {
 } from './base.ts';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 
-interface APIApplicationCommandNumberOptionBase
+export interface APIApplicationCommandNumberOptionBase
 	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Number> {
 	/**
 	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.

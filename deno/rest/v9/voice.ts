@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIVoiceRegion, APIVoiceState } from '../../payloads/v9/mod.ts';
 
 /**
- * https://discord.com/developers/docs/resources/voice#list-voice-regions
+ * @see {@link https://discord.com/developers/docs/resources/voice#list-voice-regions}
  */
 export type RESTGetAPIVoiceRegionsResult = APIVoiceRegion[];
 
@@ -12,17 +12,17 @@ export type RESTGetAPIVoiceRegionsResult = APIVoiceRegion[];
 export type GetAPIVoiceRegionsResult = RESTGetAPIVoiceRegionsResult;
 
 /**
- * https://discord.com/developers/docs/resources/voice#get-current-user-voice-state
+ * @see {@link https://discord.com/developers/docs/resources/voice#get-current-user-voice-state}
  */
 export type RESTGetAPIGuildVoiceStateCurrentMemberResult = APIVoiceState;
 
 /**
- * https://discord.com/developers/docs/resources/voice#get-user-voice-state
+ * @see {@link https://discord.com/developers/docs/resources/voice#get-user-voice-state}
  */
 export type RESTGetAPIGuildVoiceStateUserResult = APIVoiceState;
 
 /**
- * https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state
+ * @see {@link https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state}
  */
 export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 	/**
@@ -40,12 +40,12 @@ export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state
+ * @see {@link https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state}
  */
 export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/voice#modify-user-voice-state
+ * @see {@link https://discord.com/developers/docs/resources/voice#modify-user-voice-state}
  */
 export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 	/**
@@ -59,6 +59,6 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/voice#modify-user-voice-state
+ * @see {@link https://discord.com/developers/docs/resources/voice#modify-user-voice-state}
  */
 export type RESTPatchAPIGuildVoiceStateUserResult = never;

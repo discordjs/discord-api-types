@@ -1,44 +1,44 @@
-export type Nullable<T> = {
+export type _Nullable<T> = {
 	[P in keyof T]: T[P] | null;
 };
 
-export type NonNullableFields<T> = {
+export type _NonNullableFields<T> = {
 	[P in keyof T]: NonNullable<T[P]>;
 };
 
-export type AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base> = {
+export type _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base> = {
 	[K in keyof Base]: Base[K] extends Exclude<Base[K], undefined> ?
-		AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]>
-	:	AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]> | undefined;
+		_AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]>
+	:	_AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Base[K]> | undefined;
 };
 
-export type StrictPartial<Base> = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Partial<Base>>;
+export type _StrictPartial<Base> = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<Partial<Base>>;
 
-export type StrictRequired<Base> = Required<{ [K in keyof Base]: Exclude<Base[K], undefined> }>;
+export type _StrictRequired<Base> = Required<{ [K in keyof Base]: Exclude<Base[K], undefined> }>;
 
-export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+export type _UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
 
-type Keys<T> = keyof T;
-type DistributiveKeys<T> = T extends unknown ? Keys<T> : never;
+export type _Keys<T> = keyof T;
+export type _DistributiveKeys<T> = T extends unknown ? _Keys<T> : never;
 /**
  * Allows picking of keys from unions that are disjoint
  */
-export type DistributivePick<T, K extends DistributiveKeys<T>> =
+export type _DistributivePick<T, K extends _DistributiveKeys<T>> =
 	T extends unknown ?
-		keyof Pick_<T, K> extends never ?
+		keyof _Pick<T, K> extends never ?
 			never
-		:	{ [P in keyof Pick_<T, K>]: Pick_<T, K>[P] }
+		:	{ [P in keyof _Pick<T, K>]: _Pick<T, K>[P] }
 	:	never;
 
-type Pick_<T, K> = Pick<T, Extract<keyof T, K>>;
+export type _Pick<T, K> = Pick<T, Extract<keyof T, K>>;
 
 /**
  * Allows omitting of keys from unions that are disjoint
  */
-export type DistributiveOmit<T, K extends DistributiveKeys<T>> =
-	T extends unknown ? { [P in keyof Omit_<T, K>]: Omit_<T, K>[P] } : never;
+export type _DistributiveOmit<T, K extends _DistributiveKeys<T>> =
+	T extends unknown ? { [P in keyof _Omit<T, K>]: _Omit<T, K>[P] } : never;
 
-type Omit_<T, K> = Omit<T, Extract<keyof T, K>>;
+export type _Omit<T, K> = Omit<T, Extract<keyof T, K>>;
 
 // eslint-disable-next-line unicorn/better-regex
 const pattern = /^[\d%A-Za-z-_]+$/g;
