@@ -14,7 +14,7 @@ import type {
 } from './mod.ts';
 
 /**
- * https://discord.com/developers/docs/resources/webhook#webhook-object
+ * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object}
  */
 export interface APIWebhook {
 	/**
@@ -72,14 +72,14 @@ export interface APIWebhook {
 }
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#webhook-event-payloads
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#webhook-event-payloads}
  */
 export type APIWebhookEvent =
 	| APIWebhookEventBase<ApplicationWebhookType.Event, APIWebhookEventBody>
 	| APIWebhookEventBase<ApplicationWebhookType.Ping, never>;
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#event-body-object
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#event-body-object}
  */
 export type APIWebhookEventBody =
 	| APIWebhookEventEventBase<
@@ -132,7 +132,7 @@ export interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event>
 }
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#webhook-types
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#webhook-types}
  */
 export enum ApplicationWebhookType {
 	/**
@@ -161,7 +161,7 @@ export interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventTy
 }
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#event-types
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#event-types}
  */
 export enum ApplicationWebhookEventType {
 	/**
@@ -179,7 +179,7 @@ export enum ApplicationWebhookEventType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types
+ * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types}
  */
 export enum WebhookType {
 	/**

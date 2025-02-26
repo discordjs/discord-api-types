@@ -8,17 +8,17 @@ import type {
 } from '../../payloads/v9/mod.ts';
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#list-auto-moderation-rules-for-guild
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#list-auto-moderation-rules-for-guild}
  */
 export type RESTGetAPIAutoModerationRulesResult = APIAutoModerationRule[];
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#get-auto-moderation-rule
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#get-auto-moderation-rule}
  */
 export type RESTGetAPIAutoModerationRuleResult = APIAutoModerationRule;
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule}
  */
 export interface RESTPostAPIAutoModerationRuleJSONBody {
 	/**
@@ -60,12 +60,12 @@ export interface RESTPostAPIAutoModerationRuleJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule}
  */
 export type RESTPostAPIAutoModerationRuleResult = APIAutoModerationRule;
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#modify-auto-moderation-rule
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#modify-auto-moderation-rule}
  */
 export type RESTPatchAPIAutoModerationRuleJSONBody = Omit<
 	Partial<RESTPostAPIAutoModerationRuleJSONBody>,
@@ -73,11 +73,11 @@ export type RESTPatchAPIAutoModerationRuleJSONBody = Omit<
 >;
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#modify-auto-moderation-rule
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#modify-auto-moderation-rule}
  */
 export type RESTPatchAPIAutoModerationRuleResult = APIAutoModerationRule;
 
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#delete-auto-moderation-rule
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#delete-auto-moderation-rule}
  */
 export type RESTDeleteAPIAutoModerationRuleResult = never;

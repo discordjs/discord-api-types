@@ -6,7 +6,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIGuildIntegration } from './guild.ts';
 
 /**
- * https://discord.com/developers/docs/resources/user#user-object
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object}
  */
 export interface APIUser {
 	/**
@@ -99,7 +99,7 @@ export interface APIUser {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#user-object-user-flags
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
  */
 export enum UserFlags {
 	/**
@@ -210,7 +210,7 @@ export enum UserFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#user-object-premium-types
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
  */
 export enum UserPremiumType {
 	None,
@@ -220,7 +220,7 @@ export enum UserPremiumType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#connection-object
+ * @see {@link https://discord.com/developers/docs/resources/user#connection-object}
  */
 export interface APIConnection {
 	/**
@@ -316,7 +316,7 @@ export enum ConnectionVisibility {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure
+ * @see {@link https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure}
  */
 export interface APIApplicationRoleConnection {
 	/**
@@ -334,7 +334,7 @@ export interface APIApplicationRoleConnection {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
+ * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
  */
 export interface APIAvatarDecorationData {
 	/**

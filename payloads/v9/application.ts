@@ -12,7 +12,7 @@ import type { APIUser } from './user';
 import type { ApplicationWebhookEventType } from './webhook';
 
 /**
- * https://discord.com/developers/docs/resources/application#application-object
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object}
  */
 export interface APIApplication {
 	/**
@@ -171,7 +171,7 @@ export type APIApplicationIntegrationTypesConfigMap = {
 };
 
 /**
- * https://discord.com/developers/docs/resources/application#application-object-application-flags
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
  */
 export enum ApplicationFlags {
 	/**
@@ -246,7 +246,7 @@ export enum ApplicationFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-structure
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-structure}
  */
 export interface APIApplicationRoleConnectionMetadata {
 	/**
@@ -276,7 +276,7 @@ export interface APIApplicationRoleConnectionMetadata {
 }
 
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type}
  */
 export enum ApplicationRoleConnectionMetadataType {
 	/**
@@ -314,7 +314,7 @@ export enum ApplicationRoleConnectionMetadataType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status}
  */
 export enum ApplicationWebhookEventStatus {
 	/**

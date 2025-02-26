@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object}
  */
 export interface APIStageInstance {
 	/**
@@ -41,7 +41,7 @@ export interface APIStageInstance {
 }
 
 /**
- * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level}
  */
 export enum StageInstancePrivacyLevel {
 	/**
@@ -58,8 +58,7 @@ export enum StageInstancePrivacyLevel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-stage-instance-object-invite-stage-instance-structure
- *
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-stage-instance-object-invite-stage-instance-structure}
  * @deprecated
  * {@link https://github.com/discord/discord-api-docs/pull/4479 | discord-api-docs#4479}
  */

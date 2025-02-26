@@ -6,7 +6,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-object
+ * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
  */
 export interface APISticker {
 	/**
@@ -67,7 +67,7 @@ export interface APISticker {
 }
 
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types
+ * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types}
  */
 export enum StickerType {
 	/**
@@ -81,7 +81,7 @@ export enum StickerType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
+ * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types}
  */
 export enum StickerFormatType {
 	PNG = 1,
@@ -91,12 +91,12 @@ export enum StickerFormatType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-item-object
+ * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-item-object}
  */
 export type APIStickerItem = Pick<APISticker, 'format_type' | 'id' | 'name'>;
 
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-pack-object
+ * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-pack-object}
  */
 export interface APIStickerPack {
 	/**

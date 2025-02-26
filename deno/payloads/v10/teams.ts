@@ -6,7 +6,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-team-object
+ * @see {@link https://discord.com/developers/docs/topics/teams#data-models-team-object}
  */
 export interface APITeam {
 	/**
@@ -32,7 +32,7 @@ export interface APITeam {
 }
 
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-team-member-object
+ * @see {@link https://discord.com/developers/docs/topics/teams#data-models-team-member-object}
  */
 export interface APITeamMember {
 	/**
@@ -66,7 +66,7 @@ export interface APITeamMember {
 }
 
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
+ * @see {@link https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum}
  */
 export enum TeamMemberMembershipState {
 	Invited = 1,
@@ -74,7 +74,7 @@ export enum TeamMemberMembershipState {
 }
 
 /**
- * https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types
+ * @see {@link https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types}
  */
 export enum TeamMemberRole {
 	Admin = 'admin',

@@ -11,7 +11,7 @@ import type {
 } from '../../v9.ts';
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild}
  */
 export interface RESTGetAPIGuildScheduledEventsQuery {
 	/**
@@ -21,12 +21,12 @@ export interface RESTGetAPIGuildScheduledEventsQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild}
  */
 export type RESTGetAPIGuildScheduledEventsResult = APIGuildScheduledEvent[];
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event}
  */
 export interface RESTPostAPIGuildScheduledEventJSONBody {
 	/**
@@ -72,12 +72,12 @@ export interface RESTPostAPIGuildScheduledEventJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event}
  */
 export type RESTPostAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event}
  */
 export interface RESTGetAPIGuildScheduledEventQuery {
 	/**
@@ -87,12 +87,12 @@ export interface RESTGetAPIGuildScheduledEventQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event}
  */
 export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event}
  */
 export type RESTPatchAPIGuildScheduledEventJSONBody = _Nullable<
 	Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
@@ -107,17 +107,17 @@ export type RESTPatchAPIGuildScheduledEventJSONBody = _Nullable<
 	};
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event}
  */
 export type RESTPatchAPIGuildScheduledEventResult = APIGuildScheduledEvent;
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#delete-guild-scheduled-event
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#delete-guild-scheduled-event}
  */
 export type RESTDeleteAPIGuildScheduledEventResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users}
  */
 export interface RESTGetAPIGuildScheduledEventUsersQuery {
 	/**
@@ -141,6 +141,6 @@ export interface RESTGetAPIGuildScheduledEventUsersQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users}
  */
 export type RESTGetAPIGuildScheduledEventUsersResult = APIGuildScheduledEventUser[];

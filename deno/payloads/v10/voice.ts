@@ -6,14 +6,13 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 
 /**
- * https://discord.com/developers/docs/resources/voice#voice-state-object
- *
+ * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
  * @deprecated This is deprecated, use {@link APIVoiceState}
  */
 export type GatewayVoiceState = APIVoiceState;
 
 /**
- * https://discord.com/developers/docs/resources/voice#voice-state-object
+ * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
  */
 export interface APIVoiceState {
 	/**
@@ -73,7 +72,7 @@ export interface APIVoiceState {
 }
 
 /**
- * https://discord.com/developers/docs/resources/voice#voice-region-object
+ * @see {@link https://discord.com/developers/docs/resources/voice#voice-region-object}
  */
 export interface APIVoiceRegion {
 	/**

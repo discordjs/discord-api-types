@@ -8,7 +8,7 @@ import type { RESTPostAPIGuildsJSONBody } from '../../rest/v9/mod.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/resources/guild-template#template-object
+ * @see {@link https://discord.com/developers/docs/resources/guild-template#template-object}
  */
 export interface APITemplate {
 	/**

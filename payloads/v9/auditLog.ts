@@ -35,7 +35,7 @@ import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
 
 /**
- * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
+ * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure}
  */
 export interface APIAuditLog {
 	/**
@@ -91,7 +91,7 @@ export interface APIAuditLog {
 }
 
 /**
- * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
+ * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure}
  */
 export interface APIAuditLogEntry {
 	/**
@@ -133,7 +133,7 @@ export interface APIAuditLogEntry {
 }
 
 /**
- * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
+ * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events}
  */
 export enum AuditLogEvent {
 	GuildUpdate = 1,
@@ -222,7 +222,7 @@ export enum AuditLogEvent {
 }
 
 /**
- * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
+ * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info}
  */
 export interface APIAuditLogOptions {
 	/**
@@ -347,7 +347,7 @@ export enum AuditLogOptionsType {
 export type AuditLogRuleTriggerType = `${AutoModerationRuleTriggerType}`;
 
 /**
- * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
+ * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure}
  */
 export type APIAuditLogChange =
 	| APIAuditLogChangeKey$Add

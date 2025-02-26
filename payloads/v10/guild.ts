@@ -12,7 +12,7 @@ import type { APISticker } from './sticker';
 import type { APIAvatarDecorationData, APIUser } from './user';
 
 /**
- * https://discord.com/developers/docs/resources/guild#unavailable-guild-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#unavailable-guild-object}
  */
 export interface APIUnavailableGuild {
 	/**
@@ -26,7 +26,7 @@ export interface APIUnavailableGuild {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-guild-structure
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-structure}
  */
 export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'>, Pick<APIGuild, 'welcome_screen'> {
 	/**
@@ -74,7 +74,7 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-guild-structure
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-structure}
  */
 export interface APIGuild extends APIPartialGuild {
 	/**
@@ -287,7 +287,7 @@ export interface APIGuild extends APIPartialGuild {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-guild-structure
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-structure}
  */
 export interface APIPartialInteractionGuild extends Pick<APIGuild, 'features' | 'id'> {
 	/**
@@ -300,7 +300,7 @@ export interface APIPartialInteractionGuild extends Pick<APIGuild, 'features' | 
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level}
  */
 export enum GuildDefaultMessageNotifications {
 	AllMessages,
@@ -308,7 +308,7 @@ export enum GuildDefaultMessageNotifications {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level}
  */
 export enum GuildExplicitContentFilter {
 	Disabled,
@@ -317,7 +317,7 @@ export enum GuildExplicitContentFilter {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-mfa-level}
  */
 export enum GuildMFALevel {
 	None,
@@ -325,7 +325,7 @@ export enum GuildMFALevel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level}
  */
 export enum GuildNSFWLevel {
 	Default,
@@ -335,7 +335,7 @@ export enum GuildNSFWLevel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-verification-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-verification-level}
  */
 export enum GuildVerificationLevel {
 	/**
@@ -361,7 +361,7 @@ export enum GuildVerificationLevel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-premium-tier
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-premium-tier}
  */
 export enum GuildPremiumTier {
 	None,
@@ -377,7 +377,7 @@ export enum GuildHubType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags}
  */
 export enum GuildSystemChannelFlags {
 	/**
@@ -407,7 +407,7 @@ export enum GuildSystemChannelFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-guild-features
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-features}
  */
 export enum GuildFeature {
 	/**
@@ -560,7 +560,7 @@ export enum GuildFeature {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-preview-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-preview-object}
  */
 export interface APIGuildPreview {
 	/**
@@ -620,7 +620,7 @@ export interface APIGuildPreview {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-widget-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-widget-object}
  */
 export interface APIGuildWidgetSettings {
 	/**
@@ -634,7 +634,7 @@ export interface APIGuildWidgetSettings {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-member-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
  */
 export interface APIGuildMember {
 	/**
@@ -704,7 +704,7 @@ export interface APIGuildMember {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags}
  */
 export enum GuildMemberFlags {
 	/**
@@ -751,7 +751,7 @@ export enum GuildMemberFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#integration-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#integration-object}
  */
 export interface APIGuildIntegration {
 	/**
@@ -851,7 +851,7 @@ export interface APIGuildIntegration {
 export type APIGuildIntegrationType = 'discord' | 'guild_subscription' | 'twitch' | 'youtube';
 
 /**
- * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
+ * @see {@link https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors}
  */
 export enum IntegrationExpireBehavior {
 	RemoveRole,
@@ -859,7 +859,7 @@ export enum IntegrationExpireBehavior {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#integration-account-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#integration-account-object}
  */
 export interface APIIntegrationAccount {
 	/**
@@ -873,7 +873,7 @@ export interface APIIntegrationAccount {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#integration-application-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#integration-application-object}
  */
 export interface APIGuildIntegrationApplication {
 	/**
@@ -903,7 +903,7 @@ export interface APIGuildIntegrationApplication {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#ban-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#ban-object}
  */
 export interface APIBan {
 	/**
@@ -917,7 +917,7 @@ export interface APIBan {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-widget-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-widget-object}
  */
 export interface APIGuildWidget {
 	id: Snowflake;
@@ -929,7 +929,7 @@ export interface APIGuildWidget {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget}
  */
 export interface APIGuildWidgetChannel {
 	id: Snowflake;
@@ -938,7 +938,7 @@ export interface APIGuildWidgetChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-widget-object-example-guild-widget}
  */
 export interface APIGuildWidgetMember {
 	id: string;
@@ -951,7 +951,7 @@ export interface APIGuildWidgetMember {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options
+ * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options}
  */
 export enum GuildWidgetStyle {
 	/**
@@ -1051,7 +1051,7 @@ export enum MembershipScreeningFieldType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-guild-onboarding-structure
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-onboarding-object-guild-onboarding-structure}
  */
 export interface APIGuildOnboarding {
 	/**
@@ -1077,7 +1077,7 @@ export interface APIGuildOnboarding {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure}
  */
 export interface APIGuildOnboardingPrompt {
 	/**
@@ -1112,7 +1112,7 @@ export interface APIGuildOnboardingPrompt {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure}
  */
 export interface APIGuildOnboardingPromptOption {
 	/**
@@ -1142,7 +1142,7 @@ export interface APIGuildOnboardingPromptOption {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-mode
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-mode}
  */
 export enum GuildOnboardingMode {
 	/**
@@ -1156,7 +1156,7 @@ export enum GuildOnboardingMode {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types}
  */
 export enum GuildOnboardingPromptType {
 	MultipleChoice,

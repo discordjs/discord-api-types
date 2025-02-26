@@ -241,7 +241,7 @@ export interface APIThreadChannel
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure}
  */
 export interface APIGuildForumTag {
 	/**
@@ -267,7 +267,7 @@ export interface APIGuildForumTag {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#default-reaction-object-default-reaction-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#default-reaction-object-default-reaction-structure}
  */
 export interface APIGuildForumDefaultReactionEmoji {
 	/**
@@ -281,7 +281,7 @@ export interface APIGuildForumDefaultReactionEmoji {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-types
+ * @see {@link https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-types}
  */
 export enum SortOrderType {
 	/**
@@ -295,7 +295,7 @@ export enum SortOrderType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel/#channel-object-forum-layout-types
+ * @see {@link https://discord.com/developers/docs/resources/channel/#channel-object-forum-layout-types}
  */
 export enum ForumLayoutType {
 	/**
@@ -367,7 +367,7 @@ export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.G
 export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-structure}
  */
 export type APIChannel =
 	| APIDMChannel
@@ -382,7 +382,7 @@ export type APIChannel =
 	| APIThreadChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
  */
 export enum ChannelType {
 	/**
@@ -489,7 +489,7 @@ export enum VideoQualityMode {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-structure}
  */
 export interface APIMessage {
 	/**
@@ -724,7 +724,7 @@ export interface APIMessage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-types}
  */
 export enum MessageType {
 	Default,
@@ -775,7 +775,7 @@ export enum MessageType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure}
  */
 export interface APIMessageActivity {
 	/**
@@ -793,7 +793,7 @@ export interface APIMessageActivity {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure}
  */
 export interface APIMessageReference {
 	/**
@@ -815,7 +815,7 @@ export interface APIMessageReference {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-activity-types}
  */
 export enum MessageActivityType {
 	Join = 1,
@@ -825,7 +825,7 @@ export enum MessageActivityType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-reference-types}
  */
 export enum MessageReferenceType {
 	/**
@@ -839,7 +839,7 @@ export enum MessageReferenceType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-flags
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-flags}
  */
 export enum MessageFlags {
 	/**
@@ -897,7 +897,7 @@ export enum MessageFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-call-object-message-call-object-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-call-object-message-call-object-structure}
  */
 export interface APIMessageCall {
 	/**
@@ -911,7 +911,7 @@ export interface APIMessageCall {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#followed-channel-object
+ * @see {@link https://discord.com/developers/docs/resources/channel#followed-channel-object}
  */
 export interface APIFollowedChannel {
 	/**
@@ -925,7 +925,7 @@ export interface APIFollowedChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure}
  */
 export interface APIReaction {
 	/**
@@ -957,7 +957,7 @@ export interface APIReaction {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#reaction-count-details-object-reaction-count-details-structure}
  */
 export interface APIReactionCountDetails {
 	/**
@@ -971,7 +971,7 @@ export interface APIReactionCountDetails {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure}
  */
 export interface APIOverwrite {
 	/**
@@ -1004,7 +1004,7 @@ export enum OverwriteType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#thread-metadata-object-thread-metadata-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#thread-metadata-object-thread-metadata-structure}
  */
 export interface APIThreadMetadata {
 	/**
@@ -1041,7 +1041,7 @@ export enum ThreadAutoArchiveDuration {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#thread-member-object-thread-member-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#thread-member-object-thread-member-structure}
  */
 export interface APIThreadMember {
 	/**
@@ -1111,7 +1111,7 @@ export interface APIThreadList {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-structure}
  *
  * Length limit: 6000 characters
  */
@@ -1191,7 +1191,7 @@ export interface APIEmbed {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-types}
  */
 export enum EmbedType {
 	/**
@@ -1231,7 +1231,7 @@ export enum EmbedType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure}
  */
 export interface APIEmbedThumbnail {
 	/**
@@ -1253,7 +1253,7 @@ export interface APIEmbedThumbnail {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure}
  */
 export interface APIEmbedVideo {
 	/**
@@ -1275,7 +1275,7 @@ export interface APIEmbedVideo {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure}
  */
 export interface APIEmbedImage {
 	/**
@@ -1297,7 +1297,7 @@ export interface APIEmbedImage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure}
  */
 export interface APIEmbedProvider {
 	/**
@@ -1311,7 +1311,7 @@ export interface APIEmbedProvider {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure}
  */
 export interface APIEmbedAuthor {
 	/**
@@ -1335,7 +1335,7 @@ export interface APIEmbedAuthor {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure}
  */
 export interface APIEmbedFooter {
 	/**
@@ -1355,7 +1355,7 @@ export interface APIEmbedFooter {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure}
  */
 export interface APIEmbedField {
 	/**
@@ -1377,7 +1377,7 @@ export interface APIEmbedField {
 }
 
 /**
- * https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
+ * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
  */
 export interface APIAttachment {
 	/**
@@ -1441,7 +1441,7 @@ export interface APIAttachment {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure-attachment-flags
+ * @see {@link https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure-attachment-flags}
  */
 export enum AttachmentFlags {
 	/**
@@ -1451,7 +1451,7 @@ export enum AttachmentFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure}
  */
 export interface APIChannelMention {
 	/**
@@ -1475,7 +1475,7 @@ export interface APIChannelMention {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types}
  */
 export enum AllowedMentionsTypes {
 	/**
@@ -1493,7 +1493,7 @@ export enum AllowedMentionsTypes {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure}
  */
 export interface APIAllowedMentions {
 	/**
@@ -1519,7 +1519,7 @@ export interface APIAllowedMentions {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-object
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
  */
 export interface APIBaseComponent<T extends ComponentType> {
 	/**
@@ -1529,7 +1529,7 @@ export interface APIBaseComponent<T extends ComponentType> {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-object-component-types
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object-component-types}
  */
 export enum ComponentType {
 	/**
@@ -1576,7 +1576,7 @@ export enum ComponentType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#action-rows
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#action-rows}
  */
 export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
 	extends APIBaseComponent<ComponentType.ActionRow> {
@@ -1587,7 +1587,7 @@ export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#buttons
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#buttons}
  */
 export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
 	/**
@@ -1654,7 +1654,7 @@ export type APIButtonComponent =
 	| APIButtonComponentWithURL;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#button-object-button-styles}
  */
 export enum ButtonStyle {
 	Primary = 1,
@@ -1666,7 +1666,7 @@ export enum ButtonStyle {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles}
  */
 export enum TextInputStyle {
 	Short = 1,
@@ -1674,7 +1674,7 @@ export enum TextInputStyle {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
  */
 export interface APIBaseSelectMenuComponent<
 	T extends
@@ -1727,7 +1727,7 @@ export interface APIBaseAutoPopulatedSelectMenuComponent<
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
  */
 export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
 	/**
@@ -1737,7 +1737,7 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
  */
 export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.UserSelect,
@@ -1745,7 +1745,7 @@ export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 >;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
  */
 export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.RoleSelect,
@@ -1753,7 +1753,7 @@ export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 >;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
  */
 export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.MentionableSelect,
@@ -1761,7 +1761,7 @@ export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuCompon
 >;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
  */
 export interface APIChannelSelectComponent
 	extends APIBaseAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
@@ -1772,7 +1772,7 @@ export interface APIChannelSelectComponent
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure}
  */
 export enum SelectMenuDefaultValueType {
 	Channel = 'channel',
@@ -1781,7 +1781,7 @@ export enum SelectMenuDefaultValueType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure}
  */
 export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType> {
 	type: T;
@@ -1795,7 +1795,7 @@ export type APIAutoPopulatedSelectMenuComponent =
 	| APIUserSelectComponent;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menus
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
  */
 export type APISelectMenuComponent =
 	| APIChannelSelectComponent
@@ -1805,7 +1805,7 @@ export type APISelectMenuComponent =
 	| APIUserSelectComponent;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure}
  */
 export interface APISelectMenuOption {
 	/**
@@ -1831,7 +1831,7 @@ export interface APISelectMenuOption {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure}
  */
 export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
 	/**
@@ -1869,7 +1869,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-snapshot-object
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-snapshot-object}
  */
 export interface APIMessageSnapshot {
 	/**
@@ -1890,7 +1890,7 @@ export interface APIMessageSnapshot {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
+ * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-flags}
  */
 export enum ChannelFlags {
 	/**
@@ -1933,7 +1933,7 @@ export enum ChannelFlags {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#message-components
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
  */
 export type APIMessageComponent = APIActionRowComponent<APIMessageActionRowComponent> | APIMessageActionRowComponent;
 export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
@@ -1941,7 +1941,7 @@ export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent
 export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#message-components
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
  */
 export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuComponent;
 

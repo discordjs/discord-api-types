@@ -25,7 +25,7 @@ export type APIInviteGuild = Pick<
 >;
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object}
  */
 export interface APIInvite {
 	/**
@@ -98,7 +98,7 @@ export interface APIInvite {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object-invite-types
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-types}
  */
 export enum InviteType {
 	Guild,
@@ -107,7 +107,7 @@ export enum InviteType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
  */
 export enum InviteTargetType {
 	Stream = 1,
@@ -115,7 +115,7 @@ export enum InviteTargetType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/invite#invite-metadata-object
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-metadata-object}
  */
 export interface APIExtendedInvite extends APIInvite {
 	/**
