@@ -194,7 +194,7 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	 * Whether to allow sending (non-interactive) components for non-application-owned webhooks
 	 * (defaults to `false`; ignored for application-owned webhooks)
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	with_components?: boolean;
 }
