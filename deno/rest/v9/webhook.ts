@@ -174,7 +174,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIWebhookWithTokenJSONBody);
 
 /**
- * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
+ * https://discord.com/developers/docs/resources/webhook#execute-webhook-query-string-params
  */
 export interface RESTPostAPIWebhookWithTokenQuery {
 	/**
@@ -190,6 +190,13 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	 * Available only if the {@link RESTPostAPIWebhookWithTokenJSONBody.thread_name} JSON body property is not specified
 	 */
 	thread_id?: Snowflake;
+	/**
+	 * Whether to allow sending (non-interactive) components for non-application-owned webhooks
+	 * (defaults to `false`; ignored for application-owned webhooks)
+	 *
+	 * @defaultValue `false`
+	 */
+	with_components?: boolean;
 }
 
 /**
@@ -201,14 +208,14 @@ export type RESTPostAPIWebhookWithTokenResult = never;
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * See https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
+ * See https://discord.com/developers/docs/resources/webhook#execute-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenWaitResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-querystring-params
+ * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-query-string-params
  */
-export type RESTPostAPIWebhookWithTokenSlackQuery = RESTPostAPIWebhookWithTokenQuery;
+export type RESTPostAPIWebhookWithTokenSlackQuery = Pick<RESTPostAPIWebhookWithTokenQuery, 'thread_id' | 'wait'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook
@@ -219,14 +226,14 @@ export type RESTPostAPIWebhookWithTokenSlackResult = never;
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * See https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-querystring-params
+ * See https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenSlackWaitResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
+ * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-query-string-params
  */
-export type RESTPostAPIWebhookWithTokenGitHubQuery = RESTPostAPIWebhookWithTokenQuery;
+export type RESTPostAPIWebhookWithTokenGitHubQuery = Pick<RESTPostAPIWebhookWithTokenQuery, 'thread_id' | 'wait'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook
@@ -237,7 +244,7 @@ export type RESTPostAPIWebhookWithTokenGitHubResult = never;
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * See https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-querystring-params
+ * See https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-query-string-params
  */
 export type RESTPostAPIWebhookWithTokenGitHubWaitResult = APIMessage;
 
@@ -287,6 +294,11 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 			payload_json?: string | undefined;
 	  })
 	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIWebhookWithTokenMessageJSONBody);
+
+/**
+ * https://discord.com/developers/docs/resources/webhook#edit-webhook-message-query-string-params
+ */
+export type RESTPatchAPIWebhookWithTokenQuery = Pick<RESTPostAPIWebhookWithTokenQuery, 'thread_id' | 'with_components'>;
 
 /**
  * https://discord.com/developers/docs/resources/webhook#edit-webhook-message
