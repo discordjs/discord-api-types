@@ -87,7 +87,7 @@ export interface APIUser {
 	 * The user's avatar decoration hash
 	 *
 	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
-	 * @deprecated Use `avatar_decoration_data` instead
+	 * @deprecated Use {@link APIUser.avatar_decoration_data} instead
 	 */
 	avatar_decoration?: string | null;
 	/**

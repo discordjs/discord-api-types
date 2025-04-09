@@ -83,7 +83,7 @@ export interface APIApplicationCommand {
 	/**
 	 * Indicates whether the command is available in DMs with the app, only for globally-scoped commands. By default, commands are visible
 	 *
-	 * @deprecated Use `contexts` instead
+	 * @deprecated Use {@link APIApplicationCommand.contexts} instead
 	 */
 	dm_permission?: boolean;
 	/**
@@ -91,7 +91,7 @@ export interface APIApplicationCommand {
 	 *
 	 * If missing, this property should be assumed as `true`
 	 *
-	 * @deprecated Use `dm_permission` and/or `default_member_permissions` instead
+	 * @deprecated Use {@link APIApplicationCommand.dm_permission} and/or {@link APIApplicationCommand.default_member_permissions} instead
 	 */
 	default_permission?: boolean;
 	/**

@@ -44,7 +44,7 @@ export interface APITeamMember {
 	/**
 	 * Will always be `["*"]`
 	 *
-	 * @deprecated Use `role` instead
+	 * @deprecated Use {@link APITeamMember.role} instead.
 	 */
 	permissions: ['*'];
 	/**

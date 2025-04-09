@@ -603,7 +603,7 @@ export interface RESTPutAPIGuildBanJSONBody {
 	/**
 	 * Number of days to delete messages for (0-7)
 	 *
-	 * @deprecated use `delete_message_seconds` instead
+	 * @deprecated Use {@link RESTPutAPIGuildBanJSONBody.delete_message_seconds} instead
 	 */
 	delete_message_days?: number | undefined;
 	/**

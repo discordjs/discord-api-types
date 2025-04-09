@@ -7,7 +7,7 @@ import type { APIVoiceRegion, APIVoiceState } from '../../payloads/v9/mod.ts';
 export type RESTGetAPIVoiceRegionsResult = APIVoiceRegion[];
 
 /**
- * @deprecated This was exported with the wrong name, use `RESTGetAPIVoiceRegionsResult` instead
+ * @deprecated This was exported with the wrong name, use {@link RESTGetAPIVoiceRegionsResult} instead
  */
 export type GetAPIVoiceRegionsResult = RESTGetAPIVoiceRegionsResult;
 

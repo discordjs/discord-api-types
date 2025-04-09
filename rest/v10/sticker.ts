@@ -24,7 +24,7 @@ export type RESTGetAPIStickerPack = RESTGetAPIStickerPackResult;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/sticker#list-sticker-packs}
- * @deprecated Use `RESTGetStickerPacksResult` instead
+ * @deprecated Use {@link RESTGetStickerPacksResult} instead
  */
 export type RESTGetNitroStickerPacksResult = RESTGetStickerPacksResult;
 
