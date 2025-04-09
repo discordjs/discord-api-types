@@ -102,7 +102,7 @@ export interface APIGuildScheduledEventRecurrenceRule {
 	/**
 	 * List of specific days within a specific week (1-5) to recur on
 	 */
-	by_n_weekday: GuildScheduledEventRecurrenceRuleNWeekday[] | null;
+	by_n_weekday: APIGuildScheduledEventRecurrenceRuleNWeekday[] | null;
 	/**
 	 * Set of specific months to recur on
 	 */
@@ -165,7 +165,7 @@ export enum GuildScheduledEventRecurrenceRuleMonth {
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-nweekday-structure}
  */
-export interface GuildScheduledEventRecurrenceRuleNWeekday {
+export interface APIGuildScheduledEventRecurrenceRuleNWeekday {
 	/**
 	 * The week to reoccur on.
 	 */
@@ -175,6 +175,11 @@ export interface GuildScheduledEventRecurrenceRuleNWeekday {
 	 */
 	day: GuildScheduledEventRecurrenceRuleWeekday;
 }
+
+/**
+ * @deprecated Use {@link APIGuildScheduledEventRecurrenceRuleNWeekday} instead
+ */
+export type GuildScheduledEventRecurrenceRuleNWeekday = APIGuildScheduledEventRecurrenceRuleNWeekday;
 
 export interface APIStageInstanceGuildScheduledEvent
 	extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.StageInstance> {
