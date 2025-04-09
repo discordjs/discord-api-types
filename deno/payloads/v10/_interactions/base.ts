@@ -215,6 +215,10 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * Context where the interaction was triggered from
 	 */
 	context?: InteractionContextType;
+	/**
+	 * Attachment size limit in bytes
+	 */
+	attachment_size_limit: number;
 }
 
 export type APIAuthorizingIntegrationOwnersMap = {
