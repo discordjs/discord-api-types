@@ -67,7 +67,7 @@ export interface RPCAPIMessage extends Omit<APIMessage, 'channel_id'> {
 }
 
 /**
- * https://discord.com/developers/docs/topics/rpc#authenticate-oauth2-application-structure
+ * @see {@link https://discord.com/developers/docs/topics/rpc#authenticate-oauth2-application-structure}
  */
 export interface RPCOAuth2Application {
 	/**
@@ -144,7 +144,7 @@ export interface BaseRPCCertifiedDevice<Type extends RPCDeviceType> {
 }
 
 /**
- * https://discord.com/developers/docs/topics/rpc#setcertifieddevices-device-object
+ * @see {@link https://discord.com/developers/docs/topics/rpc#setcertifieddevices-device-object}
  */
 export type RPCCertifiedDevice<Type extends RPCDeviceType = RPCDeviceType> =
 	Type extends RPCDeviceType.AudioInput ?
@@ -180,7 +180,7 @@ export interface RPCVoiceAvailableDevice {
 }
 
 /**
- * https://discord.com/developers/docs/topics/rpc#getvoicesettings-voice-settings-input-object
+ * @see {@link https://discord.com/developers/docs/topics/rpc#getvoicesettings-voice-settings-input-object}
  */
 export interface RPCVoiceSettingsInput {
 	/**
@@ -198,7 +198,7 @@ export interface RPCVoiceSettingsInput {
 }
 
 /**
- * https://discord.com/developers/docs/topics/rpc#getvoicesettings-voice-settings-output-object
+ * @see {@link https://discord.com/developers/docs/topics/rpc#getvoicesettings-voice-settings-output-object}
  */
 export interface RPCVoiceSettingsOutput {
 	/**
@@ -221,7 +221,7 @@ export enum RPCVoiceSettingsModeType {
 }
 
 /**
- * https://discord.com/developers/docs/topics/rpc#getvoicesettings-key-types
+ * @see {@link https://discord.com/developers/docs/topics/rpc#getvoicesettings-key-types}
  */
 export enum RPCVoiceShortcutKeyComboKeyType {
 	KeyboardKey,
@@ -231,7 +231,7 @@ export enum RPCVoiceShortcutKeyComboKeyType {
 }
 
 /**
- * https://discord.com/developers/docs/topics/rpc#getvoicesettings-shortcut-key-combo-object
+ * @see {@link https://discord.com/developers/docs/topics/rpc#getvoicesettings-shortcut-key-combo-object}
  */
 export interface RPCVoiceShortcutKeyCombo {
 	/**
@@ -249,7 +249,7 @@ export interface RPCVoiceShortcutKeyCombo {
 }
 
 /**
- * https://discord.com/developers/docs/topics/rpc#getvoicesettings-voice-settings-mode-object
+ * @see {@link https://discord.com/developers/docs/topics/rpc#getvoicesettings-voice-settings-mode-object}
  */
 export interface RPCVoiceSettingsMode {
 	/**
@@ -348,7 +348,7 @@ export interface Relationship {
 }
 
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes}
  */
 export enum RPCErrorCodes {
 	/**
@@ -466,7 +466,7 @@ export enum RPCErrorCodes {
 }
 
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes}
  */
 export enum RPCCloseEventCodes {
 	/**

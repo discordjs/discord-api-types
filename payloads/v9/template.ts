@@ -8,7 +8,7 @@ import type { RESTPostAPIGuildsJSONBody } from '../../rest/v9/index';
 import type { APIUser } from './user';
 
 /**
- * https://discord.com/developers/docs/resources/guild-template#template-object
+ * @see {@link https://discord.com/developers/docs/resources/guild-template#template-object}
  */
 export interface APITemplate {
 	/**
@@ -34,7 +34,7 @@ export interface APITemplate {
 	/**
 	 * The user who created the template
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	creator: APIUser;
 	/**

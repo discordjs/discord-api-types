@@ -1,7 +1,7 @@
 import type { Snowflake } from '../../globals.ts';
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure
+ * @see {@link https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure}
  */
 export interface APIEntitlement {
 	/**
@@ -47,7 +47,7 @@ export interface APIEntitlement {
 }
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types
+ * @see {@link https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types}
  */
 export enum EntitlementType {
 	/**
@@ -85,7 +85,7 @@ export enum EntitlementType {
 }
 
 /**
- * https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure
+ * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure}
  */
 export interface APISKU {
 	/**
@@ -111,13 +111,13 @@ export interface APISKU {
 	/**
 	 * SKU flags combined as a bitfield
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	flags: SKUFlags;
 }
 
 /**
- * https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags
+ * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags}
  */
 export enum SKUFlags {
 	/**
@@ -136,7 +136,7 @@ export enum SKUFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/sku#sku-object-sku-types
+ * @see {@link https://discord.com/developers/docs/resources/sku#sku-object-sku-types}
  */
 export enum SKUType {
 	/**
@@ -158,7 +158,7 @@ export enum SKUType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/subscription#subscription-object
+ * @see {@link https://discord.com/developers/docs/resources/subscription#subscription-object}
  */
 export interface APISubscription {
 	/**
@@ -204,7 +204,7 @@ export interface APISubscription {
 }
 
 /**
- * https://discord.com/developers/docs/resources/subscription#subscription-statuses
+ * @see {@link https://discord.com/developers/docs/resources/subscription#subscription-statuses}
  */
 export enum SubscriptionStatus {
 	/**

@@ -2,12 +2,12 @@ import type { Snowflake } from '../../globals';
 import type { APISoundboardSound } from '../../payloads/v10/index';
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound}
  */
 export type RESTPostAPISendSoundboardSoundResult = APISoundboardSound;
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params}
  */
 export interface RESTPostAPISoundboardSendSoundJSONBody {
 	/**
@@ -21,24 +21,24 @@ export interface RESTPostAPISoundboardSendSoundJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#list-soundboard-default-sounds
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#list-soundboard-default-sounds}
  */
 export type RESTGetAPISoundboardDefaultSoundsResult = APISoundboardSound[];
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#list-guild-soundboard-sounds}
  */
 export interface RESTGetAPIGuildSoundboardSoundsResult {
 	items: APISoundboardSound[];
 }
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#get-guild-soundboard-sound}
  */
 export type RESTGetAPIGuildSoundboardSoundResult = APISoundboardSound;
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound-json-params
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound-json-params}
  */
 export interface RESTPostAPIGuildSoundboardSoundJSONBody {
 	/**
@@ -48,13 +48,13 @@ export interface RESTPostAPIGuildSoundboardSoundJSONBody {
 	/**
 	 * The data uri of the mp3 or ogg sound data, base64 encoded, similar to image data
 	 *
-	 * See https://discord.com/developers/docs/reference#image-data
+	 * @see {@link https://discord.com/developers/docs/reference#image-data}
 	 */
 	sound: string;
 	/**
 	 * The volume of the soundboard sound, from 0 to 1
 	 *
-	 * @default 1
+	 * @defaultValue `1`
 	 */
 	volume?: number | null | undefined;
 	/**
@@ -68,12 +68,12 @@ export interface RESTPostAPIGuildSoundboardSoundJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#create-guild-soundboard-sound}
  */
 export type RESTPostAPIGuildSoundboardSoundResult = APISoundboardSound;
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound-json-params
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound-json-params}
  */
 export interface RESTPatchAPIGuildSoundboardSoundJSONBody {
 	/**
@@ -83,7 +83,7 @@ export interface RESTPatchAPIGuildSoundboardSoundJSONBody {
 	/**
 	 * The volume of the soundboard sound, from 0 to 1
 	 *
-	 * @default 1
+	 * @defaultValue `1`
 	 */
 	volume?: number | null | undefined;
 	/**
@@ -97,11 +97,11 @@ export interface RESTPatchAPIGuildSoundboardSoundJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#modify-guild-soundboard-sound}
  */
 export type RESTPatchAPIGuildSoundboardSoundResult = APISoundboardSound;
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#delete-guild-soundboard-sound
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#delete-guild-soundboard-sound}
  */
 export type RESTDeleteAPIGuildSoundboardSoundResult = never;

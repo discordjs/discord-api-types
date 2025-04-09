@@ -14,7 +14,7 @@ import type {
 } from './mod.ts';
 
 /**
- * https://discord.com/developers/docs/resources/webhook#webhook-object
+ * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object}
  */
 export interface APIWebhook {
 	/**
@@ -24,7 +24,7 @@ export interface APIWebhook {
 	/**
 	 * The type of the webhook
 	 *
-	 * See https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types
+	 * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types}
 	 */
 	type: WebhookType;
 	/**
@@ -38,7 +38,7 @@ export interface APIWebhook {
 	/**
 	 * The user this webhook was created by (not returned when getting a webhook with its token)
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user?: APIUser;
 	/**
@@ -72,14 +72,14 @@ export interface APIWebhook {
 }
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#webhook-event-payloads
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#webhook-event-payloads}
  */
 export type APIWebhookEvent =
 	| APIWebhookEventBase<ApplicationWebhookType.Event, APIWebhookEventBody>
 	| APIWebhookEventBase<ApplicationWebhookType.Ping, never>;
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#event-body-object
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#event-body-object}
  */
 export type APIWebhookEventBody =
 	| APIWebhookEventEventBase<
@@ -112,7 +112,7 @@ export type APIWebhookEventEntitlementCreateData = APIEntitlement;
 
 export type APIWebhookEventQuestUserEnrollmentData = never;
 
-interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
+export interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
 	/**
 	 * Version scheme for the webhook event. Currently always `1`
 	 */
@@ -132,7 +132,7 @@ interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
 }
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#webhook-types
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#webhook-types}
  */
 export enum ApplicationWebhookType {
 	/**
@@ -145,7 +145,7 @@ export enum ApplicationWebhookType {
 	Event,
 }
 
-interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventType, Data> {
+export interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventType, Data> {
 	/**
 	 * Event type
 	 */
@@ -161,7 +161,7 @@ interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventType, Dat
 }
 
 /**
- * https://discord.com/developers/docs/events/webhook-events#event-types
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#event-types}
  */
 export enum ApplicationWebhookEventType {
 	/**
@@ -179,7 +179,7 @@ export enum ApplicationWebhookEventType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types
+ * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types}
  */
 export enum WebhookType {
 	/**
