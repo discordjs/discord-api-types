@@ -112,7 +112,7 @@ export interface APIChatInputApplicationCommandInteractionData
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export interface APIAutocompleteApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {

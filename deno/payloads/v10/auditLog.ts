@@ -628,7 +628,7 @@ export type APIAuditLogChangeKeyApplicationId = APIAuditLogChangeData<'applicati
 export type APIAuditLogChangeKeyRateLimitPerUser = APIAuditLogChangeData<'rate_limit_per_user', number>;
 
 /**
- *  Returned when a guild scheduled event's recurrence_rule is changed
+ * Returned when a guild scheduled event's recurrence_rule is changed
  */
 export type APIAuditLogChangeKeyRecurrenceRule = APIAuditLogChangeData<
 	'recurrence_rule',

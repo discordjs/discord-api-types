@@ -521,7 +521,7 @@ export type RESTPatchAPIGuildMemberResult = APIGuildMember;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#modify-current-user-nick}
- *  @deprecated Use {@link https://discord.com/developers/docs/resources/guild#modify-current-member | Modify Current Member} instead.
+ * @deprecated Use {@link https://discord.com/developers/docs/resources/guild#modify-current-member | Modify Current Member} instead.
  */
 export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
 	/**
