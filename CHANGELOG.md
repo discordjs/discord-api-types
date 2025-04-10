@@ -1,3 +1,19 @@
+## [0.37.120](https://github.com/discordjs/discord-api-types/compare/0.37.119...0.37.120) (2025-04-10)
+
+
+### Bug Fixes
+
+* Ensure autocomplete option values resolve to string for numerical types ([#1198](https://github.com/discordjs/discord-api-types/issues/1198)) ([cfac62e](https://github.com/discordjs/discord-api-types/commit/cfac62e44a02a535b8ed412dae263b8c31475c4a))
+
+
+### Features
+
+* **APIBaseInteraction:** add `attachment_size_limit` ([#1214](https://github.com/discordjs/discord-api-types/issues/1214)) ([5b6f0d4](https://github.com/discordjs/discord-api-types/commit/5b6f0d43a4e4886a924af840b388c3f482b79f5e))
+* **RPC:** types ([#1200](https://github.com/discordjs/discord-api-types/issues/1200)) ([ac4d59d](https://github.com/discordjs/discord-api-types/commit/ac4d59d17edfa77cf28c644f8797204035508a0a))
+* **webhook:** add `with_components` query param ([#1208](https://github.com/discordjs/discord-api-types/issues/1208)) ([def67db](https://github.com/discordjs/discord-api-types/commit/def67dbe90206a2a5c7d08ce734a2db6a9175ca3))
+
+
+
 ## [0.37.119](https://github.com/discordjs/discord-api-types/compare/0.37.118...0.37.119) (2025-02-02)
 
 
