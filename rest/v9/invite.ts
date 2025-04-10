@@ -11,6 +11,9 @@ export interface RESTGetAPIInviteQuery {
 	with_counts?: boolean;
 	/**
 	 * Whether the invite should contain the expiration date
+	 *
+	 * @deprecated The expiration date is always returned, regardless of this query parameter.
+	 * @see {@link https://github.com/discord/discord-api-docs/pull/7424}
 	 */
 	with_expiration?: boolean;
 	/**
