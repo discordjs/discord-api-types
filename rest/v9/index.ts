@@ -1096,7 +1096,7 @@ Object.freeze(Routes);
 
 export const StickerPackApplicationId = '710982414301790216';
 
-export type ImageSize = 1_024 | 2_048 | 4_096 | 16 | 32 | 64 | 128 | 256 | 512;
+export type ImageSize = 1_024 | 2_048 | 4_096 | 16 | 32 | 64 | 128 | 256 | 512 | (number & {});
 
 export enum ImageFormat {
 	JPEG = 'jpeg',
