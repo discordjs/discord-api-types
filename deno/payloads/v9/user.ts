@@ -6,7 +6,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIGuildIntegration } from './guild.ts';
 
 /**
- * https://discord.com/developers/docs/resources/user#user-object
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object}
  */
 export interface APIUser {
 	/**
@@ -28,7 +28,7 @@ export interface APIUser {
 	/**
 	 * The user's avatar hash
 	 *
-	 * See https://discord.com/developers/docs/reference#image-formatting
+	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
 	 */
 	avatar: string | null;
 	/**
@@ -46,7 +46,7 @@ export interface APIUser {
 	/**
 	 * The user's banner hash
 	 *
-	 * See https://discord.com/developers/docs/reference#image-formatting
+	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
 	 */
 	banner?: string | null;
 	/**
@@ -68,39 +68,38 @@ export interface APIUser {
 	/**
 	 * The flags on a user's account
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object-user-flags
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
 	 */
 	flags?: UserFlags;
 	/**
 	 * The type of Nitro subscription on a user's account
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object-premium-types
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
 	 */
 	premium_type?: UserPremiumType;
 	/**
 	 * The public flags on a user's account
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object-user-flags
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
 	 */
 	public_flags?: UserFlags;
 	/**
 	 * The user's avatar decoration hash
 	 *
-	 * See https://discord.com/developers/docs/reference#image-formatting
-	 *
-	 * @deprecated Use `avatar_decoration_data` instead
+	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
+	 * @deprecated Use {@link APIUser.avatar_decoration_data} instead
 	 */
 	avatar_decoration?: string | null;
 	/**
 	 * The data for the user's avatar decoration
 	 *
-	 * See https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
 	 */
 	avatar_decoration_data?: APIAvatarDecorationData | null;
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#user-object-user-flags
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
  */
 export enum UserFlags {
 	/**
@@ -144,7 +143,7 @@ export enum UserFlags {
 	 */
 	PremiumEarlySupporter = 1 << 9,
 	/**
-	 * User is a [team](https://discord.com/developers/docs/topics/teams)
+	 * User is a {@link https://discord.com/developers/docs/topics/teams | team}
 	 */
 	TeamPseudoUser = 1 << 10,
 	/**
@@ -168,7 +167,7 @@ export enum UserFlags {
 	 */
 	CertifiedModerator = 1 << 18,
 	/**
-	 * Bot uses only [HTTP interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction) and is shown in the online member list
+	 * Bot uses only {@link https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction | HTTP interactions} and is shown in the online member list
 	 */
 	BotHTTPInteractions = 1 << 19,
 	/**
@@ -182,36 +181,36 @@ export enum UserFlags {
 	 */
 	DisablePremium = 1 << 21,
 	/**
-	 * User is an [Active Developer](https://support-dev.discord.com/hc/articles/10113997751447)
+	 * User is an {@link https://support-dev.discord.com/hc/articles/10113997751447 | Active Developer}
 	 */
 	ActiveDeveloper = 1 << 22,
 	/**
-	 * User's account has been [quarantined](https://support.discord.com/hc/articles/6461420677527) based on recent activity
+	 * User's account has been {@link https://support.discord.com/hc/articles/6461420677527 | quarantined} based on recent activity
 	 *
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 * @privateRemarks
 	 *
-	 * This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
+	 * This value would be `1 << 44`, but bit shifting above `1 << 30` requires bigints
 	 */
 	Quarantined = 17_592_186_044_416,
 	/**
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 * @privateRemarks
 	 *
-	 * This value would be 1 << 50, but bit shifting above 1 << 30 requires bigints
+	 * This value would be `1 << 50`, but bit shifting above `1 << 30` requires bigints
 	 */
 	Collaborator = 1_125_899_906_842_624,
 	/**
 	 * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 * @privateRemarks
 	 *
-	 * This value would be 1 << 51, but bit shifting above 1 << 30 requires bigints
+	 * This value would be `1 << 51`, but bit shifting above `1 << 30` requires bigints
 	 */
 	RestrictedCollaborator = 2_251_799_813_685_248,
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#user-object-premium-types
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
  */
 export enum UserPremiumType {
 	None,
@@ -221,7 +220,7 @@ export enum UserPremiumType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#connection-object
+ * @see {@link https://discord.com/developers/docs/resources/user#connection-object}
  */
 export interface APIConnection {
 	/**
@@ -235,7 +234,7 @@ export interface APIConnection {
 	/**
 	 * The service of the connection
 	 *
-	 * See https://discord.com/developers/docs/resources/user#connection-object-services
+	 * @see {@link https://discord.com/developers/docs/resources/user#connection-object-services}
 	 */
 	type: ConnectionService;
 	/**
@@ -245,7 +244,7 @@ export interface APIConnection {
 	/**
 	 * An array of partial server integrations
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#integration-object
+	 * @see {@link https://discord.com/developers/docs/resources/guild#integration-object}
 	 */
 	integrations?: Partial<APIGuildIntegration>[];
 	/**
@@ -267,7 +266,7 @@ export interface APIConnection {
 	/**
 	 * Visibility of this connection
 	 *
-	 * See https://discord.com/developers/docs/resources/user#connection-object-visibility-types
+	 * @see {@link https://discord.com/developers/docs/resources/user#connection-object-visibility-types}
 	 */
 	visibility: ConnectionVisibility;
 }
@@ -275,7 +274,9 @@ export interface APIConnection {
 export enum ConnectionService {
 	AmazonMusic = 'amazon-music',
 	BattleNet = 'battlenet',
+	Bluesky = 'bluesky',
 	BungieNet = 'bungie',
+	Crunchyroll = 'crunchyroll',
 	Domain = 'domain',
 	eBay = 'ebay',
 	EpicGames = 'epicgames',
@@ -283,11 +284,12 @@ export enum ConnectionService {
 	GitHub = 'github',
 	Instagram = 'instagram',
 	LeagueOfLegends = 'leagueoflegends',
+	Mastodon = 'mastodon',
+	PayPal = 'paypal',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
 	RiotGames = 'riotgames',
 	Roblox = 'roblox',
-	PayPal = 'paypal',
 	Spotify = 'spotify',
 	Skype = 'skype',
 	Steam = 'steam',
@@ -295,7 +297,7 @@ export enum ConnectionService {
 	Twitch = 'twitch',
 	X = 'twitter',
 	/**
-	 * @deprecated This is the old name for {@apilink ConnectionService#X}
+	 * @deprecated This is the old name for {@link ConnectionService.X}
 	 */
 	Twitter = X,
 	Xbox = 'xbox',
@@ -314,7 +316,7 @@ export enum ConnectionVisibility {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure
+ * @see {@link https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure}
  */
 export interface APIApplicationRoleConnection {
 	/**
@@ -332,13 +334,13 @@ export interface APIApplicationRoleConnection {
 }
 
 /**
- * https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
+ * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
  */
 export interface APIAvatarDecorationData {
 	/**
 	 * The avatar decoration hash
 	 *
-	 * See https://discord.com/developers/docs/reference#image-formatting
+	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
 	 */
 	asset: string;
 	/**

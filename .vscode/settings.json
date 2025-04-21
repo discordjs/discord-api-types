@@ -6,5 +6,10 @@
 		"source.fixAll": "explicit",
 		"source.fixAll.eslint": "explicit"
 	},
-	"cSpell.enableFiletypes": ["mdx"]
+	"cSpell.enableFiletypes": ["mdx"],
+	"search.exclude": {
+		"**/v6": true,
+		"**/v8": true,
+		"deno": true
+	}
 }

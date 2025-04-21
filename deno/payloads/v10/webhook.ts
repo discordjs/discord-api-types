@@ -3,10 +3,18 @@
  */
 
 import type { Snowflake } from '../../globals.ts';
-import type { APIPartialChannel, APIPartialGuild, APIUser } from './mod.ts';
+import type {
+	APIEntitlement,
+	APIGuild,
+	APIPartialChannel,
+	APIPartialGuild,
+	APIUser,
+	ApplicationIntegrationType,
+	OAuth2Scopes,
+} from './mod.ts';
 
 /**
- * https://discord.com/developers/docs/resources/webhook#webhook-object
+ * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object}
  */
 export interface APIWebhook {
 	/**
@@ -16,7 +24,7 @@ export interface APIWebhook {
 	/**
 	 * The type of the webhook
 	 *
-	 * See https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types
+	 * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types}
 	 */
 	type: WebhookType;
 	/**
@@ -30,7 +38,7 @@ export interface APIWebhook {
 	/**
 	 * The user this webhook was created by (not returned when getting a webhook with its token)
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user?: APIUser;
 	/**
@@ -63,6 +71,116 @@ export interface APIWebhook {
 	url?: string;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#webhook-event-payloads}
+ */
+export type APIWebhookEvent =
+	| APIWebhookEventBase<ApplicationWebhookType.Event, APIWebhookEventBody>
+	| APIWebhookEventBase<ApplicationWebhookType.Ping, never>;
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#event-body-object}
+ */
+export type APIWebhookEventBody =
+	| APIWebhookEventEventBase<
+			ApplicationWebhookEventType.ApplicationAuthorized,
+			APIWebhookEventApplicationAuthorizedData
+	  >
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementCreate, APIWebhookEventEntitlementCreateData>
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.QuestUserEnrollment, APIWebhookEventQuestUserEnrollmentData>;
+
+export interface APIWebhookEventApplicationAuthorizedData {
+	/**
+	 * Installation context for the authorization. Either guild (`0`) if installed to a server or user (`1`) if installed to a user's account
+	 */
+	integration_type?: ApplicationIntegrationType;
+	/**
+	 * User who authorized the app
+	 */
+	user: APIUser;
+	/**
+	 * List of scopes the user authorized
+	 */
+	scopes: OAuth2Scopes[];
+	/**
+	 * Server which app was authorized for (when integration type is `0`)
+	 */
+	guild?: APIGuild;
+}
+
+export type APIWebhookEventEntitlementCreateData = APIEntitlement;
+
+export type APIWebhookEventQuestUserEnrollmentData = never;
+
+export interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
+	/**
+	 * Version scheme for the webhook event. Currently always `1`
+	 */
+	version: 1;
+	/**
+	 * ID of your app
+	 */
+	application_id: Snowflake;
+	/**
+	 * Type of webhook
+	 */
+	type: Type;
+	/**
+	 * Event data payload
+	 */
+	event: Event;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#webhook-types}
+ */
+export enum ApplicationWebhookType {
+	/**
+	 * PING event sent to verify your Webhook Event URL is active
+	 */
+	Ping,
+	/**
+	 * Webhook event (details for event in event body object)
+	 */
+	Event,
+}
+
+export interface APIWebhookEventEventBase<Type extends ApplicationWebhookEventType, Data> {
+	/**
+	 * Event type
+	 */
+	type: Type;
+	/**
+	 * Timestamp of when the event occurred in ISO8601 format
+	 */
+	timestamp: string;
+	/**
+	 * Data for the event. The shape depends on the event type
+	 */
+	data: Data;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#event-types}
+ */
+export enum ApplicationWebhookEventType {
+	/**
+	 * Sent when an app was authorized by a user to a server or their account
+	 */
+	ApplicationAuthorized = 'APPLICATION_AUTHORIZED',
+	/**
+	 * Entitlement was created
+	 */
+	EntitlementCreate = 'ENTITLEMENT_CREATE',
+	/**
+	 * User was added to a Quest (currently unavailable)
+	 */
+	QuestUserEnrollment = 'QUEST_USER_ENROLLMENT',
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types}
+ */
 export enum WebhookType {
 	/**
 	 * Incoming Webhooks can post messages to channels with a generated token

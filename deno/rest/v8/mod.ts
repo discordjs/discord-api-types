@@ -1,4 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
+import { urlSafeCharacters } from '../../utils/internals.ts';
 
 export * from '../common.ts';
 
@@ -776,6 +777,28 @@ export const Routes = {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}/users`;
 	},
 };
+
+for (const [key, fn] of Object.entries(Routes)) {
+	Routes[key] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(Routes);
 
 export const RouteBases = {
 	api: `https://discord.com/api/v${APIVersion}`,

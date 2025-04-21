@@ -1,3 +1,4 @@
+import type { InteractionType } from '../../responses.ts';
 import type {
 	APIApplicationCommandOptionBase,
 	APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper,
@@ -5,7 +6,7 @@ import type {
 } from './base.ts';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 
-interface APIApplicationCommandIntegerOptionBase
+export interface APIApplicationCommandIntegerOptionBase
 	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Integer> {
 	/**
 	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
@@ -22,7 +23,10 @@ export type APIApplicationCommandIntegerOption = APIApplicationCommandOptionWith
 	APIApplicationCommandOptionChoice<number>
 >;
 
-export interface APIApplicationCommandInteractionDataIntegerOption
-	extends APIInteractionDataOptionBase<ApplicationCommandOptionType.Integer, number> {
+export interface APIApplicationCommandInteractionDataIntegerOption<Type extends InteractionType = InteractionType>
+	extends APIInteractionDataOptionBase<
+		ApplicationCommandOptionType.Integer,
+		Type extends InteractionType.ApplicationCommandAutocomplete ? string : number
+	> {
 	focused?: boolean;
 }

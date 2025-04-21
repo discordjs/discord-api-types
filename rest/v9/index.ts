@@ -1,4 +1,5 @@
 import type { Snowflake } from '../../globals';
+import { urlSafeCharacters } from '../../utils/internals';
 
 export * from '../common';
 export * from './application';
@@ -11,15 +12,16 @@ export * from './guild';
 export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
+export * from './monetization';
 export * from './oauth2';
 export * from './poll';
+export * from './soundboard';
 export * from './stageInstance';
 export * from './sticker';
 export * from './template';
 export * from './user';
 export * from './voice';
 export * from './webhook';
-export * from './monetization';
 
 export const APIVersion = '9';
 
@@ -508,7 +510,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET `/channels/{channel.id}/threads/active`
-	 * 	 (deprecated, removed in API v10, use [List Active Guild Threads](https://discord.com/developers/docs/resources/guild#list-active-threads) instead.)
+	 * 	 (deprecated, removed in API v10, use {@link https://discord.com/developers/docs/resources/guild#list-active-threads | List Active Guild Threads} instead.)
 	 * - GET `/channels/{channel.id}/threads/archived/public`
 	 * - GET `/channels/{channel.id}/threads/archived/private`
 	 */
@@ -556,7 +558,7 @@ export const Routes = {
 	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userId] The user ID, defaulted to `@me`
+	 * @param [userId] - The user ID, defaulted to `@me`
 	 */
 	user(userId: Snowflake | '@me' = '@me') {
 		return `/users/${userId}` as const;
@@ -942,6 +944,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - PUT `/guilds/${guild.id}/incident-actions`
+	 */
+	guildIncidentActions(guildId: Snowflake) {
+		return `/guilds/${guildId}/incident-actions` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/applications/@me`
 	 * - PATCH `/applications/@me`
 	 */
@@ -960,6 +970,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements/{entitlement.id}`
 	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
 	 */
 	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
@@ -1019,12 +1030,69 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/skus/{sku.id}/subscriptions/${subscription.id}`
+	 * - GET `/skus/{sku.id}/subscriptions/{subscription.id}`
 	 */
 	skuSubscription(skuId: Snowflake, subscriptionId: Snowflake) {
 		return `/skus/${skuId}/subscriptions/${subscriptionId}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - POST `/channels/{channel.id}/send-soundboard-sound`
+	 */
+	sendSoundboardSound(channelId: Snowflake) {
+		return `/channels/${channelId}/send-soundboard-sound` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-default-sounds`
+	 */
+	soundboardDefaultSounds() {
+		return '/soundboard-default-sounds' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/soundboard-sounds`
+	 * - POST `/guilds/{guild.id}/soundboard-sounds`
+	 */
+	guildSoundboardSounds(guildId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 * - PATCH `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 * - DELETE `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 */
+	guildSoundboardSound(guildId: Snowflake, soundId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds/${soundId}` as const;
+	},
 };
+
+for (const [key, fn] of Object.entries(Routes)) {
+	Routes[key as keyof typeof Routes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(Routes);
 
 export const StickerPackApplicationId = '710982414301790216';
 
@@ -1115,7 +1183,7 @@ export const CDNRoutes = {
 	 * Route for:
 	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log#unique-usernames-on-discord).
+	 * The value for `index` parameter depends on whether the user is {@link https://discord.com/developers/docs/change-log#unique-usernames-on-discord | migrated to the new username system}.
 	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
 	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *
@@ -1315,7 +1383,37 @@ export const CDNRoutes = {
 	) {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-sounds/${sound.id}`
+	 */
+	soundboardSound(soundId: Snowflake) {
+		return `/soundboard-sounds/${soundId}` as const;
+	},
 };
+
+for (const [key, fn] of Object.entries(CDNRoutes)) {
+	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(CDNRoutes);
 
 export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -1325,7 +1423,7 @@ export type GuildSplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageForm
 export type GuildDiscoverySplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type UserBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-export type DefaultUserAvatar = Extract<ImageFormat, ImageFormat.PNG>;
+export type DefaultUserAvatarFormat = Extract<ImageFormat, ImageFormat.PNG>;
 export type UserAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type GuildMemberAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type ApplicationIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
@@ -1333,12 +1431,17 @@ export type ApplicationCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | Imag
 export type ApplicationAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type AchievementIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type StickerPackBannerFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
-export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type TeamIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
+export type StorePageAssetFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type StickerFormat = Extract<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie | ImageFormat.PNG>;
 export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+
+/**
+ * @deprecated Use {@link DefaultUserAvatarFormat} instead.
+ */
+export type DefaultUserAvatar = DefaultUserAvatarFormat;
 
 export interface CDNQuery {
 	/**
@@ -1352,6 +1455,7 @@ export interface CDNQuery {
 export const RouteBases = {
 	api: `https://discord.com/api/v${APIVersion}`,
 	cdn: 'https://cdn.discordapp.com',
+	media: 'https://media.discordapp.net',
 	invite: 'https://discord.gg',
 	template: 'https://discord.new',
 	gift: 'https://discord.gift',
@@ -1365,7 +1469,7 @@ export const OAuth2Routes = {
 	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
 	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
-	 * See https://tools.ietf.org/html/rfc7009
+	 * @see {@link https://tools.ietf.org/html/rfc7009}
 	 */
 	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;

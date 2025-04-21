@@ -1,6 +1,6 @@
 import type {
 	APIBaseInteraction,
-	APIChatInputApplicationCommandInteractionData,
+	APIAutocompleteApplicationCommandInteractionData,
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,
 	InteractionType,
@@ -8,26 +8,26 @@ import type {
 
 export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	InteractionType.ApplicationCommandAutocomplete,
-	APIChatInputApplicationCommandInteractionData
+	APIAutocompleteApplicationCommandInteractionData
 > &
 	Required<
 		Pick<
 			APIBaseInteraction<
 				InteractionType.ApplicationCommandAutocomplete,
-				Required<Pick<APIChatInputApplicationCommandInteractionData, 'options'>>
+				Required<Pick<APIAutocompleteApplicationCommandInteractionData, 'options'>>
 			>,
 			'data'
 		>
 	>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIApplicationCommandAutocompleteDMInteraction =
 	APIDMInteractionWrapper<APIApplicationCommandAutocompleteInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIApplicationCommandAutocompleteGuildInteraction =
 	APIGuildInteractionWrapper<APIApplicationCommandAutocompleteInteraction>;

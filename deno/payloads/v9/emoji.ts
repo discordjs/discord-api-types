@@ -25,7 +25,7 @@ export interface APIPartialEmoji {
 }
 
 /**
- * https://discord.com/developers/docs/resources/emoji#emoji-object-emoji-structure
+ * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object-emoji-structure}
  */
 export interface APIEmoji extends APIPartialEmoji {
 	/**

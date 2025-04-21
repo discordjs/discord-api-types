@@ -9,9 +9,10 @@ import type { ApplicationIntegrationType } from './interactions';
 import type { OAuth2Scopes } from './oauth2';
 import type { APITeam } from './teams';
 import type { APIUser } from './user';
+import type { ApplicationWebhookEventType } from './webhook';
 
 /**
- * https://discord.com/developers/docs/resources/application#application-object
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object}
  */
 export interface APIApplication {
 	/**
@@ -57,7 +58,7 @@ export interface APIApplication {
 	/**
 	 * Partial user object containing info on the owner of the application
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	owner?: APIUser;
 	/**
@@ -70,13 +71,13 @@ export interface APIApplication {
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
-	 * See https://discord.com/developers/docs/game-sdk/applications#getticket
+	 * @see {@link https://discord.com/developers/docs/game-sdk/applications#getticket}
 	 */
 	verify_key: string;
 	/**
 	 * The team this application belongs to
 	 *
-	 * See https://discord.com/developers/docs/topics/teams#data-models-team-object
+	 * @see {@link https://discord.com/developers/docs/topics/teams#data-models-team-object}
 	 */
 	team: APITeam | null;
 	/**
@@ -102,7 +103,7 @@ export interface APIApplication {
 	/**
 	 * The application's public flags
 	 *
-	 * See https://discord.com/developers/docs/resources/application#application-object-application-flags
+	 * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
 	 */
 	flags: ApplicationFlags;
 	/**
@@ -142,6 +143,18 @@ export interface APIApplication {
 	 * The application's default custom authorization link, if enabled
 	 */
 	custom_install_url?: string;
+	/**
+	 * Event webhook URL for the app to receive webhook events
+	 */
+	event_webhooks_url?: string | null;
+	/**
+	 * If webhook events are enabled for the app
+	 */
+	event_webhooks_status: ApplicationWebhookEventStatus;
+	/**
+	 * List of webhook event types the app subscribes to
+	 */
+	event_webhooks_types?: ApplicationWebhookEventType[];
 }
 
 export interface APIApplicationInstallParams {
@@ -158,7 +171,7 @@ export type APIApplicationIntegrationTypesConfigMap = {
 };
 
 /**
- * https://discord.com/developers/docs/resources/application#application-object-application-flags
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
  */
 export enum ApplicationFlags {
 	/**
@@ -195,12 +208,14 @@ export enum ApplicationFlags {
 	GatewayPresenceLimited = 1 << 13,
 	/**
 	 * Intent required for bots in 100 or more servers to receive member-related events like `guild_member_add`.
-	 * See list of member-related events [under `GUILD_MEMBERS`](https://discord.com/developers/docs/topics/gateway#list-of-intents)
+	 *
+	 * @see List of member-related events {@link https://discord.com/developers/docs/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
 	 */
 	GatewayGuildMembers = 1 << 14,
 	/**
 	 * Intent required for bots in under 100 servers to receive member-related events like `guild_member_add`, found in Bot Settings.
-	 * See list of member-related events [under `GUILD_MEMBERS`](https://discord.com/developers/docs/topics/gateway#list-of-intents)
+	 *
+	 * @see List of member-related events {@link https://discord.com/developers/docs/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
 	 */
 	GatewayGuildMembersLimited = 1 << 15,
 	/**
@@ -212,11 +227,11 @@ export enum ApplicationFlags {
 	 */
 	Embedded = 1 << 17,
 	/**
-	 * Intent required for bots in 100 or more servers to receive [message content](https://support-dev.discord.com/hc/en-us/articles/4404772028055)
+	 * Intent required for bots in 100 or more servers to receive {@link https://support-dev.discord.com/hc/en-us/articles/4404772028055 | message content}
 	 */
 	GatewayMessageContent = 1 << 18,
 	/**
-	 * Intent required for bots in under 100 servers to receive [message content](https://support-dev.discord.com/hc/en-us/articles/4404772028055),
+	 * Intent required for bots in under 100 servers to receive {@link https://support-dev.discord.com/hc/en-us/articles/4404772028055 | message content},
 	 * found in Bot Settings
 	 */
 	GatewayMessageContentLimited = 1 << 19,
@@ -225,13 +240,13 @@ export enum ApplicationFlags {
 	 */
 	EmbeddedFirstParty = 1 << 20,
 	/**
-	 * Indicates if an app has registered global [application commands](https://discord.com/developers/docs/interactions/application-commands)
+	 * Indicates if an app has registered global {@link https://discord.com/developers/docs/interactions/application-commands | application commands}
 	 */
 	ApplicationCommandBadge = 1 << 23,
 }
 
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-structure
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-structure}
  */
 export interface APIApplicationRoleConnectionMetadata {
 	/**
@@ -261,7 +276,7 @@ export interface APIApplicationRoleConnectionMetadata {
 }
 
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type}
  */
 export enum ApplicationRoleConnectionMetadataType {
 	/**
@@ -296,4 +311,22 @@ export enum ApplicationRoleConnectionMetadataType {
 	 * The metadata value (`integer`) is not equal to the guild's configured value (`integer`; `1`)
 	 */
 	BooleanNotEqual,
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status}
+ */
+export enum ApplicationWebhookEventStatus {
+	/**
+	 * Webhook events are disabled by developer
+	 */
+	Disabled = 1,
+	/**
+	 * Webhook events are enabled by developer
+	 */
+	Enabled,
+	/**
+	 * Webhook events are disabled by Discord, usually due to inactivity
+	 */
+	DisabledByDiscord,
 }

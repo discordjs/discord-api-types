@@ -219,9 +219,6 @@ export enum OverwriteType {
  */
 export interface APIEmbed {
 	title?: string;
-	/**
-	 * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
-	 */
 	type?: EmbedType;
 	description?: string;
 	url?: string;
@@ -239,7 +236,6 @@ export interface APIEmbed {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  *
- * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export enum EmbedType {

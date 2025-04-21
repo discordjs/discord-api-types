@@ -1,4 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
+import { urlSafeCharacters } from '../../utils/internals.ts';
 
 export * from '../common.ts';
 export * from './application.ts';
@@ -11,15 +12,16 @@ export * from './guild.ts';
 export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
+export * from './monetization.ts';
 export * from './oauth2.ts';
 export * from './poll.ts';
+export * from './soundboard.ts';
 export * from './stageInstance.ts';
 export * from './sticker.ts';
 export * from './template.ts';
 export * from './user.ts';
 export * from './voice.ts';
 export * from './webhook.ts';
-export * from './monetization.ts';
 
 export const APIVersion = '10';
 
@@ -547,7 +549,7 @@ export const Routes = {
 	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userId] The user ID, defaulted to `@me`
+	 * @param [userId] - The user ID, defaulted to `@me`
 	 */
 	user(userId: Snowflake | '@me' = '@me') {
 		return `/users/${userId}` as const;
@@ -933,6 +935,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - PUT `/guilds/${guild.id}/incident-actions`
+	 */
+	guildIncidentActions(guildId: Snowflake) {
+		return `/guilds/${guildId}/incident-actions` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/applications/@me`
 	 * - PATCH `/applications/@me`
 	 */
@@ -951,6 +961,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/applications/{application.id}/entitlements/{entitlement.id}`
 	 * - DELETE `/applications/{application.id}/entitlements/{entitlement.id}`
 	 */
 	entitlement(applicationId: Snowflake, entitlementId: Snowflake) {
@@ -1010,12 +1021,69 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/skus/{sku.id}/subscriptions/${subscription.id}`
+	 * - GET `/skus/{sku.id}/subscriptions/{subscription.id}`
 	 */
 	skuSubscription(skuId: Snowflake, subscriptionId: Snowflake) {
 		return `/skus/${skuId}/subscriptions/${subscriptionId}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - POST `/channels/{channel.id}/send-soundboard-sound`
+	 */
+	sendSoundboardSound(channelId: Snowflake) {
+		return `/channels/${channelId}/send-soundboard-sound` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-default-sounds`
+	 */
+	soundboardDefaultSounds() {
+		return '/soundboard-default-sounds' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/soundboard-sounds`
+	 * - POST `/guilds/{guild.id}/soundboard-sounds`
+	 */
+	guildSoundboardSounds(guildId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 * - PATCH `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 * - DELETE `/guilds/{guild.id}/soundboard-sounds/{sound.id}`
+	 */
+	guildSoundboardSound(guildId: Snowflake, soundId: Snowflake) {
+		return `/guilds/${guildId}/soundboard-sounds/${soundId}` as const;
+	},
 };
+
+for (const [key, fn] of Object.entries(Routes)) {
+	Routes[key as keyof typeof Routes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(Routes);
 
 export const StickerPackApplicationId = '710982414301790216';
 
@@ -1106,7 +1174,7 @@ export const CDNRoutes = {
 	 * Route for:
 	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log#unique-usernames-on-discord).
+	 * The value for `index` parameter depends on whether the user is {@link https://discord.com/developers/docs/change-log#unique-usernames-on-discord | migrated to the new username system}.
 	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
 	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *
@@ -1306,7 +1374,37 @@ export const CDNRoutes = {
 	) {
 		return `/guilds/${guildId}/users/${userId}/banners/${guildMemberBanner}.${format}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/soundboard-sounds/${sound.id}`
+	 */
+	soundboardSound(soundId: Snowflake) {
+		return `/soundboard-sounds/${soundId}` as const;
+	},
 };
+
+for (const [key, fn] of Object.entries(CDNRoutes)) {
+	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (boolean | number | string | undefined)[]) => {
+		const escaped = args.map((arg) => {
+			if (arg) {
+				// Skip already "safe" urls
+				if (urlSafeCharacters.test(String(arg))) {
+					return arg;
+				}
+
+				return encodeURIComponent(arg);
+			}
+
+			return arg;
+		});
+		// eslint-disable-next-line no-useless-call
+		return fn.call(null, ...escaped);
+	};
+}
+
+// Freeze the object so it can't be changed
+Object.freeze(CDNRoutes);
 
 export type DefaultUserAvatarAssets = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -1316,7 +1414,7 @@ export type GuildSplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageForm
 export type GuildDiscoverySplashFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type UserBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
-export type DefaultUserAvatar = Extract<ImageFormat, ImageFormat.PNG>;
+export type DefaultUserAvatarFormat = Extract<ImageFormat, ImageFormat.PNG>;
 export type UserAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type GuildMemberAvatarFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
 export type ApplicationIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
@@ -1330,6 +1428,11 @@ export type StickerFormat = Extract<ImageFormat, ImageFormat.GIF | ImageFormat.L
 export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+
+/**
+ * @deprecated Use {@link DefaultUserAvatarFormat} instead.
+ */
+export type DefaultUserAvatar = DefaultUserAvatarFormat;
 
 export interface CDNQuery {
 	/**
@@ -1357,7 +1460,7 @@ export const OAuth2Routes = {
 	authorizationURL: `${RouteBases.api}${Routes.oauth2Authorization()}`,
 	tokenURL: `${RouteBases.api}${Routes.oauth2TokenExchange()}`,
 	/**
-	 * See https://tools.ietf.org/html/rfc7009
+	 * @see {@link https://tools.ietf.org/html/rfc7009}
 	 */
 	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
 } as const;

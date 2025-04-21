@@ -1,7 +1,7 @@
 import type { Snowflake } from '../../globals';
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure
+ * @see {@link https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure}
  */
 export interface APIEntitlement {
 	/**
@@ -33,13 +33,13 @@ export interface APIEntitlement {
 	 */
 	deleted: boolean;
 	/**
-	 * Start date at which the entitlement is valid. Not present when using test entitlements.
+	 * Start date at which the entitlement is valid.
 	 */
-	starts_at?: string;
+	starts_at: string | null;
 	/**
-	 * Date at which the entitlement is no longer valid. Not present when using test entitlements.
+	 * Date at which the entitlement is no longer valid.
 	 */
-	ends_at?: string;
+	ends_at: string | null;
 	/**
 	 * For consumable items, whether or not the entitlement has been consumed
 	 */
@@ -47,7 +47,7 @@ export interface APIEntitlement {
 }
 
 /**
- * https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types
+ * @see {@link https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types}
  */
 export enum EntitlementType {
 	/**
@@ -85,7 +85,7 @@ export enum EntitlementType {
 }
 
 /**
- * https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure
+ * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure}
  */
 export interface APISKU {
 	/**
@@ -111,13 +111,13 @@ export interface APISKU {
 	/**
 	 * SKU flags combined as a bitfield
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	flags: SKUFlags;
 }
 
 /**
- * https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags
+ * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags}
  */
 export enum SKUFlags {
 	/**
@@ -136,7 +136,7 @@ export enum SKUFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/sku#sku-object-sku-types
+ * @see {@link https://discord.com/developers/docs/resources/sku#sku-object-sku-types}
  */
 export enum SKUType {
 	/**
@@ -158,7 +158,7 @@ export enum SKUType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/subscription#subscription-object
+ * @see {@link https://discord.com/developers/docs/resources/subscription#subscription-object}
  */
 export interface APISubscription {
 	/**
@@ -177,6 +177,10 @@ export interface APISubscription {
 	 * List of entitlements granted for this subscription
 	 */
 	entitlement_ids: Snowflake[];
+	/**
+	 * List of SKUs that this user will be subscribed to at renewal
+	 */
+	renewal_sku_ids: Snowflake[] | null;
 	/**
 	 * Start of the current subscription period
 	 */
@@ -200,7 +204,7 @@ export interface APISubscription {
 }
 
 /**
- * https://discord.com/developers/docs/resources/subscription#subscription-statuses
+ * @see {@link https://discord.com/developers/docs/resources/subscription#subscription-statuses}
  */
 export enum SubscriptionStatus {
 	/**

@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals';
 import type { APIEntitlement, APISKU, APISubscription } from '../../v9';
 
 /**
- * https://discord.com/developers/docs/resources/entitlement#list-entitlements
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#list-entitlements}
  */
 export interface RESTGetAPIEntitlementsQuery {
 	/**
@@ -25,7 +25,7 @@ export interface RESTGetAPIEntitlementsQuery {
 	/**
 	 * Number of entitlements to return (1-100)
 	 *
-	 * @default 100
+	 * @defaultValue `100`
 	 */
 	limit?: number | undefined;
 	/**
@@ -33,18 +33,27 @@ export interface RESTGetAPIEntitlementsQuery {
 	 */
 	guild_id?: Snowflake | undefined;
 	/**
-	 * Whether ended entitlements should be omitted
+	 * Whether ended entitlements should be omitted. Defaults to `false`, ended entitlements are included by default
 	 */
 	exclude_ended?: boolean | undefined;
+	/**
+	 * Whether deleted entitlements should be omitted. Defaults to `true`, deleted entitlements are not included by default
+	 */
+	exclude_deleted?: boolean | undefined;
 }
 
 /**
- * https://discord.com/developers/docs/resources/entitlement#list-entitlements
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#list-entitlements}
  */
 export type RESTGetAPIEntitlementsResult = APIEntitlement[];
 
 /**
- * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#get-entitlement}
+ */
+export type RESTGetAPIEntitlementResult = APIEntitlement;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#create-test-entitlement}
  */
 export interface RESTPostAPIEntitlementJSONBody {
 	/**
@@ -67,12 +76,12 @@ export interface RESTPostAPIEntitlementJSONBody {
 export type RESTPostAPIEntitlementBody = RESTPostAPIEntitlementJSONBody;
 
 /**
- * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#create-test-entitlement}
  */
 export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'ends_at' | 'starts_at'>>;
 
 /**
- * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#create-test-entitlement}
  */
 export enum EntitlementOwnerType {
 	Guild = 1,
@@ -80,22 +89,22 @@ export enum EntitlementOwnerType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/entitlement#delete-test-entitlement
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#delete-test-entitlement}
  */
 export type RESTDeleteAPIEntitlementResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/sku#list-skus
+ * @see {@link https://discord.com/developers/docs/resources/sku#list-skus}
  */
 export type RESTGetAPISKUsResult = APISKU[];
 
 /**
- * https://discord.com/developers/docs/resources/entitlement#consume-an-entitlement
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#consume-an-entitlement}
  */
 export type RESTPostAPIEntitlementConsumeResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/subscription#query-string-params
+ * @see {@link https://discord.com/developers/docs/resources/subscription#query-string-params}
  */
 export interface RESTGetAPISKUSubscriptionsQuery {
 	/**
@@ -109,7 +118,7 @@ export interface RESTGetAPISKUSubscriptionsQuery {
 	/**
 	 * Number of subscriptions to return (1-100)
 	 *
-	 * @default 50
+	 * @defaultValue `50`
 	 */
 	limit?: number | undefined;
 	/**
@@ -119,11 +128,11 @@ export interface RESTGetAPISKUSubscriptionsQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions
+ * @see {@link https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions}
  */
 export type RESTGetAPISKUSubscriptionsResult = APISubscription[];
 
 /**
- * https://discord.com/developers/docs/resources/subscription#get-sku-subscription
+ * @see {@link https://discord.com/developers/docs/resources/subscription#get-sku-subscription}
  */
 export type RESTGetAPISKUSubscriptionResult = APISubscription;

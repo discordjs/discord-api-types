@@ -1,7 +1,7 @@
-import type { LocaleString } from '../rest/common';
+import type { Locale } from '../rest/common';
 
 /**
- * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
+ * @see {@link https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags}
  *
  * These flags are exported as `BigInt`s and NOT numbers. Wrapping them in `Number()`
  * may cause issues, try to use BigInts as much as possible or modules that can
@@ -178,7 +178,7 @@ export const PermissionFlagsBits = {
 	/**
 	 * Allows management and editing of emojis, stickers, and soundboard sounds
 	 *
-	 * @deprecated This is the old name for {@apilink PermissionFlagsBits#ManageGuildExpressions}
+	 * @deprecated This is the old name for {@link PermissionFlagsBits.ManageGuildExpressions}
 	 */
 	ManageEmojisAndStickers: 1n << 30n,
 	/**
@@ -234,7 +234,7 @@ export const PermissionFlagsBits = {
 	 */
 	SendMessagesInThreads: 1n << 38n,
 	/**
-	 * Allows for using Activities (applications with the {@apilink ApplicationFlags.Embedded} flag) in a voice channel
+	 * Allows for using Activities (applications with the {@link ApplicationFlags.Embedded} flag) in a voice channel
 	 *
 	 * Applies to channel types: Voice
 	 */
@@ -297,10 +297,10 @@ export const PermissionFlagsBits = {
  */
 Object.freeze(PermissionFlagsBits);
 
-export type LocalizationMap = Partial<Record<LocaleString, string | null>>;
+export type LocalizationMap = Partial<Record<Locale, string | null>>;
 
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#json}
  */
 export interface RESTError {
 	code: number;
@@ -320,7 +320,7 @@ export interface RESTErrorGroupWrapper {
 export type RESTErrorData = RESTErrorFieldInformation | RESTErrorGroupWrapper | string | { [k: string]: RESTErrorData };
 
 /**
- * https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure
+ * @see {@link https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure}
  */
 export interface RESTRateLimit {
 	/**

@@ -1,5 +1,5 @@
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes}
  */
 export enum RESTJSONErrorCodes {
 	GeneralError,
@@ -22,6 +22,7 @@ export enum RESTJSONErrorCodes {
 	UnknownWebhookService,
 
 	UnknownSession = 10_020,
+	UnknownAsset,
 
 	UnknownBan = 10_026,
 	UnknownSKU,
@@ -56,6 +57,8 @@ export enum RESTJSONErrorCodes {
 	UnknownGuildScheduledEventUser,
 
 	UnknownTag = 10_087,
+
+	UnknownSound = 10_097,
 
 	BotsCannotUseThisEndpoint = 20_001,
 	OnlyBotsCanUseThisEndpoint,
@@ -115,7 +118,8 @@ export enum RESTJSONErrorCodes {
 
 	MaximumNumberOfGuildWidgetSettingsUpdatesHasBeenReached = 30_042,
 
-	MaximumNumberOfEditsToMessagesOlderThanOneHourReached = 30_046,
+	MaximumNumberOfSoundboardSoundsReached = 30_045,
+	MaximumNumberOfEditsToMessagesOlderThanOneHourReached,
 	MaximumNumberOfPinnedThreadsInForumHasBeenReached,
 	MaximumNumberOfTagsInForumHasBeenReached,
 
@@ -234,6 +238,10 @@ export enum RESTJSONErrorCodes {
 	ServerNeedsMoreBoostsToPerformThisAction = 50_101,
 
 	RequestBodyContainsInvalidJSON = 50_109,
+	ProvidedFileIsInvalid,
+
+	ProvidedFileTypeIsInvalid = 50_123,
+	ProvidedFileDurationExceedsMaximumLength,
 
 	OwnerCannotBePendingMember = 50_131,
 	OwnershipCannotBeMovedToABotUser,
@@ -244,6 +252,8 @@ export enum RESTJSONErrorCodes {
 	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
 	UploadedFileNotFound,
 
+	SpecifiedEmojiIsInvalid = 50_151,
+
 	VoiceMessagesDoNotSupportAdditionalContent = 50_159,
 	VoiceMessagesMustHaveASingleAudioAttachment,
 	VoiceMessagesMustHaveSupportingMetadata,
@@ -253,6 +263,8 @@ export enum RESTJSONErrorCodes {
 	YouCannotSendVoiceMessagesInThisChannel = 50_173,
 
 	TheUserAccountMustFirstBeVerified = 50_178,
+
+	ProvidedFileDoesNotHaveAValidDuration = 50_192,
 
 	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
@@ -313,7 +325,7 @@ export enum RESTJSONErrorCodes {
 }
 
 /**
- * https://discord.com/developers/docs/reference#locales
+ * @see {@link https://discord.com/developers/docs/reference#locales}
  */
 export enum Locale {
 	Indonesian = 'id',
@@ -350,4 +362,7 @@ export enum Locale {
 	Vietnamese = 'vi',
 }
 
+/**
+ * @deprecated Use {@link Locale} instead.
+ */
 export type LocaleString = `${Locale}`;

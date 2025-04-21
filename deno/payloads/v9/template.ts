@@ -3,11 +3,12 @@
  */
 
 import type { Snowflake } from '../../globals.ts';
+import type { Locale } from '../../rest/common.ts';
 import type { RESTPostAPIGuildsJSONBody } from '../../rest/v9/mod.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/resources/guild-template#template-object
+ * @see {@link https://discord.com/developers/docs/resources/guild-template#template-object}
  */
 export interface APITemplate {
 	/**
@@ -33,7 +34,7 @@ export interface APITemplate {
 	/**
 	 * The user who created the template
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	creator: APIUser;
 	/**
@@ -60,6 +61,6 @@ export interface APITemplate {
 
 export interface APITemplateSerializedSourceGuild extends Omit<RESTPostAPIGuildsJSONBody, 'icon'> {
 	description: string | null;
-	preferred_locale: string;
+	preferred_locale: Locale;
 	icon_hash: string | null;
 }
