@@ -2088,7 +2088,7 @@ export type APIModalComponent = APIActionRowComponent<APIComponentInModalActionR
 export type APIComponentInActionRow = APIComponentInMessageActionRow | APIComponentInModalActionRow;
 
 /**
- * https://discord.com/developers/docs/interactions/message-components#message-components
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
  */
 export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
 
