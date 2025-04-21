@@ -24,7 +24,7 @@ import type {
 	InviteTargetType,
 	PresenceUpdateStatus,
 } from '../payloads/v8/index';
-import type { Nullable } from '../utils/internals';
+import type { _Nullable } from '../utils/internals';
 
 export * from './common';
 
@@ -805,7 +805,7 @@ export type GatewayGuildMemberUpdateDispatch = DataPayload<
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type GatewayGuildMemberUpdateDispatchData = Nullable<Pick<APIGuildMember, 'joined_at'>> &
+export type GatewayGuildMemberUpdateDispatchData = _Nullable<Pick<APIGuildMember, 'joined_at'>> &
 	Omit<APIGuildMember, 'deaf' | 'joined_at' | 'mute' | 'user'> &
 	Partial<Pick<APIGuildMember, 'deaf' | 'mute'>> &
 	Required<Pick<APIGuildMember, 'user'>> & {

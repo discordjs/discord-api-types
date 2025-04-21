@@ -22,7 +22,7 @@ import type {
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 } from '../../payloads/v8/mod.ts';
-import type { Nullable, StrictPartial, StrictRequired, UnionToIntersection } from '../../utils/internals.ts';
+import type { _Nullable, _StrictPartial, _StrictRequired, _UnionToIntersection } from '../../utils/internals.ts';
 import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 
 /**
@@ -40,9 +40,9 @@ export type APIGuildChannelResolvable = Exclude<APIChannel, APIDMChannel | APIGr
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIGuildCreatePartialChannel = StrictPartial<
+export type APIGuildCreatePartialChannel = _StrictPartial<
 	Pick<
-		UnionToIntersection<APIGuildChannelResolvable>,
+		_UnionToIntersection<APIGuildChannelResolvable>,
 		'bitrate' | 'nsfw' | 'rate_limit_per_user' | 'topic' | 'type' | 'user_limit'
 	>
 > & {
@@ -541,7 +541,7 @@ export interface RESTPatchAPICurrentGuildMemberJSONBody {
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPICurrentGuildMemberNicknameResult =
-	StrictRequired<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
+	_StrictRequired<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#add-guild-member-role
@@ -848,7 +848,7 @@ export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildWidgetSettingsJSONBody = StrictPartial<APIGuildWidgetSettings>;
+export type RESTPatchAPIGuildWidgetSettingsJSONBody = _StrictPartial<APIGuildWidgetSettings>;
 
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-widget
@@ -968,7 +968,7 @@ export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type RESTPatchAPIGuildWelcomeScreenJSONBody = Nullable<StrictPartial<APIGuildWelcomeScreen>> & {
+export type RESTPatchAPIGuildWelcomeScreenJSONBody = _Nullable<_StrictPartial<APIGuildWelcomeScreen>> & {
 	/**
 	 * Whether the welcome screen is enabled
 	 */

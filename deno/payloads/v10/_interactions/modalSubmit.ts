@@ -19,7 +19,7 @@ export interface ModalSubmitActionRowComponent
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure}
  */
 export interface APIModalSubmission {
 	/**
@@ -33,17 +33,17 @@ export interface APIModalSubmission {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission> &
 	Required<Pick<APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission>, 'data'>>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIModalSubmitDMInteraction = APIDMInteractionWrapper<APIModalSubmitInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIModalSubmitGuildInteraction = APIGuildInteractionWrapper<APIModalSubmitInteraction>;

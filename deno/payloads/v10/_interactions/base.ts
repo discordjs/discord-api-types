@@ -15,14 +15,14 @@ import type { APIUser } from '../user.ts';
 import type { InteractionType } from './responses.ts';
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object}
  */
 export type APIMessageInteractionMetadata =
 	| APIApplicationCommandInteractionMetadata
 	| APIMessageComponentInteractionMetadata
 	| APIModalSubmitInteractionMetadata;
 
-interface APIBaseInteractionMetadata<Type extends InteractionType> {
+export interface APIBaseInteractionMetadata<Type extends InteractionType> {
 	/**
 	 * ID of the interaction
 	 */
@@ -46,7 +46,7 @@ interface APIBaseInteractionMetadata<Type extends InteractionType> {
 }
 
 /**
- * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-application-command-interaction-metadata-structure
+ * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-application-command-interaction-metadata-structure}
  */
 export interface APIApplicationCommandInteractionMetadata
 	extends APIBaseInteractionMetadata<InteractionType.ApplicationCommand> {
@@ -62,7 +62,7 @@ export interface APIApplicationCommandInteractionMetadata
 }
 
 /**
- * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-message-command-interaction-metadata-structure
+ * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-message-command-interaction-metadata-structure}
  */
 export interface APIMessageComponentInteractionMetadata
 	extends APIBaseInteractionMetadata<InteractionType.MessageComponent> {
@@ -73,7 +73,7 @@ export interface APIMessageComponentInteractionMetadata
 }
 
 /**
- * https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-modal-submit-interaction-metadata-structure
+ * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-modal-submit-interaction-metadata-structure}
  */
 export interface APIModalSubmitInteractionMetadata extends APIBaseInteractionMetadata<InteractionType.ModalSubmit> {
 	/**
@@ -96,7 +96,7 @@ export type PartialAPIMessageInteractionGuildMember = Pick<
 >;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object}
  */
 export interface APIMessageInteraction {
 	/**
@@ -122,7 +122,7 @@ export interface APIMessageInteraction {
 }
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-member-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
  */
 export interface APIInteractionGuildMember extends APIGuildMember {
 	permissions: Permissions;
@@ -132,7 +132,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 // INTERACTIONS RECEIVED
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
@@ -166,7 +166,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	/**
 	 * The id of the channel it was sent from
 	 *
-	 * @deprecated Use {@apilink APIBaseInteraction#channel} instead
+	 * @deprecated Use {@link APIBaseInteraction.channel} instead
 	 */
 	channel_id?: Snowflake;
 	/**
@@ -215,6 +215,10 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 * Context where the interaction was triggered from
 	 */
 	context?: InteractionContextType;
+	/**
+	 * Attachment size limit in bytes
+	 */
+	attachment_size_limit: number;
 }
 
 export type APIAuthorizingIntegrationOwnersMap = {
@@ -239,7 +243,7 @@ export interface APIInteractionDataResolvedChannelBase<T extends ChannelType> ex
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object
+ * @see {@link https://discord.com/developers/docs/resources/channel#channel-object}
  */
 export type APIInteractionDataResolvedChannel =
 	| APIInteractionDataResolvedChannelBase<Exclude<ChannelType, ThreadChannelType>>
@@ -247,14 +251,14 @@ export type APIInteractionDataResolvedChannel =
 			Pick<APIThreadChannel, 'parent_id' | 'thread_metadata'>);
 
 /**
- * https://discord.com/developers/docs/resources/guild#guild-member-object
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
  */
 export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'deaf' | 'mute' | 'user'> {
 	permissions: Permissions;
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure}
  */
 export interface APIInteractionDataResolved {
 	users?: Record<Snowflake, APIUser>;
