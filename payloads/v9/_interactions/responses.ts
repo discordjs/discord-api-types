@@ -1,5 +1,5 @@
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9';
-import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
+import type { APIActionRowComponent, APIComponentInModalActionRow } from '../channel';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
@@ -141,5 +141,5 @@ export interface APIModalInteractionResponseCallbackData {
 	/**
 	 * Between 1 and 5 (inclusive) components that make up the modal
 	 */
-	components: APIActionRowComponent<APIModalActionRowComponent>[];
+	components: APIActionRowComponent<APIComponentInModalActionRow>[];
 }

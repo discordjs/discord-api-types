@@ -1,12 +1,11 @@
 import type { Snowflake } from '../../globals.ts';
 import type {
 	APIAllowedMentions,
-	APIActionRowComponent,
 	APIEmbed,
 	APIMessage,
 	APIWebhook,
 	MessageFlags,
-	APIMessageActionRowComponent,
+	APIMessageTopLevelComponent,
 } from '../../payloads/v10/mod.ts';
 import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _Nullable } from '../../utils/internals.ts';
 import type { RESTAPIAttachment } from './channel.ts';
@@ -136,7 +135,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 *
 	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
+	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
 	 * Attachment objects with filename and description
 	 */
@@ -298,7 +297,10 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message-query-string-params}
  */
-export type RESTPatchAPIWebhookWithTokenQuery = Pick<RESTPostAPIWebhookWithTokenQuery, 'thread_id' | 'with_components'>;
+export type RESTPatchAPIWebhookWithTokenMessageQuery = Pick<
+	RESTPostAPIWebhookWithTokenQuery,
+	'thread_id' | 'with_components'
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message}

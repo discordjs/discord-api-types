@@ -1,13 +1,11 @@
 import type { Permissions, Snowflake } from '../../globals';
 import type {
-	APIActionRowComponent,
 	APIAllowedMentions,
 	APIChannel,
 	APIEmbed,
 	APIExtendedInvite,
 	APIFollowedChannel,
 	APIMessage,
-	APIMessageActionRowComponent,
 	APIMessageReference,
 	APIThreadList,
 	APIThreadMember,
@@ -25,6 +23,7 @@ import type {
 	ForumLayoutType,
 	ChannelFlags,
 	APIAttachment,
+	APIMessageTopLevelComponent,
 } from '../../payloads/v9/index';
 import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _StrictPartial } from '../../utils/internals';
 import type { RESTAPIPoll } from './poll';
@@ -318,7 +317,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 *
 	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
+	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
@@ -478,7 +477,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null | undefined;
+	components?: APIMessageTopLevelComponent[] | null | undefined;
 }
 
 /**

@@ -687,7 +687,7 @@ export interface APIMessage {
 	 *
 	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[];
+	components?: APIMessageTopLevelComponent[];
 	/**
 	 * Sent if the message contains stickers
 	 *
@@ -909,6 +909,10 @@ export enum MessageFlags {
 	 * This message has a snapshot (via Message Forwarding)
 	 */
 	HasSnapshot = 1 << 14,
+	/**
+	 * This flag is required to use new components
+	 */
+	IsComponentsV2 = 1 << 15,
 }
 
 /**
@@ -1559,6 +1563,10 @@ export interface APIBaseComponent<T extends ComponentType> {
 	 * The type of the component
 	 */
 	type: T;
+	/**
+	 * int32, auto generated via increment if not provided
+	 */
+	id?: number;
 }
 
 /**
@@ -1597,6 +1605,14 @@ export enum ComponentType {
 	 * Select menu for channels
 	 */
 	ChannelSelect,
+	Section,
+	TextDisplay,
+	Thumbnail,
+	MediaGallery,
+	File,
+	Separator,
+	ContentInventoryEntry = 16,
+	Container,
 
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
@@ -1611,7 +1627,7 @@ export enum ComponentType {
 /**
  * @see {@link https://discord.com/developers/docs/interactions/message-components#action-rows}
  */
-export interface APIActionRowComponent<T extends APIActionRowComponentTypes>
+export interface APIActionRowComponent<T extends APIComponentInActionRow>
 	extends APIBaseComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
@@ -1901,6 +1917,77 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	required?: boolean;
 }
 
+export enum UnfurledMediaItemLoadingState {
+	Unknown,
+	Loading,
+	LoadedSuccess,
+	LoadedNotFound,
+}
+
+export interface APIUnfurledMediaItem {
+	/**
+	 * Supports arbitrary urls _and_ attachment://<filename> references
+	 */
+	url: string;
+	proxy_url?: string;
+	width?: number | null;
+	height?: number | null;
+	placeholder?: string | null;
+	placeholder_version?: number | null;
+	content_type?: string | null;
+	loading_state?: UnfurledMediaItemLoadingState;
+	flags?: number;
+}
+
+export interface APISectionComponent extends APIBaseComponent<ComponentType.Section> {
+	components: APITextDisplayComponent[];
+	accessory: APISectionAccessoryComponent;
+}
+
+export interface APITextDisplayComponent extends APIBaseComponent<ComponentType.TextDisplay> {
+	content: string;
+}
+
+export interface APIThumbnailComponent extends APIBaseComponent<ComponentType.Thumbnail> {
+	media: APIUnfurledMediaItem;
+	description?: string | null;
+	spoiler?: boolean;
+}
+
+export interface APIMediaGalleryItem {
+	media: APIUnfurledMediaItem;
+	description?: string | null;
+	spoiler?: boolean;
+}
+
+export interface APIMediaGalleryComponent extends APIBaseComponent<ComponentType.MediaGallery> {
+	items: APIMediaGalleryItem[];
+}
+
+export enum SeparatorSpacingSize {
+	Small = 1,
+	Large,
+}
+
+export interface APISeparatorComponent extends APIBaseComponent<ComponentType.Separator> {
+	divider?: boolean;
+	spacing?: SeparatorSpacingSize;
+}
+
+export interface APIFileComponent extends APIBaseComponent<ComponentType.File> {
+	/**
+	 * The APIUnfurledMediaItem ONLY supports attachment://<filename> references
+	 */
+	file: APIUnfurledMediaItem;
+	spoiler?: boolean;
+}
+
+export interface APIContainerComponent extends APIBaseComponent<ComponentType.Container> {
+	accent_color?: number | null;
+	spoiler?: boolean;
+	components: APIComponentInContainer[];
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#message-snapshot-object}
  */
@@ -1966,20 +2053,57 @@ export enum ChannelFlags {
 }
 
 /**
+ * All components that can appear in messages.
+ *
+ * For more specific sets, see {@link APIMessageTopLevelComponent}, {@link APIComponentInMessageActionRow}, {@link APIComponentInContainer}, and {@link APISectionAccessoryComponent}
+ *
  * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
  */
-export type APIMessageComponent = APIActionRowComponent<APIMessageActionRowComponent> | APIMessageActionRowComponent;
-export type APIModalComponent = APIActionRowComponent<APIModalActionRowComponent> | APIModalActionRowComponent;
-
-export type APIActionRowComponentTypes = APIMessageActionRowComponent | APIModalActionRowComponent;
+export type APIMessageComponent =
+	| APIActionRowComponent<APIComponentInMessageActionRow>
+	| APIButtonComponent
+	| APIContainerComponent
+	| APIFileComponent
+	| APIMediaGalleryComponent
+	| APISectionComponent
+	| APISelectMenuComponent
+	| APISeparatorComponent
+	| APITextDisplayComponent
+	| APIThumbnailComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
  */
-export type APIMessageActionRowComponent = APIButtonComponent | APISelectMenuComponent;
+export type APIMessageTopLevelComponent =
+	| APIActionRowComponent<APIComponentInMessageActionRow>
+	| APIContainerComponent
+	| APIFileComponent
+	| APIMediaGalleryComponent
+	| APISectionComponent
+	| APISeparatorComponent
+	| APITextDisplayComponent;
+
+export type APIModalComponent = APIActionRowComponent<APIComponentInModalActionRow> | APIComponentInModalActionRow;
+
+export type APIComponentInActionRow = APIComponentInMessageActionRow | APIComponentInModalActionRow;
+
+/**
+ * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
+ */
+export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
 
 // Modal components
-export type APIModalActionRowComponent = APITextInputComponent;
+export type APIComponentInModalActionRow = APITextInputComponent;
+
+export type APISectionAccessoryComponent = APIButtonComponent | APIThumbnailComponent;
+
+export type APIComponentInContainer =
+	| APIActionRowComponent<APIComponentInMessageActionRow>
+	| APIFileComponent
+	| APIMediaGalleryComponent
+	| APISectionComponent
+	| APISeparatorComponent
+	| APITextDisplayComponent;
 
 export type APIMessageSnapshotFields = Pick<
 	APIMessage,
