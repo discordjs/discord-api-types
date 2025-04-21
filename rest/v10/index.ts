@@ -1087,6 +1087,8 @@ Object.freeze(Routes);
 
 export const StickerPackApplicationId = '710982414301790216';
 
+export type ImageSize = 1_024 | 2_048 | 4_096 | 16 | 32 | 64 | 128 | 256 | 512;
+
 export enum ImageFormat {
 	JPEG = 'jpeg',
 	PNG = 'png',
@@ -1438,7 +1440,7 @@ export interface CDNQuery {
 	 *
 	 * Image size can be any power of two between 16 and 4096
 	 */
-	size?: number;
+	size?: ImageSize;
 }
 
 export const RouteBases = {
