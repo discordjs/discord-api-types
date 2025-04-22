@@ -1,10 +1,10 @@
 # [0.38.0](https://github.com/discordjs/discord-api-types/compare/0.37.120...0.38.0) (2025-04-22)
 
 
-### chore
+### Features
 
-* mark as breaking ([a2c1ecc](https://github.com/discordjs/discord-api-types/commit/a2c1eccc680c772180d6ec6943e88abf35b8cac6))
-
+* components v2 ([9f769c3](https://github.com/discordjs/discord-api-types/commit/9f769c319eed0cb3d26d5a5c0cb06f8f4a78c071))
+* **CDNQuery:** add ImageSize type ([527ac2f](https://github.com/discordjs/discord-api-types/commit/527ac2fe0f80d88e62c025bcdab48d251ac171d6))
 
 ### BREAKING CHANGES
 
