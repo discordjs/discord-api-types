@@ -1,3 +1,17 @@
+# [0.38.0](https://github.com/discordjs/discord-api-types/compare/0.37.120...0.38.0) (2025-04-22)
+
+
+### chore
+
+* mark as breaking ([a2c1ecc](https://github.com/discordjs/discord-api-types/commit/a2c1eccc680c772180d6ec6943e88abf35b8cac6))
+
+
+### BREAKING CHANGES
+
+* Certain Component alias types have been renamed (for example APIMessageActionRowComponent is now APIComponentInMessageActionRow
+
+
+
 ## [0.37.120](https://github.com/discordjs/discord-api-types/compare/0.37.119...0.37.120) (2025-04-10)
 
 
