@@ -310,7 +310,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	 */
 	public_updates_channel_id?: Snowflake | null | undefined;
 	/**
-	 * The preferred locale of a Community guild used in server discovery and notices from Discord; defaults to "en-US"
+	 * The preferred locale of a Community guild used in server discovery and notices from Discord
 	 *
 	 * @defaultValue `"en-US"` (if the value is set to `null`)
 	 */

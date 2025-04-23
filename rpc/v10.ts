@@ -435,7 +435,9 @@ export interface RPCSetUserVoiceSettingsArgs {
 	 */
 	pan?: RPCVoicePan;
 	/**
-	 * Set the volume of user (defaults to 100, min 0, max 200)
+	 * Set the volume of user (min 0, max 200)
+	 *
+	 * @defaultValue `100`
 	 */
 	volume?: number;
 	/**

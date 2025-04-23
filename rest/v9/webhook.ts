@@ -178,7 +178,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 export interface RESTPostAPIWebhookWithTokenQuery {
 	/**
 	 * Waits for server confirmation of message send before response, and returns the created message body
-	 * (defaults to `false`; when `false` a message that is not saved does not return an error)
+	 * (when `false` a message that is not saved does not return an error)
 	 *
 	 * @defaultValue `false`
 	 */
@@ -191,7 +191,7 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 	thread_id?: Snowflake;
 	/**
 	 * Whether to allow sending (non-interactive) components for non-application-owned webhooks
-	 * (defaults to `false`; ignored for application-owned webhooks)
+	 * (ignored for application-owned webhooks)
 	 *
 	 * @defaultValue `false`
 	 */

@@ -363,7 +363,9 @@ export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | Channel
 
 export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.GuildForum> {
 	/**
-	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
+	 * The default layout type used to display posts in a forum channel
+	 *
+	 * @defaultValue `ForumLayoutType.NotSet` which indicates a layout view has not been set by a channel admin
 	 */
 	default_forum_layout: ForumLayoutType;
 }
@@ -1547,7 +1549,7 @@ export interface APIAllowedMentions {
 	 */
 	users?: Snowflake[];
 	/**
-	 * 	For replies, whether to mention the author of the message being replied to (default false)
+	 * For replies, whether to mention the author of the message being replied to
 	 *
 	 * @defaultValue `false`
 	 */
