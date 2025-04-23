@@ -364,6 +364,8 @@ export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | Channel
 export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.GuildForum> {
 	/**
 	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
+	 *
+	 * @defaultValue `0`
 	 */
 	default_forum_layout: ForumLayoutType;
 }
@@ -910,7 +912,9 @@ export enum MessageFlags {
 	 */
 	HasSnapshot = 1 << 14,
 	/**
-	 * This flag is required to use new components
+	 * Allows you to create fully component-driven messages
+	 *
+	 * @see {@link https://discord.com/developers/docs/components/overview}
 	 */
 	IsComponentsV2 = 1 << 15,
 }
@@ -1556,7 +1560,7 @@ export interface APIAllowedMentions {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
+ * @see {@link https://discord.com/developers/docs/components/reference#anatomy-of-a-component}
  */
 export interface APIBaseComponent<T extends ComponentType> {
 	/**
@@ -1564,17 +1568,19 @@ export interface APIBaseComponent<T extends ComponentType> {
 	 */
 	type: T;
 	/**
-	 * int32, auto generated via increment if not provided
+	 * 32 bit integer used as an optional identifier for component
+	 *
+	 * The id field is optional and is used to identify components in the response from an interaction that aren't interactive components. The id must be unique within the message and is generated sequentially if left empty. Generation of ids won't use another id that exists in the message if you have one defined for another component.
 	 */
 	id?: number;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object-component-types}
+ * @see {@link https://discord.com/developers/docs/components/reference#component-object-component-types}
  */
 export enum ComponentType {
 	/**
-	 * Action Row component
+	 * Container to display a row of interactive components
 	 */
 	ActionRow = 1,
 	/**
@@ -1605,13 +1611,37 @@ export enum ComponentType {
 	 * Select menu for channels
 	 */
 	ChannelSelect,
+	/**
+	 * Container to display text alongside an accessory component
+	 */
 	Section,
+	/**
+	 * Markdown text
+	 */
 	TextDisplay,
+	/**
+	 * Small image that can be used as an accessory
+	 */
 	Thumbnail,
+	/**
+	 * Display images and other media
+	 */
 	MediaGallery,
+	/**
+	 * Displays an attached file
+	 */
 	File,
+	/**
+	 * Component to add vertical padding between other components
+	 */
 	Separator,
+	/**
+	 * @unstable This component type is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 */
 	ContentInventoryEntry = 16,
+	/**
+	 * Container that visually groups a set of components
+	 */
 	Container,
 
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
@@ -1625,7 +1655,9 @@ export enum ComponentType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#action-rows}
+ * An Action Row is a top-level layout component used in messages and modals.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
 export interface APIActionRowComponent<T extends APIComponentInActionRow>
 	extends APIBaseComponent<ComponentType.ActionRow> {
@@ -1636,7 +1668,7 @@ export interface APIActionRowComponent<T extends APIComponentInActionRow>
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#buttons}
+ * @see {@link https://discord.com/developers/docs/components/reference#button}
  */
 export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
 	/**
@@ -1672,6 +1704,9 @@ export interface APIMessageComponentEmoji {
 	animated?: boolean;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#button}
+ */
 export interface APIButtonComponentWithCustomId
 	extends APIButtonComponentBase<
 		ButtonStyle.Danger | ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success
@@ -1682,6 +1717,9 @@ export interface APIButtonComponentWithCustomId
 	custom_id: string;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#button}
+ */
 export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
 	/**
 	 * The URL to direct users to when clicked for Link buttons
@@ -1689,6 +1727,9 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 	url: string;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#button}
+ */
 export interface APIButtonComponentWithSKUId
 	extends Omit<APIButtonComponentBase<ButtonStyle.Premium>, 'custom_id' | 'emoji' | 'label'> {
 	/**
@@ -1697,33 +1738,64 @@ export interface APIButtonComponentWithSKUId
 	sku_id: Snowflake;
 }
 
+/**
+ * A Button is an interactive component that can only be used in messages. It creates clickable elements that users can interact with, sending an interaction to your app when clicked.
+ *
+ * Buttons must be placed inside an Action Row or a Section's accessory field.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#button}
+ */
 export type APIButtonComponent =
 	| APIButtonComponentWithCustomId
 	| APIButtonComponentWithSKUId
 	| APIButtonComponentWithURL;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#button-object-button-styles}
+ * @see {@link https://discord.com/developers/docs/components/reference#button-button-styles}
  */
 export enum ButtonStyle {
+	/**
+	 * The most important or recommended action in a group of options
+	 */
 	Primary = 1,
+	/**
+	 * Alternative or supporting actions
+	 */
 	Secondary,
+	/**
+	 * Positive confirmation or completion actions
+	 */
 	Success,
+	/**
+	 * An action with irreversible consequences
+	 */
 	Danger,
+	/**
+	 * Navigates to a URL
+	 */
 	Link,
+	/**
+	 * Purchase
+	 */
 	Premium,
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles}
+ * @see {@link https://discord.com/developers/docs/components/reference#text-input-text-input-styles}
  */
 export enum TextInputStyle {
+	/**
+	 * Single-line input
+	 */
 	Short = 1,
+	/**
+	 * Multi-line input
+	 */
 	Paragraph,
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
+ * @see {@link https://discord.com/developers/docs/components/reference}
  */
 export interface APIBaseSelectMenuComponent<
 	T extends
@@ -1761,6 +1833,9 @@ export interface APIBaseSelectMenuComponent<
 	disabled?: boolean;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference}
+ */
 export interface APIBaseAutoPopulatedSelectMenuComponent<
 	T extends
 		| ComponentType.ChannelSelect
@@ -1776,7 +1851,13 @@ export interface APIBaseAutoPopulatedSelectMenuComponent<
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
+ * A String Select is an interactive component that allows users to select one or more provided options in a message.
+ *
+ * String Selects can be configured for both single-select and multi-select behavior. When a user finishes making their choice(s) your app receives an interaction.
+ *
+ * String Selects must be placed inside an Action Row and are only available in messages. An Action Row can contain only one select menu and cannot contain buttons if it has a select menu.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#string-select}
  */
 export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
 	/**
@@ -1786,7 +1867,13 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
+ * A User Select is an interactive component that allows users to select one or more users in a message. Options are automatically populated based on the server's available users.
+ *
+ * User Selects can be configured for both single-select and multi-select behavior. When a user finishes making their choice(s) your app receives an interaction.
+ *
+ * User Selects must be placed inside an Action Row and are only available in messages. An Action Row can contain only one select menu and cannot contain buttons if it has a select menu.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#user-select}
  */
 export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.UserSelect,
@@ -1794,7 +1881,13 @@ export type APIUserSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 >;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
+ * A Role Select is an interactive component that allows users to select one or more roles in a message. Options are automatically populated based on the server's available roles.
+ *
+ * Role Selects can be configured for both single-select and multi-select behavior. When a user finishes making their choice(s) your app receives an interaction.
+ *
+ * Role Selects must be placed inside an Action Row and are only available in messages. An Action Row can contain only one select menu and cannot contain buttons if it has a select menu.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#role-select}
  */
 export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.RoleSelect,
@@ -1802,7 +1895,13 @@ export type APIRoleSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 >;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
+ * A Mentionable Select is an interactive component that allows users to select one or more mentionables in a message. Options are automatically populated based on available mentionables in the server.
+ *
+ * Mentionable Selects can be configured for both single-select and multi-select behavior. When a user finishes making their choice(s), your app receives an interaction.
+ *
+ * Mentionable Selects must be placed inside an Action Row and are only available in messages. An Action Row can contain only one select menu and cannot contain buttons if it has a select menu.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#mentionable-select}
  */
 export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuComponent<
 	ComponentType.MentionableSelect,
@@ -1810,7 +1909,13 @@ export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuCompon
 >;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
+ * A Channel Select is an interactive component that allows users to select one or more channels in a message. Options are automatically populated based on available channels in the server and can be filtered by channel types.
+ *
+ * Channel Selects can be configured for both single-select and multi-select behavior. When a user finishes making their choice(s) your app receives an interaction.
+ *
+ * Channel Selects must be placed inside an Action Row and are only available in messages. An Action Row can contain only one select menu and cannot contain buttons if it has a select menu.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#channel-select}
  */
 export interface APIChannelSelectComponent
 	extends APIBaseAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
@@ -1821,7 +1926,7 @@ export interface APIChannelSelectComponent
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure}
+ * @see {@link https://discord.com/developers/docs/components/reference#user-select-select-default-value-structure}
  */
 export enum SelectMenuDefaultValueType {
 	Channel = 'channel',
@@ -1830,13 +1935,16 @@ export enum SelectMenuDefaultValueType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure}
+ * @see {@link https://discord.com/developers/docs/components/reference#user-select-select-default-value-structure}
  */
 export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType> {
 	type: T;
 	id: Snowflake;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference}
+ */
 export type APIAutoPopulatedSelectMenuComponent =
 	| APIChannelSelectComponent
 	| APIMentionableSelectComponent
@@ -1844,7 +1952,7 @@ export type APIAutoPopulatedSelectMenuComponent =
 	| APIUserSelectComponent;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menus}
+ * @see {@link https://discord.com/developers/docs/components/reference}
  */
 export type APISelectMenuComponent =
 	| APIChannelSelectComponent
@@ -1854,7 +1962,7 @@ export type APISelectMenuComponent =
 	| APIUserSelectComponent;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure}
+ * @see {@link https://discord.com/developers/docs/components/reference#string-select-select-option-structure}
  */
 export interface APISelectMenuOption {
 	/**
@@ -1880,7 +1988,13 @@ export interface APISelectMenuOption {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure}
+ * Text Input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
+ *
+ * Text Inputs can only be used within modals and must be placed inside an Action Row.
+ *
+ * When defining a text input component, you can set attributes to customize the behavior and appearance of it. However, not all attributes will be returned in the text input interaction payload.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#text-input}
  */
 export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
 	/**
@@ -1924,67 +2038,202 @@ export enum UnfurledMediaItemLoadingState {
 	LoadedNotFound,
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#unfurled-media-item-structure}
+ */
 export interface APIUnfurledMediaItem {
 	/**
-	 * Supports arbitrary urls _and_ attachment://<filename> references
+	 * Supports arbitrary urls and attachment://<filename> references
 	 */
 	url: string;
+	/**
+	 * The proxied url of the media item. This field is ignored and provided by the API as part of the response
+	 */
 	proxy_url?: string;
+	/**
+	 * The width of the media item. This field is ignored and provided by the API as part of the response
+	 */
 	width?: number | null;
+	/**
+	 * The height of the media item. This field is ignored and provided by the API as part of the response
+	 */
 	height?: number | null;
 	placeholder?: string | null;
 	placeholder_version?: number | null;
+	/**
+	 * The media type of the content. This field is ignored and provided by the API as part of the response
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
+	 */
 	content_type?: string | null;
 	loading_state?: UnfurledMediaItemLoadingState;
 	flags?: number;
 }
 
+/**
+ * A Section is a top-level layout component that allows you to join text contextually with an accessory.
+ *
+ * Sections are only available in messages.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#section}
+ */
 export interface APISectionComponent extends APIBaseComponent<ComponentType.Section> {
+	/**
+	 * One to three text components
+	 */
 	components: APITextDisplayComponent[];
+	/**
+	 * A thumbnail or a button component, with a future possibility of adding more compatible components
+	 */
 	accessory: APISectionAccessoryComponent;
 }
 
+/**
+ * A Text Display is a top-level content component that allows you to add text to your message formatted with markdown and mention users and roles. This is similar to the content field of a message, but allows you to add multiple text components, controlling the layout of your message.
+ *
+ * Text Displays are only available in messages.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#text-display}
+ */
 export interface APITextDisplayComponent extends APIBaseComponent<ComponentType.TextDisplay> {
+	/**
+	 * Text that will be displayed similar to a message
+	 */
 	content: string;
 }
 
+/**
+ * A Thumbnail is a content component that is a small image only usable as an accessory in a section. The preview comes from an url or attachment through the unfurled media item structure.
+ *
+ * Thumbnails are only available in messages as an accessory in a section.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#thumbnail}
+ */
 export interface APIThumbnailComponent extends APIBaseComponent<ComponentType.Thumbnail> {
+	/**
+	 * A url or attachment
+	 */
 	media: APIUnfurledMediaItem;
+	/**
+	 * Alt text for the media
+	 */
 	description?: string | null;
+	/**
+	 * Whether the thumbnail should be a spoiler (or blurred out). Defaults to `false`
+	 *
+	 * @defaultValue `false`
+	 */
 	spoiler?: boolean;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#media-gallery-media-gallery-item-structure}
+ */
 export interface APIMediaGalleryItem {
+	/**
+	 * A url or attachment
+	 */
 	media: APIUnfurledMediaItem;
+	/**
+	 * Alt text for the media
+	 */
 	description?: string | null;
+	/**
+	 * Whether the media should be a spoiler (or blurred out). Defaults to `false`
+	 *
+	 * @defaultValue `false`
+	 */
 	spoiler?: boolean;
 }
 
+/**
+ * A Media Gallery is a top-level content component that allows you to display 1-10 media attachments in an organized gallery format. Each item can have optional descriptions and can be marked as spoilers.
+ *
+ * Media Galleries are only available in messages.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#media-gallery}
+ */
 export interface APIMediaGalleryComponent extends APIBaseComponent<ComponentType.MediaGallery> {
+	/**
+	 * 1 to 10 media gallery items
+	 */
 	items: APIMediaGalleryItem[];
 }
 
+/**
+ * A File is a top-level component that allows you to display an uploaded file as an attachment to the message and reference it in the component.
+ *
+ * Each file component can only display 1 attached file, but you can upload multiple files and add them to different file components within your payload.
+ *
+ * Files are only available in messages.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#file}
+ */
+export interface APIFileComponent extends APIBaseComponent<ComponentType.File> {
+	/**
+	 * This unfurled media item is unique in that it **only** support attachment references using the `attachment://<filename>` syntax
+	 */
+	file: APIUnfurledMediaItem;
+
+	/**
+	 * Whether the media should be a spoiler (or blurred out). Defaults to `false`
+	 *
+	 * @defaultValue `false`
+	 */
+	spoiler?: boolean;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#separator}
+ */
 export enum SeparatorSpacingSize {
 	Small = 1,
 	Large,
 }
 
+/**
+ * A Separator is a top-level layout component that adds vertical padding and visual division between other components.
+ *
+ * Separators are only available in messages.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#separator}
+ */
 export interface APISeparatorComponent extends APIBaseComponent<ComponentType.Separator> {
+	/**
+	 * Whether a visual divider should be displayed in the component. Defaults to `true`
+	 *
+	 * @defaultValue `true`
+	 */
 	divider?: boolean;
+	/**
+	 * Size of separator padding—`1` for small padding, `2` for large padding. Defaults to `1`
+	 *
+	 * @defaultValue `SeparatorSpacingSize.Small`
+	 */
 	spacing?: SeparatorSpacingSize;
 }
 
-export interface APIFileComponent extends APIBaseComponent<ComponentType.File> {
-	/**
-	 * The APIUnfurledMediaItem ONLY supports attachment://<filename> references
-	 */
-	file: APIUnfurledMediaItem;
-	spoiler?: boolean;
-}
-
+/**
+ * A Container is a top-level layout component that holds up to 10 components. Containers are visually distinct from surrounding components and has an optional customizable color bar.
+ *
+ * Containers are only available in messages.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#container}
+ */
 export interface APIContainerComponent extends APIBaseComponent<ComponentType.Container> {
+	/**
+	 * Color for the accent on the container as RGB from `0x000000` to `0xFFFFFF`
+	 */
 	accent_color?: number | null;
+	/**
+	 * Whether the container should be a spoiler (or blurred out). Defaults to `false`.
+	 *
+	 * @defaultValue `false`
+	 */
 	spoiler?: boolean;
+	/**
+	 * Up to 10 components of the type action row, text display, section, media gallery, separator, or file
+	 */
 	components: APIComponentInContainer[];
 }
 
@@ -2057,7 +2306,7 @@ export enum ChannelFlags {
  *
  * For more specific sets, see {@link APIMessageTopLevelComponent}, {@link APIComponentInMessageActionRow}, {@link APIComponentInContainer}, and {@link APISectionAccessoryComponent}
  *
- * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
+ * @see {@link https://discord.com/developers/docs/components/reference}
  */
 export type APIMessageComponent =
 	| APIActionRowComponent<APIComponentInMessageActionRow>
@@ -2072,7 +2321,7 @@ export type APIMessageComponent =
 	| APIThumbnailComponent;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
+ * @see {@link https://discord.com/developers/docs/components/reference}
  */
 export type APIMessageTopLevelComponent =
 	| APIActionRowComponent<APIComponentInMessageActionRow>
@@ -2083,20 +2332,34 @@ export type APIMessageTopLevelComponent =
 	| APISeparatorComponent
 	| APITextDisplayComponent;
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference}
+ */
 export type APIModalComponent = APIActionRowComponent<APIComponentInModalActionRow> | APIComponentInModalActionRow;
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
+ */
 export type APIComponentInActionRow = APIComponentInMessageActionRow | APIComponentInModalActionRow;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/message-components#message-components}
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
 export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
 
-// Modal components
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
+ */
 export type APIComponentInModalActionRow = APITextInputComponent;
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#section}
+ */
 export type APISectionAccessoryComponent = APIButtonComponent | APIThumbnailComponent;
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#container}
+ */
 export type APIComponentInContainer =
 	| APIActionRowComponent<APIComponentInMessageActionRow>
 	| APIFileComponent
@@ -2105,6 +2368,9 @@ export type APIComponentInContainer =
 	| APISeparatorComponent
 	| APITextDisplayComponent;
 
+/**
+ * https://discord.com/developers/docs/resources/message#message-snapshot-object
+ */
 export type APIMessageSnapshotFields = Pick<
 	APIMessage,
 	| 'attachments'

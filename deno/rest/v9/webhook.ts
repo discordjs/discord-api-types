@@ -131,9 +131,9 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * The components to include with the message
 	 *
-	 * Requires an application-owned webhook
+	 * Application-owned webhooks can always send components. Non-application-owned webhooks cannot send interactive components, and the `components` field will be ignored unless they set the `with_components` query param.
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
+	 * @see {@link https://discord.com/developers/docs/components/reference}
 	 */
 	components?: APIMessageTopLevelComponent[] | undefined;
 	/**

@@ -315,7 +315,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * The components to include with the message
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
+	 * @see {@link https://discord.com/developers/docs/components/reference}
 	 */
 	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
@@ -475,7 +475,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * The components to include with the message
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
+	 * @see {@link https://discord.com/developers/docs/components/reference}
 	 */
 	components?: APIMessageTopLevelComponent[] | null | undefined;
 }
