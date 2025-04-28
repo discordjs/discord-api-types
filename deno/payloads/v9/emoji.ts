@@ -51,6 +51,9 @@ export interface APIEmoji extends APIPartialEmoji {
 	available?: boolean;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object-applicationowned-emoji}
+ */
 export type APIApplicationEmoji = _NonNullableFields<Required<Pick<APIEmoji, 'animated' | 'id' | 'name' | 'user'>>> & {
 	/**
 	 * Roles allowed to use this emoji.
