@@ -3,6 +3,7 @@
  */
 
 import type { Snowflake } from '../../globals';
+import type { _NonNullableFields } from '../../utils/internals';
 import type { APIRole } from './permissions';
 import type { APIUser } from './user';
 
@@ -49,3 +50,30 @@ export interface APIEmoji extends APIPartialEmoji {
 	 */
 	available?: boolean;
 }
+
+export type APIApplicationEmoji = _NonNullableFields<Required<Pick<APIEmoji, 'animated' | 'id' | 'name' | 'user'>>> & {
+	/**
+	 * Roles allowed to use this emoji.
+	 *
+	 * @remarks Always empty.
+	 */
+	roles: [];
+	/**
+	 * Whether this emoji must be wrapped in colons.
+	 *
+	 * @remarks Always `true`.
+	 */
+	require_colons: true;
+	/**
+	 * Whether this emoji is managed.
+	 *
+	 * @remarks Always `false`.
+	 */
+	managed: false;
+	/**
+	 * Whether this emoji is available.
+	 *
+	 * @remarks Always `true`.
+	 */
+	available: true;
+};
