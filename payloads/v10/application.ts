@@ -227,11 +227,11 @@ export enum ApplicationFlags {
 	 */
 	Embedded = 1 << 17,
 	/**
-	 * Intent required for bots in 100 or more servers to receive {@link https://support-dev.discord.com/hc/en-us/articles/4404772028055 | message content}
+	 * Intent required for bots in 100 or more servers to receive {@link https://support-dev.discord.com/hc/articles/6207308062871 | message content}
 	 */
 	GatewayMessageContent = 1 << 18,
 	/**
-	 * Intent required for bots in under 100 servers to receive {@link https://support-dev.discord.com/hc/en-us/articles/4404772028055 | message content},
+	 * Intent required for bots in under 100 servers to receive {@link https://support-dev.discord.com/hc/articles/6207308062871 | message content},
 	 * found in Bot Settings
 	 */
 	GatewayMessageContentLimited = 1 << 19,

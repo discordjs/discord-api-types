@@ -522,7 +522,7 @@ export interface APIMessage {
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	content: string;
 	/**
@@ -578,7 +578,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	attachments: APIAttachment[];
 	/**
@@ -590,7 +590,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -685,7 +685,7 @@ export interface APIMessage {
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	components?: APIMessageTopLevelComponent[];
 	/**
@@ -725,7 +725,7 @@ export interface APIMessage {
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**.
 	 * You also need to specify the intent bit value (`1 << 15`) if you are connecting to the gateway
 	 *
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	poll?: APIPoll;
 	/**

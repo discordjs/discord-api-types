@@ -521,7 +521,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**
 	 *
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	content: string;
 	/**
@@ -576,7 +576,7 @@ export interface APIMessage {
 	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	attachments: APIAttachment[];
 	/**
@@ -587,7 +587,7 @@ export interface APIMessage {
 	 * The `MESSAGE_CONTENT` privileged gateway intent is required for verified applications to receive a non-empty value from this field
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	embeds: APIEmbed[];
 	/**
@@ -681,7 +681,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**
 	 *
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	components?: APIMessageTopLevelComponent[];
 	/**
@@ -720,7 +720,7 @@ export interface APIMessage {
 	 *
 	 * In the Discord Developers Portal, you need to enable the toggle of this intent of your application in **Bot \> Privileged Gateway Intents**.
 	 *
-	 * @see {@link https://support-dev.discord.com/hc/articles/4404772028055}
+	 * @see {@link https://support-dev.discord.com/hc/articles/6207308062871}
 	 */
 	poll?: APIPoll;
 	/**
