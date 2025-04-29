@@ -364,8 +364,6 @@ export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | Channel
 export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.GuildForum> {
 	/**
 	 * The default layout type used to display posts in a forum channel. Defaults to `0`, which indicates a layout view has not been set by a channel admin
-	 *
-	 * @defaultValue `0`
 	 */
 	default_forum_layout: ForumLayoutType;
 }
@@ -2119,7 +2117,7 @@ export interface APIThumbnailComponent extends APIBaseComponent<ComponentType.Th
 	 */
 	description?: string | null;
 	/**
-	 * Whether the thumbnail should be a spoiler (or blurred out). Defaults to `false`
+	 * Whether the thumbnail should be a spoiler (or blurred out)
 	 *
 	 * @defaultValue `false`
 	 */
@@ -2139,7 +2137,7 @@ export interface APIMediaGalleryItem {
 	 */
 	description?: string | null;
 	/**
-	 * Whether the media should be a spoiler (or blurred out). Defaults to `false`
+	 * Whether the media should be a spoiler (or blurred out)
 	 *
 	 * @defaultValue `false`
 	 */
@@ -2176,7 +2174,7 @@ export interface APIFileComponent extends APIBaseComponent<ComponentType.File> {
 	file: APIUnfurledMediaItem;
 
 	/**
-	 * Whether the media should be a spoiler (or blurred out). Defaults to `false`
+	 * Whether the media should be a spoiler (or blurred out)
 	 *
 	 * @defaultValue `false`
 	 */
@@ -2200,13 +2198,13 @@ export enum SeparatorSpacingSize {
  */
 export interface APISeparatorComponent extends APIBaseComponent<ComponentType.Separator> {
 	/**
-	 * Whether a visual divider should be displayed in the component. Defaults to `true`
+	 * Whether a visual divider should be displayed in the component
 	 *
 	 * @defaultValue `true`
 	 */
 	divider?: boolean;
 	/**
-	 * Size of separator padding—`1` for small padding, `2` for large padding. Defaults to `1`
+	 * Size of separator padding
 	 *
 	 * @defaultValue `SeparatorSpacingSize.Small`
 	 */
@@ -2226,7 +2224,7 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 	 */
 	accent_color?: number | null;
 	/**
-	 * Whether the container should be a spoiler (or blurred out). Defaults to `false`.
+	 * Whether the container should be a spoiler (or blurred out)
 	 *
 	 * @defaultValue `false`
 	 */
