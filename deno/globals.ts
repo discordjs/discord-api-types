@@ -1,17 +1,15 @@
 /**
- * https://discord.com/developers/docs/reference#snowflakes
+ * @see {@link https://discord.com/developers/docs/reference#snowflakes}
  */
 export type Snowflake = string;
 
 /**
- * https://discord.com/developers/docs/topics/permissions
- *
- * @internal
+ * @see {@link https://discord.com/developers/docs/topics/permissions}
  */
 export type Permissions = string;
 
 /**
- * https://discord.com/developers/docs/reference#message-formatting-formats
+ * @see {@link https://discord.com/developers/docs/reference#message-formatting-formats}
  */
 export const FormattingPatterns = {
 	/**

@@ -1,13 +1,11 @@
 import type { Permissions, Snowflake } from '../../globals';
 import type {
-	APIActionRowComponent,
 	APIAllowedMentions,
 	APIChannel,
 	APIEmbed,
 	APIExtendedInvite,
 	APIFollowedChannel,
 	APIMessage,
-	APIMessageActionRowComponent,
 	APIMessageReference,
 	APIThreadList,
 	APIThreadMember,
@@ -25,8 +23,9 @@ import type {
 	ForumLayoutType,
 	ChannelFlags,
 	APIAttachment,
+	APIMessageTopLevelComponent,
 } from '../../payloads/v10/index';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals';
+import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _StrictPartial } from '../../utils/internals';
 import type { RESTAPIPoll } from './poll';
 
 export interface RESTAPIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSONBody {
@@ -39,12 +38,12 @@ export interface RESTAPIChannelPatchOverwrite extends RESTPutAPIChannelPermissio
 export type APIChannelPatchOverwrite = RESTAPIChannelPatchOverwrite;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-channel}
  */
 export type RESTGetAPIChannelResult = APIChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#modify-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#modify-channel}
  */
 export interface RESTPatchAPIChannelJSONBody {
 	/**
@@ -114,13 +113,13 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
-	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
+	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-region-object}
 	 */
 	rtc_region?: string | null | undefined;
 	/**
 	 * The camera video quality mode of the voice channel
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes}
 	 */
 	video_quality_mode?: VideoQualityMode | null | undefined;
 	/**
@@ -197,17 +196,17 @@ export interface RESTPatchAPIChannelJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#modify-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#modify-channel}
  */
 export type RESTPatchAPIChannelResult = APIChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#deleteclose-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#deleteclose-channel}
  */
 export type RESTDeleteAPIChannelResult = APIChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel-messages
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-channel-messages}
  */
 export interface RESTGetAPIChannelMessagesQuery {
 	/**
@@ -225,32 +224,32 @@ export interface RESTGetAPIChannelMessagesQuery {
 	/**
 	 * Max number of messages to return (1-100)
 	 *
-	 * @default 50
+	 * @defaultValue `50`
 	 */
 	limit?: number;
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel-messages
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-channel-messages}
  */
 export type RESTGetAPIChannelMessagesResult = APIMessage[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-channel-message}
  */
 export type RESTGetAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure}
  */
-export type RESTAPIMessageReference = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+export type RESTAPIMessageReference = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Required<Pick<APIMessageReference, 'message_id'>>
 > &
-	StrictPartial<APIMessageReference> & {
+	_StrictPartial<APIMessageReference> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
-		 * @default true
+		 * @defaultValue `true`
 		 */
 		fail_if_not_exists?: boolean | undefined;
 	};
@@ -261,7 +260,7 @@ export type RESTAPIMessageReference = AddUndefinedToPossiblyUndefinedPropertiesO
 export type APIMessageReferenceSend = RESTAPIMessageReference;
 
 /**
- * https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
+ * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
  */
 export type RESTAPIAttachment = Partial<
 	Pick<APIAttachment, 'description' | 'duration_secs' | 'filename' | 'title' | 'waveform'>
@@ -273,7 +272,7 @@ export type RESTAPIAttachment = Partial<
 };
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#create-message}
  */
 export interface RESTPostAPIChannelMessageJSONBody {
 	/**
@@ -291,31 +290,31 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#embed-object}
 	 */
 	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for a message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object}
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
 	 * Include to make your message a reply or a forward
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
+	 * @see {@link https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure}
 	 */
 	message_reference?: RESTAPIMessageReference | undefined;
 	/**
 	 * The components to include with the message
 	 *
-	 * See https://discord.com/developers/docs/interactions/message-components#component-object
+	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
+	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
-	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
+	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
 	 */
 	sticker_ids?: [Snowflake, Snowflake, Snowflake] | [Snowflake, Snowflake] | [Snowflake] | undefined;
 	/**
@@ -338,7 +337,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#create-message}
  */
 export type RESTPostAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & {
@@ -350,22 +349,22 @@ export type RESTPostAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIChannelMessageJSONBody);
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#create-message}
  */
 export type RESTPostAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#crosspost-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#crosspost-message}
  */
 export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-reaction
+ * @see {@link https://discord.com/developers/docs/resources/channel#create-reaction}
  */
 export type RESTPutAPIChannelMessageReactionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-own-reaction
+ * @see {@link https://discord.com/developers/docs/resources/channel#delete-own-reaction}
  */
 export type RESTDeleteAPIChannelMessageOwnReactionResult = never;
 
@@ -375,12 +374,12 @@ export type RESTDeleteAPIChannelMessageOwnReactionResult = never;
 export type RESTDeleteAPIChannelMessageOwnReaction = RESTDeleteAPIChannelMessageOwnReactionResult;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-user-reaction
+ * @see {@link https://discord.com/developers/docs/resources/channel#delete-user-reaction}
  */
 export type RESTDeleteAPIChannelMessageUserReactionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-reactions
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-reactions}
  */
 export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
@@ -394,13 +393,13 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 	/**
 	 * Max number of users to return (1-100)
 	 *
-	 * @default 25
+	 * @defaultValue `25`
 	 */
 	limit?: number;
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-reactions-reaction-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-reactions-reaction-types}
  */
 export enum ReactionType {
 	Normal,
@@ -408,22 +407,22 @@ export enum ReactionType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-reactions
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-reactions}
  */
 export type RESTGetAPIChannelMessageReactionUsersResult = APIUser[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-all-reactions
+ * @see {@link https://discord.com/developers/docs/resources/channel#delete-all-reactions}
  */
 export type RESTDeleteAPIChannelAllMessageReactionsResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-all-reactions-for-emoji
+ * @see {@link https://discord.com/developers/docs/resources/channel#delete-all-reactions-for-emoji}
  */
 export type RESTDeleteAPIChannelMessageReactionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#edit-message}
  */
 export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
@@ -433,7 +432,7 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#embed-object}
 	 */
 	embeds?: APIEmbed[] | null | undefined;
 	/**
@@ -442,13 +441,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 * When specifying flags, ensure to include all previously set flags/bits
 	 * in addition to ones that you are modifying
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
+	 * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-flags}
 	 */
 	flags?: MessageFlags | null | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
+	 * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object}
 	 */
 	allowed_mentions?: APIAllowedMentions | null | undefined;
 	/**
@@ -456,19 +455,19 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * See https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
+	 * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
 	 * The components to include with the message
 	 *
-	 * See https://discord.com/developers/docs/interactions/message-components#component-object
+	 * @see {@link https://discord.com/developers/docs/interactions/message-components#component-object}
 	 */
-	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null | undefined;
+	components?: APIMessageTopLevelComponent[] | null | undefined;
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#edit-message}
  */
 export type RESTPatchAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & {
@@ -480,17 +479,17 @@ export type RESTPatchAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIChannelMessageJSONBody);
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#edit-message}
  */
 export type RESTPatchAPIChannelMessageResult = APIMessage;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#delete-message}
  */
 export type RESTDeleteAPIChannelMessageResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
+ * @see {@link https://discord.com/developers/docs/resources/channel#bulk-delete-messages}
  */
 export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 	/**
@@ -500,28 +499,26 @@ export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
+ * @see {@link https://discord.com/developers/docs/resources/channel#bulk-delete-messages}
  */
 export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
+ * @see {@link https://discord.com/developers/docs/resources/channel#edit-channel-permissions}
  */
 export interface RESTPutAPIChannelPermissionJSONBody {
 	/**
 	 * The bitwise value of all allowed permissions
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
-	 *
-	 * @default "0"
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 * @defaultValue `"0"`
 	 */
 	allow?: Permissions | null | undefined;
 	/**
 	 * The bitwise value of all disallowed permissions
 	 *
-	 * See https://en.wikipedia.org/wiki/Bit_field
-	 *
-	 * @default "0"
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 * @defaultValue `"0"`
 	 */
 	deny?: Permissions | null | undefined;
 	/**
@@ -531,48 +528,48 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
+ * @see {@link https://discord.com/developers/docs/resources/channel#edit-channel-permissions}
  */
 export type RESTPutAPIChannelPermissionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-channel-invites
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-channel-invites}
  */
 export type RESTGetAPIChannelInvitesResult = APIExtendedInvite[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-channel-invite
+ * @see {@link https://discord.com/developers/docs/resources/channel#create-channel-invite}
  */
 export interface RESTPostAPIChannelInviteJSONBody {
 	/**
 	 * Duration of invite in seconds before expiry, or 0 for never
 	 *
-	 * @default 86400 (24 hours)
+	 * @defaultValue `86400` (24 hours)
 	 */
 	max_age?: number | undefined;
 	/**
 	 * Max number of uses or 0 for unlimited
 	 *
-	 * @default 0
+	 * @defaultValue `0`
 	 */
 	max_uses?: number | undefined;
 	/**
 	 * Whether this invite only grants temporary membership
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	temporary?: boolean | undefined;
 	/**
 	 * If true, don't try to reuse a similar invite
 	 * (useful for creating many unique one time use invites)
 	 *
-	 * @default false
+	 * @defaultValue `false`
 	 */
 	unique?: boolean | undefined;
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+	 * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
 	 */
 	target_type?: InviteTargetType | undefined;
 	/**
@@ -590,17 +587,17 @@ export interface RESTPostAPIChannelInviteJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#create-channel-invite
+ * @see {@link https://discord.com/developers/docs/resources/channel#create-channel-invite}
  */
 export type RESTPostAPIChannelInviteResult = APIExtendedInvite;
 
 /**
- * https://discord.com/developers/docs/resources/channel#delete-channel-permission
+ * @see {@link https://discord.com/developers/docs/resources/channel#delete-channel-permission}
  */
 export type RESTDeleteAPIChannelPermissionResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#follow-news-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#follow-news-channel}
  */
 export interface RESTPostAPIChannelFollowersJSONBody {
 	/**
@@ -610,32 +607,32 @@ export interface RESTPostAPIChannelFollowersJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#follow-news-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#follow-news-channel}
  */
 export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#trigger-typing-indicator
+ * @see {@link https://discord.com/developers/docs/resources/channel#trigger-typing-indicator}
  */
 export type RESTPostAPIChannelTypingResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-pinned-messages
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-pinned-messages}
  */
 export type RESTGetAPIChannelPinsResult = APIMessage[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#pin-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#pin-message}
  */
 export type RESTPutAPIChannelPinResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#unpin-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#unpin-message}
  */
 export type RESTDeleteAPIChannelPinResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
+ * @see {@link https://discord.com/developers/docs/resources/channel#group-dm-add-recipient}
  */
 export interface RESTPutAPIChannelRecipientJSONBody {
 	/**
@@ -649,17 +646,17 @@ export interface RESTPutAPIChannelRecipientJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
+ * @see {@link https://discord.com/developers/docs/resources/channel#group-dm-add-recipient}
  */
 export type RESTPutAPIChannelRecipientResult = unknown;
 
 /**
- * https://discord.com/developers/docs/resources/channel#group-dm-remove-recipient
+ * @see {@link https://discord.com/developers/docs/resources/channel#group-dm-remove-recipient}
  */
 export type RESTDeleteAPIChannelRecipientResult = unknown;
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-from-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-from-message}
  */
 export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
@@ -677,7 +674,7 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel}
  */
 export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
@@ -691,7 +688,7 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 };
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
+ * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel}
  */
 export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
@@ -701,12 +698,12 @@ export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessage
 };
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-from-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-from-message}
  */
 export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-without-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-without-message}
  */
 export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
@@ -715,9 +712,8 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	 * In API v9 and v10, `type` defaults to `PRIVATE_THREAD`.
 	 * In a future API version this will be changed to be a required field, with no default.
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-object-channel-types
-	 *
-	 * @default ChannelType.PrivateThread
+	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
+	 * @defaultValue `ChannelType.PrivateThread`
 	 */
 	type?: ThreadChannelType | undefined;
 	/**
@@ -727,22 +723,22 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#start-thread-without-message
+ * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-without-message}
  */
 export type RESTPostAPIChannelThreadsResult = APIChannel;
 
 /**
- * https://discord.com/developers/docs/resources/channel#join-thread
+ * @see {@link https://discord.com/developers/docs/resources/channel#join-thread}
  */
 export type RESTPutAPIChannelThreadMembersResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#leave-thread
+ * @see {@link https://discord.com/developers/docs/resources/channel#leave-thread}
  */
 export type RESTDeleteAPIChannelThreadMembersResult = never;
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-thread-member
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-thread-member}
  */
 export interface RESTGetAPIChannelThreadMemberQuery {
 	/**
@@ -752,12 +748,12 @@ export interface RESTGetAPIChannelThreadMemberQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#get-thread-member
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-thread-member}
  */
 export type RESTGetAPIChannelThreadMemberResult = APIThreadMember;
 
 /**
- * https://discord.com/developers/docs/resources/channel#list-thread-members
+ * @see {@link https://discord.com/developers/docs/resources/channel#list-thread-members}
  */
 export interface RESTGetAPIChannelThreadMembersQuery {
 	/**
@@ -775,12 +771,12 @@ export interface RESTGetAPIChannelThreadMembersQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#list-thread-members
+ * @see {@link https://discord.com/developers/docs/resources/channel#list-thread-members}
  */
 export type RESTGetAPIChannelThreadMembersResult = APIThreadMember[];
 
 /**
- * https://discord.com/developers/docs/resources/channel#list-public-archived-threads
+ * @see {@link https://discord.com/developers/docs/resources/channel#list-public-archived-threads}
  */
 export interface RESTGetAPIChannelThreadsArchivedQuery {
 	/**
@@ -794,17 +790,17 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#list-public-archived-threads
+ * @see {@link https://discord.com/developers/docs/resources/channel#list-public-archived-threads}
  */
 export type RESTGetAPIChannelThreadsArchivedPublicResult = RESTGetAPIChannelUsersThreadsArchivedResult;
 
 /**
- * https://discord.com/developers/docs/resources/channel#list-private-archived-threads
+ * @see {@link https://discord.com/developers/docs/resources/channel#list-private-archived-threads}
  */
 export type RESTGetAPIChannelThreadsArchivedPrivateResult = RESTGetAPIChannelUsersThreadsArchivedResult;
 
 /**
- * https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
+ * @see {@link https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads}
  */
 export interface RESTGetAPIChannelUsersThreadsArchivedResult extends APIThreadList {
 	/**

@@ -1,4 +1,4 @@
-import type { APIInteractionDataResolved } from '../../mod.ts';
+import type { APIInteractionDataResolved, InteractionType } from '../../mod.ts';
 import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper } from '../base.ts';
 import type {
@@ -62,7 +62,7 @@ export * from './_chatInput/subcommandGroup.ts';
 export * from './_chatInput/user.ts';
 
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}
  */
 export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandAttachmentOption
@@ -76,7 +76,7 @@ export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandUserOption;
 
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}
  */
 export type APIApplicationCommandOption =
 	| APIApplicationCommandBasicOption
@@ -84,47 +84,56 @@ export type APIApplicationCommandOption =
 	| APIApplicationCommandSubcommandOption;
 
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure}
  */
-export type APIApplicationCommandInteractionDataOption =
-	| APIApplicationCommandInteractionDataBasicOption
-	| APIApplicationCommandInteractionDataSubcommandGroupOption
-	| APIApplicationCommandInteractionDataSubcommandOption;
+export type APIApplicationCommandInteractionDataOption<Type extends InteractionType = InteractionType> =
+	| APIApplicationCommandInteractionDataBasicOption<Type>
+	| APIApplicationCommandInteractionDataSubcommandGroupOption<Type>
+	| APIApplicationCommandInteractionDataSubcommandOption<Type>;
 
-export type APIApplicationCommandInteractionDataBasicOption =
+export type APIApplicationCommandInteractionDataBasicOption<Type extends InteractionType = InteractionType> =
 	| APIApplicationCommandInteractionDataAttachmentOption
 	| APIApplicationCommandInteractionDataBooleanOption
 	| APIApplicationCommandInteractionDataChannelOption
-	| APIApplicationCommandInteractionDataIntegerOption
+	| APIApplicationCommandInteractionDataIntegerOption<Type>
 	| APIApplicationCommandInteractionDataMentionableOption
-	| APIApplicationCommandInteractionDataNumberOption
+	| APIApplicationCommandInteractionDataNumberOption<Type>
 	| APIApplicationCommandInteractionDataRoleOption
 	| APIApplicationCommandInteractionDataStringOption
 	| APIApplicationCommandInteractionDataUserOption;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export interface APIChatInputApplicationCommandInteractionData
 	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
-	options?: APIApplicationCommandInteractionDataOption[];
+	options?: APIApplicationCommandInteractionDataOption<InteractionType.ApplicationCommand>[];
 	resolved?: APIInteractionDataResolved;
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
+ */
+export interface APIAutocompleteApplicationCommandInteractionData
+	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
+	options?: APIApplicationCommandInteractionDataOption<InteractionType.ApplicationCommandAutocomplete>[];
+	resolved?: APIInteractionDataResolved;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIChatInputApplicationCommandInteraction>;

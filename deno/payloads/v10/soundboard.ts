@@ -6,7 +6,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object
+ * @see {@link https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object}
  */
 export interface APISoundboardSound {
 	/**

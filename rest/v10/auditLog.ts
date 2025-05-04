@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals';
 import type { APIAuditLog, AuditLogEvent } from '../../payloads/v10/auditLog';
 
 /**
- * https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log
+ * @see {@link https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log}
  */
 export interface RESTGetAPIAuditLogQuery {
 	/**
@@ -24,7 +24,7 @@ export interface RESTGetAPIAuditLogQuery {
 	/**
 	 * How many entries are returned (default 50, minimum 1, maximum 100)
 	 *
-	 * @default 50
+	 * @defaultValue `50`
 	 */
 	limit?: number;
 }

@@ -6,7 +6,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-team-object
+ * @see {@link https://discord.com/developers/docs/topics/teams#data-models-team-object}
  */
 export interface APITeam {
 	/**
@@ -32,19 +32,19 @@ export interface APITeam {
 }
 
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-team-member-object
+ * @see {@link https://discord.com/developers/docs/topics/teams#data-models-team-member-object}
  */
 export interface APITeamMember {
 	/**
 	 * The user's membership state on the team
 	 *
-	 * See https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
+	 * @see {@link https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum}
 	 */
 	membership_state: TeamMemberMembershipState;
 	/**
 	 * Will always be `["*"]`
 	 *
-	 * @deprecated Use `role` instead
+	 * @deprecated Use {@link APITeamMember.role} instead.
 	 */
 	permissions: ['*'];
 	/**
@@ -54,19 +54,19 @@ export interface APITeamMember {
 	/**
 	 * The avatar, discriminator, id, and username of the user
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user: APIUser;
 	/**
 	 * The user's role in the team.
 	 *
-	 * See https://discord.com/developers/docs/topics/teams#team-member-roles
+	 * @see {@link https://discord.com/developers/docs/topics/teams#team-member-roles}
 	 */
 	role: TeamMemberRole;
 }
 
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
+ * @see {@link https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum}
  */
 export enum TeamMemberMembershipState {
 	Invited = 1,
@@ -74,7 +74,7 @@ export enum TeamMemberMembershipState {
 }
 
 /**
- * https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types
+ * @see {@link https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types}
  */
 export enum TeamMemberRole {
 	Admin = 'admin',

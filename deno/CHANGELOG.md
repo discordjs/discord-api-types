@@ -1,3 +1,37 @@
+## [0.38.2](https://github.com/discordjs/discord-api-types/compare/0.38.1...0.38.2) (2025-05-01)
+
+
+
+# [0.38.1](https://github.com/discordjs/discord-api-types/compare/0.37.120...0.38.1) (2025-04-22)
+
+
+### Features
+
+* components v2 ([9f769c3](https://github.com/discordjs/discord-api-types/commit/9f769c319eed0cb3d26d5a5c0cb06f8f4a78c071))
+* **CDNQuery:** add ImageSize type ([527ac2f](https://github.com/discordjs/discord-api-types/commit/527ac2fe0f80d88e62c025bcdab48d251ac171d6))
+
+### BREAKING CHANGES
+
+* Certain Component alias types have been renamed (for example APIMessageActionRowComponent is now APIComponentInMessageActionRow
+
+
+
+## [0.37.120](https://github.com/discordjs/discord-api-types/compare/0.37.119...0.37.120) (2025-04-10)
+
+
+### Bug Fixes
+
+* Ensure autocomplete option values resolve to string for numerical types ([#1198](https://github.com/discordjs/discord-api-types/issues/1198)) ([cfac62e](https://github.com/discordjs/discord-api-types/commit/cfac62e44a02a535b8ed412dae263b8c31475c4a))
+
+
+### Features
+
+* **APIBaseInteraction:** add `attachment_size_limit` ([#1214](https://github.com/discordjs/discord-api-types/issues/1214)) ([5b6f0d4](https://github.com/discordjs/discord-api-types/commit/5b6f0d43a4e4886a924af840b388c3f482b79f5e))
+* **RPC:** types ([#1200](https://github.com/discordjs/discord-api-types/issues/1200)) ([ac4d59d](https://github.com/discordjs/discord-api-types/commit/ac4d59d17edfa77cf28c644f8797204035508a0a))
+* **webhook:** add `with_components` query param ([#1208](https://github.com/discordjs/discord-api-types/issues/1208)) ([def67db](https://github.com/discordjs/discord-api-types/commit/def67dbe90206a2a5c7d08ce734a2db6a9175ca3))
+
+
+
 ## [0.37.119](https://github.com/discordjs/discord-api-types/compare/0.37.118...0.37.119) (2025-02-02)
 
 

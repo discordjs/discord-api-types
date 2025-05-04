@@ -1,9 +1,9 @@
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v10';
-import type { APIActionRowComponent, APIModalActionRowComponent } from '../channel';
+import type { APIActionRowComponent, APIComponentInModalActionRow } from '../channel';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type}
  */
 export enum InteractionType {
 	Ping = 1,
@@ -14,7 +14,7 @@ export enum InteractionType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object}
  */
 export type APIInteractionResponse =
 	| APIApplicationCommandAutocompleteResponse
@@ -69,7 +69,7 @@ export interface APIInteractionResponseLaunchActivity {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type}
  */
 export enum InteractionResponseType {
 	/**
@@ -103,7 +103,8 @@ export enum InteractionResponseType {
 	/**
 	 * Respond to an interaction with an upgrade button, only available for apps with monetization enabled
 	 *
-	 * @deprecated See https://discord.com/developers/docs/change-log#premium-apps-new-premium-button-style-deep-linking-url-schemes
+	 * @deprecated Send a button with Premium type instead.
+	 * {@link https://discord.com/developers/docs/change-log#premium-apps-new-premium-button-style-deep-linking-url-schemes | Learn more here}
 	 */
 	PremiumRequired,
 
@@ -117,7 +118,7 @@ export enum InteractionResponseType {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure}
  */
 export type APIInteractionResponseCallbackData = Omit<RESTPostAPIWebhookWithTokenJSONBody, 'avatar_url' | 'username'>;
 
@@ -126,7 +127,7 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 }
 
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal}
  */
 export interface APIModalInteractionResponseCallbackData {
 	/**
@@ -140,5 +141,5 @@ export interface APIModalInteractionResponseCallbackData {
 	/**
 	 * Between 1 and 5 (inclusive) components that make up the modal
 	 */
-	components: APIActionRowComponent<APIModalActionRowComponent>[];
+	components: APIActionRowComponent<APIComponentInModalActionRow>[];
 }

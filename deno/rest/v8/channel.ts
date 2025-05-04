@@ -17,7 +17,7 @@ import type {
 	OverwriteType,
 	VideoQualityMode,
 } from '../../payloads/v8/mod.ts';
-import type { AddUndefinedToPossiblyUndefinedPropertiesOfInterface, StrictPartial } from '../../utils/internals.ts';
+import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _StrictPartial } from '../../utils/internals.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
@@ -176,10 +176,10 @@ export type RESTGetAPIChannelMessageResult = APIMessage;
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
-export type APIMessageReferenceSend = AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+export type APIMessageReferenceSend = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	Required<Pick<APIMessageReference, 'message_id'>>
 > &
-	StrictPartial<APIMessageReference> & {
+	_StrictPartial<APIMessageReference> & {
 		/**
 		 * Whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message
 		 *
