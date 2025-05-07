@@ -723,11 +723,9 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 	/**
 	 * The type of thread to create
 	 *
-	 * In API v9, `type` defaults to `PRIVATE_THREAD`.
-	 * In a future API version this will be changed to be a required field, with no default.
-	 *
 	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
-	 * @defaultValue `ChannelType.PrivateThread`
+	 * @defaultValue `ChannelType.PrivateThread` in API v9.
+	 * In a future API version this will be changed to be a required field, with no default.
 	 */
 	type?: ThreadChannelType | undefined;
 	/**
@@ -779,7 +777,9 @@ export interface RESTGetAPIChannelThreadMembersQuery {
 	 */
 	after?: Snowflake;
 	/**
-	 * Max number of thread members to return (1-100). Defaults to 100
+	 * Max number of thread members to return (1-100)
+	 *
+	 * @defaultValue `100`
 	 */
 	limit?: number;
 }

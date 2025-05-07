@@ -33,11 +33,15 @@ export interface RESTGetAPIEntitlementsQuery {
 	 */
 	guild_id?: Snowflake | undefined;
 	/**
-	 * Whether ended entitlements should be omitted. Defaults to `false`, ended entitlements are included by default
+	 * Whether ended entitlements should be omitted
+	 *
+	 * @defaultValue `false` ended entitlements are included by default
 	 */
 	exclude_ended?: boolean | undefined;
 	/**
-	 * Whether deleted entitlements should be omitted. Defaults to `true`, deleted entitlements are not included by default
+	 * Whether deleted entitlements should be omitted
+	 *
+	 * @defaultValue `true` deleted entitlements are not included by default
 	 */
 	exclude_deleted?: boolean | undefined;
 }

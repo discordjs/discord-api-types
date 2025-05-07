@@ -223,7 +223,7 @@ export interface APIGuild extends APIPartialGuild {
 	 */
 	premium_subscription_count?: number;
 	/**
-	 * The preferred locale of a Community guild; used in guild discovery and notices from Discord; defaults to "en-US"
+	 * The preferred locale of a Community guild; used in guild discovery and notices from Discord
 	 *
 	 * @defaultValue `"en-US"`
 	 */
@@ -291,7 +291,7 @@ export interface APIGuild extends APIPartialGuild {
  */
 export interface APIPartialInteractionGuild extends Pick<APIGuild, 'features' | 'id'> {
 	/**
-	 * The preferred locale of a Community guild; used in guild discovery and notices from Discord; defaults to "en-US"
+	 * The preferred locale of a Community guild; used in guild discovery and notices from Discord
 	 *
 	 * @unstable https://github.com/discord/discord-api-docs/issues/6938
 	 * @defaultValue `"en-US"`
@@ -674,7 +674,9 @@ export interface APIGuildMember {
 	 */
 	mute: boolean;
 	/**
-	 * Guild member flags represented as a bit set, defaults to `0`
+	 * Guild member flags represented as a bit set
+	 *
+	 * @defaultValue `0`
 	 */
 	flags: GuildMemberFlags;
 	/**

@@ -95,15 +95,21 @@ export interface APIApplicationCommand {
 	 */
 	default_permission?: boolean;
 	/**
-	 * Indicates whether the command is age-restricted, defaults to `false`
+	 * Indicates whether the command is age-restricted
+	 *
+	 * @defaultValue `false`
 	 */
 	nsfw?: boolean;
 	/**
-	 * Installation context(s) where the command is available, only for globally-scoped commands. Defaults to `GUILD_INSTALL ([0])`
+	 * Installation context(s) where the command is available, only for globally-scoped commands
+	 *
+	 * @defaultValue `[ApplicationIntegrationType.GuildInstall]`
 	 */
 	integration_types?: ApplicationIntegrationType[];
 	/**
-	 * Interaction context(s) where the command can be used, only for globally-scoped commands. By default, all interaction context types included for new commands `[0,1,2]`.
+	 * Interaction context(s) where the command can be used, only for globally-scoped commands
+	 *
+	 * @defaultValue `[InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel]`
 	 */
 	contexts?: InteractionContextType[] | null;
 	/**
