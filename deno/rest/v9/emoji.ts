@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
-import type { APIEmoji } from '../../payloads/v9/mod.ts';
+import type { APIApplicationEmoji, APIEmoji } from '../../payloads/v9.ts';
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#list-guild-emojis}
@@ -64,13 +64,13 @@ export type RESTDeleteAPIGuildEmojiResult = never;
  * @see {@link https://discord.com/developers/docs/resources/emoji#list-application-emojis}
  */
 export interface RESTGetAPIApplicationEmojisResult {
-	items: APIEmoji[];
+	items: APIApplicationEmoji[];
 }
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#get-application-emoji}
  */
-export type RESTGetAPIApplicationEmojiResult = APIEmoji;
+export type RESTGetAPIApplicationEmojiResult = APIApplicationEmoji;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#create-application-emoji-json-params}
@@ -80,7 +80,7 @@ export type RESTPostAPIApplicationEmojiJSONBody = Pick<RESTPostAPIGuildEmojiJSON
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#create-application-emoji}
  */
-export type RESTPostAPIApplicationEmojiResult = APIEmoji;
+export type RESTPostAPIApplicationEmojiResult = APIApplicationEmoji;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#modify-application-emoji}
@@ -90,7 +90,7 @@ export type RESTPatchAPIApplicationEmojiJSONBody = Pick<RESTPatchAPIGuildEmojiJS
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#modify-application-emoji}
  */
-export type RESTPatchAPIApplicationEmojiResult = APIEmoji;
+export type RESTPatchAPIApplicationEmojiResult = APIApplicationEmoji;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#delete-application-emoji}
