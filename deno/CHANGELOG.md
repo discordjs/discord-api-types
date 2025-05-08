@@ -1,3 +1,12 @@
+## [0.38.4](https://github.com/discordjs/discord-api-types/compare/0.38.3...0.38.4) (2025-05-08)
+
+
+### Features
+
+* Specific typings for application emojis ([#1228](https://github.com/discordjs/discord-api-types/issues/1228)) ([4b0a3af](https://github.com/discordjs/discord-api-types/commit/4b0a3af12badba5221604a3304efaeb3d0b46dd7))
+
+
+
 ## [0.38.3](https://github.com/discordjs/discord-api-types/compare/0.38.2...0.38.3) (2025-05-05)
 
 
