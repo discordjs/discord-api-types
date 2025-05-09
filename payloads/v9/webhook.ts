@@ -7,8 +7,8 @@ import type {
 	APIEntitlement,
 	APIGuild,
 	APIPartialChannel,
-	APIPartialGuild,
 	APIUser,
+	APIWebhookSourceGuild,
 	ApplicationIntegrationType,
 	OAuth2Scopes,
 } from './index';
@@ -60,7 +60,7 @@ export interface APIWebhook {
 	/**
 	 * The guild of the channel that this webhook is following (returned for Channel Follower Webhooks)
 	 */
-	source_guild?: APIPartialGuild;
+	source_guild?: APIWebhookSourceGuild;
 	/**
 	 * The channel that this webhook is following (returned for Channel Follower Webhooks)
 	 */
