@@ -6,11 +6,11 @@ import type { Snowflake } from '../../globals';
 import type {
 	APIEntitlement,
 	APIGuild,
-	APIPartialChannel,
 	APIPartialGuild,
 	APIUser,
 	ApplicationIntegrationType,
 	OAuth2Scopes,
+	APIWebhookSourceChannel,
 } from './index';
 
 /**
@@ -64,7 +64,7 @@ export interface APIWebhook {
 	/**
 	 * The channel that this webhook is following (returned for Channel Follower Webhooks)
 	 */
-	source_channel?: APIPartialChannel;
+	source_channel?: APIWebhookSourceChannel;
 	/**
 	 * The url used for executing the webhook (returned by the webhooks OAuth2 flow)
 	 */
