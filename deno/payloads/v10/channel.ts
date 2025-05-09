@@ -3,6 +3,7 @@
  */
 
 import type { Permissions, Snowflake } from '../../globals.ts';
+import type { _NonNullableFields } from '../../utils/internals.ts';
 import type { APIApplication } from './application.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIGuildMember } from './guild.ts';
@@ -47,6 +48,11 @@ export interface APIInviteChannel extends Required<APIPartialChannel> {
 	 */
 	recipients?: Pick<APIUser, 'username'>[] | undefined;
 }
+
+/**
+ * Source channel of channel follower webhooks.
+ */
+export type APIWebhookSourceChannel = Required<_NonNullableFields<Pick<APIPartialChannel, 'id' | 'name'>>>;
 
 /**
  * This interface is used to allow easy extension for other channel types. While
