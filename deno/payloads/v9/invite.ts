@@ -3,7 +3,7 @@
  */
 
 import type { APIApplication } from './application.ts';
-import type { APIPartialChannel } from './channel.ts';
+import type { APIInviteChannel } from './channel.ts';
 import type { APIGuild } from './guild.ts';
 import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
 import type { APIInviteStageInstance } from './stageInstance.ts';
@@ -43,7 +43,7 @@ export interface APIInvite {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object}
 	 */
-	channel: Required<APIPartialChannel> | null;
+	channel: APIInviteChannel | null;
 	/**
 	 * The user who created the invite
 	 *

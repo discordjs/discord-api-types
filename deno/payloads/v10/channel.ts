@@ -33,6 +33,22 @@ export interface APIPartialChannel {
 }
 
 /**
+ * A channel obtained from fetching an invite.
+ */
+export interface APIInviteChannel extends Required<APIPartialChannel> {
+	/**
+	 * Icon hash.
+	 */
+	icon?: string | undefined;
+	/**
+	 * The invite channel's recipients.
+	 *
+	 * @remarks Only includes usernames of users.
+	 */
+	recipients?: Pick<APIUser, 'username'>[] | undefined;
+}
+
+/**
  * This interface is used to allow easy extension for other channel types. While
  * also allowing `APIPartialChannel` to be used without breaking.
  */
