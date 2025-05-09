@@ -74,6 +74,11 @@ export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'
 }
 
 /**
+ * Source guild of channel follower webhooks.
+ */
+export type APIWebhookSourceGuild = Pick<APIPartialGuild, 'icon' | 'id' | 'name'>;
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-structure}
  */
 export interface APIGuild extends APIPartialGuild {
