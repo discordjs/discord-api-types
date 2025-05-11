@@ -6,8 +6,8 @@ import type { Snowflake } from '../../globals.ts';
 import type {
 	APIEntitlement,
 	APIGuild,
-	APIPartialGuild,
 	APIUser,
+	APIWebhookSourceGuild,
 	ApplicationIntegrationType,
 	OAuth2Scopes,
 	APIWebhookSourceChannel,
@@ -60,7 +60,7 @@ export interface APIWebhook {
 	/**
 	 * The guild of the channel that this webhook is following (returned for Channel Follower Webhooks)
 	 */
-	source_guild?: APIPartialGuild;
+	source_guild?: APIWebhookSourceGuild;
 	/**
 	 * The channel that this webhook is following (returned for Channel Follower Webhooks)
 	 */
