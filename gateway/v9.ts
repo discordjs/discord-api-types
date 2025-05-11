@@ -38,10 +38,10 @@ import type {
 	APISoundboardSound,
 	GuildChannelType,
 	ThreadChannelType,
+	APIEntitlement,
 } from '../payloads/v9/index';
 import type { ReactionType } from '../rest/v9/index';
 import type { _Nullable } from '../utils/internals';
-import type { APIEntitlement } from '../v10';
 
 export * from './common';
 
