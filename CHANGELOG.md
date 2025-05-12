@@ -1,3 +1,19 @@
+## [0.38.5](https://github.com/discordjs/discord-api-types/compare/0.38.4...0.38.5) (2025-05-12)
+
+
+### Bug Fixes
+
+* imports ([#1237](https://github.com/discordjs/discord-api-types/issues/1237)) ([c64362a](https://github.com/discordjs/discord-api-types/commit/c64362a711940a5fb5b0cb56c374ebc003fb3b0d))
+
+
+### Features
+
+* `APIWebhookSourceChannel` ([#1235](https://github.com/discordjs/discord-api-types/issues/1235)) ([ca20659](https://github.com/discordjs/discord-api-types/commit/ca206593efd1dd8f09a59c832baef0187a7cc963))
+* `APIWebhookSourceGuild` ([#1236](https://github.com/discordjs/discord-api-types/issues/1236)) ([21420c3](https://github.com/discordjs/discord-api-types/commit/21420c3028afd8cc0e73cd1081c6ecdd02c81571))
+* invite channel ([#1232](https://github.com/discordjs/discord-api-types/issues/1232)) ([0479caf](https://github.com/discordjs/discord-api-types/commit/0479cafa1bedd549d54b7cc6c915fc6beb2ba6ec))
+
+
+
 ## [0.38.4](https://github.com/discordjs/discord-api-types/compare/0.38.3...0.38.4) (2025-05-08)
 
 
