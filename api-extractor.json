@@ -6,13 +6,8 @@
 	"additionalEntryPoints": [
 		{ "modulePath": "v10", "filePath": "<projectFolder>/v10.d.ts" },
 		{ "modulePath": "v9", "filePath": "<projectFolder>/v9.d.ts" },
-		{ "modulePath": "v8", "filePath": "<projectFolder>/v8.d.ts" },
-		{ "modulePath": "v6", "filePath": "<projectFolder>/v6.d.ts" },
-		{ "modulePath": "payloads", "filePath": "<projectFolder>/payloads/index.d.ts" },
-		{ "modulePath": "payloads/v6", "filePath": "<projectFolder>/payloads/v6/index.d.ts" },
-		{ "modulePath": "payloads/v8", "filePath": "<projectFolder>/payloads/v8/index.d.ts" },
-		{ "modulePath": "payloads/v9", "filePath": "<projectFolder>/payloads/v9/index.d.ts" },
-		{ "modulePath": "payloads/v10", "filePath": "<projectFolder>/payloads/v10/index.d.ts" }
+		{ "modulePath": "rpc/v10", "filePath": "<projectFolder>/rpc/v10.d.ts" },
+		{ "modulePath": "voice/v4", "filePath": "<projectFolder>/voice/v4.d.ts" }
 	],
 
 	"bundledPackages": [],
