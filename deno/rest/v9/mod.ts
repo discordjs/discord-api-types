@@ -558,7 +558,7 @@ export const Routes = {
 	 * - GET   `/users/{user.id}`
 	 * - PATCH `/users/@me`
 	 *
-	 * @param [userId] - The user ID, defaulted to `@me`
+	 * @param userId - The user ID, defaulted to `@me`
 	 */
 	user(userId: Snowflake | '@me' = '@me') {
 		return `/users/${userId}` as const;
