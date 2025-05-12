@@ -1,0 +1,235 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '**'
+      - '!website/**'
+    tags:
+      - '**'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'The branch, tag or SHA to checkout'
+        required: true
+      ref_type:
+        type: choice
+        description: 'Branch or tag'
+        options:
+          - branch
+          - tag
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-docs:
+    name: Build & upload documentation
+    runs-on: ubuntu-latest
+    env:
+      REF_TYPE: ${{ inputs.ref_type || github.ref_type }}
+    if: github.repository_owner == 'discordjs'
+
+    steps:
+      - name: Checkout discord-api-types
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || '' }}
+
+      - name: Install Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies for discord-api-types
+        run: npm ci
+
+      #region DJS start (mostly from discord.js/packages/actions/src/pnpmCache)
+
+      - name: Checkout discord.js
+        uses: actions/checkout@v4
+        with:
+          repository: discordjs/discord.js
+          path: djs
+
+      - name: Set up swap space
+        if: runner.os == 'Linux'
+        uses: pierotofy/set-swap-space@v1.0
+        with:
+          swap-size-gb: 10
+
+      - uses: pnpm/action-setup@v4.1.0
+        name: Install pnpm
+        with:
+          run_install: false
+
+      - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
+        id: pnpm-config
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Cache rotation keys
+        id: cache-rotation
+        shell: bash
+        run: |
+          echo "YEAR_MONTH=$(/bin/date -u "+%Y%m")" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
+
+      - name: Install djs dependencies
+        working-directory: djs
+        shell: bash
+        run: |
+          pnpm install --frozen-lockfile --prefer-offline --loglevel error
+        env:
+          HUSKY: '0'
+
+      - name: Build djs
+        working-directory: djs
+        shell: bash
+        run: |
+          pnpm run build
+
+      #endregion
+
+      - name: Extract package and semver from tag
+        if: ${{ env.REF_TYPE == 'tag' }}
+        id: extract-tag
+        uses: ./djs/packages/actions/src/formatTag
+        with:
+          tag: ${{ inputs.ref || github.ref_name }}
+
+      - name: Apply tag to api-extractor config
+        if: ${{ env.REF_TYPE == 'tag' && !inputs.ref }}
+        run: sed -i 's!https://github.com/discordjs/discord-api-types/tree/main!https://github.com/discordjs/discord-api-types/tree/${{ github.ref_name }}!' "api-extractor.json"
+
+      - name: Build docs
+        shell: bash
+        run: |
+          npm run prepublishOnly
+          ./djs/packages/api-extractor/bin/api-extractor run --local --minify
+          ./djs/packages/scripts/bin/generateSplitDocumentation.js
+          npm run postpublish
+
+      - name: Upload documentation to database
+        if: ${{ env.REF_TYPE == 'tag' && (!inputs.ref || inputs.ref == 'main') }}
+        env:
+          CF_D1_DOCS_API_KEY: ${{ secrets.CF_D1_DOCS_API_KEY }}
+          CF_D1_DOCS_ID: ${{ secrets.CF_D1_DOCS_ID }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          CF_R2_DOCS_BUCKET_URL: ${{ secrets.CF_R2_DOCS_BUCKET_URL }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadDocumentation.ts
+
+      - name: Upload documentation to database
+        if: ${{ env.REF_TYPE == 'tag' && inputs.ref && inputs.ref != 'main' }}
+        env:
+          CF_D1_DOCS_API_KEY: ${{ secrets.CF_D1_DOCS_API_KEY }}
+          CF_D1_DOCS_ID: ${{ secrets.CF_D1_DOCS_ID }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          CF_R2_DOCS_BUCKET_URL: ${{ secrets.CF_R2_DOCS_BUCKET_URL }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadDocumentation.ts
+
+      - name: Upload split documentation to blob storage
+        if: ${{ env.REF_TYPE == 'tag' && (!inputs.ref || inputs.ref == 'main') }}
+        env:
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
+
+      - name: Upload split documentation to blob storage
+        if: ${{ env.REF_TYPE == 'tag' && inputs.ref && inputs.ref != 'main' }}
+        env:
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
+
+      - name: Upload documentation to database
+        if: ${{ env.REF_TYPE == 'branch' && (!inputs.ref || inputs.ref == 'main') }}
+        env:
+          CF_D1_DOCS_API_KEY: ${{ secrets.CF_D1_DOCS_API_KEY }}
+          CF_D1_DOCS_ID: ${{ secrets.CF_D1_DOCS_ID }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          CF_R2_DOCS_BUCKET_URL: ${{ secrets.CF_R2_DOCS_BUCKET_URL }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadDocumentation.ts
+
+      - name: Upload documentation to database
+        if: ${{ env.REF_TYPE == 'branch' && inputs.ref && inputs.ref != 'main' }}
+        env:
+          CF_D1_DOCS_API_KEY: ${{ secrets.CF_D1_DOCS_API_KEY }}
+          CF_D1_DOCS_ID: ${{ secrets.CF_D1_DOCS_ID }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          CF_R2_DOCS_BUCKET_URL: ${{ secrets.CF_R2_DOCS_BUCKET_URL }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadDocumentation.ts
+
+      - name: Upload split documentation to blob storage
+        if: ${{ env.REF_TYPE == 'branch' && (!inputs.ref || inputs.ref == 'main') }}
+        env:
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
+
+      - name: Upload split documentation to blob storage
+        if: ${{ env.REF_TYPE == 'branch' && inputs.ref && inputs.ref != 'main' }}
+        env:
+          CF_R2_DOCS_URL: ${{ secrets.CF_R2_DOCS_URL }}
+          CF_R2_DOCS_ACCESS_KEY_ID: ${{ secrets.CF_R2_DOCS_ACCESS_KEY_ID }}
+          CF_R2_DOCS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_DOCS_SECRET_ACCESS_KEY }}
+          CF_R2_DOCS_BUCKET: ${{ secrets.CF_R2_DOCS_BUCKET }}
+          ACTION_PACKAGE: ${{ steps.extract-tag.outputs.package }}
+          ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
+        run: |
+          npx tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts

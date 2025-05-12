@@ -10,3 +10,5 @@ payloads/v8/*
 rest/v8/*
 utils/v8.ts
 v8.ts
+
+djs/**/*
