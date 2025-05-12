@@ -62,3 +62,6 @@ docs/*
 
 # macOS files
 .DS_Store
+
+# djs repo clone
+djs
