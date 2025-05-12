@@ -1,5 +1,4 @@
 import type { Snowflake } from '../globals';
-import type { APIMessage, APIUser, RPCVoiceConnectionStatusDispatchData } from '../v10';
 
 /**
  * @unstable The ping object for the `VOICE_CONNECTION_STATUS` dispatched {@link RPCVoiceConnectionStatusDispatchData.pings} field,
@@ -46,24 +45,6 @@ export interface RPCAPIMessageParsedContentMention {
 	 */
 	parsedUserId: RPCAPIMessageParsedContentMention['userId'];
 	content: Omit<RPCAPIMessageParsedContentText, 'originalMatch'>;
-}
-
-/**
- * @unstable
- */
-export interface RPCAPIMessage extends Omit<APIMessage, 'channel_id'> {
-	/**
-	 * The nickname of the user who sent the message
-	 */
-	nick?: string;
-	/**
-	 * The color of the author's name
-	 */
-	author_color?: number;
-	/**
-	 * The content of the message parsed into an array
-	 */
-	content_parsed: (RPCAPIMessageParsedContentMention | RPCAPIMessageParsedContentText)[];
 }
 
 /**
@@ -327,24 +308,6 @@ export enum RelationshipType {
 	PendingIncoming,
 	PendingOutgoing,
 	Implicit,
-}
-
-/**
- * @unstable
- */
-export interface Relationship {
-	/**
-	 * The id of the user
-	 */
-	id: Snowflake;
-	/**
-	 * Relationship type
-	 */
-	type: RelationshipType;
-	/**
-	 * User
-	 */
-	user: APIUser;
 }
 
 /**

@@ -56,5 +56,9 @@ voice/**/*.map
 voice/**/*.d.ts
 voice/**/*.mjs
 
+# Don't commit generated docs
+tsdoc-metadata.json
+docs/*
+
 # macOS files
 .DS_Store
