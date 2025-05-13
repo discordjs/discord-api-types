@@ -1,7 +1,7 @@
 {
 	"$schema": "../discord.js/packages/api-extractor/src/schemas/api-extractor.schema.json",
 
-	"mainEntryPointFilePath": "<projectFolder>/globals.d.ts",
+	"mainEntryPointFilePath": "<projectFolder>/v10.d.ts",
 
 	"additionalEntryPoints": [
 		{ "modulePath": "v10", "filePath": "<projectFolder>/v10.d.ts" },
