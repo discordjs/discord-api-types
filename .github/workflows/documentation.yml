@@ -49,6 +49,7 @@ jobs:
         run: npm ci
 
       #region DJS start (mostly from discord.js/packages/actions/src/pnpmCache)
+      # pnpm --filter="*api-*" --filter="scripts" --filter="actions" run build
 
       - name: Checkout discord.js
         uses: actions/checkout@v4
@@ -92,7 +93,7 @@ jobs:
         working-directory: djs
         shell: bash
         run: |
-          pnpm install --frozen-lockfile --prefer-offline --loglevel error
+          pnpm install --filter="*api-*" --filter="scripts" --filter="actions" --frozen-lockfile --prefer-offline --loglevel error
         env:
           HUSKY: '0'
 
@@ -100,7 +101,7 @@ jobs:
         working-directory: djs
         shell: bash
         run: |
-          pnpm run build
+          pnpm --filter="*api-*" --filter="scripts" --filter="actions" run build
 
       #endregion
 
