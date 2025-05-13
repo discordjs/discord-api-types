@@ -4,7 +4,6 @@
 	"mainEntryPointFilePath": "<projectFolder>/v10.d.ts",
 
 	"additionalEntryPoints": [
-		{ "modulePath": "v10", "filePath": "<projectFolder>/v10.d.ts" },
 		{ "modulePath": "v9", "filePath": "<projectFolder>/v9.d.ts" },
 		{ "modulePath": "rpc/v10", "filePath": "<projectFolder>/rpc/v10.d.ts" },
 		{ "modulePath": "voice/v4", "filePath": "<projectFolder>/voice/v4.d.ts" }
