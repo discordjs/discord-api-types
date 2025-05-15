@@ -1,3 +1,17 @@
+## [0.38.6](https://github.com/discordjs/discord-api-types/compare/0.38.5...0.38.6) (2025-05-15)
+
+
+### Bug Fixes
+
+* wrong exports reported by ae ([#1239](https://github.com/discordjs/discord-api-types/issues/1239)) ([a5d949e](https://github.com/discordjs/discord-api-types/commit/a5d949e650fbc325c6b619da00edfa66d28abc72))
+
+
+### Features
+
+* experimental new docs gen ([#1240](https://github.com/discordjs/discord-api-types/issues/1240)) ([3af2ae2](https://github.com/discordjs/discord-api-types/commit/3af2ae2b85550c83ec9bf1e124226d16e6a8ca7e))
+
+
+
 ## [0.38.5](https://github.com/discordjs/discord-api-types/compare/0.38.4...0.38.5) (2025-05-12)
 
 
