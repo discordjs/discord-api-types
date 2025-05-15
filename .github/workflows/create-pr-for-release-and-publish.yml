@@ -41,7 +41,7 @@ jobs:
       - name: Bump version
         run: node ./scripts/bump-version.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.USER_PAT }}
 
       - name: Create branch for changes, add all changes and push
         run: |
@@ -60,7 +60,7 @@ jobs:
       - name: Create Pull Request
         run: node ./scripts/actions/create-pr.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.USER_PAT }}
 
   create_release:
     name: Create release and publish
@@ -94,4 +94,4 @@ jobs:
       - name: Create GitHub release
         run: node ./scripts/actions/create-release.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.USER_PAT }}
