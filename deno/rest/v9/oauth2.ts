@@ -62,11 +62,14 @@ export interface RESTPostOAuth2AuthorizationQueryResult {
 export type RESTOAuth2AuthorizationQueryResult = RESTPostOAuth2AuthorizationQueryResult;
 
 /**
+ * @remarks
+ * This endpoint requires either HTTP Basic authentication using `client_id:client_secret`,
+ * or the `client_id` and `client_secret` must be provided in the form body.
  * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example}
  */
 export interface RESTPostOAuth2AccessTokenURLEncodedData {
-	client_id: Snowflake;
-	client_secret: string;
+	client_id?: Snowflake;
+	client_secret?: string;
 	grant_type: 'authorization_code';
 	code: string;
 	redirect_uri?: string;
@@ -84,11 +87,14 @@ export interface RESTPostOAuth2AccessTokenResult {
 }
 
 /**
+ * @remarks
+ * This endpoint requires either HTTP Basic authentication using `client_id:client_secret`,
+ * or the `client_id` and `client_secret` must be provided in the form body.
  * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example}
  */
 export interface RESTPostOAuth2RefreshTokenURLEncodedData {
-	client_id: Snowflake;
-	client_secret: string;
+	client_id?: Snowflake;
+	client_secret?: string;
 	grant_type: 'refresh_token';
 	refresh_token: string;
 }
