@@ -229,9 +229,9 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 
 export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
 
-export interface APIThreadChannel
-	extends Omit<APITextBasedChannel<ThreadChannelType>, 'name'>,
-		APIGuildChannel<ThreadChannelType> {
+export interface APIThreadChannel<Type extends ThreadChannelType = ThreadChannelType>
+	extends Omit<APITextBasedChannel<Type>, 'name'>,
+		Omit<APIGuildChannel<Type>, 'position'> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -265,6 +265,10 @@ export interface APIThreadChannel
 	 */
 	applied_tags: Snowflake[];
 }
+
+export type APIPublicThreadChannel = APIThreadChannel<ChannelType.PublicThread>;
+export type APIPrivateThreadChannel = APIThreadChannel<ChannelType.PrivateThread>;
+export type APIAnnouncementThreadChannel = APIThreadChannel<ChannelType.AnnouncementThread>;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure}
@@ -398,6 +402,7 @@ export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
  * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-structure}
  */
 export type APIChannel =
+	| APIAnnouncementThreadChannel
 	| APIDMChannel
 	| APIGroupDMChannel
 	| APIGuildCategoryChannel
@@ -406,8 +411,9 @@ export type APIChannel =
 	| APIGuildStageVoiceChannel
 	| APIGuildVoiceChannel
 	| APINewsChannel
-	| APITextChannel
-	| APIThreadChannel;
+	| APIPrivateThreadChannel
+	| APIPublicThreadChannel
+	| APITextChannel;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
