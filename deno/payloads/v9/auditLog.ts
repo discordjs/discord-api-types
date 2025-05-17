@@ -325,7 +325,7 @@ export interface APIAuditLogOptions {
 	 * - CHANNEL_OVERWRITE_UPDATE
 	 * - CHANNEL_OVERWRITE_DELETE
 	 *
-	 * **Present only if the {@link APIAuditLogOptions.type | entry type} is "0"**
+	 * **Present only if the {@link APIAuditLogOptions."type" | entry type} is "0"**
 	 */
 	role_name?: string;
 
