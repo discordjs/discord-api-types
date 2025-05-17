@@ -98,6 +98,13 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 	rate_limit_per_user?: number;
 }
 
+export interface APISortableChannel {
+	/**
+	 * Sorting position of the channel
+	 */
+	position: number;
+}
+
 export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelBase<T>, 'name'> {
 	/**
 	 * The name of the channel (1-100 characters)
@@ -113,10 +120,6 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 	 * @see {@link https://discord.com/developers/docs/resources/channel#overwrite-object}
 	 */
 	permission_overwrites?: APIOverwrite[];
-	/**
-	 * Sorting position of the channel
-	 */
-	position: number;
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
 	 *
@@ -135,7 +138,8 @@ export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | Cha
 
 export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia | GuildTextChannelType>
 	extends Omit<APITextBasedChannel<T>, 'name'>,
-		APIGuildChannel<T> {
+		APIGuildChannel<T>,
+		APISortableChannel {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 */
@@ -153,10 +157,11 @@ export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelT
 
 export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
-export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
+export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.GuildCategory>, APISortableChannel {}
 
 export interface APIVoiceChannelBase<T extends ChannelType>
 	extends APIGuildChannel<T>,
+		APISortableChannel,
 		Omit<APITextBasedChannel<T>, 'last_pin_timestamp' | 'name'> {
 	/**
 	 * The bitrate (in bits) of the voice or stage channel
@@ -231,7 +236,7 @@ export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.Pri
 
 export interface APIThreadChannel<Type extends ThreadChannelType = ThreadChannelType>
 	extends Omit<APITextBasedChannel<Type>, 'name'>,
-		Omit<APIGuildChannel<Type>, 'position'> {
+		APIGuildChannel<Type> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -343,7 +348,8 @@ export enum ForumLayoutType {
 }
 
 export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
-	extends APIGuildChannel<T> {
+	extends APIGuildChannel<T>,
+		APISortableChannel {
 	/**
 	 * The channel topic (0-4096 characters)
 	 */
