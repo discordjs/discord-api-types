@@ -28,6 +28,7 @@ expectNotAssignable<AnyGuildChannel>(dmChannel);
 // @ts-expect-error - groupDMChannel is not assignable to AnyGuildChannel
 expectNotAssignable<AnyGuildChannel>(groupDMChannel);
 expectAssignable<AnyGuildChannel>(guildTextChannel);
+// @ts-expect-error - guildThreadChannel is not assignable to AnyGuildChannel
 expectAssignable<AnyGuildChannel>(guildThreadChannel);
 expectAssignable<AnyGuildChannel>(guildVoiceChannel);
 expectAssignable<AnyGuildChannel>(guildVoiceStageChannel);
