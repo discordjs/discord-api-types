@@ -41,6 +41,7 @@
 							"RESTAPIMessageReference",
 							"RESTAPIPartialCurrentUserGuild",
 							"RESTAPIPoll",
+							"RESTOAuth2TokenOptionalClientCredentials",
 
 							"RESTOAuth2AdvancedBotAuthorizationQuery",
 							"RESTOAuth2AdvancedBotAuthorizationQueryResult",
