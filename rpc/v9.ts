@@ -1,5 +1,5 @@
 import type { Snowflake } from '../globals';
-import type { APIBaseMessageNoChannel, APIMessage, APIMessageMentions, APIUser } from '../v9';
+import type { APIBaseMessageNoChannel, APIMessageMentions, APIUser } from '../v9';
 import type { RelationshipType, RPCAPIMessageParsedContentMention, RPCAPIMessageParsedContentText } from './common';
 
 export * from './common';

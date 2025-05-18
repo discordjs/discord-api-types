@@ -1,5 +1,5 @@
 import type { Snowflake } from '../globals.ts';
-import type { APIBaseMessageNoChannel, APIMessage, APIMessageMentions, APIUser } from '../v9.ts';
+import type { APIBaseMessageNoChannel, APIMessageMentions, APIUser } from '../v9.ts';
 import type { RelationshipType, RPCAPIMessageParsedContentMention, RPCAPIMessageParsedContentText } from './common.ts';
 
 export * from './common.ts';
