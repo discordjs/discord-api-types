@@ -242,7 +242,10 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
 
 export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
 
-export interface APIThreadChannel extends APITextBasedChannel<ThreadChannelType>, APIGuildChannel<ThreadChannelType> {
+export interface APIThreadChannel
+	extends APITextBasedChannel<ThreadChannelType>,
+		APIGuildChannel<ThreadChannelType>,
+		APIPinChannel<ThreadChannelType> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
