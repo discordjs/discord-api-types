@@ -13,10 +13,7 @@ import type { APIPoll } from './poll';
 import type { APISticker, APIStickerItem } from './sticker';
 import type { APIUser } from './user';
 
-/**
- * Not documented, but partial only includes id, name, and type
- */
-export interface APIPartialChannel {
+export interface APIBasePartialChannel {
 	/**
 	 * The id of the channel
 	 */
@@ -27,11 +24,19 @@ export interface APIPartialChannel {
 	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
 	 */
 	type: ChannelType;
+}
+
+export interface APINameChannel {
 	/**
 	 * The name of the channel (1-100 characters)
 	 */
 	name?: string | null;
 }
+
+/**
+ * Not documented, but partial only includes id, name, and type
+ */
+export interface APIPartialChannel extends APIBasePartialChannel, APINameChannel {}
 
 /**
  * A channel obtained from fetching an invite.
@@ -58,7 +63,7 @@ export type APIWebhookSourceChannel = Required<_NonNullableFields<Pick<APIPartia
  * This interface is used to allow easy extension for other channel types. While
  * also allowing `APIPartialChannel` to be used without breaking.
  */
-export interface APIChannelBase<T extends ChannelType> extends APIPartialChannel {
+export interface APIChannelBase<T extends ChannelType> extends APIBasePartialChannel {
 	type: T;
 	flags?: ChannelFlags;
 }
@@ -76,16 +81,7 @@ export type TextChannelType =
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T> {
-	/**
-	 * The id of the last message sent in this channel (may not point to an existing or valid message)
-	 */
-	last_message_id?: Snowflake | null;
-	/**
-	 * When the last pinned message was pinned.
-	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
-	 */
-	last_pin_timestamp?: string | null;
+export interface APISlowmodeChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
@@ -98,7 +94,22 @@ export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBa
 	rate_limit_per_user?: number;
 }
 
-export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelBase<T>, 'name'> {
+export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T>, APISlowmodeChannel<T> {
+	/**
+	 * The id of the last message sent in this channel (may not point to an existing or valid message)
+	 */
+	last_message_id?: Snowflake | null;
+}
+
+export interface APIPinChannel<T extends ChannelType> extends APIChannelBase<T> {
+	/**
+	 * When the last pinned message was pinned.
+	 * This may be `null` in events such as `GUILD_CREATE` when a message is not pinned
+	 */
+	last_pin_timestamp?: string | null;
+}
+
+export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * The name of the channel (1-100 characters)
 	 */
@@ -134,8 +145,9 @@ export interface APIGuildChannel<T extends ChannelType> extends Omit<APIChannelB
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia | GuildTextChannelType>
-	extends Omit<APITextBasedChannel<T>, 'name'>,
-		APIGuildChannel<T> {
+	extends APITextBasedChannel<T>,
+		APIGuildChannel<T>,
+		APIPinChannel<T> {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 */
@@ -157,7 +169,8 @@ export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>
 
 export interface APIVoiceChannelBase<T extends ChannelType>
 	extends APIGuildChannel<T>,
-		Omit<APITextBasedChannel<T>, 'last_pin_timestamp' | 'name'> {
+		APITextBasedChannel<T>,
+		APISlowmodeChannel<T> {
 	/**
 	 * The bitrate (in bits) of the voice or stage channel
 	 */
@@ -184,7 +197,7 @@ export type APIGuildVoiceChannel = APIVoiceChannelBase<ChannelType.GuildVoice>;
 
 export type APIGuildStageVoiceChannel = APIVoiceChannelBase<ChannelType.GuildStageVoice>;
 
-export interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBasedChannel<T>, 'rate_limit_per_user'> {
+export interface APIDMChannelBase<T extends ChannelType> extends APITextBasedChannel<T>, APIPinChannel<T> {
 	/**
 	 * The recipients of the DM
 	 *
@@ -193,14 +206,14 @@ export interface APIDMChannelBase<T extends ChannelType> extends Omit<APITextBas
 	recipients?: APIUser[];
 }
 
-export interface APIDMChannel extends Omit<APIDMChannelBase<ChannelType.DM>, 'name'> {
+export interface APIDMChannel extends APIDMChannelBase<ChannelType.DM> {
 	/**
 	 * The name of the channel (always null for DM channels)
 	 */
 	name: null;
 }
 
-export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.GroupDM>, 'name'> {
+export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM> {
 	/**
 	 * The name of the channel (1-100 characters)
 	 */
@@ -229,9 +242,7 @@ export interface APIGroupDMChannel extends Omit<APIDMChannelBase<ChannelType.Gro
 
 export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
 
-export interface APIThreadChannel
-	extends Omit<APITextBasedChannel<ThreadChannelType>, 'name'>,
-		APIGuildChannel<ThreadChannelType> {
+export interface APIThreadChannel extends APITextBasedChannel<ThreadChannelType>, APIGuildChannel<ThreadChannelType> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -517,18 +528,27 @@ export enum VideoQualityMode {
 	Full,
 }
 
+export interface APIMessageMentions {
+	/**
+	 * Users specifically mentioned in the message
+	 *
+	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+	 */
+	mentions: APIUser[];
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-structure}
  */
-export interface APIMessage {
+export interface APIBaseMessageNoChannel {
 	/**
 	 * ID of the message
 	 */
 	id: Snowflake;
-	/**
-	 * ID of the channel the message was sent in
-	 */
-	channel_id: Snowflake;
 	/**
 	 * The author of this message (only a valid user in the case where the message is generated by a user or bot user)
 	 *
@@ -564,16 +584,6 @@ export interface APIMessage {
 	 * Whether this message mentions everyone
 	 */
 	mention_everyone: boolean;
-	/**
-	 * Users specifically mentioned in the message
-	 *
-	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
-	 * from text-based guild channels
-	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
-	 */
-	mentions: APIUser[];
 	/**
 	 * Roles specifically mentioned in this message
 	 *
@@ -756,6 +766,21 @@ export interface APIMessage {
 	 */
 	call?: APIMessageCall;
 }
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-structure}
+ */
+export interface APIBaseMessage extends APIBaseMessageNoChannel {
+	/**
+	 * ID of the channel the message was sent in
+	 */
+	channel_id: Snowflake;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-structure}
+ */
+export interface APIMessage extends APIBaseMessage, APIMessageMentions {}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-types}
@@ -1686,26 +1711,29 @@ export interface APIActionRowComponent<T extends APIComponentInActionRow>
 	components: T[];
 }
 
-/**
- * @see {@link https://discord.com/developers/docs/components/reference#button}
- */
-export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
-	/**
-	 * The label to be displayed on the button
-	 */
-	label?: string;
+export interface APIButtonBase<Style extends ButtonStyle> extends APIBaseComponent<ComponentType.Button> {
 	/**
 	 * The style of the button
 	 */
 	style: Style;
 	/**
-	 * The emoji to display to the left of the text
-	 */
-	emoji?: APIMessageComponentEmoji;
-	/**
 	 * The status of the button
 	 */
 	disabled?: boolean;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#button}
+ */
+export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIButtonBase<Style> {
+	/**
+	 * The label to be displayed on the button
+	 */
+	label?: string;
+	/**
+	 * The emoji to display to the left of the text
+	 */
+	emoji?: APIMessageComponentEmoji;
 }
 
 export interface APIMessageComponentEmoji {
@@ -1749,8 +1777,7 @@ export interface APIButtonComponentWithURL extends APIButtonComponentBase<Button
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#button}
  */
-export interface APIButtonComponentWithSKUId
-	extends Omit<APIButtonComponentBase<ButtonStyle.Premium>, 'custom_id' | 'emoji' | 'label'> {
+export interface APIButtonComponentWithSKUId extends APIButtonBase<ButtonStyle.Premium> {
 	/**
 	 * The id for a purchasable SKU
 	 */

@@ -4,22 +4,14 @@
 
 import type { APIPartialEmoji } from './emoji.ts';
 
-/**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-object-poll-object-structure}
- */
-export interface APIPoll {
+export interface APIBasePoll {
 	/**
 	 * The question of the poll
 	 */
 	question: APIPollMedia;
-	/**
-	 * Each of the answers available in the poll, up to 10
-	 */
-	answers: APIPollAnswer[];
-	/**
-	 * The time when the poll ends (IS08601 timestamp)
-	 */
-	expiry: string;
+}
+
+export interface APIPollDefaults {
 	/**
 	 * Whether a user can select multiple answers
 	 *
@@ -32,6 +24,20 @@ export interface APIPoll {
 	 * @defaultValue `PollLayoutType.Default`
 	 */
 	layout_type: PollLayoutType;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/poll#poll-object-poll-object-structure}
+ */
+export interface APIPoll extends APIBasePoll, APIPollDefaults {
+	/**
+	 * Each of the answers available in the poll, up to 10
+	 */
+	answers: APIPollAnswer[];
+	/**
+	 * The time when the poll ends (IS08601 timestamp)
+	 */
+	expiry: string;
 	/**
 	 * The results of the poll
 	 */
@@ -64,18 +70,21 @@ export interface APIPollMedia {
 	emoji?: APIPartialEmoji;
 }
 
-/**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-answer-object-poll-answer-object-structure}
- */
-export interface APIPollAnswer {
-	/**
-	 * The ID of the answer. Starts at `1` for the first answer and goes up sequentially
-	 */
-	answer_id: number;
+export interface APIBasePollAnswer {
 	/**
 	 * The data of the answer
 	 */
 	poll_media: APIPollMedia;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/poll#poll-answer-object-poll-answer-object-structure}
+ */
+export interface APIPollAnswer extends APIBasePollAnswer {
+	/**
+	 * The ID of the answer. Starts at `1` for the first answer and goes up sequentially
+	 */
+	answer_id: number;
 }
 
 /**

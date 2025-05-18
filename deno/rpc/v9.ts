@@ -1,5 +1,5 @@
 import type { Snowflake } from '../globals.ts';
-import type { APIMessage, APIUser } from '../v9.ts';
+import type { APIBaseMessageNoChannel, APIMessage, APIMessageMentions, APIUser } from '../v9.ts';
 import type { RelationshipType, RPCAPIMessageParsedContentMention, RPCAPIMessageParsedContentText } from './common.ts';
 
 export * from './common.ts';
@@ -25,7 +25,7 @@ export interface Relationship {
 /**
  * @unstable
  */
-export interface RPCAPIMessage extends Omit<APIMessage, 'channel_id'> {
+export interface RPCAPIMessage extends APIBaseMessageNoChannel, APIMessageMentions {
 	/**
 	 * The nickname of the user who sent the message
 	 */

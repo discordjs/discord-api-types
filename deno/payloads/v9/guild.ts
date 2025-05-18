@@ -11,14 +11,17 @@ import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
 import type { APIAvatarDecorationData, APIUser } from './user.ts';
 
-/**
- * @see {@link https://discord.com/developers/docs/resources/guild#unavailable-guild-object}
- */
-export interface APIUnavailableGuild {
+export interface APIBaseGuild {
 	/**
 	 * Guild id
 	 */
 	id: Snowflake;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#unavailable-guild-object}
+ */
+export interface APIUnavailableGuild extends APIBaseGuild {
 	/**
 	 * `true` if this guild is unavailable due to an outage
 	 */
@@ -28,7 +31,7 @@ export interface APIUnavailableGuild {
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-structure}
  */
-export interface APIPartialGuild extends Omit<APIUnavailableGuild, 'unavailable'>, Pick<APIGuild, 'welcome_screen'> {
+export interface APIPartialGuild extends APIBaseGuild, Pick<APIGuild, 'welcome_screen'> {
 	/**
 	 * Guild name (2-100 characters, excluding trailing and leading whitespace)
 	 */
@@ -633,27 +636,11 @@ export interface APIGuildWidgetSettings {
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
  */
-export interface APIGuildMember {
-	/**
-	 * The user this guild member represents
-	 *
-	 * **This field won't be included in the member object attached to `MESSAGE_CREATE` and `MESSAGE_UPDATE` gateway events.**
-	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
-	 */
-	user: APIUser;
+export interface APIBaseGuildMember {
 	/**
 	 * This users guild nickname
 	 */
 	nick?: string | null;
-	/**
-	 * The member's guild avatar hash
-	 */
-	avatar?: string | null;
-	/**
-	 * The member's guild banner hash
-	 */
-	banner?: string | null;
 	/**
 	 * Array of role object ids
 	 *
@@ -661,29 +648,11 @@ export interface APIGuildMember {
 	 */
 	roles: Snowflake[];
 	/**
-	 * When the user joined the guild
-	 */
-	joined_at: string;
-	/**
 	 * When the user started boosting the guild
 	 *
 	 * @see {@link https://support.discord.com/hc/articles/360028038352}
 	 */
 	premium_since?: string | null;
-	/**
-	 * Whether the user is deafened in voice channels
-	 */
-	deaf: boolean;
-	/**
-	 * Whether the user is muted in voice channels
-	 */
-	mute: boolean;
-	/**
-	 * Guild member flags represented as a bit set
-	 *
-	 * @defaultValue `0`
-	 */
-	flags: GuildMemberFlags;
 	/**
 	 * Whether the user has not yet passed the guild's Membership Screening requirements
 	 *
@@ -701,6 +670,81 @@ export interface APIGuildMember {
 	 */
 	avatar_decoration_data?: APIAvatarDecorationData | null;
 }
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+ */
+export interface APIFlaggedGuildMember {
+	/**
+	 * Guild member flags represented as a bit set
+	 *
+	 * @defaultValue `0`
+	 */
+	flags: GuildMemberFlags;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+ */
+export interface APIGuildMemberJoined {
+	/**
+	 * When the user joined the guild
+	 */
+	joined_at: string;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+ */
+export interface APIGuildMemberAvatar {
+	/**
+	 * The member's guild avatar hash
+	 */
+	avatar?: string | null;
+	/**
+	 * The member's guild banner hash
+	 */
+	banner?: string | null;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+ */
+export interface APIBaseVoiceGuildMember {
+	/**
+	 * Whether the user is deafened in voice channels
+	 */
+	deaf: boolean;
+	/**
+	 * Whether the user is muted in voice channels
+	 */
+	mute: boolean;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+ */
+export interface APIGuildMemberUser {
+	/**
+	 * The user this guild member represents
+	 *
+	 * **This field won't be included in the member object attached to `MESSAGE_CREATE` and `MESSAGE_UPDATE` gateway events.**
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 */
+	user: APIUser;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+ */
+export interface APIGuildMember
+	extends APIBaseGuildMember,
+		APIBaseVoiceGuildMember,
+		APIFlaggedGuildMember,
+		APIGuildMemberAvatar,
+		APIGuildMemberJoined,
+		APIGuildMemberUser {}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags}

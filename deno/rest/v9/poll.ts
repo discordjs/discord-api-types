@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals.ts';
-import type { APIMessage, APIPoll, APIPollAnswer, APIUser } from '../../v9.ts';
+import type { APIBasePoll, APIBasePollAnswer, APIMessage, APIPollDefaults, APIUser } from '../../v9.ts';
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/poll#get-answer-voters}
@@ -20,13 +20,11 @@ export interface RESTGetAPIPollAnswerVotersQuery {
 /**
  * @see {@link https://discord.com/developers/docs/resources/poll#poll-create-request-object-poll-create-request-object-structure}
  */
-export interface RESTAPIPoll
-	extends Omit<APIPoll, 'allow_multiselect' | 'answers' | 'expiry' | 'layout_type' | 'results'>,
-		Partial<Pick<APIPoll, 'allow_multiselect' | 'layout_type'>> {
+export interface RESTAPIPoll extends APIBasePoll, Partial<APIPollDefaults> {
 	/**
 	 * Each of the answers available in the poll, up to 10
 	 */
-	answers: Omit<APIPollAnswer, 'answer_id'>[];
+	answers: APIBasePollAnswer[];
 	/**
 	 * Number of hours the poll should be open for, up to 32 days
 	 *
