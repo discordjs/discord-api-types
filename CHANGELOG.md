@@ -1,3 +1,12 @@
+## [0.38.9](https://github.com/discordjs/discord-api-types/compare/0.38.8...0.38.9) (2025-05-19)
+
+
+### Bug Fixes
+
+* optional `client_id` and `client_secret` in access token data ([#1248](https://github.com/discordjs/discord-api-types/issues/1248)) ([b360b2e](https://github.com/discordjs/discord-api-types/commit/b360b2e6a767fa34d48b2f02fd19511a2db98ecb))
+
+
+
 ## [0.38.8](https://github.com/discordjs/discord-api-types/compare/0.38.7...0.38.8) (2025-05-15)
 
 
