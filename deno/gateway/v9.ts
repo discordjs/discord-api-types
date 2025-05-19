@@ -1615,6 +1615,23 @@ export type GatewayMessageUpdateDispatch = _DataPayload<
  */
 export interface GatewayMessageUpdateDispatchData extends GatewayMessageEventExtraFields, APIBaseMessage {}
 
+export interface APIGuildMemberNoUser
+	extends APIBaseGuildMember,
+		APIFlaggedGuildMember,
+		APIGuildMemberAvatar,
+		APIGuildMemberJoined,
+		APIBaseVoiceGuildMember {}
+
+export interface APIUserWithMember extends APIUser {
+	/**
+	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+	 */
+	member?: APIGuildMemberNoUser;
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-create-message-create-extra-fields}
  */
@@ -1631,17 +1648,13 @@ export interface GatewayMessageEventExtraFields {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
-	member?: APIBaseGuildMember;
+	member?: APIGuildMemberNoUser;
 	/**
 	 * Users specifically mentioned in the message
 	 *
-	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
-	 * from text-based guild channels
-	 *
 	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
-	mentions: (APIUser & { member?: APIBaseGuildMember })[];
+	mentions: APIUserWithMember[];
 }
 
 /**

@@ -31,7 +31,7 @@ export interface APIUnavailableGuild extends APIBaseGuild {
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-structure}
  */
-export interface APIPartialGuild extends APIBaseGuild, Pick<APIGuild, 'welcome_screen'> {
+export interface APIPartialGuild extends APIBaseGuild {
 	/**
 	 * Guild name (2-100 characters, excluding trailing and leading whitespace)
 	 */
@@ -74,6 +74,12 @@ export interface APIPartialGuild extends APIBaseGuild, Pick<APIGuild, 'welcome_s
 	 * The vanity url code for the guild
 	 */
 	vanity_url_code?: string | null;
+	/**
+	 * The welcome screen of a Community guild, shown to new members
+	 *
+	 * Returned in the invite object
+	 */
+	welcome_screen?: APIGuildWelcomeScreen;
 }
 
 /**
@@ -258,12 +264,6 @@ export interface APIGuild extends APIPartialGuild {
 	 * returned from the `GET /guilds/<id>` and `/users/@me/guilds` (OAuth2) endpoints when `with_counts` is `true`
 	 */
 	approximate_presence_count?: number;
-	/**
-	 * The welcome screen of a Community guild, shown to new members
-	 *
-	 * Returned in the invite object
-	 */
-	welcome_screen?: APIGuildWelcomeScreen;
 	/**
 	 * The nsfw level of the guild
 	 *
