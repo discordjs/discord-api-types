@@ -26,10 +26,16 @@ export interface RPCAPIMessageParsedContentOriginalMatch {
 /**
  * @unstable
  */
-export interface RPCAPIMessageParsedContentText {
+export interface RPCAPIBaseMessageParsedContentText {
 	type: 'text';
-	originalMatch: RPCAPIMessageParsedContentOriginalMatch;
 	content: string;
+}
+
+/**
+ * @unstable
+ */
+export interface RPCAPIMessageParsedContentText extends RPCAPIBaseMessageParsedContentText {
+	originalMatch: RPCAPIMessageParsedContentOriginalMatch;
 }
 
 /**
@@ -44,7 +50,7 @@ export interface RPCAPIMessageParsedContentMention {
 	 * Same as {@link RPCAPIMessageParsedContentMention.userId}
 	 */
 	parsedUserId: RPCAPIMessageParsedContentMention['userId'];
-	content: Omit<RPCAPIMessageParsedContentText, 'originalMatch'>;
+	content: RPCAPIBaseMessageParsedContentText;
 }
 
 /**

@@ -60,9 +60,9 @@ export interface APIGatewaySessionStartLimit {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/gateway-events#presence-update-presence-update-event-fields}
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#update-presence}
  */
-export interface GatewayPresenceUpdate {
+export interface GatewayGuildMembersChunkPresence {
 	/**
 	 * The user presence is being updated for
 	 *
@@ -72,10 +72,6 @@ export interface GatewayPresenceUpdate {
 	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	user: Partial<APIUser> & Pick<APIUser, 'id'>;
-	/**
-	 * ID of the guild
-	 */
-	guild_id: Snowflake;
 	/**
 	 * Either "idle", "dnd", "online", or "offline"
 	 */
@@ -92,6 +88,16 @@ export interface GatewayPresenceUpdate {
 	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#client-status-object}
 	 */
 	client_status?: GatewayPresenceClientStatus;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#presence-update-presence-update-event-fields}
+ */
+export interface GatewayPresenceUpdate extends GatewayGuildMembersChunkPresence {
+	/**
+	 * ID of the guild
+	 */
+	guild_id: Snowflake;
 }
 
 /**
