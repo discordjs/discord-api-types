@@ -133,7 +133,7 @@
 		"@commitlint/cli": "^19.0.3",
 		"@commitlint/config-angular": "^19.0.3",
 		"@favware/npm-deprecate": "^2.0.0",
-		"@octokit/action": "^7.0.0",
+		"@octokit/action": "^8.0.0",
 		"@octokit/webhooks-types": "^7.3.2",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@types/conventional-recommended-bump": "^9.0.3",
