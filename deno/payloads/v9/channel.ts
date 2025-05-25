@@ -94,6 +94,13 @@ export interface APISlowmodeChannel<T extends ChannelType> extends APIChannelBas
 	rate_limit_per_user?: number;
 }
 
+export interface APISortableChannel {
+	/**
+	 * Sorting position of the channel
+	 */
+	position: number;
+}
+
 export interface APITextBasedChannel<T extends ChannelType> extends APIChannelBase<T>, APISlowmodeChannel<T> {
 	/**
 	 * The id of the last message sent in this channel (may not point to an existing or valid message)
@@ -125,10 +132,6 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	 */
 	permission_overwrites?: APIOverwrite[];
 	/**
-	 * Sorting position of the channel
-	 */
-	position: number;
-	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
 	 *
 	 * OR
@@ -146,6 +149,7 @@ export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | Cha
 
 export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia | GuildTextChannelType>
 	extends APITextBasedChannel<T>,
+		APISortableChannel,
 		APIGuildChannel<T>,
 		APIPinChannel<T> {
 	/**
@@ -165,10 +169,11 @@ export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelT
 
 export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
-export type APIGuildCategoryChannel = APIGuildChannel<ChannelType.GuildCategory>;
+export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.GuildCategory>, APISortableChannel {}
 
 export interface APIVoiceChannelBase<T extends ChannelType>
 	extends APIGuildChannel<T>,
+		APISortableChannel,
 		APITextBasedChannel<T>,
 		APISlowmodeChannel<T> {
 	/**
@@ -242,10 +247,10 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
 
 export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
 
-export interface APIThreadChannel
-	extends APITextBasedChannel<ThreadChannelType>,
-		APIGuildChannel<ThreadChannelType>,
-		APIPinChannel<ThreadChannelType> {
+export interface APIThreadChannel<Type extends ThreadChannelType = ThreadChannelType>
+	extends APITextBasedChannel<Type>,
+		APIGuildChannel<Type>,
+		APIPinChannel<Type> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -279,6 +284,10 @@ export interface APIThreadChannel
 	 */
 	applied_tags: Snowflake[];
 }
+
+export type APIPublicThreadChannel = APIThreadChannel<ChannelType.PublicThread>;
+export type APIPrivateThreadChannel = APIThreadChannel<ChannelType.PrivateThread>;
+export type APIAnnouncementThreadChannel = APIThreadChannel<ChannelType.AnnouncementThread>;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure}
@@ -353,7 +362,8 @@ export enum ForumLayoutType {
 }
 
 export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
-	extends APIGuildChannel<T> {
+	extends APIGuildChannel<T>,
+		APISortableChannel {
 	/**
 	 * The channel topic (0-4096 characters)
 	 */
@@ -412,6 +422,7 @@ export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
  * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-structure}
  */
 export type APIChannel =
+	| APIAnnouncementThreadChannel
 	| APIDMChannel
 	| APIGroupDMChannel
 	| APIGuildCategoryChannel
@@ -420,8 +431,9 @@ export type APIChannel =
 	| APIGuildStageVoiceChannel
 	| APIGuildVoiceChannel
 	| APINewsChannel
-	| APITextChannel
-	| APIThreadChannel;
+	| APIPrivateThreadChannel
+	| APIPublicThreadChannel
+	| APITextChannel;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
