@@ -111,7 +111,7 @@
 		"esm:versions": "node ./scripts/versions.mjs",
 		"esm:voice": "gen-esm-wrapper ./voice/index.js ./voice/index.mjs",
 		"lint": "prettier --write . && eslint --fix --ext mjs,ts \"{gateway,payloads,rest,rpc,voice,utils}/**/*.ts\" \"{globals,v*}.ts\" \"scripts/**/*.mjs\"",
-		"prepare": "tsc -p ./.eslint-plugin-local && (is-ci || husky)",
+		"postinstallDev": "tsc -p ./.eslint-plugin-local && (is-ci || husky)",
 		"prepublishOnly": "run-s clean test:lint build:node",
 		"postpublish": "run-s clean:node build:deno",
 		"test:lint": "prettier --check . && eslint --ext mjs,ts \"{gateway,payloads,rest,rpc,voice,utils}/**/*.ts\" \"{globals,v*}.ts\" \"scripts/**/*.mjs\"",
