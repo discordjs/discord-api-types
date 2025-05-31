@@ -1262,6 +1262,14 @@ export interface APIEmbed {
 	 * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure}
 	 */
 	fields?: APIEmbedField[];
+	/**
+	 * Embed flags combined as a bitfield
+	 *
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-flags
+	 *
+	 * See https://en.wikipedia.org/wiki/Bit_field
+	 */
+	flags?: EmbedFlags;
 }
 
 /**
@@ -1304,6 +1312,19 @@ export enum EmbedType {
 	PollResult = 'poll_result',
 }
 
+export enum EmbedFlags {
+	/**
+	 * This embed was flagged as sensitive content
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/18210995019671
+	 */
+	ContainsExplicitMedia = 1 << 4,
+	/**
+	 * This embed is a reply to an activity card and is no longer displayed
+	 */
+	IsContentInventoryEntry = 1 << 5,
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure}
  */
@@ -1324,6 +1345,14 @@ export interface APIEmbedThumbnail {
 	 * Width of thumbnail
 	 */
 	width?: number;
+	/**
+	 * Embed media flags combined as a bitfield
+	 *
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-media-flags
+	 *
+	 * See https://en.wikipedia.org/wiki/Bit_field
+	 */
+	flags?: EmbedMediaFlags;
 }
 
 /**
@@ -1368,6 +1397,21 @@ export interface APIEmbedImage {
 	 * Width of image
 	 */
 	width?: number;
+	/**
+	 * Embed media flags combined as a bitfield
+	 *
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-media-flags
+	 *
+	 * See https://en.wikipedia.org/wiki/Bit_field
+	 */
+	flags?: EmbedMediaFlags;
+}
+
+export enum EmbedMediaFlags {
+	/**
+	 * This image is animated
+	 */
+	IsAnimated = 1 << 5,
 }
 
 /**
@@ -1512,6 +1556,18 @@ export interface APIAttachment {
 	 * Attachment flags combined as a bitfield
 	 */
 	flags?: AttachmentFlags;
+	/**
+	 * For Clips, array of users who were in the stream
+	 */
+	clip_participants?: APIUser[];
+	/**
+	 * For Clips, when the clip was created
+	 */
+	clip_created_at?: string;
+	/**
+	 * For Clips, the application in the stream, if recognized
+	 */
+	application?: APIApplication | null;
 }
 
 /**
@@ -1519,9 +1575,33 @@ export interface APIAttachment {
  */
 export enum AttachmentFlags {
 	/**
+	 * This attachment is a Clip from a stream
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/16861982215703
+	 */
+	IsClip = 1 << 0,
+	/**
+	 * This attachment is the thumbnail of a thread in a media channel, displayed in the grid but not on the message
+	 */
+	IsThumbnail = 1 << 1,
+	/**
 	 * This attachment has been edited using the remix feature on mobile
 	 */
 	IsRemix = 1 << 2,
+	/**
+	 * This attachment was marked as a spoiler and is blurred until clicked
+	 */
+	IsSpoiler = 1 << 3,
+	/**
+	 * This attachment was flagged as sensitive content
+	 *
+	 * See https://support.discord.com/hc/en-us/articles/18210995019671
+	 */
+	ContainsExplicitMedia = 1 << 4,
+	/**
+	 * This attachment is an animated image
+	 */
+	IsAnimated = 1 << 5,
 }
 
 /**
