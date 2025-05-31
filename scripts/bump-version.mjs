@@ -93,7 +93,7 @@ const pullRequests = await octokit.pulls.list({
 
 const previousPullRequest = pullRequests.data.find(
 	// Find release PRs made by GitHub actions
-	({ title, user }) => title.startsWith(RELEASE_COMMIT_PREFIX) && user?.id === 41_898_282,
+	({ title }) => title.startsWith(RELEASE_COMMIT_PREFIX),
 );
 
 if (previousPullRequest) {
