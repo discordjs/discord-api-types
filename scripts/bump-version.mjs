@@ -2,7 +2,7 @@
 import { execSync, spawnSync } from 'node:child_process';
 import process from 'node:process';
 import { Octokit } from '@octokit/action';
-import conventionalRecommendedBump from 'conventional-recommended-bump';
+import { Bumper } from 'conventional-recommended-bump';
 
 const IGNORED_COMMIT_AUTHORS = ['renovate[bot]', 'dependabot[bot]'];
 const RELEASE_COMMIT_PREFIX = 'chore(release):';
@@ -51,11 +51,13 @@ const conventionalReleaseTypesTo0Ver = new Map([
 
 console.log('ℹ️ Getting the recommended bump level...');
 
-const result = await conventionalRecommendedBump({ preset: 'angular' });
+const bumper = new Bumper().loadPreset({ name: 'angular' });
+
+const result = await bumper.bump();
 
 console.log('ℹ️ Got the recommended bump level:', result);
 
-if (!result.releaseType) {
+if (!('releaseType' in result)) {
 	console.log('help');
 	throw new Error('No recommended bump level found');
 }
