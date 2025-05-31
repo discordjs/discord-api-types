@@ -51,7 +51,7 @@ import type {
 import type { ReactionType } from '../rest/v10/mod.ts';
 import type { _Nullable } from '../utils/internals.ts';
 
-export * from './common.ts';
+export type * from './common.ts';
 
 export const GatewayVersion = '10';
 

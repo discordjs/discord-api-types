@@ -1,4 +1,5 @@
 node_modules/
+.yarn/install-state.gz
 
 # Custom ESLint rules
 .eslint-plugin-local/*

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { execSync } from 'node:child_process';
 import process from 'node:process';
 
@@ -8,7 +7,7 @@ const commitUrl = `https://github.com/${OWNER}/${REPOSITORY}/commit/${process.en
 
 console.info(`👀 Verifying that deno types are up to date with commit ${process.env.GITHUB_SHA}`);
 console.debug('Running build:deno script');
-execSync(`npm run build:deno`);
+execSync(`yarn build:deno`);
 
 console.debug('Getting the difference between clone and deno build output.');
 const diff = execSync(`git diff --name-only ${process.env.GITHUB_SHA}`)
@@ -25,7 +24,7 @@ if (!diff.length) {
 console.debug(`⚠️ Found ${diff.length} different files.`, { diff });
 
 const messageBody = [
-	`Taking a look at commit ${commitUrl}, it seems that you forgot to run \`npm run build:deno\`. Here are the files that are different from the base:`,
+	`Taking a look at commit ${commitUrl}, it seems that you forgot to run \`yarn build:deno\`. Here are the files that are different from the base:`,
 	'',
 ];
 
@@ -39,7 +38,7 @@ for (const file of diff) {
 	);
 }
 
-messageBody.push('', 'Please run `npm run build:deno` and commit the results to update the deno types.');
+messageBody.push('', 'Please run `yarn build:deno` and commit the results to update the deno types.');
 
 console.error('❌ Deno types are not up to date with the commit!');
 console.error(messageBody.join('\n'));

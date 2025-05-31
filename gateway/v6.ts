@@ -18,7 +18,7 @@ import type {
 	PresenceUpdateStatus,
 } from '../payloads/v6/index';
 
-export * from './common';
+export type * from './common';
 
 /**
  * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.
@@ -313,7 +313,6 @@ export type GatewayReadyDispatch = DataPayload<
  */
 export type GatewayResumedDispatch = DataPayload<GatewayDispatchEvents.Resumed, never>;
 
-/* eslint-disable @typescript-eslint/indent */
 /**
  * https://discord.com/developers/docs/topics/gateway#channel-create
  * https://discord.com/developers/docs/topics/gateway#channel-update
@@ -325,7 +324,6 @@ export type GatewayChannelModifyDispatch = DataPayload<
 	GatewayDispatchEvents.ChannelCreate | GatewayDispatchEvents.ChannelDelete | GatewayDispatchEvents.ChannelUpdate,
 	APIChannel
 >;
-/* eslint-enable @typescript-eslint/indent */
 
 /**
  * @deprecated Gateway v6 is deprecated and the types will not receive further updates, please update to v8.

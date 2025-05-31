@@ -1,3 +1,18 @@
+## [0.38.9](https://github.com/discordjs/discord-api-types/compare/0.38.8...0.38.9) (2025-05-31)
+
+
+### Bug Fixes
+
+* discriminated thread channel types ([#1247](https://github.com/discordjs/discord-api-types/issues/1247)) ([72b8c83](https://github.com/discordjs/discord-api-types/commit/72b8c830ee6ed369085644e93b3e27849b0274ed))
+* optional `client_id` and `client_secret` in access token data ([#1248](https://github.com/discordjs/discord-api-types/issues/1248)) ([b360b2e](https://github.com/discordjs/discord-api-types/commit/b360b2e6a767fa34d48b2f02fd19511a2db98ecb))
+
+
+### Features
+
+* deauthorised webhook events ([#1253](https://github.com/discordjs/discord-api-types/issues/1253)) ([9daac44](https://github.com/discordjs/discord-api-types/commit/9daac44f1d056115755e92fcc22995a9c05012be))
+
+
+
 ## [0.38.8](https://github.com/discordjs/discord-api-types/compare/0.38.7...0.38.8) (2025-05-15)
 
 

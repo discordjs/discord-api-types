@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { execSync, spawnSync } from 'node:child_process';
 import process from 'node:process';
 import { Octokit } from '@octokit/action';
-import conventionalRecommendedBump from 'conventional-recommended-bump';
+import { Bumper } from 'conventional-recommended-bump';
 
 const IGNORED_COMMIT_AUTHORS = ['renovate[bot]', 'dependabot[bot]'];
 const RELEASE_COMMIT_PREFIX = 'chore(release):';
@@ -51,11 +50,13 @@ const conventionalReleaseTypesTo0Ver = new Map([
 
 console.log('ℹ️ Getting the recommended bump level...');
 
-const result = await conventionalRecommendedBump({ preset: 'angular' });
+const bumper = new Bumper().loadPreset('angular');
+
+const result = await bumper.bump();
 
 console.log('ℹ️ Got the recommended bump level:', result);
 
-if (!result.releaseType) {
+if (!('releaseType' in result)) {
 	console.log('help');
 	throw new Error('No recommended bump level found');
 }
@@ -76,7 +77,7 @@ console.info(
 	`✅ Done! discord-api-types was bumped to ${newVersion['discord-api-types']}! Checking if there was a pull request open already and closing it if so...`,
 );
 
-if (!process.env.GITHUB_TOKEN) {
+if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPOSITORY) {
 	console.info('🙉 Skipping the pull request checks as no GITHUB_TOKEN was provided.');
 	process.exit(0);
 }
@@ -92,7 +93,7 @@ const pullRequests = await octokit.pulls.list({
 
 const previousPullRequest = pullRequests.data.find(
 	// Find release PRs made by GitHub actions
-	({ title, user }) => title.startsWith(RELEASE_COMMIT_PREFIX) && user?.id === 41_898_282,
+	({ title }) => title.startsWith(RELEASE_COMMIT_PREFIX),
 );
 
 if (previousPullRequest) {

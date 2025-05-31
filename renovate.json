@@ -13,6 +13,12 @@
 			"matchCurrentVersion": "!/^0/",
 			"groupName": "patch/minor dependencies",
 			"groupSlug": "all-non-major"
+		},
+		{
+			"groupName": "eslint/prettier",
+			"automerge": true,
+			"groupSlug": "formatting-linting-dependencies",
+			"matchPackageNames": ["/eslint/", "/prettier/"]
 		}
 	],
 	"schedule": ["before 1pm every friday"]
