@@ -26,7 +26,7 @@ export interface APIBasePartialChannel {
 	type: ChannelType;
 }
 
-export interface APINameChannel {
+export interface APINameableChannel {
 	/**
 	 * The name of the channel (1-100 characters)
 	 */
@@ -36,7 +36,7 @@ export interface APINameChannel {
 /**
  * Not documented, but partial only includes id, name, and type
  */
-export interface APIPartialChannel extends APIBasePartialChannel, APINameChannel {}
+export interface APIPartialChannel extends APIBasePartialChannel, APINameableChannel {}
 
 /**
  * A channel obtained from fetching an invite.
