@@ -17,7 +17,7 @@ export const PermissionFlagsBits = {
 	/**
 	 * Allows kicking members
 	 */
-	// eslint-disable-next-line sonarjs/no-identical-expressions
+
 	KickMembers: 1n << 1n,
 	/**
 	 * Allows banning members

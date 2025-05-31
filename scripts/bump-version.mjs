@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { execSync, spawnSync } from 'node:child_process';
 import process from 'node:process';
 import { Octokit } from '@octokit/action';

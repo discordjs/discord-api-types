@@ -26,7 +26,7 @@ import type {
 } from '../payloads/v8/mod.ts';
 import type { _Nullable } from '../utils/internals.ts';
 
-export * from './common.ts';
+export type * from './common.ts';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.

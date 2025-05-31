@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { execSync } from 'node:child_process';
 import process from 'node:process';
 

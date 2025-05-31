@@ -13,12 +13,12 @@ website/build
 
 # Don't format build outputs
 *.js
+!eslint.config.js
 *.d.ts
 *.mjs
 
 # Miscellaneous
 CODEOWNERS
-renovate.json
 CHANGELOG.md
 
 # Format all of scripts

@@ -43,7 +43,7 @@ import type {
 import type { ReactionType } from '../rest/v9/index';
 import type { _Nullable } from '../utils/internals';
 
-export * from './common';
+export type * from './common';
 
 export const GatewayVersion = '9';
 

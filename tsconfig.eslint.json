@@ -18,6 +18,7 @@
 		"scripts",
 		"deno",
 		"tests/**/*.ts",
-		"website"
+		"website",
+		"eslint.config.js"
 	]
 }
