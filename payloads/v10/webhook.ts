@@ -86,6 +86,10 @@ export type APIWebhookEventBody =
 			ApplicationWebhookEventType.ApplicationAuthorized,
 			APIWebhookEventApplicationAuthorizedData
 	  >
+	| APIWebhookEventEventBase<
+			ApplicationWebhookEventType.ApplicationDeauthorized,
+			APIWebhookEventApplicationDeauthorizedData
+	  >
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementCreate, APIWebhookEventEntitlementCreateData>
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.QuestUserEnrollment, APIWebhookEventQuestUserEnrollmentData>;
 
@@ -106,6 +110,16 @@ export interface APIWebhookEventApplicationAuthorizedData {
 	 * Server which app was authorized for (when integration type is `0`)
 	 */
 	guild?: APIGuild;
+}
+
+/**
+ * @unstable
+ */
+export interface APIWebhookEventApplicationDeauthorizedData {
+	/**
+	 * User who deauthorized the app
+	 */
+	user: APIUser;
 }
 
 export type APIWebhookEventEntitlementCreateData = APIEntitlement;
@@ -168,6 +182,12 @@ export enum ApplicationWebhookEventType {
 	 * Sent when an app was authorized by a user to a server or their account
 	 */
 	ApplicationAuthorized = 'APPLICATION_AUTHORIZED',
+	/**
+	 * Sent when an app was deauthorized by a user
+	 *
+	 * @unstable
+	 */
+	ApplicationDeauthorized = 'APPLICATION_DEAUTHORIZED',
 	/**
 	 * Entitlement was created
 	 */
