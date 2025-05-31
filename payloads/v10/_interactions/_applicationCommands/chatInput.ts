@@ -47,19 +47,19 @@ import type {
 } from './_chatInput/user';
 import type { APIBaseApplicationCommandInteractionData } from './internals';
 
-export * from './_chatInput/attachment';
-export * from './_chatInput/base';
-export * from './_chatInput/boolean';
-export * from './_chatInput/channel';
-export * from './_chatInput/integer';
-export * from './_chatInput/mentionable';
-export * from './_chatInput/number';
-export * from './_chatInput/role';
+export type * from './_chatInput/attachment';
+export type * from './_chatInput/base';
+export type * from './_chatInput/boolean';
+export type * from './_chatInput/channel';
+export type * from './_chatInput/integer';
+export type * from './_chatInput/mentionable';
+export type * from './_chatInput/number';
+export type * from './_chatInput/role';
 export * from './_chatInput/shared';
-export * from './_chatInput/string';
-export * from './_chatInput/subcommand';
-export * from './_chatInput/subcommandGroup';
-export * from './_chatInput/user';
+export type * from './_chatInput/string';
+export type * from './_chatInput/subcommand';
+export type * from './_chatInput/subcommandGroup';
+export type * from './_chatInput/user';
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}

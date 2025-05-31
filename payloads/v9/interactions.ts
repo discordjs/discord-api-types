@@ -21,11 +21,11 @@ import type {
 import type { APIPingInteraction } from './_interactions/ping';
 
 export * from './_interactions/applicationCommands';
-export * from './_interactions/autocomplete';
-export * from './_interactions/base';
-export * from './_interactions/messageComponents';
-export * from './_interactions/modalSubmit';
-export * from './_interactions/ping';
+export type * from './_interactions/autocomplete';
+export type * from './_interactions/base';
+export type * from './_interactions/messageComponents';
+export type * from './_interactions/modalSubmit';
+export type * from './_interactions/ping';
 export * from './_interactions/responses';
 
 /**

@@ -12,8 +12,10 @@ const execAsync = promisify(exec);
  * @param {string} path
  * @param {string} version
  */
-const fileToESMWrapperCall = (path, version) =>
-	execAsync(`npx gen-esm-wrapper "${join(rootDir, path, `${version}.js`)}" "${join(rootDir, path, `${version}.mjs`)}"`);
+const fileToESMWrapperCall = async (path, version) =>
+	execAsync(
+		`npx gen-esm-wrapper "${join(rootDir, path, `${version}.js`)}" "${join(rootDir, path, `${version}.mjs`)}"`,
+	);
 
 await Promise.allSettled(
 	[

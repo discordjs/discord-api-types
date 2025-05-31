@@ -47,19 +47,19 @@ import type {
 } from './_chatInput/user.ts';
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 
-export * from './_chatInput/attachment.ts';
-export * from './_chatInput/base.ts';
-export * from './_chatInput/boolean.ts';
-export * from './_chatInput/channel.ts';
-export * from './_chatInput/integer.ts';
-export * from './_chatInput/mentionable.ts';
-export * from './_chatInput/number.ts';
-export * from './_chatInput/role.ts';
+export type * from './_chatInput/attachment.ts';
+export type * from './_chatInput/base.ts';
+export type * from './_chatInput/boolean.ts';
+export type * from './_chatInput/channel.ts';
+export type * from './_chatInput/integer.ts';
+export type * from './_chatInput/mentionable.ts';
+export type * from './_chatInput/number.ts';
+export type * from './_chatInput/role.ts';
 export * from './_chatInput/shared.ts';
-export * from './_chatInput/string.ts';
-export * from './_chatInput/subcommand.ts';
-export * from './_chatInput/subcommandGroup.ts';
-export * from './_chatInput/user.ts';
+export type * from './_chatInput/string.ts';
+export type * from './_chatInput/subcommand.ts';
+export type * from './_chatInput/subcommandGroup.ts';
+export type * from './_chatInput/user.ts';
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}

@@ -23,10 +23,10 @@ import type { APIBaseInteraction } from './base';
 import type { InteractionType } from './responses';
 
 export * from './_applicationCommands/chatInput';
-export * from './_applicationCommands/contextMenu';
+export type * from './_applicationCommands/contextMenu';
 export * from './_applicationCommands/permissions';
-export * from './_applicationCommands/entryPoint';
-export * from './_applicationCommands/internals';
+export type * from './_applicationCommands/entryPoint';
+export type * from './_applicationCommands/internals';
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object}

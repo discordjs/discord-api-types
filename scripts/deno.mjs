@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { copyFile, mkdir, opendir, readFile, rm, writeFile } from 'node:fs/promises';
 import { URL } from 'node:url';
 
@@ -83,7 +82,7 @@ const folderResults = await Promise.allSettled(
 		'rpc/',
 		'utils/',
 		'voice/',
-	].map((item) => adaptFolderToDeno(item)),
+	].map(async (item) => adaptFolderToDeno(item)),
 );
 
 for (const result of folderResults) {
@@ -97,7 +96,7 @@ const copyResults = await Promise.allSettled(
 		'CHANGELOG.md',
 		'README.md',
 		'globals.ts',
-	].map((item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
+	].map(async (item) => copyFile(new URL(item, baseDirectory), new URL(item, denoPath))),
 );
 
 for (const result of copyResults) {
@@ -111,7 +110,7 @@ const globalFileResults = await Promise.allSettled(
 		'v8.ts',
 		'v9.ts',
 		'v10.ts',
-	].map((version) => convertFile(new URL(version, baseDirectory), new URL(version, denoPath))),
+	].map(async (version) => convertFile(new URL(version, baseDirectory), new URL(version, denoPath))),
 );
 
 for (const result of globalFileResults) {

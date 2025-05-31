@@ -26,7 +26,7 @@ import type {
 } from '../payloads/v8/index';
 import type { _Nullable } from '../utils/internals';
 
-export * from './common';
+export type * from './common';
 
 /**
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
