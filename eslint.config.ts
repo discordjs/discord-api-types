@@ -1,4 +1,5 @@
-import { AST_NODE_TYPES, ESLintUtils, TSESTree } from '@typescript-eslint/utils';
+import type { TSESTree, TSESLint } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils';
 import common from 'eslint-config-neon/common';
 import node from 'eslint-config-neon/node';
 import prettier from 'eslint-config-neon/prettier';
@@ -6,15 +7,10 @@ import ts from 'eslint-config-neon/typescript';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import merge from 'lodash.merge';
 import * as tsutils from 'tsutils';
-import * as typescript from 'typescript';
+import typescript from 'typescript';
 import { config } from 'typescript-eslint';
 
-/**
- * @param {import('@typescript-eslint/utils').TSESTree.TSPropertySignature} eslNode
- * @param {string[]} interfaceEndings
- * @returns {boolean}
- */
-function shouldRun(eslNode, interfaceEndings) {
+function shouldRun(eslNode: TSESTree.TSPropertySignature, interfaceEndings: string[]): boolean {
 	// The first parent is the TSInterfaceBody, the second is the TSInterfaceDeclaration
 	const interfaceNode = eslNode.parent?.parent;
 	if (!(interfaceNode && 'id' in interfaceNode && interfaceNode.id?.type === AST_NODE_TYPES.Identifier)) {
@@ -32,22 +28,11 @@ function shouldRun(eslNode, interfaceEndings) {
 const REST_TYPE_NAME_REGEX =
 	/^REST(?:Get|Patch|Post|Put|Delete)[\dA-Za-z]+(?:JSONBody|FormDataBody|URLEncodedData|Result|Query)$/;
 
-/**
- * @typedef {[{ interfaceEndings: string[] }]} Options
- */
+type Options = [{ interfaceEndings: string[] }];
 
-/** @type {typeof ESLintUtils.RuleCreator.withoutDocs<Options, 'missingOptional'>} */
-const MissingOptionalRuleCreator = ESLintUtils.RuleCreator.withoutDocs;
-
-/** @type {typeof ESLintUtils.RuleCreator.withoutDocs<Options, 'missingUndefined'>} */
-const MissingUndefinedRuleCreator = ESLintUtils.RuleCreator.withoutDocs;
-
-/** @type {typeof ESLintUtils.RuleCreator.withoutDocs<[{ whitelist: string[] }], 'invalidName'>} */
-const RestTypeNameConventionRuleCreator = ESLintUtils.RuleCreator.withoutDocs;
-
-const localPlugin = {
+const localPlugin: TSESLint.FlatConfig.Plugin = {
 	rules: {
-		'explicitly-optional-undefined-properties': MissingOptionalRuleCreator({
+		'explicitly-optional-undefined-properties': ESLintUtils.RuleCreator.withoutDocs<Options, 'missingOptional'>({
 			create: (context) => {
 				const { interfaceEndings } = context.options[0];
 				return {
@@ -101,7 +86,7 @@ const localPlugin = {
 			},
 			defaultOptions: [{ interfaceEndings: [] }],
 		}),
-		'explicit-undefined-on-optional-properties': MissingUndefinedRuleCreator({
+		'explicit-undefined-on-optional-properties': ESLintUtils.RuleCreator.withoutDocs<Options, 'missingUndefined'>({
 			create: (context) => {
 				const { interfaceEndings } = context.options[0];
 				return {
@@ -119,9 +104,15 @@ const localPlugin = {
 						}
 
 						const { typeAnnotation } = eslNode.typeAnnotation;
+
+						// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
 						switch (typeAnnotation.type) {
 							case AST_NODE_TYPES.TSUnionType: {
-								if (typeAnnotation.types.some((t) => t.type === AST_NODE_TYPES.TSUndefinedKeyword)) {
+								if (
+									typeAnnotation.types.some(
+										(tNode) => tNode.type === AST_NODE_TYPES.TSUndefinedKeyword,
+									)
+								) {
 									return;
 								}
 
@@ -136,13 +127,7 @@ const localPlugin = {
 						context.report({
 							node: eslNode,
 							messageId: 'missingUndefined',
-							fix: (fixer) =>
-								fixer.insertTextAfter(
-									/** @type {Exclude<typeof eslNode.typeAnnotation, undefined>} */ (
-										eslNode.typeAnnotation
-									),
-									' | undefined',
-								),
+							fix: (fixer) => fixer.insertTextAfter(eslNode.typeAnnotation!, ' | undefined'),
 						});
 					},
 				};
@@ -169,17 +154,15 @@ const localPlugin = {
 			},
 			defaultOptions: [{ interfaceEndings: [] }],
 		}),
-		'rest-type-naming-convention': RestTypeNameConventionRuleCreator({
+		'rest-type-naming-convention': ESLintUtils.RuleCreator.withoutDocs<[{ whitelist: string[] }], 'invalidName'>({
 			create: (context) => {
 				const { whitelist } = context.options[0];
 				const whitelistSet = new Set(whitelist);
 
 				return {
-					'TSTypeAliasDeclaration, TSInterfaceDeclaration': (_node) => {
-						const node = /** @type {TSESTree.TSTypeAliasDeclaration | TSESTree.TSInterfaceDeclaration} */ (
-							_node
-						);
-
+					'TSTypeAliasDeclaration, TSInterfaceDeclaration': (
+						node: TSESTree.TSInterfaceDeclaration | TSESTree.TSTypeAliasDeclaration,
+					) => {
 						if (node.id.type !== AST_NODE_TYPES.Identifier) {
 							return;
 						}

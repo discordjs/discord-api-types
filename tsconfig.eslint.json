@@ -19,6 +19,6 @@
 		"deno",
 		"tests/**/*.ts",
 		"website",
-		"eslint.config.js"
+		"eslint.config.ts"
 	]
 }
