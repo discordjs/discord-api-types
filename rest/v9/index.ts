@@ -183,7 +183,26 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/channels/{channel.id}/messages/pins`
+	 */
+	channelMessagesPins(channelId: Snowflake) {
+		return `/channels/${channelId}/messages/pins` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PUT    `/channels/{channel.id}/messages/pins/{message.id}`
+	 * - DELETE `/channels/{channel.id}/messages/pins/{message.id}`
+	 */
+	channelMessagesPin(channelId: Snowflake, messageId: Snowflake) {
+		return `/channels/${channelId}/messages/pins/${messageId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/channels/{channel.id}/pins`
+	 *
+	 * @deprecated Use {@link Routes.channelMessagesPins} instead.
 	 */
 	channelPins(channelId: Snowflake) {
 		return `/channels/${channelId}/pins` as const;
@@ -193,6 +212,8 @@ export const Routes = {
 	 * Route for:
 	 * - PUT    `/channels/{channel.id}/pins/{message.id}`
 	 * - DELETE `/channels/{channel.id}/pins/{message.id}`
+	 *
+	 * @deprecated Use {@link Routes.channelMessagesPin} instead.
 	 */
 	channelPin(channelId: Snowflake, messageId: Snowflake) {
 		return `/channels/${channelId}/pins/${messageId}` as const;
