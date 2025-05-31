@@ -1,1 +1,1 @@
-npx --no-install pretty-quick --staged && npx --no-install lint-staged && npm run build:deno && git add deno
+yarn pretty-quick --staged && yarn lint-staged && yarn build:deno && git add deno

@@ -12,3 +12,5 @@ utils/v8.ts
 v8.ts
 
 djs/**/*
+
+.yarn/*
