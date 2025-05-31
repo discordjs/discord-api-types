@@ -7,8 +7,8 @@
 	"private": true,
 	"scripts": {
 		"docusaurus": "docusaurus",
-		"start": "yarn && docusaurus start",
-		"build": "yarn clean && cross-env NODE_OPTIONS=\"--max_old_space_size=7500\" docusaurus build",
+		"start": "npm run clean && docusaurus start",
+		"build": "npm run clean && cross-env NODE_OPTIONS=\"--max_old_space_size=7500\" docusaurus build",
 		"swizzle": "docusaurus swizzle",
 		"deploy": "docusaurus deploy",
 		"clear": "docusaurus clear",
@@ -24,7 +24,7 @@
 		"format": "prettier --write \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml}\"",
 		"format:check": "prettier --check \"{src,static,scripts,docs}/**/*.{js,jsx,ts,tsx,css,scss,json,md,mdx,yml}\"",
 		"test:lint": "run-s lint:no-fix format:check lint:md-no-fix",
-		"vercel-build": "yarn build",
+		"vercel-build": "npm run build",
 		"postinstall": "patch-package"
 	},
 	"dependencies": {
