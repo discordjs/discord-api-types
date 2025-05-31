@@ -77,7 +77,7 @@ console.info(
 	`✅ Done! discord-api-types was bumped to ${newVersion['discord-api-types']}! Checking if there was a pull request open already and closing it if so...`,
 );
 
-if (!process.env.GITHUB_TOKEN) {
+if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPOSITORY) {
 	console.info('🙉 Skipping the pull request checks as no GITHUB_TOKEN was provided.');
 	process.exit(0);
 }

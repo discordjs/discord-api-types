@@ -7,8 +7,8 @@ const json = JSON.parse(await readFile(new URL('../package.json', import.meta.ur
 
 console.log(`⌛ Creating website version for ${json.version}`);
 
-execSync(`yarn docusaurus docs:version ${json.version}`, { cwd, encoding: 'utf8' });
-execSync(`yarn docusaurus api:version ${json.version}`, { cwd, encoding: 'utf8' });
+execSync(`npm run docusaurus docs:version ${json.version}`, { cwd, encoding: 'utf8' });
+execSync(`npm run docusaurus api:version ${json.version}`, { cwd, encoding: 'utf8' });
 
 const bigJsonPath = new URL(`../website/versioned_docs/version-${json.version}/api-typedoc.json`, import.meta.url);
 
