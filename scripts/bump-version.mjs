@@ -51,7 +51,7 @@ const conventionalReleaseTypesTo0Ver = new Map([
 
 console.log('ℹ️ Getting the recommended bump level...');
 
-const bumper = new Bumper().loadPreset({ name: 'angular' });
+const bumper = new Bumper().loadPreset('angular');
 
 const result = await bumper.bump();
 

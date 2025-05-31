@@ -130,8 +130,8 @@
 		"{globals,v*}.{js,js.map,d.ts,d.ts.map,mjs}"
 	],
 	"devDependencies": {
-		"@commitlint/cli": "^19.0.3",
-		"@commitlint/config-angular": "^19.0.3",
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-angular": "^19.8.1",
 		"@favware/npm-deprecate": "^2.0.0",
 		"@octokit/action": "^8.0.0",
 		"@octokit/webhooks-types": "^7.3.2",
