@@ -123,10 +123,10 @@ jobs:
       - name: Build docs
         shell: bash
         run: |
-          yarn prepublishOnly
+          yarn prepack
           ./djs/packages/api-extractor/bin/api-extractor run --local --minify
           ./djs/packages/scripts/bin/generateSplitDocumentation.js
-          yarn postpublish
+          yarn postpack
 
       - name: Upload documentation to database
         if: ${{ env.REF_TYPE == 'tag' && (!inputs.ref || inputs.ref == 'main') }}

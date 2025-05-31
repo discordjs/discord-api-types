@@ -158,7 +158,8 @@
 		"typescript": "^5.8.3"
 	},
 	"publishConfig": {
-		"provenance": true
+		"provenance": true,
+		"access": "public"
 	},
 	"repository": {
 		"type": "git",

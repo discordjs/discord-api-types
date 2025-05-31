@@ -82,7 +82,7 @@ jobs:
         with:
           cache: 'yarn'
           node-version-file: package.json
-          registry-url: https://registry.npmjs.org/
+          registry-url: https://registry.npmjs.org
 
       - name: Install Dependencies
         run: yarn
