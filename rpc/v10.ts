@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import type {
+	APIBaseMessageNoChannel,
 	APIInvite,
 	APIMessage,
+	APIMessageMentions,
 	APIPartialChannel,
 	APIPartialGuild,
 	APIUser,
@@ -50,7 +52,7 @@ export interface Relationship {
 /**
  * @unstable
  */
-export interface RPCAPIMessage extends Omit<APIMessage, 'channel_id'> {
+export interface RPCAPIMessage extends APIBaseMessageNoChannel, APIMessageMentions {
 	/**
 	 * The nickname of the user who sent the message
 	 */

@@ -952,38 +952,40 @@ export type RESTPutAPIGuildOnboardingJSONBody = _AddUndefinedToPossiblyUndefined
 	prompts?: RESTAPIGuildOnboardingPrompt[] | undefined;
 };
 
-export type RESTAPIGuildOnboardingPrompt = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Partial<Omit<APIGuildOnboardingPrompt, 'guild_id' | 'id' | 'options' | 'title'>>
-> &
-	Pick<APIGuildOnboardingPrompt, 'id' | 'title'> & {
-		/**
-		 * Options available within the prompt
-		 */
-		options: RESTAPIGuildOnboardingPromptOption[];
-	};
+export interface RESTAPIGuildOnboardingPrompt
+	extends _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+			Partial<Omit<APIGuildOnboardingPrompt, 'guild_id' | 'id' | 'options' | 'title'>>
+		>,
+		Pick<APIGuildOnboardingPrompt, 'id' | 'title'> {
+	/**
+	 * Options available within the prompt
+	 */
+	options: RESTAPIGuildOnboardingPromptOption[];
+}
 
 /**
  * @deprecated Use {@link RESTAPIGuildOnboardingPrompt} instead.
  */
 export type RESTAPIModifyGuildOnboardingPromptData = RESTAPIGuildOnboardingPrompt;
 
-export type RESTAPIGuildOnboardingPromptOption = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Partial<Omit<APIGuildOnboardingPromptOption, 'emoji' | 'guild_id' | 'title'>>
-> &
-	Pick<APIGuildOnboardingPromptOption, 'title'> & {
-		/**
-		 * Emoji id
-		 */
-		emoji_id?: Snowflake | null | undefined;
-		/**
-		 * Emoji name
-		 */
-		emoji_name?: string | null | undefined;
-		/**
-		 * Whether this emoji is animated
-		 */
-		emoji_animated?: boolean | null | undefined;
-	};
+export interface RESTAPIGuildOnboardingPromptOption
+	extends _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+			Partial<Omit<APIGuildOnboardingPromptOption, 'emoji' | 'guild_id' | 'title'>>
+		>,
+		Pick<APIGuildOnboardingPromptOption, 'title'> {
+	/**
+	 * Emoji id
+	 */
+	emoji_id?: Snowflake | null | undefined;
+	/**
+	 * Emoji name
+	 */
+	emoji_name?: string | null | undefined;
+	/**
+	 * Whether this emoji is animated
+	 */
+	emoji_animated?: boolean | null | undefined;
+}
 
 /**
  * @deprecated Use {@link RESTAPIGuildOnboardingPromptOption} instead.
