@@ -33,6 +33,8 @@ jobs:
           cache: 'yarn'
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
+          always-auth: true
+          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Install Dependencies
         run: yarn
@@ -45,9 +47,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
-      - name: Publish new @next version
+      - name: Set new version
         run: |
           yarn version $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
+
+      - name: Publish new @next version
+        run: |
           yarn npm publish --tag next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

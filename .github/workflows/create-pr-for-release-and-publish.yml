@@ -83,14 +83,14 @@ jobs:
           cache: 'yarn'
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
+          always-auth: true
+          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Install Dependencies
         run: yarn
 
       - name: Publish release to npm
         run: yarn npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Create GitHub release
         run: node ./scripts/actions/create-release.mjs
