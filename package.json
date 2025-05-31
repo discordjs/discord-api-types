@@ -139,6 +139,7 @@
 		"@types/node": "^22.15.29",
 		"@typescript-eslint/utils": "^8.33.0",
 		"conventional-changelog": "^7.0.2",
+		"conventional-changelog-angular": "^8.0.0",
 		"conventional-recommended-bump": "^11.1.0",
 		"eslint": "^8.57.1",
 		"eslint-config-neon": "^0.1.62",

@@ -3816,6 +3816,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"conventional-changelog-angular@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "conventional-changelog-angular@npm:8.0.0"
+  dependencies:
+    compare-func: "npm:^2.0.0"
+  checksum: 10c0/743faceab876bb9b9656f2389830d0ccb7c5caf02a629cb495d75c65c43414274728d7059b716d0c7d66fd663f8b978f25d44657148b8bc64ece12952cbfd886
+  languageName: node
+  linkType: hard
+
 "conventional-changelog-preset-loader@npm:^5.0.0":
   version: 5.0.0
   resolution: "conventional-changelog-preset-loader@npm:5.0.0"
@@ -4126,6 +4135,7 @@ __metadata:
     "@types/node": "npm:^22.15.29"
     "@typescript-eslint/utils": "npm:^8.33.0"
     conventional-changelog: "npm:^7.0.2"
+    conventional-changelog-angular: "npm:^8.0.0"
     conventional-recommended-bump: "npm:^11.1.0"
     eslint: "npm:^8.57.1"
     eslint-config-neon: "npm:^0.1.62"
