@@ -45,13 +45,63 @@ export enum VoiceOpcodes {
 	 */
 	Resumed,
 	/**
-	 * A client has connected to the voice channel
+	 * One or more clients have connected to the voice channel
 	 */
-	ClientConnect = 12,
+	ClientsConnect = 11,
+	/**
+	 * Previously for when a client has connected to the voice channel, now unused
+	 *
+	 * @deprecated
+	 */
+	ClientConnect,
 	/**
 	 * A client has disconnected from the voice channel
 	 */
 	ClientDisconnect,
+	/**
+	 * A downgrade from the DAVE protocol is upcoming
+	 */
+	DavePrepareTransition = 21,
+	/**
+	 * Execute a previously announced protocol transition
+	 */
+	DaveExecuteTransition,
+	/**
+	 * Acknowledge readiness previously announced transition
+	 */
+	DaveTransitionReady,
+	/**
+	 * A DAVE protocol version or group change is upcoming
+	 */
+	DavePrepareEpoch,
+	/**
+	 * Credential and public key for MLS external sender
+	 */
+	DaveMlsExternalSender,
+	/**
+	 * MLS Key Package for pending group member
+	 */
+	DaveMlsKeyPackage,
+	/**
+	 * MLS Proposals to be appended or revoked
+	 */
+	DaveMlsProposals,
+	/**
+	 * MLS Commit with optional MLS Welcome messages
+	 */
+	DaveMlsCommitWelcome,
+	/**
+	 * MLS Commit to be processed for upcoming transition
+	 */
+	DaveMlsAnnounceCommitTransition,
+	/**
+	 * MLS Welcome to group for upcoming transition
+	 */
+	DaveMlsWelcome,
+	/**
+	 * Flag invalid commit or welcome, request re-add
+	 */
+	DaveMlsInvalidCommitWelcome,
 }
 
 /**
