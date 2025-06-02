@@ -424,6 +424,26 @@ export interface VoiceDaveExecuteTransitionData {
 	transition_id: number;
 }
 
+/**
+ * @see {@link https://daveprotocol.com/#dave_mls_external_sender_package-25}
+ */
+export type VoiceDaveMlsExternalSender = VoiceBinaryPayload;
+
+/**
+ * @see {@link https://daveprotocol.com/#dave_mls_proposals-27}
+ */
+export type VoiceDaveMlsProposals = VoiceBinaryPayload;
+
+/**
+ * @see {@link https://daveprotocol.com/#dave_mls_announce_commit_transition-29}
+ */
+export type VoiceDaveMlsAnnounceCommitTransition = VoiceBinaryPayload;
+
+/**
+ * @see {@link https://daveprotocol.com/#dave_mls_welcome-30}
+ */
+export type VoiceDaveMlsWelcome = VoiceBinaryPayload;
+
 // #endregion Server Payloads
 
 // #region Sendable Payloads
@@ -635,6 +655,16 @@ export interface VoiceDaveMlsInvalidCommitWelcomeData {
 	 */
 	transition_id: number;
 }
+
+/**
+ * @see {@link https://daveprotocol.com/#dave_mls_key_package-26}
+ */
+export type VoiceDaveMlsKeyPackage = VoiceBinaryPayload;
+
+/**
+ * @see {@link https://daveprotocol.com/#dave_mls_commit_welcome-28}
+ */
+export type VoiceDaveMlsCommitWelcome = VoiceBinaryPayload;
 // #endregion
 
 // #region Shared
@@ -657,4 +687,6 @@ export interface _DataPayload<Op extends VoiceOpcodes, D = unknown> extends _Bas
 	op: Op;
 	d: D;
 }
+
+export type VoiceBinaryPayload = ArrayBuffer;
 // #endregion Shared
