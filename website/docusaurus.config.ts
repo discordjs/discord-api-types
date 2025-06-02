@@ -73,6 +73,7 @@ const config: Config = {
 							v10: { path: 'v10.ts', label: 'API v10' },
 							v9: { path: 'v9.ts', label: 'API v9' },
 							'voice/v4': { path: 'voice/v4.ts', label: 'Voice v4' },
+							'voice/v8': { path: 'voice/v8.ts', label: 'Voice v8' },
 							globals: { path: 'globals.ts', label: 'Global Types' }
 						},
 						slug: 'discord-api-types'
