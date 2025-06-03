@@ -533,9 +533,9 @@ export interface VoiceSelectProtocolData {
  */
 export interface VoiceUDPProtocolData {
 	/**
-	 * External IP
+	 * External address
 	 */
-	ip: string;
+	address: string;
 	/**
 	 * External UDP port
 	 */
@@ -635,9 +635,9 @@ export interface VoiceDavePrepareEpoch {
  */
 export interface VoiceDavePrepareEpochData {
 	/**
-	 * The transition id
+	 * The protocol version
 	 */
-	transition_id: number;
+	protocol_version: number;
 	/**
 	 * The epoch id
 	 */
