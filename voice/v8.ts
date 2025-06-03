@@ -476,6 +476,10 @@ export interface VoiceIdentifyData {
 	 * Voice connection token
 	 */
 	token: string;
+	/**
+	 * The maximum DAVE protocol version supported
+	 */
+	max_dave_protocol_version?: number;
 }
 
 /**
