@@ -230,6 +230,8 @@ export type VoiceSendPayload =
 	| VoiceSpeakingSend;
 
 export type VoiceReceivePayload =
+	| VoiceClientDisconnect
+	| VoiceClientsConnect
 	| VoiceDaveExecuteTransition
 	| VoiceDavePrepareEpoch
 	| VoiceDavePrepareTransition
