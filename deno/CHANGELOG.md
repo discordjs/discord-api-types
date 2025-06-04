@@ -1,3 +1,19 @@
+## [0.38.11](https://github.com/discordjs/discord-api-types/compare/0.38.10...0.38.11) (2025-06-04)
+
+
+### Bug Fixes
+
+* **voice:** add `max_dave_protocol_version` to identify ([#1260](https://github.com/discordjs/discord-api-types/issues/1260)) ([83d34ef](https://github.com/discordjs/discord-api-types/commit/83d34ef00c4e25d5050c7fc47562b3faa9125215))
+* **voice:** add clients connect and client disconnect recieve payload ([#1261](https://github.com/discordjs/discord-api-types/issues/1261)) ([121fb47](https://github.com/discordjs/discord-api-types/commit/121fb47f4c0c51d6149bcf051ffc5bae04b1bba8))
+* **voice:** fix remaining payload typos ([#1262](https://github.com/discordjs/discord-api-types/issues/1262)) ([d71276c](https://github.com/discordjs/discord-api-types/commit/d71276cb5f3423a81780494d041694356b8cb49c))
+
+
+### Features
+
+* voice v8 payloads & MLS voice opcodes ([#1257](https://github.com/discordjs/discord-api-types/issues/1257)) ([ebf313c](https://github.com/discordjs/discord-api-types/commit/ebf313c49c1d78cb1aaf238cfbae7c114f6215cf))
+
+
+
 ## [0.38.10](https://github.com/discordjs/discord-api-types/compare/0.38.9...0.38.10) (2025-06-02)
 
 
