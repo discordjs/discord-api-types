@@ -112,9 +112,6 @@ export interface APIWebhookEventApplicationAuthorizedData {
 	guild?: APIGuild;
 }
 
-/**
- * @unstable
- */
 export interface APIWebhookEventApplicationDeauthorizedData {
 	/**
 	 * User who deauthorized the app
@@ -184,8 +181,6 @@ export enum ApplicationWebhookEventType {
 	ApplicationAuthorized = 'APPLICATION_AUTHORIZED',
 	/**
 	 * Sent when an app was deauthorized by a user
-	 *
-	 * @unstable
 	 */
 	ApplicationDeauthorized = 'APPLICATION_DEAUTHORIZED',
 	/**
