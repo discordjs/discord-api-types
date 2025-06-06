@@ -47,26 +47,29 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
  */
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
-export type RESTPostAPIBaseApplicationCommandsJSONBody = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	Omit<
-		APIApplicationCommand,
-		| 'application_id'
-		| 'contexts'
-		| 'default_member_permissions'
-		| 'description_localized'
-		| 'description'
-		| 'guild_id'
-		| 'id'
-		| 'integration_types'
-		| 'name_localized'
-		| 'type'
-		| 'version'
-	> &
-		Partial<
-			_NonNullableFields<Pick<APIApplicationCommand, 'contexts'>> &
-				Pick<APIApplicationCommand, 'default_member_permissions' | 'integration_types'>
-		>
->;
+export interface RESTPostAPIBaseApplicationCommandsJSONBody
+	extends _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+			Omit<
+				APIApplicationCommand,
+				| 'application_id'
+				| 'contexts'
+				| 'default_member_permissions'
+				| 'description_localized'
+				| 'description'
+				| 'guild_id'
+				| 'id'
+				| 'integration_types'
+				| 'name_localized'
+				| 'type'
+				| 'version'
+			>
+		>,
+		_AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+			Partial<
+				_NonNullableFields<Pick<APIApplicationCommand, 'contexts'>> &
+					Pick<APIApplicationCommand, 'default_member_permissions' | 'integration_types'>
+			>
+		> {}
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#create-global-application-command}

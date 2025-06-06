@@ -14,11 +14,7 @@ export type GatewayVoiceState = APIVoiceState;
 /**
  * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
  */
-export interface APIVoiceState {
-	/**
-	 * The guild id this voice state is for
-	 */
-	guild_id?: Snowflake;
+export interface APIBaseVoiceState {
 	/**
 	 * The channel id this user is connected to
 	 */
@@ -69,6 +65,16 @@ export interface APIVoiceState {
 	 * The time at which the user requested to speak
 	 */
 	request_to_speak_timestamp: string | null;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
+ */
+export interface APIVoiceState extends APIBaseVoiceState {
+	/**
+	 * The guild id this voice state is for
+	 */
+	guild_id?: Snowflake;
 }
 
 /**

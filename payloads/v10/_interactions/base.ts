@@ -9,7 +9,14 @@ import type {
 	ChannelType,
 	ThreadChannelType,
 } from '../channel';
-import type { APIGuildMember, APIPartialInteractionGuild } from '../guild';
+import type {
+	APIBaseGuildMember,
+	APIFlaggedGuildMember,
+	APIGuildMember,
+	APIGuildMemberAvatar,
+	APIGuildMemberJoined,
+	APIPartialInteractionGuild,
+} from '../guild';
 import type { APIEntitlement } from '../monetization';
 import type { APIUser } from '../user';
 import type { InteractionType } from './responses';
@@ -253,7 +260,11 @@ export type APIInteractionDataResolvedChannel =
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
  */
-export interface APIInteractionDataResolvedGuildMember extends Omit<APIGuildMember, 'deaf' | 'mute' | 'user'> {
+export interface APIInteractionDataResolvedGuildMember
+	extends APIBaseGuildMember,
+		APIFlaggedGuildMember,
+		APIGuildMemberAvatar,
+		APIGuildMemberJoined {
 	permissions: Permissions;
 }
 

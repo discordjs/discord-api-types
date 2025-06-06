@@ -3,7 +3,6 @@
  */
 
 import type { Snowflake } from '../globals';
-import type { GatewayPresenceUpdate } from '../payloads/v9/gateway';
 import type {
 	APIApplication,
 	APIApplicationCommandPermission,
@@ -16,7 +15,6 @@ import type {
 	APIGuildMember,
 	APIGuildScheduledEvent,
 	APIInteraction,
-	APIMessage,
 	APIRole,
 	APIStageInstance,
 	APISticker,
@@ -25,8 +23,8 @@ import type {
 	APIUnavailableGuild,
 	APIUser,
 	GatewayActivity,
-	GatewayPresenceUpdate as RawGatewayPresenceUpdate,
-	GatewayThreadListSync as RawGatewayThreadListSync,
+	GatewayPresenceUpdate,
+	GatewayThreadListSync,
 	GatewayThreadMembersUpdate as RawGatewayThreadMembersUpdate,
 	APIVoiceState,
 	InviteTargetType,
@@ -39,6 +37,16 @@ import type {
 	GuildChannelType,
 	ThreadChannelType,
 	APIEntitlement,
+	APIBaseGuild,
+	APIBaseGuildMember,
+	APIBaseVoiceState,
+	APIBaseVoiceGuildMember,
+	APIFlaggedGuildMember,
+	APIGuildMemberUser,
+	APIGuildMemberAvatar,
+	GatewayGuildMembersChunkPresence,
+	APIBaseMessage,
+	APIGuildMemberJoined,
 } from '../payloads/v9/index';
 import type { ReactionType } from '../rest/v9/index';
 import type { _Nullable } from '../utils/internals';
@@ -788,9 +796,7 @@ export type GatewayEntitlementModifyDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#entitlement-create}
  */
-export type GatewayEntitlementCreateDispatchData = Omit<GatewayEntitlementModifyDispatchData, 'ends_at'> & {
-	ends_at: GatewayEntitlementModifyDispatchData['ends_at'] | null;
-};
+export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispatchData;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#entitlement-create}
@@ -872,7 +878,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
 	 */
-	voice_states: Omit<APIVoiceState, 'guild_id'>[];
+	voice_states: APIBaseVoiceState[];
 	/**
 	 * Users in the guild
 	 *
@@ -952,7 +958,7 @@ export type GatewayGuildDeleteDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-delete}
  */
-export interface GatewayGuildDeleteDispatchData extends Omit<APIUnavailableGuild, 'unavailable'> {
+export interface GatewayGuildDeleteDispatchData extends APIBaseGuild {
 	/**
 	 * `true` if this guild is unavailable due to an outage
 	 *
@@ -1126,15 +1132,18 @@ export type GatewayGuildMemberUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-member-update}
  */
-export type GatewayGuildMemberUpdateDispatchData = _Nullable<Pick<APIGuildMember, 'joined_at'>> &
-	Omit<APIGuildMember, 'deaf' | 'flags' | 'joined_at' | 'mute' | 'user'> &
-	Partial<Pick<APIGuildMember, 'deaf' | 'flags' | 'mute'>> &
-	Required<Pick<APIGuildMember, 'avatar' | 'banner' | 'user'>> & {
-		/**
-		 * The id of the guild
-		 */
-		guild_id: Snowflake;
-	};
+export interface GatewayGuildMemberUpdateDispatchData
+	extends _Nullable<APIGuildMemberJoined>,
+		APIBaseGuildMember,
+		Partial<APIBaseVoiceGuildMember>,
+		Partial<APIFlaggedGuildMember>,
+		Required<APIGuildMemberUser>,
+		Required<APIGuildMemberAvatar> {
+	/**
+	 * The id of the guild
+	 */
+	guild_id: Snowflake;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk}
@@ -1143,11 +1152,6 @@ export type GatewayGuildMembersChunkDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildMembersChunk,
 	GatewayGuildMembersChunkDispatchData
 >;
-
-/**
- * @see {@link https://discord.com/developers/docs/topics/gateway-events#update-presence}
- */
-export type GatewayGuildMembersChunkPresence = Omit<RawGatewayPresenceUpdate, 'guild_id'>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk}
@@ -1596,7 +1600,7 @@ export type GatewayMessageCreateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-create}
  */
-export type GatewayMessageCreateDispatchData = GatewayMessageEventExtraFields & Omit<APIMessage, 'mentions'>;
+export interface GatewayMessageCreateDispatchData extends GatewayMessageEventExtraFields, APIBaseMessage {}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-update}
@@ -1609,7 +1613,24 @@ export type GatewayMessageUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-update}
  */
-export type GatewayMessageUpdateDispatchData = GatewayMessageEventExtraFields & Omit<APIMessage, 'mentions'>;
+export interface GatewayMessageUpdateDispatchData extends GatewayMessageEventExtraFields, APIBaseMessage {}
+
+export interface APIGuildMemberNoUser
+	extends APIBaseGuildMember,
+		APIFlaggedGuildMember,
+		APIGuildMemberAvatar,
+		APIGuildMemberJoined,
+		APIBaseVoiceGuildMember {}
+
+export interface APIUserWithMember extends APIUser {
+	/**
+	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
+	 * from text-based guild channels
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+	 */
+	member?: APIGuildMemberNoUser;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-create-message-create-extra-fields}
@@ -1627,17 +1648,13 @@ export interface GatewayMessageEventExtraFields {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
-	member?: Omit<APIGuildMember, 'user'>;
+	member?: APIGuildMemberNoUser;
 	/**
 	 * Users specifically mentioned in the message
 	 *
-	 * The `member` field is only present in `MESSAGE_CREATE` and `MESSAGE_UPDATE` events
-	 * from text-based guild channels
-	 *
 	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
-	mentions: (APIUser & { member?: Omit<APIGuildMember, 'user'> })[];
+	mentions: APIUserWithMember[];
 }
 
 /**
@@ -1695,25 +1712,74 @@ export interface GatewayMessageDeleteBulkDispatchData {
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-reaction-add}
  */
-export type GatewayMessageReactionAddDispatch = GatewayMessageReactionData<GatewayDispatchEvents.MessageReactionAdd>;
+export interface GatewayMessageReactionAddDispatchData extends GatewayMessageReactionRemoveDispatchData {
+	/**
+	 * The member who reacted if this happened in a guild
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+	 */
+	member?: APIGuildMember;
+	/**
+	 * The id of the user that posted the message that was reacted to
+	 */
+	message_author_id?: Snowflake;
+	/**
+	 * Colors used for super-reaction animation in "#rrggbb" format
+	 */
+	burst_colors?: string[];
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-reaction-add}
  */
-export type GatewayMessageReactionAddDispatchData = GatewayMessageReactionAddDispatch['d'];
-
-/**
- * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove}
- */
-export type GatewayMessageReactionRemoveDispatch = GatewayMessageReactionData<
-	GatewayDispatchEvents.MessageReactionRemove,
-	'burst_colors' | 'member' | 'message_author_id'
+export type GatewayMessageReactionAddDispatch = _DataPayload<
+	GatewayDispatchEvents.MessageReactionAdd,
+	GatewayMessageReactionAddDispatchData
 >;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove}
  */
-export type GatewayMessageReactionRemoveDispatchData = GatewayMessageReactionRemoveDispatch['d'];
+export interface GatewayMessageReactionRemoveDispatchData {
+	/**
+	 * The id of the user
+	 */
+	user_id: Snowflake;
+	/**
+	 * The id of the channel
+	 */
+	channel_id: Snowflake;
+	/**
+	 * The id of the message
+	 */
+	message_id: Snowflake;
+	/**
+	 * The id of the guild
+	 */
+	guild_id?: Snowflake;
+	/**
+	 * The emoji used to react
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object}
+	 */
+	emoji: APIEmoji;
+	/**
+	 * True if this is a super-reaction
+	 */
+	burst: boolean;
+	/**
+	 * The type of reaction
+	 */
+	type: ReactionType;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove}
+ */
+export type GatewayMessageReactionRemoveDispatch = _DataPayload<
+	GatewayDispatchEvents.MessageReactionRemove,
+	GatewayMessageReactionRemoveDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-all}
@@ -1757,7 +1823,7 @@ export type GatewayPresenceUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#presence-update}
  */
-export type GatewayPresenceUpdateDispatchData = RawGatewayPresenceUpdate;
+export type GatewayPresenceUpdateDispatchData = GatewayPresenceUpdate;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#stage-instance-create}
@@ -1809,7 +1875,7 @@ export type GatewayThreadListSyncDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#thread-list-sync}
  */
-export type GatewayThreadListSyncDispatchData = RawGatewayThreadListSync;
+export type GatewayThreadListSyncDispatchData = GatewayThreadListSync;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#thread-members-update}
@@ -2414,7 +2480,8 @@ export type GatewayActivityUpdateData = Pick<GatewayActivity, 'name' | 'state' |
 // #endregion Sendable Payloads
 
 // #region Shared
-export interface _BasePayload {
+
+export interface _BaseBasePayload {
 	/**
 	 * Opcode for the payload
 	 */
@@ -2423,6 +2490,8 @@ export interface _BasePayload {
 	 * Event data
 	 */
 	d?: unknown;
+}
+export interface _BasePayload extends _BaseBasePayload {
 	/**
 	 * Sequence number, used for resuming sessions and heartbeats
 	 */
@@ -2433,10 +2502,10 @@ export interface _BasePayload {
 	t?: string;
 }
 
-export type _NonDispatchPayload = Omit<_BasePayload, 's' | 't'> & {
+export interface _NonDispatchPayload extends _BaseBasePayload {
 	t: null;
 	s: null;
-};
+}
 
 export interface _DataPayload<Event extends GatewayDispatchEvents, D = unknown> extends _BasePayload {
 	op: GatewayOpcodes.Dispatch;
@@ -2444,57 +2513,10 @@ export interface _DataPayload<Event extends GatewayDispatchEvents, D = unknown> 
 	d: D;
 }
 
+// This is not used internally anymore, just remains to be non-breaking
 export type GatewayMessageReactionData<E extends GatewayDispatchEvents, O extends string = never> = _DataPayload<
 	E,
-	Omit<
-		{
-			/**
-			 * The id of the user
-			 */
-			user_id: Snowflake;
-			/**
-			 * The id of the channel
-			 */
-			channel_id: Snowflake;
-			/**
-			 * The id of the message
-			 */
-			message_id: Snowflake;
-			/**
-			 * The id of the guild
-			 */
-			guild_id?: Snowflake;
-			/**
-			 * The member who reacted if this happened in a guild
-			 *
-			 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
-			 */
-			member?: APIGuildMember;
-			/**
-			 * The emoji used to react
-			 *
-			 * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object}
-			 */
-			emoji: APIEmoji;
-			/**
-			 * The id of the user that posted the message that was reacted to
-			 */
-			message_author_id?: Snowflake;
-			/**
-			 * True if this is a super-reaction
-			 */
-			burst: boolean;
-			/**
-			 * Colors used for super-reaction animation in "#rrggbb" format
-			 */
-			burst_colors?: string[];
-			/**
-			 * The type of reaction
-			 */
-			type: ReactionType;
-		},
-		O
-	>
+	Omit<GatewayMessageReactionAddDispatchData, O>
 >;
 
 export interface GatewayMessageReactionRemoveData {
