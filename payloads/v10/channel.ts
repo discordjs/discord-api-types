@@ -747,7 +747,7 @@ export interface APIBaseMessageNoChannel {
 	 * The stickers sent with the message
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
-	 * @deprecated Use {@link APIMessage.sticker_items} instead
+	 * @deprecated Use {@link APIBaseMessageNoChannel.sticker_items} instead
 	 */
 	stickers?: APISticker[];
 	/**

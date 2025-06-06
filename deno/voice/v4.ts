@@ -51,7 +51,7 @@ export enum VoiceOpcodes {
 	/**
 	 * Previously for when a client has connected to the voice channel, now unused
 	 *
-	 * @deprecated
+	 * @deprecated Not used
 	 */
 	ClientConnect,
 	/**
