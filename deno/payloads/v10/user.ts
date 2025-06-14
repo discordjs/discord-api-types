@@ -388,21 +388,22 @@ export interface APINameplateData {
 	/**
 	 * Background color of the nameplate
 	 */
-	palette: APINameplatePalette;
+	palette: NameplatePalette;
 }
 
 /**
  * Background color of a nameplate.
  */
-export type APINameplatePalette =
-	| 'berry'
-	| 'bubble_gum'
-	| 'clover'
-	| 'cobalt'
-	| 'crimson'
-	| 'forest'
-	| 'lemon'
-	| 'sky'
-	| 'teal'
-	| 'violet'
-	| 'white';
+export enum NameplatePalette {
+	Berry = 'berry',
+	BubbleGum = 'bubble_gum',
+	Clover = 'clover',
+	Cobalt = 'cobalt',
+	Crimson = 'crimson',
+	Forest = 'forest',
+	Lemon = 'lemon',
+	Sky = 'sky',
+	Teal = 'teal',
+	Violet = 'violet',
+	White = 'white',
+}
