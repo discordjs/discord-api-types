@@ -2132,6 +2132,10 @@ export interface APIUnfurledMediaItem {
 	content_type?: string | null;
 	loading_state?: UnfurledMediaItemLoadingState;
 	flags?: number;
+	/**
+	 * The id of the uploaded attachment. This field is ignored and provided by the API as part of the response
+	 */
+	attachment_id?: Snowflake;
 }
 
 /**
