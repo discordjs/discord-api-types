@@ -96,6 +96,12 @@ export interface APIUser {
 	 * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
 	 */
 	avatar_decoration_data?: APIAvatarDecorationData | null;
+	/**
+	 * The data for the user's collectibles
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/user#collectibles}
+	 */
+	collectibles?: APICollectibles | null;
 }
 
 /**
@@ -348,3 +354,55 @@ export interface APIAvatarDecorationData {
 	 */
 	sku_id: Snowflake;
 }
+
+/**
+ * The collectibles the user has, excluding Avatar Decorations and Profile Effects.
+ *
+ * @see {@link https://discord.com/developers/docs/resources/user#collectibles}
+ */
+export interface APICollectibles {
+	/**
+	 * Object mapping of {@link APINameplateData}
+	 */
+	nameplate?: APINameplateData;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/user#nameplate}
+ */
+export interface APINameplateData {
+	/**
+	 * ID of the nameplate SKU
+	 */
+	sku_id: Snowflake;
+	/**
+	 * Path to the nameplate asset
+	 *
+	 * @example `nameplates/nameplates/twilight/`
+	 */
+	asset: string;
+	/**
+	 * The label of this nameplate. Currently unused
+	 */
+	label: string;
+	/**
+	 * Background color of the nameplate
+	 */
+	palette: APINameplatePalette;
+}
+
+/**
+ * Background color of a nameplate.
+ */
+export type APINameplatePalette =
+	| 'berry'
+	| 'bubble_gum'
+	| 'clover'
+	| 'cobalt'
+	| 'crimson'
+	| 'forest'
+	| 'lemon'
+	| 'sky'
+	| 'teal'
+	| 'violet'
+	| 'white';
