@@ -419,6 +419,20 @@ export enum GuildSystemChannelFlags {
  */
 export enum GuildFeature {
 	/**
+	 * Guild has disabled the activity feed
+	 *
+	 * @remarks
+	 * This feature is mutable and requires the {@link PermissionFlagsBits.ManageGuild} permission to be changed
+	 */
+	ActivityFeedDisabledByUser = 'ACTIVITY_FEED_DISABLED_BY_USER',
+	/**
+	 * Guild has enabled the activity feed
+	 *
+	 * @remarks
+	 * This feature is mutable and requires the {@link PermissionFlagsBits.ManageGuild} permission to be changed
+	 */
+	ActivityFeedEnabledByUser = 'ACTIVITY_FEED_ENABLED_BY_USER',
+	/**
 	 * Guild has access to set an animated guild banner image
 	 */
 	AnimatedBanner = 'ANIMATED_BANNER',
@@ -442,6 +456,9 @@ export enum GuildFeature {
 	Banner = 'BANNER',
 	/**
 	 * Guild can enable welcome screen, Membership Screening and discovery, and receives community updates
+	 *
+	 * @remarks
+	 * This feature is mutable and requires the {@link PermissionFlagsBits.Administrator} permission to be changed
 	 */
 	Community = 'COMMUNITY',
 	/**
@@ -458,6 +475,11 @@ export enum GuildFeature {
 	DeveloperSupportServer = 'DEVELOPER_SUPPORT_SERVER',
 	/**
 	 * Guild is able to be discovered in the directory
+	 *
+	 * @remarks
+	 * This feature is mutable and requires the {@link PermissionFlagsBits.Administrator} permission to be changed
+	 *
+	 * The server must be passing all discovery requirements
 	 */
 	Discoverable = 'DISCOVERABLE',
 	/**
@@ -477,6 +499,9 @@ export enum GuildFeature {
 	Hub = 'HUB',
 	/**
 	 * Guild has disabled invite usage, preventing users from joining
+	 *
+	 * @remarks
+	 * This feature is mutable and requires the {@link PermissionFlagsBits.ManageGuild} permission to be changed
 	 */
 	InvitesDisabled = 'INVITES_DISABLED',
 	/**
@@ -526,8 +551,14 @@ export enum GuildFeature {
 	PrivateThreads = 'PRIVATE_THREADS',
 	/**
 	 * Guild has disabled alerts for join raids in the configured safety alerts channel
+	 *
+	 * @remarks
+	 * This feature is mutable and requires the {@link PermissionFlagsBits.ManageGuild} permission to be changed
 	 */
 	RaidAlertsDisabled = 'RAID_ALERTS_DISABLED',
+	/**
+	 * @unstable This feature is currently not documented by Discord, but has known value
+	 */
 	RelayEnabled = 'RELAY_ENABLED',
 	/**
 	 * Guild is able to set role icons
