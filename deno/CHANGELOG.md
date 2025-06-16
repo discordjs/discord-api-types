@@ -1,3 +1,13 @@
+## [0.38.12](https://github.com/discordjs/discord-api-types/compare/0.38.11...0.38.12) (2025-06-16)
+
+
+### Features
+
+* **APIApplication:** add `approximate_user_authorization_count` ([#1272](https://github.com/discordjs/discord-api-types/issues/1272)) ([91d8516](https://github.com/discordjs/discord-api-types/commit/91d851628d2078e70b79e4aa7e464297eca745ce))
+* **APIUnfurledMediaItem:** add `attachment_id` ([#1273](https://github.com/discordjs/discord-api-types/issues/1273)) ([b2da18c](https://github.com/discordjs/discord-api-types/commit/b2da18c634c4e20112ce13a8e0a5e6db50063acc))
+
+
+
 ## [0.38.11](https://github.com/discordjs/discord-api-types/compare/0.38.10...0.38.11) (2025-06-04)
 
 
