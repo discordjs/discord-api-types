@@ -1,0 +1,33 @@
+name: Validate only supported API version changes
+on:
+  pull_request:
+    branches: '**'
+    paths:
+      - gateway/v6.ts
+      - gateway/v8.ts
+      - payloads/v6/**/*
+      - payloads/v8/**/*
+      - rest/v6/**/*
+      - rest/v8/**/*
+      - utils/v8.ts
+      - v6.ts
+      - v8.ts
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4
+
+      - name: Use Node.js v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Request changes
+        run: node ./scripts/actions/unsupported-api-version-changes.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
