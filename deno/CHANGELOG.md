@@ -1,3 +1,12 @@
+## [0.38.13](https://github.com/discordjs/discord-api-types/compare/0.38.12...0.38.13) (2025-06-23)
+
+
+### Features
+
+* **APIUser:** add `collectibles` ([#1274](https://github.com/discordjs/discord-api-types/issues/1274)) ([77cb327](https://github.com/discordjs/discord-api-types/commit/77cb32746f47247a4229910db8ec64f844038529))
+
+
+
 ## [0.38.12](https://github.com/discordjs/discord-api-types/compare/0.38.11...0.38.12) (2025-06-16)
 
 
