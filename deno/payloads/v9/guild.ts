@@ -557,6 +557,10 @@ export enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
+	/**
+	 * Guild is able to set gradient colors to roles
+	 */
+	EnhancedRoleColors = 'ENHANCED_ROLE_COLORS',
 }
 
 /**

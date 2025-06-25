@@ -26,6 +26,7 @@ import type {
 	GuildWidgetStyle,
 	APIGuildOnboardingPrompt,
 	APIGuildOnboardingPromptOption,
+	APIRoleColors,
 } from '../../payloads/v10/mod.ts';
 import type {
 	_AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
@@ -676,8 +677,15 @@ export interface RESTPostAPIGuildRoleJSONBody {
 	 * RGB color value
 	 *
 	 * @defaultValue `0`
+	 * @remarks `color` will still be returned by the API, but using the `colors` field is recommended when doing requests.
 	 */
 	color?: number | null | undefined;
+	/**
+	 * The role's colors
+	 *
+	 * @defaultValue `{ "primary_color": 0, "secondary_color": null, "tertiary_color": null }`
+	 */
+	colors?: APIRoleColors | undefined;
 	/**
 	 * Whether the role should be displayed separately in the sidebar
 	 *
@@ -738,8 +746,14 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 	permissions?: Permissions | null | undefined;
 	/**
 	 * RGB color value
+	 *
+	 * @remarks `color` will still be returned by the API, but using the `colors` field is recommended when doing requests.
 	 */
 	color?: number | null | undefined;
+	/**
+	 * The role's colors
+	 */
+	colors?: APIRoleColors | undefined;
 	/**
 	 * Whether the role should be displayed separately in the sidebar
 	 */
