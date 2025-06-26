@@ -160,4 +160,12 @@ export enum VoiceCloseCodes {
 	 * You sent a malformed request
 	 */
 	BadRequest = 4_020,
+	/**
+	 * Disconnect due to rate limit exceeded. Should not reconnect
+	 */
+	RateLimited,
+	/**
+	 * Disconnect all clients due to call terminated (channel deleted, voice server changed, etc.). Should not reconnect
+	 */
+	CallTerminated,
 }
