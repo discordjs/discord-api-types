@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../globals';
-import type { APIApplicationEmoji, APIEmoji } from '../../payloads/v9';
+import type { APIApplicationEmoji, APIEmoji } from '../../payloads/v9/index';
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#list-guild-emojis}
