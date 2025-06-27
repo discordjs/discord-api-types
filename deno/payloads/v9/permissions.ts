@@ -18,8 +18,14 @@ export interface APIRole {
 	name: string;
 	/**
 	 * Integer representation of hexadecimal color code
+	 *
+	 * @remarks `color` will still be returned by the API, but using the `colors` field is recommended when doing requests.
 	 */
 	color: number;
+	/**
+	 * The role's colors
+	 */
+	colors?: APIRoleColors;
 	/**
 	 * If this role is pinned in the user listing
 	 */
@@ -98,4 +104,24 @@ export enum RoleFlags {
 	 * Role can be selected by members in an onboarding prompt
 	 */
 	InPrompt = 1 << 0,
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/topics/permissions#role-colors-object}
+ */
+export interface APIRoleColors {
+	/**
+	 * The primary color for the role
+	 */
+	primary_color: number;
+	/**
+	 * The secondary color for the role, this will make the role a gradient between the other provided colors
+	 */
+	secondary_color: number | null;
+	/**
+	 * The tertiary color for the role, this will turn the gradient into a holographic style
+	 *
+	 * @remarks When sending `tertiary_color` the API enforces the role color to be a holographic style with values of `primary_color = 11127295`, `secondary_color = 16759788`, and `tertiary_color = 16761760`.
+	 */
+	tertiary_color: number | null;
 }
