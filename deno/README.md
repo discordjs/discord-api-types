@@ -82,15 +82,12 @@ The exports of each API version is split into three main parts:
 - Everything exported with the `Gateway` prefix represents data that ONLY comes from or is directly related to the Gateway.
 
 - Everything exported with the `REST` prefix represents data that ONLY comes from or is directly related to the REST API.
-
     - For endpoint options, they will follow the following structure: `REST<HTTP Method><Type><Query|(JSON|FormData)Body|Result>` where the type represents what it will return.
-
         - For example, `RESTPostAPIChannelMessageJSONBody` or `RESTGetAPIGatewayBotInfoResult`.
 
         - Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
 
     - If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
-
         - Types that are exported as `never` usually mean the result will be a `204 No Content`, so you can safely ignore it. This does **not** account for errors.
 
 - Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route object).
