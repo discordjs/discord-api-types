@@ -2451,3 +2451,17 @@ export type APIMessageSnapshotFields = Pick<
 	| 'timestamp'
 	| 'type'
 >;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/message#message-pin-object}
+ */
+export interface APIMessagePin {
+	/**
+	 * The time the message was pinned
+	 */
+	pinned_at: string;
+	/**
+	 * The pinned message
+	 */
+	message: APIMessage;
+}

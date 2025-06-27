@@ -24,6 +24,7 @@ import type {
 	ChannelFlags,
 	APIAttachment,
 	APIMessageTopLevelComponent,
+	APIMessagePin,
 } from '../../payloads/v10/mod.ts';
 import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _StrictPartial } from '../../utils/internals.ts';
 import type { RESTAPIPoll } from './poll.ts';
@@ -617,17 +618,60 @@ export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;
 export type RESTPostAPIChannelTypingResult = never;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#get-pinned-messages}
+ * @see {@link https://discord.com/developers/docs/resources/message#get-channel-pins}
+ */
+export interface RESTGetAPIChannelMessagesPinsQuery {
+	/**
+	 * Get messages pinned before this timestamp
+	 */
+	before?: string;
+	/**
+	 * Maximum number of pins to return (1-50).
+	 *
+	 * @defaultValue `50`
+	 */
+	limit?: number;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/message#get-channel-pins}
+ */
+export interface RESTGetAPIChannelMessagesPinsResult {
+	/**
+	 * Array of pinned messages
+	 */
+	items: APIMessagePin[];
+	/**
+	 * Whether there are more items available
+	 */
+	has_more: boolean;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/message#pin-message}
+ */
+export type RESTPutAPIChannelMessagesPinResult = never;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/message#unpin-message}
+ */
+export type RESTDeleteAPIChannelMessagesPinResult = never;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/message#get-pinned-messages-deprecated}
+ * @deprecated
  */
 export type RESTGetAPIChannelPinsResult = APIMessage[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#pin-message}
+ * @see {@link https://discord.com/developers/docs/resources/message#pin-message-deprecated}
+ * @deprecated
  */
 export type RESTPutAPIChannelPinResult = never;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#unpin-message}
+ * @see {@link https://discord.com/developers/docs/resources/message#unpin-message-deprecated}
+ * @deprecated
  */
 export type RESTDeleteAPIChannelPinResult = never;
 
