@@ -13,11 +13,9 @@
 - Checkout a topic branch from a base branch, e.g. `main`, and merge back against that branch.
 
 - If adding a new feature:
-
     - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue first and have it approved before working on it.
 
 - If fixing a bug:
-
     - If you are resolving a special issue, add `fix/close #xxxx[,#xxxx]` (#xxxx is the issue id) in your PR body for a better release log, e.g.
 
     ```
