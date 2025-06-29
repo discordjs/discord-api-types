@@ -1412,6 +1412,16 @@ export const CDNRoutes = {
 	soundboardSound(soundId: Snowflake) {
 		return `/soundboard-sounds/${soundId}` as const;
 	},
+
+	/**
+	 * Route for:
+	 * - GET `/clan-badges/{guild.id}/{badge}.{png|jpeg|webp}`
+	 *
+	 * This route supports the extensions: PNG, JPEG, WebP
+	 */
+	guildTagBadge<Format extends GuildTagBadgeFormat>(guildId: Snowflake, guildTagBadge: string, format: Format) {
+		return `/clan-badges/${guildId}/${guildTagBadge}.${format}` as const;
+	},
 };
 
 for (const [key, fn] of Object.entries(CDNRoutes)) {
@@ -1458,6 +1468,7 @@ export type StickerFormat = Extract<ImageFormat, ImageFormat.GIF | ImageFormat.L
 export type RoleIconFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildScheduledEventCoverFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 export type GuildMemberBannerFormat = Exclude<ImageFormat, ImageFormat.Lottie>;
+export type GuildTagBadgeFormat = Exclude<ImageFormat, ImageFormat.GIF | ImageFormat.Lottie>;
 
 /**
  * @deprecated Use {@link DefaultUserAvatarFormat} instead.
