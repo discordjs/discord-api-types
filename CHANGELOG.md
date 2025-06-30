@@ -1,3 +1,14 @@
+## [0.38.14](https://github.com/discordjs/discord-api-types/compare/0.38.13...0.38.14) (2025-06-30)
+
+
+### Features
+
+* role gradient colors ([#1281](https://github.com/discordjs/discord-api-types/issues/1281)) ([7fbb3e3](https://github.com/discordjs/discord-api-types/commit/7fbb3e3310bde5ea0e977afb83ea21bda0220633))
+* support new pinned messages routes ([#1254](https://github.com/discordjs/discord-api-types/issues/1254)) ([71c6d26](https://github.com/discordjs/discord-api-types/commit/71c6d2609f1713827e95c5f617011c053cd3eb6a))
+* **voice:** add close codes 4021 and 4022 ([#1283](https://github.com/discordjs/discord-api-types/issues/1283)) ([6b05db5](https://github.com/discordjs/discord-api-types/commit/6b05db5a2f9ea540e34e8429c07b96411d418b73))
+
+
+
 ## [0.38.13](https://github.com/discordjs/discord-api-types/compare/0.38.12...0.38.13) (2025-06-23)
 
 
