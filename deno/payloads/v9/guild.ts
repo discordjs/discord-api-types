@@ -668,6 +668,12 @@ export interface APIBaseGuildMember {
 	 */
 	communication_disabled_until?: string | null;
 	/**
+	 * Timestamp of when the member will no longer be marked as having unusual DM activity
+	 *
+	 * @see {@link https://support.discord.com/hc/articles/15946797617431-Members-Page#h_01H5K0YX4XET5E6KP0Q1T9HWNP}
+	 */
+	unusual_dm_activity_until?: string | null;
+	/**
 	 * The data for the member's guild avatar decoration
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
