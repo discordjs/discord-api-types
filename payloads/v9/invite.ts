@@ -95,6 +95,14 @@ export interface APIInvite {
 	 * The invite type
 	 */
 	type: InviteType;
+	/**
+	 * The flags of the invite
+	 */
+	flags?: InviteFlags;
+}
+
+export enum InviteFlags {
+	IsGuestInvite = 1 << 0,
 }
 
 /**
