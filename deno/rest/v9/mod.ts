@@ -1415,12 +1415,12 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/clan-badges/{guild.id}/{badge}.{png|jpeg|webp}`
+	 * - GET `/guild-tag-badges/{guild.id}/{badge}.{png|jpeg|webp}`
 	 *
 	 * This route supports the extensions: PNG, JPEG, WebP
 	 */
 	guildTagBadge<Format extends GuildTagBadgeFormat>(guildId: Snowflake, guildTagBadge: string, format: Format) {
-		return `/clan-badges/${guildId}/${guildTagBadge}.${format}` as const;
+		return `/guild-tag-badges/${guildId}/${guildTagBadge}.${format}` as const;
 	},
 };
 
