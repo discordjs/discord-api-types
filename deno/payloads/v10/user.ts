@@ -102,6 +102,12 @@ export interface APIUser {
 	 * @see {@link https://discord.com/developers/docs/resources/user#collectibles}
 	 */
 	collectibles?: APICollectibles | null;
+	/**
+	 * The user's primary guild
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-primary-guild}
+	 */
+	primary_guild?: APIUserPrimaryGuild | null;
 }
 
 /**
@@ -406,4 +412,29 @@ export enum NameplatePalette {
 	Teal = 'teal',
 	Violet = 'violet',
 	White = 'white',
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-primary-guild}
+ */
+export interface APIUserPrimaryGuild {
+	/**
+	 * The id of the user's primary guild
+	 */
+	identity_guild_id: Snowflake | null;
+	/**
+	 * Whether the user is displaying the primary guild's server tag.
+	 * This can be `null` if the system clears the identity, e.g. because the server no longer supports tags
+	 */
+	identity_enabled: boolean | null;
+	/**
+	 * The text of the user's server tag. Limited to 4 characters
+	 */
+	tag: string | null;
+	/**
+	 * The server tag badge hash
+	 *
+	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
+	 */
+	badge: string | null;
 }
