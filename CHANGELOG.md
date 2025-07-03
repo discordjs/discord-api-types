@@ -1,3 +1,17 @@
+## [0.38.15](https://github.com/discordjs/discord-api-types/compare/0.38.14...0.38.15) (2025-07-03)
+
+
+### Bug Fixes
+
+* **CDNRoutes:** correct `guildTagBadge` route ([#1291](https://github.com/discordjs/discord-api-types/issues/1291)) ([1fee633](https://github.com/discordjs/discord-api-types/commit/1fee6339bf05a98900d8703207c77b8e6d047f24))
+
+
+### Features
+
+* user guild tags ([#1287](https://github.com/discordjs/discord-api-types/issues/1287)) ([3245f7d](https://github.com/discordjs/discord-api-types/commit/3245f7de92c40d3b74014dbf97a2c0eafea8bcd2))
+
+
+
 ## [0.38.14](https://github.com/discordjs/discord-api-types/compare/0.38.13...0.38.14) (2025-06-30)
 
 
