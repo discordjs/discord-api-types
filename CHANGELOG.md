@@ -1,3 +1,12 @@
+## [0.38.16](https://github.com/discordjs/discord-api-types/compare/0.38.15...0.38.16) (2025-07-13)
+
+
+### Bug Fixes
+
+* **APIApplicationCommandChannelOption:** exclude directory channels ([#1300](https://github.com/discordjs/discord-api-types/issues/1300)) ([574e5c1](https://github.com/discordjs/discord-api-types/commit/574e5c12bddd2c515fd2b96b5705b5ef9f9d2787))
+
+
+
 ## [0.38.15](https://github.com/discordjs/discord-api-types/compare/0.38.14...0.38.15) (2025-07-03)
 
 
