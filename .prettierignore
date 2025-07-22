@@ -38,3 +38,5 @@ utils/v8.ts
 v8.ts
 
 .yarn/*
+djs/*
+_generated_

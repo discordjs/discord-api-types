@@ -8,7 +8,7 @@
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"start": "npm run clean && docusaurus start",
-		"build": "npm run clean && cross-env NODE_OPTIONS=\"--max_old_space_size=7500\" docusaurus build",
+		"build": "npm run clean && cp ../scripts/generate-prettier-routes-interface.ts ./scripts/generate-prettier-routes-interface.ts && npx tsx ./scripts/generate-prettier-routes-interface.ts && cross-env NODE_OPTIONS=\"--max_old_space_size=7500\" docusaurus build",
 		"swizzle": "docusaurus swizzle",
 		"deploy": "docusaurus deploy",
 		"clear": "docusaurus clear",
@@ -47,7 +47,8 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"sass": "^1.81.0",
-		"swr": "^2.2.5"
+		"swr": "^2.2.5",
+		"ts-morph": "^26.0.0"
 	},
 	"devDependencies": {
 		"@apify/docusaurus-plugin-typedoc-api": "^4.3.1",
@@ -66,6 +67,7 @@
 		"patch-package": "^8.0.0",
 		"prettier": "^3.4.1",
 		"pretty-quick": "^4.0.0",
+		"tsx": "^4.20.3",
 		"typedoc": "^0.27.1",
 		"typedoc-plugin-djs-links": "^2.2.1",
 		"typedoc-plugin-markdown": "^4.3.0",
