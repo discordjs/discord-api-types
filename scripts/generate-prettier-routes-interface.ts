@@ -13,10 +13,14 @@ import { Project, SyntaxKind } from 'ts-morph';
 const RoutesInterfaceName = 'RoutesDeclarations';
 const CDNRoutesInterfaceName = 'CDNRoutesDeclarations';
 
-const versions = readdirSync(join(__dirname, '../rest')).filter((dir) => /^v\d+$/.exec(dir));
+const isInWebsite = __dirname.includes('website');
 
-const generatedRestDirectory = join(__dirname, '../_generated_/rest');
-const globalsFilePath = join(__dirname, '../globals.ts');
+const extraPath = isInWebsite ? '../' : '';
+
+const versions = readdirSync(join(__dirname, extraPath, '../rest')).filter((dir) => /^v\d+$/.exec(dir));
+
+const generatedRestDirectory = join(__dirname, extraPath, '../_generated_/rest');
+const globalsFilePath = join(__dirname, extraPath, '../globals.ts');
 
 function parameterDeclarationToStructure(parameter: ParameterDeclaration): ParameterDeclarationStructure {
 	const obj = parameter.getStructure();
@@ -139,8 +143,8 @@ function handleObject(object: ObjectLiteralExpression, interfaceToAddTo: Interfa
 for (const version of versions) {
 	console.log(`Generating interfaces for ${version}...`);
 
-	const inputFilePath = join(__dirname, `../rest/${version}/index.ts`);
-	const generatedRestInterfacesFilePath = join(__dirname, `../_generated_/rest/${version}/interfaces.ts`);
+	const inputFilePath = join(__dirname, extraPath, `../rest/${version}/index.ts`);
+	const generatedRestInterfacesFilePath = join(__dirname, extraPath, `../_generated_/rest/${version}/interfaces.ts`);
 
 	const project = new Project({});
 
