@@ -8,7 +8,7 @@
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"start": "npm run clean && docusaurus start",
-		"build": "npm run clean && npx tsx ../scripts/generate-prettier-routes-interface.ts && cross-env NODE_OPTIONS=\"--max_old_space_size=7500\" docusaurus build",
+		"build": "npm run clean && npx --package=tsx --package=ts-morph -c 'tsx ../scripts/generate-prettier-routes-interface.ts' && cross-env NODE_OPTIONS=\"--max_old_space_size=7500\" docusaurus build",
 		"swizzle": "docusaurus swizzle",
 		"deploy": "docusaurus deploy",
 		"clear": "docusaurus clear",
