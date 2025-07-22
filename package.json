@@ -114,7 +114,7 @@
 		"lint": "prettier --write . && eslint --format=pretty --fix --ext mjs,ts \"{gateway,payloads,rest,rpc,voice,utils}/**/*.ts\" \"{globals,v*}.ts\" \"scripts/**/*.mjs\"",
 		"postinstallDev": "is-ci || husky",
 		"prepack": "run-s clean test:lint build:node",
-		"postpack": "run-s clean:node build:deno",
+		"postpack": "run-s clean:node build:deno && git checkout -- './deno/**/*.ts' './rest/**/*.ts'",
 		"test:lint": "prettier --check . && eslint --format=pretty --ext mjs,ts \"{gateway,payloads,rest,rpc,voice,utils}/**/*.ts\" \"{globals,v*}.ts\" \"scripts/**/*.mjs\"",
 		"test:types": "tsc -p tests"
 	},

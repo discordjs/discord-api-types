@@ -64,8 +64,34 @@ function handleObject(object: ObjectLiteralExpression, interfaceToAddTo: Interfa
 
 		const methodName = castedMethod.getName();
 		const methodParameters = castedMethod.getParameters();
-		const methodReturnType = castedMethod.getReturnType().getText();
+		let methodReturnType = castedMethod.getReturnType().getText();
 		const methodDocs = castedMethod.getJsDocs();
+
+		const returnBody = castedMethod
+			.getChildren()
+			?.at(-1)
+			?.getChildren()
+			?.at(1)
+			?.getChildren()
+			?.at(-1)
+			?.asKindOrThrow(SyntaxKind.ReturnStatement);
+
+		const asExpression = returnBody?.getChildrenOfKind(SyntaxKind.AsExpression)[0];
+
+		const unionType = asExpression?.getChildrenOfKind(SyntaxKind.UnionType)?.[0];
+
+		// Override with union if it exists in the cast
+		if (unionType) {
+			methodReturnType = unionType
+				.getText()
+				.split('\n')
+				.map((line) => line.trim())
+				.join(' ');
+		}
+
+		if (methodReturnType.startsWith('| ')) {
+			methodReturnType = methodReturnType.slice(2);
+		}
 
 		const typeParameters = castedMethod.getTypeParameters();
 

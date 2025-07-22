@@ -1,5 +1,6 @@
 import type { Snowflake } from '../../globals.ts';
 import { urlSafeCharacters } from '../../utils/internals.ts';
+import type { RoutesDeclarations, CDNRoutesDeclarations } from "../../_generated_/rest/v9/interfaces";
 
 export * from '../common.ts';
 export type * from './application.ts';
@@ -25,7 +26,7 @@ export type * from './webhook.ts';
 
 export const APIVersion = '9';
 
-export const Routes = {
+export const Routes: RoutesDeclarations = {
 	/**
 	 * Route for:
 	 * - GET `/applications/{application.id}/role-connections/metadata`
@@ -1127,7 +1128,7 @@ export enum ImageFormat {
 	Lottie = 'json',
 }
 
-export const CDNRoutes = {
+export const CDNRoutes: CDNRoutesDeclarations = {
 	/**
 	 * Route for:
 	 * - GET `/emojis/{emoji.id}.{png|jpeg|webp|gif}`
@@ -1508,3 +1509,6 @@ export const OAuth2Routes = {
 
 // Freeze OAuth2 route object
 Object.freeze(OAuth2Routes);
+
+// Exports all generated interfaces from the REST API.
+export type * from "../../_generated_/rest/v9/interfaces";
