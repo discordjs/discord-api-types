@@ -110,7 +110,7 @@ function handleObject(object: ObjectLiteralExpression, interfaceToAddTo: Interfa
 			returnType: methodReturnType,
 			leadingTrivia:
 				methodDocs
-					.map((doc) => doc.getText())
+					.map((doc) => doc.getText().replaceAll('Routes.', `${RoutesInterfaceName}.`))
 					.join('\n')
 					.replaceAll('\t', '') + '\n',
 		});
@@ -130,7 +130,7 @@ function handleObject(object: ObjectLiteralExpression, interfaceToAddTo: Interfa
 				leadingTrivia:
 					overload
 						.getJsDocs()
-						.map((doc) => doc.getText())
+						.map((doc) => doc.getText().replaceAll('Routes.', `${RoutesInterfaceName}.`))
 						.join('\n')
 						.replaceAll('\t', '') + '\n',
 			});
