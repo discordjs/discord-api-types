@@ -127,6 +127,7 @@
 	"author": "Vlad Frangu <me@vladfrangu.dev>",
 	"license": "MIT",
 	"files": [
+		"_generated_/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
 		"{gateway,payloads,rest,rpc,voice,utils}/**/*.{js,js.map,d.ts,d.ts.map,mjs}",
 		"{globals,v*}.{js,js.map,d.ts,d.ts.map,mjs}"
 	],

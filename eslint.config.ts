@@ -250,6 +250,8 @@ export default config([
 
 			'djs/**/*',
 			'.yarn/*',
+
+			'_generated_/**/*',
 		],
 	},
 	commonRuleset,

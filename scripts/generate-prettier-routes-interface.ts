@@ -21,7 +21,8 @@ const globalsFilePath = join(__dirname, '../globals.ts');
 function parameterDeclarationToStructure(parameter: ParameterDeclaration): ParameterDeclarationStructure {
 	const obj = parameter.getStructure();
 
-	obj.hasQuestionToken = Boolean(obj.initializer);
+	// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+	obj.hasQuestionToken = obj.hasQuestionToken || Boolean(obj.initializer);
 
 	delete obj.initializer;
 
