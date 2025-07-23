@@ -207,6 +207,7 @@ export enum AuditLogEvent {
 	AutoModerationBlockMessage,
 	AutoModerationFlagToChannel,
 	AutoModerationUserCommunicationDisabled,
+	AutoModerationQuarantineUser,
 
 	CreatorMonetizationRequestCreated = 150,
 	CreatorMonetizationTermsAccepted,
@@ -232,6 +233,7 @@ export interface APIAuditLogOptions {
 	 * - AUTO_MODERATION_BLOCK_MESSAGE
 	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
 	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 * - AUTO_MODERATION_QUARANTINE_USER
 	 */
 	auto_moderation_rule_name?: string;
 	/**
@@ -241,6 +243,7 @@ export interface APIAuditLogOptions {
 	 * - AUTO_MODERATION_BLOCK_MESSAGE
 	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
 	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 * - AUTO_MODERATION_QUARANTINE_USER
 	 */
 	auto_moderation_rule_trigger_type?: AuditLogRuleTriggerType;
 	/**
@@ -272,6 +275,7 @@ export interface APIAuditLogOptions {
 	 * - AUTO_MODERATION_BLOCK_MESSAGE
 	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
 	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
+	 * - AUTO_MODERATION_QUARANTINE_USER
 	 */
 	channel_id?: Snowflake;
 
