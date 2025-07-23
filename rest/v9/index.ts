@@ -250,6 +250,8 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - POST `/guilds`
+	 *
+	 * @deprecated {@link https://discord.com/developers/docs/change-log#deprecating-guild-creation-by-apps}
 	 */
 	guilds() {
 		return '/guilds' as const;

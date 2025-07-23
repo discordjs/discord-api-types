@@ -3,8 +3,7 @@
  */
 
 import type { Snowflake } from '../../globals.ts';
-import type { Locale } from '../../rest/common.ts';
-import type { RESTPostAPIGuildsJSONBody } from '../../rest/v9/mod.ts';
+import { APIGuild } from '../../v9.ts';
 import type { APIUser } from './user.ts';
 
 /**
@@ -59,8 +58,11 @@ export interface APITemplate {
 	is_dirty: boolean | null;
 }
 
-export interface APITemplateSerializedSourceGuild extends Omit<RESTPostAPIGuildsJSONBody, 'icon'> {
-	description: string | null;
-	preferred_locale: Locale;
-	icon_hash: string | null;
+export interface APITemplateSerializedSourceGuild extends Pick<APIGuild, "name" | "description" | "region" | "verification_level" | "default_message_notifications" | "explicit_content_filter" | "preferred_locale" | "afk_channel_id" | "afk_timeout" | "system_channel_id" | "system_channel_flags" | "roles" > {
+	channels?: unknown;
+}
+
+
+const a: APITemplateSerializedSourceGuild = {
+	
 }
