@@ -795,6 +795,10 @@ export enum GuildMemberFlags {
 	 * Member has dismissed the DM settings upsell
 	 */
 	DmSettingsUpsellAcknowledged = 1 << 9,
+	/**
+	 * Member's guild tag is blocked by AutoMod
+	 */
+	AutoModQuarantinedGuildTag = 1 << 10,
 }
 
 /**
