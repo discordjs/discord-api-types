@@ -4,7 +4,8 @@
 	"semanticCommits": "enabled",
 	"lockFileMaintenance": {
 		"enabled": true,
-		"schedule": ["before 1pm on friday"]
+		"schedule": ["before 1pm on friday"],
+		"automerge": true
 	},
 	"ignorePaths": ["website/"],
 	"packageRules": [
@@ -12,7 +13,8 @@
 			"matchUpdateTypes": ["patch", "minor"],
 			"matchCurrentVersion": "!/^0/",
 			"groupName": "patch/minor dependencies",
-			"groupSlug": "all-non-major"
+			"groupSlug": "all-non-major",
+			"automerge": true
 		},
 		{
 			"groupName": "eslint/prettier",
