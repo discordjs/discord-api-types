@@ -1,3 +1,13 @@
+## [0.38.17](https://github.com/discordjs/discord-api-types/compare/0.38.16...0.38.17) (2025-07-24)
+
+
+### Features
+
+* **auditLog:** add `AUTO_MODERATION_QUARANTINE_USER` ([#1310](https://github.com/discordjs/discord-api-types/issues/1310)) ([a72e454](https://github.com/discordjs/discord-api-types/commit/a72e4545a3409388a9c5ec0b5555ecc258de0ac2))
+* **GuildMemberFlags:** add `AutoModQuarantinedGuildTag` ([#1309](https://github.com/discordjs/discord-api-types/issues/1309)) ([a41e646](https://github.com/discordjs/discord-api-types/commit/a41e646d3d9b9f6bb15c2f6165043ef8042b26bf))
+
+
+
 ## [0.38.16](https://github.com/discordjs/discord-api-types/compare/0.38.15...0.38.16) (2025-07-13)
 
 
