@@ -8,6 +8,7 @@ export type RESTGetAPITemplateResult = APITemplate;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template}
+ * @deprecated
  */
 export interface RESTPostAPITemplateCreateGuildJSONBody {
 	/**
@@ -24,6 +25,7 @@ export interface RESTPostAPITemplateCreateGuildJSONBody {
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template}
+ * @deprecated
  */
 export type RESTPostAPITemplateCreateGuildResult = APIGuild;
 

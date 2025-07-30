@@ -464,7 +464,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET  `/guilds/templates/{template.code}`
-	 * - POST `/guilds/templates/{template.code}`
+	 * - POST `/guilds/templates/{template.code}` (**deprecated**)
 	 */
 	template(code: string) {
 		return `/guilds/templates/${code}` as const;
