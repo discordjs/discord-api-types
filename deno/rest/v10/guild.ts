@@ -192,7 +192,8 @@ export interface RESTPostAPIGuildsJSONBody {
 export type RESTPostAPIGuildsResult = APIGuild;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export interface RESTPostAPIGuildsMFAJSONBody {
 	/**
@@ -204,7 +205,8 @@ export interface RESTPostAPIGuildsMFAJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export type RESTPostAPIGuildsMFAResult = RESTPostAPIGuildsMFAJSONBody;
 

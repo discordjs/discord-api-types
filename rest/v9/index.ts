@@ -335,6 +335,8 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - POST `/guilds/{guild.id}/mfa`
+	 *
+	 * @deprecated
 	 */
 	guildMFA(guildId: Snowflake) {
 		return `/guilds/${guildId}/mfa` as const;
