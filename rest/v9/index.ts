@@ -250,6 +250,8 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - POST `/guilds`
+	 *
+	 * @deprecated {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
 	 */
 	guilds() {
 		return '/guilds' as const;
@@ -259,7 +261,7 @@ export const Routes = {
 	 * Route for:
 	 * - GET    `/guilds/{guild.id}`
 	 * - PATCH  `/guilds/{guild.id}`
-	 * - DELETE `/guilds/{guild.id}`
+	 * - DELETE `/guilds/{guild.id}` (**deprecated**)
 	 */
 	guild(guildId: Snowflake) {
 		return `/guilds/${guildId}` as const;
@@ -333,6 +335,8 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - POST `/guilds/{guild.id}/mfa`
+	 *
+	 * @deprecated
 	 */
 	guildMFA(guildId: Snowflake) {
 		return `/guilds/${guildId}/mfa` as const;
@@ -462,7 +466,7 @@ export const Routes = {
 	/**
 	 * Route for:
 	 * - GET  `/guilds/templates/{template.code}`
-	 * - POST `/guilds/templates/{template.code}`
+	 * - POST `/guilds/templates/{template.code}` (**deprecated**)
 	 */
 	template(code: string) {
 		return `/guilds/templates/${code}` as const;

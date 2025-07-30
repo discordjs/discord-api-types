@@ -98,6 +98,7 @@ export type APIGuildCreateRole = RESTAPIGuildCreateRole;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#create-guild}
+ * @deprecated {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
  */
 export interface RESTPostAPIGuildsJSONBody {
 	/**
@@ -185,12 +186,14 @@ export interface RESTPostAPIGuildsJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#create-guild}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export type RESTPostAPIGuildsResult = APIGuild;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export interface RESTPostAPIGuildsMFAJSONBody {
 	/**
@@ -202,7 +205,8 @@ export interface RESTPostAPIGuildsMFAJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export type RESTPostAPIGuildsMFAResult = RESTPostAPIGuildsMFAJSONBody;
 
@@ -276,6 +280,8 @@ export interface RESTPatchAPIGuildJSONBody {
 	icon?: string | null | undefined;
 	/**
 	 * User id to transfer guild ownership to (must be owner)
+	 *
+	 * @deprecated
 	 */
 	owner_id?: Snowflake | undefined;
 	/**
@@ -342,7 +348,8 @@ export interface RESTPatchAPIGuildJSONBody {
 export type RESTPatchAPIGuildResult = APIGuild;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#delete-guild}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export type RESTDeleteAPIGuildResult = never;
 
