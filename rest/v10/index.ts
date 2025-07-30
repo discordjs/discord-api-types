@@ -261,7 +261,7 @@ export const Routes = {
 	 * Route for:
 	 * - GET    `/guilds/{guild.id}`
 	 * - PATCH  `/guilds/{guild.id}`
-	 * - DELETE `/guilds/{guild.id}`
+	 * - DELETE `/guilds/{guild.id}` (**deprecated**)
 	 */
 	guild(guildId: Snowflake) {
 		return `/guilds/${guildId}` as const;

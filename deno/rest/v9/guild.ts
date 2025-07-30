@@ -278,6 +278,8 @@ export interface RESTPatchAPIGuildJSONBody {
 	icon?: string | null | undefined;
 	/**
 	 * User id to transfer guild ownership to (must be owner)
+	 *
+	 * @deprecated
 	 */
 	owner_id?: Snowflake | undefined;
 	/**
@@ -344,7 +346,8 @@ export interface RESTPatchAPIGuildJSONBody {
 export type RESTPatchAPIGuildResult = APIGuild;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#delete-guild}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export type RESTDeleteAPIGuildResult = never;
 
