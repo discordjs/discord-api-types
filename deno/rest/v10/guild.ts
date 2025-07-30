@@ -97,8 +97,8 @@ export interface RESTAPIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 export type APIGuildCreateRole = RESTAPIGuildCreateRole;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#create-guild}
- * @deprecated {@link https://discord.com/developers/docs/change-log#deprecating-guild-creation-by-apps}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export interface RESTPostAPIGuildsJSONBody {
 	/**
@@ -186,8 +186,8 @@ export interface RESTPostAPIGuildsJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#create-guild}
- * @deprecated {@link https://discord.com/developers/docs/change-log#deprecating-guild-creation-by-apps}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @deprecated
  */
 export type RESTPostAPIGuildsResult = APIGuild;
 

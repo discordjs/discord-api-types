@@ -7,7 +7,7 @@ import type { _StrictPartial } from '../../utils/internals';
 export type RESTGetAPITemplateResult = APITemplate;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
  * @deprecated
  */
 export interface RESTPostAPITemplateCreateGuildJSONBody {
@@ -24,7 +24,7 @@ export interface RESTPostAPITemplateCreateGuildJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template}
+ * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
  * @deprecated
  */
 export type RESTPostAPITemplateCreateGuildResult = APIGuild;
