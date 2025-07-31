@@ -1,3 +1,17 @@
+## [0.38.18](https://github.com/discordjs/discord-api-types/compare/0.38.17...0.38.18) (2025-07-31)
+
+
+### Bug Fixes
+
+* Deprecate API related to guild ownership ([#1316](https://github.com/discordjs/discord-api-types/issues/1316)) ([4afd0c1](https://github.com/discordjs/discord-api-types/commit/4afd0c13fde05fa7117ecdeaf20534545cfdb005))
+
+
+### Features
+
+* **GuildFeature:** add `GUILD_TAGS` ([#1315](https://github.com/discordjs/discord-api-types/issues/1315)) ([03f02a5](https://github.com/discordjs/discord-api-types/commit/03f02a5a9ee2e533b58b7790c4deb7ad571e5a92))
+
+
+
 ## [0.38.17](https://github.com/discordjs/discord-api-types/compare/0.38.16...0.38.17) (2025-07-24)
 
 
