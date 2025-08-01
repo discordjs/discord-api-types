@@ -2097,7 +2097,15 @@ export type GatewayVoiceStateUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-state-update}
  */
-export type GatewayVoiceStateUpdateDispatchData = APIVoiceState;
+export type GatewayVoiceStateUpdateDispatchData = Omit<APIVoiceState, 'member'> & {
+	/**
+	 * The guild member this voice state is for
+	 *
+	 * @remarks The member field will have `joined_at` set to `null` if the member was invited as a guest.
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+	 */
+	member?: APIGuildMember | null;
+};
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-server-update}
