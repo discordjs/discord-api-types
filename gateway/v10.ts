@@ -879,7 +879,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
 	 */
-	voice_states: (APIBaseVoiceState & APIVoiceStateMember)[];
+	voice_states: GatewayVoiceStateUpdateDispatchData[];
 	/**
 	 * Users in the guild
 	 *
