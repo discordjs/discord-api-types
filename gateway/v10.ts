@@ -26,7 +26,6 @@ import type {
 	GatewayPresenceUpdate,
 	GatewayThreadListSync,
 	GatewayThreadMembersUpdate as RawGatewayThreadMembersUpdate,
-	APIVoiceState,
 	InviteTargetType,
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
