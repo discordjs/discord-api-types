@@ -47,6 +47,7 @@ import type {
 	GatewayGuildMembersChunkPresence,
 	APIBaseMessage,
 	APIGuildMemberJoined,
+	APIVoiceStateMember,
 } from '../payloads/v9/mod.ts';
 import type { ReactionType } from '../rest/v9/mod.ts';
 import type { _Nullable } from '../utils/internals.ts';
@@ -878,7 +879,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
 	 */
-	voice_states: APIBaseVoiceState[];
+	voice_states: (APIBaseVoiceState & APIVoiceStateMember)[];
 	/**
 	 * Users in the guild
 	 *
@@ -1133,7 +1134,7 @@ export type GatewayGuildMemberUpdateDispatch = _DataPayload<
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-member-update}
  */
 export interface GatewayGuildMemberUpdateDispatchData
-	extends _Nullable<APIGuildMemberJoined>,
+	extends APIGuildMemberJoined,
 		APIBaseGuildMember,
 		Partial<APIBaseVoiceGuildMember>,
 		Partial<APIFlaggedGuildMember>,
@@ -1619,7 +1620,7 @@ export interface APIGuildMemberNoUser
 	extends APIBaseGuildMember,
 		APIFlaggedGuildMember,
 		APIGuildMemberAvatar,
-		APIGuildMemberJoined,
+		NonNullable<APIGuildMemberJoined>,
 		APIBaseVoiceGuildMember {}
 
 export interface APIUserWithMember extends APIUser {
@@ -2097,15 +2098,7 @@ export type GatewayVoiceStateUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-state-update}
  */
-export type GatewayVoiceStateUpdateDispatchData = Omit<APIVoiceState, 'member'> & {
-	/**
-	 * The guild member this voice state is for
-	 *
-	 * @remarks The member field will have `joined_at` set to `null` if the member was invited as a guest.
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
-	 */
-	member?: APIGuildMember | null;
-};
+export interface GatewayVoiceStateUpdateDispatchData extends APIBaseVoiceState, APIVoiceStateMember {}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-server-update}

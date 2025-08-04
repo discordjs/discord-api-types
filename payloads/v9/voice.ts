@@ -21,12 +21,6 @@ export interface APIBaseVoiceState {
 	 */
 	user_id: Snowflake;
 	/**
-	 * The guild member this voice state is for
-	 *
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
-	 */
-	member?: APIGuildMember;
-	/**
 	 * The session id for this voice state
 	 */
 	session_id: string;
@@ -64,10 +58,20 @@ export interface APIBaseVoiceState {
 	request_to_speak_timestamp: string | null;
 }
 
+export interface APIVoiceStateMember {
+	/**
+	 * The guild member this voice state is for
+	 *
+	 * @remarks The member field will have `joined_at` set to `null` if the member was invited as a guest.
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+	 */
+	member?: APIGuildMember | null;
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
  */
-export interface APIVoiceState extends APIBaseVoiceState {
+export interface APIVoiceState extends APIBaseVoiceState, APIVoiceStateMember {
 	/**
 	 * The guild id this voice state is for
 	 */
