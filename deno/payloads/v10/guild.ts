@@ -710,7 +710,7 @@ export interface APIGuildMemberJoined {
 	/**
 	 * When the user joined the guild
 	 */
-	joined_at: string;
+	joined_at: string | null;
 }
 
 /**
