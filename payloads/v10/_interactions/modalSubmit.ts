@@ -1,4 +1,4 @@
-import type { APIBaseComponent, APILabelComponent } from '../channel';
+import type { APIBaseComponent, APIStringSelectComponentInModal, APITextInputComponentInModal } from '../channel';
 import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
@@ -18,7 +18,7 @@ export interface ModalSubmitActionRowComponent extends APIBaseComponent<Componen
 }
 
 export interface ModalSubmitLabelComponent extends APIBaseComponent<ComponentType.Label> {
-	component: APILabelComponent;
+	component: APIStringSelectComponentInModal | APITextInputComponentInModal;
 }
 
 /**
