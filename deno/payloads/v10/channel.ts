@@ -2089,7 +2089,7 @@ export interface APIBaseTextInputComponent extends APIBaseComponent<ComponentTyp
 	/**
 	 * Text that appears on top of the text input field, max 45 characters
 	 */
-	label: string;
+	label?: string;
 	/**
 	 * Placeholder for the text input
 	 */
@@ -2126,14 +2126,10 @@ export type APITextInputComponent = APITextInputComponentInActionRow | APITextIn
 /**
  * @deprecated
  */
-export interface APITextInputComponentInActionRow extends APIBaseTextInputComponent {
-	/**
-	 * Text that appears on top of the text input field, max 45 characters
-	 */
-	label: string;
-}
+export type APITextInputComponentInActionRow = APIBaseTextInputComponent &
+	Required<Pick<APIBaseTextInputComponent, 'label'>>;
 
-export interface APITextInputComponentInModal extends APIBaseTextInputComponent {}
+export type APITextInputComponentInModal = APIBaseTextInputComponent;
 
 export enum UnfurledMediaItemLoadingState {
 	Unknown,
