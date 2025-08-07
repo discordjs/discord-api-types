@@ -2347,7 +2347,7 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 export interface APILabelComponent extends APIBaseComponent<ComponentType.Label> {
 	label: string;
 	description?: string;
-	component: APIStringSelectComponentInModal | APITextInputComponentInModal;
+	component: APIComponentInModalLabel;
 }
 
 /**
@@ -2448,7 +2448,11 @@ export type APIMessageTopLevelComponent =
 /**
  * @see {@link https://discord.com/developers/docs/components/reference}
  */
-export type APIModalComponent = APIActionRowComponent<APIComponentInModalActionRow> | APIComponentInModalActionRow;
+export type APIModalComponent =
+	| APIActionRowComponent<APIComponentInModalActionRow>
+	| APIComponentInModalActionRow
+	| APIComponentInModalLabel
+	| APILabelComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
@@ -2463,7 +2467,18 @@ export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuC
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
+export type APIComponentInModal = APIComponentInModalActionRow | APIComponentInModalLabel;
+
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
+ * @deprecated
+ */
 export type APIComponentInModalActionRow = APITextInputComponentInActionRow;
+
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
+ */
+export type APIComponentInModalLabel = APIStringSelectComponentInModal | APITextInputComponentInModal;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}
