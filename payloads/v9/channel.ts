@@ -2060,16 +2060,7 @@ export interface APISelectMenuOption {
 	default?: boolean;
 }
 
-/**
- * Text Input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
- *
- * Text Inputs can only be used within modals and must be placed inside an Action Row.
- *
- * When defining a text input component, you can set attributes to customize the behavior and appearance of it. However, not all attributes will be returned in the text input interaction payload.
- *
- * @see {@link https://discord.com/developers/docs/components/reference#text-input}
- */
-export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
+export interface APIBaseTextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
 	/**
 	 * One of text input styles
 	 */
@@ -2103,6 +2094,27 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 */
 	required?: boolean;
 }
+
+/**
+ * Text Input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
+ *
+ * Text Inputs can only be used within modals and must be placed inside an Action Row.
+ *
+ * When defining a text input component, you can set attributes to customize the behavior and appearance of it. However, not all attributes will be returned in the text input interaction payload.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#text-input}
+ */
+export interface APITextInputComponent extends APIBaseTextInputComponent {
+	/**
+	 * Text that appears on top of the text input field, max 45 characters
+	 */
+	label: string;
+}
+
+/**
+ * A text input component that may be used in modals.
+ */
+export interface APITextInputComponentInModal extends APIBaseTextInputComponent {}
 
 export enum UnfurledMediaItemLoadingState {
 	Unknown,
@@ -2317,7 +2329,7 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 export interface APILabelComponent extends APIBaseComponent<ComponentType.Label> {
 	label: string;
 	description?: string;
-	component: APIStringSelectComponentInModal | APITextInputComponent;
+	component: APIStringSelectComponentInModal | APITextInputComponentInModal;
 }
 
 /**
