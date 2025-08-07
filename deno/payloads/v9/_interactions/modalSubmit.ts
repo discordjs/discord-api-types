@@ -1,4 +1,4 @@
-import type { APIBaseComponent } from '../channel.ts';
+import type { APIBaseComponent, APILabelComponent } from '../channel.ts';
 import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
@@ -17,6 +17,10 @@ export interface ModalSubmitActionRowComponent extends APIBaseComponent<Componen
 	components: ModalSubmitComponent[];
 }
 
+export interface ModalSubmitLabelComponent extends APIBaseComponent<ComponentType.Label> {
+	component: APILabelComponent;
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure}
  */
@@ -28,7 +32,7 @@ export interface APIModalSubmission {
 	/**
 	 * A list of child components
 	 */
-	components: ModalSubmitActionRowComponent[];
+	components: (ModalSubmitActionRowComponent | ModalSubmitLabelComponent)[];
 }
 
 /**

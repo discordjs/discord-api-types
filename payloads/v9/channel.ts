@@ -1704,7 +1704,10 @@ export enum ComponentType {
 	 * Container that visually groups a set of components
 	 */
 	Container,
-
+	/**
+	 * Labels for use in modals.
+	 */
+	Label,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
 	/**
@@ -1716,6 +1719,8 @@ export enum ComponentType {
 }
 
 /**
+ * An Action Row is a top-level layout component used in messages. Use in modals is deprecated.
+ *
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
 export interface APIActionRowComponent<T extends APIComponentInActionRow>
@@ -1925,6 +1930,13 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 	 * Specified choices in a select menu; max 25
 	 */
 	options: APISelectMenuOption[];
+}
+
+/**
+ * A string select menu component that may be used in modals.
+ */
+export interface APIStringSelectComponentInModal extends APIStringSelectComponent {
+	required?: boolean;
 }
 
 /**
@@ -2300,6 +2312,12 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 	 * Up to 10 components of the type action row, text display, section, media gallery, separator, or file
 	 */
 	components: APIComponentInContainer[];
+}
+
+export interface APILabelComponent extends APIBaseComponent<ComponentType.Label> {
+	label: string;
+	description?: string;
+	component: APIStringSelectComponentInModal | APITextInputComponent;
 }
 
 /**
