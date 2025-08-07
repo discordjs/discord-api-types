@@ -21,3 +21,4 @@ export type * from './template.ts';
 export * from './user.ts';
 export type * from './voice.ts';
 export * from './webhook.ts';
+//# sourceMappingURL=index.d.ts.map
