@@ -1,4 +1,4 @@
-import type { APIBaseComponent, APIComponentInModalLabel } from '../channel';
+import type { APIBaseComponent } from '../channel';
 import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
@@ -7,18 +7,27 @@ import type {
 	InteractionType,
 } from '../index';
 
-export interface ModalSubmitComponent {
-	type: ComponentType;
+export interface APIBaseModalSubmitComponent<T extends ComponentType> extends APIBaseComponent<T> {
+	type: T;
 	custom_id: string;
+}
+
+export interface APIModalSubmitTextInputComponent extends APIBaseModalSubmitComponent<ComponentType.TextInput> {
 	value: string;
 }
 
+export interface APIModalSubmitStringSelectComponent extends APIBaseModalSubmitComponent<ComponentType.StringSelect> {
+	values: string[];
+}
+
+export type ModalSubmitComponent = APIModalSubmitStringSelectComponent | APIModalSubmitTextInputComponent;
+
 export interface ModalSubmitActionRowComponent extends APIBaseComponent<ComponentType.ActionRow> {
-	components: ModalSubmitComponent[];
+	components: APIModalSubmitTextInputComponent[];
 }
 
 export interface ModalSubmitLabelComponent extends APIBaseComponent<ComponentType.Label> {
-	component: APIComponentInModalLabel;
+	component: ModalSubmitComponent;
 }
 
 /**
