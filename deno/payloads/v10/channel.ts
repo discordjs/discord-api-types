@@ -2099,7 +2099,7 @@ export interface APIBaseTextInputComponent extends APIBaseComponent<ComponentTyp
 /**
  * Text Input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
  *
- * Text Inputs can only be used within modals and must be placed inside an Action Row.
+ * Text Inputs can only be used within modals and must be placed inside a Label.
  *
  * When defining a text input component, you can set attributes to customize the behavior and appearance of it. However, not all attributes will be returned in the text input interaction payload.
  *
