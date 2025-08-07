@@ -143,5 +143,5 @@ export interface APIModalInteractionResponseCallbackData {
 	 *
 	 * @remarks Using action rows inside modals is deprecated.
 	 */
-	components: APIActionRowComponent<APIComponentInModalActionRow>[] | APILabelComponent;
+	components: (APIActionRowComponent<APIComponentInModalActionRow> | APILabelComponent)[];
 }
