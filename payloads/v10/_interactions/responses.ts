@@ -126,6 +126,10 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
+export type APIModalInteractionResponseCallbackComponent =
+	| APIActionRowComponent<APIComponentInModalActionRow>
+	| APILabelComponent;
+
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal}
  */
@@ -143,5 +147,5 @@ export interface APIModalInteractionResponseCallbackData {
 	 *
 	 * @remarks Using action rows inside modals is deprecated.
 	 */
-	components: (APIActionRowComponent<APIComponentInModalActionRow> | APILabelComponent)[];
+	components: APIModalInteractionResponseCallbackComponent[];
 }
