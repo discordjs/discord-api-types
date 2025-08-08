@@ -1,5 +1,5 @@
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v10';
-import type { APIActionRowComponent, APIComponentInModalActionRow } from '../channel';
+import type { APIActionRowComponent, APIComponentInModalActionRow, APILabelComponent } from '../channel';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
@@ -126,6 +126,10 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 	choices?: APIApplicationCommandOptionChoice[];
 }
 
+export type APIModalInteractionResponseCallbackComponent =
+	| APIActionRowComponent<APIComponentInModalActionRow>
+	| APILabelComponent;
+
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal}
  */
@@ -140,6 +144,8 @@ export interface APIModalInteractionResponseCallbackData {
 	title: string;
 	/**
 	 * Between 1 and 5 (inclusive) components that make up the modal
+	 *
+	 * @remarks Using action rows inside modals is deprecated.
 	 */
-	components: APIActionRowComponent<APIComponentInModalActionRow>[];
+	components: APIModalInteractionResponseCallbackComponent[];
 }
