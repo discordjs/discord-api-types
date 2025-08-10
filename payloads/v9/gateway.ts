@@ -174,13 +174,27 @@ export interface GatewayActivity {
 	 */
 	application_id?: Snowflake;
 	/**
+	 * Controls which field is displayed in the user's status text in the member list
+	 *
+	 * @see {@link https://discord.com/developers/docs/events/gateway-events#activity-object-status-display-types}
+	 */
+	status_display_type?: StatusDisplayType | null;
+	/**
 	 * What the player is currently doing
 	 */
 	details?: string | null;
 	/**
+	 * URL that is linked when clicking on the details text
+	 */
+	details_url?: string | null;
+	/**
 	 * The user's current party status, or the text used for a custom status
 	 */
 	state?: string | null;
+	/**
+	 * URL that is linked when clicking on the state text
+	 */
+	state_url?: string | null;
 	/**
 	 * The emoji used for a custom status
 	 *
@@ -269,6 +283,26 @@ export enum ActivityType {
 }
 
 /**
+ * Controls which field is used in the user's status message
+ *
+ * @see {@link https://discord.com/developers/docs/events/gateway-events#activity-object-status-display-types}
+ */
+export enum StatusDisplayType {
+	/**
+	 * Playing \{name\}
+	 */
+	Name,
+	/**
+	 * Playing \{state\}
+	 */
+	State,
+	/**
+	 * Playing \{details\}
+	 */
+	Details,
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-timestamps}
  */
 export interface GatewayActivityTimestamps {
@@ -305,7 +339,7 @@ export interface GatewayActivityParty {
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets}
  */
 export type GatewayActivityAssets = Partial<
-	Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>
+	Record<'large_image' | 'large_text' | 'large_url' | 'small_image' | 'small_text' | 'small_url', string>
 >;
 
 /**
