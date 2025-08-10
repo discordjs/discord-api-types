@@ -339,7 +339,7 @@ export interface GatewayActivityParty {
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets}
  */
 export type GatewayActivityAssets = Partial<
-	Record<'large_image' | 'large_text' | 'small_image' | 'small_text', string>
+	Record<'large_image' | 'large_text' | 'large_url' | 'small_image' | 'small_text' | 'small_url', string>
 >;
 
 /**
