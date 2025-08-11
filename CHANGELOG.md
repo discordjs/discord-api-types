@@ -1,3 +1,12 @@
+## [0.38.19](https://github.com/discordjs/discord-api-types/compare/0.38.18...0.38.19) (2025-08-11)
+
+
+### Features
+
+* **GatewayActivity:** add url & status display type fields ([#1326](https://github.com/discordjs/discord-api-types/issues/1326)) ([5f9c1e1](https://github.com/discordjs/discord-api-types/commit/5f9c1e1b1c9f1a63d80718629fb2775b7bae62b3))
+
+
+
 ## [0.38.18](https://github.com/discordjs/discord-api-types/compare/0.38.17...0.38.18) (2025-07-31)
 
 
