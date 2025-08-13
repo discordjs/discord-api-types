@@ -77,9 +77,9 @@ export interface APIInvite {
 	 */
 	approximate_member_count?: number;
 	/**
-	 * The expiration date of this invite, returned from the `GET /invites/<code>` endpoint when `with_expiration` is `true`
+	 * The expiration date of this invite
 	 */
-	expires_at?: string | null;
+	expires_at: string | null;
 	/**
 	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
 	 *
