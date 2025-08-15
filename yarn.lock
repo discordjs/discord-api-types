@@ -4379,7 +4379,7 @@ __metadata:
     "@actions/glob": "npm:^0.5.0"
     "@aws-sdk/client-s3": "npm:^3.808.0"
     cloudflare: "npm:^4.2.0"
-    p-limit: "npm:^6.2.0"
+    p-limit: "npm:^7.0.0"
     p-queue: "npm:^8.1.0"
   languageName: unknown
   linkType: soft
@@ -8135,12 +8135,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-limit@npm:^6.2.0":
-  version: 6.2.0
-  resolution: "p-limit@npm:6.2.0"
+"p-limit@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "p-limit@npm:7.0.0"
   dependencies:
-    yocto-queue: "npm:^1.1.1"
-  checksum: 10c0/448bf55a1776ca1444594d53b3c731e68cdca00d44a6c8df06a2f6e506d5bbd540ebb57b05280f8c8bff992a630ed782a69612473f769a7473495d19e2270166
+    yocto-queue: "npm:^1.2.1"
+  checksum: 10c0/204ab6cd0a925f0608f1f607e3791baf81c414452fc86532eaaec54b71021718fd831c5231e3f7bd98467e62fe50d17b163cabbf528719195ef2cc70625aeab5
   languageName: node
   linkType: hard
 
@@ -10406,7 +10406,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yocto-queue@npm:^1.0.0, yocto-queue@npm:^1.1.1":
+"yocto-queue@npm:^1.0.0, yocto-queue@npm:^1.2.1":
   version: 1.2.1
   resolution: "yocto-queue@npm:1.2.1"
   checksum: 10c0/5762caa3d0b421f4bdb7a1926b2ae2189fc6e4a14469258f183600028eb16db3e9e0306f46e8ebf5a52ff4b81a881f22637afefbef5399d6ad440824e9b27f9f
