@@ -286,6 +286,7 @@ export enum GatewayDispatchEvents {
 	MessageReactionRemoveEmoji = 'MESSAGE_REACTION_REMOVE_EMOJI',
 	MessageUpdate = 'MESSAGE_UPDATE',
 	PresenceUpdate = 'PRESENCE_UPDATE',
+	RateLimited = 'RATE_LIMITED',
 	Ready = 'READY',
 	Resumed = 'RESUMED',
 	StageInstanceCreate = 'STAGE_INSTANCE_CREATE',
@@ -374,6 +375,7 @@ export type GatewayDispatchPayload =
 	| GatewayMessageReactionRemoveEmojiDispatch
 	| GatewayMessageUpdateDispatch
 	| GatewayPresenceUpdateDispatch
+	| GatewayRateLimitedDispatch
 	| GatewayReadyDispatch
 	| GatewayResumedDispatch
 	| GatewaySoundboardSoundsDispatch
@@ -2211,6 +2213,61 @@ export interface GatewayMessagePollVoteDispatchData {
 	 * ID of the answer
 	 */
 	answer_id: number;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/gateway-events#rate-limited}
+ */
+export type GatewayRateLimitedDispatch<
+	Opcode extends keyof GatewayOpcodeRateLimitMetadataMap = keyof GatewayOpcodeRateLimitMetadataMap,
+> = _DataPayload<GatewayDispatchEvents.RateLimited, GatewayRateLimitedDispatchData<Opcode>>;
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/gateway-events#rate-limited}
+ */
+export interface GatewayRateLimitedDispatchData<
+	Opcode extends keyof GatewayOpcodeRateLimitMetadataMap = keyof GatewayOpcodeRateLimitMetadataMap,
+> {
+	/**
+	 * {@link GatewayOpcodes | Gateway opcode} of the event that was rate limited
+	 */
+	opcode: Opcode;
+	/**
+	 * The number of seconds to wait before submitting another request
+	 */
+	retry_after: number;
+	/**
+	 * Metadata for the event that was rate limited
+	 */
+	meta: GatewayOpcodeRateLimitMetadataMap[Opcode];
+}
+
+/**
+ * Map of gateway opcodes to their rate limit metadata types
+ *
+ * @see {@link https://discord.com/developers/docs/events/gateway-events#rate-limited-rate-limit-metadata-for-opcode-structure}
+ */
+export interface GatewayOpcodeRateLimitMetadataMap {
+	[GatewayOpcodes.RequestGuildMembers]: GatewayRequestGuildMemberRateLimitMetadata;
+}
+
+/**
+ * Types of metadata that can be received in a {@link GatewayRateLimitedDispatchData.meta} field
+ */
+export type GatewayRateLimitedMetadata = GatewayOpcodeRateLimitMetadataMap[keyof GatewayOpcodeRateLimitMetadataMap];
+
+/**
+ * Rate limit metadata for the {@link GatewayOpcodes.RequestGuildMembers} opcode
+ */
+export interface GatewayRequestGuildMemberRateLimitMetadata {
+	/**
+	 * ID of the guild to get members for
+	 */
+	guild_id: Snowflake;
+	/**
+	 * Nonce to identify the {@link GatewayGuildMembersChunkDispatch} response
+	 */
+	nonce?: string;
 }
 
 // #endregion Dispatch Payloads
