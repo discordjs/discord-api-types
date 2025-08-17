@@ -2260,11 +2260,11 @@ export type GatewayRateLimitedMetadata = GatewayOpcodeRateLimitMetadataMap[keyof
  */
 export interface GatewayRequestGuildMemberRateLimitMetadata {
 	/**
-	 * ID of the guild to get members for
+	 * Id of the guild members were requested for
 	 */
 	guild_id: Snowflake;
 	/**
-	 * Nonce to identify the {@link GatewayGuildMembersChunkDispatch} response
+	 * Nonce used to identify the {@link GatewayGuildMembersChunkDispatch} response
 	 */
 	nonce?: string;
 }
