@@ -26,7 +26,6 @@ import type {
 	GatewayPresenceUpdate,
 	GatewayThreadListSync,
 	GatewayThreadMembersUpdate as RawGatewayThreadMembersUpdate,
-	APIVoiceState,
 	InviteTargetType,
 	PresenceUpdateStatus,
 	AutoModerationRuleTriggerType,
@@ -47,6 +46,7 @@ import type {
 	GatewayGuildMembersChunkPresence,
 	APIBaseMessage,
 	APIGuildMemberJoined,
+	APIVoiceStateMember,
 } from '../payloads/v9/index';
 import type { ReactionType } from '../rest/v9/index';
 import type { _Nullable } from '../utils/internals';
@@ -878,7 +878,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
 	 */
-	voice_states: APIBaseVoiceState[];
+	voice_states: GatewayVoiceStateUpdateDispatchData[];
 	/**
 	 * Users in the guild
 	 *
@@ -1133,7 +1133,7 @@ export type GatewayGuildMemberUpdateDispatch = _DataPayload<
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-member-update}
  */
 export interface GatewayGuildMemberUpdateDispatchData
-	extends _Nullable<APIGuildMemberJoined>,
+	extends APIGuildMemberJoined,
 		APIBaseGuildMember,
 		Partial<APIBaseVoiceGuildMember>,
 		Partial<APIFlaggedGuildMember>,
@@ -1619,7 +1619,7 @@ export interface APIGuildMemberNoUser
 	extends APIBaseGuildMember,
 		APIFlaggedGuildMember,
 		APIGuildMemberAvatar,
-		APIGuildMemberJoined,
+		NonNullable<APIGuildMemberJoined>,
 		APIBaseVoiceGuildMember {}
 
 export interface APIUserWithMember extends APIUser {
@@ -2097,7 +2097,7 @@ export type GatewayVoiceStateUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-state-update}
  */
-export type GatewayVoiceStateUpdateDispatchData = APIVoiceState;
+export interface GatewayVoiceStateUpdateDispatchData extends APIBaseVoiceState, APIVoiceStateMember {}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-server-update}

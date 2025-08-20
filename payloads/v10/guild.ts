@@ -573,6 +573,10 @@ export enum GuildFeature {
 	 * Guild is able to set gradient colors to roles
 	 */
 	EnhancedRoleColors = 'ENHANCED_ROLE_COLORS',
+	/**
+	 * Guild has access to guest invites
+	 */
+	GuestsEnabled = 'GUESTS_ENABLED',
 }
 
 /**
@@ -706,7 +710,7 @@ export interface APIGuildMemberJoined {
 	/**
 	 * When the user joined the guild
 	 */
-	joined_at: string;
+	joined_at: string | null;
 }
 
 /**
