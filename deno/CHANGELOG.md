@@ -1,3 +1,13 @@
+## [0.38.21](https://github.com/discordjs/discord-api-types/compare/0.38.20...0.38.21) (2025-08-21)
+
+
+### Features
+
+* guest invites ([#1290](https://github.com/discordjs/discord-api-types/issues/1290)) ([1a37ae3](https://github.com/discordjs/discord-api-types/commit/1a37ae3eea156108e1add538b1d42c5fc2ce08ee))
+* **PermissionFlagsBits:** add `PinMessages` ([#1340](https://github.com/discordjs/discord-api-types/issues/1340)) ([b05df17](https://github.com/discordjs/discord-api-types/commit/b05df17466ade5bf58578b8a230d9cb5ec9e1024))
+
+
+
 ## [0.38.20](https://github.com/discordjs/discord-api-types/compare/0.38.19...0.38.20) (2025-08-14)
 
 
