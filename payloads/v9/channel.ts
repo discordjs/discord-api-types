@@ -1704,9 +1704,6 @@ export enum ComponentType {
 	 * Container that visually groups a set of components
 	 */
 	Container,
-	/**
-	 * Labels for use in modals.
-	 */
 	Label,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
@@ -1925,22 +1922,13 @@ export interface APIBaseAutoPopulatedSelectMenuComponent<
  *
  * @see {@link https://discord.com/developers/docs/components/reference#string-select}
  */
-export type APIStringSelectComponent = APIStringSelectComponentInActionRow | APIStringSelectComponentInModal;
-
-export interface APIStringSelectComponentInActionRow extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
-	/**
-	 * Specified choices in a select menu; max 25
-	 */
-	options: APISelectMenuOption[];
-}
-
-export interface APIStringSelectComponentInModal extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
+export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<ComponentType.StringSelect> {
 	/**
 	 * Specified choices in a select menu; max 25
 	 */
 	options: APISelectMenuOption[];
 	/**
-	 * Whether this component is required
+	 * Whether this component is required in modals.
 	 */
 	required?: boolean;
 }
@@ -2047,7 +2035,7 @@ export type APISelectMenuComponentInMessage =
 	| APIChannelSelectComponent
 	| APIMentionableSelectComponent
 	| APIRoleSelectComponent
-	| APIStringSelectComponentInActionRow
+	| APIStringSelectComponent
 	| APIUserSelectComponent;
 
 /**
@@ -2076,7 +2064,16 @@ export interface APISelectMenuOption {
 	default?: boolean;
 }
 
-export interface APIBaseTextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
+/**
+ * Text input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
+ *
+ * Text inputs can only be used within modals.
+ *
+ * When defining a text input component, you can set attributes to customize the behavior and appearance of it. However, not all attributes will be returned in the text input interaction payload.
+ *
+ * @see {@link https://discord.com/developers/docs/components/reference#text-input}
+ */
+export interface APITextInputComponent extends APIBaseComponent<ComponentType.TextInput> {
 	/**
 	 * One of text input styles
 	 */
@@ -2086,7 +2083,9 @@ export interface APIBaseTextInputComponent extends APIBaseComponent<ComponentTyp
 	 */
 	custom_id: string;
 	/**
-	 * Text that appears on top of the text input field, max 45 characters
+	 * Text that appears on top of the text input field, max 45 characters.
+	 *
+	 * @remarks Cannot be used in a label component.
 	 */
 	label?: string;
 	/**
@@ -2106,29 +2105,10 @@ export interface APIBaseTextInputComponent extends APIBaseComponent<ComponentTyp
 	 */
 	max_length?: number;
 	/**
-	 * Whether or not this text input is required or not
+	 * Whether this text input is required
 	 */
 	required?: boolean;
 }
-
-/**
- * Text Input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
- *
- * Text Inputs can only be used within modals.
- *
- * When defining a text input component, you can set attributes to customize the behavior and appearance of it. However, not all attributes will be returned in the text input interaction payload.
- *
- * @see {@link https://discord.com/developers/docs/components/reference#text-input}
- */
-export type APITextInputComponent = APITextInputComponentInActionRow | APITextInputComponentInModal;
-
-/**
- * @deprecated
- */
-export type APITextInputComponentInActionRow = APIBaseTextInputComponent &
-	Required<Pick<APIBaseTextInputComponent, 'label'>>;
-
-export type APITextInputComponentInModal = APIBaseTextInputComponent;
 
 export enum UnfurledMediaItemLoadingState {
 	Unknown,
@@ -2343,7 +2323,7 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 export interface APILabelComponent extends APIBaseComponent<ComponentType.Label> {
 	label: string;
 	description?: string;
-	component: APIComponentInModalLabel;
+	component: APIComponentInLabel;
 }
 
 /**
@@ -2424,8 +2404,8 @@ export type APIMessageComponent =
 	| APIFileComponent
 	| APIMediaGalleryComponent
 	| APISectionComponent
-	| APISelectMenuComponentInMessage
 	| APISeparatorComponent
+	| APIStringSelectComponent
 	| APITextDisplayComponent
 	| APIThumbnailComponent;
 
@@ -2446,8 +2426,8 @@ export type APIMessageTopLevelComponent =
  */
 export type APIModalComponent =
 	| APIActionRowComponent<APIComponentInModalActionRow>
+	| APIComponentInLabel
 	| APIComponentInModalActionRow
-	| APIComponentInModalLabel
 	| APILabelComponent;
 
 /**
@@ -2458,23 +2438,23 @@ export type APIComponentInActionRow = APIComponentInMessageActionRow | APICompon
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponentInMessage;
+export type APIComponentInMessageActionRow = APIButtonComponent | APIStringSelectComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export type APIComponentInModal = APIComponentInModalActionRow | APIComponentInModalLabel;
+export type APIComponentInModal = APIComponentInLabel | APIComponentInModalActionRow;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  * @deprecated
  */
-export type APIComponentInModalActionRow = APITextInputComponentInActionRow;
+export type APIComponentInModalActionRow = APITextInputComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export type APIComponentInModalLabel = APIStringSelectComponentInModal | APITextInputComponentInModal;
+export type APIComponentInLabel = APIStringSelectComponent | APITextInputComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}
