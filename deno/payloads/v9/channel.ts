@@ -1704,7 +1704,7 @@ export enum ComponentType {
 	 * Container that visually groups a set of components
 	 */
 	Container,
-
+	Label,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
 	/**
@@ -1716,6 +1716,8 @@ export enum ComponentType {
 }
 
 /**
+ * An Action Row is a top-level layout component used in messages. Use in modals is deprecated.
+ *
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
 export interface APIActionRowComponent<T extends APIComponentInActionRow>
@@ -1916,7 +1918,7 @@ export interface APIBaseAutoPopulatedSelectMenuComponent<
  *
  * String Selects can be configured for both single-select and multi-select behavior. When a user finishes making their choice(s) your app receives an interaction.
  *
- * String Selects must be placed inside an Action Row and are only available in messages. An Action Row can contain only one select menu and cannot contain buttons if it has a select menu.
+ * An Action Row can contain only one select menu and cannot contain buttons if it has a select menu.
  *
  * @see {@link https://discord.com/developers/docs/components/reference#string-select}
  */
@@ -1925,6 +1927,10 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 	 * Specified choices in a select menu; max 25
 	 */
 	options: APISelectMenuOption[];
+	/**
+	 * Whether this component is required in modals.
+	 */
+	required?: boolean;
 }
 
 /**
@@ -2023,6 +2029,16 @@ export type APISelectMenuComponent =
 	| APIUserSelectComponent;
 
 /**
+ * @see {@link https://discord.com/developers/docs/components/reference}
+ */
+export type APISelectMenuComponentInMessage =
+	| APIChannelSelectComponent
+	| APIMentionableSelectComponent
+	| APIRoleSelectComponent
+	| APIStringSelectComponent
+	| APIUserSelectComponent;
+
+/**
  * @see {@link https://discord.com/developers/docs/components/reference#string-select-select-option-structure}
  */
 export interface APISelectMenuOption {
@@ -2049,9 +2065,9 @@ export interface APISelectMenuOption {
 }
 
 /**
- * Text Input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
+ * Text input is an interactive component that allows users to enter free-form text responses in modals. It supports both short, single-line inputs and longer, multi-line paragraph inputs.
  *
- * Text Inputs can only be used within modals and must be placed inside an Action Row.
+ * Text inputs can only be used within modals.
  *
  * When defining a text input component, you can set attributes to customize the behavior and appearance of it. However, not all attributes will be returned in the text input interaction payload.
  *
@@ -2067,9 +2083,11 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 */
 	custom_id: string;
 	/**
-	 * Text that appears on top of the text input field, max 45 characters
+	 * Text that appears on top of the text input field, max 45 characters.
+	 *
+	 * @remarks Cannot be used in a label component.
 	 */
-	label: string;
+	label?: string;
 	/**
 	 * Placeholder for the text input
 	 */
@@ -2087,7 +2105,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 */
 	max_length?: number;
 	/**
-	 * Whether or not this text input is required or not
+	 * Whether this text input is required
 	 */
 	required?: boolean;
 }
@@ -2302,6 +2320,12 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 	components: APIComponentInContainer[];
 }
 
+export interface APILabelComponent extends APIBaseComponent<ComponentType.Label> {
+	label: string;
+	description?: string;
+	component: APIComponentInLabel;
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#message-snapshot-object}
  */
@@ -2380,8 +2404,8 @@ export type APIMessageComponent =
 	| APIFileComponent
 	| APIMediaGalleryComponent
 	| APISectionComponent
-	| APISelectMenuComponent
 	| APISeparatorComponent
+	| APIStringSelectComponent
 	| APITextDisplayComponent
 	| APIThumbnailComponent;
 
@@ -2400,7 +2424,11 @@ export type APIMessageTopLevelComponent =
 /**
  * @see {@link https://discord.com/developers/docs/components/reference}
  */
-export type APIModalComponent = APIActionRowComponent<APIComponentInModalActionRow> | APIComponentInModalActionRow;
+export type APIModalComponent =
+	| APIActionRowComponent<APIComponentInModalActionRow>
+	| APIComponentInLabel
+	| APIComponentInModalActionRow
+	| APILabelComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
@@ -2410,12 +2438,23 @@ export type APIComponentInActionRow = APIComponentInMessageActionRow | APICompon
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
+export type APIComponentInMessageActionRow = APIButtonComponent | APIStringSelectComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
+export type APIComponentInModal = APIComponentInLabel | APIComponentInModalActionRow;
+
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
+ * @deprecated
+ */
 export type APIComponentInModalActionRow = APITextInputComponent;
+
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#action-row}
+ */
+export type APIComponentInLabel = APIStringSelectComponent | APITextInputComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}
