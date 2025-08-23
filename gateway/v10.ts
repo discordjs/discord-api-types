@@ -46,7 +46,6 @@ import type {
 	APIGuildMemberUser,
 	GatewayGuildMembersChunkPresence,
 	APIBaseMessage,
-	APIVoiceStateMember,
 	APIVoiceState,
 } from '../payloads/v10/index';
 import type { ReactionType } from '../rest/v10/index';
@@ -880,7 +879,7 @@ export interface GatewayGuildCreateDispatchData extends APIGuild {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
 	 */
-	voice_states: (APIBaseVoiceState & APIVoiceStateMember)[];
+	voice_states: APIBaseVoiceState[];
 	/**
 	 * Users in the guild
 	 *
