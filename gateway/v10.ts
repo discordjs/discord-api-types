@@ -47,6 +47,7 @@ import type {
 	GatewayGuildMembersChunkPresence,
 	APIBaseMessage,
 	APIVoiceStateMember,
+	APIVoiceState,
 } from '../payloads/v10/index';
 import type { ReactionType } from '../rest/v10/index';
 import type { _Nullable } from '../utils/internals';
@@ -2098,7 +2099,7 @@ export type GatewayVoiceStateUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-state-update}
  */
-export interface GatewayVoiceStateUpdateDispatchData extends APIBaseVoiceState, APIVoiceStateMember {}
+export type GatewayVoiceStateUpdateDispatchData = APIVoiceState;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-server-update}

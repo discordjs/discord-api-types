@@ -47,6 +47,7 @@ import type {
 	APIBaseMessage,
 	APIGuildMemberJoined,
 	APIVoiceStateMember,
+	APIVoiceState,
 } from '../payloads/v9/mod.ts';
 import type { ReactionType } from '../rest/v9/mod.ts';
 import type { _Nullable } from '../utils/internals.ts';
@@ -2097,7 +2098,7 @@ export type GatewayVoiceStateUpdateDispatch = _DataPayload<
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-state-update}
  */
-export interface GatewayVoiceStateUpdateDispatchData extends APIBaseVoiceState, APIVoiceStateMember {}
+export type GatewayVoiceStateUpdateDispatchData = APIVoiceState;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-server-update}
