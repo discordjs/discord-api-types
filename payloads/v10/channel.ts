@@ -2460,7 +2460,7 @@ export type APIComponentInModal = APIComponentInLabel | APIComponentInModalActio
 export type APIComponentInModalActionRow = APITextInputComponent;
 
 /**
- * @see {@link https://discord.com/developers/docs/components/reference#action-row}
+ * @see {@link https://discord.com/developers/docs/components/reference#label-label-child-components}
  */
 export type APIComponentInLabel = APIStringSelectComponent | APITextInputComponent;
 
