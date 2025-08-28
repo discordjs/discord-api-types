@@ -2321,11 +2321,11 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
  */
 export interface APILabelComponent extends APIBaseComponent<ComponentType.Label> {
 	/**
-	 * The label text
+	 * The label text; max 45 characters
 	 */
 	label: string;
 	/**
-	 * An optional description text for the label
+	 * An optional description text for the label; max 100 characters
 	 */
 	description?: string;
 	/**
