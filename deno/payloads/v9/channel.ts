@@ -2458,11 +2458,6 @@ export type APIComponentInActionRow = APIComponentInMessageActionRow | APICompon
 export type APIComponentInMessageActionRow = APIButtonComponent | APIStringSelectComponent;
 
 /**
- * @see {@link https://discord.com/developers/docs/components/reference#label-label-child-components}
- */
-export type APIComponentInModal = APIComponentInLabel | APIComponentInModalActionRow;
-
-/**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  * @deprecated
  */
