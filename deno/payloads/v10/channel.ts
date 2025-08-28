@@ -2315,7 +2315,7 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 }
 
 /**
- * A Label is a top-level layout component. Labels wrap modal components with text as a label and optional description. *
+ * A Label is a top-level layout component. Labels wrap modal components with text as a label and optional description.
  *
  * @see {@link https://discord.com/developers/docs/components/reference#label}
  */
