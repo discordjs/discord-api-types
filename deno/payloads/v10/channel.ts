@@ -1705,6 +1705,9 @@ export enum ComponentType {
 	 * Container that visually groups a set of components
 	 */
 	Container,
+	/**
+	 * Container associating a label and description with a component
+	 */
 	Label,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
