@@ -2421,8 +2421,8 @@ export type APIMessageComponent =
 	| APIFileComponent
 	| APIMediaGalleryComponent
 	| APISectionComponent
+	| APISelectMenuComponent
 	| APISeparatorComponent
-	| APIStringSelectComponent
 	| APITextDisplayComponent
 	| APIThumbnailComponent;
 
