@@ -2032,16 +2032,6 @@ export type APISelectMenuComponent =
 	| APIUserSelectComponent;
 
 /**
- * @see {@link https://discord.com/developers/docs/components/reference}
- */
-export type APISelectMenuComponentInMessage =
-	| APIChannelSelectComponent
-	| APIMentionableSelectComponent
-	| APIRoleSelectComponent
-	| APIStringSelectComponent
-	| APIUserSelectComponent;
-
-/**
  * @see {@link https://discord.com/developers/docs/components/reference#string-select-select-option-structure}
  */
 export interface APISelectMenuOption {
@@ -2455,7 +2445,7 @@ export type APIComponentInActionRow = APIComponentInMessageActionRow | APICompon
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export type APIComponentInMessageActionRow = APIButtonComponent | APIStringSelectComponent;
+export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}

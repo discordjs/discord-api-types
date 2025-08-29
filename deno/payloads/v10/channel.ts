@@ -2446,7 +2446,7 @@ export type APIComponentInActionRow = APIComponentInMessageActionRow | APICompon
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export type APIComponentInMessageActionRow = APIButtonComponent | APIStringSelectComponent;
+export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
