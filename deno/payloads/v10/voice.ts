@@ -26,6 +26,7 @@ export interface APIBaseVoiceState {
 	/**
 	 * The guild member this voice state is for
 	 *
+	 * @remarks The member field will have `joined_at` set to `null` if the member was invited as a guest.
 	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
 	 */
 	member?: APIGuildMember;
