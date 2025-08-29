@@ -1,3 +1,12 @@
+## [0.38.22](https://github.com/discordjs/discord-api-types/compare/0.38.21...0.38.22) (2025-08-29)
+
+
+### Features
+
+* Support select in modals ([#1321](https://github.com/discordjs/discord-api-types/issues/1321)) ([3659c59](https://github.com/discordjs/discord-api-types/commit/3659c59ce7b3ee8c0281bf28499e733e1bc0752b))
+
+
+
 ## [0.38.21](https://github.com/discordjs/discord-api-types/compare/0.38.20...0.38.21) (2025-08-21)
 
 
