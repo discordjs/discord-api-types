@@ -1914,6 +1914,12 @@ export interface APIBaseAutoPopulatedSelectMenuComponent<
 	 * List of default values for auto-populated select menu components
 	 */
 	default_values?: APISelectMenuDefaultValue<D>[];
+	/**
+	 * Whether the component is required to answer in a modal.
+	 *
+	 * @defaultValue `true`
+	 */
+	required?: boolean;
 }
 
 /**
@@ -1931,7 +1937,9 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 	 */
 	options: APISelectMenuOption[];
 	/**
-	 * Whether this component is required in modals.
+	 * Whether the string select is required to answer in a modal.
+	 *
+	 * @defaultValue `true`
 	 */
 	required?: boolean;
 }
@@ -2456,7 +2464,7 @@ export type APIComponentInModalActionRow = APITextInputComponent;
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#label-label-child-components}
  */
-export type APIComponentInLabel = APIStringSelectComponent | APITextInputComponent;
+export type APIComponentInLabel = APISelectMenuComponent | APITextInputComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}

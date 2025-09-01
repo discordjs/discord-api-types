@@ -3,6 +3,7 @@ import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
 	APIGuildInteractionWrapper,
+	APIInteractionDataResolved,
 	ComponentType,
 	InteractionType,
 } from '../mod.ts';
@@ -20,7 +21,30 @@ export interface APIModalSubmitStringSelectComponent extends APIBaseModalSubmitC
 	values: string[];
 }
 
-export type ModalSubmitComponent = APIModalSubmitStringSelectComponent | APIModalSubmitTextInputComponent;
+export interface APIModalSubmitUserSelectComponent extends APIBaseModalSubmitComponent<ComponentType.UserSelect> {
+	values: string[];
+}
+
+export interface APIModalSubmitRoleSelectComponent extends APIBaseModalSubmitComponent<ComponentType.RoleSelect> {
+	values: string[];
+}
+
+export interface APIModalSubmitMentionableSelectComponent
+	extends APIBaseModalSubmitComponent<ComponentType.MentionableSelect> {
+	values: string[];
+}
+
+export interface APIModalSubmitChannelSelectComponent extends APIBaseModalSubmitComponent<ComponentType.ChannelSelect> {
+	values: string[];
+}
+
+export type ModalSubmitComponent =
+	| APIModalSubmitChannelSelectComponent
+	| APIModalSubmitMentionableSelectComponent
+	| APIModalSubmitRoleSelectComponent
+	| APIModalSubmitStringSelectComponent
+	| APIModalSubmitTextInputComponent
+	| APIModalSubmitUserSelectComponent;
 
 export interface ModalSubmitActionRowComponent extends APIBaseComponent<ComponentType.ActionRow> {
 	components: APIModalSubmitTextInputComponent[];
@@ -36,6 +60,12 @@ export type APIModalSubmissionComponent = ModalSubmitActionRowComponent | ModalS
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure}
  */
 export interface APIModalSubmission {
+	/**
+	 * Data for users, members, channels, and roles in the modal's auto-populated select menus
+	 *
+	 * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure}
+	 */
+	resolved?: APIInteractionDataResolved;
 	/**
 	 * A developer-defined identifier for the component, max 100 characters
 	 */
