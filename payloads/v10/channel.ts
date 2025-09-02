@@ -1898,6 +1898,12 @@ export interface APIBaseSelectMenuComponent<
 	 * @defaultValue `false`
 	 */
 	disabled?: boolean;
+	/**
+	 * Whether the component is required to answer in a modal.
+	 *
+	 * @defaultValue `true`
+	 */
+	required?: boolean;
 }
 
 /**
@@ -1915,12 +1921,6 @@ export interface APIBaseAutoPopulatedSelectMenuComponent<
 	 * List of default values for auto-populated select menu components
 	 */
 	default_values?: APISelectMenuDefaultValue<D>[];
-	/**
-	 * Whether the component is required to answer in a modal.
-	 *
-	 * @defaultValue `true`
-	 */
-	required?: boolean;
 }
 
 /**
@@ -1937,12 +1937,6 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 	 * Specified choices in a select menu; max 25
 	 */
 	options: APISelectMenuOption[];
-	/**
-	 * Whether the string select is required to answer in a modal.
-	 *
-	 * @defaultValue `true`
-	 */
-	required?: boolean;
 }
 
 /**
