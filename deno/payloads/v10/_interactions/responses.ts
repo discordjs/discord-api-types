@@ -4,7 +4,7 @@ import type {
 	APIComponentInModalActionRow,
 	APILabelComponent,
 	APITextDisplayComponent,
-} from '../channel.ts';
+} from '../message.ts';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**

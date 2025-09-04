@@ -1,14 +1,6 @@
 import type { Permissions, Snowflake } from '../../../globals';
 import type { APIRole, ApplicationIntegrationType, InteractionContextType, Locale } from '../../../v9';
-import type {
-	APIAttachment,
-	APIChannel,
-	APIMessage,
-	APIPartialChannel,
-	APIThreadChannel,
-	ChannelType,
-	ThreadChannelType,
-} from '../channel';
+import type { APIChannel, APIPartialChannel, APIThreadChannel, ChannelType, ThreadChannelType } from '../channel';
 import type {
 	APIBaseGuildMember,
 	APIFlaggedGuildMember,
@@ -17,6 +9,7 @@ import type {
 	APIGuildMemberJoined,
 	APIPartialInteractionGuild,
 } from '../guild';
+import type { APIAttachment, APIMessage } from '../message';
 import type { APIEntitlement } from '../monetization';
 import type { APIUser } from '../user';
 import type { InteractionType } from './responses';

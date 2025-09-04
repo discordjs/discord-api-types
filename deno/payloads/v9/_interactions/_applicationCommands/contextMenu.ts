@@ -1,5 +1,5 @@
 import type { Snowflake } from '../../../../globals.ts';
-import type { APIMessage } from '../../channel.ts';
+import type { APIMessage } from '../../message.ts';
 import type { APIApplicationCommandInteractionWrapper, ApplicationCommandType } from '../applicationCommands.ts';
 import type { APIDMInteractionWrapper, APIGuildInteractionWrapper, APIUserInteractionDataResolved } from '../base.ts';
 import type { APIBaseApplicationCommandInteractionData } from './internals.ts';

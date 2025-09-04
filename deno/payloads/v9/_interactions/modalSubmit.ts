@@ -1,4 +1,3 @@
-import type { APIBaseComponent } from '../channel.ts';
 import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
@@ -7,6 +6,7 @@ import type {
 	ComponentType,
 	InteractionType,
 } from '../mod.ts';
+import type { APIBaseComponent } from '../message.ts';
 
 export interface APIBaseModalSubmitComponent<T extends ComponentType> extends APIBaseComponent<T> {
 	type: T;
