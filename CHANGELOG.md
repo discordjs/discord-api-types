@@ -1,3 +1,12 @@
+## [0.38.23](https://github.com/discordjs/discord-api-types/compare/0.38.22...0.38.23) (2025-09-04)
+
+
+### Features
+
+* add 400001 ([#1352](https://github.com/discordjs/discord-api-types/issues/1352)) ([ae09e2b](https://github.com/discordjs/discord-api-types/commit/ae09e2b9e47460b07907fc3b6e317bc1ae426663))
+
+
+
 ## [0.38.22](https://github.com/discordjs/discord-api-types/compare/0.38.21...0.38.22) (2025-08-29)
 
 
