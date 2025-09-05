@@ -50,11 +50,14 @@ export interface ModalSubmitActionRowComponent extends APIBaseComponent<Componen
 	components: APIModalSubmitTextInputComponent[];
 }
 
+
+export interface ModalSubmitTextDisplayComponent extends APIBaseComponent<ComponentType.TextDisplay> {}
+
 export interface ModalSubmitLabelComponent extends APIBaseComponent<ComponentType.Label> {
 	component: ModalSubmitComponent;
 }
 
-export type APIModalSubmissionComponent = ModalSubmitActionRowComponent | ModalSubmitLabelComponent;
+export type APIModalSubmissionComponent = ModalSubmitActionRowComponent | ModalSubmitLabelComponent | ModalSubmitTextDisplayComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure}
