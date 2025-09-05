@@ -1897,6 +1897,12 @@ export interface APIBaseSelectMenuComponent<
 	 * @defaultValue `false`
 	 */
 	disabled?: boolean;
+	/**
+	 * Whether the component is required to answer in a modal.
+	 *
+	 * @defaultValue `true`
+	 */
+	required?: boolean;
 }
 
 /**
@@ -1930,10 +1936,6 @@ export interface APIStringSelectComponent extends APIBaseSelectMenuComponent<Com
 	 * Specified choices in a select menu; max 25
 	 */
 	options: APISelectMenuOption[];
-	/**
-	 * Whether this component is required in modals.
-	 */
-	required?: boolean;
 }
 
 /**
@@ -2456,7 +2458,7 @@ export type APIComponentInModalActionRow = APITextInputComponent;
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#label-label-child-components}
  */
-export type APIComponentInLabel = APIStringSelectComponent | APITextInputComponent;
+export type APIComponentInLabel = APISelectMenuComponent | APITextInputComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}

@@ -1,5 +1,10 @@
 import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v10.ts';
-import type { APIActionRowComponent, APIComponentInModalActionRow, APILabelComponent } from '../channel.ts';
+import type {
+	APIActionRowComponent,
+	APIComponentInModalActionRow,
+	APILabelComponent,
+	APITextDisplayComponent,
+} from '../channel.ts';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands.ts';
 
 /**
@@ -128,7 +133,8 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 
 export type APIModalInteractionResponseCallbackComponent =
 	| APIActionRowComponent<APIComponentInModalActionRow>
-	| APILabelComponent;
+	| APILabelComponent
+	| APITextDisplayComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal}
