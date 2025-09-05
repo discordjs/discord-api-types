@@ -1,4 +1,3 @@
-import type { APIBaseComponent } from '../channel';
 import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
@@ -7,6 +6,7 @@ import type {
 	ComponentType,
 	InteractionType,
 } from '../index';
+import type { APIBaseComponent } from '../message';
 
 export interface APIBaseModalSubmitComponent<T extends ComponentType> extends APIBaseComponent<T> {
 	type: T;
