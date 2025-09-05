@@ -313,6 +313,8 @@ export enum RESTJSONErrorCodes {
 	CannotEnableOnboardingRequirementsAreNotMet = 350_000,
 	CannotUpdateOnboardingWhileBelowRequirements,
 
+	AccessToFileUploadsHasBeenLimitedForThisGuild = 400_001,
+
 	FailedToBanUsers = 500_000,
 
 	PollVotingBlocked = 520_000,
