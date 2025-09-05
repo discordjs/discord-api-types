@@ -2225,6 +2225,12 @@ export type GatewayRateLimitedDispatch<
 /**
  * @see {@link https://discord.com/developers/docs/events/gateway-events#rate-limited}
  */
+export type GatewayRateLimitedRequestGuildMembersDispatch =
+	GatewayRateLimitedDispatch<GatewayOpcodes.RequestGuildMembers>;
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/gateway-events#rate-limited}
+ */
 export interface GatewayRateLimitedDispatchData<
 	Opcode extends keyof GatewayOpcodeRateLimitMetadataMap = keyof GatewayOpcodeRateLimitMetadataMap,
 > {
@@ -2241,6 +2247,12 @@ export interface GatewayRateLimitedDispatchData<
 	 */
 	meta: GatewayOpcodeRateLimitMetadataMap[Opcode];
 }
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/gateway-events#rate-limited}
+ */
+export type GatewayRateLimitedRequestGuildMembersDispatchData =
+	GatewayRateLimitedDispatchData<GatewayOpcodes.RequestGuildMembers>;
 
 /**
  * Map of gateway opcodes to their rate limit metadata types
