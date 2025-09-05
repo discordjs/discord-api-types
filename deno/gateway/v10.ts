@@ -45,8 +45,8 @@ import type {
 	APIGuildMemberAvatar,
 	APIGuildMemberUser,
 	GatewayGuildMembersChunkPresence,
-	APIVoiceStateMember,
 	APIBaseMessage,
+	APIVoiceStateMember,
 } from '../payloads/v10/mod.ts';
 import type { ReactionType } from '../rest/v10/mod.ts';
 import type { _Nullable } from '../utils/internals.ts';
