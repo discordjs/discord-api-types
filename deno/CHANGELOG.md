@@ -1,3 +1,19 @@
+## [0.38.23](https://github.com/discordjs/discord-api-types/compare/0.38.22...0.38.23) (2025-09-05)
+
+
+### Bug Fixes
+
+* add missing text display in modal submission ([#1362](https://github.com/discordjs/discord-api-types/issues/1362)) ([464a9c8](https://github.com/discordjs/discord-api-types/commit/464a9c8cbf613428c3da6b3a9ebd0da4bd827c2b))
+* **RESTPatchAPIWebhookWithTokenMessageJSONBody:** add `flags` ([#1354](https://github.com/discordjs/discord-api-types/issues/1354)) ([af3907b](https://github.com/discordjs/discord-api-types/commit/af3907b10690c224dcd3106127fd67491262cc6c))
+
+
+### Features
+
+* add 400001 ([#1352](https://github.com/discordjs/discord-api-types/issues/1352)) ([ae09e2b](https://github.com/discordjs/discord-api-types/commit/ae09e2b9e47460b07907fc3b6e317bc1ae426663))
+* More label components and text display in modals ([#1351](https://github.com/discordjs/discord-api-types/issues/1351)) ([fa05a75](https://github.com/discordjs/discord-api-types/commit/fa05a7503f59017efc16ba2ca6cfb3fc99d331a3))
+
+
+
 ## [0.38.22](https://github.com/discordjs/discord-api-types/compare/0.38.21...0.38.22) (2025-08-29)
 
 
