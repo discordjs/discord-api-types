@@ -263,7 +263,9 @@ export interface RESTGetAPIWebhookWithTokenMessageQuery {
  * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message}
  */
 export type RESTPatchAPIWebhookWithTokenMessageJSONBody = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
-	_Nullable<Pick<RESTPostAPIWebhookWithTokenJSONBody, 'allowed_mentions' | 'components' | 'content' | 'embeds'>>
+	_Nullable<
+		Pick<RESTPostAPIWebhookWithTokenJSONBody, 'allowed_mentions' | 'components' | 'content' | 'embeds' | 'flags'>
+	>
 > & {
 	/**
 	 * Attached files to keep
