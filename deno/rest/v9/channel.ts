@@ -25,6 +25,9 @@ import type {
 	APIAttachment,
 	APIMessageTopLevelComponent,
 	APIMessagePin,
+	APIAnnouncementThreadChannel,
+	APIPrivateThreadChannel,
+	APIPublicThreadChannel,
 } from '../../payloads/v9/mod.ts';
 import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _StrictPartial } from '../../utils/internals.ts';
 import type { RESTAPIPoll } from './poll.ts';
@@ -780,7 +783,10 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-without-message}
  */
-export type RESTPostAPIChannelThreadsResult = APIChannel;
+export type RESTPostAPIChannelThreadsResult =
+	| APIAnnouncementThreadChannel
+	| APIPrivateThreadChannel
+	| APIPublicThreadChannel;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#join-thread}
