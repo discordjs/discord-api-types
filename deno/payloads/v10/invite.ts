@@ -80,6 +80,13 @@ export interface APIInvite {
 	 */
 	expires_at: string | null;
 	/**
+	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
+	 *
+	 * @deprecated This has been removed from the documentation.
+	 * {@link https://github.com/discord/discord-api-docs/pull/7779 | discord-api-docs#7779}
+	 */
+	stage_instance?: never;
+	/**
 	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */
 	guild_scheduled_event?: APIGuildScheduledEvent;
