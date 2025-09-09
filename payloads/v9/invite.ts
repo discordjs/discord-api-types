@@ -6,7 +6,6 @@ import type { APIApplication } from './application';
 import type { APIInviteChannel } from './channel';
 import type { APIGuild } from './guild';
 import type { APIGuildScheduledEvent } from './guildScheduledEvent';
-import type { APIInviteStageInstance } from './stageInstance';
 import type { APIUser } from './user';
 
 export type APIInviteGuild = Pick<
@@ -83,10 +82,10 @@ export interface APIInvite {
 	/**
 	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
 	 *
-	 * @deprecated
-	 * {@link https://github.com/discord/discord-api-docs/pull/4479 | discord-api-docs#4479}
+	 * @deprecated This has been removed from the documentation.
+	 * {@link https://github.com/discord/discord-api-docs/pull/7779 | discord-api-docs#7779}
 	 */
-	stage_instance?: APIInviteStageInstance;
+	stage_instance?: never;
 	/**
 	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */
