@@ -1559,6 +1559,10 @@ export interface GatewayInviteCreateDispatchData {
 	 * How many times the invite has been used (always will be `0`)
 	 */
 	uses: 0;
+	/**
+	 * The expiration date of this invite.
+	 */
+	expires_at: string | null;
 }
 
 /**

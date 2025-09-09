@@ -6,7 +6,6 @@ import type { APIApplication } from './application.ts';
 import type { APIInviteChannel } from './channel.ts';
 import type { APIGuild } from './guild.ts';
 import type { APIGuildScheduledEvent } from './guildScheduledEvent.ts';
-import type { APIInviteStageInstance } from './stageInstance.ts';
 import type { APIUser } from './user.ts';
 
 export type APIInviteGuild = Pick<
@@ -80,13 +79,6 @@ export interface APIInvite {
 	 * The expiration date of this invite
 	 */
 	expires_at: string | null;
-	/**
-	 * The stage instance data if there is a public stage instance in the stage channel this invite is for
-	 *
-	 * @deprecated
-	 * {@link https://github.com/discord/discord-api-docs/pull/4479 | discord-api-docs#4479}
-	 */
-	stage_instance?: APIInviteStageInstance;
 	/**
 	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */
