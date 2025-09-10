@@ -1,3 +1,14 @@
+## [0.38.24](https://github.com/discordjs/discord-api-types/compare/0.38.23...0.38.24) (2025-09-10)
+
+
+### Features
+
+* **RESTPatchAPICurrentGuildMemberJSONBody:** Add `banner`, `avatar`, and `bio` ([#1356](https://github.com/discordjs/discord-api-types/issues/1356)) ([35a4084](https://github.com/discordjs/discord-api-types/commit/35a40846473eebfe5245656ee5437347ff2fa88f))
+* **RESTPostAPIChannelThreadsResult:** narrow response ([#1364](https://github.com/discordjs/discord-api-types/issues/1364)) ([8eb66a1](https://github.com/discordjs/discord-api-types/commit/8eb66a1512e5b8c57ba7e4a85a18380664ac6219))
+* Update invite types ([#1365](https://github.com/discordjs/discord-api-types/issues/1365)) ([35867c1](https://github.com/discordjs/discord-api-types/commit/35867c19e6942e82ac6b2bcd93f61853b0b41666))
+
+
+
 ## [0.38.23](https://github.com/discordjs/discord-api-types/compare/0.38.22...0.38.23) (2025-09-05)
 
 
