@@ -555,7 +555,7 @@ export interface RESTPatchAPICurrentGuildMemberJSONBody {
 	 */
 	banner?: string | null | undefined;
 	/**
-	 * Data URL base64 encoded avatar image
+	 * Data URI base64 encoded avatar image
 	 */
 	avatar?: string | null | undefined;
 	/**
