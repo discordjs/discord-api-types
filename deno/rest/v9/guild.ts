@@ -550,6 +550,18 @@ export interface RESTPatchAPICurrentGuildMemberJSONBody {
 	 * Requires `CHANGE_NICKNAME` permission
 	 */
 	nick?: string | null | undefined;
+	/**
+	 * Data URI base64 encoded banner image
+	 */
+	banner?: string | null | undefined;
+	/**
+	 * Data URI base64 encoded avatar image
+	 */
+	avatar?: string | null | undefined;
+	/**
+	 * Guild member bio
+	 */
+	bio?: string | null | undefined;
 }
 
 /**
