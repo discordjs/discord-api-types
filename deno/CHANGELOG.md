@@ -1,3 +1,12 @@
+## [0.38.25](https://github.com/discordjs/discord-api-types/compare/0.38.24...0.38.25) (2025-09-11)
+
+
+### Features
+
+* add RateLimited gateway event ([#1334](https://github.com/discordjs/discord-api-types/issues/1334)) ([14963d6](https://github.com/discordjs/discord-api-types/commit/14963d61d488af2be8d3655651fd0677ad4c46ed))
+
+
+
 ## [0.38.24](https://github.com/discordjs/discord-api-types/compare/0.38.23...0.38.24) (2025-09-10)
 
 
