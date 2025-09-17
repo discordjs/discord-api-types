@@ -9,7 +9,6 @@ import type {
 import type { APIBaseComponent } from '../message.ts';
 
 export interface APIBaseModalSubmitComponent<T extends ComponentType> extends APIBaseComponent<T> {
-	type: T;
 	custom_id: string;
 }
 
@@ -38,8 +37,13 @@ export interface APIModalSubmitChannelSelectComponent extends APIBaseModalSubmit
 	values: string[];
 }
 
+export interface APIModalSubmitFileUploadComponent extends APIBaseModalSubmitComponent<ComponentType.FileUpload> {
+	values: string[];
+}
+
 export type ModalSubmitComponent =
 	| APIModalSubmitChannelSelectComponent
+	| APIModalSubmitFileUploadComponent
 	| APIModalSubmitMentionableSelectComponent
 	| APIModalSubmitRoleSelectComponent
 	| APIModalSubmitStringSelectComponent
