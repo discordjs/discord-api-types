@@ -1,3 +1,12 @@
+## [0.38.26](https://github.com/discordjs/discord-api-types/compare/0.38.25...0.38.26) (2025-09-18)
+
+
+### Bug Fixes
+
+* add guild_id back to GatewayVoiceStateUpdateDispatchData ([#1346](https://github.com/discordjs/discord-api-types/issues/1346)) ([e52ac85](https://github.com/discordjs/discord-api-types/commit/e52ac85e9d60b4032bb21cd958cf032cad50643f))
+
+
+
 ## [0.38.25](https://github.com/discordjs/discord-api-types/compare/0.38.24...0.38.25) (2025-09-15)
 
 
