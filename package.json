@@ -157,7 +157,7 @@
 		"prettier": "^3.5.3",
 		"pretty-quick": "^4.1.1",
 		"rimraf": "^6.0.1",
-		"ts-morph": "^26.0.0",
+		"ts-morph": "^27.0.0",
 		"tsutils": "^3.21.0",
 		"tsx": "^4.20.3",
 		"typescript": "^5.8.3",
