@@ -127,10 +127,6 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	permission_overwrites?: APIOverwrite[];
 	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
-	 *
-	 * OR
-	 *
-	 * ID of the parent channel for a thread
 	 */
 	parent_id?: Snowflake | null;
 	/**
@@ -163,7 +159,9 @@ export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelT
 
 export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
-export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.GuildCategory>, APISortableChannel {}
+export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.GuildCategory>, APISortableChannel {
+	parent_id?: null;
+}
 
 export interface APIVoiceChannelBase<T extends ChannelType>
 	extends APIGuildChannel<T>,
@@ -277,6 +275,10 @@ export interface APIThreadChannel<Type extends ThreadChannelType = ThreadChannel
 	 * The IDs of the set of tags that have been applied to a thread in a thread-only channel
 	 */
 	applied_tags: Snowflake[];
+  /**
+	 * ID of the parent channel for the thread
+	 */
+	parent_id?: Snowflake;
 }
 
 export type APIPublicThreadChannel = APIThreadChannel<ChannelType.PublicThread>;
