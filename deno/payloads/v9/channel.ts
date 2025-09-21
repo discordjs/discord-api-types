@@ -125,7 +125,7 @@ export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T
 	 * @see {@link https://discord.com/developers/docs/resources/channel#overwrite-object}
 	 */
 	permission_overwrites?: APIOverwrite[];
-  /**
+	/**
 	 * ID of the parent category for a channel (each parent category can contain up to 50 channels)
 	 */
 	parent_id?: Snowflake | null;
@@ -160,7 +160,7 @@ export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelT
 export type APITextChannel = APIGuildTextChannel<ChannelType.GuildText>;
 export type APINewsChannel = APIGuildTextChannel<ChannelType.GuildAnnouncement>;
 export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.GuildCategory>, APISortableChannel {
-  parent_id?: null;
+	parent_id?: null;
 }
 
 export interface APIVoiceChannelBase<T extends ChannelType>
@@ -271,7 +271,7 @@ export interface APIThreadChannel<Type extends ThreadChannelType = ThreadChannel
 	 * Similar to `message_count` on message creation, but won't decrement when a message is deleted
 	 */
 	total_message_sent?: number;
-  /**
+	/**
 	 * ID of the parent channel for the thread
 	 */
 	parent_id?: Snowflake;
@@ -397,7 +397,7 @@ export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | Channel
 	 * The default sort order type used to order posts in a thread-only channel
 	 */
 	default_sort_order: SortOrderType | null;
-  /**
+	/**
 	 * The IDs of the set of tags that have been applied to a thread in a thread-only channel
 	 */
 	applied_tags: Snowflake[];
