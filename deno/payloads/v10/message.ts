@@ -1027,6 +1027,7 @@ export enum ComponentType {
 	 * Container associating a label and description with a component
 	 */
 	Label,
+	FileUpload,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
 	/**
@@ -1654,6 +1655,19 @@ export interface APILabelComponent extends APIBaseComponent<ComponentType.Label>
 	component: APIComponentInLabel;
 }
 
+export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.FileUpload> {
+	custom_id: string;
+	/**
+	 * 0-10
+	 */
+	min_values?: number;
+	/**
+	 * 1-10
+	 */
+	max_values?: number;
+	required?: boolean;
+}
+
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#message-snapshot-object}
  */
@@ -1734,7 +1748,7 @@ export type APIComponentInModalActionRow = APITextInputComponent;
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#label-label-child-components}
  */
-export type APIComponentInLabel = APISelectMenuComponent | APITextInputComponent;
+export type APIComponentInLabel = APIFileUploadComponent | APISelectMenuComponent | APITextInputComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}
