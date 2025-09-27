@@ -28,12 +28,12 @@
 		"postinstall": "patch-package"
 	},
 	"dependencies": {
-		"@docusaurus/core": "^3.6.3",
-		"@docusaurus/plugin-client-redirects": "^3.6.3",
-		"@docusaurus/plugin-pwa": "^3.6.3",
-		"@docusaurus/preset-classic": "^3.6.3",
+		"@docusaurus/core": "^3.9.0",
+		"@docusaurus/plugin-client-redirects": "^3.9.0",
+		"@docusaurus/plugin-pwa": "^3.9.0",
+		"@docusaurus/preset-classic": "^3.9.0",
 		"@docusaurus/theme-common": "^3.6.3",
-		"@docusaurus/theme-search-algolia": "^3.6.3",
+		"@docusaurus/theme-search-algolia": "^3.9.0",
 		"@heroicons/react": "^2.2.0",
 		"@mdx-js/react": "^3.1.0",
 		"@sapphire/docusaurus-plugin-npm2yarn2pnpm": "^2.0.2",
