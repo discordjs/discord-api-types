@@ -1050,11 +1050,11 @@ export interface RESTPutAPIGuildIncidentActionsJSONBody {
 	/**
 	 * When invites will be enabled again
 	 */
-	invites_disabled_until?: string | undefined;
+	invites_disabled_until?: string | null | undefined;
 	/**
 	 * When direct messages will be enabled again
 	 */
-	dms_disabled_until?: string | undefined;
+	dms_disabled_until?: string | null | undefined;
 }
 
 export type RESTPutAPIGuildIncidentActionsResult = APIIncidentsData;
