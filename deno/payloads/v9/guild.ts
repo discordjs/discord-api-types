@@ -1222,6 +1222,9 @@ export enum GuildOnboardingPromptType {
 	Dropdown,
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/resources/guild#incidents-data-object}
+ */
 export interface APIIncidentsData {
 	/**
 	 * When invites get enabled again
