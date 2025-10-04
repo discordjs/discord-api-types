@@ -27,6 +27,7 @@ import type {
 	APIGuildOnboardingPrompt,
 	APIGuildOnboardingPromptOption,
 	APIRoleColors,
+	APIIncidentsData,
 } from '../../payloads/v9/index';
 import type {
 	_AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
@@ -1055,3 +1056,5 @@ export interface RESTPutAPIGuildIncidentActionsJSONBody {
 	 */
 	dms_disabled_until?: string | undefined;
 }
+
+export type RESTPutAPIGuildIncidentActionsResult = APIIncidentsData;
