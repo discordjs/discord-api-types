@@ -542,6 +542,13 @@ export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
 }
 
 /**
+ * @see {@link https://discord.com/developers/docs/resources/guild#modify-current-user-nick}
+ * @deprecated Use {@link https://discord.com/developers/docs/resources/guild#modify-current-member | Modify Current Member} instead.
+ */
+export type RESTPatchAPICurrentGuildMemberNicknameResult =
+	_StrictRequired<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/guild#modify-current-member}
  */
 export interface RESTPatchAPICurrentGuildMemberJSONBody {
@@ -566,11 +573,9 @@ export interface RESTPatchAPICurrentGuildMemberJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#modify-current-user-nick}
- * @deprecated Use {@link https://discord.com/developers/docs/resources/guild#modify-current-member | Modify Current Member} instead.
+ * @see {@link https://discord.com/developers/docs/resources/guild#modify-current-member}
  */
-export type RESTPatchAPICurrentGuildMemberNicknameResult =
-	_StrictRequired<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
+export type RESTPatchAPICurrentGuildMemberResult = APIGuildMember;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#add-guild-member-role}
