@@ -1,3 +1,12 @@
+## [0.38.28](https://github.com/discordjs/discord-api-types/compare/0.38.27...0.38.28) (2025-10-04)
+
+
+### Bug Fixes
+
+* move `applied_tags` back to thread channels ([#1391](https://github.com/discordjs/discord-api-types/issues/1391)) ([00c4694](https://github.com/discordjs/discord-api-types/commit/00c46946a02ace495031c6d257b0820c4a0652cc))
+
+
+
 ## [0.38.27](https://github.com/discordjs/discord-api-types/compare/0.38.26...0.38.27) (2025-10-04)
 
 
