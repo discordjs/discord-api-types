@@ -272,6 +272,10 @@ export interface APIThreadChannel<Type extends ThreadChannelType = ThreadChannel
 	 */
 	total_message_sent?: number;
 	/**
+	 * The IDs of the set of tags that have been applied to a thread in a thread-only channel
+	 */
+	applied_tags?: Snowflake[];
+	/**
 	 * ID of the parent channel for the thread
 	 */
 	parent_id?: Snowflake;
@@ -397,10 +401,6 @@ export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | Channel
 	 * The default sort order type used to order posts in a thread-only channel
 	 */
 	default_sort_order: SortOrderType | null;
-	/**
-	 * The IDs of the set of tags that have been applied to a thread in a thread-only channel
-	 */
-	applied_tags: Snowflake[];
 }
 
 export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.GuildForum> {
