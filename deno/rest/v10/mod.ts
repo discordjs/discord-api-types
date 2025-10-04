@@ -808,6 +808,8 @@ export const Routes = {
 	 * Route for:
 	 * - GET   `/guilds/{guild.id}/member-verification`
 	 * - PATCH `/guilds/{guild.id}/member-verification`
+	 *
+	 * @unstable https://github.com/discord/discord-api-docs/pull/2547
 	 */
 	guildMemberVerification(guildId: Snowflake) {
 		return `/guilds/${guildId}/member-verification` as const;

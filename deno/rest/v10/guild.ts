@@ -931,6 +931,9 @@ export type RESTGetAPIGuildWidgetImageResult = ArrayBuffer;
 
 export type RESTGetAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
+/**
+ * @unstable https://github.com/discord/discord-api-docs/pull/2547
+ */
 export interface RESTPatchAPIGuildMemberVerificationJSONBody {
 	/**
 	 * Whether Membership Screening is enabled
@@ -946,6 +949,9 @@ export interface RESTPatchAPIGuildMemberVerificationJSONBody {
 	description?: string | null | undefined;
 }
 
+/**
+ * @unstable https://github.com/discord/discord-api-docs/pull/2547
+ */
 export type RESTPatchAPIGuildMemberVerificationResult = APIGuildMembershipScreening;
 
 /**
