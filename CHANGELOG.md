@@ -1,3 +1,15 @@
+## [0.38.27](https://github.com/discordjs/discord-api-types/compare/0.38.26...0.38.27) (2025-10-04)
+
+
+### Bug Fixes
+
+* `[@unstable](https://github.com/unstable)` screening ([#1389](https://github.com/discordjs/discord-api-types/issues/1389)) ([95b186d](https://github.com/discordjs/discord-api-types/commit/95b186deb7410ff5a667a1cbac5e7b6dd915f6fe))
+* add `RESTPutAPIGuildIncidentActionsResult` ([#1388](https://github.com/discordjs/discord-api-types/issues/1388)) ([0c6d424](https://github.com/discordjs/discord-api-types/commit/0c6d4249b6e39b52607235b273bf0c46caa331dc))
+* Narrow thread-related properties for channels ([#1377](https://github.com/discordjs/discord-api-types/issues/1377)) ([18cf4a5](https://github.com/discordjs/discord-api-types/commit/18cf4a514e644d039f18f55d4062318dbeb1c3f6))
+* **RESTPutAPIGuildIncidentActionsJSONBody:** add `null` ([#1387](https://github.com/discordjs/discord-api-types/issues/1387)) ([6295858](https://github.com/discordjs/discord-api-types/commit/6295858de5d7bde4b2b289ef301d994ed78bf964))
+
+
+
 ## [0.38.26](https://github.com/discordjs/discord-api-types/compare/0.38.25...0.38.26) (2025-09-18)
 
 
