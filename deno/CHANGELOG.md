@@ -1,3 +1,12 @@
+## [0.38.29](https://github.com/discordjs/discord-api-types/compare/0.38.28...0.38.29) (2025-10-06)
+
+
+### Bug Fixes
+
+* edit self result ([#1393](https://github.com/discordjs/discord-api-types/issues/1393)) ([9665e02](https://github.com/discordjs/discord-api-types/commit/9665e0236734cf224e88da4a6ede4dc535ce53a5))
+
+
+
 ## [0.38.28](https://github.com/discordjs/discord-api-types/compare/0.38.27...0.38.28) (2025-10-04)
 
 
