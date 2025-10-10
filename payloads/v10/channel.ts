@@ -110,7 +110,7 @@ export interface APIPinChannel<T extends ChannelType> extends APIChannelBase<T> 
 	last_pin_timestamp?: string | null;
 }
 
-export interface APIGuildChannel<T extends ChannelType> extends APIChannelBase<T> {
+export interface APIGuildChannel<T extends GuildChannelType = GuildChannelType> extends APIChannelBase<T> {
 	/**
 	 * The name of the channel (1-100 characters)
 	 */
@@ -163,7 +163,7 @@ export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.Gui
 	parent_id?: null;
 }
 
-export interface APIVoiceChannelBase<T extends ChannelType>
+export interface APIVoiceChannelBase<T extends GuildChannelType>
 	extends APIGuildChannel<T>,
 		APISortableChannel,
 		APITextBasedChannel<T>,

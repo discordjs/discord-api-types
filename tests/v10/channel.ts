@@ -1,5 +1,5 @@
 import type {
-	ChannelType,
+	GuildChannelType,
 	APIPartialChannel,
 	APIGroupDMChannel,
 	APIDMChannel,
@@ -11,7 +11,7 @@ import type {
 } from '../../v10';
 import { expectAssignable, expectNotAssignable } from '../__utils__/type-assertions';
 
-type AnyGuildChannel = APIGuildChannel<ChannelType>;
+type AnyGuildChannel = APIGuildChannel<GuildChannelType>;
 
 declare const partialChannel: APIPartialChannel;
 declare const dmChannel: APIDMChannel;
