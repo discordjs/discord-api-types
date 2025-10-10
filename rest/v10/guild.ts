@@ -28,6 +28,7 @@ import type {
 	APIGuildOnboardingPromptOption,
 	APIRoleColors,
 	APIIncidentsData,
+	APIGuildChannel,
 } from '../../payloads/v10/index';
 import type {
 	_AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
@@ -357,7 +358,7 @@ export type RESTDeleteAPIGuildResult = never;
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-channels}
  */
-export type RESTGetAPIGuildChannelsResult = APIChannel[];
+export type RESTGetAPIGuildChannelsResult = APIGuildChannel[];
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#create-guild-channel}
