@@ -1027,6 +1027,9 @@ export enum ComponentType {
 	 * Container associating a label and description with a component
 	 */
 	Label,
+	/**
+	 * Component for uploading files
+	 */
 	FileUpload,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
@@ -1655,16 +1658,25 @@ export interface APILabelComponent extends APIBaseComponent<ComponentType.Label>
 	component: APIComponentInLabel;
 }
 
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#file-upload}
+ */
 export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.FileUpload> {
+	/**
+	 * Id for the file upload; max 100 characters
+	 */
 	custom_id: string;
 	/**
-	 * 0-10
+	 * Minimum number of items that must be uploaded (defaults to 1); min 0, max 10
 	 */
 	min_values?: number;
 	/**
-	 * 1-10
+	 * Maximum number of items that can be uploaded (defaults to 1); max 10
 	 */
 	max_values?: number;
+	/**
+	 * Whether the file upload requires files to be uploaded before submitting the modal (defaults to `true`)
+	 */
 	required?: boolean;
 }
 
