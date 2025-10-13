@@ -1,3 +1,12 @@
+## [0.38.30](https://github.com/discordjs/discord-api-types/compare/0.38.29...0.38.30) (2025-10-13)
+
+
+### Features
+
+* Add support for file upload components ([#1372](https://github.com/discordjs/discord-api-types/issues/1372)) ([51b2d4e](https://github.com/discordjs/discord-api-types/commit/51b2d4e1c91a2d10244baccf1fdeee767df2289f))
+
+
+
 ## [0.38.29](https://github.com/discordjs/discord-api-types/compare/0.38.28...0.38.29) (2025-10-06)
 
 
