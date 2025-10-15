@@ -1,4 +1,4 @@
-name: Create PR for new releases and publish new version
+name: Release flows
 
 on:
   workflow_dispatch:
