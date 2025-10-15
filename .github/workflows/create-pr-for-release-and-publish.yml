@@ -89,8 +89,6 @@ jobs:
       - name: Publish release to npm
         run: |
           yarn npm publish
-        env:
-          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Create GitHub release
         run: node ./scripts/actions/create-release.mjs
