@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           cache: 'yarn'
           node-version-file: package.json
@@ -65,7 +65,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           cache: 'yarn'
           node-version-file: package.json
@@ -121,7 +121,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           cache: 'yarn'
           node-version-file: package.json
