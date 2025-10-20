@@ -1,3 +1,12 @@
+## [0.38.31](https://github.com/discordjs/discord-api-types/compare/0.38.30...0.38.31) (2025-10-20)
+
+
+### Features
+
+* publishing with OIDC ([62e5b4a](https://github.com/discordjs/discord-api-types/commit/62e5b4a95cc7d5b71384d81f96d0e583d117cee5))
+
+
+
 ## [0.38.30](https://github.com/discordjs/discord-api-types/compare/0.38.29...0.38.30) (2025-10-13)
 
 
