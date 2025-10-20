@@ -19,7 +19,7 @@
 		},
 		{
 			"tagName": "@unstable",
-			"syntaxKind": "modifier"
+			"syntaxKind": "block"
 		},
 		{
 			"tagName": "@default",
