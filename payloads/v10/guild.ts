@@ -577,6 +577,12 @@ export enum GuildFeature {
 	 * Guild has access to guest invites
 	 */
 	GuestsEnabled = 'GUESTS_ENABLED',
+	/**
+	 * Guild has migrated to the new pin messages permission
+	 *
+	 * @unstable This feature is currently not documented by Discord, but has known value
+	 */
+	PinPermissionMigrationComplete = 'PIN_PERMISSION_MIGRATION_COMPLETE',
 }
 
 /**
