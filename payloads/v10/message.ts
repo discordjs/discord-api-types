@@ -1582,6 +1582,16 @@ export interface APIFileComponent extends APIBaseComponent<ComponentType.File> {
 	 * @defaultValue `false`
 	 */
 	spoiler?: boolean;
+
+	/**
+	 * The name of the file. This field is ignored and provided by the API as part of the response
+	 */
+	name?: string;
+
+	/**
+	 * The size of the file in bytes. This field is ignored and provided by the API as part of the response
+	 */
+	size?: number;
 }
 
 /**
