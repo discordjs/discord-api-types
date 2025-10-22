@@ -10,7 +10,13 @@ import type {
 	AutoModerationRuleEventType,
 	AutoModerationRuleTriggerType,
 } from './autoModeration';
-import type { APIChannel, APIGuildForumDefaultReactionEmoji, APIGuildForumTag, APIOverwrite } from './channel';
+import type {
+	APIChannel,
+	APIGuildForumDefaultReactionEmoji,
+	APIGuildForumTag,
+	APIOverwrite,
+	VideoQualityMode,
+} from './channel';
 import type {
 	APIGuildIntegration,
 	APIGuildIntegrationType,
@@ -422,7 +428,9 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyRateLimitPerUser
 	| APIAuditLogChangeKeyRecurrenceRule
 	| APIAuditLogChangeKeyRegion
+	| APIAuditLogChangeKeyRTCRegion
 	| APIAuditLogChangeKeyRulesChannelId
+	| APIAuditLogChangeKeySafetyAlertsChannelId
 	| APIAuditLogChangeKeySoundId
 	| APIAuditLogChangeKeySplashHash
 	| APIAuditLogChangeKeyStatus
@@ -439,6 +447,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyUses
 	| APIAuditLogChangeKeyVanityURLCode
 	| APIAuditLogChangeKeyVerificationLevel
+	| APIAuditLogChangeKeyVideoQualityMode
 	| APIAuditLogChangeKeyVolume
 	| APIAuditLogChangeKeyWidgetChannelId
 	| APIAuditLogChangeKeyWidgetEnabled;
@@ -489,6 +498,11 @@ export type APIAuditLogChangeKeyOwnerId = APIAuditLogChangeData<'owner_id', Snow
 export type APIAuditLogChangeKeyRegion = APIAuditLogChangeData<'region', string>;
 
 /**
+ * Returned when a channel's rtc_region is changed
+ */
+export type APIAuditLogChangeKeyRTCRegion = APIAuditLogChangeData<'rtc_region', string>;
+
+/**
  * Returned when a guild's preferred_locale is changed
  */
 export type APIAuditLogChangeKeyPreferredLocale = APIAuditLogChangeData<'preferred_locale', string>;
@@ -527,6 +541,11 @@ export type APIAuditLogChangeKeyMFALevel = APIAuditLogChangeData<'mfa_level', Gu
  * Returned when a guild's verification_level is changed
  */
 export type APIAuditLogChangeKeyVerificationLevel = APIAuditLogChangeData<'verification_level', GuildVerificationLevel>;
+
+/**
+ * Returned when a channel's video_quality_mode is changed
+ */
+export type APIAuditLogChangeKeyVideoQualityMode = APIAuditLogChangeData<'video_quality_mode', VideoQualityMode>;
 
 /**
  * Returned when a guild's explicit_content_filter is changed

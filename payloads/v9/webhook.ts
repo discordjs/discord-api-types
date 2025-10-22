@@ -91,6 +91,8 @@ export type APIWebhookEventBody =
 			APIWebhookEventApplicationDeauthorizedData
 	  >
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementCreate, APIWebhookEventEntitlementCreateData>
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementDelete, APIWebhookEventEntitlementDeleteData>
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementUpdate, APIWebhookEventEntitlementUpdateData>
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.QuestUserEnrollment, APIWebhookEventQuestUserEnrollmentData>;
 
 export interface APIWebhookEventApplicationAuthorizedData {
@@ -120,6 +122,16 @@ export interface APIWebhookEventApplicationDeauthorizedData {
 }
 
 export type APIWebhookEventEntitlementCreateData = APIEntitlement;
+
+/**
+ * @unstable
+ */
+export type APIWebhookEventEntitlementDeleteData = APIEntitlement;
+
+/**
+ * @unstable
+ */
+export type APIWebhookEventEntitlementUpdateData = APIEntitlement;
 
 export type APIWebhookEventQuestUserEnrollmentData = never;
 
@@ -187,6 +199,18 @@ export enum ApplicationWebhookEventType {
 	 * Entitlement was created
 	 */
 	EntitlementCreate = 'ENTITLEMENT_CREATE',
+	/**
+	 * Entitlement was updated
+	 *
+	 * @unstable This event is not yet documented but can be enabled from the developer portal
+	 */
+	EntitlementUpdate = 'ENTITLEMENT_UPDATE',
+	/**
+	 * Entitlement was deleted
+	 *
+	 * @unstable This event is not yet documented but can be enabled from the developer portal
+	 */
+	EntitlementDelete = 'ENTITLEMENT_DELETE',
 	/**
 	 * User was added to a Quest (currently unavailable)
 	 */
