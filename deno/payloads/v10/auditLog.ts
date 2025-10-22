@@ -359,7 +359,7 @@ export type AuditLogRuleTriggerType = `${AutoModerationRuleTriggerType}`;
 /**
  * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure}
  */
- export type APIAuditLogChange =
+export type APIAuditLogChange =
 	| APIAuditLogChangeKey$Add
 	| APIAuditLogChangeKey$Remove
 	| APIAuditLogChangeKeyActions
