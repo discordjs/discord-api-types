@@ -126,12 +126,12 @@ export type APIWebhookEventEntitlementCreateData = APIEntitlement;
 /**
  * @unstable
  */
-export type APIWebhookEventEntitlementUpdateData = APIEntitlement;
+export type APIWebhookEventEntitlementDeleteData = APIEntitlement;
 
 /**
  * @unstable
  */
-export type APIWebhookEventEntitlementDeleteData = APIEntitlement;
+export type APIWebhookEventEntitlementUpdateData = APIEntitlement;
 
 export type APIWebhookEventQuestUserEnrollmentData = never;
 
