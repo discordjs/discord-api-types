@@ -2,7 +2,6 @@ import type { RESTPostAPIWebhookWithTokenJSONBody } from '../../../v9';
 import type {
 	APIActionRowComponent,
 	APIComponentInModalActionRow,
-	APIFileUploadComponent,
 	APILabelComponent,
 	APITextDisplayComponent,
 } from '../message';
@@ -134,7 +133,6 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 
 export type APIModalInteractionResponseCallbackComponent =
 	| APIActionRowComponent<APIComponentInModalActionRow>
-	| APIFileUploadComponent
 	| APILabelComponent
 	| APITextDisplayComponent;
 
