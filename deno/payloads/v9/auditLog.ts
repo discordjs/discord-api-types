@@ -430,6 +430,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyRegion
 	| APIAuditLogChangeKeyRTCRegion
 	| APIAuditLogChangeKeyRulesChannelId
+	| APIAuditLogChangeKeySafetyAlertsChannelId
 	| APIAuditLogChangeKeySoundId
 	| APIAuditLogChangeKeySplashHash
 	| APIAuditLogChangeKeyStatus
