@@ -1,3 +1,22 @@
+## [0.38.31](https://github.com/discordjs/discord-api-types/compare/0.38.30...0.38.31) (2025-10-23)
+
+
+### Bug Fixes
+
+* **APIModalInteractionResponseCallbackComponent:** remove `APIFileUploadComponent` ([#1406](https://github.com/discordjs/discord-api-types/issues/1406)) ([e37f802](https://github.com/discordjs/discord-api-types/commit/e37f802e392fdce948c2a15ae26088f8ae625793))
+* missing name and size property on APIFileComponent ([#1404](https://github.com/discordjs/discord-api-types/issues/1404)) ([7d6a934](https://github.com/discordjs/discord-api-types/commit/7d6a934f66c2a2d063bae16eb6fb323022ece192))
+* tsdoc unstable tag is block not modifier ([#1405](https://github.com/discordjs/discord-api-types/issues/1405)) ([6e5563e](https://github.com/discordjs/discord-api-types/commit/6e5563e2b727684b44e2851b09fdf5590e08a1f8))
+
+
+### Features
+
+* **APIAuditLogChange:** add some missing channel change types ([#1409](https://github.com/discordjs/discord-api-types/issues/1409)) ([ea2b922](https://github.com/discordjs/discord-api-types/commit/ea2b922d12618c54139fb37986697a1a2bd33393))
+* **GuildFeature:** add `PinPermissionMigrationComplete` ([#1407](https://github.com/discordjs/discord-api-types/issues/1407)) ([c5c0312](https://github.com/discordjs/discord-api-types/commit/c5c0312867e70aefb803f9988c46e6214a028be6))
+* publishing with OIDC ([62e5b4a](https://github.com/discordjs/discord-api-types/commit/62e5b4a95cc7d5b71384d81f96d0e583d117cee5))
+* **Webhooks:** add entitlement update and delete events ([#1408](https://github.com/discordjs/discord-api-types/issues/1408)) ([be8b372](https://github.com/discordjs/discord-api-types/commit/be8b3726630bd0b0f76615cb5d7e759a95de71e4))
+
+
+
 ## [0.38.30](https://github.com/discordjs/discord-api-types/compare/0.38.29...0.38.30) (2025-10-13)
 
 
