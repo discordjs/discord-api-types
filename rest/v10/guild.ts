@@ -814,6 +814,11 @@ export type RESTPatchAPIGuildRoleResult = APIRole;
 export type RESTDeleteAPIGuildRoleResult = never;
 
 /**
+ * @unstable
+ */
+export type RESTGetAPIGuildRoleMemberCountsResult = Record<Snowflake, number>;
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-prune-count}
  */
 export interface RESTGetAPIGuildPruneCountQuery {
