@@ -382,7 +382,7 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET    `/guilds/{guild.id}/roles/member-counts`
+	 * - GET `/guilds/{guild.id}/roles/member-counts`
 	 *
 	 * @unstable
 	 */
