@@ -76,8 +76,8 @@ export const FormattingPatterns = {
 	 *
 	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
-	// eslint-disable-next-line prefer-named-capture-group
-	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<style>[DFRTdft]))?>/,
+	// eslint-disable-next-line prefer-named-capture-group, unicorn/better-regex
+	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<style>[DFRSTdfst]))?>/,
 	/**
 	 * Regular expression for matching strictly default styled timestamps
 	 *
