@@ -1,10 +1,11 @@
 * @vladfrangu
 
-/*.ts @discordjs/discord-api-types @discordjs/core
-gateway/ @discordjs/discord-api-types @discordjs/core
-payloads/ @discordjs/discord-api-types @discordjs/core
-rest/ @discordjs/discord-api-types @discordjs/core
-rpc/ @discordjs/discord-api-types @discordjs/core
-tests/ @discordjs/discord-api-types @discordjs/core
-utils/ @discordjs/discord-api-types @discordjs/core
-voice/ @discordjs/discord-api-types @discordjs/core
+/*.ts @discordjs/discord-api-types
+deno/ @discordjs/discord-api-types
+gateway/ @discordjs/discord-api-types
+payloads/ @discordjs/discord-api-types
+rest/ @discordjs/discord-api-types
+rpc/ @discordjs/discord-api-types
+tests/ @discordjs/discord-api-types
+utils/ @discordjs/discord-api-types
+voice/ @discordjs/discord-api-types
