@@ -1,3 +1,12 @@
+## [0.38.32](https://github.com/discordjs/discord-api-types/compare/0.38.31...0.38.32) (2025-11-03)
+
+
+### Features
+
+* **globals:** Support new s/S timestamp styles ([#1418](https://github.com/discordjs/discord-api-types/issues/1418)) ([bf4291b](https://github.com/discordjs/discord-api-types/commit/bf4291bed83272036e0cd743ba2824fc6de837e4))
+
+
+
 ## [0.38.31](https://github.com/discordjs/discord-api-types/compare/0.38.30...0.38.31) (2025-10-23)
 
 
