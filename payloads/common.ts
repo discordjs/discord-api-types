@@ -294,6 +294,12 @@ export const PermissionFlagsBits = {
 	 * Applies to channel types: Text
 	 */
 	PinMessages: 1n << 51n,
+	/**
+	 * @unstable Allows for bypassing slowmode restrictions. Not (yet) documented.
+	 *
+	 * Applies to text-based and thread-based channel types.
+	 */
+	BypassSlowmode: 1n << 52n,
 } as const;
 
 /**
