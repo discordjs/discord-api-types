@@ -1,3 +1,12 @@
+## [0.38.33](https://github.com/discordjs/discord-api-types/compare/0.38.32...0.38.33) (2025-11-09)
+
+
+### Features
+
+* **PermissionFlagsBits:** add `BypassSlowmode` ([#1427](https://github.com/discordjs/discord-api-types/issues/1427)) ([2736687](https://github.com/discordjs/discord-api-types/commit/27366872836c9f1f069fafea7114dedb62467d27))
+
+
+
 ## [0.38.32](https://github.com/discordjs/discord-api-types/compare/0.38.31...0.38.32) (2025-11-03)
 
 
