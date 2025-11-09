@@ -123,9 +123,7 @@ export function isInteractionButton(component: APIButtonComponent): component is
  * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the interaction is a modal submission
  */
-export function isModalSubmitInteraction(
-	interaction: APIInteraction,
-): interaction is APIModalSubmitInteraction {
+export function isModalSubmitInteraction(interaction: APIInteraction): interaction is APIModalSubmitInteraction {
 	return interaction.type === InteractionType.ModalSubmit;
 }
 
