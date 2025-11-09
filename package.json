@@ -139,7 +139,7 @@
 		"@octokit/webhooks-types": "^7.6.1",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@types/lodash.merge": "^4",
-		"@types/node": "^22.15.29",
+		"@types/node": "^24.0.0",
 		"@typescript-eslint/utils": "^8.33.0",
 		"conventional-changelog": "^7.0.2",
 		"conventional-changelog-angular": "^8.0.0",
