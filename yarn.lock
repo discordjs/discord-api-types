@@ -2821,7 +2821,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^24.0.0":
   version: 24.10.0
   resolution: "@types/node@npm:24.10.0"
   dependencies:
@@ -2839,7 +2839,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.0.0, @types/node@npm:^22.15.29":
+"@types/node@npm:^22.0.0":
   version: 22.19.0
   resolution: "@types/node@npm:22.19.0"
   dependencies:
@@ -4361,7 +4361,7 @@ __metadata:
     "@octokit/webhooks-types": "npm:^7.6.1"
     "@sapphire/prettier-config": "npm:^2.0.0"
     "@types/lodash.merge": "npm:^4"
-    "@types/node": "npm:^22.15.29"
+    "@types/node": "npm:^24.0.0"
     "@typescript-eslint/utils": "npm:^8.33.0"
     conventional-changelog: "npm:^7.0.2"
     conventional-changelog-angular: "npm:^8.0.0"
