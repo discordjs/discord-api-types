@@ -1,12 +1,8 @@
 # discord-api-types Contributing Guide
 
-**The issue tracker is only for bug reports and enhancement suggestions. If you have a question, please ask it in the [Discord server](https://discord.gg/djs) instead of opening an issue, or on [GitHub Discussions](https://github.com/discordjs/discord-api-types/discussions) – you will get redirected there anyway.**
-
 - [Code of Conduct](https://github.com/discordjs/discord-api-types/blob/main/.github/CODE_OF_CONDUCT.md)
 - [Pull Request Guidelines](#pull-request-guidelines)
 - [Development Setup](#development-setup)
-- [Project Structure](#project-structure)
-- [Contributing Tests](#contributing-tests)
 
 ## Pull Request Guidelines
 
@@ -30,18 +26,18 @@
 
 - Make sure tests pass!
 
-- Commit messages must follow the [commit message convention](./COMMIT_CONVENTION.md) so that changelogs can be automatically generated. Commit messages are automatically validated before commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [husky](https://github.com/typicode/husky)).
+- Commit messages must follow the [commit message convention](https://github.com/discordjs/discord-api-types/blob/main/.github/COMMIT_CONVENTION.md) so that changelogs can be automatically generated. Commit messages are automatically validated before commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [husky](https://github.com/typicode/husky)).
 
 - No need to worry about code style as long as you have installed the dev dependencies - modified files are automatically formatted with Prettier on commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [husky](https://github.com/typicode/husky)).
 
 ## Development Setup
 
-You will need [Node.js](http://nodejs.org) **version 12+**, and [npm](https://www.npmjs.com/).
+You will need an LTS version of [Node.js](http://nodejs.org) and [Yarn](https://yarnpkg.com).
 
 After cloning the repo, run:
 
 ```bash
-$ npm i # install the dependencies of the project
+$ yarn install # Install the dependencies of the project
 ```
 
 A high level overview of tools used:
