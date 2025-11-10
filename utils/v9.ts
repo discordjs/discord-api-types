@@ -15,6 +15,7 @@ import type {
 	APIMessageComponentGuildInteraction,
 	APIMessageComponentInteraction,
 	APIMessageComponentSelectMenuInteraction,
+	APIModalSubmitInteraction,
 } from '../payloads/v9/index';
 import { ApplicationCommandType, ButtonStyle, ComponentType, InteractionType } from '../payloads/v9/index';
 
@@ -112,6 +113,18 @@ export function isLinkButton(component: APIButtonComponent): component is APIBut
  */
 export function isInteractionButton(component: APIButtonComponent): component is APIButtonComponentWithCustomId {
 	return ![ButtonStyle.Link, ButtonStyle.Premium].includes(component.style);
+}
+
+// Modal
+
+/**
+ * A type guard check for modals submit interactions
+ *
+ * @param interaction - The interaction to check against
+ * @returns A boolean that indicates if the interaction is a modal submission
+ */
+export function isModalSubmitInteraction(interaction: APIInteraction): interaction is APIModalSubmitInteraction {
+	return interaction.type === InteractionType.ModalSubmit;
 }
 
 // Message Components
