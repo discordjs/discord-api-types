@@ -207,9 +207,9 @@
 			]
 		}
 	},
-	"packageManager": "yarn@4.10.3",
+	"packageManager": "yarn@4.11.0",
 	"volta": {
-		"node": "24.11.0",
-		"yarn": "4.10.3"
+		"node": "24.11.1",
+		"yarn": "4.11.0"
 	}
 }
