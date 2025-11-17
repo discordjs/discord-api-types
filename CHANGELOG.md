@@ -1,3 +1,12 @@
+## [0.38.34](https://github.com/discordjs/discord-api-types/compare/0.38.33...0.38.34) (2025-11-17)
+
+
+### Features
+
+* add `isModalSubmitInteraction()` type guard ([#1428](https://github.com/discordjs/discord-api-types/issues/1428)) ([f883770](https://github.com/discordjs/discord-api-types/commit/f883770df6ae7ce8b1b036c7619b4ab8c4f92354))
+
+
+
 ## [0.38.33](https://github.com/discordjs/discord-api-types/compare/0.38.32...0.38.33) (2025-11-09)
 
 
