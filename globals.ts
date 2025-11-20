@@ -89,7 +89,8 @@ export const FormattingPatterns = {
 	 *
 	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
-	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[DFRTdft])>/,
+	// eslint-disable-next-line unicorn/better-regex
+	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[DFRSTdfst])>/,
 	/**
 	 * Regular expression for matching a guild navigation mention
 	 *
