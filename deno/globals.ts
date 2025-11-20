@@ -8,6 +8,9 @@ export type Snowflake = string;
  */
 export type Permissions = string;
 
+const timestampStyles = 'DFRSTdfst';
+const timestampLength = 13;
+
 /**
  * @see {@link https://discord.com/developers/docs/reference#message-formatting-formats}
  */
@@ -76,21 +79,19 @@ export const FormattingPatterns = {
 	 *
 	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
-	// eslint-disable-next-line prefer-named-capture-group, unicorn/better-regex
-	Timestamp: /<t:(?<timestamp>-?\d{1,13})(:(?<style>[DFRSTdfst]))?>/,
+	Timestamp: new RegExp(`<t:(?<timestamp>-?\\d{1,${timestampLength}})(:(?<style>[${timestampStyles}]))?>`),
 	/**
 	 * Regular expression for matching strictly default styled timestamps
 	 *
 	 * The `timestamp` group property is present on the `exec` result of this expression
 	 */
-	DefaultStyledTimestamp: /<t:(?<timestamp>-?\d{1,13})>/,
+	DefaultStyledTimestamp: new RegExp(`<t:(?<timestamp>-?\\d{1,${timestampLength}})>`),
 	/**
 	 * Regular expression for matching strictly custom styled timestamps
 	 *
 	 * The `timestamp` and `style` group properties are present on the `exec` result of this expression
 	 */
-	// eslint-disable-next-line unicorn/better-regex
-	StyledTimestamp: /<t:(?<timestamp>-?\d{1,13}):(?<style>[DFRSTdfst])>/,
+	StyledTimestamp: new RegExp(`<t:(?<timestamp>-?\\d{1,${timestampLength}}):(?<style>[${timestampStyles}])>`),
 	/**
 	 * Regular expression for matching a guild navigation mention
 	 *
