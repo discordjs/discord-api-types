@@ -810,10 +810,10 @@ export interface APIAttachment {
 	 */
 	filename: string;
 	/**
-	 * A sanitized version of the filename that does not contain certain special characters
+	 * The original filename of the upload with special characters preserved
 	 *
-	 * This will be present when the filename contains special characters (e.g. Cyrillic)
-	 * and can be used for display purposes
+	 * This will be present when the filename contains special characters (e.g. Cyrillic),
+	 * in which case the `filename` field will be a sanitized version without those characters
 	 */
 	title?: string;
 	/**
