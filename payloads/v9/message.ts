@@ -805,7 +805,10 @@ export interface APIAttachment {
 	 */
 	filename: string;
 	/**
-	 * The title of the file
+	 * A sanitized version of the filename that does not contain certain special characters
+	 *
+	 * This will be present when the filename contains special characters (e.g. Cyrillic)
+	 * and can be used for display purposes
 	 */
 	title?: string;
 	/**
