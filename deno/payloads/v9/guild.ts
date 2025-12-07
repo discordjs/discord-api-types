@@ -757,7 +757,8 @@ export interface APIGuildMemberUser {
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
  */
 export interface APIGuildMember
-	extends APIBaseGuildMember,
+	extends
+		APIBaseGuildMember,
 		APIBaseVoiceGuildMember,
 		APIFlaggedGuildMember,
 		APIGuildMemberAvatar,

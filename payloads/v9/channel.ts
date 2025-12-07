@@ -138,10 +138,7 @@ export interface APIGuildChannel<T extends GuildChannelType = GuildChannelType> 
 export type GuildTextChannelType = Exclude<TextChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
 export interface APIGuildTextChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia | GuildTextChannelType>
-	extends APITextBasedChannel<T>,
-		APISortableChannel,
-		APIGuildChannel<T>,
-		APIPinChannel<T> {
+	extends APITextBasedChannel<T>, APISortableChannel, APIGuildChannel<T>, APIPinChannel<T> {
 	/**
 	 * Default duration for newly created threads, in minutes, to automatically archive the thread after recent activity
 	 */
@@ -164,10 +161,7 @@ export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.Gui
 }
 
 export interface APIVoiceChannelBase<T extends GuildChannelType = GuildChannelType>
-	extends APIGuildChannel<T>,
-		APISortableChannel,
-		APITextBasedChannel<T>,
-		APISlowmodeChannel<T> {
+	extends APIGuildChannel<T>, APISortableChannel, APITextBasedChannel<T>, APISlowmodeChannel<T> {
 	/**
 	 * The bitrate (in bits) of the voice or stage channel
 	 */
@@ -240,9 +234,7 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
 export type ThreadChannelType = ChannelType.AnnouncementThread | ChannelType.PrivateThread | ChannelType.PublicThread;
 
 export interface APIThreadChannel<Type extends ThreadChannelType = ThreadChannelType>
-	extends APITextBasedChannel<Type>,
-		APIGuildChannel<Type>,
-		APIPinChannel<Type> {
+	extends APITextBasedChannel<Type>, APIGuildChannel<Type>, APIPinChannel<Type> {
 	/**
 	 * The client users member for the thread, only included in select endpoints
 	 */
@@ -358,8 +350,7 @@ export enum ForumLayoutType {
 }
 
 export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | ChannelType.GuildMedia>
-	extends APIGuildChannel<T>,
-		APISortableChannel {
+	extends APIGuildChannel<T>, APISortableChannel {
 	/**
 	 * The channel topic (0-4096 characters)
 	 */

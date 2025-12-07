@@ -28,8 +28,7 @@ export interface APIModalSubmitRoleSelectComponent extends APIBaseModalSubmitCom
 	values: string[];
 }
 
-export interface APIModalSubmitMentionableSelectComponent
-	extends APIBaseModalSubmitComponent<ComponentType.MentionableSelect> {
+export interface APIModalSubmitMentionableSelectComponent extends APIBaseModalSubmitComponent<ComponentType.MentionableSelect> {
 	values: string[];
 }
 

@@ -95,9 +95,8 @@ export type RESTGetAPIGuildScheduledEventResult = APIGuildScheduledEvent;
  * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event}
  */
 export interface RESTPatchAPIGuildScheduledEventJSONBody
-	extends _Nullable<
-			Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
-		>,
+	extends
+		_Nullable<Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>>,
 		_StrictPartial<
 			Omit<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
 		> {

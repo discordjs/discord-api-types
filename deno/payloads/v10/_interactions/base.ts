@@ -48,8 +48,7 @@ export interface APIBaseInteractionMetadata<Type extends InteractionType> {
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-application-command-interaction-metadata-structure}
  */
-export interface APIApplicationCommandInteractionMetadata
-	extends APIBaseInteractionMetadata<InteractionType.ApplicationCommand> {
+export interface APIApplicationCommandInteractionMetadata extends APIBaseInteractionMetadata<InteractionType.ApplicationCommand> {
 	/**
 	 * The user the command was run on, present only on user commands interactions
 	 */
@@ -64,8 +63,7 @@ export interface APIApplicationCommandInteractionMetadata
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-message-command-interaction-metadata-structure}
  */
-export interface APIMessageComponentInteractionMetadata
-	extends APIBaseInteractionMetadata<InteractionType.MessageComponent> {
+export interface APIMessageComponentInteractionMetadata extends APIBaseInteractionMetadata<InteractionType.MessageComponent> {
 	/**
 	 * ID of the message that contained the interactive component
 	 */
@@ -254,10 +252,7 @@ export type APIInteractionDataResolvedChannel =
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
  */
 export interface APIInteractionDataResolvedGuildMember
-	extends APIBaseGuildMember,
-		APIFlaggedGuildMember,
-		APIGuildMemberAvatar,
-		APIGuildMemberJoined {
+	extends APIBaseGuildMember, APIFlaggedGuildMember, APIGuildMemberAvatar, APIGuildMemberJoined {
 	permissions: Permissions;
 }
 
