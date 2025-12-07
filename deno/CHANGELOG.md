@@ -1,3 +1,16 @@
+## [0.38.36](https://github.com/discordjs/discord-api-types/compare/0.38.35...0.38.36) (2025-12-01)
+
+
+
+## [0.38.35](https://github.com/discordjs/discord-api-types/compare/0.38.34...0.38.35) (2025-11-27)
+
+
+### Bug Fixes
+
+* Add missing s/S support to `StyledTimestamp` ([#1439](https://github.com/discordjs/discord-api-types/issues/1439)) ([a8c28ab](https://github.com/discordjs/discord-api-types/commit/a8c28ab7289726c3f29f53c5c2468e8da400f02f))
+
+
+
 ## [0.38.34](https://github.com/discordjs/discord-api-types/compare/0.38.33...0.38.34) (2025-11-17)
 
 
