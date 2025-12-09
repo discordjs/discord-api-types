@@ -814,7 +814,10 @@ export type RESTPatchAPIGuildRoleResult = APIRole;
 export type RESTDeleteAPIGuildRoleResult = never;
 
 /**
- * @unstable
+ * A record mapping role IDs to the number of members that have that role.
+ *
+ * @remarks This does not include the `@everyone` role.
+ * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-role-member-counts}
  */
 export type RESTGetAPIGuildRoleMemberCountsResult = Record<Snowflake, number>;
 
