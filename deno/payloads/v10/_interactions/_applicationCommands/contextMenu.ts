@@ -7,8 +7,7 @@ import type { APIBaseApplicationCommandInteractionData } from './internals.ts';
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
-export interface APIUserApplicationCommandInteractionData
-	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
+export interface APIUserApplicationCommandInteractionData extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.User> {
 	target_id: Snowflake;
 	resolved: APIUserInteractionDataResolved;
 }
@@ -16,8 +15,7 @@ export interface APIUserApplicationCommandInteractionData
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
-export interface APIMessageApplicationCommandInteractionData
-	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
+export interface APIMessageApplicationCommandInteractionData extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.Message> {
 	target_id: Snowflake;
 	resolved: APIMessageApplicationCommandInteractionDataResolved;
 }

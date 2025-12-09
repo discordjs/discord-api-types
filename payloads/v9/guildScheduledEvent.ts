@@ -181,8 +181,7 @@ export interface APIGuildScheduledEventRecurrenceRuleNWeekday {
  */
 export type GuildScheduledEventRecurrenceRuleNWeekday = APIGuildScheduledEventRecurrenceRuleNWeekday;
 
-export interface APIStageInstanceGuildScheduledEvent
-	extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.StageInstance> {
+export interface APIStageInstanceGuildScheduledEvent extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.StageInstance> {
 	channel_id: Snowflake;
 	entity_metadata: null;
 }
@@ -192,8 +191,7 @@ export interface APIVoiceGuildScheduledEvent extends APIGuildScheduledEventBase<
 	entity_metadata: null;
 }
 
-export interface APIExternalGuildScheduledEvent
-	extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.External> {
+export interface APIExternalGuildScheduledEvent extends APIGuildScheduledEventBase<GuildScheduledEventEntityType.External> {
 	channel_id: null;
 	entity_metadata: Required<APIGuildScheduledEventEntityMetadata>;
 }

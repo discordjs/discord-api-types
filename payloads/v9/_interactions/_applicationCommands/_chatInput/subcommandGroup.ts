@@ -6,8 +6,7 @@ import type {
 	APIApplicationCommandSubcommandOption,
 } from './subcommand';
 
-export interface APIApplicationCommandSubcommandGroupOption
-	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.SubcommandGroup> {
+export interface APIApplicationCommandSubcommandGroupOption extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.SubcommandGroup> {
 	options?: APIApplicationCommandSubcommandOption[];
 }
 

@@ -1923,8 +1923,7 @@ export interface RPCCommandActivityInviteUserPayload extends RPCCommandMessage<R
 	args: RPCActivityInviteUserArgs;
 }
 
-export interface RPCCommandBraintreePopupBridgeCallbackPayload
-	extends RPCCommandMessage<RPCCommands.BraintreePopupBridgeCallback> {
+export interface RPCCommandBraintreePopupBridgeCallbackPayload extends RPCCommandMessage<RPCCommands.BraintreePopupBridgeCallback> {
 	args: RPCBraintreePopupBridgeCallbackArgs;
 }
 
@@ -1932,8 +1931,7 @@ export interface RPCCommandBrowserPayload extends RPCCommandMessage<RPCCommands.
 	args: RPCBrowserHandoffArgs;
 }
 
-export interface RPCCommandCloseActivityJoinRequestPayload
-	extends RPCCommandMessage<RPCCommands.CloseActivityJoinRequest> {
+export interface RPCCommandCloseActivityJoinRequestPayload extends RPCCommandMessage<RPCCommands.CloseActivityJoinRequest> {
 	args: RPCCloseActivityJoinRequestArgs;
 }
 
@@ -1973,8 +1971,7 @@ export interface RPCCommandGetRelationshipsPayload extends RPCCommandMessage<RPC
 	args: RPCGetRelationshipsArgs;
 }
 
-export interface RPCCommandGetSelectedVoiceChannelPayload
-	extends RPCCommandMessage<RPCCommands.GetSelectedVoiceChannel> {
+export interface RPCCommandGetSelectedVoiceChannelPayload extends RPCCommandMessage<RPCCommands.GetSelectedVoiceChannel> {
 	args: RPCGetSelectedVoiceChannelArgs;
 }
 
@@ -2002,13 +1999,11 @@ export interface RPCCommandNetworkingPeerMetricsPayload extends RPCCommandMessag
 	args: RPCNetworkingPeerMetricsArgs;
 }
 
-export interface RPCCommandNetworkingSystemMetricsPayload
-	extends RPCCommandMessage<RPCCommands.NetworkingSystemMetrics> {
+export interface RPCCommandNetworkingSystemMetricsPayload extends RPCCommandMessage<RPCCommands.NetworkingSystemMetrics> {
 	args: RPCNetworkingSystemMetricsArgs;
 }
 
-export interface RPCCommandOpenOverlayActivityInvitePayload
-	extends RPCCommandMessage<RPCCommands.OpenOverlayActivityInvite> {
+export interface RPCCommandOpenOverlayActivityInvitePayload extends RPCCommandMessage<RPCCommands.OpenOverlayActivityInvite> {
 	args: RPCOpenOverlayActivityInviteArgs;
 }
 
@@ -2016,8 +2011,7 @@ export interface RPCCommandOpenOverlayGuildInvitePayload extends RPCCommandMessa
 	args: RPCOpenOverlayGuildInviteArgs;
 }
 
-export interface RPCCommandOpenOverlayVoiceSettingsPayload
-	extends RPCCommandMessage<RPCCommands.OpenOverlayVoiceSettings> {
+export interface RPCCommandOpenOverlayVoiceSettingsPayload extends RPCCommandMessage<RPCCommands.OpenOverlayVoiceSettings> {
 	args: RPCOpenOverlayVoiceSettingsArgs;
 }
 
@@ -2261,8 +2255,7 @@ export interface RPCActivityInviteUserResult extends RPCCommandMessage<RPCComman
 	data: RPCActivityInviteUserResultData;
 }
 
-export interface RPCBraintreePopupBridgeCallbackResult
-	extends RPCCommandMessage<RPCCommands.BraintreePopupBridgeCallback> {
+export interface RPCBraintreePopupBridgeCallbackResult extends RPCCommandMessage<RPCCommands.BraintreePopupBridgeCallback> {
 	data: RPCBraintreePopupBridgeCallbackResultData;
 }
 

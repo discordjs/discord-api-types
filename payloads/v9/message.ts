@@ -1041,8 +1041,9 @@ export enum ComponentType {
  *
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export interface APIActionRowComponent<T extends APIComponentInActionRow>
-	extends APIBaseComponent<ComponentType.ActionRow> {
+export interface APIActionRowComponent<
+	T extends APIComponentInActionRow,
+> extends APIBaseComponent<ComponentType.ActionRow> {
 	/**
 	 * The components in the ActionRow
 	 */
@@ -1092,10 +1093,9 @@ export interface APIMessageComponentEmoji {
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#button}
  */
-export interface APIButtonComponentWithCustomId
-	extends APIButtonComponentBase<
-		ButtonStyle.Danger | ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success
-	> {
+export interface APIButtonComponentWithCustomId extends APIButtonComponentBase<
+	ButtonStyle.Danger | ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success
+> {
 	/**
 	 * The custom_id to be sent in the interaction when clicked
 	 */
@@ -1307,8 +1307,10 @@ export type APIMentionableSelectComponent = APIBaseAutoPopulatedSelectMenuCompon
  *
  * @see {@link https://discord.com/developers/docs/components/reference#channel-select}
  */
-export interface APIChannelSelectComponent
-	extends APIBaseAutoPopulatedSelectMenuComponent<ComponentType.ChannelSelect, SelectMenuDefaultValueType.Channel> {
+export interface APIChannelSelectComponent extends APIBaseAutoPopulatedSelectMenuComponent<
+	ComponentType.ChannelSelect,
+	SelectMenuDefaultValueType.Channel
+> {
 	/**
 	 * List of channel types to include in the ChannelSelect component
 	 */
