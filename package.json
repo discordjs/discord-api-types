@@ -145,7 +145,7 @@
 		"conventional-changelog-angular": "^8.0.0",
 		"conventional-recommended-bump": "^11.1.0",
 		"eslint": "^9.28.0",
-		"eslint-config-neon": "^0.2.7",
+		"eslint-config-neon": "^0.3.0",
 		"eslint-formatter-pretty": "^7.0.0",
 		"eslint-import-resolver-typescript": "^4.4.2",
 		"gen-esm-wrapper": "^1.1.3",
