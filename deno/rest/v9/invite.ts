@@ -66,7 +66,7 @@ export interface RESTGetAPIInviteTargetUsersJobStatusResult {
 	/**
 	 * The status of the job processing the target users.
 	 */
-	status: TargetUsersJobStatus;
+	status: InviteTargetUsersJobStatus;
 	/**
 	 * The total number of users in the provided list.
 	 */
