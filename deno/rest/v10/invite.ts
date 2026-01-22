@@ -92,7 +92,7 @@ export interface RESTGetAPIInviteTargetUsersJobStatusResult {
 /**
  * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users-job-status}
  */
-export enum TargetUsersJobStatus {
+export enum InviteTargetUsersJobStatus {
 	/**
 	 * The default value.
 	 */

@@ -465,6 +465,23 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/invites/{invite.code}/target-users`
+	 * - PUT `/invites/{invite.code}/target-users`
+	 */
+	inviteTargetUsers(code: string) {
+		return `/invites/${code}/target-users` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/invites/{invite.code}/target-users/job-status`
+	 */
+	inviteTargetUsersJobStatus(code: string) {
+		return `/invites/${code}/target-users/job-status` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET  `/guilds/templates/{template.code}`
 	 * - POST `/guilds/templates/{template.code}` (**deprecated**)
 	 */

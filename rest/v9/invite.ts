@@ -28,3 +28,85 @@ export type RESTGetAPIInviteResult = APIInvite;
  * @see {@link https://discord.com/developers/docs/resources/invite#delete-invite}
  */
 export type RESTDeleteAPIInviteResult = APIInvite;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users}
+ */
+export type RESTGetAPIInviteTargetUsersResult = string;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
+ */
+export interface RESTPutAPIInviteTargetUsersQuery {
+	/**
+	 * A csv file with a single column of user IDs for all the users able to accept this invite
+	 */
+	target_users_file?: string;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
+ */
+export interface RESTPutAPIInviteTargetUsersFormDataBody {
+	/**
+	 * A csv file with a single column of user IDs for all the users able to accept this invite
+	 */
+	target_users_file: unknown;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
+ */
+export type RESTPutAPIInviteTargetUsersResult = never;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users-job-status}
+ */
+export interface RESTGetAPIInviteTargetUsersJobStatusResult {
+	/**
+	 * The status of the job processing the target users.
+	 */
+	status: TargetUsersJobStatus;
+	/**
+	 * The total number of users in the provided list.
+	 */
+	total_users: number;
+	/**
+	 * The number of users processed so far.
+	 */
+	processed_users: number;
+	/**
+	 * The timestamp when the job was created.
+	 */
+	created_at?: string | null;
+	/**
+	 * The timestamp when the job was successfully completed.
+	 */
+	completed_at?: string | null;
+	/**
+	 * The error message if the job failed.
+	 */
+	error_message?: string | null;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users-job-status}
+ */
+export enum InviteTargetUsersJobStatus {
+	/**
+	 * The default value.
+	 */
+	Unspecified = 0,
+	/**
+	 * The job is still being processed.
+	 */
+	Processing = 1,
+	/**
+	 * The job has been completed successfully.
+	 */
+	Completed = 2,
+	/**
+	 * The job has failed; see `errorMessage` for more details.
+	 */
+	Failed = 3,
+}
