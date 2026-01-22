@@ -1029,6 +1029,18 @@ export enum ComponentType {
 	 * Component for uploading files
 	 */
 	FileUpload,
+	/**
+	 * Component that display radio groups
+	 */
+	RadioGroupAction = 21,
+	/**
+	 * Component that displays grouped checkboxes
+	 */
+	CheckboxGroupAction,
+	/**
+	 * Component for checkbox
+	 */
+	CheckboxAction,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
 	/**
@@ -1691,6 +1703,104 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 }
 
 /**
+ * @see {@link https://discord.com/developers/docs/components/reference#radio-groups}
+ */
+export interface APIRadioGroupActionComponent extends APIBaseComponent<ComponentType.RadioGroupAction> {
+	/**
+	 * Id for the radio group action; max 100 characters
+	 */
+	custom_id: string;
+	/**
+	 * 2-10 radio group options within the radio group action component
+	 */
+	options: APIRadioGroupOption[];
+	/**
+	 * Whether the radio group requires selection before submitting the modal (defaults to `true`)
+	 */
+	required?: boolean;
+}
+
+// TODO: links
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#radio-groups}
+ */
+export interface APIRadioGroupOption {
+	/**
+	 * The value of the radio group option;
+	 */
+	value: string;
+	/**
+	 * The label text;
+	 */
+	label: string;
+	/**
+	 * An optional description for the radio group option; max 100 characters
+	 */
+	description?: string;
+	/**
+	 * Whether this option is default selected (defaults to `false`)
+	 */
+	default?: boolean;
+}
+
+// TODO: Links
+/**
+ * @see {@link https://discord.com/developers/docs/components/reference#radio-groups}
+ */
+export interface APICheckboxGroupActionComponent extends APIBaseComponent<ComponentType.CheckboxGroupAction> {
+	/**
+	 * Id for the checkbox group action; max 100 characters
+	 */
+	custom_id: string;
+	/**
+	 * 1-10 checkbox group option within the component
+	 */
+	options: APICheckboxGroupOption[];
+	/**
+	 * Minimum number of checkbox that can be selected (defaults to `1`)
+	 */
+	min_values?: number;
+	/**
+	 * Maximum number of checkbox that can be selected (default to options length)
+	 */
+	max_values?: number;
+	/**
+	 * Whether this requires selection before submitting the modal (defaults to `true`)
+	 */
+	required?: boolean;
+}
+
+export interface APICheckboxGroupOption {
+	/**
+	 * The value of the checkbox group option
+	 */
+	value: string;
+	/**
+	 * The label text; max 100 characters
+	 */
+	label: string;
+	/**
+	 * An optional description for the checkbox group option; max 100 characters;
+	 */
+	description?: string;
+	/**
+	 * Whether this option is default selected (defaults to `false`)
+	 */
+	default?: boolean;
+}
+
+export interface APICheckboxActionComponent extends APIBaseComponent<ComponentType.CheckboxAction> {
+	/**
+	 * Id for the checkbox action; max 100 characters
+	 */
+	custom_id: string;
+	/**
+	 * Whether this component is default selected (defaults to `false`)
+	 */
+	default?: boolean;
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/message#message-snapshot-object}
  */
 export interface APIMessageSnapshot {
@@ -1770,7 +1880,13 @@ export type APIComponentInModalActionRow = APITextInputComponent;
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#label-label-child-components}
  */
-export type APIComponentInLabel = APIFileUploadComponent | APISelectMenuComponent | APITextInputComponent;
+export type APIComponentInLabel =
+	| APICheckboxActionComponent
+	| APICheckboxGroupActionComponent
+	| APIFileUploadComponent
+	| APIRadioGroupActionComponent
+	| APISelectMenuComponent
+	| APITextInputComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}

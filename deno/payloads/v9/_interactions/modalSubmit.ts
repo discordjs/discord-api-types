@@ -40,10 +40,25 @@ export interface APIModalSubmitFileUploadComponent extends APIBaseModalSubmitCom
 	values: string[];
 }
 
+export interface APIModalSubmitRadioGroupActionComponent extends APIBaseModalSubmitComponent<ComponentType.RadioGroupAction> {
+	values: string[];
+}
+
+export interface APIModalSubmitCheckboxGroupActionComponent extends APIBaseModalSubmitComponent<ComponentType.CheckboxGroupAction> {
+	values: string[];
+}
+
+export interface APIModalSubmitCheckboxActionComponent extends APIBaseModalSubmitComponent<ComponentType.CheckboxAction> {
+	value: boolean;
+}
+
 export type ModalSubmitComponent =
 	| APIModalSubmitChannelSelectComponent
+	| APIModalSubmitCheckboxActionComponent
+	| APIModalSubmitCheckboxGroupActionComponent
 	| APIModalSubmitFileUploadComponent
 	| APIModalSubmitMentionableSelectComponent
+	| APIModalSubmitRadioGroupActionComponent
 	| APIModalSubmitRoleSelectComponent
 	| APIModalSubmitStringSelectComponent
 	| APIModalSubmitTextInputComponent
