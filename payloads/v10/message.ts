@@ -1039,19 +1039,19 @@ export enum ComponentType {
 	 *
 	 * @unstable This component is not publicly released and is currently in preview.
 	 */
-	RadioGroupAction = 21,
+	RadioGroup = 21,
 	/**
 	 * Component that displays grouped checkboxes
 	 *
 	 * @unstable This component is not publicly released and is currently in preview.
 	 */
-	CheckboxGroupAction,
+	CheckboxGroup,
 	/**
 	 * Component for checkbox
 	 *
 	 * @unstable This component is not publicly released and is currently in preview.
 	 */
-	CheckboxAction,
+	Checkbox,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
 	/**
