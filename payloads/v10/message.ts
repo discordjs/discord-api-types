@@ -1036,14 +1036,20 @@ export enum ComponentType {
 	FileUpload,
 	/**
 	 * Component that display radio groups
+	 *
+	 * @unstable This component is not publicly released and is currently in preview.
 	 */
 	RadioGroupAction = 21,
 	/**
 	 * Component that displays grouped checkboxes
+	 *
+	 * @unstable This component is not publicly released and is currently in preview.
 	 */
 	CheckboxGroupAction,
 	/**
 	 * Component for checkbox
+	 *
+	 * @unstable This component is not publicly released and is currently in preview.
 	 */
 	CheckboxAction,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
@@ -1702,13 +1708,15 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 	 */
 	max_values?: number;
 	/**
-	 * Whether the file upload requires files to be uploaded before submitting the modal (defaults to `true`)
+	 * Whether the file upload requires files to be uploaded before submitting the modal
+	 *
+	 * @defaultValue `true`
 	 */
 	required?: boolean;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/components/reference#radio-groups}
+ * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APIRadioGroupActionComponent extends APIBaseComponent<ComponentType.RadioGroupAction> {
 	/**
@@ -1720,22 +1728,23 @@ export interface APIRadioGroupActionComponent extends APIBaseComponent<Component
 	 */
 	options: APIRadioGroupOption[];
 	/**
-	 * Whether the radio group requires selection before submitting the modal (defaults to `true`)
+	 * Whether the radio group requires selection before submitting the modal
+	 *
+	 * @defaultValue `true`
 	 */
 	required?: boolean;
 }
 
-// TODO: links
 /**
- * @see {@link https://discord.com/developers/docs/components/reference#radio-groups}
+ * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APIRadioGroupOption {
 	/**
-	 * The value of the radio group option;
+	 * The value of the radio group option; max 100 characters
 	 */
 	value: string;
 	/**
-	 * The label text;
+	 * The label text; max 100 characters
 	 */
 	label: string;
 	/**
@@ -1743,14 +1752,15 @@ export interface APIRadioGroupOption {
 	 */
 	description?: string;
 	/**
-	 * Whether this option is default selected (defaults to `false`)
+	 * Whether this option is default selected
+	 *
+	 * @defaultValue `false`
 	 */
 	default?: boolean;
 }
 
-// TODO: Links
 /**
- * @see {@link https://discord.com/developers/docs/components/reference#radio-groups}
+ * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupActionComponent extends APIBaseComponent<ComponentType.CheckboxGroupAction> {
 	/**
@@ -1758,26 +1768,35 @@ export interface APICheckboxGroupActionComponent extends APIBaseComponent<Compon
 	 */
 	custom_id: string;
 	/**
-	 * 1-10 checkbox group option within the component
+	 * Checkbox group option within the component; max 10
 	 */
 	options: APICheckboxGroupOption[];
 	/**
-	 * Minimum number of checkbox that can be selected (defaults to `1`)
+	 * Minimum number of checkbox that can be selected; max 10
+	 *
+	 * @defaultValue `1`
 	 */
 	min_values?: number;
 	/**
-	 * Maximum number of checkbox that can be selected (default to options length)
+	 * Maximum number of checkbox that can be selected; max 10
+	 *
+	 * @defaultValue {@link APICheckboxGroupActionComponent.options} length
 	 */
 	max_values?: number;
 	/**
-	 * Whether this requires selection before submitting the modal (defaults to `true`)
+	 * Whether this requires selection before submitting the modal
+	 *
+	 * @defaultValue `true`
 	 */
 	required?: boolean;
 }
 
+/**
+ * @unstable This feature is not publicly released and is currently in preview.
+ */
 export interface APICheckboxGroupOption {
 	/**
-	 * The value of the checkbox group option
+	 * The value of the checkbox group option; max 100 characters
 	 */
 	value: string;
 	/**
@@ -1789,18 +1808,25 @@ export interface APICheckboxGroupOption {
 	 */
 	description?: string;
 	/**
-	 * Whether this option is default selected (defaults to `false`)
+	 * Whether this option is default selected
+	 *
+	 * @defaultValue `false`
 	 */
 	default?: boolean;
 }
 
+/**
+ * @unstable This component is not publicly released and is currently in preview.
+ */
 export interface APICheckboxActionComponent extends APIBaseComponent<ComponentType.CheckboxAction> {
 	/**
 	 * Id for the checkbox action; max 100 characters
 	 */
 	custom_id: string;
 	/**
-	 * Whether this component is default selected (defaults to `false`)
+	 * Whether this component is default selected
+	 *
+	 * @defaultValue `false`
 	 */
 	default?: boolean;
 }
