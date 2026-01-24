@@ -1713,7 +1713,7 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 /**
  * @unstable This component is not publicly released and is currently in preview.
  */
-export interface APIRadioGroupActionComponent extends APIBaseComponent<ComponentType.RadioGroupAction> {
+export interface APIRadioGroupActionComponent extends APIBaseComponent<ComponentType.RadioGroup> {
 	/**
 	 * Id for the radio group action; max 100 characters
 	 */
@@ -1757,7 +1757,7 @@ export interface APIRadioGroupOption {
 /**
  * @unstable This component is not publicly released and is currently in preview.
  */
-export interface APICheckboxGroupActionComponent extends APIBaseComponent<ComponentType.CheckboxGroupAction> {
+export interface APICheckboxGroupActionComponent extends APIBaseComponent<ComponentType.CheckboxGroup> {
 	/**
 	 * Id for the checkbox group action; max 100 characters
 	 */
@@ -1813,7 +1813,7 @@ export interface APICheckboxGroupOption {
 /**
  * @unstable This component is not publicly released and is currently in preview.
  */
-export interface APICheckboxActionComponent extends APIBaseComponent<ComponentType.CheckboxAction> {
+export interface APICheckboxActionComponent extends APIBaseComponent<ComponentType.Checkbox> {
 	/**
 	 * Id for the checkbox action; max 100 characters
 	 */

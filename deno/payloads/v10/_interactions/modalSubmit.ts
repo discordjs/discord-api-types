@@ -40,15 +40,15 @@ export interface APIModalSubmitFileUploadComponent extends APIBaseModalSubmitCom
 	values: string[];
 }
 
-export interface APIModalSubmitRadioGroupActionComponent extends APIBaseModalSubmitComponent<ComponentType.RadioGroupAction> {
+export interface APIModalSubmitRadioGroupActionComponent extends APIBaseModalSubmitComponent<ComponentType.RadioGroup> {
 	value?: string;
 }
 
-export interface APIModalSubmitCheckboxGroupActionComponent extends APIBaseModalSubmitComponent<ComponentType.CheckboxGroupAction> {
+export interface APIModalSubmitCheckboxGroupActionComponent extends APIBaseModalSubmitComponent<ComponentType.CheckboxGroup> {
 	values: string[];
 }
 
-export interface APIModalSubmitCheckboxActionComponent extends APIBaseModalSubmitComponent<ComponentType.CheckboxAction> {
+export interface APIModalSubmitCheckboxActionComponent extends APIBaseModalSubmitComponent<ComponentType.Checkbox> {
 	value: boolean;
 }
 
