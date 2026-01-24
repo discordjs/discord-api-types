@@ -1719,13 +1719,13 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
  * @see {@link https://discord.com/developers/docs/components/reference#radio-group}
  * @unstable This component is not publicly released and is currently in preview.
  */
-export interface APIRadioGroupActionComponent extends APIBaseComponent<ComponentType.RadioGroup> {
+export interface APIRadioGroupComponent extends APIBaseComponent<ComponentType.RadioGroup> {
 	/**
-	 * Id for the radio group action; max 100 characters
+	 * Id for the radio group; max 100 characters
 	 */
 	custom_id: string;
 	/**
-	 * 2-10 radio group options within the radio group action component
+	 * 2-10 radio group options within the radio group component
 	 */
 	options: APIRadioGroupOption[];
 	/**
@@ -1765,9 +1765,9 @@ export interface APIRadioGroupOption {
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group}
  * @unstable This component is not publicly released and is currently in preview.
  */
-export interface APICheckboxGroupActionComponent extends APIBaseComponent<ComponentType.CheckboxGroup> {
+export interface APICheckboxGroupComponent extends APIBaseComponent<ComponentType.CheckboxGroup> {
 	/**
-	 * Id for the checkbox group action; max 100 characters
+	 * Id for the checkbox group; max 100 characters
 	 */
 	custom_id: string;
 	/**
@@ -1823,9 +1823,9 @@ export interface APICheckboxGroupOption {
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox}
  * @unstable This component is not publicly released and is currently in preview.
  */
-export interface APICheckboxActionComponent extends APIBaseComponent<ComponentType.Checkbox> {
+export interface APICheckboxComponent extends APIBaseComponent<ComponentType.Checkbox> {
 	/**
-	 * Id for the checkbox action; max 100 characters
+	 * Id for the checkbox; max 100 characters
 	 */
 	custom_id: string;
 	/**
@@ -1917,10 +1917,10 @@ export type APIComponentInModalActionRow = APITextInputComponent;
  * @see {@link https://discord.com/developers/docs/components/reference#label-label-child-components}
  */
 export type APIComponentInLabel =
-	| APICheckboxActionComponent
-	| APICheckboxGroupActionComponent
+	| APICheckboxComponent
+	| APICheckboxGroupComponent
 	| APIFileUploadComponent
-	| APIRadioGroupActionComponent
+	| APIRadioGroupComponent
 	| APISelectMenuComponent
 	| APITextInputComponent;
 
