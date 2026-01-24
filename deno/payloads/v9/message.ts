@@ -1030,19 +1030,19 @@ export enum ComponentType {
 	 */
 	FileUpload,
 	/**
-	 * Component that display radio groups
+	 * Single-choice set of radio group option
 	 *
 	 * @unstable This component is not publicly released and is currently in preview.
 	 */
 	RadioGroup = 21,
 	/**
-	 * Component that displays grouped checkboxes
+	 * Multi-select group of checkboxes
 	 *
 	 * @unstable This component is not publicly released and is currently in preview.
 	 */
 	CheckboxGroup,
 	/**
-	 * Component for checkbox
+	 * Single checkbox for binary choice
 	 *
 	 * @unstable This component is not publicly released and is currently in preview.
 	 */
@@ -1711,6 +1711,7 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 }
 
 /**
+ * @see {@link https://discord.com/developers/docs/components/reference#radio-group}
  * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APIRadioGroupActionComponent extends APIBaseComponent<ComponentType.RadioGroup> {
@@ -1731,6 +1732,7 @@ export interface APIRadioGroupActionComponent extends APIBaseComponent<Component
 }
 
 /**
+ * @see {@link https://discord.com/developers/docs/components/reference#radio-group-option-structure}
  * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APIRadioGroupOption {
@@ -1747,7 +1749,7 @@ export interface APIRadioGroupOption {
 	 */
 	description?: string;
 	/**
-	 * Whether this option is default selected
+	 * Whether this option is selected by default
 	 *
 	 * @defaultValue `false`
 	 */
@@ -1755,6 +1757,7 @@ export interface APIRadioGroupOption {
 }
 
 /**
+ * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group}
  * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupActionComponent extends APIBaseComponent<ComponentType.CheckboxGroup> {
@@ -1767,19 +1770,19 @@ export interface APICheckboxGroupActionComponent extends APIBaseComponent<Compon
 	 */
 	options: APICheckboxGroupOption[];
 	/**
-	 * Minimum number of checkbox that can be selected; max 10
+	 * Minimum number of checkbox that can be selected; min 0, max 10
 	 *
 	 * @defaultValue `1`
 	 */
 	min_values?: number;
 	/**
-	 * Maximum number of checkbox that can be selected; max 10
+	 * Maximum number of checkbox that can be selected; min 1, max 10
 	 *
 	 * @defaultValue {@link APICheckboxGroupActionComponent.options} length
 	 */
 	max_values?: number;
 	/**
-	 * Whether this requires selection before submitting the modal
+	 * Whether selecting within the group is required before submitting the modal
 	 *
 	 * @defaultValue `true`
 	 */
@@ -1787,6 +1790,7 @@ export interface APICheckboxGroupActionComponent extends APIBaseComponent<Compon
 }
 
 /**
+ * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group-option-structure}
  * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupOption {
@@ -1803,7 +1807,7 @@ export interface APICheckboxGroupOption {
 	 */
 	description?: string;
 	/**
-	 * Whether this option is default selected
+	 * Whether this option is selected by default
 	 *
 	 * @defaultValue `false`
 	 */
@@ -1811,6 +1815,7 @@ export interface APICheckboxGroupOption {
 }
 
 /**
+ * @see {@link https://discord.com/developers/docs/components/reference#checkbox}
  * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APICheckboxActionComponent extends APIBaseComponent<ComponentType.Checkbox> {
@@ -1819,7 +1824,7 @@ export interface APICheckboxActionComponent extends APIBaseComponent<ComponentTy
 	 */
 	custom_id: string;
 	/**
-	 * Whether this component is default selected
+	 * Whether this checkbox is selected by default
 	 *
 	 * @defaultValue `false`
 	 */
