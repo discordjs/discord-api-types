@@ -1778,7 +1778,7 @@ export interface APICheckboxGroupComponent extends APIBaseComponent<ComponentTyp
 	/**
 	 * Maximum number of checkbox that can be selected; min 1, max 10
 	 *
-	 * @defaultValue {@link APICheckboxGroupActionComponent.options} length
+	 * @defaultValue {@link APICheckboxGroupComponent.options} length
 	 */
 	max_values?: number;
 	/**
