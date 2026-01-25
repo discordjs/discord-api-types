@@ -106,7 +106,7 @@ export enum InviteTargetUsersJobStatus {
 	 */
 	Completed = 2,
 	/**
-	 * The job has failed; see `errorMessage` for more details.
+	 * The job has failed; see `error_message` field for more details.
 	 */
 	Failed = 3,
 }
