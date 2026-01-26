@@ -1,3 +1,12 @@
+## [0.38.38](https://github.com/discordjs/discord-api-types/compare/0.38.37...0.38.38) (2026-01-26)
+
+
+### Features
+
+* radio groups and checkbox in modal ([#1495](https://github.com/discordjs/discord-api-types/issues/1495)) ([18fa946](https://github.com/discordjs/discord-api-types/commit/18fa946bdfb8e0b1537e7538ca046f1647166d1e))
+
+
+
 ## [0.38.37](https://github.com/discordjs/discord-api-types/compare/0.38.36...0.38.37) (2025-12-11)
 
 
