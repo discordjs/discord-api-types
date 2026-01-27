@@ -1030,21 +1030,15 @@ export enum ComponentType {
 	 */
 	FileUpload,
 	/**
-	 * Single-choice set of radio group option
-	 *
-	 * @unstable This component is not publicly released and is currently in preview.
+	 * Single-choice set of radio options
 	 */
 	RadioGroup = 21,
 	/**
 	 * Multi-select group of checkboxes
-	 *
-	 * @unstable This component is not publicly released and is currently in preview.
 	 */
 	CheckboxGroup,
 	/**
 	 * Single checkbox for binary choice
-	 *
-	 * @unstable This component is not publicly released and is currently in preview.
 	 */
 	Checkbox,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
@@ -1712,7 +1706,6 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#radio-group}
- * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APIRadioGroupComponent extends APIBaseComponent<ComponentType.RadioGroup> {
 	/**
@@ -1733,7 +1726,6 @@ export interface APIRadioGroupComponent extends APIBaseComponent<ComponentType.R
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#radio-group-option-structure}
- * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APIRadioGroupOption {
 	/**
@@ -1758,7 +1750,6 @@ export interface APIRadioGroupOption {
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group}
- * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupComponent extends APIBaseComponent<ComponentType.CheckboxGroup> {
 	/**
@@ -1791,7 +1782,6 @@ export interface APICheckboxGroupComponent extends APIBaseComponent<ComponentTyp
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group-option-structure}
- * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupOption {
 	/**
@@ -1816,7 +1806,6 @@ export interface APICheckboxGroupOption {
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox}
- * @unstable This component is not publicly released and is currently in preview.
  */
 export interface APICheckboxComponent extends APIBaseComponent<ComponentType.Checkbox> {
 	/**
