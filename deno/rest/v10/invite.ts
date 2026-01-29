@@ -37,16 +37,6 @@ export type RESTGetAPIInviteTargetUsersResult = string;
 /**
  * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
  */
-export interface RESTPutAPIInviteTargetUsersQuery {
-	/**
-	 * A csv file with a single column of user IDs for all the users able to accept this invite
-	 */
-	target_users_file?: string;
-}
-
-/**
- * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
- */
 export interface RESTPutAPIInviteTargetUsersFormDataBody {
 	/**
 	 * A csv file with a single column of user IDs for all the users able to accept this invite
