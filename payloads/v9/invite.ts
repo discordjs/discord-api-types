@@ -6,6 +6,7 @@ import type { APIApplication } from './application';
 import type { APIInviteChannel } from './channel';
 import type { APIGuild } from './guild';
 import type { APIGuildScheduledEvent } from './guildScheduledEvent';
+import type { APIRole } from './permissions';
 import type { APIUser } from './user';
 
 export type APIInviteGuild = Pick<
@@ -98,6 +99,10 @@ export interface APIInvite {
 	 * The flags of the invite
 	 */
 	flags?: InviteFlags;
+	/**
+	 * The roles assigned to the user upon accepting the invite
+	 */
+	roles?: APIRole[];
 }
 
 /**
