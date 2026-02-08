@@ -376,7 +376,7 @@ export interface GatewayActivityAssets {
 	 */
 	small_url?: string;
 	/**
-	 * See Activity Asset Image. Displayed as a banner on a Game Invite.
+	 * Displayed as a banner on a Game Invite.
 	 *
 	 * @see {@link https://discord.com/developers/docs/events/gateway-events#activity-object-activity-asset-image | Activity Asset Image}
 	 * @see {@link https://discord.com/developers/docs/discord-social-sdk/development-guides/managing-game-invites | Game Invite}
