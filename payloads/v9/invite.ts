@@ -102,8 +102,10 @@ export interface APIInvite {
 	/**
 	 * The roles assigned to the user upon accepting the invite
 	 */
-	roles?: APIRole[];
+	roles?: APIInvitePartialRole[];
 }
+
+export type APIInvitePartialRole = Pick<APIRole, 'color' | 'colors' | 'icon' | 'id' | 'name' | 'position'>;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-guild-invite-flags}
