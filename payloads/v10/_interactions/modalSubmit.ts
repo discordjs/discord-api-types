@@ -41,7 +41,7 @@ export interface APIModalSubmitFileUploadComponent extends APIBaseModalSubmitCom
 }
 
 export interface APIModalSubmitRadioGroupComponent extends APIBaseModalSubmitComponent<ComponentType.RadioGroup> {
-	value?: string;
+	value: string | null;
 }
 
 export interface APIModalSubmitCheckboxGroupComponent extends APIBaseModalSubmitComponent<ComponentType.CheckboxGroup> {
