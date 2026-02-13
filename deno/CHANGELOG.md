@@ -1,3 +1,12 @@
+## [0.38.39](https://github.com/discordjs/discord-api-types/compare/0.38.38...0.38.39) (2026-02-13)
+
+
+### Bug Fixes
+
+* **APIModalSubmitRadioGroupComponent:** nullable value ([#1518](https://github.com/discordjs/discord-api-types/issues/1518)) ([6f6b780](https://github.com/discordjs/discord-api-types/commit/6f6b780851124cc0aa8f06cc28abce992619ee2b))
+
+
+
 ## [0.38.38](https://github.com/discordjs/discord-api-types/compare/0.38.37...0.38.38) (2026-01-29)
 
 
