@@ -105,8 +105,7 @@ export type APIApplicationCommandInteractionDataBasicOption<Type extends Interac
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
-export interface APIChatInputApplicationCommandInteractionData
-	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
+export interface APIChatInputApplicationCommandInteractionData extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
 	options?: APIApplicationCommandInteractionDataOption<InteractionType.ApplicationCommand>[];
 	resolved?: APIInteractionDataResolved;
 }
@@ -114,8 +113,7 @@ export interface APIChatInputApplicationCommandInteractionData
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
-export interface APIAutocompleteApplicationCommandInteractionData
-	extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
+export interface APIAutocompleteApplicationCommandInteractionData extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
 	options?: APIApplicationCommandInteractionDataOption<InteractionType.ApplicationCommandAutocomplete>[];
 	resolved?: APIInteractionDataResolved;
 }

@@ -3,8 +3,7 @@ import type { APIApplicationCommandBasicOption, APIApplicationCommandInteraction
 import type { APIApplicationCommandOptionBase } from './base';
 import type { ApplicationCommandOptionType } from './shared';
 
-export interface APIApplicationCommandSubcommandOption
-	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Subcommand> {
+export interface APIApplicationCommandSubcommandOption extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Subcommand> {
 	options?: APIApplicationCommandBasicOption[];
 }
 

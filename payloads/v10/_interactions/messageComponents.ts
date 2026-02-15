@@ -56,31 +56,26 @@ export interface APIMessageComponentBaseInteractionData<CType extends ComponentT
 
 export type APIMessageButtonInteractionData = APIMessageComponentBaseInteractionData<ComponentType.Button>;
 
-export interface APIMessageStringSelectInteractionData
-	extends APIMessageComponentBaseInteractionData<ComponentType.StringSelect> {
+export interface APIMessageStringSelectInteractionData extends APIMessageComponentBaseInteractionData<ComponentType.StringSelect> {
 	values: string[];
 }
 
-export interface APIMessageUserSelectInteractionData
-	extends APIMessageComponentBaseInteractionData<ComponentType.UserSelect> {
+export interface APIMessageUserSelectInteractionData extends APIMessageComponentBaseInteractionData<ComponentType.UserSelect> {
 	values: Snowflake[];
 	resolved: APIUserInteractionDataResolved;
 }
 
-export interface APIMessageRoleSelectInteractionData
-	extends APIMessageComponentBaseInteractionData<ComponentType.RoleSelect> {
+export interface APIMessageRoleSelectInteractionData extends APIMessageComponentBaseInteractionData<ComponentType.RoleSelect> {
 	values: Snowflake[];
 	resolved: Required<Pick<APIInteractionDataResolved, 'roles'>>;
 }
 
-export interface APIMessageMentionableSelectInteractionData
-	extends APIMessageComponentBaseInteractionData<ComponentType.MentionableSelect> {
+export interface APIMessageMentionableSelectInteractionData extends APIMessageComponentBaseInteractionData<ComponentType.MentionableSelect> {
 	values: Snowflake[];
 	resolved: Pick<APIInteractionDataResolved, 'members' | 'roles' | 'users'>;
 }
 
-export interface APIMessageChannelSelectInteractionData
-	extends APIMessageComponentBaseInteractionData<ComponentType.ChannelSelect> {
+export interface APIMessageChannelSelectInteractionData extends APIMessageComponentBaseInteractionData<ComponentType.ChannelSelect> {
 	values: Snowflake[];
 	resolved: Required<Pick<APIInteractionDataResolved, 'channels'>>;
 }

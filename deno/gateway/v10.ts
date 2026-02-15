@@ -1136,7 +1136,8 @@ export type GatewayGuildMemberUpdateDispatch = _DataPayload<
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-member-update}
  */
 export interface GatewayGuildMemberUpdateDispatchData
-	extends APIGuildMemberJoined,
+	extends
+		APIGuildMemberJoined,
 		APIBaseGuildMember,
 		Partial<APIBaseVoiceGuildMember>,
 		Partial<APIFlaggedGuildMember>,
@@ -1623,7 +1624,8 @@ export type GatewayMessageUpdateDispatch = _DataPayload<
 export interface GatewayMessageUpdateDispatchData extends GatewayMessageEventExtraFields, APIBaseMessage {}
 
 export interface APIGuildMemberNoUser
-	extends APIBaseGuildMember,
+	extends
+		APIBaseGuildMember,
 		APIFlaggedGuildMember,
 		APIGuildMemberAvatar,
 		NonNullable<APIGuildMemberJoined>,

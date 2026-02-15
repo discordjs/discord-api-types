@@ -1,6 +1,6 @@
 {
 	"name": "discord-api-types",
-	"version": "0.38.36",
+	"version": "0.38.39",
 	"description": "Discord API typings that are kept up to date for use in bot library creation.",
 	"homepage": "https://discord-api-types.dev",
 	"workspaces": [
@@ -144,7 +144,7 @@
 		"conventional-changelog": "^7.0.2",
 		"conventional-changelog-angular": "^8.0.0",
 		"conventional-recommended-bump": "^11.1.0",
-		"eslint": "^9.28.0",
+		"eslint": "^10.0.0",
 		"eslint-config-neon": "^0.2.7",
 		"eslint-formatter-pretty": "^7.0.0",
 		"eslint-import-resolver-typescript": "^4.4.2",
@@ -154,7 +154,7 @@
 		"lint-staged": "^16.1.0",
 		"lodash.merge": "^4.6.2",
 		"npm-run-all2": "^8.0.4",
-		"prettier": "^3.5.3",
+		"prettier": "^3.7.4",
 		"pretty-quick": "^4.1.1",
 		"rimraf": "^6.0.1",
 		"ts-morph": "^27.0.0",
@@ -209,7 +209,7 @@
 	},
 	"packageManager": "yarn@4.12.0",
 	"volta": {
-		"node": "24.11.1",
+		"node": "24.13.1",
 		"yarn": "4.12.0"
 	}
 }

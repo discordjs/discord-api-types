@@ -28,8 +28,7 @@ export interface APIModalSubmitRoleSelectComponent extends APIBaseModalSubmitCom
 	values: string[];
 }
 
-export interface APIModalSubmitMentionableSelectComponent
-	extends APIBaseModalSubmitComponent<ComponentType.MentionableSelect> {
+export interface APIModalSubmitMentionableSelectComponent extends APIBaseModalSubmitComponent<ComponentType.MentionableSelect> {
 	values: string[];
 }
 
@@ -41,10 +40,25 @@ export interface APIModalSubmitFileUploadComponent extends APIBaseModalSubmitCom
 	values: string[];
 }
 
+export interface APIModalSubmitRadioGroupComponent extends APIBaseModalSubmitComponent<ComponentType.RadioGroup> {
+	value: string | null;
+}
+
+export interface APIModalSubmitCheckboxGroupComponent extends APIBaseModalSubmitComponent<ComponentType.CheckboxGroup> {
+	values: string[];
+}
+
+export interface APIModalSubmitCheckboxComponent extends APIBaseModalSubmitComponent<ComponentType.Checkbox> {
+	value: boolean;
+}
+
 export type ModalSubmitComponent =
 	| APIModalSubmitChannelSelectComponent
+	| APIModalSubmitCheckboxComponent
+	| APIModalSubmitCheckboxGroupComponent
 	| APIModalSubmitFileUploadComponent
 	| APIModalSubmitMentionableSelectComponent
+	| APIModalSubmitRadioGroupComponent
 	| APIModalSubmitRoleSelectComponent
 	| APIModalSubmitStringSelectComponent
 	| APIModalSubmitTextInputComponent

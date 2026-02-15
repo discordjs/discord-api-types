@@ -48,7 +48,8 @@ export type RESTGetAPIApplicationCommandsResult = APIApplicationCommand[];
 export type RESTGetAPIApplicationCommandResult = APIApplicationCommand;
 
 export interface RESTPostAPIBaseApplicationCommandsJSONBody
-	extends _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	extends
+		_AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 			Omit<
 				APIApplicationCommand,
 				| 'application_id'
@@ -89,8 +90,7 @@ export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTP
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#create-global-application-command}
  */
-export interface RESTPostAPIPrimaryEntryPointApplicationCommandJSONBody
-	extends RESTPostAPIBaseApplicationCommandsJSONBody {
+export interface RESTPostAPIPrimaryEntryPointApplicationCommandJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type: ApplicationCommandType.PrimaryEntryPoint;
 }
 

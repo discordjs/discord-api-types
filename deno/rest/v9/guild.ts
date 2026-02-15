@@ -1013,7 +1013,8 @@ export type RESTPutAPIGuildOnboardingJSONBody = _AddUndefinedToPossiblyUndefined
 };
 
 export interface RESTAPIGuildOnboardingPrompt
-	extends _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	extends
+		_AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 			Partial<Omit<APIGuildOnboardingPrompt, 'guild_id' | 'id' | 'options' | 'title'>>
 		>,
 		Pick<APIGuildOnboardingPrompt, 'id' | 'title'> {
@@ -1029,7 +1030,8 @@ export interface RESTAPIGuildOnboardingPrompt
 export type RESTAPIModifyGuildOnboardingPromptData = RESTAPIGuildOnboardingPrompt;
 
 export interface RESTAPIGuildOnboardingPromptOption
-	extends _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
+	extends
+		_AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 			Partial<Omit<APIGuildOnboardingPromptOption, 'emoji' | 'guild_id' | 'title'>>
 		>,
 		Pick<APIGuildOnboardingPromptOption, 'title'> {

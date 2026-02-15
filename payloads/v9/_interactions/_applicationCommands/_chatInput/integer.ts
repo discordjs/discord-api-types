@@ -6,8 +6,7 @@ import type {
 } from './base';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
 
-export interface APIApplicationCommandIntegerOptionBase
-	extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Integer> {
+export interface APIApplicationCommandIntegerOptionBase extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Integer> {
 	/**
 	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
 	 */
@@ -23,10 +22,11 @@ export type APIApplicationCommandIntegerOption = APIApplicationCommandOptionWith
 	APIApplicationCommandOptionChoice<number>
 >;
 
-export interface APIApplicationCommandInteractionDataIntegerOption<Type extends InteractionType = InteractionType>
-	extends APIInteractionDataOptionBase<
-		ApplicationCommandOptionType.Integer,
-		Type extends InteractionType.ApplicationCommandAutocomplete ? string : number
-	> {
+export interface APIApplicationCommandInteractionDataIntegerOption<
+	Type extends InteractionType = InteractionType,
+> extends APIInteractionDataOptionBase<
+	ApplicationCommandOptionType.Integer,
+	Type extends InteractionType.ApplicationCommandAutocomplete ? string : number
+> {
 	focused?: boolean;
 }
