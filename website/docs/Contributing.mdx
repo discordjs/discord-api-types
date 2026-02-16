@@ -179,8 +179,7 @@ They must also follow the following structure: `REST{http_method}{type_name}{Que
   - If a route doesn't take in any parameters, be it query, JSON or FormData, it shouldn't define any of those types
   - A route should always define a `Result` type, and should reference an `API*` type unless the data returned is only
     received through a REST call
-  - If a route returns a `204 No Content` response, it should define a `Result` type with `never` as its value (this
-    does not account for errors)
+  - If a route returns a `204 No Content` response, it should define a `Result` type with `void` as its value
 
 This structure should be followed whenever possible, however that might not always be doable. Specifically, types for
 OAuth2 may not follow the structure exactly, but should aim to follow it as much as possible.
