@@ -88,7 +88,7 @@ The exports of each API version is split into three main parts:
         - Some exported types (specifically OAuth2 related ones) may not respect this entire structure due to the nature of the fields. They will start with either `RESTOAuth2` or with something similar to `REST<HTTP Method>OAuth2`
 
     - If a type ends with `Result`, then it represents the expected result by calling its accompanying route.
-        - Types for a Result that will be a `204 No Content` will be typed as `void`
+        - Types for a Result that will be a `204 No Content` will be typed as `undefined`
 
 - Anything else that is miscellaneous will be exported based on what it represents (for example the `REST` route object).
 

@@ -95,7 +95,7 @@ export enum EntitlementOwnerType {
 /**
  * @see {@link https://discord.com/developers/docs/resources/entitlement#delete-test-entitlement}
  */
-export type RESTDeleteAPIEntitlementResult = void;
+export type RESTDeleteAPIEntitlementResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/sku#list-skus}
@@ -105,7 +105,7 @@ export type RESTGetAPISKUsResult = APISKU[];
 /**
  * @see {@link https://discord.com/developers/docs/resources/entitlement#consume-an-entitlement}
  */
-export type RESTPostAPIEntitlementConsumeResult = void;
+export type RESTPostAPIEntitlementConsumeResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/subscription#query-string-params}

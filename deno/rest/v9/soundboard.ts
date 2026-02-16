@@ -104,4 +104,4 @@ export type RESTPatchAPIGuildSoundboardSoundResult = APISoundboardSound;
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#delete-guild-soundboard-sound}
  */
-export type RESTDeleteAPIGuildSoundboardSoundResult = void;
+export type RESTDeleteAPIGuildSoundboardSoundResult = undefined;

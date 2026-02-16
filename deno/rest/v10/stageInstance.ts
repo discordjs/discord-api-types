@@ -61,4 +61,4 @@ export type RESTPatchAPIStageInstanceResult = APIStageInstance;
 /**
  * @see {@link https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance}
  */
-export type RESTDeleteAPIStageInstanceResult = void;
+export type RESTDeleteAPIStageInstanceResult = undefined;
