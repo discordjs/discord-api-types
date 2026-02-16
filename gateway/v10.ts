@@ -430,7 +430,7 @@ export interface GatewayHelloData {
  */
 export interface GatewayHeartbeatRequest extends _NonDispatchPayload {
 	op: GatewayOpcodes.Heartbeat;
-	d: void;
+	d: never;
 }
 
 /**
@@ -438,7 +438,7 @@ export interface GatewayHeartbeatRequest extends _NonDispatchPayload {
  */
 export interface GatewayHeartbeatAck extends _NonDispatchPayload {
 	op: GatewayOpcodes.HeartbeatAck;
-	d: void;
+	d: never;
 }
 
 /**
@@ -459,7 +459,7 @@ export type GatewayInvalidSessionData = boolean;
  */
 export interface GatewayReconnect extends _NonDispatchPayload {
 	op: GatewayOpcodes.Reconnect;
-	d: void;
+	d: never;
 }
 
 /**
@@ -2657,7 +2657,7 @@ export interface _DataPayload<Event extends GatewayDispatchEvents, D = unknown> 
 }
 
 // This is not used internally anymore, just remains to be non-breaking
-export type GatewayMessageReactionData<E extends GatewayDispatchEvents, O extends string = void> = _DataPayload<
+export type GatewayMessageReactionData<E extends GatewayDispatchEvents, O extends string = never> = _DataPayload<
 	E,
 	Omit<GatewayMessageReactionAddDispatchData, O>
 >;
