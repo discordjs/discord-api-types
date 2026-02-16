@@ -89,12 +89,12 @@ export type RESTPatchAPIWebhookWithTokenResult = RESTGetAPIWebhookWithTokenResul
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#delete-webhook}
  */
-export type RESTDeleteAPIWebhookResult = void;
+export type RESTDeleteAPIWebhookResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#delete-webhook-with-token}
  */
-export type RESTDeleteAPIWebhookWithTokenResult = void;
+export type RESTDeleteAPIWebhookWithTokenResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#execute-webhook}
@@ -201,7 +201,7 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#execute-webhook}
  */
-export type RESTPostAPIWebhookWithTokenResult = void;
+export type RESTPostAPIWebhookWithTokenResult = undefined;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -219,7 +219,7 @@ export type RESTPostAPIWebhookWithTokenSlackQuery = Pick<RESTPostAPIWebhookWithT
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook}
  */
-export type RESTPostAPIWebhookWithTokenSlackResult = void;
+export type RESTPostAPIWebhookWithTokenSlackResult = undefined;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -237,7 +237,7 @@ export type RESTPostAPIWebhookWithTokenGitHubQuery = Pick<RESTPostAPIWebhookWith
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook}
  */
-export type RESTPostAPIWebhookWithTokenGitHubResult = void;
+export type RESTPostAPIWebhookWithTokenGitHubResult = undefined;
 
 /**
  * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
@@ -312,4 +312,4 @@ export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#delete-webhook-message}
  */
-export type RESTDeleteAPIWebhookWithTokenMessageResult = void;
+export type RESTDeleteAPIWebhookWithTokenMessageResult = undefined;
