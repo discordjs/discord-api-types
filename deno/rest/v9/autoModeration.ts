@@ -80,4 +80,4 @@ export type RESTPatchAPIAutoModerationRuleResult = APIAutoModerationRule;
 /**
  * @see {@link https://discord.com/developers/docs/resources/auto-moderation#delete-auto-moderation-rule}
  */
-export type RESTDeleteAPIAutoModerationRuleResult = void;
+export type RESTDeleteAPIAutoModerationRuleResult = undefined;

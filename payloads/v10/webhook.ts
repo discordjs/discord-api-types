@@ -76,7 +76,7 @@ export interface APIWebhook {
  */
 export type APIWebhookEvent =
 	| APIWebhookEventBase<ApplicationWebhookType.Event, APIWebhookEventBody>
-	| APIWebhookEventBase<ApplicationWebhookType.Ping, void>;
+	| APIWebhookEventBase<ApplicationWebhookType.Ping, undefined>;
 
 /**
  * @see {@link https://discord.com/developers/docs/events/webhook-events#event-body-object}
@@ -133,7 +133,7 @@ export type APIWebhookEventEntitlementDeleteData = APIEntitlement;
  */
 export type APIWebhookEventEntitlementUpdateData = APIEntitlement;
 
-export type APIWebhookEventQuestUserEnrollmentData = void;
+export type APIWebhookEventQuestUserEnrollmentData = undefined;
 
 export interface APIWebhookEventBase<Type extends ApplicationWebhookType, Event> {
 	/**

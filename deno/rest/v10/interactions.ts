@@ -212,7 +212,7 @@ export type RESTPostAPIInteractionCallbackFormDataBody =
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response}
  */
-export type RESTPostAPIInteractionCallbackResult = void;
+export type RESTPostAPIInteractionCallbackResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-callback-interaction-callback-response-object}

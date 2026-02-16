@@ -85,7 +85,7 @@ export interface APIInvite {
 	 * @deprecated This has been removed from the documentation.
 	 * {@link https://github.com/discord/discord-api-docs/pull/7779 | discord-api-docs#7779}
 	 */
-	stage_instance?: void;
+	stage_instance?: undefined;
 	/**
 	 * The guild scheduled event data, returned from the `GET /invites/<code>` endpoint when `guild_scheduled_event_id` is a valid guild scheduled event id
 	 */

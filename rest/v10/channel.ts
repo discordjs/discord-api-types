@@ -365,12 +365,12 @@ export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#create-reaction}
  */
-export type RESTPutAPIChannelMessageReactionResult = void;
+export type RESTPutAPIChannelMessageReactionResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#delete-own-reaction}
  */
-export type RESTDeleteAPIChannelMessageOwnReactionResult = void;
+export type RESTDeleteAPIChannelMessageOwnReactionResult = undefined;
 
 /**
  * @deprecated Use {@link RESTDeleteAPIChannelMessageOwnReactionResult} instead
@@ -380,7 +380,7 @@ export type RESTDeleteAPIChannelMessageOwnReaction = RESTDeleteAPIChannelMessage
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#delete-user-reaction}
  */
-export type RESTDeleteAPIChannelMessageUserReactionResult = void;
+export type RESTDeleteAPIChannelMessageUserReactionResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#get-reactions}
@@ -418,12 +418,12 @@ export type RESTGetAPIChannelMessageReactionUsersResult = APIUser[];
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#delete-all-reactions}
  */
-export type RESTDeleteAPIChannelAllMessageReactionsResult = void;
+export type RESTDeleteAPIChannelAllMessageReactionsResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#delete-all-reactions-for-emoji}
  */
-export type RESTDeleteAPIChannelMessageReactionResult = void;
+export type RESTDeleteAPIChannelMessageReactionResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#edit-message}
@@ -490,7 +490,7 @@ export type RESTPatchAPIChannelMessageResult = APIMessage;
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#delete-message}
  */
-export type RESTDeleteAPIChannelMessageResult = void;
+export type RESTDeleteAPIChannelMessageResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#bulk-delete-messages}
@@ -505,7 +505,7 @@ export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#bulk-delete-messages}
  */
-export type RESTPostAPIChannelMessagesBulkDeleteResult = void;
+export type RESTPostAPIChannelMessagesBulkDeleteResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#edit-channel-permissions}
@@ -534,7 +534,7 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#edit-channel-permissions}
  */
-export type RESTPutAPIChannelPermissionResult = void;
+export type RESTPutAPIChannelPermissionResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#get-channel-invites}
@@ -598,7 +598,7 @@ export type RESTPostAPIChannelInviteResult = APIExtendedInvite;
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#delete-channel-permission}
  */
-export type RESTDeleteAPIChannelPermissionResult = void;
+export type RESTDeleteAPIChannelPermissionResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#follow-news-channel}
@@ -618,7 +618,7 @@ export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#trigger-typing-indicator}
  */
-export type RESTPostAPIChannelTypingResult = void;
+export type RESTPostAPIChannelTypingResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#get-channel-pins}
@@ -653,12 +653,12 @@ export interface RESTGetAPIChannelMessagesPinsResult {
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#pin-message}
  */
-export type RESTPutAPIChannelMessagesPinResult = void;
+export type RESTPutAPIChannelMessagesPinResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#unpin-message}
  */
-export type RESTDeleteAPIChannelMessagesPinResult = void;
+export type RESTDeleteAPIChannelMessagesPinResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#get-pinned-messages-deprecated}
@@ -670,13 +670,13 @@ export type RESTGetAPIChannelPinsResult = APIMessage[];
  * @see {@link https://discord.com/developers/docs/resources/message#pin-message-deprecated}
  * @deprecated
  */
-export type RESTPutAPIChannelPinResult = void;
+export type RESTPutAPIChannelPinResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#unpin-message-deprecated}
  * @deprecated
  */
-export type RESTDeleteAPIChannelPinResult = void;
+export type RESTDeleteAPIChannelPinResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#group-dm-add-recipient}
@@ -778,12 +778,12 @@ export type RESTPostAPIChannelThreadsResult =
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#join-thread}
  */
-export type RESTPutAPIChannelThreadMembersResult = void;
+export type RESTPutAPIChannelThreadMembersResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#leave-thread}
  */
-export type RESTDeleteAPIChannelThreadMembersResult = void;
+export type RESTDeleteAPIChannelThreadMembersResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#get-thread-member}

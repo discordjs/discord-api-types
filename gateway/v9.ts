@@ -420,7 +420,7 @@ export interface GatewayHelloData {
  */
 export interface GatewayHeartbeatRequest extends _NonDispatchPayload {
 	op: GatewayOpcodes.Heartbeat;
-	d: never;
+	d: undefined;
 }
 
 /**
@@ -428,7 +428,7 @@ export interface GatewayHeartbeatRequest extends _NonDispatchPayload {
  */
 export interface GatewayHeartbeatAck extends _NonDispatchPayload {
 	op: GatewayOpcodes.HeartbeatAck;
-	d: never;
+	d: undefined;
 }
 
 /**
@@ -449,7 +449,7 @@ export type GatewayInvalidSessionData = boolean;
  */
 export interface GatewayReconnect extends _NonDispatchPayload {
 	op: GatewayOpcodes.Reconnect;
-	d: never;
+	d: undefined;
 }
 
 /**
@@ -504,7 +504,7 @@ export interface GatewayReadyDispatchData {
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#resumed}
  */
-export type GatewayResumedDispatch = _DataPayload<GatewayDispatchEvents.Resumed, void>;
+export type GatewayResumedDispatch = _DataPayload<GatewayDispatchEvents.Resumed, undefined>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create}
