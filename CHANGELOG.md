@@ -1,3 +1,17 @@
+## [0.38.40](https://github.com/discordjs/discord-api-types/compare/0.38.39...0.38.40) (2026-02-16)
+
+
+### Bug Fixes
+
+* export missing properties and use interfaces on GatewayActivityAssets ([#1519](https://github.com/discordjs/discord-api-types/issues/1519)) ([8fd4024](https://github.com/discordjs/discord-api-types/commit/8fd402464a9db8f5341a3146cdd166d557a48510))
+
+
+### Features
+
+* mark guild member role counts endpoint as stable ([#1462](https://github.com/discordjs/discord-api-types/issues/1462)) ([2a9dfd4](https://github.com/discordjs/discord-api-types/commit/2a9dfd41db635f918a3ca905206ddde8a0d3f83f))
+
+
+
 ## [0.38.39](https://github.com/discordjs/discord-api-types/compare/0.38.38...0.38.39) (2026-02-13)
 
 
