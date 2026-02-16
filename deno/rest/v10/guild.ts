@@ -353,7 +353,7 @@ export type RESTPatchAPIGuildResult = APIGuild;
  * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
  * @deprecated
  */
-export type RESTDeleteAPIGuildResult = never;
+export type RESTDeleteAPIGuildResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-channels}
@@ -395,7 +395,7 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions}
  */
-export type RESTPatchAPIGuildChannelPositionsResult = never;
+export type RESTPatchAPIGuildChannelPositionsResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#list-active-guild-threads}
@@ -581,17 +581,17 @@ export type RESTPatchAPICurrentGuildMemberResult = APIGuildMember;
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#add-guild-member-role}
  */
-export type RESTPutAPIGuildMemberRoleResult = never;
+export type RESTPutAPIGuildMemberRoleResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#remove-guild-member-role}
  */
-export type RESTDeleteAPIGuildMemberRoleResult = never;
+export type RESTDeleteAPIGuildMemberRoleResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#remove-guild-member}
  */
-export type RESTDeleteAPIGuildMemberResult = never;
+export type RESTDeleteAPIGuildMemberResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-bans}
@@ -642,12 +642,12 @@ export interface RESTPutAPIGuildBanJSONBody {
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#create-guild-ban}
  */
-export type RESTPutAPIGuildBanResult = never;
+export type RESTPutAPIGuildBanResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#remove-guild-ban}
  */
-export type RESTDeleteAPIGuildBanResult = never;
+export type RESTDeleteAPIGuildBanResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#bulk-guild-ban}
@@ -811,7 +811,7 @@ export type RESTPatchAPIGuildRoleResult = APIRole;
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#delete-guild-role}
  */
-export type RESTDeleteAPIGuildRoleResult = never;
+export type RESTDeleteAPIGuildRoleResult = void;
 
 /**
  * A record mapping role IDs to the number of members that have that role.
@@ -896,7 +896,7 @@ export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#delete-guild-integration}
  */
-export type RESTDeleteAPIGuildIntegrationResult = never;
+export type RESTDeleteAPIGuildIntegrationResult = void;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-widget-settings}

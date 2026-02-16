@@ -505,7 +505,7 @@ export interface GatewayReadyDispatchData {
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#resumed}
  */
-export type GatewayResumedDispatch = _DataPayload<GatewayDispatchEvents.Resumed, never>;
+export type GatewayResumedDispatch = _DataPayload<GatewayDispatchEvents.Resumed, void>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create}
