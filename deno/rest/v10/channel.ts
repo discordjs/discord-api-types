@@ -588,7 +588,29 @@ export interface RESTPostAPIChannelInviteJSONBody {
 	 * - The application must have the `EMBEDDED` flag
 	 */
 	target_application_id?: Snowflake | undefined;
+	/**
+	 * The role ID(s) for roles in the guild given to the users that accept this invite
+	 */
+	role_ids?: Snowflake[] | undefined;
 }
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/channel#create-channel-invite}
+ */
+export type RESTPostAPIChannelInviteFormDataBody = {
+	/**
+	 * A csv file with a single column of user IDs for all the users able to accept this invite
+	 */
+	target_users_file?: unknown;
+} & (
+	| RESTPostAPIChannelInviteJSONBody
+	| {
+			/**
+			 * JSON stringified invite data
+			 */
+			payload_json?: string | undefined;
+	  }
+);
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#create-channel-invite}
