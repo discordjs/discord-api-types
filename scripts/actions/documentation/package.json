@@ -3,7 +3,7 @@
 	"private": true,
 	"devDependencies": {
 		"@actions/core": "^1.11.1",
-		"@actions/glob": "^0.5.0",
+		"@actions/glob": "^0.6.0",
 		"@aws-sdk/client-s3": "^3.808.0",
 		"cloudflare": "^5.0.0",
 		"p-limit": "^7.0.0",
