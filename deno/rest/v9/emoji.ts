@@ -58,7 +58,7 @@ export type RESTPatchAPIGuildEmojiResult = APIEmoji;
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#delete-guild-emoji}
  */
-export type RESTDeleteAPIGuildEmojiResult = never;
+export type RESTDeleteAPIGuildEmojiResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#list-application-emojis}
@@ -95,4 +95,4 @@ export type RESTPatchAPIApplicationEmojiResult = APIApplicationEmoji;
 /**
  * @see {@link https://discord.com/developers/docs/resources/emoji#delete-application-emoji}
  */
-export type RESTDeleteAPIApplicationEmojiResult = never;
+export type RESTDeleteAPIApplicationEmojiResult = undefined;
