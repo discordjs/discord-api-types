@@ -4328,13 +4328,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"diff@npm:^5.0.0":
-  version: 5.2.2
-  resolution: "diff@npm:5.2.2"
-  checksum: 10c0/52da594c54e9033423da26984b1449ae6accd782d5afc4431c9a192a8507ddc83120fe8f925d7220b9da5b5963c7b6f5e46add3660a00cb36df7a13420a09d4b
-  languageName: node
-  linkType: hard
-
 "dir-glob@npm:^3.0.1":
   version: 3.0.1
   resolution: "dir-glob@npm:3.0.1"
@@ -4913,9 +4906,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-mdx@npm:^3.6.2":
-  version: 3.6.2
-  resolution: "eslint-mdx@npm:3.6.2"
+"eslint-mdx@npm:^3.6.2, eslint-mdx@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "eslint-mdx@npm:3.7.0"
   dependencies:
     acorn: "npm:^8.15.0"
     acorn-jsx: "npm:^5.3.2"
@@ -4928,7 +4921,6 @@ __metadata:
     unified: "npm:^11.0.5"
     unified-engine: "npm:^11.2.2"
     unist-util-visit: "npm:^5.0.0"
-    uvu: "npm:^0.5.6"
     vfile: "npm:^6.0.3"
   peerDependencies:
     eslint: ">=8.0.0"
@@ -4936,7 +4928,7 @@ __metadata:
   peerDependenciesMeta:
     remark-lint-file-extension:
       optional: true
-  checksum: 10c0/07238395e932f5caf47a0301fc61f350a24c57e4bf923601f3e767f02d5f7ac18d708dd59819bcc1af54f16e5e6cc6aabb37a08614faade2a5e3fc317e802424
+  checksum: 10c0/e8c4a4616f58ee73d59eb6bf30cbc334530548795855d770abe5377751a44c0cd86cbf534197c36c9f0b5e10cd62f9641e1ad9b9f38cbf8b43ac75fc3057e0bb
   languageName: node
   linkType: hard
 
@@ -5058,10 +5050,10 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-mdx@npm:^3.6.2":
-  version: 3.6.2
-  resolution: "eslint-plugin-mdx@npm:3.6.2"
+  version: 3.7.0
+  resolution: "eslint-plugin-mdx@npm:3.7.0"
   dependencies:
-    eslint-mdx: "npm:^3.6.2"
+    eslint-mdx: "npm:^3.7.0"
     mdast-util-from-markdown: "npm:^2.0.2"
     mdast-util-mdx: "npm:^3.0.0"
     micromark-extension-mdxjs: "npm:^3.0.0"
@@ -5073,7 +5065,7 @@ __metadata:
     vfile: "npm:^6.0.3"
   peerDependencies:
     eslint: ">=8.0.0"
-  checksum: 10c0/16be144348fc6fe66d8a2d7d0f739084991aea5f79c3c4b4b20232ead0e826a5e26806b0fcdbfcda4cef325369a6ad1630bdb1d66a3b3dce9d5c0f765e110ee5
+  checksum: 10c0/a79a7900725e022fce2366c52359689e43b0ce4a94a172717068d50f3f51e2e4b53020c8de6582759370fb32934fd163f3768afe4c1f9e630621f27ca0b4bd6c
   languageName: node
   linkType: hard
 
@@ -6905,13 +6897,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kleur@npm:^4.0.3":
-  version: 4.1.5
-  resolution: "kleur@npm:4.1.5"
-  checksum: 10c0/e9de6cb49657b6fa70ba2d1448fd3d691a5c4370d8f7bbf1c2f64c24d461270f2117e1b0afe8cb3114f13bbd8e51de158c2a224953960331904e636a5e4c0f2a
-  languageName: node
-  linkType: hard
-
 "language-subtag-registry@npm:^0.3.20":
   version: 0.3.23
   resolution: "language-subtag-registry@npm:0.3.23"
@@ -7825,7 +7810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mri@npm:^1.1.0, mri@npm:^1.2.0":
+"mri@npm:^1.2.0":
   version: 1.2.0
   resolution: "mri@npm:1.2.0"
   checksum: 10c0/a3d32379c2554cf7351db6237ddc18dc9e54e4214953f3da105b97dc3babe0deb3ffe99cf409b38ea47cc29f9430561ba6b53b24ab8f9ce97a4b50409e4a50e7
@@ -8909,15 +8894,6 @@ __metadata:
   bin:
     rxjs-report-usage: bin/rxjs-report-usage
   checksum: 10c0/f87af567fcce83644cd028de6aaba5ee7555c85fc5b7f075068c4e48088b220721548c1b0cef9e8452def26257a098e732e062e82e494f236cf9ed5748bd8e5b
-  languageName: node
-  linkType: hard
-
-"sade@npm:^1.7.3":
-  version: 1.8.1
-  resolution: "sade@npm:1.8.1"
-  dependencies:
-    mri: "npm:^1.1.0"
-  checksum: 10c0/da8a3a5d667ad5ce3bf6d4f054bbb9f711103e5df21003c5a5c1a8a77ce12b640ed4017dd423b13c2307ea7e645adee7c2ae3afe8051b9db16a6f6d3da3f90b1
   languageName: node
   linkType: hard
 
@@ -10098,20 +10074,6 @@ __metadata:
   dependencies:
     inherits: "npm:2.0.3"
   checksum: 10c0/d29f6893e406b63b088ce9924da03201df89b31490d4d011f1c07a386ea4b3dbe907464c274023c237da470258e1805d806c7e4009a5974cd6b1d474b675852a
-  languageName: node
-  linkType: hard
-
-"uvu@npm:^0.5.6":
-  version: 0.5.6
-  resolution: "uvu@npm:0.5.6"
-  dependencies:
-    dequal: "npm:^2.0.0"
-    diff: "npm:^5.0.0"
-    kleur: "npm:^4.0.3"
-    sade: "npm:^1.7.3"
-  bin:
-    uvu: bin.js
-  checksum: 10c0/ad32eb5f7d94bdeb71f80d073003f0138e24f61ed68cecc8e15d2f30838f44c9670577bb1775c8fac894bf93d1bc1583d470a9195e49bfa6efa14cc6f4942bff
   languageName: node
   linkType: hard
 
