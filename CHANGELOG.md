@@ -1,3 +1,12 @@
+## [0.38.41](https://github.com/discordjs/discord-api-types/compare/0.38.40...0.38.41) (2026-03-02)
+
+
+### Features
+
+* **voice:** add close code `4017` ([#1538](https://github.com/discordjs/discord-api-types/issues/1538)) ([1353b59](https://github.com/discordjs/discord-api-types/commit/1353b5915c1a0069a9b1c2a24fdc11256ec486e2))
+
+
+
 ## [0.38.40](https://github.com/discordjs/discord-api-types/compare/0.38.39...0.38.40) (2026-02-19)
 
 
