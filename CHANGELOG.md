@@ -1,3 +1,13 @@
+## [0.38.41](https://github.com/discordjs/discord-api-types/compare/0.38.40...0.38.41) (2026-03-05)
+
+
+### Features
+
+* application command option allowed channel type ([#1548](https://github.com/discordjs/discord-api-types/issues/1548)) ([5ea94a6](https://github.com/discordjs/discord-api-types/commit/5ea94a6629812820174589f2ac8ebe3765548b31))
+* **voice:** add close code `4017` ([#1538](https://github.com/discordjs/discord-api-types/issues/1538)) ([1353b59](https://github.com/discordjs/discord-api-types/commit/1353b5915c1a0069a9b1c2a24fdc11256ec486e2))
+
+
+
 ## [0.38.40](https://github.com/discordjs/discord-api-types/compare/0.38.39...0.38.40) (2026-02-19)
 
 
