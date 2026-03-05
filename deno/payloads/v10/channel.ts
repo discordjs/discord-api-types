@@ -75,6 +75,11 @@ export type TextChannelType =
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
+export type ApplicationCommandOptionAllowedChannelType = Exclude<
+	ChannelType,
+	ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildDirectory
+>;
+
 export interface APISlowmodeChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
