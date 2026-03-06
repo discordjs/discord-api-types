@@ -75,7 +75,7 @@ export type RESTPostOAuth2AccessTokenURLEncodedData = RESTOAuth2TokenOptionalCli
 
 export type RESTOAuth2TokenOptionalClientCredentials =
 	| { client_id: Snowflake; client_secret: string }
-	| { client_id?: never; client_secret?: never };
+	| { client_id?: undefined; client_secret?: undefined };
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-access-token-response}
