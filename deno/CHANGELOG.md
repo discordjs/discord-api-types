@@ -1,3 +1,10 @@
+## [0.38.42](https://github.com/discordjs/discord-api-types/compare/0.38.41...0.38.42) (2026-03-09)
+
+
+### Features
+
+* mark new modal components as stable ([#1556](https://github.com/discordjs/discord-api-types/issues/1556)) ([818b899](https://github.com/discordjs/discord-api-types/commit/818b899f9dd8f93c93168550ba08976888927f77))
+
 ## [0.38.41](https://github.com/discordjs/discord-api-types/compare/0.38.40...0.38.41) (2026-03-05)
 
 
