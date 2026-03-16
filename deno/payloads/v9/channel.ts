@@ -78,7 +78,7 @@ export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType
 export interface APISlowmodeChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 * bots, as well as users with the permission `BYPASS_SLOWMODE`, are unaffected
 	 *
 	 * `rate_limit_per_user` also applies to thread creation. Users can send one message and create one thread during each `rate_limit_per_user` interval.
 	 *
@@ -361,7 +361,7 @@ export interface APIThreadOnlyChannel<T extends ChannelType.GuildForum | Channel
 	last_message_id?: Snowflake | null;
 	/**
 	 * Amount of seconds a user has to wait before creating another thread (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`, are unaffected
+	 * bots, as well as users with the permission `BYPASS_SLOWMODE`, are unaffected
 	 *
 	 * The absence of this field in API calls and Gateway events should indicate that slowmode has been reset to the default value.
 	 */
