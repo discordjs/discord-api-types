@@ -17,7 +17,6 @@ export const PermissionFlagsBits = {
 	/**
 	 * Allows kicking members
 	 */
-
 	KickMembers: 1n << 1n,
 	/**
 	 * Allows banning members
@@ -38,7 +37,7 @@ export const PermissionFlagsBits = {
 	 */
 	ManageGuild: 1n << 5n,
 	/**
-	 * Allows for the addition of reactions to messages
+	 * Allows for the addition of reactions to messages. This permission does not apply to reacting with an existing reaction on a message
 	 *
 	 * Applies to channel types: Text, Voice, Stage
 	 */
@@ -234,9 +233,9 @@ export const PermissionFlagsBits = {
 	 */
 	SendMessagesInThreads: 1n << 38n,
 	/**
-	 * Allows for using Activities (applications with the {@link ApplicationFlags.Embedded} flag) in a voice channel
+	 * Allows for using Activities (applications with the {@link ApplicationFlags.Embedded} flag)
 	 *
-	 * Applies to channel types: Voice
+	 * Applies to channel types: Text, Voice
 	 */
 	UseEmbeddedActivities: 1n << 39n,
 	/**
