@@ -56,7 +56,7 @@ export interface RESTPostAPIGuildScheduledEventJSONBody {
 	/**
 	 * The scheduled entity type of the guild event
 	 */
-	entity_type?: GuildScheduledEventEntityType | undefined;
+	entity_type: GuildScheduledEventEntityType;
 	/**
 	 * The entity metadata of the scheduled event
 	 */
@@ -98,8 +98,12 @@ export interface RESTPatchAPIGuildScheduledEventJSONBody
 	extends
 		_Nullable<Pick<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>>,
 		_StrictPartial<
-			Omit<RESTPostAPIGuildScheduledEventJSONBody, 'description' | 'entity_metadata' | 'recurrence_rule'>
+			Omit<
+				RESTPostAPIGuildScheduledEventJSONBody,
+				'channel_id' | 'description' | 'entity_metadata' | 'recurrence_rule'
+			>
 		> {
+	channel_id?: Snowflake | null | undefined;
 	/**
 	 * The status of the scheduled event
 	 */
