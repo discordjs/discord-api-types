@@ -127,7 +127,7 @@ export interface APIGuild extends APIPartialGuild {
 	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-region-object}
 	 * @deprecated This field has been deprecated in favor of `rtc_region` on the channel.
 	 */
-	region: string;
+	region?: string | null;
 	/**
 	 * ID of afk channel
 	 */
@@ -275,7 +275,7 @@ export interface APIGuild extends APIPartialGuild {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
 	 */
-	stickers: APISticker[];
+	stickers?: APISticker[];
 	/**
 	 * Whether the guild has the boost progress bar enabled.
 	 */
@@ -630,7 +630,7 @@ export interface APIGuildPreview {
 	/**
 	 * The description for the guild
 	 */
-	description: string;
+	description: string | null;
 	/**
 	 * Custom guild stickers
 	 */

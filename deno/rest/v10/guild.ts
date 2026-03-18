@@ -382,11 +382,11 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 	/**
 	 * Sorting position of the channel
 	 */
-	position: number;
+	position?: number | null | undefined;
 	/**
 	 * Sync channel overwrites with the new parent, when moving to a new `parent_id`
 	 */
-	lock_permissions?: boolean | undefined;
+	lock_permissions?: boolean | null | undefined;
 	/**
 	 * The new parent id of this channel
 	 */
