@@ -24,7 +24,7 @@ export type APIInviteGuild = Pick<
 	| 'verification_level'
 >;
 
-export type APIInviteRole = Pick<APIRole, 'color' | 'colors' | 'icon' | 'id' | 'name' | 'position'>;
+export type APIInviteRole = Pick<APIRole, 'color' | 'colors' | 'icon' | 'id' | 'name' | 'position' | 'unicode_emoji'>;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/invite#invite-object}
