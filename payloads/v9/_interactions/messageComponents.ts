@@ -52,6 +52,10 @@ export interface APIMessageComponentBaseInteractionData<CType extends ComponentT
 	 * The type of the component
 	 */
 	component_type: CType;
+	/**
+	 * The unique identifier for the component, as defined when the component was sent
+	 */
+	id: number;
 }
 
 export type APIMessageButtonInteractionData = APIMessageComponentBaseInteractionData<ComponentType.Button>;

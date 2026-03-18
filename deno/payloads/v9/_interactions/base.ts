@@ -267,6 +267,7 @@ export interface APIInteractionDataResolved {
 	roles?: Record<Snowflake, APIRole>;
 	members?: Record<Snowflake, APIInteractionDataResolvedGuildMember>;
 	channels?: Record<Snowflake, APIInteractionDataResolvedChannel>;
+	messages?: Record<Snowflake, APIMessage>;
 	attachments?: Record<Snowflake, APIAttachment>;
 }
 
