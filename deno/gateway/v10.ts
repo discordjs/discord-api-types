@@ -1567,6 +1567,10 @@ export interface GatewayInviteCreateDispatchData {
 	 * The expiration date of this invite.
 	 */
 	expires_at: string | null;
+	/**
+	 * The role ID(s) for roles in the guild given to the users that accept this invite
+	 */
+	role_ids?: Snowflake[];
 }
 
 /**
