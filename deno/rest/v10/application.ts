@@ -25,11 +25,13 @@ export type RESTGetCurrentApplicationResult = APIApplication;
  * @see {@link https://discord.com/developers/docs/resources/application#edit-current-application}
  */
 export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
-	_Nullable<Pick<APIApplication, 'cover_image' | 'icon'>> &
+	_Nullable<Pick<APIApplication, 'cover_image' | 'event_webhooks_url' | 'icon'>> &
 		Pick<
 			APIApplication,
 			| 'custom_install_url'
 			| 'description'
+			| 'event_webhooks_status'
+			| 'event_webhooks_types'
 			| 'flags'
 			| 'install_params'
 			| 'integration_types_config'
