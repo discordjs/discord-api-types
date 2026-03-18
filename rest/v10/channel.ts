@@ -84,8 +84,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	nsfw?: boolean | null | undefined;
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
-	 * bots, as well as users with the permission `MANAGE_MESSAGES` or `MANAGE_CHANNELS`,
-	 * are unaffected
+	 * bots, as well as users with the permission `BYPASS_SLOWMODE`, are unaffected
 	 *
 	 * Channel types: text, newsThread, publicThread, privateThread, forum, media
 	 */

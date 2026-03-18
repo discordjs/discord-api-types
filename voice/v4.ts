@@ -157,6 +157,10 @@ export enum VoiceCloseCodes {
 	 */
 	UnknownEncryptionMode,
 	/**
+	 * E2EE/DAVE protocol required
+	 */
+	EndToEndEncryptionDAVEProtocolRequired,
+	/**
 	 * You sent a malformed request
 	 */
 	BadRequest = 4_020,

@@ -33,7 +33,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          PATTERNS="gateway/v6.ts|gateway/v8.ts|payloads/v6/|payloads/v8/|rest/v6/|rest/v8/|rpc/v8.ts|utils/v8.ts|voice/v8.ts|^v6.ts$|^v8.ts$"
+          PATTERNS="gateway/v6.ts|gateway/v8.ts|payloads/v6/|payloads/v8/|rest/v6/|rest/v8/|rpc/v8.ts|utils/v8.ts|voice/v4.ts|^v6.ts$|^v8.ts$"
 
           if gh pr view ${{ github.event.pull_request.number }} --repo ${{github.repository}} --json files --jq ".files[].path | select(test(\"$PATTERNS\"))" | grep -q .; then
             echo "::error::Unsupported API versions modified. Please make changes to current API versions only."

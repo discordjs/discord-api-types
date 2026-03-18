@@ -1,3 +1,43 @@
+## [0.38.42](https://github.com/discordjs/discord-api-types/compare/0.38.41...0.38.42) (2026-03-09)
+
+
+### Features
+
+* mark new modal components as stable ([#1556](https://github.com/discordjs/discord-api-types/issues/1556)) ([818b899](https://github.com/discordjs/discord-api-types/commit/818b899f9dd8f93c93168550ba08976888927f77))
+
+## [0.38.41](https://github.com/discordjs/discord-api-types/compare/0.38.40...0.38.41) (2026-03-05)
+
+
+### Features
+
+* application command option allowed channel type ([#1548](https://github.com/discordjs/discord-api-types/issues/1548)) ([5ea94a6](https://github.com/discordjs/discord-api-types/commit/5ea94a6629812820174589f2ac8ebe3765548b31))
+* **voice:** add close code `4017` ([#1538](https://github.com/discordjs/discord-api-types/issues/1538)) ([1353b59](https://github.com/discordjs/discord-api-types/commit/1353b5915c1a0069a9b1c2a24fdc11256ec486e2))
+
+
+
+## [0.38.40](https://github.com/discordjs/discord-api-types/compare/0.38.39...0.38.40) (2026-02-19)
+
+
+### Bug Fixes
+
+* export missing properties and use interfaces on GatewayActivityAssets ([#1519](https://github.com/discordjs/discord-api-types/issues/1519)) ([8fd4024](https://github.com/discordjs/discord-api-types/commit/8fd402464a9db8f5341a3146cdd166d557a48510))
+
+
+### Features
+
+* mark guild member role counts endpoint as stable ([#1462](https://github.com/discordjs/discord-api-types/issues/1462)) ([2a9dfd4](https://github.com/discordjs/discord-api-types/commit/2a9dfd41db635f918a3ca905206ddde8a0d3f83f))
+
+
+
+## [0.38.39](https://github.com/discordjs/discord-api-types/compare/0.38.38...0.38.39) (2026-02-13)
+
+
+### Bug Fixes
+
+* **APIModalSubmitRadioGroupComponent:** nullable value ([#1518](https://github.com/discordjs/discord-api-types/issues/1518)) ([6f6b780](https://github.com/discordjs/discord-api-types/commit/6f6b780851124cc0aa8f06cc28abce992619ee2b))
+
+
+
 ## [0.38.38](https://github.com/discordjs/discord-api-types/compare/0.38.37...0.38.38) (2026-01-29)
 
 

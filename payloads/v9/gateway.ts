@@ -338,14 +338,57 @@ export interface GatewayActivityParty {
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets}
  */
-export type GatewayActivityAssets = Partial<
-	Record<'large_image' | 'large_text' | 'large_url' | 'small_image' | 'small_text' | 'small_url', string>
->;
+export interface GatewayActivityAssets {
+	/**
+	 * @see {@link https://discord.com/developers/docs/events/gateway-events#activity-object-activity-asset-image}
+	 */
+	large_image?: string;
+	/**
+	 * Text displayed when hovering over the large image of the activity
+	 */
+	large_text?: string;
+	/**
+	 * URL that is opened when clicking on the large image
+	 */
+	large_url?: string;
+	/**
+	 * @see {@link https://discord.com/developers/docs/events/gateway-events#activity-object-activity-asset-image}
+	 */
+	small_image?: string;
+	/**
+	 * Text displayed when hovering over the small image of the activity
+	 */
+	small_text?: string;
+	/**
+	 * URL that is opened when clicking on the small image
+	 */
+	small_url?: string;
+	/**
+	 * Displayed as a banner on a Game Invite.
+	 *
+	 * @see {@link https://discord.com/developers/docs/events/gateway-events#activity-object-activity-asset-image | Activity Asset Image}
+	 * @see {@link https://discord.com/developers/docs/discord-social-sdk/development-guides/managing-game-invites | Game Invite}
+	 */
+	invite_cover_image?: string;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets}
  */
-export type GatewayActivitySecrets = Partial<Record<'join' | 'match' | 'spectate', string>>;
+export interface GatewayActivitySecrets {
+	/**
+	 * The secret for joining a party
+	 */
+	join?: string;
+	/**
+	 * The secret for spectating a game
+	 */
+	spectate?: string;
+	/**
+	 * The secret for a specific instance of a match
+	 */
+	match?: string;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags}
