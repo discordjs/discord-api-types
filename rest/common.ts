@@ -246,7 +246,11 @@ export enum RESTJSONErrorCodes {
 	OwnerCannotBePendingMember = 50_131,
 	OwnershipCannotBeMovedToABotUser,
 
-	FailedToResizeAssetBelowTheMinimumSize = 50_138,
+	FailedToResizeAssetBelowTheMaximumSize = 50_138,
+	/**
+	 * @deprecated This name is incorrect. Use {@link RESTJSONErrorCodes.FailedToResizeAssetBelowTheMaximumSize} instead
+	 */
+	FailedToResizeAssetBelowTheMinimumSize = FailedToResizeAssetBelowTheMaximumSize,
 
 	CannotMixSubscriptionAndNonSubscriptionRolesForAnEmoji = 50_144,
 	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
@@ -324,6 +328,15 @@ export enum RESTJSONErrorCodes {
 	CannotUseAnEmojiIncludedWithThePoll,
 
 	CannotExpireANonPollMessage = 520_006,
+
+	ProvisionalAccountsPermissionNotGranted = 530_000,
+	IdTokenJWTExpired,
+	IdTokenJWTIssuerMismatch,
+	IdTokenJWTAudienceMismatch,
+	IdTokenJWTIssuedTooLongAgo,
+
+	FailedToGenerateUniqueUsername = 530_006,
+	InvalidClientSecret,
 }
 
 /**
