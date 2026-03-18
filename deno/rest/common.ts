@@ -60,6 +60,9 @@ export enum RESTJSONErrorCodes {
 
 	UnknownSound = 10_097,
 
+	UnknownInviteTargetUsersJob = 10_124,
+	UnknownInviteTargetUsers = 10_129,
+
 	BotsCannotUseThisEndpoint = 20_001,
 	OnlyBotsCanUseThisEndpoint,
 
