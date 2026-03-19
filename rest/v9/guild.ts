@@ -18,6 +18,7 @@ import type {
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildFeature,
+	GuildMemberFlags,
 	GuildMFALevel,
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
@@ -381,11 +382,11 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 	/**
 	 * Sorting position of the channel
 	 */
-	position: number;
+	position?: number | null | undefined;
 	/**
 	 * Sync channel overwrites with the new parent, when moving to a new `parent_id`
 	 */
-	lock_permissions?: boolean | undefined;
+	lock_permissions?: boolean | null | undefined;
 	/**
 	 * The new parent id of this channel
 	 */
@@ -522,6 +523,12 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null | undefined;
+	/**
+	 * Guild member flags (only {@link GuildMemberFlags.BypassesVerification} can be set)
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags}
+	 */
+	flags?: GuildMemberFlags | undefined;
 }
 
 /**

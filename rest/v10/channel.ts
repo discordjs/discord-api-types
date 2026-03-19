@@ -7,6 +7,7 @@ import type {
 	APIFollowedChannel,
 	APIMessage,
 	APIMessageReference,
+	APIMessageSharedClientTheme,
 	APIThreadList,
 	APIThreadMember,
 	APIUser,
@@ -148,7 +149,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: text, news, forum, media
 	 */
-	default_auto_archive_duration?: ThreadAutoArchiveDuration | undefined;
+	default_auto_archive_duration?: ThreadAutoArchiveDuration | null | undefined;
 	/**
 	 * Channel flags combined as a bit field.
 	 */
@@ -170,7 +171,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: forum, media
 	 */
-	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji | undefined;
+	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji | null | undefined;
 	/**
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
@@ -337,6 +338,10 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * A poll!
 	 */
 	poll?: RESTAPIPoll | undefined;
+	/**
+	 * The custom client-side theme to share via the message
+	 */
+	shared_client_theme?: APIMessageSharedClientTheme | undefined;
 }
 
 /**
