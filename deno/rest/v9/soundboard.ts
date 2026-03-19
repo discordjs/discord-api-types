@@ -4,7 +4,7 @@ import type { APISoundboardSound } from '../../payloads/v9/mod.ts';
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound}
  */
-export type RESTPostAPISendSoundboardSoundResult = APISoundboardSound;
+export type RESTPostAPISendSoundboardSoundResult = never;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params}
