@@ -248,6 +248,10 @@ export interface APIBaseMessageNoChannel {
 	 * The call associated with the message
 	 */
 	call?: APIMessageCall;
+	/**
+	 * The custom client-side theme shared via the message
+	 */
+	shared_client_theme?: APIMessageSharedClientTheme;
 }
 
 /**
@@ -456,6 +460,38 @@ export interface APIMessageCall {
 	 * ISO8601 timestamp when the call ended
 	 */
 	ended_timestamp?: string | null;
+}
+
+/**
+ * @see https://docs.discord.com/developers/resources/message#base-theme-types
+ */
+export enum BaseThemeType {
+	Dark = 1,
+	Light,
+	Darker,
+	Midnight,
+}
+
+/**
+ * @see https://docs.discord.com/developers/resources/message#shared-client-theme-object
+ */
+export interface APIMessageSharedClientTheme {
+	/**
+	 * The hexadecimal-encoded colors of the theme (max of 5)
+	 */
+	colors: string[];
+	/**
+	 * The direction of the theme's colors (max of 360)
+	 */
+	gradient_angle: number;
+	/**
+	 * The intensity of the theme's colors (max of 100)
+	 */
+	base_mix: number;
+	/**
+	 * The mode of the theme
+	 */
+	base_theme?: BaseThemeType | null;
 }
 
 /**
@@ -1783,7 +1819,6 @@ export interface APICheckboxGroupComponent extends APIBaseComponent<ComponentTyp
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group-option-structure}
- * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupOption {
 	/**

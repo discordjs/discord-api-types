@@ -20,6 +20,7 @@ import type {
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildFeature,
+	GuildMemberFlags,
 	GuildMFALevel,
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
@@ -522,6 +523,12 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 	 * Timestamp of when the time out will be removed; until then, they cannot interact with the guild
 	 */
 	communication_disabled_until?: string | null | undefined;
+	/**
+	 * Guild member flags (only {@link GuildMemberFlags.BypassesVerification} can be set)
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags}
+	 */
+	flags?: GuildMemberFlags | undefined;
 }
 
 /**
