@@ -466,7 +466,8 @@ export interface APIMessageCall {
  * @see https://docs.discord.com/developers/resources/message#base-theme-types
  */
 export enum BaseThemeType {
-	Dark = 1,
+	Unset,
+	Dark,
 	Light,
 	Darker,
 	Midnight,
