@@ -330,12 +330,17 @@ export type GatewayDispatchPayload =
 	| GatewayAutoModerationActionExecutionDispatch
 	| GatewayAutoModerationRuleCreateDispatch
 	| GatewayAutoModerationRuleDeleteDispatch
-	| GatewayAutoModerationRuleModifyDispatch
-	| GatewayChannelModifyDispatch
+	| GatewayAutoModerationRuleUpdateDispatch
+	| GatewayChannelCreateDispatch
+	| GatewayChannelDeleteDispatch
 	| GatewayChannelPinsUpdateDispatch
-	| GatewayEntitlementModifyDispatch
+	| GatewayChannelUpdateDispatch
+	| GatewayEntitlementCreateDispatch
+	| GatewayEntitlementDeleteDispatch
+	| GatewayEntitlementUpdateDispatch
 	| GatewayGuildAuditLogEntryCreateDispatch
-	| GatewayGuildBanModifyDispatch
+	| GatewayGuildBanAddDispatch
+	| GatewayGuildBanRemoveDispatch
 	| GatewayGuildCreateDispatch
 	| GatewayGuildDeleteDispatch
 	| GatewayGuildEmojisUpdateDispatch
@@ -345,8 +350,9 @@ export type GatewayDispatchPayload =
 	| GatewayGuildMembersChunkDispatch
 	| GatewayGuildMemberUpdateDispatch
 	| GatewayGuildModifyDispatch
+	| GatewayGuildRoleCreateDispatch
 	| GatewayGuildRoleDeleteDispatch
-	| GatewayGuildRoleModifyDispatch
+	| GatewayGuildRoleUpdateDispatch
 	| GatewayGuildScheduledEventCreateDispatch
 	| GatewayGuildScheduledEventDeleteDispatch
 	| GatewayGuildScheduledEventUpdateDispatch
@@ -381,7 +387,9 @@ export type GatewayDispatchPayload =
 	| GatewayStageInstanceCreateDispatch
 	| GatewayStageInstanceDeleteDispatch
 	| GatewayStageInstanceUpdateDispatch
-	| GatewaySubscriptionModifyDispatch
+	| GatewaySubscriptionCreateDispatch
+	| GatewaySubscriptionDeleteDispatch
+	| GatewaySubscriptionUpdateDispatch
 	| GatewayThreadCreateDispatch
 	| GatewayThreadDeleteDispatch
 	| GatewayThreadListSyncDispatch
@@ -528,7 +536,10 @@ export type GatewayAutoModerationRuleModifyDispatchData = APIAutoModerationRule;
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create}
  */
-export type GatewayAutoModerationRuleCreateDispatch = GatewayAutoModerationRuleModifyDispatch;
+export type GatewayAutoModerationRuleCreateDispatch = _DataPayload<
+	GatewayDispatchEvents.AutoModerationRuleCreate,
+	GatewayAutoModerationRuleCreateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create}
@@ -538,7 +549,10 @@ export type GatewayAutoModerationRuleCreateDispatchData = GatewayAutoModerationR
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-update}
  */
-export type GatewayAutoModerationRuleUpdateDispatch = GatewayAutoModerationRuleModifyDispatch;
+export type GatewayAutoModerationRuleUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.AutoModerationRuleUpdate,
+	GatewayAutoModerationRuleUpdateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-update}
@@ -548,7 +562,10 @@ export type GatewayAutoModerationRuleUpdateDispatchData = GatewayAutoModerationR
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-delete}
  */
-export type GatewayAutoModerationRuleDeleteDispatch = GatewayAutoModerationRuleModifyDispatch;
+export type GatewayAutoModerationRuleDeleteDispatch = _DataPayload<
+	GatewayDispatchEvents.AutoModerationRuleDelete,
+	GatewayAutoModerationRuleDeleteDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-delete}
@@ -673,7 +690,10 @@ export type GatewaySubscriptionModifyDispatchData = APISubscription;
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#subscription-create}
  */
-export type GatewaySubscriptionCreateDispatch = GatewaySubscriptionModifyDispatch;
+export type GatewaySubscriptionCreateDispatch = _DataPayload<
+	GatewayDispatchEvents.SubscriptionCreate,
+	GatewaySubscriptionCreateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#subscription-create}
@@ -683,7 +703,10 @@ export type GatewaySubscriptionCreateDispatchData = GatewaySubscriptionModifyDis
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#subscription-update}
  */
-export type GatewaySubscriptionUpdateDispatch = GatewaySubscriptionModifyDispatch;
+export type GatewaySubscriptionUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.SubscriptionUpdate,
+	GatewaySubscriptionUpdateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#subscription-update}
@@ -693,7 +716,10 @@ export type GatewaySubscriptionUpdateDispatchData = GatewaySubscriptionModifyDis
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#subscription-delete}
  */
-export type GatewaySubscriptionDeleteDispatch = GatewaySubscriptionModifyDispatch;
+export type GatewaySubscriptionDeleteDispatch = _DataPayload<
+	GatewayDispatchEvents.SubscriptionDelete,
+	GatewaySubscriptionDeleteDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#subscription-delete}
@@ -723,7 +749,10 @@ export type GatewayChannelModifyDispatchData = APIChannel & {
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-create}
  */
-export type GatewayChannelCreateDispatch = GatewayChannelModifyDispatch;
+export type GatewayChannelCreateDispatch = _DataPayload<
+	GatewayDispatchEvents.ChannelCreate,
+	GatewayChannelCreateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-create}
@@ -733,7 +762,10 @@ export type GatewayChannelCreateDispatchData = GatewayChannelModifyDispatchData;
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-update}
  */
-export type GatewayChannelUpdateDispatch = GatewayChannelModifyDispatch;
+export type GatewayChannelUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.ChannelUpdate,
+	GatewayChannelUpdateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-update}
@@ -743,7 +775,10 @@ export type GatewayChannelUpdateDispatchData = GatewayChannelModifyDispatchData;
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-delete}
  */
-export type GatewayChannelDeleteDispatch = GatewayChannelModifyDispatch;
+export type GatewayChannelDeleteDispatch = _DataPayload<
+	GatewayDispatchEvents.ChannelDelete,
+	GatewayChannelDeleteDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-delete}
@@ -803,7 +838,10 @@ export type GatewayEntitlementCreateDispatchData = GatewayEntitlementModifyDispa
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#entitlement-create}
  */
-export type GatewayEntitlementCreateDispatch = GatewayEntitlementModifyDispatch;
+export type GatewayEntitlementCreateDispatch = _DataPayload<
+	GatewayDispatchEvents.EntitlementCreate,
+	GatewayEntitlementCreateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#entitlement-update}
@@ -813,7 +851,10 @@ export type GatewayEntitlementUpdateDispatchData = GatewayEntitlementModifyDispa
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#entitlement-update}
  */
-export type GatewayEntitlementUpdateDispatch = GatewayEntitlementModifyDispatch;
+export type GatewayEntitlementUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.EntitlementUpdate,
+	GatewayEntitlementUpdateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#entitlement-delete}
@@ -823,7 +864,10 @@ export type GatewayEntitlementDeleteDispatchData = GatewayEntitlementModifyDispa
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#entitlement-delete}
  */
-export type GatewayEntitlementDeleteDispatch = GatewayEntitlementModifyDispatch;
+export type GatewayEntitlementDeleteDispatch = _DataPayload<
+	GatewayDispatchEvents.EntitlementDelete,
+	GatewayEntitlementDeleteDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-update}
@@ -998,7 +1042,10 @@ export interface GatewayGuildBanModifyDispatchData {
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-ban-add}
  */
-export type GatewayGuildBanAddDispatch = GatewayGuildBanModifyDispatch;
+export type GatewayGuildBanAddDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildBanAdd,
+	GatewayGuildBanAddDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-ban-add}
@@ -1008,7 +1055,10 @@ export type GatewayGuildBanAddDispatchData = GatewayGuildBanModifyDispatchData;
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-ban-remove}
  */
-export type GatewayGuildBanRemoveDispatch = GatewayGuildBanModifyDispatch;
+export type GatewayGuildBanRemoveDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildBanRemove,
+	GatewayGuildBanRemoveDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-ban-remove}
@@ -1225,7 +1275,10 @@ export interface GatewayGuildRoleModifyDispatchData {
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-role-create}
  */
-export type GatewayGuildRoleCreateDispatch = GatewayGuildRoleModifyDispatch;
+export type GatewayGuildRoleCreateDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildRoleCreate,
+	GatewayGuildRoleCreateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-role-create}
@@ -1235,7 +1288,10 @@ export type GatewayGuildRoleCreateDispatchData = GatewayGuildRoleModifyDispatchD
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-role-update}
  */
-export type GatewayGuildRoleUpdateDispatch = GatewayGuildRoleModifyDispatch;
+export type GatewayGuildRoleUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildRoleUpdate,
+	GatewayGuildRoleUpdateDispatchData
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-role-update}
