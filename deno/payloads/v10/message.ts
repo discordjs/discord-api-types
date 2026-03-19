@@ -1823,7 +1823,6 @@ export interface APICheckboxGroupComponent extends APIBaseComponent<ComponentTyp
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group-option-structure}
- * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupOption {
 	/**

@@ -123,14 +123,8 @@ export interface APIWebhookEventApplicationDeauthorizedData {
 
 export type APIWebhookEventEntitlementCreateData = APIEntitlement;
 
-/**
- * @unstable
- */
 export type APIWebhookEventEntitlementDeleteData = APIEntitlement;
 
-/**
- * @unstable
- */
 export type APIWebhookEventEntitlementUpdateData = APIEntitlement;
 
 export type APIWebhookEventQuestUserEnrollmentData = never;
@@ -201,14 +195,10 @@ export enum ApplicationWebhookEventType {
 	EntitlementCreate = 'ENTITLEMENT_CREATE',
 	/**
 	 * Entitlement was updated
-	 *
-	 * @unstable This event is not yet documented but can be enabled from the developer portal
 	 */
 	EntitlementUpdate = 'ENTITLEMENT_UPDATE',
 	/**
 	 * Entitlement was deleted
-	 *
-	 * @unstable This event is not yet documented but can be enabled from the developer portal
 	 */
 	EntitlementDelete = 'ENTITLEMENT_DELETE',
 	/**
