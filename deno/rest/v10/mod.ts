@@ -987,6 +987,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/applications/{application.id}/activity-instances/{instance_id}`
+	 */
+	applicationActivityInstance(applicationId: Snowflake, instanceId: string) {
+		return `/applications/${applicationId}/activity-instances/${instanceId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/applications/{application.id}/entitlements`
 	 * - POST `/applications/{application.id}/entitlements`
 	 */
