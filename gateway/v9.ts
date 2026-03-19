@@ -1519,7 +1519,7 @@ export interface GatewayInviteCreateDispatchData {
 	/**
 	 * The time at which the invite was created
 	 */
-	created_at: number;
+	created_at: string;
 	/**
 	 * The guild of the invite
 	 */
