@@ -7,6 +7,7 @@ import type {
 	APIFollowedChannel,
 	APIMessage,
 	APIMessageReference,
+	APIMessageSharedClientTheme,
 	APIThreadList,
 	APIThreadMember,
 	APIUser,
@@ -337,6 +338,10 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * A poll!
 	 */
 	poll?: RESTAPIPoll | undefined;
+	/**
+	 * The custom client-side theme to share via the message
+	 */
+	shared_client_theme?: APIMessageSharedClientTheme | undefined;
 }
 
 /**
