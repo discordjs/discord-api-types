@@ -32,7 +32,7 @@ export type RESTDeleteAPIInviteResult = APIInvite;
 /**
  * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users}
  */
-export type RESTGetAPIInviteTargetUsersResult = string;
+export type RESTGetAPIInviteTargetUsersResult = ArrayBuffer;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
