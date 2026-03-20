@@ -1,4 +1,8 @@
-import type { APIApplication, APIApplicationRoleConnectionMetadata } from '../../payloads/v10/application';
+import type {
+	APIActivityInstance,
+	APIApplication,
+	APIApplicationRoleConnectionMetadata,
+} from '../../payloads/v10/application';
 import type { _Nullable, _StrictPartial } from '../../utils/internals';
 
 /**
@@ -45,3 +49,8 @@ export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
  * @see {@link https://discord.com/developers/docs/resources/application#edit-current-application}
  */
 export type RESTPatchCurrentApplicationResult = APIApplication;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance}
+ */
+export type RESTGetAPIApplicationActivityInstanceResult = APIActivityInstance;
