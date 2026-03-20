@@ -2666,5 +2666,6 @@ export type RPCMessagePayload =
 	| RPCCommandSetVoiceSettingsPayload
 	| RPCCommandStartPurchasePayload
 	| RPCCommandSubscribePayload
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-type-constituents
 	| RPCCommandUnsubscribePayload
 	| RPCCommandValidateApplicationPayload;
