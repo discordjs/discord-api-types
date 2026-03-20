@@ -3,7 +3,7 @@
 import type { Snowflake } from '../../globals.ts';
 import type { _NonNullableFields } from '../../utils/internals.ts';
 import type { APIApplication } from './application.ts';
-import type { APIChannel, ChannelType } from './channel.ts';
+import type { APIChannel, APIThreadChannel, APIThreadMember, ChannelType } from './channel.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
@@ -1993,4 +1993,141 @@ export interface APIMessagePin {
 	 * The pinned message
 	 */
 	message: APIMessage;
+}
+
+/**
+ * @remarks All types can be negated by prefixing them with `-`, which means results will not include messages that match the type.
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-author-types}
+ */
+export enum MessageSearchAuthorType {
+	/**
+	 * Return messages sent by user accounts
+	 */
+	User = 'user',
+	/**
+	 * Return messages sent by bot accounts
+	 */
+	Bot = 'bot',
+	/**
+	 * Return messages sent by webhooks
+	 */
+	Webhook = 'webhook',
+}
+
+/**
+ * @remarks All types can be negated by prefixing them with `-`, which means results will not include messages that match the type.
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-has-types}
+ */
+export enum MessageSearchHasType {
+	/**
+	 * Return messages that have an image
+	 */
+	Image = 'image',
+	/**
+	 * Return messages that have a sound attachment
+	 */
+	Sound = 'sound',
+	/**
+	 * Return messages that have a video
+	 */
+	Video = 'video',
+	/**
+	 * Return messages that have an attachment
+	 */
+	File = 'file',
+	/**
+	 * Return messages that have a sent sticker
+	 */
+	Sticker = 'sticker',
+	/**
+	 * Return messages that have an embed
+	 */
+	Embed = 'embed',
+	/**
+	 * Return messages that have a link
+	 */
+	Link = 'link',
+	/**
+	 * Return messages that have a poll
+	 */
+	Poll = 'poll',
+	/**
+	 * Return messages that have a forwarded message
+	 */
+	Snapshot = 'snapshot',
+}
+
+/**
+ * @remarks These do not correspond 1:1 to actual {@link https://docs.discord.com/developers/resources/message#embed-object-embed-types | embed types} and encompass a wider range of actual types.
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-embed-types}
+ */
+export enum MessageSearchEmbedType {
+	/**
+	 * Return messages that have an image embed
+	 */
+	Image = 'image',
+	/**
+	 * Return messages that have a video embed
+	 */
+	Video = 'video',
+	/**
+	 * Return messages that have a gifv embed
+	 *
+	 * @remarks Messages sent before February 24, 2026 may not be properly indexed under the `gif` embed type.
+	 */
+	Gif = 'gif',
+	/**
+	 * Return messages that have a sound embed
+	 */
+	Sound = 'sound',
+	/**
+	 * Return messages that have an article embed
+	 */
+	Article = 'article',
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-sort-modes}
+ */
+export enum MessageSearchSortMode {
+	/**
+	 * Sort by the message creation time (default)
+	 */
+	Timestamp = 'timestamp',
+	/**
+	 * Sort by the relevance of the message to the search query
+	 */
+	Relevance = 'relevance',
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-response-body}
+ */
+export interface APIMessageSearchResult {
+	/**
+	 * Whether the guild is undergoing a deep historical indexing operation
+	 */
+	doing_deep_historical_index: boolean;
+	/**
+	 * The number of documents that have been indexed during the current index operation, if any
+	 */
+	documents_indexed?: number;
+	/**
+	 * The total number of results that match the query
+	 */
+	total_results: number;
+	/**
+	 * A nested array of messages that match the query
+	 *
+	 * @remarks The nested array was used to provide surrounding context to search results. However, surrounding context is no longer returned.
+	 */
+	messages: Omit<APIMessage, 'reactions'>[][];
+	/**
+	 * The threads that contain the returned messages
+	 */
+	threads?: APIThreadChannel[];
+	/**
+	 * A thread member object for each returned thread the current user has joined
+	 */
+	members?: APIThreadMember[];
 }
