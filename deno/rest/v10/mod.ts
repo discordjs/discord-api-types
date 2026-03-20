@@ -315,6 +315,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/messages/search`
+	 */
+	guildMessagesSearch(guildId: Snowflake) {
+		return `/guilds/${guildId}/messages/search` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
 	 *
 	 * @deprecated Use {@link Routes.guildMember} instead.
