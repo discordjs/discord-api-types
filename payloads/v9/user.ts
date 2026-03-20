@@ -22,7 +22,7 @@ export interface APIUser {
 	 */
 	discriminator: string;
 	/**
-	 * The user's display name, if it is set. For bots, this is the application name
+	 * The user's display name, if it is set
 	 */
 	global_name: string | null;
 	/**
