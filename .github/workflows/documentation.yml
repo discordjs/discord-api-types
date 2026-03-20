@@ -67,7 +67,7 @@ jobs:
         with:
           swap-size-gb: 10
 
-      - uses: pnpm/action-setup@v4.3.0
+      - uses: pnpm/action-setup@v4.4.0
         name: Install pnpm
         with:
           run_install: false
