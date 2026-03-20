@@ -270,6 +270,8 @@ export enum RESTJSONErrorCodes {
 
 	ProvidedFileDoesNotHaveAValidDuration = 50_192,
 
+	CannotSendMessagesToThisUser2 = 50_278,
+
 	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
 	TwoFactorAuthenticationIsRequired = 60_003,
