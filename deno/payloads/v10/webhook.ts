@@ -30,11 +30,11 @@ export interface APIWebhook {
 	/**
 	 * The guild id this webhook is for
 	 */
-	guild_id?: Snowflake;
+	guild_id?: Snowflake | null;
 	/**
 	 * The channel id this webhook is for
 	 */
-	channel_id: Snowflake;
+	channel_id: Snowflake | null;
 	/**
 	 * The user this webhook was created by (not returned when getting a webhook with its token)
 	 *
