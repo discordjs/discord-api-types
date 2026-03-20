@@ -30,6 +30,11 @@ import type {
 	APIRoleColors,
 	APIIncidentsData,
 	APIGuildChannel,
+	APIMessageSearchResult,
+	MessageSearchAuthorType,
+	MessageSearchEmbedType,
+	MessageSearchHasType,
+	MessageSearchSortMode,
 } from '../../payloads/v10/mod.ts';
 import type {
 	_AddUndefinedToPossiblyUndefinedPropertiesOfInterface,
@@ -535,6 +540,151 @@ export interface RESTPatchAPIGuildMemberJSONBody {
  * @see {@link https://discord.com/developers/docs/resources/guild#add-guild-member}
  */
 export type RESTPatchAPIGuildMemberResult = APIGuildMember;
+
+/**
+ * Returns a list of messages without the `reactions` key that match a search query in the guild. Requires the `READ_MESSAGE_HISTORY` permission.
+ *
+ * @remarks The Search Guild Messages endpoint is restricted according to whether the `MESSAGE_CONTENT` Privileged Intent is enabled for your application.
+ *
+ * If the entity you are searching is not yet indexed, the endpoint will return a 202 accepted response. The response body will not contain any search results, and will look similar to an error response:
+ * ```json
+ * {
+ *   "message": "Index not yet available. Try again later",
+ *   "code": 110000,
+ *   "documents_indexed": 0,
+ *   "retry_after": 2
+ * }
+ * ```
+ *
+ * Due to speed optimizations, search may return slightly fewer results than the limit specified when messages have not been accessed for a long time.
+ * Clients should not rely on the length of the `messages` array to paginate results.
+ *
+ * Additionally, when messages are actively being created or deleted, the `total_results` field may not be accurate.
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages}
+ */
+export interface RESTGetAPIGuildMessagesSearchQuery {
+	/**
+	 * Max number of messages to return (1-25)
+	 *
+	 * @defaultValue `25`
+	 */
+	limit?: number;
+	/**
+	 * Number to offset the returned messages by (max 9975)
+	 */
+	offset?: number;
+	/**
+	 * Get messages before this message ID
+	 */
+	max_id?: Snowflake;
+	/**
+	 * Get messages after this message ID
+	 */
+	min_id?: Snowflake;
+	/**
+	 * Max number of words to skip between matching tokens in the search `content` (max 100)
+	 *
+	 * @defaultValue `2`
+	 */
+	slop?: number;
+	/**
+	 * Filter messages by content (max 1024 characters)
+	 */
+	content?: string;
+	/**
+	 * Filter messages by these channels (max 500)
+	 */
+	channel_id?: Snowflake[];
+	/**
+	 * Filter messages by author type
+	 *
+	 * @remarks All types can be negated by prefixing them with `-`, which means results will not include messages that match the type.
+	 * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-author-types}
+	 */
+	author_type?: (MessageSearchAuthorType | `-${MessageSearchAuthorType}`)[];
+	/**
+	 * Filter messages by these authors (max 100)
+	 */
+	author_id?: Snowflake[];
+	/**
+	 * Filter messages that mention these users (max 100)
+	 */
+	mentions?: Snowflake[];
+	/**
+	 * Filter messages that mention these roles (max 100)
+	 */
+	mentions_role_id?: Snowflake[];
+	/**
+	 * Filter messages that do or do not mention @everyone
+	 */
+	mention_everyone?: boolean;
+	/**
+	 * Filter messages that reply to these users (max 100)
+	 */
+	replied_to_user_id?: Snowflake[];
+	/**
+	 * Filter messages that reply to these messages (max 100)
+	 */
+	replied_to_message_id?: Snowflake[];
+	/**
+	 * Filter messages by whether they are or are not pinned
+	 */
+	pinned?: boolean;
+	/**
+	 * Filter messages by whether or not they have specific things
+	 *
+	 * @remarks All types can be negated by prefixing them with `-`, which means results will not include messages that match the type.
+	 * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-has-types}
+	 */
+	has?: (MessageSearchHasType | `-${MessageSearchHasType}`)[];
+	/**
+	 * Filter messages by embed type
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-embed-types}
+	 */
+	embed_type?: MessageSearchEmbedType[];
+	/**
+	 * Filter messages by embed provider (case-sensitive, e.g. `Tenor`) (max 256 characters, max 100)
+	 */
+	embed_provider?: string[];
+	/**
+	 * Filter messages by link hostname (e.g. `discordapp.com`) (max 256 characters, max 100)
+	 */
+	link_hostname?: string[];
+	/**
+	 * Filter messages by attachment filename (max 1024 characters, max 100)
+	 */
+	attachment_filename?: string[];
+	/**
+	 * Filter messages by attachment extension (e.g. `txt`) (max 256 characters, max 100)
+	 */
+	attachment_extension?: string[];
+	/**
+	 * The sorting algorithm to use
+	 *
+	 * @remarks Sort order is not respected when sorting by relevance.
+	 * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-sort-modes}
+	 */
+	sort_by?: MessageSearchSortMode;
+	/**
+	 * The direction to sort (`asc` or `desc`)
+	 *
+	 * @defaultValue `'desc'`
+	 * @remarks Sort order is not respected when sorting by relevance.
+	 */
+	sort_order?: 'asc' | 'desc';
+	/**
+	 * Whether to include results from age-restricted channels
+	 *
+	 * @defaultValue `false`
+	 */
+	include_nsfw?: boolean;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-response-body}
+ */
+export type RESTGetAPIGuildMessagesSearchResult = APIMessageSearchResult;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#modify-current-user-nick}
