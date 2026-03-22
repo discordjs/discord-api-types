@@ -1233,42 +1233,42 @@ export enum RPCEvents {
 /**
  * @unstable
  */
-export type RPCSubscribeActivityInviteArgs = Record<string, undefined>;
+export type RPCSubscribeActivityInviteArgs = Record<string, unknown>;
 
-export type RPCSubscribeActivityJoinArgs = Record<string, undefined>;
+export type RPCSubscribeActivityJoinArgs = Record<string, unknown>;
 
-export type RPCSubscribeActivityJoinRequestArgs = Record<string, undefined>;
+export type RPCSubscribeActivityJoinRequestArgs = Record<string, unknown>;
 
-export type RPCSubscribeActivitySpectateArgs = Record<string, undefined>;
+export type RPCSubscribeActivitySpectateArgs = Record<string, unknown>;
 
-export type RPCSubscribeChannelCreateArgs = Record<string, undefined>;
-
-/**
- * @unstable
- */
-export type RPCSubscribeCurrentUserUpdateArgs = Record<string, undefined>;
+export type RPCSubscribeChannelCreateArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeEntitlementCreateArgs = Record<string, undefined>;
+export type RPCSubscribeCurrentUserUpdateArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeEntitlementDeleteArgs = Record<string, undefined>;
+export type RPCSubscribeEntitlementCreateArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeGameJoinArgs = Record<string, undefined>;
+export type RPCSubscribeEntitlementDeleteArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeGameSpectateArgs = Record<string, undefined>;
+export type RPCSubscribeGameJoinArgs = Record<string, unknown>;
 
-export type RPCSubscribeGuildCreateArgs = Record<string, undefined>;
+/**
+ * @unstable
+ */
+export type RPCSubscribeGameSpectateArgs = Record<string, unknown>;
+
+export type RPCSubscribeGuildCreateArgs = Record<string, unknown>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#guildstatus-guild-status-argument-structure}
@@ -1310,22 +1310,22 @@ export interface RPCSubscribeMessageUpdateArgs {
 	channel_id: Snowflake;
 }
 
-export type RPCSubscribeNotificationCreateArgs = Record<string, undefined>;
+export type RPCSubscribeNotificationCreateArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeOverlayArgs = Record<string, undefined>;
+export type RPCSubscribeOverlayArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeOverlayUpdateArgs = Record<string, undefined>;
+export type RPCSubscribeOverlayUpdateArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeRelationshipUpdateArgs = Record<string, undefined>;
+export type RPCSubscribeRelationshipUpdateArgs = Record<string, unknown>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#speakingstartspeakingstop-speaking-argument-structure}
@@ -1347,19 +1347,19 @@ export interface RPCSubscribeSpeakingStopArgs {
 	channel_id: Snowflake;
 }
 
-export type RPCSubscribeVoiceChannelSelectArgs = Record<string, undefined>;
+export type RPCSubscribeVoiceChannelSelectArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeVoiceConnectionStatusArgs = Record<string, undefined>;
+export type RPCSubscribeVoiceConnectionStatusArgs = Record<string, unknown>;
 
-export type RPCSubscribeVoiceSettingsUpdateArgs = Record<string, undefined>;
+export type RPCSubscribeVoiceSettingsUpdateArgs = Record<string, unknown>;
 
 /**
  * @unstable
  */
-export type RPCSubscribeVoiceSettingsUpdate2Args = Record<string, undefined>;
+export type RPCSubscribeVoiceSettingsUpdate2Args = Record<string, unknown>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-voice-state-argument-structure}
