@@ -59,6 +59,13 @@ jobs:
     if: github.repository_owner == 'discordjs' && github.event_name != 'push'
 
     steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.DISCORDJS_APP_ID }}
+          private-key: ${{ secrets.DISCORDJS_APP_KEY_RELEASE }}
+          permission-contents: write
+
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
@@ -78,13 +85,13 @@ jobs:
 
       - name: Set Git User and Email
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name "discord-js[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Bump version
         run: node ./scripts/bump-version.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.USER_PAT }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Create branch for changes, add all changes and push
         run: |
@@ -103,7 +110,7 @@ jobs:
       - name: Create Pull Request
         run: node ./scripts/actions/create-pr.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.USER_PAT }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
   create_release:
     name: Create release and publish
@@ -115,6 +122,13 @@ jobs:
     if: github.repository_owner == 'discordjs' && github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release)') && !contains(github.event.head_commit.message, '[skip ci]')
 
     steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.DISCORDJS_APP_ID }}
+          private-key: ${{ secrets.DISCORDJS_APP_KEY_RELEASE }}
+          permission-contents: write
+
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
@@ -136,4 +150,4 @@ jobs:
       - name: Create GitHub release
         run: node ./scripts/actions/create-release.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.USER_PAT }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
