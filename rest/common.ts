@@ -174,7 +174,7 @@ export enum RESTJSONErrorCodes {
 	CannotEditMessageAuthoredByAnotherUser,
 	CannotSendAnEmptyMessage,
 	/**
-	 * @see {@link RESTJSONErrorCodes.CannotSendMessagesToThisUser_2} for a similar error code
+	 * @see {@link RESTJSONErrorCodes.CannotSendMessagesToThisUserDueToHavingNoMutualGuilds} for a similar error code
 	 */
 	CannotSendMessagesToThisUser,
 	CannotSendMessagesInNonTextChannel,
@@ -276,7 +276,7 @@ export enum RESTJSONErrorCodes {
 	/**
 	 * @see {@link RESTJSONErrorCodes.CannotSendMessagesToThisUser} for a similar error code
 	 */
-	CannotSendMessagesToThisUser_2 = 50_278,
+	CannotSendMessagesToThisUserDueToHavingNoMutualGuilds = 50_278,
 
 	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
@@ -351,11 +351,11 @@ export enum RESTJSONErrorCodes {
  * JSON Error Codes that represent "Cannot send messages to this user".
  * Discord uses two different error codes for this error:
  * - {@link RESTJSONErrorCodes.CannotSendMessagesToThisUser} (50_007)
- * - {@link RESTJSONErrorCodes.CannotSendMessagesToThisUser_2} (50_278)
+ * - {@link RESTJSONErrorCodes.CannotSendMessagesToThisUserDueToHavingNoMutualGuilds} (50_278)
  */
 export const CannotSendMessagesToThisUserErrorCodes = [
 	RESTJSONErrorCodes.CannotSendMessagesToThisUser,
-	RESTJSONErrorCodes.CannotSendMessagesToThisUser_2,
+	RESTJSONErrorCodes.CannotSendMessagesToThisUserDueToHavingNoMutualGuilds,
 ] as const;
 
 /**
