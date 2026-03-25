@@ -287,7 +287,8 @@ export enum RESTJSONErrorCodes {
 	ReactionWasBlocked = 90_001,
 	UserCannotUseBurstReactions,
 
-	ApplicationNotYetAvailable = 110_001,
+	IndexNotYetAvailable = 110_000,
+	ApplicationNotYetAvailable,
 
 	APIResourceOverloaded = 130_000,
 
