@@ -836,6 +836,7 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 	/**
 	 * Get threads before this id or ISO8601 timestamp
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-type-constituents
 	before?: Snowflake | string;
 	/**
 	 * Max number of thread to return
