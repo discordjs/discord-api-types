@@ -86,9 +86,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Install website dependencies
-        run: pushd website && npm ci --ignore-scripts && popd
-
       - name: Set Git User and Email
         run: |
           git config user.name "discord-js[bot]"
