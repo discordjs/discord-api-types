@@ -616,7 +616,7 @@ export interface RESTGetAPIGuildMessagesSearchQuery {
 	 */
 	mentions_role_id?: Snowflake[];
 	/**
-	 * Filter messages that do or do not mention @everyone
+	 * Filter messages that do or do not mention `@everyone`
 	 */
 	mention_everyone?: boolean;
 	/**
