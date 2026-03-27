@@ -27,7 +27,7 @@ jobs:
           node-version-file: package.json
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Check lint on discord-api-types
         run: pnpm test:lint

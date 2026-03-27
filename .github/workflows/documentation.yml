@@ -53,7 +53,7 @@ jobs:
           node-version-file: package.json
 
       - name: Install Dependencies for discord-api-types
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       #region DJS start (mostly from discord.js/packages/actions/src/pnpmCache)
       # pnpm --filter="*api-*" --filter="scripts" --filter="actions" run build

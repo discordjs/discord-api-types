@@ -22,7 +22,7 @@ jobs:
           node-version-file: package.json
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Run Check Script
         run: node ./scripts/actions/report-deno-not-ran.mjs
