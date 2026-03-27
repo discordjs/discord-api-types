@@ -37,7 +37,7 @@ You will need an LTS version of [Node.js](http://nodejs.org) and [pnpm](https://
 After cloning the repo, run:
 
 ```bash
-$ pnpm install # Install the dependencies of the project
+$ pnpm install --frozen-lockfile # Install the dependencies of the project
 ```
 
 A high level overview of tools used:
