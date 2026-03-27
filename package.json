@@ -160,7 +160,7 @@
 		"ts-morph": "^27.0.0",
 		"tsutils": "^3.21.0",
 		"tsx": "^4.20.3",
-		"typescript": "^5.8.3",
+		"typescript": "^6.0.0",
 		"typescript-eslint": "^8.33.0"
 	},
 	"publishConfig": {
