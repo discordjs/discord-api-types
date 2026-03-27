@@ -30,28 +30,31 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version-file: package.json
 
       - name: Install Dependencies
-        run: yarn
+        run: pnpm install --frozen-lockfile
 
       - name: Bump version
         run: node ./scripts/bump-version.mjs
 
       # TODO: we need a scoped token for this -.-, can't OIDC tmk
       # - name: Deprecate old @next versions
-      #   run: yarn npm-deprecate --name "*next*" --package discord-api-types --message "No longer supported. Install the latest @next release" || true
+      #   run: pnpm npm-deprecate --name "*next*" --package discord-api-types --message "No longer supported. Install the latest @next release" || true
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Publish new @next version
         run: |
-          yarn version $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
-          yarn npm publish --tag next
+          npm version $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s) --no-git-tag-version
+          pnpm publish --tag next --no-git-checks
 
   create_pr:
     name: Create PR for new version
@@ -71,14 +74,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version-file: package.json
 
       - name: Install Dependencies
-        run: yarn
+        run: pnpm install --frozen-lockfile
 
       - name: Install website dependencies
         run: pushd website && npm ci --ignore-scripts && popd
@@ -98,7 +104,7 @@ jobs:
           git checkout -b "chore/release/$(jq --raw-output '.version' package.json)"
 
           # Run changelog generation, deno script, website version bump
-          yarn ci:pr
+          pnpm ci:pr
 
           # Add all changes, commit and push
           git add --all .
@@ -134,18 +140,21 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version-file: package.json
 
       - name: Install Dependencies
-        run: yarn
+        run: pnpm install --frozen-lockfile
 
       - name: Publish release to npm
         run: |
-          yarn npm publish
+          pnpm publish --no-git-checks
 
       - name: Create GitHub release
         run: node ./scripts/actions/create-release.mjs
