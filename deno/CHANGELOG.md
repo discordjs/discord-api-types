@@ -1,3 +1,33 @@
+## [0.38.43](https://github.com/discordjs/discord-api-types/compare/0.38.41...0.38.43) (2026-03-28)
+
+
+### Bug Fixes
+
+* **Channel:** correct PATCH channel field nullability ([#1575](https://github.com/discordjs/discord-api-types/issues/1575)) ([a4aa724](https://github.com/discordjs/discord-api-types/commit/a4aa724eb84ca0dea335b52c312af7a0e50696f6))
+* **Gateway:** invite create timestamp type, zstd-stream ([#1569](https://github.com/discordjs/discord-api-types/issues/1569)) ([38b9467](https://github.com/discordjs/discord-api-types/commit/38b9467178783c71770a15905d5f6e716ed7cbbd))
+* **Guild:** correct optionality and nullability ([#1574](https://github.com/discordjs/discord-api-types/issues/1574)) ([cf6476d](https://github.com/discordjs/discord-api-types/commit/cf6476dc8aeecb3d36cac629cb1d921b2805c573))
+* **guildScheduledEvent:** entity_type required, channel_id nullable ([#1573](https://github.com/discordjs/discord-api-types/issues/1573)) ([bf12195](https://github.com/discordjs/discord-api-types/commit/bf121954013b21f9b8a2c35249791f96b275143a))
+* **poll:** mark expiry as nullable ([#1576](https://github.com/discordjs/discord-api-types/issues/1576)) ([dea22dc](https://github.com/discordjs/discord-api-types/commit/dea22dc487d8af22827a15815ff79acd8607465b))
+* role colors optionality, color deprecation, and stale annotations ([#1566](https://github.com/discordjs/discord-api-types/issues/1566)) ([0000e9a](https://github.com/discordjs/discord-api-types/commit/0000e9afe34f748d708c1d81441a08e1a06e0d50))
+* send soundboard result type ([#1568](https://github.com/discordjs/discord-api-types/issues/1568)) ([f1a3cb7](https://github.com/discordjs/discord-api-types/commit/f1a3cb7bb7fb6fba6824fcad42e0ce54a0d9be94))
+* split grouped gateway dispatch types ([#1563](https://github.com/discordjs/discord-api-types/issues/1563)) ([f76c2fa](https://github.com/discordjs/discord-api-types/commit/f76c2fa249b1b9ad02d4bfc26495f4cfa2349641))
+* **Voice, AuditLog:** voice state channel_id, audit log application_id ([#1580](https://github.com/discordjs/discord-api-types/issues/1580)) ([811314a](https://github.com/discordjs/discord-api-types/commit/811314a825bbe32360f98109bd4981d67fdb6726))
+* **webhook:** correct nullability for guild_id and channel_id ([#1567](https://github.com/discordjs/discord-api-types/issues/1567)) ([25778ae](https://github.com/discordjs/discord-api-types/commit/25778aeee9367c145fa841c977d4de6b247652c0))
+
+
+### Features
+
+* **Application:** add activity instance types and endpoint ([#1578](https://github.com/discordjs/discord-api-types/issues/1578)) ([b985362](https://github.com/discordjs/discord-api-types/commit/b9853622523d1be70e3f754d552f5b984fff8739))
+* **Application:** add webhook event fields to PATCH ([#1570](https://github.com/discordjs/discord-api-types/issues/1570)) ([e1ff008](https://github.com/discordjs/discord-api-types/commit/e1ff008cd697cf0dd0185ed2d8aba653c6be91e4))
+* **BaseThemeType:** add `Unset` base theme type ([#1577](https://github.com/discordjs/discord-api-types/issues/1577)) ([e65e02f](https://github.com/discordjs/discord-api-types/commit/e65e02f05f048cc57488deffb04e90313c92e4c2))
+* guild messages search ([#1583](https://github.com/discordjs/discord-api-types/issues/1583)) ([a99c8c0](https://github.com/discordjs/discord-api-types/commit/a99c8c0f53b119e58841979f319eb3e49cbe9b5f))
+* **Guild:** add collectibles to guild member ([#1572](https://github.com/discordjs/discord-api-types/issues/1572)) ([c8ef2fe](https://github.com/discordjs/discord-api-types/commit/c8ef2fefde5b8a37dee40863d2a2e24df8b50e28))
+* **Guild:** add flags to modify guild member ([#1571](https://github.com/discordjs/discord-api-types/issues/1571)) ([46b8cbd](https://github.com/discordjs/discord-api-types/commit/46b8cbd46f5c5331652624d74048775bd0e9ff8d))
+* mark new modal components as stable ([#1556](https://github.com/discordjs/discord-api-types/issues/1556)) ([818b899](https://github.com/discordjs/discord-api-types/commit/818b899f9dd8f93c93168550ba08976888927f77))
+* **message:** shared client themes ([#1565](https://github.com/discordjs/discord-api-types/issues/1565)) ([c3b331d](https://github.com/discordjs/discord-api-types/commit/c3b331d80a1c4b97b260584f4c9afb5f81871ba9))
+* **Rest:** add missing JSON error codes ([#1579](https://github.com/discordjs/discord-api-types/issues/1579)) ([ba01bac](https://github.com/discordjs/discord-api-types/commit/ba01bacfc073ec5b3476157a6d6f8f91836e0eb8))
+* **RESTJSONErrorCodes:** add error code `50278` ([#1587](https://github.com/discordjs/discord-api-types/issues/1587)) ([662cb0c](https://github.com/discordjs/discord-api-types/commit/662cb0cb0ac9c6f9ad93e180849476714bfceb0c))
+
 ## [0.38.42](https://github.com/discordjs/discord-api-types/compare/0.38.41...0.38.42) (2026-03-09)
 
 
