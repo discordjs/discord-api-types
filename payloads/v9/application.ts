@@ -154,7 +154,7 @@ export interface APIApplication {
 	/**
 	 * If webhook events are enabled for the app
 	 */
-	event_webhooks_status: ApplicationWebhookEventStatus;
+	event_webhooks_status?: ApplicationWebhookEventStatus;
 	/**
 	 * List of webhook event types the app subscribes to
 	 */
