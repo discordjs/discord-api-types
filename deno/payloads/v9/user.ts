@@ -195,7 +195,7 @@ export enum UserFlags {
 	/**
 	 * User is an {@link https://support-dev.discord.com/hc/articles/10113997751447 | Active Developer}
 	 *
-	 * @deprecated This user flag is no longer available. See {@link https://github.com/discord/discord-api-docs/pull/8249 | discord-api-docs#8249} for more information.
+	 * @deprecated This user flag is no longer available. See {@link https://support-dev.discord.com/hc/articles/10113997751447-Active-Developer-Badge} for more information.
 	 */
 	ActiveDeveloper = 1 << 22,
 	/**
