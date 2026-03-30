@@ -10,7 +10,6 @@
 	"search.exclude": {
 		"**/.docusaurus/": true,
 		"**/.git/": true,
-		"**/.yarn": true,
 		"**/*.code-search": true,
 		"**/bower_components": true,
 		"**/node_modules": true,

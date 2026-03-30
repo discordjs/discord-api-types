@@ -43,14 +43,17 @@ jobs:
         with:
           ref: ${{ inputs.ref || '' }}
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version-file: package.json
 
       - name: Install Dependencies for discord-api-types
-        run: yarn
+        run: pnpm install
 
       #region DJS start (mostly from discord.js/packages/actions/src/pnpmCache)
       # pnpm --filter="*api-*" --filter="scripts" --filter="actions" run build
@@ -123,10 +126,10 @@ jobs:
       - name: Build docs
         shell: bash
         run: |
-          yarn prepack
+          pnpm prepack
           ./djs/packages/api-extractor/bin/api-extractor run --local --minify
           ./djs/packages/scripts/bin/generateSplitDocumentation.js
-          yarn postpack
+          pnpm postpack
 
       - name: Upload documentation to database
         if: ${{ env.REF_TYPE == 'tag' && (!inputs.ref || inputs.ref == 'main') }}
@@ -142,7 +145,7 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadDocumentation.ts
 
       - name: Upload documentation to database
         if: ${{ env.REF_TYPE == 'tag' && inputs.ref && inputs.ref != 'main' }}
@@ -158,7 +161,7 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadDocumentation.ts
 
       - name: Upload split documentation to blob storage
         if: ${{ env.REF_TYPE == 'tag' && (!inputs.ref || inputs.ref == 'main') }}
@@ -170,7 +173,7 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
 
       - name: Upload split documentation to blob storage
         if: ${{ env.REF_TYPE == 'tag' && inputs.ref && inputs.ref != 'main' }}
@@ -182,7 +185,7 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
 
       - name: Upload documentation to database
         if: ${{ env.REF_TYPE == 'branch' && (!inputs.ref || inputs.ref == 'main') }}
@@ -198,7 +201,7 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadDocumentation.ts
 
       - name: Upload documentation to database
         if: ${{ env.REF_TYPE == 'branch' && inputs.ref && inputs.ref != 'main' }}
@@ -214,7 +217,7 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadDocumentation.ts
 
       - name: Upload split documentation to blob storage
         if: ${{ env.REF_TYPE == 'branch' && (!inputs.ref || inputs.ref == 'main') }}
@@ -226,7 +229,7 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
 
       - name: Upload split documentation to blob storage
         if: ${{ env.REF_TYPE == 'branch' && inputs.ref && inputs.ref != 'main' }}
@@ -238,4 +241,4 @@ jobs:
           ACTION_PACKAGE: ${{ env.ACTION_PACKAGE }}
           ACTION_VERSION: ${{ steps.extract-tag.outputs.semver }}
         run: |
-          yarn tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts
+          pnpm exec tsx ./scripts/actions/documentation/uploadSplitDocumentation.ts

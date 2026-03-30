@@ -14,8 +14,8 @@ _Code is forked from the Sapphire Community's Website under the MIT license_
 
 After forking/cloning this repo to a folder locally:
 
-1. Install dependencies with `npm ci`.
-2. Run `npm run start` to start the dev server
+1. Install dependencies with `pnpm install --frozen-lockfile`.
+2. Run `pnpm run start` to start the dev server
 
 ## Special thanks
 

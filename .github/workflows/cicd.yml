@@ -17,20 +17,23 @@ jobs:
       - name: Add problem matcher
         run: echo "::add-matcher::.github/problemMatchers/eslint.json" && echo "::add-matcher::.github/problemMatchers/tsc.json"
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version-file: package.json
 
       - name: Install Dependencies
-        run: yarn
+        run: pnpm install
 
       - name: Check lint on discord-api-types
-        run: yarn test:lint
+        run: pnpm test:lint
 
       - name: Run TSC
-        run: yarn build:ci
+        run: pnpm build:ci
 
       - name: Run Type Tests
-        run: yarn test:types
+        run: pnpm test:types
