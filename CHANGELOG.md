@@ -1,3 +1,10 @@
+## [0.38.44](https://github.com/discordjs/discord-api-types/compare/0.38.43...0.38.44) (2026-04-02)
+
+
+### Bug Fixes
+
+* **APIApplication:** make event_webhooks_status optional ([#1603](https://github.com/discordjs/discord-api-types/issues/1603)) ([c76a1bc](https://github.com/discordjs/discord-api-types/commit/c76a1bc37208789b9b626a9363e8a3992edc2899))
+
 ## [0.38.43](https://github.com/discordjs/discord-api-types/compare/0.38.41...0.38.43) (2026-03-28)
 
 
