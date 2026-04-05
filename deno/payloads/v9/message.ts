@@ -1585,6 +1585,9 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	required?: boolean;
 }
 
+/**
+ * @unstable This enum is currently not documented by Discord
+ */
 export enum UnfurledMediaItemLoadingState {
 	Unknown,
 	Loading,
@@ -1638,6 +1641,9 @@ export interface APIUnfurledMediaItem {
 	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
 	 */
 	content_type?: string | null;
+	/**
+	 * @unstable This field is currently not documented by Discord
+	 */
 	loading_state?: UnfurledMediaItemLoadingState;
 	/**
 	 * Unfurled media item flags combined as a bitfield
