@@ -4,7 +4,7 @@ import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#get-current-bot-application-information}
  */
-export type RESTGetAPIOAuth2CurrentApplicationResult = Omit<APIApplication, 'flags'>;
+export type RESTGetAPIOAuth2CurrentApplicationResult = APIApplication;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#get-current-authorization-information}
