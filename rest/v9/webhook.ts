@@ -256,7 +256,7 @@ export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
  * @see {@link https://discord.com/developers/docs/resources/webhook#get-webhook-message-query-string-params}
  */
 export interface RESTGetAPIWebhookWithTokenMessageQuery {
-	thread_id?: string;
+	thread_id?: Snowflake;
 }
 
 /**
@@ -308,6 +308,13 @@ export type RESTPatchAPIWebhookWithTokenMessageQuery = Pick<
  * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message}
  */
 export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/webhook#delete-webhook-message-query-string-params}
+ */
+export interface RESTDeleteAPIWebhookWithTokenMessageQuery {
+	thread_id?: Snowflake;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#delete-webhook-message}
