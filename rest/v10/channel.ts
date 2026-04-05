@@ -411,7 +411,13 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
  */
 export enum ReactionType {
 	Normal,
-	Super,
+	Burst,
+	// eslint-disable @typescript-eslint/no-duplicate-enum-values
+	/**
+	 * @deprecated Use {@link ReactionType.Burst} instead
+	 */
+	Super = Burst,
+	// eslint-enable @typescript-eslint/no-duplicate-enum-values
 }
 
 /**
