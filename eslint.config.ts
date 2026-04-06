@@ -310,6 +310,7 @@ export default config([
 						'RESTAPIInteractionCallbackResourceObject',
 						'RESTAPIMessageReference',
 						'RESTAPIPartialCurrentUserGuild',
+						'RESTAPIForumThreadMessageParams',
 						'RESTAPIPoll',
 						'RESTOAuth2TokenOptionalClientCredentials',
 
