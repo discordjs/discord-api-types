@@ -101,7 +101,7 @@ export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
 	/**
 	 * The recipient to open a DM channel with
 	 */
-	recipient_id: string;
+	recipient_id: Snowflake;
 }
 
 /**
