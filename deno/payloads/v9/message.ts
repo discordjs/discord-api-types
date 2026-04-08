@@ -86,7 +86,7 @@ export interface APIBaseMessageNoChannel {
 	 */
 	mention_channels?: APIChannelMention[];
 	/**
-	 * Any attached files
+	 * Any attached files that are not referenced in embeds or components
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
 	 *
