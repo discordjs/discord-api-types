@@ -1382,7 +1382,7 @@ export interface GatewayGuildScheduledEventUserAddDispatchData {
  */
 export type GatewayGuildScheduledEventUserRemoveDispatch = _DataPayload<
 	GatewayDispatchEvents.GuildScheduledEventUserRemove,
-	GatewayGuildScheduledEventUserAddDispatchData
+	GatewayGuildScheduledEventUserRemoveDispatchData
 >;
 
 /**
