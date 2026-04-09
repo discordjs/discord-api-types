@@ -1,3 +1,11 @@
+## [0.38.45](https://github.com/discordjs/discord-api-types/compare/0.38.44...0.38.45) (2026-04-09)
+
+
+### Bug Fixes
+
+* **OAuth2:** include flags in current application result ([#1610](https://github.com/discordjs/discord-api-types/issues/1610)) ([1506ff0](https://github.com/discordjs/discord-api-types/commit/1506ff0d2bf38cea590872fbc2a463096150baf6))
+* **User:** use Snowflake for DM recipient_id ([#1612](https://github.com/discordjs/discord-api-types/issues/1612)) ([3a296fa](https://github.com/discordjs/discord-api-types/commit/3a296fa929470b0dba74ee7cdd4343c03d171916))
+
 ## [0.38.44](https://github.com/discordjs/discord-api-types/compare/0.38.43...0.38.44) (2026-04-02)
 
 
