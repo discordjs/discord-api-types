@@ -612,9 +612,9 @@ export interface APIEmbed {
 	/**
 	 * Thumbnail information
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure}
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-image-structure}
 	 */
-	thumbnail?: APIEmbedThumbnail;
+	thumbnail?: APIEmbedImage;
 	/**
 	 * Video information
 	 *
@@ -641,6 +641,13 @@ export interface APIEmbed {
 	 * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-field-structure}
 	 */
 	fields?: APIEmbedField[];
+	/**
+	 * Embed flags combined as a bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: EmbedFlags;
 }
 
 /**
@@ -684,26 +691,29 @@ export enum EmbedType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure}
+ * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-flags}
  */
-export interface APIEmbedThumbnail {
+export enum EmbedFlags {
 	/**
-	 * Source url of thumbnail (only supports http(s) and attachments)
+	 * This embed is a fallback for a reply to an activity card
 	 */
-	url: string;
-	/**
-	 * A proxied url of the thumbnail
-	 */
-	proxy_url?: string;
-	/**
-	 * Height of thumbnail
-	 */
-	height?: number;
-	/**
-	 * Width of thumbnail
-	 */
-	width?: number;
+	IsContentInventoryEntry = 1 << 5,
 }
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
+ */
+export enum EmbedMediaFlags {
+	/**
+	 * This image is animated
+	 */
+	IsAnimated = 1 << 5,
+}
+
+/**
+ * @deprecated Use {@link APIEmbedImage} instead.
+ */
+export interface APIEmbedThumbnail extends APIEmbedImage {}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-video-structure}
@@ -725,6 +735,33 @@ export interface APIEmbedVideo {
 	 * Width of video
 	 */
 	width?: number;
+	/**
+	 * The video's media type
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
+	 */
+	content_type?: string;
+	/**
+	 * ThumbHash placeholder of the video
+	 *
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
+	placeholder?: string;
+	/**
+	 * Version of the placeholder
+	 */
+	placeholder_version?: number;
+	/**
+	 * Description (alt text) for the video
+	 */
+	description?: string;
+	/**
+	 * Embed media flags combined as a bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: EmbedMediaFlags;
 }
 
 /**
@@ -747,6 +784,33 @@ export interface APIEmbedImage {
 	 * Width of image
 	 */
 	width?: number;
+	/**
+	 * The image's media type
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
+	 */
+	content_type?: string;
+	/**
+	 * ThumbHash placeholder of the image
+	 *
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
+	placeholder?: string;
+	/**
+	 * Version of the placeholder
+	 */
+	placeholder_version?: number;
+	/**
+	 * Description (alt text) for the image
+	 */
+	description?: string;
+	/**
+	 * Embed media flags combined as a bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: EmbedMediaFlags;
 }
 
 /**
@@ -849,7 +913,7 @@ export interface APIAttachment {
 	 */
 	title?: string;
 	/**
-	 * Description for the file
+	 * Description (alt text) for the file (max 1024 characters)
 	 */
 	description?: string;
 	/**
@@ -871,15 +935,27 @@ export interface APIAttachment {
 	 */
 	proxy_url: string;
 	/**
-	 * Height of file (if image)
+	 * Height of file (if image or video)
 	 */
 	height?: number | null;
 	/**
-	 * Width of file (if image)
+	 * Width of file (if image or video)
 	 */
 	width?: number | null;
 	/**
+	 * ThumbHash placeholder (if image or video)
+	 *
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
+	placeholder?: string;
+	/**
+	 * Version of the placeholder (if image or video)
+	 */
+	placeholder_version?: number;
+	/**
 	 * Whether this attachment is ephemeral
+	 *
+	 * @remarks Ephemeral attachments will automatically be removed after a set period of time. Ephemeral attachments on messages are guaranteed to be available as long as the message itself exists.
 	 */
 	ephemeral?: boolean;
 	/**
@@ -894,16 +970,48 @@ export interface APIAttachment {
 	 * Attachment flags combined as a bitfield
 	 */
 	flags?: AttachmentFlags;
+	/**
+	 * For Clips, array of users who were in the stream
+	 */
+	clip_participants?: APIUser[];
+	/**
+	 * For Clips, when the clip was created
+	 */
+	clip_created_at?: string;
+	/**
+	 * For Clips, the application in the stream, if recognized
+	 */
+	application?: APIApplication | null;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure-attachment-flags}
+ * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-flags}
  */
 export enum AttachmentFlags {
 	/**
+	 * This attachment is a Clip from a stream
+	 *
+	 * @see {@link https://support.discord.com/hc/en-us/articles/16861982215703}
+	 */
+	IsClip = 1 << 0,
+	/**
+	 * This attachment is the thumbnail of a thread in a media channel, displayed in the grid but not on the message
+	 */
+	IsThumbnail = 1 << 1,
+	/**
 	 * This attachment has been edited using the remix feature on mobile
+	 *
+	 * @deprecated
 	 */
 	IsRemix = 1 << 2,
+	/**
+	 * This attachment was marked as a spoiler and is blurred until clicked
+	 */
+	IsSpoiler = 1 << 3,
+	/**
+	 * This attachment is an animated image
+	 */
+	IsAnimated = 1 << 5,
 }
 
 /**
@@ -1477,6 +1585,9 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	required?: boolean;
 }
 
+/**
+ * @unstable This enum is currently not documented by Discord
+ */
 export enum UnfurledMediaItemLoadingState {
 	Unknown,
 	Loading,
@@ -1489,35 +1600,76 @@ export enum UnfurledMediaItemLoadingState {
  */
 export interface APIUnfurledMediaItem {
 	/**
-	 * Supports arbitrary urls and attachment://<filename> references
+	 * Supports arbitrary urls and `attachment://<filename>` references
 	 */
 	url: string;
 	/**
-	 * The proxied url of the media item. This field is ignored and provided by the API as part of the response
+	 * The proxied url of the media item
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 */
 	proxy_url?: string;
 	/**
-	 * The width of the media item. This field is ignored and provided by the API as part of the response
+	 * The width of the media item (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 */
 	width?: number | null;
 	/**
-	 * The height of the media item. This field is ignored and provided by the API as part of the response
+	 * The height of the media item (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 */
 	height?: number | null;
+	/**
+	 * ThumbHash placeholder (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
 	placeholder?: string | null;
+	/**
+	 * Version of the placeholder (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 */
 	placeholder_version?: number | null;
 	/**
-	 * The media type of the content. This field is ignored and provided by the API as part of the response
+	 * The media type of the content
 	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
 	 */
 	content_type?: string | null;
-	loading_state?: UnfurledMediaItemLoadingState;
-	flags?: number;
 	/**
-	 * The id of the uploaded attachment. This field is ignored and provided by the API as part of the response
+	 * @unstable This field is currently not documented by Discord
+	 */
+	loading_state?: UnfurledMediaItemLoadingState;
+	/**
+	 * Unfurled media item flags combined as a bitfield
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-unfurled-media-item-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: UnfurledMediaItemFlags;
+	/**
+	 * The id of the uploaded attachment.
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 * @remarks Only present if the media item was uploaded as an attachment.
 	 */
 	attachment_id?: Snowflake;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-unfurled-media-item-flags}
+ */
+export enum UnfurledMediaItemFlags {
+	/**
+	 * This image is animated
+	 */
+	IsAnimated = 1 << 0,
 }
 
 /**
