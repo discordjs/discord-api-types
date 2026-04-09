@@ -759,6 +759,10 @@ export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessage
 	 * The initial message of the thread
 	 */
 	message: string;
+	/**
+	 * The IDs of the set of tags to apply to the thread; limited to 5
+	 */
+	applied_tags?: Snowflake[] | undefined;
 };
 
 /**
