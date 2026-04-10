@@ -4,7 +4,7 @@ import type { APISoundboardSound } from '../../payloads/v9/index';
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound}
  */
-export type RESTPostAPISendSoundboardSoundResult = never;
+export type RESTPostAPISendSoundboardSoundResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params}
@@ -104,4 +104,4 @@ export type RESTPatchAPIGuildSoundboardSoundResult = APISoundboardSound;
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#delete-guild-soundboard-sound}
  */
-export type RESTDeleteAPIGuildSoundboardSoundResult = never;
+export type RESTDeleteAPIGuildSoundboardSoundResult = undefined;
