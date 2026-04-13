@@ -1,3 +1,20 @@
+## [0.38.46](https://github.com/discordjs/discord-api-types/compare/0.38.45...0.38.46) (2026-04-13)
+
+
+### Bug Fixes
+
+* `APIUser` `global_name` description ([#1586](https://github.com/discordjs/discord-api-types/issues/1586)) ([d165766](https://github.com/discordjs/discord-api-types/commit/d165766302c8ae7c9cd78c5a2989787351ca45fa))
+* **Channel:** add applied_tags to forum thread form data body ([#1615](https://github.com/discordjs/discord-api-types/issues/1615)) ([19d04c0](https://github.com/discordjs/discord-api-types/commit/19d04c00c9f5ba585fc0d21dbf869b74f2ea2dda))
+* **Gateway:** correct scheduled event user remove dispatch type ([#1614](https://github.com/discordjs/discord-api-types/issues/1614)) ([b2a8b74](https://github.com/discordjs/discord-api-types/commit/b2a8b740e5c7904c77bd6ba3359b3b4d30b0e0f9))
+* **ReactionType:** rename Super to Burst ([#1613](https://github.com/discordjs/discord-api-types/issues/1613)) ([c21ae24](https://github.com/discordjs/discord-api-types/commit/c21ae24f7a3d8892a1126984223a5ddf996b3105))
+* **Webhook:** add delete message query, fix thread_id type ([#1611](https://github.com/discordjs/discord-api-types/issues/1611)) ([27ef064](https://github.com/discordjs/discord-api-types/commit/27ef064f922922b8da6d8baedcc0aed6261f6d59))
+
+
+### Features
+
+* **Message:** more attachment and embed fields and flags ([#1609](https://github.com/discordjs/discord-api-types/issues/1609)) ([702e541](https://github.com/discordjs/discord-api-types/commit/702e541bf0bbcf54c85a47e1ba56dc982cb49b17))
+* **UserFlags:** mark ActiveDeveloper as deprecated ([#1604](https://github.com/discordjs/discord-api-types/issues/1604)) ([5acf5c5](https://github.com/discordjs/discord-api-types/commit/5acf5c5989d09cabd73f3435155b9ca2cf07be81))
+
 ## [0.38.45](https://github.com/discordjs/discord-api-types/compare/0.38.44...0.38.45) (2026-04-09)
 
 
