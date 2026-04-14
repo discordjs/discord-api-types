@@ -75,8 +75,12 @@ export enum RESTJSONErrorCodes {
 
 	UnderMinimumAge = 20_024,
 
-	ChannelSendRateLimit = 20_028,
-	ServerSendRateLimit,
+	ChannelWriteRateLimit = 20_028,
+	/**
+	 * @deprecated Use {@link RESTJSONErrorCodes.ChannelWriteRateLimit} instead
+	 */
+	ChannelSendRateLimit = ChannelWriteRateLimit,
+	ServerSendRateLimit = 20_029,
 
 	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20_031,
 
