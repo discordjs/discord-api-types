@@ -301,6 +301,8 @@ export enum RESTJSONErrorCodes {
 	MaximumActiveThreads,
 	MaximumActiveAnnouncementThreads,
 
+	CannotForwardMessageWithUnreadableContent = 160_014,
+
 	InvalidJSONForUploadedLottieFile = 170_001,
 	UploadedLottiesCannotContainRasterizedImages,
 	StickerMaximumFramerateExceeded,
