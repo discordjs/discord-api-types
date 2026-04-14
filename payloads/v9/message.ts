@@ -225,7 +225,7 @@ export interface APIBaseMessageNoChannel {
 	 */
 	role_subscription_data?: APIMessageRoleSubscriptionData;
 	/**
-	 * Data for users, members, channels, and roles in the message's auto-populated select menus
+	 * Data for users, members, channels, and roles referenced in this message
 	 *
 	 * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure}
 	 */
