@@ -44,9 +44,10 @@ export interface APITeamMember {
 	/**
 	 * Will always be `["*"]`
 	 *
+	 * @remarks At or before 2026-04-14, Discord stopped sending this field.
 	 * @deprecated Use {@link APITeamMember.role} instead.
 	 */
-	permissions: ['*'];
+	permissions?: ['*'] | undefined;
 	/**
 	 * The id of the parent team of which they are a member
 	 */
