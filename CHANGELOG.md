@@ -1,3 +1,11 @@
+## [0.38.47](https://github.com/discordjs/discord-api-types/compare/0.38.46...0.38.47) (2026-04-16)
+
+
+### Features
+
+* **RESTJSONErrorCodes:** add `CannotForwardMessageWithUnreadableContent` ([#1628](https://github.com/discordjs/discord-api-types/issues/1628)) ([09c71fe](https://github.com/discordjs/discord-api-types/commit/09c71fe9d19006d0b287be35456c25809e9afc1a))
+* **RESTJSONErrorCodes:** rename `ChannelSendRateLimit` to `ChannelWriteRateLimit` ([#1627](https://github.com/discordjs/discord-api-types/issues/1627)) ([d5dc47a](https://github.com/discordjs/discord-api-types/commit/d5dc47a36c544ff8a83adcfb29684d5ac5e15af4))
+
 ## [0.38.46](https://github.com/discordjs/discord-api-types/compare/0.38.45...0.38.46) (2026-04-13)
 
 
