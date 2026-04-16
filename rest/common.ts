@@ -80,7 +80,11 @@ export enum RESTJSONErrorCodes {
 	 * @deprecated Use {@link RESTJSONErrorCodes.ChannelWriteRateLimit} instead
 	 */
 	ChannelSendRateLimit = ChannelWriteRateLimit,
-	ServerSendRateLimit = 20_029,
+	ServerWriteRateLimit = 20_029,
+	/**
+	 * @deprecated Use {@link RESTJSONErrorCodes.ServerWriteRateLimit} instead
+	 */
+	ServerSendRateLimit = ServerWriteRateLimit,
 
 	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20_031,
 
