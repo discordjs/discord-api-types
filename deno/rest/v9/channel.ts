@@ -887,3 +887,18 @@ export type RESTGetAPIChannelThreadsResult = APIThreadList;
  * @see {@link https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads}
  */
 export type RESTGetAPIChannelUsersThreadsArchivedResult = APIThreadList;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#set-voice-channel-status}
+ */
+export interface RESTPutAPIChannelVoiceStatusJSONBody {
+	/**
+	 * New voice channel status (up to 500 characters)
+	 */
+	status: string | null;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#set-voice-channel-status}
+ */
+export type RESTPutAPIChannelVoiceStatusResult = undefined;

@@ -726,3 +726,21 @@ export enum ChannelFlags {
 	 */
 	HideMediaDownloadOptions = 1 << 15,
 }
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#channel-info-channel-info-channel-structure}
+ */
+export interface APIChannelInfo {
+	/**
+	 * The channel id
+	 */
+	id: Snowflake;
+	/**
+	 * The voice channel status
+	 */
+	status?: string | null;
+	/**
+	 * Unix timestamp (in seconds) of when the voice session started
+	 */
+	voice_start_time?: number | null;
+}
