@@ -230,6 +230,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - PUT `/channels/{channel.id}/voice-status`
+	 */
+	channelVoiceStatus(channelId: Snowflake) {
+		return `/channels/${channelId}/voice-status` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET  `/guilds/{guild.id}/emojis`
 	 * - POST `/guilds/{guild.id}/emojis`
 	 */
