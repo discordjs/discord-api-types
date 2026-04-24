@@ -42,7 +42,7 @@ export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 /**
  * @see {@link https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state}
  */
-export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = never;
+export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = undefined;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/voice#modify-user-voice-state}
@@ -61,4 +61,4 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 /**
  * @see {@link https://discord.com/developers/docs/resources/voice#modify-user-voice-state}
  */
-export type RESTPatchAPIGuildVoiceStateUserResult = never;
+export type RESTPatchAPIGuildVoiceStateUserResult = undefined;
