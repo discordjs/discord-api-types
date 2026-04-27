@@ -146,7 +146,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	/**
 	 * Needs to include bot for the bot flow
 	 */
-	scope:
+	scope?:
 		| `${OAuth2Scopes.Bot} ${string}`
 		| `${OAuth2Scopes.Bot}`
 		| `${string} ${OAuth2Scopes.Bot} ${string}`
