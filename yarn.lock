@@ -3924,9 +3924,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cloudflare@npm:^5.0.0":
-  version: 5.2.0
-  resolution: "cloudflare@npm:5.2.0"
+"cloudflare@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "cloudflare@npm:6.0.0"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -3935,7 +3935,7 @@ __metadata:
     form-data-encoder: "npm:1.7.2"
     formdata-node: "npm:^4.3.2"
     node-fetch: "npm:^2.6.7"
-  checksum: 10c0/f8a9bf2f63228178a91d44c19f246484e0b411bd410e4a1cebc16d22f3862241feced2cc04b281cb90b2f14a9ed1d3984293e3b25534d570d4c20f564983bb7f
+  checksum: 10c0/c72fe116dd9b9f1530eb1848c7370204e7fc56cf4f845786388f1b4bf5f346400a0125e05548d2391cf6b7dc14ae215bf98897fc7b5110c44c380607e5e69f28
   languageName: node
   linkType: hard
 
@@ -4367,7 +4367,7 @@ __metadata:
     "@actions/core": "npm:^3.0.0"
     "@actions/glob": "npm:^0.6.0"
     "@aws-sdk/client-s3": "npm:^3.808.0"
-    cloudflare: "npm:^5.0.0"
+    cloudflare: "npm:^6.0.0"
     p-limit: "npm:^7.0.0"
     p-queue: "npm:^9.0.0"
   languageName: unknown
