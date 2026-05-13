@@ -15,6 +15,8 @@ import type {
 	MessageType,
 	APIChannel,
 	APIMessage,
+	APIMessageActivity,
+	APIApplication,
 } from './index';
 
 /**
@@ -65,9 +67,9 @@ export interface APILobbyMessage {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/events/webhook-events#passthrough-message-object}
+ * @see {@link https://docs.discord.com/developers/events/webhook-events#sdk-dm-message-object}
  */
-export interface APIPassthroughMessage {
+export interface APISDKDMMessage {
 	/**
 	 * ID of the message
 	 */
@@ -109,6 +111,18 @@ export interface APIPassthroughMessage {
 	 * Channel object with recipient information
 	 */
 	channel: APIChannel;
+	/**
+	 * Sent with Rich Presence-related chat embeds
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/message#message-object-message-activity-structure}
+	 */
+	activity?: APIMessageActivity;
+	/**
+	 * Sent with Rich Presence-related chat embeds
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 */
+	application?: Partial<APIApplication>;
 }
 
 /**
@@ -247,7 +261,7 @@ export type APIWebhookEventEntitlementDeleteData = APIEntitlement;
 export type APIWebhookEventEntitlementUpdateData = APIEntitlement;
 
 export type APIWebhookEventGameDirectMessageCreateData =
-	| APIPassthroughMessage
+	| APISDKDMMessage
 	| (APIMessage & {
 			/**
 			 * ID of the lobby where the message was created (only present in Linked Channel messages)
@@ -260,7 +274,7 @@ export type APIWebhookEventGameDirectMessageCreateData =
 	  });
 
 export type APIWebhookEventGameDirectMessageDeleteData =
-	| APIPassthroughMessage
+	| APISDKDMMessage
 	| (APIMessage & {
 			/**
 			 * ID of the lobby where the message was created (only present in Linked Channel messages)
@@ -273,7 +287,7 @@ export type APIWebhookEventGameDirectMessageDeleteData =
 	  });
 
 export type APIWebhookEventGameDirectMessageUpdateData =
-	| APIPassthroughMessage
+	| APISDKDMMessage
 	| (APIMessage & {
 			/**
 			 * ID of the lobby where the message was created (only present in Linked Channel messages)
