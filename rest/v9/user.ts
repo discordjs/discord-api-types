@@ -141,3 +141,8 @@ export interface RESTPutAPICurrentUserApplicationRoleConnectionJSONBody {
  * @see {@link https://discord.com/developers/docs/resources/user#update-user-application-role-connection}
  */
 export type RESTPutAPICurrentUserApplicationRoleConnectionResult = APIApplicationRoleConnection;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/user#delete-current-user-application-role-connection}
+ */
+export type RESTDeleteAPICurrentUserApplicationRoleConnectionResult = undefined;

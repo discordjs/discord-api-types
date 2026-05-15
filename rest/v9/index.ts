@@ -607,8 +607,9 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/users/@me/applications/{application.id}/role-connection`
-	 * - PUT `/users/@me/applications/{application.id}/role-connection`
+	 * - GET    `/users/@me/applications/{application.id}/role-connection`
+	 * - PUT    `/users/@me/applications/{application.id}/role-connection`
+	 * - DELETE `/users/@me/applications/{application.id}/role-connection`
 	 */
 	userApplicationRoleConnection(applicationId: Snowflake) {
 		return `/users/@me/applications/${applicationId}/role-connection` as const;
