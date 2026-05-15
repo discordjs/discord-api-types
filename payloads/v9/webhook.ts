@@ -11,7 +11,119 @@ import type {
 	ApplicationIntegrationType,
 	OAuth2Scopes,
 	APIWebhookSourceChannel,
+	MessageFlags,
+	MessageType,
+	APIChannel,
+	APIMessage,
+	APIMessageActivity,
+	APIApplication,
 } from './index';
+
+/**
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#lobby-message-object}
+ */
+export interface APILobbyMessage {
+	/**
+	 * ID of the message
+	 */
+	id: Snowflake;
+	/**
+	 * Type of message
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/message#message-object-message-types}
+	 */
+	type: MessageType;
+	/**
+	 * Contents of the message
+	 */
+	content: string;
+	/**
+	 * ID of the lobby where the message was sent
+	 */
+	lobby_id: Snowflake;
+	/**
+	 * ID of the channel the message was sent in
+	 */
+	channel_id: Snowflake;
+	/**
+	 * 	Author of the message
+	 */
+	author: APIUser;
+	/**
+	 * Additional metadata for the message (key-value pairs)
+	 */
+	metadata?: Record<string, string>;
+	/**
+	 * Message flags combined as a bitfield
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/message#message-object-message-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags: MessageFlags;
+	/**
+	 * ID of the application (only present during active Social SDK sessions)
+	 */
+	application_id?: Snowflake;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/webhook-events#sdk-dm-message-object}
+ */
+export interface APISDKDMMessage {
+	/**
+	 * ID of the message
+	 */
+	id: Snowflake;
+	/**
+	 * Type of message
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/message#message-object-message-types}
+	 */
+	type: MessageType;
+	/**
+	 * Contents of the message
+	 */
+	content: string;
+	/**
+	 * ID of the channel the message was sent in
+	 */
+	channel_id: Snowflake;
+	/**
+	 * ID of the message recipient
+	 */
+	recipient_id: Snowflake;
+	/**
+	 * 	Author of the message
+	 */
+	author: APIUser;
+	/**
+	 * Message flags combined as a bitfield
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/message#message-object-message-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags: MessageFlags;
+	/**
+	 * ID of the application that created the message
+	 */
+	application_id: Snowflake;
+	/**
+	 * Channel object with recipient information
+	 */
+	channel: APIChannel;
+	/**
+	 * Sent with Rich Presence-related chat embeds
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/message#message-object-message-activity-structure}
+	 */
+	activity?: APIMessageActivity;
+	/**
+	 * Sent with Rich Presence-related chat embeds
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 */
+	application?: Partial<APIApplication>;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object}
@@ -90,9 +202,24 @@ export type APIWebhookEventBody =
 			ApplicationWebhookEventType.ApplicationDeauthorized,
 			APIWebhookEventApplicationDeauthorizedData
 	  >
+	| APIWebhookEventEventBase<
+			ApplicationWebhookEventType.GameDirectMessageCreate,
+			APIWebhookEventGameDirectMessageCreateData
+	  >
+	| APIWebhookEventEventBase<
+			ApplicationWebhookEventType.GameDirectMessageDelete,
+			APIWebhookEventGameDirectMessageDeleteData
+	  >
+	| APIWebhookEventEventBase<
+			ApplicationWebhookEventType.GameDirectMessageUpdate,
+			APIWebhookEventGameDirectMessageUpdateData
+	  >
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementCreate, APIWebhookEventEntitlementCreateData>
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementDelete, APIWebhookEventEntitlementDeleteData>
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.EntitlementUpdate, APIWebhookEventEntitlementUpdateData>
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.LobbyMessageCreate, APIWebhookEventLobbyMessageCreateData>
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.LobbyMessageDelete, APIWebhookEventLobbyMessageDeleteData>
+	| APIWebhookEventEventBase<ApplicationWebhookEventType.LobbyMessageUpdate, APIWebhookEventLobbyMessageUpdateData>
 	| APIWebhookEventEventBase<ApplicationWebhookEventType.QuestUserEnrollment, APIWebhookEventQuestUserEnrollmentData>;
 
 export interface APIWebhookEventApplicationAuthorizedData {
@@ -126,6 +253,60 @@ export type APIWebhookEventEntitlementCreateData = APIEntitlement;
 export type APIWebhookEventEntitlementDeleteData = APIEntitlement;
 
 export type APIWebhookEventEntitlementUpdateData = APIEntitlement;
+
+export type APIWebhookEventGameDirectMessageCreateData =
+	| APISDKDMMessage
+	| (APIMessage & {
+			/**
+			 * ID of the lobby where the message was created (only present in Linked Channel messages)
+			 */
+			lobby_id?: Snowflake;
+			/**
+			 * Channel object with recipient information
+			 */
+			channel: APIChannel;
+	  });
+
+export type APIWebhookEventGameDirectMessageDeleteData =
+	| APISDKDMMessage
+	| (APIMessage & {
+			/**
+			 * ID of the lobby where the message was created (only present in Linked Channel messages)
+			 */
+			lobby_id?: Snowflake;
+			/**
+			 * Channel object with recipient information
+			 */
+			channel: APIChannel;
+	  });
+
+export type APIWebhookEventGameDirectMessageUpdateData =
+	| APISDKDMMessage
+	| (APIMessage & {
+			/**
+			 * ID of the lobby where the message was created (only present in Linked Channel messages)
+			 */
+			lobby_id?: Snowflake;
+			/**
+			 * Channel object with recipient information
+			 */
+			channel: APIChannel;
+	  });
+
+export type APIWebhookEventLobbyMessageCreateData = APILobbyMessage;
+
+export interface APIWebhookEventLobbyMessageDeleteData {
+	/**
+	 * ID of the message
+	 */
+	id: Snowflake;
+	/**
+	 * ID of the lobby where the message was sent
+	 */
+	lobby_id: Snowflake;
+}
+
+export type APIWebhookEventLobbyMessageUpdateData = APILobbyMessage;
 
 export type APIWebhookEventQuestUserEnrollmentData = never;
 
@@ -205,6 +386,30 @@ export enum ApplicationWebhookEventType {
 	 * User was added to a Quest (currently unavailable)
 	 */
 	QuestUserEnrollment = 'QUEST_USER_ENROLLMENT',
+	/**
+	 * Sent when a message is created in a lobby
+	 */
+	LobbyMessageCreate = 'LOBBY_MESSAGE_CREATE',
+	/**
+	 * Sent when a message is updated in a lobby
+	 */
+	LobbyMessageUpdate = 'LOBBY_MESSAGE_UPDATE',
+	/**
+	 * Sent when a message is deleted from a lobby
+	 */
+	LobbyMessageDelete = 'LOBBY_MESSAGE_DELETE',
+	/**
+	 * Sent when a direct message is created during an active Social SDK session
+	 */
+	GameDirectMessageCreate = 'GAME_DIRECT_MESSAGE_CREATE',
+	/**
+	 * Sent when a direct message is updated during an active Social SDK session
+	 */
+	GameDirectMessageUpdate = 'GAME_DIRECT_MESSAGE_UPDATE',
+	/**
+	 * Sent when a direct message is deleted during an active Social SDK session
+	 */
+	GameDirectMessageDelete = 'GAME_DIRECT_MESSAGE_DELETE',
 }
 
 /**
