@@ -32,6 +32,7 @@ import type {
 	APIAuditLogEntry,
 	APIEntitlement,
 	ChannelType,
+	TextChannelType,
 	APISubscription,
 	APISoundboardSound,
 	GuildChannelType,
@@ -1720,6 +1721,12 @@ export interface GatewayMessageEventExtraFields {
 	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
 	mentions: APIUserWithMember[];
+	/**
+	 * The type of channel the message was sent in
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/channel#channel-object-channel-types}
+	 */
+	channel_type?: TextChannelType;
 }
 
 /**
