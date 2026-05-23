@@ -1,5 +1,12 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
-import type { APIApplication, APIGuild, APIUser, APIWebhook, OAuth2Scopes } from '../../payloads/v10/mod.ts';
+import type {
+	APIApplication,
+	APIGuild,
+	APIUser,
+	APIWebhook,
+	ApplicationIntegrationType,
+	OAuth2Scopes,
+} from '../../payloads/v10/mod.ts';
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#get-current-bot-application-information}
@@ -139,7 +146,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	/**
 	 * Needs to include bot for the bot flow
 	 */
-	scope:
+	scope?:
 		| `${OAuth2Scopes.Bot} ${string}`
 		| `${OAuth2Scopes.Bot}`
 		| `${string} ${OAuth2Scopes.Bot} ${string}`
@@ -158,6 +165,12 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	 * `true` or `false`—disallows the user from changing the guild dropdown
 	 */
 	disable_guild_select?: boolean;
+	/**
+	 * The installation context for the authorization
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-integration-types}
+	 */
+	integration_type?: ApplicationIntegrationType;
 }
 
 /**
@@ -181,6 +194,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	disable_guild_select?: boolean;
 	response_type: string;
 	redirect_uri?: string;
+	integration_type?: ApplicationIntegrationType;
 }
 
 export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
