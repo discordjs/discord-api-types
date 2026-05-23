@@ -74,6 +74,7 @@ export interface APIUser {
 	/**
 	 * The type of Nitro subscription on a user's account
 	 *
+	 * @remarks This field will return `0` for applications that have not been approved for the {@link OAuth2Scopes.IdentifyPremium} scope.
 	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
 	 */
 	premium_type?: UserPremiumType;
