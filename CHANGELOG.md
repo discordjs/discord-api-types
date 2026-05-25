@@ -1,3 +1,12 @@
+## [0.38.48](https://github.com/discordjs/discord-api-types/compare/0.38.47...0.38.48) (2026-05-25)
+
+
+### Features
+
+* **OAuth2:** add `integration_type` param ([#1643](https://github.com/discordjs/discord-api-types/issues/1643)) ([22b7320](https://github.com/discordjs/discord-api-types/commit/22b7320285cc71cd025cef208f277afec3cc5ddd))
+* **OAuth2Scopes:** add `IdentifyPremium` scope ([#1648](https://github.com/discordjs/discord-api-types/issues/1648)) ([bd7f4b6](https://github.com/discordjs/discord-api-types/commit/bd7f4b6df7e53f170ab29c5e712f5ed5d7db5572))
+* **Routes:** add `DELETE` method for `userApplicationRoleConnection()` ([#1654](https://github.com/discordjs/discord-api-types/issues/1654)) ([60b49bc](https://github.com/discordjs/discord-api-types/commit/60b49bc18c51ac1b9b70b8e76a19100517dc71e0))
+
 ## [0.38.47](https://github.com/discordjs/discord-api-types/compare/0.38.46...0.38.47) (2026-04-16)
 
 
