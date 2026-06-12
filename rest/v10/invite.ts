@@ -68,15 +68,15 @@ export interface RESTGetAPIInviteTargetUsersJobStatusResult {
 	/**
 	 * The timestamp when the job was created.
 	 */
-	created_at?: string | null;
+	created_at: string | null;
 	/**
 	 * The timestamp when the job was successfully completed.
 	 */
-	completed_at?: string | null;
+	completed_at: string | null;
 	/**
 	 * The error message if the job failed.
 	 */
-	error_message?: string | null;
+	error_message: string | null;
 }
 
 /**

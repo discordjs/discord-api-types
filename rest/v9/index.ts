@@ -11,7 +11,7 @@ export type * from './gateway';
 export type * from './guild';
 export type * from './guildScheduledEvent';
 export type * from './interactions';
-export type * from './invite';
+export * from './invite';
 export * from './monetization';
 export type * from './oauth2';
 export type * from './poll';

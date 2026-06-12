@@ -11,7 +11,7 @@ export type * from './gateway.ts';
 export type * from './guild.ts';
 export type * from './guildScheduledEvent.ts';
 export type * from './interactions.ts';
-export type * from './invite.ts';
+export * from './invite.ts';
 export * from './monetization.ts';
 export type * from './oauth2.ts';
 export type * from './poll.ts';
