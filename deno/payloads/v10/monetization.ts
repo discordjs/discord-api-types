@@ -212,11 +212,11 @@ export enum SubscriptionStatus {
 	 */
 	Active,
 	/**
-	 * Subscription is active but will not renew.
-	 */
-	Ending,
-	/**
 	 * Subscription is inactive and not being charged.
 	 */
 	Inactive,
+	/**
+	 * Subscription is active but will not renew.
+	 */
+	Ending,
 }
