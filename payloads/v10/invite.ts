@@ -6,6 +6,7 @@ import type { APIApplication } from './application';
 import type { APIInviteChannel } from './channel';
 import type { APIGuild } from './guild';
 import type { APIGuildScheduledEvent } from './guildScheduledEvent';
+import type { APIRole } from './permissions';
 import type { APIUser } from './user';
 
 export type APIInviteGuild = Pick<
@@ -21,6 +22,10 @@ export type APIInviteGuild = Pick<
 	| 'splash'
 	| 'vanity_url_code'
 	| 'verification_level'
+>;
+
+export type APIInviteRole = Required<
+	Pick<APIRole, 'color' | 'colors' | 'icon' | 'id' | 'name' | 'position' | 'unicode_emoji'>
 >;
 
 /**
@@ -98,6 +103,10 @@ export interface APIInvite {
 	 * The flags of the invite
 	 */
 	flags?: InviteFlags;
+	/**
+	 * The roles assigned to the user upon accepting the invite
+	 */
+	roles?: APIInviteRole[];
 }
 
 /**
