@@ -9,7 +9,6 @@ import type {
 	APIAutoModerationRule,
 	APIAutoModerationAction,
 	APIChannel,
-	APIChannelInfo,
 	APIEmoji,
 	APIGuild,
 	APIGuildIntegration,
@@ -800,7 +799,7 @@ export type GatewayChannelDeleteDispatch = _DataPayload<
 export type GatewayChannelDeleteDispatchData = GatewayChannelModifyDispatchData;
 
 /**
- * @see {@link https://docs.discord.com/developers/events/gateway-events#request-channel-info}
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#channel-info}
  */
 export type GatewayChannelInfoDispatch = _DataPayload<
 	GatewayDispatchEvents.ChannelInfo,
@@ -808,7 +807,7 @@ export type GatewayChannelInfoDispatch = _DataPayload<
 >;
 
 /**
- * @see {@link https://docs.discord.com/developers/events/gateway-events#request-channel-info}
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#channel-info}
  */
 export interface GatewayChannelInfoDispatchData {
 	/**
@@ -818,7 +817,25 @@ export interface GatewayChannelInfoDispatchData {
 	/**
 	 * Ephemeral data for channels in the guild
 	 */
-	channels: APIChannelInfo[];
+	channels: GatewayChannelInfoChannel[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#channel-info-channel-info-channel-structure}
+ */
+export interface GatewayChannelInfoChannel {
+	/**
+	 * The channel id
+	 */
+	id: Snowflake;
+	/**
+	 * The voice channel status
+	 */
+	status?: string | null;
+	/**
+	 * Unix timestamp (in seconds) of when the voice session started
+	 */
+	voice_start_time?: number | null;
 }
 
 /**
