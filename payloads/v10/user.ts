@@ -22,7 +22,7 @@ export interface APIUser {
 	 */
 	discriminator: string;
 	/**
-	 * The user's display name, if it is set. For bots, this is the application name
+	 * The user's display name, if it is set
 	 */
 	global_name: string | null;
 	/**
@@ -74,6 +74,7 @@ export interface APIUser {
 	/**
 	 * The type of Nitro subscription on a user's account
 	 *
+	 * @remarks This field will return `0` for applications that have not been approved for the {@link OAuth2Scopes.IdentifyPremium} scope.
 	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
 	 */
 	premium_type?: UserPremiumType;
@@ -194,6 +195,8 @@ export enum UserFlags {
 	DisablePremium = 1 << 21,
 	/**
 	 * User is an {@link https://support-dev.discord.com/hc/articles/10113997751447 | Active Developer}
+	 *
+	 * @deprecated This user flag is no longer available. See {@link https://support-dev.discord.com/hc/articles/10113997751447-Active-Developer-Badge} for more information.
 	 */
 	ActiveDeveloper = 1 << 22,
 	/**

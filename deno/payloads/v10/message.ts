@@ -3,7 +3,7 @@
 import type { Snowflake } from '../../globals.ts';
 import type { _NonNullableFields } from '../../utils/internals.ts';
 import type { APIApplication } from './application.ts';
-import type { APIChannel, ChannelType } from './channel.ts';
+import type { APIChannel, APIThreadChannel, APIThreadMember, ChannelType } from './channel.ts';
 import type { APIPartialEmoji } from './emoji.ts';
 import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions.ts';
 import type { APIRole } from './permissions.ts';
@@ -78,7 +78,7 @@ export interface APIBaseMessageNoChannel {
 	 * Channels specifically mentioned in this message
 	 *
 	 * Not all channel mentions in a message will appear in `mention_channels`.
-	 * - Only textual channels that are visible to everyone in a lurkable guild will ever be included
+	 * - Only textual channels that are visible to everyone in a public guild will ever be included
 	 * - Only crossposted messages (via Channel Following) currently include `mention_channels` at all
 	 *
 	 * If no mentions in the message meet these requirements, this field will not be sent
@@ -87,7 +87,7 @@ export interface APIBaseMessageNoChannel {
 	 */
 	mention_channels?: APIChannelMention[];
 	/**
-	 * Any attached files
+	 * Any attached files that are not referenced in embeds or components
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
 	 *
@@ -229,7 +229,7 @@ export interface APIBaseMessageNoChannel {
 	 */
 	role_subscription_data?: APIMessageRoleSubscriptionData;
 	/**
-	 * Data for users, members, channels, and roles in the message's auto-populated select menus
+	 * Data for users, members, channels, and roles referenced in this message
 	 *
 	 * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure}
 	 */
@@ -253,6 +253,10 @@ export interface APIBaseMessageNoChannel {
 	 * The call associated with the message
 	 */
 	call?: APIMessageCall;
+	/**
+	 * The custom client-side theme shared via the message
+	 */
+	shared_client_theme?: APIMessageSharedClientTheme;
 }
 
 /**
@@ -464,6 +468,39 @@ export interface APIMessageCall {
 }
 
 /**
+ * @see https://docs.discord.com/developers/resources/message#base-theme-types
+ */
+export enum BaseThemeType {
+	Unset,
+	Dark,
+	Light,
+	Darker,
+	Midnight,
+}
+
+/**
+ * @see https://docs.discord.com/developers/resources/message#shared-client-theme-object
+ */
+export interface APIMessageSharedClientTheme {
+	/**
+	 * The hexadecimal-encoded colors of the theme (max of 5)
+	 */
+	colors: string[];
+	/**
+	 * The direction of the theme's colors (max of 360)
+	 */
+	gradient_angle: number;
+	/**
+	 * The intensity of the theme's colors (max of 100)
+	 */
+	base_mix: number;
+	/**
+	 * The mode of the theme
+	 */
+	base_theme?: BaseThemeType | null;
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/message#role-subscription-data-object-role-subscription-data-object-structure}
  */
 export interface APIMessageRoleSubscriptionData {
@@ -580,9 +617,9 @@ export interface APIEmbed {
 	/**
 	 * Thumbnail information
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure}
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-image-structure}
 	 */
-	thumbnail?: APIEmbedThumbnail;
+	thumbnail?: APIEmbedImage;
 	/**
 	 * Video information
 	 *
@@ -609,6 +646,13 @@ export interface APIEmbed {
 	 * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-field-structure}
 	 */
 	fields?: APIEmbedField[];
+	/**
+	 * Embed flags combined as a bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: EmbedFlags;
 }
 
 /**
@@ -652,26 +696,29 @@ export enum EmbedType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure}
+ * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-flags}
  */
-export interface APIEmbedThumbnail {
+export enum EmbedFlags {
 	/**
-	 * Source url of thumbnail (only supports http(s) and attachments)
+	 * This embed is a fallback for a reply to an activity card
 	 */
-	url: string;
-	/**
-	 * A proxied url of the thumbnail
-	 */
-	proxy_url?: string;
-	/**
-	 * Height of thumbnail
-	 */
-	height?: number;
-	/**
-	 * Width of thumbnail
-	 */
-	width?: number;
+	IsContentInventoryEntry = 1 << 5,
 }
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
+ */
+export enum EmbedMediaFlags {
+	/**
+	 * This image is animated
+	 */
+	IsAnimated = 1 << 5,
+}
+
+/**
+ * @deprecated Use {@link APIEmbedImage} instead.
+ */
+export interface APIEmbedThumbnail extends APIEmbedImage {}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-video-structure}
@@ -693,6 +740,33 @@ export interface APIEmbedVideo {
 	 * Width of video
 	 */
 	width?: number;
+	/**
+	 * The video's media type
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
+	 */
+	content_type?: string;
+	/**
+	 * ThumbHash placeholder of the video
+	 *
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
+	placeholder?: string;
+	/**
+	 * Version of the placeholder
+	 */
+	placeholder_version?: number;
+	/**
+	 * Description (alt text) for the video
+	 */
+	description?: string;
+	/**
+	 * Embed media flags combined as a bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: EmbedMediaFlags;
 }
 
 /**
@@ -715,6 +789,33 @@ export interface APIEmbedImage {
 	 * Width of image
 	 */
 	width?: number;
+	/**
+	 * The image's media type
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
+	 */
+	content_type?: string;
+	/**
+	 * ThumbHash placeholder of the image
+	 *
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
+	placeholder?: string;
+	/**
+	 * Version of the placeholder
+	 */
+	placeholder_version?: number;
+	/**
+	 * Description (alt text) for the image
+	 */
+	description?: string;
+	/**
+	 * Embed media flags combined as a bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: EmbedMediaFlags;
 }
 
 /**
@@ -817,7 +918,7 @@ export interface APIAttachment {
 	 */
 	title?: string;
 	/**
-	 * Description for the file
+	 * Description (alt text) for the file (max 1024 characters)
 	 */
 	description?: string;
 	/**
@@ -839,15 +940,27 @@ export interface APIAttachment {
 	 */
 	proxy_url: string;
 	/**
-	 * Height of file (if image)
+	 * Height of file (if image or video)
 	 */
 	height?: number | null;
 	/**
-	 * Width of file (if image)
+	 * Width of file (if image or video)
 	 */
 	width?: number | null;
 	/**
+	 * ThumbHash placeholder (if image or video)
+	 *
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
+	placeholder?: string;
+	/**
+	 * Version of the placeholder (if image or video)
+	 */
+	placeholder_version?: number;
+	/**
 	 * Whether this attachment is ephemeral
+	 *
+	 * @remarks Ephemeral attachments will automatically be removed after a set period of time. Ephemeral attachments on messages are guaranteed to be available as long as the message itself exists.
 	 */
 	ephemeral?: boolean;
 	/**
@@ -862,16 +975,48 @@ export interface APIAttachment {
 	 * Attachment flags combined as a bitfield
 	 */
 	flags?: AttachmentFlags;
+	/**
+	 * For Clips, array of users who were in the stream
+	 */
+	clip_participants?: APIUser[];
+	/**
+	 * For Clips, when the clip was created
+	 */
+	clip_created_at?: string;
+	/**
+	 * For Clips, the application in the stream, if recognized
+	 */
+	application?: APIApplication | null;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure-attachment-flags}
+ * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-flags}
  */
 export enum AttachmentFlags {
 	/**
+	 * This attachment is a Clip from a stream
+	 *
+	 * @see {@link https://support.discord.com/hc/en-us/articles/16861982215703}
+	 */
+	IsClip = 1 << 0,
+	/**
+	 * This attachment is the thumbnail of a thread in a media channel, displayed in the grid but not on the message
+	 */
+	IsThumbnail = 1 << 1,
+	/**
 	 * This attachment has been edited using the remix feature on mobile
+	 *
+	 * @deprecated
 	 */
 	IsRemix = 1 << 2,
+	/**
+	 * This attachment was marked as a spoiler and is blurred until clicked
+	 */
+	IsSpoiler = 1 << 3,
+	/**
+	 * This attachment is an animated image
+	 */
+	IsAnimated = 1 << 5,
 }
 
 /**
@@ -1445,6 +1590,9 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	required?: boolean;
 }
 
+/**
+ * @unstable This enum is currently not documented by Discord
+ */
 export enum UnfurledMediaItemLoadingState {
 	Unknown,
 	Loading,
@@ -1457,35 +1605,76 @@ export enum UnfurledMediaItemLoadingState {
  */
 export interface APIUnfurledMediaItem {
 	/**
-	 * Supports arbitrary urls and attachment://<filename> references
+	 * Supports arbitrary urls and `attachment://<filename>` references
 	 */
 	url: string;
 	/**
-	 * The proxied url of the media item. This field is ignored and provided by the API as part of the response
+	 * The proxied url of the media item
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 */
 	proxy_url?: string;
 	/**
-	 * The width of the media item. This field is ignored and provided by the API as part of the response
+	 * The width of the media item (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 */
 	width?: number | null;
 	/**
-	 * The height of the media item. This field is ignored and provided by the API as part of the response
+	 * The height of the media item (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 */
 	height?: number | null;
+	/**
+	 * ThumbHash placeholder (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 * @see {@link https://evanw.github.io/thumbhash/}
+	 */
 	placeholder?: string | null;
+	/**
+	 * Version of the placeholder (if image or video)
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 */
 	placeholder_version?: number | null;
 	/**
-	 * The media type of the content. This field is ignored and provided by the API as part of the response
+	 * The media type of the content
 	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
 	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
 	 */
 	content_type?: string | null;
-	loading_state?: UnfurledMediaItemLoadingState;
-	flags?: number;
 	/**
-	 * The id of the uploaded attachment. This field is ignored and provided by the API as part of the response
+	 * @unstable This field is currently not documented by Discord
+	 */
+	loading_state?: UnfurledMediaItemLoadingState;
+	/**
+	 * Unfurled media item flags combined as a bitfield
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-unfurled-media-item-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags?: UnfurledMediaItemFlags;
+	/**
+	 * The id of the uploaded attachment.
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 * @remarks Only present if the media item was uploaded as an attachment.
 	 */
 	attachment_id?: Snowflake;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-unfurled-media-item-flags}
+ */
+export enum UnfurledMediaItemFlags {
+	/**
+	 * This image is animated
+	 */
+	IsAnimated = 1 << 0,
 }
 
 /**
@@ -1787,7 +1976,6 @@ export interface APICheckboxGroupComponent extends APIBaseComponent<ComponentTyp
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#checkbox-group-option-structure}
- * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APICheckboxGroupOption {
 	/**
@@ -1961,4 +2149,199 @@ export interface APIMessagePin {
 	 * The pinned message
 	 */
 	message: APIMessage;
+}
+
+/**
+ * @remarks All types can be negated by prefixing them with `-`, which means results will not include messages that match the type.
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-author-types}
+ */
+export enum MessageSearchAuthorType {
+	/**
+	 * Return messages sent by user accounts
+	 */
+	User = 'user',
+	/**
+	 * Return messages sent by bot accounts
+	 */
+	Bot = 'bot',
+	/**
+	 * Return messages sent by webhooks
+	 */
+	Webhook = 'webhook',
+	/**
+	 * Return messages not sent by user accounts
+	 */
+	NotUser = '-user',
+	/**
+	 * Return messages not sent by bot accounts
+	 */
+	NotBot = '-bot',
+	/**
+	 * Return messages not sent by webhooks
+	 */
+	NotWebhook = '-webhook',
+}
+
+/**
+ * @remarks All types can be negated by prefixing them with `-`, which means results will not include messages that match the type.
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-has-types}
+ */
+export enum MessageSearchHasType {
+	/**
+	 * Return messages that have an image
+	 */
+	Image = 'image',
+	/**
+	 * Return messages that have a sound attachment
+	 */
+	Sound = 'sound',
+	/**
+	 * Return messages that have a video
+	 */
+	Video = 'video',
+	/**
+	 * Return messages that have an attachment
+	 */
+	File = 'file',
+	/**
+	 * Return messages that have a sent sticker
+	 */
+	Sticker = 'sticker',
+	/**
+	 * Return messages that have an embed
+	 */
+	Embed = 'embed',
+	/**
+	 * Return messages that have a link
+	 */
+	Link = 'link',
+	/**
+	 * Return messages that have a poll
+	 */
+	Poll = 'poll',
+	/**
+	 * Return messages that have a forwarded message
+	 */
+	Snapshot = 'snapshot',
+	/**
+	 * Return messages that don't have an image
+	 */
+	NotImage = '-image',
+	/**
+	 * Return messages that don't have a sound attachment
+	 */
+	NotSound = '-sound',
+	/**
+	 * Return messages that don't have a video
+	 */
+	NotVideo = '-video',
+	/**
+	 * Return messages that don't have an attachment
+	 */
+	NotFile = '-file',
+	/**
+	 * Return messages that don't have a sent sticker
+	 */
+	NotSticker = '-sticker',
+	/**
+	 * Return messages that don't have an embed
+	 */
+	NotEmbed = '-embed',
+	/**
+	 * Return messages that don't have a link
+	 */
+	NotLink = '-link',
+	/**
+	 * Return messages that don't have a poll
+	 */
+	NotPoll = '-poll',
+	/**
+	 * Return messages that don't have a forwarded message
+	 */
+	NotSnapshot = '-snapshot',
+}
+
+/**
+ * @remarks These do not correspond 1:1 to actual {@link https://docs.discord.com/developers/resources/message#embed-object-embed-types | embed types} and encompass a wider range of actual types.
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-embed-types}
+ */
+export enum MessageSearchEmbedType {
+	/**
+	 * Return messages that have an image embed
+	 */
+	Image = 'image',
+	/**
+	 * Return messages that have a video embed
+	 */
+	Video = 'video',
+	/**
+	 * Return messages that have a gifv embed
+	 *
+	 * @remarks Messages sent before February 24, 2026 may not be properly indexed under the `gif` embed type.
+	 */
+	Gif = 'gif',
+	/**
+	 * Return messages that have a sound embed
+	 */
+	Sound = 'sound',
+	/**
+	 * Return messages that have an article embed
+	 */
+	Article = 'article',
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-search-sort-modes}
+ */
+export enum MessageSearchSortMode {
+	/**
+	 * Sort by the message creation time (default)
+	 */
+	Timestamp = 'timestamp',
+	/**
+	 * Sort by the relevance of the message to the search query
+	 */
+	Relevance = 'relevance',
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages}
+ */
+export interface APIMessageSearchIndexNotReadyResponse {
+	message: string;
+	code: number;
+	documents_indexed: number;
+	retry_after: number;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#search-guild-messages-response-body}
+ */
+export interface APIMessageSearchResult {
+	/**
+	 * Whether the guild is undergoing a deep historical indexing operation
+	 */
+	doing_deep_historical_index: boolean;
+	/**
+	 * The number of documents that have been indexed during the current index operation, if any
+	 */
+	documents_indexed?: number;
+	/**
+	 * The total number of results that match the query
+	 */
+	total_results: number;
+	/**
+	 * A nested array of messages that match the query
+	 *
+	 * @remarks The nested array was used to provide surrounding context to search results. However, surrounding context is no longer returned.
+	 */
+	messages: Omit<APIMessage, 'reactions'>[][];
+	/**
+	 * The threads that contain the returned messages
+	 */
+	threads?: APIThreadChannel[];
+	/**
+	 * A thread member object for each returned thread the current user has joined
+	 */
+	members?: APIThreadMember[];
 }

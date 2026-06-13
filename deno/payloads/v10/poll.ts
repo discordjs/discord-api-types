@@ -37,7 +37,7 @@ export interface APIPoll extends APIBasePoll, APIPollDefaults {
 	/**
 	 * The time when the poll ends (IS08601 timestamp)
 	 */
-	expiry: string;
+	expiry: string | null;
 	/**
 	 * The results of the poll
 	 */

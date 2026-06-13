@@ -347,6 +347,13 @@ export interface APIAuditLogOptions {
 	 * - MEMBER_ROLE_UPDATE
 	 */
 	integration_type?: APIGuildIntegrationType;
+	/**
+	 * ID of the app whose permissions were targeted
+	 *
+	 * Present from:
+	 * - APPLICATION_COMMAND_PERMISSION_UPDATE
+	 */
+	application_id?: Snowflake;
 }
 
 export enum AuditLogOptionsType {

@@ -1,4 +1,8 @@
-import type { APIApplication, APIApplicationRoleConnectionMetadata } from '../../payloads/v9/application.ts';
+import type {
+	APIActivityInstance,
+	APIApplication,
+	APIApplicationRoleConnectionMetadata,
+} from '../../payloads/v9/application.ts';
 import type { _StrictPartial, _Nullable } from '../../utils/internals.ts';
 
 /**
@@ -25,11 +29,13 @@ export type RESTGetCurrentApplicationResult = APIApplication;
  * @see {@link https://discord.com/developers/docs/resources/application#edit-current-application}
  */
 export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
-	_Nullable<Pick<APIApplication, 'cover_image' | 'icon'>> &
+	_Nullable<Pick<APIApplication, 'cover_image' | 'event_webhooks_url' | 'icon'>> &
 		Pick<
 			APIApplication,
 			| 'custom_install_url'
 			| 'description'
+			| 'event_webhooks_status'
+			| 'event_webhooks_types'
 			| 'flags'
 			| 'install_params'
 			| 'integration_types_config'
@@ -43,3 +49,8 @@ export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
  * @see {@link https://discord.com/developers/docs/resources/application#edit-current-application}
  */
 export type RESTPatchCurrentApplicationResult = APIApplication;
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance}
+ */
+export type RESTGetAPIApplicationActivityInstanceResult = APIActivityInstance;

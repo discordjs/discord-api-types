@@ -1,1 +1,1 @@
-yarn pretty-quick --staged && yarn lint-staged && yarn build:deno && git add deno
+yarn pretty-quick --staged && yarn lint-staged && yarn clean:node && yarn build:deno && git add deno

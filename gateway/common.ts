@@ -4,5 +4,5 @@
 export interface GatewayURLQuery {
 	v: string;
 	encoding: 'etf' | 'json';
-	compress?: 'zlib-stream';
+	compress?: 'zlib-stream' | 'zstd-stream';
 }

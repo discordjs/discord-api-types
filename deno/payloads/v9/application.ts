@@ -154,7 +154,7 @@ export interface APIApplication {
 	/**
 	 * If webhook events are enabled for the app
 	 */
-	event_webhooks_status: ApplicationWebhookEventStatus;
+	event_webhooks_status?: ApplicationWebhookEventStatus;
 	/**
 	 * List of webhook event types the app subscribes to
 	 */
@@ -315,6 +315,68 @@ export enum ApplicationRoleConnectionMetadataType {
 	 * The metadata value (`integer`) is not equal to the guild's configured value (`integer`; `1`)
 	 */
 	BooleanNotEqual,
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-kind-enum}
+ */
+export enum ActivityLocationKind {
+	/**
+	 * Location is a guild channel
+	 */
+	GuildChannel = 'gc',
+	/**
+	 * Location is a private channel, such as a DM or GDM
+	 */
+	PrivateChannel = 'pc',
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-object}
+ */
+export interface APIActivityLocation {
+	/**
+	 * Unique identifier for the location
+	 */
+	id: string;
+	/**
+	 * Enum describing kind of location
+	 */
+	kind: ActivityLocationKind;
+	/**
+	 * ID of the channel
+	 */
+	channel_id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
+	guild_id?: Snowflake | null;
+}
+
+/**
+ * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-instance-object}
+ */
+export interface APIActivityInstance {
+	/**
+	 * Application ID
+	 */
+	application_id: Snowflake;
+	/**
+	 * Activity instance ID
+	 */
+	instance_id: string;
+	/**
+	 * Unique identifier for the launch
+	 */
+	launch_id: Snowflake;
+	/**
+	 * Location the instance is running in
+	 */
+	location: APIActivityLocation;
+	/**
+	 * IDs of the users currently connected to the instance
+	 */
+	users: Snowflake[];
 }
 
 /**

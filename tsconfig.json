@@ -14,7 +14,8 @@
 		"strictNullChecks": true,
 		"preserveConstEnums": true,
 		"exactOptionalPropertyTypes": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"types": ["node"]
 	},
 	"include": [
 		"globals.ts",

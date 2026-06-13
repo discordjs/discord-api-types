@@ -7,6 +7,7 @@ import type {
 	APIFollowedChannel,
 	APIMessage,
 	APIMessageReference,
+	APIMessageSharedClientTheme,
 	APIThreadList,
 	APIThreadMember,
 	APIUser,
@@ -148,7 +149,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: text, news, forum, media
 	 */
-	default_auto_archive_duration?: ThreadAutoArchiveDuration | undefined;
+	default_auto_archive_duration?: ThreadAutoArchiveDuration | null | undefined;
 	/**
 	 * Channel flags combined as a bit field.
 	 */
@@ -170,7 +171,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: forum, media
 	 */
-	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji | undefined;
+	default_reaction_emoji?: APIGuildForumDefaultReactionEmoji | null | undefined;
 	/**
 	 * The initial `rate_limit_per_user` to set on newly created threads in a channel.
 	 * This field is copied to the thread at creation time and does not live update
@@ -344,6 +345,10 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 * A poll!
 	 */
 	poll?: RESTAPIPoll | undefined;
+	/**
+	 * The custom client-side theme to share via the message
+	 */
+	shared_client_theme?: APIMessageSharedClientTheme | undefined;
 }
 
 /**
@@ -413,7 +418,13 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
  */
 export enum ReactionType {
 	Normal,
-	Super,
+	Burst,
+	// eslint-disable @typescript-eslint/no-duplicate-enum-values
+	/**
+	 * @deprecated Use {@link ReactionType.Burst} instead
+	 */
+	Super = Burst,
+	// eslint-enable @typescript-eslint/no-duplicate-enum-values
 }
 
 /**
@@ -776,6 +787,10 @@ export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessage
 	 * The initial message of the thread
 	 */
 	message: string;
+	/**
+	 * The IDs of the set of tags to apply to the thread; limited to 5
+	 */
+	applied_tags?: Snowflake[] | undefined;
 };
 
 /**
@@ -866,6 +881,7 @@ export interface RESTGetAPIChannelThreadsArchivedQuery {
 	/**
 	 * Get threads before this id or ISO8601 timestamp
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-duplicate-type-constituents
 	before?: Snowflake | string;
 	/**
 	 * Max number of thread to return

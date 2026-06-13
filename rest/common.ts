@@ -79,8 +79,16 @@ export enum RESTJSONErrorCodes {
 
 	UnderMinimumAge = 20_024,
 
-	ChannelSendRateLimit = 20_028,
-	ServerSendRateLimit,
+	ChannelWriteRateLimit = 20_028,
+	/**
+	 * @deprecated Use {@link RESTJSONErrorCodes.ChannelWriteRateLimit} instead
+	 */
+	ChannelSendRateLimit = ChannelWriteRateLimit,
+	ServerWriteRateLimit = 20_029,
+	/**
+	 * @deprecated Use {@link RESTJSONErrorCodes.ServerWriteRateLimit} instead
+	 */
+	ServerSendRateLimit = ServerWriteRateLimit,
 
 	StageTopicServerNameServerDescriptionOrChannelNamesContainDisallowedWords = 20_031,
 
@@ -177,6 +185,9 @@ export enum RESTJSONErrorCodes {
 	GuildWidgetDisabled,
 	CannotEditMessageAuthoredByAnotherUser,
 	CannotSendAnEmptyMessage,
+	/**
+	 * @see {@link RESTJSONErrorCodes.CannotSendMessagesToThisUserDueToHavingNoMutualGuilds} for a similar error code
+	 */
 	CannotSendMessagesToThisUser,
 	CannotSendMessagesInNonTextChannel,
 	ChannelVerificationLevelTooHighForYouToGainAccess,
@@ -250,7 +261,11 @@ export enum RESTJSONErrorCodes {
 	OwnerCannotBePendingMember = 50_131,
 	OwnershipCannotBeMovedToABotUser,
 
-	FailedToResizeAssetBelowTheMinimumSize = 50_138,
+	FailedToResizeAssetBelowTheMaximumSize = 50_138,
+	/**
+	 * @deprecated This name is incorrect. Use {@link RESTJSONErrorCodes.FailedToResizeAssetBelowTheMaximumSize} instead
+	 */
+	FailedToResizeAssetBelowTheMinimumSize = FailedToResizeAssetBelowTheMaximumSize,
 
 	CannotMixSubscriptionAndNonSubscriptionRolesForAnEmoji = 50_144,
 	CannotConvertBetweenPremiumEmojiAndNormalEmoji,
@@ -270,6 +285,11 @@ export enum RESTJSONErrorCodes {
 
 	ProvidedFileDoesNotHaveAValidDuration = 50_192,
 
+	/**
+	 * @see {@link RESTJSONErrorCodes.CannotSendMessagesToThisUser} for a similar error code
+	 */
+	CannotSendMessagesToThisUserDueToHavingNoMutualGuilds = 50_278,
+
 	YouDoNotHavePermissionToSendThisSticker = 50_600,
 
 	TwoFactorAuthenticationIsRequired = 60_003,
@@ -279,7 +299,8 @@ export enum RESTJSONErrorCodes {
 	ReactionWasBlocked = 90_001,
 	UserCannotUseBurstReactions,
 
-	ApplicationNotYetAvailable = 110_001,
+	IndexNotYetAvailable = 110_000,
+	ApplicationNotYetAvailable,
 
 	APIResourceOverloaded = 130_000,
 
@@ -291,6 +312,8 @@ export enum RESTJSONErrorCodes {
 	ThreadLocked,
 	MaximumActiveThreads,
 	MaximumActiveAnnouncementThreads,
+
+	CannotForwardMessageWithUnreadableContent = 160_014,
 
 	InvalidJSONForUploadedLottieFile = 170_001,
 	UploadedLottiesCannotContainRasterizedImages,
@@ -328,7 +351,27 @@ export enum RESTJSONErrorCodes {
 	CannotUseAnEmojiIncludedWithThePoll,
 
 	CannotExpireANonPollMessage = 520_006,
+
+	ProvisionalAccountsPermissionNotGranted = 530_000,
+	IdTokenJWTExpired,
+	IdTokenJWTIssuerMismatch,
+	IdTokenJWTAudienceMismatch,
+	IdTokenJWTIssuedTooLongAgo,
+
+	FailedToGenerateUniqueUsername = 530_006,
+	InvalidClientSecret,
 }
+
+/**
+ * JSON Error Codes that represent "Cannot send messages to this user".
+ * Discord uses two different error codes for this error:
+ * - {@link RESTJSONErrorCodes.CannotSendMessagesToThisUser} (50_007)
+ * - {@link RESTJSONErrorCodes.CannotSendMessagesToThisUserDueToHavingNoMutualGuilds} (50_278)
+ */
+export const CannotSendMessagesToThisUserErrorCodes = [
+	RESTJSONErrorCodes.CannotSendMessagesToThisUser,
+	RESTJSONErrorCodes.CannotSendMessagesToThisUserDueToHavingNoMutualGuilds,
+] as const;
 
 /**
  * @see {@link https://discord.com/developers/docs/reference#locales}

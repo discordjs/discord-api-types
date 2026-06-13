@@ -19,13 +19,14 @@ export interface APIRole {
 	/**
 	 * Integer representation of hexadecimal color code
 	 *
+	 * @deprecated Use `colors` instead.
 	 * @remarks `color` will still be returned by the API, but using the `colors` field is recommended when doing requests.
 	 */
 	color: number;
 	/**
 	 * The role's colors
 	 */
-	colors?: APIRoleColors;
+	colors: APIRoleColors;
 	/**
 	 * If this role is pinned in the user listing
 	 */

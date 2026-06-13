@@ -9,7 +9,7 @@ import type { PresenceUpdateReceiveStatus } from './gateway.ts';
 import type { OAuth2Scopes } from './oauth2.ts';
 import type { APIRole } from './permissions.ts';
 import type { APISticker } from './sticker.ts';
-import type { APIAvatarDecorationData, APIUser } from './user.ts';
+import type { APIAvatarDecorationData, APICollectibles, APIUser } from './user.ts';
 
 export interface APIBaseGuild {
 	/**
@@ -127,7 +127,7 @@ export interface APIGuild extends APIPartialGuild {
 	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-region-object}
 	 * @deprecated This field has been deprecated in favor of `rtc_region` on the channel.
 	 */
-	region: string;
+	region?: string | null;
 	/**
 	 * ID of afk channel
 	 */
@@ -275,7 +275,7 @@ export interface APIGuild extends APIPartialGuild {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
 	 */
-	stickers: APISticker[];
+	stickers?: APISticker[];
 	/**
 	 * Whether the guild has the boost progress bar enabled.
 	 */
@@ -630,7 +630,7 @@ export interface APIGuildPreview {
 	/**
 	 * The description for the guild
 	 */
-	description: string;
+	description: string | null;
 	/**
 	 * Custom guild stickers
 	 */
@@ -687,6 +687,12 @@ export interface APIBaseGuildMember {
 	 * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
 	 */
 	avatar_decoration_data?: APIAvatarDecorationData | null;
+	/**
+	 * The data for the member's collectibles
+	 *
+	 * @see {@link https://discord.com/developers/docs/resources/user#collectibles}
+	 */
+	collectibles?: APICollectibles | null;
 }
 
 /**

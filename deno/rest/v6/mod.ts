@@ -522,8 +522,8 @@ export const Routes = {
 	},
 };
 
-for (const [key, fn] of Object.entries(Routes)) {
-	Routes[key] = (...args: (boolean | number | string | undefined)[]) => {
+for (const [key, fn] of Object.entries(Routes) as [keyof typeof Routes, (...args: any[]) => string][]) {
+	Routes[key] = ((...args: any[]) => {
 		const escaped = args.map((arg) => {
 			if (arg) {
 				// Skip already "safe" urls
@@ -536,9 +536,10 @@ for (const [key, fn] of Object.entries(Routes)) {
 
 			return arg;
 		});
+
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
-	};
+	}) as any;
 }
 
 // Freeze the object so it can't be changed

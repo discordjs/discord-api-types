@@ -51,7 +51,7 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 	/**
 	 * The id of the channel the user is currently in
 	 */
-	channel_id: Snowflake;
+	channel_id?: Snowflake | undefined;
 	/**
 	 * Toggles the user's suppress state
 	 */

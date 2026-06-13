@@ -315,6 +315,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/messages/search`
+	 */
+	guildMessagesSearch(guildId: Snowflake) {
+		return `/guilds/${guildId}/messages/search` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - PATCH `/guilds/{guild.id}/members/@me/nick`
 	 *
 	 * @deprecated Use {@link Routes.guildMember} instead.
@@ -616,8 +624,9 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET `/users/@me/applications/{application.id}/role-connection`
-	 * - PUT `/users/@me/applications/{application.id}/role-connection`
+	 * - GET    `/users/@me/applications/{application.id}/role-connection`
+	 * - PUT    `/users/@me/applications/{application.id}/role-connection`
+	 * - DELETE `/users/@me/applications/{application.id}/role-connection`
 	 */
 	userApplicationRoleConnection(applicationId: Snowflake) {
 		return `/users/@me/applications/${applicationId}/role-connection` as const;
@@ -1013,6 +1022,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/applications/{application.id}/activity-instances/{instance_id}`
+	 */
+	applicationActivityInstance(applicationId: Snowflake, instanceId: string) {
+		return `/applications/${applicationId}/activity-instances/${instanceId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/applications/{application.id}/entitlements`
 	 * - POST `/applications/{application.id}/entitlements`
 	 */
@@ -1124,8 +1141,8 @@ export const Routes = {
 	},
 };
 
-for (const [key, fn] of Object.entries(Routes)) {
-	Routes[key as keyof typeof Routes] = (...args: (boolean | number | string | undefined)[]) => {
+for (const [key, fn] of Object.entries(Routes) as [keyof typeof Routes, (...args: any[]) => string][]) {
+	Routes[key] = ((...args: any[]) => {
 		const escaped = args.map((arg) => {
 			if (arg) {
 				// Skip already "safe" urls
@@ -1138,9 +1155,10 @@ for (const [key, fn] of Object.entries(Routes)) {
 
 			return arg;
 		});
+
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
-	};
+	}) as any;
 }
 
 // Freeze the object so it can't be changed
@@ -1455,8 +1473,8 @@ export const CDNRoutes = {
 	},
 };
 
-for (const [key, fn] of Object.entries(CDNRoutes)) {
-	CDNRoutes[key as keyof typeof CDNRoutes] = (...args: (boolean | number | string | undefined)[]) => {
+for (const [key, fn] of Object.entries(CDNRoutes) as [keyof typeof CDNRoutes, (...args: any[]) => string][]) {
+	CDNRoutes[key] = ((...args: any[]) => {
 		const escaped = args.map((arg) => {
 			if (arg) {
 				// Skip already "safe" urls
@@ -1471,7 +1489,7 @@ for (const [key, fn] of Object.entries(CDNRoutes)) {
 		});
 		// eslint-disable-next-line no-useless-call
 		return fn.call(null, ...escaped);
-	};
+	}) as any;
 }
 
 // Freeze the object so it can't be changed
