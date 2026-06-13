@@ -873,3 +873,18 @@ export interface RESTGetAPIChannelUsersThreadsArchivedResult extends APIThreadLi
 	 */
 	has_more: boolean;
 }
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#set-voice-channel-status}
+ */
+export interface RESTPutAPIChannelVoiceStatusJSONBody {
+	/**
+	 * New voice channel status (up to 500 characters)
+	 */
+	status: string | null;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#set-voice-channel-status}
+ */
+export type RESTPutAPIChannelVoiceStatusResult = undefined;
