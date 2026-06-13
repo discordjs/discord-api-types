@@ -1,3 +1,10 @@
+## [0.38.49](https://github.com/discordjs/discord-api-types/compare/0.38.48...0.38.49) (2026-06-11)
+
+
+### Features
+
+* **Message:** message_create `channel_type` ([#1638](https://github.com/discordjs/discord-api-types/issues/1638)) ([b4adc80](https://github.com/discordjs/discord-api-types/commit/b4adc808b35f37c2c1a7c5c58757569db92e49cd))
+
 ## [0.38.48](https://github.com/discordjs/discord-api-types/compare/0.38.47...0.38.48) (2026-05-25)
 
 
