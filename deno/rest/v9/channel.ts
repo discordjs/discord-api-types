@@ -726,7 +726,7 @@ export type RESTPutAPIChannelRecipientResult = unknown;
 export type RESTDeleteAPIChannelRecipientResult = unknown;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-from-message}
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-from-message}
  */
 export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
@@ -744,40 +744,15 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel}
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-from-message}
  */
-export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
-	/**
-	 * The initial message of the thread
-	 */
-	message: RESTPostAPIChannelMessageJSONBody;
-	/**
-	 * The IDs of the set of tags to apply to the thread; limited to 5
-	 */
-	applied_tags?: Snowflake[] | undefined;
-};
+export type RESTPostAPIChannelMessagesThreadsResult =
+	| APIAnnouncementThreadChannel
+	| APIPrivateThreadChannel
+	| APIPublicThreadChannel;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel}
- */
-export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
-	/**
-	 * The initial message of the thread
-	 */
-	message: string;
-	/**
-	 * The IDs of the set of tags to apply to the thread; limited to 5
-	 */
-	applied_tags?: Snowflake[] | undefined;
-};
-
-/**
- * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-from-message}
- */
-export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
-
-/**
- * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-without-message}
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-without-message}
  */
 export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
@@ -795,12 +770,58 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-without-message}
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-without-message}
  */
 export type RESTPostAPIChannelThreadsResult =
 	| APIAnnouncementThreadChannel
 	| APIPrivateThreadChannel
 	| APIPublicThreadChannel;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel-forum-and-media-thread-message-params-object}
+ */
+export type RESTAPIForumThreadMessageParams = Pick<
+	RESTPostAPIChannelMessageJSONBody,
+	'allowed_mentions' | 'attachments' | 'components' | 'content' | 'embeds' | 'flags' | 'sticker_ids'
+>;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel}
+ */
+export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
+	/**
+	 * The initial message of the thread
+	 */
+	message: RESTAPIForumThreadMessageParams;
+	/**
+	 * The IDs of the set of tags to apply to the thread; limited to 5
+	 */
+	applied_tags?: Snowflake[] | undefined;
+};
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel}
+ */
+export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
+	/**
+	 * The initial message of the thread
+	 */
+	message: string;
+	/**
+	 * The IDs of the set of tags to apply to the thread; limited to 5
+	 */
+	applied_tags?: Snowflake[] | undefined;
+};
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel}
+ */
+export interface RESTPostAPIGuildForumThreadsResult extends APIPublicThreadChannel {
+	/**
+	 * The message that was created with the thread
+	 */
+	message: APIMessage;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#join-thread}
