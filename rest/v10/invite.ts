@@ -30,12 +30,12 @@ export type RESTGetAPIInviteResult = APIInvite;
 export type RESTDeleteAPIInviteResult = APIInvite;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users}
+ * @see {@link https://docs.discord.com/developers/resources/invite#get-target-users}
  */
 export type RESTGetAPIInviteTargetUsersResult = ArrayBuffer;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
+ * @see {@link https://docs.discord.com/developers/resources/invite#update-target-users}
  */
 export interface RESTPutAPIInviteTargetUsersFormDataBody {
 	/**
@@ -45,12 +45,12 @@ export interface RESTPutAPIInviteTargetUsersFormDataBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#update-target-users}
+ * @see {@link https://docs.discord.com/developers/resources/invite#update-target-users}
  */
-export type RESTPutAPIInviteTargetUsersResult = never;
+export type RESTPutAPIInviteTargetUsersResult = undefined;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users-job-status}
+ * @see {@link https://docs.discord.com/developers/resources/invite#get-target-users-job-status}
  */
 export interface RESTGetAPIInviteTargetUsersJobStatusResult {
 	/**
@@ -80,7 +80,7 @@ export interface RESTGetAPIInviteTargetUsersJobStatusResult {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#get-target-users-job-status}
+ * @see {@link https://docs.discord.com/developers/resources/invite#get-target-users-job-status}
  */
 export enum InviteTargetUsersJobStatus {
 	/**

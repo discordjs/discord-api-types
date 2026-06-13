@@ -600,12 +600,14 @@ export interface RESTPostAPIChannelInviteJSONBody {
 	target_application_id?: Snowflake | undefined;
 	/**
 	 * The role ID(s) for roles in the guild given to the users that accept this invite
+	 * - Requires the {@link PermissionFlagsBits.ManageRoles} permission
+	 * - Cannot assign roles with higher permissions than the sender
 	 */
 	role_ids?: Snowflake[] | undefined;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#create-channel-invite}
+ * @see {@link https://docs.discord.com/developers/resources/channel#create-channel-invite}
  */
 export type RESTPostAPIChannelInviteFormDataBody = {
 	/**
