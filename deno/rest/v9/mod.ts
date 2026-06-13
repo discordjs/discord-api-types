@@ -961,12 +961,28 @@ export const Routes = {
 
 	/**
 	 * Route for:
-	 * - GET  `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
-	 * - PATCH `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - GET    `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
+	 * - PATCH  `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
 	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}`
 	 */
 	guildScheduledEvent(guildId: Snowflake, guildScheduledEventId: Snowflake) {
 		return `/guilds/${guildId}/scheduled-events/${guildScheduledEventId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET    `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/exceptions`
+	 * - PATCH  `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/exceptions/{exception.id}`
+	 * - DELETE `/guilds/{guild.id}/scheduled-events/{guildScheduledEvent.id}/exceptions/{exception.id}`
+	 */
+	guildScheduledEventException(guildId: Snowflake, guildScheduledEventId: Snowflake, exceptionId?: Snowflake) {
+		const parts = ['', 'guilds', guildId, 'scheduled-events', guildScheduledEventId];
+
+		if (exceptionId) parts.push(exceptionId);
+
+		return parts.join('/') as
+			| `/guilds/${Snowflake}/scheduled-events/${Snowflake}/exceptions/${Snowflake}`
+			| `/guilds/${Snowflake}/scheduled-events/${Snowflake}/exceptions`;
 	},
 
 	/**

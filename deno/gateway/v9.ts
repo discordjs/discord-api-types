@@ -14,6 +14,7 @@ import type {
 	APIGuildIntegration,
 	APIGuildMember,
 	APIGuildScheduledEvent,
+	APIGuildScheduledEventException,
 	APIInteraction,
 	APIRole,
 	APIStageInstance,
@@ -260,6 +261,9 @@ export enum GatewayDispatchEvents {
 	GuildScheduledEventCreate = 'GUILD_SCHEDULED_EVENT_CREATE',
 	GuildScheduledEventDelete = 'GUILD_SCHEDULED_EVENT_DELETE',
 	GuildScheduledEventUpdate = 'GUILD_SCHEDULED_EVENT_UPDATE',
+	GuildScheduledEventExceptionCreate = 'GUILD_SCHEDULED_EVENT_EXCEPTION_CREATE',
+	GuildScheduledEventExceptionDelete = 'GUILD_SCHEDULED_EVENT_EXCEPTION_DELETE',
+	GuildScheduledEventExceptionUpdate = 'GUILD_SCHEDULED_EVENT_EXCEPTION_UPDATE',
 	GuildScheduledEventUserAdd = 'GUILD_SCHEDULED_EVENT_USER_ADD',
 	GuildScheduledEventUserRemove = 'GUILD_SCHEDULED_EVENT_USER_REMOVE',
 	GuildSoundboardSoundCreate = 'GUILD_SOUNDBOARD_SOUND_CREATE',
@@ -356,6 +360,9 @@ export type GatewayDispatchPayload =
 	| GatewayGuildRoleUpdateDispatch
 	| GatewayGuildScheduledEventCreateDispatch
 	| GatewayGuildScheduledEventDeleteDispatch
+	| GatewayGuildScheduledEventExceptionCreateDispatch
+	| GatewayGuildScheduledEventExceptionDeleteDispatch
+	| GatewayGuildScheduledEventExceptionUpdateDispatch
 	| GatewayGuildScheduledEventUpdateDispatch
 	| GatewayGuildScheduledEventUserAddDispatch
 	| GatewayGuildScheduledEventUserRemoveDispatch
@@ -1361,6 +1368,51 @@ export type GatewayGuildScheduledEventDeleteDispatch = _DataPayload<
 export type GatewayGuildScheduledEventDeleteDispatchData = APIGuildScheduledEvent;
 
 /**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-exception-create}
+ */
+export type GatewayGuildScheduledEventExceptionCreateDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventExceptionCreate,
+	GatewayGuildScheduledEventExceptionCreateDispatchData
+>;
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-exception-create}
+ */
+export interface GatewayGuildScheduledEventExceptionCreateDispatchData extends APIGuildScheduledEventException {
+	guild_id: Snowflake;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-exception-delete}
+ */
+export type GatewayGuildScheduledEventExceptionDeleteDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventExceptionDelete,
+	GatewayGuildScheduledEventExceptionDeleteDispatchData
+>;
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-exception-delete}
+ */
+export interface GatewayGuildScheduledEventExceptionDeleteDispatchData extends APIGuildScheduledEventException {
+	guild_id: Snowflake;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-exception-update}
+ */
+export type GatewayGuildScheduledEventExceptionUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.GuildScheduledEventExceptionUpdate,
+	GatewayGuildScheduledEventExceptionUpdateDispatchData
+>;
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-exception-update}
+ */
+export interface GatewayGuildScheduledEventExceptionUpdateDispatchData extends APIGuildScheduledEventException {
+	guild_id: Snowflake;
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add}
  */
 export type GatewayGuildScheduledEventUserAddDispatch = _DataPayload<
@@ -1372,9 +1424,22 @@ export type GatewayGuildScheduledEventUserAddDispatch = _DataPayload<
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add}
  */
 export interface GatewayGuildScheduledEventUserAddDispatchData {
+	/**
+	 * ID of the guild scheduled event
+	 */
 	guild_scheduled_event_id: Snowflake;
+	/**
+	 * ID of the user
+	 */
 	user_id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
 	guild_id: Snowflake;
+	/**
+	 * ID of the guild scheduled event exception, if applicable
+	 */
+	guild_scheduled_event_exception_id?: Snowflake;
 }
 
 /**
@@ -1389,9 +1454,22 @@ export type GatewayGuildScheduledEventUserRemoveDispatch = _DataPayload<
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-remove}
  */
 export interface GatewayGuildScheduledEventUserRemoveDispatchData {
+	/**
+	 * ID of the guild scheduled event
+	 */
 	guild_scheduled_event_id: Snowflake;
+	/**
+	 * ID of the user
+	 */
 	user_id: Snowflake;
+	/**
+	 * ID of the guild
+	 */
 	guild_id: Snowflake;
+	/**
+	 * ID of the guild scheduled event exception, if applicable
+	 */
+	guild_scheduled_event_exception_id?: Snowflake;
 }
 
 /**
