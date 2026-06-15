@@ -1,3 +1,15 @@
+## [0.38.49](https://github.com/discordjs/discord-api-types/compare/0.38.48...0.38.49) (2026-06-15)
+
+
+### Bug Fixes
+
+* **SubscriptionStatus:** correct status enum values ([#1675](https://github.com/discordjs/discord-api-types/issues/1675)) ([edd6d9e](https://github.com/discordjs/discord-api-types/commit/edd6d9ecbf6ea77fe385a02ad5dd77451f608fcf))
+
+
+### Features
+
+* **Message:** message_create `channel_type` ([#1638](https://github.com/discordjs/discord-api-types/issues/1638)) ([b4adc80](https://github.com/discordjs/discord-api-types/commit/b4adc808b35f37c2c1a7c5c58757569db92e49cd))
+
 ## [0.38.48](https://github.com/discordjs/discord-api-types/compare/0.38.47...0.38.48) (2026-05-25)
 
 
