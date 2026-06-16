@@ -71,7 +71,8 @@ export enum RESTJSONErrorCodes {
 
 	NotAuthorizedToPerformThisActionOnThisApplication = 20_012,
 
-	ActionCannotBePerformedDueToSlowmodeRateLimit = 20_016,
+	ThisActionRequiresAPremiumSubscription = 20_015,
+	ActionCannotBePerformedDueToSlowmodeRateLimit,
 	TheMazeIsntMeantForYou,
 	OnlyTheOwnerOfThisAccountCanPerformThisAction,
 
@@ -279,6 +280,8 @@ export enum RESTJSONErrorCodes {
 	VoiceMessagesCannotBeEdited,
 	CannotDeleteGuildSubscriptionIntegration,
 
+	CannotSendVoiceEffectWhenUserIsServerMutedDeafenedOrSuppressed = 50_167,
+
 	YouCannotSendVoiceMessagesInThisChannel = 50_173,
 
 	TheUserAccountMustFirstBeVerified = 50_178,
@@ -336,6 +339,7 @@ export enum RESTJSONErrorCodes {
 	WebhookServicesCannotBeUsedInForumChannels,
 
 	MessageBlockedByHarmfulLinksFilter = 240_000,
+	AccessToJoiningNewServersHasBeenLimitedForTheUser = 340_015,
 
 	CannotEnableOnboardingRequirementsAreNotMet = 350_000,
 	CannotUpdateOnboardingWhileBelowRequirements,
