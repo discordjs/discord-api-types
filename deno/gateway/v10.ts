@@ -109,6 +109,10 @@ export enum GatewayOpcodes {
 	 * Request information about soundboard sounds in a set of guilds
 	 */
 	RequestSoundboardSounds = 31,
+	/**
+	 * Request ephemeral channel data for channels in a guild.
+	 */
+	RequestChannelInfo = 43,
 }
 
 /**
@@ -239,6 +243,7 @@ export enum GatewayDispatchEvents {
 	AutoModerationRuleUpdate = 'AUTO_MODERATION_RULE_UPDATE',
 	ChannelCreate = 'CHANNEL_CREATE',
 	ChannelDelete = 'CHANNEL_DELETE',
+	ChannelInfo = 'CHANNEL_INFO',
 	ChannelPinsUpdate = 'CHANNEL_PINS_UPDATE',
 	ChannelUpdate = 'CHANNEL_UPDATE',
 	EntitlementCreate = 'ENTITLEMENT_CREATE',
@@ -305,6 +310,8 @@ export enum GatewayDispatchEvents {
 	TypingStart = 'TYPING_START',
 	UserUpdate = 'USER_UPDATE',
 	VoiceChannelEffectSend = 'VOICE_CHANNEL_EFFECT_SEND',
+	VoiceChannelStartTimeUpdate = 'VOICE_CHANNEL_START_TIME_UPDATE',
+	VoiceChannelStatusUpdate = 'VOICE_CHANNEL_STATUS_UPDATE',
 	VoiceServerUpdate = 'VOICE_SERVER_UPDATE',
 	VoiceStateUpdate = 'VOICE_STATE_UPDATE',
 	WebhooksUpdate = 'WEBHOOKS_UPDATE',
@@ -313,6 +320,7 @@ export enum GatewayDispatchEvents {
 export type GatewaySendPayload =
 	| GatewayHeartbeat
 	| GatewayIdentify
+	| GatewayRequestChannelInfo
 	| GatewayRequestGuildMembers
 	| GatewayRequestSoundboardSounds
 	| GatewayResume
@@ -335,6 +343,7 @@ export type GatewayDispatchPayload =
 	| GatewayAutoModerationRuleUpdateDispatch
 	| GatewayChannelCreateDispatch
 	| GatewayChannelDeleteDispatch
+	| GatewayChannelInfoDispatch
 	| GatewayChannelPinsUpdateDispatch
 	| GatewayChannelUpdateDispatch
 	| GatewayEntitlementCreateDispatch
@@ -401,6 +410,8 @@ export type GatewayDispatchPayload =
 	| GatewayTypingStartDispatch
 	| GatewayUserUpdateDispatch
 	| GatewayVoiceChannelEffectSendDispatch
+	| GatewayVoiceChannelStartTimeUpdateDispatch
+	| GatewayVoiceChannelStatusUpdateDispatch
 	| GatewayVoiceServerUpdateDispatch
 	| GatewayVoiceStateUpdateDispatch
 	| GatewayWebhooksUpdateDispatch;
@@ -786,6 +797,46 @@ export type GatewayChannelDeleteDispatch = _DataPayload<
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-delete}
  */
 export type GatewayChannelDeleteDispatchData = GatewayChannelModifyDispatchData;
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#channel-info}
+ */
+export type GatewayChannelInfoDispatch = _DataPayload<
+	GatewayDispatchEvents.ChannelInfo,
+	GatewayChannelInfoDispatchData
+>;
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#channel-info}
+ */
+export interface GatewayChannelInfoDispatchData {
+	/**
+	 * The guild id
+	 */
+	guild_id: Snowflake;
+	/**
+	 * Ephemeral data for channels in the guild
+	 */
+	channels: GatewayChannelInfoChannel[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#channel-info-channel-info-channel-structure}
+ */
+export interface GatewayChannelInfoChannel {
+	/**
+	 * The channel id
+	 */
+	id: Snowflake;
+	/**
+	 * The voice channel status
+	 */
+	status?: string | null;
+	/**
+	 * Unix timestamp (in seconds) of when the voice session started
+	 */
+	voice_start_time?: number | null;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#channel-pins-update}
@@ -2163,6 +2214,58 @@ export enum VoiceChannelEffectSendAnimationType {
 }
 
 /**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#voice-channel-status-update}
+ */
+export type GatewayVoiceChannelStatusUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.VoiceChannelStatusUpdate,
+	GatewayVoiceChannelStatusUpdateDispatchData
+>;
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#voice-channel-status-update}
+ */
+export interface GatewayVoiceChannelStatusUpdateDispatchData {
+	/**
+	 * The channel id
+	 */
+	id: Snowflake;
+	/**
+	 * The guild id
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The new voice channel status
+	 */
+	status: string | null;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#voice-channel-start-time-update}
+ */
+export type GatewayVoiceChannelStartTimeUpdateDispatch = _DataPayload<
+	GatewayDispatchEvents.VoiceChannelStartTimeUpdate,
+	GatewayVoiceChannelStartTimeUpdateDispatchData
+>;
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#voice-channel-start-time-update}
+ */
+export interface GatewayVoiceChannelStartTimeUpdateDispatchData {
+	/**
+	 * The channel id
+	 */
+	id: Snowflake;
+	/**
+	 * The guild id
+	 */
+	guild_id: Snowflake;
+	/**
+	 * Unix timestamp (in seconds) of when the voice session started
+	 */
+	voice_start_time?: number | null;
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-state-update}
  */
 export type GatewayVoiceStateUpdateDispatch = _DataPayload<
@@ -2549,6 +2652,33 @@ export interface GatewayRequestSoundboardSoundsData {
 	 * The ids of the guilds to get soundboard sounds for
 	 */
 	guild_ids: Snowflake[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#request-channel-info}
+ */
+export interface GatewayRequestChannelInfo {
+	op: GatewayOpcodes.RequestChannelInfo;
+	d: GatewayRequestChannelInfoData;
+}
+
+export enum GatewayRequestChannelInfoField {
+	Status = 'status',
+	VoiceStartTime = 'voice_start_time',
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#request-channel-info}
+ */
+export interface GatewayRequestChannelInfoData {
+	/**
+	 * The guild id to request channel info for
+	 */
+	guild_id: Snowflake;
+	/**
+	 * The fields to request. The current available fields are `status` and `voice_start_time`
+	 */
+	fields: (GatewayRequestChannelInfoField | (string & {}))[];
 }
 
 /**
