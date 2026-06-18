@@ -286,6 +286,8 @@ export interface APIAuditLogOptions {
 	 * - AUTO_MODERATION_FLAG_TO_CHANNEL
 	 * - AUTO_MODERATION_USER_COMMUNICATION_DISABLED
 	 * - AUTO_MODERATION_QUARANTINE_USER
+	 * - VOICE_CHANNEL_STATUS_CREATE
+	 * - VOICE_CHANNEL_STATUS_DELETE
 	 */
 	channel_id?: Snowflake;
 
@@ -358,6 +360,13 @@ export interface APIAuditLogOptions {
 	 * - APPLICATION_COMMAND_PERMISSION_UPDATE
 	 */
 	application_id?: Snowflake;
+	/**
+	 * The new voice channel status
+	 *
+	 * Present from:
+	 * - VOICE_CHANNEL_STATUS_CREATE
+	 */
+	status?: string;
 }
 
 export enum AuditLogOptionsType {

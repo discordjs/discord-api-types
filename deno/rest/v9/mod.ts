@@ -11,7 +11,7 @@ export type * from './gateway.ts';
 export type * from './guild.ts';
 export type * from './guildScheduledEvent.ts';
 export type * from './interactions.ts';
-export type * from './invite.ts';
+export * from './invite.ts';
 export * from './monetization.ts';
 export type * from './oauth2.ts';
 export type * from './poll.ts';
@@ -226,6 +226,14 @@ export const Routes = {
 	 */
 	channelRecipient(channelId: Snowflake, userId: Snowflake) {
 		return `/channels/${channelId}/recipients/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PUT `/channels/{channel.id}/voice-status`
+	 */
+	channelVoiceStatus(channelId: Snowflake) {
+		return `/channels/${channelId}/voice-status` as const;
 	},
 
 	/**
@@ -477,6 +485,23 @@ export const Routes = {
 	 */
 	invite(code: string) {
 		return `/invites/${code}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/invites/{invite.code}/target-users`
+	 * - PUT `/invites/{invite.code}/target-users`
+	 */
+	inviteTargetUsers(code: string) {
+		return `/invites/${code}/target-users` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/invites/{invite.code}/target-users/job-status`
+	 */
+	inviteTargetUsersJobStatus(code: string) {
+		return `/invites/${code}/target-users/job-status` as const;
 	},
 
 	/**

@@ -1,3 +1,19 @@
+## [0.38.49](https://github.com/discordjs/discord-api-types/compare/0.38.48...0.38.49) (2026-06-17)
+
+
+### Bug Fixes
+
+* **SubscriptionStatus:** correct status enum values ([#1675](https://github.com/discordjs/discord-api-types/issues/1675)) ([edd6d9e](https://github.com/discordjs/discord-api-types/commit/edd6d9ecbf6ea77fe385a02ad5dd77451f608fcf))
+* **Types:** replace never usage with undefined ([#1526](https://github.com/discordjs/discord-api-types/issues/1526)) ([0e889ae](https://github.com/discordjs/discord-api-types/commit/0e889aef6d0a05d41ed001c8a4d7db372f944a59))
+
+
+### Features
+
+* **invites:** target users routes ([#1493](https://github.com/discordjs/discord-api-types/issues/1493)) ([c79d369](https://github.com/discordjs/discord-api-types/commit/c79d369c4d0ead1f8ee4b0af82afbc4ae4e0197b))
+* **Message:** message_create `channel_type` ([#1638](https://github.com/discordjs/discord-api-types/issues/1638)) ([b4adc80](https://github.com/discordjs/discord-api-types/commit/b4adc808b35f37c2c1a7c5c58757569db92e49cd))
+* **RESTJsonErrorCode:** add error code `20015`, `50167`, and `340015` ([#1686](https://github.com/discordjs/discord-api-types/issues/1686)) ([2335451](https://github.com/discordjs/discord-api-types/commit/2335451310d52e5b22b59891a40f26ad69dab4cd))
+* voice channel status ([#1631](https://github.com/discordjs/discord-api-types/issues/1631)) ([7d3339b](https://github.com/discordjs/discord-api-types/commit/7d3339b894e1bcb167406b82638bc1a0227ed15f))
+
 ## [0.38.48](https://github.com/discordjs/discord-api-types/compare/0.38.47...0.38.48) (2026-05-25)
 
 
