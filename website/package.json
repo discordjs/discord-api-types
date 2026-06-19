@@ -67,7 +67,7 @@
 		"patch-package": "^8.0.0",
 		"prettier": "^3.4.1",
 		"pretty-quick": "^4.0.0",
-		"tsx": "^4.20.3",
+		"tsx": "^4.22.4",
 		"typedoc": "^0.27.1",
 		"typedoc-plugin-djs-links": "^2.2.1",
 		"typedoc-plugin-markdown": "^4.3.0",
