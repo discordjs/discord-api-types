@@ -23,7 +23,6 @@ import type {
 	SortOrderType,
 	ForumLayoutType,
 	ChannelFlags,
-	APIAttachment,
 	APIMessageTopLevelComponent,
 	APIMessagePin,
 	APIAnnouncementThreadChannel,
@@ -264,16 +263,42 @@ export type RESTAPIMessageReference = _AddUndefinedToPossiblyUndefinedProperties
 export type APIMessageReferenceSend = RESTAPIMessageReference;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
+ * This structure is used in Message Create and Edit requests to set which attachments are in the message and provide their metadata.
+ *
+ * When editing, you must provide the `id` of each file to keep, and you can optionally update the `description` and `is_spoiler` fields of existing attachments.
+ *
+ * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-request-structure}
  */
-export type RESTAPIAttachment = Partial<
-	Pick<APIAttachment, 'description' | 'duration_secs' | 'filename' | 'title' | 'waveform'>
-> & {
+export interface RESTAPIAttachment {
 	/**
-	 * Attachment id or a number that matches `n` in `files[n]`
+	 * attachment id, for new attachments this must match the `n` in `files[n]`
 	 */
 	id: Snowflake | number;
-};
+	/**
+	 * name of file attached
+	 */
+	filename?: string | undefined;
+	/**
+	 * the title of the file
+	 */
+	title?: string | undefined;
+	/**
+	 * description (alt text) for the file (max 1024 characters)
+	 */
+	description?: string | undefined;
+	/**
+	 * the duration of the audio or video file (required for voice messages)
+	 */
+	duration_secs?: number | undefined;
+	/**
+	 * base64 encoded bytearray representing a sampled waveform (required for voice messages)
+	 */
+	waveform?: string | undefined;
+	/**
+	 * whether the attachment should be marked as a spoiler and blurred until clicked, this sets the `IS_SPOILER` attachment flag
+	 */
+	is_spoiler?: boolean | undefined;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#create-message}
@@ -329,7 +354,9 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	 */
 	sticker_ids?: [Snowflake, Snowflake, Snowflake] | [Snowflake, Snowflake] | [Snowflake] | undefined;
 	/**
-	 * Attachment objects with filename and description
+	 * Metadata for the attachments. See Uploading Files
+	 *
+	 * @see {@link https://docs.discord.com/developers/reference#uploading-files}
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
@@ -479,11 +506,12 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 */
 	allowed_mentions?: APIAllowedMentions | null | undefined;
 	/**
-	 * Attached files to keep
+	 * Attached files to keep and their metadata. See Uploading Files
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
+	 * @see {@link https://docs.discord.com/developers/reference#uploading-files}
+	 * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-request-structure}
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
