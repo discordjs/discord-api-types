@@ -121,6 +121,10 @@ export interface APISKU {
  */
 export enum SKUFlags {
 	/**
+	 * No SKU flags are set
+	 */
+	None = 0,
+	/**
 	 * SKU is available for purchase
 	 */
 	Available = 1 << 2,

@@ -102,6 +102,10 @@ export interface APIRoleTags {
  */
 export enum RoleFlags {
 	/**
+	 * No role flags are set
+	 */
+	None = 0,
+	/**
 	 * Role can be selected by members in an onboarding prompt
 	 */
 	InPrompt = 1 << 0,

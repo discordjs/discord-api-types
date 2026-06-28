@@ -389,6 +389,10 @@ export enum MessageReferenceType {
  */
 export enum MessageFlags {
 	/**
+	 * No message flags are set
+	 */
+	None = 0,
+	/**
 	 * This message has been published to subscribed channels (via Channel Following)
 	 */
 	Crossposted = 1 << 0,
@@ -695,6 +699,10 @@ export enum EmbedType {
  */
 export enum EmbedFlags {
 	/**
+	 * No embed flags are set
+	 */
+	None = 0,
+	/**
 	 * This embed is a fallback for a reply to an activity card
 	 */
 	IsContentInventoryEntry = 1 << 5,
@@ -704,6 +712,10 @@ export enum EmbedFlags {
  * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
  */
 export enum EmbedMediaFlags {
+	/**
+	 * No embed media flags are set
+	 */
+	None = 0,
 	/**
 	 * This image is animated
 	 */
@@ -988,6 +1000,10 @@ export interface APIAttachment {
  * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-flags}
  */
 export enum AttachmentFlags {
+	/**
+	 * No attachment flags are set
+	 */
+	None = 0,
 	/**
 	 * This attachment is a Clip from a stream
 	 *
@@ -1666,6 +1682,10 @@ export interface APIUnfurledMediaItem {
  * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-unfurled-media-item-flags}
  */
 export enum UnfurledMediaItemFlags {
+	/**
+	 * No media item flags are set
+	 */
+	None = 0,
 	/**
 	 * This image is animated
 	 */

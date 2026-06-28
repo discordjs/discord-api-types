@@ -116,6 +116,10 @@ export interface APIUser {
  */
 export enum UserFlags {
 	/**
+	 * No user flags are set
+	 */
+	None = 0,
+	/**
 	 * Discord Employee
 	 */
 	Staff = 1 << 0,

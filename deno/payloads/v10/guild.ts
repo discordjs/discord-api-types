@@ -389,6 +389,10 @@ export enum GuildHubType {
  */
 export enum GuildSystemChannelFlags {
 	/**
+	 * No system channel flags are set
+	 */
+	None = 0,
+	/**
 	 * Suppress member join notifications
 	 */
 	SuppressJoinNotifications = 1 << 0,
@@ -783,6 +787,10 @@ export interface APIGuildMember
  * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags}
  */
 export enum GuildMemberFlags {
+	/**
+	 * No guild member flags are set
+	 */
+	None = 0,
 	/**
 	 * Member has left and rejoined the guild
 	 */

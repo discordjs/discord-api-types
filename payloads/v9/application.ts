@@ -179,6 +179,10 @@ export type APIApplicationIntegrationTypesConfigMap = {
  */
 export enum ApplicationFlags {
 	/**
+	 * No application flags are set
+	 */
+	None = 0,
+	/**
 	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
 	EmbeddedReleased = 1 << 1,
