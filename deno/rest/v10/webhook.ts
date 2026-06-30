@@ -137,7 +137,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 */
 	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
-	 * Attachment objects with filename and description
+	 * metadata for the attachments
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
@@ -268,11 +268,11 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = _AddUndefinedToPossibl
 	>
 > & {
 	/**
-	 * Attached files to keep
+	 * attached files to keep and their metadata
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
+	 * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-request-structure}
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
