@@ -317,6 +317,7 @@ export enum RESTJSONErrorCodes {
 	MaximumActiveAnnouncementThreads,
 
 	CannotReferenceMessageWithoutPermissionToReadMessageHistory = 160_009,
+	NSFWChannelMessageReferenceNotAllowed,
 
 	CannotForwardMessageWithUnreadableContent = 160_014,
 
