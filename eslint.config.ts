@@ -249,7 +249,6 @@ export default config([
 			'v8.ts',
 
 			'djs/**/*',
-			'.yarn/*',
 
 			'_generated_/**/*',
 		],

@@ -1,0 +1,16 @@
+packages:
+    - scripts/actions/documentation
+    - website
+
+allowBuilds:
+    '@parcel/watcher': true
+    core-js: false
+    core-js-pure: false
+    esbuild: true
+    unrs-resolver: true
+
+patchedDependencies:
+    '@apify/docusaurus-plugin-typedoc-api': patches/@apify__docusaurus-plugin-typedoc-api.patch
+
+overrides:
+    webpack: 5.96.1

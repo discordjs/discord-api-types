@@ -14,12 +14,13 @@ Simple type definitions for the [Discord API](https://discord.com/developers/doc
 
 ## Installation
 
-Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
+Install with [npm](https://www.npmjs.com/) / [pnpm](https://pnpm.io/) / [yarn](https://yarnpkg.com) / [bun](https://bun.sh):
 
 ```sh
 npm install discord-api-types
-yarn add discord-api-types
 pnpm add discord-api-types
+yarn add discord-api-types
+bun add discord-api-types
 ```
 
 ### Usage
