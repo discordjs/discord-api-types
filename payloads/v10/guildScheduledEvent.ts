@@ -4,7 +4,7 @@ import type { APIUser } from './user';
 
 export interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEntityType> {
 	/**
-	 * The id of the guild event
+	 * The id of the scheduled event
 	 */
 	id: Snowflake;
 	/**
@@ -13,18 +13,22 @@ export interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEnti
 	guild_id: Snowflake;
 	/**
 	 * The channel id in which the scheduled event will be hosted, or `null` if entity type is `EXTERNAL`
+	 *
+	 * @remarks See {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-field-requirements-by-entity-type | field requirements by entity type} to understand the relationship between `entity_type` and the following fields: `channel_id`, `entity_metadata`, and `scheduled_end_time`
 	 */
 	channel_id: Snowflake | null;
 	/**
 	 * The id of the user that created the scheduled event
+	 *
+	 * @remarks `creator_id` will be null and `creator` will not be included for events created before October 25th, 2021, when the concept of `creator_id` was introduced and tracked.
 	 */
 	creator_id?: Snowflake | null;
 	/**
-	 * The name of the scheduled event
+	 * The name of the scheduled event (1-100 characters)
 	 */
 	name: string;
 	/**
-	 * The description of the scheduled event
+	 * The description of the scheduled event (1-1000 characters)
 	 */
 	description?: string | null;
 	/**
@@ -32,7 +36,9 @@ export interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEnti
 	 */
 	scheduled_start_time: string;
 	/**
-	 * The time at which the guild event will end, or `null` if the event does not have a scheduled time to end
+	 * The time at which the guild event will end, required if entity_type is `EXTERNAL`
+	 *
+	 * @remarks See {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-field-requirements-by-entity-type | field requirements by entity type} to understand the relationship between `entity_type` and the following fields: `channel_id`, `entity_metadata`, and `scheduled_end_time`
 	 */
 	scheduled_end_time: string | null;
 	/**
@@ -44,19 +50,21 @@ export interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEnti
 	 */
 	status: GuildScheduledEventStatus;
 	/**
-	 * The type of hosting entity associated with the scheduled event
+	 * The type of the scheduled event
 	 */
 	entity_type: Type;
 	/**
-	 * The id of the hosting entity associated with the scheduled event
+	 * The id of an entity associated with a guild scheduled event
 	 */
 	entity_id: Snowflake | null;
 	/**
-	 * The entity metadata for the scheduled event
+	 * Additional metadata for the guild scheduled event
 	 */
 	entity_metadata: APIGuildScheduledEventEntityMetadata | null;
 	/**
 	 * The user that created the scheduled event
+	 *
+	 * @remarks See {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-field-requirements-by-entity-type | field requirements by entity type} to understand the relationship between `entity_type` and the following fields: `channel_id`, `entity_metadata`, and `scheduled_end_time`
 	 */
 	creator?: APIUser;
 	/**
@@ -64,13 +72,45 @@ export interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEnti
 	 */
 	user_count?: number;
 	/**
-	 * The cover image of the scheduled event
+	 * The cover image hash of the scheduled event
 	 */
 	image?: string | null;
 	/**
 	 * The definition for how often this event should recur
 	 */
 	recurrence_rule: APIGuildScheduledEventRecurrenceRule | null;
+	/**
+	 * The exceptions to the recurrence rule of the guild scheduled event
+	 */
+	guild_scheduled_event_exceptions: APIGuildScheduledEventException[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-exception-object-guild-scheduled-event-exception-structure}
+ */
+export interface APIGuildScheduledEventException {
+	/**
+	 * The id of the scheduled event the exception belongs to
+	 */
+	event_id: Snowflake;
+	/**
+	 * A snowflake containing the original scheduled start time of the scheduled event recurrence
+	 *
+	 * @remarks The snowflake in this field is not guaranteed to be globally unique.
+	 */
+	event_exception_id: Snowflake;
+	/**
+	 * The new time at when the scheduled event recurrence will start, if applicable
+	 */
+	scheduled_start_time: string | null;
+	/**
+	 * The new time at when the scheduled event recurrence will end, if applicable
+	 */
+	scheduled_end_time: string | null;
+	/**
+	 * Whether or not the scheduled event will be skipped on the recurrence
+	 */
+	is_canceled: boolean;
 }
 
 /**
@@ -259,4 +299,8 @@ export interface APIGuildScheduledEventUser {
 	 * The guild member data for this user for the guild which this event belongs to, if any
 	 */
 	member?: APIGuildMember;
+	/**
+	 * The id of the specific scheduled event exception that the user is subscribed to, if any
+	 */
+	guild_scheduled_event_exception_id?: Snowflake;
 }
