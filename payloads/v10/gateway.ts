@@ -406,6 +406,7 @@ export interface GatewayActivitySecrets {
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags}
  */
 export enum ActivityFlags {
+	None = 0,
 	Instance = 1 << 0,
 	Join = 1 << 1,
 	Spectate = 1 << 2,
