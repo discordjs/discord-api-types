@@ -3,7 +3,7 @@ import type { Snowflake } from "../globals";
 export const VoiceGatewayVersion = '8';
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-opcodes}
+ * @see {@link https://docs.discord.com/developers/topics/opcodes-and-status-codes#voice-voice-opcodes}
  */
 export enum VoiceOpcodes {
 	/**
@@ -101,7 +101,7 @@ export enum VoiceOpcodes {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-close-event-codes}
+ * @see {@link https://docs.discord.com/developers/topics/opcodes-and-status-codes#voice-voice-close-event-codes}
  */
 export enum VoiceCloseCodes {
 	/**
@@ -171,7 +171,7 @@ export enum VoiceCloseCodes {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#transport-encryption-modes}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#transport-encryption-modes}
  */
 export enum VoiceEncryptionMode {
 	/**
@@ -215,7 +215,7 @@ export enum VoiceEncryptionMode {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#speaking}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#speaking}
  */
 export enum VoiceSpeakingFlags {
 	/**
@@ -257,18 +257,18 @@ export type VoiceReceivePayload =
 // #region Server Payloads
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#heartbeating}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#heartbeating}
  */
 export type VoiceHello = _DataPayload<VoiceOpcodes.Hello, VoiceHelloData>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#heartbeating}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#heartbeating}
  */
 export interface VoiceHelloData {
 	/**
 	 * Voice gateway version
 	 * 
-	 * @see {@link https://discord.com/developers/docs/topics/voice-connections#voice-gateway-versioning-gateway-versions}
+	 * @see {@link https://docs.discord.com/developers/topics/voice-connections#voice-gateway-versioning-gateway-versions}
 	 */
 	v: number;
 	/**
@@ -278,12 +278,12 @@ export interface VoiceHelloData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-websocket-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-websocket-connection}
  */
 export type VoiceReady = _DataPayload<VoiceOpcodes.Ready, VoiceReadyData>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-websocket-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-websocket-connection}
  */
 export interface VoiceReadyData {
 	/**
@@ -301,18 +301,18 @@ export interface VoiceReadyData {
 	/**
 	 * Supported encryption modes
 	 * 
-	 * @see {@link https://discord.com/developers/docs/topics/voice-connections#transport-encryption-modes}
+	 * @see {@link https://docs.discord.com/developers/topics/voice-connections#transport-encryption-modes}
 	 */
 	modes: VoiceEncryptionMode[];
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#heartbeating}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#heartbeating}
  */
 export type VoiceHeartbeatAck = _DataPayload<VoiceOpcodes.HeartbeatAck, VoiceHeartbeatAckData>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#heartbeating}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#heartbeating}
  */
 export interface VoiceHeartbeatAckData {
 	/**
@@ -322,12 +322,12 @@ export interface VoiceHeartbeatAckData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#transport-encryption-and-sending-voice}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#transport-encryption-and-sending-voice}
  */
 export type VoiceSessionDescription = _DataPayload<VoiceOpcodes.SessionDescription, VoiceSessionDescriptionData>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#transport-encryption-and-sending-voice}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#transport-encryption-and-sending-voice}
  */
 export interface VoiceSessionDescriptionData {
 	/**
@@ -347,17 +347,17 @@ export interface VoiceSessionDescriptionData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#resuming-voice-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#resuming-voice-connection}
  */
 export type VoiceResumed = _DataPayload<VoiceOpcodes.Resumed, null>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#speaking}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#speaking}
  */
 export type VoiceSpeaking = _DataPayload<VoiceOpcodes.Speaking, VoiceSpeakingData>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#speaking}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#speaking}
  */
 export interface VoiceSpeakingData {
 	/**
@@ -390,12 +390,12 @@ export interface VoiceClientsConnectData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections}
  */
 export type VoiceClientDisconnect = _DataPayload<VoiceOpcodes.ClientDisconnect, VoiceClientDisconnectData>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections}
  */
 export interface VoiceClientDisconnectData {
 	/**
@@ -463,7 +463,7 @@ export type VoiceDaveMlsWelcome = VoiceBinaryPayload;
 // #region Sendable Payloads
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-websocket-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-websocket-connection}
  */
 export interface VoiceIdentify {
 	op: VoiceOpcodes.Identify;
@@ -471,7 +471,7 @@ export interface VoiceIdentify {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-websocket-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-websocket-connection}
  */
 export interface VoiceIdentifyData {
 	/**
@@ -497,7 +497,7 @@ export interface VoiceIdentifyData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-websocket-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-websocket-connection}
  */
 export interface VoiceHeartbeat {
 	op: VoiceOpcodes.Heartbeat;
@@ -505,7 +505,7 @@ export interface VoiceHeartbeat {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-websocket-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-websocket-connection}
  */
 export interface VoiceHeartbeatData {
 	/**
@@ -519,7 +519,7 @@ export interface VoiceHeartbeatData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-udp-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-udp-connection}
  */
 export interface VoiceSelectProtocol {
 	op: VoiceOpcodes.SelectProtocol;
@@ -527,7 +527,7 @@ export interface VoiceSelectProtocol {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-udp-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-udp-connection}
  */
 export interface VoiceSelectProtocolData {
 	/**
@@ -541,7 +541,7 @@ export interface VoiceSelectProtocolData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#establishing-a-voice-udp-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#establishing-a-voice-udp-connection}
  */
 export interface VoiceUDPProtocolData {
 	/**
@@ -555,13 +555,13 @@ export interface VoiceUDPProtocolData {
 	/**
 	 * Selected mode
 	 * 
-	 * @see {@link https://discord.com/developers/docs/topics/voice-connections#transport-encryption-modes}
+	 * @see {@link https://docs.discord.com/developers/topics/voice-connections#transport-encryption-modes}
 	 */
 	mode: VoiceEncryptionMode;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#resuming-voice-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#resuming-voice-connection}
  */
 export interface VoiceResume {
 	op: VoiceOpcodes.Resume;
@@ -569,7 +569,7 @@ export interface VoiceResume {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#resuming-voice-connection}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#resuming-voice-connection}
  */
 export interface VoiceResumeData {
 	/**
@@ -591,7 +591,7 @@ export interface VoiceResumeData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#speaking}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#speaking}
  */
 export interface VoiceSpeakingSend {
 	op: VoiceOpcodes.Speaking;
@@ -599,7 +599,7 @@ export interface VoiceSpeakingSend {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/voice-connections#speaking}
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#speaking}
  */
 export interface VoiceSpeakingSendData {
 	/**

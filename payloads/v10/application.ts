@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/application
+ * Types extracted from https://docs.discord.com/developers/resources/application
  */
 
 import type { Permissions, Snowflake } from '../../globals';
@@ -12,7 +12,7 @@ import type { APIUser } from './user';
 import type { ApplicationWebhookEventType } from './webhook';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+ * @see {@link https://docs.discord.com/developers/resources/application#application-object}
  */
 export interface APIApplication {
 	/**
@@ -58,7 +58,7 @@ export interface APIApplication {
 	/**
 	 * Partial user object containing info on the owner of the application
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object}
 	 */
 	owner?: APIUser;
 	/**
@@ -71,13 +71,13 @@ export interface APIApplication {
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
-	 * @see {@link https://discord.com/developers/docs/game-sdk/applications#getticket}
+	 * @see {@link https://docs.discord.com/developers/game-sdk/applications#getticket}
 	 */
 	verify_key: string;
 	/**
 	 * The team this application belongs to
 	 *
-	 * @see {@link https://discord.com/developers/docs/topics/teams#data-models-team-object}
+	 * @see {@link https://docs.discord.com/developers/topics/teams#data-models-team-object}
 	 */
 	team: APITeam | null;
 	/**
@@ -103,7 +103,7 @@ export interface APIApplication {
 	/**
 	 * The application's public flags
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
 	 */
 	flags: ApplicationFlags;
 	/**
@@ -175,7 +175,7 @@ export type APIApplicationIntegrationTypesConfigMap = {
 };
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
+ * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
  */
 export enum ApplicationFlags {
 	/**
@@ -213,13 +213,13 @@ export enum ApplicationFlags {
 	/**
 	 * Intent required for bots in 100 or more servers to receive member-related events like `guild_member_add`.
 	 *
-	 * @see List of member-related events {@link https://discord.com/developers/docs/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
+	 * @see List of member-related events {@link https://docs.discord.com/developers/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
 	 */
 	GatewayGuildMembers = 1 << 14,
 	/**
 	 * Intent required for bots in under 100 servers to receive member-related events like `guild_member_add`, found in Bot Settings.
 	 *
-	 * @see List of member-related events {@link https://discord.com/developers/docs/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
+	 * @see List of member-related events {@link https://docs.discord.com/developers/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
 	 */
 	GatewayGuildMembersLimited = 1 << 15,
 	/**
@@ -244,13 +244,13 @@ export enum ApplicationFlags {
 	 */
 	EmbeddedFirstParty = 1 << 20,
 	/**
-	 * Indicates if an app has registered global {@link https://discord.com/developers/docs/interactions/application-commands | application commands}
+	 * Indicates if an app has registered global {@link https://docs.discord.com/developers/interactions/application-commands | application commands}
 	 */
 	ApplicationCommandBadge = 1 << 23,
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-structure}
+ * @see {@link https://docs.discord.com/developers/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-structure}
  */
 export interface APIApplicationRoleConnectionMetadata {
 	/**
@@ -280,7 +280,7 @@ export interface APIApplicationRoleConnectionMetadata {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type}
+ * @see {@link https://docs.discord.com/developers/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type}
  */
 export enum ApplicationRoleConnectionMetadataType {
 	/**
@@ -318,7 +318,7 @@ export enum ApplicationRoleConnectionMetadataType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-kind-enum}
+ * @see {@link https://docs.discord.com/developers/resources/application#get-application-activity-instance-activity-location-kind-enum}
  */
 export enum ActivityLocationKind {
 	/**
@@ -332,7 +332,7 @@ export enum ActivityLocationKind {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-location-object}
+ * @see {@link https://docs.discord.com/developers/resources/application#get-application-activity-instance-activity-location-object}
  */
 export interface APIActivityLocation {
 	/**
@@ -354,7 +354,7 @@ export interface APIActivityLocation {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#get-application-activity-instance-activity-instance-object}
+ * @see {@link https://docs.discord.com/developers/resources/application#get-application-activity-instance-activity-instance-object}
  */
 export interface APIActivityInstance {
 	/**
@@ -380,7 +380,7 @@ export interface APIActivityInstance {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status}
+ * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-event-webhook-status}
  */
 export enum ApplicationWebhookEventStatus {
 	/**

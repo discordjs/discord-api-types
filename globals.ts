@@ -1,10 +1,10 @@
 /**
- * @see {@link https://discord.com/developers/docs/reference#snowflakes}
+ * @see {@link https://docs.discord.com/developers/reference#snowflakes}
  */
 export type Snowflake = string;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/permissions}
+ * @see {@link https://docs.discord.com/developers/topics/permissions}
  */
 export type Permissions = string;
 
@@ -12,7 +12,7 @@ const timestampStyles = 'DFRSTdfst';
 const timestampLength = 13;
 
 /**
- * @see {@link https://discord.com/developers/docs/reference#message-formatting-formats}
+ * @see {@link https://docs.discord.com/developers/reference#message-formatting-formats}
  */
 export const FormattingPatterns = {
 	/**

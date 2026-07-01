@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/topics/oauth2
+ * Types extracted from https://docs.discord.com/developers/topics/oauth2
  */
 
 export enum OAuth2Scopes {
@@ -8,10 +8,10 @@ export enum OAuth2Scopes {
 	 */
 	Bot = 'bot',
 	/**
-	 * Allows {@link https://discord.com/developers/docs/resources/user#get-user-connections | `/users/@me/connections`}
+	 * Allows {@link https://docs.discord.com/developers/resources/user#get-user-connections | `/users/@me/connections`}
 	 * to return linked third-party accounts
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#get-user-connections}
+	 * @see {@link https://docs.discord.com/developers/resources/user#get-user-connections}
 	 */
 	Connections = 'connections',
 	/**
@@ -19,15 +19,15 @@ export enum OAuth2Scopes {
 	 */
 	DMChannelsRead = 'dm_channels.read',
 	/**
-	 * Enables {@link https://discord.com/developers/docs/resources/user#get-current-user | `/users/@me`} to return an `email`
+	 * Enables {@link https://docs.discord.com/developers/resources/user#get-current-user | `/users/@me`} to return an `email`
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#get-current-user}
+	 * @see {@link https://docs.discord.com/developers/resources/user#get-current-user}
 	 */
 	Email = 'email',
 	/**
-	 * Allows {@link https://discord.com/developers/docs/resources/user#get-current-user | `/users/@me`} without `email`
+	 * Allows {@link https://docs.discord.com/developers/resources/user#get-current-user | `/users/@me`} without `email`
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#get-current-user}
+	 * @see {@link https://docs.discord.com/developers/resources/user#get-current-user}
 	 */
 	Identify = 'identify',
 	/**
@@ -38,29 +38,29 @@ export enum OAuth2Scopes {
 	 */
 	IdentifyPremium = 'identify.premium',
 	/**
-	 * Allows {@link https://discord.com/developers/docs/resources/user#get-current-user-guilds | `/users/@me/guilds`}
+	 * Allows {@link https://docs.discord.com/developers/resources/user#get-current-user-guilds | `/users/@me/guilds`}
 	 * to return basic information about all of a user's guilds
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#get-current-user-guilds}
+	 * @see {@link https://docs.discord.com/developers/resources/user#get-current-user-guilds}
 	 */
 	Guilds = 'guilds',
 	/**
-	 * Allows {@link https://discord.com/developers/docs/resources/guild#add-guild-member | `/guilds/[guild.id]/members/[user.id]`}
+	 * Allows {@link https://docs.discord.com/developers/resources/guild#add-guild-member | `/guilds/[guild.id]/members/[user.id]`}
 	 * to be used for joining users to a guild
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/guild#add-guild-member}
+	 * @see {@link https://docs.discord.com/developers/resources/guild#add-guild-member}
 	 */
 	GuildsJoin = 'guilds.join',
 	/**
 	 * Allows /users/\@me/guilds/\{guild.id\}/member to return a user's member information in a guild
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#get-current-user-guild-member}
+	 * @see {@link https://docs.discord.com/developers/resources/user#get-current-user-guild-member}
 	 */
 	GuildsMembersRead = 'guilds.members.read',
 	/**
 	 * Allows your app to join users to a group dm
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#group-dm-add-recipient}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#group-dm-add-recipient}
 	 */
 	GroupDMJoins = 'gdm.join',
 	/**
@@ -127,25 +127,25 @@ export enum OAuth2Scopes {
 	/**
 	 * Allows your app to update a user's activity - requires Discord approval (NOT REQUIRED FOR GAMESDK ACTIVITY MANAGER)
 	 *
-	 * @see {@link https://discord.com/developers/docs/game-sdk/activities}
+	 * @see {@link https://docs.discord.com/developers/game-sdk/activities}
 	 */
 	ActivitiesWrite = 'activities.write',
 	/**
 	 * Allows your app to use Application Commands in a guild
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/application-commands}
+	 * @see {@link https://docs.discord.com/developers/interactions/application-commands}
 	 */
 	ApplicationsCommands = 'applications.commands',
 	/**
 	 * Allows your app to update its Application Commands via this bearer token - client credentials grant only
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/application-commands}
+	 * @see {@link https://docs.discord.com/developers/interactions/application-commands}
 	 */
 	ApplicationsCommandsUpdate = 'applications.commands.update',
 	/**
 	 * Allows your app to update permissions for its commands using a Bearer token - client credentials grant only
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/application-commands}
+	 * @see {@link https://docs.discord.com/developers/interactions/application-commands}
 	 */
 	ApplicationCommandsPermissionsUpdate = 'applications.commands.permissions.update',
 }

@@ -11,7 +11,7 @@ import type { _AddUndefinedToPossiblyUndefinedPropertiesOfInterface, _Nullable }
 import type { RESTAPIAttachment } from './channel';
 import type { RESTAPIPoll } from './poll';
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#create-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#create-webhook}
  */
 export interface RESTPostAPIChannelWebhookJSONBody {
 	/**
@@ -21,38 +21,38 @@ export interface RESTPostAPIChannelWebhookJSONBody {
 	/**
 	 * Image for the default webhook avatar
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-data}
+	 * @see {@link https://docs.discord.com/developers/reference#image-data}
 	 */
 	avatar?: string | null | undefined;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#create-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#create-webhook}
  */
 export type RESTPostAPIChannelWebhookResult = APIWebhook;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#get-channel-webhooks}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#get-channel-webhooks}
  */
 export type RESTGetAPIChannelWebhooksResult = APIWebhook[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#get-guild-webhooks}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#get-guild-webhooks}
  */
 export type RESTGetAPIGuildWebhooksResult = APIWebhook[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#get-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#get-webhook}
  */
 export type RESTGetAPIWebhookResult = APIWebhook;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#get-webhook-with-token}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#get-webhook-with-token}
  */
 export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#modify-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#modify-webhook}
  */
 export interface RESTPatchAPIWebhookJSONBody {
 	/**
@@ -62,7 +62,7 @@ export interface RESTPatchAPIWebhookJSONBody {
 	/**
 	 * Image for the default webhook avatar
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-data}
+	 * @see {@link https://docs.discord.com/developers/reference#image-data}
 	 */
 	avatar?: string | null | undefined;
 	/**
@@ -72,32 +72,32 @@ export interface RESTPatchAPIWebhookJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#modify-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#modify-webhook}
  */
 export type RESTPatchAPIWebhookResult = APIWebhook;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#modify-webhook-with-token}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#modify-webhook-with-token}
  */
 export type RESTPatchAPIWebhookWithTokenJSONBody = Omit<RESTPatchAPIWebhookJSONBody, 'channel_id'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#modify-webhook-with-token}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#modify-webhook-with-token}
  */
 export type RESTPatchAPIWebhookWithTokenResult = RESTGetAPIWebhookWithTokenResult;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#delete-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#delete-webhook}
  */
 export type RESTDeleteAPIWebhookResult = undefined;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#delete-webhook-with-token}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#delete-webhook-with-token}
  */
 export type RESTDeleteAPIWebhookWithTokenResult = undefined;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-webhook}
  */
 export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
@@ -119,13 +119,13 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * Embedded `rich` content
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#embed-object}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#embed-object}
 	 */
 	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#allowed-mentions-object}
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
@@ -133,7 +133,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 *
 	 * Application-owned webhooks can always send components. Non-application-owned webhooks cannot send interactive components, and the `components` field will be ignored unless they set the `with_components` query param.
 	 *
-	 * @see {@link https://discord.com/developers/docs/components/reference}
+	 * @see {@link https://docs.discord.com/developers/components/reference}
 	 */
 	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
@@ -161,7 +161,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-webhook}
  */
 export type RESTPostAPIWebhookWithTokenFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & {
@@ -173,7 +173,7 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIWebhookWithTokenJSONBody);
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-webhook-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-webhook-query-string-params}
  */
 export interface RESTPostAPIWebhookWithTokenQuery {
 	/**
@@ -199,68 +199,68 @@ export interface RESTPostAPIWebhookWithTokenQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-webhook}
  */
 export type RESTPostAPIWebhookWithTokenResult = undefined;
 
 /**
- * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
+ * Received when a call to https://docs.discord.com/developers/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-webhook-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-webhook-query-string-params}
  */
 export type RESTPostAPIWebhookWithTokenWaitResult = APIMessage;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-slackcompatible-webhook-query-string-params}
  */
 export type RESTPostAPIWebhookWithTokenSlackQuery = Pick<RESTPostAPIWebhookWithTokenQuery, 'thread_id' | 'wait'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-slackcompatible-webhook}
  */
 export type RESTPostAPIWebhookWithTokenSlackResult = undefined;
 
 /**
- * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
+ * Received when a call to https://docs.discord.com/developers/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-slackcompatible-webhook-query-string-params}
  */
 export type RESTPostAPIWebhookWithTokenSlackWaitResult = APIMessage;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-githubcompatible-webhook-query-string-params}
  */
 export type RESTPostAPIWebhookWithTokenGitHubQuery = Pick<RESTPostAPIWebhookWithTokenQuery, 'thread_id' | 'wait'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-githubcompatible-webhook}
  */
 export type RESTPostAPIWebhookWithTokenGitHubResult = undefined;
 
 /**
- * Received when a call to https://discord.com/developers/docs/resources/webhook#execute-webhook receives
+ * Received when a call to https://docs.discord.com/developers/resources/webhook#execute-webhook receives
  * the `wait` query parameter set to `true`
  *
- * @see {@link https://discord.com/developers/docs/resources/webhook#execute-githubcompatible-webhook-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#execute-githubcompatible-webhook-query-string-params}
  */
 export type RESTPostAPIWebhookWithTokenGitHubWaitResult = APIMessage;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#get-webhook-message}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#get-webhook-message}
  */
 export type RESTGetAPIWebhookWithTokenMessageResult = APIMessage;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#get-webhook-message-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#get-webhook-message-query-string-params}
  */
 export interface RESTGetAPIWebhookWithTokenMessageQuery {
 	thread_id?: Snowflake;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#edit-webhook-message}
  */
 export type RESTPatchAPIWebhookWithTokenMessageJSONBody = _AddUndefinedToPossiblyUndefinedPropertiesOfInterface<
 	_Nullable<
@@ -272,7 +272,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = _AddUndefinedToPossibl
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure}
+	 * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-structure}
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
@@ -285,7 +285,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = _AddUndefinedToPossibl
 };
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#edit-webhook-message}
  */
 export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & {
@@ -297,7 +297,7 @@ export type RESTPatchAPIWebhookWithTokenMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIWebhookWithTokenMessageJSONBody);
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message-query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#edit-webhook-message-query-string-params}
  */
 export type RESTPatchAPIWebhookWithTokenMessageQuery = Pick<
 	RESTPostAPIWebhookWithTokenQuery,
@@ -305,7 +305,7 @@ export type RESTPatchAPIWebhookWithTokenMessageQuery = Pick<
 >;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#edit-webhook-message}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#edit-webhook-message}
  */
 export type RESTPatchAPIWebhookWithTokenMessageResult = APIMessage;
 
@@ -317,6 +317,6 @@ export interface RESTDeleteAPIWebhookWithTokenMessageQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/webhook#delete-webhook-message}
+ * @see {@link https://docs.discord.com/developers/resources/webhook#delete-webhook-message}
  */
 export type RESTDeleteAPIWebhookWithTokenMessageResult = undefined;

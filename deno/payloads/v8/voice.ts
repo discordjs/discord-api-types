@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/voice
+ * Types extracted from https://docs.discord.com/developers/resources/voice
  */
 
 import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 
 /**
- * https://discord.com/developers/docs/resources/voice#voice-state-object
+ * https://docs.discord.com/developers/resources/voice#voice-state-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -26,7 +26,7 @@ export interface GatewayVoiceState {
 	/**
 	 * The guild member this voice state is for
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#guild-member-object
+	 * See https://docs.discord.com/developers/resources/guild#guild-member-object
 	 */
 	member?: APIGuildMember;
 	/**
@@ -68,7 +68,7 @@ export interface GatewayVoiceState {
 }
 
 /**
- * https://discord.com/developers/docs/resources/voice#voice-region-object
+ * https://docs.discord.com/developers/resources/voice#voice-region-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

@@ -62,7 +62,7 @@ export type * from './_chatInput/subcommandGroup.ts';
 export type * from './_chatInput/user.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-object-application-command-option-structure}
  */
 export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandAttachmentOption
@@ -76,7 +76,7 @@ export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandUserOption;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure}
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-object-application-command-option-structure}
  */
 export type APIApplicationCommandOption =
 	| APIApplicationCommandBasicOption
@@ -84,7 +84,7 @@ export type APIApplicationCommandOption =
 	| APIApplicationCommandSubcommandOption;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure}
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure}
  */
 export type APIApplicationCommandInteractionDataOption<Type extends InteractionType = InteractionType> =
 	| APIApplicationCommandInteractionDataBasicOption<Type>
@@ -103,7 +103,7 @@ export type APIApplicationCommandInteractionDataBasicOption<Type extends Interac
 	| APIApplicationCommandInteractionDataUserOption;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export interface APIChatInputApplicationCommandInteractionData extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
 	options?: APIApplicationCommandInteractionDataOption<InteractionType.ApplicationCommand>[];
@@ -111,7 +111,7 @@ export interface APIChatInputApplicationCommandInteractionData extends APIBaseAp
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export interface APIAutocompleteApplicationCommandInteractionData extends APIBaseApplicationCommandInteractionData<ApplicationCommandType.ChatInput> {
 	options?: APIApplicationCommandInteractionDataOption<InteractionType.ApplicationCommandAutocomplete>[];
@@ -119,19 +119,19 @@ export interface APIAutocompleteApplicationCommandInteractionData extends APIBas
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIChatInputApplicationCommandGuildInteraction =
 	APIGuildInteractionWrapper<APIChatInputApplicationCommandInteraction>;

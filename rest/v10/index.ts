@@ -259,7 +259,7 @@ export const Routes = {
 	 * Route for:
 	 * - POST `/guilds`
 	 *
-	 * @deprecated {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+	 * @deprecated {@link https://docs.discord.com/developers/change-log#guild-create-deprecation}
 	 */
 	guilds() {
 		return '/guilds' as const;
@@ -1252,7 +1252,7 @@ export const CDNRoutes = {
 	 * Route for:
 	 * - GET `/embed/avatars/{index}.png`
 	 *
-	 * The value for `index` parameter depends on whether the user is {@link https://discord.com/developers/docs/change-log#unique-usernames-on-discord | migrated to the new username system}.
+	 * The value for `index` parameter depends on whether the user is {@link https://docs.discord.com/developers/change-log#unique-usernames-on-discord | migrated to the new username system}.
 	 * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
 	 * For users on the legacy username system, `index` will be `user.discriminator % 5`.
 	 *

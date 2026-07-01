@@ -1,7 +1,7 @@
 import type { Locale } from '../rest/common.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags}
+ * @see {@link https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags}
  *
  * These flags are exported as `BigInt`s and NOT numbers. Wrapping them in `Number()`
  * may cause issues, try to use BigInts as much as possible or modules that can
@@ -317,7 +317,7 @@ Object.freeze(PermissionFlagsBits);
 export type LocalizationMap = Partial<Record<Locale, string | null>>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#json}
+ * @see {@link https://docs.discord.com/developers/topics/opcodes-and-status-codes#json}
  */
 export interface RESTError {
 	code: number;
@@ -337,7 +337,7 @@ export interface RESTErrorGroupWrapper {
 export type RESTErrorData = RESTErrorFieldInformation | RESTErrorGroupWrapper | string | { [k: string]: RESTErrorData };
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rate-limits#exceeding-a-rate-limit-rate-limit-response-structure}
  */
 export interface RESTRateLimit {
 	/**

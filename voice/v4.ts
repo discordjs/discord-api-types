@@ -1,7 +1,7 @@
 export const VoiceGatewayVersion = '4';
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-opcodes}
+ * @see {@link https://docs.discord.com/developers/topics/opcodes-and-status-codes#voice-voice-opcodes}
  */
 export enum VoiceOpcodes {
 	/**
@@ -105,7 +105,7 @@ export enum VoiceOpcodes {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#voice-voice-close-event-codes}
+ * @see {@link https://docs.discord.com/developers/topics/opcodes-and-status-codes#voice-voice-close-event-codes}
  */
 export enum VoiceCloseCodes {
 	/**

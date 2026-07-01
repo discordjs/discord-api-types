@@ -63,7 +63,7 @@ It will also not be subject to the same versioning rules as the rest of the type
 `discontinued` as we keep them till the version is completely dead before removing them. This is a good time to figure
 out which API versions need to be updated, and you can use the table below to guide you.
 
-You can also check [`Discord's API versioning table`](https://discord.com/developers/docs/reference#api-versioning) if
+You can also check [`Discord's API versioning table`](https://docs.discord.com/developers/reference#api-versioning) if
 you want to be 1000% sure.
 
 | **API Version** | **Should receive updates** |
@@ -122,7 +122,7 @@ Any changes that need to be done to this folder need to be done through the `scr
 #### `gateway`
 
 This folder holds types that are strictly received from
-[`Discord's gateway`](https://discord.com/developers/docs/topics/gateway). It stores the gateway version the types are
+[`Discord's gateway`](https://docs.discord.com/developers/topics/gateway). It stores the gateway version the types are
 for, the intents and opcodes, and any data that can be received/sent through the gateway.
 
 Each file in the folder represents a gateway version. It references types from the versioned [`payloads`](#payloads)
@@ -190,7 +190,7 @@ OAuth2 may not follow the structure exactly, but should aim to follow it as much
 #### `rpc`
 
 This folder holds types that are strictly related to
-[`Discord's RPC API`](https://discord.com/developers/docs/topics/rpc). Just like [`gateway`](#gateway), each RPC API
+[`Discord's RPC API`](https://docs.discord.com/developers/topics/rpc). Just like [`gateway`](#gateway), each RPC API
 version receives its own file.
 
 :::info
@@ -232,7 +232,7 @@ types should never be exported from the module.
 #### `voice`
 
 This folder holds types that are strictly related to
-[`Discord's Voice API`](https://discord.com/developers/docs/topics/voice-connections). It follows the same folder
+[`Discord's Voice API`](https://docs.discord.com/developers/topics/voice-connections). It follows the same folder
 structure as [`gateway`](#gateway).
 
 :::info

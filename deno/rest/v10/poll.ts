@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIBasePoll, APIBasePollAnswer, APIMessage, APIPollDefaults, APIUser } from '../../v10.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#get-answer-voters}
+ * @see {@link https://docs.discord.com/developers/resources/poll#get-answer-voters}
  */
 export interface RESTGetAPIPollAnswerVotersQuery {
 	/**
@@ -18,7 +18,7 @@ export interface RESTGetAPIPollAnswerVotersQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-create-request-object-poll-create-request-object-structure}
+ * @see {@link https://docs.discord.com/developers/resources/poll#poll-create-request-object-poll-create-request-object-structure}
  */
 export interface RESTAPIPoll extends APIBasePoll, Partial<APIPollDefaults> {
 	/**
@@ -39,7 +39,7 @@ export interface RESTAPIPoll extends APIBasePoll, Partial<APIPollDefaults> {
 export type RESTAPIPollCreate = RESTAPIPoll;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#get-answer-voters}
+ * @see {@link https://docs.discord.com/developers/resources/poll#get-answer-voters}
  */
 export interface RESTGetAPIPollAnswerVotersResult {
 	/**
@@ -49,6 +49,6 @@ export interface RESTGetAPIPollAnswerVotersResult {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#expire-poll}
+ * @see {@link https://docs.discord.com/developers/resources/poll#expire-poll}
  */
 export type RESTPostAPIPollExpireResult = APIMessage;
