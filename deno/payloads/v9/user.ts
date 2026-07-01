@@ -115,9 +115,6 @@ export interface APIUser {
  * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
  */
 export enum UserFlags {
-	/**
-	 * No user flags are set
-	 */
 	None = 0,
 	/**
 	 * Discord Employee

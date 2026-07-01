@@ -656,9 +656,6 @@ export interface APIThreadMember {
 }
 
 export enum ThreadMemberFlags {
-	/**
-	 * No thread member flags are set
-	 */
 	None = 0,
 	/**
 	 * @unstable This thread member flag is currently not documented by Discord but has a known value which we will try to keep up to date.
@@ -693,9 +690,6 @@ export interface APIThreadList {
  * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-flags}
  */
 export enum ChannelFlags {
-	/**
-	 * No channel flags are set
-	 */
 	None = 0,
 	/**
 	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.

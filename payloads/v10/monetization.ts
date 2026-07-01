@@ -120,9 +120,6 @@ export interface APISKU {
  * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags}
  */
 export enum SKUFlags {
-	/**
-	 * No SKU flags are set
-	 */
 	None = 0,
 	/**
 	 * SKU is available for purchase
