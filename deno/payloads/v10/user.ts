@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/user
+ * Types extracted from https://docs.discord.com/developers/resources/user
  */
 
 import type { Snowflake } from '../../globals.ts';
 import type { APIGuildIntegration } from './guild.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+ * @see {@link https://docs.discord.com/developers/resources/user#user-object}
  */
 export interface APIUser {
 	/**
@@ -28,7 +28,7 @@ export interface APIUser {
 	/**
 	 * The user's avatar hash
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
+	 * @see {@link https://docs.discord.com/developers/reference#image-formatting}
 	 */
 	avatar: string | null;
 	/**
@@ -46,7 +46,7 @@ export interface APIUser {
 	/**
 	 * The user's banner hash
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
+	 * @see {@link https://docs.discord.com/developers/reference#image-formatting}
 	 */
 	banner?: string | null;
 	/**
@@ -68,51 +68,51 @@ export interface APIUser {
 	/**
 	 * The flags on a user's account
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object-user-flags}
 	 */
 	flags?: UserFlags;
 	/**
 	 * The type of Nitro subscription on a user's account
 	 *
 	 * @remarks This field will return `0` for applications that have not been approved for the {@link OAuth2Scopes.IdentifyPremium} scope.
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object-premium-types}
 	 */
 	premium_type?: UserPremiumType;
 	/**
 	 * The public flags on a user's account
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object-user-flags}
 	 */
 	public_flags?: UserFlags;
 	/**
 	 * The user's avatar decoration hash
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
+	 * @see {@link https://docs.discord.com/developers/reference#image-formatting}
 	 * @deprecated Use {@link APIUser.avatar_decoration_data} instead
 	 */
 	avatar_decoration?: string | null;
 	/**
 	 * The data for the user's avatar decoration
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
+	 * @see {@link https://docs.discord.com/developers/resources/user#avatar-decoration-data-object}
 	 */
 	avatar_decoration_data?: APIAvatarDecorationData | null;
 	/**
 	 * The data for the user's collectibles
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#collectibles}
+	 * @see {@link https://docs.discord.com/developers/resources/user#collectibles}
 	 */
 	collectibles?: APICollectibles | null;
 	/**
 	 * The user's primary guild
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-primary-guild}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object-user-primary-guild}
 	 */
 	primary_guild?: APIUserPrimaryGuild | null;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
+ * @see {@link https://docs.discord.com/developers/resources/user#user-object-user-flags}
  */
 export enum UserFlags {
 	/**
@@ -156,7 +156,7 @@ export enum UserFlags {
 	 */
 	PremiumEarlySupporter = 1 << 9,
 	/**
-	 * User is a {@link https://discord.com/developers/docs/topics/teams | team}
+	 * User is a {@link https://docs.discord.com/developers/topics/teams | team}
 	 */
 	TeamPseudoUser = 1 << 10,
 	/**
@@ -180,7 +180,7 @@ export enum UserFlags {
 	 */
 	CertifiedModerator = 1 << 18,
 	/**
-	 * Bot uses only {@link https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction | HTTP interactions} and is shown in the online member list
+	 * Bot uses only {@link https://docs.discord.com/developers/interactions/receiving-and-responding#receiving-an-interaction | HTTP interactions} and is shown in the online member list
 	 */
 	BotHTTPInteractions = 1 << 19,
 	/**
@@ -225,7 +225,7 @@ export enum UserFlags {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
+ * @see {@link https://docs.discord.com/developers/resources/user#user-object-premium-types}
  */
 export enum UserPremiumType {
 	None,
@@ -235,7 +235,7 @@ export enum UserPremiumType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#connection-object}
+ * @see {@link https://docs.discord.com/developers/resources/user#connection-object}
  */
 export interface APIConnection {
 	/**
@@ -249,7 +249,7 @@ export interface APIConnection {
 	/**
 	 * The service of the connection
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#connection-object-services}
+	 * @see {@link https://docs.discord.com/developers/resources/user#connection-object-services}
 	 */
 	type: ConnectionService;
 	/**
@@ -259,7 +259,7 @@ export interface APIConnection {
 	/**
 	 * An array of partial server integrations
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/guild#integration-object}
+	 * @see {@link https://docs.discord.com/developers/resources/guild#integration-object}
 	 */
 	integrations?: Partial<APIGuildIntegration>[];
 	/**
@@ -281,7 +281,7 @@ export interface APIConnection {
 	/**
 	 * Visibility of this connection
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#connection-object-visibility-types}
+	 * @see {@link https://docs.discord.com/developers/resources/user#connection-object-visibility-types}
 	 */
 	visibility: ConnectionVisibility;
 }
@@ -331,7 +331,7 @@ export enum ConnectionVisibility {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure}
+ * @see {@link https://docs.discord.com/developers/resources/user#application-role-connection-object-application-role-connection-structure}
  */
 export interface APIApplicationRoleConnection {
 	/**
@@ -349,13 +349,13 @@ export interface APIApplicationRoleConnection {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#avatar-decoration-data-object}
+ * @see {@link https://docs.discord.com/developers/resources/user#avatar-decoration-data-object}
  */
 export interface APIAvatarDecorationData {
 	/**
 	 * The avatar decoration hash
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
+	 * @see {@link https://docs.discord.com/developers/reference#image-formatting}
 	 */
 	asset: string;
 	/**
@@ -367,7 +367,7 @@ export interface APIAvatarDecorationData {
 /**
  * The collectibles the user has, excluding Avatar Decorations and Profile Effects.
  *
- * @see {@link https://discord.com/developers/docs/resources/user#collectibles}
+ * @see {@link https://docs.discord.com/developers/resources/user#collectibles}
  */
 export interface APICollectibles {
 	/**
@@ -377,7 +377,7 @@ export interface APICollectibles {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#nameplate}
+ * @see {@link https://docs.discord.com/developers/resources/user#nameplate}
  */
 export interface APINameplateData {
 	/**
@@ -418,7 +418,7 @@ export enum NameplatePalette {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-primary-guild}
+ * @see {@link https://docs.discord.com/developers/resources/user#user-object-user-primary-guild}
  */
 export interface APIUserPrimaryGuild {
 	/**
@@ -437,7 +437,7 @@ export interface APIUserPrimaryGuild {
 	/**
 	 * The server tag badge hash
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-formatting}
+	 * @see {@link https://docs.discord.com/developers/reference#image-formatting}
 	 */
 	badge: string | null;
 }

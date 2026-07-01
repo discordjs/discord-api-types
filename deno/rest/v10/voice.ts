@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIVoiceRegion, APIVoiceState } from '../../payloads/v10/mod.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#list-voice-regions}
+ * @see {@link https://docs.discord.com/developers/resources/voice#list-voice-regions}
  */
 export type RESTGetAPIVoiceRegionsResult = APIVoiceRegion[];
 
@@ -12,17 +12,17 @@ export type RESTGetAPIVoiceRegionsResult = APIVoiceRegion[];
 export type GetAPIVoiceRegionsResult = RESTGetAPIVoiceRegionsResult;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#get-current-user-voice-state}
+ * @see {@link https://docs.discord.com/developers/resources/voice#get-current-user-voice-state}
  */
 export type RESTGetAPIGuildVoiceStateCurrentMemberResult = APIVoiceState;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#get-user-voice-state}
+ * @see {@link https://docs.discord.com/developers/resources/voice#get-user-voice-state}
  */
 export type RESTGetAPIGuildVoiceStateUserResult = APIVoiceState;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state}
+ * @see {@link https://docs.discord.com/developers/resources/voice#modify-current-user-voice-state}
  */
 export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 	/**
@@ -40,12 +40,12 @@ export interface RESTPatchAPIGuildVoiceStateCurrentMemberJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state}
+ * @see {@link https://docs.discord.com/developers/resources/voice#modify-current-user-voice-state}
  */
 export type RESTPatchAPIGuildVoiceStateCurrentMemberResult = undefined;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#modify-user-voice-state}
+ * @see {@link https://docs.discord.com/developers/resources/voice#modify-user-voice-state}
  */
 export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 	/**
@@ -59,6 +59,6 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#modify-user-voice-state}
+ * @see {@link https://docs.discord.com/developers/resources/voice#modify-user-voice-state}
  */
 export type RESTPatchAPIGuildVoiceStateUserResult = undefined;

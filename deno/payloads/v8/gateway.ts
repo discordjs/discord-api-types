@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/topics/gateway
+ * Types extracted from https://docs.discord.com/developers/topics/gateway
  */
 
 import type { Snowflake } from '../../globals.ts';
@@ -7,7 +7,7 @@ import type { APIEmoji } from './emoji.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/topics/gateway#get-gateway
+ * https://docs.discord.com/developers/topics/gateway#get-gateway
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -19,7 +19,7 @@ export interface APIGatewayInfo {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#get-gateway-bot
+ * https://docs.discord.com/developers/topics/gateway#get-gateway-bot
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -27,19 +27,19 @@ export interface APIGatewayBotInfo extends APIGatewayInfo {
 	/**
 	 * The recommended number of shards to use when connecting
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#sharding
+	 * See https://docs.discord.com/developers/topics/gateway#sharding
 	 */
 	shards: number;
 	/**
 	 * Information on the current session start limit
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#session-start-limit-object
+	 * See https://docs.discord.com/developers/topics/gateway#session-start-limit-object
 	 */
 	session_start_limit: APIGatewaySessionStartLimit;
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#session-start-limit-object
+ * https://docs.discord.com/developers/topics/gateway#session-start-limit-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -63,7 +63,7 @@ export interface APIGatewaySessionStartLimit {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#presence-update-presence-update-event-fields
+ * https://docs.discord.com/developers/topics/gateway#presence-update-presence-update-event-fields
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -74,7 +74,7 @@ export interface GatewayPresenceUpdate {
 	 * **The user object within this event can be partial, the only field which must be sent is the `id` field,
 	 * everything else is optional.**
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * See https://docs.discord.com/developers/resources/user#user-object
 	 */
 	user: Partial<APIUser> & Pick<APIUser, 'id'>;
 	/**
@@ -88,13 +88,13 @@ export interface GatewayPresenceUpdate {
 	/**
 	 * User's current activities
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object
+	 * See https://docs.discord.com/developers/topics/gateway#activity-object
 	 */
 	activities?: GatewayActivity[];
 	/**
 	 * User's platform-dependent status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#client-status-object
+	 * See https://docs.discord.com/developers/topics/gateway#client-status-object
 	 */
 	client_status?: GatewayPresenceClientStatus;
 }
@@ -114,7 +114,7 @@ export enum PresenceUpdateStatus {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#client-status-object
+ * https://docs.discord.com/developers/topics/gateway#client-status-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -134,7 +134,7 @@ export interface GatewayPresenceClientStatus {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-structure
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -150,7 +150,7 @@ export interface GatewayActivity {
 	/**
 	 * Activity type
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
+	 * See https://docs.discord.com/developers/topics/gateway#activity-object-activity-types
 	 */
 	type: ActivityType;
 	/**
@@ -182,26 +182,26 @@ export interface GatewayActivity {
 	/**
 	 * The emoji used for a custom status
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
+	 * See https://docs.discord.com/developers/topics/gateway#activity-object-activity-emoji
 	 */
 	emoji?: GatewayActivityEmoji;
 	session_id?: string;
 	/**
 	 * Information for the current party of the player
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
+	 * See https://docs.discord.com/developers/topics/gateway#activity-object-activity-party
 	 */
 	party?: GatewayActivityParty;
 	/**
 	 * Images for the presence and their hover texts
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
+	 * See https://docs.discord.com/developers/topics/gateway#activity-object-activity-assets
 	 */
 	assets?: GatewayActivityAssets;
 	/**
 	 * Secrets for Rich Presence joining and spectating
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
+	 * See https://docs.discord.com/developers/topics/gateway#activity-object-activity-secrets
 	 */
 	secrets?: GatewayActivitySecrets;
 	/**
@@ -211,7 +211,7 @@ export interface GatewayActivity {
 	/**
 	 * Activity flags `OR`d together, describes what the payload includes
 	 *
-	 * See https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
+	 * See https://docs.discord.com/developers/topics/gateway#activity-object-activity-flags
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
@@ -232,7 +232,7 @@ export enum ActivityPlatform {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -264,7 +264,7 @@ export enum ActivityType {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-timestamps
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-timestamps
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -280,14 +280,14 @@ export interface GatewayActivityTimestamps {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-emoji
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'animated' | 'id'>> & Pick<APIEmoji, 'name'>;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-party
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -303,7 +303,7 @@ export interface GatewayActivityParty {
 }
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-assets
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -312,14 +312,14 @@ export type GatewayActivityAssets = Partial<
 >;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-secrets
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type GatewayActivitySecrets = Partial<Record<'join' | 'match' | 'spectate', string>>;
 
 /**
- * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
+ * https://docs.discord.com/developers/topics/gateway#activity-object-activity-flags
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

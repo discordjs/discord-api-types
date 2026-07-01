@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/emoji
+ * Types extracted from https://docs.discord.com/developers/resources/emoji
  */
 
 import type { Snowflake } from '../../globals.ts';
@@ -26,7 +26,7 @@ export interface APIPartialEmoji {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object-emoji-structure}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#emoji-object-emoji-structure}
  */
 export interface APIEmoji extends APIPartialEmoji {
 	/**
@@ -52,7 +52,7 @@ export interface APIEmoji extends APIPartialEmoji {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#emoji-object-applicationowned-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#emoji-object-applicationowned-emoji}
  */
 export type APIApplicationEmoji = _NonNullableFields<Required<Pick<APIEmoji, 'animated' | 'id' | 'name' | 'user'>>> & {
 	/**

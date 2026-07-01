@@ -1,5 +1,5 @@
 /**
- * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes}
+ * @see {@link https://docs.discord.com/developers/topics/opcodes-and-status-codes#json-json-error-codes}
  */
 export enum RESTJSONErrorCodes {
 	GeneralError,
@@ -378,7 +378,7 @@ export const CannotSendMessagesToThisUserErrorCodes = [
 ] as const;
 
 /**
- * @see {@link https://discord.com/developers/docs/reference#locales}
+ * @see {@link https://docs.discord.com/developers/reference#locales}
  */
 export enum Locale {
 	Indonesian = 'id',

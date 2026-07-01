@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/application
+ * Types extracted from https://docs.discord.com/developers/resources/application
  */
 
 import type { Permissions, Snowflake } from '../../globals.ts';
@@ -8,7 +8,7 @@ import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/resources/application#application-object
+ * https://docs.discord.com/developers/resources/application#application-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -52,7 +52,7 @@ export interface APIApplication {
 	/**
 	 * Partial user object containing info on the owner of the application
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * See https://docs.discord.com/developers/resources/user#user-object
 	 */
 	owner?: APIUser;
 	/**
@@ -65,13 +65,13 @@ export interface APIApplication {
 	/**
 	 * The hexadecimal encoded key for verification in interactions and the GameSDK's GetTicket function
 	 *
-	 * See https://discord.com/developers/docs/game-sdk/applications#get-ticket
+	 * See https://docs.discord.com/developers/game-sdk/applications#get-ticket
 	 */
 	verify_key: string;
 	/**
 	 * The team this application belongs to
 	 *
-	 * See https://discord.com/developers/docs/topics/teams#data-models-team-object
+	 * See https://docs.discord.com/developers/topics/teams#data-models-team-object
 	 */
 	team: APITeam | null;
 	/**
@@ -93,7 +93,7 @@ export interface APIApplication {
 	/**
 	 * The application's public flags
 	 *
-	 * See https://discord.com/developers/docs/resources/application#application-object-application-flags
+	 * See https://docs.discord.com/developers/resources/application#application-object-application-flags
 	 */
 	flags: ApplicationFlags;
 	/**
@@ -116,7 +116,7 @@ export interface APIApplicationInstallParams {
 }
 
 /**
- * https://discord.com/developers/docs/resources/application#application-object-application-flags
+ * https://docs.discord.com/developers/resources/application#application-object-application-flags
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

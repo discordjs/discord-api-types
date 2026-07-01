@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/soundboard
+ * Types extracted from https://docs.discord.com/developers/resources/soundboard
  */
 
 import type { Snowflake } from '../../globals.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/soundboard#soundboard-sound-object}
+ * @see {@link https://docs.discord.com/developers/resources/soundboard#soundboard-sound-object}
  */
 export interface APISoundboardSound {
 	/**

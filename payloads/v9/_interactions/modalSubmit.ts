@@ -80,13 +80,13 @@ export type APIModalSubmissionComponent =
 	| ModalSubmitTextDisplayComponent;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object-modal-submit-data-structure}
  */
 export interface APIModalSubmission {
 	/**
 	 * Data for users, members, channels, and roles in the modal's auto-populated select menus
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure}
+	 * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object-resolved-data-structure}
 	 */
 	resolved?: APIInteractionDataResolved;
 	/**
@@ -100,17 +100,17 @@ export interface APIModalSubmission {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIModalSubmitInteraction = APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission> &
 	Required<Pick<APIBaseInteraction<InteractionType.ModalSubmit, APIModalSubmission>, 'data'>>;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIModalSubmitDMInteraction = APIDMInteractionWrapper<APIModalSubmitInteraction>;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIModalSubmitGuildInteraction = APIGuildInteractionWrapper<APIModalSubmitInteraction>;

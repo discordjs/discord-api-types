@@ -21,13 +21,13 @@ export type APIApplicationCommandAutocompleteInteraction = APIBaseInteraction<
 	>;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIApplicationCommandAutocompleteDMInteraction =
 	APIDMInteractionWrapper<APIApplicationCommandAutocompleteInteraction>;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIApplicationCommandAutocompleteGuildInteraction =
 	APIGuildInteractionWrapper<APIApplicationCommandAutocompleteInteraction>;

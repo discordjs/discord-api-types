@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/topics/oauth2
+ * Types extracted from https://docs.discord.com/developers/topics/oauth2
  */
 
 /**
@@ -11,48 +11,48 @@ export enum OAuth2Scopes {
 	 */
 	Bot = 'bot',
 	/**
-	 * Allows [/users/@me/connections](https://discord.com/developers/docs/resources/user#get-user-connections)
+	 * Allows [/users/@me/connections](https://docs.discord.com/developers/resources/user#get-user-connections)
 	 * to return linked third-party accounts
 	 *
-	 * See https://discord.com/developers/docs/resources/user#get-user-connections
+	 * See https://docs.discord.com/developers/resources/user#get-user-connections
 	 */
 	Connections = 'connections',
 	/**
-	 * Enables [/users/@me](https://discord.com/developers/docs/resources/user#get-current-user) to return an `email`
+	 * Enables [/users/@me](https://docs.discord.com/developers/resources/user#get-current-user) to return an `email`
 	 *
-	 * See https://discord.com/developers/docs/resources/user#get-current-user
+	 * See https://docs.discord.com/developers/resources/user#get-current-user
 	 */
 	Email = 'email',
 	/**
-	 * Allows [/users/@me](https://discord.com/developers/docs/resources/user#get-current-user) without `email`
+	 * Allows [/users/@me](https://docs.discord.com/developers/resources/user#get-current-user) without `email`
 	 *
-	 * See https://discord.com/developers/docs/resources/user#get-current-user
+	 * See https://docs.discord.com/developers/resources/user#get-current-user
 	 */
 	Identify = 'identify',
 	/**
-	 * Allows [/users/@me/guilds](https://discord.com/developers/docs/resources/user#get-current-user-guilds)
+	 * Allows [/users/@me/guilds](https://docs.discord.com/developers/resources/user#get-current-user-guilds)
 	 * to return basic information about all of a user's guilds
 	 *
-	 * See https://discord.com/developers/docs/resources/user#get-current-user-guilds
+	 * See https://docs.discord.com/developers/resources/user#get-current-user-guilds
 	 */
 	Guilds = 'guilds',
 	/**
-	 * Allows [/guilds/{guild.id}/members/{user.id}](https://discord.com/developers/docs/resources/guild#add-guild-member)
+	 * Allows [/guilds/{guild.id}/members/{user.id}](https://docs.discord.com/developers/resources/guild#add-guild-member)
 	 * to be used for joining users to a guild
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#add-guild-member
+	 * See https://docs.discord.com/developers/resources/guild#add-guild-member
 	 */
 	GuildsJoin = 'guilds.join',
 	/**
 	 * Allows /users/@me/guilds/{guild.id}/member to return a user's member information in a guild
 	 *
-	 * See https://discord.com/developers/docs/resources/guild#get-current-user-guild-member
+	 * See https://docs.discord.com/developers/resources/guild#get-current-user-guild-member
 	 */
 	GuildsMembersRead = 'guilds.members.read',
 	/**
 	 * Allows your app to join users to a group dm
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
+	 * See https://docs.discord.com/developers/resources/channel#group-dm-add-recipient
 	 */
 	GroupDMJoins = 'gdm.join',
 	/**
@@ -99,19 +99,19 @@ export enum OAuth2Scopes {
 	/**
 	 * Allows your app to update a user's activity - requires Discord approval (NOT REQUIRED FOR GAMESDK ACTIVITY MANAGER)
 	 *
-	 * See https://discord.com/developers/docs/game-sdk/activities
+	 * See https://docs.discord.com/developers/game-sdk/activities
 	 */
 	ActivitiesWrite = 'activities.write',
 	/**
 	 * Allows your app to use Application Commands in a guild
 	 *
-	 * See https://discord.com/developers/docs/interactions/application-commands
+	 * See https://docs.discord.com/developers/interactions/application-commands
 	 */
 	ApplicationsCommands = 'applications.commands',
 	/**
 	 * Allows your app to update its Application Commands via this bearer token - client credentials grant only
 	 *
-	 * See https://discord.com/developers/docs/interactions/application-commands
+	 * See https://docs.discord.com/developers/interactions/application-commands
 	 */
 	ApplicationsCommandsUpdate = 'applications.commands.update',
 }

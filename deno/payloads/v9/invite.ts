@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/invite
+ * Types extracted from https://docs.discord.com/developers/resources/invite
  */
 
 import type { APIApplication } from './application.ts';
@@ -29,7 +29,7 @@ export type APIInviteRole = Required<
 >;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#invite-object}
+ * @see {@link https://docs.discord.com/developers/resources/invite#invite-object}
  */
 export interface APIInvite {
 	/**
@@ -39,37 +39,37 @@ export interface APIInvite {
 	/**
 	 * The guild this invite is for
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-object}
+	 * @see {@link https://docs.discord.com/developers/resources/guild#guild-object}
 	 */
 	guild?: APIInviteGuild;
 	/**
 	 * The channel this invite is for
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#channel-object}
 	 */
 	channel: APIInviteChannel | null;
 	/**
 	 * The user who created the invite
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object}
 	 */
 	inviter?: APIUser;
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
+	 * @see {@link https://docs.discord.com/developers/resources/invite#invite-object-invite-target-types}
 	 */
 	target_type?: InviteTargetType;
 	/**
 	 * The user whose stream to display for this voice channel stream invite
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object}
 	 */
 	target_user?: APIUser;
 	/**
 	 * The embedded application to open for this voice channel embedded application invite
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object}
 	 */
 	target_application?: Partial<APIApplication>;
 	/**
@@ -110,14 +110,14 @@ export interface APIInvite {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-guild-invite-flags}
+ * @see {@link https://docs.discord.com/developers/resources/invite#invite-object-guild-invite-flags}
  */
 export enum InviteFlags {
 	IsGuestInvite = 1 << 0,
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-types}
+ * @see {@link https://docs.discord.com/developers/resources/invite#invite-object-invite-types}
  */
 export enum InviteType {
 	Guild,
@@ -126,7 +126,7 @@ export enum InviteType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
+ * @see {@link https://docs.discord.com/developers/resources/invite#invite-object-invite-target-types}
  */
 export enum InviteTargetType {
 	Stream = 1,
@@ -134,7 +134,7 @@ export enum InviteTargetType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#invite-metadata-object}
+ * @see {@link https://docs.discord.com/developers/resources/invite#invite-metadata-object}
  */
 export interface APIExtendedInvite extends APIInvite {
 	/**

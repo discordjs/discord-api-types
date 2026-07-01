@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIEntitlement, APISKU, APISubscription } from '../../v9.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#list-entitlements}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#list-entitlements}
  */
 export interface RESTGetAPIEntitlementsQuery {
 	/**
@@ -47,17 +47,17 @@ export interface RESTGetAPIEntitlementsQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#list-entitlements}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#list-entitlements}
  */
 export type RESTGetAPIEntitlementsResult = APIEntitlement[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#get-entitlement}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#get-entitlement}
  */
 export type RESTGetAPIEntitlementResult = APIEntitlement;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#create-test-entitlement}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#create-test-entitlement}
  */
 export interface RESTPostAPIEntitlementJSONBody {
 	/**
@@ -80,12 +80,12 @@ export interface RESTPostAPIEntitlementJSONBody {
 export type RESTPostAPIEntitlementBody = RESTPostAPIEntitlementJSONBody;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#create-test-entitlement}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#create-test-entitlement}
  */
 export type RESTPostAPIEntitlementResult = Partial<Omit<APIEntitlement, 'ends_at' | 'starts_at'>>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#create-test-entitlement}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#create-test-entitlement}
  */
 export enum EntitlementOwnerType {
 	Guild = 1,
@@ -93,22 +93,22 @@ export enum EntitlementOwnerType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#delete-test-entitlement}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#delete-test-entitlement}
  */
 export type RESTDeleteAPIEntitlementResult = undefined;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/sku#list-skus}
+ * @see {@link https://docs.discord.com/developers/resources/sku#list-skus}
  */
 export type RESTGetAPISKUsResult = APISKU[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/entitlement#consume-an-entitlement}
+ * @see {@link https://docs.discord.com/developers/resources/entitlement#consume-an-entitlement}
  */
 export type RESTPostAPIEntitlementConsumeResult = undefined;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/subscription#query-string-params}
+ * @see {@link https://docs.discord.com/developers/resources/subscription#query-string-params}
  */
 export interface RESTGetAPISKUSubscriptionsQuery {
 	/**
@@ -132,11 +132,11 @@ export interface RESTGetAPISKUSubscriptionsQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/subscription#list-sku-subscriptions}
+ * @see {@link https://docs.discord.com/developers/resources/subscription#list-sku-subscriptions}
  */
 export type RESTGetAPISKUSubscriptionsResult = APISubscription[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/subscription#get-sku-subscription}
+ * @see {@link https://docs.discord.com/developers/resources/subscription#get-sku-subscription}
  */
 export type RESTGetAPISKUSubscriptionResult = APISubscription;

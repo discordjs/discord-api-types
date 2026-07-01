@@ -1,7 +1,7 @@
 import type { Snowflake } from '../../globals.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-structure}
+ * @see {@link https://docs.discord.com/developers/monetization/entitlements#entitlement-object-entitlement-structure}
  */
 export interface APIEntitlement {
 	/**
@@ -47,7 +47,7 @@ export interface APIEntitlement {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types}
+ * @see {@link https://docs.discord.com/developers/monetization/entitlements#entitlement-object-entitlement-types}
  */
 export enum EntitlementType {
 	/**
@@ -85,7 +85,7 @@ export enum EntitlementType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-structure}
+ * @see {@link https://docs.discord.com/developers/monetization/skus#sku-object-sku-structure}
  */
 export interface APISKU {
 	/**
@@ -117,7 +117,7 @@ export interface APISKU {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags}
+ * @see {@link https://docs.discord.com/developers/monetization/skus#sku-object-sku-flags}
  */
 export enum SKUFlags {
 	/**
@@ -136,7 +136,7 @@ export enum SKUFlags {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/sku#sku-object-sku-types}
+ * @see {@link https://docs.discord.com/developers/resources/sku#sku-object-sku-types}
  */
 export enum SKUType {
 	/**
@@ -158,7 +158,7 @@ export enum SKUType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/subscription#subscription-object}
+ * @see {@link https://docs.discord.com/developers/resources/subscription#subscription-object}
  */
 export interface APISubscription {
 	/**
@@ -204,7 +204,7 @@ export interface APISubscription {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/subscription#subscription-statuses}
+ * @see {@link https://docs.discord.com/developers/resources/subscription#subscription-statuses}
  */
 export enum SubscriptionStatus {
 	/**

@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/audit-log
+ * Types extracted from https://docs.discord.com/developers/resources/audit-log
  */
 
 import type { Snowflake } from '../../globals';
@@ -41,43 +41,43 @@ import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure}
+ * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-object-audit-log-structure}
  */
 export interface APIAuditLog {
 	/**
 	 * List of application commands found in the audit log
 	 *
-	 * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object}
+	 * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-object}
 	 */
 	application_commands: APIApplicationCommand[];
 	/**
 	 * Webhooks found in the audit log
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object}
+	 * @see {@link https://docs.discord.com/developers/resources/webhook#webhook-object}
 	 */
 	webhooks: APIWebhook[];
 	/**
 	 * Users found in the audit log
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object}
 	 */
 	users: APIUser[];
 	/**
 	 * Audit log entries
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object}
+	 * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object}
 	 */
 	audit_log_entries: APIAuditLogEntry[];
 	/**
 	 * List of auto moderation rules referenced in the audit log
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object}
+	 * @see {@link https://docs.discord.com/developers/resources/auto-moderation#auto-moderation-rule-object}
 	 */
 	auto_moderation_rules: APIAutoModerationRule[];
 	/**
 	 * Partial integration objects
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/guild#integration-object}
+	 * @see {@link https://docs.discord.com/developers/resources/guild#integration-object}
 	 */
 	integrations: APIGuildIntegration[];
 	/**
@@ -85,19 +85,19 @@ export interface APIAuditLog {
 	 *
 	 * Threads referenced in THREAD_CREATE and THREAD_UPDATE events are included in the threads map, since archived threads might not be kept in memory by clients.
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#channel-object}
 	 */
 	threads: APIChannel[];
 	/**
 	 * The guild scheduled events in the audit log
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object}
+	 * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object}
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure}
+ * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-entry-structure}
  */
 export interface APIAuditLogEntry {
 	/**
@@ -107,7 +107,7 @@ export interface APIAuditLogEntry {
 	/**
 	 * Changes made to the `target_id`
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-change-object}
+	 * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-change-object}
 	 */
 	changes?: APIAuditLogChange[];
 	/**
@@ -123,13 +123,13 @@ export interface APIAuditLogEntry {
 	/**
 	 * Type of action that occurred
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events}
+	 * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-events}
 	 */
 	action_type: AuditLogEvent;
 	/**
 	 * Additional info for certain action types
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info}
+	 * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-optional-audit-entry-info}
 	 */
 	options?: APIAuditLogOptions;
 	/**
@@ -139,7 +139,7 @@ export interface APIAuditLogEntry {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events}
+ * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-events}
  */
 export enum AuditLogEvent {
 	GuildUpdate = 1,
@@ -231,7 +231,7 @@ export enum AuditLogEvent {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info}
+ * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-optional-audit-entry-info}
  */
 export interface APIAuditLogOptions {
 	/**
@@ -375,7 +375,7 @@ export enum AuditLogOptionsType {
 export type AuditLogRuleTriggerType = `${AutoModerationRuleTriggerType}`;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure}
+ * @see {@link https://docs.discord.com/developers/resources/audit-log#audit-log-change-object-audit-log-change-structure}
  */
 export type APIAuditLogChange =
 	| APIAuditLogChangeKey$Add

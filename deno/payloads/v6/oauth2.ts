@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://discord.com/developers/docs/topics/oauth2
+ * Types extracted from https://docs.discord.com/developers/topics/oauth2
  */
 
 import type { APITeam } from './teams.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/topics/oauth2#get-current-application-information-response-structure
+ * https://docs.discord.com/developers/topics/oauth2#get-current-application-information-response-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */

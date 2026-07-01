@@ -9,12 +9,12 @@ import type {
 } from '../../payloads/v10/mod.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#get-current-bot-application-information}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#get-current-bot-application-information}
  */
 export type RESTGetAPIOAuth2CurrentApplicationResult = APIApplication;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#get-current-authorization-information}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#get-current-authorization-information}
  */
 export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 	/**
@@ -36,7 +36,7 @@ export interface RESTGetAPIOAuth2CurrentAuthorizationResult {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#authorization-code-grant}
  */
 export interface RESTOAuth2AuthorizationQuery {
 	response_type: 'code';
@@ -48,7 +48,7 @@ export interface RESTOAuth2AuthorizationQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-token-revocation-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-token-revocation-example}
  */
 export interface RESTPostOAuth2TokenRevocationQuery {
 	token: string;
@@ -56,7 +56,7 @@ export interface RESTPostOAuth2TokenRevocationQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-redirect-url-example}
  */
 export interface RESTPostOAuth2AuthorizationQueryResult {
 	code: string;
@@ -72,7 +72,7 @@ export type RESTOAuth2AuthorizationQueryResult = RESTPostOAuth2AuthorizationQuer
  * @remarks
  * This endpoint requires either HTTP Basic authentication using `client_id:client_secret`,
  * or the `client_id` and `client_secret` must be provided in the form body.
- * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-redirect-url-example}
  */
 export type RESTPostOAuth2AccessTokenURLEncodedData = RESTOAuth2TokenOptionalClientCredentials & {
 	grant_type: 'authorization_code';
@@ -85,7 +85,7 @@ export type RESTOAuth2TokenOptionalClientCredentials =
 	| { client_id?: never; client_secret?: never };
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-access-token-response}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-access-token-response}
  */
 export interface RESTPostOAuth2AccessTokenResult {
 	access_token: string;
@@ -99,7 +99,7 @@ export interface RESTPostOAuth2AccessTokenResult {
  * @remarks
  * This endpoint requires either HTTP Basic authentication using `client_id:client_secret`,
  * or the `client_id` and `client_secret` must be provided in the form body.
- * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-refresh-token-exchange-example}
  */
 export type RESTPostOAuth2RefreshTokenURLEncodedData = RESTOAuth2TokenOptionalClientCredentials & {
 	grant_type: 'refresh_token';
@@ -109,7 +109,7 @@ export type RESTPostOAuth2RefreshTokenURLEncodedData = RESTOAuth2TokenOptionalCl
 export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#implicit-grant}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#implicit-grant}
  */
 export interface RESTOAuth2ImplicitAuthorizationQuery {
 	response_type: 'token';
@@ -121,12 +121,12 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#implicit-grant-redirect-url-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#implicit-grant-redirect-url-example}
  */
 export type RESTOAuth2ImplicitAuthorizationURLFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#client-credentials-grant}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#client-credentials-grant}
  */
 export interface RESTPostOAuth2ClientCredentialsURLEncodedData {
 	grant_type: 'client_credentials';
@@ -136,7 +136,7 @@ export interface RESTPostOAuth2ClientCredentialsURLEncodedData {
 export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationURLFragmentResult;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow-bot-auth-parameters}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#bot-authorization-flow-bot-auth-parameters}
  */
 export interface RESTOAuth2BotAuthorizationQuery {
 	/**
@@ -154,7 +154,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 	/**
 	 * The permissions you're requesting
 	 *
-	 * @see {@link https://discord.com/developers/docs/topics/permissions}
+	 * @see {@link https://docs.discord.com/developers/topics/permissions}
 	 */
 	permissions?: Permissions;
 	/**
@@ -174,7 +174,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#advanced-bot-authorization}
  */
 export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 	client_id: Snowflake;
@@ -205,7 +205,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example}
  */
 export interface RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult {
 	access_token: string;
@@ -217,7 +217,7 @@ export interface RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/oauth2#webhooks-webhook-token-response-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#webhooks-webhook-token-response-example}
  */
 export interface RESTPostOAuth2AccessTokenWithBotAndWebhookIncomingScopeResult {
 	access_token: string;

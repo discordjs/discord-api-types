@@ -68,7 +68,7 @@ export interface RPCAPIMessage extends APIBaseMessageNoChannel, APIMessageMentio
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#commands-and-events-rpc-commands}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#commands-and-events-rpc-commands}
  */
 export enum RPCCommands {
 	/**
@@ -263,7 +263,7 @@ export enum RPCCommands {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#authorize-authorize-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#authorize-authorize-response-structure}
  */
 export interface RPCAuthorizeResultData {
 	/**
@@ -273,7 +273,7 @@ export interface RPCAuthorizeResultData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#authorize-authorize-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#authorize-authorize-argument-structure}
  */
 export interface RPCAuthorizeArgs {
 	/**
@@ -291,7 +291,7 @@ export interface RPCAuthorizeArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#authenticate-authenticate-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#authenticate-authenticate-argument-structure}
  */
 export interface RPCAuthenticateArgs {
 	/**
@@ -301,7 +301,7 @@ export interface RPCAuthenticateArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#authenticate-authenticate-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#authenticate-authenticate-response-structure}
  */
 export interface RPCAuthenticateResultData {
 	/**
@@ -325,7 +325,7 @@ export interface RPCAuthenticateResultData {
 export interface RPCGetGuildsArgs {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getguilds-get-guilds-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getguilds-get-guilds-response-structure}
  */
 export interface RPCGetGuildsResultData {
 	/**
@@ -335,7 +335,7 @@ export interface RPCGetGuildsResultData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getguild-get-guild-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getguild-get-guild-argument-structure}
  */
 export interface RPCGetGuildArgs {
 	/**
@@ -349,7 +349,7 @@ export interface RPCGetGuildArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getguild-get-guild-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getguild-get-guild-response-structure}
  */
 export interface RPCGetGuildResultData {
 	/**
@@ -373,7 +373,7 @@ export interface RPCGetGuildResultData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getchannel}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getchannel}
  */
 export interface RPCGetChannelArgs {
 	/**
@@ -383,7 +383,7 @@ export interface RPCGetChannelArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getchannel-get-channel-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getchannel-get-channel-response-structure}
  */
 export interface RPCGetChannelResultData {
 	/**
@@ -429,7 +429,7 @@ export interface RPCGetChannelResultData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getchannels-get-channels-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getchannels-get-channels-argument-structure}
  */
 export interface RPCGetChannelsArgs {
 	/**
@@ -439,7 +439,7 @@ export interface RPCGetChannelsArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getchannels-get-channels-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getchannels-get-channels-response-structure}
  */
 export interface RPCGetChannelsResultData {
 	/**
@@ -449,7 +449,7 @@ export interface RPCGetChannelsResultData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#setuservoicesettings-pan-object}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#setuservoicesettings-pan-object}
  */
 export interface RPCVoicePan {
 	/**
@@ -463,7 +463,7 @@ export interface RPCVoicePan {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#setuservoicesettings}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#setuservoicesettings}
  * @remarks Discord only supports a single modifier of voice settings at a time over RPC. If an app changes voice settings, it will lock voice settings so that other apps connected simultaneously lose the ability to change voice settings. Settings reset to what they were before being changed after the controlling app disconnects. When an app that has previously set voice settings connects, the client will swap to that app's configured voice settings and lock voice settings again.
  */
 export interface RPCSetUserVoiceSettingsArgs {
@@ -488,12 +488,12 @@ export interface RPCSetUserVoiceSettingsArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#setuservoicesettings-set-user-voice-settings-argument-and-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#setuservoicesettings-set-user-voice-settings-argument-and-response-structure}
  */
 export type RPCSetUserVoiceSettingsResultData = Required<RPCSetUserVoiceSettingsArgs>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#selectvoicechannel-select-voice-channel-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#selectvoicechannel-select-voice-channel-argument-structure}
  * @remarks When trying to join the user to a voice channel, you will receive a {@link RPCErrorCodes.SelectVoiceForceRequired} error coded response if the user is already in a voice channel. The `force` parameter should only be specified in response to the case where a user is already in a voice channel and they have approved to be moved by your app to a new voice channel.
  */
 export interface RPCSelectVoiceChannelArgs {
@@ -516,17 +516,17 @@ export interface RPCSelectVoiceChannelArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#selectvoicechannel}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#selectvoicechannel}
  */
 export type RPCSelectVoiceChannelResultData = RPCGetChannelResultData | null;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getselectedvoicechannel}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getselectedvoicechannel}
  */
 export type RPCGetSelectedVoiceChannelResultData = RPCGetChannelResultData | null;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getselectedvoicechannel}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getselectedvoicechannel}
  */
 export interface RPCGetSelectedVoiceChannelArgs {}
 
@@ -546,7 +546,7 @@ export interface RPCGetUserArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#getvoicesettings-get-voice-settings-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#getvoicesettings-get-voice-settings-response-structure}
  */
 export interface RPCGetVoiceSettingsResultData {
 	/**
@@ -594,12 +594,12 @@ export interface RPCGetVoiceSettingsResultData {
 export interface RPCGetVoiceSettingsArgs {}
 
 /**
- * Returns the {@link https://discord.com/developers/docs/topics/rpc#getchannel | Get Channel} response, or `null` if none.
+ * Returns the {@link https://docs.discord.com/developers/topics/rpc#getchannel | Get Channel} response, or `null` if none.
  */
 export type RPCSelectTextChannelResultData = RPCGetChannelResultData | null;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#selecttextchannel-select-text-channel-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#selecttextchannel-select-text-channel-argument-structure}
  */
 export interface RPCSelectTextChannelArgs {
 	/**
@@ -615,7 +615,7 @@ export interface RPCSelectTextChannelArgs {
 export interface RPCSetActivityResultData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#setactivity-set-activity-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#setactivity-set-activity-argument-structure}
  */
 export interface RPCSetActivityArgs {
 	/**
@@ -629,18 +629,18 @@ export interface RPCSetActivityArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure}
  */
 export type RPCSetVoiceSettingsResultData = RPCGetVoiceSettingsResultData;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure}
  * @remarks Discord only supports a single modifier of voice settings at a time over RPC. If an app changes voice settings, it will lock voice settings so that other apps connected simultaneously lose the ability to change voice settings. Settings reset to what they were before being changed after the controlling app disconnects. When an app that has previously set voice settings connects, the client will swap to that app's configured voice settings and lock voice settings again.
  */
 export type RPCSetVoiceSettingsArgs = RPCGetVoiceSettingsResultData;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#subscribe-subscribe-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#subscribe-subscribe-response-structure}
  */
 export interface RPCSubscribeResultData {
 	/**
@@ -650,7 +650,7 @@ export interface RPCSubscribeResultData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#subscribe}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#subscribe}
  */
 export type RPCSubscribeArgs =
 	| RPCSubscribeActivityInviteArgs
@@ -683,7 +683,7 @@ export type RPCSubscribeArgs =
 	| RPCSubscribeVoiceStateUpdateArgs;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#unsubscribe-unsubscribe-response-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#unsubscribe-unsubscribe-response-structure}
  */
 export interface RPCUnsubscribeResultData {
 	/**
@@ -693,7 +693,7 @@ export interface RPCUnsubscribeResultData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#unsubscribe}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#unsubscribe}
  */
 export type RPCUnsubscribeArgs = RPCSubscribeArgs;
 
@@ -774,7 +774,7 @@ export interface RPCBrowserHandoffArgs {}
 export interface RPCCloseActivityJoinRequestResultData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#closeactivityrequest-close-activity-request-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#closeactivityrequest-close-activity-request-argument-structure}
  */
 export interface RPCCloseActivityJoinRequestArgs {
 	/**
@@ -1061,7 +1061,7 @@ export interface RPCOverlayArgs {}
 export interface RPCSendActivityJoinInviteResultData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#sendactivityjoininvite-send-activity-join-invite-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#sendactivityjoininvite-send-activity-join-invite-argument-structure}
  */
 export interface RPCSendActivityJoinInviteArgs {
 	/**
@@ -1073,7 +1073,7 @@ export interface RPCSendActivityJoinInviteArgs {
 export type RPCSetCertifiedDevicesResultData = null;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#setcertifieddevices-set-certified-devices-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#setcertifieddevices-set-certified-devices-argument-structure}
  */
 export interface RPCSetCertifiedDevicesArgs {
 	/**
@@ -1147,7 +1147,7 @@ export interface RPCValidateApplicationResultData {}
 export interface RPCValidateApplicationArgs {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#commands-and-events-rpc-events}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#commands-and-events-rpc-events}
  */
 export enum RPCEvents {
 	/**
@@ -1191,7 +1191,7 @@ export enum RPCEvents {
 	 */
 	MessageUpdate = 'MESSAGE_UPDATE',
 	/**
-	 * This event requires the `rpc.notifications.read` {@link https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes | OAuth2 scope}.
+	 * This event requires the `rpc.notifications.read` {@link https://docs.discord.com/developers/topics/oauth2#shared-resources-oauth2-scopes | OAuth2 scope}.
 	 */
 	NotificationCreate = 'NOTIFICATION_CREATE',
 	/**
@@ -1271,7 +1271,7 @@ export type RPCSubscribeGameSpectateArgs = Record<string, unknown>;
 export type RPCSubscribeGuildCreateArgs = Record<string, unknown>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#guildstatus-guild-status-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#guildstatus-guild-status-argument-structure}
  */
 export interface RPCSubscribeGuildStatusArgs {
 	/**
@@ -1281,7 +1281,7 @@ export interface RPCSubscribeGuildStatusArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-message-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#messagecreatemessageupdatemessagedelete-message-argument-structure}
  */
 export interface RPCSubscribeMessageCreateArgs {
 	/**
@@ -1291,7 +1291,7 @@ export interface RPCSubscribeMessageCreateArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-message-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#messagecreatemessageupdatemessagedelete-message-argument-structure}
  */
 export interface RPCSubscribeMessageDeleteArgs {
 	/**
@@ -1301,7 +1301,7 @@ export interface RPCSubscribeMessageDeleteArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-message-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#messagecreatemessageupdatemessagedelete-message-argument-structure}
  */
 export interface RPCSubscribeMessageUpdateArgs {
 	/**
@@ -1328,7 +1328,7 @@ export type RPCSubscribeOverlayUpdateArgs = Record<string, unknown>;
 export type RPCSubscribeRelationshipUpdateArgs = Record<string, unknown>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#speakingstartspeakingstop-speaking-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#speakingstartspeakingstop-speaking-argument-structure}
  */
 export interface RPCSubscribeSpeakingStartArgs {
 	/**
@@ -1338,7 +1338,7 @@ export interface RPCSubscribeSpeakingStartArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#speakingstartspeakingstop-speaking-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#speakingstartspeakingstop-speaking-argument-structure}
  */
 export interface RPCSubscribeSpeakingStopArgs {
 	/**
@@ -1362,7 +1362,7 @@ export type RPCSubscribeVoiceSettingsUpdateArgs = Record<string, unknown>;
 export type RPCSubscribeVoiceSettingsUpdate2Args = Record<string, unknown>;
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-voice-state-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-voice-state-argument-structure}
  */
 export interface RPCSubscribeVoiceStateCreateArgs {
 	/**
@@ -1372,7 +1372,7 @@ export interface RPCSubscribeVoiceStateCreateArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-voice-state-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-voice-state-argument-structure}
  */
 export interface RPCSubscribeVoiceStateDeleteArgs {
 	/**
@@ -1382,7 +1382,7 @@ export interface RPCSubscribeVoiceStateDeleteArgs {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-voice-state-argument-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-voice-state-argument-structure}
  */
 export interface RPCSubscribeVoiceStateUpdateArgs {
 	/**
@@ -1397,17 +1397,17 @@ export interface RPCSubscribeVoiceStateUpdateArgs {
 export interface RPCActivityInviteDispatchData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#activityjoin-activity-join-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#activityjoin-activity-join-dispatch-data-structure}
  */
 export interface RPCActivityJoinDispatchData {
 	/**
-	 * The {@link https://discord.com/developers/docs/developer-tools/game-sdk#activitysecrets-struct | `join_secret`} for the given invite
+	 * The {@link https://docs.discord.com/developers/developer-tools/game-sdk#activitysecrets-struct | `join_secret`} for the given invite
 	 */
 	secret: string;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#activityjoinrequest-activity-join-request-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#activityjoinrequest-activity-join-request-data-structure}
  */
 export interface RPCActivityJoinRequestDispatchData {
 	/**
@@ -1417,17 +1417,17 @@ export interface RPCActivityJoinRequestDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#activityspectate-activity-spectate-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#activityspectate-activity-spectate-dispatch-data-structure}
  */
 export interface RPCActivitySpectateDispatchData {
 	/**
-	 * The {@link https://discord.com/developers/docs/developer-tools/game-sdk#activitysecrets-struct | `spectate_secret`} for the given invite
+	 * The {@link https://docs.discord.com/developers/developer-tools/game-sdk#activitysecrets-struct | `spectate_secret`} for the given invite
 	 */
 	secret: string;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#channelcreate-channel-create-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#channelcreate-channel-create-dispatch-data-structure}
  */
 export interface RPCChannelCreateDispatchData {
 	/**
@@ -1460,7 +1460,7 @@ export interface RPCEntitlementCreateDispatchData {}
 export interface RPCEntitlementDeleteDispatchData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#error-error-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#error-error-data-structure}
  */
 export interface RPCErrorDispatchData {
 	/**
@@ -1484,7 +1484,7 @@ export interface RPCGameJoinDispatchData {}
 export interface RPCGameSpectateDispatchData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#guildcreate-guild-create-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#guildcreate-guild-create-dispatch-data-structure}
  */
 export interface RPCGuildCreateDispatchData {
 	/**
@@ -1498,7 +1498,7 @@ export interface RPCGuildCreateDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#guildstatus-guild-status-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#guildstatus-guild-status-dispatch-data-structure}
  */
 export interface RPCGuildStatusDispatchData {
 	/**
@@ -1514,7 +1514,7 @@ export interface RPCGuildStatusDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-example-message-dispatch-payload}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#messagecreatemessageupdatemessagedelete-example-message-dispatch-payload}
  */
 export interface RPCMessageCreateDispatchData {
 	/**
@@ -1528,7 +1528,7 @@ export interface RPCMessageCreateDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-example-message-dispatch-payload}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#messagecreatemessageupdatemessagedelete-example-message-dispatch-payload}
  */
 export interface RPCMessageDeleteDispatchData {
 	/**
@@ -1542,7 +1542,7 @@ export interface RPCMessageDeleteDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#messagecreatemessageupdatemessagedelete-example-message-dispatch-payload}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#messagecreatemessageupdatemessagedelete-example-message-dispatch-payload}
  */
 export interface RPCMessageUpdateDispatchData {
 	/**
@@ -1556,7 +1556,7 @@ export interface RPCMessageUpdateDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#notificationcreate-notification-create-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#notificationcreate-notification-create-dispatch-data-structure}
  */
 export interface RPCNotificationCreateDispatchData {
 	/**
@@ -1592,7 +1592,7 @@ export interface RPCOverlayDispatchData {}
 export interface RPCOverlayUpdateDispatchData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#ready-rpc-server-configuration-object}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#ready-rpc-server-configuration-object}
  */
 export interface RPCServerConfiguration {
 	/**
@@ -1610,7 +1610,7 @@ export interface RPCServerConfiguration {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#ready-ready-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#ready-ready-dispatch-data-structure}
  */
 export interface RPCReadyDispatchData {
 	/**
@@ -1633,7 +1633,7 @@ export interface RPCReadyDispatchData {
 export interface RPCRelationshipUpdateDispatchData {}
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#speakingstartspeakingstop-speaking-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#speakingstartspeakingstop-speaking-dispatch-data-structure}
  */
 export interface RPCSpeakingStartDispatchData {
 	/**
@@ -1648,7 +1648,7 @@ export interface RPCSpeakingStartDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#speakingstartspeakingstop-speaking-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#speakingstartspeakingstop-speaking-dispatch-data-structure}
  */
 export interface RPCSpeakingStopDispatchData {
 	/**
@@ -1663,7 +1663,7 @@ export interface RPCSpeakingStopDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voicechannelselect-voice-channel-select-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voicechannelselect-voice-channel-select-dispatch-data-structure}
  */
 export interface RPCVoiceChannelSelectDispatchData {
 	/**
@@ -1677,7 +1677,7 @@ export interface RPCVoiceChannelSelectDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voiceconnectionstatus-voice-connection-status-dispatch-data-structure}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voiceconnectionstatus-voice-connection-status-dispatch-data-structure}
  */
 export interface RPCVoiceConnectionStatusDispatchData<State extends VoiceConnectionStates = VoiceConnectionStates> {
 	/**
@@ -1731,7 +1731,7 @@ export interface RPCVoiceSettingsUpdate2DispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-example-voice-state-dispatch-payload}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-example-voice-state-dispatch-payload}
  */
 export interface RPCVoiceStateCreateDispatchData {
 	/**
@@ -1761,7 +1761,7 @@ export interface RPCVoiceStateCreateDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-example-voice-state-dispatch-payload}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-example-voice-state-dispatch-payload}
  */
 export interface RPCVoiceStateDeleteDispatchData {
 	/**
@@ -1791,7 +1791,7 @@ export interface RPCVoiceStateDeleteDispatchData {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-example-voice-state-dispatch-payload}
+ * @see {@link https://docs.discord.com/developers/topics/rpc#voicestatecreatevoicestateupdatevoicestatedelete-example-voice-state-dispatch-payload}
  */
 export interface RPCVoiceStateUpdateDispatchData {
 	/**

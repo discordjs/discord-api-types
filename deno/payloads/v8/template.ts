@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/guild-template
+ * Types extracted from https://docs.discord.com/developers/resources/guild-template
  */
 
 import type { Snowflake } from '../../globals.ts';
@@ -7,7 +7,7 @@ import type { RESTPostAPIGuildsJSONBody } from '../../rest/v8/mod.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://discord.com/developers/docs/resources/guild-template#template-object
+ * https://docs.discord.com/developers/resources/guild-template#template-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -35,7 +35,7 @@ export interface APITemplate {
 	/**
 	 * The user who created the template
 	 *
-	 * See https://discord.com/developers/docs/resources/user#user-object
+	 * See https://docs.discord.com/developers/resources/user#user-object
 	 */
 	creator: APIUser;
 	/**

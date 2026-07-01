@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIInvite } from '../../payloads/v9/mod.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#get-invite}
+ * @see {@link https://docs.discord.com/developers/resources/invite#get-invite}
  */
 export interface RESTGetAPIInviteQuery {
 	/**
@@ -25,7 +25,7 @@ export interface RESTGetAPIInviteQuery {
 export type RESTGetAPIInviteResult = APIInvite;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#delete-invite}
+ * @see {@link https://docs.discord.com/developers/resources/invite#delete-invite}
  */
 export type RESTDeleteAPIInviteResult = APIInvite;
 
