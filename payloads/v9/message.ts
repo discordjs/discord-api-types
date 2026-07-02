@@ -1893,8 +1893,8 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 	/**
 	 * Allowed file types that can be uploaded; max 10
 	 *
-	 * If only dot-prefixed extensions is specified, due to mobile limitation, you must include `.jpg` for image uploads,
-	 * and both `.mp4` and `.mov` for video uploads
+	 * If only dot-prefixed extensions are specified, you must also include `.jpg` for image uploads
+	 * and both `.mp4` and `.mov` for video uploads because of mobile platform limitations.
 	 */
 	file_types?: FileUploadType[];
 	/**
