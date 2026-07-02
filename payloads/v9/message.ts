@@ -5,7 +5,12 @@ import type { _NonNullableFields } from '../../utils/internals';
 import type { APIApplication } from './application';
 import type { APIChannel, APIThreadChannel, APIThreadMember, ChannelType } from './channel';
 import type { APIPartialEmoji } from './emoji';
-import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions';
+import type {
+	APIInteractionDataResolved,
+	APIMessageInteraction,
+	APIMessageInteractionMetadata,
+	FileUploadType,
+} from './interactions';
 import type { APIRole } from './permissions';
 import type { APIPoll } from './poll';
 import type { APISticker, APIStickerItem } from './sticker';
@@ -1885,6 +1890,13 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 	 * Maximum number of items that can be uploaded (defaults to 1); max 10
 	 */
 	max_values?: number;
+	/**
+	 * Allowed file types that can be uploaded; max 10
+	 *
+	 * If only dot-prefixed extensions is specified, due to mobile limitation, you must include `.jpg` for image uploads,
+	 * and both `.mp4` and `.mov` for video uploads
+	 */
+	file_types?: FileUploadType[];
 	/**
 	 * Whether the file upload requires files to be uploaded before submitting the modal
 	 *
