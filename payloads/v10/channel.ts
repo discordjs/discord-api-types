@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/channel
+ * Types extracted from https://docs.discord.com/developers/resources/channel
  */
 
 import type { Permissions, Snowflake } from '../../globals';
@@ -15,7 +15,7 @@ export interface APIBasePartialChannel {
 	/**
 	 * The type of the channel
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#channel-object-channel-types}
 	 */
 	type: ChannelType;
 }
@@ -127,7 +127,7 @@ export interface APIGuildChannel<T extends GuildChannelType = GuildChannelType> 
 	/**
 	 * Explicit permission overwrites for members and roles
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#overwrite-object}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#overwrite-object}
 	 */
 	permission_overwrites?: APIOverwrite[];
 	/**
@@ -178,13 +178,13 @@ export interface APIVoiceChannelBase<T extends GuildChannelType>
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/voice#voice-region-object}
+	 * @see {@link https://docs.discord.com/developers/resources/voice#voice-region-object}
 	 */
 	rtc_region?: string | null;
 	/**
 	 * The camera video quality mode of the voice or stage channel, `1` when not present
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes}
+	 * @see {@link https://docs.discord.com/developers/resources/channel#channel-object-video-quality-modes}
 	 */
 	video_quality_mode?: VideoQualityMode;
 }
@@ -197,7 +197,7 @@ export interface APIDMChannelBase<T extends ChannelType> extends APITextBasedCha
 	/**
 	 * The recipients of the DM
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object}
 	 */
 	recipients?: APIUser[];
 }
@@ -283,7 +283,7 @@ export type APIPrivateThreadChannel = APIThreadChannel<ChannelType.PrivateThread
 export type APIAnnouncementThreadChannel = APIThreadChannel<ChannelType.AnnouncementThread>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#forum-tag-object-forum-tag-structure}
  */
 export interface APIGuildForumTag {
 	/**
@@ -309,7 +309,7 @@ export interface APIGuildForumTag {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#default-reaction-object-default-reaction-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#default-reaction-object-default-reaction-structure}
  */
 export interface APIGuildForumDefaultReactionEmoji {
 	/**
@@ -323,7 +323,7 @@ export interface APIGuildForumDefaultReactionEmoji {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-types}
+ * @see {@link https://docs.discord.com/developers/resources/channel/#channel-object-sort-order-types}
  */
 export enum SortOrderType {
 	/**
@@ -337,7 +337,7 @@ export enum SortOrderType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel/#channel-object-forum-layout-types}
+ * @see {@link https://docs.discord.com/developers/resources/channel/#channel-object-forum-layout-types}
  */
 export enum ForumLayoutType {
 	/**
@@ -411,7 +411,7 @@ export interface APIGuildForumChannel extends APIThreadOnlyChannel<ChannelType.G
 export type APIGuildMediaChannel = APIThreadOnlyChannel<ChannelType.GuildMedia>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#channel-object-channel-structure}
  */
 export type APIChannel =
 	| APIAnnouncementThreadChannel
@@ -428,7 +428,7 @@ export type APIChannel =
 	| APITextChannel;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
+ * @see {@link https://docs.discord.com/developers/resources/channel#channel-object-channel-types}
  */
 export enum ChannelType {
 	/**
@@ -536,7 +536,7 @@ export enum VideoQualityMode {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#followed-channel-object}
+ * @see {@link https://docs.discord.com/developers/resources/channel#followed-channel-object}
  */
 export interface APIFollowedChannel {
 	/**
@@ -550,7 +550,7 @@ export interface APIFollowedChannel {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#overwrite-object-overwrite-structure}
  */
 export interface APIOverwrite {
 	/**
@@ -564,14 +564,14 @@ export interface APIOverwrite {
 	/**
 	 * Permission bit set
 	 *
-	 * @see {@link https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags}
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags}
 	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	allow: Permissions;
 	/**
 	 * Permission bit set
 	 *
-	 * @see {@link https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags}
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags}
 	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	deny: Permissions;
@@ -583,7 +583,7 @@ export enum OverwriteType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#thread-metadata-object-thread-metadata-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#thread-metadata-object-thread-metadata-structure}
  */
 export interface APIThreadMetadata {
 	/**
@@ -620,7 +620,7 @@ export enum ThreadAutoArchiveDuration {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#thread-member-object-thread-member-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#thread-member-object-thread-member-structure}
  */
 export interface APIThreadMember {
 	/**
@@ -686,7 +686,7 @@ export interface APIThreadList {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-flags}
+ * @see {@link https://docs.discord.com/developers/resources/channel#channel-object-channel-flags}
  */
 export enum ChannelFlags {
 	/**

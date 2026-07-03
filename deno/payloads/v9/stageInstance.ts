@@ -2,7 +2,7 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object}
+ * @see {@link https://docs.discord.com/developers/resources/stage-instance#stage-instance-object}
  */
 export interface APIStageInstance {
 	/**
@@ -24,7 +24,7 @@ export interface APIStageInstance {
 	/**
 	 * The privacy level of the stage instance
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level}
+	 * @see {@link https://docs.discord.com/developers/resources/stage-instance#stage-instance-object-privacy-level}
 	 */
 	privacy_level: StageInstancePrivacyLevel;
 	/**
@@ -41,7 +41,7 @@ export interface APIStageInstance {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level}
+ * @see {@link https://docs.discord.com/developers/resources/stage-instance#stage-instance-object-privacy-level}
  */
 export enum StageInstancePrivacyLevel {
 	/**
@@ -58,7 +58,7 @@ export enum StageInstancePrivacyLevel {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/invite#invite-stage-instance-object-invite-stage-instance-structure}
+ * @see {@link https://docs.discord.com/developers/resources/invite#invite-stage-instance-object-invite-stage-instance-structure}
  * @deprecated
  * {@link https://github.com/discord/discord-api-docs/pull/4479 | discord-api-docs#4479}
  */
@@ -78,7 +78,7 @@ export interface APIInviteStageInstance {
 	/**
 	 * The members speaking in the stage
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-structure}
+	 * @see {@link https://docs.discord.com/developers/resources/guild#guild-member-object-guild-member-structure}
 	 */
 	members: APIGuildMember[];
 }

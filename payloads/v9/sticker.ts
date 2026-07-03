@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/sticker
+ * Types extracted from https://docs.discord.com/developers/resources/sticker
  */
 
 import type { Snowflake } from '../../globals';
 import type { APIUser } from './user';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object}
+ * @see {@link https://docs.discord.com/developers/resources/sticker#sticker-object}
  */
 export interface APISticker {
 	/**
@@ -39,13 +39,13 @@ export interface APISticker {
 	/**
 	 * Type of sticker
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types}
+	 * @see {@link https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-types}
 	 */
 	type: StickerType;
 	/**
 	 * Type of sticker format
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types}
+	 * @see {@link https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-format-types}
 	 */
 	format_type: StickerFormatType;
 	/**
@@ -67,7 +67,7 @@ export interface APISticker {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types}
+ * @see {@link https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-types}
  */
 export enum StickerType {
 	/**
@@ -81,7 +81,7 @@ export enum StickerType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types}
+ * @see {@link https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-format-types}
  */
 export enum StickerFormatType {
 	PNG = 1,
@@ -91,12 +91,12 @@ export enum StickerFormatType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-item-object}
+ * @see {@link https://docs.discord.com/developers/resources/sticker#sticker-item-object}
  */
 export type APIStickerItem = Pick<APISticker, 'format_type' | 'id' | 'name'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-pack-object}
+ * @see {@link https://docs.discord.com/developers/resources/sticker#sticker-pack-object}
  */
 export interface APIStickerPack {
 	/**

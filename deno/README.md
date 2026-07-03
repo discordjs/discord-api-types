@@ -10,7 +10,7 @@
 [![GitHub Sponsors](https://img.shields.io/badge/patreon-donate-brightgreen.svg?label=Sponsor%20through%20GitHub&logo=github&colorB=F96854&link=https://github.com/sponsors/vladfrangu)](https://github.com/sponsors/vladfrangu)
 [![Powered by Vercel](https://raw.githubusercontent.com/discordjs/discord-api-types/main/website/static/powered-by-vercel.svg)](https://vercel.com?utm_source=discordjs&utm_campaign=oss)
 
-Simple type definitions for the [Discord API](https://discord.com/developers/docs/intro).
+Simple type definitions for the [Discord API](https://docs.discord.com/developers/intro).
 
 ## Installation
 

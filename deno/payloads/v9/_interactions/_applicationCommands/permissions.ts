@@ -1,7 +1,7 @@
 import type { Snowflake } from '../../../../globals.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-guild-application-command-permissions-structure}
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-permissions-object-guild-application-command-permissions-structure}
  */
 export interface APIGuildApplicationCommandPermissions {
 	/**
@@ -23,7 +23,7 @@ export interface APIGuildApplicationCommandPermissions {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-structure}
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-permissions-object-application-command-permissions-structure}
  */
 export interface APIApplicationCommandPermission {
 	/**
@@ -41,7 +41,7 @@ export interface APIApplicationCommandPermission {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permission-type}
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-permissions-object-application-command-permission-type}
  */
 export enum ApplicationCommandPermissionType {
 	Role = 1,
@@ -50,7 +50,7 @@ export enum ApplicationCommandPermissionType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-constants}
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-permissions-object-application-command-permissions-constants}
  */
 export const APIApplicationCommandPermissionsConstant = {
 	// eslint-disable-next-line unicorn/prefer-native-coercion-functions

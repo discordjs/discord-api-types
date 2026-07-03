@@ -1,18 +1,18 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/voice
+ * Types extracted from https://docs.discord.com/developers/resources/voice
  */
 
 import type { Snowflake } from '../../globals.ts';
 import type { APIGuildMember } from './guild.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
+ * @see {@link https://docs.discord.com/developers/resources/voice#voice-state-object}
  * @deprecated This is deprecated, use {@link APIVoiceState}
  */
 export type GatewayVoiceState = APIVoiceState;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
+ * @see {@link https://docs.discord.com/developers/resources/voice#voice-state-object}
  */
 export interface APIBaseVoiceState {
 	/**
@@ -27,7 +27,7 @@ export interface APIBaseVoiceState {
 	 * The guild member this voice state is for
 	 *
 	 * @remarks The member field will have `joined_at` set to `null` if the member was invited as a guest.
-	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object}
+	 * @see {@link https://docs.discord.com/developers/resources/guild#guild-member-object}
 	 */
 	member?: APIGuildMember;
 	/**
@@ -69,7 +69,7 @@ export interface APIBaseVoiceState {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#voice-state-object}
+ * @see {@link https://docs.discord.com/developers/resources/voice#voice-state-object}
  */
 export interface APIVoiceState extends APIBaseVoiceState {
 	/**
@@ -79,7 +79,7 @@ export interface APIVoiceState extends APIBaseVoiceState {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/voice#voice-region-object}
+ * @see {@link https://docs.discord.com/developers/resources/voice#voice-region-object}
  */
 export interface APIVoiceRegion {
 	/**

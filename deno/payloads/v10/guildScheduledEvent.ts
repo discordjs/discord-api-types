@@ -74,7 +74,7 @@ export interface APIGuildScheduledEventBase<Type extends GuildScheduledEventEnti
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-structure}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-structure}
  */
 export interface APIGuildScheduledEventRecurrenceRule {
 	/**
@@ -122,7 +122,7 @@ export interface APIGuildScheduledEventRecurrenceRule {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-frequency}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-frequency}
  */
 export enum GuildScheduledEventRecurrenceRuleFrequency {
 	Yearly,
@@ -132,7 +132,7 @@ export enum GuildScheduledEventRecurrenceRuleFrequency {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-weekday}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-weekday}
  */
 export enum GuildScheduledEventRecurrenceRuleWeekday {
 	Monday,
@@ -145,7 +145,7 @@ export enum GuildScheduledEventRecurrenceRuleWeekday {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-month}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-month}
  */
 export enum GuildScheduledEventRecurrenceRuleMonth {
 	January = 1,
@@ -163,7 +163,7 @@ export enum GuildScheduledEventRecurrenceRuleMonth {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-nweekday-structure}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-nweekday-structure}
  */
 export interface APIGuildScheduledEventRecurrenceRuleNWeekday {
 	/**
@@ -197,7 +197,7 @@ export interface APIExternalGuildScheduledEvent extends APIGuildScheduledEventBa
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-structure}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-structure}
  */
 export type APIGuildScheduledEvent =
 	| APIExternalGuildScheduledEvent
@@ -205,7 +205,7 @@ export type APIGuildScheduledEvent =
 	| APIVoiceGuildScheduledEvent;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata}
  */
 export interface APIGuildScheduledEventEntityMetadata {
 	/**
@@ -215,7 +215,7 @@ export interface APIGuildScheduledEventEntityMetadata {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types}
  */
 export enum GuildScheduledEventEntityType {
 	StageInstance = 1,
@@ -224,7 +224,7 @@ export enum GuildScheduledEventEntityType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-status}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-status}
  */
 export enum GuildScheduledEventStatus {
 	Scheduled = 1,
@@ -234,7 +234,7 @@ export enum GuildScheduledEventStatus {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-privacy-level}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-privacy-level}
  */
 export enum GuildScheduledEventPrivacyLevel {
 	/**
@@ -244,7 +244,7 @@ export enum GuildScheduledEventPrivacyLevel {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure}
+ * @see {@link https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-user-object-guild-scheduled-event-user-structure}
  */
 export interface APIGuildScheduledEventUser {
 	/**

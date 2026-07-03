@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://discord.com/developers/docs/resources/poll
+ * Types extracted from https://docs.discord.com/developers/resources/poll
  */
 
 import type { APIPartialEmoji } from './emoji';
@@ -27,7 +27,7 @@ export interface APIPollDefaults {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-object-poll-object-structure}
+ * @see {@link https://docs.discord.com/developers/resources/poll#poll-object-poll-object-structure}
  */
 export interface APIPoll extends APIBasePoll, APIPollDefaults {
 	/**
@@ -45,7 +45,7 @@ export interface APIPoll extends APIBasePoll, APIPollDefaults {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#layout-type}
+ * @see {@link https://docs.discord.com/developers/resources/poll#layout-type}
  */
 export enum PollLayoutType {
 	/**
@@ -55,7 +55,7 @@ export enum PollLayoutType {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-media-object-poll-media-object-structure}
+ * @see {@link https://docs.discord.com/developers/resources/poll#poll-media-object-poll-media-object-structure}
  */
 export interface APIPollMedia {
 	/**
@@ -78,7 +78,7 @@ export interface APIBasePollAnswer {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-answer-object-poll-answer-object-structure}
+ * @see {@link https://docs.discord.com/developers/resources/poll#poll-answer-object-poll-answer-object-structure}
  */
 export interface APIPollAnswer extends APIBasePollAnswer {
 	/**
@@ -88,7 +88,7 @@ export interface APIPollAnswer extends APIBasePollAnswer {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-results-object-poll-results-object-structure}
+ * @see {@link https://docs.discord.com/developers/resources/poll#poll-results-object-poll-results-object-structure}
  */
 export interface APIPollResults {
 	/**
@@ -102,7 +102,7 @@ export interface APIPollResults {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/poll#poll-results-object-poll-answer-count-object-structure}
+ * @see {@link https://docs.discord.com/developers/resources/poll#poll-results-object-poll-answer-count-object-structure}
  */
 export interface APIPollAnswerCount {
 	/**

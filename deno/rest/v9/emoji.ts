@@ -2,17 +2,17 @@ import type { Snowflake } from '../../globals.ts';
 import type { APIApplicationEmoji, APIEmoji } from '../../payloads/v9/mod.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#list-guild-emojis}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#list-guild-emojis}
  */
 export type RESTGetAPIGuildEmojisResult = APIEmoji[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#get-guild-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#get-guild-emoji}
  */
 export type RESTGetAPIGuildEmojiResult = APIEmoji;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#create-guild-emoji-json-params}
  */
 export interface RESTPostAPIGuildEmojiJSONBody {
 	/**
@@ -22,7 +22,7 @@ export interface RESTPostAPIGuildEmojiJSONBody {
 	/**
 	 * The 128x128 emoji image
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-data}
+	 * @see {@link https://docs.discord.com/developers/reference#image-data}
 	 */
 	image: string;
 	/**
@@ -32,12 +32,12 @@ export interface RESTPostAPIGuildEmojiJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#create-guild-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#create-guild-emoji}
  */
 export type RESTPostAPIGuildEmojiResult = APIEmoji;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#modify-guild-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#modify-guild-emoji}
  */
 export interface RESTPatchAPIGuildEmojiJSONBody {
 	/**
@@ -51,48 +51,48 @@ export interface RESTPatchAPIGuildEmojiJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#modify-guild-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#modify-guild-emoji}
  */
 export type RESTPatchAPIGuildEmojiResult = APIEmoji;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#delete-guild-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#delete-guild-emoji}
  */
 export type RESTDeleteAPIGuildEmojiResult = undefined;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#list-application-emojis}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#list-application-emojis}
  */
 export interface RESTGetAPIApplicationEmojisResult {
 	items: APIApplicationEmoji[];
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#get-application-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#get-application-emoji}
  */
 export type RESTGetAPIApplicationEmojiResult = APIApplicationEmoji;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#create-application-emoji-json-params}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#create-application-emoji-json-params}
  */
 export type RESTPostAPIApplicationEmojiJSONBody = Pick<RESTPostAPIGuildEmojiJSONBody, 'image' | 'name'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#create-application-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#create-application-emoji}
  */
 export type RESTPostAPIApplicationEmojiResult = APIApplicationEmoji;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#modify-application-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#modify-application-emoji}
  */
 export type RESTPatchAPIApplicationEmojiJSONBody = Pick<RESTPatchAPIGuildEmojiJSONBody, 'name'>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#modify-application-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#modify-application-emoji}
  */
 export type RESTPatchAPIApplicationEmojiResult = APIApplicationEmoji;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/emoji#delete-application-emoji}
+ * @see {@link https://docs.discord.com/developers/resources/emoji#delete-application-emoji}
  */
 export type RESTDeleteAPIApplicationEmojiResult = undefined;

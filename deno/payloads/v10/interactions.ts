@@ -29,7 +29,7 @@ export type * from './_interactions/ping.ts';
 export * from './_interactions/responses.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIInteraction =
 	| APIApplicationCommandAutocompleteInteraction
@@ -39,7 +39,7 @@ export type APIInteraction =
 	| APIPingInteraction;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIDMInteraction =
 	| APIApplicationCommandAutocompleteDMInteraction
@@ -48,7 +48,7 @@ export type APIDMInteraction =
 	| APIModalSubmitDMInteraction;
 
 /**
- * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
+ * @see {@link https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object}
  */
 export type APIGuildInteraction =
 	| APIApplicationCommandAutocompleteGuildInteraction

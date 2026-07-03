@@ -2,12 +2,12 @@ import type { APIGuild, APITemplate } from '../../payloads/v10/index';
 import type { _StrictPartial } from '../../utils/internals';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#get-guild-template}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#get-guild-template}
  */
 export type RESTGetAPITemplateResult = APITemplate;
 
 /**
- * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @see {@link https://docs.discord.com/developers/change-log#guild-create-deprecation}
  * @deprecated
  */
 export interface RESTPostAPITemplateCreateGuildJSONBody {
@@ -18,24 +18,24 @@ export interface RESTPostAPITemplateCreateGuildJSONBody {
 	/**
 	 * base64 1024x1024 png/jpeg image for the guild icon
 	 *
-	 * @see {@link https://discord.com/developers/docs/reference#image-data}
+	 * @see {@link https://docs.discord.com/developers/reference#image-data}
 	 */
 	icon?: string | undefined;
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/change-log#guild-create-deprecation}
+ * @see {@link https://docs.discord.com/developers/change-log#guild-create-deprecation}
  * @deprecated
  */
 export type RESTPostAPITemplateCreateGuildResult = APIGuild;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#get-guild-templates}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#get-guild-templates}
  */
 export type RESTGetAPIGuildTemplatesResult = APITemplate[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#create-guild-template}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#create-guild-template}
  */
 export interface RESTPostAPIGuildTemplatesJSONBody {
 	/**
@@ -49,26 +49,26 @@ export interface RESTPostAPIGuildTemplatesJSONBody {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#create-guild-template}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#create-guild-template}
  */
 export type RESTPostAPIGuildTemplatesResult = APITemplate;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#sync-guild-template}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#sync-guild-template}
  */
 export type RESTPutAPIGuildTemplateSyncResult = APITemplate;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#modify-guild-template}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#modify-guild-template}
  */
 export type RESTPatchAPIGuildTemplateJSONBody = _StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#modify-guild-template}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#modify-guild-template}
  */
 export type RESTPatchAPIGuildTemplateResult = APITemplate;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild-template#delete-guild-template}
+ * @see {@link https://docs.discord.com/developers/resources/guild-template#delete-guild-template}
  */
 export type RESTDeleteAPIGuildTemplateResult = APITemplate;
