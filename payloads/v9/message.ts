@@ -959,7 +959,7 @@ export interface APIAttachment {
 	 */
 	ephemeral?: boolean;
 	/**
-	 * the duration of the audio or video file
+	 * The duration of the audio or video file
 	 */
 	duration_secs?: number;
 	/**

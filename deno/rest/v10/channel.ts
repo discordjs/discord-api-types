@@ -287,7 +287,7 @@ export interface RESTAPIAttachment {
 	 */
 	description?: string | undefined;
 	/**
-	 * the duration of the audio or video file (required for voice messages)
+	 * The duration of the audio or video file (required for voice messages)
 	 */
 	duration_secs?: number | undefined;
 	/**

@@ -137,7 +137,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 */
 	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
-	 * metadata for the attachments
+	 * Metadata for the attachments
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**

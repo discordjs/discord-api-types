@@ -137,7 +137,7 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	 */
 	components?: APIMessageTopLevelComponent[] | undefined;
 	/**
-	 * metadata for the attachments
+	 * Metadata for the attachments
 	 */
 	attachments?: RESTAPIAttachment[] | undefined;
 	/**
@@ -268,7 +268,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = _AddUndefinedToPossibl
 	>
 > & {
 	/**
-	 * attached files to keep and their metadata
+	 * Attached files to keep and their metadata
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
