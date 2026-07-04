@@ -271,19 +271,19 @@ export type APIMessageReferenceSend = RESTAPIMessageReference;
  */
 export interface RESTAPIAttachment {
 	/**
-	 * attachment id, for new attachments this must match the `n` in `files[n]`
+	 * Attachment id, for new attachments this must match the `n` in `files[n]`
 	 */
 	id: Snowflake | number;
 	/**
-	 * name of file attached
+	 * Name of file attached
 	 */
 	filename?: string | undefined;
 	/**
-	 * the title of the file
+	 * The title of the file
 	 */
 	title?: string | undefined;
 	/**
-	 * description (alt text) for the file (max 1024 characters)
+	 * Description (alt text) for the file (max 1024 characters)
 	 */
 	description?: string | undefined;
 	/**
@@ -291,11 +291,11 @@ export interface RESTAPIAttachment {
 	 */
 	duration_secs?: number | undefined;
 	/**
-	 * base64 encoded bytearray representing a sampled waveform (required for voice messages)
+	 * Base64 encoded bytearray representing a sampled waveform (required for voice messages)
 	 */
 	waveform?: string | undefined;
 	/**
-	 * whether the attachment should be marked as a spoiler and blurred until clicked, this sets the `IS_SPOILER` attachment flag
+	 * Whether the attachment should be marked as a spoiler and blurred until clicked, this sets the `IS_SPOILER` attachment flag
 	 */
 	is_spoiler?: boolean | undefined;
 }
