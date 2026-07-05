@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/invite
+ * Types extracted from https://discord.com/developers/docs/resources/invite
  */
 
 import type { APIApplication } from './application';
@@ -25,7 +25,7 @@ export type APIInviteGuild = Pick<
 >;
 
 /**
- * https://docs.discord.com/developers/resources/invite#invite-object
+ * https://discord.com/developers/docs/resources/invite#invite-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -37,37 +37,37 @@ export interface APIInvite {
 	/**
 	 * The guild this invite is for
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object
+	 * See https://discord.com/developers/docs/resources/guild#guild-object
 	 */
 	guild?: APIInviteGuild;
 	/**
 	 * The channel this invite is for
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#channel-object
+	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
 	channel: Required<APIPartialChannel> | null;
 	/**
 	 * The user who created the invite
 	 *
-	 * See https://docs.discord.com/developers/resources/user#user-object
+	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	inviter?: APIUser;
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * See https://docs.discord.com/developers/resources/invite#invite-object-target-user-types
+	 * See https://discord.com/developers/docs/resources/invite#invite-object-target-user-types
 	 */
 	target_type?: InviteTargetType;
 	/**
 	 * The user whose stream to display for this voice channel stream invite
 	 *
-	 * See https://docs.discord.com/developers/resources/user#user-object
+	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	target_user?: APIUser;
 	/**
 	 * The embedded application to open for this voice channel embedded application invite
 	 *
-	 * See https://docs.discord.com/developers/topics/oauth2#application
+	 * See https://discord.com/developers/docs/topics/oauth2#application
 	 */
 	target_application?: Partial<APIApplication>;
 	/**
@@ -93,7 +93,7 @@ export interface APIInvite {
 }
 
 /**
- * https://docs.discord.com/developers/resources/invite#invite-object-invite-target-types
+ * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -103,7 +103,7 @@ export enum InviteTargetType {
 }
 
 /**
- * https://docs.discord.com/developers/resources/invite#invite-metadata-object
+ * https://discord.com/developers/docs/resources/invite#invite-metadata-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

@@ -1,11 +1,11 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/user
+ * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
 import type { APIGuildIntegration } from './guild.ts';
 
 /**
- * https://docs.discord.com/developers/resources/user#user-object
+ * https://discord.com/developers/docs/resources/user#user-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -26,7 +26,7 @@ export interface APIUser {
 }
 
 /**
- * https://docs.discord.com/developers/resources/user#user-object-user-flags
+ * https://discord.com/developers/docs/resources/user#user-object-user-flags
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -48,7 +48,7 @@ export enum UserFlags {
 }
 
 /**
- * https://docs.discord.com/developers/resources/user#user-object-premium-types
+ * https://discord.com/developers/docs/resources/user#user-object-premium-types
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -59,7 +59,7 @@ export enum UserPremiumType {
 }
 
 /**
- * https://docs.discord.com/developers/resources/user#connection-object
+ * https://discord.com/developers/docs/resources/user#connection-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */

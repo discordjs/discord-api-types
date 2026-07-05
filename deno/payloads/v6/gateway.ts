@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://docs.discord.com/developers/topics/gateway
+ * Types extracted from https://discord.com/developers/docs/topics/gateway
  */
 
 import type { APIEmoji } from './emoji.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://docs.discord.com/developers/topics/gateway#get-gateway
+ * https://discord.com/developers/docs/topics/gateway#get-gateway
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -15,7 +15,7 @@ export interface APIGatewayInfo {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#get-gateway-bot
+ * https://discord.com/developers/docs/topics/gateway#get-gateway-bot
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -25,7 +25,7 @@ export interface APIGatewayBotInfo extends APIGatewayInfo {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#session-start-limit-object
+ * https://discord.com/developers/docs/topics/gateway#session-start-limit-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -36,7 +36,7 @@ export interface APIGatewaySessionStartLimit {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#presence-update-presence-update-event-fields
+ * https://discord.com/developers/docs/topics/gateway#presence-update-presence-update-event-fields
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -66,14 +66,14 @@ export enum PresenceUpdateStatus {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#client-status-object
+ * https://discord.com/developers/docs/topics/gateway#client-status-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayPresenceClientStatus = Partial<Record<'desktop' | 'mobile' | 'web', PresenceUpdateStatus>>;
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object
+ * https://discord.com/developers/docs/topics/gateway#activity-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -95,7 +95,7 @@ export interface GatewayActivity {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object-activity-types
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-types
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -109,7 +109,7 @@ export enum ActivityType {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object-activity-timestamps
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-timestamps
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -119,14 +119,14 @@ export interface GatewayActivityTimestamps {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object-activity-emoji
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-emoji
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayActivityEmoji = Partial<Pick<APIEmoji, 'animated' | 'name'>> & Pick<APIEmoji, 'id'>;
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object-activity-party
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-party
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -136,7 +136,7 @@ export interface GatewayActivityParty {
 }
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object-activity-assets
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-assets
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -145,14 +145,14 @@ export type GatewayActivityAssets = Partial<
 >;
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object-activity-secrets
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-secrets
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
 export type GatewayActivitySecrets = Partial<Record<'join' | 'match' | 'spectate', string>>;
 
 /**
- * https://docs.discord.com/developers/topics/gateway#activity-object-activity-flags
+ * https://discord.com/developers/docs/topics/gateway#activity-object-activity-flags
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */

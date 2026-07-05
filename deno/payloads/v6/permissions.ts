@@ -1,9 +1,9 @@
 /**
- * Types extracted from https://docs.discord.com/developers/topics/permissions
+ * Types extracted from https://discord.com/developers/docs/topics/permissions
  */
 
 /**
- * https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags
+ * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
  *
  * These flags are exported as `BigInt`s and NOT numbers. For most of them, you can
  * convert them in a number by wrapping it in `Number()`, however be careful as any
@@ -54,7 +54,7 @@ export const PermissionFlagsBits = {
 Object.freeze(PermissionFlagsBits);
 
 /**
- * https://docs.discord.com/developers/topics/permissions#role-object
+ * https://discord.com/developers/docs/topics/permissions#role-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */

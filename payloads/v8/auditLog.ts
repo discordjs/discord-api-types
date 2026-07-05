@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/audit-log
+ * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
 import type { Snowflake } from '../../globals';
@@ -24,7 +24,7 @@ import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-object-audit-log-structure
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -32,37 +32,37 @@ export interface APIAuditLog {
 	/**
 	 * Webhooks found in the audit log
 	 *
-	 * See https://docs.discord.com/developers/resources/webhook#webhook-object
+	 * See https://discord.com/developers/docs/resources/webhook#webhook-object
 	 */
 	webhooks: APIWebhook[];
 	/**
 	 * Users found in the audit log
 	 *
-	 * See https://docs.discord.com/developers/resources/user#user-object
+	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	users: APIUser[];
 	/**
 	 * Audit log entries
 	 *
-	 * See https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object
 	 */
 	audit_log_entries: APIAuditLogEntry[];
 	/**
 	 * Partial integration objects
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#integration-object
+	 * See https://discord.com/developers/docs/resources/guild#integration-object
 	 */
 	integrations: APIGuildIntegration[];
 	/**
 	 * The guild scheduled events in the audit log
 	 *
-	 * See https://docs.discord.com/developers/resources/guild-scheduled-event#guild-scheduled-event-object
+	 * See https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
 	 */
 	guild_scheduled_events: APIGuildScheduledEvent[];
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -74,7 +74,7 @@ export interface APIAuditLogEntry {
 	/**
 	 * Changes made to the `target_id`
 	 *
-	 * See https://docs.discord.com/developers/resources/audit-log#audit-log-change-object
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-change-object
 	 */
 	changes?: APIAuditLogChange[];
 	/**
@@ -90,13 +90,13 @@ export interface APIAuditLogEntry {
 	/**
 	 * Type of action that occurred
 	 *
-	 * See https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-events
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
 	 */
 	action_type: AuditLogEvent;
 	/**
 	 * Additional info for certain action types
 	 *
-	 * See https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
+	 * See https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
 	 */
 	options?: APIAuditLogOptions;
 	/**
@@ -106,7 +106,7 @@ export interface APIAuditLogEntry {
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-events
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -168,7 +168,7 @@ export enum AuditLogEvent {
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -266,7 +266,7 @@ export enum AuditLogOptionsType {
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-change-object-audit-log-change-structure
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://docs.discord.com/developers/topics/teams
+ * Types extracted from https://discord.com/developers/docs/topics/teams
  */
 
 import type { Snowflake } from '../../globals.ts';
 import type { APIUser } from './user.ts';
 
 /**
- * https://docs.discord.com/developers/topics/teams#data-models-team-object
+ * https://discord.com/developers/docs/topics/teams#data-models-team-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -34,7 +34,7 @@ export interface APITeam {
 }
 
 /**
- * https://docs.discord.com/developers/topics/teams#data-models-team-members-object
+ * https://discord.com/developers/docs/topics/teams#data-models-team-members-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -42,7 +42,7 @@ export interface APITeamMember {
 	/**
 	 * The user's membership state on the team
 	 *
-	 * See https://docs.discord.com/developers/topics/teams#data-models-membership-state-enum
+	 * See https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
 	 */
 	membership_state: TeamMemberMembershipState;
 	/**
@@ -56,13 +56,13 @@ export interface APITeamMember {
 	/**
 	 * The avatar, discriminator, id, and username of the user
 	 *
-	 * See https://docs.discord.com/developers/resources/user#user-object
+	 * See https://discord.com/developers/docs/resources/user#user-object
 	 */
 	user: APIUser;
 }
 
 /**
- * https://docs.discord.com/developers/topics/teams#data-models-membership-state-enum
+ * https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

@@ -27,14 +27,14 @@ export interface APIChannelPatchOverwrite extends RESTPutAPIChannelPermissionJSO
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-channel
+ * https://discord.com/developers/docs/resources/channel#get-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIChannelResult = APIChannel;
 
 /**
- * https://docs.discord.com/developers/resources/channel#modify-channel
+ * https://discord.com/developers/docs/resources/channel#modify-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -106,33 +106,33 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * Voice region id for the voice or stage channel, automatic when set to `null`
 	 *
-	 * See https://docs.discord.com/developers/resources/voice#voice-region-object
+	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	rtc_region?: string | null | undefined;
 	/**
 	 * The camera video quality mode of the voice channel
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#channel-object-video-quality-modes
+	 * See https://discord.com/developers/docs/resources/channel#channel-object-video-quality-modes
 	 */
 	video_quality_mode?: VideoQualityMode | null | undefined;
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#modify-channel
+ * https://discord.com/developers/docs/resources/channel#modify-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIChannelResult = APIChannel;
 
 /**
- * https://docs.discord.com/developers/resources/channel#deleteclose-channel
+ * https://discord.com/developers/docs/resources/channel#deleteclose-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelResult = APIChannel;
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-channel-messages
+ * https://discord.com/developers/docs/resources/channel#get-channel-messages
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -158,21 +158,21 @@ export interface RESTGetAPIChannelMessagesQuery {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-channel-messages
+ * https://discord.com/developers/docs/resources/channel#get-channel-messages
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIChannelMessagesResult = APIMessage[];
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-channel-message
+ * https://discord.com/developers/docs/resources/channel#get-channel-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIChannelMessageResult = APIMessage;
 
 /**
- * https://docs.discord.com/developers/resources/channel#message-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -189,7 +189,7 @@ export type APIMessageReferenceSend = _AddUndefinedToPossiblyUndefinedProperties
 	};
 
 /**
- * https://docs.discord.com/developers/resources/channel#create-message
+ * https://discord.com/developers/docs/resources/channel#create-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -209,13 +209,13 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
 	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Embedded `rich` content
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 *
 	 * @deprecated Use `embeds` instead
 	 */
@@ -223,25 +223,25 @@ export interface RESTPostAPIChannelMessageJSONBody {
 	/**
 	 * Allowed mentions for a message
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#allowed-mentions-object
+	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
 	 * Include to make your message a reply
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#message-object-message-reference-structure
+	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
 	 */
 	message_reference?: APIMessageReferenceSend | undefined;
 	/**
 	 * The components to include with the message
 	 *
-	 * See https://docs.discord.com/developers/interactions/message-components#component-object
+	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | undefined;
 	/**
 	 * IDs of up to 3 stickers in the server to send in the message
 	 *
-	 * See https://docs.discord.com/developers/resources/sticker#sticker-object
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object
 	 */
 	sticker_ids?: [Snowflake, Snowflake, Snowflake] | [Snowflake, Snowflake] | [Snowflake] | undefined;
 	/**
@@ -255,7 +255,7 @@ export interface RESTPostAPIChannelMessageJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#create-message
+ * https://discord.com/developers/docs/resources/channel#create-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -269,42 +269,42 @@ export type RESTPostAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPostAPIChannelMessageJSONBody);
 
 /**
- * https://docs.discord.com/developers/resources/channel#create-message
+ * https://discord.com/developers/docs/resources/channel#create-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelMessageResult = APIMessage;
 
 /**
- * https://docs.discord.com/developers/resources/channel#crosspost-message
+ * https://discord.com/developers/docs/resources/channel#crosspost-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelMessageCrosspostResult = APIMessage;
 
 /**
- * https://docs.discord.com/developers/resources/channel#create-reaction
+ * https://discord.com/developers/docs/resources/channel#create-reaction
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIChannelMessageReactionResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#delete-own-reaction
+ * https://discord.com/developers/docs/resources/channel#delete-own-reaction
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelMessageOwnReaction = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#delete-user-reaction
+ * https://discord.com/developers/docs/resources/channel#delete-user-reaction
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelMessageUserReactionResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-reactions
+ * https://discord.com/developers/docs/resources/channel#get-reactions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -322,28 +322,28 @@ export interface RESTGetAPIChannelMessageReactionUsersQuery {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-reactions
+ * https://discord.com/developers/docs/resources/channel#get-reactions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIChannelMessageReactionUsersResult = APIUser[];
 
 /**
- * https://docs.discord.com/developers/resources/channel#delete-all-reactions
+ * https://discord.com/developers/docs/resources/channel#delete-all-reactions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelAllMessageReactionsResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#delete-all-reactions-for-emoji
+ * https://discord.com/developers/docs/resources/channel#delete-all-reactions-for-emoji
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelMessageReactionResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#edit-message
+ * https://discord.com/developers/docs/resources/channel#edit-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -355,13 +355,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	/**
 	 * Embedded `rich` content (up to 6000 characters)
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 */
 	embeds?: APIEmbed[] | null | undefined;
 	/**
 	 * Embedded `rich` content
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/channel#embed-object
 	 *
 	 * @deprecated Use `embeds` instead
 	 */
@@ -372,13 +372,13 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 * When specifying flags, ensure to include all previously set flags/bits
 	 * in addition to ones that you are modifying
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#message-object-message-flags
+	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
 	 */
 	flags?: MessageFlags | null | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#allowed-mentions-object
+	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
 	 */
 	allowed_mentions?: APIAllowedMentions | null | undefined;
 	/**
@@ -386,19 +386,19 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/channel#attachment-object
 	 */
 	attachments?: (Partial<Pick<APIAttachment, 'description' | 'filename'>> & Pick<APIAttachment, 'id'>)[] | undefined;
 	/**
 	 * The components to include with the message
 	 *
-	 * See https://docs.discord.com/developers/interactions/message-components#component-object
+	 * See https://discord.com/developers/docs/interactions/message-components#component-object
 	 */
 	components?: APIActionRowComponent<APIMessageActionRowComponent>[] | null | undefined;
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#edit-message
+ * https://discord.com/developers/docs/resources/channel#edit-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -412,21 +412,21 @@ export type RESTPatchAPIChannelMessageFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> & RESTPatchAPIChannelMessageJSONBody);
 
 /**
- * https://docs.discord.com/developers/resources/channel#edit-message
+ * https://discord.com/developers/docs/resources/channel#edit-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIChannelMessageResult = APIMessage;
 
 /**
- * https://docs.discord.com/developers/resources/channel#delete-message
+ * https://discord.com/developers/docs/resources/channel#delete-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelMessageResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#bulk-delete-messages
+ * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -438,14 +438,14 @@ export interface RESTPostAPIChannelMessagesBulkDeleteJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#bulk-delete-messages
+ * https://discord.com/developers/docs/resources/channel#bulk-delete-messages
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelMessagesBulkDeleteResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#edit-channel-permissions
+ * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -473,21 +473,21 @@ export interface RESTPutAPIChannelPermissionJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#edit-channel-permissions
+ * https://discord.com/developers/docs/resources/channel#edit-channel-permissions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIChannelPermissionResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-channel-invites
+ * https://discord.com/developers/docs/resources/channel#get-channel-invites
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIChannelInvitesResult = APIExtendedInvite[];
 
 /**
- * https://docs.discord.com/developers/resources/channel#create-channel-invite
+ * https://discord.com/developers/docs/resources/channel#create-channel-invite
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -520,7 +520,7 @@ export interface RESTPostAPIChannelInviteJSONBody {
 	/**
 	 * The type of target for this voice channel invite
 	 *
-	 * See https://docs.discord.com/developers/resources/invite#invite-object-invite-target-types
+	 * See https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
 	 */
 	target_type?: InviteTargetType | undefined;
 	/**
@@ -538,21 +538,21 @@ export interface RESTPostAPIChannelInviteJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#create-channel-invite
+ * https://discord.com/developers/docs/resources/channel#create-channel-invite
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelInviteResult = APIExtendedInvite;
 
 /**
- * https://docs.discord.com/developers/resources/channel#delete-channel-permission
+ * https://discord.com/developers/docs/resources/channel#delete-channel-permission
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelPermissionResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#follow-news-channel
+ * https://discord.com/developers/docs/resources/channel#follow-news-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -564,42 +564,42 @@ export interface RESTPostAPIChannelFollowersJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#follow-news-channel
+ * https://discord.com/developers/docs/resources/channel#follow-news-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelFollowersResult = APIFollowedChannel;
 
 /**
- * https://docs.discord.com/developers/resources/channel#trigger-typing-indicator
+ * https://discord.com/developers/docs/resources/channel#trigger-typing-indicator
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIChannelTypingResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#get-pinned-messages
+ * https://discord.com/developers/docs/resources/channel#get-pinned-messages
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIChannelPinsResult = APIMessage[];
 
 /**
- * https://docs.discord.com/developers/resources/channel#add-pinned-channel-message
+ * https://discord.com/developers/docs/resources/channel#add-pinned-channel-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIChannelPinResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#delete-pinned-channel-message
+ * https://discord.com/developers/docs/resources/channel#delete-pinned-channel-message
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIChannelPinResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/channel#group-dm-add-recipient
+ * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -615,14 +615,14 @@ export interface RESTPutAPIChannelRecipientJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/channel#group-dm-add-recipient
+ * https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIChannelRecipientResult = unknown;
 
 /**
- * https://docs.discord.com/developers/resources/channel#group-dm-remove-recipient
+ * https://discord.com/developers/docs/resources/channel#group-dm-remove-recipient
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

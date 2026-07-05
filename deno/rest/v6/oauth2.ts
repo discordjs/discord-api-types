@@ -1,14 +1,14 @@
 import type { APIApplication, APIGuild, APIWebhook } from '../../payloads/v6/mod.ts';
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#get-current-application-information
+ * https://discord.com/developers/docs/topics/oauth2#get-current-application-information
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIOauth2CurrentApplicationResult = APIApplication;
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#authorization-code-grant
+ * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -22,7 +22,7 @@ export interface RESTOAuth2AuthorizationQuery {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-redirect-url-example
+ * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -32,7 +32,7 @@ export interface RESTOAuth2AuthorizationQueryResult {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-redirect-url-example
+ * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -46,7 +46,7 @@ export interface RESTPostOAuth2AccessTokenURIEncodedData {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-access-token-response
+ * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-access-token-response
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -59,7 +59,7 @@ export interface RESTPostOAuth2AccessTokenResult {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#authorization-code-grant-refresh-token-exchange-example
+ * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -75,7 +75,7 @@ export interface RESTPostOAuth2RefreshTokenURIEncodedData {
 export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#implicit-grant
+ * https://discord.com/developers/docs/topics/oauth2#implicit-grant
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -89,14 +89,14 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#implicit-grant-redirect-url-example
+ * https://discord.com/developers/docs/topics/oauth2#implicit-grant-redirect-url-example
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTOAuth2ImplicitAuthorizationURIFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#client-credentials-grant
+ * https://discord.com/developers/docs/topics/oauth2#client-credentials-grant
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -113,7 +113,7 @@ export interface RESTPostOAuth2ClientCredentialsURIEncodedData {
 export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationURIFragmentResult;
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#bot-authorization-flow-bot-auth-parameters
+ * https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow-bot-auth-parameters
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -129,7 +129,7 @@ export interface RESTOAuth2BotAuthorizationQuery {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#advanced-bot-authorization
+ * https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -160,7 +160,7 @@ export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example
+ * https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -174,7 +174,7 @@ export interface RESTPostOAuth2AccessTokenWithBotAndGuildsScopeResult {
 }
 
 /**
- * https://docs.discord.com/developers/topics/oauth2#webhooks-webhook-token-response-example
+ * https://discord.com/developers/docs/topics/oauth2#webhooks-webhook-token-response-example
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */

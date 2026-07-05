@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/emoji
+ * Types extracted from https://discord.com/developers/docs/resources/emoji
  */
 
 import type { Snowflake } from '../../globals';
@@ -27,7 +27,7 @@ export interface APIPartialEmoji {
 }
 
 /**
- * https://docs.discord.com/developers/resources/emoji#emoji-object-emoji-structure
+ * https://discord.com/developers/docs/resources/emoji#emoji-object-emoji-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

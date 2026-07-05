@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/audit-log
+ * Types extracted from https://discord.com/developers/docs/resources/audit-log
  */
 
 import type { APIOverwrite, ChannelType } from './channel';
@@ -16,7 +16,7 @@ import type { APIUser } from './user';
 import type { APIWebhook } from './webhook';
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-object-audit-log-structure
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -28,7 +28,7 @@ export interface APIAuditLog {
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-entry-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -43,7 +43,7 @@ export interface APIAuditLogEntry {
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-audit-log-events
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -94,7 +94,7 @@ export enum AuditLogEvent {
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -171,7 +171,7 @@ export enum AuditLogOptionsType {
 }
 
 /**
- * https://docs.discord.com/developers/resources/audit-log#audit-log-change-object-audit-log-change-structure
+ * https://discord.com/developers/docs/resources/audit-log#audit-log-change-object-audit-log-change-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */

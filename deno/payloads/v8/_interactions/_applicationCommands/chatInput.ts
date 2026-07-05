@@ -67,7 +67,7 @@ export * from './_chatInput/subcommandGroup.ts';
 export * from './_chatInput/user.ts';
 
 /**
- * https://docs.discord.com/developers/interactions/application-commands#application-command-object-application-command-option-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -83,7 +83,7 @@ export type APIApplicationCommandBasicOption =
 	| APIApplicationCommandUserOption;
 
 /**
- * https://docs.discord.com/developers/interactions/application-commands#application-command-object-application-command-option-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -93,7 +93,7 @@ export type APIApplicationCommandOption =
 	| APIApplicationCommandSubcommandOption;
 
 /**
- * https://docs.discord.com/developers/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
+ * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-interaction-data-option-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -117,7 +117,7 @@ export type APIApplicationCommandInteractionDataBasicOption =
 	| APIApplicationCommandInteractionDataUserOption;
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object-interaction-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -128,7 +128,7 @@ export interface APIChatInputApplicationCommandInteractionData
 }
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object-resolved-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -141,7 +141,7 @@ export interface APIChatInputApplicationCommandInteractionDataResolved {
 }
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -149,7 +149,7 @@ export type APIChatInputApplicationCommandInteraction =
 	APIApplicationCommandInteractionWrapper<APIChatInputApplicationCommandInteractionData>;
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -157,7 +157,7 @@ export type APIChatInputApplicationCommandDMInteraction =
 	APIDMInteractionWrapper<APIChatInputApplicationCommandInteraction>;
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

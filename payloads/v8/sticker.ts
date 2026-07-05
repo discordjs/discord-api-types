@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/sticker
+ * Types extracted from https://discord.com/developers/docs/resources/sticker
  */
 
 import type { Snowflake } from '../../globals';
 import type { APIUser } from './user';
 
 /**
- * https://docs.discord.com/developers/resources/sticker#sticker-object
+ * https://discord.com/developers/docs/resources/sticker#sticker-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -40,13 +40,13 @@ export interface APISticker {
 	/**
 	 * Type of sticker
 	 *
-	 * See https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-types
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types
 	 */
 	type: StickerType;
 	/**
 	 * Type of sticker format
 	 *
-	 * See https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-format-types
+	 * See https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
 	 */
 	format_type: StickerFormatType;
 	/**
@@ -68,7 +68,7 @@ export interface APISticker {
 }
 
 /**
- * https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-types
+ * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -84,7 +84,7 @@ export enum StickerType {
 }
 
 /**
- * https://docs.discord.com/developers/resources/sticker#sticker-object-sticker-format-types
+ * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -95,14 +95,14 @@ export enum StickerFormatType {
 }
 
 /**
- * https://docs.discord.com/developers/resources/sticker#sticker-item-object
+ * https://discord.com/developers/docs/resources/sticker#sticker-item-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type APIStickerItem = Pick<APISticker, 'format_type' | 'id' | 'name'>;
 
 /**
- * https://docs.discord.com/developers/resources/sticker#sticker-pack-object
+ * https://discord.com/developers/docs/resources/sticker#sticker-pack-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

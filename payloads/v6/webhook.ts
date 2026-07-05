@@ -1,5 +1,5 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/webhook
+ * Types extracted from https://discord.com/developers/docs/resources/webhook
  */
 
 import type { APIPartialChannel } from './channel';
@@ -7,7 +7,7 @@ import type { APIPartialGuild } from './guild';
 import type { APIUser } from './user';
 
 /**
- * https://docs.discord.com/developers/resources/webhook#webhook-object
+ * https://discord.com/developers/docs/resources/webhook#webhook-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */

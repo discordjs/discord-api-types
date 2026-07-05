@@ -4,7 +4,7 @@ import type { MessageFlags } from '../index';
 import type { APIApplicationCommandOptionChoice } from './applicationCommands';
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object-interaction-type
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -17,7 +17,7 @@ export enum InteractionType {
 }
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-response-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -85,7 +85,7 @@ export interface APIInteractionResponseUpdateMessage {
 }
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -121,7 +121,7 @@ export enum InteractionResponseType {
 }
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -138,7 +138,7 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 }
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-response-object-modal
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

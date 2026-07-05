@@ -2,14 +2,14 @@ import type { APIGuild, APITemplate } from '../../payloads/v8/mod.ts';
 import type { _StrictPartial } from '../../utils/internals.ts';
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#get-template
+ * https://discord.com/developers/docs/resources/template#get-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPITemplateResult = APITemplate;
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#create-guild-from-template
+ * https://discord.com/developers/docs/resources/template#create-guild-from-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -21,27 +21,27 @@ export interface RESTPostAPITemplateCreateGuildJSONBody {
 	/**
 	 * base64 1024x1024 png/jpeg image for the guild icon
 	 *
-	 * See https://docs.discord.com/developers/reference#image-data
+	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	icon?: string | undefined;
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#create-guild-from-template
+ * https://discord.com/developers/docs/resources/template#create-guild-from-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPITemplateCreateGuildResult = APIGuild;
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#get-guild-templates
+ * https://discord.com/developers/docs/resources/template#get-guild-templates
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildTemplatesResult = APITemplate[];
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#create-guild-template
+ * https://discord.com/developers/docs/resources/template#create-guild-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -57,35 +57,35 @@ export interface RESTPostAPIGuildTemplatesJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#create-guild-template
+ * https://discord.com/developers/docs/resources/template#create-guild-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildTemplatesResult = APITemplate;
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#sync-guild-template
+ * https://discord.com/developers/docs/resources/template#sync-guild-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIGuildTemplateSyncResult = APITemplate;
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#modify-guild-template
+ * https://discord.com/developers/docs/resources/template#modify-guild-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildTemplateJSONBody = _StrictPartial<RESTPostAPIGuildTemplatesJSONBody>;
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#modify-guild-template
+ * https://discord.com/developers/docs/resources/template#modify-guild-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildTemplateResult = APITemplate;
 
 /**
- * https://docs.discord.com/developers/resources/guild-template#delete-guild-template
+ * https://discord.com/developers/docs/resources/template#delete-guild-template
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

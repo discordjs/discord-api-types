@@ -29,7 +29,7 @@ export * from './_interactions/ping.ts';
 export * from './_interactions/responses.ts';
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -41,7 +41,7 @@ export type APIInteraction =
 	| APIPingInteraction;
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -52,7 +52,7 @@ export type APIDMInteraction =
 	| APIModalSubmitDMInteraction;
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

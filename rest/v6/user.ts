@@ -1,21 +1,21 @@
 import type { APIChannel, APIConnection, APIUser, GuildFeature } from '../../payloads/v6/index';
 
 /**
- * https://docs.discord.com/developers/resources/user#get-current-user
+ * https://discord.com/developers/docs/resources/user#get-current-user
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPICurrentUserResult = APIUser;
 
 /**
- * https://docs.discord.com/developers/resources/user#get-user
+ * https://discord.com/developers/docs/resources/user#get-user
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTGetAPIUserResult = APIUser;
 
 /**
- * https://docs.discord.com/developers/resources/user#modify-current-user
+ * https://discord.com/developers/docs/resources/user#modify-current-user
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -30,7 +30,7 @@ export interface RESTPatchAPICurrentUserJSONBody {
 export type RESTPatchAPICurrentUserResult = APIUser;
 
 /**
- * https://docs.discord.com/developers/resources/user#get-current-user-guilds
+ * https://discord.com/developers/docs/resources/user#get-current-user-guilds
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -62,14 +62,14 @@ export interface RESTAPIPartialCurrentUserGuild {
 export type RESTGetAPICurrentUserGuildsResult = RESTAPIPartialCurrentUserGuild[];
 
 /**
- * https://docs.discord.com/developers/resources/user#leave-guild
+ * https://discord.com/developers/docs/resources/user#leave-guild
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
 export type RESTDeleteAPICurrentUserGuildResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/user#create-dm
+ * https://discord.com/developers/docs/resources/user#create-dm
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */
@@ -83,7 +83,7 @@ export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
 export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
 
 /**
- * https://docs.discord.com/developers/resources/user#get-user-connections
+ * https://discord.com/developers/docs/resources/user#get-user-connections
  *
  * @deprecated API v6 is deprecated and the types will not receive further updates, please update to v8.
  */

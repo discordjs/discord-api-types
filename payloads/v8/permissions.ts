@@ -1,11 +1,11 @@
 /**
- * Types extracted from https://docs.discord.com/developers/topics/permissions
+ * Types extracted from https://discord.com/developers/docs/topics/permissions
  */
 
 import type { Permissions, Snowflake } from '../../globals';
 
 /**
- * https://docs.discord.com/developers/topics/permissions#role-object
+ * https://discord.com/developers/docs/topics/permissions#role-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -59,7 +59,7 @@ export interface APIRole {
 }
 
 /**
- * https://docs.discord.com/developers/topics/permissions#role-object-role-tags-structure
+ * https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

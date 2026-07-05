@@ -1,12 +1,12 @@
 /**
- * Types extracted from https://docs.discord.com/developers/resources/user
+ * Types extracted from https://discord.com/developers/docs/resources/user
  */
 
 import type { Snowflake } from '../../globals.ts';
 import type { APIGuildIntegration } from './guild.ts';
 
 /**
- * https://docs.discord.com/developers/resources/user#user-object
+ * https://discord.com/developers/docs/resources/user#user-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -26,7 +26,7 @@ export interface APIUser {
 	/**
 	 * The user's avatar hash
 	 *
-	 * See https://docs.discord.com/developers/reference#image-formatting
+	 * See https://discord.com/developers/docs/reference#image-formatting
 	 */
 	avatar: string | null;
 	/**
@@ -44,7 +44,7 @@ export interface APIUser {
 	/**
 	 * The user's banner hash
 	 *
-	 * See https://docs.discord.com/developers/reference#image-formatting
+	 * See https://discord.com/developers/docs/reference#image-formatting
 	 */
 	banner?: string | null;
 	/**
@@ -66,25 +66,25 @@ export interface APIUser {
 	/**
 	 * The flags on a user's account
 	 *
-	 * See https://docs.discord.com/developers/resources/user#user-object-user-flags
+	 * See https://discord.com/developers/docs/resources/user#user-object-user-flags
 	 */
 	flags?: UserFlags;
 	/**
 	 * The type of Nitro subscription on a user's account
 	 *
-	 * See https://docs.discord.com/developers/resources/user#user-object-premium-types
+	 * See https://discord.com/developers/docs/resources/user#user-object-premium-types
 	 */
 	premium_type?: UserPremiumType;
 	/**
 	 * The public flags on a user's account
 	 *
-	 * See https://docs.discord.com/developers/resources/user#user-object-user-flags
+	 * See https://discord.com/developers/docs/resources/user#user-object-user-flags
 	 */
 	public_flags?: UserFlags;
 }
 
 /**
- * https://docs.discord.com/developers/resources/user#user-object-user-flags
+ * https://discord.com/developers/docs/resources/user#user-object-user-flags
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -122,7 +122,7 @@ export enum UserFlags {
 	 */
 	PremiumEarlySupporter = 1 << 9,
 	/**
-	 * User is a [team](https://docs.discord.com/developers/topics/teams)
+	 * User is a [team](https://discord.com/developers/docs/topics/teams)
 	 */
 	TeamPseudoUser = 1 << 10,
 	/**
@@ -142,7 +142,7 @@ export enum UserFlags {
 	 */
 	CertifiedModerator = 1 << 18,
 	/**
-	 * Bot uses only [HTTP interactions](https://docs.discord.com/developers/interactions/receiving-and-responding#receiving-an-interaction) and is shown in the online member list
+	 * Bot uses only [HTTP interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction) and is shown in the online member list
 	 */
 	BotHTTPInteractions = 1 << 19,
 	/**
@@ -160,7 +160,7 @@ export enum UserFlags {
 }
 
 /**
- * https://docs.discord.com/developers/resources/user#user-object-premium-types
+ * https://discord.com/developers/docs/resources/user#user-object-premium-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -171,7 +171,7 @@ export enum UserPremiumType {
 }
 
 /**
- * https://docs.discord.com/developers/resources/user#connection-object
+ * https://discord.com/developers/docs/resources/user#connection-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -195,7 +195,7 @@ export interface APIConnection {
 	/**
 	 * An array of partial server integrations
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#integration-object
+	 * See https://discord.com/developers/docs/resources/guild#integration-object
 	 */
 	integrations?: Partial<APIGuildIntegration>[];
 	/**
@@ -213,7 +213,7 @@ export interface APIConnection {
 	/**
 	 * Visibility of this connection
 	 *
-	 * See https://docs.discord.com/developers/resources/user#connection-object-visibility-types
+	 * See https://discord.com/developers/docs/resources/user#connection-object-visibility-types
 	 */
 	visibility: ConnectionVisibility;
 }

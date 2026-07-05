@@ -22,7 +22,7 @@ export type PartialAPIMessageInteractionGuildMember = Pick<
 >;
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#message-interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -50,7 +50,7 @@ export interface APIMessageInteraction {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#guild-member-object
+ * https://discord.com/developers/docs/resources/guild#guild-member-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -62,7 +62,7 @@ export interface APIInteractionGuildMember extends APIGuildMember {
 // INTERACTIONS RECEIVED
 
 /**
- * https://docs.discord.com/developers/interactions/receiving-and-responding#interaction-object
+ * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */

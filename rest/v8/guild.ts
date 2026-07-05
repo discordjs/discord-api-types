@@ -60,7 +60,7 @@ export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild
+ * https://discord.com/developers/docs/resources/guild#create-guild
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -72,31 +72,31 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * Voice region id
 	 *
-	 * See https://docs.discord.com/developers/resources/voice#voice-region-object
+	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	region?: string | undefined;
 	/**
 	 * base64 1024x1024 png/jpeg image for the guild icon
 	 *
-	 * See https://docs.discord.com/developers/reference#image-data
+	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	icon?: string | undefined;
 	/**
 	 * Verification level
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-verification-level
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-verification-level
 	 */
 	verification_level?: GuildVerificationLevel | undefined;
 	/**
 	 * Default message notification level
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-default-message-notification-level
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
 	 */
 	default_message_notifications?: GuildDefaultMessageNotifications | undefined;
 	/**
 	 * Explicit content filter level
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-explicit-content-filter-level
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
 	 */
 	explicit_content_filter?: GuildExplicitContentFilter | undefined;
 	/**
@@ -110,7 +110,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	 * and will be replaced by the API upon consumption. Its purpose is to allow you to overwrite a role's permissions
 	 * in a channel when also passing in channels with the channels array.
 	 *
-	 * See https://docs.discord.com/developers/topics/permissions#role-object
+	 * See https://discord.com/developers/docs/topics/permissions#role-object
 	 */
 	roles?: APIGuildCreateRole[] | undefined;
 	/**
@@ -124,7 +124,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	 * by setting the `parent_id` field on any children to the category's id field.
 	 * Category channels must be listed before any children.
 	 *
-	 * See https://docs.discord.com/developers/resources/channel#channel-object
+	 * See https://discord.com/developers/docs/resources/channel#channel-object
 	 */
 	channels?: APIGuildCreatePartialChannel[] | undefined;
 	/**
@@ -142,7 +142,7 @@ export interface RESTPostAPIGuildsJSONBody {
 	/**
 	 * System channel flags
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-system-channel-flags
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
 	 */
 	system_channel_flags?: GuildSystemChannelFlags | undefined;
 	/**
@@ -152,14 +152,14 @@ export interface RESTPostAPIGuildsJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild
+ * https://discord.com/developers/docs/resources/guild#create-guild
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildsResult = APIGuild;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild
+ * https://discord.com/developers/docs/resources/guild#get-guild
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -173,21 +173,21 @@ export interface RESTGetAPIGuildQuery {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild
+ * https://discord.com/developers/docs/resources/guild#get-guild
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildResult = APIGuild;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-preview
+ * https://discord.com/developers/docs/resources/guild#get-guild-preview
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildPreviewResult = APIGuildPreview;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild
+ * https://discord.com/developers/docs/resources/guild#modify-guild
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -199,25 +199,25 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * Voice region id
 	 *
-	 * See https://docs.discord.com/developers/resources/voice#voice-region-object
+	 * See https://discord.com/developers/docs/resources/voice#voice-region-object
 	 */
 	region?: string | null | undefined;
 	/**
 	 * Verification level
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-verification-level
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-verification-level
 	 */
 	verification_level?: GuildVerificationLevel | null | undefined;
 	/**
 	 * Default message notification level
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-default-message-notification-level
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
 	 */
 	default_message_notifications?: GuildDefaultMessageNotifications | null | undefined;
 	/**
 	 * Explicit content filter level
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-explicit-content-filter-level
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
 	 */
 	explicit_content_filter?: GuildExplicitContentFilter | null | undefined;
 	/**
@@ -231,7 +231,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * base64 1024x1024 png/jpeg/gif image for the guild icon (can be animated gif when the guild has `ANIMATED_ICON` feature)
 	 *
-	 * See https://docs.discord.com/developers/reference#image-data
+	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	icon?: string | null | undefined;
 	/**
@@ -241,7 +241,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * base64 16:9 png/jpeg image for the guild splash (when the guild has `INVITE_SPLASH` feature)
 	 *
-	 * See https://docs.discord.com/developers/reference#image-data
+	 * See https://discord.com/developers/docs/reference#image-data
 	 */
 	splash?: string | null | undefined;
 	/**
@@ -259,7 +259,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * System channel flags
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-system-channel-flags
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
 	 */
 	system_channel_flags?: GuildSystemChannelFlags | undefined;
 	/**
@@ -279,7 +279,7 @@ export interface RESTPatchAPIGuildJSONBody {
 	/**
 	 * Enabled guild features
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#guild-object-guild-features
+	 * See https://discord.com/developers/docs/resources/guild#guild-object-guild-features
 	 */
 	features?: GuildFeature[] | undefined;
 	/**
@@ -293,42 +293,42 @@ export interface RESTPatchAPIGuildJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild
+ * https://discord.com/developers/docs/resources/guild#modify-guild
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildResult = APIGuild;
 
 /**
- * https://docs.discord.com/developers/resources/guild#delete-guild
+ * https://discord.com/developers/docs/resources/guild#delete-guild
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-channels
+ * https://discord.com/developers/docs/resources/guild#get-guild-channels
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildChannelsResult = APIChannel[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild-channel
+ * https://discord.com/developers/docs/resources/guild#create-guild-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildChannelJSONBody = Omit<APIGuildCreatePartialChannel, 'id'>;
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild-channel
+ * https://discord.com/developers/docs/resources/guild#create-guild-channel
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildChannelResult = APIChannel;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-channel-positions
+ * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -352,21 +352,21 @@ export type RESTPatchAPIGuildChannelPositionsJSONBody = {
 }[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-channel-positions
+ * https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildChannelPositionsResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-member
+ * https://discord.com/developers/docs/resources/guild#get-guild-member
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildMemberResult = APIGuildMember;
 
 /**
- * https://docs.discord.com/developers/resources/guild#list-guild-members
+ * https://discord.com/developers/docs/resources/guild#list-guild-members
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -386,14 +386,14 @@ export interface RESTGetAPIGuildMembersQuery {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#list-guild-members
+ * https://discord.com/developers/docs/resources/guild#list-guild-members
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildMembersResult = APIGuildMember[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#search-guild-members
+ * https://discord.com/developers/docs/resources/guild#search-guild-members
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -416,7 +416,7 @@ export interface RESTGetAPIGuildMembersSearchQuery {
 export type RESTGetAPIGuildMembersSearchResult = APIGuildMember[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#add-guild-member
+ * https://discord.com/developers/docs/resources/guild#add-guild-member
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -457,7 +457,7 @@ export interface RESTPutAPIGuildMemberJSONBody {
 export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-member
+ * https://discord.com/developers/docs/resources/guild#modify-guild-member
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -499,16 +499,16 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#add-guild-member
+ * https://discord.com/developers/docs/resources/guild#add-guild-member
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildMemberResult = APIGuildMember;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-current-user-nick
+ * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
  *
- * @deprecated Use [Modify Current Member](https://docs.discord.com/developers/resources/guild#modify-current-member) instead.
+ * @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
@@ -521,7 +521,7 @@ export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-current-member
+ * https://discord.com/developers/docs/resources/guild#modify-current-member
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -535,51 +535,51 @@ export interface RESTPatchAPICurrentGuildMemberJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-current-user-nick
+ * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
  *
- * @deprecated Use [Modify Current Member](https://docs.discord.com/developers/resources/guild#modify-current-member) instead.
+ * @deprecated Use [Modify Current Member](https://discord.com/developers/docs/resources/guild#modify-current-member) instead.
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPICurrentGuildMemberNicknameResult =
 	_StrictRequired<RESTPatchAPICurrentGuildMemberNicknameJSONBody>;
 
 /**
- * https://docs.discord.com/developers/resources/guild#add-guild-member-role
+ * https://discord.com/developers/docs/resources/guild#add-guild-member-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIGuildMemberRoleResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#remove-guild-member-role
+ * https://discord.com/developers/docs/resources/guild#remove-guild-member-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildMemberRoleResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#remove-guild-member
+ * https://discord.com/developers/docs/resources/guild#remove-guild-member
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildMemberResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-bans
+ * https://discord.com/developers/docs/resources/guild#get-guild-bans
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildBansResult = APIBan[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-ban
+ * https://discord.com/developers/docs/resources/guild#get-guild-ban
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildBanResult = APIBan;
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild-ban
+ * https://discord.com/developers/docs/resources/guild#create-guild-ban
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -597,28 +597,28 @@ export interface RESTPutAPIGuildBanJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild-ban
+ * https://discord.com/developers/docs/resources/guild#create-guild-ban
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPutAPIGuildBanResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#remove-guild-ban
+ * https://discord.com/developers/docs/resources/guild#remove-guild-ban
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildBanResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-roles
+ * https://discord.com/developers/docs/resources/guild#get-guild-roles
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildRolesResult = APIRole[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild-role
+ * https://discord.com/developers/docs/resources/guild#create-guild-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -664,14 +664,14 @@ export interface RESTPostAPIGuildRoleJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#create-guild-role
+ * https://discord.com/developers/docs/resources/guild#create-guild-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPostAPIGuildRoleResult = APIRole;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-role-positions
+ * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -687,14 +687,14 @@ export type RESTPatchAPIGuildRolePositionsJSONBody = {
 }[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-role-positions
+ * https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildRolePositionsResult = APIRole[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-role
+ * https://discord.com/developers/docs/resources/guild#modify-guild-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -730,21 +730,21 @@ export interface RESTPatchAPIGuildRoleJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-role
+ * https://discord.com/developers/docs/resources/guild#modify-guild-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildRoleResult = APIRole;
 
 /**
- * https://docs.discord.com/developers/resources/guild#delete-guild-role
+ * https://discord.com/developers/docs/resources/guild#delete-guild-role
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildRoleResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-prune-count
+ * https://discord.com/developers/docs/resources/guild#get-guild-prune-count
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -761,13 +761,13 @@ export interface RESTGetAPIGuildPruneCountQuery {
 	 * While this is typed as a string, it represents an array of
 	 * role IDs delimited by commas
 	 *
-	 * See https://docs.discord.com/developers/resources/guild#get-guild-prune-count-query-string-params
+	 * See https://discord.com/developers/docs/resources/guild#get-guild-prune-count-query-string-params
 	 */
 	include_roles?: string;
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-prune-count
+ * https://discord.com/developers/docs/resources/guild#get-guild-prune-count
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -776,7 +776,7 @@ export interface RESTGetAPIGuildPruneCountResult {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#begin-guild-prune
+ * https://discord.com/developers/docs/resources/guild#begin-guild-prune
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -800,7 +800,7 @@ export interface RESTPostAPIGuildPruneJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#begin-guild-prune
+ * https://discord.com/developers/docs/resources/guild#begin-guild-prune
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -809,63 +809,63 @@ export interface RESTPostAPIGuildPruneResult {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-voice-regions
+ * https://discord.com/developers/docs/resources/guild#get-guild-voice-regions
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildVoiceRegionsResult = APIVoiceRegion[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-invites
+ * https://discord.com/developers/docs/resources/guild#get-guild-invites
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildInvitesResult = APIExtendedInvite[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-integrations
+ * https://discord.com/developers/docs/resources/guild#get-guild-integrations
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
 
 /**
- * https://docs.discord.com/developers/resources/guild#delete-guild-integration
+ * https://discord.com/developers/docs/resources/guild#delete-guild-integration
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTDeleteAPIGuildIntegrationResult = never;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-widget-settings
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget-settings
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-widget
+ * https://discord.com/developers/docs/resources/guild#modify-guild-widget
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildWidgetSettingsJSONBody = _StrictPartial<APIGuildWidgetSettings>;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-widget
+ * https://discord.com/developers/docs/resources/guild#modify-guild-widget
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTPatchAPIGuildWidgetSettingsResult = APIGuildWidgetSettings;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-widget
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildWidgetJSONResult = APIGuildWidget;
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-vanity-url
+ * https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -875,7 +875,7 @@ export interface RESTGetAPIGuildVanityUrlResult {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-widget-image
+ * https://discord.com/developers/docs/resources/guild#get-guild-widget-image
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -957,14 +957,14 @@ export interface RESTPatchAPIGuildVoiceStateUserJSONBody {
 }
 
 /**
- * https://docs.discord.com/developers/resources/guild#get-guild-welcome-screen
+ * https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 export type RESTGetAPIGuildWelcomeScreenResult = APIGuildWelcomeScreen;
 
 /**
- * https://docs.discord.com/developers/resources/guild#modify-guild-welcome-screen
+ * https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
