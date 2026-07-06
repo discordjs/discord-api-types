@@ -89,11 +89,11 @@ export enum OAuth2Scopes {
 	 */
 	RPCVoiceWrite = 'rpc.voice.write',
 	/**
-	 * For local rpc server access, this allows you to read a user's screenshare status- requires Discord approval
+	 * For local rpc server access, this allows you to read a user's screenshare status - requires Discord approval
 	 */
 	RPCScreenshareRead = 'rpc.screenshare.read',
 	/**
-	 * For local rpc server access, this allows you to update a user's screenshare settings- requires Discord approval
+	 * For local rpc server access, this allows you to update a user's screenshare settings - requires Discord approval
 	 */
 	RPCScreenshareWrite = 'rpc.screenshare.write',
 	/**
