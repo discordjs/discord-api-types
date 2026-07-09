@@ -30,7 +30,7 @@
 
 				"allowArbitraryExtensions": false,
 				"allowImportingTsExtensions": false,
-				"module": "ESNext",
+				"module": "NodeNext",
 				"moduleResolution": "nodenext",
 				"resolveJsonModule": true,
 				"resolvePackageJsonExports": false,
