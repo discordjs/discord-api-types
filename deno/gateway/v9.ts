@@ -232,6 +232,18 @@ export enum GatewayIntentBits {
 }
 
 /**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities}
+ */
+export enum GatewayCapabilityBits {
+	/**
+	 * Opts the app into receiving obfuscated channel metadata over the Gateway for channels it can't view
+	 *
+	 * @unstable This is a temporary, testing-only opt-in for channel obfuscation.
+	 */
+	ChannelObfuscation = 1 << 15,
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#receive-events}
  */
 export enum GatewayDispatchEvents {
@@ -2527,6 +2539,13 @@ export interface GatewayIdentifyData {
 	 * @see {@link https://discord.com/developers/docs/topics/gateway#gateway-intents}
 	 */
 	intents: number;
+	/**
+	 * Gateway capabilities opt-in bitfield for gateway behaviors
+	 *
+	 * @defaultValue `0`
+	 * @see {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities}
+	 */
+	capabilities?: number;
 }
 
 /**
