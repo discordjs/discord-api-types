@@ -726,9 +726,7 @@ export enum ChannelFlags {
 	 */
 	HideMediaDownloadOptions = 1 << 15,
 	/**
-	 * Whether the channel has a spoiler gate.
-	 *
-	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
+	 * This channel is a Spoiler Channel i.e. users must opt in to view its contents.
 	 */
 	IsSpoilerChannel = 1 << 21,
 }
