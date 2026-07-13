@@ -1,3 +1,10 @@
+## [0.38.50](https://github.com/discordjs/discord-api-types/compare/0.38.49...0.38.50) (2026-07-13)
+
+
+### Features
+
+* Support `is_spoiler` ([#1700](https://github.com/discordjs/discord-api-types/issues/1700)) ([0e09f22](https://github.com/discordjs/discord-api-types/commit/0e09f2204fc8bcb8b3e3c91930bc79b702300af9))
+
 ## [0.38.49](https://github.com/discordjs/discord-api-types/compare/0.38.48...0.38.49) (2026-06-17)
 
 
