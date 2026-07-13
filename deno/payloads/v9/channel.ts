@@ -730,5 +730,5 @@ export enum ChannelFlags {
 	 *
 	 * @unstable This channel flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */
-	IsSpoilerChannel = 1 << 16,
+	IsSpoilerChannel = 1 << 21,
 }
