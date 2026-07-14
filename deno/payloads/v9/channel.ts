@@ -725,4 +725,8 @@ export enum ChannelFlags {
 	 * Whether media download options are hidden.
 	 */
 	HideMediaDownloadOptions = 1 << 15,
+	/**
+	 * This channel is a Spoiler Channel i.e. users must opt in to view its contents.
+	 */
+	IsSpoilerChannel = 1 << 21,
 }
