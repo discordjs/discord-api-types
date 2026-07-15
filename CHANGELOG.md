@@ -1,3 +1,12 @@
+## [0.38.50](https://github.com/discordjs/discord-api-types/compare/0.38.49...0.38.50) (2026-07-15)
+
+
+### Features
+
+* add file_types for file uploads ([#1708](https://github.com/discordjs/discord-api-types/issues/1708)) ([3231f19](https://github.com/discordjs/discord-api-types/commit/3231f19386b4b0acdf80a446377efacd3a1e6a0b))
+* **channel:** add spoiler flag ([#1725](https://github.com/discordjs/discord-api-types/issues/1725)) ([265d0ae](https://github.com/discordjs/discord-api-types/commit/265d0aed8bb5c63a9f4db2ad1690cabc18033c25))
+* Support `is_spoiler` ([#1700](https://github.com/discordjs/discord-api-types/issues/1700)) ([0e09f22](https://github.com/discordjs/discord-api-types/commit/0e09f2204fc8bcb8b3e3c91930bc79b702300af9))
+
 ## [0.38.49](https://github.com/discordjs/discord-api-types/compare/0.38.48...0.38.49) (2026-06-17)
 
 
