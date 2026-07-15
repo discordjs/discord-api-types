@@ -5,7 +5,12 @@ import type { _NonNullableFields } from '../../utils/internals.ts';
 import type { APIApplication } from './application.ts';
 import type { APIChannel, APIThreadChannel, APIThreadMember, ChannelType } from './channel.ts';
 import type { APIPartialEmoji } from './emoji.ts';
-import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions.ts';
+import type {
+	APIInteractionDataResolved,
+	APIMessageInteraction,
+	APIMessageInteractionMetadata,
+	FileUploadType,
+} from './interactions.ts';
 import type { APIRole } from './permissions.ts';
 import type { APIPoll } from './poll.ts';
 import type { APISticker, APIStickerItem } from './sticker.ts';
@@ -1890,6 +1895,13 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 	 * Maximum number of items that can be uploaded (defaults to 1); max 10
 	 */
 	max_values?: number;
+	/**
+	 * Allowed file types that can be uploaded; max 10
+	 *
+	 * If only dot-prefixed extensions are specified, you must also include `.jpg` for image uploads
+	 * and both `.mp4` and `.mov` for video uploads because of mobile platform limitations.
+	 */
+	file_types?: FileUploadType[];
 	/**
 	 * Whether the file upload requires files to be uploaded before submitting the modal
 	 *
