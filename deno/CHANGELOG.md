@@ -1,3 +1,10 @@
+## [0.38.51](https://github.com/discordjs/discord-api-types/compare/0.38.50...0.38.51) (2026-07-20)
+
+
+### Features
+
+* **interactions:** Add `app_permissions` to resolved channel data ([#1711](https://github.com/discordjs/discord-api-types/issues/1711)) ([85d2619](https://github.com/discordjs/discord-api-types/commit/85d2619c556fc928d13b921905c9882c3b0e69c4))
+
 ## [0.38.50](https://github.com/discordjs/discord-api-types/compare/0.38.49...0.38.50) (2026-07-15)
 
 
