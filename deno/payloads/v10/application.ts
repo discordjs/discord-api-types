@@ -103,9 +103,15 @@ export interface APIApplication {
 	/**
 	 * The application's public flags
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
 	 */
 	flags: ApplicationFlags;
+	/**
+	 * The application's public flags
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
+	 */
+	flags_new: string;
 	/**
 	 * Approximate count of guilds the application has been added to
 	 */
@@ -175,7 +181,7 @@ export type APIApplicationIntegrationTypesConfigMap = {
 };
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
+ * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
  */
 export enum ApplicationFlags {
 	/**
