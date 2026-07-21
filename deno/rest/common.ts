@@ -153,6 +153,8 @@ export enum RESTJSONErrorCodes {
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
+	OnlyOneChannelCanHaveAParentIdModifiedAtATime = 40_009,
+
 	ConnectionHasBeenRevoked = 40_012,
 
 	OnlyConsumableSKUsCanBeConsumed = 40_018,
