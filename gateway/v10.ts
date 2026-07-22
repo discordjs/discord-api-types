@@ -515,11 +515,11 @@ export interface GatewayReadyDispatchData {
 	 */
 	shard?: [shard_id: number, shard_count: number];
 	/**
-	 * Contains `id` and `flags`
+	 * Contains `id`, `flags`, and `flags_new`
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object}
 	 */
-	application: Pick<APIApplication, 'flags' | 'id'>;
+	application: Pick<APIApplication, 'flags_new' | 'flags' | 'id'>;
 }
 
 /**
