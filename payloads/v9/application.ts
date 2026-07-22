@@ -184,6 +184,7 @@ export type APIApplicationIntegrationTypesConfigMap = {
  * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
  */
 export enum ApplicationFlags {
+	None = 0,
 	/**
 	 * @unstable This application flag is currently not documented by Discord but has a known value which we will try to keep up to date.
 	 */

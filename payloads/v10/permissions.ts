@@ -101,6 +101,7 @@ export interface APIRoleTags {
  * @see {@link https://discord.com/developers/docs/topics/permissions#role-object-role-flags}
  */
 export enum RoleFlags {
+	None = 0,
 	/**
 	 * Role can be selected by members in an onboarding prompt
 	 */
