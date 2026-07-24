@@ -850,9 +850,7 @@ export interface RESTPostAPIChannelThreadsJSONBody extends RESTPostAPIChannelMes
  * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-without-message}
  */
 export type RESTPostAPIChannelThreadsResult =
-	| APIAnnouncementThreadChannel
-	| APIPrivateThreadChannel
-	| APIPublicThreadChannel;
+	APIAnnouncementThreadChannel | APIPrivateThreadChannel | APIPublicThreadChannel;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#join-thread}

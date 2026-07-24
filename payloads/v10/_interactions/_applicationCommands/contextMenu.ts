@@ -31,8 +31,7 @@ export interface APIMessageApplicationCommandInteractionDataResolved {
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data}
  */
 export type APIContextMenuInteractionData =
-	| APIMessageApplicationCommandInteractionData
-	| APIUserApplicationCommandInteractionData;
+	APIMessageApplicationCommandInteractionData | APIUserApplicationCommandInteractionData;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
@@ -78,12 +77,10 @@ export type APIContextMenuInteraction = APIMessageApplicationCommandInteraction 
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIContextMenuDMInteraction =
-	| APIMessageApplicationCommandDMInteraction
-	| APIUserApplicationCommandDMInteraction;
+	APIMessageApplicationCommandDMInteraction | APIUserApplicationCommandDMInteraction;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIContextMenuGuildInteraction =
-	| APIMessageApplicationCommandGuildInteraction
-	| APIUserApplicationCommandGuildInteraction;
+	APIMessageApplicationCommandGuildInteraction | APIUserApplicationCommandGuildInteraction;

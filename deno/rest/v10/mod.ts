@@ -561,8 +561,7 @@ export const Routes = {
 		parts.push('threads');
 
 		return parts.join('/') as
-			| `/channels/${Snowflake}/messages/${Snowflake}/threads`
-			| `/channels/${Snowflake}/threads`;
+			`/channels/${Snowflake}/messages/${Snowflake}/threads` | `/channels/${Snowflake}/threads`;
 	},
 
 	/**
@@ -605,8 +604,7 @@ export const Routes = {
 		if (userId) parts.push(userId);
 
 		return parts.join('/') as
-			| `/channels/${Snowflake}/thread-members/${Snowflake | '@me'}`
-			| `/channels/${Snowflake}/thread-members`;
+			`/channels/${Snowflake}/thread-members/${Snowflake | '@me'}` | `/channels/${Snowflake}/thread-members`;
 	},
 
 	/**

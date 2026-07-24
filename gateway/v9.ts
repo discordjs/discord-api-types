@@ -2632,8 +2632,7 @@ export interface GatewayRequestGuildMembersDataWithQuery extends GatewayRequestG
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#request-guild-members}
  */
 export type GatewayRequestGuildMembersData =
-	| GatewayRequestGuildMembersDataWithQuery
-	| GatewayRequestGuildMembersDataWithUserIds;
+	GatewayRequestGuildMembersDataWithQuery | GatewayRequestGuildMembersDataWithUserIds;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#request-soundboard-sounds}

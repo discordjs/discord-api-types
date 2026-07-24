@@ -20,7 +20,7 @@
 			"groupName": "eslint/prettier",
 			"automerge": true,
 			"groupSlug": "formatting-linting-dependencies",
-			"matchPackageNames": ["/eslint/", "/prettier/"]
+			"matchPackageNames": ["/eslint/", "/prettier/", "/pretty-quick/"]
 		}
 	],
 	"schedule": ["before 1pm on friday"]
