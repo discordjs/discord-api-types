@@ -151,7 +151,7 @@ export interface APIBaseMessageNoChannel {
 	/**
 	 * Sent with Rich Presence-related chat embeds
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object}
 	 */
 	application?: Partial<APIApplication>;
 	/**

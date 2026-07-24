@@ -12,7 +12,7 @@ import type { APIUser } from './user';
 import type { ApplicationWebhookEventType } from './webhook';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+ * @see {@link https://docs.discord.com/developers/resources/application#application-object}
  */
 export interface APIApplication {
 	/**
