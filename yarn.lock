@@ -2573,13 +2573,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"array-ify@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "array-ify@npm:1.0.0"
-  checksum: 10c0/75c9c072faac47bd61779c0c595e912fe660d338504ac70d10e39e1b8a4a0c9c87658703d619b9d1b70d324177ae29dc8d07dda0d0a15d005597bc4c5a59c70c
-  languageName: node
-  linkType: hard
-
 "array-includes@npm:^3.1.6, array-includes@npm:^3.1.8":
   version: 3.1.9
   resolution: "array-includes@npm:3.1.9"
@@ -3109,16 +3102,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"compare-func@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "compare-func@npm:2.0.0"
-  dependencies:
-    array-ify: "npm:^1.0.0"
-    dot-prop: "npm:^5.1.0"
-  checksum: 10c0/78bd4dd4ed311a79bd264c9e13c36ed564cde657f1390e699e0f04b8eee1fc06ffb8698ce2dfb5fbe7342d509579c82d4e248f08915b708f77f7b72234086cc3
-  languageName: node
-  linkType: hard
-
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -3142,15 +3125,6 @@ __metadata:
   version: 2.0.0
   resolution: "content-type@npm:2.0.0"
   checksum: 10c0/491539fff707d7594b0ca4fabcc084bef2a31ffa754ff0a4f80c4377e3963cff0394317f9271c24087596c97fa675bc123d61fa34ffe65b4904e7d3d3098de72
-  languageName: node
-  linkType: hard
-
-"conventional-changelog-angular@npm:^8.0.0":
-  version: 8.3.1
-  resolution: "conventional-changelog-angular@npm:8.3.1"
-  dependencies:
-    compare-func: "npm:^2.0.0"
-  checksum: 10c0/a3776ff7066004040d7d25d2b72fe8f9fee4f1fc5dc6c929ab281899b8c7a6dd6408130064344515b37a4f91d2a9fb90b69cce0bab55415c72a8ba3ee801c2b6
   languageName: node
   linkType: hard
 
@@ -3468,7 +3442,7 @@ __metadata:
     "@types/node": "npm:^24.0.0"
     "@typescript-eslint/utils": "npm:^8.33.0"
     conventional-changelog: "npm:^7.0.2"
-    conventional-changelog-angular: "npm:^8.0.0"
+    conventional-changelog-angular: "npm:^9.0.0"
     conventional-recommended-bump: "npm:^11.1.0"
     eslint: "npm:^10.0.0"
     eslint-config-neon: "npm:^0.5.0"
@@ -3512,15 +3486,6 @@ __metadata:
     p-queue: "npm:^9.0.0"
   languageName: unknown
   linkType: soft
-
-"dot-prop@npm:^5.1.0":
-  version: 5.3.0
-  resolution: "dot-prop@npm:5.3.0"
-  dependencies:
-    is-obj: "npm:^2.0.0"
-  checksum: 10c0/93f0d343ef87fe8869320e62f2459f7e70f49c6098d948cc47e060f4a3f827d0ad61e83cb82f2bd90cd5b9571b8d334289978a43c0f98fea4f0e99ee8faa0599
-  languageName: node
-  linkType: hard
 
 "dunder-proto@npm:^1.0.0, dunder-proto@npm:^1.0.1":
   version: 1.0.1
@@ -5618,13 +5583,6 @@ __metadata:
   version: 7.0.0
   resolution: "is-number@npm:7.0.0"
   checksum: 10c0/b4686d0d3053146095ccd45346461bc8e53b80aeb7671cc52a4de02dbbf7dc0d1d2a986e2fe4ae206984b4d34ef37e8b795ebc4f4295c978373e6575e295d811
-  languageName: node
-  linkType: hard
-
-"is-obj@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "is-obj@npm:2.0.0"
-  checksum: 10c0/85044ed7ba8bd169e2c2af3a178cacb92a97aa75de9569d02efef7f443a824b5e153eba72b9ae3aca6f8ce81955271aa2dc7da67a8b720575d3e38104208cb4e
   languageName: node
   linkType: hard
 
