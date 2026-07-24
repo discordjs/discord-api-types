@@ -1,3 +1,12 @@
+## [0.38.51](https://github.com/discordjs/discord-api-types/compare/0.38.50...0.38.51) (2026-07-23)
+
+
+### Features
+
+* **APIApplication:** `flags_new` ([#1734](https://github.com/discordjs/discord-api-types/issues/1734)) ([7ac58e6](https://github.com/discordjs/discord-api-types/commit/7ac58e67b0bec1fd179429211d9d65a5d90e090a))
+* **interactions:** Add `app_permissions` to resolved channel data ([#1711](https://github.com/discordjs/discord-api-types/issues/1711)) ([85d2619](https://github.com/discordjs/discord-api-types/commit/85d2619c556fc928d13b921905c9882c3b0e69c4))
+* **RESTJSONErrorCodes:** support `40009` ([#1733](https://github.com/discordjs/discord-api-types/issues/1733)) ([d89a527](https://github.com/discordjs/discord-api-types/commit/d89a5279ac4b781ac8d7e0326506904eda9c8c04))
+
 ## [0.38.50](https://github.com/discordjs/discord-api-types/compare/0.38.49...0.38.50) (2026-07-15)
 
 
