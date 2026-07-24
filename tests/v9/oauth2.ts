@@ -8,16 +8,9 @@ import type {
 import { expectAssignable, expectNotAssignable } from '../__utils__/type-assertions';
 
 declare const validBotScope:
-	| OAuth2Scopes.Bot
-	| 'applications.commands bot identify'
-	| 'applications.commands bot'
-	| 'bot identify'
-	| 'bot';
+	OAuth2Scopes.Bot | 'applications.commands bot identify' | 'applications.commands bot' | 'bot identify' | 'bot';
 declare const invalidBotScope:
-	| OAuth2Scopes.ApplicationsCommands
-	| ''
-	| 'applications.commands identify'
-	| 'applications.commands';
+	OAuth2Scopes.ApplicationsCommands | '' | 'applications.commands identify' | 'applications.commands';
 
 expectAssignable<RESTOAuth2BotAuthorizationQuery['scope']>(validBotScope);
 // @ts-expect-error - invalid scope

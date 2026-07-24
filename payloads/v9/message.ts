@@ -1295,9 +1295,7 @@ export interface APIButtonComponentWithSKUId extends APIButtonBase<ButtonStyle.P
  * @see {@link https://discord.com/developers/docs/components/reference#button}
  */
 export type APIButtonComponent =
-	| APIButtonComponentWithCustomId
-	| APIButtonComponentWithSKUId
-	| APIButtonComponentWithURL;
+	APIButtonComponentWithCustomId | APIButtonComponentWithSKUId | APIButtonComponentWithURL;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#button-button-styles}
@@ -1503,10 +1501,7 @@ export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType>
  * @see {@link https://discord.com/developers/docs/components/reference}
  */
 export type APIAutoPopulatedSelectMenuComponent =
-	| APIChannelSelectComponent
-	| APIMentionableSelectComponent
-	| APIRoleSelectComponent
-	| APIUserSelectComponent;
+	APIChannelSelectComponent | APIMentionableSelectComponent | APIRoleSelectComponent | APIUserSelectComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference}

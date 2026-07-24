@@ -200,9 +200,7 @@ export interface APIExternalGuildScheduledEvent extends APIGuildScheduledEventBa
  * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-structure}
  */
 export type APIGuildScheduledEvent =
-	| APIExternalGuildScheduledEvent
-	| APIStageInstanceGuildScheduledEvent
-	| APIVoiceGuildScheduledEvent;
+	APIExternalGuildScheduledEvent | APIStageInstanceGuildScheduledEvent | APIVoiceGuildScheduledEvent;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata}
