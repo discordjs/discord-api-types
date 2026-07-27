@@ -1,3 +1,10 @@
+## [0.38.52](https://github.com/discordjs/discord-api-types/compare/0.38.51...0.38.52) (2026-07-27)
+
+
+### Features
+
+* **GatewayReadyDispatchData:** expose `flags_new` ([#1735](https://github.com/discordjs/discord-api-types/issues/1735)) ([45b9eaf](https://github.com/discordjs/discord-api-types/commit/45b9eaf7c34324805cef034896c6539b1319a640))
+
 ## [0.38.51](https://github.com/discordjs/discord-api-types/compare/0.38.50...0.38.51) (2026-07-23)
 
 
