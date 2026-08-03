@@ -378,6 +378,7 @@ export enum MessageActivityType {
 	Spectate,
 	Listen,
 	JoinRequest = 5,
+	StreamRequest,
 }
 
 /**
