@@ -1890,6 +1890,8 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 	 *
 	 * If only dot-prefixed extensions are specified, you must also include `.jpg` for image uploads
 	 * and both `.mp4` and `.mov` for video uploads because of mobile platform limitations.
+	 *
+	 * @see {@link https://docs.discord.com/developers/reference#file-type-filtering}
 	 */
 	file_types?: FileUploadType[];
 	/**
