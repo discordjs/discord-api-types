@@ -1,3 +1,11 @@
+## [0.38.53](https://github.com/discordjs/discord-api-types/compare/0.38.52...0.38.53) (2026-08-06)
+
+
+### Features
+
+* **GatewayPresenceClientStatus:** add `vr` ([#1757](https://github.com/discordjs/discord-api-types/issues/1757)) ([9e96fcd](https://github.com/discordjs/discord-api-types/commit/9e96fcd44391542ae549361758ed2f6464fe3a69))
+* **MessageActivityType:** add `StreamRequest` ([#1756](https://github.com/discordjs/discord-api-types/issues/1756)) ([b7875bf](https://github.com/discordjs/discord-api-types/commit/b7875bfdcc02ef3674d8a5977f15271a929199a1))
+
 ## [0.38.52](https://github.com/discordjs/discord-api-types/compare/0.38.51...0.38.52) (2026-07-27)
 
 
