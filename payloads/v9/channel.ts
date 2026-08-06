@@ -210,9 +210,9 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
 	 */
 	name: string | null;
 	/**
-	 * Application id of the group DM creator if it is bot-created
+	 * Application id associated with the channel. For group DMs, this is the application that created the group
 	 */
-	application_id?: Snowflake;
+	application_id?: Snowflake | null;
 	/**
 	 * Icon hash
 	 */
