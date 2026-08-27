@@ -143,7 +143,7 @@
 		"@typescript-eslint/utils": "^8.33.0",
 		"conventional-changelog": "^7.0.2",
 		"conventional-changelog-angular": "^8.0.0",
-		"conventional-recommended-bump": "^11.1.0",
+		"conventional-recommended-bump": "^12.0.0",
 		"eslint": "^10.0.0",
 		"eslint-config-neon": "^0.5.0",
 		"eslint-formatter-pretty": "^7.0.0",
