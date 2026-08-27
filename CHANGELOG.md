@@ -1,3 +1,11 @@
+## [0.38.54](https://github.com/discordjs/discord-api-types/compare/0.38.53...0.38.54) (2026-08-27)
+
+
+### Bug Fixes
+
+* correct `available_tags` types ([#1778](https://github.com/discordjs/discord-api-types/issues/1778)) ([53018e1](https://github.com/discordjs/discord-api-types/commit/53018e1d63e2fec9ea37c37b50cc8a635bad2687))
+* **interactions:** omit respective properties ([#1777](https://github.com/discordjs/discord-api-types/issues/1777)) ([e6e07a7](https://github.com/discordjs/discord-api-types/commit/e6e07a721031ea9ea61a71568dec900f25193012))
+
 ## [0.38.53](https://github.com/discordjs/discord-api-types/compare/0.38.52...0.38.53) (2026-08-06)
 
 
