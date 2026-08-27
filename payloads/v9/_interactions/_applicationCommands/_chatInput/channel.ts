@@ -4,7 +4,7 @@ import type { APIApplicationCommandOptionBase, APIInteractionDataOptionBase } fr
 import type { ApplicationCommandOptionType } from './shared';
 
 export interface APIApplicationCommandChannelOption extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Channel> {
-	channel_types?: Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildDirectory>[];
+	channel_types?: Exclude<ChannelType, ChannelType.GuildDirectory>[];
 }
 
 export type APIApplicationCommandInteractionDataChannelOption = APIInteractionDataOptionBase<

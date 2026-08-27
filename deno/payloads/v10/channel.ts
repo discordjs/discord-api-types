@@ -75,10 +75,7 @@ export type TextChannelType =
 
 export type GuildChannelType = Exclude<ChannelType, ChannelType.DM | ChannelType.GroupDM>;
 
-export type ApplicationCommandOptionAllowedChannelType = Exclude<
-	ChannelType,
-	ChannelType.DM | ChannelType.GroupDM | ChannelType.GuildDirectory
->;
+export type ApplicationCommandOptionAllowedChannelType = Exclude<ChannelType, ChannelType.GuildDirectory>;
 
 export interface APISlowmodeChannel<T extends ChannelType> extends APIChannelBase<T> {
 	/**
