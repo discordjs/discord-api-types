@@ -278,7 +278,7 @@ export type APIPrivateThreadChannel = APIThreadChannel<ChannelType.PrivateThread
 export type APIAnnouncementThreadChannel = APIThreadChannel<ChannelType.AnnouncementThread>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#forum-tag-object}
  */
 export interface APIGuildForumTag {
 	/**
