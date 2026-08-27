@@ -42,12 +42,27 @@ export interface RESTAPIChannelPatchOverwrite extends RESTPutAPIChannelPermissio
 export type APIChannelPatchOverwrite = RESTAPIChannelPatchOverwrite;
 
 /**
+ * A forum tag in a create channel request.
+ *
+ * @see {@link https://docs.discord.com/developers/resources/channel#forum-tag-object}
+ */
+export type RESTPostAPIGuildChannelForumTagJSONBody = _StrictPartial<Omit<APIGuildForumTag, 'id'>> &
+	Pick<APIGuildForumTag, 'name'>;
+
+/**
+ * A forum tag in an update channel request.
+ *
+ * @see {@link https://docs.discord.com/developers/resources/channel#forum-tag-object}
+ */
+export type RESTPatchAPIChannelForumTagJSONBody = _StrictPartial<APIGuildForumTag> & Pick<APIGuildForumTag, 'name'>;
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/channel#get-channel}
  */
 export type RESTGetAPIChannelResult = APIChannel;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#modify-channel}
+ * @see {@link https://docs.discord.com/developers/resources/channel#modify-channel}
  */
 export interface RESTPatchAPIChannelJSONBody {
 	/**
@@ -158,7 +173,7 @@ export interface RESTPatchAPIChannelJSONBody {
 	 *
 	 * Channel types: forum, media
 	 */
-	available_tags?: (Partial<APIGuildForumTag> & Pick<APIGuildForumTag, 'name'>)[] | undefined;
+	available_tags?: RESTPatchAPIChannelForumTagJSONBody[] | undefined;
 	/**
 	 * Whether non-moderators can add other non-moderators to the thread
 	 *
