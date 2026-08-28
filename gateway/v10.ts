@@ -237,9 +237,11 @@ export enum GatewayIntentBits {
  */
 export enum GatewayCapabilityBits {
 	/**
-	 * Opts the app into receiving obfuscated channel metadata over the Gateway for channels it can't view
+	 * Opts the client into receiving {@link https://docs.discord.com/developers/resources/channel#channel-object-obfuscated-channels | obfuscated channel metadata} over the Gateway for channels it can't view
 	 *
-	 * @unstable This is a temporary, testing-only opt-in for channel obfuscation.
+	 * @unstable `CHANNEL_OBFUSCATION` is a temporary, testing-only opt-in for channel obfuscation. This opt-in mechanism
+	 * will change before the feature reaches general availability. Obfuscation is then planned to apply to all bots
+	 * automatically, even when they don't provide this capability.
 	 */
 	ChannelObfuscation = 1 << 15,
 }
@@ -2541,7 +2543,7 @@ export interface GatewayIdentifyData {
 	 */
 	intents: number;
 	/**
-	 * Gateway capabilities opt-in bitfield for gateway behaviors
+	 * Bitfield representing {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities | capabilities} of your gateway client
 	 *
 	 * @defaultValue `0`
 	 * @see {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities}
