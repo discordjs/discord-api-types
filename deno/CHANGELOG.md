@@ -1,3 +1,17 @@
+## [0.38.54](https://github.com/discordjs/discord-api-types/compare/0.38.53...0.38.54) (2026-08-28)
+
+
+### Bug Fixes
+
+* allow DM channels on ChannelOption channel_type ([#1769](https://github.com/discordjs/discord-api-types/issues/1769)) ([4a85286](https://github.com/discordjs/discord-api-types/commit/4a8528677f693c0b2c8eadd8e076b52efa8688c6))
+* correct `available_tags` types ([#1778](https://github.com/discordjs/discord-api-types/issues/1778)) ([53018e1](https://github.com/discordjs/discord-api-types/commit/53018e1d63e2fec9ea37c37b50cc8a635bad2687))
+* **interactions:** omit respective properties ([#1777](https://github.com/discordjs/discord-api-types/issues/1777)) ([e6e07a7](https://github.com/discordjs/discord-api-types/commit/e6e07a721031ea9ea61a71568dec900f25193012))
+
+
+### Features
+
+* Obfuscation ([#1718](https://github.com/discordjs/discord-api-types/issues/1718)) ([e031a8d](https://github.com/discordjs/discord-api-types/commit/e031a8d4def5bfc22fad5af0aa056365c5d2fdcd))
+
 ## [0.38.53](https://github.com/discordjs/discord-api-types/compare/0.38.52...0.38.53) (2026-08-06)
 
 
