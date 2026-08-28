@@ -724,6 +724,12 @@ export enum ChannelFlags {
 	 */
 	HideMediaDownloadOptions = 1 << 15,
 	/**
+	 * This channel's metadata has been obfuscated because the current user cannot view it. Only ever set on channels
+	 * received over the {@link https://docs.discord.com/developers/events/gateway | Gateway}; the HTTP API never sets this flag. See
+	 * {@link https://docs.discord.com/developers/resources/channel#channel-object-obfuscated-channels | Obfuscated Channels}.
+	 */
+	ChannelObfuscated = 1 << 17,
+	/**
 	 * This channel is a Spoiler Channel i.e. users must opt in to view its contents.
 	 */
 	IsSpoilerChannel = 1 << 21,
