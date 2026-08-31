@@ -535,7 +535,7 @@ export enum GuildFeature {
 	 */
 	PrivateThreads = 'PRIVATE_THREADS',
 	/**
-	 * Guild has enabled requiring admin to prune members  
+	 * Guild has enabled requiring admin to prune members
 	 */
 	PruneRequiresAdmin = 'PRUNE_REQUIRES_ADMIN',
 	/**
