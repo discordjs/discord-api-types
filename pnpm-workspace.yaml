@@ -1,16 +1,32 @@
+$schema: 'https://www.schemastore.org/pnpm-workspace.json'
+
 packages:
-    - scripts/actions/documentation
-    - website
+    - 'scripts/actions/documentation'
 
 allowBuilds:
-    '@parcel/watcher': true
-    core-js: false
-    core-js-pure: false
     esbuild: true
     unrs-resolver: true
 
-patchedDependencies:
-    '@apify/docusaurus-plugin-typedoc-api': patches/@apify__docusaurus-plugin-typedoc-api.patch
+minimumReleaseAgeExclude:
+    - '@typescript-eslint/eslint-plugin@8.69.0'
+    - '@typescript-eslint/parser@8.69.0'
+    - '@typescript-eslint/project-service@8.69.0'
+    - '@typescript-eslint/scope-manager@8.69.0'
+    - '@typescript-eslint/tsconfig-utils@8.69.0'
+    - '@typescript-eslint/type-utils@8.69.0'
+    - '@typescript-eslint/types@8.69.0'
+    - '@typescript-eslint/typescript-estree@8.69.0'
+    - '@typescript-eslint/utils@8.69.0'
+    - '@typescript-eslint/visitor-keys@8.69.0'
+    - typescript-eslint@8.69.0
 
-overrides:
-    webpack: 5.96.1
+# 1 day
+minimumReleaseAge: 1440
+
+# We don't need this
+verifyDepsBeforeRun: false
+
+# Consistency with npm
+nodeLinker: hoisted
+publicHoistPattern:
+    - '*'

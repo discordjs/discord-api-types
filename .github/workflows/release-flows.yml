@@ -65,7 +65,7 @@ jobs:
       - uses: actions/create-github-app-token@v3
         id: app-token
         with:
-          app-id: ${{ vars.DISCORDJS_APP_ID }}
+          client-id: ${{ vars.DISCORDJS_APP_ID }}
           private-key: ${{ secrets.DISCORDJS_APP_KEY_RELEASE }}
           permission-contents: write
           permission-pull-requests: write
@@ -86,6 +86,9 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Install website dependencies
+        run: pushd website && npm ci --ignore-scripts && popd
 
       - name: Set Git User and Email
         run: |

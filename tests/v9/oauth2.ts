@@ -19,6 +19,7 @@ expectNotAssignable<RESTOAuth2BotAuthorizationQuery['scope']>(invalidBotScope);
 expectAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(validBotScope);
 // @ts-expect-error - invalid scope
 expectNotAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(invalidBotScope);
+
 {
 	expectAssignable<RESTPostOAuth2AccessTokenURLEncodedData>({
 		code: 'code',
