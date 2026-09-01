@@ -5,6 +5,9 @@
 	"author": "Vlad Frangu <me@vladfrangu.dev>",
 	"license": "MIT",
 	"private": true,
+	"engines": {
+		"node": "24.x"
+	},
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"start": "npm run clean && docusaurus start",
@@ -16,8 +19,8 @@
 		"write-translations": "docusaurus write-translations",
 		"write-heading-ids": "docusaurus write-heading-ids",
 		"typecheck": "tsc",
-		"lint": "eslint src --ext mjs,ts,tsx --fix",
-		"lint:no-fix": "eslint src --ext mjs,ts,tsx",
+		"lint": "eslint src --fix",
+		"lint:no-fix": "eslint src",
 		"lint:md": "markdownlint-cli2-fix",
 		"lint:md-no-fix": "markdownlint-cli2",
 		"clean": "node scripts/clean.mjs",
@@ -60,13 +63,15 @@
 		"@types/react-dom": "^18.3.1",
 		"cross-env": "^7.0.3",
 		"cz-conventional-changelog": "^3.3.0",
-		"eslint": "^8.57.1",
-		"eslint-config-neon": "^0.1.62",
+		"eslint": "^10.9.1",
+		"eslint-config-neon": "^0.5.4",
+		"jiti": "^2.6.1",
 		"markdownlint": "^0.41.1",
 		"markdownlint-cli2": "^0.23.1",
 		"patch-package": "^8.0.0",
 		"prettier": "^3.4.1",
 		"pretty-quick": "^4.0.0",
+		"typescript-eslint": "^8.69.0",
 		"tsx": "^4.22.4",
 		"typedoc": "^0.27.1",
 		"typedoc-plugin-djs-links": "^2.2.1",
@@ -93,7 +98,7 @@
 		]
 	},
 	"lint-staged": {
-		"*.{mjs,js,jsx,ts,tsx}": "eslint --fix --ext mjs,js,jsx,ts,tsx"
+		"*.{mjs,js,jsx,ts,tsx}": "eslint --fix"
 	},
 	"config": {
 		"commitizen": {

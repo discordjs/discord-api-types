@@ -7,7 +7,6 @@ import InstallTabButton from './InstallTabButton';
 import styles from './InstallTabs.module.css';
 
 async function handleClickInstallButton(command: string) {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
 	await window.navigator.clipboard.writeText(command);
 }
 

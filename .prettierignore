@@ -40,3 +40,4 @@ v8.ts
 .yarn/*
 djs/*
 _generated_
+pnpm-lock.yaml

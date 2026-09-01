@@ -32,12 +32,12 @@
 
 ## Development Setup
 
-You will need an LTS version of [Node.js](http://nodejs.org) and [Yarn](https://yarnpkg.com).
+You will need an LTS version of [Node.js](http://nodejs.org) and [pnpm](https://pnpm.io).
 
 After cloning the repo, run:
 
 ```bash
-$ yarn install # Install the dependencies of the project
+$ pnpm install # Install the dependencies of the project
 ```
 
 A high level overview of tools used:

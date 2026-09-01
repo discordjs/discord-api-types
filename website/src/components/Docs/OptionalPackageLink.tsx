@@ -4,9 +4,9 @@ import React from 'react';
 import styles from './Link.module.css';
 
 interface Props {
-	description: ReactNode;
-	href: string;
-	linkName: string;
+	readonly description: ReactNode;
+	readonly href: string;
+	readonly linkName: string;
 }
 
 const OptionalPackageLink: FC<Props> = ({ description, href, linkName }) => (

@@ -23,6 +23,8 @@ dependencies:
       - any-glob-to-any-file:
           - package.json
           - package-lock.json
+          - pnpm-lock.yaml
+          - pnpm-workspace.yaml
           - website/package.json
           - website/package-lock.json
 
