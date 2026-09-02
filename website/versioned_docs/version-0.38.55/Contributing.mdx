@@ -10,9 +10,8 @@ things you need to keep in mind before opening a pull request!
 :::tip Before you begin
 
 We recommend you contribute either through locally editing the files on your desktop (which means also installing
-[`npm`](https://www.npmjs.com/) dependencies as this will ensure not only a consistent code style, but also that the
-`deno` types stay in sync automatically) or through a service like
-[`GitHub Codespaces`](https://github.com/features/codespaces).
+dependencies as this will ensure not only a consistent code style, but also that the `deno` types stay in sync
+automatically) or through a service like [`GitHub Codespaces`](https://github.com/features/codespaces).
 
 :::
 
@@ -23,21 +22,20 @@ channel.
 
 :::
 
-### Install npm dependencies first
+## Install dependencies first
 
-One of the most crucial steps is installing [`npm`](https://www.npmjs.com/) dependencies via `npm ci`. This ensures that
-linting can be done, and it also sets up the `git` hooks for building the `deno` types and automatically
-formatting/linting the code when you commit it.
+One of the most crucial steps is installing dependencies via `pnpm install --frozen-lockfile`. This ensures that linting
+can be done, and it also sets up the `git` hooks for building the `deno` types and automatically formatting/linting the
+code when you commit it.
 
-If you forget to install [`npm`](https://www.npmjs.com/) dependencies, or are doing the contributions through other
-means (like directly from GitHub web), you might see a comment like this one being sent as a review to your pull
-request:
+If you forget to install dependencies, or are doing the contributions through other means (like directly from GitHub
+web), you might see a comment like this one being sent as a review to your pull request:
 
 ![An image showing the style of comment the automatic deno checker reports](./images/deno_types_out_of_sync.png)
 
-The easiest way to solve this is to run the `build:deno` script (`yarn build:deno`) and pushing the results.
+The easiest way to solve this is to run the `build:deno` script (`pnpm build:deno`) and pushing the results.
 
-### Figure out if the update you want to contribute respects our rules about documentation
+## Figure out if the update you want to contribute respects our rules about documentation
 
 :::danger
 
@@ -57,7 +55,7 @@ good example is the UserFlags `SPAMMER` flag). As such, if you think your update
 it and we will be handled on a case by case basis. If approved, your update will be documented with an `@unstable` tag.
 It will also not be subject to the same versioning rules as the rest of the types.
 
-### Figure out what API versions need to receive the update
+## Figure out what API versions need to receive the update
 
 `discord-api-types` has multiple API versions in the repository, some of which may be considered `deprecated` or
 `discontinued` as we keep them till the version is completely dead before removing them. This is a good time to figure
@@ -78,7 +76,7 @@ If the version you want to contribute to is not listed above (for instance if a 
 version you want to contribute to is for a different part of the API (for instance `voice`), feel free to submit it and
 we will review it accordingly.
 
-### Figure out where exactly are the files you need to modify to make the update
+## Figure out where exactly are the files you need to modify to make the update
 
 The file structure might seem confusing at first, especially if it's your first time contributing, but we're here to
 guide you through it.
@@ -90,7 +88,7 @@ files you need to keep in mind when contributing.
 ```bash {2,4-6,9-10,12-16}
 ├── deno
 ├── gateway
-├── node_modules (once you ran `npm ci`)
+├── node_modules (once you ran `pnpm install`)
 ├── payloads
 ├── rest
 ├── rpc
@@ -107,7 +105,7 @@ files you need to keep in mind when contributing.
 └── package.json
 ```
 
-#### `deno`
+### `deno`
 
 This folder stores the [`deno`](https://deno.land/) compatible typings for Discord's API.
 
@@ -119,7 +117,7 @@ Any changes that need to be done to this folder need to be done through the `scr
 
 :::
 
-#### `gateway`
+### `gateway`
 
 This folder holds types that are strictly received from
 [`Discord's gateway`](https://discord.com/developers/docs/topics/gateway). It stores the gateway version the types are
@@ -136,7 +134,7 @@ extension of the `APIGuild` type with extra fields received only through the gat
 
 :::
 
-#### `payloads`
+### `payloads`
 
 This folder holds the bulk of type definitions for Discord's APIs. Each API version receives its own folder. Inside of
 each folder there is always an `index.ts` file that exports every type available in that version, as well as the common
@@ -160,7 +158,7 @@ normal name (for instance `UserFlags`).
 
 :::
 
-#### `rest`
+### `rest`
 
 This folder holds all the types that are related to Discord's REST API. Just like [`payloads`](#payloads), it is split
 into folders that have an `index.ts` file, from the structure in [`Discord's API Documentation`](https://discord.dev),
@@ -187,7 +185,7 @@ OAuth2 may not follow the structure exactly, but should aim to follow it as much
 
 :::
 
-#### `rpc`
+### `rpc`
 
 This folder holds types that are strictly related to
 [`Discord's RPC API`](https://discord.com/developers/docs/topics/rpc). Just like [`gateway`](#gateway), each RPC API
@@ -199,12 +197,12 @@ Types created here must start with the `RPC` prefix (for instance `RPCErrorCodes
 
 :::
 
-#### `scripts`
+### `scripts`
 
 This folder holds the module's scripts that empower our Continuous Integration / Deployment pipelines, as well as other
 miscellaneous scripts we might need. There's really not much to say about these really...
 
-#### `tests`
+### `tests`
 
 This folder holds tests for certain complex types that the module might have, and is especially useful for validating
 unions.
@@ -216,7 +214,7 @@ Files created here **must** end in `.test-d.ts`, as otherwise they will not be p
 
 :::
 
-#### `utils`
+### `utils`
 
 This folder holds certain utility functions which can be used while working with some complicated types (for instance
 for more complicated unions). Each API version gets its own file with utility functions, but a folder can be created if
@@ -229,7 +227,7 @@ types should never be exported from the module.
 
 :::
 
-#### `voice`
+### `voice`
 
 This folder holds types that are strictly related to
 [`Discord's Voice API`](https://discord.com/developers/docs/topics/voice-connections). It follows the same folder
@@ -241,7 +239,7 @@ Types in this folder must start with the `Voice` prefix (for instance `VoiceOpco
 
 :::
 
-#### `website`
+### `website`
 
 This folder holds...well...this very site you are reading this page from! For the most part, you do not need to alter
 its contents, except if you're contributing a new API version to the module.
@@ -249,16 +247,16 @@ its contents, except if you're contributing a new API version to the module.
 To add the new version to this very website, edit the `docusaurus.config.js` file, and in the `plugins` array, for the
 `docusaurus-plugin-typedoc-api` plugin, you need to add an entry similar to the ones already present.
 
-#### `globals.ts`
+### `globals.ts`
 
 This file stores types that are present regardless of the API version you use.
 
-#### `v*.ts`
+### `v*.ts`
 
 These files export everything from the previously mentioned folders that match the version the file is named after. It
 serves as the entry point for importing types from the module (for example by importing `discord-api-types/v10`).
 
-#### `package.json`
+### `package.json`
 
 This is the entry point of the package for [`npm`](https://www.npmjs.com/). You won't need to edit this file unless
 you're adding a new API version, in which case you should follow the same structure as seen in the `exports` field.

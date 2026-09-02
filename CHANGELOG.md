@@ -1,3 +1,10 @@
+## [0.38.55](https://github.com/discordjs/discord-api-types/compare/0.38.54...0.38.55) (2026-09-02)
+
+
+### Bug Fixes
+
+* allow descriptions for primary entry point commands ([#1785](https://github.com/discordjs/discord-api-types/issues/1785)) ([4a68cbc](https://github.com/discordjs/discord-api-types/commit/4a68cbc589360d0cfa65b25127cdae128f3ee068))
+
 ## [0.38.54](https://github.com/discordjs/discord-api-types/compare/0.38.53...0.38.54) (2026-08-28)
 
 
