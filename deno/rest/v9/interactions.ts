@@ -92,6 +92,7 @@ export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTP
  */
 export interface RESTPostAPIPrimaryEntryPointApplicationCommandJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type: ApplicationCommandType.PrimaryEntryPoint;
+	description?: string | undefined;
 }
 
 /**
