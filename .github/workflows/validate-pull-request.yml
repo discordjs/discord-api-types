@@ -12,17 +12,10 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v7
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v5
-
-      - name: Use Node.js
-        uses: actions/setup-node@v7
+      - name: Install pnpm, Node.js and dependencies
+        uses: pnpm/setup@v2.1.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
         with:
-          cache: 'pnpm'
-          node-version-file: package.json
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+          cache: true
 
       - name: Run Check Script
         run: node ./scripts/actions/report-deno-not-ran.mjs

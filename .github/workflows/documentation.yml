@@ -43,17 +43,10 @@ jobs:
         with:
           ref: ${{ inputs.ref || '' }}
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v5
-
-      - name: Use Node.js
-        uses: actions/setup-node@v7
+      - name: Install pnpm, Node.js and dependencies
+        uses: pnpm/setup@v2.1.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
         with:
-          cache: 'pnpm'
-          node-version-file: package.json
-
-      - name: Install Dependencies for discord-api-types
-        run: pnpm install --frozen-lockfile
+          cache: true
 
       #region DJS start (mostly from discord.js/packages/actions/src/pnpmCache)
       # pnpm --filter="*api-*" --filter="scripts" --filter="actions" run build
@@ -70,14 +63,16 @@ jobs:
         with:
           swap-size-gb: 10
 
-      - uses: pnpm/action-setup@v6.0.10
-        name: Install pnpm
+      - uses: pnpm/action-setup@v6
+        name: Install pnpm for discord.js
         with:
           run_install: false
           package_json_file: djs/package.json
+          dest: ~/setup-pnpm-djs
 
       - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
         id: pnpm-config
+        working-directory: djs
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
@@ -92,7 +87,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('djs/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
 
@@ -111,6 +106,12 @@ jobs:
           pnpm --filter="*api-*" --filter="scripts" --filter="actions" run build
 
       #endregion
+
+      # pnpm from discord.js above on PATH. This is for discord-api-types.
+      - name: Restore pnpm for discord-api-types
+        uses: pnpm/setup@v2.1.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
+        with:
+          install: false
 
       - name: Extract package and semver from tag
         if: ${{ env.REF_TYPE == 'tag' }}
