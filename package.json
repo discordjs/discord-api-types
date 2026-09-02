@@ -205,6 +205,13 @@
 		}
 	},
 	"packageManager": "pnpm@11.24.0",
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "24.20.0",
+			"onFail": "warn"
+		}
+	},
 	"volta": {
 		"node": "24.20.0",
 		"pnpm": "11.24.0"
