@@ -16,5 +16,3 @@ nodeLinker: hoisted
 
 autoInstallPeers: true
 strictPeerDependencies: false
-
-provenance: true
