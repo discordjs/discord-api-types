@@ -50,6 +50,12 @@ export const FormattingPatterns = {
 	 */
 	Role: /<@&(?<id>\d{17,20})>/,
 	/**
+	 * Regular expression for matching a game profile mention
+	 *
+	 * The `id` group property is present on the `exec` result of this expression
+	 */
+	GameProfile: /<@\$(?<id>\d{17,20})>/,
+	/**
 	 * Regular expression for matching a application command mention
 	 *
 	 * The `fullName` (possibly including `name`, `subcommandOrGroup` and `subcommand`) and `id` group properties are present on the `exec` result of this expression
