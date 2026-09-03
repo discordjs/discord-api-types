@@ -1,3 +1,10 @@
+## [0.38.56](https://github.com/discordjs/discord-api-types/compare/0.38.55...0.38.56) (2026-09-03)
+
+
+### Features
+
+* game mention ([#1788](https://github.com/discordjs/discord-api-types/issues/1788)) ([0e83e98](https://github.com/discordjs/discord-api-types/commit/0e83e9821c556174db9c27848381beecd1025839))
+
 ## [0.38.55](https://github.com/discordjs/discord-api-types/compare/0.38.54...0.38.55) (2026-09-02)
 
 
