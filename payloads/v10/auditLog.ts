@@ -226,8 +226,10 @@ export enum AuditLogEvent {
 
 	HomeSettingsCreate = 190,
 	HomeSettingsUpdate,
-	VoiceChannelStatusCreate,
-	VoiceChannelStatusDelete,
+
+	GuildScheduledEventExceptionCreate = 200,
+	GuildScheduledEventExceptionUpdate,
+	GuildScheduledEventExceptionDelete,
 }
 
 /**
