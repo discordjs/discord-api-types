@@ -204,7 +204,7 @@
 			]
 		}
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@11.25.0",
 	"devEngines": {
 		"runtime": {
 			"name": "node",
@@ -214,6 +214,6 @@
 	},
 	"volta": {
 		"node": "24.20.0",
-		"pnpm": "11.24.0"
+		"pnpm": "11.25.0"
 	}
 }
