@@ -56,7 +56,7 @@ export interface APITeamMember {
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
 	 */
-	user: APIUser;
+	user: Pick<APIUser, 'avatar' | 'discriminator' | 'id' | 'username'>;
 	/**
 	 * The user's role in the team.
 	 *
