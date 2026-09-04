@@ -1,11 +1,13 @@
 import type { Snowflake } from '../../globals';
 import type {
 	APIApplicationCommand,
+	APIApplicationCommandOption,
 	APIApplicationCommandPermission,
 	APIGuildApplicationCommandPermissions,
 	APIInteractionResponse,
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
+	EntryPointCommandHandlerType,
 	InteractionResponseType,
 	APIMessage,
 	InteractionType,
@@ -58,9 +60,11 @@ export interface RESTPostAPIBaseApplicationCommandsJSONBody
 				| 'description_localized'
 				| 'description'
 				| 'guild_id'
+				| 'handler'
 				| 'id'
 				| 'integration_types'
 				| 'name_localized'
+				| 'options'
 				| 'type'
 				| 'version'
 			>
@@ -78,6 +82,7 @@ export interface RESTPostAPIBaseApplicationCommandsJSONBody
 export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type?: ApplicationCommandType.ChatInput | undefined;
 	description: string;
+	options?: APIApplicationCommandOption[] | undefined;
 }
 
 /**
@@ -93,6 +98,7 @@ export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTP
 export interface RESTPostAPIPrimaryEntryPointApplicationCommandJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type: ApplicationCommandType.PrimaryEntryPoint;
 	description?: string | undefined;
+	handler?: EntryPointCommandHandlerType | undefined;
 }
 
 /**
