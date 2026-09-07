@@ -8,6 +8,7 @@ import type {
 
 export interface APIApplicationCommandSubcommandGroupOption extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.SubcommandGroup> {
 	options?: APIApplicationCommandSubcommandOption[];
+	required?: never;
 }
 
 export interface APIApplicationCommandInteractionDataSubcommandGroupOption<
