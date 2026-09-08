@@ -5,7 +5,6 @@ import type { ApplicationCommandOptionType } from './shared.ts';
 
 export interface APIApplicationCommandSubcommandOption extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Subcommand> {
 	options?: APIApplicationCommandBasicOption[];
-	required?: never;
 }
 
 export interface APIApplicationCommandInteractionDataSubcommandOption<Type extends InteractionType = InteractionType> {
