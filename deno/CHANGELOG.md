@@ -1,3 +1,16 @@
+## [0.38.56](https://github.com/discordjs/discord-api-types/compare/0.38.55...0.38.56) (2026-09-10)
+
+
+### Bug Fixes
+
+* remove `options` and `handler` respectively ([#1793](https://github.com/discordjs/discord-api-types/issues/1793)) ([dbde4ee](https://github.com/discordjs/discord-api-types/commit/dbde4eed954f4943649e6fc0ade5b5f6f35942ff))
+* **User:** narrow create dm channel result ([#1795](https://github.com/discordjs/discord-api-types/issues/1795)) ([50752c0](https://github.com/discordjs/discord-api-types/commit/50752c0cbaff58e16efd0135e46632e9e83fab82))
+
+
+### Features
+
+* game mention ([#1788](https://github.com/discordjs/discord-api-types/issues/1788)) ([0e83e98](https://github.com/discordjs/discord-api-types/commit/0e83e9821c556174db9c27848381beecd1025839))
+
 ## [0.38.55](https://github.com/discordjs/discord-api-types/compare/0.38.54...0.38.55) (2026-09-02)
 
 
