@@ -5,9 +5,9 @@ import React from 'react';
 import styles from './Link.module.css';
 
 interface Props {
-	href: string;
-	linkName: string;
-	noRightMargin: boolean;
+	readonly href: string;
+	readonly linkName: string;
+	readonly noRightMargin: boolean;
 }
 
 const SimpleLink: FC<Props> = ({ href, linkName, noRightMargin = false }) => (

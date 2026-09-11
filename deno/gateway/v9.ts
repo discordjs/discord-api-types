@@ -232,6 +232,20 @@ export enum GatewayIntentBits {
 }
 
 /**
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities}
+ */
+export enum GatewayCapabilityBits {
+	/**
+	 * Opts the client into receiving {@link https://docs.discord.com/developers/resources/channel#channel-object-obfuscated-channels | obfuscated channel metadata} over the Gateway for channels it can't view
+	 *
+	 * @unstable `CHANNEL_OBFUSCATION` is a temporary, testing-only opt-in for channel obfuscation. This opt-in mechanism
+	 * will change before the feature reaches general availability. Obfuscation is then planned to apply to all bots
+	 * automatically, even when they don't provide this capability.
+	 */
+	ChannelObfuscation = 1 << 15,
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#receive-events}
  */
 export enum GatewayDispatchEvents {
@@ -514,11 +528,11 @@ export interface GatewayReadyDispatchData {
 	 */
 	shard?: [shard_id: number, shard_count: number];
 	/**
-	 * Contains `id` and `flags`
+	 * Contains `id`, `flags`, and `flags_new`
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object}
 	 */
-	application: Pick<APIApplication, 'flags' | 'id'>;
+	application: Pick<APIApplication, 'flags_new' | 'flags' | 'id'>;
 }
 
 /**
@@ -2527,6 +2541,13 @@ export interface GatewayIdentifyData {
 	 * @see {@link https://discord.com/developers/docs/topics/gateway#gateway-intents}
 	 */
 	intents: number;
+	/**
+	 * Bitfield representing {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities | capabilities} of your gateway client
+	 *
+	 * @defaultValue `0`
+	 * @see {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities}
+	 */
+	capabilities?: number;
 }
 
 /**
@@ -2632,8 +2653,7 @@ export interface GatewayRequestGuildMembersDataWithQuery extends GatewayRequestG
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#request-guild-members}
  */
 export type GatewayRequestGuildMembersData =
-	| GatewayRequestGuildMembersDataWithQuery
-	| GatewayRequestGuildMembersDataWithUserIds;
+	GatewayRequestGuildMembersDataWithQuery | GatewayRequestGuildMembersDataWithUserIds;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#request-soundboard-sounds}

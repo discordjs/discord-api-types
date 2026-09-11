@@ -1,7 +1,7 @@
 import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
-	APIChannel,
 	APIConnection,
+	APIDMChannel,
 	APIGuildMember,
 	APIUser,
 	APIApplicationRoleConnection,
@@ -107,7 +107,7 @@ export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
 /**
  * @see {@link https://discord.com/developers/docs/resources/user#create-dm}
  */
-export type RESTPostAPICurrentUserCreateDMChannelResult = APIChannel;
+export type RESTPostAPICurrentUserCreateDMChannelResult = APIDMChannel;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/user#get-user-connections}

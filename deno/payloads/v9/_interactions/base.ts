@@ -241,6 +241,7 @@ export type APIGuildInteractionWrapper<Original extends APIBaseInteraction<Inter
 export interface APIInteractionDataResolvedChannelBase<T extends ChannelType> extends Required<APIPartialChannel> {
 	type: T;
 	permissions: Permissions;
+	app_permissions?: Permissions;
 }
 
 /**

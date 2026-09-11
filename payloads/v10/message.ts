@@ -5,7 +5,12 @@ import type { _NonNullableFields } from '../../utils/internals';
 import type { APIApplication } from './application';
 import type { APIChannel, APIThreadChannel, APIThreadMember, ChannelType } from './channel';
 import type { APIPartialEmoji } from './emoji';
-import type { APIInteractionDataResolved, APIMessageInteraction, APIMessageInteractionMetadata } from './interactions';
+import type {
+	APIInteractionDataResolved,
+	APIMessageInteraction,
+	APIMessageInteractionMetadata,
+	FileUploadType,
+} from './interactions';
 import type { APIRole } from './permissions';
 import type { APIPoll } from './poll';
 import type { APISticker, APIStickerItem } from './sticker';
@@ -146,7 +151,7 @@ export interface APIBaseMessageNoChannel {
 	/**
 	 * Sent with Rich Presence-related chat embeds
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object}
 	 */
 	application?: Partial<APIApplication>;
 	/**
@@ -373,6 +378,7 @@ export enum MessageActivityType {
 	Spectate,
 	Listen,
 	JoinRequest = 5,
+	StreamRequest,
 }
 
 /**
@@ -964,7 +970,7 @@ export interface APIAttachment {
 	 */
 	ephemeral?: boolean;
 	/**
-	 * The duration of the audio file (currently for voice messages)
+	 * The duration of the audio or video file
 	 */
 	duration_secs?: number;
 	/**
@@ -1295,9 +1301,7 @@ export interface APIButtonComponentWithSKUId extends APIButtonBase<ButtonStyle.P
  * @see {@link https://discord.com/developers/docs/components/reference#button}
  */
 export type APIButtonComponent =
-	| APIButtonComponentWithCustomId
-	| APIButtonComponentWithSKUId
-	| APIButtonComponentWithURL;
+	APIButtonComponentWithCustomId | APIButtonComponentWithSKUId | APIButtonComponentWithURL;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#button-button-styles}
@@ -1503,10 +1507,7 @@ export interface APISelectMenuDefaultValue<T extends SelectMenuDefaultValueType>
  * @see {@link https://discord.com/developers/docs/components/reference}
  */
 export type APIAutoPopulatedSelectMenuComponent =
-	| APIChannelSelectComponent
-	| APIMentionableSelectComponent
-	| APIRoleSelectComponent
-	| APIUserSelectComponent;
+	APIChannelSelectComponent | APIMentionableSelectComponent | APIRoleSelectComponent | APIUserSelectComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference}
@@ -1890,6 +1891,15 @@ export interface APIFileUploadComponent extends APIBaseComponent<ComponentType.F
 	 * Maximum number of items that can be uploaded (defaults to 1); max 10
 	 */
 	max_values?: number;
+	/**
+	 * Allowed file types that can be uploaded; max 10
+	 *
+	 * If only dot-prefixed extensions are specified, you must also include `.jpg` for image uploads
+	 * and both `.mp4` and `.mov` for video uploads because of mobile platform limitations.
+	 *
+	 * @see {@link https://docs.discord.com/developers/reference#file-type-filtering}
+	 */
+	file_types?: FileUploadType[];
 	/**
 	 * Whether the file upload requires files to be uploaded before submitting the modal
 	 *

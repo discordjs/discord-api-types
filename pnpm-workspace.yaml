@@ -1,0 +1,18 @@
+packages:
+    - 'scripts/actions/documentation'
+
+allowBuilds:
+    esbuild: true
+    unrs-resolver: true
+
+# Renovate uses the same age.
+minimumReleaseAge: 1440
+
+# We don't need this
+verifyDepsBeforeRun: false
+
+# Consistency with npm
+nodeLinker: hoisted
+
+autoInstallPeers: true
+strictPeerDependencies: false

@@ -132,9 +132,7 @@ export interface APICommandAutocompleteInteractionResponseCallbackData {
 }
 
 export type APIModalInteractionResponseCallbackComponent =
-	| APIActionRowComponent<APIComponentInModalActionRow>
-	| APILabelComponent
-	| APITextDisplayComponent;
+	APIActionRowComponent<APIComponentInModalActionRow> | APILabelComponent | APITextDisplayComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal}

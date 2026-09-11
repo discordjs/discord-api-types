@@ -210,9 +210,9 @@ export interface APIGroupDMChannel extends APIDMChannelBase<ChannelType.GroupDM>
 	 */
 	name: string | null;
 	/**
-	 * Application id of the group DM creator if it is bot-created
+	 * Application id associated with the channel. For group DMs, this is the application that created the group
 	 */
-	application_id?: Snowflake;
+	application_id?: Snowflake | null;
 	/**
 	 * Icon hash
 	 */
@@ -278,7 +278,7 @@ export type APIPrivateThreadChannel = APIThreadChannel<ChannelType.PrivateThread
 export type APIAnnouncementThreadChannel = APIThreadChannel<ChannelType.AnnouncementThread>;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#forum-tag-object-forum-tag-structure}
+ * @see {@link https://docs.discord.com/developers/resources/channel#forum-tag-object}
  */
 export interface APIGuildForumTag {
 	/**
@@ -725,4 +725,14 @@ export enum ChannelFlags {
 	 * Whether media download options are hidden.
 	 */
 	HideMediaDownloadOptions = 1 << 15,
+	/**
+	 * This channel's metadata has been obfuscated because the current user cannot view it. Only ever set on channels
+	 * received over the {@link https://docs.discord.com/developers/events/gateway | Gateway}; the HTTP API never sets this flag. See
+	 * {@link https://docs.discord.com/developers/resources/channel#channel-object-obfuscated-channels | Obfuscated Channels}.
+	 */
+	ChannelObfuscated = 1 << 17,
+	/**
+	 * This channel is a Spoiler Channel i.e. users must opt in to view its contents.
+	 */
+	IsSpoilerChannel = 1 << 21,
 }

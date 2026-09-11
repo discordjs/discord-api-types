@@ -69,7 +69,7 @@ export interface APIInvite {
 	/**
 	 * The embedded application to open for this voice channel embedded application invite
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/application#application-object}
+	 * @see {@link https://docs.discord.com/developers/resources/application#application-object}
 	 */
 	target_application?: Partial<APIApplication>;
 	/**

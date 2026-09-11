@@ -218,9 +218,7 @@ export type APIApplicationCommandInteractionWrapper<Data extends APIApplicationC
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
  */
 export type APIApplicationCommandInteraction =
-	| APIChatInputApplicationCommandInteraction
-	| APIContextMenuInteraction
-	| APIPrimaryEntryPointCommandInteraction;
+	APIChatInputApplicationCommandInteraction | APIContextMenuInteraction | APIPrimaryEntryPointCommandInteraction;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object}
