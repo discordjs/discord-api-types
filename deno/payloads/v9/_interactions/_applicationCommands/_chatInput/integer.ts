@@ -1,12 +1,12 @@
 import type { InteractionType } from '../../responses.ts';
 import type {
-	APIApplicationCommandOptionBase,
+	APIApplicationCommandBasicOptionBase,
 	APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper,
 	APIInteractionDataOptionBase,
 } from './base.ts';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 
-export interface APIApplicationCommandIntegerOptionBase extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Integer> {
+export interface APIApplicationCommandIntegerOptionBase extends APIApplicationCommandBasicOptionBase<ApplicationCommandOptionType.Integer> {
 	/**
 	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
 	 */
