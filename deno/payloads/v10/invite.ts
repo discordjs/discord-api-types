@@ -113,6 +113,7 @@ export interface APIInvite {
  * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-guild-invite-flags}
  */
 export enum InviteFlags {
+	None = 0,
 	IsGuestInvite = 1 << 0,
 }
 
