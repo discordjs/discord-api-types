@@ -26,32 +26,28 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - name: Use Node.js
-        uses: actions/setup-node@v6
+      - name: Install pnpm, Node.js and dependencies
+        uses: pnpm/setup@v2.1.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
         with:
-          cache: 'yarn'
-          node-version-file: package.json
-
-      - name: Install Dependencies
-        run: yarn
+          cache: true
 
       - name: Bump version
         run: node ./scripts/bump-version.mjs
 
       # TODO: we need a scoped token for this -.-, can't OIDC tmk
       # - name: Deprecate old @next versions
-      #   run: yarn npm-deprecate --name "*next*" --package discord-api-types --message "No longer supported. Install the latest @next release" || true
+      #   run: pnpm npm-deprecate --name "*next*" --package discord-api-types --message "No longer supported. Install the latest @next release" || true
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Publish new @next version
         run: |
-          yarn version $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s)
-          yarn npm publish --tag next
+          npm version $(jq --raw-output '.version' package.json)-next.$(git rev-parse --short HEAD).$(date +%s) --no-git-tag-version
+          pnpm publish --tag next --no-git-checks
 
   create_pr:
     name: Create PR for new version
@@ -62,24 +58,20 @@ jobs:
       - uses: actions/create-github-app-token@v3
         id: app-token
         with:
-          app-id: ${{ vars.DISCORDJS_APP_ID }}
+          client-id: ${{ vars.DISCORDJS_APP_ID }}
           private-key: ${{ secrets.DISCORDJS_APP_KEY_RELEASE }}
           permission-contents: write
           permission-pull-requests: write
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - name: Use Node.js
-        uses: actions/setup-node@v6
+      - name: Install pnpm, Node.js and dependencies
+        uses: pnpm/setup@v2.1.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
         with:
-          cache: 'yarn'
-          node-version-file: package.json
-
-      - name: Install Dependencies
-        run: yarn
+          cache: true
 
       - name: Install website dependencies
         run: pushd website && npm ci --ignore-scripts && popd
@@ -99,7 +91,7 @@ jobs:
           git checkout -b "chore/release/$(jq --raw-output '.version' package.json)"
 
           # Run changelog generation, deno script, website version bump
-          yarn ci:pr
+          pnpm ci:pr
 
           # Add all changes, commit and push
           git add --all .
@@ -126,28 +118,24 @@ jobs:
       - uses: actions/create-github-app-token@v3
         id: app-token
         with:
-          app-id: ${{ vars.DISCORDJS_APP_ID }}
+          client-id: ${{ vars.DISCORDJS_APP_ID }}
           private-key: ${{ secrets.DISCORDJS_APP_KEY_RELEASE }}
           permission-contents: write
           permission-pull-requests: write
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - name: Use Node.js
-        uses: actions/setup-node@v6
+      - name: Install pnpm, Node.js and dependencies
+        uses: pnpm/setup@v2.1.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
         with:
-          cache: 'yarn'
-          node-version-file: package.json
-
-      - name: Install Dependencies
-        run: yarn
+          cache: true
 
       - name: Publish release to npm
         run: |
-          yarn npm publish
+          pnpm publish --no-git-checks
 
       - name: Create GitHub release
         run: node ./scripts/actions/create-release.mjs

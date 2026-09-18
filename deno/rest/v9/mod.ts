@@ -561,8 +561,7 @@ export const Routes = {
 		parts.push('threads');
 
 		return parts.join('/') as
-			| `/channels/${Snowflake}/messages/${Snowflake}/threads`
-			| `/channels/${Snowflake}/threads`;
+			`/channels/${Snowflake}/messages/${Snowflake}/threads` | `/channels/${Snowflake}/threads`;
 	},
 
 	/**
@@ -587,8 +586,7 @@ export const Routes = {
 		else parts.push('active');
 
 		return parts.join('/') as
-			| `/channels/${Snowflake}/threads/active`
-			| `/channels/${Snowflake}/threads/archived/${'private' | 'public'}`;
+			`/channels/${Snowflake}/threads/active` | `/channels/${Snowflake}/threads/archived/${'private' | 'public'}`;
 	},
 
 	/**
@@ -614,8 +612,7 @@ export const Routes = {
 		if (userId) parts.push(userId);
 
 		return parts.join('/') as
-			| `/channels/${Snowflake}/thread-members/${Snowflake | '@me'}`
-			| `/channels/${Snowflake}/thread-members`;
+			`/channels/${Snowflake}/thread-members/${Snowflake | '@me'}` | `/channels/${Snowflake}/thread-members`;
 	},
 
 	/**

@@ -46,7 +46,7 @@ import type {
 	_StrictRequired,
 } from '../../utils/internals.ts';
 import type { Locale } from '../common.ts';
-import type { RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
+import type { RESTPostAPIGuildChannelForumTagJSONBody, RESTPutAPIChannelPermissionJSONBody } from './channel.ts';
 
 export interface RESTAPIGuildCreateOverwrite extends RESTPutAPIChannelPermissionJSONBody {
 	id: number | string;
@@ -67,7 +67,6 @@ export type APIGuildChannelResolvable = RESTAPIGuildChannelResolvable;
 export type RESTAPIGuildCreatePartialChannel = _StrictPartial<
 	_DistributivePick<
 		RESTAPIGuildChannelResolvable,
-		| 'available_tags'
 		| 'bitrate'
 		| 'default_auto_archive_duration'
 		| 'default_forum_layout'
@@ -86,6 +85,10 @@ export type RESTAPIGuildCreatePartialChannel = _StrictPartial<
 	>
 > & {
 	name: string;
+	/**
+	 * The set of tags that can be used in a thread-only channel; limited to 20
+	 */
+	available_tags?: RESTPostAPIGuildChannelForumTagJSONBody[] | null | undefined;
 	id?: number | string | undefined;
 	parent_id?: number | string | null | undefined;
 	permission_overwrites?: RESTAPIGuildCreateOverwrite[] | undefined;
@@ -368,7 +371,7 @@ export type RESTDeleteAPIGuildResult = undefined;
 export type RESTGetAPIGuildChannelsResult = APIGuildChannel[];
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/guild#create-guild-channel}
+ * @see {@link https://docs.discord.com/developers/resources/guild#create-guild-channel}
  */
 export type RESTPostAPIGuildChannelJSONBody = _DistributiveOmit<RESTAPIGuildCreatePartialChannel, 'id'>;
 

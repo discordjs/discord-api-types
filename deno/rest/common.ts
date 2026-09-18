@@ -153,6 +153,8 @@ export enum RESTJSONErrorCodes {
 	FeatureTemporarilyDisabledServerSide,
 	UserBannedFromThisGuild,
 
+	OnlyOneChannelCanHaveAParentIdModifiedAtATime = 40_009,
+
 	ConnectionHasBeenRevoked = 40_012,
 
 	OnlyConsumableSKUsCanBeConsumed = 40_018,
@@ -315,6 +317,9 @@ export enum RESTJSONErrorCodes {
 	ThreadLocked,
 	MaximumActiveThreads,
 	MaximumActiveAnnouncementThreads,
+
+	CannotReferenceAMessageWithoutPermissionToReadMessageHistory = 160_009,
+	NSFWChannelMessageReferenceNotAllowed,
 
 	CannotForwardMessageWithUnreadableContent = 160_014,
 

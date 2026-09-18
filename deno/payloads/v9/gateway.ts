@@ -132,6 +132,10 @@ export interface GatewayPresenceClientStatus {
 	 * The user's status set for an active web (browser, bot account) application session
 	 */
 	web?: PresenceUpdateReceiveStatus;
+	/**
+	 * The user's status set for an active virtual reality application session
+	 */
+	vr?: PresenceUpdateReceiveStatus;
 }
 
 /**

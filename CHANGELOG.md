@@ -1,3 +1,57 @@
+## [0.38.55](https://github.com/discordjs/discord-api-types/compare/0.38.54...0.38.55) (2026-09-02)
+
+
+### Bug Fixes
+
+* allow descriptions for primary entry point commands ([#1785](https://github.com/discordjs/discord-api-types/issues/1785)) ([4a68cbc](https://github.com/discordjs/discord-api-types/commit/4a68cbc589360d0cfa65b25127cdae128f3ee068))
+
+## [0.38.54](https://github.com/discordjs/discord-api-types/compare/0.38.53...0.38.54) (2026-08-28)
+
+
+### Bug Fixes
+
+* allow DM channels on ChannelOption channel_type ([#1769](https://github.com/discordjs/discord-api-types/issues/1769)) ([4a85286](https://github.com/discordjs/discord-api-types/commit/4a8528677f693c0b2c8eadd8e076b52efa8688c6))
+* correct `available_tags` types ([#1778](https://github.com/discordjs/discord-api-types/issues/1778)) ([53018e1](https://github.com/discordjs/discord-api-types/commit/53018e1d63e2fec9ea37c37b50cc8a635bad2687))
+* **interactions:** omit respective properties ([#1777](https://github.com/discordjs/discord-api-types/issues/1777)) ([e6e07a7](https://github.com/discordjs/discord-api-types/commit/e6e07a721031ea9ea61a71568dec900f25193012))
+
+
+### Features
+
+* Obfuscation ([#1718](https://github.com/discordjs/discord-api-types/issues/1718)) ([e031a8d](https://github.com/discordjs/discord-api-types/commit/e031a8d4def5bfc22fad5af0aa056365c5d2fdcd))
+
+## [0.38.53](https://github.com/discordjs/discord-api-types/compare/0.38.52...0.38.53) (2026-08-06)
+
+
+### Features
+
+* **GatewayPresenceClientStatus:** add `vr` ([#1757](https://github.com/discordjs/discord-api-types/issues/1757)) ([9e96fcd](https://github.com/discordjs/discord-api-types/commit/9e96fcd44391542ae549361758ed2f6464fe3a69))
+* **MessageActivityType:** add `StreamRequest` ([#1756](https://github.com/discordjs/discord-api-types/issues/1756)) ([b7875bf](https://github.com/discordjs/discord-api-types/commit/b7875bfdcc02ef3674d8a5977f15271a929199a1))
+
+## [0.38.52](https://github.com/discordjs/discord-api-types/compare/0.38.51...0.38.52) (2026-07-27)
+
+
+### Features
+
+* **GatewayReadyDispatchData:** expose `flags_new` ([#1735](https://github.com/discordjs/discord-api-types/issues/1735)) ([45b9eaf](https://github.com/discordjs/discord-api-types/commit/45b9eaf7c34324805cef034896c6539b1319a640))
+
+## [0.38.51](https://github.com/discordjs/discord-api-types/compare/0.38.50...0.38.51) (2026-07-23)
+
+
+### Features
+
+* **APIApplication:** `flags_new` ([#1734](https://github.com/discordjs/discord-api-types/issues/1734)) ([7ac58e6](https://github.com/discordjs/discord-api-types/commit/7ac58e67b0bec1fd179429211d9d65a5d90e090a))
+* **interactions:** Add `app_permissions` to resolved channel data ([#1711](https://github.com/discordjs/discord-api-types/issues/1711)) ([85d2619](https://github.com/discordjs/discord-api-types/commit/85d2619c556fc928d13b921905c9882c3b0e69c4))
+* **RESTJSONErrorCodes:** support `40009` ([#1733](https://github.com/discordjs/discord-api-types/issues/1733)) ([d89a527](https://github.com/discordjs/discord-api-types/commit/d89a5279ac4b781ac8d7e0326506904eda9c8c04))
+
+## [0.38.50](https://github.com/discordjs/discord-api-types/compare/0.38.49...0.38.50) (2026-07-15)
+
+
+### Features
+
+* add file_types for file uploads ([#1708](https://github.com/discordjs/discord-api-types/issues/1708)) ([3231f19](https://github.com/discordjs/discord-api-types/commit/3231f19386b4b0acdf80a446377efacd3a1e6a0b))
+* **channel:** add spoiler flag ([#1725](https://github.com/discordjs/discord-api-types/issues/1725)) ([265d0ae](https://github.com/discordjs/discord-api-types/commit/265d0aed8bb5c63a9f4db2ad1690cabc18033c25))
+* Support `is_spoiler` ([#1700](https://github.com/discordjs/discord-api-types/issues/1700)) ([0e09f22](https://github.com/discordjs/discord-api-types/commit/0e09f2204fc8bcb8b3e3c91930bc79b702300af9))
+
 ## [0.38.49](https://github.com/discordjs/discord-api-types/compare/0.38.48...0.38.49) (2026-06-17)
 
 

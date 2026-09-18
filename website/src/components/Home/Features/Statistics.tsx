@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import { formatNumber } from '@site/src/utils/Intl';
 import type { FC } from 'react';

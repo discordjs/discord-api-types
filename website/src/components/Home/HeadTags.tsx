@@ -21,7 +21,7 @@ const HeadTags: FC = () => (
 		<link href="/manifest.webmanifest" rel="manifest" />
 		<link color="#23529B" href="/safari-pinned-tab.svg" rel="mask-icon" />
 		<link href="/favicon.ico" rel="shortcut icon" />
-		{/* eslint-disable-next-line react/no-invalid-html-attribute */}
+		{}
 		<link href="/apple-startup.png" rel="apple-touch-startup-image" />
 	</Head>
 );

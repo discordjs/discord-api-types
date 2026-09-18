@@ -1,11 +1,13 @@
 import type { Snowflake } from '../../globals.ts';
 import type {
 	APIApplicationCommand,
+	APIApplicationCommandOption,
 	APIApplicationCommandPermission,
 	APIGuildApplicationCommandPermissions,
 	APIInteractionResponse,
 	APIInteractionResponseCallbackData,
 	ApplicationCommandType,
+	EntryPointCommandHandlerType,
 	InteractionResponseType,
 	APIMessage,
 	InteractionType,
@@ -58,9 +60,11 @@ export interface RESTPostAPIBaseApplicationCommandsJSONBody
 				| 'description_localized'
 				| 'description'
 				| 'guild_id'
+				| 'handler'
 				| 'id'
 				| 'integration_types'
 				| 'name_localized'
+				| 'options'
 				| 'type'
 				| 'version'
 			>
@@ -78,6 +82,7 @@ export interface RESTPostAPIBaseApplicationCommandsJSONBody
 export interface RESTPostAPIChatInputApplicationCommandsJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type?: ApplicationCommandType.ChatInput | undefined;
 	description: string;
+	options?: APIApplicationCommandOption[] | undefined;
 }
 
 /**
@@ -92,6 +97,8 @@ export interface RESTPostAPIContextMenuApplicationCommandsJSONBody extends RESTP
  */
 export interface RESTPostAPIPrimaryEntryPointApplicationCommandJSONBody extends RESTPostAPIBaseApplicationCommandsJSONBody {
 	type: ApplicationCommandType.PrimaryEntryPoint;
+	description?: string | undefined;
+	handler?: EntryPointCommandHandlerType | undefined;
 }
 
 /**
@@ -135,52 +142,67 @@ export type RESTGetAPIApplicationGuildCommandsQuery = RESTGetAPIApplicationComma
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands}
  */
-export type RESTGetAPIApplicationGuildCommandsResult = Omit<APIApplicationCommand, 'dm_permission'>[];
+export type RESTGetAPIApplicationGuildCommandsResult = Omit<
+	APIApplicationCommand,
+	'contexts' | 'dm_permission' | 'integration_types'
+>[];
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands}
  */
-export type RESTGetAPIApplicationGuildCommandResult = Omit<APIApplicationCommand, 'dm_permission'>;
+export type RESTGetAPIApplicationGuildCommandResult = Omit<
+	APIApplicationCommand,
+	'contexts' | 'dm_permission' | 'integration_types'
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command}
  */
 export type RESTPostAPIApplicationGuildCommandsJSONBody =
-	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
-	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>;
+	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'contexts' | 'dm_permission' | 'integration_types'>
+	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'contexts' | 'dm_permission' | 'integration_types'>;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command}
  */
-export type RESTPostAPIApplicationGuildCommandsResult = Omit<APIApplicationCommand, 'dm_permission'>;
-
-/**
- * @see {@link https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command}
- */
-export type RESTPatchAPIApplicationGuildCommandJSONBody = _StrictPartial<
-	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'>
-	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'>
+export type RESTPostAPIApplicationGuildCommandsResult = Omit<
+	APIApplicationCommand,
+	'contexts' | 'dm_permission' | 'integration_types'
 >;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command}
  */
-export type RESTPatchAPIApplicationGuildCommandResult = Omit<APIApplicationCommand, 'dm_permission'>;
+export type RESTPatchAPIApplicationGuildCommandJSONBody = _StrictPartial<
+	| Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'contexts' | 'dm_permission' | 'integration_types'>
+	| Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'contexts' | 'dm_permission' | 'integration_types'>
+>;
+
+/**
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command}
+ */
+export type RESTPatchAPIApplicationGuildCommandResult = Omit<
+	APIApplicationCommand,
+	'contexts' | 'dm_permission' | 'integration_types'
+>;
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands}
  */
 export type RESTPutAPIApplicationGuildCommandsJSONBody = (
-	| (Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'dm_permission'> &
+	| (Omit<RESTPostAPIChatInputApplicationCommandsJSONBody, 'contexts' | 'dm_permission' | 'integration_types'> &
 			Pick<Partial<APIApplicationCommand>, 'id'>)
-	| (Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'dm_permission'> &
+	| (Omit<RESTPostAPIContextMenuApplicationCommandsJSONBody, 'contexts' | 'dm_permission' | 'integration_types'> &
 			Pick<Partial<APIApplicationCommand>, 'id'>)
 )[];
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands}
  */
-export type RESTPutAPIApplicationGuildCommandsResult = Omit<APIApplicationCommand, 'dm_permission'>[];
+export type RESTPutAPIApplicationGuildCommandsResult = Omit<
+	APIApplicationCommand,
+	'contexts' | 'dm_permission' | 'integration_types'
+>[];
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response}
