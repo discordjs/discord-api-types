@@ -3,6 +3,7 @@ import { urlSafeCharacters } from '../../utils/internals.ts';
 
 export * from '../common.ts';
 export type * from './application.ts';
+export type * from './applicationIdentityProfile.ts';
 export type * from './auditLog.ts';
 export type * from './autoModeration.ts';
 export * from './channel.ts';
@@ -1135,6 +1136,44 @@ export const Routes = {
 	 */
 	guildSoundboardSound(guildId: Snowflake, soundId: Snowflake) {
 		return `/guilds/${guildId}/soundboard-sounds/${soundId}` as const;
+	},
+
+	/**
+	 * Routes for:
+	 * - GET `/applications/{application.id}/users/{user.id}/identities/{provider_issued_user_id}/profile`
+	 * - PATCH `/applications/{application.id}/users/{user.id}/identities/{provider_issued_user_id}/profile`
+	 */
+	applicationUserIdentityProfile(applicationId: Snowflake, userId: Snowflake, providerIssuedUserId: string) {
+		return `/applications/${applicationId}/users/${userId}/identities/${providerIssuedUserId}/profile` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/users/{user.id}/application-identities/{application.id}`
+	 */
+	userApplicationIdentities(userId: Snowflake, applicationId: Snowflake) {
+		return `/users/${userId}/application-identities/${applicationId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/application-identities/{provider_type}/{provider_issued_user_id}`
+	 */
+	applicationIdentities(applicationId: Snowflake, providerType: string, providerIssuedUserId: string) {
+		return `/applications/${applicationId}/application-identities/${providerType}/${providerIssuedUserId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/users/{user.id}/application-identities/{application.id}/{provider_type}/{provider_issued_user_id}/delete`
+	 */
+	userApplicationIdentityDelete(
+		userId: Snowflake,
+		applicationId: Snowflake,
+		providerType: string,
+		providerIssuedUserId: string,
+	) {
+		return `/users/${userId}/application-identities/${applicationId}/${providerType}/${providerIssuedUserId}/delete` as const;
 	},
 };
 
