@@ -7,6 +7,11 @@ export interface APIApplicationCommandOptionBase<Type extends ApplicationCommand
 	name_localizations?: LocalizationMap | null;
 	description: string;
 	description_localizations?: LocalizationMap | null;
+}
+
+export interface APIApplicationCommandBasicOptionBase<
+	Type extends ApplicationCommandOptionType,
+> extends APIApplicationCommandOptionBase<Type> {
 	required?: boolean;
 }
 
