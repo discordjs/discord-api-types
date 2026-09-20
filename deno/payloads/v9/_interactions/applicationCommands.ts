@@ -1,7 +1,7 @@
 import type { Permissions, Snowflake } from '../../../globals.ts';
 import type { LocalizationMap } from '../../../v9.ts';
 import type {
-	APIApplicationCommandOption,
+	APIApplicationCommandOptionResponse,
 	APIChatInputApplicationCommandDMInteraction,
 	APIChatInputApplicationCommandGuildInteraction,
 	APIChatInputApplicationCommandInteraction,
@@ -75,7 +75,7 @@ export interface APIApplicationCommand {
 	/**
 	 * The parameters for the `CHAT_INPUT` command, max 25
 	 */
-	options?: APIApplicationCommandOption[];
+	options?: APIApplicationCommandOptionResponse[];
 	/**
 	 * Set of permissions represented as a bitset
 	 */

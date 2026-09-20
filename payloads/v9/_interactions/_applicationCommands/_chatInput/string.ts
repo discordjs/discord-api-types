@@ -1,9 +1,14 @@
 import type {
 	APIApplicationCommandOptionBase,
+	APIApplicationCommandOptionBaseResponse,
 	APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper,
 	APIInteractionDataOptionBase,
 } from './base';
-import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
+import type {
+	APIApplicationCommandOptionChoice,
+	APIApplicationCommandOptionChoiceResponse,
+	ApplicationCommandOptionType,
+} from './shared';
 
 export interface APIApplicationCommandStringOptionBase extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.String> {
 	/**
@@ -19,6 +24,22 @@ export interface APIApplicationCommandStringOptionBase extends APIApplicationCom
 export type APIApplicationCommandStringOption = APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
 	APIApplicationCommandStringOptionBase,
 	APIApplicationCommandOptionChoice<string>
+>;
+
+export interface APIApplicationCommandStringOptionResponseBase extends APIApplicationCommandOptionBaseResponse<ApplicationCommandOptionType.String> {
+	/**
+	 * For option type `STRING`, the minimum allowed length (minimum of `0`, maximum of `6000`).
+	 */
+	min_length?: number;
+	/**
+	 * For option type `STRING`, the maximum allowed length (minimum of `1`, maximum of `6000`).
+	 */
+	max_length?: number;
+}
+
+export type APIApplicationCommandStringOptionResponse = APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
+	APIApplicationCommandStringOptionResponseBase,
+	APIApplicationCommandOptionChoiceResponse<string>
 >;
 
 export interface APIApplicationCommandInteractionDataStringOption extends APIInteractionDataOptionBase<

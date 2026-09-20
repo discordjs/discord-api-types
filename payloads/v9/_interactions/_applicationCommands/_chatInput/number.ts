@@ -1,10 +1,15 @@
 import type { InteractionType } from '../../responses';
 import type {
 	APIApplicationCommandOptionBase,
+	APIApplicationCommandOptionBaseResponse,
 	APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper,
 	APIInteractionDataOptionBase,
 } from './base';
-import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared';
+import type {
+	APIApplicationCommandOptionChoice,
+	APIApplicationCommandOptionChoiceResponse,
+	ApplicationCommandOptionType,
+} from './shared';
 
 export interface APIApplicationCommandNumberOptionBase extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.Number> {
 	/**
@@ -20,6 +25,22 @@ export interface APIApplicationCommandNumberOptionBase extends APIApplicationCom
 export type APIApplicationCommandNumberOption = APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
 	APIApplicationCommandNumberOptionBase,
 	APIApplicationCommandOptionChoice<number>
+>;
+
+export interface APIApplicationCommandNumberOptionResponseBase extends APIApplicationCommandOptionBaseResponse<ApplicationCommandOptionType.Number> {
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the minimum value permitted.
+	 */
+	min_value?: number;
+	/**
+	 * If the option is an `INTEGER` or `NUMBER` type, the maximum value permitted.
+	 */
+	max_value?: number;
+}
+
+export type APIApplicationCommandNumberOptionResponse = APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper<
+	APIApplicationCommandNumberOptionResponseBase,
+	APIApplicationCommandOptionChoiceResponse<number>
 >;
 
 export interface APIApplicationCommandInteractionDataNumberOption<

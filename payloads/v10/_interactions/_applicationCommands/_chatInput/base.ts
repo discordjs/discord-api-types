@@ -10,6 +10,13 @@ export interface APIApplicationCommandOptionBase<Type extends ApplicationCommand
 	required?: boolean;
 }
 
+export interface APIApplicationCommandOptionBaseResponse<
+	Type extends ApplicationCommandOptionType,
+> extends APIApplicationCommandOptionBase<Type> {
+	name_localized?: string;
+	description_localized?: string;
+}
+
 export interface APIInteractionDataOptionBase<T extends ApplicationCommandOptionType, D> {
 	name: string;
 	type: T;

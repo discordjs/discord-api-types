@@ -25,3 +25,12 @@ export interface APIApplicationCommandOptionChoice<ValueType = number | string> 
 	name_localizations?: LocalizationMap | null;
 	value: ValueType;
 }
+
+/**
+ * @see {@link https://docs.discord.com/developers/interactions/application-commands#application-command-object-application-command-option-choice-structure}
+ */
+export interface APIApplicationCommandOptionChoiceResponse<
+	ValueType = number | string,
+> extends APIApplicationCommandOptionChoice<ValueType> {
+	name_localized?: string;
+}
