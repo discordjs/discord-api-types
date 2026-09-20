@@ -461,9 +461,21 @@ export enum GuildFeature {
 	 */
 	Discoverable = 'DISCOVERABLE',
 	/**
+	 * Guild is able to set gradient colors to roles
+	 */
+	EnhancedRoleColors = 'ENHANCED_ROLE_COLORS',
+	/**
 	 * Guild is able to be featured in the directory
 	 */
 	Featurable = 'FEATURABLE',
+	/**
+	 * Guild has access to guest invites
+	 */
+	GuestsEnabled = 'GUESTS_ENABLED',
+	/**
+	 * Guild has access to set guild tags
+	 */
+	GuildTags = 'GUILD_TAGS',
 	/**
 	 * Guild is listed in a directory channel
 	 */
@@ -495,15 +507,15 @@ export enum GuildFeature {
 	 */
 	MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
 	/**
-	 * Guild has increased custom soundboard sound slots
-	 */
-	MoreSoundboard = 'MORE_SOUNDBOARD',
-	/**
 	 * Guild has enabled monetization
 	 *
 	 * @unstable This feature is no longer documented by Discord
 	 */
 	MonetizationEnabled = 'MONETIZATION_ENABLED',
+	/**
+	 * Guild has increased custom soundboard sound slots
+	 */
+	MoreSoundboard = 'MORE_SOUNDBOARD',
 	/**
 	 * Guild has increased custom sticker slots
 	 */
@@ -517,6 +529,12 @@ export enum GuildFeature {
 	 */
 	Partnered = 'PARTNERED',
 	/**
+	 * Guild has migrated to the new pin messages permission
+	 *
+	 * @unstable This feature is currently not documented by Discord, but has known value
+	 */
+	PinPermissionMigrationComplete = 'PIN_PERMISSION_MIGRATION_COMPLETE',
+	/**
 	 * Guild can be previewed before joining via Membership Screening or the directory
 	 */
 	PreviewEnabled = 'PREVIEW_ENABLED',
@@ -524,6 +542,10 @@ export enum GuildFeature {
 	 * Guild has access to create private threads
 	 */
 	PrivateThreads = 'PRIVATE_THREADS',
+	/**
+	 * Guild has enabled requiring admin to prune members
+	 */
+	PruneRequiresAdmin = 'PRUNE_REQUIRES_ADMIN',
 	/**
 	 * Guild has disabled alerts for join raids in the configured safety alerts channel
 	 */
@@ -565,24 +587,6 @@ export enum GuildFeature {
 	 * Guild has enabled the welcome screen
 	 */
 	WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
-	/**
-	 * Guild has access to set guild tags
-	 */
-	GuildTags = 'GUILD_TAGS',
-	/**
-	 * Guild is able to set gradient colors to roles
-	 */
-	EnhancedRoleColors = 'ENHANCED_ROLE_COLORS',
-	/**
-	 * Guild has access to guest invites
-	 */
-	GuestsEnabled = 'GUESTS_ENABLED',
-	/**
-	 * Guild has migrated to the new pin messages permission
-	 *
-	 * @unstable This feature is currently not documented by Discord, but has known value
-	 */
-	PinPermissionMigrationComplete = 'PIN_PERMISSION_MIGRATION_COMPLETE',
 }
 
 /**
