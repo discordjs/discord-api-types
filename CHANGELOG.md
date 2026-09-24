@@ -1,3 +1,20 @@
+## [0.38.56](https://github.com/discordjs/discord-api-types/compare/0.38.55...0.38.56) (2026-09-24)
+
+
+### Bug Fixes
+
+* **AutoModeration:** allow null custom_message ([#1810](https://github.com/discordjs/discord-api-types/issues/1810)) ([e2c4565](https://github.com/discordjs/discord-api-types/commit/e2c4565224a273b9773b2e4e5ec3b6cc168f575c))
+* remove `options` and `handler` respectively ([#1793](https://github.com/discordjs/discord-api-types/issues/1793)) ([dbde4ee](https://github.com/discordjs/discord-api-types/commit/dbde4eed954f4943649e6fc0ade5b5f6f35942ff))
+* **User:** narrow create dm channel result ([#1795](https://github.com/discordjs/discord-api-types/issues/1795)) ([50752c0](https://github.com/discordjs/discord-api-types/commit/50752c0cbaff58e16efd0135e46632e9e83fab82))
+
+
+### Features
+
+* application identity profiles ([#1799](https://github.com/discordjs/discord-api-types/issues/1799)) ([be102d7](https://github.com/discordjs/discord-api-types/commit/be102d70f54a28083eace736424aeb9a47c2e381))
+* game mention ([#1788](https://github.com/discordjs/discord-api-types/issues/1788)) ([0e83e98](https://github.com/discordjs/discord-api-types/commit/0e83e9821c556174db9c27848381beecd1025839))
+* **GuildFeature:** add `PruneRequiresAdmin` ([#1770](https://github.com/discordjs/discord-api-types/issues/1770)) ([567f099](https://github.com/discordjs/discord-api-types/commit/567f099c05beb5c6045094875dab121e3c847d36))
+* **RESTJSONErrorCodes:** add `160009` &`160010` (forward message errors) ([#1697](https://github.com/discordjs/discord-api-types/issues/1697)) ([7484c1d](https://github.com/discordjs/discord-api-types/commit/7484c1dec6a8d9127f2028c756437c56c1f211bd))
+
 ## [0.38.55](https://github.com/discordjs/discord-api-types/compare/0.38.54...0.38.55) (2026-09-02)
 
 
