@@ -288,6 +288,10 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	AmazonMusic = 'amazon-music',
+	/**
+	 * @deprecated Battle.net connections were removed on September 22, 2026
+	 * @see {@link https://github.com/discord/discord-api-docs/pull/8621}
+	 */
 	BattleNet = 'battlenet',
 	Bluesky = 'bluesky',
 	BungieNet = 'bungie',
