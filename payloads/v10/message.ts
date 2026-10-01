@@ -943,6 +943,9 @@ export interface APIAttachment {
 	url: string;
 	/**
 	 * A proxied url of file
+	 *
+	 * @remarks The proxy url supports images and videos (which have a defined `width` and `height`) as well as audio files, which are passed through unmodified.
+	 * For all other attachment types, the proxy returns a `415: Unsupported Media Type` error.
 	 */
 	proxy_url: string;
 	/**
