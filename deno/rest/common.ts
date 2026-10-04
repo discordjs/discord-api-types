@@ -335,6 +335,9 @@ export enum RESTJSONErrorCodes {
 
 	FailedToCreateStageNeededForStageEvent = 180_002,
 
+	ThisRouteRequiresARecurringEvent = 180_004,
+	RecurringEventExceptionsMustHaveAModifiedEventFieldFromTheEventSeries,
+
 	MessageWasBlockedByAutomaticModeration = 200_000,
 	TitleWasBlockedByAutomaticModeration,
 
