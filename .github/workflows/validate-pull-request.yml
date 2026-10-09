@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Install pnpm, Node.js and dependencies
-        uses: pnpm/setup@v2.1.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
+        uses: pnpm/setup@v3.0.0 # Pinned due to https://github.com/pnpm/setup/issues/47.
         with:
           cache: true
 
