@@ -499,6 +499,31 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - PUT    `/invites/{invite.code}/target-users/{user.id}`
+	 * - DELETE `/invites/{invite.code}/target-users/{user.id}`
+	 */
+	inviteTargetUser(code: string, userId: Snowflake) {
+		return `/invites/${code}/target-users/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/invites/{invite.code}/target-users/bulk-add`
+	 */
+	inviteTargetUsersBulkAdd(code: string) {
+		return `/invites/${code}/target-users/bulk-add` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/invites/{invite.code}/target-users/bulk-delete`
+	 */
+	inviteTargetUsersBulkDelete(code: string) {
+		return `/invites/${code}/target-users/bulk-delete` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/invites/{invite.code}/target-users/job-status`
 	 */
 	inviteTargetUsersJobStatus(code: string) {
