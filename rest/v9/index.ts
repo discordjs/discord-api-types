@@ -1597,6 +1597,14 @@ export const OAuth2Routes = {
 	 * @see {@link https://tools.ietf.org/html/rfc7009}
 	 */
 	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
+	/**
+	 * @see {@link https://www.rfc-editor.org/rfc/rfc8414}
+	 */
+	authorizationServerMetadataURL: 'https://discord.com/.well-known/oauth-authorization-server',
+	/**
+	 * @see {@link https://openid.net/specs/openid-connect-discovery-1_0.html}
+	 */
+	openIDConfigurationURL: 'https://discord.com/.well-known/openid-configuration',
 } as const;
 
 // Freeze OAuth2 route object
