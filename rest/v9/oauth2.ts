@@ -61,6 +61,12 @@ export interface RESTPostOAuth2TokenRevocationQuery {
 export interface RESTPostOAuth2AuthorizationQueryResult {
 	code: string;
 	state?: string;
+	/**
+	 * The issuer identifier of the authorization server
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/oauth2#issuer-identification}
+	 */
+	iss: 'https://discord.com';
 }
 
 /**
@@ -122,7 +128,19 @@ export interface RESTOAuth2ImplicitAuthorizationQuery {
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#implicit-grant-redirect-url-example}
  */
-export type RESTOAuth2ImplicitAuthorizationURLFragmentResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
+export interface RESTOAuth2ImplicitAuthorizationURLFragmentResult {
+	access_token: string;
+	token_type: string;
+	expires_in: number;
+	scope: string;
+	state?: string;
+	/**
+	 * The issuer identifier of the authorization server
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/oauth2#issuer-identification}
+	 */
+	iss: 'https://discord.com';
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#client-credentials-grant}
@@ -132,7 +150,7 @@ export interface RESTPostOAuth2ClientCredentialsURLEncodedData {
 	scope: string;
 }
 
-export type RESTPostOAuth2ClientCredentialsResult = RESTOAuth2ImplicitAuthorizationURLFragmentResult;
+export type RESTPostOAuth2ClientCredentialsResult = Omit<RESTPostOAuth2AccessTokenResult, 'refresh_token'>;
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow-bot-auth-parameters}
@@ -199,6 +217,12 @@ export interface RESTOAuth2AdvancedBotAuthorizationQuery {
 export interface RESTOAuth2AdvancedBotAuthorizationQueryResult {
 	code: string;
 	state?: string;
+	/**
+	 * The issuer identifier of the authorization server
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/oauth2#issuer-identification}
+	 */
+	iss: 'https://discord.com';
 	guild_id: Snowflake;
 	permissions: Permissions;
 }
