@@ -666,20 +666,34 @@ export interface RESTPostAPIChannelInviteJSONBody {
 /**
  * @see {@link https://docs.discord.com/developers/resources/channel#create-channel-invite}
  */
-export type RESTPostAPIChannelInviteFormDataBody = {
-	/**
-	 * A csv file with a single column of user IDs for all the users able to accept this invite
-	 */
-	target_users_file?: unknown;
-} & (
-	| RESTPostAPIChannelInviteJSONBody
+export type RESTPostAPIChannelInviteFormDataBody = (
 	| {
 			/**
-			 * JSON stringified invite data
+			 * A csv file with a single column of user IDs for all the users able to accept this invite
+			 * - Requires `multipart/form-data` as the content type with other parameters as form fields in the multipart body.
+			 * Uploading a file with invalid user IDs will result in a 400 with the invalid IDs described. Duplicate user IDs in the file will be ignored.
 			 */
-			payload_json?: string | undefined;
+			target_users_file?: unknown;
+			target_user_ids?: never;
 	  }
-);
+	| {
+			/**
+			 * An array of IDs of all users able to see and accept this invite. Max of 1000 IDs
+			 * - Mutually exclusive with `target_users_file`, only one can be sent at a time.
+			 */
+			target_user_ids?: Snowflake[] | undefined;
+			target_users_file?: never;
+	  }
+) &
+	(
+		| RESTPostAPIChannelInviteJSONBody
+		| {
+				/**
+				 * JSON stringified invite data
+				 */
+				payload_json?: string | undefined;
+		  }
+	);
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#create-channel-invite}
