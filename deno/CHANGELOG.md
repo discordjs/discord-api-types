@@ -1,3 +1,10 @@
+## [0.38.57](https://github.com/discordjs/discord-api-types/compare/0.38.56...0.38.57) (2026-10-19)
+
+
+### Features
+
+* **oauth2:** support iss ([#1837](https://github.com/discordjs/discord-api-types/issues/1837)) ([f3ce294](https://github.com/discordjs/discord-api-types/commit/f3ce2947a0a51a10a209e250e8cc37dbcf0b4e07))
+
 ## [0.38.56](https://github.com/discordjs/discord-api-types/compare/0.38.55...0.38.56) (2026-09-28)
 
 
