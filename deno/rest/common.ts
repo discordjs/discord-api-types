@@ -145,6 +145,8 @@ export enum RESTJSONErrorCodes {
 	MaximumNumberOfChannelPermissionOverwritesReached = 30_060,
 	TheChannelsForThisGuildAreTooLarge,
 
+	TargetUsersLimitForThisGuildReached = 30_084,
+
 	Unauthorized = 40_001,
 	VerifyYourAccount,
 	OpeningDirectMessagesTooFast,
@@ -179,6 +181,9 @@ export enum RESTJSONErrorCodes {
 	AnEntitlementHasAlreadyBeenGrantedForThisResource = 40_074,
 
 	ThisInteractionHasHitTheMaximumNumberOfFollowUpMessages = 40_094,
+
+	TargetUsersAreAlreadyBeingProcessedForThisInvite = 40_114,
+	TargetUsersFileHasNotBeenProcessed,
 
 	CloudflareIsBlockingYourRequest = 40_333,
 
