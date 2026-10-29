@@ -1,7 +1,14 @@
-import type { APIApplicationCommandOptionBase, APIInteractionDataOptionBase } from './base';
+import type {
+	APIApplicationCommandOptionBase,
+	APIApplicationCommandOptionBaseResponse,
+	APIInteractionDataOptionBase,
+} from './base';
 import type { ApplicationCommandOptionType } from './shared';
 
 export type APIApplicationCommandBooleanOption = APIApplicationCommandOptionBase<ApplicationCommandOptionType.Boolean>;
+
+export type APIApplicationCommandBooleanOptionResponse =
+	APIApplicationCommandOptionBaseResponse<ApplicationCommandOptionType.Boolean>;
 
 export type APIApplicationCommandInteractionDataBooleanOption = APIInteractionDataOptionBase<
 	ApplicationCommandOptionType.Boolean,
