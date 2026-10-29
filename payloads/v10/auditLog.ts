@@ -150,11 +150,7 @@ export enum AuditLogEvent {
 	ChannelOverwriteCreate,
 	ChannelOverwriteUpdate,
 	ChannelOverwriteDelete,
-
-	/**
-	 * @unstable
-	 */
-	ChannelPositionUpdate = 16,
+	ChannelPositionUpdate,
 
 	MemberKick = 20,
 	MemberPrune,
@@ -169,11 +165,7 @@ export enum AuditLogEvent {
 	RoleCreate = 30,
 	RoleUpdate,
 	RoleDelete,
-
-	/**
-	 * @unstable
-	 */
-	RolePositionUpdate = 33,
+	RolePositionUpdate,
 
 	InviteCreate = 40,
 	InviteUpdate,
