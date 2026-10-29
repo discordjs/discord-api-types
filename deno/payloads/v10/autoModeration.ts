@@ -226,5 +226,5 @@ export interface APIAutoModerationActionMetadata {
 	 *
 	 * Associated action type {@link AutoModerationActionType.BlockMessage}
 	 */
-	custom_message?: string;
+	custom_message?: string | null;
 }

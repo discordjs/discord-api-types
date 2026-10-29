@@ -1,5 +1,6 @@
 export * from '../common';
 export * from './application';
+export * from './applicationIdentityProfile';
 export * from './auditLog';
 export * from './autoModeration';
 export * from './channel';
