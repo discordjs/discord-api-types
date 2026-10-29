@@ -150,6 +150,7 @@ export enum AuditLogEvent {
 	ChannelOverwriteCreate,
 	ChannelOverwriteUpdate,
 	ChannelOverwriteDelete,
+	ChannelPositionUpdate,
 
 	MemberKick = 20,
 	MemberPrune,
@@ -164,6 +165,7 @@ export enum AuditLogEvent {
 	RoleCreate = 30,
 	RoleUpdate,
 	RoleDelete,
+	RolePositionUpdate,
 
 	InviteCreate = 40,
 	InviteUpdate,
@@ -306,6 +308,8 @@ export interface APIAuditLogOptions {
 	 * - MESSAGE_BULK_DELETE
 	 * - MEMBER_DISCONNECT
 	 * - MEMBER_MOVE
+	 * - CHANNEL_POSITION_UPDATE
+	 * - ROLE_POSITION_UPDATE
 	 */
 	count?: string;
 
