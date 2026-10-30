@@ -204,16 +204,16 @@
 			]
 		}
 	},
-	"packageManager": "pnpm@12.15.0",
+	"packageManager": "pnpm@12.16.1",
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "24.22.1",
+			"version": "24.22.2",
 			"onFail": "warn"
 		}
 	},
 	"volta": {
-		"node": "24.22.1",
-		"pnpm": "12.15.0"
+		"node": "24.22.2",
+		"pnpm": "12.16.1"
 	}
 }
