@@ -298,11 +298,19 @@ export enum ConnectionService {
 	Facebook = 'facebook',
 	GitHub = 'github',
 	Instagram = 'instagram',
+	/**
+	 * @deprecated No longer returned.
+	 * @see {@link https://docs.discord.com/developers/change-log#deprecation-riot-games-connections-in-get-current-user-connections}
+	 */
 	LeagueOfLegends = 'leagueoflegends',
 	Mastodon = 'mastodon',
 	PayPal = 'paypal',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
+	/**
+	 * @deprecated No longer returned.
+	 * @see {@link https://docs.discord.com/developers/change-log#deprecation-riot-games-connections-in-get-current-user-connections}
+	 */
 	RiotGames = 'riotgames',
 	Roblox = 'roblox',
 	Spotify = 'spotify',
