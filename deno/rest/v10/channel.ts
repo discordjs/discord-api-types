@@ -62,6 +62,57 @@ export type RESTPatchAPIChannelForumTagJSONBody = _StrictPartial<APIGuildForumTa
 export type RESTGetAPIChannelResult = APIChannel;
 
 /**
+ * @see {@link https://docs.discord.com/developers/resources/channel#get-channel-member-permissions}
+ */
+export interface RESTGetAPIChannelMemberPermissionsQuery {
+	/**
+	 * Whether to apply implicit permission masking for missing `VIEW_CHANNEL` or voice/stage `CONNECT`.
+	 * Not applied when the target member is a bot
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#implicit-permissions}
+	 * @defaultValue `true`
+	 */
+	implicit?: boolean;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#get-channel-member-permissions}
+ */
+export interface RESTGetAPIChannelMemberPermissionsResult {
+	/**
+	 * The computed permissions as a stringified bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags}
+	 */
+	permissions: Permissions;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#get-channel-role-permissions}
+ */
+export interface RESTGetAPIChannelRolePermissionsQuery {
+	/**
+	 * Whether to apply implicit permission masking for missing `VIEW_CHANNEL` or voice/stage `CONNECT`
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#implicit-permissions}
+	 * @defaultValue `true`
+	 */
+	implicit?: boolean;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/channel#get-channel-role-permissions}
+ */
+export interface RESTGetAPIChannelRolePermissionsResult {
+	/**
+	 * The computed permissions as a stringified bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags}
+	 */
+	permissions: Permissions;
+}
+
+/**
  * @see {@link https://docs.discord.com/developers/resources/channel#modify-channel}
  */
 export interface RESTPatchAPIChannelJSONBody {
