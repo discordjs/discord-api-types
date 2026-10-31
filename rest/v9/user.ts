@@ -65,6 +65,17 @@ export interface RESTGetAPICurrentUserGuildsQuery {
 	 */
 	limit?: number;
 	/**
+	 * Only return guilds in this shard (`0` to `max_concurrency - 1`)
+	 *
+	 * @remarks Apps using large bot sharding must provide the `shard` param.
+	 * Valid values are `0` through `max_concurrency - 1`, where `max_concurrency` comes from the session start limit object on Get Gateway Bot.
+	 * Iterate over every shard to retrieve the full guild list. Apps that are not using large bot sharding are unaffected.
+	 *
+	 * Note that this value is different from the shard id used when connecting to the gateway.
+	 * @see {@link https://docs.discord.com/developers/resources/user#get-current-user-guilds}
+	 */
+	shard?: number;
+	/**
 	 * Include approximate member and presence counts in response
 	 *
 	 * @defaultValue `false`
