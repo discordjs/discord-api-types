@@ -648,6 +648,12 @@ export interface APIEmbed {
 	 */
 	fields?: APIEmbedField[];
 	/**
+	 * Components that make up the embed, only present on `components` type embeds.
+	 *
+	 * @see {@link https://docs.discord.com/developers/link-previews/component-embeds}
+	 */
+	components?: APIComponentInEmbed[];
+	/**
 	 * Embed flags combined as a bitfield
 	 *
 	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-flags}
@@ -694,7 +700,67 @@ export enum EmbedType {
 	 * Poll result embed
 	 */
 	PollResult = 'poll_result',
+	/**
+	 * Link preview built from Discord components
+	 *
+	 * @see {@link https://docs.discord.com/developers/link-previews/component-embeds}
+	 */
+	Components = 'components',
 }
+
+/**
+ * The document, inline or linked, must be a JSON object with a single, parent container component.
+ * No other component can exist at the top level with the container.
+ *
+ * @remarks A component embed can contain up to 40 components, including the parent container component.
+ * Media gallery items are capped at 10 across the entire embed, not per component. Thumbnails don't count toward this limit.
+ * @see {@link https://docs.discord.com/developers/link-previews/component-embeds#payload-structure}
+ */
+export interface APIComponentEmbed {
+	component: APIComponentEmbedContainer;
+}
+
+/**
+ * A button must use the link style (`style` of `5`) and may contain `id`, `type`, `url`, `style`, `label`, `emoji`,
+ * and `disabled`, with a `label`, an `emoji`, or both. Any other key invalidates the entire payload.
+ *
+ * @see {@link https://docs.discord.com/developers/link-previews/component-embeds#compatible-components}
+ */
+export type APIComponentEmbedButton = APIButtonComponentWithURL &
+	({ emoji: APIMessageComponentEmoji } | { label: string });
+
+/**
+ * @see {@link https://docs.discord.com/developers/link-previews/component-embeds#compatible-components}
+ */
+export interface APIComponentEmbedSection extends APISectionComponent {
+	accessory: APIComponentEmbedButton | APIThumbnailComponent;
+}
+
+/**
+ * The container component must be the only top-level component in a component embed.
+ * A container cannot contain another container component.
+ *
+ * @see {@link https://docs.discord.com/developers/link-previews/component-embeds#compatible-components}
+ */
+export interface APIComponentEmbedContainer extends APIContainerComponent {
+	components: APIComponentInEmbedContainer[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/link-previews/component-embeds#compatible-components}
+ */
+export type APIComponentInEmbedContainer =
+	| APIActionRowComponent<APIComponentEmbedButton>
+	| APIComponentEmbedSection
+	| APIMediaGalleryComponent
+	| APISeparatorComponent
+	| APITextDisplayComponent;
+
+/**
+ * @see {@link https://docs.discord.com/developers/link-previews/component-embeds#compatible-components}
+ */
+export type APIComponentInEmbed =
+	APIComponentEmbedButton | APIComponentEmbedContainer | APIComponentInEmbedContainer | APIThumbnailComponent;
 
 /**
  * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-flags}
