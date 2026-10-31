@@ -418,6 +418,18 @@ export type RESTGetAPIGuildThreadsResult = Omit<APIThreadList, 'has_more'>;
 export type RESTGetAPIGuildMemberResult = APIGuildMember;
 
 /**
+ * @see {@link https://docs.discord.com/developers/resources/guild#get-guild-member-permissions}
+ */
+export interface RESTGetAPIGuildMemberPermissionsResult {
+	/**
+	 * The computed permissions as a stringified bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags}
+	 */
+	permissions: Permissions;
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/guild#list-guild-members}
  */
 export interface RESTGetAPIGuildMembersQuery {
@@ -969,6 +981,18 @@ export interface RESTPatchAPIGuildRoleJSONBody {
  * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-role}
  */
 export type RESTGetAPIGuildRoleResult = APIRole;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/guild#get-guild-role-permissions}
+ */
+export interface RESTGetAPIGuildRolePermissionsResult {
+	/**
+	 * The computed permissions as a stringified bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/permissions#permissions-bitwise-permission-flags}
+	 */
+	permissions: Permissions;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/guild#modify-guild-role}
