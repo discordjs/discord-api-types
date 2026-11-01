@@ -1,11 +1,11 @@
 import type {
-	APIApplicationCommandOptionBase,
+	APIApplicationCommandBasicOptionBase,
 	APIApplicationCommandOptionWithAutocompleteOrChoicesWrapper,
 	APIInteractionDataOptionBase,
 } from './base.ts';
 import type { APIApplicationCommandOptionChoice, ApplicationCommandOptionType } from './shared.ts';
 
-export interface APIApplicationCommandStringOptionBase extends APIApplicationCommandOptionBase<ApplicationCommandOptionType.String> {
+export interface APIApplicationCommandStringOptionBase extends APIApplicationCommandBasicOptionBase<ApplicationCommandOptionType.String> {
 	/**
 	 * For option type `STRING`, the minimum allowed length (minimum of `0`, maximum of `6000`).
 	 */
