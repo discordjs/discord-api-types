@@ -9,6 +9,7 @@ import type {
 	APIFileComponent,
 	APILabelComponent,
 	APIStringSelectComponent,
+	APITextDisplayComponent,
 } from '../../v10';
 import { ButtonStyle, ComponentType, EmbedType } from '../../v10';
 import { expectAssignable } from '../__utils__/type-assertions';
@@ -53,6 +54,7 @@ declare const customButton: APIButtonComponentWithCustomId;
 declare const selectRow: APIActionRowComponent<APIStringSelectComponent>;
 declare const file: APIFileComponent;
 declare const label: APILabelComponent;
+declare const textDisplay: APITextDisplayComponent;
 
 // @ts-expect-error - Component embeds cannot contain interactive buttons.
 expectAssignable<APIComponentEmbedButton>(customButton);
@@ -70,5 +72,7 @@ expectAssignable<APIComponentInEmbedContainer>(payload.component);
 expectAssignable<APIComponentInEmbed>(file);
 // @ts-expect-error - Modal components are not supported in component embeds.
 expectAssignable<APIComponentInEmbed>(label);
+// @ts-expect-error - Only containers can be top-level components in an embed.
+expectAssignable<APIEmbed>({ type: EmbedType.Components, components: [textDisplay] });
 // @ts-expect-error - The website payload requires a container at its root.
 expectAssignable<APIComponentEmbed>({ component: { type: ComponentType.TextDisplay, content: 'Preview' } });

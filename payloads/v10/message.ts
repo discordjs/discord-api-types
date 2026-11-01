@@ -657,7 +657,7 @@ export interface APIEmbed {
 	 *
 	 * @see {@link https://docs.discord.com/developers/link-previews/component-embeds}
 	 */
-	components?: APIComponentInEmbed[];
+	components?: APIComponentEmbedContainer[];
 	/**
 	 * Embed flags combined as a bitfield
 	 *
