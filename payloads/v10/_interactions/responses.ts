@@ -90,11 +90,17 @@ export enum InteractionResponseType {
 	 */
 	DeferredChannelMessageWithSource,
 	/**
-	 * ACK a button interaction and update it to a loading state
+	 * ACK a component or modal submit interaction and update it to a loading state
+	 *
+	 * @remarks
+	 * Only valid for component-based and modal submit interactions
 	 */
 	DeferredMessageUpdate,
 	/**
-	 * ACK a button interaction and edit the message to which the button was attached
+	 * ACK a component or modal submit interaction and edit the message to which the component was attached
+	 *
+	 * @remarks
+	 * Only valid for component-based and modal submit interactions
 	 */
 	UpdateMessage,
 	/**
