@@ -911,7 +911,7 @@ export type RESTPatchAPIGuildRolePositionsJSONBody = {
 	/**
 	 * Sorting position of the role
 	 */
-	position?: number | undefined;
+	position?: number | null | undefined;
 }[];
 
 /**
