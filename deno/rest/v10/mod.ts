@@ -159,6 +159,22 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/channels/{channel.id}/permissions/member/{user.id}`
+	 */
+	channelPermissionsMember(channelId: Snowflake, userId: Snowflake) {
+		return `/channels/${channelId}/permissions/member/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/channels/{channel.id}/permissions/role/{role.id}`
+	 */
+	channelPermissionsRole(channelId: Snowflake, roleId: Snowflake) {
+		return `/channels/${channelId}/permissions/role/${roleId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET  `/channels/{channel.id}/invites`
 	 * - POST `/channels/{channel.id}/invites`
 	 */
@@ -308,6 +324,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/permissions/member/{user.id}`
+	 */
+	guildPermissionsMember(guildId: Snowflake, userId: Snowflake) {
+		return `/guilds/${guildId}/permissions/member/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/guilds/{guild.id}/members`
 	 */
 	guildMembers(guildId: Snowflake) {
@@ -395,6 +419,14 @@ export const Routes = {
 	 */
 	guildRole(guildId: Snowflake, roleId: Snowflake) {
 		return `/guilds/${guildId}/roles/${roleId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/permissions/role/{role.id}`
+	 */
+	guildPermissionsRole(guildId: Snowflake, roleId: Snowflake) {
+		return `/guilds/${guildId}/permissions/role/${roleId}` as const;
 	},
 
 	/**
