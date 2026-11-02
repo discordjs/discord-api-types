@@ -43,6 +43,14 @@ const payload: APIComponentEmbed = {
 
 expectAssignable<APIEmbed>({ type: EmbedType.Components, components: [payload.component] });
 
+expectAssignable<APIComponentEmbedButton>({
+	type: ComponentType.Button,
+	style: ButtonStyle.Link,
+	url: 'https://example.com',
+	label: 'Open',
+	emoji: { name: '🔗' },
+});
+
 // Discriminating an embed action row narrows its children to link buttons.
 for (const component of payload.component.components) {
 	if (component.type === ComponentType.ActionRow) {
