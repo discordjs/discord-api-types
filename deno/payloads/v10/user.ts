@@ -288,6 +288,10 @@ export interface APIConnection {
 
 export enum ConnectionService {
 	AmazonMusic = 'amazon-music',
+	/**
+	 * @deprecated Battle.net connections were removed on September 22, 2026
+	 * @see {@link https://github.com/discord/discord-api-docs/pull/8621}
+	 */
 	BattleNet = 'battlenet',
 	Bluesky = 'bluesky',
 	BungieNet = 'bungie',
@@ -298,11 +302,19 @@ export enum ConnectionService {
 	Facebook = 'facebook',
 	GitHub = 'github',
 	Instagram = 'instagram',
+	/**
+	 * @deprecated No longer returned.
+	 * @see {@link https://docs.discord.com/developers/change-log#deprecation-riot-games-connections-in-get-current-user-connections}
+	 */
 	LeagueOfLegends = 'leagueoflegends',
 	Mastodon = 'mastodon',
 	PayPal = 'paypal',
 	PlayStationNetwork = 'playstation',
 	Reddit = 'reddit',
+	/**
+	 * @deprecated No longer returned.
+	 * @see {@link https://docs.discord.com/developers/change-log#deprecation-riot-games-connections-in-get-current-user-connections}
+	 */
 	RiotGames = 'riotgames',
 	Roblox = 'roblox',
 	Spotify = 'spotify',
@@ -331,21 +343,21 @@ export enum ConnectionVisibility {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/user#application-role-connection-object-application-role-connection-structure}
+ * @see {@link https://docs.discord.com/developers/resources/user#application-role-connection-object}
  */
 export interface APIApplicationRoleConnection {
 	/**
 	 * The vanity name of the platform a bot has connected (max 50 characters)
 	 */
-	platform_name: string | null;
+	platform_name?: string | null;
 	/**
 	 * The username on the platform a bot has connected (max 100 characters)
 	 */
-	platform_username: string | null;
+	platform_username?: string | null;
 	/**
 	 * Object mapping application role connection metadata keys to their `string`-ified value (max 100 characters) for the user on the platform a bot has connected
 	 */
-	metadata: Record<string, number | string>;
+	metadata?: Record<string, number | string>;
 }
 
 /**

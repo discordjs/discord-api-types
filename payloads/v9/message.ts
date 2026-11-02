@@ -701,9 +701,21 @@ export enum EmbedType {
  */
 export enum EmbedFlags {
 	/**
+	 * This embed's media was flagged as explicit by Discord's content scanning
+	 */
+	ContainsExplicitContent = 1 << 4,
+	/**
 	 * This embed is a fallback for a reply to an activity card
 	 */
 	IsContentInventoryEntry = 1 << 5,
+	/**
+	 * This embed's media was flagged as gore by Discord's content scanning
+	 */
+	ContainsGoreContent = 1 << 6,
+	/**
+	 * This embed's media was flagged as self-harm by Discord's content scanning
+	 */
+	ContainsSelfHarmContent = 1 << 7,
 }
 
 /**
@@ -938,6 +950,9 @@ export interface APIAttachment {
 	url: string;
 	/**
 	 * A proxied url of file
+	 *
+	 * @remarks The proxy url supports images and videos (which have a defined `width` and `height`) as well as audio files, which are passed through unmodified.
+	 * For all other attachment types, the proxy returns a `415: Unsupported Media Type` error.
 	 */
 	proxy_url: string;
 	/**
@@ -1015,9 +1030,21 @@ export enum AttachmentFlags {
 	 */
 	IsSpoiler = 1 << 3,
 	/**
+	 * This attachment was flagged as explicit by Discord's content scanning
+	 */
+	ContainsExplicitContent = 1 << 4,
+	/**
 	 * This attachment is an animated image
 	 */
 	IsAnimated = 1 << 5,
+	/**
+	 * this attachment was flagged as gore by Discord's content scanning  
+	 */
+	ContainsGoreContent = 1 << 6,
+	/**
+	 * This attachment was flagged as self-harm by Discord's content scanning  
+	 */
+	ContainsSelfHarmContent = 1 << 7,
 }
 
 /**
@@ -1655,12 +1682,50 @@ export interface APIUnfurledMediaItem {
 	 */
 	flags?: UnfurledMediaItemFlags;
 	/**
+	 * Content scan metadata object
+	 *
+	 * @remarks This field is ignored and provided by the API as part of the response.
+	 * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-content-scan-metadata-structure}
+	 */
+	content_scan_metadata?: UnfurledMediaItemContentScanMetadata;
+	/**
 	 * The id of the uploaded attachment.
 	 *
 	 * @remarks This field is ignored and provided by the API as part of the response.
 	 * @remarks Only present if the media item was uploaded as an attachment.
 	 */
 	attachment_id?: Snowflake;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-content-scan-metadata-structure}
+ */
+export interface UnfurledMediaItemContentScanMetadata {
+	/**
+	 * Content scan metadata flags combined as a bitfield
+	 *
+	 * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-content-scan-metadata-flags}
+	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
+	 */
+	flags: UnfurledMediaItemContentScanMetadataFlags;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-content-scan-metadata-flags}
+ */
+export enum UnfurledMediaItemContentScanMetadataFlags {
+	/**
+	 * This media was flagged as explicit by Discord's content scanning
+	 */
+	IsExplicitContent = 1 << 0,
+	/**
+	 * This media was flagged as gore by Discord's content scanning
+	 */
+	IsGoreContent = 1 << 1,
+	/**
+	 * This media was flagged as self-harm by Discord's content scanning
+	 */
+	IsSelfHarmContent = 1 << 2,
 }
 
 /**
