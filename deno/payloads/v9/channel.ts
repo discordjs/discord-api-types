@@ -163,7 +163,7 @@ export interface APIGuildCategoryChannel extends APIGuildChannel<ChannelType.Gui
 export interface APIVoiceChannelBase<T extends GuildChannelType = GuildChannelType>
 	extends APIGuildChannel<T>, APISortableChannel, APITextBasedChannel<T>, APISlowmodeChannel<T> {
 	/**
-	 * The bitrate (in bits) of the voice or stage channel
+	 * The bitrate (in bits per second) of the voice or stage channel
 	 */
 	bitrate?: number;
 	/**
