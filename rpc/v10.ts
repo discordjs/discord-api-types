@@ -9,8 +9,10 @@ import type {
 	APIUser,
 	APIVoiceState,
 	ChannelType,
+	EntitlementType,
 	GatewayActivity,
 	OAuth2Scopes,
+	PresenceUpdateReceiveStatus,
 	Snowflake,
 } from '../v10';
 import type {
@@ -1392,9 +1394,30 @@ export interface RPCSubscribeVoiceStateUpdateArgs {
 }
 
 /**
- * @unstable
+ * @see {@link https://docs.discord.com/developers/topics/rpc#activityinvite-activity-invite-dispatch-data-structure}
  */
-export interface RPCActivityInviteDispatchData {}
+export interface RPCActivityInviteDispatchData {
+	/**
+	 * Invite type; `1` for join
+	 */
+	type: 1;
+	/**
+	 * User who sent the invite
+	 */
+	user: APIUser;
+	/**
+	 * The activity associated with the invite
+	 */
+	activity: GatewayActivity;
+	/**
+	 * Id of the channel the invite was sent in
+	 */
+	channel_id: Snowflake;
+	/**
+	 * Id of the invite message
+	 */
+	message_id: Snowflake;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#activityjoin-activity-join-dispatch-data-structure}
@@ -1445,19 +1468,78 @@ export interface RPCChannelCreateDispatchData {
 }
 
 /**
- * @unstable
+ * @see {@link https://docs.discord.com/developers/topics/rpc#currentuserupdate-current-user-update-dispatch-data-structure}
  */
-export interface RPCCurrentUserUpdateDispatchData {}
+export interface RPCCurrentUserUpdateDispatchData
+	extends
+		Pick<APIUser, 'avatar' | 'discriminator' | 'global_name' | 'id' | 'username'>,
+		Required<Pick<APIUser, 'avatar_decoration_data' | 'bot' | 'flags' | 'premium_type'>> {}
 
 /**
- * @unstable
+ * @see {@link https://docs.discord.com/developers/topics/rpc#entitlementcreate-entitlement-object}
  */
-export interface RPCEntitlementCreateDispatchData {}
+export interface RPCEntitlement {
+	/**
+	 * Entitlement id
+	 */
+	id: Snowflake;
+	/**
+	 * Id of the SKU this entitlement is for
+	 */
+	sku_id: Snowflake;
+	/**
+	 * Id of the application
+	 */
+	application_id: Snowflake;
+	/**
+	 * Id of the user that owns the entitlement
+	 */
+	user_id: Snowflake;
+	/**
+	 * Entitlement type
+	 */
+	type: EntitlementType;
+	/**
+	 * Whether the entitlement has been deleted
+	 */
+	deleted: boolean;
+	/**
+	 * Start date of the entitlement
+	 */
+	starts_at?: string;
+	/**
+	 * End date of the entitlement
+	 */
+	ends_at?: string;
+	/**
+	 * Id of the guild the entitlement applies to
+	 */
+	guild_id?: Snowflake;
+	/**
+	 * For consumable entitlements, whether the entitlement has been consumed
+	 */
+	consumed?: boolean;
+}
 
 /**
- * @unstable
+ * @see {@link https://docs.discord.com/developers/topics/rpc#entitlementcreate-entitlement-create-dispatch-data-structure}
  */
-export interface RPCEntitlementDeleteDispatchData {}
+export interface RPCEntitlementCreateDispatchData {
+	/**
+	 * The entitlement that was created
+	 */
+	entitlement: RPCEntitlement;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/topics/rpc#entitlementdelete-entitlement-delete-dispatch-data-structure}
+ */
+export interface RPCEntitlementDeleteDispatchData {
+	/**
+	 * The entitlement that was deleted
+	 */
+	entitlement: RPCEntitlement;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#error-error-data-structure}
@@ -1628,9 +1710,36 @@ export interface RPCReadyDispatchData {
 }
 
 /**
- * @unstable
+ * @see {@link https://docs.discord.com/developers/topics/rpc#relationshipupdate-presence-object}
  */
-export interface RPCRelationshipUpdateDispatchData {}
+export interface RPCRelationshipPresence {
+	/**
+	 * User's status
+	 */
+	status: PresenceUpdateReceiveStatus;
+	/**
+	 * User's current activity for this application
+	 */
+	activity: GatewayActivity | null;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/topics/rpc#relationshipupdate-relationship-update-dispatch-data-structure}
+ */
+export interface RPCRelationshipUpdateDispatchData {
+	/**
+	 * Relationship type
+	 */
+	type: RelationshipType;
+	/**
+	 * The related user
+	 */
+	user: APIUser;
+	/**
+	 * The related user's current presence
+	 */
+	presence: RPCRelationshipPresence;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#speakingstartspeakingstop-speaking-dispatch-data-structure}
