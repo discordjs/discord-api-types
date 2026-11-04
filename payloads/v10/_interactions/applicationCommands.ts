@@ -61,7 +61,7 @@ export interface APIApplicationCommand {
 	 */
 	name_localized?: string;
 	/**
-	 * 1-100 character description for `CHAT_INPUT` commands, empty string for `USER` and `MESSAGE` commands
+	 * 1-100 character description for `CHAT_INPUT` and `PRIMARY_ENTRY_POINT` commands, empty string for `USER` and `MESSAGE` commands
 	 */
 	description: string;
 	/**
