@@ -1,5 +1,6 @@
 export * from '../common.ts';
 export * from './application.ts';
+export * from './applicationIdentityProfile.ts';
 export * from './auditLog.ts';
 export * from './autoModeration.ts';
 export * from './channel.ts';

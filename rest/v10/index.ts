@@ -3,6 +3,7 @@ import { urlSafeCharacters } from '../../utils/internals';
 
 export * from '../common';
 export type * from './application';
+export type * from './applicationIdentityProfile';
 export type * from './auditLog';
 export type * from './autoModeration';
 export * from './channel';
@@ -158,6 +159,22 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/channels/{channel.id}/permissions/member/{user.id}`
+	 */
+	channelPermissionsMember(channelId: Snowflake, userId: Snowflake) {
+		return `/channels/${channelId}/permissions/member/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/channels/{channel.id}/permissions/role/{role.id}`
+	 */
+	channelPermissionsRole(channelId: Snowflake, roleId: Snowflake) {
+		return `/channels/${channelId}/permissions/role/${roleId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET  `/channels/{channel.id}/invites`
 	 * - POST `/channels/{channel.id}/invites`
 	 */
@@ -307,6 +324,14 @@ export const Routes = {
 
 	/**
 	 * Route for:
+	 * - GET `/guilds/{guild.id}/permissions/member/{user.id}`
+	 */
+	guildPermissionsMember(guildId: Snowflake, userId: Snowflake) {
+		return `/guilds/${guildId}/permissions/member/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
 	 * - GET `/guilds/{guild.id}/members`
 	 */
 	guildMembers(guildId: Snowflake) {
@@ -394,6 +419,14 @@ export const Routes = {
 	 */
 	guildRole(guildId: Snowflake, roleId: Snowflake) {
 		return `/guilds/${guildId}/roles/${roleId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/guilds/{guild.id}/permissions/role/{role.id}`
+	 */
+	guildPermissionsRole(guildId: Snowflake, roleId: Snowflake) {
+		return `/guilds/${guildId}/permissions/role/${roleId}` as const;
 	},
 
 	/**
@@ -1136,6 +1169,44 @@ export const Routes = {
 	guildSoundboardSound(guildId: Snowflake, soundId: Snowflake) {
 		return `/guilds/${guildId}/soundboard-sounds/${soundId}` as const;
 	},
+
+	/**
+	 * Routes for:
+	 * - GET `/applications/{application.id}/users/{user.id}/identities/{provider_issued_user_id}/profile`
+	 * - PATCH `/applications/{application.id}/users/{user.id}/identities/{provider_issued_user_id}/profile`
+	 */
+	applicationUserIdentityProfile(applicationId: Snowflake, userId: Snowflake, providerIssuedUserId: string) {
+		return `/applications/${applicationId}/users/${userId}/identities/${providerIssuedUserId}/profile` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/users/{user.id}/application-identities/{application.id}`
+	 */
+	userApplicationIdentities(userId: Snowflake, applicationId: Snowflake) {
+		return `/users/${userId}/application-identities/${applicationId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET `/applications/{application.id}/application-identities/{provider_type}/{provider_issued_user_id}`
+	 */
+	applicationIdentities(applicationId: Snowflake, providerType: string, providerIssuedUserId: string) {
+		return `/applications/${applicationId}/application-identities/${providerType}/${providerIssuedUserId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/users/{user.id}/application-identities/{application.id}/{provider_type}/{provider_issued_user_id}/delete`
+	 */
+	userApplicationIdentityDelete(
+		userId: Snowflake,
+		applicationId: Snowflake,
+		providerType: string,
+		providerIssuedUserId: string,
+	) {
+		return `/users/${userId}/application-identities/${applicationId}/${providerType}/${providerIssuedUserId}/delete` as const;
+	},
 };
 
 for (const [key, fn] of Object.entries(Routes) as [keyof typeof Routes, (...args: any[]) => string][]) {
@@ -1550,6 +1621,14 @@ export const OAuth2Routes = {
 	 * @see {@link https://tools.ietf.org/html/rfc7009}
 	 */
 	tokenRevocationURL: `${RouteBases.api}${Routes.oauth2TokenRevocation()}`,
+	/**
+	 * @see {@link https://www.rfc-editor.org/rfc/rfc8414}
+	 */
+	authorizationServerMetadataURL: 'https://discord.com/.well-known/oauth-authorization-server',
+	/**
+	 * @see {@link https://openid.net/specs/openid-connect-discovery-1_0.html}
+	 */
+	openIDConfigurationURL: 'https://discord.com/.well-known/openid-configuration',
 } as const;
 
 // Freeze OAuth2 route object
