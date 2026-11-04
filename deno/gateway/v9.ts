@@ -201,6 +201,7 @@ export enum GatewayCloseCodes {
  * @see {@link https://discord.com/developers/docs/topics/gateway#list-of-intents}
  */
 export enum GatewayIntentBits {
+	None = 0,
 	Guilds = 1 << 0,
 	GuildMembers = 1 << 1,
 	GuildModeration = 1 << 2,
@@ -235,6 +236,7 @@ export enum GatewayIntentBits {
  * @see {@link https://docs.discord.com/developers/events/gateway-events#identify-gateway-capabilities}
  */
 export enum GatewayCapabilityBits {
+	None = 0,
 	/**
 	 * Opts the client into receiving {@link https://docs.discord.com/developers/resources/channel#channel-object-obfuscated-channels | obfuscated channel metadata} over the Gateway for channels it can't view
 	 *

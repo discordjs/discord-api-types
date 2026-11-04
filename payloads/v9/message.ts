@@ -1784,6 +1784,7 @@ export interface UnfurledMediaItemContentScanMetadata {
  * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-content-scan-metadata-flags}
  */
 export enum UnfurledMediaItemContentScanMetadataFlags {
+	None = 0,
 	/**
 	 * This media was flagged as explicit by Discord's content scanning
 	 */
