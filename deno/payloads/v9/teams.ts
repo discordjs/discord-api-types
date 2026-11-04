@@ -52,9 +52,9 @@ export interface APITeamMember {
 	 */
 	team_id: Snowflake;
 	/**
-	 * The avatar, discriminator, id, and username of the user
+	 * User object of the team member
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/user#user-object}
+	 * @see {@link https://docs.discord.com/developers/resources/user#user-object}
 	 */
 	user: APIUser;
 	/**
