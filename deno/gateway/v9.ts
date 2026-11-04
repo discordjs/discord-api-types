@@ -1072,9 +1072,9 @@ export type GatewayGuildDeleteDispatch = _DataPayload<
  */
 export interface GatewayGuildDeleteDispatchData extends APIBaseGuild {
 	/**
-	 * `true` if this guild is unavailable due to an outage
+	 * `true` if this guild is currently unavailable (e.g. due to an outage)
 	 *
-	 * If the field is not set, the user was removed from the guild.
+	 * If it becomes available to the session again, a Guild Create event is sent.
 	 */
 	unavailable?: true;
 }
