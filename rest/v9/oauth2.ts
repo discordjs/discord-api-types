@@ -45,6 +45,15 @@ export interface RESTOAuth2AuthorizationQuery {
 	redirect_uri?: string;
 	state?: string;
 	prompt?: 'consent' | 'none';
+	/**
+	 * The installation context for the authorization
+	 *
+	 * @remarks
+	 * Only relevant when `scope` contains `applications.commands`.
+	 * The application must be configured in the Developer Portal to support the provided `integration_type`.
+	 * @see {@link https://docs.discord.com/developers/resources/application#installation-context}
+	 */
+	integration_type?: ApplicationIntegrationType;
 }
 
 /**
