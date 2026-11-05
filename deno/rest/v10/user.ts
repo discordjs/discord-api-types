@@ -2,6 +2,7 @@ import type { Permissions, Snowflake } from '../../globals.ts';
 import type {
 	APIConnection,
 	APIDMChannel,
+	APIGroupDMChannel,
 	APIGuildMember,
 	APIUser,
 	APIApplicationRoleConnection,
@@ -119,6 +120,25 @@ export interface RESTPostAPICurrentUserCreateDMChannelJSONBody {
  * @see {@link https://discord.com/developers/docs/resources/user#create-dm}
  */
 export type RESTPostAPICurrentUserCreateDMChannelResult = APIDMChannel;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/user#create-group-dm}
+ */
+export interface RESTPostAPICurrentUserCreateGroupDMChannelJSONBody {
+	/**
+	 * Access tokens of users that have granted your app the `gdm.join` scope
+	 */
+	access_tokens: string[];
+	/**
+	 * A dictionary of user ids to their respective nicknames
+	 */
+	nicks: Record<Snowflake, string>;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/user#create-group-dm}
+ */
+export type RESTPostAPICurrentUserCreateGroupDMChannelResult = APIGroupDMChannel;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/user#get-user-connections}
