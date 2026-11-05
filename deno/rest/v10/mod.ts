@@ -1475,9 +1475,14 @@ export const CDNRoutes = {
 
 	/**
 	 * Route for:
-	 * - GET `/stickers/{sticker.id}.{png|json}`
+	 * - GET `/stickers/{sticker.id}.{png|json|gif}`
 	 *
 	 * This route supports the extensions: PNG, Lottie, GIF
+	 *
+	 * @remarks
+	 * Sticker GIFs do not use the CDN base URL, and can be accessed at {@link RouteBases.media}
+	 * (`https://media.discordapp.net/stickers/{sticker.id}.gif`)
+	 * @see {@link https://docs.discord.com/developers/reference#image-formatting-cdn-endpoints}
 	 */
 	sticker<Format extends StickerFormat>(stickerId: Snowflake, format: Format) {
 		return `/stickers/${stickerId}.${format}` as const;
