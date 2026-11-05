@@ -869,16 +869,26 @@ export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThr
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel}
  */
-export type RESTPostAPIGuildForumThreadsFormDataBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
-	/**
-	 * The initial message of the thread
-	 */
-	message: string;
-	/**
-	 * The IDs of the set of tags to apply to the thread; limited to 5
-	 */
-	applied_tags?: Snowflake[] | undefined;
-};
+export type RESTPostAPIGuildForumThreadsFormDataBody =
+	| (Record<`files[${bigint}]`, unknown> &
+			RESTPostAPIChannelMessagesThreadsJSONBody & {
+				/**
+				 * The initial message of the thread, as a JSON stringified {@link RESTPostAPIChannelMessageJSONBody}
+				 *
+				 * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel-forum-and-media-thread-message-params-object}
+				 */
+				message: string;
+				/**
+				 * The IDs of the set of tags to apply to the thread; limited to 5
+				 */
+				applied_tags?: Snowflake[] | undefined;
+			})
+	| (Record<`files[${bigint}]`, unknown> & {
+			/**
+			 * JSON stringified thread body
+			 */
+			payload_json?: string | undefined;
+	  });
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-from-message}
