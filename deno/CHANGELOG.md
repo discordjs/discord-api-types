@@ -1,3 +1,24 @@
+## [0.38.58](https://github.com/discordjs/discord-api-types/compare/0.38.57...0.38.58) (2026-11-05)
+
+
+### Bug Fixes
+
+* **APIApplicationRoleConnection:** make fields optional ([#1858](https://github.com/discordjs/discord-api-types/issues/1858)) ([278b275](https://github.com/discordjs/discord-api-types/commit/278b2750494fb8bc7ffc2800a0553343f71515a4))
+* **ConnectionService:** deprecate League of Legends and RiotGames ([#1857](https://github.com/discordjs/discord-api-types/issues/1857)) ([d6d59c2](https://github.com/discordjs/discord-api-types/commit/d6d59c2c822c280a6293a32307cc59fb963142d4))
+* **interactions:** include individual locale property ([#1794](https://github.com/discordjs/discord-api-types/issues/1794)) ([b9c8cd6](https://github.com/discordjs/discord-api-types/commit/b9c8cd66ede6d82a75de1d51e06535eee505f7a6))
+* **RESTPatchAPIGuildRolePositionsJSONBody:** make `position` nullable ([#1848](https://github.com/discordjs/discord-api-types/issues/1848)) ([49c6e4b](https://github.com/discordjs/discord-api-types/commit/49c6e4b0ba40f58d55933af28d452a5a72013d36))
+
+
+### Features
+
+* add computed permission endpoints ([#1855](https://github.com/discordjs/discord-api-types/issues/1855)) ([e62c39c](https://github.com/discordjs/discord-api-types/commit/e62c39cc1f0e49c19f869d16c718123063e5dd8e))
+* **AuditLog:** add position update events ([#1841](https://github.com/discordjs/discord-api-types/issues/1841)) ([2affad0](https://github.com/discordjs/discord-api-types/commit/2affad0689d349ebfb65a6282b3c03d60fa68231))
+* **ConnectionService:** mark BattleNet as deprecated ([#1813](https://github.com/discordjs/discord-api-types/issues/1813)) ([f6165d0](https://github.com/discordjs/discord-api-types/commit/f6165d0730ec80ab8b41325af646a6760d6be5d9))
+* content scanning flags ([#1847](https://github.com/discordjs/discord-api-types/issues/1847)) ([904d0e6](https://github.com/discordjs/discord-api-types/commit/904d0e6b863737f2ab3625c507f69d5694237ff8))
+* **message:** support link previews ([#1859](https://github.com/discordjs/discord-api-types/issues/1859)) ([64d6c8b](https://github.com/discordjs/discord-api-types/commit/64d6c8bc4386d1a4ef2816f2fb87a0101765f786))
+* **RESTGetAPICurrentUserGuildsQuery:** add `shard` ([#1856](https://github.com/discordjs/discord-api-types/issues/1856)) ([c76dff4](https://github.com/discordjs/discord-api-types/commit/c76dff4c0d652a406b714c1bf8d69ab55f689eae))
+* **RESTOAuth2AuthorizationQuery:** add `integration_type` ([#1868](https://github.com/discordjs/discord-api-types/issues/1868)) ([861bc71](https://github.com/discordjs/discord-api-types/commit/861bc719ffe546d63a688f52d500343a85427a01))
+
 ## [0.38.57](https://github.com/discordjs/discord-api-types/compare/0.38.56...0.38.57) (2026-10-19)
 
 
