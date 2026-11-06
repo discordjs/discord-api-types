@@ -67,7 +67,7 @@
 		"eslint-config-neon": "^0.5.4",
 		"jiti": "^2.6.1",
 		"markdownlint": "^0.41.1",
-		"markdownlint-cli2": "^0.23.1",
+		"markdownlint-cli2": "^0.23.3",
 		"npm-run-all2": "^9.0.3",
 		"patch-package": "^8.0.0",
 		"prettier": "^3.9.6",
