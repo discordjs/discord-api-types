@@ -305,7 +305,7 @@ export enum VoiceConnectionStates {
 }
 
 /**
- * @unstable
+ * @see {@link https://docs.discord.com/developers/topics/rpc#relationshipupdate-relationship-types}
  */
 export enum RelationshipType {
 	None,
