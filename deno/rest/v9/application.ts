@@ -2,6 +2,7 @@ import type {
 	APIActivityInstance,
 	APIApplication,
 	APIApplicationRoleConnectionMetadata,
+	ApplicationWebhookEventStatus,
 } from '../../payloads/v9/application.ts';
 import type { _StrictPartial, _Nullable } from '../../utils/internals.ts';
 
@@ -34,7 +35,6 @@ export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
 			APIApplication,
 			| 'custom_install_url'
 			| 'description'
-			| 'event_webhooks_status'
 			| 'event_webhooks_types'
 			| 'flags'
 			| 'install_params'
@@ -43,7 +43,12 @@ export type RESTPatchCurrentApplicationJSONBody = _StrictPartial<
 			| 'role_connections_verification_url'
 			| 'tags'
 		>
->;
+> & {
+	/**
+	 * If webhook events are enabled for the app. `1` to disable, and `2` to enable
+	 */
+	event_webhooks_status?: ApplicationWebhookEventStatus.Disabled | ApplicationWebhookEventStatus.Enabled | undefined;
+};
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/application#edit-current-application}
