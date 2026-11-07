@@ -213,7 +213,7 @@ export interface GatewayActivity {
 	 *
 	 * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji}
 	 */
-	emoji?: GatewayActivityEmoji;
+	emoji?: GatewayActivityEmoji | null;
 	/**
 	 * @unstable
 	 */
