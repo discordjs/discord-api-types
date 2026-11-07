@@ -485,7 +485,7 @@ export enum ChannelType {
 	 */
 	GuildForum,
 	/**
-	 * A channel like forum channels but contains media for server subscriptions
+	 * A channel that can only contain threads, similar to `GuildForum` channels
 	 *
 	 * @see {@link https://creator-support.discord.com/hc/articles/14346342766743}
 	 */
@@ -691,7 +691,7 @@ export enum ChannelFlags {
 	 */
 	GuildFeedRemoved = 1 << 0,
 	/**
-	 * This thread is pinned to the top of its parent forum channel
+	 * This thread is pinned to the top of its parent `GuildForum` or `GuildMedia` channel
 	 */
 	Pinned = 1 << 1,
 	/**
@@ -699,7 +699,7 @@ export enum ChannelFlags {
 	 */
 	ActiveChannelsRemoved = 1 << 2,
 	/**
-	 * Whether a tag is required to be specified when creating a thread in a forum channel.
+	 * Whether a tag is required to be specified when creating a thread in a `GuildForum` or a `GuildMedia` channel.
 	 * Tags are specified in the `applied_tags` field
 	 */
 	RequireTag = 1 << 4,
