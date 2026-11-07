@@ -26,7 +26,10 @@ export interface APISticker {
 	 */
 	description: string | null;
 	/**
-	 * For guild stickers, the Discord name of a unicode emoji representing the sticker's expression. for standard stickers, a comma-separated list of related expressions.
+	 * Autocomplete/suggestion tags for the sticker (max 200 characters)
+	 *
+	 * @remarks A comma separated list of keywords is the format used in this field by standard stickers, but this is just a convention.
+	 * Incidentally the client will always use a name generated from an emoji as the value of this field when creating or modifying a guild sticker.
 	 */
 	tags: string;
 	/**

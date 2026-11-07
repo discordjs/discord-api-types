@@ -51,7 +51,7 @@ export interface RESTPostAPIGuildStickerFormDataBody {
 	 */
 	description: string;
 	/**
-	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
+	 * Autocomplete/suggestion tags for the sticker (max 200 characters)
 	 */
 	tags: string;
 	/**
@@ -80,7 +80,7 @@ export interface RESTPatchAPIGuildStickerJSONBody {
 	 */
 	description?: string | null | undefined;
 	/**
-	 * The Discord name of a unicode emoji representing the sticker's expression (2-200 characters)
+	 * Autocomplete/suggestion tags for the sticker (max 200 characters)
 	 */
 	tags?: string | undefined;
 }
