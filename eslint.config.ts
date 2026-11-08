@@ -297,6 +297,7 @@ export default config([
 				{
 					whitelist: [
 						'RESTAPIAttachment',
+						'RESTAPIBulkUpdateLobbyMember',
 						'RESTAPIChannelPatchOverwrite',
 						'RESTAPIGuildChannelResolvable',
 						'RESTAPIGuildCreateOverwrite',
@@ -307,6 +308,7 @@ export default config([
 						'RESTAPIInteractionCallbackActivityInstanceResource',
 						'RESTAPIInteractionCallbackObject',
 						'RESTAPIInteractionCallbackResourceObject',
+						'RESTAPILobbyMember',
 						'RESTAPIMessageReference',
 						'RESTAPIPartialCurrentUserGuild',
 						'RESTAPIPoll',
