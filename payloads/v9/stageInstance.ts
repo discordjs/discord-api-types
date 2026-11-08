@@ -37,7 +37,7 @@ export interface APIStageInstance {
 	/**
 	 * The id of the scheduled event for this stage instance
 	 */
-	guild_scheduled_event_id?: Snowflake;
+	guild_scheduled_event_id: Snowflake | null;
 }
 
 /**
