@@ -122,7 +122,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: all
 	 */
 	name?: string | undefined;
-
+	/**
+	 * Base64 encoded icon
+	 *
+	 * Channel types: groupDM
+	 */
+	icon?: string | undefined;
 	/**
 	 * The type of channel; only conversion between `text` and `news`
 	 * is supported and only in guilds with the "NEWS" feature
