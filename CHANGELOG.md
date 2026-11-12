@@ -1,3 +1,10 @@
+## [0.38.59](https://github.com/discordjs/discord-api-types/compare/0.38.58...0.38.59) (2026-11-12)
+
+
+### Bug Fixes
+
+* **GatewayActivity:** make `emoji` nullable ([#1879](https://github.com/discordjs/discord-api-types/issues/1879)) ([edd6aea](https://github.com/discordjs/discord-api-types/commit/edd6aeabbec1843c0feb9c9b0b11d0d618eb5eef))
+
 ## [0.38.58](https://github.com/discordjs/discord-api-types/compare/0.38.57...0.38.58) (2026-11-07)
 
 
