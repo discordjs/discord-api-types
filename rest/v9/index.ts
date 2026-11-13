@@ -911,6 +911,9 @@ export const Routes = {
 	 * Route for:
 	 * - GET `/applications/{application.id}/guilds/{guild.id}/commands/permissions`
 	 * - PUT `/applications/{application.id}/guilds/{guild.id}/commands/permissions`
+	 *
+	 * @remarks The PUT endpoint has been disabled with updates to command permissions (Permissions v2).
+	 * Use {@link Routes.applicationCommandPermissions} to edit each application command's permissions instead.
 	 */
 	guildApplicationCommandsPermissions(applicationId: Snowflake, guildId: Snowflake) {
 		return `/applications/${applicationId}/guilds/${guildId}/commands/permissions` as const;

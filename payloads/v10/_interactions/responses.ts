@@ -149,7 +149,7 @@ export interface APIModalInteractionResponseCallbackData {
 	 */
 	custom_id: string;
 	/**
-	 * The title of the popup modal
+	 * The title of the popup modal, max 45 characters
 	 */
 	title: string;
 	/**

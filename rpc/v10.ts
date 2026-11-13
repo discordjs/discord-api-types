@@ -1204,7 +1204,10 @@ export enum RPCEvents {
 	OverlayUpdate = 'OVERLAY_UPDATE',
 	Ready = 'READY',
 	/**
-	 * @unstable
+	 * This event requires the `relationships_read` {@link https://docs.discord.com/developers/topics/oauth2#shared-resources-oauth2-scopes | OAuth2 scope}.
+	 * When a relationship is removed, `type` will be `0` (`NONE`).
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/rpc#relationshipupdate}
 	 */
 	RelationshipUpdate = 'RELATIONSHIP_UPDATE',
 	SpeakingStart = 'SPEAKING_START',
@@ -1322,9 +1325,6 @@ export type RPCSubscribeOverlayArgs = Record<string, unknown>;
  */
 export type RPCSubscribeOverlayUpdateArgs = Record<string, unknown>;
 
-/**
- * @unstable
- */
 export type RPCSubscribeRelationshipUpdateArgs = Record<string, unknown>;
 
 /**

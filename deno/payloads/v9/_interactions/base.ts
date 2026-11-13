@@ -189,7 +189,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 */
 	version: 1;
 	/**
-	 * For components, the message they were attached to
+	 * For components or modals triggered by components, the message they were attached to
 	 */
 	message?: APIMessage;
 	/**
