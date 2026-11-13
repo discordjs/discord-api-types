@@ -1655,6 +1655,7 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 * Text that appears on top of the text input field, max 45 characters.
 	 *
 	 * @remarks Cannot be used in a label component.
+	 * @deprecated Use {@link APILabelComponent.label} and {@link APILabelComponent.description} instead
 	 */
 	label?: string;
 	/**
