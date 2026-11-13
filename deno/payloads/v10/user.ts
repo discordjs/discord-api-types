@@ -275,7 +275,7 @@ export interface APIConnection {
 	 */
 	show_activity: boolean;
 	/**
-	 * Whether this connection supports console voice transfer
+	 * Whether this connection has a corresponding third party OAuth2 token
 	 */
 	two_way_link: boolean;
 	/**
