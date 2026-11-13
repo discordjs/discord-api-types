@@ -7,6 +7,7 @@
 import type { Snowflake } from '../../globals.ts';
 import type { APIThreadChannel, APIThreadMember } from './channel.ts';
 import type { APIEmoji } from './emoji.ts';
+import type { APIGuildMember } from './guild.ts';
 import type { APIUser } from './user.ts';
 
 /**
@@ -455,6 +456,22 @@ export interface GatewayThreadListSync {
 }
 
 /**
+ * A thread member sent in the `added_members` field of the `THREAD_MEMBERS_UPDATE` event
+ *
+ * @see {@link https://docs.discord.com/developers/events/gateway-events#thread-members-update-thread-members-update-event-fields}
+ */
+export interface GatewayThreadMembersUpdateAddedMember extends APIThreadMember {
+	/**
+	 * The guild member object for the added thread member
+	 */
+	member: APIGuildMember;
+	/**
+	 * The presence object for the added thread member
+	 */
+	presence: GatewayGuildMembersChunkPresence | null;
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/topics/gateway-events#thread-members-update-thread-members-update-event-fields}
  */
 export interface GatewayThreadMembersUpdate {
@@ -473,7 +490,7 @@ export interface GatewayThreadMembersUpdate {
 	/**
 	 * The members that were added to the thread
 	 */
-	added_members?: APIThreadMember[];
+	added_members?: GatewayThreadMembersUpdateAddedMember[];
 	/**
 	 * The ids of the members that were removed from the thread
 	 */
