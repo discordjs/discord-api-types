@@ -399,6 +399,7 @@ export enum MessageReferenceType {
  * @see {@link https://discord.com/developers/docs/resources/message#message-object-message-flags}
  */
 export enum MessageFlags {
+	None = 0,
 	/**
 	 * This message has been published to subscribed channels (via Channel Following)
 	 */
@@ -771,6 +772,7 @@ export type APIComponentInEmbed =
  * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-flags}
  */
 export enum EmbedFlags {
+	None = 0,
 	/**
 	 * This embed's media was flagged as explicit by Discord's content scanning
 	 */
@@ -793,6 +795,7 @@ export enum EmbedFlags {
  * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-media-flags}
  */
 export enum EmbedMediaFlags {
+	None = 0,
 	/**
 	 * This image is animated
 	 */
@@ -1080,6 +1083,7 @@ export interface APIAttachment {
  * @see {@link https://docs.discord.com/developers/resources/message#attachment-object-attachment-flags}
  */
 export enum AttachmentFlags {
+	None = 0,
 	/**
 	 * This attachment is a Clip from a stream
 	 *
@@ -1785,6 +1789,7 @@ export interface UnfurledMediaItemContentScanMetadata {
  * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-content-scan-metadata-flags}
  */
 export enum UnfurledMediaItemContentScanMetadataFlags {
+	None = 0,
 	/**
 	 * This media was flagged as explicit by Discord's content scanning
 	 */
@@ -1803,6 +1808,7 @@ export enum UnfurledMediaItemContentScanMetadataFlags {
  * @see {@link https://docs.discord.com/developers/components/reference#unfurled-media-item-unfurled-media-item-flags}
  */
 export enum UnfurledMediaItemFlags {
+	None = 0,
 	/**
 	 * This image is animated
 	 */

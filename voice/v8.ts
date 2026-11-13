@@ -218,6 +218,7 @@ export enum VoiceEncryptionMode {
  * @see {@link https://discord.com/developers/docs/topics/voice-connections#speaking}
  */
 export enum VoiceSpeakingFlags {
+	None = 0,
 	/**
 	 * Normal transmission of voice audio
 	 */
