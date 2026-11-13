@@ -1,3 +1,4 @@
+import type { Snowflake } from '../../../globals.ts';
 import type {
 	APIBaseInteraction,
 	APIDMInteractionWrapper,
@@ -21,23 +22,23 @@ export interface APIModalSubmitStringSelectComponent extends APIBaseModalSubmitC
 }
 
 export interface APIModalSubmitUserSelectComponent extends APIBaseModalSubmitComponent<ComponentType.UserSelect> {
-	values: string[];
+	values: Snowflake[];
 }
 
 export interface APIModalSubmitRoleSelectComponent extends APIBaseModalSubmitComponent<ComponentType.RoleSelect> {
-	values: string[];
+	values: Snowflake[];
 }
 
 export interface APIModalSubmitMentionableSelectComponent extends APIBaseModalSubmitComponent<ComponentType.MentionableSelect> {
-	values: string[];
+	values: Snowflake[];
 }
 
 export interface APIModalSubmitChannelSelectComponent extends APIBaseModalSubmitComponent<ComponentType.ChannelSelect> {
-	values: string[];
+	values: Snowflake[];
 }
 
 export interface APIModalSubmitFileUploadComponent extends APIBaseModalSubmitComponent<ComponentType.FileUpload> {
-	values: string[];
+	values: Snowflake[];
 }
 
 export interface APIModalSubmitRadioGroupComponent extends APIBaseModalSubmitComponent<ComponentType.RadioGroup> {
