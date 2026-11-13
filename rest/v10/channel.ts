@@ -122,7 +122,12 @@ export interface RESTPatchAPIChannelJSONBody {
 	 * Channel types: all
 	 */
 	name?: string | undefined;
-
+	/**
+	 * Base64 encoded icon
+	 *
+	 * Channel types: groupDM
+	 */
+	icon?: string | undefined;
 	/**
 	 * The type of channel; only conversion between `text` and `news`
 	 * is supported and only in guilds with the "NEWS" feature
@@ -156,9 +161,13 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	rate_limit_per_user?: number | null | undefined;
 	/**
-	 * The bitrate (in bits) of the voice channel; 8000 to 96000 (128000 for VIP servers)
+	 * The bitrate (in bits per second) of the voice or stage channel; min 8000
 	 *
-	 * Channel types: voice
+	 * For voice channels, normal servers can set bitrate up to 96000, servers with Boost level 1 can set up to 128000,
+	 * servers with Boost level 2 can set up to 256000, and servers with Boost level 3 or the `VIP_REGIONS` guild feature
+	 * can set up to 384000. For stage channels, bitrate can be set up to 64000.
+	 *
+	 * Channel types: voice, stage
 	 */
 	bitrate?: number | null | undefined;
 	/**

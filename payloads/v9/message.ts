@@ -2062,7 +2062,6 @@ export interface APIRadioGroupComponent extends APIBaseComponent<ComponentType.R
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#radio-group-option-structure}
- * @unstable This feature is not publicly released and is currently in preview.
  */
 export interface APIRadioGroupOption {
 	/**
