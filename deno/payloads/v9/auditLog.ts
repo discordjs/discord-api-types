@@ -20,9 +20,12 @@ import type {
 import type {
 	APIGuildIntegration,
 	APIGuildIntegrationType,
+	APIGuildOnboardingPrompt,
+	APIGuildOnboardingPromptOption,
 	GuildDefaultMessageNotifications,
 	GuildExplicitContentFilter,
 	GuildMFALevel,
+	GuildOnboardingMode,
 	GuildSystemChannelFlags,
 	GuildVerificationLevel,
 	IntegrationExpireBehavior,
@@ -403,6 +406,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyCommunicationDisabledUntil
 	| APIAuditLogChangeKeyDeaf
 	| APIAuditLogChangeKeyDefaultAutoArchiveDuration
+	| APIAuditLogChangeKeyDefaultChannelIds
 	| APIAuditLogChangeKeyDefaultMessageNotifications
 	| APIAuditLogChangeKeyDefaultReactionEmoji
 	| APIAuditLogChangeKeyDefaultThreadRateLimitPerUser
@@ -427,6 +431,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyIconHash
 	| APIAuditLogChangeKeyId
 	| APIAuditLogChangeKeyImageHash
+	| APIAuditLogChangeKeyInOnboarding
 	| APIAuditLogChangeKeyInviterId
 	| APIAuditLogChangeKeyLocation
 	| APIAuditLogChangeKeyLocked
@@ -434,10 +439,12 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyMaxUses
 	| APIAuditLogChangeKeyMentionable
 	| APIAuditLogChangeKeyMFALevel
+	| APIAuditLogChangeKeyMode
 	| APIAuditLogChangeKeyMute
 	| APIAuditLogChangeKeyName
 	| APIAuditLogChangeKeyNick
 	| APIAuditLogChangeKeyNSFW
+	| APIAuditLogChangeKeyOptions
 	| APIAuditLogChangeKeyOwnerId
 	| APIAuditLogChangeKeyPermissionOverwrites
 	| APIAuditLogChangeKeyPermissions
@@ -445,14 +452,17 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyPreferredLocale
 	| APIAuditLogChangeKeyPremiumProgressBarEnabled
 	| APIAuditLogChangeKeyPrivacyLevel
+	| APIAuditLogChangeKeyPrompts
 	| APIAuditLogChangeKeyPruneDeleteDays
 	| APIAuditLogChangeKeyPublicUpdatesChannelId
 	| APIAuditLogChangeKeyRateLimitPerUser
 	| APIAuditLogChangeKeyRecurrenceRule
 	| APIAuditLogChangeKeyRegion
+	| APIAuditLogChangeKeyRequired
 	| APIAuditLogChangeKeyRTCRegion
 	| APIAuditLogChangeKeyRulesChannelId
 	| APIAuditLogChangeKeySafetyAlertsChannelId
+	| APIAuditLogChangeKeySingleSelect
 	| APIAuditLogChangeKeySoundId
 	| APIAuditLogChangeKeySplashHash
 	| APIAuditLogChangeKeyStatus
@@ -460,6 +470,7 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeySystemChannelId
 	| APIAuditLogChangeKeyTags
 	| APIAuditLogChangeKeyTemporary
+	| APIAuditLogChangeKeyTitle
 	| APIAuditLogChangeKeyTopic
 	| APIAuditLogChangeKeyTriggerMetadata
 	| APIAuditLogChangeKeyTriggerType
@@ -966,6 +977,46 @@ export type APIAuditLogChangeKeyEmojiName = APIAuditLogChangeData<'emoji_name', 
  * Returned when a sounboard is created
  */
 export type APIAuditLogChangeKeyUserId = APIAuditLogChangeData<'user_id', Snowflake>;
+
+/**
+ * Returned when a guild's onboarding default channels are changed
+ */
+export type APIAuditLogChangeKeyDefaultChannelIds = APIAuditLogChangeData<'default_channel_ids', Snowflake[]>;
+
+/**
+ * Returned when a guild's onboarding mode is changed
+ */
+export type APIAuditLogChangeKeyMode = APIAuditLogChangeData<'mode', GuildOnboardingMode>;
+
+/**
+ * Returned when a guild's onboarding prompts are changed
+ */
+export type APIAuditLogChangeKeyPrompts = APIAuditLogChangeData<'prompts', APIGuildOnboardingPrompt[]>;
+
+/**
+ * Returned when an onboarding prompt's options are changed
+ */
+export type APIAuditLogChangeKeyOptions = APIAuditLogChangeData<'options', APIGuildOnboardingPromptOption[]>;
+
+/**
+ * Returned when an onboarding prompt's title is changed
+ */
+export type APIAuditLogChangeKeyTitle = APIAuditLogChangeData<'title', string>;
+
+/**
+ * Returned when an onboarding prompt's single select setting is changed
+ */
+export type APIAuditLogChangeKeySingleSelect = APIAuditLogChangeData<'single_select', boolean>;
+
+/**
+ * Returned when an onboarding prompt's required setting is changed
+ */
+export type APIAuditLogChangeKeyRequired = APIAuditLogChangeData<'required', boolean>;
+
+/**
+ * Returned when an onboarding prompt's presence in the onboarding flow is changed
+ */
+export type APIAuditLogChangeKeyInOnboarding = APIAuditLogChangeData<'in_onboarding', boolean>;
 
 export interface APIAuditLogChangeData<K extends string, D> {
 	key: K;
