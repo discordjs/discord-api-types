@@ -462,15 +462,15 @@ export type APIAuditLogChange =
 	| APIAuditLogChangeKeyRTCRegion
 	| APIAuditLogChangeKeyRulesChannelId
 	| APIAuditLogChangeKeySafetyAlertsChannelId
+	| APIAuditLogChangeKeySingleSelect
 	| APIAuditLogChangeKeySoundId
 	| APIAuditLogChangeKeySplashHash
-	| APIAuditLogChangeKeySingleSelect
 	| APIAuditLogChangeKeyStatus
 	| APIAuditLogChangeKeySystemChannelFlags
 	| APIAuditLogChangeKeySystemChannelId
 	| APIAuditLogChangeKeyTags
-	| APIAuditLogChangeKeyTitle
 	| APIAuditLogChangeKeyTemporary
+	| APIAuditLogChangeKeyTitle
 	| APIAuditLogChangeKeyTopic
 	| APIAuditLogChangeKeyTriggerMetadata
 	| APIAuditLogChangeKeyTriggerType
