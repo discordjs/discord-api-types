@@ -290,7 +290,7 @@ export enum VideoQualityMode {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-structure
+ * https://discord.com/developers/docs/resources/message#message-object-message-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -370,25 +370,25 @@ export interface APIMessage {
 	 *
 	 * If no mentions in the message meet these requirements, this field will not be sent
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#channel-mention-object
+	 * See https://discord.com/developers/docs/resources/message#channel-mention-object
 	 */
 	mention_channels?: APIChannelMention[];
 	/**
 	 * Any attached files
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/message#attachment-object
 	 */
 	attachments: APIAttachment[];
 	/**
 	 * Any embedded content
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/message#embed-object
 	 */
 	embeds: APIEmbed[];
 	/**
 	 * Reactions to the message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#reaction-object
+	 * See https://discord.com/developers/docs/resources/message#reaction-object
 	 */
 	reactions?: APIReaction[];
 	/**
@@ -409,19 +409,19 @@ export interface APIMessage {
 	/**
 	 * Type of message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-types
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-types
 	 */
 	type: MessageType;
 	/**
 	 * Sent with Rich Presence-related chat embeds
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
 	 */
 	activity?: APIMessageActivity;
 	/**
 	 * Sent with Rich Presence-related chat embeds
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-application-structure
+	 * See https://discord.com/developers/docs/resources/message#message-object
 	 */
 	application?: Partial<APIApplication>;
 	/**
@@ -431,13 +431,13 @@ export interface APIMessage {
 	/**
 	 * Reference data sent with crossposted messages, replies, pins, and thread starter messages
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+	 * See https://discord.com/developers/docs/resources/message#message-reference-structure
 	 */
 	message_reference?: APIMessageReference;
 	/**
 	 * Message flags combined as a bitfield
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-flags
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-flags
 	 *
 	 * See https://en.wikipedia.org/wiki/Bit_field
 	 */
@@ -453,7 +453,7 @@ export interface APIMessage {
 	 *
 	 * If the field exists but is `null`, the referenced message was deleted
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object
+	 * See https://discord.com/developers/docs/resources/message#message-object
 	 */
 	referenced_message?: APIMessage | null;
 	/**
@@ -481,7 +481,7 @@ export interface APIMessage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-types
+ * https://discord.com/developers/docs/resources/message#message-object-message-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -510,7 +510,7 @@ export enum MessageType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
+ * https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -518,7 +518,7 @@ export interface APIMessageActivity {
 	/**
 	 * Type of message activity
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+	 * See https://discord.com/developers/docs/resources/message#message-object-message-activity-types
 	 */
 	type: MessageActivityType;
 	/**
@@ -530,7 +530,7 @@ export interface APIMessageActivity {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/message#message-reference-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -550,7 +550,7 @@ export interface APIMessageReference {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+ * https://discord.com/developers/docs/resources/message#message-object-message-activity-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -562,7 +562,7 @@ export enum MessageActivityType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-flags
+ * https://discord.com/developers/docs/resources/message#message-object-message-flags
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -614,7 +614,7 @@ export interface APIFollowedChannel {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure
+ * https://discord.com/developers/docs/resources/message#reaction-object-reaction-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -678,7 +678,7 @@ export enum OverwriteType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-structure
  *
  * Length limit: 6000 characters
  *
@@ -716,37 +716,37 @@ export interface APIEmbed {
 	/**
 	 * Footer information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-footer-structure
 	 */
 	footer?: APIEmbedFooter;
 	/**
 	 * Image information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-image-structure
 	 */
 	image?: APIEmbedImage;
 	/**
 	 * Thumbnail information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object
 	 */
 	thumbnail?: APIEmbedThumbnail;
 	/**
 	 * Video information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-video-structure
 	 */
 	video?: APIEmbedVideo;
 	/**
 	 * Provider information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure
 	 */
 	provider?: APIEmbedProvider;
 	/**
 	 * Author information
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-author-structure
 	 */
 	author?: APIEmbedAuthor;
 	/**
@@ -754,13 +754,13 @@ export interface APIEmbed {
 	 *
 	 * Length limit: 25 field objects
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
+	 * See https://discord.com/developers/docs/resources/message#embed-object-embed-field-structure
 	 */
 	fields?: APIEmbedField[];
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -792,7 +792,7 @@ export enum EmbedType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
+ * https://discord.com/developers/docs/resources/message#embed-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -816,7 +816,7 @@ export interface APIEmbedThumbnail {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-video-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -836,7 +836,7 @@ export interface APIEmbedVideo {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-image-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -860,7 +860,7 @@ export interface APIEmbedImage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -876,7 +876,7 @@ export interface APIEmbedProvider {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-author-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -902,7 +902,7 @@ export interface APIEmbedAuthor {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-footer-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -924,7 +924,7 @@ export interface APIEmbedFooter {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-field-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -948,7 +948,7 @@ export interface APIEmbedField {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
+ * https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -998,7 +998,7 @@ export interface APIAttachment {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure
+ * https://discord.com/developers/docs/resources/message#channel-mention-object-channel-mention-structure
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -1024,7 +1024,7 @@ export interface APIChannelMention {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
+ * https://discord.com/developers/docs/resources/message#allowed-mentions-object-allowed-mention-types
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -1044,7 +1044,7 @@ export enum AllowedMentionsTypes {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mentions-structure
+ * https://discord.com/developers/docs/resources/message#allowed-mentions-object
  *
  * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
@@ -1052,7 +1052,7 @@ export interface APIAllowedMentions {
 	/**
 	 * An array of allowed mention types to parse from the content
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
+	 * See https://discord.com/developers/docs/resources/message#allowed-mentions-object-allowed-mention-types
 	 */
 	parse?: AllowedMentionsTypes[];
 	/**

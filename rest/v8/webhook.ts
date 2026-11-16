@@ -146,13 +146,13 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * Embedded `rich` content
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#embed-object
+	 * See https://discord.com/developers/docs/resources/message#embed-object
 	 */
 	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#allowed-mentions-object
+	 * See https://discord.com/developers/docs/resources/message#allowed-mentions-object
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
@@ -291,7 +291,7 @@ export type RESTPatchAPIWebhookWithTokenMessageJSONBody = _AddUndefinedToPossibl
 	 *
 	 * Starting with API v10, the `attachments` array must contain all attachments that should be present after edit, including **retained and new** attachments provided in the request body.
 	 *
-	 * See https://discord.com/developers/docs/resources/channel#attachment-object
+	 * See https://discord.com/developers/docs/resources/message#attachment-object
 	 */
 	attachments?: (Partial<Pick<APIAttachment, 'description' | 'filename'>> & Pick<APIAttachment, 'id'>)[] | undefined;
 };

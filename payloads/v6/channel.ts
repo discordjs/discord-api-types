@@ -57,7 +57,7 @@ export enum ChannelType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-structure
+ * https://discord.com/developers/docs/resources/message#message-object-message-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -90,7 +90,7 @@ export interface APIMessage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-types
+ * https://discord.com/developers/docs/resources/message#message-object-message-types
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -115,7 +115,7 @@ export enum MessageType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
+ * https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -125,7 +125,7 @@ export interface APIMessageActivity {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-application-structure
+ * https://discord.com/developers/docs/resources/message#message-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -138,7 +138,7 @@ export interface APIMessageApplication {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
+ * https://discord.com/developers/docs/resources/message#message-reference-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -149,7 +149,7 @@ export interface APIMessageReference {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+ * https://discord.com/developers/docs/resources/message#message-object-message-activity-types
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -161,7 +161,7 @@ export enum MessageActivityType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-flags
+ * https://discord.com/developers/docs/resources/message#message-object-message-flags
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -174,7 +174,7 @@ export enum MessageFlags {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure
+ * https://discord.com/developers/docs/resources/message#reaction-object-reaction-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -213,7 +213,7 @@ export enum OverwriteType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -234,7 +234,7 @@ export interface APIEmbed {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-types
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -248,7 +248,7 @@ export enum EmbedType {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
+ * https://discord.com/developers/docs/resources/message#embed-object
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -260,7 +260,7 @@ export interface APIEmbedThumbnail {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-video-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -271,7 +271,7 @@ export interface APIEmbedVideo {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-image-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -283,7 +283,7 @@ export interface APIEmbedImage {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -293,7 +293,7 @@ export interface APIEmbedProvider {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-author-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -305,7 +305,7 @@ export interface APIEmbedAuthor {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-footer-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -316,7 +316,7 @@ export interface APIEmbedFooter {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
+ * https://discord.com/developers/docs/resources/message#embed-object-embed-field-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -327,7 +327,7 @@ export interface APIEmbedField {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
+ * https://discord.com/developers/docs/resources/message#attachment-object-attachment-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */
@@ -342,7 +342,7 @@ export interface APIAttachment {
 }
 
 /**
- * https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure
+ * https://discord.com/developers/docs/resources/message#channel-mention-object-channel-mention-structure
  *
  * @deprecated API and Gateway v6 are deprecated and the types will not receive further updates, please update to v8.
  */

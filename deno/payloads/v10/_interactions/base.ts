@@ -15,7 +15,7 @@ import type { APIUser } from '../user.ts';
 import type { InteractionType } from './responses.ts';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object}
+ * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object}
  */
 export type APIMessageInteractionMetadata =
 	| APIApplicationCommandInteractionMetadata
