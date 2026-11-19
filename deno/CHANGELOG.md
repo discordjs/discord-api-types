@@ -1,3 +1,10 @@
+## [0.38.60](https://github.com/discordjs/discord-api-types/compare/0.38.59...0.38.60) (2026-11-19)
+
+
+### Features
+
+* support `None` enum value for flags ([#1705](https://github.com/discordjs/discord-api-types/issues/1705)) ([6279896](https://github.com/discordjs/discord-api-types/commit/6279896d1d81ed6f0eb995e537cd8382baad4f74))
+
 ## [0.38.59](https://github.com/discordjs/discord-api-types/compare/0.38.58...0.38.59) (2026-11-12)
 
 
