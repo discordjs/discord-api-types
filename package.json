@@ -134,7 +134,7 @@
 		"@favware/npm-deprecate": "^2.0.0",
 		"@octokit/action": "^8.0.2",
 		"@octokit/webhooks-types": "^7.6.1",
-		"@sapphire/prettier-config": "^2.0.0",
+		"@sapphire/prettier-config": "^3.0.0",
 		"@types/lodash.merge": "^4",
 		"@types/node": "^24.0.0",
 		"@typescript-eslint/utils": "^8.33.0",
