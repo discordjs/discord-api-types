@@ -182,8 +182,8 @@ importers:
         specifier: ^7.6.1
         version: 7.6.1
       '@sapphire/prettier-config':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/lodash.merge':
         specifier: ^4
         version: 4.6.9
@@ -1024,9 +1024,9 @@ packages:
     resolution: {integrity: sha512-YfH5iFFL+n21dEWfdNpSlN1Q4RH+84I9ZFLxtdlbqyWljkh1IwMU6UmHjnroiRJx9TwdFSQ0krHm4v0fV/VqiA==}
     engines: {node: '>=v18'}
 
-  '@sapphire/prettier-config@2.0.0':
-    resolution: {integrity: sha512-Vie8KR5zQ6sbEP4+biW/IR7k55saGfZkTSuRlgvxCBKb4SBJdRWcOBI80i+JxMVIDDZKgXlgYnXEST+FgZiWXA==}
-    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+  '@sapphire/prettier-config@3.0.0':
+    resolution: {integrity: sha512-BJVbPJCUmjadfar3SBC2ZwI53pWjcl1MPXPTxJGFwqVPrqeKfAy2sy4aumAUR0pvayD0FlxAznuBPNx33JJAEQ==}
+    engines: {node: '>=v24.0.0', npm: '>=11.0.0'}
 
   '@sapphire/utilities@3.18.2':
     resolution: {integrity: sha512-QGLdC9+pT74Zd7aaObqn0EUfq40c4dyTL65pFnkM6WO1QYN7Yg/s4CdH+CXmx0Zcu6wcfCWILSftXPMosJHP5A==}
@@ -4901,7 +4901,7 @@ snapshots:
 
   '@sapphire/fetch@3.0.5': {}
 
-  '@sapphire/prettier-config@2.0.0':
+  '@sapphire/prettier-config@3.0.0':
     dependencies:
       prettier: 3.10.1
 
