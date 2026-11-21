@@ -32,6 +32,32 @@ export * from './common';
 export const RPCVersion = '1';
 
 /**
+ * @see {@link https://docs.discord.com/developers/topics/rpc#handshake-payload}
+ */
+export enum RPCOpcodes {
+	/**
+	 * Sent by the client to initiate the connection.
+	 */
+	Handshake,
+	/**
+	 * Used for all standard RPC commands and events.
+	 */
+	Frame,
+	/**
+	 * Sent by either side to close the connection.
+	 */
+	Close,
+	/**
+	 * Sent to check if the connection is alive.
+	 */
+	Ping,
+	/**
+	 * Response to a `PING`.
+	 */
+	Pong,
+}
+
+/**
  * @unstable
  */
 export interface Relationship {
