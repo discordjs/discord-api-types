@@ -50,6 +50,46 @@ export interface RESTPutAPIInviteTargetUsersFormDataBody {
 export type RESTPutAPIInviteTargetUsersResult = undefined;
 
 /**
+ * @see {@link https://docs.discord.com/developers/resources/invite#add-target-user}
+ */
+export type RESTPutAPIInviteTargetUserResult = undefined;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/invite#remove-target-user}
+ */
+export type RESTDeleteAPIInviteTargetUserResult = undefined;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/invite#bulk-add-target-users}
+ */
+export interface RESTPostAPIInviteTargetUsersBulkAddJSONBody {
+	/**
+	 * The IDs of users to add, max of 1000 users
+	 */
+	user_ids: Snowflake[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/invite#bulk-add-target-users}
+ */
+export type RESTPostAPIInviteTargetUsersBulkAddResult = undefined;
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/invite#bulk-delete-target-users}
+ */
+export interface RESTPostAPIInviteTargetUsersBulkDeleteJSONBody {
+	/**
+	 * The IDs of users to remove, max of 1000 users
+	 */
+	user_ids: Snowflake[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/invite#bulk-delete-target-users}
+ */
+export type RESTPostAPIInviteTargetUsersBulkDeleteResult = undefined;
+
+/**
  * @see {@link https://docs.discord.com/developers/resources/invite#get-target-users-job-status}
  */
 export interface RESTGetAPIInviteTargetUsersJobStatusResult {
