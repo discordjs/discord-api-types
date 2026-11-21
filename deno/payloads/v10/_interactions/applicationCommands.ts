@@ -103,7 +103,7 @@ export interface APIApplicationCommand {
 	/**
 	 * Installation context(s) where the command is available, only for globally-scoped commands
 	 *
-	 * @defaultValue `[ApplicationIntegrationType.GuildInstall]`
+	 * @defaultValue Your app's configured installation contexts
 	 */
 	integration_types?: ApplicationIntegrationType[];
 	/**
