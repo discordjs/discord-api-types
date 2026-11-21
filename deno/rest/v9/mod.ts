@@ -13,6 +13,7 @@ export type * from './guild.ts';
 export type * from './guildScheduledEvent.ts';
 export type * from './interactions.ts';
 export * from './invite.ts';
+export type * from './lobby.ts';
 export * from './monetization.ts';
 export type * from './oauth2.ts';
 export type * from './poll.ts';
@@ -1214,6 +1215,83 @@ export const Routes = {
 		providerIssuedUserId: string,
 	) {
 		return `/users/${userId}/application-identities/${applicationId}/${providerType}/${providerIssuedUserId}/delete` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/lobbies`
+	 * - PUT  `/lobbies`
+	 */
+	lobbies() {
+		return '/lobbies' as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET    `/lobbies/{lobby.id}`
+	 * - PATCH  `/lobbies/{lobby.id}`
+	 * - DELETE `/lobbies/{lobby.id}`
+	 */
+	lobby(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PUT    `/lobbies/{lobby.id}/members/{user.id}`
+	 * - DELETE `/lobbies/{lobby.id}/members/@me`
+	 * - DELETE `/lobbies/{lobby.id}/members/{user.id}`
+	 *
+	 * @param lobbyId - The lobby ID
+	 * @param userId - The user ID, defaulted to `@me`
+	 */
+	lobbyMember(lobbyId: Snowflake, userId: Snowflake | '@me' = '@me') {
+		return `/lobbies/${lobbyId}/members/${userId}` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/lobbies/{lobby.id}/members/bulk`
+	 */
+	lobbyMembersBulk(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}/members/bulk` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - POST `/lobbies/{lobby.id}/members/@me/invites`
+	 * - POST `/lobbies/{lobby.id}/members/{user.id}/invites`
+	 *
+	 * @param lobbyId - The lobby ID
+	 * @param userId - The user ID, defaulted to `@me`
+	 */
+	lobbyMemberInvites(lobbyId: Snowflake, userId: Snowflake | '@me' = '@me') {
+		return `/lobbies/${lobbyId}/members/${userId}/invites` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PATCH `/lobbies/{lobby.id}/channel-linking`
+	 */
+	lobbyChannelLinking(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}/channel-linking` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - GET  `/lobbies/{lobby.id}/messages`
+	 * - POST `/lobbies/{lobby.id}/messages`
+	 */
+	lobbyMessages(lobbyId: Snowflake) {
+		return `/lobbies/${lobbyId}/messages` as const;
+	},
+
+	/**
+	 * Route for:
+	 * - PUT `/lobbies/{lobby.id}/messages/{message.id}/moderation-metadata`
+	 */
+	lobbyMessageModerationMetadata(lobbyId: Snowflake, messageId: Snowflake) {
+		return `/lobbies/${lobbyId}/messages/${messageId}/moderation-metadata` as const;
 	},
 };
 

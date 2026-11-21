@@ -10,6 +10,7 @@ export * from './guild';
 export * from './guildScheduledEvent';
 export * from './interactions';
 export * from './invite';
+export * from './lobby';
 export * from './message';
 export * from './monetization';
 export * from './oauth2';
