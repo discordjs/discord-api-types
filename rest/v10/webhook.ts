@@ -119,13 +119,13 @@ export interface RESTPostAPIWebhookWithTokenJSONBody {
 	/**
 	 * Embedded `rich` content
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#embed-object}
+	 * @see {@link https://discord.com/developers/docs/resources/message#embed-object}
 	 */
 	embeds?: APIEmbed[] | undefined;
 	/**
 	 * Allowed mentions for the message
 	 *
-	 * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object}
+	 * @see {@link https://discord.com/developers/docs/resources/message#allowed-mentions-object}
 	 */
 	allowed_mentions?: APIAllowedMentions | undefined;
 	/**
