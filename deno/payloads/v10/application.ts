@@ -81,7 +81,7 @@ export interface APIApplication {
 	 */
 	team: APITeam | null;
 	/**
-	 * If this application is a game sold on Discord, this field will be the guild to which it has been linked
+	 * Guild associated with the application. For example, a developer support server.
 	 */
 	guild_id?: Snowflake;
 	/**
@@ -97,18 +97,21 @@ export interface APIApplication {
 	 */
 	slug?: string;
 	/**
-	 * If this application is a game sold on Discord, this field will be the hash of the image on store embeds
+	 * The application's default rich presence invite cover image hash
 	 */
 	cover_image?: string;
 	/**
-	 * The application's public flags
+	 * The application's legacy public flags
 	 *
+	 * @remarks This number will not grow beyond 31 bits. New flag bits beyond bit 30 will only appear in {@link APIApplication.flags_new}.
+	 * Requests that accept flag values should continue to use this field.
 	 * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
 	 */
 	flags: ApplicationFlags;
 	/**
-	 * The application's public flags
+	 * The application's public flags, as a string-serialized integer containing the full set of flag bits
 	 *
+	 * @remarks This field is for response serialization only. Requests that accept flag values should continue to use {@link APIApplication.flags}.
 	 * @see {@link https://docs.discord.com/developers/resources/application#application-object-application-flags}
 	 */
 	flags_new: string;
