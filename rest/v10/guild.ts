@@ -547,6 +547,8 @@ export interface RESTPatchAPIGuildMemberJSONBody {
 	/**
 	 * Guild member flags (only {@link GuildMemberFlags.BypassesVerification} can be set)
 	 *
+	 * Requires `MANAGE_GUILD` or `MANAGE_ROLES` permission, or all of `MODERATE_MEMBERS`, `KICK_MEMBERS`, and `BAN_MEMBERS` permissions
+	 *
 	 * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags}
 	 */
 	flags?: GuildMemberFlags | undefined;
@@ -1011,7 +1013,7 @@ export type RESTGetAPIGuildRoleMemberCountsResult = Record<Snowflake, number>;
  */
 export interface RESTGetAPIGuildPruneCountQuery {
 	/**
-	 * Number of days to count prune for (1 or more)
+	 * Number of days to count prune for (1-30)
 	 *
 	 * @defaultValue `7`
 	 */
@@ -1039,7 +1041,7 @@ export interface RESTGetAPIGuildPruneCountResult {
  */
 export interface RESTPostAPIGuildPruneJSONBody {
 	/**
-	 * Number of days to count prune for (1 or more)
+	 * Number of days to count prune for (1-30)
 	 *
 	 * @defaultValue `7`
 	 */

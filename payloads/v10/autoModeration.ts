@@ -101,7 +101,7 @@ export interface APIAutoModerationRuleTriggerMetadata {
 	 */
 	presets?: AutoModerationRuleKeywordPresetType[];
 	/**
-	 * Substrings which will be exempt from triggering the preset trigger type (Maximum of 1000)
+	 * Substrings which will be exempt from triggering the preset trigger type (Maximum of 100 for {@link AutoModerationRuleTriggerType.Keyword} and {@link AutoModerationRuleTriggerType.MemberProfile}, 1000 for {@link AutoModerationRuleTriggerType.KeywordPreset})
 	 *
 	 * A allowed-word can be a phrase which contains multiple words. Wildcard symbols can be used to customize how each string will be matched. Each keyword must be 60 characters or less
 	 *
@@ -216,7 +216,7 @@ export interface APIAutoModerationActionMetadata {
 	/**
 	 * Timeout duration in seconds (Maximum of 4 weeks - 2419200 seconds)
 	 *
-	 * Only available if using {@link AutoModerationRuleTriggerType.Keyword}
+	 * Only available if using {@link AutoModerationRuleTriggerType.Keyword} or {@link AutoModerationRuleTriggerType.MentionSpam}
 	 *
 	 * Associated action type: {@link AutoModerationActionType.Timeout}
 	 */
