@@ -177,7 +177,7 @@ export interface APIBaseMessageNoChannel {
 	 * the backend did not attempt to fetch the message that was being replied to,
 	 * so its state is unknown.
 	 *
-	 * If the field exists but is `null`, the referenced message was deleted
+	 * If the field exists but is `null`, the referenced message was deleted or, for a `THREAD_STARTER_MESSAGE`, is unavailable to the requester
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/message#message-object}
 	 */
