@@ -174,13 +174,13 @@ export interface APIBaseMessageNoChannel {
 	/**
 	 * The message associated with the `message_reference`
 	 *
-	 * This field is only returned for messages with a `type` of `19` (REPLY).
+	 * This field is only returned for messages with a `type` of `19` (REPLY), `21` (THREAD_STARTER_MESSAGE), or `23` (CONTEXT_MENU_COMMAND).
 	 *
-	 * If the message is a reply but the `referenced_message` field is not present,
+	 * If the message is one of these but the `referenced_message` field is not present,
 	 * the backend did not attempt to fetch the message that was being replied to,
 	 * so its state is unknown.
 	 *
-	 * If the field exists but is `null`, the referenced message was deleted
+	 * If the field exists but is `null`, the referenced message was deleted or, for a `THREAD_STARTER_MESSAGE`, is unavailable to the requester
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/message#message-object}
 	 */
@@ -634,6 +634,12 @@ export interface APIEmbed {
 	 */
 	video?: APIEmbedVideo;
 	/**
+	 * Audio information
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-audio-structure}
+	 */
+	audio?: APIEmbedAudio;
+	/**
 	 * Provider information
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure}
@@ -684,6 +690,10 @@ export enum EmbedType {
 	 * Video embed
 	 */
 	Video = 'video',
+	/**
+	 * Audio embed rendered with an inline audio player
+	 */
+	Audio = 'audio',
 	/**
 	 * Animated gif image embed rendered as a video embed
 	 */
@@ -854,6 +864,30 @@ export interface APIEmbedVideo {
 	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	flags?: EmbedMediaFlags;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-audio-structure}
+ */
+export interface APIEmbedAudio {
+	/**
+	 * Source url of audio
+	 */
+	url?: string;
+	/**
+	 * A proxied url of the audio
+	 */
+	proxy_url?: string;
+	/**
+	 * The audio's media type
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
+	 */
+	content_type?: string;
+	/**
+	 * Description of the audio
+	 */
+	description?: string;
 }
 
 /**
@@ -1165,7 +1199,7 @@ export enum AllowedMentionsTypes {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/message#allowed-mentions-object-allowed-mentions-structure}
+ * @see {@link https://discord.com/developers/docs/resources/message#allowed-mentions-object}
  */
 export interface APIAllowedMentions {
 	/**
@@ -1334,7 +1368,7 @@ export interface APIButtonBase<Style extends ButtonStyle> extends APIBaseCompone
  */
 export interface APIButtonComponentBase<Style extends ButtonStyle> extends APIButtonBase<Style> {
 	/**
-	 * The label to be displayed on the button
+	 * The label to be displayed on the button; max 80 characters
 	 */
 	label?: string;
 	/**
@@ -1365,7 +1399,7 @@ export interface APIButtonComponentWithCustomId extends APIButtonComponentBase<
 	ButtonStyle.Danger | ButtonStyle.Primary | ButtonStyle.Secondary | ButtonStyle.Success
 > {
 	/**
-	 * The custom_id to be sent in the interaction when clicked
+	 * The custom_id to be sent in the interaction when clicked; 1-100 characters
 	 */
 	custom_id: string;
 }
@@ -1375,7 +1409,7 @@ export interface APIButtonComponentWithCustomId extends APIButtonComponentBase<
  */
 export interface APIButtonComponentWithURL extends APIButtonComponentBase<ButtonStyle.Link> {
 	/**
-	 * The URL to direct users to when clicked for Link buttons
+	 * The URL to direct users to when clicked for Link buttons; max 512 characters
 	 */
 	url: string;
 }
@@ -1456,7 +1490,7 @@ export interface APIBaseSelectMenuComponent<
 		| ComponentType.UserSelect,
 > extends APIBaseComponent<T> {
 	/**
-	 * A developer-defined identifier for the select menu, max 100 characters
+	 * A developer-defined identifier for the select menu, 1-100 characters
 	 */
 	custom_id: string;
 	/**
@@ -1466,6 +1500,7 @@ export interface APIBaseSelectMenuComponent<
 	/**
 	 * The minimum number of items that must be chosen; min 0, max 25
 	 *
+	 * @remarks `min_values` must be either omitted or at least `1` if `required` is omitted or `true`.
 	 * @defaultValue `1`
 	 */
 	min_values?: number;
@@ -1478,6 +1513,7 @@ export interface APIBaseSelectMenuComponent<
 	/**
 	 * Disable the select
 	 *
+	 * @remarks Using `disabled` in a modal will result in an error. Modals can not currently have disabled components in them.
 	 * @defaultValue `false`
 	 */
 	disabled?: boolean;
@@ -1501,7 +1537,7 @@ export interface APIBaseAutoPopulatedSelectMenuComponent<
 	D extends SelectMenuDefaultValueType,
 > extends APIBaseSelectMenuComponent<T> {
 	/**
-	 * List of default values for auto-populated select menu components
+	 * List of default values for auto-populated select menu components; number of default values must be in the range defined by `min_values` and `max_values`
 	 */
 	default_values?: APISelectMenuDefaultValue<D>[];
 }
@@ -1664,22 +1700,23 @@ export interface APITextInputComponent extends APIBaseComponent<ComponentType.Te
 	 * Text that appears on top of the text input field, max 45 characters.
 	 *
 	 * @remarks Cannot be used in a label component.
+	 * @deprecated Use {@link APILabelComponent.label} and {@link APILabelComponent.description} instead
 	 */
 	label?: string;
 	/**
-	 * Placeholder for the text input
+	 * Custom placeholder text if the input is empty; max 100 characters
 	 */
 	placeholder?: string;
 	/**
-	 * The pre-filled text in the text input
+	 * The pre-filled text in the text input; max 4000 characters
 	 */
 	value?: string;
 	/**
-	 * Minimal length of text input
+	 * Minimal length of text input; min 0, max 4000
 	 */
 	min_length?: number;
 	/**
-	 * Maximal length of text input
+	 * Maximal length of text input; min 1, max 4000
 	 */
 	max_length?: number;
 	/**
@@ -1824,7 +1861,9 @@ export enum UnfurledMediaItemFlags {
  */
 export interface APISectionComponent extends APIBaseComponent<ComponentType.Section> {
 	/**
-	 * One to three text components
+	 * One to three child components
+	 *
+	 * @remarks Don't hardcode `components` to contain only text components. Discord may add other components in the future.
 	 */
 	components: APITextDisplayComponent[];
 	/**
@@ -1860,7 +1899,7 @@ export interface APIThumbnailComponent extends APIBaseComponent<ComponentType.Th
 	 */
 	media: APIUnfurledMediaItem;
 	/**
-	 * Alt text for the media
+	 * Alt text for the media, max 1024 characters
 	 */
 	description?: string | null;
 	/**
@@ -1880,7 +1919,7 @@ export interface APIMediaGalleryItem {
 	 */
 	media: APIUnfurledMediaItem;
 	/**
-	 * Alt text for the media
+	 * Alt text for the media, max 1024 characters
 	 */
 	description?: string | null;
 	/**
@@ -1969,7 +2008,7 @@ export interface APISeparatorComponent extends APIBaseComponent<ComponentType.Se
 }
 
 /**
- * A Container is a top-level layout component that holds up to 10 components. Containers are visually distinct from surrounding components and has an optional customizable color bar.
+ * A Container is a top-level layout component. Containers are visually distinct from surrounding components and has an optional customizable color bar.
  *
  * Containers are only available in messages.
  *
@@ -1987,7 +2026,7 @@ export interface APIContainerComponent extends APIBaseComponent<ComponentType.Co
 	 */
 	spoiler?: boolean;
 	/**
-	 * Up to 10 components of the type action row, text display, section, media gallery, separator, or file
+	 * Child components of the type action row, text display, section, media gallery, separator, or file
 	 */
 	components: APIComponentInContainer[];
 }

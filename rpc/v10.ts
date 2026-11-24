@@ -637,7 +637,31 @@ export type RPCSetVoiceSettingsResultData = RPCGetVoiceSettingsResultData;
  * @see {@link https://discord.com/developers/docs/topics/rpc#setvoicesettings-set-voice-settings-argument-and-response-structure}
  * @remarks Discord only supports a single modifier of voice settings at a time over RPC. If an app changes voice settings, it will lock voice settings so that other apps connected simultaneously lose the ability to change voice settings. Settings reset to what they were before being changed after the controlling app disconnects. When an app that has previously set voice settings connects, the client will swap to that app's configured voice settings and lock voice settings again.
  */
-export type RPCSetVoiceSettingsArgs = RPCGetVoiceSettingsResultData;
+export interface RPCSetVoiceSettingsArgs extends Partial<
+	Pick<
+		RPCGetVoiceSettingsResultData,
+		| 'automatic_gain_control'
+		| 'deaf'
+		| 'echo_cancellation'
+		| 'mute'
+		| 'noise_suppression'
+		| 'qos'
+		| 'silence_warning'
+	>
+> {
+	/**
+	 * Input settings
+	 */
+	input?: Partial<RPCVoiceSettingsInput>;
+	/**
+	 * Output settings
+	 */
+	output?: Partial<RPCVoiceSettingsOutput>;
+	/**
+	 * Voice mode settings
+	 */
+	mode?: Partial<RPCVoiceSettingsMode>;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#subscribe-subscribe-response-structure}
@@ -1204,7 +1228,10 @@ export enum RPCEvents {
 	OverlayUpdate = 'OVERLAY_UPDATE',
 	Ready = 'READY',
 	/**
-	 * @unstable
+	 * This event requires the `relationships_read` {@link https://docs.discord.com/developers/topics/oauth2#shared-resources-oauth2-scopes | OAuth2 scope}.
+	 * When a relationship is removed, `type` will be `0` (`NONE`).
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/rpc#relationshipupdate}
 	 */
 	RelationshipUpdate = 'RELATIONSHIP_UPDATE',
 	SpeakingStart = 'SPEAKING_START',
@@ -1322,9 +1349,6 @@ export type RPCSubscribeOverlayArgs = Record<string, unknown>;
  */
 export type RPCSubscribeOverlayUpdateArgs = Record<string, unknown>;
 
-/**
- * @unstable
- */
 export type RPCSubscribeRelationshipUpdateArgs = Record<string, unknown>;
 
 /**

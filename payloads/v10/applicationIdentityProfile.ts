@@ -9,6 +9,10 @@ import type { Snowflake } from '../../globals';
  */
 export interface APIApplicationIdentity {
 	/**
+	 * The Discord user's ID
+	 */
+	user_id: Snowflake;
+	/**
 	 * The external account provider type
 	 */
 	provider_type: string;
@@ -25,14 +29,9 @@ export interface APIApplicationIdentity {
 }
 
 /**
- * @see {@link https://docs.discord.com/developers/resources/application-identity-profile#get-application-identities-by-user-id}
+ * @deprecated Use {@link APIApplicationIdentity} instead
  */
-export interface APIUserApplicationIdentity extends APIApplicationIdentity {
-	/**
-	 * The Discord user ID
-	 */
-	user_id: Snowflake;
-}
+export type APIUserApplicationIdentity = APIApplicationIdentity;
 
 /**
  * @see {@link https://docs.discord.com/developers/resources/application-identity-profile#application-identity-profile-object}
@@ -74,10 +73,14 @@ export interface APIApplicationIdentityProfileData {
 export interface APIApplicationIdentityProfilePrimaryData {
 	/**
 	 * Current season name (e.g. `Season 3`)
+	 *
+	 * @remarks Max 100 characters
 	 */
 	season?: string;
 	/**
 	 * Current rank name (e.g. `Silver`)
+	 *
+	 * @remarks Max 100 characters
 	 */
 	rank_name?: string;
 	/**
@@ -86,6 +89,8 @@ export interface APIApplicationIdentityProfilePrimaryData {
 	rank_image?: APIApplicationIdentityProfileMedia;
 	/**
 	 * Highest rank achieved
+	 *
+	 * @remarks Max 100 characters
 	 */
 	highest_rank?: string;
 	/**
@@ -94,6 +99,8 @@ export interface APIApplicationIdentityProfilePrimaryData {
 	highest_rank_image?: APIApplicationIdentityProfileMedia;
 	/**
 	 * Name of the featured played character
+	 *
+	 * @remarks Max 100 characters
 	 */
 	featured_played_character?: string;
 	/**
@@ -162,7 +169,7 @@ export interface APIBaseApplicationIdentityProfileDynamicField<
 	/**
 	 * The field name
 	 *
-	 * @remarks This is the data key referenced in the widget editor when configuring a User Data field, it is not shown to players.
+	 * @remarks This is the data key referenced in the widget editor when configuring a User Data field, it is not shown to players. Max 100 characters.
 	 */
 	name: string;
 	/**
@@ -190,6 +197,7 @@ export enum ApplicationIdentityProfileDynamicFieldType {
 }
 
 /**
+ * @remarks The `value` is limited to 100 characters
  * @see {@link https://docs.discord.com/developers/resources/application-identity-profile#dynamic-field-object-dynamic-string-field-structure}
  */
 export type APIApplicationIdentityProfileStringDynamicField = APIBaseApplicationIdentityProfileDynamicField<

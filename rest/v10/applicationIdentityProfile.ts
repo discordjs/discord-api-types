@@ -1,7 +1,7 @@
 import type {
+	APIApplicationIdentity,
 	APIApplicationIdentityProfile,
 	APIApplicationIdentityProfileData,
-	APIUserApplicationIdentity,
 } from '../../payloads/v10/index';
 
 /**
@@ -39,7 +39,7 @@ export interface RESTGetAPIUserApplicationIdentitiesResult {
 	/**
 	 * The application identities for the specified user and application
 	 */
-	identities: APIUserApplicationIdentity[];
+	identities: APIApplicationIdentity[];
 }
 
 /**
@@ -61,7 +61,7 @@ export interface RESTGetAPIApplicationIdentitiesResult {
 	 *
 	 * @remarks This is empty if no identity matches the external account key.
 	 */
-	identities: APIUserApplicationIdentity[];
+	identities: APIApplicationIdentity[];
 }
 
 /**

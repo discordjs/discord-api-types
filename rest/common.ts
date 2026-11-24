@@ -295,6 +295,8 @@ export enum RESTJSONErrorCodes {
 
 	ProvidedFileDoesNotHaveAValidDuration = 50_192,
 
+	InviteIsExpired = 50_270,
+
 	/**
 	 * @see {@link RESTJSONErrorCodes.CannotSendMessagesToThisUser} for a similar error code
 	 */

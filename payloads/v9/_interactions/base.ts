@@ -15,7 +15,7 @@ import type { APIUser } from '../user';
 import type { InteractionType } from './responses';
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object}
+ * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object}
  */
 export type APIMessageInteractionMetadata =
 	| APIApplicationCommandInteractionMetadata
@@ -23,7 +23,7 @@ export type APIMessageInteractionMetadata =
 	| APIModalSubmitInteractionMetadata;
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object}
+ * @see {@link https://discord.com/developers/docs/resources/message#message-interaction-metadata-object}
  */
 export interface APIBaseInteractionMetadata<Type extends InteractionType> {
 	/**
@@ -189,7 +189,7 @@ export interface APIBaseInteraction<Type extends InteractionType, Data> {
 	 */
 	version: 1;
 	/**
-	 * For components, the message they were attached to
+	 * For components or modals triggered by components, the message they were attached to
 	 */
 	message?: APIMessage;
 	/**

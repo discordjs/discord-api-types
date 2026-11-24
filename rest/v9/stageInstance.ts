@@ -21,6 +21,8 @@ export interface RESTPostAPIStageInstanceJSONBody {
 	privacy_level?: StageInstancePrivacyLevel | undefined;
 	/**
 	 * Notify `@everyone` that a stage instance has started
+	 *
+	 * @remarks The stage moderator must have the `MENTION_EVERYONE` permission for this notification to be sent
 	 */
 	send_start_notification?: boolean | undefined;
 	/**
