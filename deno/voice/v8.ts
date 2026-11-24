@@ -55,6 +55,10 @@ export enum VoiceOpcodes {
 	 */
 	ClientDisconnect = 13,
 	/**
+	 * Indicate which voice data the client wants to receive
+	 */
+	MediaSinkWants = 15,
+	/**
 	 * A downgrade from the DAVE protocol is upcoming
 	 */
 	DavePrepareTransition = 21,
@@ -238,6 +242,7 @@ export type VoiceSendPayload =
 	| VoiceDaveTransitionReady
 	| VoiceHeartbeat
 	| VoiceIdentify
+	| VoiceMediaSinkWants
 	| VoiceResume
 	| VoiceSelectProtocol
 	| VoiceSpeakingSend;
@@ -615,6 +620,34 @@ export interface VoiceSpeakingSendData {
 	 * SSRC identifier
 	 */
 	ssrc: number;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#media-sink-wants}
+ */
+export interface VoiceMediaSinkWants {
+	op: VoiceOpcodes.MediaSinkWants;
+	d: VoiceMediaSinkWantsData;
+}
+
+/**
+ * A map of SSRCs to a value between `0` and `100`.
+ * A value of `0` means the packets of that SSRC will not be sent, and a value of `100` means they will.
+ * Values in between are used to request lower quality video and have no use for audio.
+ *
+ * Each Media Sink Wants payload replaces the previous one, so every SSRC that should have a value must be included each time.
+ *
+ * @see {@link https://docs.discord.com/developers/topics/voice-connections#media-sink-wants}
+ */
+export interface VoiceMediaSinkWantsData {
+	/**
+	 * The value used for every SSRC that is not in the payload
+	 */
+	any?: number;
+	/**
+	 * The value for the user with this SSRC, as received in {@link VoiceSpeaking} payloads
+	 */
+	[ssrc: `${number}`]: number;
 }
 
 /**
