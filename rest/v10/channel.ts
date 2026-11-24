@@ -858,7 +858,7 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600)
 	 */
-	rate_limit_per_user?: number | undefined;
+	rate_limit_per_user?: number | null | undefined;
 }
 
 /**
