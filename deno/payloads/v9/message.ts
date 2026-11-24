@@ -1194,7 +1194,7 @@ export enum AllowedMentionsTypes {
 }
 
 /**
- * @see {@link https://discord.com/developers/docs/resources/message#allowed-mentions-object-allowed-mentions-structure}
+ * @see {@link https://discord.com/developers/docs/resources/message#allowed-mentions-object}
  */
 export interface APIAllowedMentions {
 	/**
