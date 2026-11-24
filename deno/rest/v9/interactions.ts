@@ -411,6 +411,7 @@ export type RESTPutAPIApplicationCommandPermissionsResult = APIGuildApplicationC
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#batch-edit-application-command-permissions}
+ * @deprecated This endpoint has been disabled with updates to command permissions (Permissions v2). Use {@link https://docs.discord.com/developers/interactions/application-commands#edit-application-command-permissions | Edit Application Command Permissions} instead.
  */
 export type RESTPutAPIGuildApplicationCommandsPermissionsJSONBody = Pick<
 	APIGuildApplicationCommandPermissions,
@@ -419,5 +420,6 @@ export type RESTPutAPIGuildApplicationCommandsPermissionsJSONBody = Pick<
 
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#batch-edit-application-command-permissions}
+ * @deprecated This endpoint has been disabled with updates to command permissions (Permissions v2). Use {@link https://docs.discord.com/developers/interactions/application-commands#edit-application-command-permissions | Edit Application Command Permissions} instead.
  */
 export type RESTPutAPIGuildApplicationCommandsPermissionsResult = APIGuildApplicationCommandPermissions[];
