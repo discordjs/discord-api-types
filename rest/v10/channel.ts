@@ -881,13 +881,21 @@ export interface RESTPostAPIChannelMessagesThreadsJSONBody {
 }
 
 /**
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel-forum-and-media-thread-message-params-object}
+ */
+export type RESTAPIForumThreadMessageParams = Pick<
+	RESTPostAPIChannelMessageJSONBody,
+	'allowed_mentions' | 'attachments' | 'components' | 'content' | 'embeds' | 'flags' | 'sticker_ids'
+>;
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel}
  */
 export type RESTPostAPIGuildForumThreadsJSONBody = RESTPostAPIChannelMessagesThreadsJSONBody & {
 	/**
 	 * The initial message of the thread
 	 */
-	message: RESTPostAPIChannelMessageJSONBody;
+	message: RESTAPIForumThreadMessageParams;
 	/**
 	 * The IDs of the set of tags to apply to the thread; limited to 5
 	 */
@@ -901,7 +909,7 @@ export type RESTPostAPIGuildForumThreadsFormDataBody =
 	| (Record<`files[${bigint}]`, unknown> &
 			RESTPostAPIChannelMessagesThreadsJSONBody & {
 				/**
-				 * The initial message of the thread, as a JSON stringified {@link RESTPostAPIChannelMessageJSONBody}
+				 * The initial message of the thread, as a JSON stringified {@link RESTAPIForumThreadMessageParams}
 				 *
 				 * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel-forum-and-media-thread-message-params-object}
 				 */
@@ -919,9 +927,19 @@ export type RESTPostAPIGuildForumThreadsFormDataBody =
 	  });
 
 /**
+ * @see {@link https://docs.discord.com/developers/resources/channel#start-thread-in-forum-or-media-channel}
+ */
+export interface RESTPostAPIGuildForumThreadsResult extends APIPublicThreadChannel {
+	/**
+	 * The message that was created with the thread
+	 */
+	message: APIMessage;
+}
+
+/**
  * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-from-message}
  */
-export type RESTPostAPIChannelMessagesThreadsResult = APIChannel;
+export type RESTPostAPIChannelMessagesThreadsResult = APIAnnouncementThreadChannel | APIPublicThreadChannel;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/channel#start-thread-without-message}
