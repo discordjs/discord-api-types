@@ -171,13 +171,13 @@ export interface APIBaseMessageNoChannel {
 	/**
 	 * The message associated with the `message_reference`
 	 *
-	 * This field is only returned for messages with a `type` of `19` (REPLY).
+	 * This field is only returned for messages with a `type` of `19` (REPLY), `21` (THREAD_STARTER_MESSAGE), or `23` (CONTEXT_MENU_COMMAND).
 	 *
-	 * If the message is a reply but the `referenced_message` field is not present,
+	 * If the message is one of these but the `referenced_message` field is not present,
 	 * the backend did not attempt to fetch the message that was being replied to,
 	 * so its state is unknown.
 	 *
-	 * If the field exists but is `null`, the referenced message was deleted
+	 * If the field exists but is `null`, the referenced message was deleted or, for a `THREAD_STARTER_MESSAGE`, is unavailable to the requester
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/message#message-object}
 	 */

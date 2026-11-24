@@ -150,14 +150,14 @@ export interface RESTPatchAPIChannelJSONBody {
 	/**
 	 * Whether the channel is nsfw
 	 *
-	 * Channel types: text, voice, news, forum, media
+	 * Channel types: text, voice, news, stage, forum, media
 	 */
 	nsfw?: boolean | null | undefined;
 	/**
 	 * Amount of seconds a user has to wait before sending another message (0-21600);
 	 * bots, as well as users with the permission `BYPASS_SLOWMODE`, are unaffected
 	 *
-	 * Channel types: text, newsThread, publicThread, privateThread, forum, media
+	 * Channel types: text, voice, stage, newsThread, publicThread, privateThread, forum, media
 	 */
 	rate_limit_per_user?: number | null | undefined;
 	/**
@@ -171,9 +171,9 @@ export interface RESTPatchAPIChannelJSONBody {
 	 */
 	bitrate?: number | null | undefined;
 	/**
-	 * The user limit of the voice channel; 0 refers to no limit, 1 to 99 refers to a user limit
+	 * The user limit of the voice or stage channel, max 99 for voice channels and 10,000 for stage channels (0 refers to no limit)
 	 *
-	 * Channel types: voice
+	 * Channel types: voice, stage
 	 */
 	user_limit?: number | null | undefined;
 	/**
@@ -566,7 +566,11 @@ export interface RESTPatchAPIChannelMessageJSONBody {
 	 */
 	embed?: APIEmbed | null | undefined;
 	/**
-	 * Edit the flags of a message (only `SUPPRESS_EMBEDS` can currently be set/unset)
+	 * Edit the flags of a message (`SUPPRESS_EMBEDS` and `IS_COMPONENTS_V2` only)
+	 *
+	 * The `SUPPRESS_EMBEDS` flag can be both set and unset, while the `IS_COMPONENTS_V2` flag can only be set.
+	 * When the `IS_COMPONENTS_V2` flag is set, any of the used `content`, `embeds`, `sticker_ids`, or `poll` fields
+	 * must have their values reset to empty. For `content` and `poll` this is `null`. For `embeds` and `sticker_ids` this is `[]`
 	 *
 	 * When specifying flags, ensure to include all previously set flags/bits
 	 * in addition to ones that you are modifying
