@@ -105,15 +105,15 @@ export enum OAuth2Scopes {
 	 */
 	ApplicationsEntitlements = 'applications.entitlements',
 	/**
-	 * Allows your app to know a user's friends and implicit relationships - requires Discord approval
+	 * Allows your app to access a user's Discord Friends list, their pending requests, and blocked users. This scope is part of the Social SDK
 	 */
 	RelationshipsRead = 'relationships.read',
 	/**
-	 * Allows your app to fetch data from a user's "Now Playing/Recently Played" list - requires Discord approval
+	 * Allows your app to fetch data from a user's "Now Playing/Recently Played" list - not currently available for apps
 	 */
 	ActivitiesRead = 'activities.read',
 	/**
-	 * Allows your app to update a user's activity - requires Discord approval (NOT REQUIRED FOR GAMESDK ACTIVITY MANAGER)
+	 * Allows your app to update a user's activity - not currently available for apps (NOT REQUIRED FOR GAMESDK ACTIVITY MANAGER)
 	 *
 	 * @see {@link https://discord.com/developers/docs/game-sdk/activities}
 	 */
@@ -131,7 +131,7 @@ export enum OAuth2Scopes {
 	 */
 	ApplicationsCommandsUpdate = 'applications.commands.update',
 	/**
-	 * Allows your app to update permissions for its commands using a Bearer token - client credentials grant only
+	 * Allows your app to update permissions for its commands in a guild a user has permissions to
 	 *
 	 * @see {@link https://discord.com/developers/docs/interactions/application-commands}
 	 */
