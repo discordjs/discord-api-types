@@ -11,6 +11,7 @@ import type {
 	ChannelType,
 	EntitlementType,
 	GatewayActivity,
+	MessageActivityType,
 	OAuth2Scopes,
 	PresenceUpdateReceiveStatus,
 	Snowflake,
@@ -1398,9 +1399,9 @@ export interface RPCSubscribeVoiceStateUpdateArgs {
  */
 export interface RPCActivityInviteDispatchData {
 	/**
-	 * Invite type; `1` for join
+	 * Invite type; always {@link MessageActivityType.Join}
 	 */
-	type: 1;
+	type: MessageActivityType.Join;
 	/**
 	 * User who sent the invite
 	 */
