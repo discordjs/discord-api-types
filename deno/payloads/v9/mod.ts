@@ -10,6 +10,7 @@ export * from './guild.ts';
 export * from './guildScheduledEvent.ts';
 export * from './interactions.ts';
 export * from './invite.ts';
+export * from './lobby.ts';
 export * from './message.ts';
 export * from './monetization.ts';
 export * from './oauth2.ts';
