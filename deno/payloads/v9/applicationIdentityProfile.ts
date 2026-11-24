@@ -9,6 +9,10 @@ import type { Snowflake } from '../../globals.ts';
  */
 export interface APIApplicationIdentity {
 	/**
+	 * The Discord user's ID
+	 */
+	user_id: Snowflake;
+	/**
 	 * The external account provider type
 	 */
 	provider_type: string;
@@ -25,14 +29,9 @@ export interface APIApplicationIdentity {
 }
 
 /**
- * @see {@link https://docs.discord.com/developers/resources/application-identity-profile#get-application-identities-by-user-id}
+ * @deprecated Use {@link APIApplicationIdentity} instead
  */
-export interface APIUserApplicationIdentity extends APIApplicationIdentity {
-	/**
-	 * The Discord user ID
-	 */
-	user_id: Snowflake;
-}
+export type APIUserApplicationIdentity = APIApplicationIdentity;
 
 /**
  * @see {@link https://docs.discord.com/developers/resources/application-identity-profile#application-identity-profile-object}
