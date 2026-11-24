@@ -519,9 +519,11 @@ export interface VoiceHeartbeatData {
 	 */
 	t: number;
 	/**
-	 * The last sequence number recieved
+	 * The last sequence number received
+	 *
+	 * Can be omitted or `-1` if no sequence-numbered messages have been received yet
 	 */
-	seq_ack: number;
+	seq_ack?: number;
 }
 
 /**
@@ -591,9 +593,11 @@ export interface VoiceResumeData {
 	 */
 	token: string;
 	/**
-	 * Last recieved sequence number
+	 * Last received sequence number
+	 *
+	 * Can be omitted or `-1` if no sequence-numbered messages have been received yet
 	 */
-	seq_ack: number;
+	seq_ack?: number;
 }
 
 /**
