@@ -629,6 +629,12 @@ export interface APIEmbed {
 	 */
 	video?: APIEmbedVideo;
 	/**
+	 * Audio information
+	 *
+	 * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-audio-structure}
+	 */
+	audio?: APIEmbedAudio;
+	/**
 	 * Provider information
 	 *
 	 * @see {@link https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure}
@@ -679,6 +685,10 @@ export enum EmbedType {
 	 * Video embed
 	 */
 	Video = 'video',
+	/**
+	 * Audio embed rendered with an inline audio player
+	 */
+	Audio = 'audio',
 	/**
 	 * Animated gif image embed rendered as a video embed
 	 */
@@ -849,6 +859,30 @@ export interface APIEmbedVideo {
 	 * @see {@link https://en.wikipedia.org/wiki/Bit_field}
 	 */
 	flags?: EmbedMediaFlags;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/resources/message#embed-object-embed-audio-structure}
+ */
+export interface APIEmbedAudio {
+	/**
+	 * Source url of audio
+	 */
+	url?: string;
+	/**
+	 * A proxied url of the audio
+	 */
+	proxy_url?: string;
+	/**
+	 * The audio's media type
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Media_type}
+	 */
+	content_type?: string;
+	/**
+	 * Description of the audio
+	 */
+	description?: string;
 }
 
 /**
