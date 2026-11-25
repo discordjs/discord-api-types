@@ -41,7 +41,22 @@ export type APIMessageComponentSelectMenuInteraction = APIBaseInteraction<
 		>
 	>;
 
-export type APIMessageComponentInteractionData = APIMessageButtonInteractionData | APIMessageSelectMenuInteractionData;
+/**
+ * @unstable This feature is not publicly released and is currently in preview.
+ */
+export type APIMessageComponentMenuActionItemInteraction = APIBaseInteraction<
+	InteractionType.MessageComponent,
+	APIMessageMenuActionItemInteractionData
+> &
+	Required<
+		Pick<
+			APIBaseInteraction<InteractionType.MessageComponent, APIMessageMenuActionItemInteractionData>,
+			'app_permissions' | 'channel_id' | 'channel' | 'data' | 'message'
+		>
+	>;
+
+export type APIMessageComponentInteractionData =
+	APIMessageButtonInteractionData | APIMessageMenuActionItemInteractionData | APIMessageSelectMenuInteractionData;
 
 export interface APIMessageComponentBaseInteractionData<CType extends ComponentType> {
 	/**
@@ -55,6 +70,12 @@ export interface APIMessageComponentBaseInteractionData<CType extends ComponentT
 }
 
 export type APIMessageButtonInteractionData = APIMessageComponentBaseInteractionData<ComponentType.Button>;
+
+/**
+ * @unstable This feature is not publicly released and is currently in preview.
+ */
+export type APIMessageMenuActionItemInteractionData =
+	APIMessageComponentBaseInteractionData<ComponentType.MenuActionItem>;
 
 export interface APIMessageStringSelectInteractionData extends APIMessageComponentBaseInteractionData<ComponentType.StringSelect> {
 	values: string[];
