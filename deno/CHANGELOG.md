@@ -1,3 +1,33 @@
+## [0.38.61](https://github.com/discordjs/discord-api-types/compare/0.38.60...0.38.61) (2026-11-26)
+
+
+### Bug Fixes
+
+* **APIApplicationIdentity:** add `user_id`, deprecate `APIUserApplicationIdentity` ([#1906](https://github.com/discordjs/discord-api-types/issues/1906)) ([4413813](https://github.com/discordjs/discord-api-types/commit/4413813664d308ed11fabf5a0c04074da9030894))
+* **APIModalSubmitComponent:** type select and file upload values as Snowflake[] ([#1884](https://github.com/discordjs/discord-api-types/issues/1884)) ([b2ed95a](https://github.com/discordjs/discord-api-types/commit/b2ed95a343e29d14f5737cf3ef4fd826de4392d8))
+* **APIStageInstance:** make `guild_scheduled_event_id` required and nullable ([#1880](https://github.com/discordjs/discord-api-types/issues/1880)) ([d4a8f47](https://github.com/discordjs/discord-api-types/commit/d4a8f470186c0a068f20531333d0655963e9f623))
+* **Channel:** narrow thread creation message and result types ([#1619](https://github.com/discordjs/discord-api-types/issues/1619)) ([1ef2a25](https://github.com/discordjs/discord-api-types/commit/1ef2a25fc2a4e02d7e0cd320c8d1902c893b24a5))
+* **RESTPatchCurrentApplicationJSONBody:** disallow DisabledByDiscord for event_webhooks_status ([#1881](https://github.com/discordjs/discord-api-types/issues/1881)) ([f87a7b1](https://github.com/discordjs/discord-api-types/commit/f87a7b1630177164bbcf8666e762af6b01aaf52b))
+* **RESTPostAPIChannelMessagesThreadsJSONBody:** make `rate_limit_per_user` nullable ([#1886](https://github.com/discordjs/discord-api-types/issues/1886)) ([c09e3aa](https://github.com/discordjs/discord-api-types/commit/c09e3aabadd5711b996aa30e0d8131f6712fcd88))
+* **RESTPostAPIGuildForumThreadsFormDataBody:** add files[n] and payload_json ([#1878](https://github.com/discordjs/discord-api-types/issues/1878)) ([b33194b](https://github.com/discordjs/discord-api-types/commit/b33194b93833db968510645cf85ecc456c37d99d))
+* **RPCSetVoiceSettingsArgs:** make fields optional ([#1901](https://github.com/discordjs/discord-api-types/issues/1901)) ([82c44ce](https://github.com/discordjs/discord-api-types/commit/82c44cece910cd43326a6591da201b98e17d02e6))
+* **VoiceHeartbeatData:** make `seq_ack` optional ([#1882](https://github.com/discordjs/discord-api-types/issues/1882)) ([90d9e06](https://github.com/discordjs/discord-api-types/commit/90d9e06ba0a7ce8657b36af86e32ccea70cd6d1f))
+
+
+### Features
+
+* **APIEmbed:** add audio embeds ([#1907](https://github.com/discordjs/discord-api-types/issues/1907)) ([2674e1a](https://github.com/discordjs/discord-api-types/commit/2674e1a1fd66aad83b610af740f0b3a78ba0a7ef))
+* **APITextInputComponent:** deprecate label ([#1887](https://github.com/discordjs/discord-api-types/issues/1887)) ([0ecee2a](https://github.com/discordjs/discord-api-types/commit/0ecee2a099a4b14257ac683ac2b70dac2fd7a212))
+* **AuditLog:** add onboarding change keys ([#1897](https://github.com/discordjs/discord-api-types/issues/1897)) ([dba5801](https://github.com/discordjs/discord-api-types/commit/dba5801803dceac2729cd285aefe8d7df65339dd)), closes [#1678](https://github.com/discordjs/discord-api-types/issues/1678)
+* **GatewayThreadMembersUpdate:** add member and presence to added members ([#1885](https://github.com/discordjs/discord-api-types/issues/1885)) ([9d209cc](https://github.com/discordjs/discord-api-types/commit/9d209cca7e516e9bc1ea5a94a85165721e5339fc))
+* **invites:** add single and bulk invite target user endpoints ([#1836](https://github.com/discordjs/discord-api-types/issues/1836)) ([49c47a2](https://github.com/discordjs/discord-api-types/commit/49c47a23432a8f7b74d8e7304f86ccf86299e74b))
+* **Lobby:** add lobby resource ([#1876](https://github.com/discordjs/discord-api-types/issues/1876)) ([a17efeb](https://github.com/discordjs/discord-api-types/commit/a17efeb8af2a88c50bee73b2e9b1fb824505193f))
+* **RESTJSONErrorCodes:** add InviteIsExpired ([#1900](https://github.com/discordjs/discord-api-types/issues/1900)) ([9fcad50](https://github.com/discordjs/discord-api-types/commit/9fcad502cba0308ed6fccd4140523c5a8e1dcaef))
+* **RESTPostAPICurrentUserCreateGroupDMChannelJSONBody:** add Create Group DM body ([#1871](https://github.com/discordjs/discord-api-types/issues/1871)) ([9706c77](https://github.com/discordjs/discord-api-types/commit/9706c77eb1212d1ec1f6480316e239605fb17c95))
+* **RPC:** add dispatch data for new IPC events ([#1867](https://github.com/discordjs/discord-api-types/issues/1867)) ([21c2f41](https://github.com/discordjs/discord-api-types/commit/21c2f410b920346eee3cf7ea321c40af09f157bc))
+* **Rpc:** add RPCOpcodes ([#1773](https://github.com/discordjs/discord-api-types/issues/1773)) ([1128bc7](https://github.com/discordjs/discord-api-types/commit/1128bc7a721f5c577db947a5df7e7a46fcd8bdfa))
+* **VoiceOpcodes:** add MediaSinkWants ([#1908](https://github.com/discordjs/discord-api-types/issues/1908)) ([9f0b623](https://github.com/discordjs/discord-api-types/commit/9f0b6235babbcb6c14830a1c9773597f0f10b8ed))
+
 ## [0.38.60](https://github.com/discordjs/discord-api-types/compare/0.38.59...0.38.60) (2026-11-19)
 
 
