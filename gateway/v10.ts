@@ -241,9 +241,7 @@ export enum GatewayCapabilityBits {
 	/**
 	 * Opts the client into receiving {@link https://docs.discord.com/developers/resources/channel#channel-object-obfuscated-channels | obfuscated channel metadata} over the Gateway for channels it can't view
 	 *
-	 * @unstable `CHANNEL_OBFUSCATION` is a temporary, testing-only opt-in for channel obfuscation. This opt-in mechanism
-	 * will change before the feature reaches general availability. Obfuscation is then planned to apply to all bots
-	 * automatically, even when they don't provide this capability.
+	 * @deprecated Channel obfuscation now applies to all bots automatically, so this capability no longer has any effect
 	 */
 	ChannelObfuscation = 1 << 15,
 }
