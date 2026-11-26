@@ -284,9 +284,41 @@ export interface RPCAuthorizeArgs {
 	 */
 	client_id: Snowflake;
 	/**
-	 * Scopes to authorize
+	 * Scopes to authorize, as a space-separated string or an array
+	 *
+	 * @remarks If neither `scope` nor `scopes` is set, no scopes are requested.
 	 */
-	scopes: OAuth2Scopes[];
+	scope?: OAuth2Scopes[] | string | null;
+	/**
+	 * Legacy alias for `scope`; takes precedence over `scope` if both are set
+	 */
+	scopes?: OAuth2Scopes[] | string | null;
+	/**
+	 * OAuth2 response type; defaults to `code` (`token` is not supported)
+	 */
+	response_type?: string | null;
+	/**
+	 * PKCE code challenge
+	 */
+	code_challenge?: string | null;
+	/**
+	 * PKCE code challenge method
+	 */
+	code_challenge_method?: string | null;
+	/**
+	 * OAuth2 state value
+	 *
+	 * @see {@link https://docs.discord.com/developers/topics/oauth2#state-and-security}
+	 */
+	state?: string | null;
+	/**
+	 * How to handle existing authorizations
+	 */
+	prompt?: 'consent' | 'none' | null;
+	/**
+	 * Nonce to include in the authorization request
+	 */
+	nonce?: string | null;
 	/**
 	 * 	username to create a guest account with if the user does not have Discord
 	 */
