@@ -501,3 +501,19 @@ export enum RPCOpcodes {
 	 */
 	Pong,
 }
+
+/**
+ * The payload sent with {@link RPCOpcodes.Handshake} to begin an IPC session
+ *
+ * @see {@link https://docs.discord.com/developers/topics/rpc#handshake-payload}
+ */
+export interface RPCHandshakePayload {
+	/**
+	 * RPC version
+	 */
+	v: number;
+	/**
+	 * Your application's client ID
+	 */
+	client_id: Snowflake;
+}
