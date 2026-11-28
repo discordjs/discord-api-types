@@ -314,6 +314,7 @@ export default config([
 						'RESTAPIPartialCurrentUserGuild',
 						'RESTAPIPoll',
 						'RESTOAuth2TokenOptionalClientCredentials',
+						'RESTOAuth2TokenPublicClientCredentials',
 
 						'RESTOAuth2AdvancedBotAuthorizationQuery',
 						'RESTOAuth2AdvancedBotAuthorizationQueryResult',

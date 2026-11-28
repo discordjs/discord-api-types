@@ -1,5 +1,6 @@
 import type {
 	OAuth2Scopes,
+	RESTOAuth2AuthorizationQuery,
 	RESTOAuth2BotAuthorizationQuery,
 	RESTOAuth2AdvancedBotAuthorizationQuery,
 	RESTPostOAuth2AccessTokenURLEncodedData,
@@ -40,7 +41,7 @@ expectNotAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(invalidBot
 		redirect_uri: 'https://discord.com',
 	});
 
-	// @ts-expect-error - client_secret is missing
+	// @ts-expect-error - client_secret or code_verifier is missing
 	expectNotAssignable<RESTPostOAuth2AccessTokenURLEncodedData>({
 		client_id: '123456789',
 		code: 'code',
@@ -52,6 +53,39 @@ expectNotAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(invalidBot
 	expectNotAssignable<RESTPostOAuth2AccessTokenURLEncodedData>({
 		client_secret: 'very secret',
 		code: 'code',
+		grant_type: 'authorization_code',
+		redirect_uri: 'https://discord.com',
+	});
+
+	expectAssignable<RESTPostOAuth2AccessTokenURLEncodedData>({
+		code: 'code',
+		code_verifier: 'verifier',
+		grant_type: 'authorization_code',
+		redirect_uri: 'https://discord.com',
+	});
+
+	expectAssignable<RESTPostOAuth2AccessTokenURLEncodedData>({
+		client_id: '123456789',
+		client_secret: 'very secret',
+		code: 'code',
+		code_verifier: 'verifier',
+		grant_type: 'authorization_code',
+		redirect_uri: 'https://discord.com',
+	});
+
+	expectAssignable<RESTPostOAuth2AccessTokenURLEncodedData>({
+		client_id: '123456789',
+		code: 'code',
+		code_verifier: 'verifier',
+		grant_type: 'authorization_code',
+		redirect_uri: 'https://discord.com',
+	});
+
+	// @ts-expect-error - client_id is missing
+	expectNotAssignable<RESTPostOAuth2AccessTokenURLEncodedData>({
+		client_secret: 'very secret',
+		code: 'code',
+		code_verifier: 'verifier',
 		grant_type: 'authorization_code',
 		redirect_uri: 'https://discord.com',
 	});
@@ -70,8 +104,7 @@ expectNotAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(invalidBot
 		refresh_token: 'a real token this is',
 	});
 
-	// @ts-expect-error - client_secret is missing
-	expectNotAssignable<RESTPostOAuth2RefreshTokenURLEncodedData>({
+	expectAssignable<RESTPostOAuth2RefreshTokenURLEncodedData>({
 		client_id: '123456789',
 		grant_type: 'refresh_token',
 		refresh_token: 'a real token this is',
@@ -82,5 +115,24 @@ expectNotAssignable<RESTOAuth2AdvancedBotAuthorizationQuery['scope']>(invalidBot
 		client_secret: 'very secret',
 		grant_type: 'refresh_token',
 		refresh_token: 'a real token this is',
+	});
+}
+
+{
+	expectAssignable<RESTOAuth2AuthorizationQuery>({
+		client_id: '123456789',
+		code_challenge: 'challenge',
+		code_challenge_method: 'S256',
+		response_type: 'code',
+		scope: 'identify',
+	});
+
+	expectNotAssignable<RESTOAuth2AuthorizationQuery>({
+		client_id: '123456789',
+		code_challenge: 'challenge',
+		// @ts-expect-error - only S256 is supported
+		code_challenge_method: 'plain',
+		response_type: 'code',
+		scope: 'identify',
 	});
 }
