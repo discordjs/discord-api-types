@@ -9,7 +9,7 @@ export type RESTPostAPISendSoundboardSoundResult = undefined;
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#send-soundboard-sound-json-params}
  */
-export interface RESTPostAPISoundboardSendSoundJSONBody {
+export interface RESTPostAPISendSoundboardSoundJSONBody {
 	/**
 	 * The id of the soundboard sound to play
 	 */
@@ -19,6 +19,11 @@ export interface RESTPostAPISoundboardSendSoundJSONBody {
 	 */
 	source_guild_id?: Snowflake | undefined;
 }
+
+/**
+ * @deprecated Use {@link RESTPostAPISendSoundboardSoundJSONBody} instead
+ */
+export type RESTPostAPISoundboardSendSoundJSONBody = RESTPostAPISendSoundboardSoundJSONBody;
 
 /**
  * @see {@link https://discord.com/developers/docs/resources/soundboard#list-soundboard-default-sounds}
