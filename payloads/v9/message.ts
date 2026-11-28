@@ -1323,6 +1323,14 @@ export enum ComponentType {
 	 * Single checkbox for binary choice
 	 */
 	Checkbox,
+	/**
+	 * @unstable This component is not publicly released and is currently in preview.
+	 */
+	OverflowMenu = 25,
+	/**
+	 * @unstable This component is not publicly released and is currently in preview.
+	 */
+	MenuActionItem,
 	// EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
 
 	/**
@@ -1457,6 +1465,120 @@ export enum ButtonStyle {
 	 * Purchase
 	 */
 	Premium,
+}
+
+/**
+ * An Overflow Menu is an interactive component that can only be used in messages. When clicked, it displays a dropdown menu of grouped action items.
+ *
+ * Overflow menus must be placed inside an Action Row or a Section's `accessory` field and require the components v2 message flag.
+ *
+ * @see {@link https://docs.discord.com/developers/components/reference}
+ * @unstable This component is not publicly released and is currently in preview.
+ */
+export interface APIOverflowMenuComponent extends APIBaseComponent<ComponentType.OverflowMenu> {
+	/**
+	 * The groups of menu action items displayed in the menu
+	 */
+	groups: APIOverflowMenuGroup[];
+}
+
+/**
+ * A group of menu action items in an overflow menu.
+ *
+ * @see {@link https://docs.discord.com/developers/components/reference}
+ * @unstable This feature is not publicly released and is currently in preview.
+ */
+export interface APIOverflowMenuGroup {
+	/**
+	 * The label for the group
+	 */
+	label?: string;
+	/**
+	 * The menu action items in the group
+	 */
+	components: APIMenuActionItemComponent[];
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference}
+ * @unstable This feature is not publicly released and is currently in preview.
+ */
+export interface APIMenuActionItemComponentBase<
+	Style extends MenuActionItemStyle,
+> extends APIBaseComponent<ComponentType.MenuActionItem> {
+	/**
+	 * The style of the menu action item
+	 */
+	style: Style;
+	/**
+	 * Whether the menu action item is disabled
+	 *
+	 * @defaultValue `false`
+	 */
+	disabled?: boolean;
+	/**
+	 * The label to be displayed on the menu action item
+	 */
+	label: string;
+	/**
+	 * An optional description displayed below the label
+	 */
+	description?: string;
+	/**
+	 * The emoji to display to the left of the text
+	 */
+	emoji?: APIMessageComponentEmoji;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference}
+ * @unstable This feature is not publicly released and is currently in preview.
+ */
+export interface APIMenuActionItemComponentWithCustomId extends APIMenuActionItemComponentBase<
+	MenuActionItemStyle.Danger | MenuActionItemStyle.Default
+> {
+	/**
+	 * The custom_id to be sent in the interaction when clicked; 1-100 characters
+	 */
+	custom_id: string;
+}
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference}
+ * @unstable This feature is not publicly released and is currently in preview.
+ */
+export interface APIMenuActionItemComponentWithURL extends APIMenuActionItemComponentBase<MenuActionItemStyle.Link> {
+	/**
+	 * The URL to direct users to when clicked for Link menu action items; max 512 characters
+	 */
+	url: string;
+}
+
+/**
+ * A Menu Action Item is an item within an Overflow Menu. Clicking an item with a `custom_id` sends an interaction to your app, while a Link item navigates to its URL.
+ *
+ * @see {@link https://docs.discord.com/developers/components/reference}
+ * @unstable This component is not publicly released and is currently in preview.
+ */
+export type APIMenuActionItemComponent = APIMenuActionItemComponentWithCustomId | APIMenuActionItemComponentWithURL;
+
+/**
+ * @see {@link https://docs.discord.com/developers/components/reference}
+ * @unstable This enum is not publicly released and is currently in preview.
+ */
+export enum MenuActionItemStyle {
+	/**
+	 * A standard action
+	 */
+	Default = 1,
+	/**
+	 * An action with irreversible consequences
+	 */
+	Danger,
+	/**
+	 * Navigates to a URL
+	 */
+	Link,
 }
 
 /**
@@ -2229,6 +2351,7 @@ export type APIMessageComponent =
 	| APIContainerComponent
 	| APIFileComponent
 	| APIMediaGalleryComponent
+	| APIOverflowMenuComponent
 	| APISectionComponent
 	| APISelectMenuComponent
 	| APISeparatorComponent
@@ -2264,7 +2387,7 @@ export type APIComponentInActionRow = APIComponentInMessageActionRow | APICompon
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
  */
-export type APIComponentInMessageActionRow = APIButtonComponent | APISelectMenuComponent;
+export type APIComponentInMessageActionRow = APIButtonComponent | APIOverflowMenuComponent | APISelectMenuComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#action-row}
@@ -2286,7 +2409,7 @@ export type APIComponentInLabel =
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#section}
  */
-export type APISectionAccessoryComponent = APIButtonComponent | APIThumbnailComponent;
+export type APISectionAccessoryComponent = APIButtonComponent | APIOverflowMenuComponent | APIThumbnailComponent;
 
 /**
  * @see {@link https://discord.com/developers/docs/components/reference#container}
