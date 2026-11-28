@@ -54,6 +54,19 @@ export interface RESTOAuth2AuthorizationQuery {
 	 * @see {@link https://docs.discord.com/developers/resources/application#installation-context}
 	 */
 	integration_type?: ApplicationIntegrationType;
+	/**
+	 * The PKCE code challenge, derived from the `code_verifier` that will be sent when exchanging the authorization code
+	 *
+	 * @see {@link https://datatracker.ietf.org/doc/html/rfc7636#section-4.2}
+	 */
+	code_challenge?: string;
+	/**
+	 * The method used to derive the `code_challenge` from the `code_verifier`
+	 *
+	 * @remarks Discord only supports `S256`
+	 * @see {@link https://datatracker.ietf.org/doc/html/rfc7636#section-4.3}
+	 */
+	code_challenge_method?: 'S256';
 }
 
 /**
@@ -87,16 +100,37 @@ export type RESTOAuth2AuthorizationQueryResult = RESTPostOAuth2AuthorizationQuer
  * @remarks
  * This endpoint requires either HTTP Basic authentication using `client_id:client_secret`,
  * or the `client_id` and `client_secret` must be provided in the form body.
+ *
+ * Alternatively, only the `client_id` may be provided in the form body, as long as a PKCE `code_verifier` is included.
  * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-redirect-url-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#shared-resources-oauth2-urls}
  */
-export type RESTPostOAuth2AccessTokenURLEncodedData = RESTOAuth2TokenOptionalClientCredentials & {
+export type RESTPostOAuth2AccessTokenURLEncodedData = {
 	grant_type: 'authorization_code';
 	code: string;
 	redirect_uri?: string;
-};
+	/**
+	 * The PKCE code verifier the `code_challenge` of the authorization request was derived from
+	 *
+	 * @remarks Required if the authorization request included a `code_challenge`, or if only the `client_id` is provided for client authentication
+	 * @see {@link https://datatracker.ietf.org/doc/html/rfc7636#section-4.5}
+	 */
+	code_verifier?: string;
+} & (RESTOAuth2TokenOptionalClientCredentials | (RESTOAuth2TokenPublicClientCredentials & { code_verifier: string }));
 
 export type RESTOAuth2TokenOptionalClientCredentials =
 	{ client_id: Snowflake; client_secret: string } | { client_id?: never; client_secret?: never };
+
+/**
+ * Client authentication that only provides the `client_id` in the form body, without a `client_secret`
+ * (the `none` token endpoint authentication method)
+ *
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#shared-resources-oauth2-urls}
+ */
+export interface RESTOAuth2TokenPublicClientCredentials {
+	client_id: Snowflake;
+	client_secret?: never;
+}
 
 /**
  * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-access-token-response}
@@ -113,12 +147,15 @@ export interface RESTPostOAuth2AccessTokenResult {
  * @remarks
  * This endpoint requires either HTTP Basic authentication using `client_id:client_secret`,
  * or the `client_id` and `client_secret` must be provided in the form body.
+ *
+ * Applications configured as public clients may instead only provide the `client_id` in the form body.
  * @see {@link https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example}
+ * @see {@link https://docs.discord.com/developers/topics/oauth2#shared-resources-oauth2-urls}
  */
-export type RESTPostOAuth2RefreshTokenURLEncodedData = RESTOAuth2TokenOptionalClientCredentials & {
+export type RESTPostOAuth2RefreshTokenURLEncodedData = {
 	grant_type: 'refresh_token';
 	refresh_token: string;
-};
+} & (RESTOAuth2TokenOptionalClientCredentials | RESTOAuth2TokenPublicClientCredentials);
 
 export type RESTPostOAuth2RefreshTokenResult = RESTPostOAuth2AccessTokenResult;
 
